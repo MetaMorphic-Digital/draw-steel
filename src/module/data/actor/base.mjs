@@ -394,6 +394,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
    * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
+   * @param {HTMLDListElement} [options.resultTable]    A reference to a DList element for a result table.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
@@ -431,26 +432,42 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     if (!promptValue) return null;
     const { rollMode, powerRolls } = promptValue;
 
-    // TODO: Integrate difficulty result response
-    // let content = "";
-    // if (options.difficulty) {
-    //   /** @type {PowerRoll} */
-    //   const testRoll = powerRolls[0];
-    //   if (testRoll.isCritical) {
-    //     content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty].critical);
-    //   }
-    //   else {
-    //     content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty][`tier${testRoll.product}`]);
-    //   }
-    // }
-
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       title: flavor,
-      rolls: powerRolls,
+      system: {
+        // ignored if not-standard
+        parts: [],
+      },
       sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
     };
+
+    if (options.difficulty || options.resultTable) {
+      messageData.type = "standard";
+      const testConfig = ds.CONST.testOutcomes[options.difficulty];
+      const contentPart = { type: "content" };
+      /** @type {PowerRoll} */
+      const testRoll = powerRolls[0];
+      if (testConfig) {
+        contentPart.flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", { difficulty: game.i18n.localize(testConfig.label) });
+        if (testRoll.isCritical) {
+          messageData.content = game.i18n.localize(testConfig.critical);
+        }
+        else {
+          messageData.content = game.i18n.localize(testConfig[`tier${testRoll.product}`]);
+        }
+      }
+      if (options.resultTable) {
+        messageData.content = options.resultTable.querySelector(`dt.tier${testRoll.product} + dd`)?.innerHTML ?? "";
+      }
+      messageData.system.parts.push({ type: "roll", rolls: powerRolls });
+      messageData.system.parts.push(contentPart);
+    }
+    else {
+      messageData.rolls = powerRolls;
+    }
+
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
     return DrawSteelChatMessage.create(messageData);
   }
