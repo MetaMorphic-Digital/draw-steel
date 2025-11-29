@@ -1,5 +1,6 @@
 /**
  * @import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
+ * @import DSRoll from "../../../rolls/base.mjs";
  */
 
 const { ArrayField, JSONField, StringField } = foundry.data.fields;
@@ -48,6 +49,7 @@ export default class MessagePart extends foundry.abstract.DataModel {
   static get TYPES() {
     return this.#TYPES ??= Object.freeze({
       content: ds.data.ChatMessage.parts.ContentPart,
+      roll: ds.data.ChatMessage.parts.RollPart,
     });
   }
 
@@ -133,6 +135,7 @@ export default class MessagePart extends foundry.abstract.DataModel {
    * Prepare data of an individual part.
    */
   prepareData() {
+    /** @type {DSRoll[]} */
     this.rolls = this.rolls.reduce((rolls, rollData) => {
       try {
         rolls.push(foundry.dice.Roll.fromData(rollData));

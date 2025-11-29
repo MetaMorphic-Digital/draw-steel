@@ -21,7 +21,7 @@ export default class ContentPart extends MessagePart {
     await super._prepareContext(context);
 
     context.enrichedHTML = await enrichHTML(this.message.content, {
-      rollData: this.message.getRollData(),
+      rollData: context.rollData,
       secrets: this.message.speakerActor?.isOwner ?? game.user.isGM,
     });
   }

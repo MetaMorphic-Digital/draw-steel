@@ -431,26 +431,31 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     if (!promptValue) return null;
     const { rollMode, powerRolls } = promptValue;
 
-    // TODO: Integrate difficulty result response
-    // let content = "";
-    // if (options.difficulty) {
-    //   /** @type {PowerRoll} */
-    //   const testRoll = powerRolls[0];
-    //   if (testRoll.isCritical) {
-    //     content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty].critical);
-    //   }
-    //   else {
-    //     content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty][`tier${testRoll.product}`]);
-    //   }
-    // }
-
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       title: flavor,
+      system: {
+        parts: [],
+      },
       rolls: powerRolls,
       sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
     };
+
+    if (options.difficulty) {
+      messageData.type = "standard";
+      /** @type {PowerRoll} */
+      const testRoll = powerRolls[0];
+      if (testRoll.isCritical) {
+        messageData.content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty].critical);
+      }
+      else {
+        messageData.content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty][`tier${testRoll.product}`]);
+      }
+      messageData.system.parts.push({ type: "roll", rolls: powerRolls });
+      messageData.system.parts.push({ type: "content" });
+    }
+
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
     return DrawSteelChatMessage.create(messageData);
   }
