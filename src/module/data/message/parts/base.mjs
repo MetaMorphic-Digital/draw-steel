@@ -1,3 +1,7 @@
+/**
+ * @import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
+ */
+
 const { ArrayField, JSONField, StringField } = foundry.data.fields;
 
 /**
@@ -42,7 +46,9 @@ export default class MessagePart extends foundry.abstract.DataModel {
    * @type {Record<string, typeof MessagePart>}
    */
   static get TYPES() {
-    return this.#TYPES ??= Object.freeze({});
+    return this.#TYPES ??= Object.freeze({
+      content: ds.data.ChatMessage.parts.ContentPart,
+    });
   }
 
   /* -------------------------------------------------- */
@@ -60,6 +66,16 @@ export default class MessagePart extends foundry.abstract.DataModel {
    * @type {string}
    */
   static TYPE = "";
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The chat message this is part of.
+   * @type {DrawSteelChatMessage}
+   */
+  get message() {
+    return this.parent.parent;
+  }
 
   /* -------------------------------------------------- */
 
@@ -85,6 +101,7 @@ export default class MessagePart extends foundry.abstract.DataModel {
 
   /**
    * Modify the context used to render this part.
+   * Called by StandardModel#_renderHTML.
    * @param {object} context    The context object (**will be mutated**).
    * @returns {Promise<void>}
    */
@@ -97,6 +114,7 @@ export default class MessagePart extends foundry.abstract.DataModel {
 
   /**
    * Apply event listeners to the rendered element.
+   * Called by StandardModel#_renderHTML.
    * @param {HTMLElement} element   The rendered part.
    * @param {object} context        The rendering context.
    */
