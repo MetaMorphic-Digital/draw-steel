@@ -1422,6 +1422,11 @@ export const PowerRollEffect = {
       },
     },
   },
+  resource: {
+    label: "TYPES.PowerRollEffect.resource",
+    defaultImage: "icons/svg/lightning.svg",
+    documentClass: pseudoDocuments.powerRollEffects.GainResourcePowerRollEffect,
+  },
   other: {
     label: "TYPES.PowerRollEffect.other",
     defaultImage: "icons/svg/sun.svg",
