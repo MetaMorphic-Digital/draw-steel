@@ -27,6 +27,8 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
     return "resource";
   }
 
+  /* -------------------------------------------------- */
+
   /** @type {Record<string, {label: string, plural: string}>} */
   static get resourceTypes() {
     return {
@@ -44,6 +46,11 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
       },
     };
   }
+
+  /* -------------------------------------------------- */
+
+  /** @type {Intl.PluralRules} */
+  static pluralRules;
 
   /* -------------------------------------------------- */
 
@@ -66,10 +73,11 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
    * @returns {string}    The default value.
    */
   #getResourceKey(n) {
+    this.constructor.pluralRules ||= new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
+
     const tierAmount = this.resource[`tier${n}`].amount;
     const resourceType = this.resource[`tier${n}`].type;
-    const pluralRules = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
-    const labelKey = pluralRules.select(tierAmount) === "one" ? "label" : "plural";
+    const labelKey = this.constructor.pluralRules.select(tierAmount) === "one" ? "label" : "plural";
 
     return this.constructor.resourceTypes[resourceType][labelKey];
   }
