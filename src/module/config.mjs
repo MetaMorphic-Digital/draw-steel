@@ -857,10 +857,10 @@ export const hero = {
       tokens: 1,
       messageContent: "DRAW_STEEL.Setting.HeroTokens.SucceedSave.messageContent",
     },
-    improveTest: {
-      label: "DRAW_STEEL.Setting.HeroTokens.ImproveTest.label",
+    rerollTest: {
+      label: "DRAW_STEEL.Setting.HeroTokens.RerollTest.label",
       tokens: 1,
-      messageContent: "DRAW_STEEL.Setting.HeroTokens.ImproveTest.messageContent",
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.RerollTest.messageContent",
     },
     regainStamina: {
       label: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
