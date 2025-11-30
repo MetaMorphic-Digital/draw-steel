@@ -57,10 +57,10 @@ export default class DrawSteelRegistry {
             this.perk.set(dsid, registryEntry);
             break;
           case "kit":
-            this.kit.set(dsid, registryEntry);
             if (this.kit.has(item.dsid)) {
               console.warn(`Replacing ${item.type} registry entry for ${dsid}`);
             }
+            this.kit.set(dsid, registryEntry);
             break;
         }
       }
@@ -71,19 +71,47 @@ export default class DrawSteelRegistry {
   /*  Registries                                        */
   /* -------------------------------------------------- */
 
-  class = new DSRegistryCollection();
+  #class = new DSRegistryCollection();
+
+  /**
+   * A registry of classes mapping DSID to registry entries.
+   */
+  get class() {
+    return this.#class;
+  }
 
   /* -------------------------------------------------- */
 
-  subclass = new DSRegistryCollection();
+  #subclass = new DSRegistryCollection();
+
+  /**
+   * A registry of subclasses mapping DSID to registry entries.
+   */
+  get subclass() {
+    return this.#subclass;
+  }
 
   /* -------------------------------------------------- */
 
-  perk = new DSRegistryCollection();
+  #perk = new DSRegistryCollection();
+
+  /**
+   * A registry of perks mapping DSID to registry entries.
+   */
+  get perk() {
+    return this.#perk;
+  }
 
   /* -------------------------------------------------- */
 
-  kit = new DSRegistryCollection();
+  #kit = new DSRegistryCollection();
+
+  /**
+   * A registry of kits mapping DSID to registry entries.
+   */
+  get kit() {
+    return this.#kit;
+  }
 }
 
 /* -------------------------------------------------- */
