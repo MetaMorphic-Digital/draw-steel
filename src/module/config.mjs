@@ -7,12 +7,18 @@ import { preLocalize } from "./helpers/localization.mjs";
 /* -------------------------------------------------- */
 
 /**
+ * @typedef CharacteristicConfig
+ * @property {string} label       Full name (e.g. "Might").
+ * @property {string} hint        Short form in all caps (e.g. "M").
+ * @property {string} rollKey     Key for `@` references in roll data.
+ * @property {string} reference   UUID pointer to a `reference` page.
+ */
+
+/**
  * The set of Characteristics used within the system.
  * These have special localization handling that checks for `DRAW_STEEL.Actor.characteristics`.
- * The `label` is the full name (e.g. Might).
- * The `hint` is the short form in all caps (e.g. M).
  * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
- * @type {Record<string, {label: string; hint: string; rollKey: string}>}
+ * @type {Record<string, CharacteristicConfig>}
  */
 export const characteristics = Object.seal({
   might: {
@@ -798,6 +804,8 @@ preLocalize("measurements.height", { keys: ["label"] });
 preLocalize("measurements.weight", { keys: ["label"] });
 preLocalize("measurements.groups", { keys: ["label"] });
 
+/* -------------------------------------------------- */
+
 /**
  * Configuration information for heroes.
  */
@@ -907,131 +915,171 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
 /* -------------------------------------------------- */
 
 /**
+ * @typedef MonsterKeyword
+ * @property {string} label
+ * @property {string} group
+ * @property {string} [reference] An optional pointer to a UUID reference with a description of the keyword.
+ */
+
+/** @type {Record<string, MonsterKeyword>} */
+const monsterKeywords = {
+  abyssal: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Abyssal",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  accursed: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Accursed",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  animal: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Animal",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  beast: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Beast",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  construct: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Construct",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  dragon: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Dragon",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  elemental: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Elemental",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  fey: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Fey",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  giant: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Giant",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  horror: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Horror",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  humanoid: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Humanoid",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  infernal: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Infernal",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  plant: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Plant",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  soulless: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Soulless",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  swarm: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Swarm",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+  undead: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Undead",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+  },
+};
+
+/**
+ * @typedef MonsterOrganization
+ * @property {string} label
+ * @property {string} reference A UUID with a description of the organizational structure.
+ */
+
+/** @type {Record<string, MonsterOrganization>} */
+const monsterOrganizations = {
+  minion: {
+    label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
+    reference: "",
+  },
+  horde: {
+    label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
+    reference: "",
+  },
+  platoon: {
+    label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
+    reference: "",
+  },
+  elite: {
+    label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
+    reference: "",
+  },
+  leader: {
+    label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
+    reference: "",
+  },
+  solo: {
+    label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Solo",
+    reference: "",
+  },
+};
+
+/**
+ * @typedef MonsterRole
+ * @property {string} label
+ * @property {string} reference A UUID with a description of the role.
+ */
+
+/** @type {Record<string, MonsterRole>} */
+const monsterRoles = {
+  ambusher: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Ambusher",
+    reference: "",
+  },
+  artillery: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Artillery",
+    reference: "",
+  },
+  brute: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Brute",
+    reference: "",
+  },
+  controller: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Controller",
+    reference: "",
+  },
+  defender: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Defender",
+    reference: "",
+  },
+  harrier: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Harrier",
+    reference: "",
+  },
+  hexer: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Hexer",
+    reference: "",
+  },
+  mount: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Mount",
+    reference: "",
+  },
+  support: {
+    label: "DRAW_STEEL.Actor.npc.ROLES.Support",
+    reference: "",
+  },
+};
+
+/**
  * Configuration information for monsters.
  */
 export const monsters = {
-  /** @type {Record<string, {label: string, group: string}>} */
-  keywords: {
-    abyssal: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Abyssal",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    accursed: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Accursed",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    animal: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Animal",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    beast: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Beast",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    construct: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Construct",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    dragon: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Dragon",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    elemental: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Elemental",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    fey: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Fey",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    giant: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Giant",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    horror: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Horror",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    humanoid: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Humanoid",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    infernal: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Infernal",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    plant: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Plant",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    soulless: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Soulless",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    swarm: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Swarm",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-    undead: {
-      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Undead",
-      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
-    },
-  },
-  /** @type {Record<string, {label: string}>} */
-  roles: {
-    ambusher: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Ambusher",
-    },
-    artillery: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Artillery",
-    },
-    brute: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Brute",
-    },
-    controller: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Controller",
-    },
-    defender: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Defender",
-    },
-    harrier: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Harrier",
-    },
-    hexer: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Hexer",
-    },
-    mount: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Mount",
-    },
-    support: {
-      label: "DRAW_STEEL.Actor.npc.ROLES.Support",
-    },
-  },
-  /** @type {Record<string, {label: string}>} */
-  organizations: {
-    minion: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
-    },
-    horde: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
-    },
-    platoon: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
-    },
-    elite: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
-    },
-    leader: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
-    },
-    solo: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Solo",
-    },
-  },
+  keywords: monsterKeywords,
+  organizations: monsterOrganizations,
+  roles: monsterRoles,
 };
 preLocalize("monsters.keywords", { keys: ["label", "group"] });
-preLocalize("monsters.roles", { key: "label" });
 preLocalize("monsters.organizations", { key: "label" });
+preLocalize("monsters.roles", { key: "label" });
 
 /* -------------------------------------------------- */
 
@@ -1128,35 +1176,50 @@ const abilityKeywords = {
 };
 
 /**
+ * @typedef AbilityType
+ * @property {string} label
+ * @property {boolean} [triggered]
+ * @property {string} reference     A UUID with a description of the action type.
+ */
+
+/**
  * Action types for abilities.
- * @type {Record<string, {label: string, triggered?: boolean}>}
+ * @type {Record<string, AbilityType>}
  */
 const abilityTypes = {
   main: {
     label: "DRAW_STEEL.Item.ability.Type.Main",
+    reference: "",
   },
   maneuver: {
     label: "DRAW_STEEL.Item.ability.Type.Maneuver",
+    reference: "",
   },
   freeManeuver: {
     label: "DRAW_STEEL.Item.ability.Type.FreeManeuver",
+    reference: "",
   },
   triggered: {
     label: "DRAW_STEEL.Item.ability.Type.Triggered",
+    reference: "",
     triggered: true,
   },
   freeTriggered: {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
+    reference: "",
   },
   move: {
     label: "DRAW_STEEL.Item.ability.Type.Move",
+    reference: "",
   },
   none: {
     label: "DRAW_STEEL.Item.ability.Type.None",
+    reference: "",
   },
   villain: {
     label: "DRAW_STEEL.Item.ability.Type.Villain",
+    reference: "",
   },
 };
 
@@ -1187,6 +1250,7 @@ const abilityCategories = {
  * @property {string} [tertiary]    Distance measurement label.
  * @property {boolean} [area]       Does this count as an area measurment?
  * @property {string} embedLabel    Format string for the display in the ability embed.
+ * @property {string} [reference]   An optional UUID with a description of the ability distance.
  */
 
 /**
@@ -1198,11 +1262,13 @@ const abilityDistances = {
     label: "DRAW_STEEL.Item.ability.Distance.Melee",
     primary: "DRAW_STEEL.Item.ability.Distance.Melee",
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Melee",
+    reference: "",
   },
   ranged: {
     label: "DRAW_STEEL.Item.ability.Distance.Ranged",
     primary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Ranged",
+    reference: "",
   },
   meleeRanged: {
     label: "DRAW_STEEL.Item.ability.Distance.MeleeRanged",
@@ -1215,12 +1281,14 @@ const abilityDistances = {
     primary: "DRAW_STEEL.Item.ability.Distance.Aura",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Aura",
+    reference: "",
   },
   burst: {
     label: "DRAW_STEEL.Item.ability.Distance.Burst",
     primary: "DRAW_STEEL.Item.ability.Distance.Burst",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Burst",
+    reference: "",
   },
   cube: {
     label: "DRAW_STEEL.Item.ability.Distance.Cube",
@@ -1228,6 +1296,7 @@ const abilityDistances = {
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Cube",
+    reference: "",
   },
   line: {
     label: "DRAW_STEEL.Item.ability.Distance.Line",
@@ -1236,6 +1305,7 @@ const abilityDistances = {
     tertiary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Line",
+    reference: "",
   },
   wall: {
     label: "DRAW_STEEL.Item.ability.Distance.Wall",
@@ -1243,6 +1313,7 @@ const abilityDistances = {
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Wall",
+    reference: "",
   },
   special: {
     label: "DRAW_STEEL.Item.ability.Distance.Special",
@@ -1256,19 +1327,29 @@ const abilityDistances = {
 };
 
 /**
+ * @typedef AbilityTarget
+ * @property {string} label
+ * @property {string} [all]       I18n key for an ability that targets everything within an area.
+ * @property {string} embedLabel  Format string for display in the ability embed.
+ * @property {string} [reference] An optional UUID with a description of the ability targets.
+ */
+
+/**
  * Valid targeting categories.
- * @type {Record<string, {label: string; all?: string; embedLabel: string}>}
+ * @type {Record<string, AbilityTarget>}
  */
 const abilityTargets = {
   creature: {
     label: "DRAW_STEEL.Item.ability.Target.Creature",
     all: "DRAW_STEEL.Item.ability.Target.AllCreatures",
     embedLabel: "DRAW_STEEL.Item.ability.Target.CreatureEmbed",
+    reference: "",
   },
   object: {
     label: "DRAW_STEEL.Item.ability.Target.Object",
     all: "DRAW_STEEL.Item.ability.Target.AllObjects",
     embedLabel: "DRAW_STEEL.Item.ability.Target.ObjectEmbed",
+    reference: "",
   },
   creatureObject: {
     label: "DRAW_STEEL.Item.ability.Target.CreatureObject",
@@ -1279,6 +1360,7 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.Enemy",
     all: "DRAW_STEEL.Item.ability.Target.AllEnemies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyEmbed",
+    reference: "",
   },
   enemyObject: {
     label: "DRAW_STEEL.Item.ability.Target.EnemyObject",
@@ -1289,6 +1371,7 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.Ally",
     all: "DRAW_STEEL.Item.ability.Target.AllAllies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.AllyEmbed",
+    reference: "",
   },
   self: {
     label: "DRAW_STEEL.Item.ability.Target.Self",
@@ -1584,15 +1667,6 @@ preLocalize("culture.group", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
- * Configuration details for Kit items.
- * @type {Record<string,  Record<string, {label: string}>>}
- */
-export const kits = {};
-// preLocalize("kits.types", {key: "label"});
-
-/* -------------------------------------------------- */
-
-/**
  * @typedef TreasureCategory
  * @property {string} label
  * @property {FormSelectOption[]} keywords
@@ -1664,6 +1738,13 @@ const equipmentKinds = {
 };
 
 /**
+ * @typedef ArmorType
+ * @property {string} label
+ * @property {boolean} kitEquipment Is this an eligible choice for a kit's equipment.
+ * @property {string} reference     A UUID with a description for the armor type.
+ */
+
+/**
  * Also used by kits.
  * @type {Record<string, {label: string, kitEquipment: boolean}>}
  */
@@ -1671,28 +1752,39 @@ const armorTypes = {
   none: {
     label: "DRAW_STEEL.Item.treasure.Armor.None",
     kitEquipment: true,
+    reference: "",
   },
   light: {
     label: "DRAW_STEEL.Item.treasure.Armor.Light",
     kitEquipment: true,
+    reference: "",
   },
   medium: {
     label: "DRAW_STEEL.Item.treasure.Armor.Medium",
     kitEquipment: true,
+    reference: "",
   },
   heavy: {
     label: "DRAW_STEEL.Item.treasure.Armor.Heavy",
     kitEquipment: true,
+    reference: "",
   },
   shield: {
     label: "DRAW_STEEL.Item.treasure.Armor.Shield",
     kitEquipment: false,
+    reference: "",
   },
 };
 
 /**
+ * @typedef WeaponType
+ * @property {string} label
+ * @property {string} reference A UUID with a description for the weapon type.
+ */
+
+/**
  * Also used by kits.
- * @type {Record<string, {label: string}>}
+ * @type {Record<string, WeaponType>}
  */
 const weaponTypes = {
   none: {
@@ -1844,44 +1936,65 @@ preLocalize("perks.types", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * @typedef ProjectType
+ * @property {string} label
+ * @property {string} [reference] An optional UUID with a description for the weapon type.
+ */
+
+/** @type {Record<string, ProjectType>} */
+const projectTypes = {
+  crafting: {
+    label: "DRAW_STEEL.Item.project.Types.Crafting",
+  },
+  research: {
+    label: "DRAW_STEEL.Item.project.Types.Research",
+  },
+  other: {
+    label: "DRAW_STEEL.Item.project.Types.Other",
+  },
+};
+
+/**
+ * @typedef ProjectMilestone
+ * @property {number} min
+ * @property {number} max
+ * @property {number} events
+ */
+
+/** @type {ProjectMilestone[]} */
+const projectMilestones = [
+  {
+    min: 0,
+    max: 30,
+    events: 0,
+  },
+  {
+    min: 31,
+    max: 200,
+    events: 1,
+  },
+  {
+    min: 201,
+    max: 999,
+    events: 2,
+  },
+  {
+    min: 1000,
+    max: Infinity,
+    events: 3,
+  },
+];
+
+/**
  * Configuration details for project items.
  */
 export const projects = {
-  types: {
-    crafting: {
-      label: "DRAW_STEEL.Item.project.Types.Crafting",
-    },
-    research: {
-      label: "DRAW_STEEL.Item.project.Types.Research",
-    },
-    other: {
-      label: "DRAW_STEEL.Item.project.Types.Other",
-    },
-  },
-  milestones: [
-    {
-      min: 0,
-      max: 30,
-      events: 0,
-    },
-    {
-      min: 31,
-      max: 200,
-      events: 1,
-    },
-    {
-      min: 201,
-      max: 999,
-      events: 2,
-    },
-    {
-      min: 1000,
-      max: Infinity,
-      events: 3,
-    },
-  ],
+  types: projectTypes,
+  milestones: projectMilestones,
 };
 preLocalize("projects.types", { key: "label" });
+
+/* -------------------------------------------------- */
 
 /**
  * @typedef SourceBook
