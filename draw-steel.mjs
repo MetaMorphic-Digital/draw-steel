@@ -116,6 +116,11 @@ Hooks.once("init", function () {
     foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet,
     { makeDefault: true, types: ["reference"] },
   );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.DrawSteelImageSheet,
+    { makeDefault: true, types: ["image"] },
+  );
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {

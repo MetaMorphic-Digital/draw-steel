@@ -8,6 +8,11 @@ export default class DrawSteelImageData extends ReferenceData {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat(["DRAW_STEEL.JournalEntryPage.image"]);
+
+  /* -------------------------------------------------- */
+
   /** @override */
   static defineSchema() {
     const schema = super.defineSchema();
@@ -16,7 +21,7 @@ export default class DrawSteelImageData extends ReferenceData {
 
     schema.artDescription = new fields.StringField();
 
-    return {};
+    return schema;
   }
 
   /* -------------------------------------------------- */
