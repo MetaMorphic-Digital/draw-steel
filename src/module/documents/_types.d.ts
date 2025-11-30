@@ -25,7 +25,7 @@ import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, Dra
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
 type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
-type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
+type MessageModel = typeof ChatMessageModels[Exclude<keyof typeof ChatMessageModels, "parts">];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
 
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;

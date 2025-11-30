@@ -1624,9 +1624,9 @@
           "label": "Succeed on a Saving Throw",
           "messageContent": "Spends a hero token to succeed on a saving throw instead of failing."
         },
-        "ImproveTest": {
-          "label": "Improve Test Result",
-          "messageContent": "Spends a hero token to succeed on a test and lose any consequences suffered."
+        "RerollTest": {
+          "label": "Reroll Test",
+          "messageContent": "Spends a hero token to reroll a test. They must use the new roll."
         },
         "RegainStamina": {
           "tooltip": "Regain Stamina with Hero Tokens",
@@ -1815,6 +1815,15 @@
             "Tooltip": "Succeed by spending a Hero Token",
             "NoEffect": "This effect no longer exists.",
             "NoOwner": "You no longer have update permissions for this effect."
+          }
+        }
+      },
+      "PARTS": {
+        "test": {
+          "HeroTokenReroll": {
+            "label": "Hero Token",
+            "tooltip": "Reroll the test. You must use the new roll.",
+            "flavor": "Hero Token Reroll"
           }
         }
       }
