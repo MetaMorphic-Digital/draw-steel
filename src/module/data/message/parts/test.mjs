@@ -86,14 +86,12 @@ export default class TestPart extends MessagePart {
 
     Object.assign(newRoll.options, {
       baseRoll: false,
-      flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
     });
 
     const newPart = this.toObject();
 
     Object.assign(newPart, {
-      // Don't need to repeat "Hard Test"
-      flavor: "",
+      flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
       rolls: [newRoll],
     });
 
