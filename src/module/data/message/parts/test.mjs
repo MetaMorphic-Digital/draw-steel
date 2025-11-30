@@ -91,7 +91,11 @@ export default class TestPart extends MessagePart {
 
     const newPart = this.toObject();
 
-    newPart.rolls = [newRoll];
+    Object.assign(newPart, {
+      // Don't need to repeat "Hard Test"
+      flavor: "",
+      rolls: [newRoll],
+    });
 
     await this.message.update({ "system.parts": this.message.system.parts.concat(newPart) });
   }
