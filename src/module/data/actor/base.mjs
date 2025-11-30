@@ -420,17 +420,23 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const evaluation = "evaluate";
     const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
-    const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
     const modifiers = {
       edges: options.edges ?? 0,
       banes: options.banes ?? 0,
       bonuses: options.bonuses ?? 0,
     };
 
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills });
+    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills });
 
     if (!promptValue) return null;
     const { rollMode, powerRolls } = promptValue;
+
+    const testConfig = ds.CONST.testOutcomes[options.difficulty];
+
+    const flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
+      difficulty: game.i18n.localize(testConfig?.label) ?? "",
+      characteristic: ds.CONFIG.characteristics[characteristic].label,
+    });
 
     const messageData = {
       type: "standard",
@@ -443,19 +449,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       flags: { core: { canPopout: true } },
     };
 
-    const testConfig = ds.CONST.testOutcomes[options.difficulty];
-    const testPart = { type: "test", results: {}, rolls: powerRolls };
-    if (testConfig) {
-      testPart.flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", { difficulty: game.i18n.localize(testConfig.label) });
-      if (!options.resultTable) {
-        Object.assign(testPart.results, {
-          tier1: game.i18n.localize(testConfig.tier1),
-          tier2: game.i18n.localize(testConfig.tier2),
-          tier3: game.i18n.localize(testConfig.tier3),
-          critical: game.i18n.localize(testConfig.critical),
-        });
-      }
-    }
+    const testPart = { type: "test", flavor, results: {}, rolls: powerRolls };
+
     if (options.resultTable) {
       Object.assign(testPart.results, {
         tier1: options.resultTable.querySelector("dt.tier1 + dd")?.innerHTML ?? "",
@@ -463,6 +458,15 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         tier3: options.resultTable.querySelector("dt.tier3 + dd")?.innerHTML ?? "",
       });
     }
+    else if (testConfig) {
+      Object.assign(testPart.results, {
+        tier1: game.i18n.localize(testConfig.tier1),
+        tier2: game.i18n.localize(testConfig.tier2),
+        tier3: game.i18n.localize(testConfig.tier3),
+        critical: game.i18n.localize(testConfig.critical),
+      });
+    }
+
     messageData.system.parts.push(testPart);
 
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
