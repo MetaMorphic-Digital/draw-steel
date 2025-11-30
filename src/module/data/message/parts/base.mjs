@@ -50,6 +50,7 @@ export default class MessagePart extends foundry.abstract.DataModel {
     return this.#TYPES ??= Object.freeze({
       content: ds.data.ChatMessage.parts.ContentPart,
       roll: ds.data.ChatMessage.parts.RollPart,
+      test: ds.data.ChatMessage.parts.TestPart,
     });
   }
 

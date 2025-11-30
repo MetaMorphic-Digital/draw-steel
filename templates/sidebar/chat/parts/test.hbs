@@ -1,0 +1,25 @@
+{{#if part.flavor}}
+<div>
+  <em>{{part.flavor}}</em>
+</div>
+{{/if}}
+<div>
+  {{#each ctx.rolls}}{{{this}}}{{/each}}
+</div>
+{{#if resultHTML}}
+<div>
+  {{{resultHTML}}}
+</div>
+{{/if}}
+{{#if buttons.length}}
+<footer>
+  {{#each buttons}}
+  <button type="button" data-action="{{action}}" data-tooltip="{{tooltip}}">
+    {{#if icon}}
+    <i class="fa-fw fa-solid fa-{{icon}}"></i>
+    {{/if}}
+    {{localize label}}
+  </button>
+  {{/each}}
+</footer>
+{{/if}}
