@@ -1,3 +1,5 @@
+const { StringField, HTMLField } = foundry.data.fields;
+
 /**
  * An extensions of a text page that allows for rich tooltips.
  */
@@ -11,7 +13,10 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static defineSchema() {
-    return {};
+    return {
+      short: new StringField({ required: true }),
+      long: new HTMLField(),
+    };
   }
 
   /* -------------------------------------------------- */
