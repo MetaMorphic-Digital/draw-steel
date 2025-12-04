@@ -10,7 +10,7 @@ There are no "recommended" modules for use with Draw Steel. The system is design
 
 1. In Setup, go to the Add-on Modules tab, and hit the ⚙️ `Create Module` button.
 2. Give it a `Title`, like "Shared Packs" or something. Ignore the rest of the fields in the Basic Details tab.
-3. Go to the Compendium Packs tab, hit `+ Add Compendium Pack`, and give the pack a `Label` (like "Shared Spells") and a `Document Type` (which would be `Item` if this was for spells). Set the `Required System` if this is an Actor or Item pack.
+3. Go to the Compendium Packs tab, hit `+ Add Compendium Pack`, and give the pack a `Label` (like "Perks") and a `Document Type` (which would be `Item` if this was for spells). Set the `Required System` to "Draw Steel" if this is an Actor or Item pack.
 4. Keep adding more packs with the `+ Add Compendium Pack` button until you've got what you need. You can always edit this later and add more, though.
 5. Hit the `Create Module` button.
 6. In a world, go to the `Game Settings` sidebar > `Manage Modules`, and enable this new module.
