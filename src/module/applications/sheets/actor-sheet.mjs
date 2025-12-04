@@ -327,7 +327,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   async _prepareItemContext(item) {
     const context = {
       item,
-      expanded: this._expandedDocumentDescriptions.has(item.id),
+      expanded: this._expandedDocumentDescriptions.has(item.uuid),
     };
 
     // only generate the item embed when it's expanded
@@ -514,7 +514,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         expanded: false,
       };
 
-      if (this._expandedDocumentDescriptions.has(e.id)) {
+      if (this._expandedDocumentDescriptions.has(e.uuid)) {
         effectContext.expanded = true;
         effectContext.enrichedDescription = await e.system.toEmbed({});
       }
