@@ -18,6 +18,40 @@
 ### Known Issues
 -->
 
+## 0.9.2
+
+### Removed
+
+- Removed "Stone Cursed" complication (old name for Curse of Stone)
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Errata to Charge action.
+  - Errata to Animal Form Complication.
+  - Errata to Bleeding and Grabbed conditions.
+  - Errata to "Learn from a Master: Improve Control" project.
+  - Errata to Telemagnet, Gravekeer's Lantern treasures.
+  - Errata to Fishing Events table.
+  - Corrected names for "Pardon My Friend" and "Traveling Sage" perks. (#1454)
+  - Fixed complications table to match book.
+- Director-Facing Compendium Data Fixes:
+  - Errata to Gnoll Malice: Bloodpool.
+  - Errata to Predator A.
+  - Errata to Predator B.
+  - Errata to Arixx.
+  - Errata to Dorzinuuth the Base.
+  - Errata to Crucible Dragon.
+  - Errata to Wode Elf Guerilla.
+  - Errata to Shieldscale Drangolin.
+  - Errata to Medusa.
+  - Errata to Rival Null, Talent, Elementalist, Fury.
+  - Errata to Time Raider Vertex.
+  - Errata to Ghost.
+  - Errata to Servok Builder.
+  - Errata to War Dog Hypokrite, Prismite.
+- Fixed expanded descriptions not staying expanded on re-render.
+
 ## 0.9.1
 
 ### Fixed
