@@ -272,7 +272,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     }
     return {
       list: formatter.format(languageList),
-      options: languageOptions.sort((a,b) => a.label.localeCompare(b.label)),
+      options: languageOptions,
     };
   }
 
