@@ -113,8 +113,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
 
     dialogOptions.context ??= {};
     dialogOptions.context.effectFormula = formula;
-    dialogOptions.context.successThreshold = rollOptions.successThreshold ??
-      foundry.utils.getProperty(this.parent.target, "system.combat.save.threshold") ?? 6;
+    dialogOptions.context.successThreshold = rollOptions.successThreshold ?? 6;
 
     const fd = await SavingThrowDialog.create(dialogOptions);
 

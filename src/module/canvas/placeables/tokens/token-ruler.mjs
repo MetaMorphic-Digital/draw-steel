@@ -158,28 +158,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.value") ?? Infinity;
       // Total cost, up to 1x is green, up to 2x is yellow, over that is red
       const index = Math.clamp(Math.floor((waypoint.measurement.cost - 1) / value), 0, 2);
-
-      const { might, agility } = foundry.utils.getProperty(this, "token.actor.system.characteristics") ?? {};
-
-      // Jumping is evaluated on its own terms, separate from the overall movement highlighting,
-      // Unless the total distance exceeds 2x the actor's speed
-      if ((index < 2) && (waypoint.action === "jump") && (might && agility)) {
-        const jumpColors = [0x33BC4E, 0xF1D836, 0xffa500, 0xE72124];
-        const maxDistance = Math.max(1, might.value, agility.value);
-
-        let jumpDistance = waypoint.cost;
-        let wp = waypoint.previous;
-        while (wp && !wp.explicit) {
-          jumpDistance += wp?.cost ?? 0;
-          wp = wp.previous;
-        }
-
-        // Green jump distance is equal to or less than higher of Might and Agility
-        // Yellow for +1 (tier 2 test result), Orange for +2 (tier 3 test result), red beyond that.
-        const jumpIndex = Math.clamp(Math.max(0, Math.ceil(jumpDistance - maxDistance)), 0, 3);
-        style.color = jumpColors[jumpIndex];
-      }
-      else style.color = colors[index];
+      style.color = colors[index];
     }
   }
 }

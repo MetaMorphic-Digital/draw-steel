@@ -48,54 +48,41 @@
           "damage": {
             "tier1": {
               "value": "7",
+              "properties": [
+                "ignoresImmunity"
+              ],
               "types": [
                 "cold",
                 "corruption",
                 "fire",
                 "lightning"
-              ],
-              "ignoredImmunities": [
-                "all"
-              ],
-              "potency": {
-                "value": "@potency.weak",
-                "characteristic": "none"
-              }
+              ]
             },
             "tier2": {
               "value": "10",
+              "properties": [
+                "ignoresImmunity"
+              ],
               "types": [
                 "cold",
                 "corruption",
                 "fire",
                 "lightning"
-              ],
-              "ignoredImmunities": [
-                "all"
-              ],
-              "potency": {
-                "value": "@potency.average",
-                "characteristic": ""
-              }
+              ]
             },
             "tier3": {
               "value": "15",
+              "properties": [
+                "ignoresImmunity"
+              ],
               "types": [
                 "cold",
                 "corruption",
                 "fire",
                 "lightning"
-              ],
-              "ignoredImmunities": [
-                "all"
-              ],
-              "potency": {
-                "value": "@potency.strong",
-                "characteristic": ""
-              }
+              ]
             }
-          },
-          "sort": 0
+          }
         }
       }
     },
@@ -118,7 +105,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761572846230,

@@ -37,11 +37,8 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  const templates = [
-    "templates/embeds/item/ability.hbs",
-    "templates/embeds/item/kit.hbs",
-    "templates/embeds/item/project.hbs",
-  ].map(t => DS_CONST.systemPath(t));
+  helpers.registerHandlebars();
+  const templates = ["templates/embeds/item/ability.hbs", "templates/embeds/item/kit.hbs", "templates/embeds/item/project.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -61,7 +58,6 @@ Hooks.once("init", function () {
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
   CONFIG.Token.hudClass = applications.hud.DrawSteelTokenHUD;
-  CONFIG.Canvas.layers.tokens.layerClass = canvas.layers.DrawSteelTokenLayer;
   canvas.placeables.tokens.DrawSteelTokenRuler.applyDSMovementConfig();
 
   foundry.applications.handlebars.loadTemplates(templates);
@@ -78,7 +74,7 @@ Hooks.once("init", function () {
   }
 
   // Destructuring some pieces for simplification
-  const { Actors, Items } = foundry.documents.collections;
+  const { Actors, Journal, Items } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
@@ -96,6 +92,10 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
   });
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
+  });
+
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
@@ -110,12 +110,6 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
-  DocumentSheetConfig.registerSheet(
-    JournalEntryPage, DS_CONST.systemID,
-    // TODO: Implement custom sheet for Reference pages.
-    foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet,
-    { makeDefault: true, types: ["reference"] },
-  );
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
@@ -123,21 +117,11 @@ Hooks.once("init", function () {
     players: applications.ui.DrawSteelPlayers,
   });
 
-  // Register replacemnets for core ux elements.
-  Object.assign(CONFIG.ux, {
-    TooltipManager: helpers.interaction.DrawSteelTooltipManager,
-  });
-
   // Register dice rolls
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 
   // Register enrichers
-  CONFIG.TextEditor.enrichers = [
-    applications.ux.enrichers.applyEffect,
-    applications.ux.enrichers.lookup,
-    applications.ux.enrichers.reference,
-    applications.ux.enrichers.roll,
-  ];
+  CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll, applications.ux.enrichers.applyEffect];
 
   CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
     editor: false,
@@ -146,8 +130,12 @@ Hooks.once("init", function () {
     ],
   };
 
-  // Register handlebars helpers. This is done after any replacement of ui/ux classes.
-  helpers.registerHandlebars();
+  CONFIG.fontDefinitions["Draw Steel Book"] = {
+    editor: true,
+    fonts: [
+      { urls: [DS_CONST.systemPath("assets/fonts/MCDM-Book.otf")] },
+    ],
+  };
 });
 
 /**
@@ -204,7 +192,6 @@ Hooks.once("i18nInit", () => {
 /* -------------------------------------------- */
 
 Hooks.once("ready", async function () {
-  game.tooltip.observe();
   await data.migrations.migrateWorld();
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => {

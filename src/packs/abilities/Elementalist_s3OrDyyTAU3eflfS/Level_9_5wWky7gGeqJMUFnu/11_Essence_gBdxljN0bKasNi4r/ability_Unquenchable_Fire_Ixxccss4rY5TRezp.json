@@ -51,42 +51,29 @@
               "types": [
                 "fire"
               ],
-              "ignoredImmunities": [
-                "all"
-              ],
-              "potency": {
-                "value": "@potency.weak",
-                "characteristic": "none"
-              }
+              "properties": [
+                "ignoresImmunity"
+              ]
             },
             "tier2": {
               "value": "18 + @chr",
               "types": [
                 "fire"
               ],
-              "ignoredImmunities": [
-                "all"
-              ],
-              "potency": {
-                "value": "@potency.average",
-                "characteristic": ""
-              }
+              "properties": [
+                "ignoresImmunity"
+              ]
             },
             "tier3": {
               "value": "25 + @chr",
               "types": [
                 "fire"
               ],
-              "ignoredImmunities": [
-                "all"
-              ],
-              "potency": {
-                "value": "@potency.strong",
-                "characteristic": ""
-              }
+              "properties": [
+                "ignoresImmunity"
+              ]
             }
-          },
-          "sort": 0
+          }
         },
         "ymlPTQH1g4yFQgv5": {
           "name": "",
@@ -96,14 +83,12 @@
           "applied": {
             "tier1": {
               "potency": {
-                "characteristic": "intuition",
-                "value": "@potency.weak"
+                "characteristic": "intuition"
               },
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "",
-                  "properties": []
+                  "end": ""
                 }
               },
               "display": "{{potency}}, dazed (save ends)"
@@ -112,31 +97,18 @@
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "",
-                  "properties": []
+                  "end": ""
                 }
-              },
-              "display": "",
-              "potency": {
-                "value": "@potency.average",
-                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "dazed": {
-                  "condition": "failure",
-                  "properties": []
+                  "condition": "failure"
                 }
-              },
-              "display": "",
-              "potency": {
-                "value": "@potency.strong",
-                "characteristic": ""
               }
             }
-          },
-          "sort": 0
+          }
         }
       }
     },
@@ -159,7 +131,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761518547831,

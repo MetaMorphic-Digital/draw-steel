@@ -29,7 +29,7 @@
           <div class="item-column item-type">{{lookup (lookup @root.config.projects.types projectContext.item.system.type) "label"}}</div>
           <div class="item-column item-controls">
             <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
-            <a class="fa-fw fa-solid fa-angle-{{ifThen projectContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
+            <a class="fa-solid fa-angle-{{ifThen projectContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
         <div class="document-description item-embed {{#if projectContext.expanded}}expanded{{/if}}">

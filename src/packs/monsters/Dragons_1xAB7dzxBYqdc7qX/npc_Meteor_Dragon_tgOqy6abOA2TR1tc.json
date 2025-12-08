@@ -393,7 +393,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 sonic]] damage; the target is [[/apply LSJMwYhEddUWz94r save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 sonic]] damage; the target is [[/apply LSJMwYhEddUWz94r save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 sonic]] damage</p></dd></dl>",
+          "before": "<p>Each target makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"104\"><p>11 or less</p></td><td><p>[[/damage 20 sonic]] damage; the target is [[/apply Actor.iF26pHaViOldYwvB.Item.oARN5a64Y0k5bZFU.ActiveEffect.LSJMwYhEddUWz94r save]] </p></td></tr><tr><td data-colwidth=\"104\"><p>12-16</p></td><td><p>[[/damage 16 sonic]] damage; the target is [[/apply Actor.iF26pHaViOldYwvB.Item.oARN5a64Y0k5bZFU.ActiveEffect.LSJMwYhEddUWz94r save]]</p></td></tr><tr><td data-colwidth=\"104\"><p>17+</p></td><td><p>[[/damage 10 sonic]] damage</p></td></tr></tbody></table>",
           "after": "<p>A dragonsealed target emits a golden aura, and takes 2 damage per square moved when falling or when force moved into an obstacle.</p>"
         },
         "spend": {
@@ -459,7 +459,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -1091,7 +1091,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p><em>This ability has infinite length</em></p><p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 25]] damage; I&lt;6 the target is annihilated</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 21]] damage; I&lt;6 the target is annihilated.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 15]] damage; I&lt;6 the target is annihilated.</p></dd></dl>",
+          "before": "<p>Note: the length is listed as an infinity simple in the book.</p><p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 25]] damage; I&lt;6 the target is annihilated</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 21]] damage; I&lt;6 the target is annihilated.</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>[[/damage 15]] damage; I&lt;6 the target is annihilated.</p></td></tr></tbody></table>",
           "after": "<p>An annihilated target must make the test again, decreasing the potency for themself by 2 each time they are annihilated. A creature reduced to 0 Stamina by this dies and their soul is destroyed.</p>"
         },
         "spend": {
@@ -1116,7 +1116,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -1278,7 +1278,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 holy]] damage; slowed (save ends), prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 holy]] damage; slowed (save ends)</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 holy]] damage</p></dd></dl>",
+          "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <strong>Agility test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 20 holy]] damage; [[/apply slowed save]], [[/apply prone]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 16 holy]] damage; [[/apply slowed save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 10 holy]] damage</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -1379,7 +1379,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

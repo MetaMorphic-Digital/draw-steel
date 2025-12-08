@@ -15,10 +15,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       damage: this.duplicateTierSchema(() => ({
         value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
         types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
-        ignoredImmunities: new SetField(setOptions(), {
-          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.label",
-          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.hint",
-        }),
+        properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
   }
@@ -82,20 +79,16 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
           src: this._source.damage[`tier${n}`].types,
           name: `${path}.types`,
         },
-        ignoredImmunities: {
-          field: this.schema.getField(`${path}.ignoredImmunities`),
-          value: this.damage[`tier${n}`].ignoredImmunities,
-          src: this._source.damage[`tier${n}`].ignoredImmunities,
-          name: `${path}.ignoredImmunities`,
+        properties: {
+          field: this.schema.getField(`${path}.properties`),
+          value: this.damage[`tier${n}`].properties,
+          src: this._source.damage[`tier${n}`].properties,
+          name: `${path}.properties`,
         },
       });
     }
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
-    context.fields.immunityTypes = [
-      { value: "all", label: game.i18n.localize("DRAW_STEEL.Damage.Immunities.All") },
-      { rule: true },
-      ...Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label })),
-    ];
+    context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.damage.properties).map(([value, { label }]) => ({ value, label }));
   }
 
   /* -------------------------------------------------- */
@@ -105,7 +98,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    * @inheritdoc
    */
   toText(tier) {
-    const { value, types, potency, ignoredImmunities } = this.damage[`tier${tier}`];
+    const { value, types, potency } = this.damage[`tier${tier}`];
     if (Number(value) === 0) return "";
 
     let damageTypes;
@@ -117,54 +110,13 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       i18nString += "Typeless";
     }
     const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value, damageTypes }));
-
-    let result = formattedDamageString;
-
-    if (ignoredImmunities.size > 0) {
-      const ignoredTypes = Array.from(ignoredImmunities);
-      // Special case for "all" immunity
-      if (ignoredImmunities.has("all")) {
-        result += ` <em>(${game.i18n.localize("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresAllImmunities")})</em>`;
-      } else {
-        const formatter = game.i18n.getListFormatter({ type: "conjunction" });
-        const typeLabels = ignoredTypes.map(t => ds.CONFIG.damageTypes[t]?.label).filter(_ => _);
-        if (typeLabels.length > 0) {
-          result += ` <em>(${game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresImmunities", { types: formatter.format(typeLabels) })})</em>`;
-        }
-      }
-    }
-
-    if (potency.characteristic === "none") return result;
+    if (potency.characteristic === "none") return formattedDamageString;
 
     const potencyString = this.toPotencyHTML(tier);
 
     return game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
-      damage: result,
+      damage: formattedDamageString,
       potency: potencyString,
     });
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static migrateData(data) {
-    // 0.10.0 updates
-    for (const tier of ["tier1", "tier2", "tier3"]) {
-      const oldKey = `damage.${tier}.properties`;
-      const migrated = foundry.abstract.Document._addDataFieldMigration(data,
-        oldKey, `damage.${tier}.ignoredImmunities`,
-        (effect) => {
-          const properties = foundry.utils.getProperty(effect, oldKey);
-          return properties?.includes("ignoresImmunity") ? ["all"] : [];
-        });
-
-      // The result is only true if the new key was *not* present and old key was present
-      // If we get a false result, then we (may) need to manually delete the old key
-      if (migrated === false) {
-        foundry.utils.deleteProperty(data, oldKey);
-      }
-    }
-
-    return super.migrateData(data);
   }
 }

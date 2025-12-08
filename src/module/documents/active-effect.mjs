@@ -53,26 +53,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _onCreate(data, options, userId) {
-    super._onCreate(data, options, userId);
-    if (this.modifiesActor && this.statuses.has("prone")) {
-      for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  _onDelete(options, userId) {
-    super._onDelete(options, userId);
-    if (this.modifiesActor && this.statuses.has("prone")) {
-      for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
-    }
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
    * @param {string} statusId

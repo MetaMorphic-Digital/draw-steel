@@ -94,8 +94,6 @@ export default class HeroModel extends BaseActorModel {
   prepareBaseData() {
     super.prepareBaseData();
 
-    this.combat.initiativeThreshold = 6;
-
     this.recoveries.bonus = 0;
     this.recoveries.divisor = 3;
 
@@ -442,8 +440,8 @@ export default class HeroModel extends BaseActorModel {
    * @type {number | null} Null if there is no next level
    */
   get nextLevelXP() {
-    if (this.level >= ds.CONFIG.hero.xpTrack.length) return null;
-    return ds.CONFIG.hero.xpTrack[this.level];
+    if (this.level >= ds.CONFIG.hero.xp_track.length) return null;
+    return ds.CONFIG.hero.xp_track[this.level];
   }
 
   /* -------------------------------------------------- */
@@ -488,8 +486,8 @@ export default class HeroModel extends BaseActorModel {
     if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
-    if (this.level + levels > ds.CONFIG.hero.xpTrack.length) {
-      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xpTrack.length}.`);
+    if (this.level + levels > ds.CONFIG.hero.xp_track.length) {
+      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
     }
 
     if (!cls) item.system.applyAdvancements({ actor: this.parent });

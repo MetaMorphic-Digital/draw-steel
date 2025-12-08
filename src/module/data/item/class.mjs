@@ -35,7 +35,7 @@ export default class ClassModel extends AdvancementModel {
       nullable: false,
       integer: true,
       min: 0,
-      max: config.hero.xpTrack.length,
+      max: config.hero.xp_track.length,
     });
 
     schema.primary = new fields.StringField({ required: true });

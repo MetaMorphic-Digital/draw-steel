@@ -1,4 +1,3 @@
-import { systemID } from "./constants.mjs";
 import { pseudoDocuments } from "./data/_module.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
 
@@ -834,42 +833,10 @@ export const hero = {
     "Compendium.draw-steel.abilities.Item.QXOkflcYF6DITJE3",
   ]),
   /**
-   * XP advancement options for heroes.
-   */
-  xpTracks: {
-    normal: {
-      label: "DRAW_STEEL.Setting.XPAdvancement.NormalSpeed",
-      track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
-    },
-    double: {
-      label: "DRAW_STEEL.Setting.XPAdvancement.DoubleSpeed",
-      track: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72],
-    },
-    half: {
-      label: "DRAW_STEEL.Setting.XPAdvancement.HalfSpeed",
-      track: [0, 32, 64, 96, 128, 160, 192, 224, 256, 288],
-    },
-  },
-  /**
-   * The chosen XP advancement option from the settings.
+   * XP progression for heroes.
    * @type {number[]}
    */
-  get xpTrack() {
-    const xpSetting = game.settings.get(systemID, "xpAdvancement");
-    // In case a module added track is removed.
-    const fallbackTrack = ds.CONFIG.hero.xpTracks.normal?.track ?? Object.values(ds.CONFIG.hero.xpTracks)[0].track;
-
-    return ds.CONFIG.hero.xpTracks[xpSetting]?.track ?? fallbackTrack;
-  },
-  /**
-   * A deprecated version of {@linkcode ds.CONFIG.hero.xpTrack}.
-   */
-  get xp_track () {
-    foundry.utils.logCompatibilityWarning("ds.CONFIG.hero.xp_track is deprecated. To get the currently configured "
-      + "xp track use ds.CONFIG.hero.xpTrack instead. Setting an xp track "
-      + "has moved to an object in ds.CONFIG.hero.xpTracks.", { since: "0.10.0", until: "0.12.0", once: true });
-    return ds.CONFIG.hero.xpTrack;
-  },
+  xp_track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
   /**
    * Ways to spend hero tokens.
    * @type {Record<string, {label: string, tokens: number, messageContent: string}>}
@@ -1398,6 +1365,11 @@ export const PowerRollEffect = {
     label: "TYPES.PowerRollEffect.damage",
     defaultImage: "icons/svg/fire.svg",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
+    properties: {
+      ignoresImmunity: {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
+      },
+    },
   },
   applied: {
     label: "TYPES.PowerRollEffect.applied",
@@ -1926,12 +1898,3 @@ export const sourceInfo = {
 };
 preLocalize("sourceInfo.books", { keys: ["label", "title"] });
 preLocalize("sourceInfo.licenses", { keys: ["label"] });
-
-/* -------------------------------------------------- */
-
-/**
- * Record of journal entry pages of type `reference` that help display tooltips
- * throughout the system.
- * @type {Record<string, string>}
- */
-export const references = {};

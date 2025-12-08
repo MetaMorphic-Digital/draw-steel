@@ -40,7 +40,7 @@
           <div class="item-column item-ranged-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.ranged.damage}}</div>
           <div class="item-column item-controls">
             <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
-            <a class="fa-fw fa-solid fa-angle-{{ifThen kitContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
+            <a class="fa-solid fa-angle-{{ifThen kitContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
         <div class="document-description item-embed {{#if kitContext.expanded}}expanded{{/if}}">
@@ -92,7 +92,7 @@
             </a>
           </div>
           <div class="item-column item-controls">
-            <a class="fa-fw fa-solid fa-angle-{{ifThen treasureContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
+            <a class="fa-solid fa-angle-{{ifThen treasureContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
         <div class="document-description item-embed {{#if treasureContext.expanded}}expanded{{/if}}">

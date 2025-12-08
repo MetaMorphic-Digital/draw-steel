@@ -354,7 +354,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         icon: "<i class=\"fa-solid fa-fw fa-dice-d10\"></i>",
         condition: (target) => {
           const effect = this._getEmbeddedDocument(target);
-          return effect.system.end?.type === "save";
+          return effect.system.end.type === "save";
         },
         callback: async (target) => {
           const effect = this._getEmbeddedDocument(target);

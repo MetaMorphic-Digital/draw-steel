@@ -114,7 +114,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     };
 
     Object.assign(this.statuses, {
-      flankable: true,
+      flankable: false,
       slowed: {
         speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
       },
@@ -486,7 +486,14 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       }
     }
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
+    const staminaUpdates = {};
+    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
+    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
+
+    const remainingDamage = Math.max(0, damage - damageToTempStamina);
+    if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
+
+    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
   }
 
   /* -------------------------------------------------- */

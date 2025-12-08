@@ -342,9 +342,10 @@
       "_key": "!actors.items!fSHdcO4q12wV8qHx.NVpvDaIfPAbl2K9h"
     },
     {
+      "folder": "nF331WOpAjOEwAp4",
       "name": "Soul Flense",
       "type": "ability",
-      "_id": "syxGnTEj50fmkVMO",
+      "_id": "4cNFyCxzxVSM7rml",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
@@ -364,9 +365,7 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special",
-          "custom": "",
-          "value": null
+          "type": "special"
         },
         "power": {
           "roll": {
@@ -376,7 +375,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>One demon acting this turn unleashes their pent-up agony and pain on every non-demon in a 5 burst. Each target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 corruption]] damage; the target is soul flensed</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is soul flensed</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>One demon acting this turn unleashes their pent-up agony and pain on every non-demon in a 5 burst. Each target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"92\"><p>11 or less</p></td><td><p>[[/damage 10 corruption]] damage; the target is soul flensed</p></td></tr><tr><td data-colwidth=\"92\"><p>12-16</p></td><td><p>The target is soul flensed</p></td></tr><tr><td data-colwidth=\"92\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
           "after": "<p>The demon removes all conditions and effects on themself that can be ended by a saving throw, and transfers all those effects to each creature soul flensed this way.</p>"
         },
         "spend": {
@@ -385,25 +384,23 @@
         }
       },
       "effects": [],
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.4cNFyCxzxVSM7rml",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.351",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "createdTime": 1763816946140,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "sort": 0,
       "ownership": {
         "default": 0,
-        "CIQwmPP4Pjosq4Yp": 3
+        "R75FAhxK5fADaoJF": 3
       },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!fSHdcO4q12wV8qHx.syxGnTEj50fmkVMO"
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!fSHdcO4q12wV8qHx.4cNFyCxzxVSM7rml"
     }
   ],
   "folder": "YVkbVbuTCdEc4h7w",

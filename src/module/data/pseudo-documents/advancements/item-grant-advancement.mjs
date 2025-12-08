@@ -81,16 +81,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  get canReconfigure() {
-    const actor = this.document.parent;
-    // Removed check for isChoice, as an item grant advancement can always be reconfigured
-    // to delete old versions of items and make new ones
-    return !!actor && (this.requirements.level <= actor.system.level);
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * Does this item grant advancement use point buy rather than a simple count.
    * @type {boolean}

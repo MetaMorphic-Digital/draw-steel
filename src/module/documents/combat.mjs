@@ -28,13 +28,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     const roll = new DSRoll("1d10");
     await roll.evaluate();
 
-    const heroes = this.combatants.filter(c => (c.actor?.type === "hero")).map(c => c.actor);
-    const initiativeThreshold = heroes.reduce((threshold, hero) => {
-      return (hero.system.combat.initiativeThreshold < threshold) ? hero.system.combat.initiativeThreshold : threshold;
-    }, 10);
-
-    const initiativeWinner = roll.total >= initiativeThreshold ? "Heroes" : "Enemies";
-    const resultMessage = `DRAW_STEEL.Combat.Initiative.Actions.RollFirst.${initiativeWinner}`;
+    const resultMessage = roll.total >= 6 ? "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Heroes" : "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Enemies";
 
     roll.toMessage({
       flavor: game.i18n.localize(resultMessage),

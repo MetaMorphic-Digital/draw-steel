@@ -30,16 +30,6 @@ interface FreeStrike {
   };
 }
 
-interface Combat {
-  size: SizeModel;
-  stability: number;
-  turns: number;
-  save: {
-    bonus: string;
-    threshold: number;
-  }
-}
-
 declare module "./base.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
@@ -52,7 +42,15 @@ declare module "./base.mjs" {
       }
     },
     characteristics: Record<string, { value: number }>;
-    combat: Combat;
+    combat: {
+      size: SizeModel;
+      stability: number;
+      turns: number;
+      save: {
+        bonus: string;
+        threshold: number;
+      }
+    }
     biography: Biography;
     movement: {
       value: number;
@@ -61,7 +59,7 @@ declare module "./base.mjs" {
       disengage: number;
       teleport: number | null;
       multiplier: number;
-      /** Only defined for heroes. */
+      /** Only defined for heroes */
       kitBonus?: number;
     }
     damage: {
@@ -91,9 +89,6 @@ declare module "./hero.mjs" {
   };
 
   export default interface HeroModel {
-    combat: Combat & {
-      initiativeThreshold: number;
-    };
     recoveries: BarAttribute & {
       bonus: number;
       recoveryValue: number;

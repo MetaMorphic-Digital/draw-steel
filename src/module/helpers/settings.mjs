@@ -1,4 +1,3 @@
-import DrawSteelHeroSheet from "../applications/sheets/hero-sheet.mjs";
 import { systemID } from "../constants.mjs";
 import { HeroTokenModel, MaliceModel } from "../data/settings/_module.mjs";
 
@@ -79,20 +78,6 @@ export default class DrawSteelSettingsHandler {
         config: true,
         scope: "world",
         onChange: () => ui.players.render(),
-      },
-      xpAdvancement: {
-        name: "DRAW_STEEL.Setting.XPAdvancement.Label",
-        hint: "DRAW_STEEL.Setting.XPAdvancement.Hint",
-        type: new fields.StringField({ choices: ds.CONFIG.hero.xpTracks, initial: "normal", required: true }),
-        config: true,
-        scope: "world",
-        onChange: () => {
-          for (const [index, app] of foundry.applications.instances) {
-            if (app instanceof DrawSteelHeroSheet) {
-              app.render({ parts: ["header"] });
-            }
-          }
-        },
       },
     };
   }

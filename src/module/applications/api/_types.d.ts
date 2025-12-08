@@ -1,3 +1,4 @@
+import Document from "@common/abstract/document.mjs";
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
 
 declare module "./document-input.mjs" {

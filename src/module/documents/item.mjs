@@ -25,8 +25,6 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     return super.migrateData(data);
   }
 
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
     if (!pack) {
