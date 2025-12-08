@@ -1,20 +1,22 @@
 /* CSS for DrawSteelJournalEntrySheet */
-
-/*all*/
+/*framing content*/
 .draw-steel.journal-sheet .window-content,
 .draw-steel.journal-sheet .window-header,
 .draw-steel.journal-sheet .journal-sidebar {
   backdrop-filter: none;
   background: var(--draw-steel-c-white);
   color: var(--draw-steel-c-light);
+  /* optimize legibility to see if this fixes title uneveness on subpixel rounding*/
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 
 
   .active {
     text-shadow: none;
     background: transparent;
     background-image: linear-gradient(to left, var(--draw-steel-c-faint), transparent);
-
-    /*color: white;*/
   }
 
   h1 {
@@ -70,7 +72,6 @@
   button,
   .page-title {
     color: var(--color-text-primary);
-    /*background: #ccccccdd;*/
   }
 
   button:disabled {
@@ -83,12 +84,23 @@
     ;
   }
 
+  a.button,
+  button {
+    background: var(--draw-steel-c-white);
+  }
 
-  ol li {
+  a.button:hover,
+  button:hover {
+    background: var(--draw-steel-c-laserline);
+    color: whitesmoke;
+  }
+
+  /*contents*/
+  .toc ol li {
     font-family: 'Draw Steel Book';
     position: relative;
 
-    /*laser line highlight specific to menu*/
+    /*laser line highlight specific to contents menu*/
     a:after {
       content: '';
       position: absolute;
@@ -98,8 +110,6 @@
       bottom: 0;
       left: 0;
       background-color: var(--draw-steel-c-laserline);
-      /*
-background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;*/
       transition: transform 0.25s ease-out;
       transform-origin: bottom left;
     }
@@ -118,31 +128,9 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     }
   }
 
-  a.button,
-  button {
-    background: var(--draw-steel-c-white);
-  }
-
-  a.button:hover,
-  button:hover {
-    background: var(--draw-steel-c-laserline);
-    color: whitesmoke;
-  }
-
 }
 
-.draw-steel .content-link,
-.draw-steel .inline-roll {
-  background: var(--draw-steel-c-white);
-  border: 1px solid var(--draw-steel-c-laserline);
-  border-radius: 2px;
-  color: var(--draw-steel-c-laserline);
-  margin: -1px 0;
-  padding: 1px 4px 0;
-  white-space: nowrap;
-  word-break: break-all;
-}
-
+/*body content*/
 .draw-steel.journal-sheet .journal-entry,
 .draw-steel .journal-entry-page {
   .hanging-indent {
@@ -152,6 +140,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     /* Pulls the first line back by 2em */
   }
 
+  /*all aisdes recieve the beveled border by default*/
   aside {
     --b: 1px;
     /* border */
@@ -159,12 +148,12 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     /* size of the cut */
     width: 100%;
     display: inline-block;
-    /*aspect-ratio: 1.5;*/
     min-height: 80px;
     position: relative;
     z-index: 0;
     padding: 20px;
 
+    /*the little diamonds top and bottom, placed overtop content*/
     .charm {
       color: var(--draw-steel-c-laserline);
       font-family: Draw Steel Glyphs;
@@ -207,6 +196,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
   }
 
+  /*wireframe box*/
   aside:before {
     content: "";
     position: absolute;
@@ -226,6 +216,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
   }
 
+  /*some asides are inverted to indicate DM / technical tips*/
   aside.inverse {
     --b: 1px;
     /* border */
@@ -239,7 +230,25 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     z-index: 0;
     padding: 0px;
 
-    /*background: black;*/
+    &.inverse:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--draw-steel-c-laserline);
+      --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+      --g2: #0000 calc(0.707*var(--s)),
+        #000 0 calc(0.707*var(--s) + var(--b)),
+        #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+        #000 0 calc(100% - 0.707*var(--s)),
+        #0000 0;
+      -webkit-mask:
+        linear-gradient(45deg, var(--g2)),
+        linear-gradient(-45deg, var(--g2)),
+        linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+        linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+    }
+
     div {
       background-color: black;
       clip-path: polygon(
@@ -263,7 +272,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
         /* left bottom */
         0% var(--corner)
         /* left top */
-      );
+        );
       --corner: 1em;
       background: var(--draw-steel-c-black);
       color: var(--draw-steel-c-white);
@@ -271,7 +280,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       margin: 8px;
     }
 
-
+    /*top and bottom do-dads*/
     .charm {
       color: var(--draw-steel-c-laserline);
       font-family: Draw Steel Glyphs;
@@ -290,31 +299,6 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     }
   }
 
-  aside.inverse:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--draw-steel-c-laserline);
-    --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
-    --g2: #0000 calc(0.707*var(--s)),
-      #000 0 calc(0.707*var(--s) + var(--b)),
-      #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-      #000 0 calc(100% - 0.707*var(--s)),
-      #0000 0;
-    -webkit-mask:
-      linear-gradient(45deg, var(--g2)),
-      linear-gradient(-45deg, var(--g2)),
-      linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-      linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-  }
-
-
-  .journal-header input {
-    font-family: 'Draw Steel Book', serif;
-    color: var(--draw-steel-dark);
-  }
-
   .journal-header input {
     font-family: 'Draw Steel Book', serif;
     color: var(--draw-steel-dark);
@@ -323,26 +307,6 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   /*imports*/
   .glyph {
     font-family: Draw Steel Glyphs;
-  }
-
-  dl.power-roll-display {
-    display: grid;
-    grid-template-columns: max-content auto;
-
-    dt {
-      grid-column-start: 1;
-
-      &.tier1 p,
-      &.tier2 p,
-      &.tier3 p {
-        font-family: Draw Steel Glyphs;
-      }
-    }
-
-    dd {
-      grid-column-start: 2;
-    }
-
   }
 
   .left {
@@ -380,19 +344,15 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     color: var(--draw-steel-c-laserline);
   }
 
-  a::hover {
+  a:hover {
     text-shadow: transparent;
   }
 
   .callout {
     --b: 0px;
     --s: 0px;
-    border: 4px solid transparent;
     background-color: var(--draw-steel-c-faint);
-
-
     background-origin: padding-box;
-
     border: 2px solid orange;
     margin-left: 40px;
     width: calc(100% - 64px);
@@ -402,13 +362,10 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     .icon {
       width: 4em;
       height: 4em;
-      /*display: inline-block;*/
       margin-left: -3.5em;
       z-index: 2;
       position: absolute;
       top: calc(50% - 2em);
-      /*border: 2px solid orange;
-      border-radius: 6px;*/
       filter: drop-shadow(1px 1px 0 orange) drop-shadow(-1px -1px 0 orange) drop-shadow(1px -1px 0 orange) drop-shadow(-1px 1px 0 orange);
     }
 
@@ -419,7 +376,6 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
   /*laser lines on captions*/
   caption {
-    width: 100%;
     text-align: center;
     position: relative;
     border-bottom: 2px solid var(--draw-steel-c-laserline);
@@ -430,6 +386,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     border-image-slice: 1;
     margin-bottom: 1em;
 
+    /*strong creates the white box behind the lettering, uses before and after to place the diamonds at the edges*/
     strong {
       background: var(--draw-steel-c-white);
       padding: 0.5em 1em;
@@ -489,9 +446,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
     strong {
       background: var(--draw-steel-c-white);
-      /*padding: 0.5em 1em;*/
       margin: -0.2em;
-      ;
       position: absolute;
       transform: translate(-50%, 0%);
       font-style: normal;
@@ -501,16 +456,12 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       content: "®";
       font-family: Draw Steel Glyphs;
       color: #866d4b;
-      /*margin-left: -0.25em;*/
-      /*margin-right: 0.25em;*/
     }
 
     strong::after {
       content: "® ";
       font-family: Draw Steel Glyphs;
       color: #866d4b;
-      /*margin-right: -0.25em;*/
-      /*margin-left: 0.25em;*/
     }
 
     cite {
@@ -529,14 +480,29 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
 }
 
-
-.journal-entry-content,
-.journal-entry-pages,
-.journal-entry-page {
+/*inline links and rolls; this may deserve it's own file if it's broader in scope?*/
+.draw-steel .journal-entry-content,
+.draw-steel .journal-entry-pages,
+.draw-steel .journal-entry-page {
   background: var(--draw-steel-c-white);
+
+
+  .content-link,
+  .draw-steel .inline-roll {
+    background: var(--draw-steel-c-white);
+    border: 1px solid var(--draw-steel-c-laserline);
+    border-radius: 2px;
+    color: var(--draw-steel-c-laserline);
+    margin: -1px 0;
+    padding: 1px 4px 0;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+
+
 }
 
-
+/* dark theme specific deco*/
 .theme-dark .draw-steel.journal-sheet:not(.theme-light),
 .draw-steel.journal-sheet.theme-dark {
   .journal-sidebar {
@@ -554,7 +520,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   }
 }
 
-
+/* light theme specific deco*/
 .theme-light .draw-steel.journal-sheet:not(.theme-dark),
 .draw-steel.journal-sheet.theme-light {
   .journal-sidebar {

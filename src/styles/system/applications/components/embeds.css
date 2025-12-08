@@ -62,4 +62,62 @@
       }
     }
   }
+
+  /* all embedded captions*/
+  /*draws gradient behind*/
+  caption {
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid #866d4b;
+    line-height: 0.75em;
+    padding-top: 1em;
+    width: 100%;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image-slice: 1;
+
+    /*adds white block over gradient, behind text*/
+    strong {
+      background: var(--draw-steel-c-white);
+      padding: 0.5em 1em;
+      margin-top: -0.75em;
+      position: absolute;
+      transform: translate(-50%, 0%);
+    }
+
+    /*adds diamonds*/
+    strong::before {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      position: absolute;
+      left: -0.5em;
+    }
+
+    strong::after {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      position: absolute;
+      right: -0.5em;
+    }
+
+    cite {
+      position: absolute;
+      top: 1.25em;
+      right: 0;
+    }
+
+    cite::before {
+      content: '';
+      clear: both;
+      margin-top: 3em;
+    }
+  }
+
+  .roll-table-sheet {
+    thead {
+      border: none;
+      border-color: transparent;
+    }
+  }
 }
