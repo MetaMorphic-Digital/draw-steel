@@ -21,7 +21,7 @@
     {
       "name": "Prayer of Speed",
       "img": "icons/skills/movement/feet-winged-sandals-tan.webp",
-      "type": "abilityModifier",
+      "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.6zBmgbtklqTgsU7R",
       "transfer": true,
       "_id": "hqggUhQqbvi1TRUy",
@@ -29,11 +29,6 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        },
-        "filters": {
-          "keywords": [
-            "magic"
-          ]
         }
       },
       "changes": [

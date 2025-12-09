@@ -656,7 +656,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         icon: "<i class=\"fa-solid fa-fw fa-dice-d10\"></i>",
         condition: (target) => {
           const effect = this._getEmbeddedDocument(target);
-          return (effect.documentName === "ActiveEffect") && (effect.system.end.type === "save");
+          return (effect.documentName === "ActiveEffect") && (effect.system.end?.type === "save");
         },
         callback: async (target) => {
           const effect = this._getEmbeddedDocument(target);

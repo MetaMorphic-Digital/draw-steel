@@ -1,7 +1,6 @@
 import "./pseudo-documents/_types";
 import * as documents from "../../documents/_module.mjs";
 import * as data from "../../data/_module.mjs";
-import * as sheets from "@client/applications/sheets/_module.mjs";
 
 // TODO: Remove the extends if/when Foundry updates HBSMixin to use @template
 

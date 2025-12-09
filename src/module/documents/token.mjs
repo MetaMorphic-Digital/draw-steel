@@ -40,6 +40,20 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /* -------------------------------------------------- */
 
   /**
+   * If the token's movementAction is invalid, force it to null (default).
+   * @returns {Promise<boolean>} Whether the refresh has caused a change in movementAction.
+   */
+  async refreshMovementAction() {
+    if (!CONFIG.Token.movement.actions[this.movementAction].canSelect(this)) {
+      await this.update({ movementAction: null }, { diff: false });
+      return true;
+    }
+    return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Get hostile tokens within range of movement.
    * @param {Point[]} [points]              An array of points describing a segment of movement.
    * @returns {DrawSteelTokenDocument[]}    Hostile tokens.
@@ -96,6 +110,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
     if (barData?.attribute !== "stamina") return barData;
 
     barData.min = this.actor.system.stamina.min;
+    barData.value += this.actor.system.stamina.temporary || 0;
 
     // Set minion specific stamina bar data based on their combat squad
     if (!this.actor.isMinion || (this.actor.system.combatGroups.size !== 1)) return barData;
