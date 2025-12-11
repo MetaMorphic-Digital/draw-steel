@@ -1,0 +1,112 @@
+{
+  "folder": "ml6AC5RUBQc4djy1",
+  "name": "Riders on the Storm",
+  "type": "ability",
+  "_id": "BcuwCnoVexl0Edkx",
+  "img": "icons/magic/lightning/bolt-cloud-sky-white.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "139",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "riders-on-the-storm",
+    "story": "You focus your connection to the Primordial Chaos into a seething storm.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "aura",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Until the end of the encounter or until you are dying, each enemy target takes damage of your primordial damage type equal to [[/damage 2*@M type=cold/fire/corruption/lightning]]{twice your Might score} at the end of each of your turns.</p><p>Additionally, you can [[/apply t7CYKliC6xtRG9gk]] while the aura is active. Each ally target who starts or ends their turn in the area can also [[/apply t7CYKliC6xtRG9gk]] until the start of their next turn or until the effect ends.</p><p><strong>Special</strong>: When you use this ability outside of combat without spending ferocity, you must spend 1 uninterrupted minute summoning a primordial storm that fills the area, and you take [[/damage 1d6]] damage before the ability takes effect. The storm lasts for 1 hour or until a combat encounter begins.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Fly",
+      "img": "icons/magic/lightning/bolt-cloud-sky-white.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.BcuwCnoVexl0Edkx",
+      "transfer": false,
+      "_id": "t7CYKliC6xtRG9gk",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "fly"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761524438589,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!BcuwCnoVexl0Edkx.t7CYKliC6xtRG9gk"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.10.0",
+    "createdTime": 1761523891978,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!BcuwCnoVexl0Edkx"
+}

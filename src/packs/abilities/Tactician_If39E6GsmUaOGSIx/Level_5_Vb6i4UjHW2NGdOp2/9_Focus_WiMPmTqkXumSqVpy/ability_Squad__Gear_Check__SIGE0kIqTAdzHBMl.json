@@ -1,0 +1,91 @@
+{
+  "folder": "WiMPmTqkXumSqVpy",
+  "name": "Squad! Gear Check!",
+  "type": "ability",
+  "_id": "SIGE0kIqTAdzHBMl",
+  "img": "icons/containers/bags/satchel-leather-silver-tan.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "181",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "squad-gear-check",
+    "story": "You distract a foe while your allies secure their defensive gear.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "vJEZB4Fii89bh7HS": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "vJEZB4Fii89bh7HS",
+          "damage": {
+            "tier1": {
+              "value": "9 + @chr",
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "13 + @chr"
+            },
+            "tier3": {
+              "value": "18 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You and each ally adjacent to the target gain [[/heal 10 temporary]].</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760642636201,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!SIGE0kIqTAdzHBMl"
+}
