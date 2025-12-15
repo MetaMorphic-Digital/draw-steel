@@ -21,6 +21,10 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
 
   /* -------------------------------------------------- */
 
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.reference"];
+
+  /* -------------------------------------------------- */
+
   /**
    * Create data for an enriched tooltip.
    * @returns {Promise<HTMLElement[]>}

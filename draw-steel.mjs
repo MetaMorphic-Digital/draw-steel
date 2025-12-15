@@ -113,7 +113,7 @@ Hooks.once("init", function () {
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
     // TODO: Implement custom sheet for Reference pages.
-    foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet,
+    applications.sheets.journal.ReferencePage,
     { makeDefault: true, types: ["reference"] },
   );
 
