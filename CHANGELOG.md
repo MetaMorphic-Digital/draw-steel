@@ -34,6 +34,7 @@
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
+- Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 
 ### Changed
 

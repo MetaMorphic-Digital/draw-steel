@@ -5,9 +5,7 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
   /**
    * Subtype metadata.
    */
-  static get metadata() {
-    return { type: "reference" };
-  }
+  static metadata = { type: "reference" };
 
   /* -------------------------------------------------- */
 
