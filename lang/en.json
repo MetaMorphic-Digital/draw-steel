@@ -204,6 +204,14 @@
         },
         "properties": {
           "label": "Properties"
+        },
+        "resource": {
+          "amount": {
+            "label": "Gain Amount"
+          },
+          "type": {
+            "label": "Resource Type"
+          }
         }
       },
       "APPLIED": {
@@ -234,6 +242,16 @@
           "IgnoresStability": "Ignores Stability",
           "Vertical": "Vertical"
         }
+      },
+      "RESOURCE": {
+        "Surge": "Surge",
+        "Surges": "Surges",
+        "HeroicResource": "Heroic Resource",
+        "HeroicResources": "Heroic Resources",
+        "EpicResource": "Epic Resource",
+        "EpicResources": "Epic Resources",
+        "DefaultDisplay": "Each target gains {amount} {resource}.",
+        "ButtonText": "Gain {amount} {resource}"
       }
     },
     "SHEET": {
@@ -1899,6 +1917,7 @@
       "applied": "Applied Effect",
       "damage": "Damage",
       "forced": "Forced Movement",
+      "resource": "Gain Resource",
       "other": "Other"
     }
   },
