@@ -44,9 +44,11 @@
   - Errata to Telemagnet, Gravekeer's Lantern treasures.
   - Errata to Fishing Events table.
   - Corrected names for "Pardon My Friend", "Traveling Sage", "Behold a Shield of Fate!", "Squad! Gear Check!", "Stay Strong and Focus!", "Face the Storm!", "Mind Game", "Magma Titan", "Riders on the Storm", "Immovable Object" and "Tactical Offensive". (#1454, #1464, #1468, #1471)
-  - Fixed links in text for both versions of Covenant of the Heart. (#1469)
+  - Corrected links in text for both versions of Covenant of the Heart. (#1469)
+  - Corrected header usage in "Essence", "Discipline", "Clarity and Strain", "Drama", and Stormwight Kits. (#1472)
   - Added missing text to Melee Superiority. (#1475)
-  - Fixed complications table to match book.
+  - Corrected Orc Chainlock's Hook and Chain. (#1482)
+  - Corrected complications table to match book.
 - Director-Facing Compendium Data Fixes:
   - Errata to Gnoll Malice: Bloodpool.
   - Errata to Predator A.
@@ -62,6 +64,7 @@
   - Errata to Ghost.
   - Errata to Servok Builder.
   - Errata to War Dog Hypokrite, Prismite.
+- Re-added missing Project Description to embed. (#1461)
 - Fixed expanded descriptions not staying expanded on re-render.
 
 ## 0.9.1
