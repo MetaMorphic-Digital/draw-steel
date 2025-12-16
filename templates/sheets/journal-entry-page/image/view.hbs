@@ -1,0 +1,16 @@
+{{!-- <!-- eslint-disable @html-eslint/require-closing-tags -->  --}}
+<div>
+  {{#if title.show}}
+  <header class="journal-page-header">
+
+    <h{{ title.level }}>{{ name }}</h{{ title.level }}>
+
+</header>
+      {{/if}}
+
+      <figure class="journal-page-content">
+        {{#if src}}<img src="{{ src }}" alt="{{ system.artDescription }}">{{/if}}
+        {{#if caption}}<figcaption>{{ caption }}</figcaption>{{/if}}
+      </figure>
+
+</div>
