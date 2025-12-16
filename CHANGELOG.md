@@ -22,6 +22,7 @@
 
 ### Added
 
+- Added missing Elementalist 4th-level Mantle of Essence feature that describes the aura and how it's used. (#1470)
 - Added ability for Glowing Eyes triggered action. (#1473)
 
 ### Changed
