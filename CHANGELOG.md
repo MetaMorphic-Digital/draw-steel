@@ -20,9 +20,19 @@
 
 ## 0.9.2
 
+### Added
+
+- Added ability for Glowing Eyes triggered action. (#1473)
+
+### Changed
+
+- Added automatic sorting to the list of languages.
+- Implemented power list table for Advanced Studies, Studied Commander, Black Ash Dart, and Lachomp Tooth. (#1474)
+
 ### Removed
 
 - Removed "Stone Cursed" complication (old name for Curse of Stone)
+- Removed duplicate "Bullseye" Minotaur malice feature.
 
 ### Fixed
 
@@ -33,7 +43,9 @@
   - Errata to "Learn from a Master: Improve Control" project.
   - Errata to Telemagnet, Gravekeer's Lantern treasures.
   - Errata to Fishing Events table.
-  - Corrected names for "Pardon My Friend" and "Traveling Sage" perks. (#1454)
+  - Corrected names for "Pardon My Friend", "Traveling Sage", "Behold a Shield of Fate!", "Squad! Gear Check!", "Stay Strong and Focus!", "Face the Storm!", "Mind Game", "Magma Titan", "Riders on the Storm", "Immovable Object" and "Tactical Offensive". (#1454, #1464, #1468, #1471)
+  - Fixed links in text for both versions of Covenant of the Heart. (#1469)
+  - Added missing text to Melee Superiority. (#1475)
   - Fixed complications table to match book.
 - Director-Facing Compendium Data Fixes:
   - Errata to Gnoll Malice: Bloodpool.
