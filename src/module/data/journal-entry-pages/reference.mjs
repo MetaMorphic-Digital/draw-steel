@@ -1,4 +1,8 @@
-const { StringField, HTMLField } = foundry.data.fields;
+/**
+ * @import {SubtypeMetadata} from "../_types"
+ */
+
+const { HTMLField } = foundry.data.fields;
 
 /**
  * An extensions of a text page that allows for rich tooltips.
@@ -6,21 +10,28 @@ const { StringField, HTMLField } = foundry.data.fields;
 export default class ReferenceData extends foundry.abstract.TypeDataModel {
   /**
    * Subtype metadata.
+   * @type {SubtypeMetadata}
    */
-  static metadata = { type: "reference" };
-
-  /* -------------------------------------------------- */
-
-  /** @override */
-  static defineSchema() {
+  static get metadata() {
     return {
-      short: new StringField({ required: true }),
-      long: new HTMLField(),
+      type: "reference",
+      icon: "fa-solid fa-notebook",
+      embedded: {},
     };
   }
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  static defineSchema() {
+    return {
+      tooltip: new HTMLField({ required: true }),
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.reference"];
 
   /* -------------------------------------------------- */
@@ -37,7 +48,7 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async toEmbed(config, options = {}) {
     return this.parent._embedTextPage(config, options);
   }
