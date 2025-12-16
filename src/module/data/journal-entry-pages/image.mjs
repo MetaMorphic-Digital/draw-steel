@@ -15,13 +15,9 @@ export default class DrawSteelImageData extends ReferenceData {
 
   /** @override */
   static defineSchema() {
-    const schema = super.defineSchema();
-
-    const fields = foundry.data.fields;
-
-    schema.artDescription = new fields.StringField();
-
-    return schema;
+    return Object.assign(super.defineSchema(), {
+      artDescription: new foundry.data.fields.StringField({ required: true }),
+    });
   }
 
   /* -------------------------------------------------- */
