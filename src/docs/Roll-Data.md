@@ -25,6 +25,7 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Size (1/2/3/4) `@combat.size.value`
 + Stability - `@combat.stability`
 + Total amount of turns per round of specific actor (e.g. Solos would have 2) `@combat.turns`
++ Initiative Threshold - `@combat.initiativeThreshold`
 
 ## Potencies
 + Strong Potency (= highest characteristic) - `@potency.strong`
