@@ -4,7 +4,7 @@
 
 /**
  * A registry of cached document info compiled across all compendiums.
- * Each collection is expected to be of a a single document type & subtype.
+ * Each collection is expected to be of a single document type & subtype.
  */
 export default class DrawSteelRegistry {
   /**
@@ -22,43 +22,47 @@ export default class DrawSteelRegistry {
       return typeMap[a.metadata.packageType] - typeMap[b.metadata.packageType];
     });
 
-    for (const pack of itemPacks) {
-      // Fancy performant fetch
-      const docs = await pack.getDocuments({ type__in: ["class", "subclass", "perk", "kit"] });
+    const registryTypes = new Set(["class", "subclass", "perk", "kit"]);
 
-      for (const item of docs) {
-        const dsid = item.dsid;
+    for (const pack of itemPacks) {
+      // Need to re-call `getIndex` for `system._dsid` to be populated
+      const docs = await pack.getIndex();
+
+      const indices = docs.filter(idx => registryTypes.has(idx.type));
+
+      for (const idx of indices) {
+        const dsid = idx.system._dsid ?? idx.name.replaceAll(/(\w+)([\\|/])(\w+)/g, "$1-$3").slugify({ strict: true });
         /** @type {RegistryEntry} */
         const registryEntry = {
           dsid,
-          name: item.name,
-          uuid: item.uuid,
+          name: idx.name,
+          uuid: idx.uuid,
         };
-        switch (item.type) {
+        switch (idx.type) {
           case "class":
-            registryEntry.primary = item.system.primary;
-            if (this.class.has(item.dsid)) {
-              console.warn(`Replacing ${item.type} registry entry for ${dsid}`);
+            registryEntry.primary = idx.system.primary;
+            if (this.class.has(dsid)) {
+              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
             }
             this.class.set(dsid, registryEntry);
             break;
           case "subclass":
-            registryEntry.classLink = item.system.classLink;
-            if (this.subclass.has(item.dsid)) {
-              console.warn(`Replacing ${item.type} registry entry for ${dsid}`);
+            registryEntry.classLink = idx.system.classLink;
+            if (this.subclass.has(dsid)) {
+              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
             }
             this.subclass.set(dsid, registryEntry);
             break;
           case "perk":
-            registryEntry.perkType = item.system.perkType;
-            if (this.perk.has(item.dsid)) {
-              console.warn(`Replacing ${item.type} registry entry for ${dsid}`);
+            registryEntry.perkType = idx.system.perkType;
+            if (this.perk.has(dsid)) {
+              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
             }
             this.perk.set(dsid, registryEntry);
             break;
           case "kit":
-            if (this.kit.has(item.dsid)) {
-              console.warn(`Replacing ${item.type} registry entry for ${dsid}`);
+            if (this.kit.has(dsid)) {
+              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
             }
             this.kit.set(dsid, registryEntry);
             break;

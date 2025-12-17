@@ -54,6 +54,9 @@ Hooks.once("init", function () {
     }
   }
 
+  // Indexing
+  CONFIG.Item.compendiumIndexFields.push("system._dsid");
+
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
   CONFIG.Combat.collection = documents.collections.DrawSteelCombatEncounters;
