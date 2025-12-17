@@ -7,6 +7,15 @@
  * Each collection is expected to be of a single document type & subtype.
  */
 export default class DrawSteelRegistry {
+  constructor() {
+    Object.defineProperties(this, {
+      class: { value: new DSRegistryCollection(), writable: false, configurable: false },
+      subclass: { value: new DSRegistryCollection(), writable: false, configurable: false },
+      perk: { value: new DSRegistryCollection(), writable: false, configurable: false },
+      kit: { value: new DSRegistryCollection(), writable: false, configurable: false },
+    });
+  }
+
   /**
    * Called once in `ready` after migrations.
    */
@@ -75,47 +84,35 @@ export default class DrawSteelRegistry {
   /*  Registries                                        */
   /* -------------------------------------------------- */
 
-  #class = new DSRegistryCollection();
-
   /**
    * A registry of classes mapping DSID to registry entries.
+   * @type {DSRegistryCollection}
    */
-  get class() {
-    return this.#class;
-  }
+  class;
 
   /* -------------------------------------------------- */
-
-  #subclass = new DSRegistryCollection();
 
   /**
    * A registry of subclasses mapping DSID to registry entries.
+   * @type {DSRegistryCollection}
    */
-  get subclass() {
-    return this.#subclass;
-  }
+  subclass;
 
   /* -------------------------------------------------- */
-
-  #perk = new DSRegistryCollection();
 
   /**
    * A registry of perks mapping DSID to registry entries.
+   * @type {DSRegistryCollection}
    */
-  get perk() {
-    return this.#perk;
-  }
+  perk;
 
   /* -------------------------------------------------- */
 
-  #kit = new DSRegistryCollection();
-
   /**
    * A registry of kits mapping DSID to registry entries.
+   * @type {DSRegistryCollection}
    */
-  get kit() {
-    return this.#kit;
-  }
+  kit;
 }
 
 /* -------------------------------------------------- */
