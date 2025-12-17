@@ -6,7 +6,7 @@ import BaseItemModel from "./base.mjs";
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs"; */
 
 /**
- * Treasure are supernatural items that provide benefits beyond what a kit can provide.
+ * A piece of supernatural equipment, from weapons and armor to implements and more.
  */
 export default class TreasureModel extends BaseItemModel {
   /** @inheritdoc */

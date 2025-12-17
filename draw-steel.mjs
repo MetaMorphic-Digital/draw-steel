@@ -205,43 +205,27 @@ Hooks.once("setup", () => {
     if (status.rule) ds.CONFIG.references[status.id] = status.rule;
   }
 
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.characteristics)) {
-    ds.CONFIG.references[key] = reference;
-  }
+  // Common/expected structure for reference construction
+  const referenceObjects = [
+    "characteristics",
+    "monsters.keywords",
+    "monsters.organizations",
+    "monsters.roles",
+    "abilities.types",
+    "abilities.distances",
+    "abilities.targets",
+    "equipment.categories",
+    "equipment.armor",
+    "equipment.weapon",
+    "projects.types",
+  ];
 
-  // Monsters
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.monsters.keywords)) {
-    ds.CONFIG.references[key] = reference;
-  }
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.monsters.organizations)) {
-    ds.CONFIG.references[key] = reference;
-  }
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.monsters.roles)) {
-    ds.CONFIG.references[key] = reference;
-  }
-
-  // Abilities
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.abilities.types)) {
-    ds.CONFIG.references[key] = reference;
-  }
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.abilities.distances)) {
-    if (reference) ds.CONFIG.references[key] = reference;
-  }
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.abilities.targets)) {
-    if (reference) ds.CONFIG.references[key] = reference;
-  }
-
-  // Kits
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.equipment.armor)) {
-    ds.CONFIG.references[key] = reference;
-  }
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.equipment.weapon)) {
-    ds.CONFIG.references[key] = reference;
-  }
-
-  // Projects
-  for (const [key, { reference }] of Object.entries(ds.CONFIG.projects.types)) {
-    if (reference) ds.CONFIG.references[key] = reference;
+  for (const path of referenceObjects) {
+    const config = foundry.utils.getProperty(ds.CONFIG, path);
+    for (const [key, { reference }] of Object.entries(config)) {
+      if (key in ds.CONFIG.references) console.warn(key, path);
+      if (reference) ds.CONFIG.references[reference.identifier ?? key] = reference.uuid;
+    }
   }
 });
 

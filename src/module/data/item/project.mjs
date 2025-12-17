@@ -13,7 +13,7 @@ import BaseItemModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Projects are activities (crafting, research, or other) heroes can accomplish during downtime.
+ * A task a hero undertakes during one or more respites.
  */
 export default class ProjectModel extends BaseItemModel {
   /** @inheritdoc */

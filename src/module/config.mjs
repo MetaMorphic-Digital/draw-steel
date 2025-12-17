@@ -4,6 +4,12 @@ import { preLocalize } from "./helpers/localization.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 
+/**
+ * @typedef Reference
+ * @property {string} uuid A UUID pointer to a page of type `reference`.
+ * @property {string} [identifier] An optional substitution for the key to construct the reference.
+ */
+
 /* -------------------------------------------------- */
 
 /**
@@ -11,7 +17,7 @@ import { preLocalize } from "./helpers/localization.mjs";
  * @property {string} label       Full name (e.g. "Might").
  * @property {string} hint        Short form in all caps (e.g. "M").
  * @property {string} rollKey     Key for `@` references in roll data.
- * @property {string} reference   UUID pointer to a `reference` page.
+ * @property {Reference} reference
  */
 
 /**
@@ -25,26 +31,41 @@ export const characteristics = Object.seal({
     label: "DRAW_STEEL.Actor.characteristics.might.full",
     hint: "DRAW_STEEL.Actor.characteristics.might.abbreviation",
     rollKey: "M",
+    reference: {
+      uuid: "",
+    },
   },
   agility: {
     label: "DRAW_STEEL.Actor.characteristics.agility.full",
     hint: "DRAW_STEEL.Actor.characteristics.agility.abbreviation",
     rollKey: "A",
+    reference: {
+      uuid: "",
+    },
   },
   reason: {
     label: "DRAW_STEEL.Actor.characteristics.reason.full",
     hint: "DRAW_STEEL.Actor.characteristics.reason.abbreviation",
     rollKey: "R",
+    reference: {
+      uuid: "",
+    },
   },
   intuition: {
     label: "DRAW_STEEL.Actor.characteristics.intuition.full",
     hint: "DRAW_STEEL.Actor.characteristics.intuition.abbreviation",
     rollKey: "I",
+    reference: {
+      uuid: "",
+    },
   },
   presence: {
     label: "DRAW_STEEL.Actor.characteristics.presence.full",
     hint: "DRAW_STEEL.Actor.characteristics.presence.abbreviation",
     rollKey: "P",
+    reference: {
+      uuid: "",
+    },
   },
 });
 preLocalize("characteristics", { keys: ["label", "hint"] });
@@ -267,6 +288,13 @@ export const conditions = {
 /* -------------------------------------------------- */
 
 /**
+ * @typedef EffectEnd
+ * @property {string} label
+ * @property {string} abbreviation
+ * @property {Reference} reference
+ */
+
+/**
  * Times when an effect can end.
  * @type {Record<string, {label: string, abbreviation: string}>}
  */
@@ -274,10 +302,18 @@ export const effectEnds = {
   turn: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Turn.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Turn.Abbr",
+    reference: {
+      uuid: "",
+      identifier: "eot",
+    },
   },
   save: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Save.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Save.Abbr",
+    reference: {
+      uuid: "",
+      identifier: "saveEnds",
+    },
   },
   encounter: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Label",
@@ -286,6 +322,9 @@ export const effectEnds = {
   respite: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Respite.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Respite.Abbr",
+    reference: {
+      uuid: "",
+    },
   },
 };
 preLocalize("effectEnds", { keys: ["label", "abbreviation"] });
@@ -918,7 +957,7 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
  * @typedef MonsterKeyword
  * @property {string} label
  * @property {string} group
- * @property {string} [reference] An optional pointer to a UUID reference with a description of the keyword.
+ * @property {Reference} [reference] An optional pointer to a UUID reference with a description of the keyword.
  */
 
 /** @type {Record<string, MonsterKeyword>} */
@@ -926,80 +965,130 @@ const monsterKeywords = {
   abyssal: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Abyssal",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   accursed: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Accursed",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   animal: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Animal",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   beast: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Beast",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   construct: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Construct",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   dragon: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Dragon",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   elemental: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Elemental",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   fey: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Fey",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   giant: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Giant",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   horror: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Horror",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   humanoid: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Humanoid",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   infernal: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Infernal",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   plant: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Plant",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   soulless: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Soulless",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   swarm: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Swarm",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
   undead: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Undead",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
 /**
  * @typedef MonsterOrganization
  * @property {string} label
- * @property {string} reference A UUID with a description of the organizational structure.
+ * @property {Reference} reference
  */
 
 /** @type {Record<string, MonsterOrganization>} */
 const monsterOrganizations = {
   minion: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   horde: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
@@ -1007,65 +1096,91 @@ const monsterOrganizations = {
   },
   platoon: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   elite: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   leader: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   solo: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Solo",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
 /**
  * @typedef MonsterRole
  * @property {string} label
- * @property {string} reference A UUID with a description of the role.
+ * @property {Reference} reference
  */
 
 /** @type {Record<string, MonsterRole>} */
 const monsterRoles = {
   ambusher: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Ambusher",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   artillery: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Artillery",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   brute: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Brute",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   controller: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Controller",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   defender: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Defender",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   harrier: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Harrier",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   hexer: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Hexer",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   mount: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Mount",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   support: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Support",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
@@ -1179,7 +1294,7 @@ const abilityKeywords = {
  * @typedef AbilityType
  * @property {string} label
  * @property {boolean} [triggered]
- * @property {string} reference     A UUID with a description of the action type.
+ * @property {Reference} reference
  */
 
 /**
@@ -1189,39 +1304,66 @@ const abilityKeywords = {
 const abilityTypes = {
   main: {
     label: "DRAW_STEEL.Item.ability.Type.Main",
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "mainAction",
+    },
   },
   maneuver: {
     label: "DRAW_STEEL.Item.ability.Type.Maneuver",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   freeManeuver: {
     label: "DRAW_STEEL.Item.ability.Type.FreeManeuver",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   triggered: {
     label: "DRAW_STEEL.Item.ability.Type.Triggered",
-    reference: "",
     triggered: true,
+    reference: {
+      uuid: "",
+      identifier: "triggeredAction",
+    },
   },
   freeTriggered: {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "freeTriggeredAction",
+    },
   },
   move: {
     label: "DRAW_STEEL.Item.ability.Type.Move",
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "moveAction",
+    },
   },
   none: {
     label: "DRAW_STEEL.Item.ability.Type.None",
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "noAction",
+    },
   },
   villain: {
     label: "DRAW_STEEL.Item.ability.Type.Villain",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
 };
+
+/**
+ * @typedef AbilityCategory
+ * @property {string} label
+ * @property {Reference} [reference]
+ */
 
 /**
  * Ability category, e.g. "Villain Action".
@@ -1230,12 +1372,23 @@ const abilityTypes = {
 const abilityCategories = {
   heroic: {
     label: "DRAW_STEEL.Item.ability.Category.Heroic",
+    reference: {
+      uuid: "",
+      identifier: "heroicAbility",
+    },
   },
   freeStrike: {
     label: "DRAW_STEEL.Item.ability.Category.FreeStrike",
+    reference: {
+      uuid: "",
+    },
   },
   signature: {
     label: "DRAW_STEEL.Item.ability.Category.Signature",
+    reference: {
+      uuid: "",
+      identifier: "signatureAbility",
+    },
   },
   villain: {
     label: "DRAW_STEEL.Item.ability.Category.Villain",
@@ -1250,7 +1403,7 @@ const abilityCategories = {
  * @property {string} [tertiary]    Distance measurement label.
  * @property {boolean} [area]       Does this count as an area measurment?
  * @property {string} embedLabel    Format string for the display in the ability embed.
- * @property {string} [reference]   An optional UUID with a description of the ability distance.
+ * @property {Reference} [reference]
  */
 
 /**
@@ -1262,13 +1415,17 @@ const abilityDistances = {
     label: "DRAW_STEEL.Item.ability.Distance.Melee",
     primary: "DRAW_STEEL.Item.ability.Distance.Melee",
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Melee",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   ranged: {
     label: "DRAW_STEEL.Item.ability.Distance.Ranged",
     primary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Ranged",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   meleeRanged: {
     label: "DRAW_STEEL.Item.ability.Distance.MeleeRanged",
@@ -1281,14 +1438,18 @@ const abilityDistances = {
     primary: "DRAW_STEEL.Item.ability.Distance.Aura",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Aura",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   burst: {
     label: "DRAW_STEEL.Item.ability.Distance.Burst",
     primary: "DRAW_STEEL.Item.ability.Distance.Burst",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Burst",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   cube: {
     label: "DRAW_STEEL.Item.ability.Distance.Cube",
@@ -1296,7 +1457,9 @@ const abilityDistances = {
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Cube",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   line: {
     label: "DRAW_STEEL.Item.ability.Distance.Line",
@@ -1305,7 +1468,9 @@ const abilityDistances = {
     tertiary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Line",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   wall: {
     label: "DRAW_STEEL.Item.ability.Distance.Wall",
@@ -1313,7 +1478,9 @@ const abilityDistances = {
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Wall",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   special: {
     label: "DRAW_STEEL.Item.ability.Distance.Special",
@@ -1331,7 +1498,7 @@ const abilityDistances = {
  * @property {string} label
  * @property {string} [all]       I18n key for an ability that targets everything within an area.
  * @property {string} embedLabel  Format string for display in the ability embed.
- * @property {string} [reference] An optional UUID with a description of the ability targets.
+ * @property {Reference} [reference] An optional UUID with a description of the ability targets.
  */
 
 /**
@@ -1343,13 +1510,17 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.Creature",
     all: "DRAW_STEEL.Item.ability.Target.AllCreatures",
     embedLabel: "DRAW_STEEL.Item.ability.Target.CreatureEmbed",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   object: {
     label: "DRAW_STEEL.Item.ability.Target.Object",
     all: "DRAW_STEEL.Item.ability.Target.AllObjects",
     embedLabel: "DRAW_STEEL.Item.ability.Target.ObjectEmbed",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   creatureObject: {
     label: "DRAW_STEEL.Item.ability.Target.CreatureObject",
@@ -1371,7 +1542,9 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.Ally",
     all: "DRAW_STEEL.Item.ability.Target.AllAllies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.AllyEmbed",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   self: {
     label: "DRAW_STEEL.Item.ability.Target.Self",
@@ -1397,20 +1570,37 @@ const abilityTargets = {
 };
 
 /**
+ * @typedef ForcedMovement
+ * @property {string} label
+ * @property {string} vertical I18n key for the vertical version of this movement.
+ * @property {Reference} reference
+ */
+
+/**
  * Forced movement categories.
+ * @type {Record<string, ForcedMovement>}
  */
 const abilityForcedMovement = {
   push: {
     label: "DRAW_STEEL.Item.ability.ForcedMovement.Push",
     vertical: "DRAW_STEEL.Item.ability.ForcedMovement.VerticalPush",
+    reference: {
+      uuid: "",
+    },
   },
   pull: {
     label: "DRAW_STEEL.Item.ability.ForcedMovement.Pull",
     vertical: "DRAW_STEEL.Item.ability.ForcedMovement.VerticalPull",
+    reference: {
+      uuid: "",
+    },
   },
   slide: {
     label: "DRAW_STEEL.Item.ability.ForcedMovement.Slide",
     vertical: "DRAW_STEEL.Item.ability.ForcedMovement.VerticalSlide",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
@@ -1667,12 +1857,6 @@ preLocalize("culture.group", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
- * @typedef TreasureCategory
- * @property {string} label
- * @property {FormSelectOption[]} keywords
- */
-
-/**
  * Keywords available to all treasure types.
  * @type {Record<string, {label: string}>}
  */
@@ -1686,12 +1870,22 @@ const treasureKeywords = {
 };
 
 /**
+ * @typedef TreasureCategory
+ * @property {string} label
+ * @property {Reference} reference
+ * @property {FormSelectOption[]} keywords
+ */
+
+/**
  * Core types of treasures.
  * @type {Record<string, TreasureCategory>}
  */
 const treasureCategories = {
   consumable: {
     label: "DRAW_STEEL.Item.treasure.Categories.Consumable",
+    reference: {
+      uuid: "",
+    },
     get keywords() {
       return Object.entries(ds.CONFIG.equipment.consumables)
         .map(([value, { label }]) => ({ label, value, group: ds.CONFIG.equipment.categories.consumable.label }));
@@ -1699,6 +1893,9 @@ const treasureCategories = {
   },
   trinket: {
     label: "DRAW_STEEL.Item.treasure.Categories.Trinket",
+    reference: {
+      uuid: "",
+    },
     get keywords() {
       return Object.entries(ds.CONFIG.equipment.other)
         .map(([value, { label }]) => ({ label, value, group: ds.CONFIG.equipment.categories.trinket.label }));
@@ -1706,12 +1903,19 @@ const treasureCategories = {
   },
   leveled: {
     label: "DRAW_STEEL.Item.treasure.Categories.Leveled",
+    reference: {
+      uuid: "",
+      identifier: "leveledTreasure",
+    },
     get keywords() {
       return [];
     },
   },
   artifact: {
     label: "DRAW_STEEL.Item.treasure.Categories.Artifact",
+    reference: {
+      uuid: "",
+    },
     get keywords() {
       return [];
     },
@@ -1741,45 +1945,59 @@ const equipmentKinds = {
  * @typedef ArmorType
  * @property {string} label
  * @property {boolean} kitEquipment Is this an eligible choice for a kit's equipment.
- * @property {string} reference     A UUID with a description for the armor type.
+ * @property {Reference} reference     A UUID with a description for the armor type.
  */
 
 /**
  * Also used by kits.
- * @type {Record<string, {label: string, kitEquipment: boolean}>}
+ * @type {Record<string, ArmorType>}
  */
 const armorTypes = {
   none: {
     label: "DRAW_STEEL.Item.treasure.Armor.None",
     kitEquipment: true,
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "noArmor",
+    },
   },
   light: {
     label: "DRAW_STEEL.Item.treasure.Armor.Light",
     kitEquipment: true,
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "lightArmor",
+    },
   },
   medium: {
     label: "DRAW_STEEL.Item.treasure.Armor.Medium",
     kitEquipment: true,
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "mediumArmor",
+    },
   },
   heavy: {
     label: "DRAW_STEEL.Item.treasure.Armor.Heavy",
     kitEquipment: true,
-    reference: "",
+    reference: {
+      uuid: "",
+      identifier: "heavyArmor",
+    },
   },
   shield: {
     label: "DRAW_STEEL.Item.treasure.Armor.Shield",
     kitEquipment: false,
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
 /**
  * @typedef WeaponType
  * @property {string} label
- * @property {string} reference A UUID with a description for the weapon type.
+ * @property {Reference} reference
  */
 
 /**
@@ -1789,30 +2007,61 @@ const armorTypes = {
 const weaponTypes = {
   none: {
     label: "DRAW_STEEL.Item.treasure.Weapons.None",
+    reference: {
+      uuid: "",
+      identifier: "noWeapon",
+    },
   },
   bow: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Bow",
+    reference: {
+      uuid: "",
+    },
   },
   ensnaring: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Ensnaring",
+    reference: {
+      uuid: "",
+    },
   },
   heavy: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Heavy",
+    reference: {
+      uuid: "",
+      identifier: "heavyWeapon",
+    },
   },
   light: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Light",
+    reference: {
+      uuid: "",
+      identifier: "lightWeapon",
+    },
   },
   medium: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Medium",
+    reference: {
+      uuid: "",
+      identifier: "mediumWeapon",
+    },
   },
   polearm: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Polearm",
+    reference: {
+      uuid: "",
+    },
   },
   unarmed: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Unarmed",
+    reference: {
+      uuid: "",
+    },
   },
   whip: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Whip",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
@@ -1938,19 +2187,28 @@ preLocalize("perks.types", { key: "label" });
 /**
  * @typedef ProjectType
  * @property {string} label
- * @property {string} [reference] An optional UUID with a description for the weapon type.
+ * @property {Reference} [reference]
  */
 
 /** @type {Record<string, ProjectType>} */
 const projectTypes = {
   crafting: {
     label: "DRAW_STEEL.Item.project.Types.Crafting",
+    reference: {
+      uuid: "",
+    },
   },
   research: {
     label: "DRAW_STEEL.Item.project.Types.Research",
+    reference: {
+      uuid: "",
+    },
   },
   other: {
     label: "DRAW_STEEL.Item.project.Types.Other",
+    reference: {
+      uuid: "",
+    },
   },
 };
 
@@ -2047,4 +2305,141 @@ preLocalize("sourceInfo.licenses", { keys: ["label"] });
  * throughout the system.
  * @type {Record<string, string>}
  */
-export const references = {};
+export const references = {
+  ability: "",
+  abilityRoll: "",
+  adjacent: "",
+  ancestry: "",
+  areaOfEffect: "",
+  argument: "",
+  artisan: "",
+  background: "",
+  bane: "",
+  bonus: "",
+  breakthrough: "",
+  burrow: "",
+  capital: "",
+  career: "",
+  characteristics: "",
+  ceiling: "",
+  class: "",
+  climb: "",
+  combatRound: "",
+  complication: "",
+  concealment: "",
+  condition: "",
+  consequence: "",
+  cover: "",
+  crawl: "",
+  criticalHit: "",
+  culture: "",
+  damage: "",
+  damageImmunity: "",
+  damageWeakness: "",
+  damagingTerrain: "",
+  difficultTerrain: "",
+  director: "",
+  distance: "",
+  doubleBane: "",
+  doubleEdge: "",
+  downtimeProject: "",
+  echelon: "",
+  edge: "",
+  enhancement: "",
+  experience: "",
+  falling: "",
+  flanking: "",
+  fly: "",
+  forcedMovement: "",
+  follower: "",
+  god: "",
+  ground: "",
+  groupTest: "",
+  guide: "",
+  hero: "",
+  heroTokens: "",
+  heroicResource: "",
+  highGround: "",
+  hover: "",
+  implement: "",
+  interest: "",
+  itemPrerequisite: "",
+  jump: "",
+  kit: "",
+  level: "",
+  lineOfEffect: "",
+  malice: "",
+  manifold: "",
+  montageTest: "",
+  motivation: "",
+  mountedCombat: "",
+  movement: "",
+  mundane: "",
+  natural19or20: "",
+  naturalRoll: "",
+  negotiation: "",
+  npc: "",
+  objective: "",
+  opportunityAttack: "",
+  opposedPowerRoll: "",
+  orden: "",
+  patience: "",
+  penalty: "",
+  perk: "",
+  pitfall: "",
+  potency: "",
+  powerRoll: "",
+  projectEvent: "",
+  projectGoal: "",
+  projectPoints: "",
+  projectRoll: "",
+  projectSource: "",
+  reactiveTest: "",
+  recoveries: "",
+  recoveryValue: "",
+  renown: "",
+  respiteActivity: "",
+  retainer: "",
+  reward: "",
+  rolledDamage: "",
+  sage: "",
+  saint: "",
+  savingThrow: "",
+  shift: "",
+  side: "",
+  size: "",
+  skill: "",
+  space: "",
+  speed: "",
+  square: "",
+  stability: "",
+  stamina: "",
+  strained: "",
+  strike: "",
+  subclass: "",
+  suffocating: "",
+  supernatural: "",
+  surge: "",
+  swim: "",
+  target: "",
+  teleport: "",
+  temporaryStamina: "",
+  test: "",
+  tierOutcome: "",
+  tier1: "",
+  tier2: "",
+  tier3: "",
+  title: "",
+  timescape: "",
+  treasure: "",
+  turn: "",
+  unattendedObject: "",
+  underwaterCombat: "",
+  untypedDamage: "",
+  vasloria: "",
+  vertical: "",
+  victories: "",
+  walk: "",
+  wealth: "",
+  winded: "",
+};
