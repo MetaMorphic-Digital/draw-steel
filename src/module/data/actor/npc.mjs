@@ -4,7 +4,7 @@ import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
 
 /**
- * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
  * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
@@ -192,6 +192,70 @@ export default class NPCModel extends BaseActorModel {
     }
 
     return freeStrike;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform a free strike against one or more enemies.
+   * @param {DrawSteelActor[]} [targets] Actors to apply the free strike damage to. Defaults to all current targets.
+   */
+  async performFreeStrike(targets) {
+    if (!targets) {
+      try {
+        targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
+      } catch (e) {
+        ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.MultiLinked", { localize: true });
+        throw (e);
+      }
+    }
+    if (!targets.length) {
+      ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.NoTargets", { localize: true });
+      return;
+    }
+    const freeStrike = this.freeStrike;
+
+    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
+      value: freeStrike.value,
+      type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
+    });
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+    const keywordList = freeStrike.keywords.toObject().map(k => ds.CONFIG.abilities.keywords[k]?.label);
+
+    let content = `<span>${keywordFormatter.format([damageLabel, ...keywordList])}</span>`;
+
+    content += targets.map(a => {
+      const checkboxInput = foundry.applications.fields.createCheckboxInput({ name: a.uuid, value: true });
+      const formGroup = foundry.applications.fields.createFormGroup({
+        label: a.name,
+        input: checkboxInput,
+        classes: ["inline"],
+      });
+      // style fix
+      const label = formGroup.querySelector("label");
+      label.classList.add("checkbox");
+      label.style = "font-size: inherit;";
+      return formGroup.outerHTML;
+    }).join("");
+
+    /** @type {object} */
+    const fd = await ds.applications.api.DSDialog.input({
+      window: { title: "DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
+      content,
+      ok: {
+        label: "DRAW_STEEL.Actor.npc.FreeStrike.DialogButton",
+      },
+    });
+
+    if (fd) {
+      for (const [uuid, bool] of Object.entries(fd)) {
+        if (bool) {
+          /** @type {DrawSteelActor} */
+          const actor = fromUuidSync(uuid);
+          actor.system.takeDamage(freeStrike.value, { type: freeStrike.type });
+        }
+      }
+    }
   }
 
   /* -------------------------------------------------- */
