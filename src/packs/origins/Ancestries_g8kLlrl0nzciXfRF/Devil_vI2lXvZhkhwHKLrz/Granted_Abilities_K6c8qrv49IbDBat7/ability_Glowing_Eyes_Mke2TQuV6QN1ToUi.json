@@ -1,32 +1,27 @@
 {
-  "folder": "Z4fGY0bILcpzVcAP",
-  "name": "Reap",
+  "name": "Glowing Eyes",
   "type": "ability",
-  "_id": "OqZbt8MOyCeVkd5z",
-  "img": "icons/magic/death/weapon-scythe-rune-green.webp",
+  "img": "icons/creatures/eyes/humanoid-single-red-brown.webp",
   "system": {
     "source": {
-      "book": "Heroes",
-      "page": "103",
+      "book": "",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "reap",
-    "story": "The gods reward those who smite their foes.",
-    "keywords": [
-      "magic",
-      "ranged"
-    ],
-    "type": "maneuver",
-    "category": "heroic",
-    "resource": 5,
-    "trigger": "",
+    "_dsid": "glowing-eyes",
+    "story": "Your eyes are a solid, vibrant color that flares to show your excitement or rage",
+    "keywords": [],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "Whenever you take damage from a creature.",
     "distance": {
-      "type": "ranged",
-      "primary": 10
+      "type": "special"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
+      "type": "creature",
+      "custom": "",
       "value": null
     },
     "power": {
@@ -37,7 +32,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the start of your next turn, each time a target kills an enemy, they regain Stamina equal to [[/heal 5+@I]]{5 + your Intuition score}.</p>",
+      "before": "<p>You deal [[/damage 1d10+@level]]{1d10 + your level psychic damage} to  that creature.</p>",
       "after": ""
     },
     "spend": {
@@ -46,7 +41,7 @@
     }
   },
   "effects": [],
-  "sort": 0,
+  "folder": "K6c8qrv49IbDBat7",
   "ownership": {
     "default": 0
   },
@@ -58,9 +53,11 @@
     "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
-    "createdTime": 1756154752353,
+    "createdTime": 1765762078165,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!OqZbt8MOyCeVkd5z"
+  "_id": "Mke2TQuV6QN1ToUi",
+  "sort": 0,
+  "_key": "!items!Mke2TQuV6QN1ToUi"
 }
