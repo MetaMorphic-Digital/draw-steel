@@ -204,6 +204,11 @@ Hooks.once("i18nInit", () => {
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
 });
 
+// TODO: Merge with registry setup hook
+Hooks.once("setup", () => {
+  applications.sidebar.apps.DrawSteelCompendiumTOC.applyToPacks();
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
