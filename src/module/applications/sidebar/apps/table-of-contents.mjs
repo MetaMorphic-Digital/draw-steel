@@ -65,6 +65,11 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     const context = await super._prepareContext(options);
     const documents = await this.collection.getDocuments();
 
+    // default header
+    context.header = {
+      title: this.title,
+    };
+
     context.chapters = [];
     const specialEntries = [];
     for (const entry of documents) {
