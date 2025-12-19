@@ -37,6 +37,12 @@
     border-image: initial;
   }
 
+  .chapter,
+  .journal-page-header {
+    font-size: 1.5em;
+    padding-top: 0.5em;
+  }
+
   h2 {
     font-family: 'Newsreader', serif;
     font-weight: bold;
@@ -62,11 +68,7 @@
   }
 
 
-  .chapter,
-  .journal-page-header {
-    font-size: 1.5em;
-    padding-top: 0.5em;
-  }
+
 
   .window-title,
   button,
@@ -140,15 +142,7 @@
     /* Pulls the first line back by 2em */
   }
 
-  /*all asides in journal recieve the beveled border by default*/
-  aside {}
-
-  /*wireframe box*/
-  aside:before {}
-
-
-
-
+  /*gold framed boxes with deco top and bottom*/
   aside.boxed {
     border-image-source: url(/systems/draw-steel/assets/ui/mcdm-box.svg);
     border-image-slice: 40 40 40 40;
@@ -397,8 +391,6 @@
     white-space: nowrap;
     word-break: break-all;
   }
-
-
 }
 
 /* dark theme specific deco*/
