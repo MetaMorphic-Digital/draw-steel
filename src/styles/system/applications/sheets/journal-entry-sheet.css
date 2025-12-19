@@ -140,116 +140,26 @@
     /* Pulls the first line back by 2em */
   }
 
-  /*all aisdes recieve the beveled border by default*/
-  aside {
-    --b: 1px;
-    /* border */
-    --s: 20px;
-    /* size of the cut */
-    width: 100%;
-    display: inline-block;
-    min-height: 80px;
-    position: relative;
-    z-index: 0;
-    padding: 20px;
-
-    /*the little diamonds top and bottom, placed overtop content*/
-    .charm {
-      color: var(--draw-steel-c-laserline);
-      font-family: Draw Steel Glyphs;
-      width: calc(100% - 40px);
-      margin: 0 auto;
-      text-align: center;
-      position: absolute;
-      /*background: white;*/
-      z-index: 2;
-
-      &.top-charm {
-        top: -7px;
-      }
-
-      &.top-charm:after {
-        content: '◇';
-        background: var(--draw-steel-c-white);
-        position: absolute;
-        left: calc(50% - 0.5em);
-        z-index: 1;
-        width: 1em;
-        height: 0.75em;
-      }
-
-      &.bottom-charm {
-        bottom: -11px;
-      }
-
-      &.bottom-charm:after {
-        content: '£';
-        background: var(--draw-steel-c-white);
-        position: absolute;
-        left: calc(50% - 0.5em);
-        z-index: 1;
-        width: 1em;
-        height: 0.75em;
-      }
-    }
-
-
-  }
+  /*all asides in journal recieve the beveled border by default*/
+  aside {}
 
   /*wireframe box*/
-  aside:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--draw-steel-c-laserline);
-    --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
-    --g2: #0000 calc(0.707*var(--s)),
-      #000 0 calc(0.707*var(--s) + var(--b)),
-      #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-      #000 0 calc(100% - 0.707*var(--s)),
-      #0000 0;
-    mask:
-      linear-gradient(45deg, var(--g2)),
-      linear-gradient(-45deg, var(--g2)),
-      linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-      linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-  }
+  aside:before {}
 
-  /*some asides are inverted to indicate DM / technical tips*/
-  aside.inverse {
-    --b: 1px;
-    /* border */
-    --s: 20px;
-    /* size of the cut */
-    width: 100%;
-    display: inline-block;
-    /*aspect-ratio: 1.5;*/
-    min-height: 80px;
-    position: relative;
-    z-index: 0;
-    padding: 0px;
 
-    &.inverse:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: var(--draw-steel-c-laserline);
-      --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
-      --g2: #0000 calc(0.707*var(--s)),
-        #000 0 calc(0.707*var(--s) + var(--b)),
-        #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-        #000 0 calc(100% - 0.707*var(--s)),
-        #0000 0;
-      -mask:
-        linear-gradient(45deg, var(--g2)),
-        linear-gradient(-45deg, var(--g2)),
-        linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-        linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-    }
 
-    div {
+
+  aside.boxed {
+    border-image-source: url(/systems/draw-steel/assets/ui/mcdm-box.svg);
+    border-image-slice: 40 40 40 40;
+    border-image-width: 120px;
+    border-image-repeat: repeat;
+    padding: 40px 40px 40px 40px;
+    max-width: 650px;
+    margin: 0px auto;
+
+    /*some asides are inverted to indicate DM / technical tips*/
+    div.inverse {
       background-color: black;
       clip-path: polygon(
         /* top edge */
@@ -279,25 +189,8 @@
       padding: 1rem;
       margin: 8px;
     }
-
-    /*top and bottom do-dads*/
-    .charm {
-      color: var(--draw-steel-c-laserline);
-      font-family: Draw Steel Glyphs;
-      width: calc(100%);
-      margin: 0 auto;
-      text-align: center;
-      position: absolute;
-
-      &.top-charm {
-        top: -7px;
-      }
-
-      &.bottom-charm {
-        bottom: -11px;
-      }
-    }
   }
+
 
   .journal-header input {
     font-family: 'Draw Steel Book', serif;
@@ -348,9 +241,14 @@
     text-shadow: transparent;
   }
 
-  .callout {
+  aside.callout {
     --b: 0px;
     --s: 0px;
+    display: inline-block;
+    min-height: 80px;
+    position: relative;
+    z-index: 0;
+    padding: 20px;
     background-color: var(--draw-steel-c-faint);
     background-origin: padding-box;
     border: 2px solid orange;
@@ -410,6 +308,7 @@
       position: absolute;
       right: -0.5em;
     }
+
 
     cite {
       position: absolute;
