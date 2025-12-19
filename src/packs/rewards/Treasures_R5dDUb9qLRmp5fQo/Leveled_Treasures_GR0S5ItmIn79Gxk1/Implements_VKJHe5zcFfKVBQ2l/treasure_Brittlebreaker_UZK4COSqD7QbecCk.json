@@ -1,0 +1,109 @@
+{
+  "name": "Brittlebreaker",
+  "type": "treasure",
+  "img": "icons/weapons/wands/wand-gem-teal.webp",
+  "folder": "VKJHe5zcFfKVBQ2l",
+  "effects": [
+    {
+      "name": "Brittlebreaker",
+      "img": "icons/weapons/wands/wand-gem-teal.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.UZK4COSqD7QbecCk",
+      "_id": "i3r6ojdg1miCo3sn",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1764189948579,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!UZK4COSqD7QbecCk.i3r6ojdg1miCo3sn"
+    }
+  ],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>This crystal wand thrums with power, yet is so thin and brittle that it feels as if even a slight squeeze will shatter it.</em></p><p><strong>1st Level:</strong> While you wield this implement, your magic or psionic abilities that deal rolled damage deal an extra [[/damage 2 psychic]] damage. Additionally, you have damage weakness 3, and you gain an edge on magic or psionic abilities if you aren’t at full Stamina, or a double edge if you are winded.</p><p><strong>5th Level:</strong> The implement’s extra psychic damage increases to [[/damage 3 psychic]]. Additionally, once per round when you take more than 20 damage from a single source, the implement’s extra damage is doubled until the end of your next turn.</p><p><strong>9th Level:</strong> The implement’s extra psychic damage increases to [[/damage 4 psychic]]. Additionally, whenever you use a damage-dealing magic or psionic ability, you can take half as much total damage as is dealt to all targets to immediately use the same ability again. The damage you take can’t be reduced in any way. You can’t use this benefit more than once a turn.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "330",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "treasure",
+    "kind": "implement",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "psionic",
+      "wand"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A handful of shattered quartz",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "_id": "UZK4COSqD7QbecCk",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.10.0",
+    "createdTime": 1763173308662,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!UZK4COSqD7QbecCk"
+}

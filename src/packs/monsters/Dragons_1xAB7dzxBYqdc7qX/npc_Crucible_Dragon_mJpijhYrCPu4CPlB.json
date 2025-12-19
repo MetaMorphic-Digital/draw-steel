@@ -245,7 +245,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility</strong> test.</p><table><tbody><tr><td data-colwidth=\"111\"><p>11 or less</p></td><td><p>[[/damage 13 fire]]; the target is [[/apply Actor.twrjEGy1hsBecP0U.Item.pV9CV7UqoL6K8LBP.ActiveEffect.NKcQsfUtamefx1uh save]]</p></td></tr><tr><td data-colwidth=\"111\"><p>12-16</p></td><td><p>[[/damage 10 fire]]; the target is [[/apply Actor.twrjEGy1hsBecP0U.Item.pV9CV7UqoL6K8LBP.ActiveEffect.NKcQsfUtamefx1uh save]]</p></td></tr><tr><td data-colwidth=\"111\"><p>17+</p></td><td><p>[[/damage 6 fire]]</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes an <strong>Agility</strong> test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 13 fire]]; the target is [[/apply NKcQsfUtamefx1uh save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10 fire]]; the target is [[/apply NKcQsfUtamefx1uh save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6 fire]]</p></dd></dl>",
           "after": "<p>A slagged target is coated in molten metal and takes [[/damage 2d6 fire]] damage at the start of each of their turns. If a slagged target has M &lt; 3 they are [[/apply restrained save]] whenever they take cold damage.</p>"
         },
         "spend": {
@@ -285,7 +285,7 @@
             "rounds": null,
             "turns": null
           },
-          "description": "<p>A slagged target is coated in molten metal and takes [[/damahge 2d6 fire]] damage at the start of each of their turns. If a slagged target has m&lt;3 they are [[/apply restrained save whenever they take cold damage.</p>",
+          "description": "<p>A slagged target is coated in molten metal and takes [[/damage 2d6 fire]] damage at the start of each of their turns. If a slagged target has m&lt;3 they are [[/apply restrained save whenever they take cold damage.</p>",
           "tint": "#ffffff",
           "transfer": false,
           "statuses": [],
@@ -294,10 +294,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1764052367578
           },
           "_id": "NKcQsfUtamefx1uh",
           "sort": 0,
@@ -311,7 +312,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -1054,7 +1055,7 @@
           }
         },
         "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"90\"><p>11 or less</p></td><td><p>[[/damage 16]]; pull 10 or push 10</p></td></tr><tr><td data-colwidth=\"90\"><p>12-16</p></td><td><p>[[/damage 13]]; pull 8 or push 8</p></td></tr><tr><td data-colwidth=\"90\"><p>17+</p></td><td><p>[[/damage 7]]; pull 5 or push 5</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16]]; pull 10 or push 10</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 13]]; pull 8 or push 8</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 7]]; pull 5 or push 5</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -1179,7 +1180,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon shakes loose a cloud of shattered weapons in a 6 × 4 line within 1 square of them. Each creature and object in the area makes an <strong>Agility test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 16]] damage; [[/apply bleeding save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 13]] damage; [[/apply bleeding turn]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 7]] damage</p></td></tr></tbody></table>",
+          "before": "<p>The dragon shakes loose a cloud of shattered weapons in a 6 × 4 line within 1 square of them. Each creature and object in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16]] damage; [[/apply bleeding save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 13]] damage; [[/apply bleeding turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 7]] damage</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -1280,7 +1281,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
