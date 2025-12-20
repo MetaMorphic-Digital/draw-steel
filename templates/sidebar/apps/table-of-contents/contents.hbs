@@ -1,7 +1,7 @@
 {{#*inline "pages"}}
 <ul class="pages">
   {{#each pages}}
-  {{#unless flags.dnd5e.tocHidden}}
+  {{#unless flags.draw-steel.tocHidden}}
   <li class="{{#if (and showPages pages.length)}}child-pages{{/if}} {{#if entry}}special-entry{{/if}}">
     <a class="journal-entry-page-link" data-action="activateEntry"
       {{~#if entry}} data-document-id="{{ id }}" data-entry-id="{{ id }}"
