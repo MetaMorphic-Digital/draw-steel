@@ -1,7 +1,7 @@
 import DSRoll from "../../../rolls/base.mjs";
-import StandardModel from "../standard.mjs";
+import StandardModel from "../../message/standard.mjs";
 
-declare module "./base.mjs" {
+declare module "./base-message-part.mjs" {
   export default interface MessagePart {
     parent: StandardModel;
     type: string;

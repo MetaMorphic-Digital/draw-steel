@@ -1443,6 +1443,24 @@ preLocalize("Advancement", { key: "label" });
 
 /* -------------------------------------------------- */
 
+export const MessagePart = {
+  content: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.ContentPart,
+  },
+  roll: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.RollPart,
+  },
+  test: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.TestPart,
+  },
+};
+preLocalize("MessagePart", { key: "label" });
+
+/* -------------------------------------------------- */
+
 /**
  * @typedef CultureAspect
  * @property {string} label         Human-readable label.

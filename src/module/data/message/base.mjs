@@ -1,16 +1,22 @@
 import DamageRoll from "../../rolls/damage.mjs";
-
-/** @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs"; */
+import DrawSteelSystemModel from "../system-model.mjs";
 
 /**
- * A base class for message subtype-specific behavior and data.
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import { SubtypeMetadata } from "../_types"
  */
-export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
+
+/**
+ * A base class for message subtype-specific behavior and data for message subtypes *without* parts.
+ */
+export default class BaseMessageModel extends DrawSteelSystemModel {
   /**
    * Key information about this ChatMessage subtype.
+   * @type {SubtypeMetadata}
    */
   static get metadata() {
     return {
+      ...super.metadata,
       type: "base",
     };
   }

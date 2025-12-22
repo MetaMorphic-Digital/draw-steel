@@ -1,27 +1,51 @@
 import { systemPath } from "../../constants.mjs";
-import MessagePart from "./parts/base.mjs";
+import DrawSteelSystemModel from "../system-model.mjs";
 
-const { ArrayField, TypedSchemaField } = foundry.data.fields;
+/**
+ * @import { SubtypeMetadata } from "../_types"
+ */
 
 /**
  * A standard model for chat messages that holds nested models that each individually
  * render a part of the chat message html. This class is responsible for delegating responsibility.
  */
-export default class StandardModel extends foundry.abstract.TypeDataModel {
+export default class StandardModel extends DrawSteelSystemModel {
   /**
-   * Chat message subtype metadata.
+   * Key information about this ChatMessage subtype.
+   * @type {SubtypeMetadata}
    */
-  static metadata = Object.freeze({
-    type: "standard",
-  });
+  static get metadata() {
+    return {
+      type: "standard",
+      embedded: {
+        MessagePart: "system.parts",
+      },
+    };
+  }
 
   /* -------------------------------------------------- */
 
   /** @override */
   static defineSchema() {
     return {
-      parts: new ArrayField(new TypedSchemaField(MessagePart.TYPES)),
+      parts: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.messageParts.BaseMessagePart),
     };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    // Passing an array of parts is always valid, this migration will automatically translate that to the proper object format
+    if (Array.isArray(data.parts)) {
+      data.parts = data.parts.reduce((record, part) => {
+        const _id = foundry.utils.randomID();
+        record[_id] = { _id, ...part };
+        return record;
+      }, {});
+    }
+
+    return super.migrateData(data);
   }
 
   /* -------------------------------------------------- */
@@ -73,12 +97,12 @@ export default class StandardModel extends foundry.abstract.TypeDataModel {
     element.insertAdjacentHTML("beforeend", htmlString);
 
     // Render subparts.
-    for (const [i, part] of this.parts.entries()) {
+    for (const part of this.parts.sortedContents) {
       if (!part.visible) continue;
-      Object.assign(context, { part, index: i });
+      Object.assign(context, { part });
       await part._prepareContext(context);
       const htmlString = await foundry.applications.handlebars.renderTemplate(part.constructor.TEMPLATE, context);
-      const html = foundry.utils.parseHTML(`<section data-message-part="${i}">${htmlString}</section>`);
+      const html = foundry.utils.parseHTML(`<section data-message-part="${part.id}">${htmlString}</section>`);
       part._addListeners(html, context);
       element.insertAdjacentElement("beforeend", html);
     }
@@ -111,13 +135,5 @@ export default class StandardModel extends foundry.abstract.TypeDataModel {
     for (const cssClass of cssClasses) frame.classList.add(cssClass);
     if (options.borderColor) frame.style.setProperty("border-color", options.borderColor);
     return frame;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareDerivedData() {
-    super.prepareDerivedData();
-    for (const part of this.parts) part.prepareData();
   }
 }

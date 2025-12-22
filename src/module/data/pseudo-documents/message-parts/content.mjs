@@ -1,13 +1,15 @@
 import { systemPath } from "../../../constants.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
-import MessagePart from "./base.mjs";
+import BaseMessagePart from "./base-message-part.mjs";
 
 /**
  * A simple part that displays the enriched HTML of the `ChatMessage#content` property.
  */
-export default class ContentPart extends MessagePart {
+export default class ContentPart extends BaseMessagePart {
   /** @inheritdoc */
-  static TYPE = "content";
+  static get TYPE() {
+    return "content";
+  }
 
   /* -------------------------------------------------- */
 
