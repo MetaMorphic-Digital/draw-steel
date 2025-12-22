@@ -1,6 +1,6 @@
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
-import MessagePart from "./parts/base.mjs";
-import "./parts/_types";
+import ModelCollection from "../../utils/model-collection.mjs";
+import * as part from "../pseudo-documents/message-parts/_module.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseMessageModel {
@@ -23,8 +23,10 @@ declare module "./saving-throw.mjs" {
   }
 }
 
+type MessagePart = part.ContentPart | part.RollPart | part.TestPart;
+
 declare module "./standard.mjs" {
   export default interface StandardModel {
-    parts: MessagePart[]
+    parts: ModelCollection<MessagePart>;
   }
 }

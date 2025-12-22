@@ -1,12 +1,14 @@
 import { systemPath } from "../../../constants.mjs";
-import MessagePart from "./base.mjs";
+import BaseMessagePart from "./base-message-part.mjs";
 
 /**
  * A simple part that displays the contained rolls.
  */
-export default class RollPart extends MessagePart {
+export default class RollPart extends BaseMessagePart {
   /** @inheritdoc */
-  static TYPE = "roll";
+  static get TYPE() {
+    return "roll";
+  }
 
   /* -------------------------------------------------- */
 

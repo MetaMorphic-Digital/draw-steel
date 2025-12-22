@@ -1,4 +1,4 @@
-import MessagePart from "./base.mjs";
+import BaseMessagePart from "./base-message-part.mjs";
 import { systemPath } from "../../../constants.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 
@@ -7,7 +7,7 @@ const { SchemaField, HTMLField } = foundry.data.fields;
 /**
  * A part containing a Test roll and.
  */
-export default class TestPart extends MessagePart {
+export default class TestPart extends BaseMessagePart {
   /**
    * Standard click event listeners.
    * @type {Record<string, Function>}
@@ -20,7 +20,9 @@ export default class TestPart extends MessagePart {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static TYPE = "test";
+  static get TYPE() {
+    return "test";
+  }
 
   /* -------------------------------------------------- */
 
@@ -56,7 +58,7 @@ export default class TestPart extends MessagePart {
 
     context.buttons = [];
 
-    const lastTestPart = this.parent.parts.findLast(p => p.type === this.type) === this;
+    const lastTestPart = this.parent.parts.sortedContents.findLast(p => p.type === this.type) === this;
 
     if (lastTestPart && (this.message.speakerActor?.type === "hero")) {
       context.buttons.push({
