@@ -1456,6 +1456,10 @@ export const MessagePart = {
     label: "",
     documentClass: pseudoDocuments.messageParts.ContentPart,
   },
+  heroToken: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.HeroTokenPart,
+  },
   roll: {
     label: "",
     documentClass: pseudoDocuments.messageParts.RollPart,
