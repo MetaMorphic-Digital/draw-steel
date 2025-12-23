@@ -13,7 +13,9 @@
     <dt class="{{part.tierKey}}">{{ctx.tierSymbol}}</dt>
     <dd>{{{ctx.resultHTML}}}</dd>
   </dl>
-  {{else}}{{{ctx.resultHTML}}}{{/if}}
+  {{else}}
+  <p>{{localize "DRAW_STEEL.Item.ability.EmbedFail"}}</p>
+  {{/if}}
 </div>
 {{/if}}
 {{#if ctx.buttons.length}}
