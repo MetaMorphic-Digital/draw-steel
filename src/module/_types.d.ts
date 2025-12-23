@@ -43,7 +43,8 @@ export interface PowerRollPromptOptions extends RollPromptOptions {
 
 export interface PowerRollPrompt {
   rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
-  powerRolls: Array <PowerRoll | DrawSteelChatMessage | object>;
+  baseRoll: PowerRoll;
+  rolls: Array <PowerRoll | DrawSteelChatMessage | object>;
 }
 
 export interface ProjectRollPrompt {

@@ -1,6 +1,19 @@
 import DSRoll from "../../../rolls/base.mjs";
 import StandardModel from "../../message/standard.mjs";
 
+declare module "./ability-result.mjs" {
+  export default interface AbilityResult {
+    ability: string;
+    tier: number;
+  }
+}
+
+declare module "./ability-use.mjs" {
+  export default interface AbilityUse {
+    ability: string;
+  }
+}
+
 declare module "./base-message-part.mjs" {
   export default interface MessagePart {
     parent: StandardModel;

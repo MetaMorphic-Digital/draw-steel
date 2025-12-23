@@ -158,6 +158,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         img: effect.img,
         classes: ["apply-effect"],
         dataset: {
+          action: "applyEffect",
           type: effect.documentName === "ActiveEffect" ? "custom" : "status",
           effectId: effect.id,
           uuid: this.uuid,

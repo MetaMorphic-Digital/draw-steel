@@ -3,23 +3,16 @@
   <em>{{part.flavor}}</em>
 </div>
 {{/if}}
-<div>
+<div class="message-part-rolls">
   {{#each ctx.rolls}}{{{this}}}{{/each}}
 </div>
 {{#if resultHTML}}
-<div>
+<div class="message-part-html">
   {{{resultHTML}}}
 </div>
 {{/if}}
-{{#if buttons.length}}
-<footer>
-  {{#each buttons}}
-  <button type="button" data-action="{{action}}" data-tooltip="{{tooltip}}">
-    {{#if icon}}
-    <i class="fa-fw fa-solid fa-{{icon}}"></i>
-    {{/if}}
-    {{localize label}}
-  </button>
-  {{/each}}
+{{#if ctx.buttons.length}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
 </footer>
 {{/if}}
