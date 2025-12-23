@@ -101,7 +101,7 @@ export default class AbilityResultPart extends RollPart {
   static async #applyEffect(event, target) {
     /** @type {AppliedPowerRollEffect} */
     const pre = await fromUuid(target.dataset.uuid);
-    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoPRE", { localize: true });
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.PARTS.abilityResult.NoPRE", { localize: true });
     const effectId = target.dataset.effectId;
     const config = pre.applied[this.tierKey].effects[effectId];
 

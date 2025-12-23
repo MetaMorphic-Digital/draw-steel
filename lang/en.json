@@ -1560,6 +1560,9 @@
     "ROLL": {
       "Prompt": "Roll {prompt}",
       "Button": "Roll",
+      "Damage": {
+        "NoTokenSelected": "You must have at least one token selected."
+      },
       "Power": {
         "Prompt": {
           "Title": "{typeLabel} Power Roll",
@@ -1857,21 +1860,20 @@
           }
         }
       },
-      "abilityUse": {
-        "NoTokenSelected": "You must have at least one token selected.",
-        "NoPRE": "The Power Roll Effect could not be found."
-      },
-      "savingThrow": {
-        "Buttons": {
-          "HeroToken": {
-            "Label": "Hero Token",
-            "Tooltip": "Succeed by spending a Hero Token",
-            "NoEffect": "This effect no longer exists.",
-            "NoOwner": "You no longer have update permissions for this effect."
-          }
-        }
-      },
       "PARTS": {
+        "abilityResult": {
+          "NoPRE": "The Power Roll Effect could not be found."
+        },
+        "savingThrow": {
+          "Buttons": {
+            "HeroToken": {
+              "Label": "Hero Token",
+              "Tooltip": "Succeed by spending a Hero Token",
+              "NoEffect": "This effect no longer exists.",
+              "NoOwner": "You no longer have update permissions for this effect."
+            }
+          }
+        },
         "test": {
           "HeroTokenReroll": {
             "label": "Hero Token",

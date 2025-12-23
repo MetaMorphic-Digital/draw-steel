@@ -9,7 +9,7 @@ export default class DamageRoll extends DSRoll {
    * @param {PointerEvent} event
    */
   static async applyDamageCallback(event) {
-    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoTokenSelected", { localize: true });
+    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.ROLL.Damage.NoTokenSelected", { localize: true });
 
     /** @type {HTMLButtonElement} */
     const target = event.currentTarget;
