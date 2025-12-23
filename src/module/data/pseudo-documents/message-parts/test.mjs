@@ -62,8 +62,8 @@ export default class TestPart extends BaseMessagePart {
 
     if (lastTestPart && (this.message.speakerActor?.type === "hero")) {
       context.ctx.buttons.push(ds.utils.constructHTMLButton({
-        label: "DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label",
-        icon: "fa-solid dice-d10",
+        label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label"),
+        icon: "fa-solid fa-dice-d10",
         dataset: {
           tooltip: "DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.tooltip",
           action: "heroReroll",

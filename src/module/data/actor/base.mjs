@@ -433,7 +433,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills });
 
     if (!promptValue) return null;
-    const { rollMode, powerRolls } = promptValue;
+    const { rollMode, rolls, baseRoll } = promptValue;
 
     const testConfig = ds.CONST.testOutcomes[options.difficulty];
 
@@ -446,6 +446,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       title: flavor,
+      rolls: [baseRoll],
       system: {
         parts: [],
       },
@@ -453,7 +454,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       flags: { core: { canPopout: true } },
     };
 
-    const testPart = { type: "test", flavor, results: {}, rolls: powerRolls };
+    const testPart = { type: "test", flavor, results: {}, rolls };
 
     if (options.resultTable) {
       Object.assign(testPart.results, {
