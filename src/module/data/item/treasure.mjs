@@ -73,7 +73,6 @@ export default class TreasureModel extends BaseItemModel {
       includeProjectInfo: config.includeProjectInfo !== false,
     };
     context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
-    await this.getSheetContext(context);
 
     if (context.includeProjectInfo) {
       const characteristicFormatter = game.i18n.getListFormatter({ type: "disjunction" });
