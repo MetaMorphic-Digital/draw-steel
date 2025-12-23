@@ -56,17 +56,19 @@ export default class TestPart extends BaseMessagePart {
     if (testRoll.isCritical && this.results.critical) context.resultHTML = await enrichHTML(this.results.critical);
     else context.resultHTML = await enrichHTML(this.results[`tier${testRoll.product}`]);
 
-    context.buttons = [];
+    context.ctx.buttons = [];
 
     const lastTestPart = this.parent.parts.sortedContents.findLast(p => p.type === this.type) === this;
 
     if (lastTestPart && (this.message.speakerActor?.type === "hero")) {
-      context.buttons.push({
+      context.ctx.buttons.push(ds.utils.constructHTMLButton({
         label: "DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label",
-        icon: "dice-d10",
-        tooltip: "DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.tooltip",
-        action: "heroReroll",
-      });
+        icon: "fa-solid dice-d10",
+        dataset: {
+          tooltip: "DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.tooltip",
+          action: "heroReroll",
+        },
+      }));
     }
   }
 
@@ -87,16 +89,9 @@ export default class TestPart extends BaseMessagePart {
     const newRoll = await this.rolls[0].reroll();
 
     Object.assign(newRoll.options, {
-      baseRoll: false,
-    });
-
-    const newPart = this.toObject();
-
-    Object.assign(newPart, {
       flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
-      rolls: [newRoll],
     });
 
-    await this.message.update({ "system.parts": this.message.system.parts.concat(newPart) });
+    await this.update({ rolls: this.rolls.concat(newRoll) });
   }
 }

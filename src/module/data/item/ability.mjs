@@ -399,12 +399,15 @@ export default class AbilityModel extends BaseItemModel {
 
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      type: "abilityUse",
+      type: "standard",
       rolls: [],
       title: this.parent.name,
       content: this.parent.name,
       system: {
-        uuid: this.parent.uuid,
+        parts: [{
+          type: "abilityUse",
+          ability: this.parent.uuid,
+        }],
       },
       flags: { core: { canPopout: true } },
     };
@@ -452,26 +455,28 @@ export default class AbilityModel extends BaseItemModel {
       });
 
       if (!promptValue) return null;
-      const { rollMode, powerRolls } = promptValue;
+      const { rollMode, rolls, baseRoll } = promptValue;
+
+      messageData.rolls.push(baseRoll);
 
       DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-      const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
-        accumulator[powerRoll.product] ??= [baseRoll];
+      const groupedRolls = rolls.reduce((accumulator, powerRoll) => {
+        accumulator[powerRoll.product] ??= [];
         accumulator[powerRoll.product].push(powerRoll);
 
         return accumulator;
       }, {});
 
-      // Each tier group gets a message. Rolls within a group are in the same message
-      const messages = [];
+      // Each tier group gets a message part. Rolls within a group are in the same message part
       for (const tierNumber in groupedRolls) {
-        const messageDataCopy = foundry.utils.duplicate(messageData);
-        for (const powerRoll of groupedRolls[tierNumber]) {
-          messageDataCopy.rolls.push(powerRoll);
-        }
+        const rollPart = {
+          type: "abilityResult",
+          rolls: groupedRolls[tierNumber],
+          tier: tierNumber,
+          ability: this.parent.uuid,
+        };
 
         // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
         const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
@@ -490,17 +495,13 @@ export default class AbilityModel extends BaseItemModel {
           const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
           const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
           await damageRoll.evaluate();
-          messageDataCopy.rolls.push(damageRoll);
+          rollPart.rolls.push(damageRoll);
         }
 
-        if (messages.length > 0) messageDataCopy.system.embedText = false;
-
-        messages.push(DrawSteelChatMessage.create(messageDataCopy));
+        messageData.system.parts.push(rollPart);
       }
-
-      return Promise.allSettled(messages);
     }
-    else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /* -------------------------------------------------- */

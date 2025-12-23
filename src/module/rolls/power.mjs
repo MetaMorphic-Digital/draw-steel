@@ -188,13 +188,11 @@ export default class PowerRoll extends DSRoll {
     });
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {
-      baseRoll: true, damageSelection: promptValue.damage, skill: promptValue.skill,
-    });
+    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill });
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
-    const rolls = [baseRoll];
+    const rolls = [];
     // DSN support - ensure that only the base power roll is displayed on screen
     const termData = baseRoll.terms[0].toJSON();
     // Ensures `termData.options` is a copy instead of reference
@@ -217,7 +215,7 @@ export default class PowerRoll extends DSRoll {
           break;
       }
     }
-    return { rollMode: promptValue.rollMode, powerRolls: rolls };
+    return { rollMode: promptValue.rollMode, rolls, baseRoll };
   }
 
   /* -------------------------------------------------- */

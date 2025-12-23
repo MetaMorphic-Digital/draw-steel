@@ -1,3 +1,5 @@
+export { default as AbilityResult } from "./ability-result.mjs";
+export { default as AbilityUse } from "./ability-use.mjs";
 export { default as BaseMessagePart } from "./base-message-part.mjs";
 export { default as ContentPart } from "./content.mjs";
 export { default as RollPart } from "./roll.mjs";

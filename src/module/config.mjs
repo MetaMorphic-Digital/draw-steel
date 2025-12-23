@@ -1444,6 +1444,14 @@ preLocalize("Advancement", { key: "label" });
 /* -------------------------------------------------- */
 
 export const MessagePart = {
+  abilityResult: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.AbilityResult,
+  },
+  abilityUse: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.AbilityUse,
+  },
   content: {
     label: "",
     documentClass: pseudoDocuments.messageParts.ContentPart,
