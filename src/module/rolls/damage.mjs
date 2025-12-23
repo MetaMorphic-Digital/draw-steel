@@ -108,14 +108,14 @@ export default class DamageRoll extends DSRoll {
     if (options.halfDamage) amount = Math.floor(amount / 2);
 
     for (const actor of targets) {
-      if (roll.isHeal) {
-        const isTemp = roll.type !== "value";
+      if (this.isHeal) {
+        const isTemp = this.type !== "value";
         if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
           format: { name: actor.name },
         });
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
       }
-      else await actor.system.takeDamage(amount, { type: roll.type, ignoredImmunities: roll.ignoredImmunities });
+      else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities });
     }
   }
 }

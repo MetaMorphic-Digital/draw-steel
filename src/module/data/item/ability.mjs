@@ -406,7 +406,7 @@ export default class AbilityModel extends BaseItemModel {
       system: {
         parts: [{
           type: "abilityUse",
-          ability: this.parent.uuid,
+          abilityUuid: this.parent.uuid,
         }],
       },
       flags: { core: { canPopout: true } },
@@ -475,7 +475,7 @@ export default class AbilityModel extends BaseItemModel {
           type: "abilityResult",
           rolls: groupedRolls[tierNumber],
           tier: tierNumber,
-          ability: this.parent.uuid,
+          abilityUuid: this.parent.uuid,
         };
 
         // Filter to the non-zero damage tiers and map them to the tier damage in one loop.

@@ -22,8 +22,18 @@ export default class AbilityUsePart extends BaseMessagePart {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      ability: new DocumentUUIDField({ nullable: false, type: "Item" }),
+      abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the ability from the UUID. Can return null if the effect no longer exists.
+   * @type {Omit<DrawSteelItem, "system"> & { system: AbilityData } | null}
+   */
+  get ability() {
+    return fromUuidSync(this.abilityUuid);
   }
 
   /* -------------------------------------------------- */
@@ -32,7 +42,7 @@ export default class AbilityUsePart extends BaseMessagePart {
   async _prepareContext(context) {
     await super._prepareContext(context);
 
-    const item = await fromUuid(this.ability);
+    const item = this.ability;
 
     if (item) {
       const embedConfig = {

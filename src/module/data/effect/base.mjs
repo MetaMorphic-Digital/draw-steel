@@ -133,7 +133,15 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
 
     if (roll.product) await this.parent.update({ disabled: true });
 
-    foundry.utils.setProperty(messageData, "system.effectUuid", this.parent.uuid);
+    messageData.type = "standard";
+    messageData.system ??= {};
+    messageData.system.parts ??= [];
+
+    messageData.system.parts.push({
+      type: "savingThrow",
+      effectUuid: this.parent.uuid,
+      rolls: [roll],
+    });
 
     return roll.toMessage(messageData, messageOptions);
   }

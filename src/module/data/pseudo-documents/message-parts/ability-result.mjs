@@ -4,6 +4,8 @@ import RollPart from "./roll.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
+ * @import DrawSteelItem from "../../../documents/item.mjs";
+ * @import AbilityData from "../../item/ability.mjs";
  * @import AppliedPowerRollEffect from "../power-roll-effects/applied-effect.mjs";
  */
 
@@ -35,9 +37,19 @@ export default class AbilityUsePart extends RollPart {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      ability: new DocumentUUIDField({ nullable: false, type: "Item" }),
+      abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
       tier: new NumberField({ integer: true, min: 1, max: 3, nullable: false }),
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the ability from the UUID. Can return null if the effect no longer exists.
+   * @type {Omit<DrawSteelItem, "system"> & { system: AbilityData } | null}
+   */
+  get ability() {
+    return fromUuidSync(this.abilityUuid);
   }
 
   /* -------------------------------------------------- */
@@ -58,7 +70,7 @@ export default class AbilityUsePart extends RollPart {
   async _prepareContext(context) {
     await super._prepareContext(context);
 
-    const item = await fromUuid(this.ability);
+    const item = this.ability;
 
     if (item) {
       const htmlPRE = [];
