@@ -8,7 +8,12 @@
 </div>
 {{#if ctx.resultHTML}}
 <div class="message-part-html">
-  {{{ctx.resultHTML}}}
+  {{#if ctx.foundItem}}
+  <dl class="power-roll-display">
+    <dt class="{{part.tierKey}}">{{ctx.tierSymbol}}</dt>
+    <dd>{{{ctx.resultHTML}}}</dd>
+  </dl>
+  {{else}}{{{ctx.resultHTML}}}{{/if}}
 </div>
 {{/if}}
 {{#if ctx.buttons.length}}

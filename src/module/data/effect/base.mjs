@@ -2,10 +2,7 @@ import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
 import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-
-/**
- * @import { DrawSteelChatMessage } from "../../documents/_module.mjs"
- */
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
@@ -132,6 +129,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     await roll.evaluate();
 
     if (roll.product) await this.parent.update({ disabled: true });
+
+    messageData.speaker ??= DrawSteelChatMessage.getSpeaker({ actor: this.parent.target });
 
     messageData.type = "standard";
     messageData.system ??= {};
