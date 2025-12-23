@@ -17,6 +17,28 @@ export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.docu
       }];
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }
+    if (data.type === "abilityUse") {
+      data.type = "standard";
+
+      data.system.parts = [{
+        type: "abilityUse",
+        abilityUuid: data.system.uuid,
+      }];
+
+      if (data.rolls) {
+        const baseRoll = data.rolls.findSplice(rollData => rollData.options.baseRoll);
+        const powerRoll = ds.rolls.DSRoll.fromData(data.rolls.find(rollData => rollData.class === "PowerRoll"));
+        data.system.parts.push({
+          type: "abilityResult",
+          abilityUuid: data.system.uuid,
+          rolls: data.rolls,
+          tier: powerRoll.product,
+        });
+        data.rolls = [baseRoll];
+      }
+
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
 
     return super.migrateData(data);
   }

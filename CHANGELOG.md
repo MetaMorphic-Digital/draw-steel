@@ -41,7 +41,7 @@
 ### Changed
 
 - Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
-- [BREAKING] Re-implemented system generated chat messages to use a parts system.
+- [BREAKING] Re-implemented system generated chat messages to use a parts system. (#1444)
   - Many actions that would generate new chat messages instead append to an existing message.
 - Temporary stamina now shows as part of the stamina bar. (#601)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
