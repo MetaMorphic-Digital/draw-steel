@@ -86,9 +86,6 @@ export default class AbilityUsePart extends RollPart {
       context.ctx.tierSymbol = ["!", "@", "#"][this.tier - 1];
       context.ctx.resultHTML = htmlPRE.filter(_ => _).join("; ");
     }
-    else {
-      context.ctx.resultHTML = `<p>${game.i18n.localize("DRAW_STEEL.Item.ability.EmbedFail")}</p>`;
-    }
   }
 
   /* -------------------------------------------------- */
