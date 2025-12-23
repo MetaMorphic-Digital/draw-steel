@@ -27,10 +27,9 @@ export default class SavingThrowPart extends BaseMessagePart {
 
   /** @inheritdoc */
   static defineSchema() {
-    const schema = super.defineSchema();
-    // Fully Mandatory field
-    schema.effectUuid = new DocumentUUIDField({ nullable: false, type: "ActiveEffect" });
-    return schema;
+    return Object.assign(super.defineSchema(), {
+      effectUuid: new DocumentUUIDField({ nullable: false, type: "ActiveEffect" }),
+    });
   }
 
   /* -------------------------------------------------- */

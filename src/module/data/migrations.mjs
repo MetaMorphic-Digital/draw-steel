@@ -22,47 +22,81 @@ export async function migrateWorld() {
     await game.users.activeGM.update({ name: game.i18n.localize("USER.RoleGamemaster") });
     updateVersion = true;
   }
-  else if (foundry.utils.isNewerVersion("0.8.0", migrationVersion)) {
-    const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.8.0" }, progress: true });
-
-    console.log("Migrating world actors");
-    await migrateType(game.actors);
-    warning.update({ pct: 0.2 });
-
-    console.log("Migrating world items");
-    await migrateType(game.items);
-    warning.update({ pct: 0.5 });
-
-    for (const actor of game.actors) {
-      console.log("Migrating items inside", actor.name);
-      await migrateType(actor.items, { parent: actor });
+  else {
+    if (foundry.utils.isNewerVersion("0.8.0", migrationVersion)) {
+      await version_0_8_migration();
+      updateVersion = true;
     }
-    warning.update({ pct: 0.8 });
-
-    // Current migration does not search for items created inside deltas
-    // if that is ever necessary, expand to loop through game.scenes => scene.tokens
-
-    const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
-    for (const pack of packsToMigrate) {
-      console.log("Migrating document inside", pack.title);
-      await pack.getDocuments();
-      const wasLocked = pack.config.locked;
-      if (wasLocked) await pack.configure({ locked: false });
-      await migrateType(pack, { pack: pack.collection });
-      if (pack.documentName === "Actor") {
-        for (const actor of pack) await migrateType(actor.items, { parent: actor, pack: pack.collection });
-      }
-      if (wasLocked) await pack.configure({ locked: true });
+    if (foundry.utils.isNewerVersion("0.10.0", migrationVersion)) {
+      await version_0_10_migration();
+      updateVersion = true;
     }
-    warning.update({ pct: 1.0 });
-
-    ui.notifications.remove(warning);
-    ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "0.8.0" }, permanent: true });
-    console.log("Migration complete");
-    updateVersion = true;
   }
   if (updateVersion) await game.settings.set(systemID, "migrationVersion", game.system.version);
 }
+
+/* -------------------------------------------------- */
+
+/**
+ * Migrates heroes and various feature subtype items for version 0.8.0.
+ */
+async function version_0_8_migration() {
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.8.0" }, progress: true });
+
+  console.log("Migrating world actors");
+  await migrateType(game.actors);
+  warning.update({ pct: 0.2 });
+
+  console.log("Migrating world items");
+  await migrateType(game.items);
+  warning.update({ pct: 0.5 });
+
+  for (const actor of game.actors) {
+    console.log("Migrating items inside", actor.name);
+    await migrateType(actor.items, { parent: actor });
+  }
+  warning.update({ pct: 0.8 });
+
+  // Current migration does not search for items created inside deltas
+  // if that is ever necessary, expand to loop through game.scenes => scene.tokens
+
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
+  for (const pack of packsToMigrate) {
+    console.log("Migrating document inside", pack.title);
+    await pack.getDocuments();
+    const wasLocked = pack.config.locked;
+    if (wasLocked) await pack.configure({ locked: false });
+    await migrateType(pack, { pack: pack.collection });
+    if (pack.documentName === "Actor") {
+      for (const actor of pack) await migrateType(actor.items, { parent: actor, pack: pack.collection });
+    }
+    if (wasLocked) await pack.configure({ locked: true });
+  }
+  warning.update({ pct: 1.0 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "0.8.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Migrates chat messages for version 0.10.0.
+ */
+async function version_0_10_migration() {
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.10.0" }, progress: true });
+
+  console.log("Migrating chat messages");
+  await migrateType(game.messages);
+  warning.update({ pct: 1.00 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "0.10.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
 
 /**
  * @typedef {DocumentCollection<Document> | EmbeddedCollection<Document> | CompendiumCollection<Document>} AnyCollection
@@ -89,6 +123,8 @@ export async function migrateType(collection, options = {}) {
     await collection.documentClass.updateDocuments(updateData, { pack: options.pack, parent: options.parent, diff: false });
   }
 }
+
+/* -------------------------------------------------- */
 
 /**
  * Determine whether a compendium pack should be migrated during `migrateWorld`.
