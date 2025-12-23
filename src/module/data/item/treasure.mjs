@@ -1,9 +1,13 @@
 import { systemPath } from "../../constants.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs"; */
+/**
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ */
 
 /**
  * Treasure are supernatural items that provide benefits beyond what a kit can provide.
@@ -50,6 +54,41 @@ export default class TreasureModel extends BaseItemModel {
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", "treasure");
+    if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    const context = {
+      system: this,
+      systemFields: this.schema.fields,
+      includeProjectInfo: config.includeProjectInfo !== false,
+    };
+    context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
+    await this.getSheetContext(context);
+
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+    const keywordList = Array.from(this.keywords).map(keyword => context.keywords.find(k => k.value === keyword)?.label ?? keyword);
+    keywordList.sort((a, b) => a.localeCompare(b));
+    context.formattedKeywords = keywordFormatter.format(keywordList);
+
+    if (context.includeProjectInfo) {
+      const characteristicFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+      const characteristicList = Array.from(this.project.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
+      context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
+    }
+
+    const treasureBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/treasure.hbs"), context);
+    embed.insertAdjacentHTML("beforeend", treasureBody);
+    return embed;
   }
 
   /* -------------------------------------------------- */
