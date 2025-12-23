@@ -1460,6 +1460,10 @@ export const MessagePart = {
     label: "",
     documentClass: pseudoDocuments.messageParts.RollPart,
   },
+  savingThrow: {
+    label: "",
+    documentClass: pseudoDocuments.messageParts.SavingThrowPart,
+  },
   test: {
     label: "",
     documentClass: pseudoDocuments.messageParts.TestPart,

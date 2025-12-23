@@ -3,14 +3,14 @@ import StandardModel from "../../message/standard.mjs";
 
 declare module "./ability-result.mjs" {
   export default interface AbilityResult {
-    ability: string;
+    abilityUuid: string;
     tier: number;
   }
 }
 
 declare module "./ability-use.mjs" {
   export default interface AbilityUse {
-    ability: string;
+    abilityUuid: string;
   }
 }
 

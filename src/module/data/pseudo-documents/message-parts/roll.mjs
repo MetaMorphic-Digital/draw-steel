@@ -14,7 +14,7 @@ export default class RollPart extends BaseMessagePart {
   /* -------------------------------------------------- */
 
   static ACTIONS = {
-    applyDamage: this.#applyDamage,
+    applyDamage: (event) => DamageRoll.applyDamageCallback(event),
   };
 
   /* -------------------------------------------------- */
@@ -34,18 +34,5 @@ export default class RollPart extends BaseMessagePart {
       const roll = this.rolls[i];
       if (roll instanceof DamageRoll) context.ctx.buttons.push(roll.toRollButton(i));
     }
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Apply damage to the selected actor.
-   *
-   * @this RollPart
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #applyDamage(event, target) {
-    console.log(this, event, target);
   }
 }

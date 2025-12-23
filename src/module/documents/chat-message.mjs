@@ -5,6 +5,14 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.documents.ChatMessage) {
   /** @inheritdoc */
+  static migrateData(data) {
+
+    return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   get isRoll() {
     return this.system.isRoll ?? super.isRoll;
   }
