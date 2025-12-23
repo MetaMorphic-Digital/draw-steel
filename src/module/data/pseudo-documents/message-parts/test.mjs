@@ -82,7 +82,7 @@ export default class TestPart extends BaseMessagePart {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #heroReroll(event, target) {
-    const token = await game.actors.heroTokens.spendToken("rerollTest");
+    const token = await game.actors.heroTokens.spendToken("rerollTest", { messageId: this.message.id });
 
     if (token === false) return;
 

@@ -23,6 +23,12 @@ declare module "./base-message-part.mjs" {
   }
 }
 
+declare module "./hero-token.mjs" {
+  export default interface HeroTokenPart {
+    spendType: string;
+  }
+}
+
 declare module "./test.mjs" {
   export default interface TestPart {
     results: {

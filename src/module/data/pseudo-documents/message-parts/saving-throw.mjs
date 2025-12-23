@@ -4,7 +4,7 @@ import BaseMessagePart from "./base-message-part.mjs";
 const { DocumentUUIDField } = foundry.data.fields;
 
 /**
- * A simple part that displays the contained rolls.
+ * A part that contains a saving throw and any associated buttons.
  */
 export default class SavingThrowPart extends BaseMessagePart {
   /** @inheritdoc */
@@ -60,6 +60,7 @@ export default class SavingThrowPart extends BaseMessagePart {
         icon: "fa-solid fa-shield",
         classes: ["hero-token"],
         dataset: {
+          action: "heroToken",
           tooltip: game.i18n.localize("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.Tooltip"),
         },
         disabled: effect.disabled,
@@ -72,7 +73,7 @@ export default class SavingThrowPart extends BaseMessagePart {
   /**
    * Expend a hero token to succeed on the saving throw.
    *
-   * @this RollPart
+   * @this SavingThrowPart
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -86,11 +87,11 @@ export default class SavingThrowPart extends BaseMessagePart {
       return;
     }
 
-    const token = await game.actors.heroTokens.spendToken("succeedSave");
+    const token = await game.actors.heroTokens.spendToken("succeedSave", { messageId: this.message.id });
 
     if (token !== false) {
       await effect.update({ disabled: true });
-      return ui.chat.updateMessage(this.parent);
+      return ui.chat.updateMessage(this.message);
     }
   }
 }
