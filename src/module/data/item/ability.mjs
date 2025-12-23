@@ -496,6 +496,8 @@ export default class AbilityModel extends BaseItemModel {
           const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
           await damageRoll.evaluate();
           rollPart.rolls.push(damageRoll);
+          // If there's a roll, add it to the base message data for DSN purposes
+          if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
         }
 
         messageData.system.parts.push(rollPart);

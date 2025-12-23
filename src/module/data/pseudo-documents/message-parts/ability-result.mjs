@@ -1,6 +1,7 @@
 import { systemPath } from "../../../constants.mjs";
 import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 import RollPart from "./roll.mjs";
+import DamageRoll from "../../../rolls/damage.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
@@ -81,6 +82,8 @@ export default class AbilityUsePart extends RollPart {
         htmlPRE.push(pre.toText(this.tier));
       }
 
+      context.ctx.foundItem = true;
+      context.ctx.tierSymbol = ["!", "@", "#"][this.tier - 1];
       context.ctx.resultHTML = htmlPRE.filter(_ => _).join("; ");
     }
     else {
@@ -132,5 +135,44 @@ export default class AbilityUsePart extends RollPart {
       // not awaited to allow parallel processing
       actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+     * Create a new DamageRoll based on applying modifications to a given DamageRoll.
+     * After creation, the new roll is added to the message rolls.
+     * @param {DamageRoll} roll The damage roll to modify.
+     * @param {object} modifications The modification options to apply.
+     * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
+     * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+     * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
+     * @returns {DamageRoll}
+     */
+  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }, evaluationOptions = {}) {
+    const rollData = this.ability?.getRollData() ?? this.message.getRollData();
+
+    const newRoll = DamageRoll.fromData(roll.toJSON());
+
+    if (additionalTerms) {
+      const terms = DamageRoll.parse(additionalTerms, rollData);
+      for (const term of terms) if (!term._evaluated) await term.evaluate(evaluationOptions);
+      newRoll.terms = newRoll.terms.concat(new foundry.dice.terms.OperatorTerm({ operator: "+" }), terms);
+      newRoll.resetFormula();
+      newRoll._total = newRoll._evaluateTotal();
+    }
+
+    if (damageType !== undefined) {
+      // Without this, changing the new roll damage type changes the original rolls damage type.
+      newRoll.options = { ...newRoll.options };
+      newRoll.options.type = damageType;
+      const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+      const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+      newRoll.options.flavor = flavor;
+    }
+
+    await this.update({ rolls: this.rolls.concat(newRoll) });
+
+    return newRoll;
   }
 }
