@@ -74,12 +74,6 @@ export default class TreasureModel extends BaseItemModel {
     };
     context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
 
-    if (context.includeProjectInfo) {
-      const characteristicFormatter = game.i18n.getListFormatter({ type: "disjunction" });
-      const characteristicList = Array.from(this.project.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
-      context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
-    }
-
     const treasureBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/treasure.hbs"), context);
     embed.insertAdjacentHTML("beforeend", treasureBody);
     return embed;
@@ -104,6 +98,19 @@ export default class TreasureModel extends BaseItemModel {
     keywordList.sort((a, b) => a.localeCompare(b));
 
     return keywordFormatter.format(keywordList);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A formatted list of the treaure's localized project roll characteristic.
+   * @type {string}
+   */
+  get formattedProjectRollCharacteristics() {
+    const characteristicFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+    const characteristicList = Array.from(this.project.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
+
+    return characteristicFormatter.format(characteristicList);
   }
 
   /* -------------------------------------------------- */

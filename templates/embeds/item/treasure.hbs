@@ -14,7 +14,7 @@
     <dd class="source">{{system.project.source}}</dd>
 
     <dt class="characteristics">{{systemFields.project.fields.rollCharacteristic.label}}</dt>
-    <dd class="characteristics">{{formattedCharacteristics}}</dd>
+    <dd class="characteristics">{{system.formattedProjectRollCharacteristics}}</dd>
 
     <dt class="goal">{{systemFields.project.fields.goal.label}}</dt>
     <dd class="goal">{{ifThen system.project.goal system.project.goal (localize "DRAW_STEEL.Item.project.Varies")}} {{#if system.project.yield.display}}({{system.project.yield.display}}){{/if}}</dd>
