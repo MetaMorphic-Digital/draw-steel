@@ -35,6 +35,7 @@
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
+- Added new embed for treasure items with an option for including project info (defaults to true). (#1462)
 
 ### Changed
 
