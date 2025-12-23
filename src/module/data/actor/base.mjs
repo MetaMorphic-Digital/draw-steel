@@ -26,7 +26,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
-      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      value: new fields.NumberField({ initial: null, nullable: true, integer: true }),
       max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
@@ -154,6 +154,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
     this.stamina.max += this.level * this.stamina.bonuses.level;
+
+    // If our current stamina has not been set, match it to max:
+    this.stamina.value ??= this.stamina.max;
+
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
     // Presents better if there's a 0 instead of blank
@@ -518,14 +522,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       }
     }
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    const staminaUpdates = {};
-    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
-    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
-
-    const remainingDamage = Math.max(0, damage - damageToTempStamina);
-    if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
-
-    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
+    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
   }
 
   /* -------------------------------------------------- */

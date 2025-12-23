@@ -18,6 +18,47 @@
 ### Known Issues
 -->
 
+## 0.10.0
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Leveled Treasures
+- Implemented Summoning. (#583)
+  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
+- Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
+  - Updated the Infernal Contract complication to make use of this.
+- Added a setting for the XP advancement speed. (#1064)
+- New ability modifier keys
+  - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
+  - Added `keyword` to add keywords to abilities. (#1322)
+  - Added `potency` to adjust the potency of abilities. (#1350)
+- Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
+
+### Changed
+
+- Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
+
+### Fixed
+
+## 0.9.1
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Corrected action type for the 1st & 2nd Grave Domain abilities for the Censor and Conduit.
+- Director-Facing Compendium Data Fixes:
+  - Corrected a typo in the Arixx's Solo Monster trait.
+  - Corrected a typo in the High Elf malice feature "Gift from an Accursed Tome".
+  - Corrected a typo in the Human Knave's "I'm Your Enemy".
+  - Corrected a typo in the Orc Eye of Grole's "Elemental Affinity" feature.
+- Normalized scrollbar experience across browsers for document sheet tabs. (#1385)
+- Fixed interaction with AE subtypes provided by modules. (#1412)
+- Fixed an issue where double-guaranteed characteristic advances would give bonuses to all characteristics instead of only two.
+
 ## 0.9.0
 
 ### Added

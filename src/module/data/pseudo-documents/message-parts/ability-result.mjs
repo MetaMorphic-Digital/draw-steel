@@ -15,7 +15,7 @@ const { DocumentUUIDField, NumberField } = foundry.data.fields;
 /**
  * A part that displays the result of an ability power roll and its consequences.
  */
-export default class AbilityUsePart extends RollPart {
+export default class AbilityResultPart extends RollPart {
   /** @inheritdoc */
   static get TYPE() {
     return "abilityResult";
@@ -26,6 +26,7 @@ export default class AbilityUsePart extends RollPart {
   static ACTIONS = {
     ...super.ACTIONS,
     applyEffect: this.#applyEffect,
+    gainResource: this.#gainResource,
   };
 
   /* -------------------------------------------------- */
@@ -93,7 +94,7 @@ export default class AbilityUsePart extends RollPart {
   /**
    * Apply an effect to the selected actor.
    *
-   * @this AbilityUsePart
+   * @this AbilityResultPart
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -131,6 +132,38 @@ export default class AbilityUsePart extends RollPart {
       if (existing?.disabled) await existing.delete();
       // not awaited to allow parallel processing
       actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to the selected actor.
+   *
+   * @this AbilityResultPart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #gainResource(event, target) {
+    const { amount, type } = target.dataset;
+    let path;
+    switch (type) {
+      case "surge":
+        path = "hero.surges";
+        break;
+      case "heroic":
+        path = "hero.primary.value";
+        break;
+      case "epic":
+        path = "hero.epic.value";
+        break;
+    }
+
+    if (!path) return;
+
+    const heroActors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
+    for (const actor of heroActors) {
+      await actor.modifyTokenAttribute(path, Number(amount), true, false);
     }
   }
 

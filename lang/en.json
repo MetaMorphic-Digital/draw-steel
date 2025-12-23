@@ -164,6 +164,10 @@
         "types": {
           "label": "Damage Types"
         },
+        "ignoredImmunities": {
+          "label": "Ignored Immunities",
+          "hint": "Select which damage immunity types this effect should ignore. Select 'All Immunities' to ignore all immunities."
+        },
         "display": {
           "label": "Display",
           "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
@@ -200,6 +204,14 @@
         },
         "properties": {
           "label": "Properties"
+        },
+        "resource": {
+          "amount": {
+            "label": "Gain Amount"
+          },
+          "type": {
+            "label": "Resource Type"
+          }
         }
       },
       "APPLIED": {
@@ -219,6 +231,8 @@
         "formatted": "{value} {damageTypes} damage",
         "formattedTypeless": "{value} damage",
         "formattedPotency": "{potency} {damage}",
+        "IgnoresAllImmunities": "ignores all immunities",
+        "IgnoresImmunities": "ignores {types} immunity",
         "Properties": {
           "IgnoresImmunity": "Ignores Immunities"
         }
@@ -228,6 +242,16 @@
           "IgnoresStability": "Ignores Stability",
           "Vertical": "Vertical"
         }
+      },
+      "RESOURCE": {
+        "Surge": "Surge",
+        "Surges": "Surges",
+        "HeroicResource": "Heroic Resource",
+        "HeroicResources": "Heroic Resources",
+        "EpicResource": "Epic Resource",
+        "EpicResources": "Epic Resources",
+        "DefaultDisplay": "Each target gains {amount} {resource}.",
+        "ButtonText": "Gain {amount} {resource}"
       }
     },
     "SHEET": {
@@ -685,6 +709,17 @@
       },
       "DamageNotification": {
         "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
+      },
+      "Summoning": {
+        "Errors": {
+          "TOKEN_CREATE": "You do not have permission to create new Tokens!",
+          "WILDCARD": "You must have 'Use File Browser' permissions to summon creatures with wildcard artwork."
+        }
+      }
+    },
+    "Damage": {
+      "Immunities": {
+        "All": "All Immunities"
       }
     },
     "Combat": {
@@ -697,8 +732,8 @@
         },
         "Actions": {
           "RollFirst": {
-            "Heroes": "Heroes Go First!",
-            "Enemies": "Enemies Go First!"
+            "Heroes": "The Heroes Determine Who Goes First!",
+            "Enemies": "The Director Determines Who Goes First!"
           },
           "Act": "Act",
           "Restore": "Restore Action"
@@ -1598,6 +1633,16 @@
         }
       }
     },
+    "JournalEntryPage": {
+      "image": {
+        "FIELDS": {
+          "artDescription": {
+            "label": "Art Description",
+            "hint": "The Art Description fills in the alt text attribute of the image, improving accessibility for screen readers and help viewers discover new elements within an image if they are ambiguous, unfamiliar, or framed in an atypical way."
+          }
+        }
+      }
+    },
     "Setting": {
       "NoActiveGM": "This requires an active GM logged into the world.",
       "HeroTokens": {
@@ -1665,6 +1710,13 @@
       "UpdateFromCompendium": {
         "Label": "Update from Compendium",
         "Hint": "Minimum user level to access the Update from Compendium option in NPC and Item sheets."
+      },
+      "XPAdvancement": {
+        "NormalSpeed": "Normal Speed",
+        "DoubleSpeed": "Double Speed",
+        "HalfSpeed": "Half Speed",
+        "Label": "XP Advancement",
+        "Hint": "The XP advancement pace to use for hero progression. Normal is 16 XP per level. Double is is 8 xp per level. Half is 32 xp per level."
       }
     },
     "SOCKET": {
@@ -1887,10 +1939,14 @@
       "subclass": "Subclass",
       "title": "Title"
     },
+    "JournalEntryPage": {
+      "reference": "Reference"
+    },
     "PowerRollEffect": {
       "applied": "Applied Effect",
       "damage": "Damage",
       "forced": "Forced Movement",
+      "resource": "Gain Resource",
       "other": "Other"
     }
   },
