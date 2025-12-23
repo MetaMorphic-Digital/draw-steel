@@ -75,11 +75,6 @@ export default class TreasureModel extends BaseItemModel {
     context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
     await this.getSheetContext(context);
 
-    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
-    const keywordList = Array.from(this.keywords).map(keyword => context.keywords.find(k => k.value === keyword)?.label ?? keyword);
-    keywordList.sort((a, b) => a.localeCompare(b));
-    context.formattedKeywords = keywordFormatter.format(keywordList);
-
     if (context.includeProjectInfo) {
       const characteristicFormatter = game.i18n.getListFormatter({ type: "disjunction" });
       const characteristicList = Array.from(this.project.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
@@ -89,6 +84,27 @@ export default class TreasureModel extends BaseItemModel {
     const treasureBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/treasure.hbs"), context);
     embed.insertAdjacentHTML("beforeend", treasureBody);
     return embed;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A formatted list of the treaure's localized keywords.
+   * @type {string}
+   */
+  get formattedKeywords() {
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const keywordList = Array.from(this.keywords).map(keyword => {
+      const equipmentKeyword = ds.CONFIG.equipment.keywords[keyword]?.label;
+      const categoryKeyword = ds.CONFIG.equipment.categories[this.category]?.keywords.find(k => k.value === keyword)?.label;
+      const kindKeyword = ds.CONFIG.equipment[this.kind]?.[keyword]?.label;
+
+      return equipmentKeyword ?? categoryKeyword ?? kindKeyword ?? keyword;
+    });
+    keywordList.sort((a, b) => a.localeCompare(b));
+
+    return keywordFormatter.format(keywordList);
   }
 
   /* -------------------------------------------------- */
