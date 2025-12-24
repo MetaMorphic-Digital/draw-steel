@@ -44,6 +44,8 @@
 
 ### Fixed
 
+- Fixed source registration logic to match documentation.
+
 ## 0.9.1
 
 ### Fixed
