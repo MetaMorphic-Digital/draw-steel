@@ -1,7 +1,7 @@
 import DSRoll from "./base.mjs";
 
 /**
- * Contains damage-specific info like damage types.
+ * A roll subclass with damage-specific info like damage type.
  */
 export default class DamageRoll extends DSRoll {
   /**

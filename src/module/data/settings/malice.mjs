@@ -6,7 +6,7 @@ import { systemID } from "../../constants.mjs";
 const fields = foundry.data.fields;
 
 /**
- * A data model to manage Malice in Draw Steel.
+ * A combat resource the Director can spend to activate specific monster features.
  */
 export class MaliceModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

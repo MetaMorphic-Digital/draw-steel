@@ -8,7 +8,7 @@ import AdvancementModel from "./advancement.mjs";
  */
 
 /**
- * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics.
+ * A fighting style that comes with equipment to match. Kits are available to most heroes who wield weapons and wear armor.
  */
 export default class KitModel extends AdvancementModel {
   /** @inheritdoc */
