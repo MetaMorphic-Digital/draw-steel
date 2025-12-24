@@ -53,7 +53,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>While a creature is bleeding, whenever they use a main action, use a triggered action, or make a test or ability roll using Might or Agility, they lose Stamina equal to [[/damage 1d6+@level]] after the main action, triggered action, or power roll is resolved. This Stamina loss can’t be prevented in any way.</p><p>You take damage from this condition when you use a main action off your turn. For example, a signature ability used as a free triggered action with the assistance of the tactician’s Strike Now ability triggers the damage from the bleeding condition.</p>"
+        "content": "<p>While a creature is bleeding, whenever they use a main action, use a triggered action, or make a test or ability roll using Might or Agility, they lose Stamina equal to [[/damage 1d6+@level]] after the main action, triggered action, or power roll is resolved. This Stamina loss can’t be prevented in any way, and only happens once per action.</p><p>You take damage from this condition when you use a main action off your turn. For example, a signature ability used as a free triggered action with the assistance of the tactician’s Strike Now ability triggers the damage from the bleeding condition.</p>"
       },
       "video": {
         "controls": true,
@@ -67,7 +67,7 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "13.341",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.1.0",
         "createdTime": null,
@@ -167,7 +167,7 @@
       "image": {},
       "text": {
         "format": 1,
-        "content": "<p>A creature who is grabbed has speed 0, can’t be force moved except by a creature, object, or effect that has them grabbed, can’t use the @UUID[Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu]{Knockback} maneuver, and takes a bane on abilities that don’t target the creature, object, or effect that has them grabbed. If a creature is grabbed by another creature and that creature moves, they bring the grabbed creature with them. If a creature’s size is equal to or less than the size of a creature they have grabbed, their speed is halved while they have that creature grabbed.</p><p>A creature who has another creature grabbed can use a maneuver to move the grabbed creature into an unoccupied space adjacent to them.</p><p>A creature can release a creature they have grabbed at any time to end that condition (no action required). A grabbed creature can attempt to escape being grabbed using the @UUID[Compendium.draw-steel.abilities.Item.iD1SlB15GXJFALya]{Escape Grab} maneuver. If a grabbed creature teleports, or if either the grabbed creature or the creature grabbing them is force moved so that both creatures are no longer adjacent to each other, that creature is no longer grabbed.</p><p>A creature can grab only creatures of their size or smaller. If a creature’s Might score is 2 or higher, they can grab any creature larger than them with a size equal to or less than their Might score.</p><p>Unless otherwise indicated, a creature can grab only one creature at a time.</p>"
+        "content": "<p>A creature who is grabbed has speed 0, can’t be force moved except by a creature, object, or effect that has them grabbed, can’t use the @UUID[Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu]{Knockback} maneuver, and takes a bane on abilities that don’t target the creature, object, or effect that has them grabbed. If a creature is grabbed by another creature and that creature moves, they bring the grabbed creature with them. If a creature’s size is equal to or less than the size of a creature they have grabbed, their speed is halved while they have that creature grabbed.</p><p>A creature who has another creature grabbed can use a maneuver to move the grabbed creature into an unoccupied space adjacent to them.</p><p>A creature can release a creature they have grabbed at any time to end that condition (no action required). A grabbed creature can attempt to escape being grabbed using the @UUID[Compendium.draw-steel.abilities.Item.iD1SlB15GXJFALya]{Escape Grab} maneuver. If a grabbed creature teleports, or if either the grabbed creature or the creature grabbing them is force moved so that both creatures are not adjacent to each other, that creature is no longer grabbed.</p><p>A creature can grab only creatures of their size or smaller. If a creature’s Might score is 2 or higher, they can grab any creature larger than them with a size equal to or less than their Might score.</p><p>Unless otherwise indicated, a creature can grab only one creature at a time.</p>"
       },
       "video": {
         "controls": true,
@@ -181,7 +181,7 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "13.346",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.1.0",
         "createdTime": null,

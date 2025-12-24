@@ -1,17 +1,17 @@
 {
-  "folder": "1KXwSgGxCTvfrnKn",
-  "name": "Behold a Shield of Fate!",
+  "folder": "WiMPmTqkXumSqVpy",
+  "name": "Squad! Gear Check!",
   "type": "ability",
-  "_id": "kfkkmiaXCPQrF5AJ",
-  "img": "icons/magic/holy/barrier-shield-winged-cross.webp",
+  "_id": "SIGE0kIqTAdzHBMl",
+  "img": "icons/containers/bags/satchel-leather-silver-tan.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "82",
+      "page": "181",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "behold-a-shield-of-fate",
-    "story": "A mighty blow turns your foe’s vitality into a holy light that envelops you and an ally, discouraging enemies who might attack you.",
+    "_dsid": "squad-gear-check",
+    "story": "You distract a foe while your allies secure their defensive gear.",
     "keywords": [
       "melee",
       "strike",
@@ -19,7 +19,7 @@
     ],
     "type": "main",
     "category": "heroic",
-    "resource": 3,
+    "resource": 9,
     "trigger": "",
     "distance": {
       "type": "melee",
@@ -27,7 +27,8 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creatureObject",
+      "type": "enemy",
+      "custom": "",
       "value": 1
     },
     "power": {
@@ -38,29 +39,23 @@
         ]
       },
       "effects": {
-        "3BEUFKuXX8WildFK": {
+        "vJEZB4Fii89bh7HS": {
           "name": "",
           "img": null,
           "type": "damage",
-          "_id": "3BEUFKuXX8WildFK",
+          "_id": "vJEZB4Fii89bh7HS",
           "damage": {
             "tier1": {
-              "value": "3+ @chr",
-              "types": [
-                "holy"
-              ]
+              "value": "9 + @chr",
+              "potency": {
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6+ @chr",
-              "types": [
-                "holy"
-              ]
+              "value": "13 + @chr"
             },
             "tier3": {
-              "value": "9 + @chr",
-              "types": [
-                "holy"
-              ]
+              "value": "18 + @chr"
             }
           }
         }
@@ -68,7 +63,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>Until the start of your next turn, enemies take a bane on ability rolls made against you or any ally adjacent to you.</p>"
+      "after": "<p>You and each ally adjacent to the target gain [[/heal 10 temporary]].</p>"
     },
     "spend": {
       "text": "",
@@ -85,12 +80,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1754755419781,
+    "createdTime": 1760642636201,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!kfkkmiaXCPQrF5AJ"
+  "_key": "!items!SIGE0kIqTAdzHBMl"
 }

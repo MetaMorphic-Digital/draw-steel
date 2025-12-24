@@ -1,6 +1,7 @@
 import { systemPath } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
@@ -146,6 +147,7 @@ export default class ProjectModel extends BaseItemModel {
       system: this,
       systemFields: this.schema.fields,
       config: ds.CONFIG,
+      enrichedDescription: await enrichHTML(this.description.value, { ...options, relativeTo: this.parent }),
     };
     await this.getSheetContext(context);
 
