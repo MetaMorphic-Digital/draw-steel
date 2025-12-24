@@ -116,9 +116,11 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     } else {
       i18nString += "Typeless";
     }
-    const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value, damageTypes }));
+    let simplifiedFormula = value;
+    if (this.actor) simplifiedFormula = ds.utils.simplifyRollFormula(value, this.item.getRollData());
+    const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value: simplifiedFormula, damageTypes }));
 
-    let result = formattedDamageString;
+    let result = `<span data-tooltip="${value}" data-tooltip-direction="UP">${formattedDamageString}</span>`;
 
     if (ignoredImmunities.size > 0) {
       const ignoredTypes = Array.from(ignoredImmunities);
