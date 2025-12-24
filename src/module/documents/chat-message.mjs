@@ -25,9 +25,9 @@ export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.docu
         abilityUuid: data.system.uuid,
       }];
 
-      if (data.rolls) {
-        const baseRoll = data.rolls.findSplice(rollData => rollData.options.baseRoll);
-        const powerRoll = ds.rolls.DSRoll.fromData(data.rolls.find(rollData => rollData.class === "PowerRoll"));
+      if (data.rolls?.length) {
+        const baseRoll = data.rolls.findSplice(rollData => JSON.parse(rollData).options.baseRoll);
+        const powerRoll = ds.rolls.DSRoll.fromData(JSON.parse(data.rolls.find(rollData => JSON.parse(rollData).class === "PowerRoll")));
         data.system.parts.push({
           type: "abilityResult",
           abilityUuid: data.system.uuid,
