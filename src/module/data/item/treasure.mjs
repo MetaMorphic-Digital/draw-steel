@@ -70,7 +70,7 @@ export default class TreasureModel extends BaseItemModel {
     const context = {
       system: this,
       systemFields: this.schema.fields,
-      includeProjectInfo: config.includeProjectInfo !== false,
+      includeProjectInfo: !!config.includeProjectInfo,
     };
     context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
 
