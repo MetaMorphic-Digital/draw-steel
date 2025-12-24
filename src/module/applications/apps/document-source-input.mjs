@@ -38,7 +38,12 @@ export default class DocumentSourceInput extends DocumentInput {
       const record = foundry.utils.getProperty(m, `flags.draw-steel.${property}`);
       if (foundry.utils.getType(record) === "Object") {
         for (const [k, v] of Object.entries(record)) {
-          if (foundry.utils.getType(v) === "string") ds.CONFIG.sourceInfo[property][k] ??= v;
+          if (foundry.utils.getType(v) === "Object") {
+            const { label, title } = v;
+            const sourceData = ds.CONFIG.sourceInfo[property][k] ??= {};
+            if (label) sourceData.label = label;
+            if (title) sourceData.title = title;
+          }
           else console.warn(`Attempted to register invalid ${property} '${v}' for module '${m.id}'.`);
         }
       } else if (record) {
