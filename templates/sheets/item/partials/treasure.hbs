@@ -1,3 +1,6 @@
+{{#if isPlay}}
+{{> "systems/draw-steel/templates/embeds/item/treasure.hbs" includeProjectInfo=true}}
+{{else}}
 {{formGroup systemFields.category value=system.category options=categories disabled=isPlay}}
 {{formGroup systemFields.kind value=system.kind options=kinds disabled=isPlay}}
 {{formGroup systemFields.echelon value=system.echelon options=echelons disabled=isPlay}}
@@ -12,3 +15,4 @@
   {{formGroup systemFields.project.fields.yield.fields.amount value=system.project.yield.amount disabled=isPlay}}
   {{formGroup systemFields.project.fields.yield.fields.display value=system.project.yield.display disabled=isPlay}}
 </fieldset>
+{{/if}}
