@@ -87,7 +87,7 @@ export default function simplifyRollFormula(formula, { rollData = {}, preserveFl
   diceTerms = _simplifyDiceTerms(diceTerms ?? []);
 
   // Recombine the terms into a single term array and remove an initial + operator if present.
-  const simplifiedTerms = [diceTerms, poolTerms, mathTerms, numericTerms].flat().filter(Boolean);
+  const simplifiedTerms = [numericTerms, diceTerms, poolTerms, mathTerms].flat().filter(Boolean);
   if (simplifiedTerms[0]?.operator === "+") simplifiedTerms.shift();
   return roll.constructor.getFormula(simplifiedTerms);
 }

@@ -116,7 +116,8 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     } else {
       i18nString += "Typeless";
     }
-    const simplifiedFormula = this.actor ? ds.utils.simplifyRollFormula(value, this.item.getRollData()) : value;
+
+    const simplifiedFormula = this.actor ? ds.utils.simplifyRollFormula(value, { rollData: this.item.getRollData() }) : value;
     const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value: simplifiedFormula, damageTypes }));
 
     let result = `<span data-tooltip="${value}" data-tooltip-direction="UP">${formattedDamageString}</span>`;
