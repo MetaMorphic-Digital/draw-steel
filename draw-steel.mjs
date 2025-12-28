@@ -18,6 +18,7 @@ globalThis.ds = {
   utils,
   CONST: DS_CONST,
   CONFIG: DS_CONFIG,
+  registry: new helpers.DrawSteelRegistry(),
 };
 
 // Register custom elements.
@@ -52,6 +53,9 @@ Hooks.once("init", function () {
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
     }
   }
+
+  // Indexing
+  CONFIG.Item.compendiumIndexFields.push("system._dsid");
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
@@ -218,6 +222,9 @@ Hooks.once("ready", async function () {
       return false;
     }
   });
+
+  await ds.registry.initialize();
+
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
