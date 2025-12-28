@@ -1,18 +1,38 @@
 /**
+ * @import {SubtypeMetadata} from "../_types"
+ */
+
+const { HTMLField } = foundry.data.fields;
+
+/**
  * An extensions of a text page that allows for rich tooltips.
  */
 export default class ReferenceData extends foundry.abstract.TypeDataModel {
   /**
    * Subtype metadata.
+   * @type {SubtypeMetadata}
    */
-  static metadata = { type: "reference" };
+  static get metadata() {
+    return {
+      type: "reference",
+      icon: "fa-solid fa-notebook",
+      embedded: {},
+    };
+  }
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
-    return {};
+    return {
+      tooltip: new HTMLField({ required: true }),
+    };
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.reference"];
 
   /* -------------------------------------------------- */
 
@@ -28,7 +48,7 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async toEmbed(config, options = {}) {
     return this.parent._embedTextPage(config, options);
   }
