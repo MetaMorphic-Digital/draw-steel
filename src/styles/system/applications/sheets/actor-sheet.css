@@ -82,7 +82,7 @@
         margin-top: -1.5px;
         margin-bottom: -1.5px;
       }
-      div.take-respite  {
+      div.take-respite {
         text-align: center;
         margin-top: 5px;
       }
@@ -306,7 +306,9 @@
   }
 
   [data-application-part="effects"] {
-    &.standard-form { padding-top: 0; }
+    &.standard-form {
+      padding-top: 0;
+    }
     gap: 0;
 
     .status-effects {
@@ -332,7 +334,7 @@
   }
 
   [data-application-part="biography"] {
-    dl{
+    dl {
       display: grid;
       grid-template-columns: auto 1fr auto 1fr auto 1fr;
       gap: 10px;
