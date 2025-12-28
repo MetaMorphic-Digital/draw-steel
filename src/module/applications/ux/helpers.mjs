@@ -42,7 +42,11 @@ export function parseConfig(match = "", { multiple = false } = {}) {
 export function createLink(label, dataset = {}, { classes = "roll-link", tag = "a", icon } = {}) {
   const link = document.createElement(tag);
   link.className = classes;
-  if (icon) link.insertAdjacentElement("afterbegin", foundry.applications.fields.createFontAwesomeIcon(icon));
+  if (icon) {
+    link.insertAdjacentElement("afterbegin", foundry.applications.fields.createFontAwesomeIcon(icon));
+    // Space between icon and text looks better
+    if (!label.startsWith(" ")) label = " " + label;
+  }
   link.append(label);
   addDataset(link, dataset);
   return link;

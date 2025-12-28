@@ -397,6 +397,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {number} [options.edges]                    Base edges for the roll.
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
+   * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
+   * @param {HTMLDListElement} [options.resultTable]    A reference to a DList element for a result table.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
@@ -422,25 +424,56 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const evaluation = "evaluate";
     const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
-    const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
     const modifiers = {
       edges: options.edges ?? 0,
       banes: options.banes ?? 0,
       bonuses: options.bonuses ?? 0,
     };
 
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills });
+    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills });
 
     if (!promptValue) return null;
-    const { rollMode, powerRolls } = promptValue;
+    const { rollMode, rolls, baseRoll } = promptValue;
+
+    const testConfig = ds.CONST.testOutcomes[options.difficulty];
+
+    const flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
+      difficulty: game.i18n.localize(testConfig?.label) ?? "",
+      characteristic: ds.CONFIG.characteristics[characteristic].label,
+    });
 
     const messageData = {
+      type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       title: flavor,
-      rolls: powerRolls,
+      rolls: [baseRoll],
+      system: {
+        parts: [],
+      },
       sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
     };
+
+    const testPart = { type: "test", flavor, results: {}, rolls };
+
+    if (options.resultTable) {
+      Object.assign(testPart.results, {
+        tier1: options.resultTable.querySelector("dt.tier1 + dd")?.innerHTML ?? "",
+        tier2: options.resultTable.querySelector("dt.tier2 + dd")?.innerHTML ?? "",
+        tier3: options.resultTable.querySelector("dt.tier3 + dd")?.innerHTML ?? "",
+      });
+    }
+    else if (testConfig) {
+      Object.assign(testPart.results, {
+        tier1: game.i18n.localize(testConfig.tier1),
+        tier2: game.i18n.localize(testConfig.tier2),
+        tier3: game.i18n.localize(testConfig.tier3),
+        critical: game.i18n.localize(testConfig.critical),
+      });
+    }
+
+    messageData.system.parts.push(testPart);
+
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
     return DrawSteelChatMessage.create(messageData);
   }
