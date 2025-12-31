@@ -354,6 +354,17 @@ export default class HeroModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Internal record used to cache advancements that can be repicked on respite.
+   * Each entry is a set of advancement UUIDs.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<"activity" | "finish", Set<string>>}
+   * @internal
+   */
+  _respiteAdvancements = {};
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
