@@ -120,6 +120,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
    * Creates a combat group and populates it with the combatants linked to the provided tokens.
    * @param {DrawSteelCombat} combat            The parent combat.
    * @param {DrawSteelTokenDocument[]} [tokens] The tokens to create from. Defaults to selected.
+   * @returns {DrawSteelCombatantGroup}
    */
   static async createFromTokens(combat, tokens) {
     tokens ??= canvas.tokens.controlled.map(t => t.document);
@@ -136,6 +137,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     const updateData = combatants.map(c => ({ _id: c.id, group: group.id }));
     await combat.updateEmbeddedDocuments("Combatant", updateData);
     if (group.type === "squad") await group.update({ "system.staminaValue": group.system.staminaMax });
+
+    return group;
   }
 
   /* -------------------------------------------------- */

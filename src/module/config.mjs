@@ -1925,7 +1925,7 @@ preLocalize("projects.types", { key: "label" });
 /**
  * @typedef SourceBook
  * @property {string} label   An i18n key for the label that will show in sheet headers.
- * @property {string} name    An i18n key for the longer title that will display in the Compendium Browser.
+ * @property {string} title   An i18n key for the longer title that will display in the Compendium Browser.
  */
 
 /**

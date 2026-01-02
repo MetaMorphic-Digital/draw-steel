@@ -37,6 +37,7 @@
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
+- Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 
 ### Changed
 
@@ -47,6 +48,58 @@
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
 
 ### Fixed
+
+- Fixed source registration logic to match documentation.
+
+## 0.9.2
+
+### Added
+
+- Added missing Elementalist 4th-level Mantle of Essence feature that describes the aura and how it's used. (#1470)
+- Added ability for Glowing Eyes triggered action. (#1473)
+
+### Changed
+
+- Added automatic sorting to the list of languages.
+- Implemented power list table for Advanced Studies, Studied Commander, Black Ash Dart, and Lachomp Tooth. (#1474)
+
+### Removed
+
+- Removed "Stone Cursed" complication (old name for Curse of Stone)
+- Removed duplicate "Bullseye" Minotaur malice feature.
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Errata to Charge action.
+  - Errata to Animal Form Complication.
+  - Errata to Bleeding and Grabbed conditions.
+  - Errata to "Learn from a Master: Improve Control" project.
+  - Errata to Telemagnet, Gravekeer's Lantern treasures.
+  - Errata to Fishing Events table.
+  - Corrected names for "Pardon My Friend", "Traveling Sage", "Behold a Shield of Fate!", "Squad! Gear Check!", "Stay Strong and Focus!", "Face the Storm!", "Mind Game", "Magma Titan", "Riders on the Storm", "Immovable Object" and "Tactical Offensive". (#1454, #1464, #1468, #1471)
+  - Corrected links in text for both versions of Covenant of the Heart. (#1469)
+  - Corrected header usage in "Essence", "Discipline", "Clarity and Strain", "Drama", and Stormwight Kits. (#1472)
+  - Added missing text to Melee Superiority. (#1475)
+  - Corrected Orc Chainlock's Hook and Chain. (#1482)
+  - Corrected complications table to match book.
+- Director-Facing Compendium Data Fixes:
+  - Errata to Gnoll Malice: Bloodpool.
+  - Errata to Predator A.
+  - Errata to Predator B.
+  - Errata to Arixx.
+  - Errata to Dorzinuuth the Base.
+  - Errata to Crucible Dragon.
+  - Errata to Wode Elf Guerilla.
+  - Errata to Shieldscale Drangolin.
+  - Errata to Medusa.
+  - Errata to Rival Null, Talent, Elementalist, Fury.
+  - Errata to Time Raider Vertex.
+  - Errata to Ghost.
+  - Errata to Servok Builder.
+  - Errata to War Dog Hypokrite, Prismite.
+- Re-added missing Project Description to embed. (#1461)
+- Fixed expanded descriptions not staying expanded on re-render.
 
 ## 0.9.1
 
