@@ -228,7 +228,6 @@ Hooks.once("setup", () => {
   for (const path of referenceObjects) {
     const config = foundry.utils.getProperty(ds.CONFIG, path);
     for (const [key, { reference }] of Object.entries(config)) {
-      if (key in ds.CONFIG.references) console.warn(key, path);
       if (reference) ds.CONFIG.references[reference.identifier ?? key] = reference.uuid;
     }
   }
