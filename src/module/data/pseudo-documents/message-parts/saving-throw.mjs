@@ -14,6 +14,7 @@ export default class SavingThrowPart extends BaseMessagePart {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static ACTIONS = {
     heroToken: this.#heroToken,
   };
@@ -60,7 +61,7 @@ export default class SavingThrowPart extends BaseMessagePart {
         classes: ["hero-token"],
         dataset: {
           action: "heroToken",
-          tooltip: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.savingThrow.Buttons.HeroToken.Tooltip"),
+          tooltip: "DRAW_STEEL.ChatMessage.PARTS.savingThrow.Buttons.HeroToken.Tooltip",
         },
         disabled: effect.disabled,
       }));
@@ -76,7 +77,8 @@ export default class SavingThrowPart extends BaseMessagePart {
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
-  static async #heroToken(event, target) {const effect = this.effect;
+  static async #heroToken(event, target) {
+    const effect = this.effect;
     if (!effect) {
       ui.notifications.error("DRAW_STEEL.ChatMessage.PARTS.savingThrow.Buttons.HeroToken.NoEffect", { localize: true });
       return;

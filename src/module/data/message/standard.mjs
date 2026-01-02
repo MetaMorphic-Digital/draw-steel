@@ -132,7 +132,7 @@ export default class StandardModel extends DrawSteelSystemModel {
       whisper.length ? "whisper" : null,
       blind ? "blind" : null,
     ];
-    for (const cssClass of cssClasses) frame.classList.add(cssClass);
+    for (const cssClass of cssClasses) if (cssClass) frame.classList.add(cssClass);
     if (options.borderColor) frame.style.setProperty("border-color", options.borderColor);
     return frame;
   }

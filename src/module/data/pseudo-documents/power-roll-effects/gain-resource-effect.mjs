@@ -160,9 +160,9 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
       icon: "fa-solid fa-bolt",
       classes: ["gain-resource"],
       dataset: {
-        action: "gainResource",
         amount,
         type,
+        action: "gainResource",
       },
     });
 

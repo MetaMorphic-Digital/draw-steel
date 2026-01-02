@@ -13,6 +13,7 @@ export default class RollPart extends BaseMessagePart {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static ACTIONS = {
     applyDamage: (event) => DamageRoll.applyDamageCallback(event),
   };
@@ -28,11 +29,9 @@ export default class RollPart extends BaseMessagePart {
   async _prepareContext(context) {
     await super._prepareContext(context);
 
-    context.ctx.buttons = [];
-
-    for (let i = 0; i < this.rolls.length; i++) {
-      const roll = this.rolls[i];
-      if (roll instanceof DamageRoll) context.ctx.buttons.push(roll.toRollButton(i));
-    }
+    context.ctx.buttons = this.rolls.map((roll, i) => {
+      if (roll instanceof DamageRoll) return roll.toRollButton(i);
+      return null;
+    }).filter(_ => _);
   }
 }

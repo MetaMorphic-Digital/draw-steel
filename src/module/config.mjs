@@ -1476,33 +1476,32 @@ preLocalize("Advancement", { key: "label" });
 
 /* -------------------------------------------------- */
 
+/**
+ * @typedef MessagePartType
+ * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
+ */
+
+/** @type {Record<string, MessagePartType>} */
 export const MessagePart = {
   abilityResult: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.AbilityResult,
   },
   abilityUse: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.AbilityUse,
   },
   content: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.ContentPart,
   },
   heroToken: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.HeroTokenPart,
   },
   roll: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.RollPart,
   },
   savingThrow: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.SavingThrowPart,
   },
   test: {
-    label: "",
     documentClass: pseudoDocuments.messageParts.TestPart,
   },
 };

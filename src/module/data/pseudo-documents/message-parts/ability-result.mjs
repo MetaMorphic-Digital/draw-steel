@@ -23,6 +23,7 @@ export default class AbilityResultPart extends RollPart {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static ACTIONS = {
     ...super.ACTIONS,
     applyEffect: this.#applyEffect,
@@ -170,15 +171,15 @@ export default class AbilityResultPart extends RollPart {
   /* -------------------------------------------------- */
 
   /**
-     * Create a new DamageRoll based on applying modifications to a given DamageRoll.
-     * After creation, the new roll is added to the message rolls.
-     * @param {DamageRoll} roll The damage roll to modify.
-     * @param {object} modifications The modification options to apply.
-     * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
-     * @param {string} [modifications.damageType] The damage type to use for the modified roll.
-     * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
-     * @returns {DamageRoll}
-     */
+   * Create a new DamageRoll based on applying modifications to a given DamageRoll.
+   * After creation, the new roll is added to the message rolls.
+   * @param {DamageRoll} roll The damage roll to modify.
+   * @param {object} modifications The modification options to apply.
+   * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
+   * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
+   * @returns {Promise<DamageRoll>}
+   */
   async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }, evaluationOptions = {}) {
     const rollData = this.ability?.getRollData() ?? this.message.getRollData();
 

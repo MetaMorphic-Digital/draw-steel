@@ -5,13 +5,10 @@ import enrichHTML from "../../../utils/enrich-html.mjs";
 const { SchemaField, HTMLField } = foundry.data.fields;
 
 /**
- * A part containing a Test roll and.
+ * A part containing a Test roll and possible result text.
  */
 export default class TestPart extends BaseMessagePart {
-  /**
-   * Standard click event listeners.
-   * @type {Record<string, Function>}
-   */
+  /**@inheritdoc */
   static ACTIONS = {
     ...super.ACTIONS,
     heroReroll: this.#heroReroll,
