@@ -54,6 +54,11 @@
   {{formGroup properties.field value=properties.src name=properties.name options=@root.fields.properties localize=true}}
   {{#> potencyFields potency}}{{/potencyFields}}
   {{/with}}
+  {{#with tierFields.resource}}
+  {{formGroup display.field value=display.src name=display.name placeholder=display.placeholder localize=true}}
+  {{formGroup amount.field value=amount.src name=amount.name placeholder=amount.placeholder localize=true}}
+  {{formGroup type.field value=type.src name=type.name localize=true options=type.options}}
+  {{/with}}
   {{#with tierFields.other}}
   {{formGroup display.field value=display.src name=display.name placeholder=display.placeholder localize=true}}
   {{#> potencyFields potency}}{{/potencyFields}}
