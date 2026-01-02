@@ -163,7 +163,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     /** @type {Record<string, PowerRollModifiers>} */
-    this.hero.skillModifiers = { };
+    this.hero.skillModifiers = {};
   }
 
   /* -------------------------------------------------- */

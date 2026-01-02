@@ -205,10 +205,10 @@ export default class AbilityModel extends BaseItemModel {
       if (bonus.key.startsWith("power.")) {
         switch (bonus.key) {
           case "power.roll.banes":
-            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
+            this.power.roll.banes = (this.power.roll.banes ?? 0) + (Number(bonus.value) || 0);
             break;
           case "power.roll.edges":
-            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            this.power.roll.edges = (this.power.roll.edges ?? 0) + (Number(bonus.value) || 0);
             break;
           default:
             break;

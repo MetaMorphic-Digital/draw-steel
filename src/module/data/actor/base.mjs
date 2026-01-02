@@ -141,12 +141,9 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       multiplier: 1,
     });
 
-    Object.values(this.characteristics).forEach((chr) => {
-      Object.assign(chr, {
-        edges: 0,
-        banes: 0,
-      });
-    });
+    for (const chr of Object.values(this.characteristics) {
+      chr.edges = chr.banes = 0;
+    }
   }
 
   /* -------------------------------------------------- */

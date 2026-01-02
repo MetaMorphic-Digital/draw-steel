@@ -143,10 +143,7 @@ export default class PowerRollDialog extends RollDialog {
     const { list, groups } = ds.CONFIG.skills;
     const skillModifiers = context.skillModifiers;
 
-    if (!this.constructor.EdgePluralFormatter) {
-      this.constructor.EdgePluralFormatter = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
-    }
-    const pr = this.constructor.EdgePluralFormatter;
+    const pr = this.constructor.EdgePluralFormatter ??= new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
 
     // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
     context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
