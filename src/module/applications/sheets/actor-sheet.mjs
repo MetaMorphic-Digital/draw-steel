@@ -327,7 +327,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   async _prepareItemContext(item) {
     const context = {
       item,
-      expanded: this._expandedDocumentDescriptions.has(item.id),
+      expanded: this._expandedDocumentDescriptions.has(item.uuid),
     };
 
     // only generate the item embed when it's expanded
@@ -514,7 +514,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         expanded: false,
       };
 
-      if (this._expandedDocumentDescriptions.has(e.id)) {
+      if (this._expandedDocumentDescriptions.has(e.uuid)) {
         effectContext.expanded = true;
         effectContext.enrichedDescription = await e.system.toEmbed({});
       }
@@ -656,7 +656,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         icon: "<i class=\"fa-solid fa-fw fa-dice-d10\"></i>",
         condition: (target) => {
           const effect = this._getEmbeddedDocument(target);
-          return (effect.documentName === "ActiveEffect") && (effect.system.end.type === "save");
+          return (effect.documentName === "ActiveEffect") && (effect.system.end?.type === "save");
         },
         callback: async (target) => {
           const effect = this._getEmbeddedDocument(target);
