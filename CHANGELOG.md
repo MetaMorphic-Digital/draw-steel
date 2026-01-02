@@ -35,6 +35,7 @@
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
+- Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 
 ### Changed
 
