@@ -6,7 +6,9 @@ import DrawSteelChatMessage from "../documents/chat-message.mjs";
 /** @import { RollPromptOptions, ProjectRollPrompt } from "../_types.js" */
 
 /**
- * Special test used during downtime.
+ * A special test a hero makes while working on a downtime project during a respite.
+ * A project roll doesn’t have any tier outcome.
+ * Instead, its total is earned as project points toward completing the project.
  */
 export default class ProjectRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {

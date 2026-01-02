@@ -16,7 +16,7 @@ import BaseItemModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment.
+ * Special main actions, maneuvers, and more that a creature can use to affect other creatures and objects, and the environment.
  */
 export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */

@@ -1,7 +1,7 @@
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Ancestries describe how a hero was born and grant benefits from their anatomy and physiology.
+ * A humanoid creature’s species. Every hero has an ancestry.
  */
 export default class AncestryModel extends AdvancementModel {
   /** @inheritdoc */

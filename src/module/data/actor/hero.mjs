@@ -16,7 +16,7 @@ import BaseActorModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Heroes are controlled by players and have heroic resources and advancement.
+ * A player character, created and run by a player other than the Director.
  */
 export default class HeroModel extends BaseActorModel {
   /** @inheritdoc */

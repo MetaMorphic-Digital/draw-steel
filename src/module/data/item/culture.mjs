@@ -1,7 +1,7 @@
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Culture describes the community that raised a hero.
+ * The community in which a hero was raised.
  */
 export default class CultureModel extends AdvancementModel {
   /** @inheritdoc */
