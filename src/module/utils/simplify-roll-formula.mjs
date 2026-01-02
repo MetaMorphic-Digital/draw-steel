@@ -92,7 +92,7 @@ export default function simplifyRollFormula(formula, { rollData = {}, preserveFl
   return roll.constructor.getFormula(simplifiedTerms);
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * A helper function to perform arithmetic simplification and remove redundant operator terms.
@@ -120,7 +120,7 @@ function _simplifyOperatorTerms(terms) {
   }, []);
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * A helper function for combining unannotated numeric terms in an array into a single numeric term.
@@ -143,7 +143,7 @@ function _simplifyNumericTerms(terms) {
   return [...simplified, ...annotated];
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * A helper function to group dice of the same size and sign into single dice terms.
@@ -177,7 +177,7 @@ function _simplifyDiceTerms(terms) {
   return [...simplified, ...annotated];
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * A helper function to extract the contents of parenthetical terms into their own terms.
@@ -201,7 +201,7 @@ function _expandParentheticalTerms(terms) {
   return _simplifyOperatorTerms(terms.flat());
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * A helper function to group terms into PoolTerms, DiceTerms, FunctionTerms, and NumericTerms.
@@ -226,7 +226,7 @@ function _groupTermsByType(terms) {
   }, {});
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * A helper function to separate annotated terms from unannotated terms.
