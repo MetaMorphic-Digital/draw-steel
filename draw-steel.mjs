@@ -7,6 +7,7 @@ import * as data from "./src/module/data/_module.mjs";
 import * as utils from "./src/module/utils/_module.mjs";
 import * as DS_CONFIG from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
+import * as calendar from "./src/module/calendar/_module.mjs";
 
 globalThis.ds = {
   canvas,
@@ -188,6 +189,10 @@ Hooks.once("i18nInit", () => {
         }
       }
     }
+    // Initialize in game calendar
+  
+      game.calendars.register(calendar.ORDEN_CALENDAR);
+    
   }
 
   // Localize pseudo-documents. Base first, then loop through the types in use
