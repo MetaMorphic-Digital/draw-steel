@@ -198,9 +198,13 @@ export default class NPCModel extends BaseActorModel {
 
   /**
    * Perform a free strike against one or more enemies.
-   * @param {DrawSteelActor[]} [targets] Actors to apply the free strike damage to. Defaults to all current targets.
+   * @param {object} [options]
+   * @param {DrawSteelActor[]} [options.targets]    Actors to apply the free strike damage to.
+   *                                                Defaults to all current targets.
+   * @param {boolean} [options.configure]           Configure which targets damage is applied to.
+   * @returns {Promise<void>}
    */
-  async performFreeStrike(targets) {
+  async performFreeStrike({ targets, configure = true } = {}) {
     if (!targets) {
       try {
         targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
@@ -215,46 +219,44 @@ export default class NPCModel extends BaseActorModel {
     }
     const freeStrike = this.freeStrike;
 
-    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
-      value: freeStrike.value,
-      type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
-    });
-    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
-    const keywordList = freeStrike.keywords.toObject().map(k => ds.CONFIG.abilities.keywords[k]?.label);
-
-    let content = `<span>${keywordFormatter.format([damageLabel, ...keywordList])}</span>`;
-
-    content += targets.map(a => {
-      const checkboxInput = foundry.applications.fields.createCheckboxInput({ name: a.uuid, value: true });
-      const formGroup = foundry.applications.fields.createFormGroup({
-        label: a.name,
-        input: checkboxInput,
-        classes: ["inline"],
+    if (configure !== false) {
+      const damageLabel = game.i18n.format("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
+        value: freeStrike.value,
+        type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
       });
-      // style fix
-      const label = formGroup.querySelector("label");
-      label.classList.add("checkbox");
-      label.style = "font-size: inherit;";
-      return formGroup.outerHTML;
-    }).join("");
+      const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+      const keywordList = freeStrike.keywords.toObject().map(k => ds.CONFIG.abilities.keywords[k]?.label);
 
-    /** @type {object} */
-    const fd = await ds.applications.api.DSDialog.input({
-      window: { title: "DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
-      content,
-      ok: {
-        label: "DRAW_STEEL.Actor.npc.FreeStrike.DialogButton",
-      },
-    });
+      let content = `<span>${keywordFormatter.format([damageLabel, ...keywordList])}</span>`;
 
-    if (fd) {
-      for (const [uuid, bool] of Object.entries(fd)) {
-        if (bool) {
-          /** @type {DrawSteelActor} */
-          const actor = fromUuidSync(uuid);
-          actor.system.takeDamage(freeStrike.value, { type: freeStrike.type });
-        }
-      }
+      content += targets.map(a => {
+        const checkboxInput = foundry.applications.fields.createCheckboxInput({ name: a.uuid, value: true });
+        const formGroup = foundry.applications.fields.createFormGroup({
+          label: a.name,
+          input: checkboxInput,
+          classes: ["inline"],
+        });
+        // style fix
+        const label = formGroup.querySelector("label");
+        label.classList.add("checkbox");
+        label.style = "font-size: inherit;";
+        return formGroup.outerHTML;
+      }).join("");
+
+      /** @type {object} */
+      const fd = await ds.applications.api.DSDialog.input({
+        window: { title: "DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
+        content,
+        ok: {
+          label: "DRAW_STEEL.Actor.npc.FreeStrike.DialogButton",
+        },
+      });
+      if (!fd) return;
+      targets = Object.entries(fd).filter(f => f[1]).map(f => fromUuidSync(f[0]));
+    }
+
+    for (const actor of targets) {
+      actor.system.takeDamage(freeStrike.value, { type: freeStrike.type });
     }
   }
 
