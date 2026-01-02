@@ -1,3 +1,5 @@
+import DrawSteelItem from "../documents/item.mjs";
+
 /**
  * @import { RegistryEntry } from "./_types";
  */
@@ -40,7 +42,7 @@ export default class DrawSteelRegistry {
       const indices = docs.filter(idx => registryTypes.has(idx.type));
 
       for (const idx of indices) {
-        const dsid = idx.system._dsid ?? idx.name.replaceAll(/(\w+)([\\|/])(\w+)/g, "$1-$3").slugify({ strict: true });
+        const dsid = idx.system._dsid ?? DrawSteelItem.generateDSID(idx.name);
         /** @type {RegistryEntry} */
         const registryEntry = {
           dsid,
