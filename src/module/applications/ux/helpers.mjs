@@ -44,10 +44,8 @@ export function createLink(label, dataset = {}, { classes = "roll-link", tag = "
   link.className = classes;
   if (icon) {
     link.insertAdjacentElement("afterbegin", foundry.applications.fields.createFontAwesomeIcon(icon));
-    // Space between icon and text looks better
-    if (!label.startsWith(" ")) label = " " + label;
   }
-  link.append(label);
+  link.append(label.trim());
   addDataset(link, dataset);
   return link;
 }
