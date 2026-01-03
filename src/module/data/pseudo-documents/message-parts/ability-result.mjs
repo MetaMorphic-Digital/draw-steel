@@ -7,7 +7,7 @@ import DamageRoll from "../../../rolls/damage.mjs";
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
  * @import DrawSteelItem from "../../../documents/item.mjs";
  * @import AbilityData from "../../item/ability.mjs";
- * @import AppliedPowerRollEffect from "../power-roll-effects/applied-effect.mjs";
+ * @import { AppliedPowerRollEffect, GainResourcePowerRollEffect } from "../power-roll-effects/_module.mjs";
  */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
@@ -103,37 +103,8 @@ export default class AbilityResultPart extends RollPart {
     /** @type {AppliedPowerRollEffect} */
     const pre = await fromUuid(target.dataset.uuid);
     if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.PARTS.abilityResult.NoPRE", { localize: true });
-    const effectId = target.dataset.effectId;
-    const config = pre.applied[this.tierKey].effects[effectId];
 
-    const noStack = !config.properties.has("stacking");
-
-    const isStatus = target.dataset.type === "status";
-
-    /** @type {DrawSteelActiveEffect} */
-    const tempEffect = isStatus ?
-      await DrawSteelActiveEffect.fromStatusEffect(effectId) :
-      pre.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
-
-    /** @type {ActiveEffectData} */
-    const updates = {
-      transfer: true,
-      // v14 is turning this into a DocumentUUID field so needs to be a real document
-      origin: pre.item.uuid,
-      system: {},
-    };
-    if (config.end) updates.system.end = { type: config.end };
-    tempEffect.updateSource(updates);
-
-    // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
-    for (const actor of ds.utils.tokensToActors()) {
-      // reusing the ID will block creation if it's already on the actor
-      const existing = actor.effects.get(tempEffect.id);
-      // deleting instead of updating because there may be variances between the old copy and new
-      if (existing?.disabled) await existing.delete();
-      // not awaited to allow parallel processing
-      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
-    }
+    await pre.applyEffect(this.tierKey, target.dataset.effectId);
   }
 
   /* -------------------------------------------------- */
@@ -146,26 +117,11 @@ export default class AbilityResultPart extends RollPart {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #gainResource(event, target) {
-    const { amount, type } = target.dataset;
-    let path;
-    switch (type) {
-      case "surge":
-        path = "hero.surges";
-        break;
-      case "heroic":
-        path = "hero.primary.value";
-        break;
-      case "epic":
-        path = "hero.epic.value";
-        break;
-    }
+    /** @type {GainResourcePowerRollEffect} */
+    const pre = await fromUuid(target.dataset.uuid);
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.PARTS.abilityResult.NoPRE", { localize: true });
 
-    if (!path) return;
-
-    const heroActors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
-    for (const actor of heroActors) {
-      await actor.modifyTokenAttribute(path, Number(amount), true, false);
-    }
+    await pre.applyGain(this.tierKey);
   }
 
   /* -------------------------------------------------- */

@@ -1,5 +1,9 @@
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
+/**
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
+ */
+
 const { NumberField, StringField } = foundry.data.fields;
 
 /**
@@ -149,7 +153,6 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
    * @param {1 | 2 | 3} tier
    */
   constructButtons(tier) {
-    /** @type {HTMLButtonElement[]} */
     const { amount, type } = this.resource[`tier${tier}`];
     if (!amount || !type) return [];
 
@@ -160,12 +163,43 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
       icon: "fa-solid fa-bolt",
       classes: ["gain-resource"],
       dataset: {
-        amount,
-        type,
         action: "gainResource",
+        uuid: this.uuid,
       },
     });
 
     return [button];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Give a hero some resources.
+   * @param {string} tierKey
+   * @param {object} [options]
+   * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected hero actors.
+   */
+  async applyGain(tierKey, options) {
+    const { amount, type } = this.resource[tierKey];
+
+    let path;
+    switch (type) {
+      case "surge":
+        path = "hero.surges";
+        break;
+      case "heroic":
+        path = "hero.primary.value";
+        break;
+      case "epic":
+        path = "hero.epic.value";
+        break;
+    }
+
+    if (!path) return;
+
+    options.targets ??= ds.utils.tokensToActors().filter((a) => a.type === "hero");
+    for (const actor of options.targets) {
+      await actor.modifyTokenAttribute(path, amount, true, false);
+    }
   }
 }
