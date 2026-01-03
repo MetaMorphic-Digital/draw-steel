@@ -64,4 +64,13 @@ export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.docu
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareChatMessageData", this);
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+    if (options.notify) ui.chat.notify(this);
+  }
+
 }

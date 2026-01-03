@@ -57,7 +57,7 @@ export default class TestPart extends BaseMessagePart {
 
     const lastTestPart = this.parent.parts.sortedContents.findLast(p => p.type === this.type) === this;
 
-    if (lastTestPart && (this.message.speakerActor?.type === "hero")) {
+    if (this.message.isOwner && lastTestPart && (this.message.speakerActor?.type === "hero")) {
       context.ctx.buttons.push(ds.utils.constructHTMLButton({
         label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label"),
         icon: "fa-solid fa-dice-d10",
@@ -88,7 +88,7 @@ export default class TestPart extends BaseMessagePart {
    * Reroll this test.
    * @param {object} [options={}]
    * @param {boolean} [options.spendToken] Should a hero token be spent as part of this reroll?
-   * @returns {Promise<this | null>} Returns this, or null if no reroll was performed.
+   * @returns {Promise<true | false>} Returns true if the reroll was performed or false if it wasn't.
    */
   async reroll(options = {}) {
 
@@ -97,13 +97,15 @@ export default class TestPart extends BaseMessagePart {
     if (options.spendToken) {
       const token = await game.actors.heroTokens.spendToken("rerollTest", { messageId: this.message.id });
 
-      if (token === false) return null;
+      if (token === false) return false;
 
       Object.assign(newRoll.options, {
         flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
       });
     }
 
-    return this.update({ rolls: this.rolls.concat(newRoll) });
+    await this.update({ rolls: this.rolls.concat(newRoll) }, { notify: true });
+
+    return true;
   }
 }

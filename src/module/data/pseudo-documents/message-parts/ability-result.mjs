@@ -78,7 +78,7 @@ export default class AbilityResultPart extends RollPart {
     if (item) {
       const htmlPRE = [];
       for (const pre of item.system.power.effects) {
-        const newButtons = await pre.constructButtons(this.tier);
+        const newButtons = pre.constructButtons(this.tier);
         if (newButtons) context.ctx.buttons.push(...newButtons);
 
         htmlPRE.push(pre.toText(this.tier));
@@ -158,7 +158,7 @@ export default class AbilityResultPart extends RollPart {
       newRoll.options.flavor = flavor;
     }
 
-    await this.update({ rolls: this.rolls.concat(newRoll) });
+    await this.update({ rolls: this.rolls.concat(newRoll) }, { notify: true });
 
     return newRoll;
   }

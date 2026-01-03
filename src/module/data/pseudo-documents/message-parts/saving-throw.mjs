@@ -92,7 +92,7 @@ export default class SavingThrowPart extends BaseMessagePart {
 
     if (token !== false) {
       await effect.update({ disabled: true });
-      return ui.chat.updateMessage(this.message);
+      return ui.chat.updateMessage(this.message, { notify: true });
     }
   }
 }
