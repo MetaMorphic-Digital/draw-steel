@@ -79,16 +79,31 @@ export default class TestPart extends BaseMessagePart {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #heroReroll(event, target) {
-    const token = await game.actors.heroTokens.spendToken("rerollTest", { messageId: this.message.id });
+    await this.reroll({ spendToken: true });
+  }
 
-    if (token === false) return;
+  /* -------------------------------------------------- */
+
+  /**
+   * Reroll this test.
+   * @param {object} [options={}]
+   * @param {boolean} [options.spendToken] Should a hero token be spent as part of this reroll?
+   * @returns {Promise<this | null>} Returns this, or null if no reroll was performed.
+   */
+  async reroll(options = {}) {
 
     const newRoll = await this.rolls[0].reroll();
 
-    Object.assign(newRoll.options, {
-      flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
-    });
+    if (options.spendToken) {
+      const token = await game.actors.heroTokens.spendToken("rerollTest", { messageId: this.message.id });
 
-    await this.update({ rolls: this.rolls.concat(newRoll) });
+      if (token === false) return null;
+
+      Object.assign(newRoll.options, {
+        flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
+      });
+    }
+
+    return this.update({ rolls: this.rolls.concat(newRoll) });
   }
 }
