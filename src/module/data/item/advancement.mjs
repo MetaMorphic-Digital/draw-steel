@@ -54,6 +54,8 @@ export default class AdvancementModel extends BaseItemModel {
 
     const level = this.actor.system.level;
     for (const advancement of this.advancements) {
+      if (!advancement.levels.some(l => l <= level)) continue;
+
       // Populate _respiteAdvancements
       if (advancement.repick.respite) {
         respiteAdvancements[advancement.repick.respite] ??= new Set();
@@ -61,7 +63,6 @@ export default class AdvancementModel extends BaseItemModel {
       }
 
       // Populate _unfilledTraits
-      if (!advancement.levels.some(l => l <= level)) continue;
       if (advancement.isTrait) {
         const selected = advancement.isChoice
           ? flags[advancement.id]?.selected ?? []

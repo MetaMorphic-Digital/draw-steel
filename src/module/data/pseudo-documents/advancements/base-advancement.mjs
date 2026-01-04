@@ -32,7 +32,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
       description: new HTMLField(),
       requirements: new SchemaField(this.defineRequirements()),
       repick: new SchemaField({
-        respite: new StringField({ initial: null, nullable: true, choices: {
+        respite: new StringField({ blank: true, choices: {
           activity: "DRAW_STEEL.ADVANCEMENT.FIELDS.repick.respite.Choices.activity",
           finish: "DRAW_STEEL.ADVANCEMENT.FIELDS.repick.respite.Choices.finish",
         } }),
