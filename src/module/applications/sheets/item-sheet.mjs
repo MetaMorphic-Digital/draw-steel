@@ -291,7 +291,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         expanded: false,
       };
 
-      if (this._expandedDocumentDescriptions.has(e.id)) {
+      if (this._expandedDocumentDescriptions.has(e.uuid)) {
         effectContext.expanded = true;
         effectContext.enrichedDescription = await e.system.toEmbed({});
       }
