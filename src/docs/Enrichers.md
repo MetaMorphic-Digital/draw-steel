@@ -84,10 +84,16 @@ The `[[/test]]` enricher allows requesting specific rolls without users needing 
 - [&ZeroWidthSpace;[/test characteristic=intuition difficulty=hard]]: The characteristic and difficulty can be explicitly specified.
 - [&ZeroWidthSpace;[/test P edges=1 banes=1]]: You can specify edges and banes for the roll
 - [&ZeroWidthSpace;[/test M]]{A might test}: Brackets will replace the default text for the command.
-- [&ZeroWidthSpace;[/test A table=someTable]]: An advanced use case is linking the result text to a power roll table. The power roll table must have the following structure to be linked properly. Keep in mind the risk of overly-matching `data-table` properties; the DSID of an item containing the table is a good option to ensure relative uniqueness.
+
+### Using Result Tables
+
+The Test enricher supports linked result tables, which allow directly reporting the text of the result in the generated chat message. This is likely to require direct HTML editing, as you must create the appropriately formatted display list element with a `data-table` attribute matching the value used in the `table` property of the enricher. Keep in mind that content embeds may mean a piece of text shows up alongside other result tables, so pay some mind to ensuring some level of uniqueness in these matched properties, e.g. by using the DSID of the item or room key for a trap in an adventure.
+
+- [&ZeroWidthSpace;[/test A table=someTable]]: Basic usage.
 - [&ZeroWidthSpace;[/test R table=someTable difficulty=medium]] Specifying the difficulty and a table will not use the default difficulty result text but will keep the flavor text for "Easy Test", "Medium Test", or "Hard Test".
 
 ```html
+<p>Players may perform an [[/test A table=someTable]] to cross the narrow, patchy bridge.</p>
 <dl class="power-roll-display" data-table="someTable">
     <dt class="tier1">
         <p>!</p>
