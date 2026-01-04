@@ -1,0 +1,26 @@
+<section class="keywords-info">
+  <dl>
+    <dt class="keywords">{{systemFields.keywords.label}}</dt>
+    <dd class="keywords">{{system.formattedKeywords}}</dd>
+  </dl>
+</section>
+{{#if includeProjectInfo}}
+<section class="project-info">
+  <dl>
+    <dt class="prerequisites">{{systemFields.project.fields.prerequisites.label}}</dt>
+    <dd class="prerequisites">{{ifThen system.project.prerequisites system.project.prerequisites (localize "None")}}</dd>
+
+    <dt class="source">{{systemFields.project.fields.source.label}}</dt>
+    <dd class="source">{{system.project.source}}</dd>
+
+    <dt class="characteristics">{{systemFields.project.fields.rollCharacteristic.label}}</dt>
+    <dd class="characteristics">{{system.formattedProjectRollCharacteristics}}</dd>
+
+    <dt class="goal">{{systemFields.project.fields.goal.label}}</dt>
+    <dd class="goal">{{ifThen system.project.goal system.project.goal (localize "DRAW_STEEL.Item.project.Varies")}} {{#if system.project.yield.display}}({{system.project.yield.display}}){{/if}}</dd>
+  </dl>
+</section>
+{{/if}}
+<section class="treasure-info">
+  {{{enrichedDescription}}}
+</section>
