@@ -28,6 +28,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @type {boolean}
    */
   get canFlank() {
+    // For orphaned tokens, assume they cannot flank
     if (!this.actor) return false;
     // Defeated/Dead actors cannot flank
     if (this.actor.statuses.has(CONFIG.specialStatusEffects.DEFEATED)) return false;

@@ -36,6 +36,7 @@
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
+- Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 
 ### Changed
