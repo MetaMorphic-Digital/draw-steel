@@ -1,6 +1,12 @@
 /** General file for all enricher styling */
 
 enriched-content {
+  .roll-link {
+    i {
+      padding-right: 0.25em;
+    }
+  }
+
   /* Matches core inline roll styling */
   &[enricher="ds.roll"], &[enricher="ds.apply"] {
     background: var(--content-link-background);

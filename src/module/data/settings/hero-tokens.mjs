@@ -1,5 +1,6 @@
 import { systemID } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import HeroTokenPart from "../pseudo-documents/message-parts/hero-token.mjs";
 
 const fields = foundry.data.fields;
 
@@ -46,6 +47,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
    * @param {string} spendType        Key of `ds.CONFIG.hero.tokenSpends`.
    * @param {object} [options]        Options to modify the token spend.
    * @param {string} [options.flavor] Flavor for the chat message (default: Current user's character name).
+   * @param {string} [options.messageId] A message to append a chat message part to.
    * @returns {Promise<void|false>}   An explicit `false` if there was an error in spending the token.
    */
   async spendToken(spendType, options = {}) {
@@ -66,12 +68,18 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     // Just directly execute if the current user is a game master
     if (game.user.isGM) {
       await game.settings.set(systemID, "heroTokens", { value: currentTokens - tokenSpendConfiguration.tokens });
-      await DrawSteelChatMessage.create({
+      if (options.messageId) {
+        HeroTokenPart.create({
+          spendType,
+          type: "heroToken",
+        }, { parent: game.messages.get(options.messageId) });
+      }
+      else await DrawSteelChatMessage.create({
         content: tokenSpendConfiguration.messageContent,
         flavor: options.flavor ?? game.user.character?.name,
       });
     }
-    else game.system.socketHandler.spendHeroToken({ userId: game.userId, spendType, flavor: options.flavor });
+    else game.system.socketHandler.spendHeroToken({ userId: game.userId, spendType, flavor: options.flavor, messageId: options.messageId });
   }
 
   /* -------------------------------------------------- */

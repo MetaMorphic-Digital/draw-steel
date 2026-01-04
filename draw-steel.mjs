@@ -232,5 +232,4 @@ Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 /**
  * Other hooks.
  */
-Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);

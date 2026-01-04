@@ -53,15 +53,4 @@ export default class SavingThrowRoll extends DSRoll {
 
     return context;
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async toMessage(messageData, messageOptions) {
-    // Saving throws always create savingThrow messages
-    // `system.effect` is expected to be passed; if not it will throw in construction
-    messageData.type = "savingThrow";
-
-    return super.toMessage(messageData, messageOptions);
-  }
 }

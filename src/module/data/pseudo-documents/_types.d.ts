@@ -1,4 +1,5 @@
 import "./advancements/_types";
+import "./message-parts/_types";
 import "./power-roll-effects/_types";
 
 import ModelCollection from "../../utils/model-collection.mjs";
