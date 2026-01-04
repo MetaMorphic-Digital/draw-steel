@@ -42,6 +42,7 @@
 
 - Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
 - Temporary stamina now shows as part of the stamina bar. (#601)
+- Fixed the Omen Dragon's Repent ability not correctly applying the apply effect enricher. (#1524)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
 
 ### Fixed
