@@ -41,41 +41,37 @@ export default class DrawSteelRegistry {
 
       const indices = docs.filter(idx => registryTypes.has(idx.type));
 
+      // Use "world" and "system" for world & system compendiums, elsewise the module ID
+      const packageId = pack.metadata.packageType !== "module" ? pack.metadata.packageType : pack.metadata.packageName;
+
       for (const idx of indices) {
         const dsid = idx.system._dsid || DrawSteelItem.generateDSID(idx.name);
+
+        const key = `${packageId}:${dsid}`;
+
         /** @type {RegistryEntry} */
         const registryEntry = {
+          key,
           dsid,
           name: idx.name,
           uuid: idx.uuid,
         };
+
         switch (idx.type) {
           case "class":
             registryEntry.primary = idx.system.primary;
-            if (this.class.has(dsid)) {
-              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
-            }
-            this.class.set(dsid, registryEntry);
+            this.class.set(key, registryEntry);
             break;
           case "subclass":
             registryEntry.classLink = idx.system.classLink;
-            if (this.subclass.has(dsid)) {
-              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
-            }
-            this.subclass.set(dsid, registryEntry);
+            this.subclass.set(key, registryEntry);
             break;
           case "perk":
             registryEntry.perkType = idx.system.perkType;
-            if (this.perk.has(dsid)) {
-              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
-            }
-            this.perk.set(dsid, registryEntry);
+            this.perk.set(key, registryEntry);
             break;
           case "kit":
-            if (this.kit.has(dsid)) {
-              console.warn(`Replacing ${idx.type} registry entry for ${dsid}`);
-            }
-            this.kit.set(dsid, registryEntry);
+            this.kit.set(key, registryEntry);
             break;
         }
       }

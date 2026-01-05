@@ -1,5 +1,7 @@
 export interface RegistryEntry {
-  /** Also used as the key for each entry */
+  /** The Key used for the entry */
+  key;
+  /** Used as part of the key */
   dsid: string;
   /** Name for easy display reference */
   name: string;

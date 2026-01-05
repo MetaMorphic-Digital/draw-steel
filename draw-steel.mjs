@@ -54,8 +54,8 @@ Hooks.once("init", function () {
     }
   }
 
-  // Indexing
-  CONFIG.Item.compendiumIndexFields.push("system._dsid");
+  // Indexing DSID, class primary name, subclass associated classes, and perk types
+  CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
