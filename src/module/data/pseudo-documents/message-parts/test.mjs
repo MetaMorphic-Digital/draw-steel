@@ -99,12 +99,14 @@ export default class TestPart extends BaseMessagePart {
 
       if (token === false) return false;
 
-      Object.assign(newRoll.options, {
-        flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor"),
-      });
+      newRoll.options = { ...newRoll.options, flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor") };
     }
 
-    await this.update({ rolls: this.rolls.concat(newRoll) }, { notify: true });
+    const rolls = this.rolls.concat(newRoll);
+
+    await this.update({ rolls }, { notify: true, ds: {
+      dsn: { [this.id]: [rolls.length - 1] },
+    } });
 
     return true;
   }

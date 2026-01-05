@@ -158,7 +158,11 @@ export default class AbilityResultPart extends RollPart {
       newRoll.options.flavor = flavor;
     }
 
-    await this.update({ rolls: this.rolls.concat(newRoll) }, { notify: true });
+    const rolls = this.rolls.concat(newRoll);
+
+    await this.update({ rolls }, { notify: true, ds: {
+      dsn: { [this.id]: [rolls.length - 1] },
+    } });
 
     return newRoll;
   }

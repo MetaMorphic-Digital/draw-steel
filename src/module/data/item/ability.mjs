@@ -490,6 +490,7 @@ export default class AbilityModel extends BaseItemModel {
       if (!promptValue) return null;
       const { rollMode, rolls, baseRoll } = promptValue;
 
+      // Base roll for DSN purposes
       messageData.rolls.push(baseRoll);
 
       DrawSteelChatMessage.applyRollMode(messageData, rollMode);

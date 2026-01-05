@@ -27,6 +27,7 @@ type MessagePart = part.ContentPart | part.RollPart | part.TestPart;
 
 declare module "./standard.mjs" {
   export default interface StandardModel {
+    parent: DrawSteelChatMessage;
     parts: ModelCollection<MessagePart>;
   }
 }

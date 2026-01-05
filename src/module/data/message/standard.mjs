@@ -70,6 +70,43 @@ export default class StandardModel extends DrawSteelSystemModel {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    /**
+     * An array of new roll indices per part.
+     * @type {Record<string, number[]>}
+     */
+    const newRolls = options.ds?.dsn;
+
+    if (game.dice3d && newRolls && (userId === game.userId)) {
+      for (const [partId, rollIndices] of Object.entries(newRolls)) {
+        const part = this.parts.get(partId);
+
+        for (const i of rollIndices) {
+          const roll = part.rolls[i];
+          if (!roll.isDeterministic) this.playDSNRoll(roll);
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Play rolls via the DSN API.
+   * @param {foundry.dice.Roll} roll
+   * @returns {Promise<boolean>} When resolved true if the animation was displayed, false if not.
+   */
+  async playDSNRoll(roll) {
+    if (!game.dice3d) return false;
+
+    return game.dice3d.showForRoll(roll, game.user, true, this.parent.whisper, this.parent.blind, this.parent.id, this.parent.speaker);
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Render the HTML for the ChatMessage which should be added to the log.
    * @param {object} [options]              Additional options passed to the Handlebars template.
