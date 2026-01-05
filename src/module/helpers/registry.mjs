@@ -42,7 +42,7 @@ export default class DrawSteelRegistry {
       const indices = docs.filter(idx => registryTypes.has(idx.type));
 
       for (const idx of indices) {
-        const dsid = idx.system._dsid ?? DrawSteelItem.generateDSID(idx.name);
+        const dsid = idx.system._dsid || DrawSteelItem.generateDSID(idx.name);
         /** @type {RegistryEntry} */
         const registryEntry = {
           dsid,
