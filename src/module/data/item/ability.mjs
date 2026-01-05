@@ -495,12 +495,7 @@ export default class AbilityModel extends BaseItemModel {
       DrawSteelChatMessage.applyRollMode(messageData, rollMode);
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = rolls.reduce((accumulator, powerRoll) => {
-        accumulator[powerRoll.product] ??= [];
-        accumulator[powerRoll.product].push(powerRoll);
-
-        return accumulator;
-      }, {});
+      const groupedRolls = Object.groupBy(rolls, roll => roll.product);
 
       // Each tier group gets a message part. Rolls within a group are in the same message part
       for (const tierNumber in groupedRolls) {

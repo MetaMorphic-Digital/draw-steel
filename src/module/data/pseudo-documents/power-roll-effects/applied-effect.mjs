@@ -198,10 +198,10 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     if (config.end) updates.system.end = { type: config.end };
     tempEffect.updateSource(updates);
 
-    options.targets ??= ds.utils.tokensToActors();
+    const targetActors = options.targets ?? ds.utils.tokensToActors();
 
     // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
-    for (const actor of options.targets) {
+    for (const actor of targetActors) {
       // reusing the ID will block creation if it's already on the actor
       const existing = actor.effects.get(tempEffect.id);
       // deleting instead of updating because there may be variances between the old copy and new

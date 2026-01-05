@@ -197,8 +197,9 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
 
     if (!path) return;
 
-    options.targets ??= ds.utils.tokensToActors().filter((a) => a.type === "hero");
-    for (const actor of options.targets) {
+    const targetActors = options.targets ?? ds.utils.tokensToActors().filter((a) => a.type === "hero");
+
+    for (const actor of targetActors) {
       await actor.modifyTokenAttribute(path, amount, true, false);
     }
   }
