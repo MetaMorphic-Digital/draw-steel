@@ -398,7 +398,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
    * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
-   * @param {HTMLDListElement} [options.resultTable]    A reference to a DList element for a result table.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
@@ -456,14 +455,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     const testPart = { type: "test", flavor, results: {}, rolls };
 
-    if (options.resultTable) {
-      Object.assign(testPart.results, {
-        tier1: options.resultTable.querySelector("dt.tier1 + dd")?.innerHTML ?? "",
-        tier2: options.resultTable.querySelector("dt.tier2 + dd")?.innerHTML ?? "",
-        tier3: options.resultTable.querySelector("dt.tier3 + dd")?.innerHTML ?? "",
-      });
-    }
-    else if (testConfig) {
+    if (testConfig) {
       Object.assign(testPart.results, {
         tier1: game.i18n.localize(testConfig.tier1),
         tier2: game.i18n.localize(testConfig.tier2),

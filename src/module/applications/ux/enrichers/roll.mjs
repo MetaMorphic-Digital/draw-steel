@@ -418,7 +418,6 @@ function enrichTest(parsedConfig, label, options) {
     difficulty: parsedConfig.difficulty,
     edges: parsedConfig.edges,
     banes: parsedConfig.banes,
-    table: parsedConfig.table,
   };
 
   const letterCharacteristics = {
@@ -459,19 +458,11 @@ function enrichTest(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollTest(link, event) {
-  const { characteristic, difficulty, edges, banes, table } = link.dataset;
+  const { characteristic, difficulty, edges, banes } = link.dataset;
 
   if (!characteristic) throw new Error("Test enricher must provide a characteristic");
 
-  let resultTable = null;
-
-  if (table) {
-    // Often will hit the application, but in the context of a journal entry sheet in multi-page mode will only search within the page.
-    const container = link.closest("[id]");
-    resultTable = container.querySelector(`dl[data-table="${table}"]`);
-  }
-
   for (const actor of ds.utils.tokensToActors()) {
-    if ("characteristics" in actor.system) actor.system.rollCharacteristic(characteristic, { difficulty, edges, banes, resultTable });
+    if (actor.system.rollCharacteristic instanceof Function) actor.system.rollCharacteristic(characteristic, { difficulty, edges, banes });
   }
 }

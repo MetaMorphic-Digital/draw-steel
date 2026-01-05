@@ -85,37 +85,6 @@ The `[[/test]]` enricher allows requesting specific rolls without users needing 
 - [&ZeroWidthSpace;[/test P edges=1 banes=1]]: You can specify edges and banes for the roll
 - [&ZeroWidthSpace;[/test M]]{A might test}: Brackets will replace the default text for the command.
 
-### Using Result Tables
-
-The Test enricher supports linked result tables, which allow directly reporting the text of the result in the generated chat message. This is likely to require direct HTML editing, as you must create the appropriately formatted display list element with a `data-table` attribute matching the value used in the `table` property of the enricher. Keep in mind that content embeds may mean a piece of text shows up alongside other result tables, so pay some mind to ensuring some level of uniqueness in these matched properties, e.g. by using the DSID of the item or room key for a trap in an adventure.
-
-- [&ZeroWidthSpace;[/test A table=someTable]]: Basic usage.
-- [&ZeroWidthSpace;[/test R table=someTable difficulty=medium]] Specifying the difficulty and a table will not use the default difficulty result text but will keep the flavor text for "Easy Test", "Medium Test", or "Hard Test".
-
-```html
-<p>Players may perform an [[/test A table=someTable]] to cross the narrow, patchy bridge.</p>
-<dl class="power-roll-display" data-table="someTable">
-    <dt class="tier1">
-        <p>!</p>
-    </dt>
-    <dd>
-        <p>Tier 1 Result Text.</p>
-    </dd>
-    <dt class="tier2">
-        <p>@</p>
-    </dt>
-    <dd>
-        <p>Tier 2 Result Text.</p>
-    </dd>
-    <dt class="tier3">
-        <p>#</p>
-    </dt>
-    <dd>
-        <p>Tier 3 Result Text.</p>
-    </dd>
-</dl>
-```
-
 ## Apply Effect
 
 The `[[/apply]]` enricher allows you to link status effects, either from an item or the canonical status effects. This can be especially useful for items like the Censor's Judgment that have an effect but no power roll.
