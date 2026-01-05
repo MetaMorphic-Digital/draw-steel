@@ -5,7 +5,8 @@ import DSRoll from "./base.mjs";
 /** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
 
 /**
- * Augments the Roll class with specific functionality for power rolls.
+ * A roll of 2d10 plus a characteristic score that has three different possible tier outcomes—tier 1, tier 2, or tier 3.
+ * A power roll can be an ability roll or a test.
  */
 export default class PowerRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {

@@ -204,6 +204,35 @@ Hooks.once("i18nInit", () => {
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
 });
 
+Hooks.once("setup", () => {
+  // Link up various rules & references automatically
+  for (const status of CONFIG.statusEffects) {
+    if (status.rule) ds.CONFIG.references[status.id] = status.rule;
+  }
+
+  // Common/expected structure for reference construction
+  const referenceObjects = [
+    "characteristics",
+    "monsters.keywords",
+    "monsters.organizations",
+    "monsters.roles",
+    "abilities.types",
+    "abilities.distances",
+    "abilities.targets",
+    "equipment.categories",
+    "equipment.armor",
+    "equipment.weapon",
+    "projects.types",
+  ];
+
+  for (const path of referenceObjects) {
+    const config = foundry.utils.getProperty(ds.CONFIG, path);
+    for (const [key, { reference }] of Object.entries(config)) {
+      if (reference) ds.CONFIG.references[reference.identifier ?? key] = reference.uuid;
+    }
+  }
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
