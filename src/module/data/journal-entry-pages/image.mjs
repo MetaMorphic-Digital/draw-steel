@@ -21,9 +21,9 @@ export default class DrawSteelImageData extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {
+    return {
       artDescription: new StringField({ required: true }),
-    });
+    };
   }
 
   /* -------------------------------------------------- */
