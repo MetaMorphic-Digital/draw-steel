@@ -18,6 +18,7 @@ globalThis.ds = {
   utils,
   CONST: DS_CONST,
   CONFIG: DS_CONFIG,
+  registry: new helpers.DrawSteelRegistry(),
 };
 
 // Register custom elements.
@@ -52,6 +53,9 @@ Hooks.once("init", function () {
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
     }
   }
+
+  // Indexing DSID, class primary name, subclass associated classes, and perk types
+  CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
@@ -247,6 +251,9 @@ Hooks.once("ready", async function () {
       return false;
     }
   });
+
+  await ds.registry.initialize();
+
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
