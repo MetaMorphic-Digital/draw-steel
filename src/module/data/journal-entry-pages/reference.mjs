@@ -1,8 +1,8 @@
+import enrichHTML from "../../utils/enrich-html.mjs";
+
 /**
  * @import {SubtypeMetadata} from "../_types"
  */
-
-import enrichHTML from "../../utils/enrich-html.mjs";
 
 const { HTMLField } = foundry.data.fields;
 
@@ -11,7 +11,7 @@ const { HTMLField } = foundry.data.fields;
  */
 export default class ReferenceData extends foundry.abstract.TypeDataModel {
   /**
-   * Subtype metadata.
+   * Metadata for this JournalEntryPage subtype.
    * @type {SubtypeMetadata}
    */
   static get metadata() {
