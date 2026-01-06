@@ -2,6 +2,8 @@
  * @import {SubtypeMetadata} from "../_types"
  */
 
+import enrichHTML from "../../utils/enrich-html.mjs";
+
 const { HTMLField } = foundry.data.fields;
 
 /**
@@ -41,9 +43,10 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
    * @returns {Promise<HTMLElement[]>}
    */
   async richTooltip() {
-    // TODO: Use a custom HTML template.
-    const embed = await this.parent.toEmbed({}, {});
-    return embed.length ? embed : [embed];
+    const enrichedPage = await enrichHTML(this.tooltip || this.parent.text.content, { relativeTo: this.parent });
+    const container = document.createElement("div");
+    container.innerHTML = enrichedPage;
+    return container.children;
   }
 
   /* -------------------------------------------------- */
