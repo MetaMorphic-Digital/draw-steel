@@ -32,7 +32,7 @@ export const characteristics = Object.seal({
     hint: "DRAW_STEEL.Actor.characteristics.might.abbreviation",
     rollKey: "M",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.LedSCHkhclBNG67p",
     },
   },
   agility: {
@@ -40,7 +40,7 @@ export const characteristics = Object.seal({
     hint: "DRAW_STEEL.Actor.characteristics.agility.abbreviation",
     rollKey: "A",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.DG2tkerUo16322AY",
     },
   },
   reason: {
@@ -48,7 +48,7 @@ export const characteristics = Object.seal({
     hint: "DRAW_STEEL.Actor.characteristics.reason.abbreviation",
     rollKey: "R",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.rZDHwVr23OILE1XM",
     },
   },
   intuition: {
@@ -56,7 +56,7 @@ export const characteristics = Object.seal({
     hint: "DRAW_STEEL.Actor.characteristics.intuition.abbreviation",
     rollKey: "I",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.btHevmmefh3I1dV1",
     },
   },
   presence: {
@@ -64,7 +64,7 @@ export const characteristics = Object.seal({
     hint: "DRAW_STEEL.Actor.characteristics.presence.abbreviation",
     rollKey: "P",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.z5fiYN750d7idtM0",
     },
   },
 });
@@ -1092,7 +1092,9 @@ const monsterOrganizations = {
   },
   horde: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   platoon: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
@@ -1531,7 +1533,9 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.Enemy",
     all: "DRAW_STEEL.Item.ability.Target.AllEnemies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyEmbed",
-    reference: "",
+    reference: {
+      uuid: "",
+    },
   },
   enemyObject: {
     label: "DRAW_STEEL.Item.ability.Target.EnemyObject",
@@ -2325,7 +2329,7 @@ export const references = {
   burrow: "",
   capital: "",
   career: "",
-  characteristics: "",
+  characteristic: "",
   ceiling: "",
   class: "",
   climb: "",
@@ -2392,7 +2396,7 @@ export const references = {
   penalty: "",
   perk: "",
   pitfall: "",
-  potency: "",
+  potency: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.TDEeoUAJRUSBkByN",
   powerRoll: "",
   projectEvent: "",
   projectGoal: "",
