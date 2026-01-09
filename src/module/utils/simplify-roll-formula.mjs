@@ -22,7 +22,7 @@ export default function simplifyRollFormula(formula, rollData = {}) {
     return formula;
   }
 
-  const roll = new DSRoll(formula.replace(RollTerm.FLAVOR_REGEXP, ""), rollData);
+  const roll = new DSRoll(`0+${formula.replace(RollTerm.FLAVOR_REGEXP, "")}`, rollData);
 
   // If roll is deterministic, return early with evaluated total.
   if (roll.isDeterministic) return String(roll.evaluateSync().total);
@@ -42,7 +42,10 @@ export default function simplifyRollFormula(formula, rollData = {}) {
   // Recombine the terms into a single term array and remove an initial + operator if present.
   const simplifiedTerms = [numericTerms, diceTerms, poolTerms, mathTerms].flat().filter(_ => _);
   if (simplifiedTerms[0]?.operator === "+") simplifiedTerms.shift();
-  return roll.constructor.getFormula(simplifiedTerms);
+
+  let simplifiedFormula = DSRoll.getFormula(simplifiedTerms);
+  if (simplifiedTerms[0]?.operator === "-") simplifiedFormula = simplifiedFormula.replace(/^\s-\s/, "-");
+  return simplifiedFormula;
 }
 
 /* -------------------------------------------------- */
