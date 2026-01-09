@@ -3,7 +3,7 @@
 import DSRoll from "../rolls/base.mjs";
 
 const {
-  Coin, DiceTerm, Die, FunctionTerm, NumericTerm, OperatorTerm, ParentheticalTerm, RollTerm,
+  DiceTerm, Die, FunctionTerm, NumericTerm, OperatorTerm, ParentheticalTerm, RollTerm,
 } = foundry.dice.terms;
 
 /**
