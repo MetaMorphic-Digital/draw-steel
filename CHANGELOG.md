@@ -38,6 +38,8 @@
 - Implemented a Reference page, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
+- Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
+- Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 
@@ -49,6 +51,7 @@
 
 ### Fixed
 
+- Removed the category from the Conduit's Word of Guidance and Word of Judgement triggered actions. (#1519)
 - Corrected the prototype tokens of various monsters to match their size. (#1523)
 - Fixed the Omen Dragon's Repent ability not correctly applying the apply effect enricher. (#1524)
 - Fixed source registration logic to match documentation.

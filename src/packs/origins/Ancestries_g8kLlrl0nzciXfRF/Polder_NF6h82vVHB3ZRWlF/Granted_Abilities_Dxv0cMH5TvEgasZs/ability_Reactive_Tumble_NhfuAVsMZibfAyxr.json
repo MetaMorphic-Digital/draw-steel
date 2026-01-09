@@ -1,33 +1,30 @@
 {
-  "folder": "uBYwoiLZC8CArBSZ",
-  "name": "Word of Guidance",
+  "folder": "Dxv0cMH5TvEgasZs",
+  "name": "Reactive Tumble",
   "type": "ability",
-  "_id": "cIyx6zWZj5c900Ge",
-  "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
+  "_id": "NhfuAVsMZibfAyxr",
+  "img": "icons/skills/movement/ball-spinning-blue.webp",
   "system": {
     "source": {
-      "book": "Heroes",
-      "page": "98",
+      "book": "",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "word-of-guidance",
-    "story": "You invigorate an attacking ally with divine energy.",
-    "keywords": [
-      "magic",
-      "ranged"
-    ],
-    "type": "triggered",
+    "_dsid": "reactive-tumble",
+    "story": "",
+    "keywords": [],
+    "type": "freeTriggered",
     "category": "",
     "resource": null,
-    "trigger": "The target makes an ability roll for a damage-dealing ability.",
+    "trigger": "Whenever you are force moved",
     "distance": {
-      "type": "ranged",
-      "primary": 10
+      "type": "self"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
-      "value": 1
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -37,12 +34,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The power roll gains an edge.</p>",
+      "before": "<p>You can shift 1 square after the forced movement is resolved.</p>",
       "after": ""
     },
     "spend": {
-      "text": "The power roll has a double edge.",
-      "value": 1
+      "text": "",
+      "value": null
     }
   },
   "effects": [],
@@ -58,9 +55,9 @@
     "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
-    "createdTime": 1755647909605,
+    "createdTime": 1768001692581,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!cIyx6zWZj5c900Ge"
+  "_key": "!items!NhfuAVsMZibfAyxr"
 }
