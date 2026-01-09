@@ -129,15 +129,17 @@ function _groupTermsByType(terms) {
   // Add an initial operator so that terms can be rearranged arbitrarily.
   if (!(terms[0] instanceof OperatorTerm)) terms.unshift(new OperatorTerm({ operator: "+" }));
 
-  return terms.reduce((obj, term, i) => {
+  const getTermKey = term => {
     let type;
     if (term instanceof DiceTerm) type = DiceTerm;
     else if ((term instanceof FunctionTerm) && (term.isDeterministic)) type = NumericTerm;
     else type = term.constructor;
-    const key = `${type.name.charAt(0).toLowerCase()}${type.name.substring(1)}s`;
+    return `${type.name.charAt(0).toLowerCase()}${type.name.substring(1)}s`;
+  };
 
-    // Push the term and the preceding OperatorTerm.
-    (obj[key] = obj[key] ?? []).push(terms[i - 1], term);
-    return obj;
-  }, {});
+  return Object.groupBy(terms, (term, index) => {
+    // OperatorTerms should be grouped with the term next term in the array.
+    if (term instanceof OperatorTerm) return getTermKey(terms[index + 1]);
+    else return getTermKey(term);
+  });
 }
