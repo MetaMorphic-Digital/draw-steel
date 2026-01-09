@@ -74,6 +74,7 @@ declare module "./base.mjs" {
         speed: number;
       };
       flankable: boolean;
+      canFlank: boolean;
     }
     potency: {
       bonuses: number;
