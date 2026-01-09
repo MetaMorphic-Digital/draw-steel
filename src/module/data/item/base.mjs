@@ -104,7 +104,7 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
     const defaultName = game.i18n.localize(CONFIG.Item.typeLabels[data.type]);
 
-    if (!this._dsid && !data.name.startsWith(defaultName)) updates._dsid = data.name.slugify({ strict: true });
+    if (!this._dsid && !data.name.startsWith(defaultName)) updates._dsid = this.parent.constructor.generateDSID(data.name);
 
     if (!foundry.utils.isEmpty(updates)) this.updateSource(updates);
   }

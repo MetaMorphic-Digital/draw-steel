@@ -1,18 +1,40 @@
+import enrichHTML from "../../utils/enrich-html.mjs";
+
+/**
+ * @import {SubtypeMetadata} from "../_types"
+ */
+
+const { HTMLField } = foundry.data.fields;
+
 /**
  * An extensions of a text page that allows for rich tooltips.
  */
 export default class ReferenceData extends foundry.abstract.TypeDataModel {
   /**
-   * Subtype metadata.
+   * Metadata for this JournalEntryPage subtype.
+   * @type {SubtypeMetadata}
    */
-  static metadata = { type: "reference" };
+  static get metadata() {
+    return {
+      type: "reference",
+      icon: "fa-solid fa-notebook",
+      embedded: {},
+    };
+  }
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
-    return {};
+    return {
+      tooltip: new HTMLField({ required: true }),
+    };
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.reference"];
 
   /* -------------------------------------------------- */
 
@@ -21,14 +43,15 @@ export default class ReferenceData extends foundry.abstract.TypeDataModel {
    * @returns {Promise<HTMLElement[]>}
    */
   async richTooltip() {
-    // TODO: Use a custom HTML template.
-    const embed = await this.parent.toEmbed({}, {});
-    return embed.length ? embed : [embed];
+    const enrichedPage = await enrichHTML(this.tooltip || this.parent.text.content, { relativeTo: this.parent });
+    const container = document.createElement("div");
+    container.innerHTML = enrichedPage;
+    return container.children;
   }
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async toEmbed(config, options = {}) {
     return this.parent._embedTextPage(config, options);
   }
