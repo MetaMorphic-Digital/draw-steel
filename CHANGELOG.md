@@ -35,8 +35,10 @@
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
+- Implemented a Reference page, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
+- Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 
 ### Changed
@@ -47,6 +49,7 @@
 
 ### Fixed
 
+- Corrected the prototype tokens of various monsters to match their size. (#1523)
 - Fixed source registration logic to match documentation.
 
 ## 0.9.2

@@ -11,7 +11,7 @@ import SourceModel from "../models/source.mjs";
  */
 
 /**
- * NPCs are created and controlled by the director.
+ * A nonplayer character, usually created and run by the Director.
  */
 export default class NPCModel extends BaseActorModel {
   /** @inheritdoc */
