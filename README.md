@@ -29,3 +29,6 @@ We have two dedicated channels in appropriate discord forums:
 
 If you wish to contribute to development, please review [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+## AI Policy
+
+The Draw Steel system does not use AI art, code, or writing. We expect all contributors to abide by this, and the system will not support or promote modules that make use of AI.
