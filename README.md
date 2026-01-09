@@ -31,4 +31,4 @@ If you wish to contribute to development, please review [CONTRIBUTING.md](./CONT
 
 ## AI Policy
 
-The Draw Steel system does not use AI art, code, or writing. We expect all contributors to abide by this in their pull requests.
+The Draw Steel system does not make use of AI (generative or otherwise) for any area of its implementation, be that art, code, or other. We expect all contributors to follow this same policy when contributing with a pull request; contributions made using AI will be rejected outright.
