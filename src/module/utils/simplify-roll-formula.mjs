@@ -28,7 +28,7 @@ export default function simplifyRollFormula(formula, rollData = {}) {
   if (roll.isDeterministic) return String(roll.evaluateSync().total);
 
   // If the formula contains multiplication or division we cannot easily simplify
-  if (/[*/]/.test(roll.formula)) return roll.constructor.getFormula(roll.terms);
+  if (/[*/]/.test(roll.formula)) return formula;
 
   // Flatten the roll formula and eliminate string terms.
   roll.terms = _expandParentheticalTerms(roll.terms);
