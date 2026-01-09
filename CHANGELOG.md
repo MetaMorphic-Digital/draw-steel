@@ -48,6 +48,7 @@
 
 ### Fixed
 
+- Corrected the prototype tokens of various monsters to match their size. (#1523)
 - Fixed source registration logic to match documentation.
 
 ## 0.9.2
