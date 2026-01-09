@@ -9,22 +9,20 @@ const {
 /**
  * A standardized helper function for simplifying the constant parts of a multipart roll formula.
  *
- * @param {string} formula                          The original roll formula.
- * @param {object} [options]                        Formatting options.
- * @param {object} [options.rollData={}]            The actor or item roll data to use for the formula.
+ * @param {string} formula                  The original roll formula.
+ * @param {object} [rollData={}]            The actor or item roll data to use for the formula.
  *
  * @returns {string}  The resulting simplified formula.
  */
 export default function simplifyRollFormula(formula, rollData = {}) {
-  // Create a new roll and verify that the formula is valid before attempting simplification.
-  let roll;
-  try {
-    if (!DSRoll.validate(formula)) throw new Error("The roll formula is not valid.");
-    roll = new DSRoll(formula.replace(RollTerm.FLAVOR_REGEXP, ""), rollData);
-  } catch(err) {
-    console.warn(`Unable to simplify formula '${formula}': ${err}`);
+
+  // Verify that the formula is valid before attempting to simplify it.
+  if (!DSRoll.validate(formula)) {
+    console.warn(`Unable to simplify formula '${formula}': The roll formula is not valid.`);
     return formula;
   }
+
+  const roll = new DSRoll(formula.replace(RollTerm.FLAVOR_REGEXP, ""), rollData);
 
   // If roll is deterministic, return early with evaluated total.
   if (roll.isDeterministic) return String(roll.evaluateSync().total);
@@ -42,7 +40,7 @@ export default function simplifyRollFormula(formula, rollData = {}) {
   diceTerms = _simplifyDiceTerms(diceTerms ?? []);
 
   // Recombine the terms into a single term array and remove an initial + operator if present.
-  const simplifiedTerms = [numericTerms, diceTerms, poolTerms, mathTerms].flat().filter(Boolean);
+  const simplifiedTerms = [numericTerms, diceTerms, poolTerms, mathTerms].flat().filter(_ => _);
   if (simplifiedTerms[0]?.operator === "+") simplifiedTerms.shift();
   return roll.constructor.getFormula(simplifiedTerms);
 }
@@ -52,7 +50,7 @@ export default function simplifyRollFormula(formula, rollData = {}) {
 /**
  * A helper function for combining unannotated numeric terms in an array into a single numeric term.
  * @param {object[]} terms  An array of roll terms.
- * @returns {object[]}      A new array of terms with numeric terms combined into one.
+ * @returns {Array<NumericTerm|OperatorTerm>}      A new array of terms with numeric terms combined into one.
  */
 function _simplifyNumericTerms(terms) {
   if (!terms.length) return terms;
@@ -79,23 +77,19 @@ function _simplifyDiceTerms(terms) {
   // Split the terms into different die sizes and signs
   const diceQuantities = terms.reduce((obj, curr, i) => {
     if (curr instanceof OperatorTerm) return obj;
-    const isCoin = curr.constructor?.name === "Coin";
-    const face = isCoin ? "c" : curr.faces;
-    const modifiers = isCoin ? "" : curr.modifiers.filterJoin("");
-    const key = `${terms[i - 1].operator}${face}${modifiers}`;
+    const { faces, modifiers } = curr;
+    const key = `${terms[i - 1].operator}${faces}${modifiers.filterJoin("")}`;
     obj[key] ??= {};
     if ((curr._number instanceof Roll) && (curr._number.isDeterministic)) curr._number.evaluateSync();
     obj[key].number = (obj[key].number ?? 0) + curr.number;
-    if (!isCoin) obj[key].modifiers = (obj[key].modifiers ?? []).concat(curr.modifiers);
+    obj[key].modifiers = (obj[key].modifiers ?? []).concat(curr.modifiers);
     return obj;
   }, {});
 
   // Add new die and operator terms to simplified for each die size and sign
   const simplified = Object.entries(diceQuantities).flatMap(([key, { number, modifiers }]) => ([
     new OperatorTerm({ operator: key.charAt(0) }),
-    key.slice(1) === "c"
-      ? new Coin({ number: number })
-      : new Die({ number, faces: parseInt(key.slice(1)), modifiers: [...new Set(modifiers)] }),
+    new Die({ number, faces: parseInt(key.slice(1)), modifiers: [...new Set(modifiers)] }),
   ]));
   return simplified;
 }
@@ -108,7 +102,7 @@ function _simplifyDiceTerms(terms) {
  * @returns {object[]}      A new array of terms with no parenthetical terms.
  */
 function _expandParentheticalTerms(terms) {
-  terms = terms.reduce((acc, term) => {
+  terms = terms.flatMap(term => {
     if (term instanceof ParentheticalTerm) {
       if (term.isDeterministic) {
         const roll = new DSRoll(term.term);
@@ -118,10 +112,9 @@ function _expandParentheticalTerms(terms) {
         term = _expandParentheticalTerms(subterms);
       }
     }
-    acc.push(term);
-    return acc;
-  }, []);
-  return DSRoll.fromTerms(terms.flat()).terms;
+    return term;
+  });
+  return DSRoll.fromTerms(terms).terms;
 }
 
 /* -------------------------------------------------- */
