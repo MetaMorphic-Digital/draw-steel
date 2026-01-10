@@ -1,33 +1,30 @@
 {
-  "folder": "uBYwoiLZC8CArBSZ",
-  "name": "Word of Guidance",
+  "folder": "9ANvwB5lFXPqOa0k",
+  "name": "Keeper of Order",
   "type": "ability",
-  "_id": "cIyx6zWZj5c900Ge",
-  "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
+  "_id": "GcuPYWaSMerBUWlK",
+  "img": "icons/skills/social/trading-justice-scale-gold.webp",
   "system": {
     "source": {
-      "book": "Heroes",
-      "page": "98",
+      "book": "",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "word-of-guidance",
-    "story": "You invigorate an attacking ally with divine energy.",
-    "keywords": [
-      "magic",
-      "ranged"
-    ],
-    "type": "triggered",
+    "_dsid": "keeper-of-order",
+    "story": "",
+    "keywords": [],
+    "type": "freeTriggered",
     "category": "",
     "resource": null,
-    "trigger": "The target makes an ability roll for a damage-dealing ability.",
+    "trigger": "Once per round when you or an adjacent creature makes a power roll",
     "distance": {
-      "type": "ranged",
-      "primary": 10
+      "type": "self"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
-      "value": 1
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -37,12 +34,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The power roll gains an edge.</p>",
+      "before": "<p>You can remove an edge or a bane on the roll, turn a double edge into an edge, or turn a double bane into a bane.</p>",
       "after": ""
     },
     "spend": {
-      "text": "The power roll has a double edge.",
-      "value": 1
+      "text": "",
+      "value": null
     }
   },
   "effects": [],
@@ -58,9 +55,9 @@
     "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
-    "createdTime": 1755647909605,
+    "createdTime": 1768001375518,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!cIyx6zWZj5c900Ge"
+  "_key": "!items!GcuPYWaSMerBUWlK"
 }
