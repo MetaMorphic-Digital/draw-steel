@@ -57,6 +57,29 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
   /* -------------------------------------------------- */
 
+  /**
+   * Valid entry types, as represented by `flags.draw-steel.type`.
+   * @type {Record<string, { label: string; order?: number }>}
+   */
+  static ENTRY_TYPES = {
+    chapter: {
+      label: "DRAW_STEEL.COMPENDIUM.TOC.ENTRY_TYPES.chapter",
+      order: 0,
+    },
+    appendix: {
+      label: "DRAW_STEEL.COMPENDIUM.TOC.ENTRY_TYPES.appendix",
+      order: 100,
+    },
+    special: {
+      label: "DRAW_STEEL.COMPENDIUM.TOC.ENTRY_TYPES.special",
+    },
+    header: {
+      label: "DRAW_STEEL.COMPENDIUM.TOC.ENTRY_TYPES.header",
+    },
+  };
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _createContextMenus() {
     this._createContextMenu(this._getEntryContextOptions, "[data-document-id][data-entry-id]", {
@@ -98,7 +121,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
       if (type === "header") {
         const page = entry.pages.contents[0];
         context.header = {
-          title: flags.title ?? page?.name,
+          title: flags.title || page?.name,
           content: page?.text.content,
         };
         continue;
@@ -107,10 +130,10 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
       const data = {
         type, flags,
         id: entry.id,
-        name: flags.title ?? entry.name,
+        name: flags.title || entry.name,
         pages: Array.from(entry.pages).map(({ flags, id, name, sort }) => ({
           id, sort, flags,
-          name: flags[systemID]?.title ?? name,
+          name: flags[systemID]?.title || name,
           entryId: entry.id,
         })),
       };
@@ -119,7 +142,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
         data.showPages = flags.showPages ?? !flags.append;
         specialEntries.push(data);
       } else {
-        data.order = (this.constructor.TYPES[type] ?? 200) + (flags.position ?? 0);
+        data.order = (this.constructor.ENTRY_TYPES[type].order ?? 200) + (flags.position ?? 0);
         data.showPages = (flags.showPages !== false) && ((flags.showPages === true) || (type === "chapter"));
         context.chapters.push(data);
       }
@@ -173,7 +196,9 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
   static async #configureTOC(event, target) {
     const fd = await CompendiumTOCConfig.create({ compendium: this.collection });
 
-    getDocumentClass("JournalEntry").updateDocuments(fd, { pack: this.collection.collection });
+    await getDocumentClass("JournalEntry").updateDocuments(fd, { pack: this.collection.collection });
+
+    this.render();
   }
 
   /* -------------------------------------------------- */
@@ -187,4 +212,9 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
       pageId: target.closest("[data-page-id]")?.dataset.pageId,
     });
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onSearchFilter(event, query, rgx, html) {}
 }

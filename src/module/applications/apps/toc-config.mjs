@@ -1,5 +1,6 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DSApplication from "../api/application.mjs";
+import DrawSteelCompendiumTOC from "../sidebar/apps/table-of-contents.mjs";
 
 /**
  * @import { ApplicationRenderOptions } from "@client/applications/_types.mjs"
@@ -75,7 +76,15 @@ export default class CompendiumTOCConfig extends DSApplication {
    * @param {ApplicationRenderOptions} options
    */
   async _prepareBodyContext(context, options) {
-    context.collection = this.compendium.contents.sort((a, b) => a.sort - b.sort);
+    context.entries = this.compendium.contents.sort((a, b) => a.sort - b.sort).map((doc, index) => ({
+      document: doc,
+      type: doc.getFlag(systemID, "type") ?? "chapter",
+      showPages: doc.getFlag(systemID, "showPages") ?? true,
+      position: doc.getFlag(systemID, "position") ?? index,
+      title: doc.getFlag(systemID, "title"),
+    }));
+
+    context.entryTypes = Object.entries(DrawSteelCompendiumTOC.ENTRY_TYPES).map(([value, { label }]) => ({ value, label }));
   }
 
   /* -------------------------------------------------- */

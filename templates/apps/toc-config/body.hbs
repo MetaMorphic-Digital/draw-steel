@@ -1,7 +1,36 @@
-<section>
-  <ul>
-    {{#each collection}}
-    <li>{{name}}</li>
-    {{/each}}
-  </ul>
+<section class="standard-form scrollable">
+  {{#each entries}}
+  <fieldset>
+    <legend>{{document.name}}</legend>
+    <div class="form-group">
+      <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.entryType.label"}}</label>
+      <div class="form-fields">
+        <select name="{{concat document.id ".type"}}">
+          {{selectOptions @root.entryTypes selected=type localize=true}}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group slim">
+        <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.showPages.label"}}</label>
+        <div class="form-fields">
+          <input type="checkbox" name="{{concat document.id ".showPages"}}" {{checked showPages}}>
+        </div>
+      </div>
+      <div class="form-group slim">
+        <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.position.label"}}</label>
+        <div class="form-fields">
+          <input type="number" name="{{concat document.id ".position"}}" value="{{position}}" step="1">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.label"}}</label>
+      <div class="form-fields">
+        <input type="text" name="{{concat document.id ".title"}}" value="{{title}}" placeholder="{{document.name}}">
+      </div>
+      <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.hint"}}</p>
+    </div>
+  </fieldset>
+  {{/each}}
 </section>
