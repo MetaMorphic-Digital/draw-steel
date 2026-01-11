@@ -1,32 +1,27 @@
-import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import DSApplication from "../../api/application.mjs";
 
 /**
  * @import DrawSteelActor from "../../../documents/actor.mjs";
- * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import {AdvancementChain, AdvancementNode} from "../../../utils/advancement/_module.mjs";
+ * @import { ApplicationConfiguration, ApplicationRenderContext, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  */
 
 /**
  * @typedef ChainConfigurationDialogOptions
- * @property {DrawSteelActor} actor
- * @property {AdvancementChain[]} chains
+ * @property {AdvancementChain} chains
  */
 
 export default class ChainConfigurationDialog extends DSApplication {
   /**
    * @param {ApplicationConfiguration & ChainConfigurationDialogOptions} options
    */
-  constructor({ chains, actor, ...options } = {}) {
-    if (!chains) {
+  constructor({ chain, ...options } = {}) {
+    if (!chain) {
       throw new Error("The chain configuration dialog was constructed without Chains.");
     }
-    if (!actor || !(actor.documentName === "Actor") || !(actor.type === "hero")) {
-      throw new Error("A chain configuration dialog can only be constructed for heroes.");
-    }
     super(options);
-    this.#chains = chains;
-    this.#hero = actor;
+    Object.defineProperty(this, "chain", { value: chain, writable: false, configurable: false });
   }
 
   /* -------------------------------------------------- */
@@ -63,62 +58,57 @@ export default class ChainConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * The individual advancement chains. These will be mutated by the application
-   * and as such cannot be reused for repeat behavior.
-   * @type {AdvancementChain[]}
+   * The advancement chain this dialog is modifying.
+   * @type {AdvancementChain}
    */
-  #chains;
-  // eslint-disable-next-line @jsdoc/require-jsdoc
-  get chains() {
-    return this.#chains;
-  }
+  chain;
 
   /* -------------------------------------------------- */
 
   /**
-   * The hero leveling up.
+   * The actor leveling up.
    * @type {DrawSteelActor}
    */
-  #hero;
-  // eslint-disable-next-line @jsdoc/require-jsdoc
-  get hero() {
-    return this.#hero;
+  get actor() {
+    return this.chain.actor;
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _prepareContext(options) {
-    const context = await super._prepareContext(options);
-    context.ctx = { chains: this.#chains.map(c => c.active()) };
-    context.buttons = [{ type: "submit", label: "Confirm", icon: "fa-solid fa-fw fa-check" }];
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+
+    switch (partId) {
+      case "chains":
+        await this._prepareChainContext(context, options);
+        break;
+      case "footer":
+        context.buttons = [{ type: "submit", label: "Confirm", icon: "fa-solid fa-fw fa-check" }];
+        break;
+    }
+
     return context;
   }
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  async _preFirstRender(context, options) {
-    await super._preFirstRender(context, options);
-
-    for (const chain of this.#chains) {
-      chain.enrichedDescription = await enrichHTML(chain.advancement.description, { relativeTo: chain.advancement.document });
-    }
-  }
-
-  /* -------------------------------------------------- */
-
   /**
-   * Find the node that contains an advancement.
-   * @param {string} uuid   The uuid of an advancement.
-   * @returns {AdvancementChain|null}
+   *
+   * @param {ApplicationRenderContext} context      Shared context provided by _preparePartContext, will be mutated.
+   * @param {ApplicationRenderOptions} options       Options which configure application rendering behavior.
    */
-  getByAdvancement(uuid) {
-    for (const chain of this.#chains) {
-      const node = chain.getByAdvancement(uuid);
-      if (node) return node;
+  async _prepareChainContext(context, options) {
+
+    /** @type {AdvancementNode[][]} */
+    const rootNodes = context.rootNodes = [];
+
+    for (const node of this.chain.nodes.values()) {
+      if (!node.active) continue;
+      node.enrichedDescription ??= await enrichHTML(node.advancement.description, { relativeTo: node.advancement.document });
+      // Possibly a more efficient method here, this is looping over the nodes array a *lot*.
+      if (!node.depth) rootNodes.push([node, ...node.descendants()].filter(n => n.active));
     }
-    return null;
   }
 
   /* -------------------------------------------------- */
@@ -141,7 +131,7 @@ export default class ChainConfigurationDialog extends DSApplication {
    */
   static async #configureAdvancement(event, target) {
     const advancementUuid = target.closest("[data-advancement-uuid]").dataset.advancementUuid;
-    const node = this.getByAdvancement(advancementUuid);
+    const node = this.chain.nodes.get(advancementUuid);
     const configured = await node.advancement.configureAdvancement(node);
     if (!configured) return;
     this.render();

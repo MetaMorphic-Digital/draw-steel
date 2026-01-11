@@ -28,7 +28,7 @@ export default class AdvancementChain {
 
     const maxLevel = ds.CONFIG.hero.xpTrack.length;
 
-    if (!levelRange.start.between(1, maxLevel) || !levelRange.end.between(1, maxLevel)) {
+    if (!levelRange.end.between(1, maxLevel)) {
       throw new Error("The AdvancementChain level is out of bounds.");
     }
     Object.defineProperties(this, {
@@ -79,8 +79,8 @@ export default class AdvancementChain {
   /* -------------------------------------------------- */
 
   /**
-   * Nodes in the chain, categorized by the advancement type.
-   * @type {Map<string, AdvancementNode[]>}
+   * Nodes in the chain. The key is the .
+   * @type {Map<string, AdvancementNode>}
    */
   nodes;
 
@@ -96,10 +96,7 @@ export default class AdvancementChain {
     if (this.#initialized) throw new Error("An AdvancementChain cannot be initialized more than once.");
 
     const items = options.item ? [options.item] : this.actor.items;
-    for (const item of items) {
-      if (!item.supportsAdvancements) continue;
-      await Promise.all(this.createNodes(item));
-    }
+    await Promise.allSettled(items.map(i => this.createNodes(i)).flat());
     this.#initialized = true;
   }
 
@@ -110,9 +107,9 @@ export default class AdvancementChain {
    * @param {DrawSteelItem} item                    An item that has an Advancement collection.
    * @param {object} [options]
    * @param {AdvancementLeaf} [options.parentLeaf]  A parent leaf for the node, used by item grants.
-   * @returns {Promise<Array<Promise<void>>>}
+   * @returns {Array<Promise<void>>}
    */
-  async createNodes(item, options = {}) {
+  createNodes(item, options = {}) {
     const promises = [];
     if (!item.supportsAdvancements) return promises;
     const { start: levelStart, end: levelEnd } = this.levelRange;
@@ -137,8 +134,7 @@ export default class AdvancementChain {
    * @returns {true}
    */
   addNode(node) {
-    if (!this.nodes.has(node.type)) this.nodes.set(node.type, []);
-    this.nodes.get(node.type).push(node);
+    this.nodes.set(node.id, node);
     return true;
   }
 
@@ -149,11 +145,7 @@ export default class AdvancementChain {
    * @param {AdvancementNode} node
    */
   removeNode(node) {
-    const nodes = this.nodes.get(node.type);
-    const result = nodes.findSplice(n => n === node);
-    if (result !== null) {
-      for (const child of node.children) this.removeNode(child);
-    }
+    this.nodes.delete(node.id);
   }
 
   /* -------------------------------------------------- */

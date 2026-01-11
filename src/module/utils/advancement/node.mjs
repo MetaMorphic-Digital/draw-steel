@@ -67,10 +67,8 @@ export default class AdvancementNode {
    */
   get children() {
     const children = [];
-    for (const nodes of this.chain.nodes.values()) {
-      for (const node of nodes) {
-        if (node.parentNode === this) children.push(node);
-      }
+    for (const node of this.chain.nodes.values()) {
+      if (node.parentNode === this) children.push(node);
     }
     return children;
   }
@@ -95,10 +93,11 @@ export default class AdvancementNode {
 
   /**
    * Unique id to identify this node.
+   * Serves as the key in the chain's node map.
    * @type {string}
    */
   get id() {
-    return this.advancement.id;
+    return this.advancement.uuid;
   }
 
   /* -------------------------------------------------- */
@@ -127,12 +126,12 @@ export default class AdvancementNode {
   /* -------------------------------------------------- */
 
   /**
-   * Has this node been chosen?
+   * Should this node be considered as part of the final tally?
    * @type {boolean}
    */
-  get isChosen() {
+  get active() {
     if (!this.parent) return true;
-    return this.parent.isChosen && this.parentNode.isChosen;
+    return this.parent.isChosen && this.parentNode.active;
   }
 
   /* -------------------------------------------------- */

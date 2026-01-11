@@ -1,8 +1,7 @@
 <section class="standard-form">
   <ul class="advancement-list">
-    {{#each ctx.chains}}
-
-    {{#each this}}
+    {{#each rootNodes as |nodeArray|}}
+    {{#each nodeArray}}
     <li class="advancement" data-advancement-uuid="{{advancement.uuid}}">
       <div class="advancement-row">
         <img class="advancement-img" src="{{advancement.img}}" alt="{{advancement.name}}">
@@ -18,21 +17,8 @@
       {{/if}}
       <ul class="advancement-choices">
         {{#each choices}}
-
         {{#if isChosen}}
-
-        {{!-- ITEM GRANT SELECTED CHOICES --}}
-        {{#if (eq node.advancement.type "itemGrant")}}
-        <li class="advancement-choice" data-item-uuid="{{item.uuid}}">{{{itemLink.outerHTML}}}</li>
-        {{/if}}
-        {{!-- TRAIT SELECTED CHOICES --}}
-        {{#if node.advancement.isTrait}}
-        <li class="advancement-choice">{{choice}}</li>
-        {{/if}}
-        {{!-- CHARACTERISTIC SELECTED CHOICES --}}
-        {{#if (eq node.advancement.type "characteristic")}}
-        <li>{{localize "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease" chr=choice}}</li>
-        {{/if}}
+        <li class="advancement-choice">{{{label}}}</li>
         {{/if}}
         {{/each}}
       </ul>

@@ -75,6 +75,12 @@ export interface AdvancementChainCharacteristicLeaf extends AdvancementLeaf {
   choice: string;
   characteristic: string;
 }
+declare module "./utils/advancement/node.mjs" {
+  export default interface AdvancementNode {
+    /** Assigned by the Chain Configuration Dialog */
+    enrichedDescription?: string;
+  }
+}
 
 declare module "./utils/advancement-chain.mjs" {
   export default interface AdvancementChain {

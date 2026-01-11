@@ -5,7 +5,7 @@ import ItemGrantConfigurationDialog from "../../../applications/apps/advancement
 import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 
 /**
- * @import DrawSteelActor from "../../../documents/actor.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
  */
 
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -145,14 +145,17 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /** @inheritdoc */
   async createLeaves(node) {
+    const promises = [];
     for (const { uuid } of this.pool) {
+      /** @type {DrawSteelItem} */
       const item = await fromUuid(uuid);
       if (!item) continue;
-      const leaf = node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor());
+      const leaf = node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor().outerHTML);
       if (!item.supportsAdvancements) continue;
 
-      await node.chain.createNodes(item, { parent: leaf });
+      promises.push(...node.chain.createNodes(item, { parentLeaf: leaf }));
     }
+    return Promise.allSettled(promises);
   }
 
   /* -------------------------------------------------- */

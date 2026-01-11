@@ -3,6 +3,7 @@ import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mj
 import DSRoll from "../../rolls/base.mjs";
 import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
+import AdvancementChain from "../../utils/advancement/chain.mjs";
 import BaseActorModel from "./base.mjs";
 
 /**
@@ -505,22 +506,22 @@ export default class HeroModel extends BaseActorModel {
 
     if (!cls) item.system.applyAdvancements({ actor: this.parent });
     else {
-      const levelRange = { start: this.level + 1, end: this.level + levels };
-      const chains = (await Promise.all(this.parent.items.map(i => {
-        if (i.supportsAdvancements) return i.system.createChains(levelRange.start, levelRange.end);
-        return [];
-      }))).flat();
+
+      const chain = new AdvancementChain(this.parent, { start: this.level + 1, end: this.level + levels });
+
+      await chain.initializeRoots();
 
       const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-        chains, actor: this.parent, window: {
+        chain,
+        window: {
           title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
         },
       });
       if (!configured) return;
 
-      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": levelRange.end } };
+      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": chain.levelRange.end } };
 
-      this._finalizeAdvancements({ chains, toUpdate }, { levels: levelRange });
+      this._finalizeAdvancements({ chain, toUpdate }, { levels: chain.levelRange });
     }
 
     return this.class;
@@ -531,7 +532,7 @@ export default class HeroModel extends BaseActorModel {
   /**
    * Perform document operations for advancements.
    * @param {object} config
-   * @param {AdvancementChain[]} config.chains
+   * @param {AdvancementChain} config.chain
    * @param {ItemData[]} [config.toCreate={}]
    * @param {ItemData[]} [config.toUpdate={}]
    * @param {ActorData} [config.actorUpdate={}]
@@ -543,11 +544,12 @@ export default class HeroModel extends BaseActorModel {
    *                    or ItemGrantAdvancement#reconfigure methods
    */
   async _finalizeAdvancements(
-    { chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
+    { chain, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
     { levels } = {},
   ) {
     // First gather all new items that are to be created.
-    for (const chain of chains) for (const node of chain.active()) {
+    for (const node of chain.nodes.values()) {
+      if (!node.active) continue;
       if (node.advancement.type === "itemGrant") {
         const parentItem = node.advancement.document;
 
