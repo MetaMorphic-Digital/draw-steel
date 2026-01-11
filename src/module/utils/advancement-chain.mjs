@@ -25,6 +25,7 @@ export default class AdvancementChain {
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {
+        if (!node.choices[k].children) continue;
         for (const u in node.choices[k].children)
           yield * yielder(node.choices[k].children[u]);
       }
@@ -51,7 +52,7 @@ export default class AdvancementChain {
       yield node;
       for (const k in node.choices) {
         const isSelected = !node.advancement.isChoice || !!node.selected[k];
-        if (!isSelected) continue;
+        if (!isSelected || !node.choices[k].children) continue;
         for (const u in node.choices[k].children)
           yield * yielder(node.choices[k].children[u]);
       }

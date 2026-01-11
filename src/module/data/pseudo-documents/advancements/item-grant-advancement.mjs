@@ -2,6 +2,7 @@ import BaseAdvancement from "./base-advancement.mjs";
 import { systemID } from "../../../constants.mjs";
 import { setOptions } from "../../helpers.mjs";
 import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 
 /**
  * @import DrawSteelActor from "../../../documents/actor.mjs";
@@ -138,6 +139,20 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     }
     return items;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async createLeaves(node) {
+    for (const { uuid } of this.pool) {
+      const item = await fromUuid(uuid);
+      if (!item) continue;
+      const leaf = node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor());
+      if (!item.supportsAdvancements) continue;
+
+      await node.chain.createNodes(item, { parent: leaf });
+    }
   }
 
   /* -------------------------------------------------- */
