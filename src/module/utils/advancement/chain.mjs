@@ -28,7 +28,7 @@ export default class AdvancementChain {
 
     const maxLevel = ds.CONFIG.hero.xpTrack.length;
 
-    if (!levelRange.end.between(1, maxLevel)) {
+    if (!levelRange.end.between(null, maxLevel)) {
       throw new Error("The AdvancementChain level is out of bounds.");
     }
     Object.defineProperties(this, {

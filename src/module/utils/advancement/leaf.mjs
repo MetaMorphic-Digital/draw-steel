@@ -1,18 +1,26 @@
 import AdvancementNode from "./node.mjs";
 
 /**
+ * @import DrawSteelItem from "../../documents/item.mjs";
+ */
+
+/**
  * A leaf represents an individual choice on a node. It may have descendant nodes.
  */
 export default class AdvancementLeaf {
   /**
    * @param {AdvancementNode} node
    * @param {string} key
+   * @param {string} label
+   * @param {object} [options={}]
+   * @param {DrawSteelItem} [options.item]
    */
-  constructor(node, key, label) {
+  constructor(node, key, label, options = {}) {
     Object.defineProperties(this, {
       node: { value: node, configurable: false, writable: false },
       key: { value: key, configurable: false, writable: false },
       label: { value: label, configurable: false, writable: false },
+      item: { value: options.item ?? null, configurable: false, writable: false },
     });
   }
 
@@ -58,4 +66,12 @@ export default class AdvancementLeaf {
    * @type {Record<string, AdvancementNode> | null}
    */
   children = null;
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The item associated with this leaf's key. Only used by item grant advancements.
+   * @type {DrawSteelItem | null}
+   */
+  item = null;
 }

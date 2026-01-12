@@ -1,18 +1,19 @@
 import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
 import DSApplication from "../../api/application.mjs";
-import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";
+ * @import AdvancementNode from "../../../utils/advancement/node.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
 
 /**
  * @typedef ItemGrantConfigurationOptions
- * @property {AdvancementChain} node   The node to configure.
+ * @property {AdvancementNode} node   The node to configure.
  */
 
 const { DragDrop, TextEditor } = foundry.applications.ux;
@@ -26,7 +27,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    */
   constructor({ node, ...options }) {
     if (!(node.advancement?.type === "itemGrant")) {
-      throw new Error("An item grant configuration dialog must be passed an AdvancementChain with an Item Grant.");
+      throw new Error("An item grant configuration dialog must be passed an AdvancementNode with an Item Grant.");
     }
     super(options);
     this.#node = node;
@@ -68,7 +69,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /**
    * The node this is configuring. May be null.
-   * @type {AdvancementChain | null}
+   * @type {AdvancementNode | null}
    */
   #node;
   // eslint-disable-next-line @jsdoc/require-jsdoc
@@ -299,7 +300,8 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     }
     if (allowed && !this.items.has(item)) {
       this.items.add(item);
-      this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node);
+      const leaf = this.node.choices[item.uuid] = new AdvancementLeaf(this.node, item.uuid, item.toAnchor().outerHTML, { item });
+      await Promise.allSettled(this.node.chain.createNodes(item, { parentLeaf: leaf }));
       this.chosen.add(item.uuid);
       this.element.querySelector(".item-choices").insertAdjacentHTML("beforeend", `<div class="form-group">
         <label>${item.toAnchor().outerHTML}</label>
