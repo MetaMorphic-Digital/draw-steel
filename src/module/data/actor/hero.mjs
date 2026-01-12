@@ -544,7 +544,7 @@ export default class HeroModel extends BaseActorModel {
    */
   async _finalizeAdvancements(
     { chain, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
-    { levels } = {},
+    options = {},
   ) {
     // First gather all new items that are to be created.
     for (const node of chain.nodes.values()) {
@@ -580,6 +580,7 @@ export default class HeroModel extends BaseActorModel {
 
     // Perform item data modifications or store item updates.
     for (const node of chain.nodes.values()) {
+      if (!node.active) continue;
       if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
         const { document: item, id } = node.advancement;
         const isExisting = item.parent === this.parent;
@@ -596,9 +597,9 @@ export default class HeroModel extends BaseActorModel {
       }
     }
 
-    const operationOptions = {
+    const operationOptions = foundry.utils.mergeObject({
       levels: chain.levelRange,
-    };
+    }, options);
 
     return await Promise.all([
       this.parent.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: operationOptions }),

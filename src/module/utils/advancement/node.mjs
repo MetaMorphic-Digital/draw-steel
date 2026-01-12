@@ -114,11 +114,9 @@ export default class AdvancementNode {
     }
 
     let i = 0;
-    loop: for (const nodes of this.chain.nodes.values()) {
-      for (const node of nodes) {
-        if (node === this) break loop;
-        if (!node.depth) i++;
-      }
+    for (const node of this.chain.nodes.values()) {
+      if (node === this) break;
+      if (!node.depth) i++;
     }
     return i;
   }
@@ -141,7 +139,9 @@ export default class AdvancementNode {
    * @type {boolean}
    */
   get isConfigured() {
-    return this.advancement.isConfigured;
+    if (!this.advancement.isChoice) return true;
+    const selected = Object.values(this.selected).reduce((acc, b) => acc + b, 0);
+    return selected === this.advancement.chooseN;
   }
 
   /* -------------------------------------------------- */
@@ -179,6 +179,18 @@ export default class AdvancementNode {
    * @type {Record<string, boolean | number>}
    */
   selected = {};
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Retrieve the chosen selection. If no choice is involved, returns all choices.
+   * @type {string[]|null}
+   */
+  get chosenSelection() {
+    if (!this.isConfigured) return null;
+    if (this.advancement.isChoice) return Object.entries(this.selected).filter(([, v]) => v).map(([k]) => k);
+    return Object.keys(this.choices);
+  }
 
   /* -------------------------------------------------- */
 
