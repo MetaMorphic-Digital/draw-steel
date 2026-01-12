@@ -81,10 +81,10 @@ export default class AdvancementNode {
    */
   get depth() {
     let depth = 0;
-    let parent = this.parent;
+    let parent = this.parentNode;
     while (parent) {
       depth++;
-      parent = parent.parent;
+      parent = parent.parentNode;
     }
     return depth;
   }
@@ -142,16 +142,6 @@ export default class AdvancementNode {
     if (!this.advancement.isChoice) return true;
     const selected = Object.values(this.selected).reduce((acc, b) => acc + b, 0);
     return selected === this.advancement.chooseN;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * The level the actor is advancing to.
-   * @type {number}
-   */
-  get level() {
-    return this.chain.level;
   }
 
   /* -------------------------------------------------- */

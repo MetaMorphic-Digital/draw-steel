@@ -547,8 +547,7 @@ export default class HeroModel extends BaseActorModel {
     options = {},
   ) {
     // First gather all new items that are to be created.
-    for (const node of chain.nodes.values()) {
-      if (!node.active) continue;
+    for (const node of chain.activeNodes()) {
       if (node.advancement.type === "itemGrant") {
         const parentItem = node.advancement.document;
 
@@ -579,8 +578,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     // Perform item data modifications or store item updates.
-    for (const node of chain.nodes.values()) {
-      if (!node.active) continue;
+    for (const node of chain.activeNodes()) {
       if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
         const { document: item, id } = node.advancement;
         const isExisting = item.parent === this.parent;

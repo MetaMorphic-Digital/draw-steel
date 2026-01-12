@@ -88,6 +88,18 @@ export default class AdvancementChain {
   /* -------------------------------------------------- */
 
   /**
+   * The chain's active nodes.
+   * @yields {AdvancementNode}
+   */
+  * activeNodes() {
+    for (const node of this.nodes.values()) {
+      if (node.active) yield node;
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Initialize the chain, creating the root nodes and their initial leaves.
    * @param {object} [options={}]
    * @param {DrawSteelItem} [options.item]          A single compendium item being added to an actor that needs to apply advancements.
@@ -151,11 +163,9 @@ export default class AdvancementChain {
   /**
    * Add a node.
    * @param {AdvancementNode} node
-   * @returns {true}
    */
   addNode(node) {
     this.nodes.set(node.id, node);
-    return true;
   }
 
   /* -------------------------------------------------- */
@@ -166,21 +176,5 @@ export default class AdvancementChain {
    */
   removeNode(node) {
     this.nodes.delete(node.id);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Retrieve a node by its id.
-   * @type {string}
-   * @returns {AdvancementNode|null}
-   */
-  get(nodeId) {
-    for (const nodes of this.nodes.values()) {
-      for (const node of nodes) {
-        if (node.id === nodeId) return node;
-      }
-    }
-    return null;
   }
 }

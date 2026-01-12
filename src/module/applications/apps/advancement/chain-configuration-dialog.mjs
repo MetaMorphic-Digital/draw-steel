@@ -103,11 +103,11 @@ export default class ChainConfigurationDialog extends DSApplication {
     /** @type {AdvancementNode[][]} */
     const rootNodes = context.rootNodes = [];
 
-    for (const node of this.chain.nodes.values()) {
-      if (!node.active) continue;
+    for (const node of this.chain.activeNodes()) {
       node.enrichedDescription ??= await enrichHTML(node.advancement.description, { relativeTo: node.advancement.document });
       // Possibly a more efficient method here, this is looping over the nodes array a *lot*.
-      if (!node.depth) rootNodes.push([node, ...node.descendants()].filter(n => n.active));
+      // Might involve the currently-unused index property
+      if (!node.parent) rootNodes.push([node, ...node.descendants()].filter(n => n.active));
     }
   }
 
