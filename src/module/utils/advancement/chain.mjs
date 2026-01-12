@@ -2,6 +2,7 @@ import AdvancementNode from "./node.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import BaseAdvancement from "../../data/pseudo-documents/advancements/base.mjs";
  * @import AdvancementLeaf from "./leaf.mjs";
  */
 
@@ -89,14 +90,20 @@ export default class AdvancementChain {
   /**
    * Initialize the chain, creating the root nodes and their initial leaves.
    * @param {object} [options={}]
-   * @param {DrawSteelItem} [options.item] A single compendium item being added to an actor that needs to apply advancements.
+   * @param {DrawSteelItem} [options.item]          A single compendium item being added to an actor that needs to apply advancements.
+   * @param {BaseAdvancement} [options.advancement] A single advancement (likely being reconfigured).
    * @returns {Promise<void>}   A promise that resolves once the chain is initialized.
    */
   async initializeRoots(options = {}) {
     if (this.#initialized) throw new Error("An AdvancementChain cannot be initialized more than once.");
 
-    const items = options.item ? [options.item] : this.actor.items;
-    await Promise.allSettled(items.map(i => this.createNodes(i)).flat());
+    if (options.advancement) {
+      await this.#createNodeForAdvancement(options.advancement, options);
+    }
+    else {
+      const items = options.item ? [options.item] : this.actor.items;
+      await Promise.allSettled(items.map(i => this.createNodes(i)).flat());
+    }
     this.#initialized = true;
   }
 
@@ -119,11 +126,24 @@ export default class AdvancementChain {
         else return levelStart === null;
       });
       if (!validRange) continue;
-      const node = new AdvancementNode(advancement, this, { parent: options.parentLeaf ?? null });
-      promises.push(advancement.createLeaves(node));
-      this.addNode(node);
+      promises.push(this.#createNodeForAdvancement(advancement, options));
     }
     return promises;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create and initialize a node for a single advancement.
+   * @param {BaseAdvancement} advancement           An individual advancement to be turned into a node.
+   * @param {object} [options]
+   * @param {AdvancementLeaf} [options.parentLeaf]  A parent leaf for the node, used by item grants.
+   * @returns {Promise<void>}
+   */
+  async #createNodeForAdvancement(advancement, options = {}) {
+    const node = new AdvancementNode(advancement, this, { parent: options.parentLeaf ?? null });
+    this.addNode(node);
+    return advancement.createLeaves(node);
   }
 
   /* -------------------------------------------------- */

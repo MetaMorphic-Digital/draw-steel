@@ -521,7 +521,7 @@ export default class HeroModel extends BaseActorModel {
 
       const toUpdate = { [cls.id]: { _id: cls.id, "system.level": chain.levelRange.end } };
 
-      this._finalizeAdvancements({ chain, toUpdate }, { levels: chain.levelRange });
+      this._finalizeAdvancements({ chain, toUpdate });
     }
 
     return this.class;
@@ -538,7 +538,6 @@ export default class HeroModel extends BaseActorModel {
    * @param {ActorData} [config.actorUpdate={}]
    * @param {Map<string>} [config._idMap]
    * @param {object} [options]                                      Operation options.
-   * @param {{ start: number, end: number }} [options.levels]       Level information about these advancements.
    * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
    * @internal          End consumers should use the {@link advance}, AdvancementModel#applyAdvancements,
    *                    or ItemGrantAdvancement#reconfigure methods
@@ -580,7 +579,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     // Perform item data modifications or store item updates.
-    for (const chain of chains) for (const node of chain.active()) {
+    for (const node of chain.nodes.values()) {
       if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
         const { document: item, id } = node.advancement;
         const isExisting = item.parent === this.parent;
@@ -597,8 +596,9 @@ export default class HeroModel extends BaseActorModel {
       }
     }
 
-    const operationOptions = {};
-    if (levels) operationOptions.levels = levels;
+    const operationOptions = {
+      levels: chain.levelRange,
+    };
 
     return await Promise.all([
       this.parent.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: operationOptions }),

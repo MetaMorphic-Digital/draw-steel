@@ -1,4 +1,3 @@
-import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
 import DSApplication from "../../api/application.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
@@ -7,6 +6,7 @@ import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";
  * @import AdvancementNode from "../../../utils/advancement/node.mjs";
+ * @import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
