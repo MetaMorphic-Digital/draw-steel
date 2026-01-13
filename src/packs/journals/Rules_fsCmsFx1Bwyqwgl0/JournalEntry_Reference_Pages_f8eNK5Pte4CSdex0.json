@@ -4,7 +4,7 @@
   "_id": "f8eNK5Pte4CSdex0",
   "pages": [
     {
-      "sort": 100000,
+      "sort": 18000,
       "name": "Characteristics",
       "type": "reference",
       "_id": "wbCPqatk0kRgrZpy",
@@ -45,7 +45,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.wbCPqatk0kRgrZpy"
     },
     {
-      "sort": 200000,
+      "sort": 4000,
       "name": "Might",
       "type": "reference",
       "_id": "LedSCHkhclBNG67p",
@@ -86,7 +86,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.LedSCHkhclBNG67p"
     },
     {
-      "sort": 300000,
+      "sort": 5000,
       "name": "Agility",
       "type": "reference",
       "_id": "DG2tkerUo16322AY",
@@ -127,7 +127,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.DG2tkerUo16322AY"
     },
     {
-      "sort": 400000,
+      "sort": 7000,
       "name": "Intuition",
       "type": "reference",
       "_id": "btHevmmefh3I1dV1",
@@ -168,7 +168,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.btHevmmefh3I1dV1"
     },
     {
-      "sort": 350000,
+      "sort": 6000,
       "name": "Reason",
       "type": "reference",
       "_id": "rZDHwVr23OILE1XM",
@@ -209,7 +209,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.rZDHwVr23OILE1XM"
     },
     {
-      "sort": 500000,
+      "sort": 8000,
       "name": "Presence",
       "type": "reference",
       "_id": "z5fiYN750d7idtM0",
@@ -250,7 +250,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.z5fiYN750d7idtM0"
     },
     {
-      "sort": 700000,
+      "sort": 19000,
       "name": "Potency",
       "type": "reference",
       "_id": "TDEeoUAJRUSBkByN",
@@ -291,7 +291,7 @@
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.TDEeoUAJRUSBkByN"
     },
     {
-      "sort": 800000,
+      "sort": 20000,
       "name": "Power Roll",
       "type": "reference",
       "category": "MkXTjc6scRGEkmz0",
@@ -330,6 +330,662 @@
         "lastModifiedBy": null
       },
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.tpLzfZEnAg3WAc8J"
+    },
+    {
+      "sort": 0,
+      "name": "Ability",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "mpZrEjKwJEKiHKnE",
+      "system": {
+        "tooltip": "<p>Special [[reference mainAction]]{Main Actions}, [[reference maneuvers]]{Maneuvers}, and more that a creature can use to affect other [[reference creatureObject]]{Creatures and Objects}, and the environment.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Abilities are special actions, maneuvers, and more that allow you to affect creatures, objects, and the environment. They represent the main activities your character can undertake when the game is in combat or some other time-sensitive scenario. All characters have access to a few basic abilities, including free strikes and maneuvers such as @UUID[Compendium.draw-steel.abilities.Item.oxaISpgVoCfo6fmt]{Grab} and @UUID[Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu]{Knockback}. But your class, ancestry, kit, titles and treasures, and other heroic options give you access to more powerful abilities that make your hero stand out.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768262662763,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.mpZrEjKwJEKiHKnE"
+    },
+    {
+      "sort": 1000,
+      "name": "Ability Roll",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "DsHzsC9xbS2uDTVd",
+      "system": {
+        "tooltip": "<p>A [[reference powerRoll]] made as part of using an [[reference ability]]. [[reference skill]]{Skills} can’t be applied to ability rolls</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If an ability requires a power roll, it has a “Power Roll” entry that tells you which characteristic to add to the 2d10 roll you make when you use the ability.</p><p>Unlike power rolls made as tests, ability rolls always do something useful. You’re rolling to determine the impact of the ability, including how much damage it deals and any other effects it imposes based on the tier outcome of the power roll. For instance, the fury’s Brutal Slam ability is a melee strike that targets one adjacent creature (within 1 square), and which has the following effects:</p><p class=\"hanging\"><strong>Tier 1 (11 or lower):</strong> The ability deals damage equal to 3 + your Might score, then pushes the target back 1 square.</p><p class=\"hanging\"><strong>Tier 2 (12</strong><em>–</em><strong>16):</strong> The ability deals damage equal to 6 + your Might score, then pushes the target back 2 squares.</p><p class=\"hanging\"><strong>Tier 3 (17 or higher):</strong> The ability deals damage equal to 9 + your Might score, then pushes the target back 4 squares.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768262953541,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.DsHzsC9xbS2uDTVd"
+    },
+    {
+      "sort": 2000,
+      "name": "Adjacent",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "wJYPNIX6735qkPya",
+      "system": {
+        "tooltip": "<p>Within 1 [[reference square]].</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Many abilities and other options refer to creatures, objects, or spaces that are adjacent to a specified creature. Something is adjacent to a creature if it is within 1 square of that creature.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768263128192,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.wJYPNIX6735qkPya"
+    },
+    {
+      "sort": 3000,
+      "name": "Ancestry",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "aVnI025dpWjuH3ml",
+      "system": {
+        "tooltip": "<p>A [[reference humanoid]] creature’s species. Every [[reference hero]] has an ancestry.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Fantastic peoples inhabit the worlds of <em>Draw Steel</em>. Among them are devils, dwarves, elves, time raiders—and of course humans, whose culture and history dominates many worlds.</p><p>Your hero is one of these folks! The fantastic ancestry you choose bestows benefits that come from your anatomy and physiology. This choice doesn’t grant you cultural benefits, such as crafting or lore skills, though. While many game settings have cultures made of mostly one ancestry, other cultures and worlds have a cosmopolitan mix of peoples.</p><p>In <em>Draw Steel</em>, ancestry describes how you were born. Culture describes how you grew up. If you want to be a wode elf who was raised in a forest among other wode elves, you can do that! If you want to play a wode elf who was raised in an underground city of dwarves, humans, and orcs, you can do that too!</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768263510558,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.aVnI025dpWjuH3ml"
+    },
+    {
+      "sort": 9000,
+      "name": "Ally",
+      "type": "reference",
+      "category": "Ou4jQK9zXTOwJO0U",
+      "_id": "xX77jHOwOS8XTJS7",
+      "system": {
+        "tooltip": "<p>A creature who is willingly friendly to another creature.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If an ability targets one or more allies, it can affect only willing creatures who are friendly to the creature using the ability. Typically, you and any other player whose character you target with an ability decide who counts as an ally, though the Director has the final say.</p><p>You aren’t an eligible target for your own abilities that target allies unless those abilities also have “self” as a target, or unless the ability indicates otherwise.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768263632716,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.xX77jHOwOS8XTJS7"
+    },
+    {
+      "sort": 10000,
+      "name": "Area of Effect",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "2969TZTDE177bvEi",
+      "system": {
+        "tooltip": "<p>The [[reference square]]{squares} affected by an [[reference ability]] that creates an [[reference aura]], [[reference burst]], [[reference cube]], [[reference line]], or [[reference wall]]. (An ability that creates an area of effect affects targets simply by those targets being in its area, as opposed to a [[reference strike]].)</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Area abilities cover a number of squares on the battlefield at once, creating an effect within that area that lets you target multiple creatures or objects. When an ability creates an area of effect, it sometimes notes a distance for the effect in the form “within X.” The number X tells you how many squares away from you the area can be. If an area ability doesn’t have this distance, it originates from you and you are at the center of the area.</p><p>If an area ability originates a distance away from you, then one square of the area of effect must be within that distance, and must also be within your [[reference lineOfEffect]]. This square is referred to as the <strong>origin square</strong> of the area of effect. The area of effect can spread from the origin square however you choose, according to the rules for the shape and arrangement of that particular area.</p><p>You can place an area of effect to include one or more squares where you don’t have line of effect, as long as you have line of effect to the origin square. Unless otherwise noted, area abilities don’t pass through solid barriers such as walls or ceilings, and they don’t spread around corners.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768263726543,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.2969TZTDE177bvEi"
+    },
+    {
+      "sort": 11000,
+      "name": "Argument",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "btoOIJijDdahjW47",
+      "system": {
+        "tooltip": "<p>A plea the heroes make during a [[reference negotiation]] to convince one or more [[reference npc]]{NPCs} to work with them.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>As part of their initial request to an NPC in a negotiation, a hero makes an argument as to why the NPC should give the heroes what they want. The hero might offer to do something in exchange as part of their argument, such as clearing bandits from a forest, handing over a piece of treasure, or slaying a dragon for the NPC. Or instead of offering something, the hero could attempt to convince the NPC that it’s in their own best interest to help—or even that it’s a moral imperative. For example, a hero could appeal to a knight’s sense of duty, the potential wealth a mercenary could make, or the final wish of a queen’s dearly departed grandmother as part of an argument. NPCs who admire the heroes are more likely to respond to compliments and buttering up, while those who fear the heroes are more likely to respond to intimidation and awe.</p><p>Arguments need a justification as to why they’re true. “Helping us defeat Lord Saxton is good for you in the long run,” is half an argument, but the hero also needs to explain why this is the case. “Helping us defeat Lord Saxton is good for you in the long run, because we know he’s coming for your kingdom after Bedegar falls!” If a hero makes half an argument, the NPC might follow up with questions such as, “Why do you say that?” or “What makes you think that’s true?” to get the full argument from them.</p><p>One hero makes an argument to an NPC, but the players can discuss the details of the argument out of character beforehand. It’s up to the group to decide how much discussion to have before making an argument, and to decide what argument the players think will best sway the NPC.</p><p>This is a good topic for discussion before a group actually gets into a negotiation, so everyone knows the other players’ thoughts. Some groups have the most fun without any around-the-table discussion, while others prefer being able to strategize as often as possible.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768263910222,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.btoOIJijDdahjW47"
+    },
+    {
+      "sort": 12000,
+      "name": "Artisan",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "RUXQtabdFwfZ3Cqq",
+      "system": {
+        "tooltip": "<p>A [[reference follower]] who undertakes [[reference craftingProject]]{crafting projects} for a [[reference hero]].</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Artisans are crafting experts who can contribute to your research and crafting projects. An artisan can contribute one project roll per day to a downtime project you choose, whether you spend those days in respite, adventuring, or other activities. They must remain at your stronghold or at the site where the project is undertaken, and must have access to the necessary materials.</p><p>When you recruit an artisan, choose four skills from the crafting skill group that they know. An artisan has a Might or Agility score of 1 (your choice), a Reason score of 1, and a 0 in all other characteristics. They know Caelian and two other languages of your choice.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768263991718,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.RUXQtabdFwfZ3Cqq"
+    },
+    {
+      "sort": 21000,
+      "name": "Artifact",
+      "type": "reference",
+      "category": "z7TdMPge5FElMs1n",
+      "_id": "vuRZz2hSIZPFvL1W",
+      "system": {
+        "tooltip": "<p>A powerful [[reference treasure]] that can unbalance the game.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Artifacts are powerful treasures, with entire campaigns to be built around finding, using, hiding, protecting, or destroying one. Make no mistake—these items unbalance the game. If the heroes or villains have access to such a treasure, their power is far beyond what the encounter-building guidelines in <em>Draw Steel: Monsters</em> expect. That’s part of the fun!</p><p>Typically, one creature never holds onto an artifact for too long. Most of these treasures have a sentience of their own and an eagerness to move on. Since many powerful entities might want to get their hands on an artifact, characters might see armies, dragons, and even gods come to collect one from a wielder who refuses to let go.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768264075261,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.vuRZz2hSIZPFvL1W"
+    },
+    {
+      "sort": 13000,
+      "name": "Background",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "etUcPDck6u9QGpxW",
+      "system": {
+        "tooltip": "<p>A [[reference hero]]{hero’s} [[reference culture]] and [[reference career]].</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>What makes a hero? Is their desire to stand up for the innocent and protect others somehow innate? Are they born knowing that tyrants must fall? Does a higher power instill the idea that sometimes those least deserving of compassion are those who need it most?</p><p>No. A hero’s life experience and background make them what they are. That background starts with the culture in which a hero was raised, and is threaded through the career that led them to a life of adventuring.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265036397,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.etUcPDck6u9QGpxW"
+    },
+    {
+      "sort": 23000,
+      "name": "Aura",
+      "type": "reference",
+      "category": "GLF1N2Ga73aEx4rl",
+      "_id": "3IzfAxqODmxTQGXm",
+      "system": {
+        "tooltip": "<p>When an [[reference ability]] or other effect creates an aura, that area is expressed as “X aura.” The number X is the radius of the aura, which always originates from the creature or object who created it, extends from the outside of the creator’s [[reference space]], and moves with them.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When an ability creates an aura, that area is expressed as “X aura.” The number X is the radius of the aura, which always originates from you and moves with you for the duration of the ability that created it. A creature or object must be within X squares of you to be targeted by an aura ability.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265085401,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.3IzfAxqODmxTQGXm"
+    },
+    {
+      "sort": 14000,
+      "name": "Bane",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "OMD0y7dhERvBNGZn",
+      "system": {
+        "tooltip": "<p>A situational disadvantage that gives a creature a −2 penalty to a [[reference powerRoll]].</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A <strong>bane</strong> represents a situational disadvantage a hero or an enemy has when making a power roll. For example, if you make a strike while prone, the power roll for the strike takes a bane. A rainstorm might give you a bane on a power roll made to climb an outdoor wall because the weather makes the stone surface extra slick.</p><p>When you make a power roll with a bane, you take a −2 penalty to the roll. If you make a power roll with two or more banes, you have a <strong>double bane</strong>. With a double bane, you don’t subtract anything from the power roll, but the outcome of the roll automatically decreases one tier (to a minimum of tier 1).</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265208676,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.OMD0y7dhERvBNGZn"
+    },
+    {
+      "sort": 15000,
+      "name": "Bonus",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "Et7Kc1K01334FrFn",
+      "system": {
+        "tooltip": "<p>A positive number that increases a creature’s statistics or the roll of a die.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>While edges and banes cover most circumstantial effects that can have an impact on a power roll, a few rules add numeric bonuses or penalties to power rolls. Bonus and penalty values are specified in the rules that impose them, and are calculated independently of edges and banes, and before edges and banes are factored into a power roll. There is no limit to the number of bonuses or penalties that can apply to a power roll, and bonuses and penalties always add together.</p><p>Though it might sound as if the math with bonuses and penalties can get confusing, fear not! Bonuses and penalties are rare except in the case of skills, which appear on your character sheet.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265316897,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.Et7Kc1K01334FrFn"
+    },
+    {
+      "sort": 16000,
+      "name": "Breakthrough",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "Ig1sdMNjMKoGQR8y",
+      "system": {
+        "tooltip": "<p>A [[reference natural19or20]] on a [[reference projectRoll]]. When a character experiences a breakthrough, they can make another project roll for the same [[reference project]] as part of the same [[reference respite]] activity.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If you obtain a critical success—a natural 19 or 20—on a project roll, this is called a <strong>breakthrough</strong>, and you can make another project roll for the same project as part of the same respite activity.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265447828,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.Ig1sdMNjMKoGQR8y"
+    },
+    {
+      "sort": 17000,
+      "name": "Burrow",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "AE2vkxT9b1ANbiGb",
+      "system": {
+        "tooltip": "<p>A [[reference movement]] mode available to creatures with “burrow” in their speed entry, or who gain the capability to temporarily burrow. Such creatures can move through dirt horizontally at full speed.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A creature who has “burrow” in their speed entry, or who gains the temporary ability to burrow, can move through dirt horizontally, and either has the means to breathe while doing so or doesn’t require air to live. Such creatures can’t move through more solid ground, such as stone, unless their stat block or the effect that lets them burrow says otherwise. Similarly, a burrowing creature doesn’t leave a tunnel unless the rules say so.</p><h5>Dig Maneuver</h5><p>It takes extra effort to dig vertically through the ground as opposed to tunneling horizontally, requiring a creature to use a special maneuver. To use the Dig maneuver, a creature must have “burrow” in their speed entry, they must have a speed that is equal to or greater than their size, and they must be touching terrain that can be burrowed through.</p><p>When a creature uses the Dig maneuver, they can move vertically up to a number of squares equal to their size. If a burrowing creature has a creature who is not unconscious grabbed, they can’t willingly move deeper into the ground. It’s too difficult to dig with a flailing enemy in your claws.</p><h5>Targeting Burrowing Creatures</h5><p>If you are on the ground, you have line of effect to a burrowing creature if that creature occupies 1 or more squares of terrain that can be burrowed through and that touch the ground, and if you have line of effect to any of those squares. The burrowing creature gains the benefit of cover from you.</p><p>If you are completely beneath the ground while burrowing, you don’t have line of effect to any creature on the surface unless a rule states otherwise.</p><p>If you are completely beneath the ground while burrowing and are adjacent to another creature who is burrowing, you have line of effect to that creature, though you both have cover from each other.</p><p>You can’t gain the benefit of @UUID[.11movement000000#high-ground]{high ground} against creatures who are completely beneath the ground while burrowing.</p><h5>Non-Burrowing Creatures</h5><p>If you are on the ground and adjacent to a creature who is beneath the ground while burrowing, you can use a maneuver to pull that creature up 1 square out of the ground, provided the creature is willing.</p><p>If a creature who can’t burrow wants to dig into the ground, they can use the following ability provided their speed is 2 or more.</p><h3 data-no-toc>Claw Dirt</h3>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265532849,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.AE2vkxT9b1ANbiGb"
+    },
+    {
+      "sort": 22000,
+      "name": "Burst",
+      "type": "reference",
+      "category": "GLF1N2Ga73aEx4rl",
+      "_id": "fRRL0LxYTLYDjI2l",
+      "system": {
+        "tooltip": "<p>When an [[reference ability]] or other effect creates a burst, that area is expressed as “X burst.” The number X is the radius of the burst, which always originates from the creature or object who created it, extends from the outside of the creator’s [[reference space]], and lasts only for as long as it takes to affect its targets.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When an ability creates a burst area, that area is expressed as “X burst.” The number X is the radius of the burst, which always originates from you and lasts only for as long as it takes to affect its targets. A creature or object must be within X squares of you to be targeted by a burst ability.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768265662898,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.fRRL0LxYTLYDjI2l"
     }
   ],
   "sort": 0,

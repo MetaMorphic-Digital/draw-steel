@@ -1441,7 +1441,7 @@ const abilityDistances = {
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Aura",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.3IzfAxqODmxTQGXm",
     },
   },
   burst: {
@@ -1450,7 +1450,7 @@ const abilityDistances = {
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Burst",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.fRRL0LxYTLYDjI2l",
     },
   },
   cube: {
@@ -1547,7 +1547,7 @@ const abilityTargets = {
     all: "DRAW_STEEL.Item.ability.Target.AllAllies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.AllyEmbed",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.xX77jHOwOS8XTJS7",
     },
   },
   self: {
@@ -1923,7 +1923,7 @@ const treasureCategories = {
   artifact: {
     label: "DRAW_STEEL.Item.treasure.Categories.Artifact",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.vuRZz2hSIZPFvL1W",
     },
     get keywords() {
       return [];
@@ -2315,18 +2315,18 @@ preLocalize("sourceInfo.licenses", { keys: ["label"] });
  * @type {Record<string, string>}
  */
 export const references = {
-  ability: "",
-  abilityRoll: "",
-  adjacent: "",
-  ancestry: "",
-  areaOfEffect: "",
-  argument: "",
-  artisan: "",
-  background: "",
-  bane: "",
-  bonus: "",
-  breakthrough: "",
-  burrow: "",
+  ability: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.mpZrEjKwJEKiHKnE",
+  abilityRoll: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.DsHzsC9xbS2uDTVd",
+  adjacent: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.wJYPNIX6735qkPya",
+  ancestry: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.aVnI025dpWjuH3ml",
+  areaOfEffect: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.2969TZTDE177bvEi",
+  argument: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.btoOIJijDdahjW47",
+  artisan: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.RUXQtabdFwfZ3Cqq",
+  background: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.etUcPDck6u9QGpxW",
+  bane: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.OMD0y7dhERvBNGZn",
+  bonus: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Et7Kc1K01334FrFn",
+  breakthrough: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Ig1sdMNjMKoGQR8y",
+  burrow: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.AE2vkxT9b1ANbiGb",
   capital: "",
   career: "",
   characteristic: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.wbCPqatk0kRgrZpy",
