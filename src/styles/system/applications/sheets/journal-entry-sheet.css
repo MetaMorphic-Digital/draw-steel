@@ -12,7 +12,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-
   .active {
     text-shadow: none;
     background: transparent;
@@ -27,14 +26,18 @@
     border-image-slice: 1;
   }
 
+  /*special treatments*/
   .journal-page-header h1,
   h1.chapter,
   h1.window-title {
     font-family: 'Draw Steel Book', serif;
-    size: 3em;
     border-bottom: 0px;
     border-color: transparent;
     border-image: initial;
+  }
+
+  h1.window-title {
+    font-size: var(--font-size-20);
   }
 
   .chapter,
@@ -67,9 +70,6 @@
     font-weight: bold;
   }
 
-
-
-
   .window-title,
   button,
   .page-title {
@@ -83,7 +83,6 @@
 
   a:hover {
     text-shadow: 0 0 1px var(--draw-steel-c-color-shadow);
-    ;
   }
 
   a.button,
@@ -99,8 +98,14 @@
 
   /*contents*/
   .toc ol li {
-    font-family: 'Draw Steel Book';
+    font-family: var(--font-h1);
     position: relative;
+
+    /*specificity override*/
+    .heading-link,
+    .page-heading {
+      font-size: var(--font-size-20);
+    }
 
     /*laser line highlight specific to contents menu*/
     a:after {
@@ -152,7 +157,7 @@
     max-width: 650px;
     margin: 0px auto;
 
-    /*some asides are inverted to indicate DM / technical tips*/
+    /*some asides are inverted to indicate DM / technical tips. polygon clip fill to create a bevel*/
     div.inverse {
       background-color: black;
       clip-path: polygon(
@@ -212,20 +217,29 @@
     width: 100%;
     border-collapse: collapse;
     background: var(--input-background-color);
+
+    th,
+    td {
+      padding: 8px;
+    }
+
+    thead {
+      border: none;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: var(--input-background-color);
+    }
+
+    &.compact {
+
+      th,
+      td {
+        padding: 0px
+      }
+    }
   }
 
-  th,
-  td {
-    padding: 8px;
-  }
-
-  thead {
-    border: none;
-  }
-
-  tbody tr:nth-child(odd) {
-    background: var(--input-background-color);
-  }
 
   a {
     color: var(--draw-steel-c-laserline);
@@ -259,6 +273,7 @@
       position: absolute;
       top: calc(50% - 2em);
       filter: drop-shadow(1px 1px 0 orange) drop-shadow(-1px -1px 0 orange) drop-shadow(1px -1px 0 orange) drop-shadow(-1px 1px 0 orange);
+      /*optional todo: filter PNG to dropshadow shape and round edges for jpg at 1px border color*/
     }
 
     p {
@@ -266,7 +281,9 @@
     }
   }
 
-  /*laser lines on captions*/
+  /*laser lines on captions
+
+  */
   caption {
     text-align: center;
     position: relative;
@@ -278,6 +295,10 @@
     border-image-slice: 1;
     margin-bottom: 1em;
 
+    p {
+      background: transparent;
+    }
+
     /*strong creates the white box behind the lettering, uses before and after to place the diamonds at the edges*/
     strong {
       background: var(--draw-steel-c-white);
@@ -285,24 +306,24 @@
       margin-top: -0.75em;
       position: absolute;
       transform: translate(-50%, 0%);
-    }
 
-    strong::before {
-      content: "®";
-      font-family: Draw Steel Glyphs;
-      color: #866d4b;
-      position: absolute;
-      left: -0.5em;
-    }
+      &::before {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+        position: absolute;
+        left: -0.5em;
+      }
 
-    strong::after {
-      content: "®";
-      font-family: Draw Steel Glyphs;
-      color: #866d4b;
-      position: absolute;
-      right: -0.5em;
-    }
+      &::after {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+        position: absolute;
+        right: -0.5em;
+      }
 
+    }
 
     cite {
       position: absolute;
@@ -316,6 +337,13 @@
       margin-top: 3em;
     }
 
+
+    &::empty,
+    &:not(:has(p)),
+    &:has(p:empty) {
+      border: none;
+    }
+
   }
 
   /*laser lines on figcaptions*/
@@ -326,10 +354,8 @@
   figcaption {
     display: table-caption;
     caption-side: top;
-    width: 100%;
     text-align: center;
     position: relative;
-    border-bottom: 2px solid var(--draw-steel-c-laserline);
     line-height: 0.75em;
     padding-top: 0.85em;
     width: 100%;
@@ -337,48 +363,61 @@
     border-image-slice: 1;
     margin-bottom: 2em;
 
-    strong {
-      background: var(--draw-steel-c-white);
-      margin: -0.2em;
-      position: absolute;
-      transform: translate(-50%, 0%);
-      font-style: normal;
-    }
-
-    strong::before {
-      content: "®";
-      font-family: Draw Steel Glyphs;
-      color: #866d4b;
-    }
-
-    strong::after {
-      content: "® ";
-      font-family: Draw Steel Glyphs;
-      color: #866d4b;
-    }
-
     cite {
-      position: absolute;
-      top: 1.75em;
-      right: 0;
+      float: right;
     }
 
-    cite::before {
-      content: '';
-      clear: both;
-      /*margin-top: 2em;*/
+    /*if it has the table title in a strong tag*/
+    &:has(strong) {
+      border-bottom: 2px solid var(--draw-steel-c-laserline);
+
+      strong {
+        background: var(--draw-steel-c-white);
+        margin: -0.2em;
+        position: absolute;
+        transform: translate(-50%, 0%);
+        font-style: normal;
+      }
+
+      strong::before {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+
+
+      }
+
+      strong::after {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+      }
+
+      cite {
+        position: absolute;
+        top: 1.75em;
+        right: 0;
+      }
+
+      cite::before {
+        content: '';
+        clear: both;
+        /*margin-top: 2em;*/
+      }
     }
 
+    p {
+      padding: 0.5em;
+    }
   }
 
 }
 
-/*inline links and rolls; this may deserve it's own file if it's broader in scope?*/
+/*inline links and rolls; this may deserve it's own file if it's broader than journals*/
 .draw-steel .journal-entry-content,
 .draw-steel .journal-entry-pages,
 .draw-steel .journal-entry-page {
   background: var(--draw-steel-c-white);
-
 
   .content-link,
   .draw-steel .inline-roll {
