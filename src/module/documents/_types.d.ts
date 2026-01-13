@@ -18,6 +18,7 @@ import {
   Combatant as CombatantModels,
   CombatantGroup as CombatantGroupModels,
   Item as ItemModels,
+  JournalEntryPage as JEPModels,
 } from "../data/_module.mjs";
 import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem } from "./_module.mjs";
 
@@ -27,6 +28,7 @@ type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActo
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
+type JournalEntryPageModel = typeof JEPModels[keyof typeof JEPModels];
 
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
 
@@ -70,9 +72,9 @@ declare module "@client/documents/_module.mjs" {
     system: CombatantModels.BaseCombatantModel;
   }
 
-  interface BaseJournalEntryPage extends JournalEntryPageData, InstanceType<ClientDocument> {
-    type: "text" | "image" | "pdf" | "video";
-    system: Record<string, unknown>;
+  interface BaseJournalEntryPage<Model extends JournalEntryPageModel = JournalEntryPageModel> extends JournalEntryPageData, InstanceType<ClientDocument> {
+    type: Model["metadata"]["type"];
+    system: InstanceType<Model>;
   }
 
   interface BaseToken extends TokenData, InstanceType<ClientDocument> {}

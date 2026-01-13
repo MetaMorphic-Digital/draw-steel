@@ -43,6 +43,8 @@ export default class AdvancementModel extends BaseItemModel {
 
     const flags = this.parent.getFlag(systemID, "advancement") ?? {};
 
+    const respiteAdvancements = this.actor.system._respiteAdvancements;
+
     const record = this.actor.system._traits;
     const unfilled = this.actor.system._unfilledTraits;
     const addTrait = (type, trait) => {
@@ -53,6 +55,14 @@ export default class AdvancementModel extends BaseItemModel {
     const level = this.actor.system.level;
     for (const advancement of this.advancements) {
       if (!advancement.levels.some(l => l <= level)) continue;
+
+      // Populate _respiteAdvancements
+      if (advancement.repick.respite) {
+        respiteAdvancements[advancement.repick.respite] ??= new Set();
+        respiteAdvancements[advancement.repick.respite].add(advancement.getRelativeUUID(this.actor));
+      }
+
+      // Populate _unfilledTraits
       if (advancement.isTrait) {
         const selected = advancement.isChoice
           ? flags[advancement.id]?.selected ?? []

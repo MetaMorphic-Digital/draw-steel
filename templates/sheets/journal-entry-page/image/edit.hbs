@@ -1,0 +1,12 @@
+<section>
+  <figure class="image-preview">
+    {{#if src}}<img src="{{ src }}" alt="{{ name }}">{{/if}}
+    {{#if caption}}<figcaption>{{ caption }}</figcaption>{{/if}}
+  </figure>
+
+  {{formField fields.src value=source.src label="JOURNALENTRYPAGE.ImageSource" input=srcInput localize=true }}
+
+  {{formField fields.image.fields.caption value=source.image.caption label="JOURNALENTRYPAGE.ImageCaption" localize=true }}
+
+  {{~formField systemFields.artDescription value=system.artDescription elementType="textarea"}}
+</section>

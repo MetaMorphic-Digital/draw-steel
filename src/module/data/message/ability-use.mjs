@@ -154,6 +154,30 @@ export default class AbilityUseModel extends BaseMessageModel {
         actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
       }
     });
+
+    const gainResourceButtons = html.querySelectorAll(".gain-resource");
+    for (const gainResourceButton of gainResourceButtons) gainResourceButton.addEventListener("click", async (event) => {
+      const { amount, type } = gainResourceButton.dataset;
+      let path;
+      switch (type) {
+        case "surge":
+          path = "hero.surges";
+          break;
+        case "heroic":
+          path = "hero.primary.value";
+          break;
+        case "epic":
+          path = "hero.epic.value";
+          break;
+      }
+
+      if (!path) return;
+
+      const heroActors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
+      for (const actor of heroActors) {
+        await actor.modifyTokenAttribute(path, Number(amount), true, false);
+      }
+    });
   }
 
   /* -------------------------------------------------- */

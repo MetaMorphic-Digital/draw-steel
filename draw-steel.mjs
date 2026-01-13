@@ -18,6 +18,7 @@ globalThis.ds = {
   utils,
   CONST: DS_CONST,
   CONFIG: DS_CONFIG,
+  registry: new helpers.DrawSteelRegistry(),
 };
 
 // Register custom elements.
@@ -52,6 +53,9 @@ Hooks.once("init", function () {
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
     }
   }
+
+  // Indexing DSID, class primary name, subclass associated classes, and perk types
+  CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
@@ -117,8 +121,13 @@ Hooks.once("init", function () {
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
     // TODO: Implement custom sheet for Reference pages.
-    foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet,
+    applications.sheets.journal.ReferencePage,
     { makeDefault: true, types: ["reference"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.DrawSteelImageSheet,
+    { makeDefault: true, types: ["image"] },
   );
 
   // Register replacements for core UI elements
@@ -211,6 +220,35 @@ Hooks.once("i18nInit", () => {
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
 });
 
+Hooks.once("setup", () => {
+  // Link up various rules & references automatically
+  for (const status of CONFIG.statusEffects) {
+    if (status.rule) ds.CONFIG.references[status.id] = status.rule;
+  }
+
+  // Common/expected structure for reference construction
+  const referenceObjects = [
+    "characteristics",
+    "monsters.keywords",
+    "monsters.organizations",
+    "monsters.roles",
+    "abilities.types",
+    "abilities.distances",
+    "abilities.targets",
+    "equipment.categories",
+    "equipment.armor",
+    "equipment.weapon",
+    "projects.types",
+  ];
+
+  for (const path of referenceObjects) {
+    const config = foundry.utils.getProperty(ds.CONFIG, path);
+    for (const [key, { reference }] of Object.entries(config)) {
+      if (reference) ds.CONFIG.references[reference.identifier ?? key] = reference.uuid;
+    }
+  }
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
@@ -225,6 +263,9 @@ Hooks.once("ready", async function () {
       return false;
     }
   });
+
+  await ds.registry.initialize();
+
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
