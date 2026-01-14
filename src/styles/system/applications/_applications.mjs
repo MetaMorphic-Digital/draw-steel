@@ -26,6 +26,7 @@ import "./sheets/actor-sheet.css";
 import "./sheets/combatant-group-config.css";
 import "./sheets/item-sheet.css";
 import "./sheets/journal-entry-sheet.css";
+import "./sheets/journal-entry-page.css";
 import "./sheets/pseudo-documents.css";
 
 import "./sidebar/tabs/chat.css";
