@@ -227,6 +227,7 @@ Hooks.once("setup", () => {
     "equipment.armor",
     "equipment.weapon",
     "projects.types",
+    "effectEnds",
   ];
 
   for (const path of referenceObjects) {

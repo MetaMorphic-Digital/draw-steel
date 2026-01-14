@@ -6193,6 +6193,990 @@
         "lastModifiedBy": null
       },
       "_key": "!journal.pages!f8eNK5Pte4CSdex0.XO7TAsQjiiTzo41J"
+    },
+    {
+      "sort": 240000,
+      "name": "Target",
+      "type": "reference",
+      "category": "Ou4jQK9zXTOwJO0U",
+      "_id": "FgypcTRmYmK3H7KT",
+      "system": {
+        "tooltip": "<p>A [[reference creature]] or [[reference object]] affected by an [[reference ability]] or other effect. The target of an [[reference enemy]]{enemy’s} ability typically takes damage, has a [[reference condition]] or harmful effect imposed on them, or both. The target of an [[reference ally]]{ally’s} ability typically gains some beneficial effect.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>The “Target” entry of an ability, represented by this symbol <span style=\"font-family:'Draw Steel Glyphs'\">x</span>, notes the number of creatures, objects, or both who can be targeted by that ability. You can always affect fewer targets than the number indicated by this entry.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768428618033,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.FgypcTRmYmK3H7KT"
+    },
+    {
+      "sort": 240000,
+      "name": "Teleport",
+      "type": "reference",
+      "category": "9mIjAz3Ik57xdSIB",
+      "_id": "1G4GugFrzz9fykjw",
+      "system": {
+        "tooltip": "<p>Moving from one location to another instantaneously. Teleporting requires [[reference lineOfEffect]] to the [[reference space]] where a creature ends up, bypasses obstacles, and doesn’t provoke [[reference opportunityAttack]]{opportunity attacks} or other effects triggered by moving.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When a creature teleports, they move from one space to another space instantaneously. The following rules apply to teleporting:</p><ul><li>Teleporting doesn’t provoke opportunity attacks or other effects that are triggered by a creature moving.</li><li>When a creature teleports, they bypass any obstacles between the space they leave and their destination space.</li><li>A creature teleporting themself must have line of effect to their destination space. A creature teleporting another creature must have line of effect from the space the teleported creature leaves and to their destination space.</li><li>A teleporting creature’s destination space can’t be occupied by another creature or object.</li><li>The effect that lets a creature teleport indicates how far they can teleport. That distance can be greater than the creature’s speed.</li><li>If a creature can teleport as part of their usual movement, they can use the Advance move action to teleport a number of squares up to their usual speed, unmodified by conditions or effects.</li><li>If a creature teleports while prone, they can be standing when they reach their destination space provided they are able to stand. If a prone creature is teleported by another creature, it is up to that creature whether the teleported creature remains prone or stands if they are able.</li><li>If you teleport while affected by the grabbed or restrained conditions, those conditions end for you.</li><li>When a creature teleports, they must leave the space where they start and enter a new space. A creature can’t teleport to and from the same space.</li></ul>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768428696264,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.1G4GugFrzz9fykjw"
+    },
+    {
+      "sort": 240000,
+      "name": "Temporary Stamina",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "RnkEFwU4x6SMfHaP",
+      "system": {
+        "tooltip": "<p>An additional pool of [[reference stamina]] that decreases first when a creature takes damage, and which disappears at the end of an encounter if not already lost.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Some abilities, treasures, and other effects grant a creature temporary Stamina. Temporary Stamina shouldn’t be included in a creature’s Stamina total when figuring out a creature’s recovery value or winded value. If you have temporary Stamina while winded, dying, or dead, the temporary Stamina doesn’t change those states.</p><p>Whenever you take damage while you have temporary Stamina, the temporary Stamina decreases first, and any leftover damage is applied to your Stamina as usual. For instance, if you have 10 temporary Stamina and take 16 damage, you lose the temporary Stamina and then lose another 6 Stamina.</p><p>There is no maximum to how much temporary Stamina you can have. Regaining Stamina can’t restore temporary Stamina. If you have temporary Stamina and then gain more temporary Stamina, you get whichever amount of temporary Stamina is greater, rather than adding the two pools together. For instance, if an ability grants you 10 temporary Stamina when you already have 5, you have 10 temporary Stamina, not 15.</p><p>Unless otherwise indicated, temporary Stamina disappears at the end of an encounter.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768428751675,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.RnkEFwU4x6SMfHaP"
+    },
+    {
+      "sort": 240000,
+      "name": "Test",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "Oc6920rU3ucsKZSm",
+      "system": {
+        "tooltip": "<p>A [[reference powerRoll]] made by a creature to affect or interact with the world around them that doesn’t use an [[reference ability]]. Skills can be applied to tests.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When you want your hero to rifle through a desk and locate a specific document, scale a castle wall, negotiate a treaty with a monarch, or undertake any other activity with a chance of failure, you’ll need to make a test to determine how successful you are at the task. A test is any power roll that has failure or consequences as an option.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768428782359,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.Oc6920rU3ucsKZSm"
+    },
+    {
+      "sort": 240000,
+      "name": "Tier Outcome",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "93uRnoeiQGnly0GL",
+      "system": {
+        "tooltip": "<p>The three possible effects for a [[reference powerRoll]], based on the total of the power roll.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>The total of a power roll determines your outcome tier—three levels that determine how successful your power roll is.</p><p class=\"hanging\"><strong>Tier 1:</strong> If your power roll total is <strong>11 or lower</strong>, it is a tier 1 outcome. This is the worst outcome a power roll can have. If you’re using an ability, a tier 1 outcome means you still do something, but the impact of what you do is minimal. With this outcome, a strike ability might deal a little bit of damage and not do much else. For a test, a tier 1 outcome might mean you fail at what you set out to do, and you might also incur a negative consequence.</p><p class=\"hanging\"><strong>Tier 2:</strong> If your power roll total is <strong>12 to 16</strong>, it is a tier 2 outcome. This is the average outcome of many power rolls, especially for heroes who are 1st level. When using an ability, a tier 2 outcome means that what you do has a moderate impact. With this outcome, a strike ability deals a decent amount of damage and has an effect that briefly helps allies or hinders enemies. For a test, a tier 2 outcome means you might succeed at what you set out to do—though depending on the difficulty, success might have a cost.</p><p class=\"hanging\"><strong>Tier 3:</strong> If your power roll total is <strong>17 or higher</strong>, it is a tier 3 outcome. This is the best outcome a power roll can have. When using an ability, a tier 3 outcome means you deliver the maximum impact possible. With this outcome, a strike ability deals a lot of damage and has a powerful or lasting effect on enemies or allies. For a test, a tier 3 outcome means you succeed at what you set out to do. If the test has an easy difficulty, you also get a little something extra in addition to your success.</p><p>The specific outcome of any power roll is determined by the effect or ability that requires the roll or the rules for tests.</p><h4>Downgrade a Power Roll</h4><p>Whenever you make a power roll, you can downgrade it to select the outcome of a lower tier. For instance, if an ability has a tier 3 outcome that lets you impose the restrained condition on a creature, but the tier 2 outcome for that ability lets you impose the slowed condition, you can use the tier 2 outcome if you would rather have the creature slowed than restrained.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768428810829,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.93uRnoeiQGnly0GL"
+    },
+    {
+      "sort": 240000,
+      "name": "Tier 1",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "0u1DzQMh9lDTiBYa",
+      "system": {
+        "tooltip": "<p>The worst tier outcome of a power roll, achieved when the total of the roll is 11 or lower.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If your power roll total is <strong>11 or lower</strong>, it is a tier 1 outcome. This is the worst outcome a power roll can have. If you’re using an ability, a tier 1 outcome means you still do something, but the impact of what you do is minimal. With this outcome, a strike ability might deal a little bit of damage and not do much else. For a test, a tier 1 outcome might mean you fail at what you set out to do, and you might also incur a negative consequence.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429117159,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.0u1DzQMh9lDTiBYa"
+    },
+    {
+      "sort": 240000,
+      "name": "Tier 2",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "P4GJ9QDbzeccNtM1",
+      "system": {
+        "tooltip": "<p>The second-worst tier outcome of a power roll, achieved when the total of the roll is between 12 and 16.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If your power roll total is <strong>12 to 16</strong>, it is a tier 2 outcome. This is the average outcome of many power rolls, especially for heroes who are 1st level. When using an ability, a tier 2 outcome means that what you do has a moderate impact. With this outcome, a strike ability deals a decent amount of damage and has an effect that briefly helps allies or hinders enemies. For a test, a tier 2 outcome means you might succeed at what you set out to do—though depending on the difficulty, success might have a cost.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429135783,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.P4GJ9QDbzeccNtM1"
+    },
+    {
+      "sort": 240000,
+      "name": "Tier 3",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "PDx2MP6Gq6EqLpMR",
+      "system": {
+        "tooltip": "<p>The best tier outcome of a power roll (other than a [[reference criticalHit]]), achieved when the total of the roll is 17 or higher.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If your power roll total is <strong>17 or higher</strong>, it is a tier 3 outcome. This is the best outcome a power roll can have. When using an ability, a tier 3 outcome means you deliver the maximum impact possible. With this outcome, a strike ability deals a lot of damage and has a powerful or lasting effect on enemies or allies. For a test, a tier 3 outcome means you succeed at what you set out to do. If the test has an easy difficulty, you also get a little something extra in addition to your success.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429163278,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.PDx2MP6Gq6EqLpMR"
+    },
+    {
+      "sort": 240000,
+      "name": "Title",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "tWSIF6S2QC7YuAzU",
+      "system": {
+        "tooltip": "<p>A special reward that a [[reference hero]] can earn while adventuring, and which grants benefits or new abilities.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Titles are special benefits earned by heroes through adventure and mighty deeds. Heroes must win titles—sometimes individually, sometimes as a group—by accomplishing heroic tasks. Titles are the record of a hero’s accomplishments, forming the basis of the stories told of them in taverns or whispered in the halls of the mighty.</p><p>Each title comes with a new ability or other special benefit. By earning titles, heroes gain a unique set of capabilities that sets them apart from other adventurers.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429188074,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.tWSIF6S2QC7YuAzU"
+    },
+    {
+      "sort": 240000,
+      "name": "Timescape",
+      "type": "reference",
+      "category": "G0k9xZdPNPBOog4b",
+      "_id": "MSDL5m5CrIVVigS8",
+      "system": {
+        "tooltip": "<p>A multiverse of worlds, also known as [[reference manifold]]{manifolds}, connected by the Sea of Stars.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Orden is only one world in the timescape! Each star in the night sky is another, though this fact is not known to most people living on Orden. Old fashioned people still use the archaic term “plane” to describe these worlds, while sages use geometric formulae, describing these worlds they call “manifolds,” but they all mean the same thing.</p><p>Higher worlds are more energetic, affording access to alien technologies. Great starfreighters ply the space-lanes, and knights wield psionically powered hard-light blades dueling against star pirates with hard-light blasters.</p><p>The lower worlds lack the energy necessary for such extraordinary technology to function, and so rely on magic to break the rules.</p><p>On Axiom, the Plane of Uttermost Law, the memonek live on a world teeming with complex, inorganic life. UNISOL, the Universal Solar League, ensures and protects trade across the upper worlds, defending the starfreighters from the time raiders and the infamous pirate band the Starslayers on their legendary ship the <span class=\"footnote\" data-tooltip-text=\"Kuran’zoi Rapid Attack Dreadnought\">K.R.A.D.</span> <em>Fearless</em>.</p><p>Meanwhile, on Proteus, the Sea of Eternal Change, the formless proteans rebelled against the synliroi who once ruled the Plane of Uttermost Chaos, exiling the voiceless talkers to the World Below. Now masters of their world, the proteans take to the stars in their living changeships, hurling their small fleet against the tyrannical unquestioned might of UNISOL.</p><p>On Quintessence, the lowest of the upper worlds, proteans and memonek alike rub shoulders with devils, fire dwarves, even humans in Quintessence’s capital city of Alloy, the City at the Center of the Timescape. The Free City of Alloy, also known as the City of Brass, is the gateway to the timescape. People travelling to or from the upper and lower worlds meet here to trade goods and information, free from the inflexible law of UNISOL.</p><p>Traveling downward from Quintessence one arrives on Orden, the Plane of Gods and Sorcery, highest of the lower worlds where magic rules. The gods, forbidden from interfering directly in a world with such a low energy state, rely on saints to enact their will. Technology from the upper worlds does not function down here, unless powered by a strong psionic mind or the miracle mineral iridoss, also known as prismacore.</p><p>Almost coterminal with Orden is its sister-manifold, the World Below, the Dark Under All, a plane of exiles ruled by A Lie Cloaked In Star’s Silver, the Queen of Night, first of the Three Sisters Below. The World Below is a land of vast caves, and sunless seas. There are no stars here, no sky, only endless caverns and warrens, some vast enough to hold entire cities, like Or-Mazaar City of the Black Star from which the Queen of Night rules.</p><p>The power of the World Below wanes, while the power of Equinox waxes. A smaller, parasitic manifold home to the twilight celestials and their servants the shadow elves, Equinox is ruled by Every Strike of Lightning a Lover Betrayed, the Queen of Shadows, third of the Three Sisters Below who plots to bridge the sea between worlds and colonize Orden making a new home for her people before their old world dies. A fierce, fairy-tale, weird magic, jungle world of permanent twilight also known as Dusk.</p><p>The last plane of law, the Seven Cities of Hell is among the lowest of the lower planes. A land of devils proud of their civilization, each of the seven cities is ruled by an archduke who schemes to ascend to the Throne of Hell. A world of bureaucratic law, the devil denizens of Hell have little interest in the other planes. Life is so much more <em>interesting</em> down here.</p><p>The seven archdevils conspired together once; agreeing to create the Order of Desolation—also known as the Illriggers—to extend their power into the timescape, and defend Hell from the horde of demons below.</p><p>The demons of the Abyssal Waste, the lowest plane, claw and scramble over each other, competing for souls in this heat-blasted desert under a baleful, giant orange sun. Mindless collections of organs, claws, and teeth, demons collect souls until they reach sentience and gain identity and the blessing of memory. These demons will do anything to escape upwards, out of the wasteland, lest they lose their collected souls, lose their identity, and fall into that mindless state called lethe.</p><p>At the center of the Abyssal Waste lies the Necropolitan Ruin, the Last City, a city of the dead, ruled by Khorsekef, once the Infinite Pharaoh of Khemhara, now the Ultralich. Khorsekef intends to return to Orden and sit once again on his throne in the Heliopolis.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429233440,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.MSDL5m5CrIVVigS8"
+    },
+    {
+      "sort": 340000,
+      "name": "Treasure",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "tA2DsdbVy91uiSV3",
+      "system": {
+        "tooltip": "<p>A piece of [[reference supernatural]] equipment, from weapons and armor to implements and more.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>You’ve helped save the world! Or at least a corner of that world important to you. Now you deserve the treasures that can help you do so even more efficiently next time. So claim your magic sword, psionic shield, and Catapult Dust, and ride to your next adventure!</p><p>Treasures are the supernatural items that heroes find on their adventures, or that they craft themselves to help with their heroics. You might claim a magic whip from a bandit captain or create a psionic necklace that will help you take down a dread cult.</p><p>Treasures come in all shapes and sizes, and are broken down into four types.</p><p><strong>Consumables </strong>are the most numerous treasures. These include potions, dusts, and other items that are consumed by you when you activate them. Most consumables can be used only once!</p><p><strong>Trinkets</strong> are treasures with supernatural properties that never fade. These include magic bags, boots, cloaks, gloves, jewelry, and other oddities.</p><p><strong>Leveled treasure</strong>s are treasures that become even more powerful in the hands of a higher-level hero. They connect with their user, building a bond that fuels the item’s supernatural power. Armor, implements, and weapons are the most common types of leveled treasure.</p><p><strong>Artifacts</strong> are treasures of legendary power that can change or shape an adventure—or even an entire campaign. Each of these game-breaking items is unique, highly coveted, and well guarded.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429345543,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.tA2DsdbVy91uiSV3"
+    },
+    {
+      "sort": 340000,
+      "name": "Turn",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "zTqK9wHFLpoJ4Rly",
+      "system": {
+        "tooltip": "<p>A creature’s turn in combat consists of a [[reference moveAction]], a [[reference maneuver]], and a [[reference moveAction]].</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Each creature in combat—whether hero, adversary, or something in between—gets to take a <strong>main action</strong>, a <strong>maneuver</strong>, and a <strong>move action</strong> on their turn. Each combatant can perform their maneuver and main action in any order, and can break up the movement granted by their move action before, after, or between their maneuver and main action however they like. You can also turn your main action into a move action or a maneuver, so that your turn can alternatively consist of two move actions and a maneuver, or two maneuvers and a move action.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429380866,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.zTqK9wHFLpoJ4Rly"
+    },
+    {
+      "sort": 340000,
+      "name": "Triggered Action",
+      "type": "reference",
+      "category": "tSaaq1tKeWuj6ZC2",
+      "_id": "nSU3m3Myo1yx7G13",
+      "system": {
+        "tooltip": "<p>An action a creature can use on any [[reference turn]], including their own, but only when a specific trigger occurs. Each creature can use one triggered action per round.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Your hero might have one or more unique triggered actions, each of which has a specified trigger that allows the action to be used. You can use one triggered action per round, either on your turn or another creature’s turn, but only when the action’s trigger occurs. For instance, a fury hero can use the Lines of Force triggered action to force move a target, but only after an enemy has first tried to force move the fury or another nearby creature.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429432448,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.nSU3m3Myo1yx7G13"
+    },
+    {
+      "sort": 340000,
+      "name": "Trinket",
+      "type": "reference",
+      "category": "z7TdMPge5FElMs1n",
+      "_id": "b3YQXonGmCHa3ywO",
+      "system": {
+        "tooltip": "<p>A [[reference treasure]] that can be used at will without any reduction in its power.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Trinkets are treasures that can be used at will without a reduction in their potency. They generally provide a small benefit, such as allowing you to see farther or become a bit better at picking locks.</p><p>Like consumables, trinket treasures are organized by echelon. You can carry any number of trinkets.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429669704,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.b3YQXonGmCHa3ywO"
+    },
+    {
+      "sort": 340000,
+      "name": "Unattended Objects",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "cebUz2NCtgyZ98Wb",
+      "system": {
+        "tooltip": "<p>An [[reference object]] that isn’t worn, held, or controlled by a creature.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>The game sometimes refers to “unattended objects,” which are objects that aren’t held, worn, or controlled by a creature. Whenever an ability or other effect targets objects, it affects only unattended objects unless the Director determines otherwise. Among other things, this prevents abilities from being used to damage a foe’s armor, weapons, clothing, treasures, and so forth while those objects are worn or held.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429714566,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.cebUz2NCtgyZ98Wb"
+    },
+    {
+      "sort": 340000,
+      "name": "Underwater Combat",
+      "type": "reference",
+      "category": "9mIjAz3Ik57xdSIB",
+      "_id": "zXABpFEQFq2cXotM",
+      "system": {
+        "tooltip": "<p>Special rules that apply when creatures fight beneath the sea, in rivers or pools, in underwater lairs, and similar areas.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If a creature is fully submerged in water, they have fire immunity 5 and lightning weakness 5. If they can’t automatically swim at full speed while moving, their power rolls take a bane.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429748027,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.zXABpFEQFq2cXotM"
+    },
+    {
+      "sort": 340000,
+      "name": "Untyped Damage",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "moCvomf9JgtINifU",
+      "system": {
+        "tooltip": "<p>Damage dealt by an ability or other effect that has no [[reference damageType]] associated with it.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Typical damage, such as that caused by weapons, falling, traps, and monstrous claws, has no type associated with it. That’s because for most creatures, there’s no difference in the amount of harm caused by being run through with a pike, dropped from a height onto a stone floor, slashed by a pendulum scythe, or skewered on a minotaur’s horns.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429833933,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.moCvomf9JgtINifU"
+    },
+    {
+      "sort": 340000,
+      "name": "Vasloria",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "Kg051ORcHptPRcw3",
+      "system": {
+        "tooltip": "<p>A forested, feudal-medieval continent in [[reference Orden]].</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>A forested, medieval, feudal land, Vasloria is peppered with few cities, mostly just towns and villages. While there will someday be nations here with proper borders, as of now in the Age of Chaos those nations are merely geographic areas with names people use to distinguish lands that share similar terrain and subcultures.</p><p>Aendrim, the land of hills and farms. Corwell with its knights and castles. The marshlands of Tull where witches and wise women battle hags and swamp monsters. The thick forests of Farrow with its bands of archers, and the horselands of Graid home to the best cavalry in Orden.</p><p>Mountainous northeastern Vasloria is home to the small earldoms of Sednia, Olvaria, and Sărda, and the earldom of Rhöl containing the land of Glauer once ruled by a deathless count.</p><p>Scattered across it all, Vasloria boasts the densest collection of elf-haunted wodes in Orden. All regions have wodes, but Vasloria’s northern border is the Great Wode where the world still works as it did before humans arrived.</p><p>Within the wodes, time misbehaves. Cause and effect are only distant cousins, as all lands were before Ord placed the dwarves in the world, imposing the Law of Time on Orden. Children’s tales of villagers wandering into a wode and emerging unchanged 100 years later are based on real events. When pressed on how this “works,” the elves look baffled. “How does what work?”</p><h4>Omund’s Land</h4><p>Western Vasloria, including most of Aendrim and Corwell and parts of Graid, was until recently ruled by Good King Omund. His draconian knights, the Dragon Phalanx, protected the weak from the strong, dispensing justice. Omund’s rule lasted 35 years and in his life this area was known as Omund’s Land.</p><p>Under Omund’s rule, order thrived. Roads were safe. People could even walk into the woods unafraid of meeting anything more threatening than a nymph or conversational manticore.</p><p>Omund died 15 years ago and so died the rule of law. Now the forest claims the towns and roads once held safe. The woods are dangerous. Their only law … tooth and claw.</p><p>Omund was betrayed and his castle fell to Ajax the Invincible, now called the Iron Saint. His wizard Mortum unlocked the secret of the ancient sky elf flying cities, and raised the Chrysopolis, Ajax’s city-fortress in the sky.</p><p>It was Mortum who used the secrets of the synliroi Body Banks, granting immortality to those nobles who voluntarily submit to Ajax. Those same Body Banks produce Ajax’s war dogs, his brutal, patchwork-soldiers who owe their new lives to the Iron Saint and fight for him fanatically.</p><p>Ajax abolished all faiths and temples. He executed the dukes who organized and united the barons, leaving the far-flung baronies to try and hold human civilization together. Once, these people were loose allies. There was trade between humans, elves, dwarves and orcs.</p><p>Now there is only suspicion.</p><p><strong>The high elves of the fallen city </strong>pay tribute with ancient artifacts they plunder from the fallen celestial city of Irranys. <strong>The wode elves of the Orchid Court</strong>, lacking any centralized government or cities, refuse to bow to Ajax.</p><p><strong>The dwarves of Kal Kalavar </strong>pay tribute in prisoners they abduct from those foolish enough to travel the roads unescorted. These prisoners serve Ajax as forced labor or are fed into the Body Banks. Brooding under the mountains in their fabled Hanging City, the stone dwarves do not like this deal with the Overlord but lack the power—or the will—to rebel.</p><p><strong>The Hawklords of the High Aeries</strong>, once remote and proud, almost mythical to the people below, made their own pact with Ajax to avoid extermination. They now serve as his elite counterinsurgent force. Mounted on their giant hawks, they project Ajax’s power, enforce his law and extend his influence into every corner of the wilderness. Their mastery of the air means any revolt or rebellion is quickly seen and crushed.</p><p><strong>The Dragon Phalanx </strong>is broken. Ajax placed a high bounty on its warriors’ heads. Some folk still see Omund’s knights as symbols of justice, heroes of a lost age before might made right. But in every town, every village, there are always desperate people willing to collect the bounty, summoning the Hawklords to pluck any dragon knight foolish enough to travel without a disguise away to the Chrysopolis.</p><p>Isolated and outnumbered, the human baronies desperately fight a losing battle against the encroaching wilderness. Order dies. Chaos thrives.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429892210,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.Kg051ORcHptPRcw3"
+    },
+    {
+      "sort": 340000,
+      "name": "Vertical",
+      "type": "reference",
+      "category": "9mIjAz3Ik57xdSIB",
+      "_id": "XDLVPefPqfzM8CmK",
+      "system": {
+        "tooltip": "<p>When any form of [[reference forcedMovement]] is noted as vertical, the creature performing the forced movement can move the target up or down in addition to horizontally.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>If a forced movement effect has the word “vertical” in front of it, then the forced movement can move a target up or down in addition to horizontally. For example, if a forced movement effect says “vertical push 5,” then a creature targeted by the effect can be pushed up to 5 squares in any direction, as long as the forced movement is a straight line.</p><p>If a creature who can’t fly is left in midair at the end of a vertical forced move, they fall. Forced movement made against a creature who is flying is always a vertical forced move, whether or not the effect specifies it.</p><p>Though you can’t freely push, pull, or slide a target up and down unless that forced movement specifies “vertical,” you can move them along a physical slope such as a hill or staircase. For a target to be force moved along a slope, each square of the slope can be no more than 1 square higher or lower than the previous square.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768429934198,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.XDLVPefPqfzM8CmK"
+    },
+    {
+      "sort": 340000,
+      "name": "Victories",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "SC9i7tyTg1jKl4vr",
+      "system": {
+        "tooltip": "<p>A measure of a [[reference hero]]{hero's} increasing power over the course of an adventure, earned by triumphing in battles and overcoming other challenges.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Victories measure your hero’s increasing power over the course of an adventure, as they overcome battles and other challenges. At the start of an adventure, your hero has 0 Victories.</p><h4>Victories For Combat</h4><p>Each time your hero survives a combat encounter in which the party’s objectives are achieved, you earn 1 Victory. The Director can decide that a trivially easy encounter doesn’t earn the heroes a Victory, and can award additional Victories for particularly challenging encounters.</p><h4>Victories For Noncombat Challenges</h4><p>When your hero successfully overcomes a big challenge that doesn’t involve combat, the Director can award you 1 Victory. Such challenges can include things such as a particularly complicated and deadly trap, a negotiation, a montage test, a complicated puzzle, or the execution of a clever idea that avoids a battle. Especially difficult challenges might earn you more than 1 Victory.</p><h4>Victories Reset</h4><p>Whenever you finish a respite (see @UUID[.02buildingaher00#respite]{Respite} below), your Victories are converted into Experience.</p><aside><p class=\"charm top-charm\"></p><h3 data-no-toc>Bags of Rats Ain’t Heroic</h3><p>Some players might think that quickly starting a fight with some bar patrons or carrying around a bag of rats is a good way to gather up those sweet, sweet Victories and Heroic Resources. Those strategies don’t work! The rules of the game exist to help you tell a cool heroic fantasy story, not so you can try to be clever and exploit them by harming innocent rats to “win.” In order to generate Victories and Heroic Resources, you must face and overcome challenges worthy of a hero!</p><p class=\"charm bottom-charm\"></p></aside>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768430008361,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.SC9i7tyTg1jKl4vr"
+    },
+    {
+      "sort": 340000,
+      "name": "Walk",
+      "type": "reference",
+      "category": "9mIjAz3Ik57xdSIB",
+      "_id": "kXZbGJmK6Lp9tFOD",
+      "system": {
+        "tooltip": "<p>The most common [[reference movement]] type, used to move over solid ground. Walking can incorporate ambulating on legs, rolling, slithering, or any other default method of movement.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Walking is the most common movement type, whether it refers to ambulating on legs, rolling, slithering, or some other default method of movement. Unless specified otherwise, all creatures can move over solid horizontal ground without any problem.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768430034614,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.kXZbGJmK6Lp9tFOD"
+    },
+    {
+      "sort": 340000,
+      "name": "Wealth",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "I38Puf98ti2zZbiz",
+      "system": {
+        "tooltip": "<p>A measure of a [[reference hero]]{hero's} material worth.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Draw Steel isn’t about accumulating and counting every piece of copper you acquire. Instead of tracking a bank account, the amount of stuff your hero can purchase is based on their Wealth score. As you accomplish more deeds, you acquire more treasure and rewards from grateful NPCs that allow you to be an even more effective hero.</p><p>The Hero Wealth table shows the types of items, gear, services, property, and more that you can purchase in the game. For a hero to make a purchase, the item must be available to them. Being able to afford a suit of armor or a stay at an inn doesn’t do much good in the middle of a trackless forest, an empty desert, or a remote dungeon ruin. As well, the Director can also decide that a hero can afford only a limited number of purchases. For example, a hero with Wealth 3 can easily buy a small house, but that Wealth doesn’t mean they can buy up every available small house in the local area to become a landlord.</p><p>The table isn’t meant to be an exhaustive list, but you and the Director can use it to judge what your character can and can’t purchase. For instance, the relative value of an ox isn’t on the table, but you can reasonably assume that if you can buy a horse, you can probably afford an ox as well. (Don’t @ us, farm nerds.) And if you can’t afford something you want, fear not! You might still be able to acquire a specific good or service through negotiation, or by trading your heroic services instead of spending cash.</p><p>Treasures such as magic swords, psionic crowns, and even healing potions are rare to the point where they don’t appear on the Hero Wealth table. Such items typically can’t be purchased, and are instead found on adventures, traded for other treasures, given as rewards by NPCs, or crafted by the heroes.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768430091047,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.I38Puf98ti2zZbiz"
+    },
+    {
+      "sort": 340000,
+      "name": "Wall",
+      "type": "reference",
+      "category": "GLF1N2Ga73aEx4rl",
+      "_id": "yoPRPFENNuODlmpT",
+      "system": {
+        "tooltip": "<p>When an [[reference ability]] or other effect creates a wall, that area is expressed as “X wall.” The number X is how many squares are used to make the wall. Each square must share at least one side (not just a corner) with another square of the wall. A wall effect has a duration specified by the effect, or it lasts indefinitely or until destroyed.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When an ability creates a wall, that area is expressed as “X wall.” The number X is how many squares are used to make the wall. When you place a wall, you can build it one square at a time, but each square must share at least one side (not just a corner) with another square of the wall. A creature or object must be within the area to be targeted by a wall ability.</p><p>You can stack squares on top of each other to make the wall higher. Unless otherwise stated, a wall can’t be placed in occupied squares, and a wall blocks line of effect.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768430127883,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.yoPRPFENNuODlmpT"
+    },
+    {
+      "sort": 340000,
+      "name": "Winded",
+      "type": "reference",
+      "category": "MkXTjc6scRGEkmz0",
+      "_id": "3yd9XsnxkDbR7Ywd",
+      "system": {
+        "tooltip": "<p>A state a creature enters when their [[reference stamina]] is equal to or less than their winded value (half their Stamina maximum).</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>Your winded value equals half your Stamina maximum. When your Stamina is equal to or less than your winded value, you are winded. Although being winded has no effects on its own, certain ancestry, class, item, title, and monster abilities affect winded creatures.</p><p>You can tell when other creatures are winded and vice versa.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768430275065,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!f8eNK5Pte4CSdex0.3yd9XsnxkDbR7Ywd"
     }
   ],
   "sort": 0,
