@@ -1307,14 +1307,14 @@ const abilityTypes = {
   main: {
     label: "DRAW_STEEL.Item.ability.Type.Main",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.EexO0KXlTFmMvdrB",
       identifier: "mainAction",
     },
   },
   maneuver: {
     label: "DRAW_STEEL.Item.ability.Type.Maneuver",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.WyefvD846iMEuENJ",
     },
   },
   freeManeuver: {
@@ -1342,7 +1342,7 @@ const abilityTypes = {
   move: {
     label: "DRAW_STEEL.Item.ability.Type.Move",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.omTjeQTTXHHbYufA",
       identifier: "moveAction",
     },
   },
@@ -1418,7 +1418,7 @@ const abilityDistances = {
     primary: "DRAW_STEEL.Item.ability.Distance.Melee",
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Melee",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.8EAIUfdZl1OOtd0J",
     },
   },
   ranged: {
@@ -1913,7 +1913,7 @@ const treasureCategories = {
   leveled: {
     label: "DRAW_STEEL.Item.treasure.Categories.Leveled",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.yuFjNCvJTmXsuzkc",
       identifier: "leveledTreasure",
     },
     get keywords() {
@@ -2372,20 +2372,20 @@ export const references = {
   heroicResource: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.lo64C7BlS2U8rHaV",
   highGround: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.s2xSRFejmKTa9M35",
   hover: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.HWEhkXO9s4cWMDV1",
-  implement: "",
-  interest: "",
-  itemPrerequisite: "",
-  jump: "",
-  kit: "",
-  level: "",
-  lineOfEffect: "",
-  malice: "",
-  manifold: "",
-  montageTest: "",
-  motivation: "",
-  mountedCombat: "",
-  movement: "",
-  mundane: "",
+  implement: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.bDpFehUdTzGYyMnz",
+  interest: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.VGmXTbAX3nVMawMM",
+  itemPrerequisite: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.I0CtWzEx44EmZUTU",
+  jump: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.2hNwwBDSeUfLeMNT",
+  kit: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.7m5yUiDD1lTIsAQy",
+  level: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0",
+  lineOfEffect: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.lzZVp1FIRH1pKAT5",
+  malice: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.1yjvW12GBRAaS9IS",
+  manifold: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.REoiWLkGfsIJ3kGs",
+  montageTest: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.bBCThFlh8jjcOBmv",
+  motivation: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.j2ISMUzfW4oVCaHA",
+  mountedCombat: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.1SCQCicL4p8W32rc",
+  movement: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.XnAtxT9FyoWATIvC",
+  mundane: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.lA1kHSbWBPGGVleM",
   natural19or20: "",
   naturalRoll: "",
   negotiation: "",
