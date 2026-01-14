@@ -88,7 +88,7 @@
       "type": "reference",
       "_id": "bXiI9vUF3tF78qXg",
       "system": {
-        "tooltip": ""
+        "tooltip": "<p>A [[reference condition]] that causes a creature to take a [[reference bane]] on [[reference characteristic]]{characteristics} against the source of their fear. The creature can’t willingly move closer to the source of their fear, and that source gains an [[reference edge]] on ability rolls made against the creature.</p>"
       },
       "title": {
         "show": true,
@@ -128,7 +128,7 @@
       "type": "reference",
       "_id": "aWBP2vfXXM3fzuVn",
       "system": {
-        "tooltip": ""
+        "tooltip": "<p>A [[reference condition]] that reduces a creature’s speed to 0 and causes them to take a [[reference bane]] on abilities that don’t target the creature, object, or effect that has them grabbed.</p>"
       },
       "title": {
         "show": true,
@@ -401,6 +401,47 @@
       },
       "category": null,
       "_key": "!journal.pages!hDhdILCi65wpBgPZ.QZpLhRT6imKlqZ1n"
+    },
+    {
+      "sort": 250000,
+      "name": "Dying",
+      "type": "reference",
+      "_id": "FllqqqqI9t6TROIb",
+      "system": {
+        "tooltip": "<p>A state a [[reference hero]] enters when their [[reference stamina]] is 0 or lower but doesn’t reach the negative of their [[reference winded]] value. While dying, a hero is [[reference bleeding]] and they can’t use the @UUID[Compendium.draw-steel.abilities.Item.nYPJN8Ce2dX9H09K]{Catch Breath} maneuver in combat. A hero dies when their Stamina equals the negative of their winded value.</p>"
+      },
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "image": {},
+      "text": {
+        "format": 1,
+        "content": "<p>When your Stamina is 0 or lower, you are dying. While dying, you can’t use the Catch Breath maneuver in combat. Additionally, you are bleeding, and this instance of the condition can’t be negated or removed in any way until you are no longer dying. While you are dying, you can still act, your allies can help you spend Recoveries in combat, and you can spend Recoveries out of combat as usual.</p><p>While your Stamina is lower than 0, if it reaches the negative of your winded value, you die. When you die, you can’t be brought back to life without the use of a special powerful item, such as a Scroll of Resurrection.</p>"
+      },
+      "video": {
+        "controls": true,
+        "volume": 0.5
+      },
+      "src": null,
+      "category": null,
+      "ownership": {
+        "default": -1,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1768347571435,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!journal.pages!hDhdILCi65wpBgPZ.FllqqqqI9t6TROIb"
     }
   ],
   "folder": "wnqp2PFeCN9C0VOw",

@@ -303,7 +303,7 @@ export const effectEnds = {
     label: "DRAW_STEEL.ActiveEffect.Ends.Turn.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Turn.Abbr",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.SIMO12AE8JWh7yVz",
       identifier: "eot",
     },
   },
@@ -1036,7 +1036,7 @@ const monsterKeywords = {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Humanoid",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.E6fdDf51F2s5giiu",
     },
   },
   infernal: {
@@ -1320,7 +1320,7 @@ const abilityTypes = {
   freeManeuver: {
     label: "DRAW_STEEL.Item.ability.Type.FreeManeuver",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.xGfhqjb3wv43hiCA",
     },
   },
   triggered: {
@@ -1335,7 +1335,7 @@ const abilityTypes = {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.9rdat4y1avRydTf5",
       identifier: "freeTriggeredAction",
     },
   },
@@ -1382,7 +1382,7 @@ const abilityCategories = {
   freeStrike: {
     label: "DRAW_STEEL.Item.ability.Category.FreeStrike",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.lhVGS0ukgIhWcQVt",
     },
   },
   signature: {
@@ -1534,7 +1534,7 @@ const abilityTargets = {
     all: "DRAW_STEEL.Item.ability.Target.AllEnemies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyEmbed",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Yqr9RRDEeyf5mD2n",
     },
   },
   enemyObject: {
@@ -2353,24 +2353,25 @@ export const references = {
   doubleBane: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.T4GKo5WfRsdXvKFq",
   doubleEdge: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.U4L4Tj7VIiDkWXnn",
   downtimeProject: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.F7QYa1BTKiqBTFWB",
-  echelon: "",
-  edge: "",
-  enhancement: "",
-  experience: "",
-  falling: "",
-  flanking: "",
-  fly: "",
-  forcedMovement: "",
-  follower: "",
-  god: "",
-  ground: "",
-  groupTest: "",
-  guide: "",
-  hero: "",
-  heroTokens: "",
-  heroicResource: "",
-  highGround: "",
-  hover: "",
+  dying: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.FllqqqqI9t6TROIb",
+  echelon: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.iB8wcLPrm1W02K5O",
+  edge: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.fLPZTVQavFcvsMu1",
+  enhancement: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.L556gYnuPWRnyKyK",
+  experience: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Cni7beYU3RiHtUgC",
+  falling: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.PwSDdsWPxNWn4Mkb",
+  flanking: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.gmQaZ7gHLi1T4Akr",
+  fly: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.1nxJIITOBSRF5gI5",
+  forcedMovement: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.79MpnUhrFec8nwIr",
+  follower: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.dfCVx6WAQh3XM9Qs",
+  god: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.P1yZPeXbIYAFzzv8",
+  ground: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.hLQ8JM9PjCMZ365u",
+  groupTest: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.2vketYyQ9Cfox3id",
+  guide: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.3Lj2wPOqHtxx5lBn",
+  hero: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.yjGyjvC6eSl00RXA",
+  heroTokens: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.XF6tQR1SHB38D5Cr",
+  heroicResource: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.lo64C7BlS2U8rHaV",
+  highGround: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.s2xSRFejmKTa9M35",
+  hover: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.HWEhkXO9s4cWMDV1",
   implement: "",
   interest: "",
   itemPrerequisite: "",
