@@ -966,70 +966,70 @@ const monsterKeywords = {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Abyssal",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.GrHx8NCX5FhWslnq",
     },
   },
   accursed: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Accursed",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.iEn2DkOyDEKALG8y",
     },
   },
   animal: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Animal",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.CGmMvctU1zPFRyfe",
     },
   },
   beast: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Beast",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.ZydJ0bkDd8a0wvPA",
     },
   },
   construct: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Construct",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.5IVqClzPVA6XJO4y",
     },
   },
   dragon: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Dragon",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.vuD9bbxXevN6htqr",
     },
   },
   elemental: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Elemental",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.e08BCn9FLr5RMQhl",
     },
   },
   fey: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Fey",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.CCt86LLL0qZKD19T",
     },
   },
   giant: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Giant",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.LsMcx0o0We7vh7pc",
     },
   },
   horror: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Horror",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.x8xsuo4z0eaO0bnC",
     },
   },
   humanoid: {
@@ -1043,35 +1043,42 @@ const monsterKeywords = {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Infernal",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.hw3WY0zxnWEc0KPQ",
+    },
+  },
+  ooze: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Ooze",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.uuWfDQJe1gvjaMmk",
     },
   },
   plant: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Plant",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.2eA3CrXM9L1bpAun",
     },
   },
   soulless: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Soulless",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.tq8b1Siu7tQ86Bxt",
     },
   },
   swarm: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Swarm",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.OhMPEI6FwxENCK3g",
     },
   },
   undead: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Undead",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.UdGIomLvVZT9Yb2U",
     },
   },
 };
@@ -1087,37 +1094,37 @@ const monsterOrganizations = {
   minion: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.r58bHi5diuP9bYec",
     },
   },
   horde: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.YNoGNdtJCLBkh1Mv",
     },
   },
   platoon: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.G4iXFToD1xUH8LHA",
     },
   },
   elite: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.7hMnUvUBRIK1Dqsr",
     },
   },
   leader: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.JKZSMbQLCgeqluoy",
     },
   },
   solo: {
     label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Solo",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.AhYTCkuNSjqQawnw",
     },
   },
 };
@@ -1133,55 +1140,55 @@ const monsterRoles = {
   ambusher: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Ambusher",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.at1wXoR8j4I7zGyw",
     },
   },
   artillery: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Artillery",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.YiIFucMXwcLQWYML",
     },
   },
   brute: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Brute",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.jAW0FNszXkQ8HIPI",
     },
   },
   controller: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Controller",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.lo0u0WhNF5f2Ipbe",
     },
   },
   defender: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Defender",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.vqYVpLwxsP2IyzhT",
     },
   },
   harrier: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Harrier",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.SrjPn5F16qjbCnou",
     },
   },
   hexer: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Hexer",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.BOy0UENOGgkFF95S",
     },
   },
   mount: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Mount",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.VJ8FHxp8YhIzD3nO",
     },
   },
   support: {
     label: "DRAW_STEEL.Actor.npc.ROLES.Support",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.YZo2PwMXRRep5wHK",
     },
   },
 };
@@ -1356,7 +1363,7 @@ const abilityTypes = {
   villain: {
     label: "DRAW_STEEL.Item.ability.Type.Villain",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.yfhZHK53v6X2ErLb",
     },
   },
 };
@@ -1481,7 +1488,7 @@ const abilityDistances = {
     area: true,
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Wall",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.yoPRPFENNuODlmpT",
     },
   },
   special: {
