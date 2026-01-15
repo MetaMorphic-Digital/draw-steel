@@ -116,7 +116,11 @@ Hooks.once("init", function () {
   });
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
-    // TODO: Implement custom sheet for Reference pages.
+    applications.sheets.journal.ConfigPage,
+    { makeDefault: true, types: ["config"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ReferencePage,
     { makeDefault: true, types: ["reference"] },
   );
@@ -132,7 +136,7 @@ Hooks.once("init", function () {
     players: applications.ui.DrawSteelPlayers,
   });
 
-  // Register replacemnets for core ux elements.
+  // Register replacements for core ux elements.
   Object.assign(CONFIG.ux, {
     TooltipManager: helpers.interaction.DrawSteelTooltipManager,
   });

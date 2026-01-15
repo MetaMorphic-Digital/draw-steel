@@ -20,11 +20,18 @@ export default class ConfigData extends foundry.abstract.TypeDataModel {
 
   /** @inheritdoc */
   static defineSchema() {
-    return {
-      monsterKeywords: new ArrayField(new SchemaField({
+    const entryList = () => {
+      return new ArrayField(new SchemaField({
         label: new StringField({ required: true }),
-        key: new StringField({ blank: false }),
-      })),
+        key: new StringField({ blank: false, validate: string => {
+          return; // TODO:
+        } }),
+      }));
+    };
+
+    return {
+      languages: entryList(),
+      monsterKeywords: entryList(),
     };
   }
 
