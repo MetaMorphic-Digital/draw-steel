@@ -1966,7 +1966,7 @@ const armorTypes = {
     label: "DRAW_STEEL.Item.treasure.Armor.None",
     kitEquipment: true,
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.0GzLdGji9ovF4JWf",
       identifier: "noArmor",
     },
   },
@@ -1974,7 +1974,7 @@ const armorTypes = {
     label: "DRAW_STEEL.Item.treasure.Armor.Light",
     kitEquipment: true,
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Nnmlc3flHHU6SDZt",
       identifier: "lightArmor",
     },
   },
@@ -1982,7 +1982,7 @@ const armorTypes = {
     label: "DRAW_STEEL.Item.treasure.Armor.Medium",
     kitEquipment: true,
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.ZLP8WyWXfzN0OHgF",
       identifier: "mediumArmor",
     },
   },
@@ -1990,7 +1990,7 @@ const armorTypes = {
     label: "DRAW_STEEL.Item.treasure.Armor.Heavy",
     kitEquipment: true,
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.8RaSYcVxJzhTt57f",
       identifier: "heavyArmor",
     },
   },
@@ -1998,7 +1998,7 @@ const armorTypes = {
     label: "DRAW_STEEL.Item.treasure.Armor.Shield",
     kitEquipment: false,
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.6ZROuBoDEhIFQVN0",
     },
   },
 };
@@ -2016,60 +2016,56 @@ const armorTypes = {
 const weaponTypes = {
   none: {
     label: "DRAW_STEEL.Item.treasure.Weapons.None",
-    reference: {
-      uuid: "",
-      identifier: "noWeapon",
-    },
   },
   bow: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Bow",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.DWmnPd9SaN1cjuHg",
     },
   },
   ensnaring: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Ensnaring",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.dIJ0FFC63E2F9KQf",
     },
   },
   heavy: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Heavy",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.2g9hH726tlyxT1DI",
       identifier: "heavyWeapon",
     },
   },
   light: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Light",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Gyf2GDvwohFqmJNm",
       identifier: "lightWeapon",
     },
   },
   medium: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Medium",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.8P0vOtoGSvWeaedd",
       identifier: "mediumWeapon",
     },
   },
   polearm: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Polearm",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.PCrfsqn61L7ZavdX",
     },
   },
   unarmed: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Unarmed",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.nK8t3y38hbGsvp1d",
     },
   },
   whip: {
     label: "DRAW_STEEL.Item.treasure.Weapons.Whip",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.CYKzqzDMQjJCq0c1",
     },
   },
 };
@@ -2211,14 +2207,14 @@ const projectTypes = {
   research: {
     label: "DRAW_STEEL.Item.project.Types.Research",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.DvrfyW0kGqPdihlV",
       identifier: "researchProject",
     },
   },
   other: {
     label: "DRAW_STEEL.Item.project.Types.Other",
     reference: {
-      uuid: "",
+      uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.7sibcPI0V1rBrEyy",
       identifier: "otherProject",
     },
   },
