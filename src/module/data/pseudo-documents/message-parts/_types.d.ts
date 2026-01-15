@@ -31,11 +31,6 @@ declare module "./hero-token.mjs" {
 
 declare module "./test.mjs" {
   export default interface TestPart {
-    results: {
-      tier1: string;
-      tier2: string;
-      tier3: string;
-      critical: string;
-    }
+    resultSource: string;
   }
 }

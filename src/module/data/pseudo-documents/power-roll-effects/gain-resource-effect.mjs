@@ -180,6 +180,10 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
    * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected hero actors.
    */
   async applyGain(tierKey, options) {
+    if (Array.from(options.targets ?? []).some(a => !a.isOwner)) {
+      throw new Error(`${game.user.name} is not an owner of all the actors`);
+    }
+
     const { amount, type } = this.resource[tierKey];
 
     let path;

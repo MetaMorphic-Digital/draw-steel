@@ -177,6 +177,10 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected actors.
    */
   async applyEffect(tierKey, effectId, options = {}) {
+    if (Array.from(options.targets ?? []).some(a => !a.isOwner)) {
+      throw new Error(`${game.user.name} is not an owner of all the actors`);
+    }
+
     const config = this.applied[tierKey].effects[effectId];
 
     const noStack = !config.properties.has("stacking");

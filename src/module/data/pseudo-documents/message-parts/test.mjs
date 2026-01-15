@@ -2,7 +2,7 @@ import BaseMessagePart from "./base-message-part.mjs";
 import { systemPath } from "../../../constants.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 
-const { SchemaField, HTMLField } = foundry.data.fields;
+const { DocumentUUIDField } = foundry.data.fields;
 
 /**
  * A part containing a Test roll and possible result text.
@@ -32,12 +32,7 @@ export default class TestPart extends BaseMessagePart {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    schema.results = new SchemaField({
-      tier1: new HTMLField(),
-      tier2: new HTMLField(),
-      tier3: new HTMLField(),
-      critical: new HTMLField(),
-    });
+    schema.resultSource = new DocumentUUIDField();
 
     return schema;
   }
@@ -48,10 +43,11 @@ export default class TestPart extends BaseMessagePart {
   async _prepareContext(context) {
     await super._prepareContext(context);
 
-    const testRoll = this.rolls[0];
+    // const testRoll = this.rolls[0];
 
-    if (testRoll.isCritical && this.results.critical) context.resultHTML = await enrichHTML(this.results.critical);
-    else context.resultHTML = await enrichHTML(this.results[`tier${testRoll.product}`]);
+    // const resultSource = await fromUuid(this.resultSource);
+
+    // TODO: Populate `context.resultHTML` with info from resultSource
 
     context.ctx.buttons = [];
 

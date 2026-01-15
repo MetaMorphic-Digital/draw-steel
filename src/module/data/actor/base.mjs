@@ -453,16 +453,9 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       flags: { core: { canPopout: true } },
     };
 
-    const testPart = { type: "test", flavor, results: {}, rolls };
+    const testPart = { type: "test", flavor, rolls };
 
-    if (testConfig) {
-      Object.assign(testPart.results, {
-        tier1: game.i18n.localize(testConfig.tier1),
-        tier2: game.i18n.localize(testConfig.tier2),
-        tier3: game.i18n.localize(testConfig.tier3),
-        critical: game.i18n.localize(testConfig.critical),
-      });
-    }
+    // TODO: Populate testPart.resultSource using system-provided UUID references for test difficulties etc.
 
     messageData.system.parts.push(testPart);
 
