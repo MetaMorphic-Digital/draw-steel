@@ -49,11 +49,11 @@ export default class DSIconElement extends HTMLElement {
 
   /**
    * Fetch and cache SVG element.
-   * @param {string} src                          File path of the svg element.
-   * @returns {SVGElement|Promise<SVGElement>}    Promise if the element is not cached, otherwise the element directly.
+   * @param {string} src                  File path of the image element.
+   * @returns {string|Promise<string>}    Promise if the element is not cached, otherwise the element directly.
    */
   static fetch(src) {
-    if (!src.endsWith(".svg")) return foundry.utils.parseHTML(`<img src="${src}">`);
+    if (!src.endsWith(".svg")) return `<img src="${src}">`;
     if (!DSIconElement.#svgCache.has(src)) DSIconElement.#svgCache.set(src, fetch(src)
       .then(b => b.text())
       .then(t => this.#svgCache.set(src, t).get(src)));
