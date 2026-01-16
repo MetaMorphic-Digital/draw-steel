@@ -149,6 +149,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   async createLeaves(node) {
     const promises = [];
     for (const { uuid } of this.pool) {
+      // TODO: Optimize DB calls
       /** @type {DrawSteelItem} */
       const item = await fromUuid(uuid);
       if (!item) continue;

@@ -69,7 +69,7 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
   async createLeaves(node) {
     for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
       if (!(this.characteristics[chr] >= 0)) continue;
-      const leafLabel = game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", label);
+      const leafLabel = game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", { chr: label });
       node.choices[chr] = new AdvancementLeaf(node, chr, leafLabel);
     }
   }
