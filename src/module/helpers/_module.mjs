@@ -1,4 +1,3 @@
-export * from "./dsn.mjs";
 export * from "./hot-reload.mjs";
 export * from "./handlebars.mjs";
 export * as interaction from "./interaction/_module.mjs";

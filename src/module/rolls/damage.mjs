@@ -9,25 +9,19 @@ export default class DamageRoll extends DSRoll {
    * @param {PointerEvent} event
    */
   static async applyDamageCallback(event) {
-    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoTokenSelected", { localize: true });
+    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.ROLL.Damage.NoTokenSelected", { localize: true });
 
-    const li = event.currentTarget.closest("[data-message-id]");
+    /** @type {HTMLButtonElement} */
+    const target = event.currentTarget;
+
+    const part = target.closest("[data-message-part]");
+    const li = target.closest("[data-message-id]");
     const message = game.messages.get(li.dataset.messageId);
+    const idx = target.dataset.index;
     /** @type {DamageRoll} */
-    const roll = message.rolls[event.currentTarget.dataset.index];
+    const roll = part ? message.system.parts.get(part.dataset.messagePart).rolls[idx] : message.rolls[idx];
 
-    let amount = roll.total;
-    if (event.shiftKey) amount = Math.floor(amount / 2);
-    for (const actor of ds.utils.tokensToActors()) {
-      if (roll.isHeal) {
-        const isTemp = roll.type !== "value";
-        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
-          format: { name: actor.name },
-        });
-        else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
-      }
-      else await actor.system.takeDamage(amount, { type: roll.type, ignoredImmunities: roll.ignoredImmunities });
-    }
+    await roll.applyDamage(null, { halfDamage: event.shiftKey });
   }
 
   /* -------------------------------------------------- */
@@ -89,6 +83,7 @@ export default class DamageRoll extends DSRoll {
         amount: this.total,
       }),
       dataset: {
+        action: "applyDamage",
         index,
         tooltip: game.i18n.localize(tooltipPath),
         tooltipDirection: "UP",
@@ -96,5 +91,31 @@ export default class DamageRoll extends DSRoll {
       classes: ["apply-damage"],
       icon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply this roll's damage to a selection of actors.
+   * @param {DrawSteelActor[]} [targets]    Actors to apply damage to. Defaults to selected targets.
+   * @param {object} [options={}]           Options that modify the damage application.
+   * @param {boolean} [options.halfDamage]  Only apply half the total damage.
+   */
+  async applyDamage(targets, options = {}) {
+    targets ??= ds.utils.tokensToActors();
+
+    let amount = this.total;
+    if (options.halfDamage) amount = Math.floor(amount / 2);
+
+    for (const actor of targets) {
+      if (this.isHeal) {
+        const isTemp = this.type !== "value";
+        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
+          format: { name: actor.name },
+        });
+        else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
+      }
+      else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities });
+    }
   }
 }

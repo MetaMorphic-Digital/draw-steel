@@ -1,6 +1,7 @@
 import { systemID } from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
-import AdvancementChain from "../../utils/advancement-chain.mjs";
+import AdvancementChain from "../../utils/advancement/chain.mjs";
+import AdvancementNode from "../../utils/advancement/node.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -84,26 +85,6 @@ export default class AdvancementModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Creates the advancement chains for this item given a level range.
-   * @param {number} levelStart
-   * @param {number} levelEnd
-   * @returns {Promise<AdvancementChain[]>}
-   */
-  async createChains(levelStart, levelEnd) {
-    const chains = [];
-    for (const advancement of this.advancements) {
-      const validRange = advancement.levels.some(level => {
-        if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
-        else return levelStart === null;
-      });
-      if (validRange) chains.push(await AdvancementChain.create(advancement, null, { start: levelStart, end: levelEnd }));
-    }
-    return chains;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Helper method to add an item's advancements and create or update this item.
    * @param {object} [options]                  Optional properties to configure this advancement's creation.
    * @param {DrawSteelActor} [options.actor]    The actor to create this item within.
@@ -120,14 +101,13 @@ export default class AdvancementModel extends BaseItemModel {
    */
   async applyAdvancements({
     actor = this.actor,
-    levels = { start: null, end: 1 },
+    levels = {},
     toCreate = {},
     toUpdate = {},
     actorUpdate = {},
     ...options } = {},
   ) {
     if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
-    const { start: levelStart = null, end: levelEnd = 1 } = levels;
     const _idMap = options._idMap ?? new Map();
 
     if (!(this.parent.uuid in toCreate)) {
@@ -140,12 +120,16 @@ export default class AdvancementModel extends BaseItemModel {
       } else if (!(this.parent.id in toUpdate)) toUpdate[this.parent.id] = { _id: this.parent.id };
     }
 
-    const chains = await this.createChains(levelStart, levelEnd);
+    const { start = null, end = 1 } = levels;
+
+    const chain = new AdvancementChain(actor, { start, end });
+
+    await chain.initializeRoots({ item: this.parent });
 
     const [firstUpdate, ...rest] = Object.values(toUpdate);
     const noUpdates = (Object.keys(firstUpdate ?? {}).length <= 1) && (rest.length === 0);
 
-    if (!chains.length && foundry.utils.isEmpty(toCreate) && noUpdates) {
+    if (!chain.nodes.size && foundry.utils.isEmpty(toCreate) && noUpdates) {
       console.debug("No advancements to apply for", this.parent.name);
       return null;
     }
@@ -155,14 +139,11 @@ export default class AdvancementModel extends BaseItemModel {
       game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.createWithAdvancementsTitle", { name: this.parent.name });
 
     const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-      chains, actor, window: { title },
+      chain, window: { title },
     });
     if (!configured) return;
 
-    const transactions = await actor.system._finalizeAdvancements(
-      { chains, toCreate, toUpdate, actorUpdate, _idMap },
-      { levels },
-    );
+    const transactions = await actor.system._finalizeAdvancements({ chain, toCreate, toUpdate, actorUpdate, _idMap });
 
     return transactions[0].find(i => i.type === this.parent.type);
   }

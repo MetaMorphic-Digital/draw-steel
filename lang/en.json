@@ -311,6 +311,12 @@
           },
           "NoSelection": "You must select hero tokens to gain resources."
         },
+        "Test": {
+          "FormatString": {
+            "Default": "{difficulty} {characteristic} test"
+          },
+          "MessageTitle": {}
+        },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
           "EffectEnds": {
@@ -660,6 +666,7 @@
           "Horror": "Horror",
           "Humanoid": "Humanoid",
           "Infernal": "Infernal",
+          "Ooze": "Ooze",
           "Plant": "Plant",
           "Soulless": "Soulless",
           "Swarm": "Swarm",
@@ -1631,6 +1638,9 @@
     "ROLL": {
       "Prompt": "Roll {prompt}",
       "Button": "Roll",
+      "Damage": {
+        "NoTokenSelected": "You must have at least one token selected."
+      },
       "Power": {
         "Prompt": {
           "Title": "{typeLabel} Power Roll",
@@ -1665,6 +1675,19 @@
           "Bonus": "Bonus",
           "Penalty": "Penalty",
           "Label": "{number} {mod}"
+        },
+        "TestDifficulty": {
+          "easy": "Easy",
+          "medium": "Medium",
+          "hard": "Hard",
+          "label": "{difficulty} {characteristic} Test"
+        },
+        "TestResult": {
+          "FailureConsequence": "Failure with a consequence",
+          "Failure": "Failure",
+          "SuccessConsequence": "Success with a consequence",
+          "Success": "Success",
+          "SuccessReward": "Success with a reward"
         },
         "BaseRoll": "Base Power Roll",
         "RollPlusBonus": "Power Roll + {bonus}"
@@ -1703,6 +1726,7 @@
         "GrantedTokens": "The heroes gain {count} hero token(s).",
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
+        "UnknownType": "Unknown hero token spend type.",
         "Generic": {
           "label": "Spend Token",
           "messageContent": "Spent a hero token."
@@ -1717,9 +1741,9 @@
           "label": "Succeed on a Saving Throw",
           "messageContent": "Spends a hero token to succeed on a saving throw instead of failing."
         },
-        "ImproveTest": {
-          "label": "Improve Test Result",
-          "messageContent": "Spends a hero token to succeed on a test and lose any consequences suffered."
+        "RerollTest": {
+          "label": "Reroll Test",
+          "messageContent": "Spends a hero token to reroll a test. They must use the new roll."
         },
         "RegainStamina": {
           "tooltip": "Regain Stamina with Hero Tokens",
@@ -1904,17 +1928,25 @@
           }
         }
       },
-      "abilityUse": {
-        "NoTokenSelected": "You must have at least one token selected.",
-        "NoPRE": "The Power Roll Effect could not be found."
-      },
-      "savingThrow": {
-        "Buttons": {
-          "HeroToken": {
-            "Label": "Hero Token",
-            "Tooltip": "Succeed by spending a Hero Token",
-            "NoEffect": "This effect no longer exists.",
-            "NoOwner": "You no longer have update permissions for this effect."
+      "PARTS": {
+        "abilityResult": {
+          "NoPRE": "The Power Roll Effect could not be found."
+        },
+        "savingThrow": {
+          "Buttons": {
+            "HeroToken": {
+              "Label": "Hero Token",
+              "Tooltip": "Succeed by spending a Hero Token",
+              "NoEffect": "This effect no longer exists.",
+              "NoOwner": "You no longer have update permissions for this effect."
+            }
+          }
+        },
+        "test": {
+          "HeroTokenReroll": {
+            "label": "Hero Token",
+            "tooltip": "Reroll the test. You must use the new roll.",
+            "flavor": "Hero Token Reroll"
           }
         }
       }

@@ -1,5 +1,6 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 import { systemPath } from "../../../constants.mjs";
+import * as advancements from "../../../utils/advancement/_module.mjs";
 
 /**
  * @import { DataSchema } from "@common/abstract/_types.mjs"
@@ -108,6 +109,26 @@ export default class BaseAdvancement extends TypedPseudoDocument {
    */
   get levels() {
     return [this.requirements.level];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Populate a node's choices.
+   * @param {advancements.AdvancementNode} node
+   * @abstract
+   */
+  async createLeaves(node) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Was this leaf chosen?
+   * @param {advancements.AdvancementLeaf} leaf
+   * @returns {boolean}
+   */
+  isChosen(leaf) {
+    return !this.isChoice || !!leaf.node.selected[leaf.key];
   }
 
   /* -------------------------------------------------- */
