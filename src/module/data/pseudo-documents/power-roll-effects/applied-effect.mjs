@@ -3,7 +3,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /**
  * @import { AppliedEffectSchema } from "./_types";
- * @import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../../documents/_module.mjs";
  * @import { StatusEffectConfig } from "@client/config.mjs";
  */
 
@@ -150,7 +150,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   constructButtons(tier) {
     /** @type {HTMLButtonElement[]} */
     const buttons = [];
-    for (const [key, data] of Object.entries(this.applied[`tier${tier}`].effects)) {
+    for (const key of Object.keys(this.applied[`tier${tier}`].effects)) {
       const effect = this._getEffect(key);
       if (!effect.id) continue;
       buttons.push(ds.utils.constructHTMLButton({
@@ -158,13 +158,61 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         img: effect.img,
         classes: ["apply-effect"],
         dataset: {
-          type: effect.documentName === "ActiveEffect" ? "custom" : "status",
+          action: "applyEffect",
           effectId: effect.id,
           uuid: this.uuid,
         },
       }));
     }
     return buttons;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to one or more actors.
+   * @param {string} tierKey    The tier of effect to apply.
+   * @param {string} effectId   A status effect or AE id.
+   * @param {object} [options]
+   * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected actors.
+   */
+  async applyEffect(tierKey, effectId, options = {}) {
+    if (Array.from(options.targets ?? []).some(a => !a.isOwner)) {
+      throw new Error(`${game.user.name} is not an owner of all the actors`);
+    }
+
+    const config = this.applied[tierKey].effects[effectId];
+
+    const noStack = !config.properties.has("stacking");
+
+    const isStatus = this._getEffect(effectId).documentName !== "ActiveEffect";
+
+    /** @type {DrawSteelActiveEffect} */
+    const tempEffect = isStatus
+      ? await DrawSteelActiveEffect.fromStatusEffect(effectId)
+      : this.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
+
+    /** @type {ActiveEffectData} */
+    const updates = {
+      transfer: true,
+      // v14 is turning this into a DocumentUUID field so needs to be a real document
+      origin: this.item.uuid,
+      system: {},
+    };
+    if (config.end) updates.system.end = { type: config.end };
+    tempEffect.updateSource(updates);
+
+    const targetActors = options.targets ?? ds.utils.tokensToActors();
+
+    // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
+    for (const actor of targetActors) {
+      // reusing the ID will block creation if it's already on the actor
+      const existing = actor.effects.get(tempEffect.id);
+      // deleting instead of updating because there may be variances between the old copy and new
+      if (existing?.disabled) await existing.delete();
+      // not awaited to allow parallel processing
+      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+    }
   }
 
   /* -------------------------------------------------- */

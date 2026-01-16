@@ -189,17 +189,14 @@ export default class PowerRoll extends DSRoll {
     });
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {
-      baseRoll: true, damageSelection: promptValue.damage, skill: promptValue.skill,
-    });
+    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill });
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
-    const rolls = [baseRoll];
-    // DSN support - ensure that only the base power roll is displayed on screen
+    const rolls = [];
     const termData = baseRoll.terms[0].toJSON();
     // Ensures `termData.options` is a copy instead of reference
-    termData.options = { ...termData.options, rollOrder: 999 };
+    termData.options = foundry.utils.deepClone(termData.options);
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
@@ -211,14 +208,15 @@ export default class PowerRoll extends DSRoll {
           rolls.push(roll);
           break;
         case "evaluate":
-          rolls.push(await roll.evaluate());
+          rolls.push(await roll.evaluate({ allowInteractive: false }));
           break;
         case "message":
+          await roll.evaluate({ allowInteractive: false });
           rolls.push(await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode }));
           break;
       }
     }
-    return { rollMode: promptValue.rollMode, powerRolls: rolls };
+    return { rollMode: promptValue.rollMode, rolls, baseRoll };
   }
 
   /* -------------------------------------------------- */
