@@ -188,9 +188,9 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const isStatus = this._getEffect(effectId).documentName !== "ActiveEffect";
 
     /** @type {DrawSteelActiveEffect} */
-    const tempEffect = isStatus ?
-      await DrawSteelActiveEffect.fromStatusEffect(effectId) :
-      this.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
+    const tempEffect = isStatus
+      ? await DrawSteelActiveEffect.fromStatusEffect(effectId)
+      : this.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
 
     /** @type {ActiveEffectData} */
     const updates = {

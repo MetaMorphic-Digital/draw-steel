@@ -1,4 +1,5 @@
 import * as canvas from "./src/module/canvas/_module.mjs";
+import * as compatibility from "./src/module/compatibility/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
@@ -10,6 +11,7 @@ import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
   canvas,
+  compatibility,
   documents,
   applications,
   helpers,
