@@ -27,6 +27,16 @@
             "label": "Level",
             "hint": "The level at which this advancement can be granted."
           }
+        },
+        "repick": {
+          "label": "Repick",
+          "respite": {
+            "label": "Repick On Respite",
+            "Choices": {
+              "activity": "As a Respite Activity",
+              "finish": "Finish a Respite"
+            }
+          }
         }
       },
       "CHARACTERISTIC": {
@@ -656,6 +666,7 @@
           "Horror": "Horror",
           "Humanoid": "Humanoid",
           "Infernal": "Infernal",
+          "Ooze": "Ooze",
           "Plant": "Plant",
           "Soulless": "Soulless",
           "Swarm": "Swarm",
@@ -1516,6 +1527,28 @@
         }
       }
     },
+    "JournalEntryPage": {
+      "Tabs": {
+        "content": "Content",
+        "tooltip": "Tooltip"
+      },
+      "reference": {
+        "FIELDS": {
+          "tooltip": {
+            "label": "Tooltip",
+            "hint": "Preferred tooltip text. If blank, the normal journal content will be preferred."
+          }
+        }
+      },
+      "image": {
+        "FIELDS": {
+          "artDescription": {
+            "label": "Art Description",
+            "hint": "The Art Description fills in the alt text attribute of the image, improving accessibility for screen readers and helping viewers discover new elements within an image if they are ambiguous, unfamiliar, or framed in an atypical way."
+          }
+        }
+      }
+    },
     "DAMAGE_TYPE": {
       "Acid": "Acid",
       "Cold": "Cold",
@@ -1632,16 +1665,6 @@
           },
           "SuccessThreshold": {
             "Label": "Success Threshold"
-          }
-        }
-      }
-    },
-    "JournalEntryPage": {
-      "image": {
-        "FIELDS": {
-          "artDescription": {
-            "label": "Art Description",
-            "hint": "The Art Description fills in the alt text attribute of the image, improving accessibility for screen readers and help viewers discover new elements within an image if they are ambiguous, unfamiliar, or framed in an atypical way."
           }
         }
       }

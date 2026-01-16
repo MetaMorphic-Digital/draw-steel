@@ -28,7 +28,7 @@ type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActo
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[Exclude<keyof typeof ChatMessageModels, "parts">];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
-type JournalEntryPageModel = typeof JEPModels[keyof typeof JEPModels]
+type JournalEntryPageModel = typeof JEPModels[keyof typeof JEPModels];
 
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
 

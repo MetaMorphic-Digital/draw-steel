@@ -1,12 +1,16 @@
 import { systemPath } from "../../constants.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs"; */
+/**
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ */
 
 /**
- * Treasure are supernatural items that provide benefits beyond what a kit can provide.
+ * A piece of supernatural equipment, from weapons and armor to implements and more.
  */
 export default class TreasureModel extends BaseItemModel {
   /** @inheritdoc */
@@ -50,6 +54,63 @@ export default class TreasureModel extends BaseItemModel {
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", "treasure");
+    if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    const context = {
+      system: this,
+      systemFields: this.schema.fields,
+      includeProjectInfo: !!config.includeProjectInfo,
+    };
+    context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
+
+    const treasureBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/treasure.hbs"), context);
+    embed.insertAdjacentHTML("beforeend", treasureBody);
+    return embed;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A formatted list of the treaure's localized keywords.
+   * @type {string}
+   */
+  get formattedKeywords() {
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const keywordList = Array.from(this.keywords).map(keyword => {
+      const equipmentKeyword = ds.CONFIG.equipment.keywords[keyword]?.label;
+      const categoryKeyword = ds.CONFIG.equipment.categories[this.category]?.keywords.find(k => k.value === keyword)?.label;
+      const kindKeyword = ds.CONFIG.equipment[this.kind]?.[keyword]?.label;
+
+      return equipmentKeyword ?? categoryKeyword ?? kindKeyword ?? keyword;
+    });
+    keywordList.sort((a, b) => a.localeCompare(b));
+
+    return keywordFormatter.format(keywordList);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A formatted list of the treaure's localized project roll characteristic.
+   * @type {string}
+   */
+  get formattedProjectRollCharacteristics() {
+    const characteristicFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+    const characteristicList = Array.from(this.project.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
+
+    return characteristicFormatter.format(characteristicList);
   }
 
   /* -------------------------------------------------- */

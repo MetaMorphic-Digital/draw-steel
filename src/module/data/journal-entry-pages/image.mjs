@@ -1,7 +1,13 @@
-import ReferenceData from "./reference.mjs";
+const { StringField } = foundry.data.fields;
 
-export default class DrawSteelImageData extends ReferenceData {
-  /** @inheritdoc */
+/**
+ * An extension of the core Image page data with advanced alt text capabilities as art descriptions.
+ */
+export default class DrawSteelImageData extends foundry.abstract.TypeDataModel {
+  /**
+   * Metadata for this JournalEntryPage subtype.
+   * @type {SubtypeMetadata}
+   */
   static get metadata() {
     return { type: "image" };
   }
@@ -15,9 +21,9 @@ export default class DrawSteelImageData extends ReferenceData {
 
   /** @override */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-      artDescription: new foundry.data.fields.StringField({ required: true }),
-    });
+    return {
+      artDescription: new StringField({ required: true }),
+    };
   }
 
   /* -------------------------------------------------- */

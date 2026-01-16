@@ -16,7 +16,7 @@ import BaseActorModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Heroes are controlled by players and have heroic resources and advancement.
+ * A player character, created and run by a player other than the Director.
  */
 export default class HeroModel extends BaseActorModel {
   /** @inheritdoc */
@@ -351,6 +351,17 @@ export default class HeroModel extends BaseActorModel {
    * @internal
    */
   _unfilledTraits = {};
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Internal record used to cache advancements that can be repicked on respite.
+   * Each entry is a set of advancement UUIDs.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<"activity" | "finish", Set<string>>}
+   * @internal
+   */
+  _respiteAdvancements = {};
 
   /* -------------------------------------------------- */
 
