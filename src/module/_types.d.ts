@@ -3,6 +3,7 @@ import "./canvas/_types";
 import "./data/_types";
 import "./documents/_types";
 import "./helpers/_types";
+import "./utils/advancement/_types";
 import {
   DrawSteelActor,
   DrawSteelChatMessage,
@@ -53,43 +54,9 @@ export interface ProjectRollPrompt {
   projectRoll: ProjectRoll | DrawSteelChatMessage;
 }
 
-/* -------------------------------------------------- */
-
-interface AdvancementLeaf {
-  node: AdvancementChain;
-  children: Record<string, AdvancementChain>;
-  /** Whether this specific choice has been selected. */
-  isChosen: boolean;
-}
-
-export interface AdvancementChainItemGrantLeaf extends AdvancementLeaf {
-  item: DrawSteelItem;
-  itemLink: HTMLElement;
-}
-
-export interface AdvancementChainTraitLeaf extends AdvancementLeaf {
-  choice: string;
-  trait: string;
-}
-
-export interface AdvancementChainCharacteristicLeaf extends AdvancementLeaf {
-  choice: string;
-  characteristic: string;
-}
-
-declare module "./utils/advancement-chain.mjs" {
-  export default interface AdvancementChain {
-    advancement: BaseAdvancement;
-    parent?: AdvancementChain;
-    depth: number;
-    isRoot: boolean;
-    choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf | AdvancementChainCharacteristicLeaf>;
-    selected: Record<string, boolean | number>;
-    levels: [number, number];
-
-    // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.
-    parentChoice?: AdvancementChainItemGrantLeaf;
-
-    isChosen: boolean;
+declare module "./utils/advancement/node.mjs" {
+  export default interface AdvancementNode {
+    /** Assigned by the Chain Configuration Dialog */
+    enrichedDescription?: string;
   }
 }
