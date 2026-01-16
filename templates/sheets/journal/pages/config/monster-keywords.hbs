@@ -6,19 +6,22 @@
     </button>
   </div>
   <div class="scrollable">
-    {{#each system.monsterKeywords as |mk idx|}}
+    {{#each monsterKeywords}}
     <fieldset>
       <legend>
-        <button type="button" data-action="removeEntry" data-path="monsterKeywords" data-index="{{idx}}">
+        <button type="button" data-action="removeEntry" data-path="monsterKeywords" data-index="{{@index}}">
           <i class="fa-solid fa-trash"></i>
           {{localize "DRAW_STEEL.JournalEntryPage.config.removeEntry.monsterKeyword"}}
         </button>
       </legend>
+      {{#if warnDuplicateKey}}
+      <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.config.duplicateEntry"}}</div>
+      {{/if}}
       <div class="form-group">
-        {{formGroup @root.systemFields.monsterKeywords.element.fields.key value=mk.key name=(concat "system.monsterKeywords." idx ".key")}}
-        {{formGroup @root.systemFields.monsterKeywords.element.fields.label value=mk.label name=(concat "system.monsterKeywords." idx ".label")}}
+        {{formGroup fields.label value=values.label name=names.label hint="" dataset=(object tooltipText=fields.label.hint)}}
+        {{formGroup fields.key value=values.key name=names.key hint="" placeholder=keyPlaceholder dataset=(object tooltipText=fields.key.hint)}}
       </div>
-      {{formGroup @root.systemFields.monsterKeywords.element.fields.reference value=mk.reference name=(concat "system.monsterKeywords." idx ".reference")}}
+      {{formGroup fields.reference value=values.reference name=names.reference hint="" dataset=(object tooltipText=fields.reference.hint)}}
     </fieldset>
     {{/each}}
   </div>

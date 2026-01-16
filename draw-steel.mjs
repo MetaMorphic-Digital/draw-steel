@@ -57,7 +57,7 @@ Hooks.once("init", function () {
   // Indexing DSID, class primary name, subclass associated classes, and perk types
   CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
   // Need to be able to find "config" type pages
-  CONFIG.JournalEntryPage.compendiumIndexFields.push("pages.type");
+  CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;

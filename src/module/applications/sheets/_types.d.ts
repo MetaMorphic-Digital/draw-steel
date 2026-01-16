@@ -1,3 +1,4 @@
+import "./journal/_types";
 import "./pseudo-documents/_types";
 import * as documents from "../../documents/_module.mjs";
 import * as data from "../../data/_module.mjs";

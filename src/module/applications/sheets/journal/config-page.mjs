@@ -1,6 +1,10 @@
 import { systemPath } from "../../../constants.mjs";
 
 /**
+ * @import { ConfigContextEntry } from "./_types";
+ */
+
+/**
  * A page allowing easy configuration of certain registry entries.
  */
 export default class ConfigPage extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {
@@ -36,11 +40,11 @@ export default class ConfigPage extends foundry.applications.sheets.journal.Jour
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
-    content: {
+    languages: {
       template: systemPath("templates/sheets/journal/pages/config/languages.hbs"),
       scrollable: [".scrollable"],
     },
-    tooltip: {
+    monsterKeywords: {
       template: systemPath("templates/sheets/journal/pages/config/monster-keywords.hbs"),
       scrollable: [".scrollable"],
     },
@@ -55,6 +59,64 @@ export default class ConfigPage extends foundry.applications.sheets.journal.Jour
     context.systemFields = this.page.system.schema.fields;
     context.system = this.page.system;
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+
+    switch (partId) {
+      case "languages":
+      case "monsterKeywords":
+        context[partId] = this._prepareConfigArray(partId);
+        break;
+    }
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Construct iterable with relevant data for each entry in the array.
+   * @param {string} partId
+   * @returns {Array<ConfigContextEntry>}
+   */
+  _prepareConfigArray(partId) {
+    const fields = this.document.system.schema.getField(partId).element.fields;
+
+    let config;
+
+    switch (partId) {
+      case "languages":
+        config = ds.CONFIG.languages;
+        break;
+      case "monsterKeywords":
+        config = ds.CONFIG.monsters.keywords;
+        break;
+    }
+
+    return this.document.system[partId].map((values, index) => {
+
+      const keyPlaceholder = values.label.slugify({ strict: true });
+
+      const entry = { fields, values, keyPlaceholder };
+
+      entry.names = Object.keys(values).reduce((names, key) => {
+        names[key] = `system.${partId}.${index}.${key}`;
+        return names;
+      }, {});
+
+      const effectiveKey = values.key || keyPlaceholder;
+
+      if ((effectiveKey in config) && (config[effectiveKey].source !== this.document.uuid)) {
+        entry.warnDuplicateKey = true;
+      }
+
+      return entry;
+    });
   }
 
   /* -------------------------------------------------- */

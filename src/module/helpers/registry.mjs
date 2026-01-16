@@ -104,12 +104,12 @@ export default class DrawSteelRegistry {
         for (const lang of page.system.languages) {
           if (!lang.key) continue;
           if (lang.key in ds.CONFIG.languages) console.warn("Overwriting language", lang.key);
-          ds.CONFIG.languages[lang.key] = { label: lang.label };
+          ds.CONFIG.languages[lang.key] = { label: lang.label, source: page.uuid };
         }
         for (const mk of page.system.monsterKeywords) {
           if (!mk.key) continue;
           if (mk.key in ds.CONFIG.monsters.keywords) console.warn("Overwriting monster keyword", mk.key);
-          const entry = { label: mk.label };
+          const entry = { label: mk.label, source: page.uuid };
           if (mk.reference) entry.reference = mk.reference;
           ds.CONFIG.monsters.keywords[mk.key] = entry;
         }

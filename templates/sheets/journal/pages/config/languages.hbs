@@ -6,17 +6,20 @@
     </button>
   </div>
   <div class="scrollable">
-    {{#each system.languages as |lang idx|}}
+    {{#each languages}}
     <fieldset>
       <legend>
-        <button type="button" data-action="removeEntry" data-path="languages" data-index="{{idx}}">
+        <button type="button" data-action="removeEntry" data-path="languages" data-index="{{@index}}">
           <i class="fa-solid fa-trash"></i>
           {{localize "DRAW_STEEL.JournalEntryPage.config.removeEntry.language"}}
         </button>
       </legend>
+      {{#if warnDuplicateKey}}
+      <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.config.duplicateEntry"}}</div>
+      {{/if}}
       <div class="form-group">
-        {{formGroup @root.systemFields.languages.element.fields.key value=lang.key name=(concat "system.languages." idx ".key")}}
-        {{formGroup @root.systemFields.languages.element.fields.label value=lang.label name=(concat "system.languages." idx ".label")}}
+        {{formGroup fields.label value=values.label name=names.label hint="" dataset=(object tooltipText=fields.label.hint)}}
+        {{formGroup fields.key value=values.key name=names.key hint="" placeholder=keyPlaceholder dataset=(object tooltipText=fields.key.hint)}}
       </div>
     </fieldset>
     {{/each}}
