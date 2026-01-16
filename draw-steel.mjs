@@ -223,10 +223,12 @@ Hooks.once("setup", () => {
     "abilities.types",
     "abilities.distances",
     "abilities.targets",
+    "abilities.categories",
     "equipment.categories",
     "equipment.armor",
     "equipment.weapon",
     "projects.types",
+    "effectEnds",
   ];
 
   for (const path of referenceObjects) {

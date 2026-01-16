@@ -24,24 +24,24 @@
 
 - New Player-Facing Compendium Content:
   - Leveled Treasures
-- Implemented Summoning. (#583)
-  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
   - Updated the Infernal Contract complication to make use of this.
+- Added a `[[reference]]` enricher which implements a tooltip for the text.
+  - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
 - Added a setting for the XP advancement speed. (#1064)
 - New ability modifier keys
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
-- Implemented a Reference page, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
 - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
 - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
+- Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 
 ### Changed
 
