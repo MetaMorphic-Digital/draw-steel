@@ -5,6 +5,7 @@
  */
 
 import BaseAdvancement from "../data/pseudo-documents/advancements/base-advancement.mjs";
+import BaseMessagePart from "../data/pseudo-documents/message-parts/base-message-part.mjs";
 import BasePowerRollEffect from "../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 
 /**
@@ -43,6 +44,7 @@ export default class ModelCollection extends foundry.utils.Collection {
    */
   static documentClasses = {
     Advancement: BaseAdvancement,
+    MessagePart: BaseMessagePart,
     PowerRollEffect: BasePowerRollEffect,
   };
 

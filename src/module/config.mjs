@@ -937,10 +937,10 @@ export const hero = {
       tokens: 1,
       messageContent: "DRAW_STEEL.Setting.HeroTokens.SucceedSave.messageContent",
     },
-    improveTest: {
-      label: "DRAW_STEEL.Setting.HeroTokens.ImproveTest.label",
+    rerollTest: {
+      label: "DRAW_STEEL.Setting.HeroTokens.RerollTest.label",
       tokens: 1,
-      messageContent: "DRAW_STEEL.Setting.HeroTokens.ImproveTest.messageContent",
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.RerollTest.messageContent",
     },
     regainStamina: {
       label: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
@@ -1757,6 +1757,39 @@ export const Advancement = {
   },
 };
 preLocalize("Advancement", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef MessagePartType
+ * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
+ */
+
+/** @type {Record<string, MessagePartType>} */
+export const MessagePart = {
+  abilityResult: {
+    documentClass: pseudoDocuments.messageParts.AbilityResult,
+  },
+  abilityUse: {
+    documentClass: pseudoDocuments.messageParts.AbilityUse,
+  },
+  content: {
+    documentClass: pseudoDocuments.messageParts.ContentPart,
+  },
+  heroToken: {
+    documentClass: pseudoDocuments.messageParts.HeroTokenPart,
+  },
+  roll: {
+    documentClass: pseudoDocuments.messageParts.RollPart,
+  },
+  savingThrow: {
+    documentClass: pseudoDocuments.messageParts.SavingThrowPart,
+  },
+  test: {
+    documentClass: pseudoDocuments.messageParts.TestPart,
+  },
+};
+preLocalize("MessagePart", { key: "label" });
 
 /* -------------------------------------------------- */
 
