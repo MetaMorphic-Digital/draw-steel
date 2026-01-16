@@ -100,19 +100,24 @@ export default class DrawSteelRegistry {
 
       const docs = await pack.getDocuments({ _id__in: configJournals.map(idx => idx._id) });
 
-      for (const page of docs.pages.documentsByType["config"]) {
-        for (const lang of page.system.languages) {
-          if (!lang.key) continue;
-          if (lang.key in ds.CONFIG.languages) console.warn("Overwriting language", lang.key);
-          ds.CONFIG.languages[lang.key] = { label: lang.label, source: page.uuid };
+      for (const je of docs) {
+        for (const page of je.pages.documentsByType["config"]) {
+          for (const lang of page.system.languages) {
+            const key = lang.key ?? lang.label.slugify({ strict: true });
+            if (!key) continue;
+            if (key in ds.CONFIG.languages) console.warn("Overwriting language", key);
+            ds.CONFIG.languages[key] = { label: lang.label, source: page.uuid };
+          }
+          for (const mk of page.system.monsterKeywords) {
+            const key = mk.key ?? mk.label.slugify({ strict: true });
+            if (!key) continue;
+            if (key in ds.CONFIG.monsters.keywords) console.warn("Overwriting monster keyword", key);
+            const entry = { label: mk.label, source: page.uuid, group: page.name };
+            if (mk.reference) entry.reference = mk.reference;
+            ds.CONFIG.monsters.keywords[key] = entry;
+          }
         }
-        for (const mk of page.system.monsterKeywords) {
-          if (!mk.key) continue;
-          if (mk.key in ds.CONFIG.monsters.keywords) console.warn("Overwriting monster keyword", mk.key);
-          const entry = { label: mk.label, source: page.uuid };
-          if (mk.reference) entry.reference = mk.reference;
-          ds.CONFIG.monsters.keywords[mk.key] = entry;
-        }
+
       }
     }
   }

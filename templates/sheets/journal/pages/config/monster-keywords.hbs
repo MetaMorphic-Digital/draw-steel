@@ -5,6 +5,7 @@
       {{localize "DRAW_STEEL.JournalEntryPage.config.addEntry.monsterKeyword"}}
     </button>
   </div>
+  <p class="hint">{{localize "DRAW_STEEL.JournalEntryPage.config.pageNameIsGroup"}}</p>
   <div class="scrollable">
     {{#each monsterKeywords}}
     <fieldset>
@@ -18,10 +19,25 @@
       <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.config.duplicateEntry"}}</div>
       {{/if}}
       <div class="form-group">
-        {{formGroup fields.label value=values.label name=names.label hint="" dataset=(object tooltipText=fields.label.hint)}}
-        {{formGroup fields.key value=values.key name=names.key hint="" placeholder=keyPlaceholder dataset=(object tooltipText=fields.key.hint)}}
+        <div class="form-group" data-tooltip-text="{{fields.label.hint}}">
+          <label>{{fields.label.label}}</label>
+          <div class="form-fields">
+            {{formInput fields.label value=values.label name=names.label}}
+          </div>
+        </div>
+        <div class="form-group" data-tooltip-text="{{fields.key.hint}}">
+          <label>{{fields.key.label}}</label>
+          <div class="form-fields">
+            {{formInput fields.key value=values.key name=names.key placeholder=keyPlaceholder}}
+          </div>
+        </div>
       </div>
-      {{formGroup fields.reference value=values.reference name=names.reference hint="" dataset=(object tooltipText=fields.reference.hint)}}
+      <div class="form-group" data-tooltip-text="{{fields.reference.hint}}">
+        <label>{{fields.reference.label}}</label>
+        <div class="form-fields">
+          {{formInput fields.reference value=values.reference name=names.reference}}
+        </div>
+      </div>
     </fieldset>
     {{/each}}
   </div>

@@ -18,8 +18,18 @@
       <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.config.duplicateEntry"}}</div>
       {{/if}}
       <div class="form-group">
-        {{formGroup fields.label value=values.label name=names.label hint="" dataset=(object tooltipText=fields.label.hint)}}
-        {{formGroup fields.key value=values.key name=names.key hint="" placeholder=keyPlaceholder dataset=(object tooltipText=fields.key.hint)}}
+        <div class="form-group" data-tooltip-text="{{fields.label.hint}}">
+          <label>{{fields.label.label}}</label>
+          <div class="form-fields">
+            {{formInput fields.label value=values.label name=names.label}}
+          </div>
+        </div>
+        <div class="form-group" data-tooltip-text="{{fields.key.hint}}">
+          <label>{{fields.key.label}}</label>
+          <div class="form-fields">
+            {{formInput fields.key value=values.key name=names.key placeholder=keyPlaceholder}}
+          </div>
+        </div>
       </div>
     </fieldset>
     {{/each}}
