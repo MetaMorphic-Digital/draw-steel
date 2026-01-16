@@ -1,4 +1,4 @@
-const { ArrayField, SchemaField, StringField } = foundry.data.fields;
+const { ArrayField, DocumentUUIDField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * A journal page for easy registration of configuration data like monster keywords.
@@ -20,18 +20,19 @@ export default class ConfigData extends foundry.abstract.TypeDataModel {
 
   /** @inheritdoc */
   static defineSchema() {
-    const entryList = () => {
+    const entryList = (additionalEntries = {}) => {
       return new ArrayField(new SchemaField({
         label: new StringField({ required: true }),
         key: new StringField({ blank: false, validate: string => {
           return; // TODO:
         } }),
+        ...additionalEntries,
       }));
     };
 
     return {
       languages: entryList(),
-      monsterKeywords: entryList(),
+      monsterKeywords: entryList({ reference: new DocumentUUIDField({ type: "JournalEntryPage" }) }),
     };
   }
 

@@ -1,0 +1,24 @@
+<section class="standard-form tab {{tabs.languages.cssClass}}" data-tab="languages" data-group="primary">
+  <div class="form-group">
+    <button type="button" data-action="addEntry" data-path="languages">
+      <i class="fa-solid fa-plus"></i>
+      {{localize "DRAW_STEEL.JournalEntryPage.config.addEntry.language"}}
+    </button>
+  </div>
+  <div class="scrollable">
+    {{#each system.languages as |lang idx|}}
+    <fieldset>
+      <legend>
+        <button type="button" data-action="removeEntry" data-path="languages" data-index="{{idx}}">
+          <i class="fa-solid fa-trash"></i>
+          {{localize "DRAW_STEEL.JournalEntryPage.config.removeEntry.language"}}
+        </button>
+      </legend>
+      <div class="form-group">
+        {{formGroup @root.systemFields.languages.element.fields.key value=lang.key name=(concat "system.languages." idx ".key")}}
+        {{formGroup @root.systemFields.languages.element.fields.label value=lang.label name=(concat "system.languages." idx ".label")}}
+      </div>
+    </fieldset>
+    {{/each}}
+  </div>
+</section>

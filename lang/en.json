@@ -1522,6 +1522,8 @@
     },
     "JournalEntryPage": {
       "Tabs": {
+        "languages": "Languages",
+        "monsterKeywords": "Monster Keywords",
         "content": "Content",
         "tooltip": "Tooltip"
       },
@@ -1532,11 +1534,11 @@
             "element": {
               "label": {
                 "label": "Label",
-                "hint": "The public-facing name of the language."
+                "hint": "The public name, e.g. 'Goblin'."
               },
               "key": {
                 "label": "Key",
-                "hint": "The internal data key for the language that determines uniqueness."
+                "hint": "A unique key, e.g. 'goblin'."
               }
             }
           },
@@ -1545,14 +1547,26 @@
             "element": {
               "label": {
                 "label": "Label",
-                "hint": "The public-facing name of the monster keyword."
+                "hint": "The public name, e.g. 'Goblin."
               },
               "key": {
                 "label": "Key",
-                "hint": "The internal data key for the keyword that determines uniqueness."
+                "hint": "A unique key, e.g. 'goblin'."
+              },
+              "reference": {
+                "label": "Reference",
+                "hint": "A JournalEntryPage that serves as a full reference description for this keyword."
               }
             }
           }
+        },
+        "addEntry": {
+          "language": "Add Language",
+          "monsterKeyword": "Add Monster Keyword"
+        },
+        "removeEntry": {
+          "language": "Remove Language",
+          "monsterKeyword": "Remove Monster Keyword"
         }
       },
       "image": {

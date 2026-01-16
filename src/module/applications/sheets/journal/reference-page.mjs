@@ -4,8 +4,9 @@ import { systemPath } from "../../../constants.mjs";
  * An application responsible for displaying a journal entry page with type "reference".
  */
 export default class ReferencePage extends foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet {
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["draw-steel"],
+    classes: ["draw-steel", "reference"],
   };
 
   /* -------------------------------------------------- */

@@ -855,7 +855,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
    */
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
@@ -870,7 +869,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
    */
   static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
@@ -885,7 +883,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
    */
   static async #onRoll(event, target) {
     event.preventDefault();
@@ -906,7 +903,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
    */
   static async #editCombat(event, target) {
     return new ActorCombatStatsInput({ document: this.actor }).render({ force: true });
@@ -920,7 +916,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
    */
   static async #useAbility(event, target) {
     const item = this._getEmbeddedDocument(target);
