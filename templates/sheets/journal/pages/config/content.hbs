@@ -1,0 +1,18 @@
+<section>
+  {{#if system.languages}}
+  <h3>{{systemFields.languages.label}}</h3>
+  {{/if}}
+  <ul>
+    {{#each system.languages}}
+    <li>{{label}}</li>
+    {{/each}}
+  </ul>
+  {{#if system.monsterKeywords}}
+  <h3>{{systemFields.monsterKeywords.label}}</h3>
+  {{/if}}
+  <ul>
+    {{#each system.monsterKeywords}}
+    <li>{{label}}</li>
+    {{/each}}
+  </ul>
+</section>

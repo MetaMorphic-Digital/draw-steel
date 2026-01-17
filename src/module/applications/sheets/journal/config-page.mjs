@@ -53,6 +53,16 @@ export default class ConfigPage extends foundry.applications.sheets.journal.Jour
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  static VIEW_PARTS = {
+    content: {
+      template: systemPath("templates/sheets/journal/pages/config/content.hbs"),
+      root: true,
+    },
+  };
+
+  /* -------------------------------------------------- */
+
   /** @inheritDoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
