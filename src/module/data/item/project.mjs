@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
@@ -193,6 +193,7 @@ export default class ProjectModel extends BaseItemModel {
 
     if (!promptValue) return null;
     const { rollMode, projectRoll } = promptValue;
+    if (projectRoll.isCritical) projectRoll.options.flavor = game.i18n.localize("DRAW_STEEL.ROLL.Project.Breakthrough");
 
     const total = projectRoll.total;
     const previousPoints = this.points;
@@ -200,19 +201,28 @@ export default class ProjectModel extends BaseItemModel {
     await this.parent.update({ "system.points": updatedPoints });
 
     const messageData = {
+      type: "standard",
       system: {
-        uuid: this.parent.uuid,
-        events: this.milestoneEventsOccured(previousPoints, updatedPoints),
+        parts: [],
       },
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],
       title: this.parent.name,
-      content: this.parent.name,
-      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
+      sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
     };
 
-    return await projectRoll.toMessage(messageData, { rollMode });
+    const projectPart = {
+      type: "project",
+      flavor: this.parent.name,
+      projectUuid: this.parent.uuid,
+      rolls: [projectRoll],
+    };
+    if (game.settings.get(systemID, "projectEvents") === "milestone") projectPart.events = this.milestoneEventsOccured(previousPoints, updatedPoints);
+    messageData.system.parts.push(projectPart);
+
+    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /* -------------------------------------------------- */
@@ -232,7 +242,6 @@ export default class ProjectModel extends BaseItemModel {
       actor: this.actor,
       evaluation: "evaluate",
       data: rollData,
-      flavor: this.parent.name,
     });
 
     return promptValue;
