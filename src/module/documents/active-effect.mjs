@@ -231,7 +231,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       rollData.effect.statuses[status] = 1;
     }
 
-    if (this.system.modifyRollData instanceof Function) {
+    if (typeof this.system.modifyRollData === "function") {
       this.system.modifyRollData(rollData);
     }
 
@@ -242,7 +242,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   apply(actor, change) {
-    if (this.system.apply instanceof Function) return this.system.apply(actor, change);
+    if (typeof this.system.apply === "function") return this.system.apply(actor, change);
     else return super.apply(actor, change);
   }
 }
