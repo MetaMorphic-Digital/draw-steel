@@ -231,8 +231,6 @@ export default class AbilityModel extends BaseItemModel {
           case "power.roll.edges":
             this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
             break;
-          default:
-            break;
         }
       }
     }

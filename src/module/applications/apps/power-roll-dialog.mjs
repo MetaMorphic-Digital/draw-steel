@@ -149,7 +149,7 @@ export default class PowerRollDialog extends RollDialog {
     const pr = this.constructor.EdgePluralFormatter;
 
     // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
-    context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
+    context.skillOptions = Array.from(context.skills).map(value => {
       const { group } = list[value];
       let { label } = list[value];
       if (value in skillModifiers) {
@@ -168,10 +168,8 @@ export default class PowerRollDialog extends RollDialog {
         const formatter = game.i18n.getListFormatter("narrow");
         label += ` (${formatter.format(modifiers)})`;
       }
-      accumulator.push({ label: label, group: groups[group].label, value });
-      return accumulator;
-    }, []);
-    return;
+      return { label: label, group: groups[group].label, value };
+    });
   }
 
   /* -------------------------------------------------- */
