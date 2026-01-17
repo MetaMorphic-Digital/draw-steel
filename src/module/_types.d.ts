@@ -7,15 +7,12 @@ import "./utils/advancement/_types";
 import {
   DrawSteelActor,
   DrawSteelChatMessage,
-  DrawSteelItem,
 } from "./documents/_module.mjs";
 
 import {
   PowerRoll,
   ProjectRoll,
 } from "./rolls/_module.mjs";
-import BaseAdvancement from "./data/pseudo-documents/advancements/base-advancement.mjs";
-import AdvancementChain from "./utils/advancement-chain.mjs";
 
 export interface PowerRollModifiers {
   edges: number;
@@ -57,7 +54,7 @@ export interface ProjectRollPrompt {
 
 declare module "./utils/advancement/node.mjs" {
   export default interface AdvancementNode {
-    /** Assigned by the Chain Configuration Dialog */
+    /** Assigned by the Chain Configuration Dialog. */
     enrichedDescription?: string;
   }
 }
