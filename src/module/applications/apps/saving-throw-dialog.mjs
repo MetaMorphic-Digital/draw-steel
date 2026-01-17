@@ -10,11 +10,17 @@ const { FormDataExtended } = foundry.applications.ux;
 export default class SavingThrowDialog extends RollDialog {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    window: {
-      title: "DRAW_STEEL.ROLL.Save.Prompt.Title",
-    },
     classes: ["saving-throw-dialog"],
   };
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get title() {
+    return game.i18n.format("DRAW_STEEL.ROLL.Save.Prompt.Title", {
+      effect: this.options.context.effect.name,
+    });
+  }
 
   /* -------------------------------------------------- */
 

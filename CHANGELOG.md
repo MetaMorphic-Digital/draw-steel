@@ -58,6 +58,7 @@
   - Migrated saving throws to use chat parts. (#1447)
   - Migrated ability rolls to use chat parts. (#1449)
 - Temporary stamina now shows as part of the stamina bar. (#601)
+- The saving throw dialog now has the effect name that's being rolled for. (#1538)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
 
 ### Fixed
