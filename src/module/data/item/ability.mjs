@@ -222,6 +222,17 @@ export default class AbilityModel extends BaseItemModel {
           }
         }
       }
+
+      if (bonus.key.startsWith("power.")) {
+        switch (bonus.key) {
+          case "power.roll.banes":
+            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
+            break;
+          case "power.roll.edges":
+            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            break;
+        }
+      }
     }
   }
 
@@ -462,8 +473,8 @@ export default class AbilityModel extends BaseItemModel {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
-      options.modifiers.banes ??= 0;
-      options.modifiers.edges ??= 0;
+      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
       options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);

@@ -32,6 +32,15 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
+   * Formatter to select the correct plural form for "Edge".
+   * Must be initialized before first use to ensure language is available.
+   * @type {Intl.PluralRules | null}
+   */
+  static EdgePluralFormatter = null;
+
+  /* -------------------------------------------------- */
+
+  /**
    * The currently highlighted token.
    * @type {DrawSteelToken | null}
    */
@@ -132,11 +141,35 @@ export default class PowerRollDialog extends RollDialog {
    */
   _prepareSkillOptions(context) {
     const { list, groups } = ds.CONFIG.skills;
-    context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
-      const { label, group } = list[value];
-      accumulator.push({ label, group: groups[group].label, value });
-      return accumulator;
-    }, []);
+    const skillModifiers = context.skillModifiers;
+
+    if (!this.constructor.EdgePluralFormatter) {
+      this.constructor.EdgePluralFormatter = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
+    }
+    const pr = this.constructor.EdgePluralFormatter;
+
+    // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
+    context.skillOptions = Array.from(context.skills).map(value => {
+      const { group } = list[value];
+      let { label } = list[value];
+      if (value in skillModifiers) {
+        const modifiers = [];
+
+        const edges = skillModifiers[value].edges;
+        const edgeCategory = pr.select(edges);
+        const edgeName = game.i18n.format(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Edge.${edgeCategory}`);
+        if (edges > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${edges}`, mod: edgeName }));
+
+        const banes = skillModifiers[value].banes;
+        const baneCategory = pr.select(banes);
+        const baneName = game.i18n.format(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Bane.${baneCategory}`);
+        if (banes > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${banes}`, mod: baneName }));
+
+        const formatter = game.i18n.getListFormatter("narrow");
+        label += ` (${formatter.format(modifiers)})`;
+      }
+      return { label: label, group: groups[group].label, value };
+    });
   }
 
   /* -------------------------------------------------- */
@@ -166,6 +199,17 @@ export default class PowerRollDialog extends RollDialog {
       const newSkill = formData.skill;
       if ((previousSkill === "") && (newSkill !== "")) this.options.context.modifiers.bonuses += 2;
       else if ((previousSkill !== "") && (newSkill === "")) this.options.context.modifiers.bonuses -= 2;
+
+      const skillModifiers = this.options.context.skillModifiers;
+      if (previousSkill in skillModifiers) {
+        this.options.context.modifiers.edges -= skillModifiers[previousSkill].edges ?? 0;
+        this.options.context.modifiers.banes -= skillModifiers[previousSkill].banes ?? 0;
+      }
+
+      if (newSkill in skillModifiers) {
+        this.options.context.modifiers.edges += skillModifiers[newSkill].edges ?? 0;
+        this.options.context.modifiers.banes += skillModifiers[newSkill].banes ?? 0;
+      }
 
       this.options.context.skill = newSkill;
     }
