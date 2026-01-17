@@ -51,7 +51,6 @@ declare module "./base.mjs" {
         level: number;
       }
     },
-    characteristics: Record<string, { value: number }>;
     combat: Combat;
     biography: Biography;
     movement: {
@@ -76,6 +75,12 @@ declare module "./base.mjs" {
       flankable: boolean;
       canFlank: boolean;
     }
+  }
+}
+
+declare module "./creature" {
+  export default interface CreatureModel {
+    characteristics: Record<string, { value: number }>;
     potency: {
       bonuses: number;
       weak: number;
