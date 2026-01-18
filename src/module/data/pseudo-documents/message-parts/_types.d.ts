@@ -38,6 +38,6 @@ declare module "./test.mjs" {
 declare module "./project.mjs" {
   export default interface ProjectPart {
     projectUuid: string;
-    events: number;
+    event: boolean;
   }
 }

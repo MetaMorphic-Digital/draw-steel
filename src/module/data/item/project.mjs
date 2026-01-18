@@ -221,10 +221,10 @@ export default class ProjectModel extends BaseItemModel {
     messageData.system.parts.push(projectPart);
 
     if (game.settings.get(systemID, "projectEvents") === "milestone") {
-      const events = this.milestoneEventsOccured(previousPoints, updatedPoints);
-      if (game.settings.get(systemID, "projectEvents") === "milestone") projectPart.events = events;
-      if (events) {
-        messageData.content = game.i18n.format("DRAW_STEEL.Item.project.Events.MilestoneTriggered", { events });
+      const event = !!this.milestoneEventsOccured(previousPoints, updatedPoints);
+      if (event) {
+        projectPart.event = event;
+        messageData.content = game.i18n.localize("DRAW_STEEL.Item.project.Events.EventTriggered");
         messageData.system.parts.push({ type: "content" });
       }
     }

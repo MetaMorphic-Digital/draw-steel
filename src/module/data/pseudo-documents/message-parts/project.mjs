@@ -5,7 +5,7 @@ import ContentPart from "./content.mjs";
 
 /** @import { ProjectRollPrompt } from  "../../../_types.js"*/
 
-const { DocumentUUIDField, NumberField } = foundry.data.fields;
+const { BooleanField, DocumentUUIDField } = foundry.data.fields;
 
 /**
  * A part containing a Project roll and its subsequent breakthrough and event rolls.
@@ -36,7 +36,7 @@ export default class ProjectPart extends BaseMessagePart {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       projectUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
-      events: new NumberField({ initial: 0 }),
+      event: new BooleanField(),
     });
   }
 
@@ -94,21 +94,20 @@ export default class ProjectPart extends BaseMessagePart {
    */
   async updateEventText() {
     const eventSetting = game.settings.get(systemID, "projectEvents");
-    if ((eventSetting === "none") || !this.events) return;
+    if ((eventSetting === "none") || !this.event) return;
 
-    let eventText = "";
-    if (eventSetting === "roll") eventText = game.i18n.localize("DRAW_STEEL.Item.project.Events.RollTriggered");
-    else if (eventSetting === "milestone") eventText = game.i18n.format("DRAW_STEEL.Item.project.Events.MilestoneTriggered", { events: this.events });
+    const eventPart = this.parent.parts.documentsByType.content[0];
+    if (eventPart) return;
 
-    const eventPart = this.parent.parts.find(p => p instanceof ContentPart);
-    if (eventPart && (eventSetting === "milestone")) {
-      await this.message.update({ content: eventText });
-    } else {
-      await this.message.update({ content: eventText });
-      ContentPart.create({
-        type: "content",
-      }, { parent: this.message });
-    }
+    const eventText = game.i18n.localize("DRAW_STEEL.Item.project.Events.EventTriggered");
+    const updates = { content: eventText };
+
+    const parts = { ...this.parent.parts };
+    const contentPart = new ContentPart({ type: "content" });
+    parts[contentPart._id] = contentPart;
+    updates.system = { parts };
+
+    await this.message.update(updates);
   }
 
   /* -------------------------------------------------- */
@@ -138,19 +137,16 @@ export default class ProjectPart extends BaseMessagePart {
     const updates = { rolls };
 
     const eventSetting = game.settings.get(systemID, "projectEvents");
-    let updateEventText = false;
     if (eventSetting === "milestone") {
       const newEvents = project.system.milestoneEventsOccured(previousPoints, updatedPoints);
-      updates.events = (this.events ?? 0) + newEvents;
-
-      if (updates.events > this.events) updateEventText = true;
+      if (newEvents) updates.event = true;
     }
 
     await this.update(updates, { notify: true, ds: {
       dsn: { [this.id]: [rolls.length - 1] },
     } });
 
-    if (updateEventText) await this.updateEventText();
+    if (updates.event) await this.updateEventText();
   }
 
   /* -------------------------------------------------- */
@@ -167,13 +163,13 @@ export default class ProjectPart extends BaseMessagePart {
       flavor: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
     });
     await eventRoll.evaluate();
-    const events = eventRoll.total === 6 ? 1 : this.events;
+    const eventTriggered = eventRoll.total === 6;
     const rolls = this.rolls.concat(eventRoll);
 
-    await this.update({ rolls, events }, { notify: true, ds: {
+    await this.update({ rolls, event: eventTriggered }, { notify: true, ds: {
       dsn: { [this.id]: [rolls.length - 1] },
     } });
 
-    if (eventRoll.total === 6) await this.updateEventText();
+    if (eventTriggered) await this.updateEventText();
   }
 }
