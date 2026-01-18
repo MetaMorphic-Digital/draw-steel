@@ -443,7 +443,20 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       bonuses: options.bonuses,
     };
 
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills, skillModifiers });
+    const doc = await fromUuid(options.resultSource);
+
+    const promptValue = await PowerRoll.prompt({
+      type,
+      evaluation,
+      formula,
+      data,
+      modifiers,
+      actor: this.parent,
+      characteristic,
+      skills,
+      skillModifiers,
+      flavor: doc?.name,
+    });
 
     if (!promptValue) return null;
     const { rollMode, rolls, baseRoll } = promptValue;
@@ -469,8 +482,20 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     const testPart = { type: "test", flavor, rolls };
 
-    // TODO: Populate testPart.resultSource using system-provided UUID references for test difficulties etc.
-    if (options.resultSource) testPart.resultSource = options.resultSource;
+    if (doc) {
+      testPart.resultSource = options.resultSource;
+      if ((doc.documentName === "Item") && (doc.type === "ability")) {
+        for (const damageEffect of doc.system.power.effects.documentsByType.damage) {
+          // TODO: Determine how to pick/enforce across multiple damage types
+          const damageRoll = damageEffect.toDamageRoll(baseRoll.product);
+          if (!damageRoll) continue;
+          await damageRoll.evaluate();
+          testPart.rolls.push(damageRoll);
+          // If there's a roll, add it to the base message data for DSN purposes
+          if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
+        }
+      }
+    }
 
     messageData.system.parts.push(testPart);
 

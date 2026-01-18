@@ -1,8 +1,9 @@
 import FormulaField from "../../fields/formula-field.mjs";
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
+import DamageRoll from "../../../rolls/damage.mjs";
 
-const { SetField, SchemaField, StringField } = foundry.data.fields;
+const { SetField } = foundry.data.fields;
 
 /**
  * For abilities that do damage.
@@ -144,6 +145,36 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     return game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
       damage: result,
       potency: potencyString,
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Produce a damage roll.
+   * @param {1 | 2 | 3} tier        The tier of this effects' data to fetch.
+   * @param {object} [options]
+   * @param {string} [options.damageSelection] Pick between this damage effect's multiple damage types.
+   * @returns {DamageRoll | null} Returns null if there would be no damage from that tier.
+   */
+  toDamageRoll(tier, options = {}) {
+    const effectTier = this.damage[`tier${tier}`];
+    if (Number(effectTier.value) === 0) return null;
+
+    let damageType = "";
+    if (effectTier.types.size === 1) damageType = effectTier.types.first();
+    else if (effectTier.types.size > 1) damageType = options.damageSelection;
+
+    const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+    const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+
+    // Extract ignoredImmunities from the damage effect
+    const ignoredImmunities = Array.from(effectTier.ignoredImmunities);
+
+    return new DamageRoll(String(effectTier.value), this.item.getRollData(), {
+      flavor,
+      type: damageType,
+      ignoredImmunities,
     });
   }
 

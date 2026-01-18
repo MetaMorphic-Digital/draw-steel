@@ -532,30 +532,9 @@ export default class AbilityModel extends BaseItemModel {
           abilityUuid: this.parent.uuid,
         };
 
-        // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
-        const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
-          const damage = currentEffect.damage[`tier${tierNumber}`];
-          if (Number(damage.value) !== 0) effects.push(damage);
-          return effects;
-        }, []);
-
-        for (const damageEffect of damageEffects) {
-          // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-          let damageType = "";
-          if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
-          else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
-
-          const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-          const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
-
-          // Extract ignoredImmunities from the damage effect
-          const ignoredImmunities = Array.from(damageEffect.ignoredImmunities);
-
-          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, {
-            flavor,
-            type: damageType,
-            ignoredImmunities,
-          });
+        for (const damageEffect of this.power.effects.documentsByType.damage) {
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: baseRoll.options.damageSelection });
+          if (!damageRoll) continue;
           await damageRoll.evaluate();
           rollPart.rolls.push(damageRoll);
           // If there's a roll, add it to the base message data for DSN purposes

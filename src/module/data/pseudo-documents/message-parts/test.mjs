@@ -56,7 +56,7 @@ export default class TestPart extends RollPart {
     const lastTestPart = this.parent.parts.sortedContents.findLast(p => p.type === this.type) === this;
 
     if (this.message.isOwner && lastTestPart && (this.message.speakerActor?.type === "hero")) {
-      context.ctx.buttons.push(ds.utils.constructHTMLButton({
+      context.ctx.buttons.unshift(ds.utils.constructHTMLButton({
         label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label"),
         icon: "fa-solid fa-dice-d10",
         dataset: {
@@ -71,7 +71,11 @@ export default class TestPart extends RollPart {
     if (resultSource) {
       const latestRoll = this.latestTest;
 
-      if (typeof resultSource.system?.powerRollText === "function") context.resultHTML = resultSource.system.powerRollText(latestRoll.product);
+      if (typeof resultSource.system?.powerRollText === "function") {
+        context.ctx.tierKey = `tier${latestRoll.product}`;
+        context.ctx.tierSymbol = ["!", "@", "#"][latestRoll.product - 1];
+        context.ctx.resultHTML = resultSource.system.powerRollText(latestRoll.product);
+      }
 
       if ((resultSource.documentName === "Item") && (resultSource.type === "ability")) {
         for (const pre of resultSource.system.power.effects) {

@@ -6,7 +6,7 @@ type PotencySchema = {
 export type DamageSchema = {
   value: string;
   types: Set<string>;
-  properties: Set<string>;
+  ignoredImmunities: Set<string>;
   potency: PotencySchema;
 };
 
