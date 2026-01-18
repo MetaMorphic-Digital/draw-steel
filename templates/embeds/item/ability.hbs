@@ -38,9 +38,11 @@
 {{/if}}
 {{#if powerRolls}}
 <section class="powerResult">
+  {{#unless system.power.roll.reactive}}
   <p>
     <strong>{{{localize "DRAW_STEEL.ROLL.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
   </p>
+  {{/unless}}
   <dl class="power-roll-display">
     <dt class="tier1">!</dt>
     <dd class="tier1">{{{powerRollEffects.tier1.text}}}</dd>

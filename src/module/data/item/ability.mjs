@@ -69,6 +69,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.power = new fields.SchemaField({
       roll: new fields.SchemaField({
+        reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
       }),
@@ -116,7 +117,7 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.power.roll.enabled = this.power.effects.size > 0;
+    this.power.roll.enabled = !this.power.roll.reactive && (this.power.effects.size > 0);
   }
 
   /* -------------------------------------------------- */
@@ -126,12 +127,14 @@ export default class AbilityModel extends BaseItemModel {
     super.preparePostActorPrepData();
     this._applyAbilityBonuses();
 
-    for (const chr of this.power.roll.characteristics) {
-      const c = this.actor.system.characteristics[chr];
-      if (!c) continue;
-      if (c.value >= this.power.characteristic.value) {
-        this.power.characteristic.key = chr;
-        this.power.characteristic.value = c.value;
+    if (!this.power.roll.reactive && this.actor.system.characteristics) {
+      for (const chr of this.power.roll.characteristics) {
+        const c = this.actor.system.characteristics[chr];
+        if (!c) continue;
+        if (c.value >= this.power.characteristic.value) {
+          this.power.characteristic.key = chr;
+          this.power.characteristic.value = c.value;
+        }
       }
     }
   }
@@ -359,7 +362,7 @@ export default class AbilityModel extends BaseItemModel {
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
-    if (this.actor) {
+    if (this.actor && this.actor.system.characteristics) {
       rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }

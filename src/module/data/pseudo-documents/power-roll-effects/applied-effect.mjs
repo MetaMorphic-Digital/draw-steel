@@ -65,7 +65,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       if (n > 1) {
         /** @type {AppliedEffectSchema} */
         const prevTier = this.applied[`tier${n - 1}`];
-        if (prevTier.display) tierValue.display ||= prevTier.display;
+        if (!this.parent.power.roll.reactive && prevTier.display) tierValue.display ||= prevTier.display;
         if (prevTier.potency.characteristic) tierValue.potency.characteristic ||= prevTier.potency.characteristic;
       }
     }
@@ -109,12 +109,14 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         return entry;
       });
 
+      const usePlaceHolder = !this.parent.power.roll.reactive && (n > 1);
+
       Object.assign(context.fields[`tier${n}`].applied, {
         display: {
           field: this.schema.getField(`${path}.display`),
           value: this.applied[`tier${n}`].display,
           src: this._source.applied[`tier${n}`].display,
-          placeholder: n > 1 ? this.applied[`tier${n - 1}`].display : "",
+          placeholder: usePlaceHolder ? this.applied[`tier${n - 1}`].display : "",
           name: `${path}.display`,
         },
         effects: {

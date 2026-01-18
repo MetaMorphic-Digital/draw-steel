@@ -12,8 +12,8 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   static defineSchema() {
     // TODO: Remove manual label assignment when localization bug is fixed
     return Object.assign(super.defineSchema(), {
-      damage: this.duplicateTierSchema(() => ({
-        value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
+      damage: this.duplicateTierSchema((n) => ({
+        value: new FormulaField({ initial: n === 1 ? "2 + @chr" : "", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
         types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
         ignoredImmunities: new SetField(setOptions(), {
           label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.label",
@@ -50,6 +50,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    * @returns {string}    The default value.
    */
   #defaultDamageValue(n) {
+    if (this.parent.power.roll.reactive) return "";
     switch (n) {
       case 1:
         return "2 + @chr";
