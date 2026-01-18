@@ -76,17 +76,14 @@ export default class AbilityResultPart extends RollPart {
     const item = this.ability;
 
     if (item) {
-      const htmlPRE = [];
       for (const pre of item.system.power.effects) {
         const newButtons = pre.constructButtons(this.tier);
         if (newButtons) context.ctx.buttons.push(...newButtons);
-
-        htmlPRE.push(pre.toText(this.tier));
       }
 
       context.ctx.foundItem = true;
       context.ctx.tierSymbol = ["!", "@", "#"][this.tier - 1];
-      context.ctx.resultHTML = htmlPRE.filter(_ => _).join("; ");
+      context.ctx.resultHTML = item.system.powerRollText(this.tier);
     }
   }
 

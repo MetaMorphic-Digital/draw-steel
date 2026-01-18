@@ -331,7 +331,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
+      this.powerRollText(tier),
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -354,6 +354,17 @@ export default class AbilityModel extends BaseItemModel {
       value: this.spend.value ?? "",
       name: resourceName,
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Produces the power roll text for a given tier.
+   * @param {1 | 2 | 3} tier
+   * @returns {string}
+   */
+  powerRollText(tier) {
+    return this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ");
   }
 
   /* -------------------------------------------------- */

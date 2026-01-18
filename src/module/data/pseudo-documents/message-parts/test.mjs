@@ -42,13 +42,6 @@ export default class TestPart extends BaseMessagePart {
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
-
-    // const testRoll = this.rolls[0];
-
-    // const resultSource = await fromUuid(this.resultSource);
-
-    // TODO: Populate `context.resultHTML` with info from resultSource
-
     context.ctx.buttons = [];
 
     const lastTestPart = this.parent.parts.sortedContents.findLast(p => p.type === this.type) === this;
@@ -63,6 +56,22 @@ export default class TestPart extends BaseMessagePart {
         },
       }));
     }
+
+    const resultSource = await fromUuid(this.resultSource);
+
+    if (resultSource) {
+      const latestRoll = this.rolls.at(-1);
+
+      if (typeof resultSource.system?.powerRollText === "function") context.resultHTML = resultSource.system.powerRollText(latestRoll.product);
+
+      if ((resultSource.documentName === "Item") && (resultSource.type === "ability")) {
+        for (const pre of resultSource.system.power.effects) {
+          const newButtons = pre.constructButtons(latestRoll.product);
+          if (newButtons) context.ctx.buttons.push(...newButtons);
+        }
+      }
+    }
+
   }
 
   /* -------------------------------------------------- */

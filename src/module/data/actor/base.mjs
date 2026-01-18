@@ -406,6 +406,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
    * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
+   * @param {string} [options.resultSource]             A UUID pointing to an ability or power roll result page.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
@@ -469,6 +470,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const testPart = { type: "test", flavor, rolls };
 
     // TODO: Populate testPart.resultSource using system-provided UUID references for test difficulties etc.
+    if (options.resultSource) testPart.resultSource = options.resultSource;
 
     messageData.system.parts.push(testPart);
 

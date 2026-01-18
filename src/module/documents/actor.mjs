@@ -62,7 +62,6 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * Rolls a given actor's characteristic.
    * @param {string} characteristic
    * @param {object} [options] Pass through options object.
-   * @returns
    */
   async rollCharacteristic(characteristic, options) {
     if (this.system.rollCharacteristic instanceof Function) return this.system.rollCharacteristic(characteristic, options);
@@ -98,9 +97,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     }
     const { value: current, temporary, min, max } = this.system.stamina;
     const delta = isDelta ? (-1 * value) : current + temporary - value;
-    
+
     if (!delta) return this;
-    
+
     const updates = {};
     if (delta < 0) {
       // Healing modifies only stamina value
