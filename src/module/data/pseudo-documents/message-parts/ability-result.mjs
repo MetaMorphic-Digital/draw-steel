@@ -1,10 +1,8 @@
 import { systemPath } from "../../../constants.mjs";
-import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 import RollPart from "./roll.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
 
 /**
- * @import { ActiveEffectData } from "@common/documents/_types.mjs";
  * @import DrawSteelItem from "../../../documents/item.mjs";
  * @import AbilityData from "../../item/ability.mjs";
  * @import { AppliedPowerRollEffect, GainResourcePowerRollEffect } from "../power-roll-effects/_module.mjs";

@@ -12,6 +12,8 @@ export default class TestPart extends BaseMessagePart {
   static ACTIONS = {
     ...super.ACTIONS,
     heroReroll: this.#heroReroll,
+    applyEffect: this.#applyEffect,
+    gainResource: this.#gainResource,
   };
 
   /* -------------------------------------------------- */
@@ -115,4 +117,47 @@ export default class TestPart extends BaseMessagePart {
 
     return true;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+     * Apply an effect to the selected actor.
+     *
+     * @this TestPart
+     * @param {PointerEvent} event   The originating click event.
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+     */
+  static async #applyEffect(event, target) {
+    /** @type {AppliedPowerRollEffect} */
+    const pre = await fromUuid(target.dataset.uuid);
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
+
+    const latestRoll = this.rolls.at(-1);
+
+    const tierKey = `tier${latestRoll.product}`;
+
+    await pre.applyEffect(tierKey, target.dataset.effectId);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+     * Apply an effect to the selected actor.
+     *
+     * @this TestPart
+     * @param {PointerEvent} event   The originating click event.
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+     */
+  static async #gainResource(event, target) {
+    /** @type {GainResourcePowerRollEffect} */
+    const pre = await fromUuid(target.dataset.uuid);
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
+
+    const latestRoll = this.rolls.at(-1);
+
+    const tierKey = `tier${latestRoll.product}`;
+
+    await pre.applyGain(tierKey);
+  }
+
 }
