@@ -1,6 +1,7 @@
 import BaseMessagePart from "./base-message-part.mjs";
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DSRoll, ProjectRoll } from "../../../rolls/_module.mjs";
+import ContentPart from "./content.mjs";
 
 /** @import { ProjectRollPrompt } from  "../../../_types.js"*/
 
@@ -85,15 +86,29 @@ export default class ProjectPart extends BaseMessagePart {
       }));
     }
 
-    if ((eventSetting !== "none") && this.events) {
-      let eventText = "";
-      if (eventSetting === "roll") eventText = game.i18n.localize("DRAW_STEEL.Item.project.Events.RollTriggered");
-      else if (eventSetting === "milestone") eventText = game.i18n.format("DRAW_STEEL.Item.project.Events.MilestoneTriggered", { events: this.events });
-
-      context.eventText = eventText;
-    }
-
     return context;
+  }
+
+  /**
+   * Update the message content with the new event text. If there's no ContentPart, create one.
+   */
+  async updateEventText() {
+    const eventSetting = game.settings.get(systemID, "projectEvents");
+    if ((eventSetting === "none") || !this.events) return;
+
+    let eventText = "";
+    if (eventSetting === "roll") eventText = game.i18n.localize("DRAW_STEEL.Item.project.Events.RollTriggered");
+    else if (eventSetting === "milestone") eventText = game.i18n.format("DRAW_STEEL.Item.project.Events.MilestoneTriggered", { events: this.events });
+
+    const eventPart = this.parent.parts.find(p => p instanceof ContentPart);
+    if (eventPart && (eventSetting === "milestone")) {
+      await this.message.update({ content: eventText });
+    } else {
+      await this.message.update({ content: eventText });
+      ContentPart.create({
+        type: "content",
+      }, { parent: this.message });
+    }
   }
 
   /* -------------------------------------------------- */
@@ -123,14 +138,19 @@ export default class ProjectPart extends BaseMessagePart {
     const updates = { rolls };
 
     const eventSetting = game.settings.get(systemID, "projectEvents");
+    let updateEventText = false;
     if (eventSetting === "milestone") {
       const newEvents = project.system.milestoneEventsOccured(previousPoints, updatedPoints);
       updates.events = (this.events ?? 0) + newEvents;
+
+      if (updates.events > this.events) updateEventText = true;
     }
 
     await this.update(updates, { notify: true, ds: {
       dsn: { [this.id]: [rolls.length - 1] },
     } });
+
+    if (updateEventText) await this.updateEventText();
   }
 
   /* -------------------------------------------------- */
@@ -150,8 +170,10 @@ export default class ProjectPart extends BaseMessagePart {
     const events = eventRoll.total === 6 ? 1 : this.events;
     const rolls = this.rolls.concat(eventRoll);
 
-    this.update({ rolls, events }, { notify: true, ds: {
+    await this.update({ rolls, events }, { notify: true, ds: {
       dsn: { [this.id]: [rolls.length - 1] },
     } });
+
+    if (eventRoll.total === 6) await this.updateEventText();
   }
 }

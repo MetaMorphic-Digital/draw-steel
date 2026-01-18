@@ -218,8 +218,16 @@ export default class ProjectModel extends BaseItemModel {
       projectUuid: this.parent.uuid,
       rolls: [projectRoll],
     };
-    if (game.settings.get(systemID, "projectEvents") === "milestone") projectPart.events = this.milestoneEventsOccured(previousPoints, updatedPoints);
     messageData.system.parts.push(projectPart);
+
+    if (game.settings.get(systemID, "projectEvents") === "milestone") {
+      const events = this.milestoneEventsOccured(previousPoints, updatedPoints);
+      if (game.settings.get(systemID, "projectEvents") === "milestone") projectPart.events = events;
+      if (events) {
+        messageData.content = game.i18n.format("DRAW_STEEL.Item.project.Events.MilestoneTriggered", { events });
+        messageData.system.parts.push({ type: "content" });
+      }
+    }
 
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
     return DrawSteelChatMessage.create(messageData);
