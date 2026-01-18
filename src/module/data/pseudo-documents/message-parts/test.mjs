@@ -1,13 +1,12 @@
-import BaseMessagePart from "./base-message-part.mjs";
 import { systemPath } from "../../../constants.mjs";
-import enrichHTML from "../../../utils/enrich-html.mjs";
+import RollPart from "./roll.mjs";
 
 const { DocumentUUIDField } = foundry.data.fields;
 
 /**
  * A part containing a Test roll and possible result text.
  */
-export default class TestPart extends BaseMessagePart {
+export default class TestPart extends RollPart {
   /**@inheritdoc */
   static ACTIONS = {
     ...super.ACTIONS,
@@ -41,10 +40,18 @@ export default class TestPart extends BaseMessagePart {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Finds the most recent test roll (useful for managing rerolls).
+   */
+  get latestTest() {
+    return this.rolls.filter(r => r instanceof ds.rolls.PowerRoll).at(-1);
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
-    context.ctx.buttons = [];
 
     const lastTestPart = this.parent.parts.sortedContents.findLast(p => p.type === this.type) === this;
 
@@ -62,7 +69,7 @@ export default class TestPart extends BaseMessagePart {
     const resultSource = await fromUuid(this.resultSource);
 
     if (resultSource) {
-      const latestRoll = this.rolls.at(-1);
+      const latestRoll = this.latestTest;
 
       if (typeof resultSource.system?.powerRollText === "function") context.resultHTML = resultSource.system.powerRollText(latestRoll.product);
 
@@ -132,9 +139,7 @@ export default class TestPart extends BaseMessagePart {
     const pre = await fromUuid(target.dataset.uuid);
     if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
 
-    const latestRoll = this.rolls.at(-1);
-
-    const tierKey = `tier${latestRoll.product}`;
+    const tierKey = `tier${this.latestTest.product}`;
 
     await pre.applyEffect(tierKey, target.dataset.effectId);
   }
@@ -153,11 +158,8 @@ export default class TestPart extends BaseMessagePart {
     const pre = await fromUuid(target.dataset.uuid);
     if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
 
-    const latestRoll = this.rolls.at(-1);
-
-    const tierKey = `tier${latestRoll.product}`;
+    const tierKey = `tier${this.latestTest.product}`;
 
     await pre.applyGain(tierKey);
   }
-
 }
