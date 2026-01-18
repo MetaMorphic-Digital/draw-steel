@@ -44,6 +44,7 @@ Hooks.once("init", function () {
     "templates/embeds/item/ability.hbs",
     "templates/embeds/item/kit.hbs",
     "templates/embeds/item/project.hbs",
+    "templates/embeds/item/treasure.hbs",
   ].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
