@@ -1,5 +1,10 @@
+import DSDialog from "../../../applications/api/dialog.mjs";
 import { systemPath } from "../../../constants.mjs";
 import RollPart from "./roll.mjs";
+
+/**
+ * @import DamagePowerRollEffect from "../power-roll-effects/damage-effect.mjs";
+ */
 
 const { DocumentUUIDField } = foundry.data.fields;
 
@@ -13,6 +18,7 @@ export default class TestPart extends RollPart {
     heroReroll: this.#heroReroll,
     applyEffect: this.#applyEffect,
     gainResource: this.#gainResource,
+    rollDamage: this.#rollDamage,
   };
 
   /* -------------------------------------------------- */
@@ -79,12 +85,21 @@ export default class TestPart extends RollPart {
 
       if ((resultSource.documentName === "Item") && (resultSource.type === "ability")) {
         for (const pre of resultSource.system.power.effects) {
-          const newButtons = pre.constructButtons(latestRoll.product);
-          if (newButtons) context.ctx.buttons.push(...newButtons);
+          const newButtons = pre.constructButtons(latestRoll.product) ?? [];
+          if (pre.type === "damage") {
+            newButtons.push(ds.utils.constructHTMLButton({
+              label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.RollDamage.label"),
+              icon: "fa-solid fa-dice-d6",
+              dataset: {
+                action: "rollDamage",
+                uuid: pre.uuid,
+              },
+            }));
+          }
+          if (newButtons.length) context.ctx.buttons.push(...newButtons);
         }
       }
     }
-
   }
 
   /* -------------------------------------------------- */
@@ -120,29 +135,8 @@ export default class TestPart extends RollPart {
       newRoll.options = { ...newRoll.options, flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor") };
     }
 
-    const rolls = [newRoll];
-    const dsnIndices = [this.rolls.length];
-
-    const existingTiers = new Set(this.rolls.filter(r => r instanceof ds.rolls.PowerRoll).map(r => r.product));
-
-    // Need to potentially add more damage rolls if the reroll changed the tier.
-    if (!existingTiers.has(newRoll.product)) {
-      const doc = await fromUuid(this.resultSource);
-
-      if ((doc?.documentName === "Item") && (doc.type === "ability ")) {
-        for (const damageEffect of doc.system.power.effects.documentsByType.damage) {
-        // TODO: Determine how to pick/enforce across multiple damage types
-          const damageRoll = damageEffect.toDamageRoll(baseRoll.product);
-          if (!damageRoll) continue;
-          await damageRoll.evaluate();
-          if (!damageRoll.isDeterministic) dsnIndices.push(this.rolls.length + rolls.length);
-          rolls.push(damageRoll);
-        }
-      }
-
-    }
-    await this.update({ rolls: this.rolls.concat(rolls) }, { notify: true, ds: {
-      dsn: { [this.id]: dsnIndices },
+    await this.update({ rolls: this.rolls.concat(newRoll) }, { notify: true, ds: {
+      dsn: { [this.id]: [this.rolls.length] },
     } });
 
     return true;
@@ -184,5 +178,65 @@ export default class TestPart extends RollPart {
     const tierKey = `tier${this.latestTest.product}`;
 
     await pre.applyGain(tierKey);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to the selected actor.
+   *
+   * @this TestPart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #rollDamage(event, target) {
+    const { uuid } = target.dataset;
+
+    /** @type {DamagePowerRollEffect} */
+    const pre = await fromUuid(uuid);
+
+    console.log(this, pre);
+
+    const tier = this.latestTest.product;
+
+    const damageInfo = pre.damage[`tier${tier}`];
+
+    let damageSelection;
+
+    if (damageInfo.types.size > 1) {
+      const content = document.createElement("div");
+
+      const { createFormGroup, createSelectInput } = foundry.applications.fields;
+
+      content.append(createFormGroup({
+        label: "DRAW_STEEL.ChatMessage.PARTS.test.RollDamage.DamageType",
+        localize: true,
+        input: createSelectInput({
+          name: "damageSelection",
+          options: Array.from(damageInfo.types).map(value => ({ label: ds.CONFIG.damageTypes[value]?.label ?? value, value })),
+        }),
+      }));
+
+      const fd = await DSDialog.input({
+        content,
+        window: {
+          title: pre.item.name,
+          icon: "fa-solid fa-dice-d6",
+        },
+      });
+
+      if (!fd) return;
+
+      damageSelection = fd.damageSelection;
+    }
+
+    const damageRoll = pre.toDamageRoll(tier, { damageSelection });
+    await damageRoll.evaluate();
+
+    const options = { notify: true };
+
+    if (!damageRoll.isDeterministic) options.ds = { dsn: { [this.id]: [this.rolls.length] } };
+
+    await this.update({ rolls: this.rolls.concat(damageRoll) }, options);
   }
 }

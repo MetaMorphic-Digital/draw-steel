@@ -482,21 +482,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     const testPart = { type: "test", flavor, rolls };
 
-    if (doc) {
-      testPart.resultSource = options.resultSource;
-      if ((doc.documentName === "Item") && (doc.type === "ability")) {
-        for (const damageEffect of doc.system.power.effects.documentsByType.damage) {
-          // TODO: Determine how to pick/enforce across multiple damage types
-          const damageRoll = damageEffect.toDamageRoll(baseRoll.product);
-          if (!damageRoll) continue;
-          await damageRoll.evaluate();
-          testPart.rolls.push(damageRoll);
-          // If there's a roll, add it to the base message data for DSN purposes
-          if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
-        }
-      }
-    }
-
     messageData.system.parts.push(testPart);
 
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
