@@ -159,6 +159,7 @@ Hooks.once("init", function () {
     applications.ux.enrichers.lookup,
     applications.ux.enrichers.reference,
     applications.ux.enrichers.roll,
+    applications.ux.enrichers.potency,
   ];
 
   Object.assign(CONFIG.fontDefinitions, {
