@@ -40,6 +40,7 @@
 - Added a setting for the XP advancement speed. (#1064)
 - Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
 - Implemented a Draw Steel Journal Sheet that styles the contained pages in a fashion similar to the core books. (#1170)
+- Added a `[[potency]]` enricher to format potency values with the Draw Steel glyphs. (#1269)
 - New ability modifier keys
   - Added `power.roll.banes` and `power.roll.edges` to control base numbers of edges/banes. (#1067)
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
