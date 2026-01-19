@@ -120,10 +120,29 @@ export default class TestPart extends RollPart {
       newRoll.options = { ...newRoll.options, flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor") };
     }
 
-    const rolls = this.rolls.concat(newRoll);
+    const rolls = [newRoll];
+    const dsnIndices = [this.rolls.length];
 
-    await this.update({ rolls }, { notify: true, ds: {
-      dsn: { [this.id]: [rolls.length - 1] },
+    const existingTiers = new Set(this.rolls.filter(r => r instanceof ds.rolls.PowerRoll).map(r => r.product));
+
+    // Need to potentially add more damage rolls if the reroll changed the tier.
+    if (!existingTiers.has(newRoll.product)) {
+      const doc = await fromUuid(this.resultSource);
+
+      if ((doc?.documentName === "Item") && (doc.type === "ability ")) {
+        for (const damageEffect of doc.system.power.effects.documentsByType.damage) {
+        // TODO: Determine how to pick/enforce across multiple damage types
+          const damageRoll = damageEffect.toDamageRoll(baseRoll.product);
+          if (!damageRoll) continue;
+          await damageRoll.evaluate();
+          if (!damageRoll.isDeterministic) dsnIndices.push(this.rolls.length + rolls.length);
+          rolls.push(damageRoll);
+        }
+      }
+
+    }
+    await this.update({ rolls: this.rolls.concat(rolls) }, { notify: true, ds: {
+      dsn: { [this.id]: dsnIndices },
     } });
 
     return true;
