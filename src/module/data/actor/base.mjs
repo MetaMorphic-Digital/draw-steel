@@ -482,6 +482,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     const testPart = { type: "test", flavor, rolls };
 
+    if (doc) testPart.resultSource = options.resultSource;
+
     messageData.system.parts.push(testPart);
 
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
