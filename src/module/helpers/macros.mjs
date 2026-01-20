@@ -51,7 +51,7 @@ export async function rollItemMacro(itemUuid) {
   const item = await fromUuid(itemUuid);
   if (!item) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoItem", { localize: true });
   if (!item.parent) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NotOwnedItem", { format: { item: item.name } });
-  if (!(item.system.roll instanceof Function)) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoRoll", { format: { item: item.name } });
+  if (typeof item.system.roll !== "function") return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoRoll", { format: { item: item.name } });
 
   item.system.roll();
 }

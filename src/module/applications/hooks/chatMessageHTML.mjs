@@ -9,10 +9,10 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
  */
 export async function renderChatMessageHTML(message, html, context) {
   if (!message.isContentVisible) return;
-  if (message.system.alterMessageHTML instanceof Function) {
+  if (typeof message.system.alterMessageHTML === "function") {
     await message.system.alterMessageHTML(html);
   }
-  if (message.system.addListeners instanceof Function) {
+  if (typeof message.system.addListeners === "function") {
     await message.system.addListeners(html);
   }
 }
