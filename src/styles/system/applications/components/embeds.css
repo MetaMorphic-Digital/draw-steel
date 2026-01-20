@@ -1,6 +1,6 @@
 /* Sheets do not include the document-embed wrapper but do use a `.content-embed` div class */
 document-embed, .content-embed {
-  div.ability {
+  div.ability, &.immediate-embed.ability {
     h5 {
       margin: 0;
       font-size: var(--font-h5-size);
@@ -9,19 +9,17 @@ document-embed, .content-embed {
     .metadata {
       margin: 0.5em 0;
 
-      .info-row {
-        p {
-          margin: 0;
-        }
+      dt.distance, dt.target {
+        font-family: "Draw Steel Glyphs";
       }
     }
 
-    .powerResult {
-      margin-top: 1rem;
-    }
-
-    .effect {
-      margin: 0.5em 0;
+    dd.effect {
+      :first-child {
+        /* Ensures the text lines up with the dt element */
+        margin-top: 0;
+        padding-top: 0;
+      }
     }
   }
 
