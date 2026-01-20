@@ -134,6 +134,11 @@ export default class AbilityModel extends BaseItemModel {
         this.power.characteristic.value = c.value;
       }
     }
+
+    // Prepare PRE data that relies on ability data prep being complete (e.g. treasure damage bonuses).
+    for (const effect of this.power.effects) {
+      effect.preparePostAbilityPrepData();
+    }
   }
 
   /* -------------------------------------------------- */
@@ -191,7 +196,8 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          const field = DamagePowerRollEffect.schema.getField(bonus.key);
+          // The special handling can be removed in v14 when non-persistent fields can be included in the schema.
+          const field = (bonus.key.startsWith("damage.bonuses")) ? new fields.NumberField({ integer: true }) : DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
