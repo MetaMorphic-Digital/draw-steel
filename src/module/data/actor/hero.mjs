@@ -4,7 +4,7 @@ import DSRoll from "../../rolls/base.mjs";
 import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
-import BaseActorModel from "./base.mjs";
+import CreatureModel from "./creature.mjs";
 
 /**
  * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
@@ -20,7 +20,7 @@ const fields = foundry.data.fields;
 /**
  * A player character, created and run by a player other than the Director.
  */
-export default class HeroModel extends BaseActorModel {
+export default class HeroModel extends CreatureModel {
   /** @inheritdoc */
   static get metadata() {
     return {

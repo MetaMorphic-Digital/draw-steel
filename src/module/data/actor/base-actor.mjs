@@ -1,9 +1,7 @@
-import DrawSteelChatMessage from "../../documents/chat-message.mjs";
-import PowerRoll from "../../rolls/power.mjs";
+
 import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
-import { systemID } from "../../constants.mjs";
 import DrawSteelSystemModel from "../system-model.mjs";
 
 /**
@@ -22,7 +20,6 @@ const fields = foundry.data.fields;
 export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   static defineSchema() {
-    const characteristic = { initial: 0, integer: true, nullable: false };
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
@@ -30,15 +27,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
-
-    schema.characteristics = new fields.SchemaField(
-      Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {
-        obj[chc] = new fields.SchemaField({
-          value: new fields.NumberField({ ...characteristic, label, hint }),
-        });
-        return obj;
-      }, {}),
-    );
 
     schema.combat = new fields.SchemaField({
       save: new fields.SchemaField({
@@ -105,14 +93,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
-
-    this.potency = {
-      bonuses: 0,
-      weak: 0,
-      average: 0,
-      strong: 0,
-    };
-
     Object.assign(this.statuses, {
       canFlank: true,
       flankable: true,
@@ -140,13 +120,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Kit bonus is added in derived data, which means multipliers need to happen after
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
-    });
-
-    Object.values(this.characteristics).forEach((chr) => {
-      Object.assign(chr, {
-        edges: 0,
-        banes: 0,
-      });
     });
   }
 
@@ -176,12 +149,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     // Enforce a minimum of 0 for stability
     this.combat.stability = Math.max(0, this.combat.stability);
 
-    const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
-
-    this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;
-    this.potency.average += highestCharacteristic - 1 + this.potency.bonuses;
-    this.potency.strong += highestCharacteristic + this.potency.bonuses;
-
     // Add restrictions based on status effects
     for (const effect of CONFIG.statusEffects) {
       if (!this.parent.statuses.has(effect.id) || !effect.restrictions) continue;
@@ -207,11 +174,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy.
    */
   modifyRollData(rollData) {
-    for (const [key, obj] of Object.entries(this.characteristics)) {
-      const rollKey = ds.CONFIG.characteristics[key].rollKey;
-      rollData[rollKey] = obj.value;
-    }
-
     rollData.echelon = this.echelon;
     rollData.level = this.level;
   }
@@ -394,87 +356,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @abstract
    */
   async _onStartTurn(combatant) {}
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Prompt the user for what types.
-   * @param {string} characteristic   The characteristic to roll.
-   * @param {object} [options]        Options to modify the characteristic roll.
-   * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic.
-   * @param {number} [options.edges]                    Base edges for the roll.
-   * @param {number} [options.banes]                    Base banes for the roll.
-   * @param {number} [options.bonuses]                  Base bonuses for the roll.
-   * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
-   * @returns {Promise<DrawSteelChatMessage | null>}
-   */
-  async rollCharacteristic(characteristic, options = {}) {
-    const types = options.types ?? ["test"];
-
-    let type = types[0];
-
-    if (types.length > 1) {
-      const buttons = types.reduce((b, action) => {
-        const { label, icon } = PowerRoll.TYPES[action];
-        b.push({ label, icon, action });
-        return b;
-      }, []);
-      type = await ds.applications.api.DSDialog.wait({
-        window: { title: game.i18n.localize("DRAW_STEEL.ROLL.Power.ChooseType.Title") },
-        content: game.i18n.localize("DRAW_STEEL.ROLL.Power.ChooseType.Content"),
-        buttons,
-        rejectClose: true,
-      });
-    }
-
-    options.edges = (options.edges ?? 0) + this.characteristics[characteristic].edges;
-    options.banes = (options.banes ?? 0) + this.characteristics[characteristic].banes;
-
-    const skills = this.hero?.skills ?? null;
-    const skillModifiers = this.hero?.skillModifiers ?? null;
-
-    const evaluation = "evaluate";
-    const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
-    const data = this.parent.getRollData();
-    const modifiers = {
-      edges: options.edges,
-      banes: options.banes,
-      bonuses: options.bonuses,
-    };
-
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills, skillModifiers });
-
-    if (!promptValue) return null;
-    const { rollMode, rolls, baseRoll } = promptValue;
-
-    const testConfig = ds.CONST.testOutcomes[options.difficulty];
-
-    const flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
-      difficulty: game.i18n.localize(testConfig?.label) ?? "",
-      characteristic: ds.CONFIG.characteristics[characteristic].label,
-    });
-
-    const messageData = {
-      type: "standard",
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
-      title: flavor,
-      rolls: [baseRoll],
-      system: {
-        parts: [],
-      },
-      sound: CONFIG.sounds.dice,
-      flags: { core: { canPopout: true } },
-    };
-
-    const testPart = { type: "test", flavor, rolls };
-
-    // TODO: Populate testPart.resultSource using system-provided UUID references for test difficulties etc.
-
-    messageData.system.parts.push(testPart);
-
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-    return DrawSteelChatMessage.create(messageData);
-  }
 
   /* -------------------------------------------------- */
 
