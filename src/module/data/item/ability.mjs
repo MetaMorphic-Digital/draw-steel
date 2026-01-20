@@ -222,6 +222,17 @@ export default class AbilityModel extends BaseItemModel {
           }
         }
       }
+
+      if (bonus.key.startsWith("power.")) {
+        switch (bonus.key) {
+          case "power.roll.banes":
+            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
+            break;
+          case "power.roll.edges":
+            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            break;
+        }
+      }
     }
   }
 
@@ -432,12 +443,15 @@ export default class AbilityModel extends BaseItemModel {
 
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      type: "abilityUse",
+      type: "standard",
       rolls: [],
       title: this.parent.name,
       content: this.parent.name,
       system: {
-        uuid: this.parent.uuid,
+        parts: [{
+          type: "abilityUse",
+          abilityUuid: this.parent.uuid,
+        }],
       },
       flags: { core: { canPopout: true } },
     };
@@ -459,8 +473,8 @@ export default class AbilityModel extends BaseItemModel {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
-      options.modifiers.banes ??= 0;
-      options.modifiers.edges ??= 0;
+      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
       options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);
@@ -485,26 +499,24 @@ export default class AbilityModel extends BaseItemModel {
       });
 
       if (!promptValue) return null;
-      const { rollMode, powerRolls } = promptValue;
+      const { rollMode, rolls, baseRoll } = promptValue;
+
+      // Base roll for DSN purposes
+      messageData.rolls.push(baseRoll);
 
       DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-      const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
-        accumulator[powerRoll.product] ??= [baseRoll];
-        accumulator[powerRoll.product].push(powerRoll);
+      const groupedRolls = Object.groupBy(rolls, roll => roll.product);
 
-        return accumulator;
-      }, {});
-
-      // Each tier group gets a message. Rolls within a group are in the same message
-      const messages = [];
+      // Each tier group gets a message part. Rolls within a group are in the same message part
       for (const tierNumber in groupedRolls) {
-        const messageDataCopy = foundry.utils.duplicate(messageData);
-        for (const powerRoll of groupedRolls[tierNumber]) {
-          messageDataCopy.rolls.push(powerRoll);
-        }
+        const rollPart = {
+          type: "abilityResult",
+          rolls: groupedRolls[tierNumber],
+          tier: tierNumber,
+          abilityUuid: this.parent.uuid,
+        };
 
         // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
         const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
@@ -531,17 +543,15 @@ export default class AbilityModel extends BaseItemModel {
             ignoredImmunities,
           });
           await damageRoll.evaluate();
-          messageDataCopy.rolls.push(damageRoll);
+          rollPart.rolls.push(damageRoll);
+          // If there's a roll, add it to the base message data for DSN purposes
+          if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
         }
 
-        if (messages.length > 0) messageDataCopy.system.embedText = false;
-
-        messages.push(DrawSteelChatMessage.create(messageDataCopy));
+        messageData.system.parts.push(rollPart);
       }
-
-      return Promise.allSettled(messages);
     }
-    else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /* -------------------------------------------------- */

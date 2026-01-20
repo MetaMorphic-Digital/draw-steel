@@ -24,29 +24,41 @@
 
 - New Player-Facing Compendium Content:
   - Leveled Treasures
+- Added hero token reroll for tests. (#444)
 - Implemented Summoning. (#583)
   - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
   - Updated the Infernal Contract complication to make use of this.
+- Implemented `[[/test]]` enricher which can be used to request tests. (#893)
+- Implemented Reference system. (#945)
+  - Added a `[[reference]]` enricher which implements a tooltip for the text.
+  - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
+  - Reworked the rules journal to instead have an expansive list of term references and pages. (#11)
 - Added a setting for the XP advancement speed. (#1064)
 - New ability modifier keys
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
-- Implemented a Reference page, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
 - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
 - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
+- Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 
 ### Changed
 
 - Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- [BREAKING] Re-implemented system generated chat messages to use a parts system. (#1444)
+  - Many actions that would generate new chat messages instead append to an existing message, such as spending a hero token.
+  - Re-implemented the DSN integration and usage of base vs. target-specific roll copies. (#1445)
+  - Migrated saving throws to use chat parts. (#1447)
+  - Migrated ability rolls to use chat parts. (#1449)
 - Temporary stamina now shows as part of the stamina bar. (#601)
+- The saving throw dialog now has the effect name that's being rolled for. (#1538)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
 
 ### Fixed

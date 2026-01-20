@@ -42,8 +42,10 @@ export function parseConfig(match = "", { multiple = false } = {}) {
 export function createLink(label, dataset = {}, { classes = "roll-link", tag = "a", icon } = {}) {
   const link = document.createElement(tag);
   link.className = classes;
-  if (icon) link.insertAdjacentElement("afterbegin", foundry.applications.fields.createFontAwesomeIcon(icon));
-  link.append(label);
+  if (icon) {
+    link.insertAdjacentElement("afterbegin", foundry.applications.fields.createFontAwesomeIcon(icon));
+  }
+  link.append(label.trim());
   addDataset(link, dataset);
   return link;
 }

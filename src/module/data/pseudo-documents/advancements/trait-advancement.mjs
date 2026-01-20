@@ -1,3 +1,4 @@
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import BaseAdvancement from "./base-advancement.mjs";
 
 /**
@@ -57,6 +58,16 @@ export default class TraitAdvancement extends BaseAdvancement {
     if (this.chooseN === null) return false;
     if (this.chooseN < this.traitOptions.length) return true;
     return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async createLeaves(node) {
+    // forEach has performance gains over `for of`, and this operation is sync
+    this.traitOptions.forEach(trait => {
+      node.choices[trait.value] = new AdvancementLeaf(node, trait.value, trait.label);
+    });
   }
 
   /* -------------------------------------------------- */
