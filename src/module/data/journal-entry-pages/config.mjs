@@ -3,14 +3,14 @@ const { ArrayField, DocumentUUIDField, SchemaField, StringField } = foundry.data
 /**
  * A journal page for easy registration of configuration data like monster keywords.
  */
-export default class ConfigData extends foundry.abstract.TypeDataModel {
+export default class ConfigurationModel extends foundry.abstract.TypeDataModel {
   /**
    * Metadata for this JournalEntryPage subtype.
    * @type {SubtypeMetadata}
    */
   static get metadata() {
     return {
-      type: "config",
+      type: "configure",
       icon: "fa-solid fa-spaghetti-monster-flying",
       embedded: {},
     };

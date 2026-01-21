@@ -6,7 +6,7 @@ type ConfigEntry = {
 }
 
 declare module "./config.mjs" {
-  export default interface ConfigData {
+  export default interface ConfigurationModel {
     parent: DrawSteelJournalEntryPage;
     languages: ConfigEntry[];
     monsterKeywords: ConfigEntry[];
@@ -14,14 +14,14 @@ declare module "./config.mjs" {
 }
 
 declare module "./image.mjs" {
-  export default interface DrawSteelImagePage {
+  export default interface DrawSteelImageModel {
     parent: DrawSteelJournalEntryPage;
     artDescription: string;
   }
 }
 
 declare module "./reference.mjs" {
-  export default interface ReferenceData {
+  export default interface ReferenceModel {
     parent: DrawSteelJournalEntryPage;
     tooltip: string;
   }

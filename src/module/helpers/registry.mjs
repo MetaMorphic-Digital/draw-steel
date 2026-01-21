@@ -94,7 +94,7 @@ export default class DrawSteelRegistry {
       // Need to re-call `getIndex` for `pages` to be populated
       const indices = await pack.getIndex();
 
-      const configJournals = indices.filter(idx => idx.pages?.some(p => p.type === "config"));
+      const configJournals = indices.filter(idx => idx.pages?.some(p => p.type === "configuration"));
 
       if (!configJournals.length) continue;
 
@@ -105,16 +105,18 @@ export default class DrawSteelRegistry {
           for (const lang of page.system.languages) {
             const key = lang.key ?? lang.label.slugify({ strict: true });
             if (!key) continue;
-            if (key in ds.CONFIG.languages) console.warn("Overwriting language", key);
-            ds.CONFIG.languages[key] = { label: lang.label, source: page.uuid };
+            else if (key in ds.CONFIG.languages) console.warn(`Collision detected, language ${key} from ${page.uuid} already exists`);
+            else ds.CONFIG.languages[key] = { label: lang.label, source: page.uuid };
           }
           for (const mk of page.system.monsterKeywords) {
             const key = mk.key ?? mk.label.slugify({ strict: true });
             if (!key) continue;
-            if (key in ds.CONFIG.monsters.keywords) console.warn("Overwriting monster keyword", key);
-            const entry = { label: mk.label, source: page.uuid, group: page.name };
-            if (mk.reference) entry.reference = mk.reference;
-            ds.CONFIG.monsters.keywords[key] = entry;
+            if (key in ds.CONFIG.monsters.keywords) console.warn(`Collision detected, monster keyword ${key} from ${page.uuid} already exists`);
+            else {
+              const entry = { label: mk.label, source: page.uuid, group: page.name };
+              if (mk.reference) entry.reference = mk.reference;
+              ds.CONFIG.monsters.keywords[key] = entry;
+            }
           }
         }
 

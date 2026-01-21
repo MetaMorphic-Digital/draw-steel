@@ -3,7 +3,7 @@ const { StringField } = foundry.data.fields;
 /**
  * An extension of the core Image page data with advanced alt text capabilities as art descriptions.
  */
-export default class DrawSteelImageData extends foundry.abstract.TypeDataModel {
+export default class DrawSteelImageModel extends foundry.abstract.TypeDataModel {
   /**
    * Metadata for this JournalEntryPage subtype.
    * @type {SubtypeMetadata}
