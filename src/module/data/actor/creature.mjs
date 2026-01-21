@@ -80,7 +80,7 @@ export default class CreatureModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user for what types.
+   * Perform a power roll using a characteristic.
    * @param {string} characteristic   The characteristic to roll.
    * @param {object} [options]        Options to modify the characteristic roll.
    * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic.
