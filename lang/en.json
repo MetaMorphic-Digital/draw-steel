@@ -298,6 +298,7 @@
         "Character": "Draw Steel Character Sheet",
         "NPC": "Draw Steel NPC Sheet",
         "Item": "Draw Steel Item Sheet",
+        "JournalEntry": "Draw Steel Journal Entry Sheet",
         "ActiveEffect": "Draw Steel Active Effect Config",
         "CombatantGroup": "Draw Steel Combatant Group Config",
         "WallDocument": "Draw Steel Wall Config"
@@ -339,6 +340,12 @@
             "Victory": "Earn {type} {targets}"
           },
           "NoSelection": "You must select hero tokens to gain resources."
+        },
+        "Test": {
+          "FormatString": {
+            "Default": "{difficulty} {characteristic} test"
+          },
+          "MessageTitle": {}
         },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
@@ -476,9 +483,6 @@
               "label": "Age"
             }
           },
-          "characteristics": {
-            "label": "Characteristics"
-          },
           "stamina": {
             "label": "Stamina",
             "value": {
@@ -582,6 +586,13 @@
           "Rows": {
             "Input": "Base",
             "Advancement": "Advancement"
+          }
+        }
+      },
+      "creature": {
+        "FIELDS": {
+          "characteristics": {
+            "label": "Characteristics"
           }
         }
       },
@@ -689,6 +700,7 @@
           "Horror": "Horror",
           "Humanoid": "Humanoid",
           "Infernal": "Infernal",
+          "Ooze": "Ooze",
           "Plant": "Plant",
           "Soulless": "Soulless",
           "Swarm": "Swarm",
@@ -908,8 +920,9 @@
               "label": "Power Roll Effects"
             },
             "roll": {
-              "flat": {
-                "label": "Flat"
+              "reactive": {
+                "label": "Reactive Test",
+                "hint": "This ability does not require a power roll, but instead each target must make a reactive test to mitigate the result."
               },
               "formula": {
                 "label": "Roll Bonus"
@@ -1615,6 +1628,9 @@
     "ROLL": {
       "Prompt": "Roll {prompt}",
       "Button": "Roll",
+      "Damage": {
+        "NoTokenSelected": "You must have at least one token selected."
+      },
       "Power": {
         "Prompt": {
           "Title": "{typeLabel} Power Roll",
@@ -1648,7 +1664,30 @@
           "Bonuses": "Bonuses/Penalties",
           "Bonus": "Bonus",
           "Penalty": "Penalty",
-          "Label": "{number} {mod}"
+          "Label": "{number} {mod}",
+          "Plurals": {
+            "Edge": {
+              "one": "Edge",
+              "other": "Edges"
+            },
+            "Bane": {
+              "one": "Bane",
+              "other": "Banes"
+            }
+          }
+        },
+        "TestDifficulty": {
+          "easy": "Easy",
+          "medium": "Medium",
+          "hard": "Hard",
+          "label": "{difficulty} {characteristic} Test"
+        },
+        "TestResult": {
+          "FailureConsequence": "Failure with a consequence",
+          "Failure": "Failure",
+          "SuccessConsequence": "Success with a consequence",
+          "Success": "Success",
+          "SuccessReward": "Success with a reward"
         },
         "BaseRoll": "Base Power Roll",
         "RollPlusBonus": "Power Roll + {bonus}"
@@ -1663,7 +1702,7 @@
           "Title": "Saving Throw Manager: {name}"
         },
         "Prompt": {
-          "Title": "Roll Saving Throw",
+          "Title": "Roll Saving Throw - {effect}",
           "SituationalBonus": {
             "Label": "Situational Bonus",
             "PlaceHolder": "e.g. 3 or @I",
@@ -1687,6 +1726,7 @@
         "GrantedTokens": "The heroes gain {count} hero token(s).",
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
+        "UnknownType": "Unknown hero token spend type.",
         "Generic": {
           "label": "Spend Token",
           "messageContent": "Spent a hero token."
@@ -1701,9 +1741,9 @@
           "label": "Succeed on a Saving Throw",
           "messageContent": "Spends a hero token to succeed on a saving throw instead of failing."
         },
-        "ImproveTest": {
-          "label": "Improve Test Result",
-          "messageContent": "Spends a hero token to succeed on a test and lose any consequences suffered."
+        "RerollTest": {
+          "label": "Reroll Test",
+          "messageContent": "Spends a hero token to reroll a test. They must use the new roll."
         },
         "RegainStamina": {
           "tooltip": "Regain Stamina with Hero Tokens",
@@ -1888,20 +1928,33 @@
           }
         }
       },
-      "abilityUse": {
-        "NoTokenSelected": "You must have at least one token selected.",
-        "NoPRE": "The Power Roll Effect could not be found."
-      },
-      "savingThrow": {
-        "Buttons": {
-          "HeroToken": {
-            "Label": "Hero Token",
-            "Tooltip": "Succeed by spending a Hero Token",
-            "NoEffect": "This effect no longer exists.",
-            "NoOwner": "You no longer have update permissions for this effect."
+      "PARTS": {
+        "abilityUse": {
+          "performTest": "{characteristic} Test"
+        },
+        "savingThrow": {
+          "Buttons": {
+            "HeroToken": {
+              "Label": "Hero Token",
+              "Tooltip": "Succeed by spending a Hero Token",
+              "NoEffect": "This effect no longer exists.",
+              "NoOwner": "You no longer have update permissions for this effect."
+            }
+          }
+        },
+        "test": {
+          "HeroTokenReroll": {
+            "label": "Hero Token",
+            "tooltip": "Reroll the test. You must use the new roll.",
+            "flavor": "Hero Token Reroll"
+          },
+          "RollDamage": {
+            "label": "Roll Damage",
+            "DamageType": "Damage Type"
           }
         }
-      }
+      },
+      "NoPRE": "The Power Roll Effect could not be found."
     },
     "Macro": {
       "Warnings": {

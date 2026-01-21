@@ -1,7 +1,7 @@
 import { systemID } from "../../constants.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
-import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
+import CreatureModel from "./creature.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -13,7 +13,7 @@ import SourceModel from "../models/source.mjs";
 /**
  * A nonplayer character, usually created and run by the Director.
  */
-export default class NPCModel extends BaseActorModel {
+export default class NPCModel extends CreatureModel {
   /** @inheritdoc */
   static get metadata() {
     return {

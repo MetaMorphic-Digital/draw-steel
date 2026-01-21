@@ -76,3 +76,43 @@ export const potencyConditions = Object.freeze({
     label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.success",
   },
 });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef TestOutcome
+ * Outcomes for a given difficulty by power roll result.
+ * @property {string} label     The i18n string for the test difficulty.
+ * @property {string} tier1     The i18n string for the tier 1 result of a test.
+ * @property {string} tier2     The i18n string for the tier 2 result of a test.
+ * @property {string} tier3     The i18n string for the tier 3 result of a test.
+ * @property {string} critical  The i18n string for the critical result of a test.
+ */
+
+/**
+ * The outcomes of a test by difficulty then result.
+ * @type {Record<string, TestOutcome>}
+ */
+export const testOutcomes = {
+  easy: {
+    label: "DRAW_STEEL.ROLL.Power.TestDifficulty.easy",
+    tier1: "DRAW_STEEL.ROLL.Power.TestResult.SuccessConsequence",
+    tier2: "DRAW_STEEL.ROLL.Power.TestResult.Success",
+    tier3: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+    critical: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+  },
+  medium: {
+    label: "DRAW_STEEL.ROLL.Power.TestDifficulty.medium",
+    tier1: "DRAW_STEEL.ROLL.Power.TestResult.Failure",
+    tier2: "DRAW_STEEL.ROLL.Power.TestResult.SuccessConsequence",
+    tier3: "DRAW_STEEL.ROLL.Power.TestResult.Success",
+    critical: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+  },
+  hard: {
+    label: "DRAW_STEEL.ROLL.Power.TestDifficulty.hard",
+    tier1: "DRAW_STEEL.ROLL.Power.TestResult.FailureConsequence",
+    tier2: "DRAW_STEEL.ROLL.Power.TestResult.Failure",
+    tier3: "DRAW_STEEL.ROLL.Power.TestResult.Success",
+    critical: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+  },
+};

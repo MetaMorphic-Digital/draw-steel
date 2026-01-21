@@ -2,10 +2,7 @@ import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
 import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-
-/**
- * @import { DrawSteelChatMessage } from "../../documents/_module.mjs"
- */
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
@@ -112,6 +109,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     let formula = SavingThrowRoll.replaceFormulaData(this.end.roll, rollData);
 
     dialogOptions.context ??= {};
+    dialogOptions.context.effect = this.parent;
     dialogOptions.context.effectFormula = formula;
     dialogOptions.context.successThreshold = rollOptions.successThreshold ??
       foundry.utils.getProperty(this.parent.target, "system.combat.save.threshold") ?? 6;
@@ -133,7 +131,17 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
 
     if (roll.product) await this.parent.update({ disabled: true });
 
-    foundry.utils.setProperty(messageData, "system.effectUuid", this.parent.uuid);
+    messageData.speaker ??= DrawSteelChatMessage.getSpeaker({ actor: this.parent.target });
+
+    messageData.type = "standard";
+    messageData.system ??= {};
+    messageData.system.parts ??= [];
+
+    messageData.system.parts.push({
+      type: "savingThrow",
+      effectUuid: this.parent.uuid,
+      rolls: [roll],
+    });
 
     return roll.toMessage(messageData, messageOptions);
   }

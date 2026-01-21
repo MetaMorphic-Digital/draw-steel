@@ -96,9 +96,9 @@ export default class DrawSteelTooltipManager extends foundry.helpers.interaction
    * @param {foundry.abstract.Document} doc   The document.
    */
   async _onHoverDocument(doc) {
-    let content = (doc.richTooltip instanceof Function)
+    let content = (typeof doc.richTooltip === "function")
       ? doc.richTooltip()
-      : (doc.system?.richTooltip instanceof Function)
+      : (typeof doc.system?.richTooltip === "function")
         ? doc.system.richTooltip()
         : null;
 

@@ -72,6 +72,19 @@ The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Fo
 - The roll is made once and the total is applied to all selected tokens.
 - Non-hero actors will be skipped when gaining resources.
 
+## Test
+
+The `[[/test]]` enricher allows requesting specific rolls without users needing to open the individual sheet for the actor.
+
+**Examples:**
+
+- [&ZeroWidthSpace;[/test might]]: A might test.
+- [&ZeroWidthSpace;[/test A]]: The single capital letter abbreviations are also accepted.
+- [&ZeroWidthSpace;[/test R easy]]: You can specify a difficulty for the test, "easy", "medium", or "hard".
+- [&ZeroWidthSpace;[/test characteristic=intuition difficulty=hard]]: The characteristic and difficulty can be explicitly specified.
+- [&ZeroWidthSpace;[/test P edges=1 banes=1]]: You can specify edges and banes for the roll
+- [&ZeroWidthSpace;[/test M]]{A might test}: Brackets will replace the default text for the command.
+
 ## Apply Effect
 
 The `[[/apply]]` enricher allows you to link status effects, either from an item or the canonical status effects. This can be especially useful for items like the Censor's Judgment that have an effect but no power roll.

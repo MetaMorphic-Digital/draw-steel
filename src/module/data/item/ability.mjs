@@ -69,6 +69,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.power = new fields.SchemaField({
       roll: new fields.SchemaField({
+        reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
       }),
@@ -116,7 +117,7 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.power.roll.enabled = this.power.effects.size > 0;
+    this.power.roll.enabled = !this.power.roll.reactive && (this.power.effects.size > 0);
   }
 
   /* -------------------------------------------------- */
@@ -126,12 +127,14 @@ export default class AbilityModel extends BaseItemModel {
     super.preparePostActorPrepData();
     this._applyAbilityBonuses();
 
-    for (const chr of this.power.roll.characteristics) {
-      const c = this.actor.system.characteristics[chr];
-      if (!c) continue;
-      if (c.value >= this.power.characteristic.value) {
-        this.power.characteristic.key = chr;
-        this.power.characteristic.value = c.value;
+    if (!this.power.roll.reactive && this.actor.system.characteristics) {
+      for (const chr of this.power.roll.characteristics) {
+        const c = this.actor.system.characteristics[chr];
+        if (!c) continue;
+        if (c.value >= this.power.characteristic.value) {
+          this.power.characteristic.key = chr;
+          this.power.characteristic.value = c.value;
+        }
       }
     }
   }
@@ -220,6 +223,17 @@ export default class AbilityModel extends BaseItemModel {
             const currentValue = foundry.utils.getProperty(effect, key);
             foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus));
           }
+        }
+      }
+
+      if (bonus.key.startsWith("power.")) {
+        switch (bonus.key) {
+          case "power.roll.banes":
+            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
+            break;
+          case "power.roll.edges":
+            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            break;
         }
       }
     }
@@ -317,7 +331,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
+      this.powerRollText(tier),
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -344,11 +358,22 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Produces the power roll text for a given tier.
+   * @param {1 | 2 | 3} tier
+   * @returns {string}
+   */
+  powerRollText(tier) {
+    return this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ");
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
-    if (this.actor) {
+    if (this.actor && this.actor.system.characteristics) {
       rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }
@@ -432,12 +457,15 @@ export default class AbilityModel extends BaseItemModel {
 
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      type: "abilityUse",
+      type: "standard",
       rolls: [],
       title: this.parent.name,
       content: this.parent.name,
       system: {
-        uuid: this.parent.uuid,
+        parts: [{
+          type: "abilityUse",
+          abilityUuid: this.parent.uuid,
+        }],
       },
       flags: { core: { canPopout: true } },
     };
@@ -459,8 +487,8 @@ export default class AbilityModel extends BaseItemModel {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
-      options.modifiers.banes ??= 0;
-      options.modifiers.edges ??= 0;
+      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
       options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);
@@ -485,63 +513,38 @@ export default class AbilityModel extends BaseItemModel {
       });
 
       if (!promptValue) return null;
-      const { rollMode, powerRolls } = promptValue;
+      const { rollMode, rolls, baseRoll } = promptValue;
+
+      // Base roll for DSN purposes
+      messageData.rolls.push(baseRoll);
 
       DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-      const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
-        accumulator[powerRoll.product] ??= [baseRoll];
-        accumulator[powerRoll.product].push(powerRoll);
+      const groupedRolls = Object.groupBy(rolls, roll => roll.product);
 
-        return accumulator;
-      }, {});
-
-      // Each tier group gets a message. Rolls within a group are in the same message
-      const messages = [];
+      // Each tier group gets a message part. Rolls within a group are in the same message part
       for (const tierNumber in groupedRolls) {
-        const messageDataCopy = foundry.utils.duplicate(messageData);
-        for (const powerRoll of groupedRolls[tierNumber]) {
-          messageDataCopy.rolls.push(powerRoll);
-        }
+        const rollPart = {
+          type: "abilityResult",
+          rolls: groupedRolls[tierNumber],
+          tier: tierNumber,
+          abilityUuid: this.parent.uuid,
+        };
 
-        // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
-        const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
-          const damage = currentEffect.damage[`tier${tierNumber}`];
-          if (Number(damage.value) !== 0) effects.push(damage);
-          return effects;
-        }, []);
-
-        for (const damageEffect of damageEffects) {
-          // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-          let damageType = "";
-          if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
-          else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
-
-          const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-          const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
-
-          // Extract ignoredImmunities from the damage effect
-          const ignoredImmunities = Array.from(damageEffect.ignoredImmunities);
-
-          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, {
-            flavor,
-            type: damageType,
-            ignoredImmunities,
-          });
+        for (const damageEffect of this.power.effects.documentsByType.damage) {
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: baseRoll.options.damageSelection });
+          if (!damageRoll) continue;
           await damageRoll.evaluate();
-          messageDataCopy.rolls.push(damageRoll);
+          rollPart.rolls.push(damageRoll);
+          // If there's a roll, add it to the base message data for DSN purposes
+          if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
         }
 
-        if (messages.length > 0) messageDataCopy.system.embedText = false;
-
-        messages.push(DrawSteelChatMessage.create(messageDataCopy));
+        messageData.system.parts.push(rollPart);
       }
-
-      return Promise.allSettled(messages);
     }
-    else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /* -------------------------------------------------- */

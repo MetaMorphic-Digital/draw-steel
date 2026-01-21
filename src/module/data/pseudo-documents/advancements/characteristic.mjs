@@ -1,4 +1,5 @@
 import { systemID } from "../../../constants.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import BaseAdvancement from "./base-advancement.mjs";
 
 const { NumberField, TypedObjectField } = foundry.data.fields;
@@ -60,6 +61,31 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   get isChoice() {
     return Object.values(this.characteristics).some(v => v === 0);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async createLeaves(node) {
+    for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
+      if (!(this.characteristics[chr] >= 0)) continue;
+      const leafLabel = game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", { chr: label });
+      node.choices[chr] = new AdvancementLeaf(node, chr, leafLabel);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  isChosen(leaf) {
+    return (this.characteristics[leaf.key] === 1) || !!leaf.node.selected[leaf.key];
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  leafLabel(leaf) {
+    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", ds.CONFIG.characteristics[leaf.key].label);
   }
 
   /* -------------------------------------------------- */

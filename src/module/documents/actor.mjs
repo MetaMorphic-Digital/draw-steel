@@ -35,7 +35,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
       rollData.statuses[status] = 1;
     }
 
-    if (this.system.modifyRollData instanceof Function) {
+    if (typeof this.system.modifyRollData === "function") {
       this.system.modifyRollData(rollData);
     }
 
@@ -62,10 +62,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * Rolls a given actor's characteristic.
    * @param {string} characteristic
    * @param {object} [options] Pass through options object.
-   * @returns
    */
   async rollCharacteristic(characteristic, options) {
-    if (this.system.rollCharacteristic instanceof Function) return this.system.rollCharacteristic(characteristic, options);
+    if (typeof this.system.rollCharacteristic === "function") return this.system.rollCharacteristic(characteristic, options);
     throw new Error(`Actors of type ${this.type} cannot roll characteristics`);
   }
 
@@ -98,9 +97,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     }
     const { value: current, temporary, min, max } = this.system.stamina;
     const delta = isDelta ? (-1 * value) : current + temporary - value;
-    
+
     if (!delta) return this;
-    
+
     const updates = {};
     if (delta < 0) {
       // Healing modifies only stamina value

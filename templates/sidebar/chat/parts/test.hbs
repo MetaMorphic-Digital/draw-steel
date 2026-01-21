@@ -1,0 +1,19 @@
+{{#if part.flavor}}
+<div class="message-part-flavor">{{part.flavor}}</div>
+{{/if}}
+<div class="message-part-rolls">
+  {{#each ctx.rolls}}{{{this}}}{{/each}}
+</div>
+{{#if ctx.resultHTML}}
+<div class="message-part-html">
+  <dl class="power-roll-display">
+    <dt class="{{ctx.tierKey}}">{{ctx.tierSymbol}}</dt>
+    <dd>{{{ctx.resultHTML}}}</dd>
+  </dl>
+</div>
+{{/if}}
+{{#if ctx.buttons}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
+</footer>
+{{/if}}

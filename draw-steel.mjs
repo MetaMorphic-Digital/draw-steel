@@ -1,4 +1,5 @@
 import * as canvas from "./src/module/canvas/_module.mjs";
+import * as compatibility from "./src/module/compatibility/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
@@ -10,6 +11,7 @@ import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
   canvas,
+  compatibility,
   documents,
   applications,
   helpers,
@@ -42,6 +44,7 @@ Hooks.once("init", function () {
     "templates/embeds/item/ability.hbs",
     "templates/embeds/item/kit.hbs",
     "templates/embeds/item/project.hbs",
+    "templates/embeds/item/treasure.hbs",
   ].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
@@ -82,7 +85,7 @@ Hooks.once("init", function () {
   }
 
   // Destructuring some pieces for simplification
-  const { Actors, Items } = foundry.documents.collections;
+  const { Actors, Items, Journal } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
@@ -99,6 +102,10 @@ Hooks.once("init", function () {
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
+  });
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
   });
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
@@ -148,12 +155,20 @@ Hooks.once("init", function () {
     applications.ux.enrichers.roll,
   ];
 
-  CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
-    editor: false,
-    fonts: [
-      { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
-    ],
-  };
+  Object.assign(CONFIG.fontDefinitions, {
+    "Draw Steel Glyphs": {
+      editor: false,
+      fonts: [
+        { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
+      ],
+    },
+    "Draw Steel Book": {
+      editor: true,
+      fonts: [
+        { urls: [DS_CONST.systemPath("assets/fonts/MCDM-Book.otf")] },
+      ],
+    },
+  });
 
   // Register handlebars helpers. This is done after any replacement of ui/ux classes.
   helpers.registerHandlebars();
@@ -225,10 +240,12 @@ Hooks.once("setup", () => {
     "abilities.types",
     "abilities.distances",
     "abilities.targets",
+    "abilities.categories",
     "equipment.categories",
     "equipment.armor",
     "equipment.weapon",
     "projects.types",
+    "effectEnds",
   ];
 
   for (const path of referenceObjects) {
@@ -270,5 +287,4 @@ Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 /**
  * Other hooks.
  */
-Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);

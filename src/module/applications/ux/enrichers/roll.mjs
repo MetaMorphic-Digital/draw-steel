@@ -1,5 +1,5 @@
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
-import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
+import { DSRoll, DamageRoll, PowerRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
 import { parseConfig, createLink, addDataset } from "../helpers.mjs";
 
@@ -63,7 +63,7 @@ const multiRollTypes = ["damage", "heal", "healing"];
 /**
  * Valid roll types that only allow a single formula.
  */
-const singleRollTypes = Object.keys(GAIN_RESOURCE_LOOKUP).concat("gain");
+const singleRollTypes = Object.keys(GAIN_RESOURCE_LOOKUP).concat(["gain", "test"]);
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${multiRollTypes.concat(singleRollTypes).join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -99,6 +99,7 @@ export function enricher(match, options) {
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
     case "gain": return enrichGain(parsedConfig, label, options);
+    case "test": return enrichTest(parsedConfig, label, options);
   }
 }
 
@@ -117,6 +118,8 @@ export async function onRender(element) {
         return void rollDamageHeal(link, ev);
       case "gain":
         return void rollGain(link, ev);
+      case "test":
+        return void rollTest(link, ev);
     }
   });
 }
@@ -396,5 +399,72 @@ async function rollGain(link, event) {
   // Apply the gain to each selected token's actor
   for (const actor of actors) {
     await actor.modifyTokenAttribute(lookup.resource, roll.total, true, false);
+  }
+}
+
+/* -------------------------------------------------- */
+/*   Test Enricher                                    */
+/* -------------------------------------------------- */
+
+/**
+ * Enrich a test link.
+ * @param {ParsedConfig} parsedConfig      Configuration data.
+ * @param {string} [label]             Optional label to replace default text.
+ * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
+ * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
+ */
+function enrichTest(parsedConfig, label, options) {
+  const linkConfig = {
+    type: "test",
+    characteristic: parsedConfig.characteristic,
+    difficulty: parsedConfig.difficulty,
+    edges: parsedConfig.edges,
+    banes: parsedConfig.banes,
+  };
+
+  const letterCharacteristics = {
+    M: "might",
+    A: "agility",
+    R: "reason",
+    I: "intuition",
+    P: "presence",
+  };
+
+  for (const value of parsedConfig.values) {
+    const normalizedValue = value.toLowerCase();
+    if (value in ds.CONFIG.characteristics) linkConfig.characteristic ??= normalizedValue;
+    if (letterCharacteristics[value]) linkConfig.characteristic ??= letterCharacteristics[value];
+    if (normalizedValue in ds.CONST.testOutcomes) linkConfig.difficulty ??= normalizedValue;
+  }
+
+  if (!linkConfig.characteristic) return null;
+
+  const localizationData = {
+    difficulty: game.i18n.localize(ds.CONST.testOutcomes[linkConfig.difficulty]?.label) ?? "",
+    characteristic: ds.CONFIG.characteristics[linkConfig.characteristic].label,
+  };
+
+  label ??= game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
+
+  return createLink(label,
+    linkConfig,
+    { icon: "fa-dice-d10" },
+  );
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Helper function that constructs the test roll.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
+ */
+async function rollTest(link, event) {
+  const { characteristic, difficulty, edges, banes } = link.dataset;
+
+  if (!characteristic) throw new Error("Test enricher must provide a characteristic");
+
+  for (const actor of ds.utils.tokensToActors()) {
+    if (typeof actor.system.rollCharacteristic === "function") actor.system.rollCharacteristic(characteristic, { difficulty, edges, banes });
   }
 }
