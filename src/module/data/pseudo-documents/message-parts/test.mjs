@@ -195,8 +195,6 @@ export default class TestPart extends RollPart {
     /** @type {DamagePowerRollEffect} */
     const pre = await fromUuid(uuid);
 
-    console.log(this, pre);
-
     const tier = this.latestTest.product;
 
     const damageInfo = pre.damage[`tier${tier}`];
