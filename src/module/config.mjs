@@ -612,8 +612,14 @@ preLocalize("skills.list", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * @typedef DSLanguage
+ * @property {string} label
+ * @property {string} [source]    UUID pointing to a config page that added this language.
+ */
+
+/**
  * Configuration information for languages.
- * @type {Record<string, {label: string}>}
+ * @type {Record<string, DSLanguage>}
  */
 export const languages = {
   // ancestry languages
@@ -958,6 +964,7 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
  * @property {string} label
  * @property {string} group
  * @property {Reference} [reference] An optional pointer to a UUID reference with a description of the keyword.
+ * @property {string} [source]       UUID pointing to a config page that added this language.
  */
 
 /** @type {Record<string, MonsterKeyword>} */

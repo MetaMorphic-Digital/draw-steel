@@ -9,7 +9,7 @@ const { HTMLField } = foundry.data.fields;
 /**
  * An extensions of a text page that allows for rich tooltips.
  */
-export default class ReferenceData extends foundry.abstract.TypeDataModel {
+export default class ReferenceModel extends foundry.abstract.TypeDataModel {
   /**
    * Metadata for this JournalEntryPage subtype.
    * @type {SubtypeMetadata}

@@ -1535,22 +1535,69 @@
     },
     "JournalEntryPage": {
       "Tabs": {
+        "languages": "Languages",
+        "monsterKeywords": "Monster Keywords",
         "content": "Content",
         "tooltip": "Tooltip"
       },
-      "reference": {
+      "configuration": {
         "FIELDS": {
-          "tooltip": {
-            "label": "Tooltip",
-            "hint": "Preferred tooltip text. If blank, the normal journal content will be preferred."
+          "languages": {
+            "label": "Languages",
+            "element": {
+              "label": {
+                "label": "Label",
+                "hint": "The public name, e.g. 'Orcish'."
+              },
+              "key": {
+                "label": "Key",
+                "hint": "A unique key, e.g. 'orcish'."
+              }
+            }
+          },
+          "monsterKeywords": {
+            "label": "Monster Keywords",
+            "element": {
+              "label": {
+                "label": "Label",
+                "hint": "The public name, e.g. 'Goblin'."
+              },
+              "key": {
+                "label": "Key",
+                "hint": "A unique key, e.g. 'goblin'."
+              },
+              "reference": {
+                "label": "Reference",
+                "hint": "A JournalEntryPage that serves as a full reference description for this keyword."
+              }
+            }
           }
-        }
+        },
+        "addEntry": {
+          "language": "Add Language",
+          "monsterKeyword": "Add Monster Keyword"
+        },
+        "removeEntry": {
+          "language": "Remove Language",
+          "monsterKeyword": "Remove Monster Keyword"
+        },
+        "duplicateEntry": "Key is duplicate of existing CONFIG entry and will be ignored!",
+        "pageNameIsGroup": "The name of this page will be the group for the keywords.",
+        "noPack": "This configuration page is not inside of a pack and will not be used."
       },
       "image": {
         "FIELDS": {
           "artDescription": {
             "label": "Art Description",
             "hint": "The Art Description fills in the alt text attribute of the image, improving accessibility for screen readers and helping viewers discover new elements within an image if they are ambiguous, unfamiliar, or framed in an atypical way."
+          }
+        }
+      },
+      "reference": {
+        "FIELDS": {
+          "tooltip": {
+            "label": "Tooltip",
+            "hint": "Preferred tooltip text. If blank, the normal journal content will be preferred."
           }
         }
       }
@@ -1986,6 +2033,7 @@
       "title": "Title"
     },
     "JournalEntryPage": {
+      "configuration": "Configuration",
       "reference": "Reference"
     },
     "PowerRollEffect": {
