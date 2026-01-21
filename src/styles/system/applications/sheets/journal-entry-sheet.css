@@ -141,10 +141,13 @@
 .draw-steel.journal-sheet .journal-entry,
 .draw-steel .journal-entry-page {
   .hanging-indent {
+    /* Indents the entire block */
     padding-left: 1em;
-    /* Indents the entire block by 2em */
+    /* Pulls the first line back */
     text-indent: -1em;
-    /* Pulls the first line back by 2em */
+    * {
+      text-indent: initial;
+    }
   }
 
   /*gold framed boxes with deco top and bottom*/
