@@ -19,6 +19,15 @@ export default class SavingThrowDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  get title() {
+    return game.i18n.format(this.options.window.title, {
+      effect: this.options.context.effect.name,
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static PARTS = {
     content: {
       template: systemPath("templates/apps/saving-throw-dialog.hbs"),

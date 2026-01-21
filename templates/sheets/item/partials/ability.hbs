@@ -1,5 +1,7 @@
 {{#if isPlay}}
-{{> "systems/draw-steel/templates/embeds/item/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
+<div class="content-embed immediate-embed ability">
+  {{> "systems/draw-steel/templates/embeds/item/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
+</div>
 {{else}}
 {{formGroup systemFields.story value=system.story}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywordOptions}}

@@ -463,6 +463,6 @@ async function rollTest(link, event) {
   if (!characteristic) throw new Error("Test enricher must provide a characteristic");
 
   for (const actor of ds.utils.tokensToActors()) {
-    if (actor.system.rollCharacteristic instanceof Function) actor.system.rollCharacteristic(characteristic, { difficulty, edges, banes });
+    if (typeof actor.system.rollCharacteristic === "function") actor.system.rollCharacteristic(characteristic, { difficulty, edges, banes });
   }
 }
