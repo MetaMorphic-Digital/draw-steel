@@ -46,7 +46,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     // Shallow copy
     rollData.item = { ...this.system, flags: this.flags, name: this.name };
 
-    if (this.system.modifyRollData instanceof Function) {
+    if (typeof this.system.modifyRollData === "function") {
       this.system.modifyRollData(rollData);
     }
 
