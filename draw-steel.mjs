@@ -85,7 +85,7 @@ Hooks.once("init", function () {
   }
 
   // Destructuring some pieces for simplification
-  const { Actors, Items } = foundry.documents.collections;
+  const { Actors, Items, Journal } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
@@ -102,6 +102,10 @@ Hooks.once("init", function () {
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
+  });
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
   });
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
@@ -151,12 +155,20 @@ Hooks.once("init", function () {
     applications.ux.enrichers.roll,
   ];
 
-  CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
-    editor: false,
-    fonts: [
-      { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
-    ],
-  };
+  Object.assign(CONFIG.fontDefinitions, {
+    "Draw Steel Glyphs": {
+      editor: false,
+      fonts: [
+        { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
+      ],
+    },
+    "Draw Steel Book": {
+      editor: true,
+      fonts: [
+        { urls: [DS_CONST.systemPath("assets/fonts/MCDM-Book.otf")] },
+      ],
+    },
+  });
 
   // Register handlebars helpers. This is done after any replacement of ui/ux classes.
   helpers.registerHandlebars();

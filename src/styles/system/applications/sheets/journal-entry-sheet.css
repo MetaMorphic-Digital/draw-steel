@@ -1,0 +1,462 @@
+/* CSS for DrawSteelJournalEntrySheet */
+/*framing content*/
+.draw-steel.journal-sheet .window-content,
+.draw-steel.journal-sheet .window-header,
+.draw-steel.journal-sheet .journal-sidebar {
+  backdrop-filter: none;
+  background: var(--draw-steel-c-white);
+  color: var(--draw-steel-c-light);
+  /* optimize legibility to see if this fixes title uneveness on subpixel rounding*/
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  .active {
+    text-shadow: none;
+    background: transparent;
+    background-image: linear-gradient(to left, var(--draw-steel-c-faint), transparent);
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+    border-color: transparent;
+    border-image: linear-gradient(to right, var(--draw-steel-c-faint), transparent) 1;
+    border-image-slice: 1;
+  }
+
+  /*special treatments*/
+  .journal-page-header h1,
+  h1.chapter,
+  h1.window-title {
+    font-family: 'Draw Steel Book', serif;
+    border-bottom: 0px;
+    border-color: transparent;
+    border-image: initial;
+  }
+
+  h1.window-title {
+    font-size: var(--font-size-20);
+  }
+
+  .chapter,
+  .journal-page-header {
+    font-size: 1.5em;
+    padding-top: 0.5em;
+  }
+
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+    border-bottom: 0px;
+  }
+
+  h3 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+    font-variant: small-caps;
+  }
+
+  h4,
+  h5 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+
+  h6 {
+    font-family: 'Atkinson Hyperlegible', serif;
+    font-weight: bold;
+  }
+
+  .window-title,
+  button,
+  .page-title {
+    color: var(--color-text-primary);
+  }
+
+  button:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  a:hover {
+    text-shadow: 0 0 1px var(--draw-steel-c-color-shadow);
+  }
+
+  a.button,
+  button {
+    background: var(--draw-steel-c-white);
+  }
+
+  a.button:hover,
+  button:hover {
+    background: var(--draw-steel-c-laserline);
+    color: whitesmoke;
+  }
+
+  /*contents*/
+  .toc ol li {
+    font-family: var(--font-h1);
+    position: relative;
+
+    /*specificity override*/
+    .heading-link,
+    .page-heading {
+      font-size: var(--font-size-20);
+    }
+
+    /*laser line highlight specific to contents menu*/
+    a:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--draw-steel-c-laserline);
+      transition: transform 0.25s ease-out;
+      transform-origin: bottom left;
+    }
+
+    a:hover::after {
+      transform: scaleX(1);
+    }
+
+    & {
+      color: var(--draw-steel-dark);
+    }
+
+    &.page {
+      border-top: 0px transparent;
+      border-bottom: 0px transparent;
+    }
+  }
+
+}
+
+/*body content*/
+.draw-steel.journal-sheet .journal-entry,
+.draw-steel .journal-entry-page {
+  .hanging-indent {
+    padding-left: 1em;
+    /* Indents the entire block by 2em */
+    text-indent: -1em;
+    /* Pulls the first line back by 2em */
+  }
+
+  /*gold framed boxes with deco top and bottom*/
+  aside.boxed {
+    border-image-source: url(/systems/draw-steel/assets/ui/mcdm-box.svg);
+    border-image-slice: 40 40 40 40;
+    border-image-width: 120px;
+    border-image-repeat: repeat;
+    padding: 40px 40px 40px 40px;
+    max-width: 650px;
+    margin: 0px auto;
+
+    /*some asides are inverted to indicate DM / technical tips. polygon clip fill to create a bevel*/
+    div.inverse {
+      background-color: black;
+      clip-path: polygon(
+        /* top edge */
+        var(--corner) 0%,
+        /* left top */
+        calc(100% - var(--corner)) 0%,
+        /* right top */
+        /* right edge */
+        100% var(--corner),
+        /* right top */
+        100% calc(100% - var(--corner)),
+        /* right bottom */
+        /* bottom edge*/
+        calc(100% - var(--corner)) 100%,
+        /* right bottom */
+        var(--corner) 100%,
+        /* left bottom*/
+        /* left edge */
+        0% calc(100% - var(--corner)),
+        /* left bottom */
+        0% var(--corner)
+        /* left top */
+        );
+      --corner: 1em;
+      background: var(--draw-steel-c-black);
+      color: var(--draw-steel-c-white);
+      padding: 1rem;
+      margin: 0px 0px 8px;
+    }
+  }
+
+
+  .journal-header input {
+    font-family: 'Draw Steel Book', serif;
+    color: var(--draw-steel-dark);
+  }
+
+  /*imports*/
+  .glyph {
+    font-family: Draw Steel Glyphs;
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--input-background-color);
+
+    th,
+    td {
+      padding: 8px;
+    }
+
+    thead {
+      border: none;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: var(--input-background-color);
+    }
+
+    &.compact {
+
+      th,
+      td {
+        padding: 0px
+      }
+    }
+  }
+
+
+  a {
+    color: var(--draw-steel-c-laserline);
+  }
+
+  a:hover {
+    text-shadow: transparent;
+  }
+
+  aside.callout {
+    --b: 0px;
+    --s: 0px;
+    display: inline-block;
+    min-height: 80px;
+    position: relative;
+    z-index: 0;
+    padding: 20px;
+    background-color: var(--draw-steel-c-faint);
+    background-origin: padding-box;
+    border: 2px solid orange;
+    margin-left: 40px;
+    width: calc(100% - 64px);
+    border-radius: 6px;
+    z-index: 1;
+
+    .icon {
+      width: 4em;
+      height: 4em;
+      margin-left: -3.5em;
+      z-index: 2;
+      position: absolute;
+      top: calc(50% - 2em);
+      filter: drop-shadow(1px 1px 0 orange) drop-shadow(-1px -1px 0 orange) drop-shadow(1px -1px 0 orange) drop-shadow(-1px 1px 0 orange);
+      /*optional todo: filter PNG to dropshadow shape and round edges for jpg at 1px border color*/
+    }
+
+    p {
+      padding-left: 20px;
+    }
+  }
+
+  /*laser lines on captions
+
+  */
+  caption {
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid var(--draw-steel-c-laserline);
+    line-height: 0.75em;
+    padding-top: 0.85em;
+    width: 100%;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image-slice: 1;
+    margin-bottom: 1em;
+
+    p {
+      background: transparent;
+    }
+
+    /*strong creates the white box behind the lettering, uses before and after to place the diamonds at the edges*/
+    strong {
+      background: var(--draw-steel-c-white);
+      padding: 0.5em 1em;
+      margin-top: -0.75em;
+      position: absolute;
+      transform: translate(-50%, 0%);
+
+      &::before {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+        position: absolute;
+        left: -0.5em;
+      }
+
+      &::after {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+        position: absolute;
+        right: -0.5em;
+      }
+
+    }
+
+    cite {
+      position: absolute;
+      top: 1.25em;
+      right: 0;
+    }
+
+    cite::before {
+      content: '';
+      clear: both;
+      margin-top: 3em;
+    }
+
+
+    &::empty,
+    &:not(:has(p)),
+    &:has(p:empty) {
+      border: none;
+    }
+
+  }
+
+  /*laser lines on figcaptions*/
+  figure {
+    display: table;
+  }
+
+  figcaption {
+    display: table-caption;
+    caption-side: top;
+    text-align: center;
+    position: relative;
+    line-height: 0.75em;
+    padding-top: 0.85em;
+    width: 100%;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image-slice: 1;
+    margin-bottom: 2em;
+
+    cite {
+      float: right;
+    }
+
+    /*if it has the table title in a strong tag*/
+    &:has(strong) {
+      border-bottom: 2px solid var(--draw-steel-c-laserline);
+
+      strong {
+        background: var(--draw-steel-c-white);
+        margin: -0.2em;
+        position: absolute;
+        transform: translate(-50%, 0%);
+        font-style: normal;
+      }
+
+      strong::before {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+
+
+      }
+
+      strong::after {
+        content: "®";
+        font-family: Draw Steel Glyphs;
+        color: #866d4b;
+      }
+
+      cite {
+        position: absolute;
+        top: 1.75em;
+        right: 0;
+      }
+
+      cite::before {
+        content: '';
+        clear: both;
+        /*margin-top: 2em;*/
+      }
+    }
+
+    p {
+      padding: 0.5em;
+    }
+  }
+
+}
+
+/*inline links and rolls; this may deserve it's own file if it's broader than journals*/
+.draw-steel .journal-entry-content,
+.draw-steel .journal-entry-pages,
+.draw-steel .journal-entry-page {
+  background: var(--draw-steel-c-white);
+
+  .content-link,
+  .draw-steel .inline-roll {
+    background: var(--draw-steel-c-white);
+    border: 1px solid var(--draw-steel-c-laserline);
+    border-radius: 2px;
+    color: var(--draw-steel-c-laserline);
+    margin: -1px 0;
+    padding: 1px 4px 0;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+}
+
+/* dark theme specific art*/
+.theme-dark .draw-steel.journal-sheet:not(.theme-light),
+.draw-steel.journal-sheet.theme-dark {
+  .journal-sidebar {
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+    background-size: 800px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    .active {
+      text-shadow: none;
+      background: transparent;
+      background-image: linear-gradient(to left, var(--draw-steel-c-laserline-rev), transparent);
+
+    }
+  }
+}
+
+/* light theme specific art*/
+.theme-light .draw-steel.journal-sheet:not(.theme-dark),
+.draw-steel.journal-sheet.theme-light {
+  .journal-sidebar {
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+    background-size: 1000px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+  }
+}
