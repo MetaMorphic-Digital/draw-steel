@@ -62,7 +62,6 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * Rolls a given actor's characteristic.
    * @param {string} characteristic
    * @param {object} [options] Pass through options object.
-   * @returns
    */
   async rollCharacteristic(characteristic, options) {
     if (typeof this.system.rollCharacteristic === "function") return this.system.rollCharacteristic(characteristic, options);

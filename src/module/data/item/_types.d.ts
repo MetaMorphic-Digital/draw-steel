@@ -60,6 +60,7 @@ declare module "./ability.mjs" {
         value: null | number;
       }
       roll: {
+        reactive: boolean;
         /** Added during data prep. */
         enabled: boolean;
         formula: string;
