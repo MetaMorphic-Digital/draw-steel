@@ -11,7 +11,7 @@ export default class DrawSteelImageSheet extends foundry.applications.sheets.jou
   static EDIT_PARTS = {
     header: super.EDIT_PARTS.header,
     content: {
-      template: systemPath("templates/sheets/journal-entry-page/image/edit.hbs"),
+      template: systemPath("templates/sheets/journal/pages/image/edit.hbs"),
       classes: ["standard-form", "scrollable"],
       scrollable: [""],
     },
@@ -23,7 +23,7 @@ export default class DrawSteelImageSheet extends foundry.applications.sheets.jou
   /** @override */
   static VIEW_PARTS = {
     content: {
-      template: systemPath("templates/sheets/journal-entry-page/image/view.hbs"),
+      template: systemPath("templates/sheets/journal/pages/image/view.hbs"),
       root: true,
     },
   };

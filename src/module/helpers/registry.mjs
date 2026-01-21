@@ -18,6 +18,8 @@ export default class DrawSteelRegistry {
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Called once in `ready` after migrations.
    */
@@ -74,6 +76,50 @@ export default class DrawSteelRegistry {
             this.kit.set(key, registryEntry);
             break;
         }
+      }
+    }
+
+    await this.loadConfigPages();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Called once in `ready` after migrations.
+   */
+  async loadConfigPages() {
+    const journalPacks = game.packs.filter(p => p.documentName === "JournalEntry");
+
+    for (const pack of journalPacks) {
+      // Need to re-call `getIndex` for `pages` to be populated
+      const indices = await pack.getIndex();
+
+      const configJournals = indices.filter(idx => idx.pages?.some(p => p.type === "configuration"));
+
+      if (!configJournals.length) continue;
+
+      const docs = await pack.getDocuments({ _id__in: configJournals.map(idx => idx._id) });
+
+      for (const je of docs) {
+        for (const page of je.pages.documentsByType["configuration"]) {
+          for (const lang of page.system.languages) {
+            const key = lang.key ?? lang.label.slugify({ strict: true });
+            if (!key) continue;
+            else if (key in ds.CONFIG.languages) console.warn(`Collision detected, language ${key} from ${page.uuid} already exists`);
+            else ds.CONFIG.languages[key] = { label: lang.label, source: page.uuid };
+          }
+          for (const mk of page.system.monsterKeywords) {
+            const key = mk.key ?? mk.label.slugify({ strict: true });
+            if (!key) continue;
+            if (key in ds.CONFIG.monsters.keywords) console.warn(`Collision detected, monster keyword ${key} from ${page.uuid} already exists`);
+            else {
+              const entry = { label: mk.label, source: page.uuid, group: page.name };
+              if (mk.reference) entry.reference = mk.reference;
+              ds.CONFIG.monsters.keywords[key] = entry;
+            }
+          }
+        }
+
       }
     }
   }

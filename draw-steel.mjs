@@ -59,6 +59,8 @@ Hooks.once("init", function () {
 
   // Indexing DSID, class primary name, subclass associated classes, and perk types
   CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
+  // Need to be able to find "configuration" type pages
+  CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
@@ -123,7 +125,11 @@ Hooks.once("init", function () {
   });
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
-    // TODO: Implement custom sheet for Reference pages.
+    applications.sheets.journal.ConfigPage,
+    { makeDefault: true, types: ["configuration"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ReferencePage,
     { makeDefault: true, types: ["reference"] },
   );
@@ -139,7 +145,7 @@ Hooks.once("init", function () {
     players: applications.ui.DrawSteelPlayers,
   });
 
-  // Register replacemnets for core ux elements.
+  // Register replacements for core ux elements.
   Object.assign(CONFIG.ux, {
     TooltipManager: helpers.interaction.DrawSteelTooltipManager,
   });
