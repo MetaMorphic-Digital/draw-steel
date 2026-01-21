@@ -890,8 +890,9 @@
               "label": "Power Roll Effects"
             },
             "roll": {
-              "flat": {
-                "label": "Flat"
+              "reactive": {
+                "label": "Reactive Test",
+                "hint": "This ability does not require a power roll, but instead each target must make a reactive test to mitigate the result."
               },
               "formula": {
                 "label": "Roll Bonus"
@@ -1944,8 +1945,8 @@
         }
       },
       "PARTS": {
-        "abilityResult": {
-          "NoPRE": "The Power Roll Effect could not be found."
+        "abilityUse": {
+          "performTest": "{characteristic} Test"
         },
         "savingThrow": {
           "Buttons": {
@@ -1962,9 +1963,14 @@
             "label": "Hero Token",
             "tooltip": "Reroll the test. You must use the new roll.",
             "flavor": "Hero Token Reroll"
+          },
+          "RollDamage": {
+            "label": "Roll Damage",
+            "DamageType": "Damage Type"
           }
         }
-      }
+      },
+      "NoPRE": "The Power Roll Effect could not be found."
     },
     "Macro": {
       "Warnings": {

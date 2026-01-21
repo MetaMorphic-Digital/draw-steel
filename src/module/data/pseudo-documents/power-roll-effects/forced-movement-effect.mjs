@@ -51,7 +51,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       if (n > 1) {
         /** @type {ForcedMovementSchema} */
         const prevTier = this.forced[`tier${n - 1}`];
-        if (prevTier.display) tierValue.display ||= prevTier.display;
+        if (!this.parent.power.roll.reactive && prevTier.display) tierValue.display ||= prevTier.display;
         if (prevTier.potency.characteristic) tierValue.potency.characteristic ||= prevTier.potency.characteristic;
       }
     }
@@ -64,13 +64,15 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     await super._tierRenderingContext(context, options);
 
     for (const n of [1, 2, 3]) {
+
+      const usePlaceHolder = !this.parent.power.roll.reactive && (n > 1);
       const path = `forced.tier${n}`;
       Object.assign(context.fields[`tier${n}`].forced, {
         display: {
           field: this.schema.getField(`${path}.display`),
           value: this.forced[`tier${n}`].display,
           src: this._source.forced[`tier${n}`].display,
-          placeholder: n > 1 ? this.forced[`tier${n - 1}`].display : "",
+          placeholder: usePlaceHolder ? this.forced[`tier${n - 1}`].display : "",
           name: `${path}.display`,
         },
         movement: {
@@ -119,7 +121,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     // Format the output
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
     let distanceString;
-    
+
     if (distanceGroups.size === 1) {
       // All movement types have the same distance, so group them together
       const [distance, types] = [...distanceGroups.entries()][0];
@@ -146,7 +148,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       }
       distanceString = formatter.format(formattedParts);
     }
-    
+
     const potencyString = this.toPotencyHTML(tier);
     const escapedDisplay = Handlebars.escapeExpression(tierValue.display);
     const finalText = escapedDisplay.replaceAll("{{potency}}", potencyString);

@@ -4,7 +4,7 @@
 <div class="message-part-rolls">
   {{#each ctx.rolls}}{{{this}}}{{/each}}
 </div>
-{{#if ctx.buttons.length}}
+{{#if ctx.buttons}}
 <footer class="message-part-buttons">
   {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
 </footer>

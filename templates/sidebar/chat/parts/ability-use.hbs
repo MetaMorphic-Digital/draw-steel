@@ -1,3 +1,8 @@
 <div class="message-part-html">
   {{{ctx.embed.outerHTML}}}
 </div>
+{{#if ctx.buttons}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
+</footer>
+{{/if}}

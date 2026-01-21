@@ -69,6 +69,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.power = new fields.SchemaField({
       roll: new fields.SchemaField({
+        reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
       }),
@@ -116,7 +117,7 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.power.roll.enabled = this.power.effects.size > 0;
+    this.power.roll.enabled = !this.power.roll.reactive && (this.power.effects.size > 0);
   }
 
   /* -------------------------------------------------- */
@@ -126,12 +127,14 @@ export default class AbilityModel extends BaseItemModel {
     super.preparePostActorPrepData();
     this._applyAbilityBonuses();
 
-    for (const chr of this.power.roll.characteristics) {
-      const c = this.actor.system.characteristics[chr];
-      if (!c) continue;
-      if (c.value >= this.power.characteristic.value) {
-        this.power.characteristic.key = chr;
-        this.power.characteristic.value = c.value;
+    if (!this.power.roll.reactive && this.actor.system.characteristics) {
+      for (const chr of this.power.roll.characteristics) {
+        const c = this.actor.system.characteristics[chr];
+        if (!c) continue;
+        if (c.value >= this.power.characteristic.value) {
+          this.power.characteristic.key = chr;
+          this.power.characteristic.value = c.value;
+        }
       }
     }
   }
@@ -328,7 +331,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
+      this.powerRollText(tier),
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -355,11 +358,22 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Produces the power roll text for a given tier.
+   * @param {1 | 2 | 3} tier
+   * @returns {string}
+   */
+  powerRollText(tier) {
+    return this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ");
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
-    if (this.actor) {
+    if (this.actor && this.actor.system.characteristics) {
       rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }
@@ -518,30 +532,9 @@ export default class AbilityModel extends BaseItemModel {
           abilityUuid: this.parent.uuid,
         };
 
-        // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
-        const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
-          const damage = currentEffect.damage[`tier${tierNumber}`];
-          if (Number(damage.value) !== 0) effects.push(damage);
-          return effects;
-        }, []);
-
-        for (const damageEffect of damageEffects) {
-          // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-          let damageType = "";
-          if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
-          else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
-
-          const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-          const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
-
-          // Extract ignoredImmunities from the damage effect
-          const ignoredImmunities = Array.from(damageEffect.ignoredImmunities);
-
-          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, {
-            flavor,
-            type: damageType,
-            ignoredImmunities,
-          });
+        for (const damageEffect of this.power.effects.documentsByType.damage) {
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: baseRoll.options.damageSelection });
+          if (!damageRoll) continue;
           await damageRoll.evaluate();
           rollPart.rolls.push(damageRoll);
           // If there's a roll, add it to the base message data for DSN purposes

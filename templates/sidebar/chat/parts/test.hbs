@@ -4,12 +4,15 @@
 <div class="message-part-rolls">
   {{#each ctx.rolls}}{{{this}}}{{/each}}
 </div>
-{{#if resultHTML}}
+{{#if ctx.resultHTML}}
 <div class="message-part-html">
-  {{{resultHTML}}}
+  <dl class="power-roll-display">
+    <dt class="{{ctx.tierKey}}">{{ctx.tierSymbol}}</dt>
+    <dd>{{{ctx.resultHTML}}}</dd>
+  </dl>
 </div>
 {{/if}}
-{{#if ctx.buttons.length}}
+{{#if ctx.buttons}}
 <footer class="message-part-buttons">
   {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
 </footer>

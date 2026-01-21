@@ -14,8 +14,11 @@
   <fieldset class="power-roll-data">
     <legend>{{localize "DRAW_STEEL.Item.ability.FIELDS.power.label"}}</legend>
     {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
+    {{formGroup powerRoll.reactive value=@root.system.power.roll.reactive}}
     {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics disabled=@root.isPlay}}
+    {{#unless @root.system.power.roll.reactive}}
     {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial disabled=@root.isPlay}}
+    {{/unless}}
     {{/with}}
   </fieldset>
 

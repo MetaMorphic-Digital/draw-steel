@@ -88,6 +88,7 @@ export default class CreatureModel extends BaseActorModel {
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
    * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
+   * @param {string} [options.resultSource]             A UUID pointing to an ability or power roll result page.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
@@ -124,7 +125,20 @@ export default class CreatureModel extends BaseActorModel {
       bonuses: options.bonuses,
     };
 
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills, skillModifiers });
+    const doc = await fromUuid(options.resultSource);
+
+    const promptValue = await PowerRoll.prompt({
+      type,
+      evaluation,
+      formula,
+      data,
+      modifiers,
+      actor: this.parent,
+      characteristic,
+      skills,
+      skillModifiers,
+      flavor: doc?.name,
+    });
 
     if (!promptValue) return null;
     const { rollMode, rolls, baseRoll } = promptValue;
@@ -150,7 +164,7 @@ export default class CreatureModel extends BaseActorModel {
 
     const testPart = { type: "test", flavor, rolls };
 
-    // TODO: Populate testPart.resultSource using system-provided UUID references for test difficulties etc.
+    if (doc) testPart.resultSource = options.resultSource;
 
     messageData.system.parts.push(testPart);
 

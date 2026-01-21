@@ -1,10 +1,8 @@
 import { systemPath } from "../../../constants.mjs";
-import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 import RollPart from "./roll.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
 
 /**
- * @import { ActiveEffectData } from "@common/documents/_types.mjs";
  * @import DrawSteelItem from "../../../documents/item.mjs";
  * @import AbilityData from "../../item/ability.mjs";
  * @import { AppliedPowerRollEffect, GainResourcePowerRollEffect } from "../power-roll-effects/_module.mjs";
@@ -76,17 +74,14 @@ export default class AbilityResultPart extends RollPart {
     const item = this.ability;
 
     if (item) {
-      const htmlPRE = [];
       for (const pre of item.system.power.effects) {
         const newButtons = pre.constructButtons(this.tier);
         if (newButtons) context.ctx.buttons.push(...newButtons);
-
-        htmlPRE.push(pre.toText(this.tier));
       }
 
       context.ctx.foundItem = true;
       context.ctx.tierSymbol = ["!", "@", "#"][this.tier - 1];
-      context.ctx.resultHTML = htmlPRE.filter(_ => _).join("; ");
+      context.ctx.resultHTML = item.system.powerRollText(this.tier);
     }
   }
 
