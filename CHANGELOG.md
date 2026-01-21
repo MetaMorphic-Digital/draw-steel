@@ -24,6 +24,8 @@
 
 - New Player-Facing Compendium Content:
   - Leveled Treasures
+- Added a new "Configuration" journal page to allow users to add new languages and monster keywords without javascript. (#306)
+- Added support for abilities that request a reactive test instead of making their own power roll. (#342)
 - Added hero token reroll for tests. (#444)
 - Implemented Summoning. (#583)
   - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
@@ -36,10 +38,14 @@
   - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
   - Reworked the rules journal to instead have an expansive list of term references and pages. (#11)
 - Added a setting for the XP advancement speed. (#1064)
+- Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
+- Implemented a Draw Steel Journal Sheet that styles the contained pages in a fashion similar to the core books. (#1170)
 - New ability modifier keys
+  - Added `power.roll.banes` and `power.roll.edges` to control base numbers of edges/banes. (#1067)
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
+- Added "Gain Resource" power roll effect which covers surges, heroic resources, and epic resources. (#1396)
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
@@ -52,12 +58,13 @@
 ### Changed
 
 - Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Current stamina on new actors will change to reflect max stamina. (#890)
 - [BREAKING] Re-implemented system generated chat messages to use a parts system. (#1444)
   - Many actions that would generate new chat messages instead append to an existing message, such as spending a hero token.
   - Re-implemented the DSN integration and usage of base vs. target-specific roll copies. (#1445)
   - Migrated saving throws to use chat parts. (#1447)
   - Migrated ability rolls to use chat parts. (#1449)
-- Temporary stamina now shows as part of the stamina bar. (#601)
 - The saving throw dialog now has the effect name that's being rolled for. (#1538)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
 
