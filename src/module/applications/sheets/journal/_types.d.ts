@@ -21,7 +21,7 @@ declare module "./reference-page.mjs" {
 export interface ConfigContextEntry {
   fields: Record<string, foundry.data.fields.DataField>;
   values: Record<string, string>;
-  keyPlaceholder: string ;
+  keyPlaceholder: string;
   names: Record<string, string>;
-  warnDuplicateKey?: boolean
+  warnDuplicateKey?: boolean;
 }

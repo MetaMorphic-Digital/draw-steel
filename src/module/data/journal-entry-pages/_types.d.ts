@@ -3,7 +3,7 @@ import DrawSteelJournalEntryPage from "../../documents/journal-entry-page.mjs";
 type ConfigEntry = {
   label: string;
   key: string;
-}
+};
 
 declare module "./config.mjs" {
   export default interface ConfigurationModel {
