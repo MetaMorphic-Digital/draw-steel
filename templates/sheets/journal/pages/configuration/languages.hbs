@@ -1,8 +1,11 @@
 <section class="standard-form tab {{tabs.languages.cssClass}}" data-tab="languages" data-group="primary">
+  {{#unless document.pack}}
+  <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.configuration.noPack"}}</div>
+  {{/unless}}
   <div class="form-group">
     <button type="button" data-action="addEntry" data-path="languages">
       <i class="fa-solid fa-plus" inert></i>
-      {{localize "DRAW_STEEL.JournalEntryPage.config.addEntry.language"}}
+      {{localize "DRAW_STEEL.JournalEntryPage.configuration.addEntry.language"}}
     </button>
   </div>
   <div class="scrollable">
@@ -11,11 +14,11 @@
       <legend>
         <button type="button" data-action="removeEntry" data-path="languages" data-index="{{@index}}">
           <i class="fa-solid fa-trash" inert></i>
-          {{localize "DRAW_STEEL.JournalEntryPage.config.removeEntry.language"}}
+          {{localize "DRAW_STEEL.JournalEntryPage.configuration.removeEntry.language"}}
         </button>
       </legend>
       {{#if warnDuplicateKey}}
-      <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.config.duplicateEntry"}}</div>
+      <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.configuration.duplicateEntry"}}</div>
       {{/if}}
       <div class="form-group">
         <div class="form-group" data-tooltip-text="{{fields.label.hint}}">

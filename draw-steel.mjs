@@ -59,7 +59,7 @@ Hooks.once("init", function () {
 
   // Indexing DSID, class primary name, subclass associated classes, and perk types
   CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
-  // Need to be able to find "config" type pages
+  // Need to be able to find "configuration" type pages
   CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
 
   // Custom collections
@@ -122,7 +122,7 @@ Hooks.once("init", function () {
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ConfigPage,
-    { makeDefault: true, types: ["config"] },
+    { makeDefault: true, types: ["configuration"] },
   );
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,

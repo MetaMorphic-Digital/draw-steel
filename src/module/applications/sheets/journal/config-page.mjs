@@ -10,7 +10,7 @@ import { systemPath } from "../../../constants.mjs";
 export default class ConfigPage extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["draw-steel", "config"],
+    classes: ["draw-steel", "configuration"],
     actions: {
       addEntry: this.#addEntry,
       removeEntry: this.#removeEntry,
@@ -41,11 +41,11 @@ export default class ConfigPage extends foundry.applications.sheets.journal.Jour
       template: "templates/generic/tab-navigation.hbs",
     },
     languages: {
-      template: systemPath("templates/sheets/journal/pages/config/languages.hbs"),
+      template: systemPath("templates/sheets/journal/pages/configuration/languages.hbs"),
       scrollable: [".scrollable"],
     },
     monsterKeywords: {
-      template: systemPath("templates/sheets/journal/pages/config/monster-keywords.hbs"),
+      template: systemPath("templates/sheets/journal/pages/configuration/monster-keywords.hbs"),
       scrollable: [".scrollable"],
     },
     footer: super.EDIT_PARTS.footer,
@@ -56,7 +56,7 @@ export default class ConfigPage extends foundry.applications.sheets.journal.Jour
   /** @inheritdoc */
   static VIEW_PARTS = {
     content: {
-      template: systemPath("templates/sheets/journal/pages/config/content.hbs"),
+      template: systemPath("templates/sheets/journal/pages/configuration/content.hbs"),
       root: true,
     },
   };

@@ -101,7 +101,7 @@ export default class DrawSteelRegistry {
       const docs = await pack.getDocuments({ _id__in: configJournals.map(idx => idx._id) });
 
       for (const je of docs) {
-        for (const page of je.pages.documentsByType["config"]) {
+        for (const page of je.pages.documentsByType["configuration"]) {
           for (const lang of page.system.languages) {
             const key = lang.key ?? lang.label.slugify({ strict: true });
             if (!key) continue;

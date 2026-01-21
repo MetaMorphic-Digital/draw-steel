@@ -1,22 +1,25 @@
 <section class="standard-form tab {{tabs.monsterKeywords.cssClass}}" data-tab="monsterKeywords" data-group="primary">
+  {{#unless document.pack}}
+  <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.configuration.noPack"}}</div>
+  {{/unless}}
   <div class="form-group">
     <button type="button" data-action="addEntry" data-path="monsterKeywords">
       <i class="fa-solid fa-plus" inert></i>
-      {{localize "DRAW_STEEL.JournalEntryPage.config.addEntry.monsterKeyword"}}
+      {{localize "DRAW_STEEL.JournalEntryPage.configuration.addEntry.monsterKeyword"}}
     </button>
   </div>
-  <p class="hint">{{localize "DRAW_STEEL.JournalEntryPage.config.pageNameIsGroup"}}</p>
+  <p class="hint">{{localize "DRAW_STEEL.JournalEntryPage.configuration.pageNameIsGroup"}}</p>
   <div class="scrollable">
     {{#each monsterKeywords}}
     <fieldset>
       <legend>
         <button type="button" data-action="removeEntry" data-path="monsterKeywords" data-index="{{@index}}">
           <i class="fa-solid fa-trash" inert></i>
-          {{localize "DRAW_STEEL.JournalEntryPage.config.removeEntry.monsterKeyword"}}
+          {{localize "DRAW_STEEL.JournalEntryPage.configuration.removeEntry.monsterKeyword"}}
         </button>
       </legend>
       {{#if warnDuplicateKey}}
-      <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.config.duplicateEntry"}}</div>
+      <div class="notification warning">{{localize "DRAW_STEEL.JournalEntryPage.configuration.duplicateEntry"}}</div>
       {{/if}}
       <div class="form-group">
         <div class="form-group" data-tooltip-text="{{fields.label.hint}}">

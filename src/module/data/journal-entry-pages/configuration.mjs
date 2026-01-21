@@ -10,7 +10,7 @@ export default class ConfigurationModel extends foundry.abstract.TypeDataModel {
    */
   static get metadata() {
     return {
-      type: "configure",
+      type: "configuration",
       icon: "fa-solid fa-spaghetti-monster-flying",
       embedded: {},
     };
@@ -39,7 +39,7 @@ export default class ConfigurationModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.config"];
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.configuration"];
 
   /* -------------------------------------------------- */
 
