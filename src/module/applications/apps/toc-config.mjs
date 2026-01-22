@@ -106,6 +106,24 @@ export default class CompendiumTOCConfig extends DSApplication {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    this.refreshSpecial();
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onChangeForm(formConfig, event) {
+    super._onChangeForm(formConfig, event);
+
+    this.refreshSpecial();
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _processFormData(event, form, formData, submitOptions) {
     const fd = super._processFormData(event, form, formData, submitOptions);
 
@@ -116,6 +134,21 @@ export default class CompendiumTOCConfig extends DSApplication {
     }
 
     return updateData;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Toggle the visibility of the "manage special" buttons.
+   */
+  refreshSpecial() {
+    for (const journalField of this.element.querySelectorAll("fieldset")) {
+      const button = journalField.querySelector("button[data-action='manageSpecial']");
+
+      const typeEntry = journalField.querySelector("select");
+
+      button.classList.toggle("hidden", typeEntry.value !== "special");
+    }
   }
 
   /* -------------------------------------------------- */
@@ -170,7 +203,7 @@ export default class CompendiumTOCConfig extends DSApplication {
     });
 
     if (fd) {
-      await specialJournal.setFlag(systemID, flagPath);
+      await specialJournal.setFlag(systemID, flagPath, fd.append);
     }
   }
 }
