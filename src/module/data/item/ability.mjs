@@ -199,7 +199,7 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          // The special handling can be removed in v14 when non-persistent fields can be included in the schema.
+          // TODO: Remove in v14 with non-persisted schema fields.
           const field = (bonus.key.startsWith("damage.bonuses")) ? new fields.NumberField({ integer: true }) : DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
