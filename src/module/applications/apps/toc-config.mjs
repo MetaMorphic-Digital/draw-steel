@@ -1,10 +1,13 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DSApplication from "../api/application.mjs";
+import { journal } from "../sheets/_module.mjs";
 import DrawSteelCompendiumTOC from "../sidebar/apps/table-of-contents.mjs";
 
 /**
  * @import { ApplicationRenderOptions } from "@client/applications/_types.mjs"
  */
+
+const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
 /**
  * Application for configuring which documents appear in the Table of Contents.
@@ -16,6 +19,9 @@ export default class CompendiumTOCConfig extends DSApplication {
     compendium: null,
     window: {
       resizable: true,
+    },
+    actions: {
+      manageSpecial: this.#manageSpecial,
     },
   };
 
@@ -31,6 +37,16 @@ export default class CompendiumTOCConfig extends DSApplication {
       template: "templates/generic/form-footer.hbs",
     },
   };
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The data path for flags used in the TOC application.
+   * @type {string}
+   */
+  static get flagPath() {
+    return `flags.${systemID}.table-of-contents`;
+  }
 
   /* -------------------------------------------------- */
 
@@ -80,7 +96,7 @@ export default class CompendiumTOCConfig extends DSApplication {
       document: doc,
       type: doc.getFlag(systemID, "table-of-contents.type") ?? "chapter",
       showPages: doc.getFlag(systemID, "table-of-contents.showPages") ?? true,
-      position: doc.getFlag(systemID, "table-of-contents.position") ?? index,
+      order: doc.getFlag(systemID, "table-of-contents.order") ?? index,
       title: doc.getFlag(systemID, "table-of-contents.title"),
     }));
 
@@ -96,9 +112,65 @@ export default class CompendiumTOCConfig extends DSApplication {
     const updateData = [];
 
     for (const [_id, data] of Object.entries(fd)) {
-      updateData.push({ _id, [`flags.${systemID}.table-of-contents`]: data });
+      updateData.push({ _id, [CompendiumTOCConfig.flagPath]: data });
     }
 
     return updateData;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Configure the append values for a special page.
+   *
+   * @this CompendiumTOCConfig
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #manageSpecial(event, target) {
+    const { journalId } = target.closest("[data-journal-id]").dataset;
+
+    const specialJournal = this.compendium.get(journalId);
+
+    await this.submit();
+
+    const chapterAppendices = this.config.filter(data => data[CompendiumTOCConfig.flagPath].type === "chapter")
+      .sort((a, b) => a[CompendiumTOCConfig.flagPath].order - b[CompendiumTOCConfig.flagPath].order);
+
+    const options = chapterAppendices.map((entry, idx) => {
+      const journal = this.compendium.get(entry._id);
+      return { label: entry[CompendiumTOCConfig.flagPath].title || journal.name, value: idx };
+    });
+
+    const flagPath = "table-of-contents.append";
+
+    const appendChoice = createFormGroup({
+      label: "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.label",
+      hint: "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.hint",
+      input: createSelectInput({
+        options,
+        name: "append",
+        value: specialJournal.getFlag(systemID, flagPath),
+        blank: game.i18n.localize("DRAW_STEEL.COMPENDIUM.TOC.configure.append.blank"),
+      }),
+      localize: true,
+    });
+
+    const content = this.element.ownerDocument.createElement("div");
+
+    content.append(appendChoice);
+
+    const fd = await ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: "DRAW_STEEL.COMPENDIUM.TOC.configure.append.title",
+        icon: "fa-solid fa-edit",
+      },
+    });
+
+    if (fd) {
+      await specialJournal.setFlag(systemID, flagPath);
+    }
   }
 }

@@ -1,7 +1,10 @@
 <section class="standard-form scrollable">
   {{#each entries}}
-  <fieldset>
-    <legend>{{document.name}}</legend>
+  <fieldset data-journal-id="{{document.id}}">
+    <legend>
+      {{document.name}}
+      <button type="button" class="icon fa-solid fa-edit" data-action="manageSpecial"></button>
+    </legend>
     <div class="form-group">
       <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.entryType.label"}}</label>
       <div class="form-fields">
@@ -18,9 +21,9 @@
         </div>
       </div>
       <div class="form-group slim">
-        <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.position.label"}}</label>
+        <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.order.label"}}</label>
         <div class="form-fields">
-          <input type="number" name="{{concat document.id ".position"}}" value="{{position}}" step="1">
+          <input type="number" name="{{concat document.id ".order"}}" value="{{order}}" step="1">
         </div>
       </div>
     </div>

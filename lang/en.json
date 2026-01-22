@@ -19,7 +19,11 @@
         "configure": {
           "action": "Configure Table of Contents",
           "title": "Table of Contents: {title}",
-          "submit": "Update Table of Contents"
+          "submit": "Update Table of Contents",
+          "append": {
+            "title": "Configure Append",
+            "blank": "Standalone"
+          }
         },
         "Contents": "Contents",
         "FIELDS": {
@@ -29,12 +33,16 @@
           "showPages": {
             "label": "Show Pages"
           },
-          "position": {
-            "label": "Position"
+          "order": {
+            "label": "Order"
           },
           "title": {
             "label": "Title",
             "hint": "Replaces the name of the Journal Entry in the TOC display"
+          },
+          "append": {
+            "label": "Append",
+            "hint": "Display this journal as pages of another journal. If Standalone is selected, then this will display after appendices."
           }
         },
         "ENTRY_TYPES": {

@@ -4,7 +4,7 @@ import CompendiumTOCConfig from "../../apps/toc-config.mjs";
 /**
  * @import JournalEntry from "@client/documents/journal-entry.mjs";
  * @import DrawSteelJournalEntryPage from "../../../documents/journal-entry-page.mjs";
- * @import { ChapterContext, ChapterFlags, PageContext } from "./_types";
+ * @import { ChapterContext, ChapterFlags, PageContext, SpecialContext } from "./_types";
  */
 
 /**
@@ -118,7 +118,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
     /** @type {ChapterContext[]} */
     const chapters = [];
-    /** @type {ChapterContext[]} */
+    /** @type {SpecialContext[]} */
     const specialEntries = [];
     for (const entry of documents) {
       /** @type {ChapterFlags} */
@@ -159,7 +159,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
         data.showPages = tocFlags.showPages ?? !tocFlags.append;
         specialEntries.push(data);
       } else {
-        data.order = (this.constructor.ENTRY_TYPES[type].order ?? 200) + (tocFlags.position ?? 0);
+        data.order = (this.constructor.ENTRY_TYPES[type].order ?? 200) + (tocFlags.order ?? 0);
         data.showPages = tocFlags.showPages ?? type === "chapter";
         chapters.push(data);
       }
@@ -169,7 +169,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     for (const entry of specialEntries) {
       const append = entry.tocFlags.append;
       if (append && (append <= chapters.length)) {
-        chapters[append - 1].pages.push({ ...entry, sort: entry.tocFlags.position, entry: true });
+        chapters[append - 1].pages.push({ ...entry, sort: entry.tocFlags.order, entry: true });
       } else {
         chapters.push(entry);
       }

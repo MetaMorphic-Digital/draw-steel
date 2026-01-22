@@ -22,7 +22,7 @@ export interface ChapterFlags {
   type: EntryType;
   title: string;
   showPages: boolean;
-  position: number;
+  order: number;
   /** Used by "special" pages */
   append: number;
   /** Explicit false to hide regardless, explicit true to show regardless */
@@ -41,7 +41,7 @@ export interface ChapterContext {
   pages: Array<PageContext | SpecialContext>;
 }
 
-interface SpecialContext extends Omit<ChapterContext, "order" | "pages"> {
+export interface SpecialContext extends Omit<ChapterContext, "order" | "pages"> {
   sort: number;
   entry: true;
 }
