@@ -173,7 +173,7 @@ export default class CompendiumTOCConfig extends DSApplication {
 
     const options = chapterAppendices.map((entry, idx) => {
       const journal = this.compendium.get(entry._id);
-      return { label: entry[CompendiumTOCConfig.flagPath].title || journal.name, value: idx };
+      return { label: entry[CompendiumTOCConfig.flagPath].title || journal.name, value: idx + 1 };
     });
 
     const flagPath = "table-of-contents.append";
@@ -186,6 +186,9 @@ export default class CompendiumTOCConfig extends DSApplication {
         name: "append",
         value: specialJournal.getFlag(systemID, flagPath),
         blank: game.i18n.localize("DRAW_STEEL.COMPENDIUM.TOC.configure.append.blank"),
+        dataset: {
+          dtype: "Number",
+        },
       }),
       localize: true,
     });

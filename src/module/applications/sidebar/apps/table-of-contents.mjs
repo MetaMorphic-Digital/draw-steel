@@ -16,7 +16,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
    */
   static applyToPacks() {
     for (const pack of game.packs.filter(p => p.metadata.type === "JournalEntry")) {
-      if (pack.metadata.flags.display === "table-of-contents") pack.applicationClass = this;
+      if (pack.metadata.flags[systemID]?.display === "table-of-contents") pack.applicationClass = this;
     }
   }
 
@@ -166,7 +166,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
     chapters.sort((lhs, rhs) => lhs.order - rhs.order);
     for (const entry of specialEntries) {
-      const append = entry.tocFlags.append;
+      const append = Number(entry.tocFlags.append);
       if (append && (append <= chapters.length)) {
         chapters[append - 1].pages.push({ ...entry, sort: entry.tocFlags.order, entry: true });
       } else {
