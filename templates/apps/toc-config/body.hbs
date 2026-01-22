@@ -6,7 +6,7 @@
       <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.entryType.label"}}</label>
       <div class="form-fields">
         <select name="{{concat document.id ".type"}}">
-          {{selectOptions @root.entryTypes selected=type blank="None" localize=true}}
+          {{selectOptions @root.entryTypes selected=type blank="DRAW_STEEL.COMPENDIUM.TOC.ENTRY_TYPES.hidden" localize=true}}
         </select>
       </div>
     </div>

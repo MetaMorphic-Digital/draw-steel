@@ -12,6 +12,7 @@ import "./apps/monster-metadata.css";
 import "./apps/power-roll-dialog.css";
 import "./apps/saving-throw-dialog.css";
 import "./apps/targeted-condition-prompt.css";
+import "./apps/toc-config.css";
 
 import "./canvas/measurement.css";
 import "./canvas/token-hud.css";

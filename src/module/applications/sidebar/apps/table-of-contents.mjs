@@ -123,9 +123,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     for (const entry of documents) {
       /** @type {ChapterFlags} */
       const tocFlags = entry.flags?.[systemID]?.["table-of-contents"];
-      if (!tocFlags || (tocFlags.type === "")) continue;
-      const keys = Object.keys(tocFlags);
-      if (tocFlags.tocHidden || !keys.length) continue;
+      if (!tocFlags || !Object.keys(tocFlags).length || (tocFlags.type === "")) continue;
       const type = tocFlags.type ?? "chapter";
 
       if (type === "header") {
@@ -170,9 +168,8 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     chapters.sort((lhs, rhs) => lhs.order - rhs.order);
     for (const entry of specialEntries) {
       const append = entry.tocFlags.append;
-      const order = entry.tocFlags.order;
       if (append && (append <= chapters.length)) {
-        chapters[append - 1].pages.push({ ...entry, sort: order, entry: true });
+        chapters[append - 1].pages.push({ ...entry, sort: entry.tocFlags.position, entry: true });
       } else {
         chapters.push(entry);
       }

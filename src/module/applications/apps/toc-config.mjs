@@ -12,17 +12,17 @@ import DrawSteelCompendiumTOC from "../sidebar/apps/table-of-contents.mjs";
 export default class CompendiumTOCConfig extends DSApplication {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["standard-form"],
+    classes: ["standard-form", "toc-config"],
     compendium: null,
+    window: {
+      resizable: true,
+    },
   };
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static PARTS = {
-    header: {
-      template: systemPath("templates/apps/toc-config/header.hbs"),
-    },
     body: {
       template: systemPath("templates/apps/toc-config/body.hbs"),
     },

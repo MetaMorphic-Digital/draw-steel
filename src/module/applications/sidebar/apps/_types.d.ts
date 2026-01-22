@@ -1,6 +1,6 @@
 import DrawSteelCompendiumTOC from "./table-of-contents.mjs";
 
-export type EntryType = keyof typeof DrawSteelCompendiumTOC.ENTRY_TYPES;
+export type EntryType = keyof typeof DrawSteelCompendiumTOC.ENTRY_TYPES | "";
 
 interface PageFlags {
   title: string;
@@ -22,12 +22,9 @@ export interface ChapterFlags {
   type: EntryType;
   title: string;
   showPages: boolean;
-  /** Used by chapter & appendix pages */
   position: number;
   /** Used by "special" pages */
   append: number;
-  /** Used by "special" pages */
-  order: number;
   /** Explicit false to hide regardless, explicit true to show regardless */
   show: boolean;
 }
