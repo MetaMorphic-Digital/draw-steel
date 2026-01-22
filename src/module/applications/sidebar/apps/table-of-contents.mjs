@@ -107,6 +107,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     // default header
     context.header = {
       title: this.title,
+      cssClass: "hidden",
     };
 
     context.chapters = [];
@@ -120,11 +121,12 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
       const type = flags.type ?? "chapter";
 
       if (type === "header") {
-        const page = entry.pages.contents[0];
-        context.header = {
+        const page = entry.pages.contents.sort((a, b) => a.sort - b.sort)[0];
+        Object.assign(context.header, {
           title: flags.title || page?.name,
           content: page?.text.content,
-        };
+          cssClass: "",
+        });
         continue;
       }
 
@@ -132,11 +134,15 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
         type, flags,
         id: entry.id,
         name: flags.title || entry.name,
-        pages: Array.from(entry.pages).map(({ flags, id, name, sort }) => ({
-          id, sort, flags,
-          name: flags[systemID]?.title || name,
-          entryId: entry.id,
-        })),
+        pages: Array.from(entry.pages).map(({ flags, id, name, sort, title }) => {
+          const tocFlags = flags[systemID]?.["table-of-contents"];
+
+          return {
+            id, sort, tocFlags, level: title.level,
+            name: tocFlags?.title || name,
+            entryId: entry.id,
+          };
+        }),
       };
 
       if (type === "special") {
@@ -151,8 +157,8 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
     context.chapters.sort((lhs, rhs) => lhs.order - rhs.order);
     for (const entry of specialEntries) {
-      const append = entry.flags.append;
-      const order = entry.flags.order;
+      const append = entry.tocFlags.append;
+      const order = entry.tocFlags.order;
       if (append && (append <= context.chapters.length)) {
         context.chapters[append - 1].pages.push({ ...entry, sort: order, entry: true });
       } else {
@@ -162,7 +168,11 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
     for (const chapter of context.chapters) {
       chapter.pages = chapter.pages
-        .filter(p => !p.flags.tocHidden && (chapter.showPages || p.entry))
+        .filter(p => {
+          // By default only show level 1 pages
+          const showPage = p.tocFlags?.show ?? p.level === 1;
+          return showPage && (chapter.showPages || p.entry);
+        })
         .sort((lhs, rhs) => lhs.sort - rhs.sort);
       for (const page of chapter.pages) {
         if (page.pages) page.pages.sort((lhs, rhs) => lhs.sort - rhs.sort);
