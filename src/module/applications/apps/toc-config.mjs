@@ -78,10 +78,10 @@ export default class CompendiumTOCConfig extends DSApplication {
   async _prepareBodyContext(context, options) {
     context.entries = this.compendium.contents.sort((a, b) => a.sort - b.sort).map((doc, index) => ({
       document: doc,
-      type: doc.getFlag(systemID, "type") ?? "chapter",
-      showPages: doc.getFlag(systemID, "showPages") ?? true,
-      position: doc.getFlag(systemID, "position") ?? index,
-      title: doc.getFlag(systemID, "title"),
+      type: doc.getFlag(systemID, "table-of-contents.type") ?? "chapter",
+      showPages: doc.getFlag(systemID, "table-of-contents.showPages") ?? true,
+      position: doc.getFlag(systemID, "table-of-contents.position") ?? index,
+      title: doc.getFlag(systemID, "table-of-contents.title"),
     }));
 
     context.entryTypes = Object.entries(DrawSteelCompendiumTOC.ENTRY_TYPES).map(([value, { label }]) => ({ value, label }));

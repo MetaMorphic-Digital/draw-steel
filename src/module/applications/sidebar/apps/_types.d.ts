@@ -17,9 +17,16 @@ export interface PageContext {
   entryId: string;
 }
 
-interface ChapterFlags {
+export interface ChapterFlags {
+  tocHidden: boolean;
+  type: EntryType;
+  title: string;
+  showPages: boolean;
+  /** Used by chapter & appendix pages */
+  position: number;
   /** Used by "special" pages */
   append: number;
+  /** Used by "special" pages */
   order: number;
   /** Explicit false to hide regardless, explicit true to show regardless */
   show: boolean;

@@ -1,11 +1,11 @@
 <header class="{{header.cssClass}}">
-  {{log this}}
   <aside>
     <header>
       <h2>{{ header.title }}</h2>
     </header>
     <section>{{{ header.content }}}</section>
   </aside>
+  {{!-- Necessary for Compendium preSyncPartState --}}
   <search>
     <input type="hidden">
   </search>
