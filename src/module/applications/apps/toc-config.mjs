@@ -96,7 +96,7 @@ export default class CompendiumTOCConfig extends DSApplication {
     const updateData = [];
 
     for (const [_id, data] of Object.entries(fd)) {
-      updateData.push({ _id, [`flags.${systemID}`]: data });
+      updateData.push({ _id, [`flags.${systemID}.table-of-contents`]: data });
     }
 
     return updateData;

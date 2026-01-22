@@ -112,7 +112,8 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     context.chapters = [];
     const specialEntries = [];
     for (const entry of documents) {
-      const flags = entry.flags?.[systemID];
+      /** @type {Record<string, string>} */
+      const flags = entry.flags?.[systemID]?.["table-of-contents"];
       if (!flags) continue;
       const keys = Object.keys(flags);
       if (flags.tocHidden || !keys.length || ((keys.length === 1) && (keys[0] === "navigation"))) continue;
