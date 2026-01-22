@@ -2,6 +2,7 @@ import BaseMessagePart from "./base-message-part.mjs";
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DSRoll, ProjectRoll } from "../../../rolls/_module.mjs";
 import ContentPart from "./content.mjs";
+import DrawSteelItem from "../../../documents/item.mjs";
 
 /** @import { ProjectRollPrompt } from  "../../../_types.js"*/
 
@@ -35,7 +36,13 @@ export default class ProjectPart extends BaseMessagePart {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      projectUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
+      projectUuid: new DocumentUUIDField({
+        embedded: true,
+        nullable: false,
+        type: "Item",
+        validate: (uuid) => !uuid.startsWith("Compendium"),
+        validationError: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.project.NoCompendiumActor"),
+      }),
       event: new BooleanField(),
     });
   }
@@ -44,7 +51,7 @@ export default class ProjectPart extends BaseMessagePart {
 
   /**
    * Fetches the project from the UUID. Can return null if the project no longer exists.
-   * @returns {DrawSteelActiveEffect | null}
+   * @returns {DrawSteelItem | null}
    */
   get project() {
     return fromUuidSync(this.projectUuid);
@@ -113,13 +120,22 @@ export default class ProjectPart extends BaseMessagePart {
   /* -------------------------------------------------- */
 
   /**
-   * Make the breakthrough roll.
+   * Handle the click action for rolling a project breakthrough using the {@linkcode rollBreakthrough} method.
    *
    * @this ProjectPart
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #rollBreakthrough(target, event) {
+    this.rollBreakthrough();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Make the breakthrough roll, updating the project with the new points, and adding the roll to the project part.
+   */
+  async rollBreakthrough(target, event) {
     const project = this.project;
     if (!project) return;
 
@@ -152,13 +168,22 @@ export default class ProjectPart extends BaseMessagePart {
   /* -------------------------------------------------- */
 
   /**
-   * Roll to deteremine if a project event happens.
+   * Handle the click action for rolling a project event using the {@linkcode rollEvent} method.
    *
    * @this ProjectPart
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #rollEvent(target, event) {
+    this.rollEvent();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Roll to deteremine if a project event happens.
+   */
+  async rollEvent() {
     const eventRoll = await new DSRoll("1d6", {}, {
       flavor: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
     });
