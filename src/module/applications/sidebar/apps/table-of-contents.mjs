@@ -16,8 +16,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
    */
   static applyToPacks() {
     for (const pack of game.packs.filter(p => p.metadata.type === "JournalEntry")) {
-      pack.applicationClass = this;
-      // if (pack.metadata.flags.display === "table-of-contents") pack.applicationClass = this;
+      if (pack.metadata.flags.display === "table-of-contents") pack.applicationClass = this;
     }
   }
 

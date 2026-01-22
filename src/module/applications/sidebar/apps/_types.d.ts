@@ -18,15 +18,12 @@ export interface PageContext {
 }
 
 export interface ChapterFlags {
-  tocHidden: boolean;
   type: EntryType;
   title: string;
   showPages: boolean;
   order: number;
   /** Used by "special" pages */
   append: number;
-  /** Explicit false to hide regardless, explicit true to show regardless */
-  show: boolean;
 }
 
 export interface ChapterContext {
