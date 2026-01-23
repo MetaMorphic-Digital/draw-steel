@@ -1,5 +1,6 @@
 /**
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import FormDataExtended from "@client/applications/ux/form-data-extended.mjs";
  */
 
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;

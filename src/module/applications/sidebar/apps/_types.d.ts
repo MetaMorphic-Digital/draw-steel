@@ -23,7 +23,7 @@ export interface ChapterFlags {
   showPages: boolean;
   order: number;
   /** Used by "special" pages */
-  append: number;
+  append: string;
 }
 
 export interface ChapterContext {

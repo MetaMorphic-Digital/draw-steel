@@ -1,10 +1,7 @@
 <section class="standard-form scrollable">
   {{#each entries}}
   <fieldset data-journal-id="{{document.id}}">
-    <legend>
-      {{document.name}}
-      <button type="button" class="icon fa-solid fa-edit" data-action="manageSpecial" data-tooltip="DRAW_STEEL.COMPENDIUM.TOC.configure.append.label"></button>
-    </legend>
+    <legend>{{document.name}}</legend>
     <div class="form-group">
       <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.entryType.label"}}</label>
       <div class="form-fields">
@@ -34,6 +31,17 @@
       </div>
       <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.hint"}}</p>
     </div>
+    {{#if (eq type "special")}}
+    <div class="form-group">
+      <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.label"}}</label>
+      <div class="form-fields">
+        <select name="{{concat document.id ".append"}}">
+          {{selectOptions @root.chapterOptions selected=append blank=(localize "DRAW_STEEL.COMPENDIUM.TOC.configure.append.blank")}}
+        </select>
+      </div>
+      <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.hint"}}</p>
+    </div>
+    {{/if}}
   </fieldset>
   {{/each}}
 </section>

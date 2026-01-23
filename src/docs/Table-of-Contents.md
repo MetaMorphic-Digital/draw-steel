@@ -53,9 +53,7 @@ The `order` flag is used to control where chapters and appendices appear in the 
 
 ### Append
 
-The `append` flag is only used by special entries and can be configured via a submenu. This numerical flag specifies which chapter the special entry will be added to. If marked standalone (`append` is empty), then a special entry will be added after all of the other chapters and appendices as a top-level entry.
-
-This flag corresponds to the absolute chapter position starting at `1`, so so if you have 5 chapters and 2 appendices, the range of valid values will be 1–7, with 1–5 being the first through fifth chapter, and 6 & 7 being the first and second appendix.
+The `append` flag is only used by special entries. This flag specifies which chapter the special entry will be added to based on ID. If marked standalone (`append` is empty), then a special entry will be added after all of the other chapters and appendices as a top-level entry.
 
 If the append flag is set, the `order` flag will be used to position the special entry relative to the `sort` value of the other pages in the main entry. This is likely to be a fairly large value in the hundreds of thousands.
 

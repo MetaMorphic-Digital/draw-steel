@@ -37,7 +37,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
       controls: [
         {
           action: "configureTOC",
-          icon: "fa-solid fa-edit",
+          icon: "fa-solid fa-table-columns",
           label: "DRAW_STEEL.COMPENDIUM.TOC.configure.action",
           visible: this.#canConfigureTOC,
         },
@@ -166,9 +166,9 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
     chapters.sort((lhs, rhs) => lhs.order - rhs.order);
     for (const entry of specialEntries) {
-      const append = Number(entry.tocFlags.append);
-      if (append && (append <= chapters.length)) {
-        chapters[append - 1].pages.push({ ...entry, sort: entry.tocFlags.order, entry: true });
+      if (entry.tocFlags.append) {
+        const ch = chapters.find(c => c.id === entry.tocFlags.append);
+        if (ch) ch.pages.push({ ...entry, sort: entry.tocFlags.order, entry: true });
       } else {
         chapters.push(entry);
       }
@@ -215,13 +215,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
    * @private
    */
   static async #configureTOC(event, target) {
-    const fd = await CompendiumTOCConfig.create({ compendium: this.collection });
-
-    if (!fd) return;
-
-    await getDocumentClass("JournalEntry").updateDocuments(fd, { pack: this.collection.collection });
-
-    this.render();
+    new CompendiumTOCConfig({ compendium: this.collection }).render({ force: true });
   }
 
   /* -------------------------------------------------- */
