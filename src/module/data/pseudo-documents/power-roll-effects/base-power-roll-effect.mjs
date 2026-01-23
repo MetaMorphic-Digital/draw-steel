@@ -160,13 +160,8 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @returns {HTMLSpanElement}
    */
   static constructPotencyHTML(characteristic, strength) {
-    const strengthGlyphs = {
-      weak: "w",
-      average: "v",
-      strong: "s",
-    };
 
-    if (strength in strengthGlyphs) strength = strengthGlyphs[strength];
+    if (strength in ds.CONST.potencyStrengths) strength = ds.CONST.potencyStrengths[strength].glyph;
     // Numeric glyphs are formatted with square edges on both sides
     // Append right bracket to get the rounded edge on the end.
     else if (typeof strength === "number") strength = `${strength}]`;
