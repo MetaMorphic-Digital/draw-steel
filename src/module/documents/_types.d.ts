@@ -1,3 +1,4 @@
+import { JournalEntryCategory } from "@client/documents/_module.mjs";
 import {
   ActiveEffectData,
   ActorData,
@@ -7,6 +8,7 @@ import {
   CombatData,
   ItemData,
   JournalEntryPageData,
+  JournalEntryData,
   TokenData,
 } from "@common/documents/_types.mjs";
 import Collection from "@common/utils/collection.mjs";
@@ -20,7 +22,7 @@ import {
   Item as ItemModels,
   JournalEntryPage as JEPModels,
 } from "../data/_module.mjs";
-import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem } from "./_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem, DrawSteelJournalEntryPage } from "./_module.mjs";
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
@@ -70,6 +72,11 @@ declare module "@client/documents/_module.mjs" {
   interface BaseCombatant extends CombatantData, InstanceType<ClientDocument> {
     type: "base";
     system: CombatantModels.BaseCombatantModel;
+  }
+
+  interface BaseJournalEntry extends JournalEntryData, InstanceType<ClientDocument> {
+    pages: Collection<string, DrawSteelJournalEntryPage>;
+    categories: Collection<string, JournalEntryCategory>;
   }
 
   interface BaseJournalEntryPage<Model extends JournalEntryPageModel = JournalEntryPageModel> extends JournalEntryPageData, InstanceType<ClientDocument> {
