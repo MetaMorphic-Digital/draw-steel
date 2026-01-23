@@ -1,3 +1,4 @@
+import { systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
@@ -43,9 +44,21 @@ export default class ReferenceModel extends foundry.abstract.TypeDataModel {
    * @returns {Promise<HTMLElement[]>}
    */
   async richTooltip() {
-    const enrichedPage = await enrichHTML(this.tooltip || this.parent.text.content, { relativeTo: this.parent });
+    const tooltipHTML = await enrichHTML(this.tooltip || this.parent.text.content, { relativeTo: this.parent });
+
+    const journal = this.parent.parent;
+
+    const context = {
+      tooltipHTML,
+      page: this.parent,
+      category: journal.categories.get(this.parent.category),
+    };
+
     const container = document.createElement("div");
-    container.innerHTML = enrichedPage;
+
+    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/journal/pages/reference/rich-tooltip.hbs"), context);
+
+    container.innerHTML = content;
     return container.children;
   }
 
