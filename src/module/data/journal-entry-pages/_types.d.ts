@@ -24,5 +24,6 @@ declare module "./reference.mjs" {
   export default interface ReferenceModel {
     parent: DrawSteelJournalEntryPage;
     tooltip: string;
+    category: string;
   }
 }

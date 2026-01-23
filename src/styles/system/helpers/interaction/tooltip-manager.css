@@ -1,4 +1,26 @@
-#tooltip.draw-steel {
+#tooltip.draw-steel, aside[role="tooltip"] {
   background: var(--draw-steel-c-white);
   color: var(--draw-steel-c-light);
+
+  header.metadata {
+    display: flex;
+    justify-content: space-between;
+    h3.name {
+      padding-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    aside.category {
+      border: 2px inset var(--draw-steel-c-laserline);
+      background-color: var(--draw-steel-c-black);
+      padding: 0.25rem 0.5rem;
+      margin: 0.5rem 0;
+      h4 {
+        text-align: right;
+        line-height: 1rem;
+        color: var(--draw-steel-c-white);
+        margin: 0;
+        font-size: var(--font-size-16);
+      }
+    }
+  }
 }
