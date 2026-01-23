@@ -16,7 +16,7 @@
       <label for="{{concat @root.rootId "-append-" document.id}}">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.label"}}</label>
       <div class="form-fields">
         <select name="{{concat document.id ".append"}}" for="{{concat @root.rootId "-append-" document.id}}">
-          {{selectOptions @root.chapterOptions selected=append blank=(localize "DRAW_STEEL.COMPENDIUM.TOC.configure.append.blank")}}
+          {{selectOptions @root.chapterOptions selected=append blank=(localize "DRAW_STEEL.COMPENDIUM.TOC.blankAppend")}}
         </select>
       </div>
       <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.hint"}}</p>
