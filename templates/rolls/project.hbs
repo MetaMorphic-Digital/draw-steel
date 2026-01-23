@@ -1,9 +1,5 @@
 <div class="dice-roll" data-action="expandRoll">
   <div class="modifier">
-    {{#if critical}}
-    {{localize "DRAW_STEEL.ROLL.Project.Breakthrough"}}
-    {{/if}}
-    {{#if (and critical modifier.number)}}<br>{{/if}}
     {{#if modifier.number}}
     <em>({{localize "DRAW_STEEL.ROLL.Power.Modifier.Label" number=modifier.number mod=modifier.mod}})</em>
     {{/if}}

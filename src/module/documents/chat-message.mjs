@@ -39,6 +39,16 @@ export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.docu
 
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }
+    if (data.type === "projectRoll") {
+      data.type = "standard";
+      data.system.parts = [{
+        type: "project",
+        projectUuid: data.system.uuid,
+        event: !!data.system.events,
+        rolls: data.rolls,
+      }];
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
 
     return super.migrateData(data);
   }

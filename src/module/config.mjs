@@ -1795,6 +1795,9 @@ export const MessagePart = {
   test: {
     documentClass: pseudoDocuments.messageParts.TestPart,
   },
+  project: {
+    documentClass: pseudoDocuments.messageParts.ProjectPart,
+  },
 };
 preLocalize("MessagePart", { key: "label" });
 

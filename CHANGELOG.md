@@ -68,6 +68,7 @@
   - Many actions that would generate new chat messages instead append to an existing message, such as spending a hero token.
   - Re-implemented the DSN integration and usage of base vs. target-specific roll copies. (#1445)
   - Migrated saving throws to use chat parts. (#1447)
+  - Migrated project rolls to use chat parts. (#1448)
   - Migrated ability rolls to use chat parts. (#1449)
 - The saving throw dialog now has the effect name that's being rolled for. (#1538)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
