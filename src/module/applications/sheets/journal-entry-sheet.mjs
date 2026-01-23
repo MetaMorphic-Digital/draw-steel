@@ -18,9 +18,6 @@ export default class DrawSteelJournalEntrySheet extends foundry.applications.she
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.element.querySelectorAll(".action-buttons :is(.previous, .next)").forEach(el => {
-      el.classList.add("inline-control");
-    });
     if (options.parts.includes("pages")) this._injectNavigation(this.document, this.element);
   }
 
@@ -28,6 +25,7 @@ export default class DrawSteelJournalEntrySheet extends foundry.applications.she
 
   /**
    * Add navigational controls for journals that define them.
+   * @protected
    */
   async _injectNavigation() {
     const nav = this.document.getFlag(systemID, "navigation");
