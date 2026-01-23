@@ -166,6 +166,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Bonus Stamina Per Level|`system.stamina.bonuses.level`|
+|Bonus Stamina From Treasure|`system.stamina.bonuses.treasure`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
 |Bonus Recovery Divisor|`system.recoveries.divisor`|
 |Speed|`system.movement.value`|
@@ -241,6 +242,8 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |Key|Description|
 |---|-----------|
 |`distance`|Gives a bonus to the range of the ability, based on the range type.|
+|`damage.bonuses.value`|Give a bonus to the first damage effect's damage at each tier|
+|`damage.bonuses.treasure`|Give a bonus to the first damage effect's damage at each tier. Should be used with the `Upgrade` mode for non-stacking bonuses.|
 |`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|

@@ -98,6 +98,13 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
+   * Prepare derived power roll effect data that requires ability data prep to be completed.
+   */
+  preparePostAbilityPrepData() {}
+
+  /* -------------------------------------------------- */
+
+  /**
    * Helper method to derive default potency characteristic for tiers 2 and 3.
    * @param {1|2|3} n     The tier.
    * @returns {string}    The default characteristic.

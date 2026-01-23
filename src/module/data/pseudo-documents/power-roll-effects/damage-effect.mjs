@@ -34,11 +34,52 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  prepareBaseData() {
+    super.prepareBaseData();
+
+    Object.assign(this.damage, {
+      bonuses: {
+        value: 0,
+        treasure: 0,
+      },
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     for (const n of [1, 2, 3]) {
       this.damage[`tier${n}`].value ||= this.#defaultDamageValue(n);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  preparePostAbilityPrepData() {
+    super.preparePostAbilityPrepData();
+
+    // Apply treasure bonuses
+    const bonuses = this.damage.bonuses;
+    if (bonuses.value || bonuses.treasure) {
+      for (const n of [1, 2, 3]) {
+        const damageTier = this.damage[`tier${n}`];
+        const formulaField = this.schema.getField(`damage.tier${n}.value`);
+        const change = { mode: CONST.ACTIVE_EFFECT_MODES.ADD };
+
+        if (bonuses.value) {
+          change.value = bonuses.value;
+          damageTier.value = formulaField.applyChange(damageTier.value, this, change);
+        }
+
+        if (bonuses.treasure) {
+          change.value = bonuses.treasure;
+          damageTier.value = formulaField.applyChange(damageTier.value, this, change);
+        }
+      }
     }
   }
 

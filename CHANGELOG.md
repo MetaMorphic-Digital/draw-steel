@@ -39,6 +39,9 @@
   - Reworked the rules journal to instead have an expansive list of term references and pages. (#11)
 - Added a setting for the XP advancement speed. (#1064)
 - Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
+- Added new AE keys treasure bonuses to stamina and damage. (#1140)
+  - Added `system.stamina.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure stamina bonuses.
+  - Added `damage.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure damage bonuses.
 - Implemented a Draw Steel Journal Sheet that styles the contained pages in a fashion similar to the core books. (#1170)
 - New ability modifier keys
   - Added `power.roll.banes` and `power.roll.edges` to control base numbers of edges/banes. (#1067)
@@ -54,6 +57,7 @@
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added `damage.bonuses.value` which can be targeted to apply a single value to each damage tier.
 
 ### Changed
 
