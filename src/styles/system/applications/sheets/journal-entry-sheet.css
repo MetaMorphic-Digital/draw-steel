@@ -238,7 +238,8 @@
 
       th,
       td {
-        padding: 0px
+        padding-top: 0;
+        padding-bottom: 0;
       }
     }
   }
@@ -284,9 +285,7 @@
     }
   }
 
-  /*laser lines on captions
-
-  */
+  /*laser lines on captions */
   caption {
     text-align: center;
     position: relative;
@@ -414,6 +413,15 @@
     }
   }
 
+  /* Embed-specific adjustments */
+  document-embed {
+    .draw-steel.ability {
+      /* More compact display of abilities */
+      .metadata dl {
+        grid-template-columns: auto 1fr auto 1fr;
+      }
+    }
+  }
 }
 
 /*inline links and rolls; this may deserve it's own file if it's broader than journals*/
