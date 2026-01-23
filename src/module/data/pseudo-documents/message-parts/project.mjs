@@ -135,7 +135,7 @@ export default class ProjectPart extends BaseMessagePart {
   /**
    * Make the breakthrough roll, updating the project with the new points, and adding the roll to the project part.
    */
-  async rollBreakthrough(target, event) {
+  async rollBreakthrough() {
     const project = this.project;
     if (!project) return;
 
