@@ -14,6 +14,7 @@ const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Application) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
+    id: "toc-config-{id}",
     classes: ["draw-steel", "toc-config"],
     compendium: null,
     position: {
@@ -27,7 +28,6 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
     },
     window: {
       icon: "fa-solid fa-table-columns",
-      contentClasses: ["standard-form"],
     },
   };
 
@@ -66,29 +66,24 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
   get title() {
     return game.i18n.format("DRAW_STEEL.COMPENDIUM.TOC.configure.title", { title: game.i18n.localize(this.compendium.title) });
   }
+
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  async _preparePartContext(partId, context, options) {
-    context = await super._preparePartContext(partId, context, options);
-
-    switch (partId) {
-      case "body":
-        this._prepareBodyContext(context, options);
-        break;
-    }
-
-    return context;
+  /** @inheritDoc */
+  _initializeApplicationOptions(options) {
+    options = super._initializeApplicationOptions(options);
+    options.uniqueId = options.compendium.collection.replaceAll(".", "_");
+    return options;
   }
 
   /* -------------------------------------------------- */
 
-  /**
-   * Helper function to prepare the body context.
-   * @param {object} context
-   * @param {ApplicationRenderOptions} options
-   */
-  async _prepareBodyContext(context, options) {
+  /** @inheritdoc */
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+
+    context.rootId = this.id;
+
     context.entries = this.compendium.contents.sort((a, b) => a.sort - b.sort).map((doc, index) => ({
       document: doc,
       type: doc.getFlag(systemID, "table-of-contents.type") ?? "chapter",
@@ -101,6 +96,16 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
     context.chapterOptions = context.entries.filter(e => e.type === "chapter").map(e => ({ value: e.document.id, label: e.document.name }));
 
     context.entryTypes = Object.entries(DrawSteelCompendiumTOC.ENTRY_TYPES).map(([value, { label }]) => ({ value, label }));
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+    this.compendium.apps.push(this);
   }
 
   /* -------------------------------------------------- */
@@ -124,8 +129,7 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
 
     await getDocumentClass("JournalEntry").updateDocuments(updateData, { pack: this.compendium.collection });
 
-    await this.render();
-
+    // Also includes this application
     this.compendium.render();
   }
 }

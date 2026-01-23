@@ -1,47 +1,48 @@
+{{!-- <!-- eslint-disable @html-eslint/no-duplicate-id --> --}}
 <section class="standard-form scrollable">
   {{#each entries}}
   <fieldset data-journal-id="{{document.id}}">
     <legend>{{document.name}}</legend>
     <div class="form-group">
-      <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.entryType.label"}}</label>
+      <label for="{{concat @root.rootId "-type-" document.id}}">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.entryType.label"}}</label>
       <div class="form-fields">
-        <select name="{{concat document.id ".type"}}">
+        <select name="{{concat document.id ".type"}}" id="{{concat @root.rootId "-type-" document.id}}">
           {{selectOptions @root.entryTypes selected=type blank="DRAW_STEEL.COMPENDIUM.TOC.ENTRY_TYPES.hidden" localize=true}}
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <div class="form-group slim">
-        <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.showPages.label"}}</label>
-        <div class="form-fields">
-          <input type="checkbox" name="{{concat document.id ".showPages"}}" {{checked showPages}}>
-        </div>
-      </div>
-      <div class="form-group slim">
-        <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.order.label"}}</label>
-        <div class="form-fields">
-          <input type="number" name="{{concat document.id ".order"}}" value="{{order}}" step="1">
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.label"}}</label>
-      <div class="form-fields">
-        <input type="text" name="{{concat document.id ".title"}}" value="{{title}}" placeholder="{{document.name}}">
-      </div>
-      <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.hint"}}</p>
-    </div>
     {{#if (eq type "special")}}
     <div class="form-group">
-      <label>{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.label"}}</label>
+      <label for="{{concat @root.rootId "-append-" document.id}}">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.label"}}</label>
       <div class="form-fields">
-        <select name="{{concat document.id ".append"}}">
+        <select name="{{concat document.id ".append"}}" for="{{concat @root.rootId "-append-" document.id}}">
           {{selectOptions @root.chapterOptions selected=append blank=(localize "DRAW_STEEL.COMPENDIUM.TOC.configure.append.blank")}}
         </select>
       </div>
       <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.append.hint"}}</p>
     </div>
     {{/if}}
+    <div class="form-group">
+      <div class="form-group slim">
+        <label for="{{concat @root.rootId "-show-pages-" document.id}}">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.showPages.label"}}</label>
+        <div class="form-fields">
+          <input type="checkbox" name="{{concat document.id ".showPages"}}" {{checked showPages}} id="{{concat @root.rootId "-show-pages-" document.id}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="{{concat @root.rootId "-order-" document.id}}">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.order.label"}}</label>
+        <div class="form-fields">
+          <input type="number" name="{{concat document.id ".order"}}" value="{{order}}" step="1" id="{{concat @root.rootId "-order-" document.id}}">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="{{concat @root.rootId "-title-" document.id}}">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.label"}}</label>
+      <div class="form-fields">
+        <input type="text" name="{{concat document.id ".title"}}" value="{{title}}" placeholder="{{document.name}}" id="{{concat @root.rootId "-title-" document.id}}">
+      </div>
+      <p class="hint">{{localize "DRAW_STEEL.COMPENDIUM.TOC.FIELDS.title.hint"}}</p>
+    </div>
   </fieldset>
   {{/each}}
 </section>
