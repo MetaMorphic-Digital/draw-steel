@@ -53,7 +53,7 @@ export default class ReferenceModel extends foundry.abstract.TypeDataModel {
     const context = {
       tooltipHTML,
       page: this.parent,
-      categoryLabel: this.category ?? category?.name,
+      categoryLabel: this.category ?? category?.name ?? journal.name,
     };
 
     const container = document.createElement("div");
