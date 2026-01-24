@@ -36,7 +36,7 @@ export default class CreatureModel extends BaseActorModel {
 
   /** @inheritdoc */
   static actorBiography() {
-    const bio = super.actorBiography();
+    const bio = super._actorBiography();
 
     bio.languages = new fields.SetField(setOptions());
 

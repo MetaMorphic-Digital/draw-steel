@@ -72,8 +72,8 @@ export default class HeroModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static actorBiography() {
-    const bio = super.actorBiography();
+  static _actorBiography() {
+    const bio = super._actorBiography();
 
     bio.height = new fields.SchemaField({
       value: new fields.NumberField({ min: 0 }),
