@@ -1,5 +1,6 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
 import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
+import ModelCollection from "../../utils/model-collection.mjs";
 
 /**
  * @import { DragDrop } from "@client/applications/ux/_module.mjs";
@@ -232,12 +233,17 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   static async #createPseudoDocument(event, target) {
     const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
     const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
-    const Cls = this.document.getEmbeddedCollection(documentName).documentClass;
+    /** @type {ModelCollection} */
+    const collection = this.document.getEmbeddedCollection(documentName);
+    const Cls = collection.documentClass;
+
+    // Ensure the new document has a non-zero sort value
+    const sort = (collection.sortedContents.at(-1)?.sort ?? 0) + CONST.SORT_INTEGER_DENSITY;
 
     if (!type && (foundry.utils.isSubclass(Cls, ds.data.pseudoDocuments.TypedPseudoDocument))) {
-      await Cls.createDialog({}, { parent: this.document });
+      await Cls.createDialog({ sort }, { parent: this.document });
     } else {
-      await Cls.create({ type }, { parent: this.document });
+      await Cls.create({ sort, type }, { parent: this.document });
     }
   }
 
@@ -470,7 +476,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     }
 
     // TODO: Add drag and drop for PseudoDocuments
-    const pseudoClass = ds.utils.ModelCollection.documentClasses[data.type];
+    const pseudoClass = ModelCollection.documentClasses[data.type];
     if (pseudoClass) {
       const pseudo = await pseudoClass.fromDropData(data);
       return this._onDropPseudoDocument(event, pseudo);
