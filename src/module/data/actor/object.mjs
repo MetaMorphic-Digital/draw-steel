@@ -34,12 +34,20 @@ export default class ObjectModel extends BaseActorModel {
     schema.ev = requiredInteger({ initial: 4 }),
 
     schema.object = new fields.SchemaField({
+      level: requiredInteger({ initial: 1 }),
       category: new fields.StringField({ required: true }),
       role: new fields.StringField({ required: true }),
       area: new fields.StringField({ blank: false }),
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get level() {
+    return this.object.level;
   }
 
   /* -------------------------------------------------- */

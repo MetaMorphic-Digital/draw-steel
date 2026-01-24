@@ -1,0 +1,55 @@
+{{! Stats Tab }}
+<section class="tab stats standard-form {{tab.cssClass}}" data-group="primary" data-tab="stats">
+  <fieldset class="resources flexrow">
+    <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
+    <div class="resource stamina">
+      <label class="resource-label">
+        {{systemFields.stamina.label}}
+      </label>
+      <div class="form-group resource-content">
+        {{#if isPlay}}
+        <div class="resource-temporary">
+          {{formGroup
+          systemFields.stamina.fields.temporary
+          value=system.stamina.temporary
+          dataset=datasets.notSource
+          classes="paired"
+          }}
+        </div>
+        <div class="resource-current">
+          {{formGroup
+          systemFields.stamina.fields.value
+          value=system.stamina.value
+          dataset=datasets.notSource
+          classes="paired"
+          }}
+        </div>
+        {{/if}}
+        <span class="resource-max">
+          {{#if isPlay}}
+          <div class="form-group paired">
+            <label class="input-placeholder-label">
+              {{systemFields.stamina.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.stamina.max}}
+            </div>
+          </div>
+          {{else}}
+          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
+          {{/if}}
+        </span>
+      </div>
+    </div>
+  </fieldset>
+  {{#if isPlay}}
+  <div class="form-group">
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
+  </div>
+  {{else}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
+  {{/if}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
+</section>

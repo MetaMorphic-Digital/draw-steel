@@ -10,7 +10,6 @@ interface BarAttribute {
 interface Biography {
   value: string;
   director: string;
-  languages: Set<string>;
 }
 
 interface CoreResource {
@@ -80,6 +79,9 @@ declare module "./base.mjs" {
 
 declare module "./creature" {
   export default interface CreatureModel {
+    biography: Biography & {
+      languages: Set<string>;
+    }
     characteristics: Record<string, { value: number }>;
     potency: {
       bonuses: number;
@@ -115,6 +117,7 @@ declare module "./hero.mjs" {
       preferredKit: string;
     }
     biography: Biography & {
+      languages: Set<string>;
       age: string;
       height: {
         value: number;
@@ -158,6 +161,7 @@ declare module "./object.mjs" {
     ev: number;
     evLabel: string;
     object: {
+      level: number;
       category: string;
       role: string;
       area: string;

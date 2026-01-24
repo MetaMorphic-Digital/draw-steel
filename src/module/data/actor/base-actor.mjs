@@ -75,7 +75,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     return {
       value: new fields.HTMLField(),
       director: new fields.HTMLField({ gmOnly: true }),
-      languages: new fields.SetField(setOptions()),
     };
   }
 

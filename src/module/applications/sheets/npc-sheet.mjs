@@ -4,7 +4,6 @@ import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
 
 /**
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
- * @import DrawSteelActor from "../../documents/actor.mjs";
  */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
@@ -171,7 +170,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /**
    * Open the update source dialog.
-   * @this DrawSteelItemSheet
+   * @this DrawSteelNPCSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
