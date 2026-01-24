@@ -41,6 +41,7 @@
   - Added `system.stamina.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure stamina bonuses.
   - Added `damage.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure damage bonuses.
 - Implemented a Draw Steel Journal Sheet that styles the contained pages in a fashion similar to the core books. (#1170)
+- Added a `[[potency]]` enricher to format potency values with the Draw Steel glyphs. (#1269)
 - New ability modifier keys
   - Added `power.roll.banes` and `power.roll.edges` to control base numbers of edges/banes. (#1067)
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
