@@ -31,10 +31,10 @@ export default class ObjectModel extends BaseActorModel {
 
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
-    schema.ev = requiredInteger({ initial: 4 }),
+    schema.ev = new fields.NumberField({ required: true, integer: true });
 
     schema.object = new fields.SchemaField({
-      level: requiredInteger({ initial: 1 }),
+      level: new fields.NumberField({ required: true, integer: true }),
       category: new fields.StringField({ required: true }),
       role: new fields.StringField({ required: true }),
       area: new fields.StringField({ blank: false }),
@@ -63,9 +63,12 @@ export default class ObjectModel extends BaseActorModel {
     const roles = ds.CONFIG.objects.roles;
     this.object.roleLabel = roles[this.object.role]?.label ?? "";
 
-    const evData = { value: this.ev, area: this.object.area };
-    this.evLabel = this.object.area
-      ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Area", evData)
-      : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
+    if (this.ev == null) this.evLabel = "—";
+    else {
+      const evData = { value: this.ev, area: this.object.area };
+      this.evLabel = this.object.area
+        ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Area", evData)
+        : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
+    }
   }
 }

@@ -1223,22 +1223,22 @@ preLocalize("monsters.roles", { key: "label" });
 /** @type {Record<string, ObjectCategory>} */
 const objectCategories = {
   hazard: {
-    label: "",
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.hazard",
   },
   fortification: {
-    label: "",
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.fortification",
   },
   trap: {
-    label: "",
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.trap",
   },
   trigger: {
-    label: "",
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.trigger",
   },
   relic: {
-    label: "",
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.relic",
   },
   siegeEngine: {
-    label: "",
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.siegeEngine",
   },
 };
 
@@ -1246,6 +1246,7 @@ export const objects = {
   roles: monsterRoles,
   categories: objectCategories,
 };
+preLocalize("objects.categories", { key: "label" });
 
 /* -------------------------------------------------- */
 

@@ -737,9 +737,21 @@
               "label": "Creature Role"
             },
             "area": {
-              "label": "Area"
+              "label": "Area",
+              "hint": "Optional area per section of terrain, e.g. '10 x 10 pool'"
             }
           }
+        },
+        "CATEGORIES": {
+          "hazard": "Hazard",
+          "fortification": "Fortification",
+          "trap": "Trap",
+          "trigger": "Trigger",
+          "relic": "Relic",
+          "siegeEngine": "Siege Engine"
+        },
+        "ObjectMetadata": {
+          "DialogTitle": "Update Object Metadata"
         }
       },
       "DamageNotification": {

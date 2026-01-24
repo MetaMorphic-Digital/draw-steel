@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
-import { DocumentSourceInput } from "../apps/_module.mjs";
+import { DocumentSourceInput, ObjectMetadataInput } from "../apps/_module.mjs";
 
 export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
@@ -8,6 +8,7 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
     classes: ["npc"],
     actions: {
       updateSource: this.#updateSource,
+      editObjectMetadata: this.#editObjectMetadata,
     },
     window: {
       controls: [{
@@ -82,4 +83,15 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
     new DocumentSourceInput({ document: this.document }).render({ force: true });
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a dialog to edit the object metadata.
+   * @this DrawSteelObjectSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editObjectMetadata(event, target) {
+    new ObjectMetadataInput({ document: this.document }).render({ force: true });
+  }
 }

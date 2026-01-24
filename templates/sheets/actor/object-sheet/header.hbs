@@ -36,11 +36,14 @@
       {{system.source.label}}
     </div>
     <dl>
+      {{#if system.level}}
       <dt class="level">{{systemFields.object.fields.level.label}}</dt>
-      <dd class="level">{{systemSource.object.level}}</dd>
-
+      <dd class="level">{{system.level}}</dd>
+      {{/if}}
+      {{#if system.ev}}
       <dt class="ev">{{localize "DRAW_STEEL.Actor.base.EVLabel.Label"}}</dt>
       <dd class="ev">{{system.evLabel}}</dd>
+      {{/if}}
     </dl>
   </div>
 </header>
