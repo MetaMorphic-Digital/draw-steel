@@ -501,6 +501,9 @@
               }
             }
           },
+          "ev": {
+            "label": "Encounter Value"
+          },
           "movement": {
             "label": "Movement",
             "value": {
@@ -532,6 +535,12 @@
               "format": "{type} Weakness"
             }
           }
+        },
+        "EVLabel": {
+          "Label": "EV",
+          "Area": "{value} per {area}",
+          "Minion": "{value} for four minions",
+          "Other": "{value}"
         },
         "sizes": {
           "T": "Tiny",
@@ -639,9 +648,6 @@
             "level": {
               "label": "Level"
             },
-            "ev": {
-              "label": "Encounter Value"
-            },
             "role": {
               "label": "Creature Role"
             },
@@ -652,11 +658,6 @@
         },
         "MonsterMetadata": {
           "DialogTitle": "Update Monster Metadata"
-        },
-        "EVLabel": {
-          "Label": "EV",
-          "Minion": "{value} for four minions",
-          "Other": "{value}"
         },
         "KEYWORDS": {
           "Abyssal": "Abyssal",
@@ -721,6 +722,18 @@
           "DialogHeader": "{value} {type} Damage",
           "DialogTitle": "Free Strike",
           "DialogButton": "Deal Damage"
+        }
+      },
+      "object": {
+        "FIELDS": {
+          "object": {
+            "category": {
+              "label": "Category"
+            },
+            "area": {
+              "label": "Area"
+            }
+          }
         }
       },
       "DamageNotification": {
@@ -2004,7 +2017,8 @@
     },
     "Actor": {
       "hero": "Hero",
-      "npc": "NPC"
+      "npc": "NPC",
+      "object": "Object"
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",

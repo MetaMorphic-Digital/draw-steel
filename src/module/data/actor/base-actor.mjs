@@ -24,7 +24,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     schema.stamina = new fields.SchemaField({
       value: new fields.NumberField({ initial: null, nullable: true, integer: true }),
-      max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      max: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
 

@@ -138,16 +138,31 @@ declare module "./npc.mjs" {
       pitfalls: Set<string>;
       impression: number;
     }
+    ev: number;
+    evLabel: string;
     monster: {
       freeStrike: number;
       keywords: Set<string> & { list: string[]; labels: string };
       level: number;
-      ev: number;
-      evLabel: number;
       role: string;
       roleLabel: string;
       organization: string;
       organizationLabel: string;
+    }
+  }
+}
+
+declare module "./object.mjs" {
+  export default interface ObjectModel {
+    source: SourceModel;
+    ev: number;
+    evLabel: string;
+    object: {
+      category: string;
+      role: string;
+      area: string;
+      roleLabel: string;
+      categoryLabel: string;
     }
   }
 }
