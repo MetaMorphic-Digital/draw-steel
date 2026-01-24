@@ -5,7 +5,7 @@ import { DocumentSourceInput, ObjectMetadataInput } from "../apps/_module.mjs";
 export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["npc"],
+    classes: ["object"],
     actions: {
       updateSource: this.#updateSource,
       editObjectMetadata: this.#editObjectMetadata,
@@ -56,6 +56,17 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
   };
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _getMovement() {
+    const data = super._getMovement();
+
+    data.show = !!this.actor.system.movement.value;
+
+    return data;
+  }
 
   /* -------------------------------------------------- */
   /*   Actions                                          */

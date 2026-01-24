@@ -11,9 +11,9 @@ export default class ObjectSizeModel extends SizeModel {
     const schema = super.defineSchema();
 
     Object.assign(schema, {
-      text: new fields.StringField({ blank: false }),
-      direction: new fields.StringField({ blank: false }),
-      typical: new fields.StringField({ blank: false }),
+      text: new fields.StringField({ required: true }),
+      direction: new fields.StringField({ required: true }),
+      typical: new fields.StringField({ required: true }),
     });
 
     return schema;
@@ -21,9 +21,18 @@ export default class ObjectSizeModel extends SizeModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Placeholder value for the text input.
+   * @type {string}
+   */
+  get textPlaceholder() {
+    return super.toString();
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   toString() {
-    const letter = this.value === 1 ? this.letter ?? "" : "";
-    return this.value + letter;
+    return this.text || super.toString();
   }
 }

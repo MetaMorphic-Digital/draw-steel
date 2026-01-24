@@ -37,7 +37,8 @@ export default class ObjectModel extends BaseActorModel {
       level: new fields.NumberField({ required: true, integer: true }),
       category: new fields.StringField({ required: true }),
       role: new fields.StringField({ required: true }),
-      area: new fields.StringField({ blank: false }),
+      area: new fields.StringField({ required: true }),
+      squareStamina: new fields.BooleanField(),
     });
 
     return schema;
@@ -77,5 +78,9 @@ export default class ObjectModel extends BaseActorModel {
         ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Area", evData)
         : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
     }
+
+    this.stamina.maxLabel = this.object.squareStamina
+      ? game.i18n.format("DRAW_STEEL.Actor.object.MaxStaminaLabel.PerSquare", { value: this.stamina.max })
+      : String(this.stamina.max);
   }
 }

@@ -1,6 +1,5 @@
 import DrawSteelActor from "../../documents/actor.mjs";
-import SizeModel from "../models/size.mjs";
-import SourceModel from "../models/source.mjs";
+import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
 
 interface BarAttribute {
   value: number,
@@ -30,7 +29,7 @@ interface FreeStrike {
 }
 
 interface Combat {
-  size: SizeModel;
+  size: SizeModel | ObjectSizeModel;
   stability: number;
   turns: number;
   save: {
@@ -39,7 +38,7 @@ interface Combat {
   }
 }
 
-declare module "./base.mjs" {
+declare module "./base-actor.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
     stamina: BarAttribute & {
@@ -49,6 +48,8 @@ declare module "./base.mjs" {
         echelon: number;
         level: number;
       }
+      /** Added by ObjectModel */
+      maxLabel?: string;
     },
     combat: Combat;
     biography: Biography;
@@ -165,6 +166,7 @@ declare module "./object.mjs" {
       category: string;
       role: string;
       area: string;
+      squareStamina: boolean;
       roleLabel: string;
       categoryLabel: string;
     }

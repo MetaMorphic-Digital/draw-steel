@@ -481,6 +481,15 @@
               "label": "Size",
               "value": {
                 "label": "Size Number"
+              },
+              "text": {
+                "label": "Size Override"
+              },
+              "direction": {
+                "label": "Direction"
+              },
+              "typical": {
+                "label": "Typical Space"
               }
             },
             "stability": {
@@ -739,8 +748,14 @@
             "area": {
               "label": "Area",
               "hint": "Optional area per section of terrain, e.g. '10 x 10 pool'"
+            },
+            "squareStamina": {
+              "label": "Per Square"
             }
           }
+        },
+        "MaxStaminaLabel": {
+          "PerSquare": "{value} per square"
         },
         "CATEGORIES": {
           "hazard": "Hazard",
