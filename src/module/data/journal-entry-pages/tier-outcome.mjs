@@ -1,3 +1,4 @@
+import { systemID, systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 
 const { HTMLField } = foundry.data.fields;
@@ -6,6 +7,20 @@ const { HTMLField } = foundry.data.fields;
  * A page subtype that mostly exists to be used as an embed that has room for three tiers of results.
  */
 export default class TierOutcomeModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Metadata for this JournalEntryPage subtype.
+   * @type {SubtypeMetadata}
+   */
+  static get metadata() {
+    return {
+      type: "tierOutcome",
+      icon: "fa-solid fa-dice-d10",
+      embedded: {},
+    };
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     return {
@@ -18,16 +33,25 @@ export default class TierOutcomeModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.JournalEntryPage.tierOutcome"];
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async toEmbed(config, options) {
-    const dl = document.createElement("dl");
-    dl.classList.add("power-roll-display");
+    const context = {
+      tier1: await this.powerRollText(1),
+      tier2: await this.powerRollText(2),
+      tier3: await this.powerRollText(3),
+    };
 
-    for (const tier of ["tier1", "tier2", "tier3"]) {
-      const html = await enrichHTML(this[tier], { relativeTo: this.parent });
-      dl.insertAdjacentHTML("beforeend", `<dt class="${tier}">${ds.rolls.PowerRoll.RESULT_TIERS[tier].glyph}</dt><dd>${html}</dd>`);
-    }
+    const wrapper = document.createElement("div");
 
-    return dl;
+    wrapper.classList.add(systemID);
+
+    wrapper.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/journal-entry-page/tier-outcome.hbs"), context);
+
+    return wrapper;
   }
 
   /* -------------------------------------------------- */
@@ -35,7 +59,7 @@ export default class TierOutcomeModel extends foundry.abstract.TypeDataModel {
   /**
    * Produces the power roll text for a given tier.
    * @param {1 | 2 | 3} tier
-   * @returns {string} An HTML string.
+   * @returns {Promise<string>} An HTML string.
    */
   async powerRollText(tier) {
     return enrichHTML(this[`tier${tier}`], { relativeTo: this.parent });

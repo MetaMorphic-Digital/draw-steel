@@ -105,10 +105,6 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
   });
-  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
-    makeDefault: true,
-    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
-  });
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
@@ -123,10 +119,21 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
+
+  // Journal Pages
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
+  });
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ConfigPage,
     { makeDefault: true, types: ["configuration"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.DrawSteelImageSheet,
+    { makeDefault: true, types: ["image"] },
   );
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
@@ -135,8 +142,8 @@ Hooks.once("init", function () {
   );
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
-    applications.sheets.journal.DrawSteelImageSheet,
-    { makeDefault: true, types: ["image"] },
+    applications.sheets.journal.TierOutcomePage,
+    { makeDefault: true, types: ["tierOutcome"] },
   );
 
   // Register replacements for core UI elements
