@@ -26,3 +26,12 @@ declare module "./reference.mjs" {
     tooltip: string;
   }
 }
+
+declare module "./tier-outcome.mjs" {
+  export default interface TierOutcomeModel {
+    parent: DrawSteelJournalEntryPage;
+    tier1: string;
+    tier2: string;
+    tier3: string;
+  }
+}
