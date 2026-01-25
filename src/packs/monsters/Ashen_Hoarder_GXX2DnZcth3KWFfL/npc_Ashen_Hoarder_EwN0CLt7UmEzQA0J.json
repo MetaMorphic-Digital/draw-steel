@@ -182,7 +182,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>When the ashen hoarder is reduced to 0 Stamina, they explode in a swirling singularity of bone shards and soul energy. Each creature within 5 squares of the ashen hoarder who has M &lt; 3 takes [[/damage 11 corruption]] damage. A creature killed by this damage has their soul sucked into the vortex and lost somewhere in the Abyssal Wasteland, and can't be brought back to life until their soul is recovered.</p>",
+          "value": "<p>When the ashen hoarder is reduced to 0 Stamina, they explode in a swirling singularity of bone shards and soul energy. Each creature within 5 squares of the ashen hoarder who has [[potency M 3]] takes [[/damage 11 corruption]] damage. A creature killed by this damage has their soul sucked into the vortex and lost somewhere in the Abyssal Wasteland, and can't be brought back to life until their soul is recovered.</p>",
           "director": ""
         },
         "source": {
@@ -205,9 +205,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -851,7 +851,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The ashen hoarder moves up to twice their speed in a straight line. Each creature or object in the path of this movement is either pushed into the nearest unoccupied space outside the path, or if they have M &lt; 3 is pushed forward until the movement ends. Any creature who is force moved forward into an obstacle is dazed (save ends).</p>",
+          "before": "<p>The ashen hoarder moves up to twice their speed in a straight line. Each creature or object in the path of this movement is either pushed into the nearest unoccupied space outside the path, or if they have [[potency M 3]] is pushed forward until the movement ends. Any creature who is force moved forward into an obstacle is dazed (save ends).</p>",
           "after": ""
         },
         "spend": {
@@ -876,9 +876,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

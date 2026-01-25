@@ -106,7 +106,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Whenever an adjacent enemy grabs the chief or uses a melee ability against them, that enemy takes [[/damage 9 fire]] damage, and if they have M &lt; 4 they are weakened (save ends)</p>",
+          "value": "<p>Whenever an adjacent enemy grabs the chief or uses a melee ability against them, that enemy takes [[/damage 9 fire]] damage, and if they have [[potency M 4]] they are weakened (save ends)</p>",
           "director": ""
         },
         "source": {
@@ -129,9 +129,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -656,7 +656,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target shifts up to their speed and can make a free strike. Any enemy who takes damage from a free strike this way and who has A &lt; 4 is [[/apply cb0mj68diIIMNaU2 save]]. A burning enemy takes [[/damage 1d6 fire]] damage at the start of each of their turns.</p>",
+          "before": "<p>Each target shifts up to their speed and can make a free strike. Any enemy who takes damage from a free strike this way and who has [[potency A 4]] is [[/apply cb0mj68diIIMNaU2 save]]. A burning enemy takes [[/damage 1d6 fire]] damage at the start of each of their turns.</p>",
           "after": ""
         },
         "spend": {
@@ -724,9 +724,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
