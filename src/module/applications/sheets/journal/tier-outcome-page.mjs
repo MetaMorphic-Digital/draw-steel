@@ -32,7 +32,7 @@ export default class TierOutcomePage extends foundry.applications.sheets.journal
   /** @inheritdoc */
   static VIEW_PARTS = {
     content: {
-      template: systemPath("templates/embeds/journal-entry-page/tier-outcome.hbs"),
+      template: systemPath("templates/sheets/journal/pages/tier-outcome/content.hbs"),
     },
   };
 

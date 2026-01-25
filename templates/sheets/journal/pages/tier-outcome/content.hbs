@@ -1,0 +1,12 @@
+{{!-- <!-- eslint-disable @html-eslint/require-closing-tags --> --}}
+{{!-- <!-- eslint-disable @html-eslint/indent --> --}}
+<section>
+  {{#if title.show}}
+  <header class="journal-page-header">
+    <h{{ title.level }}>
+      {{ name }}
+</h{{ title.level }}>
+</header>
+  {{/if}}
+  {{> "systems/draw-steel/templates/embeds/journal-entry-page/tier-outcome.hbs"}}
+</section>
