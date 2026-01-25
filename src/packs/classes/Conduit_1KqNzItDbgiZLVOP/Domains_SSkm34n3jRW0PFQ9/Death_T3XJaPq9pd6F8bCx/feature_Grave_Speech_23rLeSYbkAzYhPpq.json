@@ -1,12 +1,12 @@
 {
-  "folder": "lV0kAMQlAVsMO4xU",
-  "name": "Blessing of Compassion",
+  "folder": "T3XJaPq9pd6F8bCx",
+  "name": "Grave Speech",
   "type": "feature",
-  "_id": "D0ef3sDvAeB8Tre7",
-  "img": "icons/magic/life/heart-pink.webp",
+  "_id": "23rLeSYbkAzYhPpq",
+  "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
   "system": {
     "description": {
-      "value": "<p>You exude a magic presence that can soothe those willing to socially engage with you. You gain an edge on any test made to assist another creature with a test.</p><p>Additionally, when you are present at the start of a negotiation, one NPC of your choice has their patience increased by 1 (to a maximum of 5), and the first test made to influence them gains an edge.</p>",
+      "value": "<p>You have the following ability.</p><p>@UUID[Compendium.draw-steel.classes.Item.19Xsq1UYwruqOI5i]{Grave Speech}</p>",
       "director": ""
     },
     "source": {
@@ -14,10 +14,32 @@
       "page": "97",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "blessing-of-compassion",
+    "_dsid": "grave-speech",
     "advancements": {
+      "43elmjHIt2VItO3g": {
+        "name": "Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "43elmjHIt2VItO3g",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.19Xsq1UYwruqOI5i"
+          }
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
+      },
       "dKMxH4YRAXv6N60V": {
-        "name": "Skill (Interpersonal)",
+        "name": "Skill (Lore)",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -26,7 +48,7 @@
         "_id": "dKMxH4YRAXv6N60V",
         "skills": {
           "groups": [
-            "interpersonal"
+            "lore"
           ],
           "choices": []
         },
@@ -39,13 +61,15 @@
       }
     },
     "prerequisites": {
+      "value": "",
       "dsid": [
-        "love"
-      ]
+        "death"
+      ],
+      "level": null
     }
   },
   "effects": [],
-  "sort": 600000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -57,9 +81,9 @@
     "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
-    "createdTime": 1755755060878,
+    "createdTime": 1769306757149,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!D0ef3sDvAeB8Tre7"
+  "_key": "!items!23rLeSYbkAzYhPpq"
 }
