@@ -92,6 +92,24 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
+   * The set of DSIDs that can be checked to fulfill requirements.
+   * @type {Set<string>}
+   */
+  #fulfilledDSID;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
+  get fulfilledDSID() {
+    if (!this.#fulfilledDSID) {
+      this.#fulfilledDSID = new Set(this.node.chain.actorSubclasses.map(i => i.dsid));
+
+      if (this.node.chain.actorClass) this.#fulfilledDSID.add(this.node.chain.actorClass);
+    }
+
+    return this.#fulfilledDSID;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Set of uuids chosen by this dialog, which will be saved in the submit process.
    * A new set is constructed each time the form data is processed.
    * @type {Set<string>}
@@ -199,7 +217,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
         points: context.points ? i.system.points : false,
-        disabled: !chosen && (value > (this.advancement.chooseN - totalChosen)),
+        disabled: !this.fulfillsRequirements(i) || (!chosen && (value > (this.advancement.chooseN - totalChosen))),
       };
     });
 
@@ -222,6 +240,22 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     });
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Checks if an item fulfills all of its prerequisites.
+   * @param {DrawSteelItem} item
+   * @returns {boolean}
+   */
+  fulfillsRequirements(item) {
+    if (item.system.prerequisites?.dsid?.size) {
+      return this.fulfilledDSID.intersects(item.system.prerequisites.dsid);
+    }
+    return true;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Refresh the disabled state of checkboxes and the submit button in this app.
    */
@@ -236,12 +270,14 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     const totalChosen = this.totalChosen;
 
     for (const input of checkboxes) {
+      const item = this.items.find(i => i.uuid === input.value);
+      input.disabled = !this.fulfillsRequirements(item);
       if (this.advancement.pointBuy) {
         // if unchosen, potential value is compared to remaining points
-        const value = !this.chosen.has(input.value) ? this.items.find(i => i.uuid === input.value).system.points : 0;
-        input.disabled = value > (this.advancement.chooseN - totalChosen);
+        const value = !this.chosen.has(input.value) ? item.system.points : 0;
+        input.disabled ||= (value > (this.advancement.chooseN - totalChosen));
       }
-      else input.disabled = !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
+      else input.disabled ||= !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
     }
     this.element.querySelector("button[type='submit']").disabled = totalChosen !== this.advancement.chooseN;
   }

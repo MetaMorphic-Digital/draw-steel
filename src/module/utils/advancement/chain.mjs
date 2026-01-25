@@ -49,6 +49,64 @@ export default class AdvancementChain {
   /* -------------------------------------------------- */
 
   /**
+   * A cached reference to the actor's class or pending class.
+   * Cached because classes cannot be changed/granted.
+   * @type {DrawSteelItem}
+   */
+  #actorClass;
+
+  /**
+   * The actor's class or pending class.
+   * @returns {DrawSteelItem | null} Returns null if the actor doesn't have a class already and this isn't to give one,
+   *  e.g. If you add an Ancestry before a Class.
+   */
+  get actorClass() {
+    // Cache hit
+    if (this.#actorClass !== undefined) return this.#actorClass;
+    // Hero with class
+    else if (this.actor.system.class) {
+      this.#actorClass = this.actor.system.class;
+      return this.#actorClass;
+    }
+    // Pending class
+    for (const node of this.activeNodes()) {
+      const item = node.advancement.document;
+      if (item.type === "class") {
+        this.#actorClass = item;
+        return item;
+      }
+    }
+
+    this.#actorClass = null;
+    return this.#actorClass;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The actor's subclasses and pending subclasses.
+   * *Not* cached because these can change during the advancement selection process.
+   * @type {Set<DrawSteelItem>}
+   */
+  get actorSubclasses() {
+    /**
+     * Existing subclasses.
+     * @type {Set<DrawSteelItem>}
+     */
+    const subclasses = this.actor.system.subclasses;
+
+    // Pending subclasses
+    for (const node of this.activeNodes()) {
+      const item = node.advancement.document;
+      if (item.type === "subclass") subclasses.add(item);
+    }
+
+    return subclasses;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Is the chain initialized?
    * @type {boolean}
    */
