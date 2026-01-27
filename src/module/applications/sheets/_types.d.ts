@@ -28,6 +28,12 @@ declare module "./combatant-group-config.mjs" {
   }
 }
 
+declare module "./journal-entry-sheet.mjs" {
+  export default interface DrawSteelJournalEntrySheet extends foundry.applications.api.DocumentSheet {
+    document: foundry.documents.JournalEntry;
+  }
+}
+
 export interface ActiveEffectCategory {
   /** The type of category. */
   type: string;
