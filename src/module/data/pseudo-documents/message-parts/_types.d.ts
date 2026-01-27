@@ -34,3 +34,10 @@ declare module "./test.mjs" {
     resultSource: string;
   }
 }
+
+declare module "./project.mjs" {
+  export default interface ProjectPart {
+    projectUuid: string;
+    event: boolean;
+  }
+}

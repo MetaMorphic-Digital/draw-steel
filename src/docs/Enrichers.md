@@ -97,6 +97,16 @@ The `[[/apply]]` enricher allows you to link status effects, either from an item
 - [&ZeroWidthSpace;[/apply xww2tw1knkZ9x4A3]]: Apply the effect with an ID of `xww2tw1knkZ9x4A3`. You can grab an effect's ID by right clicking the passport icon in the top right of the active effect config.
 - [&ZeroWidthSpace;[/apply Item.uU7qrouU5PlbLWIM.ActiveEffect.xww2tw1knkZ9x4A3]]: Apply an effect by UUID, which can be grabbed by left clicking the passport icon in the top right of the active effect config.. Unlike the ID and name matching, this allows referencing a custom active effect without being inside the parent's html fields.
 
+## Potency
+
+The `[[potency]]` enricher allows you to construct enriched potency displays using the Draw Steel Glyphs. The a strength of `weak`, `average`, or `strong` is provided and the item is on an actor, it will pull the actor's potency value.
+
+- [&ZeroWidthSpace;[potency M weak]]: Displays `M<weak` without an actor or `M<[number]` with an actor.
+- [&ZeroWidthSpace;[potency A 2]]: Displays `A<2`.
+- [&ZeroWidthSpace;[potency reason 2]]: Displays `R<2`.
+- [&ZeroWidthSpace;[potency characteristic=I strength=weak]]: Displays `I<weak` without an actor or `I<[number]` with an actor.
+- [&ZeroWidthSpace;[potency characteristic=presence strength=1]]: Displays `P<1`.
+
 ## HTML-mode to clean up text
 If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):
 1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then

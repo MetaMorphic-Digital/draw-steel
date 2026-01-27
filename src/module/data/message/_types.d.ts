@@ -23,7 +23,7 @@ declare module "./saving-throw.mjs" {
   }
 }
 
-type MessagePart = part.ContentPart | part.RollPart | part.TestPart;
+type MessagePart = part.ContentPart | part.RollPart | part.TestPart | part.ProjectPart;
 
 declare module "./standard.mjs" {
   export default interface StandardModel {

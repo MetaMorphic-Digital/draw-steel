@@ -181,7 +181,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>At the start of each round, the lich chooses a creature within 10 squares. If that creature has R &lt; 4, they are [[/apply restrained]] until the end of the lich's next turn. The lich can't choose the same creature two rounds in a row.</p>",
+          "value": "<p>At the start of each round, the lich chooses a creature within 10 squares. If that creature has [[potency R 4]], they are [[/apply restrained]] until the end of the lich's next turn. The lich can't choose the same creature two rounds in a row.</p>",
           "director": ""
         },
         "source": {
@@ -204,9 +204,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -218,7 +218,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The lich has a soulstone, which has 50 Stamina and damage immunity all except to sonic damage and holy damage. If the lich is destroyed while their soulstone is intact, their soul retreats into the soulstone. Any creature who has P &lt; 5 and who moves within 5 squares of an inhabited soulstone for the first time in a round or starts their turn there is [[/apply gvdfE7VPjREf7wMg save]]. A compelled creature must do everything in their power to move toward and touch the soulstone. A creature who touches an inhabited soulstone makes a **Might test** that takes a bane.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature is reduced to 0 Stamina and the lich manifests adjacent to the soulstone with full Stamina.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature is reduced to 0 Stamina and the lich manifests adjacent to the soulstone with 300 Stamina.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The creature has their stamine reduced to their winded value Stamina and the lich manifests adjacent to the soulstone with 100 Stamina.</p></dd></dl>",
+          "value": "<p>The lich has a soulstone, which has 50 Stamina and damage immunity all except to sonic damage and holy damage. If the lich is destroyed while their soulstone is intact, their soul retreats into the soulstone. Any creature who has [[potency P 5]] and who moves within 5 squares of an inhabited soulstone for the first time in a round or starts their turn there is [[/apply gvdfE7VPjREf7wMg save]]. A compelled creature must do everything in their power to move toward and touch the soulstone. A creature who touches an inhabited soulstone makes a **Might test** that takes a bane.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature is reduced to 0 Stamina and the lich manifests adjacent to the soulstone with full Stamina.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature is reduced to 0 Stamina and the lich manifests adjacent to the soulstone with 300 Stamina.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The creature has their stamine reduced to their winded value Stamina and the lich manifests adjacent to the soulstone with 100 Stamina.</p></dd></dl>",
           "director": ""
         },
         "source": {
@@ -282,9 +282,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -824,7 +824,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>A target who has M &lt; 4 is wracked with pain (save ends). A creature wracked with pain has a double bane on abilities.</p><p><strong>+2 Malice: </strong>Each creature wracked with pain gains one of the following conditions of the lich's choice for each 2 Malice spent: [[/apply bleeding]], [[/apply slowed]], or [[/apply prone]] and [[/apply uRiVf7aO7uY3RFTk]]. These conditions end when a creature is no longer wracked with pain.</p>"
+          "after": "<p>A target who has [[potency M 4]] is wracked with pain (save ends). A creature wracked with pain has a double bane on abilities.</p><p><strong>+2 Malice: </strong>Each creature wracked with pain gains one of the following conditions of the lich's choice for each 2 Malice spent: [[/apply bleeding]], [[/apply slowed]], or [[/apply prone]] and [[/apply uRiVf7aO7uY3RFTk]]. These conditions end when a creature is no longer wracked with pain.</p>"
         },
         "spend": {
           "text": "The lich chooses one additional target.",
@@ -929,9 +929,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -971,7 +971,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>If the target has P &lt; 4, they swap places with the lich to become the new target of the triggering ability.</p>",
+          "before": "<p>If the target has [[potency P 4]], they swap places with the lich to become the new target of the triggering ability.</p>",
           "after": ""
         },
         "spend": {
@@ -996,9 +996,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1592,12 +1592,13 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>The lich summons a mind-altering mist, turns invisible until the start of their next turn, and moves up to half their speed. Each enemy within 20 squares of the lich’s starting point who has i&lt;4 is [[/apply 8hDNL0rDby9GJhCS]]. While deceived, a creature perceives all allies and enemies as the lich, and perceives the environment as an unfamiliar wasteland corrupted by necrotic blight. If other creatures attempt to communicate with a deceived creature, that creature interprets their words as ghastly taunts in the lich’s voice.</p><p>This effect lasts until an affected creature takes damage or an ally uses a main action to shake them out of it. Each time this feature is used during an encounter, the distance of the effect decreases by 5 squares (to a minimum of 5 squares) and the potency increases by 1.</p>",
+          "before": "<p>The lich summons a mind-altering mist, turns invisible until the start of their next turn, and moves up to half their speed. Each enemy within 20 squares of the lich’s starting point who has [[potency I 4]] is [[/apply 8hDNL0rDby9GJhCS]]. While deceived, a creature perceives all allies and enemies as the lich, and perceives the environment as an unfamiliar wasteland corrupted by necrotic blight. If other creatures attempt to communicate with a deceived creature, that creature interprets their words as ghastly taunts in the lich’s voice.</p><p>This effect lasts until an affected creature takes damage or an ally uses a main action to shake them out of it. Each time this feature is used during an encounter, the distance of the effect decreases by 5 squares (to a minimum of 5 squares) and the potency increases by 1.</p>",
           "after": ""
         },
         "spend": {
@@ -1606,7 +1607,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "280",
+          "page": "279",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "cloud-of-deceit",
@@ -1647,10 +1648,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1769282394580
           },
           "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.DaqDvvgRoA7Jz7yY.8hDNL0rDby9GJhCS"
         }
@@ -1659,10 +1661,10 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.6Ha0QmsS2jLtwvPg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

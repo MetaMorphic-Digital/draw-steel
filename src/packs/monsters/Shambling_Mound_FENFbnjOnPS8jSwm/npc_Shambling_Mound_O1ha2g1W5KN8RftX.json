@@ -591,7 +591,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The target must be size 1L or smaller. The shambling mound reaches out with writhing vines, and if the target has A &lt; 3, they are engulfed into the shambling mound's @UUID[Compendium.draw-steel.monsters.Actor.OSs5E643DHaEh2zJ]{sack}. If the target is grabbed by the shambling mound, the potency increases by 1. An engulfed creature is [[/apply restrained]], takes [[/damage 3 poison]]{3 poison damage} at the start of each turn, and can't take damage from abilities used from outside the sack. When the shambling mound moves, the engulfed creature moves with them. If the shambling mound dies or their sack is destroyed, each engulfed creature is freed and appears in an unoccupied space within 2 squares of the shambling mound.</p>",
+          "before": "<p>The target must be size 1L or smaller. The shambling mound reaches out with writhing vines, and if the target has [[potency A 3]], they are engulfed into the shambling mound's @UUID[Compendium.draw-steel.monsters.Actor.OSs5E643DHaEh2zJ]{sack}. If the target is grabbed by the shambling mound, the potency increases by 1. An engulfed creature is [[/apply restrained]], takes [[/damage 3 poison]]{3 poison damage} at the start of each turn, and can't take damage from abilities used from outside the sack. When the shambling mound moves, the engulfed creature moves with them. If the shambling mound dies or their sack is destroyed, each engulfed creature is freed and appears in an unoccupied space within 2 squares of the shambling mound.</p>",
           "after": ""
         },
         "spend": {
@@ -616,9 +616,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

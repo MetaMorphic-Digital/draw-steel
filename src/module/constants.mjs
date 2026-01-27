@@ -116,3 +116,21 @@ export const testOutcomes = {
     critical: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
   },
 };
+
+/* -------------------------------------------------- */
+
+/**
+ * Potency strengths and their related glyphs.
+ * @type {Record<string, { glyph: string }}
+ */
+export const potencyStrengths = Object.freeze({
+  weak: {
+    glyph: "w",
+  },
+  average: {
+    glyph: "v",
+  },
+  strong: {
+    glyph: "s",
+  },
+});

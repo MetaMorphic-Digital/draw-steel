@@ -27,8 +27,6 @@
 - Added a new "Configuration" journal page to allow users to add new languages and monster keywords without javascript. (#306)
 - Added support for abilities that request a reactive test instead of making their own power roll. (#342)
 - Added hero token reroll for tests. (#444)
-- Implemented Summoning. (#583)
-  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
   - Updated the Infernal Contract complication to make use of this.
@@ -43,6 +41,7 @@
   - Added `system.stamina.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure stamina bonuses.
   - Added `damage.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure damage bonuses.
 - Implemented a Draw Steel Journal Sheet that styles the contained pages in a fashion similar to the core books. (#1170)
+- Added a `[[potency]]` enricher to format potency values with the Draw Steel glyphs. (#1269)
 - New ability modifier keys
   - Added `power.roll.banes` and `power.roll.edges` to control base numbers of edges/banes. (#1067)
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
@@ -68,6 +67,7 @@
   - Many actions that would generate new chat messages instead append to an existing message, such as spending a hero token.
   - Re-implemented the DSN integration and usage of base vs. target-specific roll copies. (#1445)
   - Migrated saving throws to use chat parts. (#1447)
+  - Migrated project rolls to use chat parts. (#1448)
   - Migrated ability rolls to use chat parts. (#1449)
 - The saving throw dialog now has the effect name that's being rolled for. (#1538)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
