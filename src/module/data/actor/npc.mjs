@@ -1,4 +1,4 @@
-import { systemID } from "../../constants.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import SourceModel from "../models/source.mjs";
 import CreatureModel from "./creature.mjs";
@@ -192,6 +192,28 @@ export default class NPCModel extends CreatureModel {
     }
 
     return freeStrike;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async toEmbed(config, options) {
+    // All NPCs are rendered inline
+    config.inline = true;
+    console.log(config, options);
+
+    const context = {
+      actor: this.parent,
+      system: this,
+      systemFields: this.schema.fields,
+    };
+
+    const wrapper = document.createElement("div");
+
+    wrapper.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
+
+    return wrapper;
+
   }
 
   /* -------------------------------------------------- */
