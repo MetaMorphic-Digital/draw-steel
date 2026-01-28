@@ -145,6 +145,7 @@
     padding-left: 1em;
     /* Pulls the first line back */
     text-indent: -1em;
+
     * {
       text-indent: initial;
     }
@@ -190,6 +191,15 @@
       color: var(--draw-steel-c-white);
       padding: 1rem;
       margin: 0px 0px 8px;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--draw-steel-c-white);
+      }
     }
   }
 
@@ -416,6 +426,7 @@
   /* Embed-specific adjustments */
   document-embed {
     .draw-steel.ability {
+
       /* More compact display of abilities */
       .metadata dl {
         grid-template-columns: auto 1fr auto 1fr;
@@ -434,7 +445,9 @@
   opacity: 0.2;
   transition: opacity 0.5s ease-out;
 
-  &:hover { opacity: 1; }
+  &:hover {
+    opacity: 1;
+  }
 
   ul {
     display: flex;
@@ -443,7 +456,11 @@
     padding-inline: 1rem;
     list-style: none;
   }
-  li { flex: 1 1 33%; }
+
+  li {
+    flex: 1 1 33%;
+  }
+
   a {
     display: block;
     border: none;
@@ -451,8 +468,10 @@
     text-align: center;
     text-decoration: none;
   }
+
   a[rel="prev"] {
     text-align: start;
+
     &::before {
       content: "\f060";
       font-family: var(--font-awesome);
@@ -460,8 +479,10 @@
       padding-inline-end: 2px;
     }
   }
+
   a[rel="next"] {
     text-align: end;
+
     &::after {
       content: "\f061";
       font-family: var(--font-awesome);
@@ -469,8 +490,10 @@
       padding-inline-start: 2px;
     }
   }
+
   a.parent {
     text-align: center;
+
     &::before {
       content: "\f062";
       font-family: var(--font-awesome);
