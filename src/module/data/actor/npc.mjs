@@ -208,11 +208,13 @@ export default class NPCModel extends CreatureModel {
       systemFields: this.schema.fields,
     };
 
-    const wrapper = document.createElement("div");
+    const embed = document.createElement("div");
 
-    wrapper.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
+    embed.classList.add("draw-steel", "actor", "npc");
 
-    return wrapper;
+    embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
+
+    return embed;
 
   }
 
