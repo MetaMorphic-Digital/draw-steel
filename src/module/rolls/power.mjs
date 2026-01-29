@@ -22,6 +22,11 @@ export default class PowerRoll extends DSRoll {
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
     if (!options.appliedModifier) {
 
+      if (options.rollThree && this.isValidPowerRoll) {
+        this.terms[0]._number = 3;
+        this.terms[0].modifiers.push(`k${options.rollThree > 0 ? "h" : "l"}2`);
+      }
+
       // Add edges/banes to formula
       if (Math.abs(this.netBoon) === 1) {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
@@ -59,6 +64,7 @@ export default class PowerRoll extends DSRoll {
     banes: 0,
     edges: 0,
     bonuses: 0,
+    rollThree: 0,
   });
 
   /* -------------------------------------------------- */
@@ -165,6 +171,7 @@ export default class PowerRoll extends DSRoll {
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
     options.modifiers.bonuses ??= 0;
+    options.modifiers.rollThree ??= 0;
     options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
@@ -190,7 +197,7 @@ export default class PowerRoll extends DSRoll {
     });
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill });
+    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill, rollThree: promptValue.rollThree });
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
@@ -201,7 +208,7 @@ export default class PowerRoll extends DSRoll {
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
-      if (promptValue.skill) flavor = `${flavor} - ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
+      if (promptValue.skill) flavor = `${flavor} — ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
       const roll = new this(formula, options.data, { flavor, ...context });
       roll.terms[0] = firstTerm;
       switch (evaluation) {
@@ -243,7 +250,7 @@ export default class PowerRoll extends DSRoll {
    */
   get isValidPowerRoll() {
     const firstTerm = this.terms[0];
-    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
+    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number >= 2);
   }
 
   /* -------------------------------------------------- */

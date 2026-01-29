@@ -18,6 +18,8 @@ export interface PowerRollModifiers {
   edges: number;
   banes: number;
   bonuses: number;
+  /** -1 for take lowest 2, 0 for normal, 1 for take highest 2 */
+  rollThree: -1 | 0 | 1;
 }
 
 export interface PowerRollTargets {

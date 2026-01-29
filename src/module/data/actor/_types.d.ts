@@ -13,6 +13,12 @@ interface Biography {
   languages: Set<string>;
 }
 
+interface Characteristic {
+  value: number;
+  edges: number;
+  banes: number;
+}
+
 interface CoreResource {
   name: string;
   target: foundry.abstract.DataModel;
@@ -80,7 +86,7 @@ declare module "./base.mjs" {
 
 declare module "./creature" {
   export default interface CreatureModel {
-    characteristics: Record<string, { value: number }>;
+    characteristics: Record<string, Characteristic>;
     potency: {
       bonuses: number;
       weak: number;
