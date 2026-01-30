@@ -41,6 +41,17 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
+   * Cached object for edge and bane options.
+   * @type {Record<number, number>}
+   */
+  static #modChoices = Array.fromRange(3).reduce((obj, number) => {
+    obj[number] = number;
+    return obj;
+  }, {});
+
+  /* -------------------------------------------------- */
+
+  /**
    * The currently highlighted token.
    * @type {DrawSteelToken | null}
    */
@@ -53,10 +64,7 @@ export default class PowerRollDialog extends RollDialog {
     context = await super._preparePartContext(partId, context, options);
 
     if (partId === "content") {
-      context.modChoices = Array.fromRange(3).reduce((obj, number) => {
-        obj[number] = number;
-        return obj;
-      }, {});
+      context.modChoices = PowerRollDialog.#modChoices;
 
       if (context.type === "ability") await this._prepareAbilityContext(context);
 

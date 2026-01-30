@@ -179,9 +179,10 @@ export default class PowerRoll extends DSRoll {
 
     this.getActorModifiers(options);
     const context = {
+      type,
+      formula: new this(formula, options.data, { rollThree: options.modifiers.rollThree }).formula,
       modifiers: options.modifiers,
       targets: options.targets,
-      type,
     };
 
     if (options.ability) context.ability = options.ability;
