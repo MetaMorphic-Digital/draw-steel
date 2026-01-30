@@ -171,7 +171,6 @@ export default class PowerRoll extends DSRoll {
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
     options.modifiers.bonuses ??= 0;
-    options.modifiers.rollThree ??= 0;
     options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
@@ -197,7 +196,7 @@ export default class PowerRoll extends DSRoll {
     });
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill, rollThree: promptValue.rollThree });
+    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill, rollThree: options.modifiers.rollThree });
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });

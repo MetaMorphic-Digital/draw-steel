@@ -1,7 +1,7 @@
-<section>
+<section class="standard-form">
   <div class="global group">
     <div class="header">{{localize "DRAW_STEEL.ROLL.Power.Prompt.GlobalModifiers"}}</div>
-    <div class="modifiers general">
+    <div class="form-group general">
       <label>
         <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Edges"}}</span>
         <select name="modifiers.edges" data-dtype="Number">
@@ -23,7 +23,7 @@
   {{#each targets as |target|}}
   <div class="target group" data-token-uuid="{{target.token.uuid}}">
     <div class="header">{{target.token.name}}</div>
-    <div class="modifiers">
+    <div class="form-group">
       <label>
         <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Edges"}}</span>
         <select name="targets.{{@index}}.modifiers.edges" data-dtype="Number">
@@ -47,12 +47,14 @@
   </div>
   {{/each}}
   {{#if skillOptions}}
-  <label>
-    <span>{{localize "DRAW_STEEL.Actor.hero.FIELDS.hero.skills.label"}}</span>
-    <select name="skill">
-      {{selectOptions skillOptions blank=(localize "None") selected=skill}}
-    </select>
-  </label>
+  <div class="form-group">
+    <label>{{localize "DRAW_STEEL.Actor.hero.FIELDS.hero.skills.label"}}</label>
+    <div class="form-fields">
+      <select name="skill">
+        {{selectOptions skillOptions blank=(localize "None") selected=skill}}
+      </select>
+    </div>
+  </div>
   {{/if}}
   {{#if damageOptions}}
   <div class="form-group">
