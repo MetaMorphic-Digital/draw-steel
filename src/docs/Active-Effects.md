@@ -134,8 +134,11 @@ While there are similarities with roll data, active effects generally lead with 
 |Might value|`system.characteristics.might.value`|
 |Presence value|`system.characteristics.presence.value`|
 |Reason value|`system.characteristics.reason.value`|
-|Edges for Characteristic Tests|`system.characteristics.[chr].edges`|
-|Banes for Characteristic Tests|`system.characteristics.[chr].banes`|
+|Edges for Tests|`system.characteristics.[chr].edges`|
+|Banes for Tests|`system.characteristics.[chr].banes`|
+|Roll Three for Tests|`system.characteristics.[chr].rollThree`|
+
+The "Roll Three" key uses `0` for the standard 2d10 roll, `-1` for "Roll three and take the lowest two", and `1` for "Roll three and take the highest two". The Upgrade, Downgrade, and Override modes are recommended over Add & Multiply.
 
 #### Skill Keys
 

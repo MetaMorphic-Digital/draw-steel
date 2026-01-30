@@ -17,6 +17,7 @@ interface Characteristic {
   value: number;
   edges: number;
   banes: number;
+  rollThree: -1 | 0 | 1;
 }
 
 interface CoreResource {
@@ -73,6 +74,10 @@ declare module "./base.mjs" {
       immunities: Record<string, number>;
       weaknesses: Record<string, number>;
     }
+    restrictions: {
+      type: Set<string>;
+      dsid: Set<string>;
+    }
     statuses: {
       immunities: Set<string>;
       slowed: {
@@ -84,7 +89,7 @@ declare module "./base.mjs" {
   }
 }
 
-declare module "./creature" {
+declare module "./creature.mjs" {
   export default interface CreatureModel {
     characteristics: Record<string, Characteristic>;
     potency: {
