@@ -41,6 +41,7 @@ All heroes share a "Hero Token" pool from which they can dig deeper. Players can
 - Clicking the "Stamina" button on the character sheet will spend two hero tokens to regain stamina equal to the hero's recovery value.
 - Clicking the "Surges" button will spend a hero token to gain two surges.
 - Saving throws include a button to spend a hero token to turn a failure into a success.
+- Tests include a button to spend a hero token to reroll the test.
 - You can always use the vertical ellipsis menu below the Players list to spend hero tokens without any automated effect.
 
 Directors have additional options in the vertical ellipsis menu, including giving hero tokens and resetting the total to the number of heroes in the game.
