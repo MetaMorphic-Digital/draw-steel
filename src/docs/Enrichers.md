@@ -31,6 +31,7 @@ You can have inline damage enrichers by using `[[/damage]]`; this is the intende
 - [&ZeroWidthSpace;[/damage formula=3d6 type=acid]]: You can also specify which parts are which to avoid ambiguity.
 - [&ZeroWidthSpace;[/damage 3d6 type=acid/poison]]: If you specify the `type` parameter you can use a `/` or `|` to indicate "or".
 - [&ZeroWidthSpace;[/damage 3d6 fire & 2d6 cold]]: You can join any number of damage rolls together in one enricher by using &.
+- [&ZeroWidthSpace;[/damage 2 type=poison ignoredImmunities=poison]]: Deal 2 poison damage, ignoring immunity to poison damage.
 - [&ZeroWidthSpace;[/damage @monster.freeStrike]]: This will display the selected actors free strike damage as an `Apply Damage` button, which can be used multiple times for example for a minion squad. You can also use [&ZeroWidthSpace;[/damage 8*monster.freeStrike]] to display the selected actor's free strike damage times 8 (or any other number) to emulate multiple minions striking at once.
 
 ### Healing and Temporary Stamina
