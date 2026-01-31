@@ -54,6 +54,7 @@
 - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
 - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
+- Added a parameter to damage enrichers to allow ignoring immunities.
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added `damage.bonuses.value` which can be targeted to apply a single value to each damage tier.
