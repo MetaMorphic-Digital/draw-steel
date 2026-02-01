@@ -17,4 +17,8 @@ enriched-content {
     text-wrap-mode: nowrap;
     word-break: break-all;
   }
+
+  &[enricher="ds.lookup"] {
+    text-decoration: underline dotted;
+  }
 }
