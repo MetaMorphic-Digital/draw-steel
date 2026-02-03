@@ -1,0 +1,27 @@
+{{#*inline "pages"}}
+<ul class="pages">
+  {{#each pages}}
+  <li class="{{#if (and showPages pages.length)}}child-pages{{/if}} {{#if entry}}special-entry{{/if}}" data-level="{{level}}">
+    <a class="journal-entry-page-link" data-action="activateEntry"
+      {{~#if entry}} data-document-id="{{ id }}" data-entry-id="{{ id }}"
+      {{~else}} data-page-id="{{ id }}" {{#if entryId}}data-entry-id="{{ entryId }}"{{/if}}{{/if}}>{{ name }}</a>
+    {{#if (and showPages pages.length)}}{{> "pages" }}{{/if}}
+  </li>
+  {{/each}}
+</ul>
+{{/inline}}
+<section class="contents">
+  <header>
+    <h1>{{ localize "DRAW_STEEL.COMPENDIUM.TOC.Contents" }}</h1>
+  </header>
+  <section class="chapters">
+    {{#each chapters}}
+    <div class="chapter" data-document-id="{{ id }}" data-entry-id="{{ id }}">
+      <h3>
+        <a class="journal-entry-link" data-action="activateEntry">{{ name }}</a>
+      </h3>
+      {{#if pages.length}}{{> "pages" }}{{/if}}
+    </div>
+    {{/each}}
+  </section>
+</section>

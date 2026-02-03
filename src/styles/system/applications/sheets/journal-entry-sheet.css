@@ -139,7 +139,9 @@
 
 /*body content*/
 .draw-steel.journal-sheet .journal-entry,
-.draw-steel .journal-entry-page {
+.draw-steel .journal-entry-page,
+#tooltip.draw-steel section.content,
+aside[role="tooltip"] section.content {
   .hanging-indent {
     /* Indents the entire block */
     padding-left: 1em;

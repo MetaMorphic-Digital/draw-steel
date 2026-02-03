@@ -19,3 +19,4 @@ Start by checking out the [[Frequently Asked Questions]]; more information can b
 ## Development
 - [[CONFIG Modifications]]
 - [[Registering Sources]]
+- [[Table of Contents]]
