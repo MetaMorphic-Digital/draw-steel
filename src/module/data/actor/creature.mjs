@@ -116,7 +116,6 @@ export default class CreatureModel extends BaseActorModel {
     const skills = this.hero?.skills ?? null;
     const skillModifiers = this.hero?.skillModifiers ?? null;
 
-    const evaluation = "evaluate";
     const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
     const modifiers = {
@@ -127,9 +126,14 @@ export default class CreatureModel extends BaseActorModel {
 
     const doc = await fromUuid(options.resultSource);
 
+    // evaluation was previously set to "evaluate", provided to the prompt and never used again. 
+    // Instead evaluation is now set to either the provided value or "message" if no value was
+    // provided. The prompt receives a hard-coded "evaluate" as before. When evaluation is set
+    // to "message", then the roll will be returned as a message, otherwise just as a roll.
+    const evaluation = options.evaluation ?? "message";
     const promptValue = await PowerRoll.prompt({
       type,
-      evaluation,
+      evaluation: "evaluate",
       formula,
       data,
       modifiers,
@@ -143,33 +147,38 @@ export default class CreatureModel extends BaseActorModel {
     if (!promptValue) return null;
     const { rollMode, rolls, baseRoll } = promptValue;
 
-    const testConfig = ds.CONST.testOutcomes[options.difficulty];
+    if (evaluation == "message")
+    {
+      const testConfig = ds.CONST.testOutcomes[options.difficulty];
 
-    const flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
-      difficulty: game.i18n.localize(testConfig?.label) ?? "",
-      characteristic: ds.CONFIG.characteristics[characteristic].label,
-    });
+      const flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
+        difficulty: game.i18n.localize(testConfig?.label) ?? "",
+        characteristic: ds.CONFIG.characteristics[characteristic].label,
+      });
 
-    const messageData = {
-      type: "standard",
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
-      title: flavor,
-      rolls: [baseRoll],
-      system: {
-        parts: [],
-      },
-      sound: CONFIG.sounds.dice,
-      flags: { core: { canPopout: true } },
-    };
+      const messageData = {
+        type: "standard",
+        speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+        title: flavor,
+        rolls: [baseRoll],
+        system: {
+          parts: [],
+        },
+        sound: CONFIG.sounds.dice,
+        flags: { core: { canPopout: true } },
+      };
 
-    const testPart = { type: "test", flavor, rolls };
+      const testPart = { type: "test", flavor, rolls };
 
-    if (doc) testPart.resultSource = options.resultSource;
+      if (doc) testPart.resultSource = options.resultSource;
 
-    messageData.system.parts.push(testPart);
+      messageData.system.parts.push(testPart);
 
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-    return DrawSteelChatMessage.create(messageData);
+      DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+      return DrawSteelChatMessage.create(messageData);
+    }
+
+    return rolls;
   }
 
 }
