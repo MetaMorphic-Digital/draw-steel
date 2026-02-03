@@ -12,6 +12,7 @@ The reference page provides a rich tooltip for links to the page, which is espec
 
 The power roll outcome page allows specifying three tiers of results in rich HTML, which can be combined with the `resultSource` parameter of a test enricher and/or as an embed to format the three tiers with the appropriate structure and glyphs.
 
+```html
 <dl class="power-roll-display">
     <dt class="tier1">
         <p>!</p>
@@ -32,3 +33,4 @@ The power roll outcome page allows specifying three tiers of results in rich HTM
         <p>Tier 3 Outcome HTML.</p>
     </dd>
 </dl>
+```
