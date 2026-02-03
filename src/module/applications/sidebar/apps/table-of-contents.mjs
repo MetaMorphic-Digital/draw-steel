@@ -103,7 +103,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
   /* -------------------------------------------------- */
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     /** @type {JournalEntry[]} */
@@ -137,7 +137,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
       }
 
       const data = {
-        type, tocFlags,
+        tocFlags, type,
         id: entry.id,
         name: tocFlags.title || entry.name,
         pages: Array.from(entry.pages).map(({ flags, id, name, sort, title }) => {
@@ -145,9 +145,10 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
           /** @type {PageContext} */
           const pageData = {
-            id, sort, tocFlags, level: title.level,
-            name: tocFlags?.title || name,
+            id, sort, tocFlags,
             entryId: entry.id,
+            level: title.level,
+            name: tocFlags?.title || name,            
           };
 
           return pageData;
