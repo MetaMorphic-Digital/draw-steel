@@ -64,6 +64,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
 
   /**
    * Valid entry types, as represented by `flags.draw-steel.type`.
+   * @remarks Left as type literal rather than a Record for typing purposes.
    */
   static ENTRY_TYPES = {
     chapter: {
@@ -148,7 +149,7 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
             id, sort, tocFlags,
             entryId: entry.id,
             level: title.level,
-            name: tocFlags?.title || name,            
+            name: tocFlags?.title || name,
           };
 
           return pageData;
@@ -226,7 +227,8 @@ export default class DrawSteelCompendiumTOC extends foundry.applications.sidebar
     const entryId = target.closest("[data-entry-id]")?.dataset.entryId;
     if (!entryId) return;
     const entry = await this.collection.getDocument(entryId);
-    entry?.sheet.render(true, {
+    entry?.sheet.render({
+      force: true,
       pageId: target.closest("[data-page-id]")?.dataset.pageId,
     });
   }
