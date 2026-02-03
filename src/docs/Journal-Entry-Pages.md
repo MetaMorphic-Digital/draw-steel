@@ -2,7 +2,7 @@ The Foundry [Knowledge Base](<https://foundryvtt.com/article/journal/>) has more
 
 ## Configuration
 
-The Configuration page allows you to add new languages and monster types to your game without writing any code. Any configuration page inside of a compendium is read as part of the initial world load, adding its listed skills and monster types. Edits to a configuration page will show up in the list of languages and monster keywords after refreshing the page. Configuration pages inside the journals tab are ignored. They do not allow for removing existing languages; a small world or module script is necessary to fully replace the list of languages.
+The Configuration page allows you to add new languages and monster types to your game without writing any code. Any configuration page inside of a compendium is read as part of the initial world load, adding its listed skills and monster types. Edits to a configuration page will show up in the list of languages and monster keywords after refreshing the page. Configuration pages in the journal directory are ignored; a Configuration page must exist in a JournalEntry within a compendium. They do not allow for removing existing languages; a small module script is necessary to fully replace the list of languages.
 
 ## Reference
 
