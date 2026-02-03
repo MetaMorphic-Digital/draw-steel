@@ -231,6 +231,8 @@ Hooks.once("i18nInit", () => {
 });
 
 Hooks.once("setup", () => {
+  applications.sidebar.apps.DrawSteelCompendiumTOC.applyToPacks();
+
   // Link up various rules & references automatically
   for (const status of CONFIG.statusEffects) {
     if (status.rule) ds.CONFIG.references[status.id] = status.rule;
