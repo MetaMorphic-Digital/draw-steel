@@ -24,6 +24,8 @@
 
 - New Player-Facing Compendium Content:
   - Leveled Treasures
+  - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
+  - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added a new "Configuration" journal page to allow users to add new languages and monster keywords without javascript. (#306)
 - Added support for abilities that request a reactive test instead of making their own power roll. (#342)
 - Added hero token reroll for tests. (#444)
@@ -52,8 +54,6 @@
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
 - Implemented a Table of Contents view for journal compendiums. (#1502)
-- Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
-- Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
 - Added a parameter to damage enrichers to allow ignoring immunities.
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
