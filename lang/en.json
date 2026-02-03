@@ -1579,7 +1579,10 @@
         "languages": "Languages",
         "monsterKeywords": "Monster Keywords",
         "content": "Content",
-        "tooltip": "Tooltip"
+        "tooltip": "Tooltip",
+        "tier1": "Tier 1",
+        "tier2": "Tier 2",
+        "tier3": "Tier 3"
       },
       "configuration": {
         "FIELDS": {
@@ -1639,6 +1642,19 @@
           "tooltip": {
             "label": "Tooltip",
             "hint": "Preferred tooltip text. If blank, the normal journal content will be preferred."
+          }
+        }
+      },
+      "tierOutcome": {
+        "FIELDS": {
+          "tier1": {
+            "label": "Tier 1"
+          },
+          "tier2": {
+            "label": "Tier 2"
+          },
+          "tier3": {
+            "label": "Tier 3"
           }
         }
       }
@@ -2078,7 +2094,8 @@
     },
     "JournalEntryPage": {
       "configuration": "Configuration",
-      "reference": "Reference"
+      "reference": "Reference",
+      "tierOutcome": "Power Roll Tier Outcomes"
     },
     "PowerRollEffect": {
       "applied": "Applied Effect",
