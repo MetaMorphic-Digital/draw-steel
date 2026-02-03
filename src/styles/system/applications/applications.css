@@ -23,6 +23,7 @@
  **/
 .system-draw-steel {
   dl.power-roll-display {
+    gap: 4px;
 
     dt.tier1,
     dt.tier2,
@@ -39,7 +40,8 @@
     }
   }
 
-  dl.power-roll-display, enriched-content[enricher="ds.potency"] {
+  dl.power-roll-display,
+  enriched-content[enricher="ds.potency"] {
     span.potency {
       font-family: "Draw Steel Glyphs";
       font-size: var(--font-size-16);
