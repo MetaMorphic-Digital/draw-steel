@@ -51,9 +51,11 @@
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
+- Implemented a Table of Contents view for journal compendiums. (#1502)
 - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
 - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
+- Added a parameter to damage enrichers to allow ignoring immunities.
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added `damage.bonuses.value` which can be targeted to apply a single value to each damage tier.

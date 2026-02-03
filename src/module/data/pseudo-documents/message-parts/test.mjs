@@ -78,9 +78,9 @@ export default class TestPart extends RollPart {
       const latestRoll = this.latestTest;
 
       if (typeof resultSource.system?.powerRollText === "function") {
-        context.ctx.tierKey = `tier${latestRoll.product}`;
-        context.ctx.tierSymbol = ["!", "@", "#"][latestRoll.product - 1];
-        context.ctx.resultHTML = resultSource.system.powerRollText(latestRoll.product);
+        const tierKey = context.ctx.tierKey = `tier${latestRoll.product}`;
+        context.ctx.tierSymbol = ds.rolls.PowerRoll.RESULT_TIERS[tierKey].glyph;
+        context.ctx.resultHTML = await resultSource.system.powerRollText(latestRoll.product);
       }
 
       if ((resultSource.documentName === "Item") && (resultSource.type === "ability")) {
