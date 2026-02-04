@@ -80,8 +80,8 @@ export default class AbilityResultPart extends RollPart {
       }
 
       context.ctx.foundItem = true;
-      context.ctx.tierSymbol = ["!", "@", "#"][this.tier - 1];
-      context.ctx.resultHTML = item.system.powerRollText(this.tier);
+      context.ctx.tierSymbol = ds.rolls.PowerRoll.RESULT_TIERS[`tier${this.tier}`].glyph;
+      context.ctx.resultHTML = await item.system.powerRollText(this.tier);
     }
   }
 

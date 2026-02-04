@@ -966,7 +966,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Area: Creates Two 3 cubes within 5</p><p>Each area is saturated with vengeful spirits until the end of the round. Any enemy who enters the area for the first time in a round or starts their turn there takes [[/damage 5 corruption]]{5 corruption damage}. At the end of the round, the spirits violently disperse. Each enemy within 2 squares of an area and has P &lt; 5 is [[/apply weakened save]].</p>",
+          "before": "<p>Area: Creates Two 3 cubes within 5</p><p>Each area is saturated with vengeful spirits until the end of the round. Any enemy who enters the area for the first time in a round or starts their turn there takes [[/damage 5 corruption]]{5 corruption damage}. At the end of the round, the spirits violently disperse. Each enemy within 2 squares of an area and has [[potency P 5]] is [[/apply weakened save]].</p>",
           "after": ""
         },
         "spend": {
@@ -991,9 +991,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1034,7 +1034,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A target who has I &lt; 5 is [[/apply frightened]]. This effect ends if the target is 11 or more squares from Rhodar.</p>",
+          "before": "<p>A target who has [[potency I 5]] is [[/apply frightened]]. This effect ends if the target is 11 or more squares from Rhodar.</p>",
           "after": ""
         },
         "spend": {
@@ -1059,9 +1059,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

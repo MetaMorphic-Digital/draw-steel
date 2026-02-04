@@ -14,7 +14,42 @@
       "monster-features": "Monster Features",
       "origins": "Ancestries & Backgrounds",
       "character-options": "Complications, Perks, and Kits",
-      "rewards": "Projects & Rewards"
+      "rewards": "Projects & Rewards",
+      "TOC": {
+        "configure": {
+          "action": "Configure Table of Contents",
+          "title": "Table of Contents: {title}",
+          "submit": "Update Table of Contents"
+        },
+        "Contents": "Contents",
+        "FIELDS": {
+          "entryType": {
+            "label": "Entry Type"
+          },
+          "showPages": {
+            "label": "Show Pages"
+          },
+          "order": {
+            "label": "Order"
+          },
+          "title": {
+            "label": "Title",
+            "hint": "Replaces the name of the Journal Entry in the TOC display"
+          },
+          "append": {
+            "label": "Append",
+            "hint": "Display this journal as pages of another journal. If Standalone is selected, then this will display after appendices."
+          }
+        },
+        "ENTRY_TYPES": {
+          "hidden": "Hidden",
+          "chapter": "Chapter",
+          "appendix": "Appendix",
+          "special": "Special",
+          "header": "Header"
+        },
+        "blankAppend": "Standalone"
+      }
     },
     "ADVANCEMENT": {
       "FIELDS": {
@@ -1545,12 +1580,22 @@
         }
       }
     },
+    "JournalEntry": {
+      "Navigation": {
+        "Up": "Up",
+        "Previous": "Previous",
+        "Next": "Next"
+      }
+    },
     "JournalEntryPage": {
       "Tabs": {
         "languages": "Languages",
         "monsterKeywords": "Monster Keywords",
         "content": "Content",
-        "tooltip": "Tooltip"
+        "tooltip": "Tooltip",
+        "tier1": "Tier 1",
+        "tier2": "Tier 2",
+        "tier3": "Tier 3"
       },
       "configuration": {
         "FIELDS": {
@@ -1610,6 +1655,19 @@
           "tooltip": {
             "label": "Tooltip",
             "hint": "Preferred tooltip text. If blank, the normal journal content will be preferred."
+          }
+        }
+      },
+      "tierOutcome": {
+        "FIELDS": {
+          "tier1": {
+            "label": "Tier 1"
+          },
+          "tier2": {
+            "label": "Tier 2"
+          },
+          "tier3": {
+            "label": "Tier 3"
           }
         }
       }
@@ -2049,7 +2107,8 @@
     },
     "JournalEntryPage": {
       "configuration": "Configuration",
-      "reference": "Reference"
+      "reference": "Reference",
+      "tierOutcome": "Power Roll Tier Outcomes"
     },
     "PowerRollEffect": {
       "applied": "Applied Effect",

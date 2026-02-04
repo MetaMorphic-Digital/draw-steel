@@ -345,10 +345,10 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
-      `tier${tier}`,
-      this.powerRollText(tier),
-    ]));
+    context.powerRollEffects = {};
+    for (const tier of [1, 2, 3]) {
+      context.powerRollEffects[`tier${tier}`] = await this.powerRollText(tier);
+    }
     context.powerRolls = this.power.effects.size > 0;
 
     context.powerRollBonus = this.power.roll.formula;
@@ -377,9 +377,9 @@ export default class AbilityModel extends BaseItemModel {
   /**
    * Produces the power roll text for a given tier.
    * @param {1 | 2 | 3} tier
-   * @returns {string}
+   * @returns {Promise<string>} An HTML string.
    */
-  powerRollText(tier) {
+  async powerRollText(tier) {
     return this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ");
   }
 
