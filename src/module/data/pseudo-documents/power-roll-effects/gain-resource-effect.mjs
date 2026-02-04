@@ -176,10 +176,11 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
   /**
    * Give a hero some resources.
    * @param {string} tierKey
-   * @param {object} [options]
+   * @param {object} [options={}]
    * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected hero actors.
    */
-  async applyGain(tierKey, options) {
+  async applyGain(tierKey, options = {}) {
+    options.targets ??= ds.utils.tokensToActors().filter((a) => a.type === "hero");
     if (Array.from(options.targets ?? []).some(a => !a.isOwner)) {
       throw new Error(`${game.user.name} is not an owner of all the actors`);
     }
@@ -201,9 +202,7 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
 
     if (!path) return;
 
-    const targetActors = options.targets ?? ds.utils.tokensToActors().filter((a) => a.type === "hero");
-
-    for (const actor of targetActors) {
+    for (const actor of options.targets) {
       await actor.modifyTokenAttribute(path, amount, true, false);
     }
   }

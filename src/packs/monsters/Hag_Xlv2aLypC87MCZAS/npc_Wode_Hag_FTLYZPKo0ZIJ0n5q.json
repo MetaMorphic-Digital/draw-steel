@@ -781,7 +781,7 @@
           }
         },
         "effect": {
-          "before": "<p>The hag attaches an ornate explosive pastry to each target who has A &lt; 2. At the end of the round, the hag makes one power roll against each creature with a pastry attached to them.</p>",
+          "before": "<p>The hag attaches an ornate explosive pastry to each target who has [[potency A 2]]. At the end of the round, the hag makes one power roll against each creature with a pastry attached to them.</p>",
           "after": "<p>Special: A creature wearing a pastry or adjacent to a creature wearing a pastry can attempt an Agility test to remove the pastry as a maneuver.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The hag makes the roll for all pastries.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The pastry is not removed.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pastry is removed and can no longer explode.</p></dd></dl>"
         },
         "spend": {
@@ -806,9 +806,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1548,19 +1548,7 @@
           "priority": null
         },
         {
-          "key": "damage.tier1.value",
-          "mode": 2,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "damage.tier2.value",
-          "mode": 2,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "damage.tier3.value",
+          "key": "damage.bonuses.value",
           "mode": 2,
           "value": "4",
           "priority": null
@@ -1585,7 +1573,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,

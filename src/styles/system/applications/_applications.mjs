@@ -12,6 +12,7 @@ import "./apps/monster-metadata.css";
 import "./apps/power-roll-dialog.css";
 import "./apps/saving-throw-dialog.css";
 import "./apps/targeted-condition-prompt.css";
+import "./apps/toc-config.css";
 
 import "./canvas/measurement.css";
 import "./canvas/token-hud.css";
@@ -29,6 +30,7 @@ import "./sheets/journal-entry-sheet.css";
 import "./sheets/journal-entry-page.css";
 import "./sheets/pseudo-documents.css";
 
+import "./sidebar/apps/table-of-contents.css";
 import "./sidebar/tabs/chat.css";
 import "./sidebar/tabs/combat.css";
 

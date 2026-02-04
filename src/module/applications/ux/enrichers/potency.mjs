@@ -56,7 +56,7 @@ export async function enricher(match, options) {
   if (parsedConfig.characteristic in characteristics) parsedConfig.characteristic = characteristics[parsedConfig.characteristic].rollKey.toLowerCase();
 
   const hasValidCharacteristic = rollKeys.has(parsedConfig.characteristic);
-  const hasValidStrength = parsedConfig.strength && ((typeof parsedConfig.strength === "number") || (parsedConfig.strength in potencyStrengths));
+  const hasValidStrength = (typeof parsedConfig.strength === "number") || (parsedConfig.strength in potencyStrengths);
   if (!hasValidCharacteristic || !hasValidStrength) {
     if (!hasValidCharacteristic) console.warn(`Potency characteristic must be defined and be a valid characteristic roll key to enrich ${config._input}.`);
     if (!hasValidStrength) console.warn(`Potency strength must be defined and be a number or a valid potency strength to enrich ${config._input}.`);

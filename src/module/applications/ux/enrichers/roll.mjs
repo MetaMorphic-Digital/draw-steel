@@ -139,12 +139,19 @@ export async function onRender(element) {
  *
  */
 function enrichDamageHeal(parsedConfig, label, options) {
-  const linkConfig = { type: "damageHeal", formulas: [], damageTypes: [], rollType: parsedConfig._isHealing ? "healing" : "damage" };
+  const linkConfig = {
+    type: "damageHeal",
+    formulas: [],
+    damageTypes: [],
+    rollType: parsedConfig._isHealing ? "healing" : "damage",
+    ignoredImmunities: [],
+  };
 
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
     c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
+    c.ignoredImmunities = c.ignoredImmunities?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
       if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
@@ -161,6 +168,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
     if (c.formula) {
       linkConfig.formulas.push(c.formula);
       linkConfig.damageTypes.push(c.type.join("|"));
+      linkConfig.ignoredImmunities.push(c.ignoredImmunities.join("|"));
     }
   }
 
@@ -210,13 +218,14 @@ function enrichDamageHeal(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollDamageHeal(link, event) {
-  let { formulas, rollType, damageTypes } = link.dataset;
+  let { formulas, rollType, damageTypes, ignoredImmunities: rawIgnoredImmunities } = link.dataset;
   const configKey = rollType === "damage" ? "damageTypes" : "healingTypes";
 
   if (!["damage", "healing"].includes(rollType)) throw new Error("The button's roll type must be damage or healing");
 
   const formulaArray = formulas?.split("&") ?? [];
   const damageTypeArray = damageTypes?.split("&") ?? [];
+  const ignoredImmunities = rawIgnoredImmunities.split("|") ?? [];
 
   /** @type {{ index: number; types: string[] }[]} */
   const typeOptions = [];
@@ -229,7 +238,7 @@ async function rollDamageHeal(link, event) {
     });
     return {
       formula,
-      options: { type: types[0], types, isHeal: rollType !== "damage" },
+      options: { type: types[0], types, isHeal: rollType !== "damage", ignoredImmunities },
     };
   });
 
@@ -278,7 +287,7 @@ async function rollDamageHeal(link, event) {
   // One by one evaluation to make it easier on users doing manual rolls
   for (const r of rolls) await r.evaluate();
 
-  DrawSteelChatMessage.create({
+  await DrawSteelChatMessage.create({
     rolls,
     flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType),
     flags: { core: { canPopout: true } },
