@@ -1,6 +1,7 @@
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 import BaseActorModel from "./base-actor.mjs";
+import { setOptions } from "../helpers.mjs";
 
 const fields = foundry.data.fields;
 
@@ -29,6 +30,17 @@ export default class CreatureModel extends BaseActorModel {
     );
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _actorBiography() {
+    const bio = super._actorBiography();
+
+    bio.languages = new fields.SetField(setOptions());
+
+    return bio;
   }
 
   /* -------------------------------------------------- */

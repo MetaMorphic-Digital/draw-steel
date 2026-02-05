@@ -302,6 +302,7 @@
     "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
+        "Object": "Draw Steel Object Sheet",
         "NPC": "Draw Steel NPC Sheet",
         "Item": "Draw Steel Item Sheet",
         "JournalEntry": "Draw Steel Journal Entry Sheet",
@@ -516,6 +517,15 @@
               "label": "Size",
               "value": {
                 "label": "Size Number"
+              },
+              "text": {
+                "label": "Size Override"
+              },
+              "direction": {
+                "label": "Direction"
+              },
+              "typical": {
+                "label": "Typical Space"
               }
             },
             "stability": {
@@ -535,6 +545,9 @@
                 "hint": "The total necessary to end a (Save Ends) effect."
               }
             }
+          },
+          "ev": {
+            "label": "Encounter Value"
           },
           "movement": {
             "label": "Movement",
@@ -567,6 +580,12 @@
               "format": "{type} Weakness"
             }
           }
+        },
+        "EVLabel": {
+          "Label": "EV",
+          "Area": "{value} per {area}",
+          "Minion": "{value} for four minions",
+          "Other": "{value}"
         },
         "sizes": {
           "T": "Tiny",
@@ -674,9 +693,6 @@
             "level": {
               "label": "Level"
             },
-            "ev": {
-              "label": "Encounter Value"
-            },
             "role": {
               "label": "Creature Role"
             },
@@ -687,11 +703,6 @@
         },
         "MonsterMetadata": {
           "DialogTitle": "Update Monster Metadata"
-        },
-        "EVLabel": {
-          "Label": "EV",
-          "Minion": "{value} for four minions",
-          "Other": "{value}"
         },
         "KEYWORDS": {
           "Abyssal": "Abyssal",
@@ -756,6 +767,42 @@
           "DialogHeader": "{value} {type} Damage",
           "DialogTitle": "Free Strike",
           "DialogButton": "Deal Damage"
+        }
+      },
+      "object": {
+        "FIELDS": {
+          "object": {
+            "level": {
+              "label": "Level"
+            },
+            "category": {
+              "label": "Category"
+            },
+            "role": {
+              "label": "Creature Role"
+            },
+            "area": {
+              "label": "Area",
+              "hint": "Optional area per section of terrain, e.g. '10 x 10 pool'"
+            },
+            "squareStamina": {
+              "label": "Per Square"
+            }
+          }
+        },
+        "MaxStaminaLabel": {
+          "PerSquare": "{value} per square"
+        },
+        "CATEGORIES": {
+          "hazard": "Hazard",
+          "fortification": "Fortification",
+          "trap": "Trap",
+          "trigger": "Trigger",
+          "relic": "Relic",
+          "siegeEngine": "Siege Engine"
+        },
+        "ObjectMetadata": {
+          "DialogTitle": "Update Object Metadata"
         }
       },
       "DamageNotification": {
@@ -2062,7 +2109,8 @@
     },
     "Actor": {
       "hero": "Hero",
-      "npc": "NPC"
+      "npc": "NPC",
+      "object": "Object"
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",

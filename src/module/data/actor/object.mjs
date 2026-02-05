@@ -1,0 +1,94 @@
+import BaseActorModel from "./base-actor.mjs";
+import SourceModel from "../models/source.mjs";
+import ObjectSizeModel from "../models/object-size.mjs";
+
+/**
+ * Inanimate matter, including walls, rocks, vehicles, and corpses (the kind that can’t move around and bite you), as well as living non-creatures such as plants.
+ */
+export default class ObjectModel extends BaseActorModel {
+  /** @inheritdoc */
+  static get metadata() {
+    return {
+      ...super.metadata,
+      type: "object",
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat([
+    "DRAW_STEEL.SOURCE",
+    "DRAW_STEEL.Actor.object",
+  ]);
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static defineSchema() {
+    const fields = foundry.data.fields;
+    const schema = super.defineSchema();
+
+    // Objects have default null movement
+    const speedField = schema.movement.getField("value");
+    speedField.nullable = speedField.options.nullable = true;
+    speedField.initial = speedField.options.initial = null;
+    const disengageField = schema.movement.getField("disengage");
+    disengageField.nullable = disengageField.options.nullable = true;
+    disengageField.initial = disengageField.options.initial = null;
+
+    schema.source = new fields.EmbeddedDataField(SourceModel);
+
+    schema.ev = new fields.NumberField({ required: true, integer: true });
+
+    schema.object = new fields.SchemaField({
+      level: new fields.NumberField({ required: true, integer: true }),
+      category: new fields.StringField({ required: true }),
+      role: new fields.StringField({ required: true }),
+      area: new fields.StringField({ required: true }),
+      squareStamina: new fields.BooleanField(),
+    });
+
+    return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _sizeModel() {
+    return ObjectSizeModel;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get level() {
+    return this.object.level;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.source.prepareData();
+
+    const categories = ds.CONFIG.objects.categories;
+    this.object.categoryLabel = categories[this.object.category]?.label ?? "";
+
+    const roles = ds.CONFIG.objects.roles;
+    this.object.roleLabel = roles[this.object.role]?.label ?? "";
+
+    if (this.ev == null) this.evLabel = "—";
+    else {
+      const evData = { value: this.ev, area: this.object.area };
+      this.evLabel = this.object.area
+        ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Area", evData)
+        : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
+    }
+
+    this.stamina.maxLabel = this.object.squareStamina
+      ? game.i18n.format("DRAW_STEEL.Actor.object.MaxStaminaLabel.PerSquare", { value: this.stamina.max })
+      : String(this.stamina.max);
+  }
+}

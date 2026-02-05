@@ -1215,6 +1215,42 @@ preLocalize("monsters.roles", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * @typedef ObjectCategory
+ * @property {string} label
+ * @property {Reference} [reference]
+ */
+
+/** @type {Record<string, ObjectCategory>} */
+const objectCategories = {
+  hazard: {
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.hazard",
+  },
+  fortification: {
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.fortification",
+  },
+  trap: {
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.trap",
+  },
+  trigger: {
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.trigger",
+  },
+  relic: {
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.relic",
+  },
+  siegeEngine: {
+    label: "DRAW_STEEL.Actor.object.CATEGORIES.siegeEngine",
+  },
+};
+
+export const objects = {
+  roles: monsterRoles,
+  categories: objectCategories,
+};
+preLocalize("objects.categories", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
  * Keywords available for abilities. Used by both system and user-defined automation.
  * Groups are directly i18n strings, and exist for the purpose of denoting class-specific keywords.
  * @type {Record<string, {label: string, group?: string}>}
