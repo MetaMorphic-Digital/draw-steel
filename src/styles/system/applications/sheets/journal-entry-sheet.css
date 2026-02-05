@@ -108,15 +108,16 @@
     font-weight: bold;
   }
 
-  h5 {
-    font-size: 1em;
 
+  h5 {
+    --font-h5-size: 1em;
     a.content-link {
       padding: 3px 4px;
     }
   }
 
   h6 {
+    --font-h6-size: 1em;
     font-family: 'Atkinson Hyperlegible', serif;
     font-weight: bold;
   }
@@ -498,6 +499,12 @@ aside[role="tooltip"] section.content {
       /* More compact display of abilities */
       .metadata dl {
         grid-template-columns: auto 1fr auto 1fr;
+      }
+    }
+    .draw-steel.kit {
+      .equipment dl {
+        display: grid;
+        grid-template-columns: auto 1fr auto 1fr auto 1fr;
       }
     }
   }
