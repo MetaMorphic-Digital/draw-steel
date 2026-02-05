@@ -26,6 +26,51 @@
     border-image-slice: 1;
   }
 
+  /*special class pages*/
+  .class-spread {
+    img {
+      outline: 1px solid rgba(255, 255, 255, 0.5);
+      outline-offset: -6px;
+    }
+
+    blockquote {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 9;
+      container-type: inline-size;
+      width: 100%;
+      padding: 10px;
+      font-weight: bolder;
+      text-shadow: black 1px 1px 2px, rgb(118, 118, 121) 0px 0px 1em, rgb(117, 117, 118) 0px 0px 0.2em;
+
+      p.pull-quote {
+        font-size: clamp(0.75rem, 6cqw, 3rem)
+      }
+
+      p.pull-quote-citation {
+        font-size: clamp(0.5rem, 4cqw, 2rem)
+      }
+    }
+
+    .class-intro-wrapper {
+      position: absolute;
+      top: 4em;
+      left: 0px;
+      container-type: inline-size;
+      width: 40%;
+      max-width: 400px;
+      padding: 10px;
+      font-weight: bolder;
+      text-shadow: black 1px 1px 2px, rgb(118, 118, 121) 0px 0px 1em, rgb(117, 117, 118) 0px 0px 0.2em;
+      min-width: 200px;
+
+      .class-intro {
+        font-size: clamp(0.75rem, 6cqw, 1rem);
+      }
+    }
+  }
+
   /*special treatments*/
   .journal-page-header h1,
   h1.chapter,
@@ -53,19 +98,26 @@
   }
 
   h3 {
-    font-family: 'Newsreader', serif;
-    font-weight: bold;
     font-variant: small-caps;
   }
 
+  h3,
   h4,
   h5 {
     font-family: 'Newsreader', serif;
     font-weight: bold;
-    font-size: 0.9em;
+  }
+
+
+  h5 {
+    --font-h5-size: 1em;
+    a.content-link {
+      padding: 3px 4px;
+    }
   }
 
   h6 {
+    --font-h6-size: 1em;
     font-family: 'Atkinson Hyperlegible', serif;
     font-weight: bold;
   }
@@ -425,13 +477,34 @@ aside[role="tooltip"] section.content {
     }
   }
 
+  .ability-bordered {
+    &.default {
+      --ability-border: var(--ability-default-border);
+    }
+    &.quick {
+      --ability-border: var(--ability-quick-border);
+    }
+
+    padding-left: 30px;
+    background: var(--ability-border) no-repeat top left;
+    background-size: 20px;
+  }
+
   /* Embed-specific adjustments */
   document-embed {
     .draw-steel.ability {
-
+      .flavor {
+        border-bottom: 1px solid var(--draw-steel-c-laserline-rev);
+      }
       /* More compact display of abilities */
       .metadata dl {
         grid-template-columns: auto 1fr auto 1fr;
+      }
+    }
+    .draw-steel.kit {
+      .equipment dl {
+        display: grid;
+        grid-template-columns: auto 1fr auto 1fr auto 1fr;
       }
     }
   }
