@@ -53,6 +53,7 @@
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
+- Added new "Object" actor type. (#1347)
 - Added "Gain Resource" power roll effect which covers surges, heroic resources, and epic resources. (#1396)
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)

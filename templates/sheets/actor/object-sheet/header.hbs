@@ -17,19 +17,15 @@
       {{/if}}
     </div>
     <div class="tags flexrow">
-      {{!-- Keyword Tags --}}
-      {{#each monsterKeywords as |keyword|}}
-      <div class="tag">{{keyword}}</div>
-      {{/each}}
-      {{!-- Organization/Role Tags --}}
-      {{#if system.monster.organizationLabel}}
-      <div class="tag">{{system.monster.organizationLabel}}</div>
+      {{!-- Category/Role Tags --}}
+      {{#if system.object.categoryLabel}}
+      <div class="tag">{{system.object.categoryLabel}}</div>
       {{/if}}
-      {{#if system.monster.roleLabel}}
-      <div class="tag">{{system.monster.roleLabel}}</div>
+      {{#if system.object.roleLabel}}
+      <div class="tag">{{system.object.roleLabel}}</div>
       {{/if}}
       {{#unless isPlay}}
-      <a data-action="editMonsterMetadata">
+      <a data-action="editObjectMetadata">
         <i class="fa-solid fa-gear"></i>
       </a>
       {{/unless}}
@@ -40,17 +36,14 @@
       {{system.source.label}}
     </div>
     <dl>
-      <dt class="level">{{systemFields.monster.fields.level.label}}</dt>
-      <dd class="level">{{systemSource.monster.level}}</dd>
-
+      {{#if system.level}}
+      <dt class="level">{{systemFields.object.fields.level.label}}</dt>
+      <dd class="level">{{system.level}}</dd>
+      {{/if}}
+      {{#if system.ev}}
       <dt class="ev">{{localize "DRAW_STEEL.Actor.base.EVLabel.Label"}}</dt>
       <dd class="ev">{{system.evLabel}}</dd>
+      {{/if}}
     </dl>
-    {{#if showMalice}}
-    <div class="malice">
-      <label>{{malice.label}}</label>
-      <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
-    </div>
-    {{/if}}
   </div>
 </header>
