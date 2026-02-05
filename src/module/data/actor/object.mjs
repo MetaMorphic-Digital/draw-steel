@@ -29,6 +29,14 @@ export default class ObjectModel extends BaseActorModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
+    // Objects have default null movement
+    const speedField = schema.movement.getField("value");
+    speedField.nullable = speedField.options.nullable = true;
+    speedField.initial = speedField.options.initial = null;
+    const disengageField = schema.movement.getField("disengage");
+    disengageField.nullable = disengageField.options.nullable = true;
+    disengageField.initial = disengageField.options.initial = null;
+
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
     schema.ev = new fields.NumberField({ required: true, integer: true });
