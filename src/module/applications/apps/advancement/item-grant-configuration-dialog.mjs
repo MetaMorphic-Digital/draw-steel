@@ -101,7 +101,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     if (!this.#fulfilledDSID) {
       this.#fulfilledDSID = new Set(this.node.chain.actorSubclasses.map(i => i.dsid));
 
-      if (this.node.chain.actorClass) this.#fulfilledDSID.add(this.node.chain.actorClass);
+      if (this.node.chain.actorClass) this.#fulfilledDSID.add(this.node.chain.actorClass.dsid);
     }
 
     return this.#fulfilledDSID;
@@ -123,9 +123,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @type {number}
    */
   get totalChosen() {
-    if (!this.advancement.pointBuy) return this.chosen.size;
-    else return this.items.reduce((points, item) => {
-      if (this.chosen.has(item.uuid)) points += item.system.points;
+    return this.items.reduce((points, item) => {
+      // level 1 subclass choices can invalidate later feature choices if redone
+      // don't want disabled inputs to count against what's valid
+      if (this.chosen.has(item.uuid) && this.fulfillsRequirements(item)) points += this.advancement.pointBuy ? item.system.points : 1;
       return points;
     }, 0);
   }
@@ -212,12 +213,13 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     context.items = this.items.map(i => {
       const chosen = this.chosen.has(i.uuid) || (this.advancement.chooseN == null);
       const value = context.points ? i.system.points : 1;
+      const disabled = !this.fulfillsRequirements(i) || (!chosen && (value > (this.advancement.chooseN - totalChosen)));
       return {
-        chosen,
+        disabled,
+        chosen: chosen && !disabled,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
         points: context.points ? i.system.points : false,
-        disabled: !this.fulfillsRequirements(i) || (!chosen && (value > (this.advancement.chooseN - totalChosen))),
       };
     });
 
@@ -262,6 +264,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   #refreshDisabled() {
     if (this.advancement.chooseN == null) return;
 
+    /** @type {HTMLInputElement[]} */
     const checkboxes = [];
     // could be a RadioNodeList or could be a single checkbox
     if (this.form.choices?.length) checkboxes.push(...this.form.choices);
