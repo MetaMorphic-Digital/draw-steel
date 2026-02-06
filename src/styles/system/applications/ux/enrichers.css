@@ -16,6 +16,12 @@ enriched-content {
     padding: 1px 4px 0;
     text-wrap-mode: nowrap;
     word-break: break-all;
+
+    a[data-type="requestTest"] {
+      margin-left: 0.25rem;
+      padding-left: 0.4rem;
+      border-left: 1px solid var(--content-link-border-color);
+    }
   }
 
   &[enricher="ds.lookup"] {

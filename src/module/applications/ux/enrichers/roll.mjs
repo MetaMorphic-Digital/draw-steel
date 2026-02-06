@@ -110,20 +110,20 @@ export function enricher(match, options) {
  * @param {HTMLEnrichedContentElement} element
  */
 export async function onRender(element) {
-  const link = element.querySelector("a");
-
-  link.addEventListener("click", (ev) => {
-    switch (link.dataset.type) {
-      case "damageHeal":
-        return void rollDamageHeal(link, ev);
-      case "gain":
-        return void rollGain(link, ev);
-      case "test":
-        return void rollTest(link, ev);
-      case "requestTest":
-        return void requestTest(link, ev);
-    }
-  });
+  for (const link of element.querySelectorAll("a")) {
+    link.addEventListener("click", (ev) => {
+      switch (link.dataset.type) {
+        case "damageHeal":
+          return void rollDamageHeal(link, ev);
+        case "gain":
+          return void rollGain(link, ev);
+        case "test":
+          return void rollTest(link, ev);
+        case "requestTest":
+          return void requestTest(link, ev);
+      }
+    });
+  }
 }
 
 /* -------------------------------------------------- */
@@ -431,6 +431,7 @@ function enrichTest(parsedConfig, label, options) {
     difficulty: parsedConfig.difficulty,
     edges: parsedConfig.edges,
     banes: parsedConfig.banes,
+    resultSource: parsedConfig.resultSource,
   };
 
   const letterCharacteristics = {
@@ -465,10 +466,22 @@ function enrichTest(parsedConfig, label, options) {
 
   label ??= game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
 
-  return createLink(label,
+  const rollTestLink = createLink(label,
     linkConfig,
     { icon: "fa-dice-d10" },
   );
+
+  if (game.user.isGM) {
+    // foundry checks if the returned html element is enriched-content and wraps if it's not.
+    const wrapper = document.createElement("enriched-content");
+    wrapper.appendChild(rollTestLink);
+    wrapper.appendChild(createLink("",
+      { ...linkConfig, type: "requestTest", tooltip: "DRAW_STEEL.EDITOR.Enrichers.Test.Request" },
+      { icon: "fa-comment" },
+    ));
+    return wrapper;
+  }
+  else return rollTestLink;
 }
 
 /* -------------------------------------------------- */
@@ -523,5 +536,5 @@ async function rollTest(link, event) {
  * @param {PointerEvent} event
  */
 async function requestTest(link, event) {
-
+  console.log(link, event);
 }
