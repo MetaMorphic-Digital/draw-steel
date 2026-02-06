@@ -32,7 +32,7 @@
 - Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
   - Updated the Infernal Contract complication to make use of this.
-- Implemented `[[/test]]` enricher which can be used to request tests. (#893)
+- Implemented `[[/test]]` enricher which can be used to request tests. (#893, #1599)
 - Implemented Reference system. (#945)
   - Added a `[[reference]]` enricher which implements a tooltip for the text.
   - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)

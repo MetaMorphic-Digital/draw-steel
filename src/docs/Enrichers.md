@@ -79,12 +79,14 @@ The `[[/test]]` enricher allows requesting specific rolls without users needing 
 
 **Examples:**
 
-- [&ZeroWidthSpace;[/test might]]: A might test.
+- [&ZeroWidthSpace;[/test might]]: A might test. The valid keys are "might", "agility", "intuition", "reason", and "presence".
 - [&ZeroWidthSpace;[/test A]]: The single capital letter abbreviations are also accepted.
 - [&ZeroWidthSpace;[/test R easy]]: You can specify a difficulty for the test, "easy", "medium", or "hard".
 - [&ZeroWidthSpace;[/test characteristic=intuition difficulty=hard]]: The characteristic and difficulty can be explicitly specified.
-- [&ZeroWidthSpace;[/test P edges=1 banes=1]]: You can specify edges and banes for the roll
-- [&ZeroWidthSpace;[/test M]]{A might test}: Brackets will replace the default text for the command.
+- [&ZeroWidthSpace;[/test characteristic=presence|might]]: You can specify multiple characteristics with | or / to offer an "or" choice.
+- [&ZeroWidthSpace;[/test A reason]]: You can also just include multiple valid characteristic keys in the brackets.
+- [&ZeroWidthSpace;[/test I edges=1 banes=1]]: You can specify edges and banes for the roll
+- [&ZeroWidthSpace;[/test P]]{A presence test}: Brackets will replace the default text for the command.
 
 ## Apply Effect
 
