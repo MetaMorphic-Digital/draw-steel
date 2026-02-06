@@ -1,3 +1,4 @@
+import { characteristics } from "../../../config.mjs";
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll, PowerRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
@@ -536,5 +537,16 @@ async function rollTest(link, event) {
  * @param {PointerEvent} event
  */
 async function requestTest(link, event) {
-  console.log(link, event);
+  const { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
+  const part = {
+    difficulty, edges, banes, resultSource,
+    characteristics: characteristic.split("|"),
+    type: "testRequest",
+  };
+
+  await DrawSteelChatMessage.create({
+    type: "standard",
+    "system.parts": [part],
+    flags: { core: { canPopout: true } },
+  });
 }
