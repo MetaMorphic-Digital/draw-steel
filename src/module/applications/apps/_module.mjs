@@ -1,3 +1,4 @@
+export { default as ActorAvatarInput } from "./actor-avatar-input.mjs";
 export { default as ActorCombatStatsInput } from "./actor-combat-stats-input.mjs";
 export { default as CharacteristicInput } from "./characteristic-input.mjs";
 export { default as DocumentSourceInput } from "./document-source-input.mjs";

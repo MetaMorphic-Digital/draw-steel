@@ -161,6 +161,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
+      case "header":
+        context.avatarProperties = this.document.getFlag(ds.CONST.systemID, "avatarProperties") ?? {};
+        break;
       case "stats":
         context.combatTooltip = this._getCombatTooltip();
         context.movement = this._getMovement();
