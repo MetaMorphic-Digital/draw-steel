@@ -162,7 +162,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "header":
-        context.avatarProperties = this.document.getFlag(ds.CONST.systemID, "avatarProperties") ?? {};
+        context.avatarProperties = this._prepareAvatarCSS();
         break;
       case "stats":
         context.combatTooltip = this._getCombatTooltip();
@@ -189,6 +189,20 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     }
     if (partId in context.tabs) context.tab = context.tabs[partId];
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepare avatar adjustments context.
+   * @returns {object}
+   */
+  _prepareAvatarCSS() {
+    const { objectFit, objectPosition } = this.document.getFlag(ds.CONST.systemID, "avatarProperties") ?? {};
+    return {
+      objectFit: CSS.supports("object-fit", objectFit) ? objectFit : null,
+      objectPosition: CSS.supports("object-position", objectPosition) ? objectPosition : null,
+    };
   }
 
   /* -------------------------------------------------- */
@@ -343,7 +357,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /**
    * Prepare the context for features.
-   * @returns {Array<ActorSheetItemContext>}
+   * @returns {Promise<ActorSheetItemContext[]>}
    * @protected
    */
   async _prepareFeaturesContext() {

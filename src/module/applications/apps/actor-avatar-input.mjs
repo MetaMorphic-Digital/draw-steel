@@ -32,10 +32,10 @@ export default class ActorAvatarInput extends DocumentInput {
         name: "flags.draw-steel.avatarProperties.objectFit",
         options: [
           { value: "", label: game.i18n.localize("DRAW_STEEL.Actor.base.AvatarInput.objectFit.optionDefault") },
-          { value: "contain", label: "contain" },
-          { value: "cover", label: "cover" },
-          { value: "fill", label: "fill" },
-          { value: "scale-down", label: "scale-down" },
+          { value: "contain" },
+          { value: "cover" },
+          { value: "fill" },
+          { value: "scale-down" },
         ],
       },
       objectPosition: {
