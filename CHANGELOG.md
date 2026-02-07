@@ -56,6 +56,7 @@
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
 - Implemented a Table of Contents view for journal compendiums. (#1502)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
+- Implemented a Scene embed which showcases the scene thumbnail and provides buttons to activate or view the scene. (#1598)
 - Added a parameter to damage enrichers to allow ignoring immunities.
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
