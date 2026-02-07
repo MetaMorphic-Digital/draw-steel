@@ -493,7 +493,7 @@ function enrichTest(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollTest(link, event) {
-  let { characteristic, difficulty, edges, banes } = link.dataset;
+  let { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
 
   if (!characteristic) throw new Error("Test enricher must provide a characteristic");
 
@@ -525,7 +525,7 @@ async function rollTest(link, event) {
   }
 
   for (const actor of ds.utils.tokensToActors()) {
-    actor.rollCharacteristic(characteristic, { difficulty, edges, banes });
+    actor.rollCharacteristic(characteristic, { difficulty, edges, banes, resultSource });
   }
 }
 

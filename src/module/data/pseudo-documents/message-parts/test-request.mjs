@@ -103,8 +103,10 @@ export default class TestRequestPart extends BaseMessagePart {
   static async #rollTest(event, target) {
     const { chr } = target.dataset;
 
+    const resultSource = this.revealResult ? this.resultSource : "";
+
     for (const actor of ds.utils.tokensToActors()) {
-      actor.rollCharacteristic(chr, { edges: this.edges, banes: this.banes, difficulty: this.difficulty });
+      actor.rollCharacteristic(chr, { resultSource, edges: this.edges, banes: this.banes, difficulty: this.difficulty });
     }
   }
 }
