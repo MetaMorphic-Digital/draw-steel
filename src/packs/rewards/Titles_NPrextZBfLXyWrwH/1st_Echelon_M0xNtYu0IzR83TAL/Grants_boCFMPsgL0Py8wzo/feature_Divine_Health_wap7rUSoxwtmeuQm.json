@@ -6,7 +6,7 @@
   "img": "icons/magic/life/cross-beam-green.webp",
   "system": {
     "description": {
-      "value": "<p>You gain corruption immunity equal to your highest characteristic score. Additionally, you can’t be turned into an undead creature.</p>",
+      "value": "<p>You gain corruption immunity equal to [[lookup formula=\"max(@M, @A, @R, @I, @P)\" evaluate=true]]{your highest characteristic score}. Additionally, you can’t be turned into an undead creature.</p>",
       "director": ""
     },
     "source": {
@@ -77,9 +77,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.10.0",
     "createdTime": 1757644119691,
     "modifiedTime": null,
     "lastModifiedBy": null

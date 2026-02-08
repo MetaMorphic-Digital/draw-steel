@@ -6,7 +6,7 @@
   "img": "icons/tools/fishing/reel-brown-white.webp",
   "system": {
     "description": {
-      "value": "<p>Whenever you deal damage to a target who is 2 or more squares away from you and that target isn’t also force moved, you can pull the target a number of squares equal to your Agility, Reason, or Intuition score (your choice).</p>",
+      "value": "<p>Whenever you deal damage to a target who is 2 or more squares away from you and that target isn’t also force moved, you can pull the target a number of squares equal to [[lookup formula=\"max(@A, @R, @I)\" evaluate=true]]{your Agility, Reason, or Intuition score (your choice)}.</p>",
       "director": ""
     },
     "source": {
@@ -32,9 +32,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1760629667549,
     "modifiedTime": null,
     "lastModifiedBy": null

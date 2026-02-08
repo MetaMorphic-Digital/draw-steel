@@ -32,7 +32,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The monster pours all their animosity into their attack. Their next strike deals extra damage to one target equal to the monster’s highest characteristic score. The extra damage increases by 1 for each additional Malice spent on this feature (to a maximum of three times the monster’s highest characteristic). This feature can’t be used two rounds in a row, even by different monsters.</p>",
+      "before": "<p>The monster pours all their animosity into their attack. Their next strike deals extra damage to one target equal to the monster’s [[lookup formula=\"max(@M, @A, @R, @I, @P)\" evaluate=true]]{highest characteristic score}. The extra damage increases by 1 for each additional Malice spent on this feature (to a maximum of three times the monster’s highest characteristic). This feature can’t be used two rounds in a row, even by different monsters.</p>",
       "after": ""
     },
     "spend": {
@@ -50,9 +50,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.10.0",
     "createdTime": 1758032559916,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -191,7 +191,7 @@
   "flags": {},
   "system": {
     "description": {
-      "value": "<p><em>This suit is shaped of tough leather and set with thousands of tiny barbs on the inside, all thankfully pain-free to the touch.</em></p><p><strong>1st Level:</strong> While you wear this armor, you gain a +6 bonus to Stamina, and you have immunity to acid and poison damage equal to your highest characteristic score.</p><p><strong>5th Level:</strong> The armor’s bonus to Stamina increases to +12. Additionally, whenever an adjacent creature deals damage to you, they take [[/damage 3 type=acid/poison]] damage (your choice).</p><p><strong>9th Level:</strong> The armor’s bonus to Stamina increases to +21, and an adjacent creature who deals damage to you takes 6 acid or poison damage. Additionally, you can use a maneuver to transmute a 2-cube area of liquid or gas adjacent to you into liquid acid or poison gas until the start of your next turn. Any creature who enters the area for the first time in a combat round or starts their turn there [[/damage 6 type=acid/poison]], as appropriate.</p>",
+      "value": "<p><em>This suit is shaped of tough leather and set with thousands of tiny barbs on the inside, all thankfully pain-free to the touch.</em></p><p><strong>1st Level:</strong> While you wear this armor, you gain a +6 bonus to Stamina, and you have immunity to acid and poison damage equal to [[lookup formula=\"max(@M, @A, @R, @I, @P)\" evaluate=true]]{your highest characteristic score}.</p><p><strong>5th Level:</strong> The armor’s bonus to Stamina increases to +12. Additionally, whenever an adjacent creature deals damage to you, they take [[/damage 3 type=acid/poison]] damage (your choice).</p><p><strong>9th Level:</strong> The armor’s bonus to Stamina increases to +21, and an adjacent creature who deals damage to you takes 6 acid or poison damage. Additionally, you can use a maneuver to transmute a 2-cube area of liquid or gas adjacent to you into liquid acid or poison gas until the start of your next turn. Any creature who enters the area for the first time in a combat round or starts their turn there [[/damage 6 type=acid/poison]], as appropriate.</p>",
       "director": ""
     },
     "source": {
@@ -231,9 +231,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1763173306105,
     "modifiedTime": null,
     "lastModifiedBy": null
