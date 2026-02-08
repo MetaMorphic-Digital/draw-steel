@@ -6,6 +6,7 @@ export default class DrawSteelScene extends foundry.documents.Scene {
   async _buildEmbedHTML(config, options = {}) {
     // Ignore normal cite and caption logic
     const embed = document.createElement("document-embed");
+    embed.classList.add("scene-embed");
 
     const label = config.cite ? this.toAnchor({ name: config.label }) : foundry.utils.parseHTML(`<span>${config.label || this.name}</span>`);
 
@@ -17,7 +18,7 @@ export default class DrawSteelScene extends foundry.documents.Scene {
     const activateButton = document.createElement("a");
     activateButton.append(foundry.applications.fields.createFontAwesomeIcon("fa-bullseye"));
     activateButton.dataset.tooltip = "SCENE.Activate";
-    viewButton.dataset.embedAction = "activate";
+    activateButton.dataset.embedAction = "activate";
 
     if (config.inline || !this.thumb) {
       embed.append(label);
