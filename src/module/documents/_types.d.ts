@@ -26,7 +26,7 @@ import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, Dra
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
-type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
+type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel" | "CreatureModel">];
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[Exclude<keyof typeof ChatMessageModels, "parts">];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];

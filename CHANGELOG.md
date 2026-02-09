@@ -37,6 +37,10 @@
   - Added a `[[reference]]` enricher which implements a tooltip for the text.
   - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
   - Reworked the rules journal to instead have an expansive list of term references and pages. (#11)
+- Added `system.prerequisites` to abilities, features, and perks to help guide which classes and subclasses something is eligible for. (#950)
+  - The DSID field lists the classes or subclasses the item is for. If multiple are provided, it is eligible for any of them.
+  - The Level field is the minimum level for the item.
+  - These fields are only needed if the item is part of a choice; automatic features/abilities like the Tactician's Mark do not need it.
 - Added a setting for the XP advancement speed. (#1064)
 - Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
 - Added new AE keys treasure bonuses to stamina and damage. (#1140)
@@ -78,6 +82,7 @@
 ### Fixed
 
 - Player-Facing Compendium Data Fixes:
+  - Significantly refactored how the Conduit is structured to properly give out subclass features and abilities. (#950)
   - Removed the category from the Conduit's Word of Guidance and Word of Judgement triggered actions. (#1519)
   - Corrected the table formatting for the "Perfect New Recipe" project.
 - Director-Facing Compendium Data Fixes:

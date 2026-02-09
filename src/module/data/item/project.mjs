@@ -4,7 +4,7 @@ import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
-import BaseItemModel from "./base.mjs";
+import BaseItemModel from "./base-item.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
