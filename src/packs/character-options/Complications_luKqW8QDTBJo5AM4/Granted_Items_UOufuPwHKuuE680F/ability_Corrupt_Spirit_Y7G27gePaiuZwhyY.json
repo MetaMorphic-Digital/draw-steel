@@ -34,7 +34,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the end of your turn, whenever you use a damage-dealing heroic ability against a single target, you can weaken that target’s life force. The ability deals extra corruption damage equal to [[lookup formula=\"max(@M, @A, @R, @I, @P)\" evaluate=true]]{your highest characteristic score}.</p>",
+      "before": "<p>Until the end of your turn, whenever you use a damage-dealing heroic ability against a single target, you can weaken that target’s life force. The ability deals extra corruption damage equal to [[lookup @chr]]{your highest characteristic score}.</p>",
       "after": ""
     },
     "spend": {

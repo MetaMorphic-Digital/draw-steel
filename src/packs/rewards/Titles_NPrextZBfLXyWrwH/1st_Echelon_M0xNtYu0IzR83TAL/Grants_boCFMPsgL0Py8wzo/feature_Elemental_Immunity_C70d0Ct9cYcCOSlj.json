@@ -6,7 +6,7 @@
   "img": "icons/magic/defensive/armor-shield-barrier-steel.webp",
   "system": {
     "description": {
-      "value": "<p>You have immunity to the chosen damage type equal to [[lookup formula=\"max(@M, @A, @R, @I, @P)\" evaluate=true]]{your highest characteristic score}.</p><p><strong>Note: </strong>Alter the Active Effect to match the selected element.</p>",
+      "value": "<p>You have immunity to the chosen damage type equal to [[lookup @chr]]{your highest characteristic score}.</p><p><strong>Note: </strong>Alter the Active Effect to match the selected element.</p>",
       "director": ""
     },
     "source": {

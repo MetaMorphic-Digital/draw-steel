@@ -83,9 +83,12 @@ export default class CreatureModel extends BaseActorModel {
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
+    rollData.chr = -5;
     for (const [key, obj] of Object.entries(this.characteristics)) {
       const rollKey = ds.CONFIG.characteristics[key].rollKey;
       rollData[rollKey] = obj.value;
+
+      if (obj.value > rollData.chr) rollData.chr = obj.value;
     }
   }
 
