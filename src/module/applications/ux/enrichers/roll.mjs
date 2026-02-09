@@ -156,7 +156,8 @@ function enrichDamageHeal(parsedConfig, label, options) {
     c.ignoredImmunities = c.ignoredImmunities?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
-      if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
+      if (normalizedValue === "scaling") c.scaling = true;
+      else if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
       else if (normalizedValue in ds.CONFIG.healingTypes) c.type.push(normalizedValue);
       else if (["heal", "healing"].includes(normalizedValue)) c.type.push("value");
       else if (["temp", "temphp"].includes(normalizedValue)) c.type.push("temporary");
@@ -247,7 +248,7 @@ async function rollDamageHeal(link, event) {
 
   const rollData = {};
 
-  if (typeOptions.length) {
+  if (typeOptions.length || scaling) {
 
     const content = document.createElement("div");
 
@@ -278,7 +279,9 @@ async function rollDamageHeal(link, event) {
           max: Number.isNumeric(scaling) ? scaling : null,
           min: 0,
           value: 0,
+          name: "scaling",
         }),
+        localize: true,
       });
 
       content.append(scaleInput);
@@ -295,7 +298,7 @@ async function rollDamageHeal(link, event) {
 
     rollData.scaling = rollChoices.scaling;
 
-    for (const [key, value] of Object.entries(foundry.utils.expandObject(rollChoices).typeChoice)) {
+    for (const [key, value] of Object.entries(foundry.utils.expandObject(rollChoices).typeChoice ?? {})) {
       rollPrep[key].options.type = value;
     }
   }
