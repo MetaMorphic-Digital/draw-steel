@@ -60,7 +60,11 @@ export default class CreatureModel extends BaseActorModel {
       Object.assign(chr, {
         edges: 0,
         banes: 0,
-        rollThree: 0,
+        dice: {
+          mode: "kh",
+          number: 2,
+          faces: 10,
+        },
       });
     });
   }
@@ -103,7 +107,6 @@ export default class CreatureModel extends BaseActorModel {
    * @param {number} [options.edges]                    Base edges for the roll.
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
-   * @param {-1 | 0 | 1} [options.rollThree]            Whether to roll three and if so take highest or lowest 2.
    * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
    * @param {string} [options.resultSource]             A UUID pointing to an ability or power roll result page.
    * @returns {Promise<DrawSteelChatMessage | null>}
@@ -131,19 +134,18 @@ export default class CreatureModel extends BaseActorModel {
 
     options.edges = (options.edges ?? 0) + chr.edges;
     options.banes = (options.banes ?? 0) + chr.banes;
-    options.rollThree = options.rollThree || chr.rollThree;
 
     const skills = this.hero?.skills ?? null;
     const skillModifiers = this.hero?.skillModifiers ?? null;
 
     const evaluation = "evaluate";
-    const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
+    const baseFormula = chr.dice.number > 2 ? `${chr.dice.number}d10${chr.dice.mode}2` : "2d10";
+    const formula = `${baseFormula} + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
     const modifiers = {
       edges: options.edges,
       banes: options.banes,
       bonuses: options.bonuses,
-      rollThree: options.rollThree,
     };
 
     const doc = await fromUuid(options.resultSource);

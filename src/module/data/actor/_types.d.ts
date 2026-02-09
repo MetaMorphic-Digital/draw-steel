@@ -15,14 +15,10 @@ interface Characteristic {
   value: number;
   edges: number;
   banes: number;
-  rollThree: -1 | 0 | 1;
-}
-
-interface Characteristic {
-  value: number;
-  edges: number;
-  banes: number;
-  rollThree: -1 | 0 | 1;
+  dice: {
+    mode: "kh" | "kl";
+    number: number;
+  }
 }
 
 interface CoreResource {

@@ -22,11 +22,6 @@ export default class PowerRoll extends DSRoll {
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
     if (!options.appliedModifier) {
 
-      if (options.rollThree && this.isValidPowerRoll) {
-        this.terms[0]._number = 3;
-        this.terms[0].modifiers.push(`k${options.rollThree > 0 ? "h" : "l"}2`);
-      }
-
       // Add edges/banes to formula
       if (Math.abs(this.netBoon) === 1) {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
@@ -64,7 +59,6 @@ export default class PowerRoll extends DSRoll {
     banes: 0,
     edges: 0,
     bonuses: 0,
-    rollThree: 0,
   });
 
   /* -------------------------------------------------- */
@@ -183,7 +177,7 @@ export default class PowerRoll extends DSRoll {
     this.getActorModifiers(options);
     const context = {
       type,
-      formula: new this(formula, options.data, { rollThree: options.modifiers.rollThree }).formula,
+      formula: this.replaceFormulaData(formula, options.data, { missing: "0" }),
       modifiers: options.modifiers,
       targets: options.targets,
     };
@@ -200,7 +194,7 @@ export default class PowerRoll extends DSRoll {
     });
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill, rollThree: options.modifiers.rollThree });
+    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill });
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
