@@ -28,6 +28,8 @@ You can have inline damage enrichers by using `[[/damage]]`; this is the intende
 - [&ZeroWidthSpace;[/damage 2*@P]]: You can use roll data in the formula. The available values depend on where the enriched text lies, such as an Ability Description.
 - [&ZeroWidthSpace;[/damage 1d6+@level]]{Bleeding}: Brackets will replace the default text for the roll.
 - [&ZeroWidthSpace;[/damage 3d6 acid]]: You can include damage types, which are not case sensitive.
+- [&ZeroWidthSpace;[/damage 2*@scaling scaling]]: The scaling option will add a prompt to pick the value of the `@scaling` when the enricher is used.
+- [&ZeroWidthSpace;[/damage 2*@scaling scaling=5]]: Explicitly including a number for the scaling option imposes a maximum value for the input.
 - [&ZeroWidthSpace;[/damage formula=3d6 type=acid]]: You can also specify which parts are which to avoid ambiguity.
 - [&ZeroWidthSpace;[/damage 3d6 type=acid/poison]]: If you specify the `type` parameter you can use a `/` or `|` to indicate "or".
 - [&ZeroWidthSpace;[/damage 3d6 fire & 2d6 cold]]: You can join any number of damage rolls together in one enricher by using &.
