@@ -35,7 +35,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The target is [[/apply YW2JEdoDPd0XlaII]]{marked} by you until the end of the encounter, until you are dying, or until you use this ability again. You can willingly end your mark on a creature (no action required), and if another tactician marks a creature, your mark on that creature ends. When a creature marked by you is reduced to 0 Stamina, you can use a free triggered action to mark a new target within distance.</p><p>You can initially mark only one creature using this ability, though other tactician abilities allow you to mark additional creatures at the same time. The mastermind tactical doctrine’s Anticipation feature allows you to target additional creatures with this ability starting at 5th level.</p><p>While a creature marked by you is within your line of effect, you and allies within your line of effect gain an edge on power rolls made against that creature. Additionally, whenever you or any ally uses an ability to deal rolled damage to a creature marked by you, you can spend 1 focus to gain one of the following benefits as a free triggered action:</p><ul><li><p>The ability deals [[/damage 2*@R]]{extra damage equal to twice your Reason score}.</p></li><li><p>The creature dealing the damage can spend a Recovery.</p></li><li><p>The creature dealing the damage can shift up to a number of squares equal to your Reason score.</p></li><li><p>If you damage a creature marked by you with a melee ability, the creature is [[/apply taunted turn]] by you until the end of their next turn.</p></li></ul><p>You can’t gain more than one benefit from the same trigger</p>",
+      "before": "<p>The target is [[/apply YW2JEdoDPd0XlaII]]{marked} by you until the end of the encounter, until you are dying, or until you use this ability again. You can willingly end your mark on a creature (no action required), and if another tactician marks a creature, your mark on that creature ends. When a creature marked by you is reduced to 0 Stamina, you can use a free triggered action to mark a new target within distance.</p><p>You can initially mark only one creature using this ability, though other tactician abilities allow you to mark additional creatures at the same time. The mastermind tactical doctrine’s Anticipation feature allows you to target additional creatures with this ability starting at 5th level.</p><p>While a creature marked by you is within your line of effect, you and allies within your line of effect gain an edge on power rolls made against that creature. Additionally, whenever you or any ally uses an ability to deal rolled damage to a creature marked by you, you can spend 1 focus to gain one of the following benefits as a free triggered action:</p><ul><li><p>The ability deals extra [[/damage 2*@R]]{damage} equal to twice your Reason score.</p></li><li><p>The creature dealing the damage can spend a Recovery.</p></li><li><p>The creature dealing the damage can shift up to a number of squares equal to [[lookup @R]]{your Reason score}.</p></li><li><p>If you damage a creature marked by you with a melee ability, the creature is [[/apply taunted turn]] by you until the end of their next turn.</p></li></ul><p>You can’t gain more than one benefit from the same trigger</p>",
       "after": ""
     },
     "spend": {
@@ -95,9 +95,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755474003234,
     "modifiedTime": null,
     "lastModifiedBy": null

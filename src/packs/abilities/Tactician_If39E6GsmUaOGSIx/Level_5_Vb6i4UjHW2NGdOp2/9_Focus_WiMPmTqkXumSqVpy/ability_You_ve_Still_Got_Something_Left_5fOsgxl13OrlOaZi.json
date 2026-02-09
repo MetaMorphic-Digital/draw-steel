@@ -37,7 +37,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The target uses a heroic ability with the Strike keyword as a free triggered action, and deals [[/damage @R]]{extra damage} with that ability equal to your Reason score. The ability has its Heroic Resource cost reduced by 1 + your Reason score (minimum cost 0).</p>",
+      "before": "<p>The target uses a heroic ability with the Strike keyword as a free triggered action, and deals [[/damage @R]]{extra damage} with that ability equal to your Reason score. The ability has its Heroic Resource cost reduced by [[lookup 1+@R evaluate=true]]{1 + your Reason score} (minimum cost 0).</p>",
       "after": ""
     },
     "spend": {
@@ -55,9 +55,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1760643909201,
     "modifiedTime": null,
     "lastModifiedBy": null

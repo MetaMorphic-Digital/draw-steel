@@ -6,7 +6,7 @@
   "img": "icons/magic/life/ankh-gold-blue.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that a creature within 10 squares regains Stamina.</p><p><strong>Prayer Effect:</strong> Choose yourself or one ally within 10 squares. That character can spend a Recovery, can end one effect on them that is ended by a saving throw or that ends at the end of their turn, or can stand up if they are prone. Alternatively, you or one ally within 10 squares gains temporary Stamina equal to two times your Intuition score. [[/heal 2*@I type=temporary]]</p>",
+      "value": "<p><strong>Piety:</strong> You [[/gain 2 hr]]{gain 2 piety} the first time in an encounter that a creature within 10 squares regains Stamina.</p><p><strong>Prayer Effect:</strong> Choose yourself or one ally within 10 squares. That character can spend a Recovery, can end one effect on them that is ended by a saving throw or that ends at the end of their turn, or can stand up if they are prone. Alternatively, you or one ally within 10 squares gains [[/heal 2*@I type=temporary]]{temporary Stamina} equal to two times your Intuition score.</p>",
       "director": ""
     },
     "source": {
@@ -135,9 +135,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755670963090,
     "modifiedTime": null,
     "lastModifiedBy": null
