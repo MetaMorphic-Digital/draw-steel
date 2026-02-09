@@ -1831,6 +1831,9 @@ export const MessagePart = {
   test: {
     documentClass: pseudoDocuments.messageParts.TestPart,
   },
+  testRequest: {
+    documentClass: pseudoDocuments.messageParts.TestRequestPart,
+  },
   project: {
     documentClass: pseudoDocuments.messageParts.ProjectPart,
   },
