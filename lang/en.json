@@ -328,9 +328,13 @@
       "Enrichers": {
         "DamageHeal": {
           "FormatString": "{formula} {type}",
-          "ChooseType": {
-            "InputLabel": "Type {index}",
-            "DialogTitle": "Choose Damage Types"
+          "RollInput": {
+            "Type": "Type {index}",
+            "Scaling": {
+              "label": "Scaling",
+              "hint": "Value for @scaling in formula"
+            },
+            "DialogTitle": "Choose Damage Options"
           },
           "MessageTitle": {
             "damage": "Damage Roll",

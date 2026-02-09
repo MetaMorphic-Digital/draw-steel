@@ -1,5 +1,5 @@
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
-import { DSRoll, DamageRoll, PowerRoll } from "../../../rolls/_module.mjs";
+import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
 import { parseConfig, createLink, addDataset } from "../helpers.mjs";
 
@@ -8,6 +8,8 @@ import { parseConfig, createLink, addDataset } from "../helpers.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  */
+
+const { createFormGroup, createNumberInput, createSelectInput } = foundry.applications.fields;
 
 /**
  * Implementation logic for all roll-style enrichers.
@@ -169,6 +171,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
       linkConfig.formulas.push(c.formula);
       linkConfig.damageTypes.push(c.type.join("|"));
       linkConfig.ignoredImmunities.push(c.ignoredImmunities.join("|"));
+      linkConfig.scaling ||= c.scaling;
     }
   }
 
@@ -218,7 +221,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollDamageHeal(link, event) {
-  let { formulas, rollType, damageTypes, ignoredImmunities: rawIgnoredImmunities } = link.dataset;
+  let { formulas, rollType, damageTypes, ignoredImmunities: rawIgnoredImmunities, scaling } = link.dataset;
   const configKey = rollType === "damage" ? "damageTypes" : "healingTypes";
 
   if (!["damage", "healing"].includes(rollType)) throw new Error("The button's roll type must be damage or healing");
@@ -242,38 +245,57 @@ async function rollDamageHeal(link, event) {
     };
   });
 
+  const rollData = {};
+
   if (typeOptions.length) {
 
-    const content = typeOptions.reduce((htmlString, choices) => {
+    const content = document.createElement("div");
+
+    const typeInputs = typeOptions.map(choices => {
       const options = choices.types.map((type) => ({
         value: type,
         label: ds.CONFIG[configKey][type].label,
       }));
 
-      const input = foundry.applications.fields.createSelectInput({
-        name: "typeChoice." + choices.index,
-        blank: false,
-        options,
-        value: choices.types[0],
+      return createFormGroup({
+        input: createSelectInput({
+          name: "typeChoice." + choices.index,
+          blank: false,
+          options,
+          value: choices.types[0],
+        }),
+        label: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Type", { index: choices.index + 1 }),
+      });
+    });
+
+    content.append(...typeInputs);
+
+    if (scaling) {
+      const scaleInput = createFormGroup({
+        label: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Scaling.label",
+        hint: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Scaling.hint",
+        input: createNumberInput({
+          max: Number.isNumeric(scaling) ? scaling : null,
+          min: 0,
+          value: 0,
+        }),
       });
 
-      const label = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.InputLabel", { index: choices.index + 1 });
+      content.append(scaleInput);
+    }
 
-      htmlString += foundry.applications.fields.createFormGroup({ input, label, localize: true }).outerHTML;
-
-      return htmlString;
-    }, "");
-
-    const typeChoices = await DSDialog.input({
+    const rollChoices = await DSDialog.input({
       content,
       window: {
-        title: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.DialogTitle",
+        title: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.DialogTitle",
       },
     });
 
-    if (!typeChoices) return;
+    if (!rollChoices) return;
 
-    for (const [key, value] of Object.entries(foundry.utils.expandObject(typeChoices).typeChoice)) {
+    rollData.scaling = rollChoices.scaling;
+
+    for (const [key, value] of Object.entries(foundry.utils.expandObject(rollChoices).typeChoice)) {
       rollPrep[key].options.type = value;
     }
   }
@@ -281,7 +303,7 @@ async function rollDamageHeal(link, event) {
   const rolls = rollPrep.map(({ formula, options }) => {
     options.flavor = ds.CONFIG[configKey][options.type]?.label;
 
-    return new DamageRoll(formula, {}, options);
+    return new DamageRoll(formula, rollData, options);
   });
 
   // One by one evaluation to make it easier on users doing manual rolls
