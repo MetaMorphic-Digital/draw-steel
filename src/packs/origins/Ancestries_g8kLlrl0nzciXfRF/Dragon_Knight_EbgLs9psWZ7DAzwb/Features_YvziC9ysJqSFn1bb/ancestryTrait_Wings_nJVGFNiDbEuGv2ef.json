@@ -6,7 +6,7 @@
   "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
   "system": {
     "description": {
-      "value": "<p>You possess wings powerful enough to take you airborne. While using your wings to fly, you can stay aloft for a number of rounds equal to your Might score [[@M]] (minimum 1 round) before you fall. While using your wings to fly at 3rd level or lower, you have damage weakness 5.</p>",
+      "value": "<p>You possess wings powerful enough to take you airborne. While using your wings to fly, you can stay aloft for a number of rounds equal to [[lookup formula=\"max(@M, 1)\" evaluate=true]]{your Might score (minimum 1 round)} before you fall. While using your wings to fly at 3rd level or lower, you have damage weakness 5.</p>",
       "director": "<p>Two active effects are included in this feature. One for players in echelon 1, another for players in echelon 2+. Players should keep the one that applies.</p>"
     },
     "source": {
@@ -133,9 +133,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1754522609093,
     "modifiedTime": null,
     "lastModifiedBy": null

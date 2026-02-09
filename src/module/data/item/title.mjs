@@ -37,11 +37,6 @@ export default class TitleModel extends FeatureModel {
 
     schema.story = new fields.StringField({ required: true });
 
-    // Can be expanded over time for automation
-    schema.prerequisites = new fields.SchemaField({
-      value: new fields.StringField({ required: true }),
-    });
-
     return schema;
   }
 

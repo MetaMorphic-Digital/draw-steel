@@ -356,7 +356,11 @@
           "FormatString": {
             "Default": "{difficulty} {characteristic} test"
           },
-          "MessageTitle": {}
+          "chooseCharacteristic": {
+            "title": "Choose Test Characteristic",
+            "inputLabel": "Characteristic"
+          },
+          "Request": "Request Test"
         },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
@@ -422,7 +426,8 @@
       },
       "Licenses": {
         "DSCL": "Draw Steel Creator License"
-      }
+      },
+      "InvalidDSID": "A DSID must be all lowercase with no spaces."
     },
     "MEASUREMENT": {
       "Height": {
@@ -930,6 +935,20 @@
           "_dsid": {
             "label": "DSID",
             "hint": "Draw Steel ID"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            },
+            "dsid": {
+              "label": "DSID",
+              "hint": "The Draw Steel ID of other items (e.g. classes, subclasses) required by this item. Any may be fulfilled. Only needed if this is an option in advancements."
+            },
+            "level": {
+              "label": "Level",
+              "hint": "The minimum level required to choose this item. Only needed if this an option in advancements."
+            }
           }
         }
       },
@@ -942,6 +961,10 @@
       },
       "ability": {
         "FIELDS": {
+          "class": {
+            "label": "Ability Source",
+            "hint": "The DSID of the Class or Subclass this ability belongs to"
+          },
           "story": {
             "label": "Story Text"
           },
@@ -1444,12 +1467,6 @@
           },
           "story": {
             "label": "Story Text"
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
           }
         }
       },

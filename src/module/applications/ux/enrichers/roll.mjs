@@ -1,3 +1,4 @@
+import { characteristics } from "../../../config.mjs";
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
@@ -112,18 +113,20 @@ export function enricher(match, options) {
  * @param {HTMLEnrichedContentElement} element
  */
 export async function onRender(element) {
-  const link = element.querySelector("a");
-
-  link.addEventListener("click", (ev) => {
-    switch (link.dataset.type) {
-      case "damageHeal":
-        return void rollDamageHeal(link, ev);
-      case "gain":
-        return void rollGain(link, ev);
-      case "test":
-        return void rollTest(link, ev);
-    }
-  });
+  for (const link of element.querySelectorAll("a")) {
+    link.addEventListener("click", (ev) => {
+      switch (link.dataset.type) {
+        case "damageHeal":
+          return void rollDamageHeal(link, ev);
+        case "gain":
+          return void rollGain(link, ev);
+        case "test":
+          return void rollTest(link, ev);
+        case "requestTest":
+          return void requestTest(link, ev);
+      }
+    });
+  }
 }
 
 /* -------------------------------------------------- */
@@ -450,10 +453,11 @@ async function rollGain(link, event) {
 function enrichTest(parsedConfig, label, options) {
   const linkConfig = {
     type: "test",
-    characteristic: parsedConfig.characteristic,
+    characteristic: (parsedConfig.characteristic ?? "").replaceAll("/", "|"),
     difficulty: parsedConfig.difficulty,
     edges: parsedConfig.edges,
     banes: parsedConfig.banes,
+    resultSource: parsedConfig.resultSource,
   };
 
   const letterCharacteristics = {
@@ -465,25 +469,45 @@ function enrichTest(parsedConfig, label, options) {
   };
 
   for (const value of parsedConfig.values) {
+    let characteristic;
     const normalizedValue = value.toLowerCase();
-    if (value in ds.CONFIG.characteristics) linkConfig.characteristic ??= normalizedValue;
-    if (letterCharacteristics[value]) linkConfig.characteristic ??= letterCharacteristics[value];
+    if (normalizedValue in ds.CONFIG.characteristics) characteristic = normalizedValue;
+    if (letterCharacteristics[value]) characteristic = letterCharacteristics[value];
+    if (characteristic) linkConfig.characteristic += `${linkConfig.characteristic ? "|" : ""}${characteristic}`;
     if (normalizedValue in ds.CONST.testOutcomes) linkConfig.difficulty ??= normalizedValue;
   }
 
   if (!linkConfig.characteristic) return null;
 
+  const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+
+  const characteristicLabel = linkConfig.characteristic.includes("|")
+    ? formatter.format(linkConfig.characteristic.split("|").map(chr => ds.CONFIG.characteristics[chr].label))
+    : ds.CONFIG.characteristics[linkConfig.characteristic].label;
+
   const localizationData = {
     difficulty: game.i18n.localize(ds.CONST.testOutcomes[linkConfig.difficulty]?.label) ?? "",
-    characteristic: ds.CONFIG.characteristics[linkConfig.characteristic].label,
+    characteristic: characteristicLabel,
   };
 
   label ??= game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
 
-  return createLink(label,
+  const rollTestLink = createLink(label,
     linkConfig,
     { icon: "fa-dice-d10" },
   );
+
+  if (game.user.isGM) {
+    // foundry checks if the returned html element is enriched-content and wraps if it's not.
+    const wrapper = document.createElement("enriched-content");
+    wrapper.appendChild(rollTestLink);
+    wrapper.appendChild(createLink("",
+      { ...linkConfig, type: "requestTest", tooltip: "DRAW_STEEL.EDITOR.Enrichers.Test.Request" },
+      { icon: "fa-comment" },
+    ));
+    return wrapper;
+  }
+  else return rollTestLink;
 }
 
 /* -------------------------------------------------- */
@@ -494,11 +518,60 @@ function enrichTest(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollTest(link, event) {
-  const { characteristic, difficulty, edges, banes } = link.dataset;
+  let { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
 
   if (!characteristic) throw new Error("Test enricher must provide a characteristic");
 
-  for (const actor of ds.utils.tokensToActors()) {
-    if (typeof actor.system.rollCharacteristic === "function") actor.system.rollCharacteristic(characteristic, { difficulty, edges, banes });
+  if (characteristic.includes("|")) {
+    const chrOptions = characteristic.split("|").map(chr => ({ value: chr, label: ds.CONFIG.characteristics[chr].label }));
+
+    const content = document.createElement("div");
+    const { createFormGroup, createSelectInput } = foundry.applications.fields;
+
+    content.append(createFormGroup({
+      label: "DRAW_STEEL.EDITOR.Enrichers.Test.chooseCharacteristic.inputLabel",
+      localize: true,
+      input: createSelectInput({
+        name: "characteristic",
+        options: chrOptions,
+      }),
+    }));
+
+    const fd = await ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: "DRAW_STEEL.EDITOR.Enrichers.Test.chooseCharacteristic.title",
+      },
+    });
+
+    if (!fd) return;
+
+    characteristic = fd.characteristic;
   }
+
+  for (const actor of ds.utils.tokensToActors()) {
+    actor.rollCharacteristic(characteristic, { difficulty, edges, banes, resultSource });
+  }
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Create a test request chat message.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
+ */
+async function requestTest(link, event) {
+  const { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
+  const part = {
+    difficulty, edges, banes, resultSource,
+    characteristics: characteristic.split("|"),
+    type: "testRequest",
+  };
+
+  await DrawSteelChatMessage.create({
+    type: "standard",
+    "system.parts": [part],
+    flags: { core: { canPopout: true } },
+  });
 }

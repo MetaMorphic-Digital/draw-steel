@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
-import BaseItemModel from "./base.mjs";
+import BaseItemModel from "./base-item.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";

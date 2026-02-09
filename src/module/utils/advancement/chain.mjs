@@ -49,6 +49,65 @@ export default class AdvancementChain {
   /* -------------------------------------------------- */
 
   /**
+   * A cached reference to the actor's class or pending class.
+   * Cached because classes cannot be changed/granted.
+   * @type {DrawSteelItem}
+   */
+  #actorClass;
+
+  /**
+   * The actor's class or pending class.
+   * @returns {DrawSteelItem | null} Returns null if the actor doesn't have a class already and this isn't to give one,
+   *  e.g. If you add an Ancestry before a Class.
+   */
+  get actorClass() {
+    if (this.#actorClass === undefined) {
+      // Hero with class
+      if (this.actor.system.class) this.#actorClass = this.actor.system.class;
+      else {
+        // Pending class
+        this.#actorClass = null;
+        for (const node of this.activeNodes()) {
+          const item = node.advancement.document;
+          if (item.type === "class") {
+            this.#actorClass = item;
+            return item;
+          }
+        }
+      }
+    }
+    return this.#actorClass;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The actor's subclasses and pending subclasses.
+   * *Not* cached because these can change during the advancement selection process.
+   * @type {Set<DrawSteelItem>}
+   */
+  get actorSubclasses() {
+    /**
+     * Existing subclasses.
+     * @type {Set<DrawSteelItem>}
+     */
+    const subclasses = this.actor.system.subclasses;
+
+    // Pending subclasses
+    for (const node of this.activeNodes()) {
+      if (node.advancement.type !== "itemGrant") continue;
+      for (const uuid of (node.chosenSelection ?? [])) {
+        const item = node.choices[uuid].item;
+        if (item.type === "subclass") subclasses.add(item);
+      }
+    }
+
+    return subclasses;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Is the chain initialized?
    * @type {boolean}
    */
@@ -132,7 +191,7 @@ export default class AdvancementChain {
     const promises = [];
     if (!item.supportsAdvancements) return promises;
     const { start: levelStart, end: levelEnd } = this.levelRange;
-    for (const advancement of item.getEmbeddedCollection("Advancement")) {
+    for (const advancement of item.getEmbeddedCollection("Advancement").sortedContents) {
       const validRange = advancement.levels.some(level => {
         if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
         else return levelStart === null;

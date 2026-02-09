@@ -15,7 +15,34 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "oracular-visions",
-    "advancements": {}
+    "advancements": {
+      "dKMxH4YRAXv6N60V": {
+        "name": "Skill (Lore)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": null
+        },
+        "_id": "dKMxH4YRAXv6N60V",
+        "skills": {
+          "groups": [
+            "lore"
+          ],
+          "choices": []
+        },
+        "chooseN": 1,
+        "sort": 0,
+        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>",
+        "repick": {
+          "respite": ""
+        }
+      }
+    },
+    "prerequisites": {
+      "dsid": [
+        "fate"
+      ]
+    }
   },
   "effects": [],
   "sort": 200000,
@@ -27,9 +54,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755755140550,
     "modifiedTime": null,
     "lastModifiedBy": null

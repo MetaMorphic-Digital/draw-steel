@@ -114,4 +114,15 @@ document-embed, .content-embed {
       }
     }
   }
+
+  /* Scene Embeds */
+  &.scene-embed {
+    a.content-link {
+      border: none;
+      padding-right: 0;
+    }
+    a[data-embed-action] {
+      margin-left: 0.3rem;
+    }
+  }
 }

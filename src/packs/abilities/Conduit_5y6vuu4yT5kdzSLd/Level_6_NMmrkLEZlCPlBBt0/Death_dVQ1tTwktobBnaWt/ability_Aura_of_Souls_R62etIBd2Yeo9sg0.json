@@ -38,12 +38,17 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the end of the encounter or until you are dying, at the end of each of your turns, you can slide each creature in the area up to a number of squares equal to your Intuition score. This forced movement ignores stability for your allies.</p>",
+      "before": "<p>Until the end of the encounter or until you are dying, at the end of each of your turns, you can slide each creature in the area up to a number of squares equal to [[lookup @I]]{your Intuition score}. This forced movement ignores stability for your allies.</p>",
       "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "prerequisites": {
+      "dsid": [
+        "death"
+      ]
     }
   },
   "effects": [],
@@ -56,9 +61,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1760753576494,
     "modifiedTime": null,
     "lastModifiedBy": null

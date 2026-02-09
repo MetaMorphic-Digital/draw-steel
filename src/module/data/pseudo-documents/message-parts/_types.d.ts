@@ -29,6 +29,17 @@ declare module "./hero-token.mjs" {
   }
 }
 
+declare module "./test-request.mjs" {
+  export default interface TestRequestPart {
+    characteristics: Set<string>;
+    difficulty: string;
+    edges: number;
+    banes: number;
+    resultSource: string;
+    revealResult: string;
+  }
+}
+
 declare module "./test.mjs" {
   export default interface TestPart {
     resultSource: string;
