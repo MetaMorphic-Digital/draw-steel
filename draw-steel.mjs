@@ -101,13 +101,14 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.NPC",
   });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelObjectSheet, {
+    types: ["object"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Object",
+  });
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
-  });
-  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
-    makeDefault: true,
-    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
   });
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
@@ -123,10 +124,21 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
+
+  // Journal Pages
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
+  });
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ConfigPage,
     { makeDefault: true, types: ["configuration"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.DrawSteelImageSheet,
+    { makeDefault: true, types: ["image"] },
   );
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
@@ -135,8 +147,8 @@ Hooks.once("init", function () {
   );
   DocumentSheetConfig.registerSheet(
     JournalEntryPage, DS_CONST.systemID,
-    applications.sheets.journal.DrawSteelImageSheet,
-    { makeDefault: true, types: ["image"] },
+    applications.sheets.journal.TierOutcomePage,
+    { makeDefault: true, types: ["tierOutcome"] },
   );
 
   // Register replacements for core UI elements
@@ -231,6 +243,8 @@ Hooks.once("i18nInit", () => {
 });
 
 Hooks.once("setup", () => {
+  applications.sidebar.apps.DrawSteelCompendiumTOC.applyToPacks();
+
   // Link up various rules & references automatically
   for (const status of CONFIG.statusEffects) {
     if (status.rule) ds.CONFIG.references[status.id] = status.rule;

@@ -28,7 +28,10 @@
 {{/inline}}
 
 {{! Sheet Header }}
-<header class="sheet-header">
+<header class="sheet-header" style="
+  {{#if avatarProperties.objectFit}} --avatar-object-fit: {{avatarProperties.objectFit}}; {{/if}}
+  {{#if avatarProperties.objectPosition}} --avatar-object-position: {{avatarProperties.objectPosition}}; {{/if}}
+  ">
   <img
     class="profile-img"
     src="{{document.img}}"

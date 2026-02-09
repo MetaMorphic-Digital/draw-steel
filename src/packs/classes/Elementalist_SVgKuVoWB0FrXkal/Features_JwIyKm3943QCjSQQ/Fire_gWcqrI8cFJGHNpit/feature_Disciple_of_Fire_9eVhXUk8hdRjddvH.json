@@ -6,7 +6,7 @@
   "img": "icons/magic/fire/flame-burning-fist-strike.webp",
   "system": {
     "description": {
-      "value": "<p>Your connection to fire allows you to protect yourself from it, even as you rip away the protections of others. You have fire immunity equal to 5 plus your level. Additionally, fire damage you deal ignores a target’s fire immunity.</p><p>At the start of a combat encounter, you gain a number of surges equal to your Victories. Whenever you spend a surge to deal extra damage, you can make that damage fire damage.</p>",
+      "value": "<p>Your connection to fire allows you to protect yourself from it, even as you rip away the protections of others. You have fire immunity equal to [[lookup 5+@level evaluate=true]]{5 plus your level}. Additionally, fire damage you deal ignores a target’s fire immunity.</p><p>At the start of a combat encounter, you [[/gain @hero.victories surge]]{gain a number of surges} equal to your Victories. Whenever you spend a surge to deal extra damage, you can make that damage fire damage.</p>",
       "director": ""
     },
     "source": {
@@ -77,9 +77,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.10.0",
     "createdTime": 1756082750757,
     "modifiedTime": null,
     "lastModifiedBy": null

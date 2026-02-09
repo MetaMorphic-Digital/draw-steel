@@ -15,7 +15,34 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "protective-circle",
-    "advancements": {}
+    "advancements": {
+      "ikTmfY5zLmTJEAxi": {
+        "name": "Skill (Exploration)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": null
+        },
+        "_id": "ikTmfY5zLmTJEAxi",
+        "skills": {
+          "groups": [
+            "exploration"
+          ],
+          "choices": []
+        },
+        "chooseN": 1,
+        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>",
+        "sort": 0,
+        "repick": {
+          "respite": ""
+        }
+      }
+    },
+    "prerequisites": {
+      "dsid": [
+        "protection"
+      ]
+    }
   },
   "effects": [],
   "sort": 200000,
@@ -27,9 +54,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755755150390,
     "modifiedTime": null,
     "lastModifiedBy": null

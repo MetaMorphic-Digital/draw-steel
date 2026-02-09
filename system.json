@@ -25,6 +25,10 @@
       "npc": {
         "htmlFields": ["biography.value", "biography.director"],
         "gmOnlyFields": ["biography.director"]
+      },
+      "object": {
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       }
     },
     "ChatMessage": {
@@ -141,6 +145,9 @@
       "configuration": {},
       "reference": {
         "htmlFields": ["tooltip"]
+      },
+      "tierOutcome": {
+        "htmlFields": ["tier1", "tier2", "tier3"]
       }
     }
   },
@@ -194,7 +201,12 @@
     {
       "name": "journals",
       "label": "DRAW_STEEL.COMPENDIUM.journals",
-      "type": "JournalEntry"
+      "type": "JournalEntry",
+      "flags": {
+        "draw-steel": {
+          "display": "table-of-contents"
+        }
+      }
     },
     {
       "name": "tables",

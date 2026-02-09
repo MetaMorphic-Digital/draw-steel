@@ -1,1 +1,6 @@
 {{formGroup systemFields.perkType value=system.perkType options=perkTypes disabled=isPlay}}
+<fieldset class="prerequisites" {{disabled isPlay}}>
+  <legend>{{systemFields.prerequisites.label}}</legend>
+  {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value}}
+  {{formGroup systemFields.prerequisites.fields.dsid value=system.prerequisites.dsid}}
+</fieldset>

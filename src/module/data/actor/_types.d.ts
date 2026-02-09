@@ -1,6 +1,5 @@
 import DrawSteelActor from "../../documents/actor.mjs";
-import SizeModel from "../models/size.mjs";
-import SourceModel from "../models/source.mjs";
+import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
 
 interface BarAttribute {
   value: number,
@@ -10,7 +9,13 @@ interface BarAttribute {
 interface Biography {
   value: string;
   director: string;
-  languages: Set<string>;
+}
+
+interface Characteristic {
+  value: number;
+  edges: number;
+  banes: number;
+  rollThree: -1 | 0 | 1;
 }
 
 interface Characteristic {
@@ -38,7 +43,7 @@ interface FreeStrike {
 }
 
 interface Combat {
-  size: SizeModel;
+  size: SizeModel | ObjectSizeModel;
   stability: number;
   turns: number;
   save: {
@@ -47,7 +52,7 @@ interface Combat {
   }
 }
 
-declare module "./base.mjs" {
+declare module "./base-actor.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
     stamina: BarAttribute & {
@@ -57,6 +62,8 @@ declare module "./base.mjs" {
         echelon: number;
         level: number;
       }
+      /** Added by ObjectModel */
+      maxLabel?: string;
     },
     combat: Combat;
     biography: Biography;
@@ -91,6 +98,9 @@ declare module "./base.mjs" {
 
 declare module "./creature.mjs" {
   export default interface CreatureModel {
+    biography: Biography & {
+      languages: Set<string>;
+    }
     characteristics: Record<string, Characteristic>;
     potency: {
       bonuses: number;
@@ -126,6 +136,7 @@ declare module "./hero.mjs" {
       preferredKit: string;
     }
     biography: Biography & {
+      languages: Set<string>;
       age: string;
       height: {
         value: number;
@@ -149,16 +160,33 @@ declare module "./npc.mjs" {
       pitfalls: Set<string>;
       impression: number;
     }
+    ev: number;
+    evLabel: string;
     monster: {
       freeStrike: number;
       keywords: Set<string> & { list: string[]; labels: string };
       level: number;
-      ev: number;
-      evLabel: number;
       role: string;
       roleLabel: string;
       organization: string;
       organizationLabel: string;
+    }
+  }
+}
+
+declare module "./object.mjs" {
+  export default interface ObjectModel {
+    source: SourceModel;
+    ev: number;
+    evLabel: string;
+    object: {
+      level: number;
+      category: string;
+      role: string;
+      area: string;
+      squareStamina: boolean;
+      roleLabel: string;
+      categoryLabel: string;
     }
   }
 }

@@ -6,7 +6,7 @@
   "img": "icons/equipment/chest/breastplate-layered-gold.webp",
   "system": {
     "description": {
-      "value": "<p>Your hardened scales grant you damage immunity equal to your level to one of the following damage types: acid, cold, corruption, fire, lightning, or poison. You can change your damage immunity type when you finish a respite.</p>",
+      "value": "<p>Your hardened scales grant you damage immunity equal to [[lookup @level]]{your level} to one of the following damage types: acid, cold, corruption, fire, lightning, or poison. You can change your damage immunity type when you finish a respite.</p>",
       "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
     },
     "source": {
@@ -78,9 +78,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1754522554970,
     "modifiedTime": null,
     "lastModifiedBy": null

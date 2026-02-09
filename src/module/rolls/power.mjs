@@ -145,14 +145,17 @@ export default class PowerRoll extends DSRoll {
     tier1: {
       label: "DRAW_STEEL.ROLL.Power.Tiers.One",
       threshold: -Infinity,
+      glyph: "!",
     },
     tier2: {
       label: "DRAW_STEEL.ROLL.Power.Tiers.Two",
       threshold: 12,
+      glyph: "@",
     },
     tier3: {
       label: "DRAW_STEEL.ROLL.Power.Tiers.Three",
       threshold: 17,
+      glyph: "#",
     },
   };
 

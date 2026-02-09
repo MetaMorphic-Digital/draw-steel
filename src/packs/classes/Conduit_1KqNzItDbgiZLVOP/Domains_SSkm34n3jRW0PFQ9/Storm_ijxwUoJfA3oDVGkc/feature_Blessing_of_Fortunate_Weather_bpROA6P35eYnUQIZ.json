@@ -15,7 +15,34 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "blessing-of-fortunate-weather",
-    "advancements": {}
+    "advancements": {
+      "GlNrUzNEbfqs94d7": {
+        "name": "Skill (Exploration)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": null
+        },
+        "_id": "GlNrUzNEbfqs94d7",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "exploration"
+          ],
+          "choices": []
+        },
+        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>",
+        "sort": 0,
+        "repick": {
+          "respite": ""
+        }
+      }
+    },
+    "prerequisites": {
+      "dsid": [
+        "storm"
+      ]
+    }
   },
   "effects": [],
   "sort": 200000,
@@ -27,9 +54,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755755102286,
     "modifiedTime": null,
     "lastModifiedBy": null

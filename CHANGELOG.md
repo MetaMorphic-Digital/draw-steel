@@ -24,17 +24,23 @@
 
 - New Player-Facing Compendium Content:
   - Leveled Treasures
+  - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
+  - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
 - Added a new "Configuration" journal page to allow users to add new languages and monster keywords without javascript. (#306)
 - Added support for abilities that request a reactive test instead of making their own power roll. (#342)
 - Added hero token reroll for tests. (#444)
 - Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
   - Updated the Infernal Contract complication to make use of this.
-- Implemented `[[/test]]` enricher which can be used to request tests. (#893)
+- Implemented `[[/test]]` enricher which can be used to request tests. (#893, #1599)
 - Implemented Reference system. (#945)
   - Added a `[[reference]]` enricher which implements a tooltip for the text.
   - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
   - Reworked the rules journal to instead have an expansive list of term references and pages. (#11)
+- Added `system.prerequisites` to abilities, features, and perks to help guide which classes and subclasses something is eligible for. (#950)
+  - The DSID field lists the classes or subclasses the item is for. If multiple are provided, it is eligible for any of them.
+  - The Level field is the minimum level for the item.
+  - These fields are only needed if the item is part of a choice; automatic features/abilities like the Tactician's Mark do not need it.
 - Added a setting for the XP advancement speed. (#1064)
 - Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
 - Added new AE keys treasure bonuses to stamina and damage. (#1140)
@@ -47,13 +53,17 @@
   - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
   - Added `keyword` to add keywords to abilities. (#1322)
   - Added `potency` to adjust the potency of abilities. (#1350)
+- Added new "Object" actor type. (#1347)
 - Added "Gain Resource" power roll effect which covers surges, heroic resources, and epic resources. (#1396)
 - Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
 - Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
 - Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
-- Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
-- Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
+- Implemented a Table of Contents view for journal compendiums. (#1502)
 - Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
+- Added new parameters to damage enrichers
+  - Ignore immunities (#1555)
+  - Pick a `@scaling` value (#1578)
+- Implemented a Scene embed which showcases the scene thumbnail and provides buttons to activate or view the scene. (#1598)
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added `damage.bonuses.value` which can be targeted to apply a single value to each damage tier.
@@ -75,6 +85,7 @@
 ### Fixed
 
 - Player-Facing Compendium Data Fixes:
+  - Significantly refactored how the Conduit is structured to properly give out subclass features and abilities. (#950)
   - Removed the category from the Conduit's Word of Guidance and Word of Judgement triggered actions. (#1519)
   - Corrected the table formatting for the "Perfect New Recipe" project.
 - Director-Facing Compendium Data Fixes:

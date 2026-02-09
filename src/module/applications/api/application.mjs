@@ -1,3 +1,8 @@
+/**
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import FormDataExtended from "@client/applications/ux/form-data-extended.mjs";
+ */
+
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
 /**
@@ -45,7 +50,7 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
 
   /**
    * Factory method for asynchronous behavior.
-   * @param {object} options            Application rendering options.
+   * @param {ApplicationConfiguration} options            Application rendering options.
    * @returns {Promise<object|null>}    A promise that resolves to the form data, or `null`
    *                                    if the application was closed without submitting.
    */

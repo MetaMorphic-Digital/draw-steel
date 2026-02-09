@@ -26,6 +26,51 @@
     border-image-slice: 1;
   }
 
+  /*special class pages*/
+  .class-spread {
+    img {
+      outline: 1px solid rgba(255, 255, 255, 0.5);
+      outline-offset: -6px;
+    }
+
+    blockquote {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 9;
+      container-type: inline-size;
+      width: 100%;
+      padding: 10px;
+      font-weight: bolder;
+      text-shadow: black 1px 1px 2px, rgb(118, 118, 121) 0px 0px 1em, rgb(117, 117, 118) 0px 0px 0.2em;
+
+      p.pull-quote {
+        font-size: clamp(0.75rem, 6cqw, 3rem)
+      }
+
+      p.pull-quote-citation {
+        font-size: clamp(0.5rem, 4cqw, 2rem)
+      }
+    }
+
+    .class-intro-wrapper {
+      position: absolute;
+      top: 4em;
+      left: 0px;
+      container-type: inline-size;
+      width: 40%;
+      max-width: 400px;
+      padding: 10px;
+      font-weight: bolder;
+      text-shadow: black 1px 1px 2px, rgb(118, 118, 121) 0px 0px 1em, rgb(117, 117, 118) 0px 0px 0.2em;
+      min-width: 200px;
+
+      .class-intro {
+        font-size: clamp(0.75rem, 6cqw, 1rem);
+      }
+    }
+  }
+
   /*special treatments*/
   .journal-page-header h1,
   h1.chapter,
@@ -53,19 +98,26 @@
   }
 
   h3 {
-    font-family: 'Newsreader', serif;
-    font-weight: bold;
     font-variant: small-caps;
   }
 
+  h3,
   h4,
   h5 {
     font-family: 'Newsreader', serif;
     font-weight: bold;
-    font-size: 0.9em;
+  }
+
+
+  h5 {
+    --font-h5-size: 1em;
+    a.content-link {
+      padding: 3px 4px;
+    }
   }
 
   h6 {
+    --font-h6-size: 1em;
     font-family: 'Atkinson Hyperlegible', serif;
     font-weight: bold;
   }
@@ -139,7 +191,9 @@
 
 /*body content*/
 .draw-steel.journal-sheet .journal-entry,
-.draw-steel .journal-entry-page {
+.draw-steel .journal-entry-page,
+#tooltip.draw-steel section.content,
+aside[role="tooltip"] section.content {
   .hanging-indent {
     /* Indents the entire block */
     padding-left: 1em;
@@ -295,7 +349,9 @@
     }
   }
 
-  /*laser lines on captions */
+
+  /* STANDARD HTML TABLES */
+
   caption {
     text-align: center;
     position: relative;
@@ -358,78 +414,98 @@
 
   }
 
-  /*laser lines on figcaptions*/
-  figure {
-    display: table;
-  }
-
-  figcaption {
-    display: table-caption;
-    caption-side: top;
-    text-align: center;
-    position: relative;
-    line-height: 0.75em;
-    padding-top: 0.85em;
-    width: 100%;
-    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
-    border-image-slice: 1;
-    margin-bottom: 2em;
-
-    cite {
-      float: right;
+  .ability-bordered {
+    &.default {
+      --ability-border: var(--ability-default-border);
+    }
+    &.quick {
+      --ability-border: var(--ability-quick-border);
     }
 
-    /*if it has the table title in a strong tag*/
-    &:has(strong) {
-      border-bottom: 2px solid var(--draw-steel-c-laserline);
-
-      strong {
-        background: var(--draw-steel-c-white);
-        margin: -0.2em;
-        position: absolute;
-        transform: translate(-50%, 0%);
-        font-style: normal;
-      }
-
-      strong::before {
-        content: "®";
-        font-family: Draw Steel Glyphs;
-        color: #866d4b;
-
-
-      }
-
-      strong::after {
-        content: "®";
-        font-family: Draw Steel Glyphs;
-        color: #866d4b;
-      }
-
-      cite {
-        position: absolute;
-        top: 1.75em;
-        right: 0;
-      }
-
-      cite::before {
-        content: '';
-        clear: both;
-        /*margin-top: 2em;*/
-      }
-    }
-
-    p {
-      padding: 0.5em;
-    }
+    padding-left: 30px;
+    background: var(--ability-border) no-repeat top left;
+    background-size: 20px;
   }
 
   /* Embed-specific adjustments */
   document-embed {
     .draw-steel.ability {
-
+      .flavor {
+        border-bottom: 1px solid var(--draw-steel-c-laserline-rev);
+      }
       /* More compact display of abilities */
       .metadata dl {
         grid-template-columns: auto 1fr auto 1fr;
+      }
+    }
+    .draw-steel.kit {
+      .equipment dl {
+        display: grid;
+        grid-template-columns: auto 1fr auto 1fr auto 1fr;
+      }
+    }
+
+    /* EMBEDDED ROLL TABLES */
+
+    figure:has(table) {
+      cite {
+        float: right;
+      }
+    }
+
+    figcaption:has(+ table) {
+      caption-side: top;
+      text-align: center;
+      position: relative;
+      line-height: 0.75em;
+      padding-top: 0.85em;
+      width: 100%;
+      border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+      border-image-slice: 1;
+      margin-bottom: 2em;
+
+
+      /*if it has the table title in a strong tag*/
+      &:has(strong) {
+        border-bottom: 2px solid var(--draw-steel-c-laserline);
+
+        strong {
+          background: var(--draw-steel-c-white);
+          margin: -0.2em;
+          position: absolute;
+          transform: translate(-50%, 0%);
+          font-style: normal;
+        }
+
+        strong::before {
+          content: "®";
+          font-family: Draw Steel Glyphs;
+          color: #866d4b;
+
+
+        }
+
+        strong::after {
+          content: "®";
+          font-family: Draw Steel Glyphs;
+          color: #866d4b;
+        }
+
+        cite {
+          position: absolute;
+          top: 1.75em;
+          right: 0;
+        }
+
+        cite::before {
+          content: '';
+          clear: both;
+          /*margin-top: 2em;*/
+        }
+      }
+
+      p {
+        padding: 0.5em;
       }
     }
   }
