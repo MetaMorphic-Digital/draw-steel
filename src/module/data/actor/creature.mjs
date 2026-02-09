@@ -60,6 +60,11 @@ export default class CreatureModel extends BaseActorModel {
       Object.assign(chr, {
         edges: 0,
         banes: 0,
+        dice: {
+          mode: "kh",
+          number: 2,
+          faces: 10,
+        },
       });
     });
   }
@@ -125,14 +130,17 @@ export default class CreatureModel extends BaseActorModel {
       });
     }
 
-    options.edges = (options.edges ?? 0) + this.characteristics[characteristic].edges;
-    options.banes = (options.banes ?? 0) + this.characteristics[characteristic].banes;
+    const chr = this.characteristics[characteristic];
+
+    options.edges = (options.edges ?? 0) + chr.edges;
+    options.banes = (options.banes ?? 0) + chr.banes;
 
     const skills = this.hero?.skills ?? null;
     const skillModifiers = this.hero?.skillModifiers ?? null;
 
     const evaluation = "evaluate";
-    const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
+    const baseFormula = chr.dice.number > 2 ? `${chr.dice.number}d10${chr.dice.mode}2` : "2d10";
+    const formula = `${baseFormula} + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
     const modifiers = {
       edges: options.edges,

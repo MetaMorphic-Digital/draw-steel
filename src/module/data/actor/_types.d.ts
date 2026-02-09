@@ -11,6 +11,16 @@ interface Biography {
   director: string;
 }
 
+interface Characteristic {
+  value: number;
+  edges: number;
+  banes: number;
+  dice: {
+    mode: "kh" | "kl";
+    number: number;
+  }
+}
+
 interface CoreResource {
   name: string;
   target: foundry.abstract.DataModel;
@@ -67,6 +77,10 @@ declare module "./base-actor.mjs" {
       immunities: Record<string, number>;
       weaknesses: Record<string, number>;
     }
+    restrictions: {
+      type: Set<string>;
+      dsid: Set<string>;
+    }
     statuses: {
       immunities: Set<string>;
       slowed: {
@@ -78,12 +92,12 @@ declare module "./base-actor.mjs" {
   }
 }
 
-declare module "./creature" {
+declare module "./creature.mjs" {
   export default interface CreatureModel {
     biography: Biography & {
       languages: Set<string>;
     }
-    characteristics: Record<string, { value: number }>;
+    characteristics: Record<string, Characteristic>;
     potency: {
       bonuses: number;
       weak: number;
