@@ -61,3 +61,19 @@ All NPC actors share a malice pool. Any ability that has a Resource Cost listed 
 ## Free Strikes
 
 The Free Strike button on an NPC automatically applies the damage to *targeted* actors.
+
+## Actor Images
+
+The system supports two flags, `"avatarProperties.objectFit"` and `"avatarProperties.objectPosition"`, which correspond to the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit) and [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-position) css properties for the actor image in the character sheet.
+
+You can set flags for an existing actor with commands like `actor.setFlag("draw-steel", "avatarProperties.objectFit", "contain")` or `actor.setFlag("draw-steel", "avatarProperties.objectPosition", "50% 50%")`. These can be useful when working with existing actors in a world like player characters. The default values for these properties are `"cover"` and `"top left"` respectively.
+
+For module developers seeking to use the Art Mapping feature, we have special processing for the `actor` property to be an object instead of the actor image path. The objectFit and objectPosition properties are both optional if only one is needed.
+
+```json
+"actor": {
+  "img": "modules/my-module/asset/gobbo.webp",
+  "objectFit": "contain",
+  "objectPosition": "50% 50%"
+}
+```
