@@ -45,8 +45,8 @@ The Draw Steel system has added a number of unique classes that can be used to s
 
 ```html
 <h3 class="left"></h3>
-<h2 class="center"></h3>
-<h2 class="right"></h3>
+<h3 class="center"></h3>
+<h3 class="right"></h3>
 ```
 
 The "left", "center", and "right" classes align the contained text content accordingly.
@@ -112,7 +112,7 @@ The `div.ability-bordered` element and class pads the left side of the container
   <blockquote>
     <p class="pull-quote">“Quote Start</p>
     <p class="pull-quote">Quote End”</p>
-    <p class="pull-quote-citation">Speaker</p>
+    <cite>Speaker</cite>
   </blockquote>
   <div class="class-intro-wrapper">
     <p class="class-intro">Text here</p>
@@ -120,4 +120,4 @@ The `div.ability-bordered` element and class pads the left side of the container
 </div>
 ```
 
-The "class-spread" class puts together a contained image with a pull quote positioned in the top left and a class intro positioned in the bottom left.
+The "class-spread" block and its descendant elements puts together a contained image with a pull quote positioned in the top left and a class intro positioned in the bottom left.
