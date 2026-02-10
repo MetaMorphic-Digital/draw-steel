@@ -14,10 +14,5 @@
  */
 export function applyCompendiumArt(documentClass, source, pack, art) {
   if (documentClass.documentName !== "Actor") return;
-  // Normal mapping
-  if (typeof art.actor === "string") return;
-  // Integrate with avatarProperties flag
-  source.img = art.actor.img;
-  if (art.actor.objectFit) foundry.utils.setProperty(source, "flags.draw-steel.avatarProperties.objectFit", art.actor.objectFit);
-  if (art.actor.objectPosition) foundry.utils.setProperty(source, "flags.draw-steel.avatarProperties.objectPosition", art.actor.objectPosition);
+  if (art.avatarProperties) foundry.utils.setProperty(source, "flags.draw-steel.avatarProperties", art.avatarProperties);
 }
