@@ -306,4 +306,5 @@ Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 /**
  * Other hooks.
  */
+Hooks.on("applyCompendiumArt", helpers.applyCompendiumArt);
 Hooks.on("hotReload", helpers.hotReload);

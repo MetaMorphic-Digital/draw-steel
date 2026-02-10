@@ -1,5 +1,6 @@
-export * from "./hot-reload.mjs";
+export * from "./art-mapping.mjs";
 export * from "./handlebars.mjs";
+export * from "./hot-reload.mjs";
 export * as interaction from "./interaction/_module.mjs";
 export * as localization from "./localization.mjs";
 export * as macros from "./macros.mjs";
