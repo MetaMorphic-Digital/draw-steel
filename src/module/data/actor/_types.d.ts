@@ -46,6 +46,10 @@ interface Combat {
     bonus: string;
     threshold: number;
   }
+  targetModifiers: {
+    edges: number;
+    banes: number;
+  }
 }
 
 declare module "./base-actor.mjs" {

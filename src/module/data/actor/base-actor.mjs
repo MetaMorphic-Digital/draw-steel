@@ -132,6 +132,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
     });
+
+    this.combat.targetModifiers = { edges: 0, banes: 0 };
   }
 
   /* -------------------------------------------------- */

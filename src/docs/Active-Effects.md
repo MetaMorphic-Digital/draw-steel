@@ -164,6 +164,8 @@ Draw Steel also supports modifying the default roll formula for tests. `system.c
 |Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
 |Initiative Threshold|`system.combat.initiativeThreshold`|
+|Edge for abilities targeting you|`system.combat.targetModifiers.edges`|
+|Bane for abilities targeting you|`system.combat.targetModifiers.banes`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|

@@ -29,6 +29,7 @@
 - Added a new "Configuration" journal page to allow users to add new languages and monster keywords without javascript. (#306)
 - Added support for abilities that request a reactive test instead of making their own power roll. (#342)
 - Added hero token reroll for tests. (#444)
+- Added target-based edges and bane tracking, such as the edge against marked targets or the double bane against defending targets. (#546)
 - Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
   - Updated the Infernal Contract complication to make use of this.
