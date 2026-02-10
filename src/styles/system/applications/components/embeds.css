@@ -11,6 +11,7 @@ document-embed, .content-embed {
 
       dt.distance, dt.target {
         font-family: "Draw Steel Glyphs";
+        text-align: right;
       }
     }
 
@@ -111,6 +112,17 @@ document-embed, .content-embed {
         clear: both;
         margin-top: 3em;
       }
+    }
+  }
+
+  /* Scene Embeds */
+  &.scene-embed {
+    a.content-link {
+      border: none;
+      padding-right: 0;
+    }
+    a[data-embed-action] {
+      margin-left: 0.3rem;
     }
   }
 }

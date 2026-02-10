@@ -101,6 +101,11 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.NPC",
   });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelObjectSheet, {
+    types: ["object"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Object",
+  });
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
@@ -301,4 +306,5 @@ Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 /**
  * Other hooks.
  */
+Hooks.on("applyCompendiumArt", helpers.applyCompendiumArt);
 Hooks.on("hotReload", helpers.hotReload);

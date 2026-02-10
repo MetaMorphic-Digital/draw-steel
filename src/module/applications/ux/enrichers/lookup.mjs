@@ -42,8 +42,10 @@ export async function enricher(match, options) {
 
   /** @type {string | number} */
   let value;
-  if (parsedConfig.evaluate) value = ds.utils.evaluateFormula(parsedConfig.formula, data, { contextName: "lookup" });
-  else {
+  if (parsedConfig.evaluate) {
+    const replacedFormula = Roll.replaceFormulaData(parsedConfig.formula, data);
+    value = (replacedFormula.includes("@")) ? fallback : ds.utils.evaluateFormula(replacedFormula, data, { contextName: "lookup" });
+  } else {
     value = foundry.utils.getProperty(data, parsedConfig.formula.substring(1)) ?? fallback;
 
     switch (parsedConfig.style) {

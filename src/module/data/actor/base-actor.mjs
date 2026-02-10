@@ -24,7 +24,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     schema.stamina = new fields.SchemaField({
       value: new fields.NumberField({ initial: null, nullable: true, integer: true }),
-      max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      max: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
 
@@ -33,12 +33,12 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         threshold: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, max: 10, initial: 6 }),
         bonus: new FormulaField(),
       }),
-      size: new fields.EmbeddedDataField(SizeModel),
+      size: new fields.EmbeddedDataField(this._sizeModel()),
       stability: requiredInteger(),
       turns: requiredInteger({ initial: 1 }),
     });
 
-    schema.biography = new fields.SchemaField(this.actorBiography());
+    schema.biography = new fields.SchemaField(this._actorBiography());
 
     schema.movement = new fields.SchemaField({
       value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 5 }),
@@ -71,12 +71,22 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @protected
    * @returns {Record<string, DataField>}
    */
-  static actorBiography() {
+  static _actorBiography() {
     return {
       value: new fields.HTMLField(),
       director: new fields.HTMLField({ gmOnly: true }),
-      languages: new fields.SetField(setOptions()),
     };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The data model used for the `combat.size` property.
+   * @protected
+   * @returns {SizeModel}
+   */
+  static _sizeModel() {
+    return SizeModel;
   }
 
   /* -------------------------------------------------- */
@@ -122,6 +132,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
     });
+
+    this.combat.targetModifiers = { edges: 0, banes: 0 };
   }
 
   /* -------------------------------------------------- */

@@ -176,9 +176,10 @@ export default class PowerRoll extends DSRoll {
 
     this.getActorModifiers(options);
     const context = {
+      type,
+      formula: this.replaceFormulaData(formula, options.data, { missing: "0" }),
       modifiers: options.modifiers,
       targets: options.targets,
-      type,
     };
 
     if (options.ability) context.ability = options.ability;
@@ -204,7 +205,7 @@ export default class PowerRoll extends DSRoll {
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
-      if (promptValue.skill) flavor = `${flavor} - ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
+      if (promptValue.skill) flavor = `${flavor} — ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
       const roll = new this(formula, options.data, { flavor, ...context });
       roll.terms[0] = firstTerm;
       switch (evaluation) {
@@ -246,7 +247,7 @@ export default class PowerRoll extends DSRoll {
    */
   get isValidPowerRoll() {
     const firstTerm = this.terms[0];
-    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
+    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number >= 2);
   }
 
   /* -------------------------------------------------- */

@@ -302,6 +302,7 @@
     "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
+        "Object": "Draw Steel Object Sheet",
         "NPC": "Draw Steel NPC Sheet",
         "Item": "Draw Steel Item Sheet",
         "JournalEntry": "Draw Steel Journal Entry Sheet",
@@ -327,9 +328,13 @@
       "Enrichers": {
         "DamageHeal": {
           "FormatString": "{formula} {type}",
-          "ChooseType": {
-            "InputLabel": "Type {index}",
-            "DialogTitle": "Choose Damage Types"
+          "RollInput": {
+            "Type": "Type {index}",
+            "Scaling": {
+              "label": "Scaling",
+              "hint": "Value for @scaling in formula"
+            },
+            "DialogTitle": "Choose Damage Options"
           },
           "MessageTitle": {
             "damage": "Damage Roll",
@@ -351,7 +356,11 @@
           "FormatString": {
             "Default": "{difficulty} {characteristic} test"
           },
-          "MessageTitle": {}
+          "chooseCharacteristic": {
+            "title": "Choose Test Characteristic",
+            "inputLabel": "Characteristic"
+          },
+          "Request": "Request Test"
         },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
@@ -417,7 +426,8 @@
       },
       "Licenses": {
         "DSCL": "Draw Steel Creator License"
-      }
+      },
+      "InvalidDSID": "A DSID must be all lowercase with no spaces."
     },
     "MEASUREMENT": {
       "Height": {
@@ -516,6 +526,15 @@
               "label": "Size",
               "value": {
                 "label": "Size Number"
+              },
+              "text": {
+                "label": "Size Override"
+              },
+              "direction": {
+                "label": "Direction"
+              },
+              "typical": {
+                "label": "Typical Space"
               }
             },
             "stability": {
@@ -535,6 +554,9 @@
                 "hint": "The total necessary to end a (Save Ends) effect."
               }
             }
+          },
+          "ev": {
+            "label": "Encounter Value"
           },
           "movement": {
             "label": "Movement",
@@ -568,6 +590,12 @@
             }
           }
         },
+        "EVLabel": {
+          "Label": "EV",
+          "Area": "{value} per {area}",
+          "Minion": "{value} for four minions",
+          "Other": "{value}"
+        },
         "sizes": {
           "T": "Tiny",
           "S": "Small",
@@ -584,6 +612,16 @@
         "NicheCombatDialog": {
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
+        },
+        "AvatarInput": {
+          "title": "Avatar Positioning: {name}",
+          "objectFit": {
+            "label": "Object Fit",
+            "optionDefault": "Default"
+          },
+          "objectPosition": {
+            "label": "Object Position"
+          }
         },
         "CharacteristicInput": {
           "Title": "Edit Characteristics",
@@ -674,9 +712,6 @@
             "level": {
               "label": "Level"
             },
-            "ev": {
-              "label": "Encounter Value"
-            },
             "role": {
               "label": "Creature Role"
             },
@@ -687,11 +722,6 @@
         },
         "MonsterMetadata": {
           "DialogTitle": "Update Monster Metadata"
-        },
-        "EVLabel": {
-          "Label": "EV",
-          "Minion": "{value} for four minions",
-          "Other": "{value}"
         },
         "KEYWORDS": {
           "Abyssal": "Abyssal",
@@ -756,6 +786,42 @@
           "DialogHeader": "{value} {type} Damage",
           "DialogTitle": "Free Strike",
           "DialogButton": "Deal Damage"
+        }
+      },
+      "object": {
+        "FIELDS": {
+          "object": {
+            "level": {
+              "label": "Level"
+            },
+            "category": {
+              "label": "Category"
+            },
+            "role": {
+              "label": "Creature Role"
+            },
+            "area": {
+              "label": "Area",
+              "hint": "Optional area per section of terrain, e.g. '10 x 10 pool'"
+            },
+            "squareStamina": {
+              "label": "Per Square"
+            }
+          }
+        },
+        "MaxStaminaLabel": {
+          "PerSquare": "{value} per square"
+        },
+        "CATEGORIES": {
+          "hazard": "Hazard",
+          "fortification": "Fortification",
+          "trap": "Trap",
+          "trigger": "Trigger",
+          "relic": "Relic",
+          "siegeEngine": "Siege Engine"
+        },
+        "ObjectMetadata": {
+          "DialogTitle": "Update Object Metadata"
         }
       },
       "DamageNotification": {
@@ -869,6 +935,20 @@
           "_dsid": {
             "label": "DSID",
             "hint": "Draw Steel ID"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            },
+            "dsid": {
+              "label": "DSID",
+              "hint": "The Draw Steel ID of other items (e.g. classes, subclasses) required by this item. Any may be fulfilled. Only needed if this is an option in advancements."
+            },
+            "level": {
+              "label": "Level",
+              "hint": "The minimum level required to choose this item. Only needed if this an option in advancements."
+            }
           }
         }
       },
@@ -881,6 +961,10 @@
       },
       "ability": {
         "FIELDS": {
+          "class": {
+            "label": "Ability Source",
+            "hint": "The DSID of the Class or Subclass this ability belongs to"
+          },
           "story": {
             "label": "Story Text"
           },
@@ -1383,12 +1467,6 @@
           },
           "story": {
             "label": "Story Text"
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
           }
         }
       },
@@ -1710,7 +1788,6 @@
         "Prompt": {
           "Title": "{typeLabel} Power Roll",
           "Total": "Total: {number}",
-          "GlobalModifiers": "Global Modifiers",
           "DamageSelectionLabel": "Damage Type"
         },
         "Tiers": {
@@ -2062,7 +2139,8 @@
     },
     "Actor": {
       "hero": "Hero",
-      "npc": "NPC"
+      "npc": "NPC",
+      "object": "Object"
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",

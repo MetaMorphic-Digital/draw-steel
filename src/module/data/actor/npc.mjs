@@ -47,11 +47,12 @@ export default class NPCModel extends CreatureModel {
       impression: requiredInteger({ initial: 1 }),
     });
 
+    schema.ev = requiredInteger({ initial: 4 }),
+
     schema.monster = new fields.SchemaField({
       freeStrike: requiredInteger({ initial: 0 }),
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({ initial: 1 }),
-      ev: requiredInteger({ initial: 4 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
     });
@@ -72,6 +73,9 @@ export default class NPCModel extends CreatureModel {
         data.monster.organization = "elite";
         break;
     }
+
+    // 0.10 Object release
+    foundry.abstract.Document._addDataFieldMigration(data, "monster.ev", "ev");
 
     return super.migrateData(data);
   }
@@ -134,10 +138,10 @@ export default class NPCModel extends CreatureModel {
     const roles = ds.CONFIG.monsters.roles;
     this.monster.roleLabel = roles[this.monster.role]?.label ?? "";
 
-    const data = { value: this.monster.ev };
-    this.monster.evLabel = this.isMinion
-      ? game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data)
-      : game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
+    const evData = { value: this.ev };
+    this.evLabel = this.isMinion
+      ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Minion", evData)
+      : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
   }
 
   /* -------------------------------------------------- */

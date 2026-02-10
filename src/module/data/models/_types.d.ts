@@ -1,3 +1,10 @@
+declare module "./object-size.mjs" {
+  export default interface ObjectSizeModel {
+    direction: string;
+    typical: string;
+  }
+}
+
 declare module "./size.mjs" {
   export default interface SizeModel {
     value: number;

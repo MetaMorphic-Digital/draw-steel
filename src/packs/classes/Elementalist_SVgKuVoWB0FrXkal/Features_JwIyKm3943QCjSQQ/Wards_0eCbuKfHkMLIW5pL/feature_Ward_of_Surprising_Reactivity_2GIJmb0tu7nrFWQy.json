@@ -6,7 +6,7 @@
   "img": "icons/magic/defensive/shield-barrier-flaming-diamond-orange.webp",
   "system": {
     "description": {
-      "value": "<p>You use the magic of fire to create a ward of explosive energy. Whenever an adjacent creature deals damage to you, you can use a free triggered action to push that creature up to a number of squares equal to twice your Reason score.</p>",
+      "value": "<p>You use the magic of fire to create a ward of explosive energy. Whenever an adjacent creature deals damage to you, you can use a free triggered action to push that creature up to a number of squares equal to [[lookup 2*@R evaluate=rue]]{twice your Reason score}.</p>",
       "director": ""
     },
     "source": {
@@ -27,9 +27,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755736816616,
     "modifiedTime": null,
     "lastModifiedBy": null

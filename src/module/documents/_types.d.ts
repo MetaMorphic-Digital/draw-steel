@@ -9,7 +9,10 @@ import {
   ItemData,
   JournalEntryPageData,
   JournalEntryData,
+  SceneData,
   TokenData,
+  UserData,
+  WallData,
 } from "@common/documents/_types.mjs";
 import Collection from "@common/utils/collection.mjs";
 import {
@@ -26,7 +29,7 @@ import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, Dra
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
-type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
+type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel" | "CreatureModel">];
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[Exclude<keyof typeof ChatMessageModels, "parts">];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
@@ -84,5 +87,11 @@ declare module "@client/documents/_module.mjs" {
     system: InstanceType<Model>;
   }
 
+  interface BaseScene extends SceneData, InstanceType<ClientDocument> {}
+
   interface BaseToken extends TokenData, InstanceType<ClientDocument> {}
+
+  interface BaseUser extends UserData, InstanceType<ClientDocument> {}
+
+  interface BaseWall extends WallData, InstanceType<ClientDocument> {}
 }

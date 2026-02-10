@@ -9,7 +9,7 @@ import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/
 /**
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
  * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs";
- * @import BaseItemModel from "../../data/item/base.mjs";
+ * @import BaseItemModel from "../../data/item/base-item.mjs";
  * @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
  */
 

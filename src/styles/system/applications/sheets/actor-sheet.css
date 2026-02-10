@@ -19,7 +19,10 @@
   .sheet-header {
     gap: 10px;
     .profile-img {
-      width: 125px;
+      width: 150px;
+      max-height: 150px;
+      object-fit: var(--avatar-object-fit, cover);
+      object-position: var(--avatar-object-position, top left);
     }
     .header-center {
       gap: 5px;
@@ -177,6 +180,12 @@
       select {
         flex-basis: 70px;
       }
+    }
+  }
+
+  &.object .combat {
+    .form-group {
+      text-align: inherit;
     }
   }
 

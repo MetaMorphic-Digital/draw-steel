@@ -1,0 +1,12 @@
+{{#if ctx.resultHTML}}
+<secret-block>
+  <section class="secret {{ctx.revealClass}}" id="test-request-{{document.id}}-{{part.id}}">
+    {{{ctx.resultHTML}}}
+  </section>
+</secret-block>
+{{/if}}
+{{#if ctx.buttons}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
+</footer>
+{{/if}}

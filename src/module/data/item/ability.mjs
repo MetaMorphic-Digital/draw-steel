@@ -1,16 +1,17 @@
 import { systemPath } from "../../constants.mjs";
-import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { DamageRoll, PowerRoll } from "../../rolls/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import { PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { setOptions, validateDSID } from "../helpers.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
-import BaseItemModel from "./base.mjs";
+import BaseItemModel from "./base-item.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs"
  */
 
 const fields = foundry.data.fields;
@@ -44,6 +45,16 @@ export default class AbilityModel extends BaseItemModel {
 
     // Items don't have descriptions
     delete schema.description;
+
+    // Can be expanded over time for automation
+    schema.prerequisites = new fields.SchemaField({
+      value: new fields.StringField({ required: true }),
+      dsid: new fields.SetField(setOptions({
+        validate: validateDSID,
+        validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+      })),
+      level: new fields.NumberField({ required: true, integer: true, positive: true }),
+    });
 
     schema.story = new fields.StringField({ required: true });
     schema.keywords = new fields.SetField(setOptions());
@@ -596,6 +607,9 @@ export default class AbilityModel extends BaseItemModel {
 
     // Modifiers requiring just the targeted token to have an actor
     if (targetActor) {
+      modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
+      modifiers.banes += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.banes") ?? 0;
+
       // Frightened condition checks
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
       if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened

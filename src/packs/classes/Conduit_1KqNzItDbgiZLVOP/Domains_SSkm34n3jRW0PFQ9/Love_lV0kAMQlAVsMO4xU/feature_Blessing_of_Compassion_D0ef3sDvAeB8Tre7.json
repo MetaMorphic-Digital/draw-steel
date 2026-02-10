@@ -15,10 +15,37 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "blessing-of-compassion",
-    "advancements": {}
+    "advancements": {
+      "dKMxH4YRAXv6N60V": {
+        "name": "Skill (Interpersonal)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": null
+        },
+        "_id": "dKMxH4YRAXv6N60V",
+        "skills": {
+          "groups": [
+            "interpersonal"
+          ],
+          "choices": []
+        },
+        "chooseN": 1,
+        "sort": 0,
+        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>",
+        "repick": {
+          "respite": ""
+        }
+      }
+    },
+    "prerequisites": {
+      "dsid": [
+        "love"
+      ]
+    }
   },
   "effects": [],
-  "sort": 200000,
+  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -27,9 +54,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755755060878,
     "modifiedTime": null,
     "lastModifiedBy": null

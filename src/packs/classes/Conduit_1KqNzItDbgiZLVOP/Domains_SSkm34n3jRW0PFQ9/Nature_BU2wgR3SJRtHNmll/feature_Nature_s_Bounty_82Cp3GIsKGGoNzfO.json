@@ -6,7 +6,7 @@
   "img": "icons/magic/nature/cornucopia-orange.webp",
   "system": {
     "description": {
-      "value": "<p>When you finish a respite, you can prepare a magic meal using local flora for any companions who rested with you. Choose two of the following benefits for creatures who consume the meal:</p><ul><li><p>Each creature gains [[/apply Wxs2FU26E89kePKO]], [[/apply cNgt67I3KzdcLCIj]], [[/apply JNwnNUeLwK9Nn5xb]], [[/apply L9ezn20AAjsHxnV0]], [[/apply ArVE1nyjiwuG3CjM]], [[/apply J7GED0lgtMJGiy2v]], or [[/apply CVKrHW9ex8doTr34]] damage equal to your level. You can choose this benefit twice, choosing a different damage immunity each time.</p></li><li><p>Each creature gains [[/heal 20 type=temporary]].</p></li><li><p>Each creature gains a [[/apply PEBzKcJ0CObveH4p]]{+1 bonus to speed}.</p></li><li><p>Each creature gains a [[/apply dlw4NFzF507dk8ui]]{+1 bonus to saving throws}.</p></li><li><p>Each creature gains an edge on tests made to influence other creatures.</p></li></ul><p>Each benefit lasts until the creature who gains it finishes another respite.</p>",
+      "value": "<p>When you finish a respite, you can prepare a magic meal using local flora for any companions who rested with you. Choose two of the following benefits for creatures who consume the meal:</p><ul><li><p>Each creature gains [[/apply Wxs2FU26E89kePKO]], [[/apply cNgt67I3KzdcLCIj]], [[/apply JNwnNUeLwK9Nn5xb]], [[/apply L9ezn20AAjsHxnV0]], [[/apply ArVE1nyjiwuG3CjM]], [[/apply J7GED0lgtMJGiy2v]], or [[/apply CVKrHW9ex8doTr34]] damage equal to [[lookup @level]]{your level}. You can choose this benefit twice, choosing a different damage immunity each time.</p></li><li><p>Each creature gains [[/heal 20 type=temporary]].</p></li><li><p>Each creature gains a [[/apply PEBzKcJ0CObveH4p]]{+1 bonus to speed}.</p></li><li><p>Each creature gains a [[/apply dlw4NFzF507dk8ui]]{+1 bonus to saving throws}.</p></li><li><p>Each creature gains an edge on tests made to influence other creatures.</p></li></ul><p>Each benefit lasts until the creature who gains it finishes another respite.</p>",
       "director": ""
     },
     "source": {
@@ -15,7 +15,12 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "natures-bounty",
-    "advancements": {}
+    "advancements": {},
+    "prerequisites": {
+      "dsid": [
+        "nature"
+      ]
+    }
   },
   "effects": [
     {
@@ -469,9 +474,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1760805178469,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,5 +1,5 @@
 import { systemID } from "../../constants.mjs";
-import BaseItemModel from "./base.mjs";
+import BaseItemModel from "./base-item.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
 import AdvancementNode from "../../utils/advancement/node.mjs";
 
