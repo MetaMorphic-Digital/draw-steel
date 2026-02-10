@@ -27,7 +27,7 @@
       "value": null
     },
     "effect": {
-      "before": "<p>When a creature takes the Defend main action, ability rolls made against them have a double bane until the start of their next turn. Additionally, you have a double edge on tests when called for to resist environmental effects or a creature’s traits or abilities. A creature gains no benefit from this action while another creature is taunted by them.</p>",
+      "before": "<p>When a creature takes the [[/apply TYggdI2Kwa302NjW]]{Defend main action}, ability rolls made against them have a double bane until the start of their next turn. Additionally, you have a double edge on tests when called for to resist environmental effects or a creature’s traits or abilities. A creature gains no benefit from this action while another creature is taunted by them.</p>",
       "after": ""
     },
     "spend": {
@@ -43,15 +43,65 @@
       "effects": {}
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Defending",
+      "img": "icons/skills/melee/shield-block-fire-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.fjtY7RKBGWx2u5tK",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "_id": "TYggdI2Kwa302NjW",
+      "changes": [
+        {
+          "key": "system.combat.targetModifiers.banes",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 1,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>When a creature takes the Defend main action, ability rolls made against them have a double bane until the start of their next turn. Additionally, you have a double edge on tests when called for to resist environmental effects or a creature’s traits or abilities. A creature gains no benefit from this action while another creature is taunted by them.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1770706662192,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!fjtY7RKBGWx2u5tK.TYggdI2Kwa302NjW"
+    }
+  ],
   "flags": {},
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1749702844092,
     "modifiedTime": null,
     "lastModifiedBy": null
