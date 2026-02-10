@@ -11,6 +11,7 @@ import BaseItemModel from "./base-item.mjs";
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs"
  */
 
 const fields = foundry.data.fields;
@@ -606,6 +607,9 @@ export default class AbilityModel extends BaseItemModel {
 
     // Modifiers requiring just the targeted token to have an actor
     if (targetActor) {
+      modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
+      modifiers.banes += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.banes") ?? 0;
+
       // Frightened condition checks
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
       if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
