@@ -93,6 +93,7 @@
 - Director-Facing Compendium Data Fixes:
   - Corrected the prototype tokens of various monsters to match their size. (#1523)
   - Fixed the Omen Dragon's Repent ability not correctly applying the apply effect enricher. (#1524)
+  - Fixed token scales on the Dwarf Stone Whisperer, Trapper, and Warden.
 - Fixed source registration logic to match documentation.
 
 ## 0.9.2
