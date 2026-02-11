@@ -68,6 +68,7 @@
 - Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
 - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
 - Added `damage.bonuses.value` which can be targeted to apply a single value to each damage tier.
+- Added a `hideInSheet` flag which can be used for most item types to filter them from display.
 
 ### Changed
 

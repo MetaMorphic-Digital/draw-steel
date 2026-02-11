@@ -366,7 +366,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       ...this.actor.itemTypes.ancestryTrait,
       ...this.actor.itemTypes.perk,
       ...this.actor.itemTypes.title,
-    ].sort((a, b) => a.sort - b.sort);
+    ].filter(i => !i.getFlag(ds.CONST.systemID, "hideInSheet")).sort((a, b) => a.sort - b.sort);
+
     const context = [];
 
     for (const feature of features) {
@@ -389,7 +390,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
      * @type {Record<string, ActorSheetAbilitiesContext>}
      */
     const context = {};
-    const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
+    const abilities = this.actor.itemTypes.ability
+      .filter(i => !i.getFlag(ds.CONST.systemID, "hideInSheet"))
+      .sort((a, b) => a.sort - b.sort);
 
     // Prepare ability categories for each ability type
     for (const [type, config] of Object.entries(ds.CONFIG.abilities.types)) {
