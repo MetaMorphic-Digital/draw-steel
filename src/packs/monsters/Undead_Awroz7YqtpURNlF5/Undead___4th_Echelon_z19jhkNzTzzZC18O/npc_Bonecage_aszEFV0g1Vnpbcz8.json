@@ -283,13 +283,33 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "h40u5zCGi4UdZR7M": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "h40u5zCGi4UdZR7M",
+              "damage": {
+                "tier1": {
+                  "value": "9"
+                },
+                "tier2": {
+                  "value": "7"
+                },
+                "tier3": {
+                  "value": "4"
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The bonecage can put up to two 90-degree bends in each of the lines. Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 9]]{9 damage}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7]]{7 damage}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4]]{4 damage}</p></dd></dl>",
+          "before": "<p>The bonecage can put up to two 90-degree bends in each of the lines. Each target makes an <strong>Agility test.</strong></p>",
           "after": "<p>The area is difficult terrain for enemies. The effect ends at the end of the encounter or when the bonecage uses this ability again.</p>"
         },
         "spend": {
@@ -314,9 +334,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -417,17 +437,98 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "V0VknapJDXE3PTJB": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "V0VknapJDXE3PTJB",
+              "damage": {
+                "tier1": {
+                  "value": "10",
+                  "types": [
+                    "corruption"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "8",
+                  "types": [
+                    "corruption"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "5",
+                  "types": [
+                    "corruption"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "HhMIIyfKsVelSvtk": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "HhMIIyfKsVelSvtk",
+              "other": {
+                "tier1": {
+                  "display": "the target loses 2 Recoveries",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target loses 1 Recovery",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The undead attempts to rend the vitality of their foes. Each ene my within 5 squares of the undead makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 corruption]]{10 corruption damage}; the target loses 2 Recoveries</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 8 corruption]]{8 corruption damage}; the target loses 1 Recovery</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 corruption]]{5 corruption damage}</p></dd></dl>",
-          "after": "<p>A target who has fewer Recoveries than they would lose is also weakened (save ends).</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+          "before": "<p>The undead attempts to rend the vitality of their foes. Each enemy within 5 squares of the undead makes a <strong>Might test.</strong></p>",
+          "after": "<p>A target who has fewer Recoveries than they would lose is also [[/apply weakened save]].</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -436,7 +537,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.yTgOi8V1WWjNMRey",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761428094242,

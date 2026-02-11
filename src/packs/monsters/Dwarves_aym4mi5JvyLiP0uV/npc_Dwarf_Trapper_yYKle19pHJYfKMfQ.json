@@ -391,12 +391,61 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "wEhfDiVWpI8VyBYL": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "wEhfDiVWpI8VyBYL",
+              "damage": {
+                "tier1": {
+                  "value": "7"
+                },
+                "tier2": {
+                  "value": "5"
+                }
+              }
+            },
+            "uvbnvGbInGGwRnKN": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "uvbnvGbInGGwRnKN",
+              "applied": {
+                "tier1": {
+                  "display": "restrained (EoT)",
+                  "effects": {
+                    "restrained": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "slowed (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "No effect."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 7]]; [[/apply restrained turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 5]]; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Each target makes a <strong>Might test.</strong></p>",
           "after": "<p>The snare remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p>"
         },
         "spend": {
@@ -416,7 +465,7 @@
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -584,17 +633,107 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "EO8ZBhNJxsnCzLhD": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "EO8ZBhNJxsnCzLhD",
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "LUTwXYl53BtoCpBM": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "LUTwXYl53BtoCpBM",
+              "applied": {
+                "tier1": {
+                  "display": "restrained (EoT)",
+                  "effects": {
+                    "restrained": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "slowed (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an Agility Test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>8 damage; [[/apply restrained turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>6 damage; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Each target makes an Agility Test.</p>",
           "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><strong>Special:</strong> This ability canʼt be used by a minion.</p>"
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "UrwLwfDVlxJTNQTd",
@@ -602,7 +741,7 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.LawMkoXkoSARdPho",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.iV1xZa3LFqKK1Xgu",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.351",

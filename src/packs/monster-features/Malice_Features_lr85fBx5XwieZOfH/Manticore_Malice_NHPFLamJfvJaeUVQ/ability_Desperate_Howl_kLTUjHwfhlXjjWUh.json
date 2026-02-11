@@ -17,12 +17,46 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [
+          "intuition"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "3Sp94TNhFilbkawY": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "3Sp94TNhFilbkawY",
+          "applied": {
+            "tier1": {
+              "display": "Frightened (save ends)",
+              "effects": {
+                "frightened": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "Frightened (EoT)",
+              "effects": {
+                "frightened": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier3": {
+              "display": "No effect."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>The manticore lets out an unnerving cry. Each enemy within the manticore’s line of effect makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Frightened save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Frightened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "before": "<p>The manticore lets out an unnerving cry. Each enemy within the manticore’s line of effect makes an <strong>Intuition test</strong>.</p>",
       "after": ""
     },
     "spend": {
@@ -124,9 +158,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1757287701106,
     "modifiedTime": null,
     "lastModifiedBy": null

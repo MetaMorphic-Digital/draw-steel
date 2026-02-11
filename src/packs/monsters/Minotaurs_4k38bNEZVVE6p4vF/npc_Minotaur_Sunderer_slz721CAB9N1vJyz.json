@@ -848,12 +848,61 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "ecDoH620kT4aPLAd": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "ecDoH620kT4aPLAd",
+              "applied": {
+                "tier1": {
+                  "display": "The target has line of effect only within 3 squares and is frightened of all minotaurs (save ends).",
+                  "effects": {
+                    "F2fGz4WjWIom6q2J": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "The target has line of effect only within 3 squares (EoT).",
+                  "effects": {
+                    "j05qfRBPuK0wvtpo": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target has [[/apply F2fGz4WjWIom6q2J save]]{line of effect} only within 3 squares and is frightened of all minotaurs (save ends).</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target has [[/apply j05qfRBPuK0wvtpo turn]]{line of effect} only within 3 squares (EoT).</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -867,7 +916,12 @@
         },
         "_dsid": "bullseye",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -907,7 +961,7 @@
             "systemId": "draw-steel",
             "systemVersion": "0.9.1",
             "lastModifiedBy": null,
-            "modifiedTime": 1765845705537
+            "modifiedTime": 1770785019779
           },
           "_key": "!actors.items.effects!slz721CAB9N1vJyz.bAt7raSpMfENZiG5.j05qfRBPuK0wvtpo"
         },
@@ -950,7 +1004,7 @@
             "systemId": "draw-steel",
             "systemVersion": "0.9.1",
             "lastModifiedBy": null,
-            "modifiedTime": 1765845705537
+            "modifiedTime": 1770785019779
           },
           "_key": "!actors.items.effects!slz721CAB9N1vJyz.bAt7raSpMfENZiG5.F2fGz4WjWIom6q2J"
         }

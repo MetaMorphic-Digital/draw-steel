@@ -32,12 +32,61 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [
+          "agility"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "EO8ZBhNJxsnCzLhD": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "EO8ZBhNJxsnCzLhD",
+          "damage": {
+            "tier1": {
+              "value": "8"
+            },
+            "tier2": {
+              "value": "6"
+            }
+          }
+        },
+        "LUTwXYl53BtoCpBM": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "LUTwXYl53BtoCpBM",
+          "applied": {
+            "tier1": {
+              "display": "restrained (EoT)",
+              "effects": {
+                "restrained": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "display": "slowed (EoT)",
+              "effects": {
+                "slowed": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier3": {
+              "display": "No effect."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>Each target makes an Agility Test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>8 damage; [[/apply restrained turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>6 damage; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "before": "<p>Each target makes an Agility Test.</p>",
       "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><strong>Special:</strong> This ability canʼt be used by a minion.</p>"
     },
     "spend": {
@@ -55,9 +104,9 @@
     "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.LawMkoXkoSARdPho",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755639546111,
     "modifiedTime": null,
     "lastModifiedBy": null
