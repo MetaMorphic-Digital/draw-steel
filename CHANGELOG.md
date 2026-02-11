@@ -82,6 +82,7 @@
   - Migrated ability rolls to use chat parts. (#1449)
 - The saving throw dialog now has the effect name that's being rolled for. (#1538)
 - Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
+- The actor sheet image now has similar CSS handling to the directory and compendium thumbnails. You can override these properties with the `avatarProperties` flag (see documentation for details).
 
 ### Fixed
 

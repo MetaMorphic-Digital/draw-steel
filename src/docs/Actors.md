@@ -68,7 +68,7 @@ The system supports two flags, `"avatarProperties.objectFit"` and `"avatarProper
 
 ### In-world adjustment
 
-You can set flags for an existing actor with commands like `actor.setFlag("draw-steel", "avatarProperties.objectFit", "contain")` or `actor.setFlag("draw-steel", "avatarProperties.objectPosition", "50% 50%")`. These can be useful when working with existing actors in a world like player characters. The default values for these properties are `"cover"` and `"top left"` respectively.
+You can set flags for an existing actor with commands like `actor.setFlag("draw-steel", "avatarProperties.objectFit", "contain")` or `actor.setFlag("draw-steel", "avatarProperties.objectPosition", "50% 50%")`. These can be useful when working with existing actors in a world like player characters. The default values for these properties are `"cover"` and `"50% 0"` respectively.
 
 Alternatively, `new ds.applications.apps.ActorAvatarInput({ document: actor }).render({ force: true })` will create a window that allows for easy configuration of the properties.
 
