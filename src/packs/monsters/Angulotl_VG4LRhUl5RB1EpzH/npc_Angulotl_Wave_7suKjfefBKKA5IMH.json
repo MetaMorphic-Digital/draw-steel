@@ -582,12 +582,79 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "Ihed8xnapJl1NddM": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "Ihed8xnapJl1NddM",
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [
+                    "poison"
+                  ]
+                },
+                "tier2": {
+                  "value": "2",
+                  "types": [
+                    "poison"
+                  ]
+                },
+                "tier3": {
+                  "value": "1",
+                  "types": [
+                    "poison"
+                  ]
+                }
+              }
+            },
+            "gryG1WLJq1xA6Syd": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "gryG1WLJq1xA6Syd",
+              "applied": {
+                "tier1": {
+                  "display": "the target is wet and weakened (save ends)",
+                  "effects": {
+                    "pmnETcOZRzv4P4WW": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "KdvjIfVEqR7vMfai": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  },
+                  "display": "the target is wet (save ends)"
+                },
+                "tier3": {
+                  "display": "the target is wet (EoT)",
+                  "effects": {
+                    "KdvjIfVEqR7vMfai": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>A bubble of toxic gas fills the area, ready to pop. If any creature or object touches the bubble or if the bubble takes damage, it bursts. Each angulotl adjacent to the bubble is wet until the end of the encounter, and each enemy adjacent to the bubble makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 3 poison]] damage; the target is [[/apply pmnETcOZRzv4P4WW save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 2 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.LCVUFvkic3ekh34p.ActiveEffect.X66mp8MbRILfgKS6 save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 1 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.LCVUFvkic3ekh34p.ActiveEffect.X66mp8MbRILfgKS6 turn]]</p></dd></dl>",
+          "before": "<p>A bubble of toxic gas fills the area, ready to pop. If any creature or object touches the bubble or if the bubble takes damage, it bursts. Each angulotl adjacent to the bubble is wet until the end of the encounter, and each enemy adjacent to the bubble makes a <strong>Might test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -641,6 +708,48 @@
           "_id": "pmnETcOZRzv4P4WW",
           "sort": 0,
           "_key": "!actors.items.effects!7suKjfefBKKA5IMH.bPAAa1tXNGQvAual.pmnETcOZRzv4P4WW"
+        },
+        {
+          "name": "Wet",
+          "img": "icons/magic/water/water-drop-swirl-blue.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.bPAAa1tXNGQvAual",
+          "transfer": false,
+          "_id": "KdvjIfVEqR7vMfai",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770768438497,
+            "modifiedTime": 1770768482304,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!7suKjfefBKKA5IMH.bPAAa1tXNGQvAual.KdvjIfVEqR7vMfai"
         }
       ],
       "folder": null,
@@ -654,9 +763,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "createdTime": 1757016985040,
         "modifiedTime": null,
         "lastModifiedBy": null

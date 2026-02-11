@@ -1099,12 +1099,86 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "reason"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "oodUnyVFnjYn0Rk8": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "oodUnyVFnjYn0Rk8",
+              "damage": {
+                "tier1": {
+                  "value": "13",
+                  "types": [
+                    "psychic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [
+                    "psychic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "pGr1YDSG7l7KFJO9": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "pGr1YDSG7l7KFJO9",
+              "other": {
+                "tier1": {
+                  "display": "the target uses a signature ability against a creature of Lord Syuul’s choice",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target makes a free strike against a creature of Lord Syuul’s choice",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 13 psychic]]{13 psychic damage}; the target uses a signature ability against a creature of Lord Syuul’s choice</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10 psychic]]{10 psychic damage}; the target makes a free strike against a creature of Lord Syuul’s choice</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -1118,17 +1192,22 @@
         },
         "_dsid": "do-it-for-me",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.No9WuHO95jXubc8M",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

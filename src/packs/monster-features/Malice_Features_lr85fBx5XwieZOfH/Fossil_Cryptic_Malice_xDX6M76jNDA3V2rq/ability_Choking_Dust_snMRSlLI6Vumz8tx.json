@@ -27,12 +27,46 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "drYAfy1CM39hLIE0": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "drYAfy1CM39hLIE0",
+          "applied": {
+            "tier1": {
+              "display": "Until the end of the enemy’s next turn, their stability is reduced to 0, and any forced movement effects targeting them gain a +2 bonus to the distance moved.",
+              "effects": {
+                "wcBZLFR2RqTQm9fI": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "display": "The enemy’s stability is halved (EoT).",
+              "effects": {
+                "XjhsIBEBU0rhWV0o": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier3": {
+              "display": "No Effect."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Until the end of the enemy’s next turn, their [[/apply wcBZLFR2RqTQm9fI turn]]{stability is reduced to 0}, and any forced movement effects targeting them gain a +2 bonus to the distance moved.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The enemy’s [[/apply XjhsIBEBU0rhWV0o turn]]{stability is halved (EoT)}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p>",
       "after": ""
     },
     "spend": {
@@ -73,7 +107,7 @@
       },
       "description": "<p>Until the end of the your next turn, your stability is reduced to 0, and any forced movement effects targeting you gain a +2 bonus to the distance moved.</p>",
       "tint": "#ffffff",
-      "transfer": true,
+      "transfer": false,
       "statuses": [],
       "sort": 0,
       "flags": {},
@@ -81,7 +115,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761101863918,
@@ -122,7 +156,7 @@
       },
       "description": "<p>Your stability is halved.</p>",
       "tint": "#ffffff",
-      "transfer": true,
+      "transfer": false,
       "statuses": [],
       "sort": 0,
       "flags": {},
@@ -130,7 +164,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761101977471,
@@ -149,9 +183,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1757284581142,
     "modifiedTime": null,
     "lastModifiedBy": null

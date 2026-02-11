@@ -1715,17 +1715,71 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "drYAfy1CM39hLIE0": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "drYAfy1CM39hLIE0",
+              "applied": {
+                "tier1": {
+                  "display": "Until the end of the enemy’s next turn, their stability is reduced to 0, and any forced movement effects targeting them gain a +2 bonus to the distance moved.",
+                  "effects": {
+                    "wcBZLFR2RqTQm9fI": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "The enemy’s stability is halved (EoT).",
+                  "effects": {
+                    "XjhsIBEBU0rhWV0o": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No Effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Until the end of the enemy’s next turn, their [[/apply wcBZLFR2RqTQm9fI turn]]{stability is reduced to 0}, and any forced movement effects targeting them gain a +2 bonus to the distance moved.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The enemy’s [[/apply XjhsIBEBU0rhWV0o turn]]{stability is halved (EoT)}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [
@@ -1769,11 +1823,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1761102404482
+            "modifiedTime": 1770770845252
           },
           "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx.wcBZLFR2RqTQm9fI"
         },
@@ -1817,11 +1871,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1761102405921
+            "modifiedTime": 1770770845252
           },
           "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx.XjhsIBEBU0rhWV0o"
         }
@@ -1831,7 +1885,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.snMRSlLI6Vumz8tx",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761102399379,

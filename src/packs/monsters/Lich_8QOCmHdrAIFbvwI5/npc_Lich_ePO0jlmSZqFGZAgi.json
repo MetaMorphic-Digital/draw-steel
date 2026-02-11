@@ -1453,12 +1453,93 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "358De2IiioPuJq8k": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "358De2IiioPuJq8k",
+              "damage": {
+                "tier1": {
+                  "value": "16",
+                  "types": [
+                    "psychic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "x5Yq93huwTSuJuyp": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "x5Yq93huwTSuJuyp",
+              "applied": {
+                "tier1": {
+                  "display": "dazed (save ends)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "Dazed (save ends)",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The lich summons a swirling cloud of angry spirits to surround them until the start of the next round. Any creature who deals active makes a <strong>Presence test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 psychic]]{16 psychic damage}[[/apply Dazed save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Dazed save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>The lich summons a swirling cloud of angry spirits to surround them until the start of the next round. Any creature who deals active makes a <strong>Presence test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1467,12 +1548,17 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "280",
+          "page": "279",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "spirit-shell",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1505,10 +1591,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770764815757
           },
           "_id": "TnYHgAGAx11M4aQd",
           "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.mHctUIjv9G5fFlA9.TnYHgAGAx11M4aQd"
@@ -1543,10 +1630,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770764815757
           },
           "_id": "bdFfWM98wiiCFiUf",
           "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.mHctUIjv9G5fFlA9.bdFfWM98wiiCFiUf"
@@ -1556,10 +1644,10 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.IE71jgkH98dmPwjp",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

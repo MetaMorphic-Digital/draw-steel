@@ -613,12 +613,47 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "cXrdoXhFULisYxQK": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "cXrdoXhFULisYxQK",
+              "other": {
+                "tier1": {
+                  "display": "The jurist chooses a new target for the strike."
+                },
+                "tier2": {
+                  "display": "The jurist halves the triggering damage."
+                }
+              }
+            },
+            "ou6spibJGH9tfGm5": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "ou6spibJGH9tfGm5",
+              "applied": {
+                "tier3": {
+                  "effects": {
+                    "P4DYF13Ak4up9e4q": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  },
+                  "display": "The target takes a bane on the strike."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The jurist chooses a new target for the strike.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The jurist halves the triggering damage.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target takes a bane on the strike.</p></dd></dl>",
+          "before": "<p>The target makes a <strong>Presence test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -635,7 +670,60 @@
         "resource": 2,
         "trigger": "A creature targets the jurist with a strike."
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Bane on the Strike",
+          "img": "icons/skills/movement/arrow-upward-yellow.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monsters.Actor.u2LQOxcBMlktfPgQ.Item.LJ2udIBXXrj6BL48",
+          "transfer": false,
+          "_id": "P4DYF13Ak4up9e4q",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": []
+            }
+          },
+          "changes": [
+            {
+              "key": "power.roll.banes",
+              "mode": 2,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770769715978,
+            "modifiedTime": 1770769735691,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!u2LQOxcBMlktfPgQ.LJ2udIBXXrj6BL48.P4DYF13Ak4up9e4q"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -643,9 +731,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

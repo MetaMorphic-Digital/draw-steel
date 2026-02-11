@@ -1224,12 +1224,67 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "mTVT5DuX3qn7Ucbh": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "mTVT5DuX3qn7Ucbh",
+              "forced": {
+                "tier1": {
+                  "properties": [
+                    "vertical"
+                  ],
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "10",
+                  "display": "{{forced}}",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "6",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "display": "{{forced}}",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "4",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "display": "{{forced}}",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The dragon flies up to 10 squares and carries fated souls with them. Each creature in the area of the dragon’s Stagnant Wyrmscale Aura trait makes a <strong>Presence test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Vertical pull 10</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Vertical pull 6</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Vertical pull 4</p></dd></dl>",
+          "before": "<p>The dragon flies up to 10 squares and carries fated souls with them. Each creature in the area of the dragon’s Stagnant Wyrmscale Aura trait makes a <strong>Presence test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1243,14 +1298,19 @@
         },
         "_dsid": "rise-and-fall",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.2BEqvGlPAmOAUpBB",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.351",
