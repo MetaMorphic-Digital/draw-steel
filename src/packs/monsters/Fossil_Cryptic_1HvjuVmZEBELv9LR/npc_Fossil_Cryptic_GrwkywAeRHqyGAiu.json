@@ -1064,13 +1064,60 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "fNkVOqGZZwfvlezk": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "fNkVOqGZZwfvlezk",
+              "damage": {
+                "tier1": {
+                  "value": "9"
+                },
+                "tier2": {
+                  "value": "5"
+                }
+              }
+            },
+            "F9JqGntzmfys60t7": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "F9JqGntzmfys60t7",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  },
+                  "display": "prone"
+                }
+              }
+            },
+            "D3QqdxJf9rrflkmw": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "D3QqdxJf9rrflkmw",
+              "other": {
+                "tier3": {
+                  "display": "The target moves to the nearest unoccupied space outside the area."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><strong>Special</strong>: A target must be on the ground.</p><p>The area drops 2 squares and is difficult terrain. Each target enemy falls, while each target ally drops safely. Additionally, each target enemy makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 9]] damage; prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 5]] damage</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target moves to the nearest unoccupied space outside the area.</p></dd></dl>",
+          "before": "<p><strong>Special</strong>: A target must be on the ground.</p><p>The area drops 2 squares and is difficult terrain. Each target enemy falls, while each target ally drops safely. Additionally, each target enemy makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"></dl>",
           "after": ""
         },
         "spend": {
@@ -1095,9 +1142,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

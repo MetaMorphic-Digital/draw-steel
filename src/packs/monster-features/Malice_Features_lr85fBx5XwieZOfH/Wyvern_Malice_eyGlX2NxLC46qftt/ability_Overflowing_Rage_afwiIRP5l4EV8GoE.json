@@ -17,12 +17,46 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [
+          "intuition"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "LJRpJlHxvpuia8WQ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "LJRpJlHxvpuia8WQ",
+          "applied": {
+            "tier1": {
+              "display": "The target is taunted by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.",
+              "effects": {
+                "l7c999f6gYJkZkbo": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "The target is taunted by the nearest creature or object (save ends).",
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "No effect."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"></dl>",
       "after": ""
     },
     "spend": {
@@ -40,23 +74,35 @@
   },
   "effects": [
     {
-      "name": "Taunted",
-      "img": "icons/svg/downgrade.svg",
-      "origin": null,
+      "name": "Taunted with Double Edge",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE",
       "transfer": false,
+      "_id": "l7c999f6gYJkZkbo",
       "type": "base",
       "system": {
         "end": {
-          "type": "save",
+          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "system.combat.targetModifiers.edges",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
       "disabled": false,
       "duration": {
-        "rounds": null,
         "startTime": null,
-        "combat": null
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
       },
       "description": "",
       "tint": "#ffffff",
@@ -69,53 +115,14 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.10.0",
+        "createdTime": 1770780437947,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "pcBTfPVzDHzCzWgE",
-      "_key": "!items.effects!afwiIRP5l4EV8GoE.pcBTfPVzDHzCzWgE"
-    },
-    {
-      "name": "Taunted",
-      "img": "icons/svg/downgrade.svg",
-      "origin": null,
-      "transfer": false,
-      "type": "base",
-      "system": {
-        "end": {
-          "type": "save",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "rounds": null,
-        "startTime": null,
-        "combat": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [
-        "taunted"
-      ],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "sytzDKyd0JBLGgCq",
-      "_key": "!items.effects!afwiIRP5l4EV8GoE.sytzDKyd0JBLGgCq"
+      "_key": "!items.effects!afwiIRP5l4EV8GoE.l7c999f6gYJkZkbo"
     }
   ],
   "folder": "eyGlX2NxLC46qftt",
@@ -124,9 +131,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1757728773160,
     "modifiedTime": null,
     "lastModifiedBy": null

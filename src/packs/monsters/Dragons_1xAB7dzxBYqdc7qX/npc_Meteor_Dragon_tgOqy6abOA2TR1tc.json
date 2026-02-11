@@ -994,12 +994,65 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "kPefRBtzFLWNjm76": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "kPefRBtzFLWNjm76",
+              "damage": {
+                "tier1": {
+                  "value": "25"
+                },
+                "tier2": {
+                  "value": "21"
+                },
+                "tier3": {
+                  "value": "15"
+                }
+              }
+            },
+            "3HWoSE6fatFOKwQb": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "3HWoSE6fatFOKwQb",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is annihilated",
+                  "potency": {
+                    "characteristic": "intuition",
+                    "value": "6"
+                  },
+                  "effects": {
+                    "SXJ8WJ7FTcQ6vcLu": {
+                      "condition": "failure"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} the target is annihilated",
+                  "potency": {
+                    "value": "5"
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} the target is annihilated",
+                  "potency": {
+                    "value": "4"
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><em>This ability has infinite length</em></p><p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 25]] damage; [[potency I 6]] the target is annihilated</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 21]] damage; [[potency I 5]] the target is annihilated.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 15]] damage; [[potency I 4]] the target is annihilated.</p></dd></dl>",
+          "before": "<p><em>This ability has infinite length</em></p><p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"></dl>",
           "after": "<p>An annihilated target must make the test again, decreasing the potency for themself by 2 each time they are annihilated. A creature reduced to 0 Stamina by this dies and their soul is destroyed.</p>"
         },
         "spend": {
@@ -1016,7 +1069,50 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Annihilated",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.tgOqy6abOA2TR1tc.Item.JvXqemGBqPkOQU9i",
+          "transfer": false,
+          "_id": "SXJ8WJ7FTcQ6vcLu",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770780870068,
+            "modifiedTime": 1770780882457,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.JvXqemGBqPkOQU9i.SXJ8WJ7FTcQ6vcLu"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},

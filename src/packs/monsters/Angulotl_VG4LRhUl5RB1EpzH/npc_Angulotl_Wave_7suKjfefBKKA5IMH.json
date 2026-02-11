@@ -907,17 +907,99 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "4NXwyJpbYZYHpOZt": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "4NXwyJpbYZYHpOZt",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [
+                    "sonic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [
+                    "sonic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "J1p9xenKzFyHaNKe": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "J1p9xenKzFyHaNKe",
+              "applied": {
+                "tier1": {
+                  "display": "slowed (EoT)",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 5 sonic]] damage; [[/apply slowed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4 sonic]] damage</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],

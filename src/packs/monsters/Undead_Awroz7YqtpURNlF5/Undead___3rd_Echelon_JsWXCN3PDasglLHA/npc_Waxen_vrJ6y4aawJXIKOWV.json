@@ -309,13 +309,33 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "hf4Ny9p9jsSAbCgV": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "hf4Ny9p9jsSAbCgV",
+              "damage": {
+                "tier1": {
+                  "value": "10"
+                },
+                "tier2": {
+                  "value": "8"
+                },
+                "tier3": {
+                  "value": "5"
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>If the waxen is ignited (see Burn Bright), they shift up to their speed before using this ability. Each target makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 8]]{8 damage}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5]]{5 damage}</p></dd></dl><p>The waxen is then destroyed and the area is difficult terrain for enemies.</p>",
+          "before": "<p>If the waxen is ignited (see Burn Bright), they shift up to their speed before using this ability. Each target makes an <strong>Agility test</strong>.</p><p>The waxen is then destroyed and the area is difficult terrain for enemies.</p>",
           "after": ""
         },
         "spend": {
@@ -340,9 +360,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

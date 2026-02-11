@@ -495,12 +495,49 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "3Pz4IKiFEHXj5qbW": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "3Pz4IKiFEHXj5qbW",
+              "other": {
+                "tier1": {
+                  "display": "The target uses a signature ability against the nearest enemy within distance."
+                },
+                "tier2": {
+                  "display": "The target makes a free strike against the nearest enemy within distance."
+                }
+              }
+            },
+            "5STEMgRTsFZWieoA": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "5STEMgRTsFZWieoA",
+              "applied": {
+                "tier3": {
+                  "display": "Frightened (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target uses a signature ability against the nearest enemy within distance.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target makes a free strike against the nearest enemy within distance.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/apply Frightened save]]</p></dd></dl>",
+          "before": "<p>Each target makes an <strong>Intuition test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -525,9 +562,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

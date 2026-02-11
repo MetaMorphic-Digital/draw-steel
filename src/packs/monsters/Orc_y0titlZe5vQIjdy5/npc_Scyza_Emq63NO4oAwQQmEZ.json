@@ -790,12 +790,79 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "2XRjLc2m063puu7T": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "2XRjLc2m063puu7T",
+              "damage": {
+                "tier1": {
+                  "value": "10"
+                },
+                "tier2": {
+                  "value": "7"
+                },
+                "tier3": {
+                  "value": "4"
+                }
+              }
+            },
+            "P2pUWoWZPurwMId0": {
+              "sort": 200000,
+              "name": "Prone",
+              "img": null,
+              "type": "applied",
+              "_id": "P2pUWoWZPurwMId0",
+              "applied": {
+                "tier1": {
+                  "display": "prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                }
+              }
+            },
+            "Nc4LJWsdy33aSiQe": {
+              "sort": 300000,
+              "name": "Slowed",
+              "img": null,
+              "type": "applied",
+              "_id": "Nc4LJWsdy33aSiQe",
+              "applied": {
+                "tier1": {
+                  "display": "slowed (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "slowed (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The scyza kicks up a sandstorm, granting concealment to themself and any ally in the area until the end of the scyza’s next turn. Each enemy in the area makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; [[/apply prone]]; [[/apply slowed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7]]{7 damage};[[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4]]{4 damage}</p></dd></dl>",
+          "before": "<p>The scyza kicks up a sandstorm, granting concealment to themself and any ally in the area until the end of the scyza’s next turn. Each enemy in the area makes an <strong>Intuition test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -817,9 +884,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "createdTime": 1757006830804,
         "modifiedTime": null,
         "lastModifiedBy": null

@@ -490,12 +490,97 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "sk9oiFWEqUy3RRe3": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "sk9oiFWEqUy3RRe3",
+              "damage": {
+                "tier1": {
+                  "value": "18",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "14",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "nEbJVZeaiILXH8Iu": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "nEbJVZeaiILXH8Iu",
+              "applied": {
+                "tier1": {
+                  "display": "prone and can't stand (save ends)",
+                  "effects": {
+                    "dx8loOnogA4DqJ4J": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 18]]{18 damage}; [[/apply dx8loOnogA4DqJ4J save]]{Prone and Can't stand (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 14]]{14 damage}; [[/apply prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 9]]{9 Damage}</p></dd></dl>",
+          "before": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -513,7 +598,12 @@
           "area",
           "ranged",
           "weapon"
-        ]
+        ],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -551,10 +641,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770778755395
           },
           "_key": "!actors.items.effects!hd854shZ53uki7UL.etXG4qihF4LWitWS.dx8loOnogA4DqJ4J"
         }
@@ -564,7 +655,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761167271222,
@@ -601,12 +692,127 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "CYTJpjkCGlbZGSMr": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "CYTJpjkCGlbZGSMr",
+              "damage": {
+                "tier1": {
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "vYbkVCZQ6D37FAfk": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "vYbkVCZQ6D37FAfk",
+              "applied": {
+                "tier1": {
+                  "display": "the target falls into the fissure, and is prone and can’t stand (EoT)",
+                  "effects": {
+                    "2hXPO1wVP7B7bl2z": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target is prone and hanging onto the edge of the fissure",
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "xvCwGOhjo135YaxW": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "xvCwGOhjo135YaxW",
+              "other": {
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "The target can shift into the nearest unoccupied space outside the fissure.",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; the target falls into the fissure, and is [[/apply 2hXPO1wVP7B7bl2z turn]]{prone and can’t stand (EoT)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; the target is [[/apply prone]] and hanging onto the edge of the fissure</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the fissure.</p></dd></dl>",
+          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"></dl>",
           "after": ""
         },
         "spend": {
@@ -620,7 +826,12 @@
         },
         "_dsid": "titanic-tear",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -656,10 +867,11 @@
             "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770778759888
           },
           "_id": "2hXPO1wVP7B7bl2z",
           "sort": 0,
@@ -671,7 +883,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sRo2Z3MHYnHpAol7",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761167272199,
