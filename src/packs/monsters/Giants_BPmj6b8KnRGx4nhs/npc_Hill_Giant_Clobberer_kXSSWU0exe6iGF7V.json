@@ -589,13 +589,55 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "might",
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "1Pu7wLxloFaABJDM": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "1Pu7wLxloFaABJDM",
+              "damage": {
+                "tier1": {
+                  "value": "6"
+                },
+                "tier2": {
+                  "value": "2"
+                }
+              }
+            },
+            "38KkI2rHjcK6IXbc": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "38KkI2rHjcK6IXbc",
+              "forced": {
+                "tier1": {
+                  "distance": "3",
+                  "properties": [
+                    "vertical"
+                  ]
+                },
+                "tier2": {
+                  "distance": "2",
+                  "properties": [
+                    "vertical"
+                  ]
+                },
+                "tier3": {
+                  "distance": "2"
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target must make either a <strong>Might test or an Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 6]]{6 Damage}; vertical push 3</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 2]]{2 Damage}; vertical push 2</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 2</p></dd></dl>",
+          "before": "<p>Each target must make either a <strong>Might test or an Agility test.</strong></p>",
           "after": "<p>The clobberer can choose to fall prone in order to double the forced movement distance.</p>"
         },
         "spend": {
@@ -620,9 +662,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1164,17 +1206,17 @@
                     "characteristic": "none"
                   }
                 },
-                "tier2": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
                 "tier3": {
                   "display": "The target can shift into the nearest unoccupied space outside the fissure.",
                   "potency": {
                     "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
                     "characteristic": ""
                   }
                 }
@@ -1183,7 +1225,7 @@
           }
         },
         "effect": {
-          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"></dl>",
+          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1242,7 +1284,7 @@
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770778568633
+            "modifiedTime": 1770783958752
           },
           "_id": "2hXPO1wVP7B7bl2z",
           "sort": 0,

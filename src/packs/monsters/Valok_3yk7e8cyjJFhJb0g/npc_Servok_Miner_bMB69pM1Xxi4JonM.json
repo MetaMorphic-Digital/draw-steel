@@ -654,13 +654,72 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "AEi0Mi4Nnn68j8yR": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "AEi0Mi4Nnn68j8yR",
+              "damage": {
+                "tier1": {
+                  "value": "14"
+                },
+                "tier2": {
+                  "value": "11"
+                },
+                "tier3": {
+                  "value": "7"
+                }
+              }
+            },
+            "5xvxE1K0ixRO2Awe": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "5xvxE1K0ixRO2Awe",
+              "applied": {
+                "tier1": {
+                  "display": "the target falls into the fissure, and is prone and can’t stand (EoT)",
+                  "effects": {
+                    "teIi6RRa0uSHCbxK": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is prone and hanging onto the edge of the fissure",
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  }
+                }
+              }
+            },
+            "yisdEa2LEihDaMZt": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "yisdEa2LEihDaMZt",
+              "other": {
+                "tier3": {
+                  "display": "the target can shift into the nearest unoccupied space outside the fissure"
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>A 5-square-deep fissure opens along the ground in the area. Each ally in the area can shift into the nearest unoccupied space outside the fissure. Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14 damage]]{14 damage}; the target falls into the fissure, and is [[/apply prone]] and [[/apply teIi6RRa0uSHCbxK turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11 damage]]{11 damage}; the target is [[/apply prone]] and hanging onto the edge of the fissure</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><dl class=\"power-roll-display\"><dd><p>[[/damage 7 damage]]{7 damage}the target can shift into the nearest unoccupied space outside the fissure</p></dd></dl></dd></dl>",
+          "before": "<p>A 5-square-deep fissure opens along the ground in the area. Each ally in the area can shift into the nearest unoccupied space outside the fissure. Each target makes an <strong>Agility test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -726,9 +785,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

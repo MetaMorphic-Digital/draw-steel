@@ -239,13 +239,69 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "rUVhpzSKy2qPJT3C": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "rUVhpzSKy2qPJT3C",
+              "damage": {
+                "tier1": {
+                  "value": "13",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier3": {
+                  "value": "6",
+                  "types": [
+                    "fire"
+                  ]
+                }
+              }
+            },
+            "OznXeN16R8Rx7V70": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "OznXeN16R8Rx7V70",
+              "applied": {
+                "tier1": {
+                  "display": "the target is slagged (save ends)",
+                  "effects": {
+                    "NKcQsfUtamefx1uh": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is slagged (save ends)",
+                  "effects": {
+                    "NKcQsfUtamefx1uh": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility</strong> test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 13 fire]]; the target is [[/apply NKcQsfUtamefx1uh save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10 fire]]; the target is [[/apply NKcQsfUtamefx1uh save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6 fire]]</p></dd></dl>",
+          "before": "<p>Each target makes an <strong>Agility</strong> test.</p>",
           "after": "<p>A slagged target is coated in molten metal and takes [[/damage 2d6 fire]] damage at the start of each of their turns. If a slagged target has [[potency M 3]] they are [[/apply restrained save]] whenever they take cold damage.</p>"
         },
         "spend": {

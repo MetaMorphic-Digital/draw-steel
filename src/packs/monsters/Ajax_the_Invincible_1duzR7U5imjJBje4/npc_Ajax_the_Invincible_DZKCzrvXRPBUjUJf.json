@@ -1753,13 +1753,102 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "might",
+              "agility",
+              "reason",
+              "intuition",
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "bhl2jxko2ROn5cTB": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "bhl2jxko2ROn5cTB",
+              "damage": {
+                "tier1": {
+                  "value": "26",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "22",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "tKr4w034TXF3m59T": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "tKr4w034TXF3m59T",
+              "applied": {
+                "tier1": {
+                  "display": "bleeding and slowed (save ends)",
+                  "effects": {
+                    "qjXeWgkCqr0K87AF": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 26]]{26 damage}; [[/apply qjXeWgkCqr0K87AF save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 22]]{22 damage}; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 16]]{16 damage}</p></dd></dl><p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>",
-          "after": ""
+          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p>",
+          "after": "<p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>"
         },
         "spend": {
           "text": "",
@@ -1777,85 +1866,14 @@
           "magic",
           "ranged",
           "weapon"
-        ]
+        ],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
-        {
-          "name": "Bleeding",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "bleeding"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "mtLHXXDkei6dJVEF",
-          "_key": "!actors.items.effects!DZKCzrvXRPBUjUJf.OzzKADAUbKDjyYzJ.mtLHXXDkei6dJVEF"
-        },
-        {
-          "name": "Bleeding",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "bleeding"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "Ym5ShKw97vJGHU5N",
-          "_key": "!actors.items.effects!DZKCzrvXRPBUjUJf.OzzKADAUbKDjyYzJ.Ym5ShKw97vJGHU5N"
-        },
         {
           "name": "Bleeding and Slowed",
           "img": "icons/skills/melee/strike-slashes-orange.webp",
@@ -1892,10 +1910,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770783301889
           },
           "_key": "!actors.items.effects!DZKCzrvXRPBUjUJf.OzzKADAUbKDjyYzJ.qjXeWgkCqr0K87AF"
         }
@@ -1904,10 +1923,10 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.TYx67L0lNw0axGan",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

@@ -540,25 +540,184 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "kbz4kv3kRQcdK4Tp": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "kbz4kv3kRQcdK4Tp",
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "G8xCPshWub1coEWg": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "G8xCPshWub1coEWg",
+              "other": {
+                "tier1": {
+                  "display": "the target falls",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target falls",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "The target can shift into the nearest unoccupied space outside the pit.",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "5lQe70WlBHDkF5g9": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "5lQe70WlBHDkF5g9",
+              "applied": {
+                "tier1": {
+                  "display": "prone and can’t stand (EoT)",
+                  "effects": {
+                    "6tfLepwkoZo1d24S": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 4]] damage; the target falls; prone and can’t stand (EoT)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]] damage; the target falls</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the pit.</p></dd></dl>",
+          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa.ActiveEffect.6tfLepwkoZo1d24S",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770785566673,
+            "modifiedTime": 1770785566673,
+            "lastModifiedBy": null
+          },
+          "_id": "m1VavnUK1reDhY5N",
+          "sort": 0,
+          "_key": "!actors.items.effects!OK7dDOMHmlEa69BN.OMNyXoF5k0h6ffBa.m1VavnUK1reDhY5N"
+        }
+      ],
       "sort": 300000,
       "ownership": {
         "default": 0,
@@ -569,7 +728,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1757004485006,
