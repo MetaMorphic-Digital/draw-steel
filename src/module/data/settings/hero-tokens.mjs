@@ -75,8 +75,12 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
         }, { parent: game.messages.get(options.messageId) });
       }
       else await DrawSteelChatMessage.create({
+        title: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
         content: tokenSpendConfiguration.messageContent,
+        type: "standard",
+        "system.parts": [{ type: "content" }],
         flavor: options.flavor ?? game.user.character?.name,
+        flags: { core: { canPopout: true } },
       });
     }
     else game.system.socketHandler.spendHeroToken({ userId: game.userId, spendType, flavor: options.flavor, messageId: options.messageId });
@@ -101,6 +105,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     await game.settings.set(systemID, "heroTokens", { value });
     if (chatMessage) await DrawSteelChatMessage.create({
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count })}</p>`,
+      type: "standard",
+      "system.parts": [{ type: "content" }],
     });
     return value;
   }
@@ -124,6 +130,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     await game.settings.set(systemID, "heroTokens", { value: nonGM.length });
     if (chatMessage) await DrawSteelChatMessage.create({
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: nonGM.length })}</p>`,
+      type: "standard",
+      "system.parts": [{ type: "content" }],
     });
   }
 }

@@ -315,9 +315,17 @@ async function rollDamageHeal(link, event) {
   // One by one evaluation to make it easier on users doing manual rolls
   for (const r of rolls) await r.evaluate();
 
+  const title = game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType);
+
   await DrawSteelChatMessage.create({
-    rolls,
-    flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType),
+    title,
+    rolls: rolls.filter(r => !r.isDeterministic),
+    type: "standard",
+    "system.parts": [{
+      rolls,
+      flavor: title,
+      type: "roll",
+    }],
     flags: { core: { canPopout: true } },
   });
 }
@@ -400,7 +408,7 @@ async function rollGain(link, event) {
   const actors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
 
   if (!actors.size) {
-    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection"));
+    ui.notifications.warn("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection", { localize: true });
     return;
   }
 
@@ -424,10 +432,19 @@ async function rollGain(link, event) {
   // Get the localized resource label
   const resourceLabel = game.i18n.localize(lookup.label);
 
+  const title = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, {
+    type: resourceLabel, targets: targetList ?? "",
+  });
   // Create the chat message
   await DrawSteelChatMessage.create({
-    rolls: [roll],
-    flavor: game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, { type: resourceLabel, targets: targetList ?? "" }),
+    title,
+    rolls: roll.isDeterministic ? [] : [roll],
+    type: "standard",
+    "system.parts": [{
+      type: "roll",
+      flavor: title,
+      rolls: [roll],
+    }],
     flags: { core: { canPopout: true } },
     speaker: DrawSteelChatMessage.getSpeaker(),
     style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
@@ -479,18 +496,7 @@ function enrichTest(parsedConfig, label, options) {
 
   if (!linkConfig.characteristic) return null;
 
-  const formatter = game.i18n.getListFormatter({ type: "disjunction" });
-
-  const characteristicLabel = linkConfig.characteristic.includes("|")
-    ? formatter.format(linkConfig.characteristic.split("|").map(chr => ds.CONFIG.characteristics[chr].label))
-    : ds.CONFIG.characteristics[linkConfig.characteristic].label;
-
-  const localizationData = {
-    difficulty: game.i18n.localize(ds.CONST.testOutcomes[linkConfig.difficulty]?.label) ?? "",
-    characteristic: characteristicLabel,
-  };
-
-  label ??= game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
+  label ??= formatTestLabel(linkConfig.characteristic, linkConfig.difficulty);
 
   const rollTestLink = createLink(label,
     linkConfig,
@@ -522,6 +528,13 @@ async function rollTest(link, event) {
 
   if (!characteristic) throw new Error("Test enricher must provide a characteristic");
 
+  const actors = ds.utils.tokensToActors();
+
+  if (!actors.size) {
+    ui.notifications.warn("DRAW_STEEL.EDITOR.Enrichers.Test.NoSelection", { localize: true });
+    return;
+  }
+
   if (characteristic.includes("|")) {
     const chrOptions = characteristic.split("|").map(chr => ({ value: chr, label: ds.CONFIG.characteristics[chr].label }));
 
@@ -549,7 +562,7 @@ async function rollTest(link, event) {
     characteristic = fd.characteristic;
   }
 
-  for (const actor of ds.utils.tokensToActors()) {
+  for (const actor of actors) {
     actor.rollCharacteristic(characteristic, { difficulty, edges, banes, resultSource });
   }
 }
@@ -565,13 +578,38 @@ async function requestTest(link, event) {
   const { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
   const part = {
     difficulty, edges, banes, resultSource,
+    flavor: formatTestLabel(characteristic, difficulty),
     characteristics: characteristic.split("|"),
     type: "testRequest",
   };
 
   await DrawSteelChatMessage.create({
+    title: "DRAW_STEEL.EDITOR.Enrichers.Test.Request",
     type: "standard",
     "system.parts": [part],
     flags: { core: { canPopout: true } },
   });
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * A helper function that formats the characteristics with the difficulty.
+ * @param {string} characteristics    A list of characteristics split by "|".
+ * @param {string} difficulty         A test difficulty.
+ * @returns {string} The localized string.
+ */
+function formatTestLabel(characteristics, difficulty) {
+  const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+
+  const characteristicLabel = characteristics.includes("|")
+    ? formatter.format(characteristics.split("|").map(chr => ds.CONFIG.characteristics[chr].label))
+    : ds.CONFIG.characteristics[characteristics].label;
+
+  const localizationData = {
+    difficulty: game.i18n.localize(ds.CONST.testOutcomes[difficulty]?.label) ?? "",
+    characteristic: characteristicLabel,
+  };
+
+  return game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
 }
