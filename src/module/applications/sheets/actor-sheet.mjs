@@ -741,9 +741,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
             "system.parts": [{ type: "content" }],
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
             title: document.name,
-            flags: {
-              core: { canPopout: true },
-            },
+            flags: { core: { canPopout: true } },
           });
         },
       },

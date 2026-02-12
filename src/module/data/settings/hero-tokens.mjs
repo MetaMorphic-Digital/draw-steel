@@ -75,7 +75,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
         }, { parent: game.messages.get(options.messageId) });
       }
       else await DrawSteelChatMessage.create({
-        title: "DRAW_STEEL.SETTING.HeroTokens.Generic.messageTitle",
+        title: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
         content: tokenSpendConfiguration.messageContent,
         type: "standard",
         "system.parts": [{ type: "content" }],
