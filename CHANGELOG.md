@@ -42,6 +42,8 @@
   - The DSID field lists the classes or subclasses the item is for. If multiple are provided, it is eligible for any of them.
   - The Level field is the minimum level for the item.
   - These fields are only needed if the item is part of a choice; automatic features/abilities like the Tactician's Mark do not need it.
+- Added a context menu to ability result message parts with options for modifying damage rolls. (#1054)
+  - This allows for adding addtional roll terms or changing the damage type.
 - Added a setting for the XP advancement speed. (#1064)
 - Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
 - Added new AE keys treasure bonuses to stamina and damage. (#1140)
