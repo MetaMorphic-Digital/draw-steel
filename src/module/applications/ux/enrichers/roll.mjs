@@ -591,6 +591,8 @@ async function requestTest(link, event) {
   });
 }
 
+/* -------------------------------------------------- */
+
 /**
  * A helper function that formats the characteristics with the difficulty.
  * @param {string} characteristics    A list of characteristics split by "|".
