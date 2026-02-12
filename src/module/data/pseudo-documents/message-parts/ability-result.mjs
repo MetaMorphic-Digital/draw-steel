@@ -6,6 +6,7 @@ import DamageRoll from "../../../rolls/damage.mjs";
  * @import DrawSteelItem from "../../../documents/item.mjs";
  * @import AbilityData from "../../item/ability.mjs";
  * @import { AppliedPowerRollEffect, GainResourcePowerRollEffect } from "../power-roll-effects/_module.mjs";
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
@@ -178,8 +179,8 @@ export default class AbilityResultPart extends RollPart {
   /* -------------------------------------------------- */
 
   /**
-   *
-   * @returns
+   * Get context menu entries for this ability result part.
+   * @returns {ContextMenuEntry[]}
    */
   _getResultPartContextOptions() {
     const damageRolls = this.rolls.filter(roll => (roll instanceof DamageRoll) && !roll.isHeal);
@@ -210,7 +211,7 @@ export default class AbilityResultPart extends RollPart {
   async modifyDamageDialog(roll) {
     const content = document.createElement("div");
 
-    const additionalTermGroup = foundry.applications.fields.createFormGroup({
+    const additionalTermGroup = createFormGroup({
       label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.label",
       hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.hint",
       input: createTextInput({ name: "additionalTerms" }),
