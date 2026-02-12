@@ -1,6 +1,9 @@
 /* Sheets do not include the document-embed wrapper but do use a `.content-embed` div class */
 document-embed, .content-embed {
-  div.ability, &.immediate-embed.ability {
+  &.inline {
+    display: inline;
+  }
+  &.ability, &.immediate-embed.ability {
     h5 {
       margin: 0;
       font-size: var(--font-h5-size);

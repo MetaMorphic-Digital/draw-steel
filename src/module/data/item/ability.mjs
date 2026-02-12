@@ -264,17 +264,15 @@ export default class AbilityModel extends BaseItemModel {
    * @param {EnrichmentOptions} options
    */
   async toEmbed(config, options = {}) {
-    // All abilities are rendered inline
-    config.inline = true;
-
     // If unspecified assume all three tiers are desired for display
     if (!(("tier1" in config) || ("tier2" in config) || ("tier3" in config))) {
       config.tier1 = config.tier2 = config.tier3 = this.power.effects.size > 0;
     }
 
-    const embed = document.createElement("div");
+    // Ability embeds do not have citations
+    const embed = document.createElement("document-embed");
     embed.classList.add("draw-steel", "ability");
-    if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    if (config.includeName !== false) embed.innerHTML = `<h5>${config.cite ? this.parent.toAnchor().outerHTML : this.parent.name}</h5>`;
     const context = {
       system: this,
       systemFields: this.schema.fields,
