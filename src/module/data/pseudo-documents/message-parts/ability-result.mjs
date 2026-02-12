@@ -9,6 +9,7 @@ import DamageRoll from "../../../rolls/damage.mjs";
  */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
+const { createFormGroup, createSelectInput, createTextInput } = foundry.applications.fields;
 
 /**
  * A part that displays the result of an ability power roll and its consequences.
@@ -167,7 +168,9 @@ export default class AbilityResultPart extends RollPart {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _onRender(element, context) {
+  _addListeners(element, context) {
+    super._addListeners(element, context);
+
     const menuItems = this._getResultPartContextOptions();
     new foundry.applications.ux.ContextMenu.implementation(element, "[data-action=resultPartContext", menuItems, { jQuery: false, fixed: true, eventName: "click" });
   }
@@ -210,18 +213,18 @@ export default class AbilityResultPart extends RollPart {
     const additionalTermGroup = foundry.applications.fields.createFormGroup({
       label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.label",
       hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.hint",
-      input: foundry.applications.fields.createTextInput({ name: "additionalTerms" }),
+      input: createTextInput({ name: "additionalTerms" }),
       localize: true,
     });
 
     const damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, { label }]) => ({ value, label }));
-    const damageSelect = foundry.applications.fields.createSelectInput({
+    const damageSelect = createSelectInput({
       value: roll.options.type,
       options: damageTypes,
       name: "damageType",
       blank: "",
     });
-    const damageTypeGroup = foundry.applications.fields.createFormGroup({
+    const damageTypeGroup = createFormGroup({
       label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.DamageType.label",
       hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.DamageType.hint",
       input: damageSelect,
