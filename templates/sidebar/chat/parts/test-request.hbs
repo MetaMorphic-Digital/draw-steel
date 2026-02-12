@@ -1,3 +1,6 @@
+{{#if part.flavor}}
+<div class="message-part-flavor">{{part.flavor}}</div>
+{{/if}}
 {{#if ctx.resultHTML}}
 <secret-block>
   <section class="secret {{ctx.revealClass}}" id="test-request-{{document.id}}-{{part.id}}">

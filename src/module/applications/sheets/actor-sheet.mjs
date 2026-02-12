@@ -737,6 +737,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
             content: `@Embed[${document.uuid} caption=false]`,
+            type: "standard",
+            "system.parts": [{ type: "content" }],
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
             title: document.name,
             flags: {
