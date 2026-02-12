@@ -83,6 +83,8 @@ export default class AbilityResultPart extends RollPart {
       context.ctx.tierSymbol = ds.rolls.PowerRoll.RESULT_TIERS[`tier${this.tier}`].glyph;
       context.ctx.resultHTML = await item.system.powerRollText(this.tier);
     }
+
+    context.ctx.showContextMenu = !!this.rolls.find(roll => (roll instanceof DamageRoll) && !roll.isHeal);
   }
 
   /* -------------------------------------------------- */
@@ -160,5 +162,87 @@ export default class AbilityResultPart extends RollPart {
     } });
 
     return newRoll;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onRender(element, context) {
+    const menuItems = this._getResultPartContextOptions();
+    new foundry.applications.ux.ContextMenu.implementation(element, "[data-action=resultPartContext", menuItems, { jQuery: false, fixed: true, eventName: "click" });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   *
+   * @returns
+   */
+  _getResultPartContextOptions() {
+    const damageRolls = this.rolls.filter(roll => (roll instanceof DamageRoll) && !roll.isHeal);
+    if (!damageRolls.length) return [];
+
+    const baseLocalizationPath = "DRAW_STEEL.ChatMessage.PARTS.abilityResult.ContextMenuOptions.DamageModification";
+    return damageRolls.map(roll => {
+      const damageType = ds.CONFIG.damageTypes[roll.options.type]?.label ?? roll.options.type;
+      const name = game.i18n.format(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
+        total: roll.total,
+        type: damageType,
+      });
+      return {
+        name,
+        icon: "<i class=\"fa-fw fa-solid fa-gear\"></i>",
+        condition: this.message.isOwner,
+        callback: () => this.modifyDamageDialog(roll),
+      };
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+  * Prompt the dialog to modify the damage roll and then create the modified roll.
+  * @param {DamageRoll} roll
+  */
+  async modifyDamageDialog(roll) {
+    const content = document.createElement("div");
+
+    const additionalTermGroup = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.label",
+      hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.hint",
+      input: foundry.applications.fields.createTextInput({ name: "additionalTerms" }),
+      localize: true,
+    });
+
+    const damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, { label }]) => ({ value, label }));
+    const damageSelect = foundry.applications.fields.createSelectInput({
+      value: roll.options.type,
+      options: damageTypes,
+      name: "damageType",
+      blank: "",
+    });
+    const damageTypeGroup = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.DamageType.label",
+      hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.DamageType.hint",
+      input: damageSelect,
+      localize: true,
+    });
+
+    content.append(additionalTermGroup, damageTypeGroup);
+
+    const modifications = await ds.applications.api.DSDialog.input({
+      content,
+      classes: ["modify-damage-dialog"],
+      window: {
+        title: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Title",
+        icon: "fa-fw fa-solid fa-gear",
+      },
+    });
+
+    // If the dialog is closed or submitted without modifications, don't create a new roll.
+    if (!modifications) return;
+    if ((modifications.additionalTerms === "") && (modifications.damageType === roll.options.type)) return;
+
+    this.createModifiedDamageRoll(roll, modifications);
   }
 }

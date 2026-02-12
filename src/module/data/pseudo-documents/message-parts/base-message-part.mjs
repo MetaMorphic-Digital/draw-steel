@@ -120,4 +120,14 @@ export default class BaseMessagePart extends TypedPseudoDocument {
       return rolls;
     }, []);
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Actions performed after any render of the message part.
+   * Called by StandardModel#_renderHTML.
+   * @param {HTMLElement} element   The rendered part.
+   * @param {object} context        The rendering context.
+   */
+  _onRender(html, context) {}
 }

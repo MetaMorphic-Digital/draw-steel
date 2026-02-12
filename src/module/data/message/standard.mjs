@@ -129,6 +129,7 @@ export default class StandardModel extends DrawSteelSystemModel {
       const htmlString = await foundry.applications.handlebars.renderTemplate(part.constructor.TEMPLATE, context);
       const html = foundry.utils.parseHTML(`<section data-message-part="${part.id}">${htmlString}</section>`);
       part._addListeners(html, context);
+      part._onRender(html, context);
       element.insertAdjacentElement("beforeend", html);
     }
 
