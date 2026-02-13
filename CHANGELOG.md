@@ -105,6 +105,7 @@
   - Fixed token scales on the Dwarf Stone Whisperer, Trapper, and Warden, and the Goblin Skitterling.
 - Long enricher or roll text will now wrap in the chat log. (#1608)
 - Fixed clicking on the image of a locked document (e.g. ones in a compendium) not opening the image. (#1618)
+- Multitarget abilities that include the source of the taunted condition will no longer apply double banes to non-source targets. (#1629)
 - Fixed source registration logic to match documentation.
 
 ## 0.9.2
