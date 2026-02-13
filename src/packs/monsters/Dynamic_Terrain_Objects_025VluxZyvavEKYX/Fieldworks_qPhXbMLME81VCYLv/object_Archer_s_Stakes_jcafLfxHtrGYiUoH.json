@@ -1,0 +1,543 @@
+{
+  "name": "Archer's Stakes",
+  "type": "object",
+  "img": "icons/environment/traps/spiked-wall.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 3,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M",
+        "text": "One or more squares of difficult terrain",
+        "direction": "One side of the stakes is defined as the front",
+        "typical": "4 x 1-square area"
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>A series of sharp stakes have been placed point-out to protect defenders against charges and other direct attacks.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": 0,
+      "types": [],
+      "hover": false,
+      "disengage": 0
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "335",
+      "license": "Draw Steel Creator License"
+    },
+    "ev": 2,
+    "object": {
+      "level": 1,
+      "category": "fortification",
+      "role": "defender",
+      "area": "",
+      "squareStamina": true
+    }
+  },
+  "prototypeToken": {
+    "name": "Archer's Stakes",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/environment/traps/spiked-wall.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 0,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "i1AWuD7OfZ4NNLPF",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>Each square of stakes must be individually destroyed.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!jcafLfxHtrGYiUoH.i1AWuD7OfZ4NNLPF"
+    },
+    {
+      "name": "Activate",
+      "type": "feature",
+      "_id": "LZitA1vPuzMwXCF3",
+      "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
+      "system": {
+        "description": {
+          "value": "<p>A creature enters an area of stakes from the front.</p><p><strong>Effect:</strong> The triggering creature takes [[/damage 2 scaling]] damage per square of stakes they enter. If they are force moved into an area of stakes, they take an additional [[/damage 3]] damage.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!jcafLfxHtrGYiUoH.LZitA1vPuzMwXCF3"
+    },
+    {
+      "name": "Sticky Stakes",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "A creature enters the stakes from the front",
+        "distance": {
+          "type": "melee",
+          "primary": 0
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "The triggering creature or object",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "x0jAdVOHBh2BlIT2": {
+              "sort": 100000,
+              "name": "Sticky",
+              "img": null,
+              "type": "applied",
+              "_id": "x0jAdVOHBh2BlIT2",
+              "applied": {
+                "tier2": {
+                  "potency": {
+                    "characteristic": "agility",
+                    "value": "1"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "{{potency}} slowed (save ends)"
+                },
+                "tier3": {
+                  "potency": {
+                    "value": "2",
+                    "characteristic": ""
+                  },
+                  "effects": {
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "{{potency}} restrained (save ends)"
+                },
+                "tier1": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "_id": "TqizhQiUENorHpRL",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!jcafLfxHtrGYiUoH.TqizhQiUENorHpRL"
+    },
+    {
+      "name": "Allied Awareness",
+      "type": "feature",
+      "_id": "F1JsmKHUf2Pvty2f",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Allies of this object ignore the difficult terrain created by the stakes, take no damage from moving through the stakes unless they are force moved, and have cover while in an area of archer’s stakes.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1770927757232,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!jcafLfxHtrGYiUoH.F1JsmKHUf2Pvty2f"
+    }
+  ],
+  "effects": [
+    {
+      "name": "Poison",
+      "img": "icons/skills/toxins/poison-bottle-open-fire-purple.webp",
+      "type": "base",
+      "origin": "Actor.X0yqnB6ySFeJUUAN",
+      "_id": "cbfg7fruga2vh1ho",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.ev",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 5,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>The tips of the stakes have poison applied to them. Any creature who takes damage from the stakes also takes [[/damage 1d6 poison]] damage at the start of each of their turns (save ends).</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.effects!jcafLfxHtrGYiUoH.cbfg7fruga2vh1ho"
+    },
+    {
+      "name": "Sticky Stakes",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.jcafLfxHtrGYiUoH",
+      "disabled": true,
+      "_id": "i92gM3FIKdCWAE09",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.ev",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 5,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>A sticky slime or webbing has been applied to the stakes and the ground between them. Any creature who enters an area of stakes triggers the Sticky Stakes ability in addition to suffering the stakes’ other effects.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1770927957133,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!jcafLfxHtrGYiUoH.i92gM3FIKdCWAE09"
+    }
+  ],
+  "folder": "qPhXbMLME81VCYLv",
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.10.0",
+    "createdTime": 1770926926662,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "jcafLfxHtrGYiUoH",
+  "sort": 0,
+  "_key": "!actors!jcafLfxHtrGYiUoH"
+}

@@ -3,7 +3,7 @@
     class="profile-img"
     src="{{document.img}}"
     alt="{{document.name}}"
-    {{#if isEdit}}data-edit="img"{{/if}}
+    {{#unless isPlay}}data-edit="img"{{/unless}}
     data-action="{{ifThen isPlay "showImage" "editImage"}}"
     title="{{document.name}}"
   >
