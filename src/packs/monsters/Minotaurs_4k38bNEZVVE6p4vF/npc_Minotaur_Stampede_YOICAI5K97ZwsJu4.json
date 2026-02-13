@@ -798,17 +798,29 @@
     {
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
-      "type": "base",
-      "origin": "Actor.YOICAI5K97ZwsJu4",
-      "_id": "hyV9YaV2HPF8fTJL",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.YOICAI5K97ZwsJu4",
+      "_id": "Buto9Rd7ce6Gp9aj",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
         }
       },
-      "changes": [],
-      "disabled": false,
+      "changes": [
+        {
+          "key": "power.roll.edges",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": 0,
         "combat": null,
@@ -818,7 +830,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>Gain an Edge on Strikes.</p>",
+      "description": "<p>Gain an edge on strikes.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -828,13 +840,14 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.10.0",
+        "createdTime": 1770942863584,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.effects!YOICAI5K97ZwsJu4.hyV9YaV2HPF8fTJL"
+      "_key": "!actors.effects!YOICAI5K97ZwsJu4.Buto9Rd7ce6Gp9aj"
     }
   ],
   "sort": 0,
