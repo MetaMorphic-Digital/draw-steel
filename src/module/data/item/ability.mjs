@@ -630,13 +630,17 @@ export default class AbilityModel extends BaseItemModel {
     if (token && targetActor) {
       //Taunted checks - attacking a token other than the taunted source while having LOE to the taunted source gets a double bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "taunted") === false) {
-        const tauntedSource = fromUuidSync(this.actor.system.statuses.taunted.sources.first());
-        const activeTokens = tauntedSource?.getActiveTokens?.() ?? [];
+        const tauntedSourceUuid = this.actor.system.statuses.taunted.sources.first();
+        const isTauntedSourceTargeted = !!game.user.targets.find(target => target.actor?.uuid === tauntedSourceUuid);
+        if (!isTauntedSourceTargeted) {
+          const tauntedSource = fromUuidSync(tauntedSourceUuid);
+          const activeTokens = tauntedSource?.getActiveTokens?.() ?? [];
 
-        for (const tauntedSourceToken of activeTokens) {
-          if (!token.hasLineOfEffect(tauntedSourceToken)) continue;
-          modifiers.banes += 2;
-          break;
+          for (const tauntedSourceToken of activeTokens) {
+            if (!token.hasLineOfEffect(tauntedSourceToken)) continue;
+            modifiers.banes += 2;
+            break;
+          }
         }
       }
     }

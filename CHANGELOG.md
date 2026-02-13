@@ -98,6 +98,7 @@
   - Corrected the prototype tokens of various monsters to match their size. (#1523)
   - Fixed the Omen Dragon's Repent ability not correctly applying the apply effect enricher. (#1524)
   - Fixed token scales on the Dwarf Stone Whisperer, Trapper, and Warden.
+- Multitarget abilities that include the source of the taunted condition will no longer apply double banes to non-source targets. (#1629)
 - Fixed source registration logic to match documentation.
 
 ## 0.9.2
