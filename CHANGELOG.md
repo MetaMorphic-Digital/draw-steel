@@ -95,6 +95,7 @@
 - Player-Facing Compendium Data Fixes:
   - Significantly refactored how the Conduit is structured to properly give out subclass features and abilities. (#950)
   - Removed the category from the Conduit's Word of Guidance and Word of Judgement triggered actions. (#1519)
+  - Added missing tier 2 result to concussive push. (#1626)
   - Added missing trigger text to Vanguard's Parry.
   - Added description to many active effects.
   - Corrected the table formatting for the "Perfect New Recipe" project.
