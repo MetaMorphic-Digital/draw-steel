@@ -8,7 +8,7 @@
     src="{{document.img}}"
     alt="{{document.name}}"
     data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
-    {{#if isEdit}}data-edit="img"{{/if}}
+    {{#unless isPlay}}data-edit="img"{{/unless}}
     title="{{document.name}}"
   >
   <div class="header-center flexcol">

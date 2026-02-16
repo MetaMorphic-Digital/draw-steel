@@ -322,9 +322,9 @@ async function rollDamageHeal(link, event) {
     rolls: rolls.filter(r => !r.isDeterministic),
     type: "standard",
     "system.parts": [{
-      type: "roll",
       rolls,
       flavor: title,
+      type: "roll",
     }],
     flags: { core: { canPopout: true } },
   });
@@ -432,8 +432,9 @@ async function rollGain(link, event) {
   // Get the localized resource label
   const resourceLabel = game.i18n.localize(lookup.label);
 
-  const title = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, { type: resourceLabel, targets: targetList ?? "" });
-
+  const title = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, {
+    type: resourceLabel, targets: targetList ?? "",
+  });
   // Create the chat message
   await DrawSteelChatMessage.create({
     title,
@@ -590,6 +591,8 @@ async function requestTest(link, event) {
   });
 }
 
+/* -------------------------------------------------- */
+
 /**
  * A helper function that formats the characteristics with the difficulty.
  * @param {string} characteristics    A list of characteristics split by "|".
@@ -597,7 +600,6 @@ async function requestTest(link, event) {
  * @returns {string} The localized string.
  */
 function formatTestLabel(characteristics, difficulty) {
-
   const formatter = game.i18n.getListFormatter({ type: "disjunction" });
 
   const characteristicLabel = characteristics.includes("|")

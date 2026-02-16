@@ -61,10 +61,15 @@
           "_id": "vT0GlOzfvjAUxakK",
           "forced": {
             "tier1": {
-              "distance": ""
+              "distance": "",
+              "movement": [],
+              "display": ""
             },
             "tier3": {
               "distance": "2"
+            },
+            "tier2": {
+              "distance": "1"
             }
           }
         },
@@ -78,6 +83,11 @@
               "display": "{{potency}}, prone",
               "potency": {
                 "characteristic": "might"
+              },
+              "effects": {
+                "prone": {
+                  "condition": "failure"
+                }
               }
             }
           }
@@ -103,9 +113,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1754630162821,
     "modifiedTime": null,
     "lastModifiedBy": null
