@@ -56,7 +56,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /** @inheritdoc */
   _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
-    if (this.modifiesActor && this.statuses.has("prone")) {
+    if ((game.userId === userId) && this.modifiesActor && this.statuses.has("prone")) {
       for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
     }
   }
@@ -66,7 +66,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /** @inheritdoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
-    if (this.modifiesActor && this.statuses.has("prone")) {
+    if ((game.userId === userId) && this.modifiesActor && this.statuses.has("prone")) {
       for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
     }
   }
