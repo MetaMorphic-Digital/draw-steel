@@ -95,14 +95,21 @@
 - Player-Facing Compendium Data Fixes:
   - Significantly refactored how the Conduit is structured to properly give out subclass features and abilities. (#950)
   - Removed the category from the Conduit's Word of Guidance and Word of Judgement triggered actions. (#1519)
+  - Added missing tier 2 result to concussive push. (#1626)
+  - Fixed tier 1 and 3 damage numbers on Censor's Your Allies Cannot Save You.
+  - Added missing fire immunity effect to Sun Domain's Light of the Burning Scene.
+  - Added missing save bonus to Sun Domain's Inner Light.
+  - Added missing damage immunity effects to Fury's Elemental Form.
   - Added missing trigger text to Vanguard's Parry.
   - Added description to many active effects.
   - Corrected the table formatting for the "Perfect New Recipe" project.
+  - Updated damage immunity and weakness effects to use the UPGRADE mode instead of ADD.
 - Director-Facing Compendium Data Fixes:
   - Corrected the prototype tokens of various monsters to match their size. (#1523)
   - Fixed the Omen Dragon's Repent ability not correctly applying the apply effect enricher. (#1524)
   - Fixed the With Captain effect on the Goblin Sniper. (#1602)
   - Fixed token scales on the Dwarf Stone Whisperer, Trapper, and Warden, and the Goblin Skitterling.
+  - Standardized token properties on Goblin Skitterling and Human Brawler.
 - Long enricher or roll text will now wrap in the chat log. (#1608)
 - Fixed clicking on the image of a locked document (e.g. ones in a compendium) not opening the image. (#1618)
 - Multitarget abilities that include the source of the taunted condition will no longer apply double banes to non-source targets. (#1629)
