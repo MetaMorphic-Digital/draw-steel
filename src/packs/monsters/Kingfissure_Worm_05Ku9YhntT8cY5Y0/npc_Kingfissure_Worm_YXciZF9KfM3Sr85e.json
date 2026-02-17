@@ -882,13 +882,69 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "cmFUx4nqBHB8y1M4": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "cmFUx4nqBHB8y1M4",
+              "damage": {
+                "tier1": {
+                  "value": "10"
+                },
+                "tier2": {
+                  "value": "10"
+                }
+              }
+            },
+            "lYDNtFsJUZd41h1s": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "lYDNtFsJUZd41h1s",
+              "applied": {
+                "tier1": {
+                  "display": "the target falls into the fissure, lands prone, and can’t stand (EoT)",
+                  "effects": {
+                    "Jtyo7w0rGoTMpMQd": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is knocked prone and left hanging at the edge of the area",
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  }
+                }
+              }
+            },
+            "7HaQEWZWUfeejLbY": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "7HaQEWZWUfeejLbY",
+              "other": {
+                "tier3": {
+                  "display": "The target shifts to the nearest unoccupied space outside the area."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><strong>Special:</strong> Each target must be on the ground.</p><p>The area becomes a 10-square-deep fissure in the earth. Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; the target falls into the fissure, lands [[/apply prone]], and [[/apply Jtyo7w0rGoTMpMQd turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; the target is knocked [[/apply prone]] and left hanging at the edge of the area</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target shifts to the nearest unoccupied space outside the area.</p></dd></dl>",
+          "before": "<p><strong>Special:</strong> Each target must be on the ground.</p><p>The area becomes a 10-square-deep fissure in the earth. Each target makes an <strong>Agility test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -954,9 +1010,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -995,7 +1051,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The kingfissure worm can use this villain action only while burrowing. The worm burrows up to half their speed, then breaches the surface and moves 5 squares straight up before dropping back to the ground. Each creature or object whose space the worm moves through during this movement takes [[/damage 10]]{10 damage}, and if they have A &lt; 4 they are knocked [[/apply prone]]. Any creature who is made winded by this damage is swallowed (see Swallowed).</p>",
+          "before": "<p>The kingfissure worm can use this villain action only while burrowing. The worm burrows up to half their speed, then breaches the surface and moves 5 squares straight up before dropping back to the ground. Each creature or object whose space the worm moves through during this movement takes [[/damage 10]]{10 damage}, and if they have [[potency A 4]] they are knocked [[/apply prone]]. Any creature who is made winded by this damage is swallowed (see Swallowed).</p>",
           "after": ""
         },
         "spend": {
@@ -1020,9 +1076,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1549,7 +1605,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each creature within 5 squares of the kingfissure worm takes [[/damage 5]]{5 damage}, and if they have a&lt;4 they are knocked [[/apply prone]]. The kingfissure worm can use this ability only once per round.</p>",
+          "before": "<p>Each creature within 5 squares of the kingfissure worm takes [[/damage 5]]{5 damage}, and if they have [[potency A 4]] they are knocked [[/apply prone]]. The kingfissure worm can use this ability only once per round.</p>",
           "after": ""
         },
         "spend": {
@@ -1571,9 +1627,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1585,8 +1641,8 @@
     "name": "Kingfissure Worm",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 5,
+    "height": 5,
     "texture": {
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
@@ -1684,7 +1740,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761597533820,

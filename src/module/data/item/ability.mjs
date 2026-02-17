@@ -1,22 +1,23 @@
 import { systemPath } from "../../constants.mjs";
-import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { DamageRoll, PowerRoll } from "../../rolls/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import { PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { setOptions, validateDSID } from "../helpers.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
-import BaseItemModel from "./base.mjs";
+import BaseItemModel from "./base-item.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs"
  */
 
 const fields = foundry.data.fields;
 
 /**
- * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment.
+ * Special main actions, maneuvers, and more that a creature can use to affect other creatures and objects, and the environment.
  */
 export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
@@ -45,6 +46,16 @@ export default class AbilityModel extends BaseItemModel {
     // Items don't have descriptions
     delete schema.description;
 
+    // Can be expanded over time for automation
+    schema.prerequisites = new fields.SchemaField({
+      value: new fields.StringField({ required: true }),
+      dsid: new fields.SetField(setOptions({
+        validate: validateDSID,
+        validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+      })),
+      level: new fields.NumberField({ required: true, integer: true, positive: true }),
+    });
+
     schema.story = new fields.StringField({ required: true });
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
@@ -69,6 +80,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.power = new fields.SchemaField({
       roll: new fields.SchemaField({
+        reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
       }),
@@ -116,7 +128,7 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.power.roll.enabled = this.power.effects.size > 0;
+    this.power.roll.enabled = !this.power.roll.reactive && (this.power.effects.size > 0);
   }
 
   /* -------------------------------------------------- */
@@ -126,13 +138,20 @@ export default class AbilityModel extends BaseItemModel {
     super.preparePostActorPrepData();
     this._applyAbilityBonuses();
 
-    for (const chr of this.power.roll.characteristics) {
-      const c = this.actor.system.characteristics[chr];
-      if (!c) continue;
-      if (c.value >= this.power.characteristic.value) {
-        this.power.characteristic.key = chr;
-        this.power.characteristic.value = c.value;
+    if (!this.power.roll.reactive && this.actor.system.characteristics) {
+      for (const chr of this.power.roll.characteristics) {
+        const c = this.actor.system.characteristics[chr];
+        if (!c) continue;
+        if (c.value >= this.power.characteristic.value) {
+          this.power.characteristic.key = chr;
+          this.power.characteristic.value = c.value;
+        }
       }
+    }
+
+    // Prepare PRE data that relies on ability data prep being complete (e.g. treasure damage bonuses).
+    for (const effect of this.power.effects) {
+      effect.preparePostAbilityPrepData();
     }
   }
 
@@ -143,6 +162,15 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _applyAbilityBonuses() {
+    // Apply keyword modifiers first to ensure later effects operate on the modified set
+    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
+      if (bonus.key !== "keyword") continue;
+      if (bonus.mode !== CONST.ACTIVE_EFFECT_MODES.ADD) continue;
+      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+
+      this.keywords.add(bonus.value);
+    }
+
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
 
@@ -182,11 +210,47 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          const formulaField = DamagePowerRollEffect.schema.getField(bonus.key);
+          // TODO: Remove in v14 with non-persisted schema fields.
+          const field = (bonus.key.startsWith("damage.bonuses")) ? new fields.NumberField({ integer: true }) : DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
-          foundry.utils.setProperty(firstDamageEffect, bonus.key, formulaField.applyChange(currentValue, this, bonus));
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus));
+        }
+      }
+
+      const forcedPrefix = "forced.";
+      if (bonus.key.startsWith(forcedPrefix)) {
+        const key = bonus.key.substring(forcedPrefix.length);
+        // Apply forced movement bonuses to all forced movement effects
+        const forcedEffects = this.power.effects.filter(effect => effect.type === "forced");
+        for (const effect of forcedEffects) {
+          const currentBonuses = foundry.utils.getProperty(effect, "bonuses") ?? {};
+          // Bonus change objects are stored as strings, convert to Number
+          foundry.utils.setProperty(effect, "bonuses", { ...currentBonuses, [key]: Number(bonus.value) });
+        }
+      }
+
+      if (bonus.key === "potency") {
+        // For potency effects, apply to all power roll effects and all tiers
+        for (const effect of this.power.effects) {
+          for (const tierNumber of [1, 2, 3]) {
+            const key = `${effect.constructor.TYPE}.tier${tierNumber}.potency.value`;
+            const formulaField = effect.schema.getField(key);
+            const currentValue = foundry.utils.getProperty(effect, key);
+            foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus));
+          }
+        }
+      }
+
+      if (bonus.key.startsWith("power.")) {
+        switch (bonus.key) {
+          case "power.roll.banes":
+            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
+            break;
+          case "power.roll.edges":
+            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            break;
         }
       }
     }
@@ -200,17 +264,15 @@ export default class AbilityModel extends BaseItemModel {
    * @param {EnrichmentOptions} options
    */
   async toEmbed(config, options = {}) {
-    // All abilities are rendered inline
-    config.inline = true;
-
     // If unspecified assume all three tiers are desired for display
     if (!(("tier1" in config) || ("tier2" in config) || ("tier3" in config))) {
       config.tier1 = config.tier2 = config.tier3 = this.power.effects.size > 0;
     }
 
-    const embed = document.createElement("div");
+    // Ability embeds do not have citations
+    const embed = document.createElement("document-embed");
     embed.classList.add("draw-steel", "ability");
-    if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    if (config.includeName !== false) embed.innerHTML = `<h5>${config.cite ? this.parent.toAnchor().outerHTML : this.parent.name}</h5>`;
     const context = {
       system: this,
       systemFields: this.schema.fields,
@@ -282,10 +344,10 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
-      `tier${tier}`,
-      { text: this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
-    ]));
+    context.powerRollEffects = {};
+    for (const tier of [1, 2, 3]) {
+      context.powerRollEffects[`tier${tier}`] = await this.powerRollText(tier);
+    }
     context.powerRolls = this.power.effects.size > 0;
 
     context.powerRollBonus = this.power.roll.formula;
@@ -311,11 +373,22 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Produces the power roll text for a given tier.
+   * @param {1 | 2 | 3} tier
+   * @returns {Promise<string>} An HTML string.
+   */
+  async powerRollText(tier) {
+    return this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ");
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
-    if (this.actor) {
+    if (this.actor && this.actor.system.characteristics) {
       rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }
@@ -399,12 +472,15 @@ export default class AbilityModel extends BaseItemModel {
 
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      type: "abilityUse",
+      type: "standard",
       rolls: [],
       title: this.parent.name,
       content: this.parent.name,
       system: {
-        uuid: this.parent.uuid,
+        parts: [{
+          type: "abilityUse",
+          abilityUuid: this.parent.uuid,
+        }],
       },
       flags: { core: { canPopout: true } },
     };
@@ -426,8 +502,8 @@ export default class AbilityModel extends BaseItemModel {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
-      options.modifiers.banes ??= 0;
-      options.modifiers.edges ??= 0;
+      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
       options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);
@@ -452,55 +528,38 @@ export default class AbilityModel extends BaseItemModel {
       });
 
       if (!promptValue) return null;
-      const { rollMode, powerRolls } = promptValue;
+      const { rollMode, rolls, baseRoll } = promptValue;
+
+      // Base roll for DSN purposes
+      messageData.rolls.push(baseRoll);
 
       DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-      const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
-        accumulator[powerRoll.product] ??= [baseRoll];
-        accumulator[powerRoll.product].push(powerRoll);
+      const groupedRolls = Object.groupBy(rolls, roll => roll.product);
 
-        return accumulator;
-      }, {});
-
-      // Each tier group gets a message. Rolls within a group are in the same message
-      const messages = [];
+      // Each tier group gets a message part. Rolls within a group are in the same message part
       for (const tierNumber in groupedRolls) {
-        const messageDataCopy = foundry.utils.duplicate(messageData);
-        for (const powerRoll of groupedRolls[tierNumber]) {
-          messageDataCopy.rolls.push(powerRoll);
-        }
+        const rollPart = {
+          type: "abilityResult",
+          rolls: groupedRolls[tierNumber],
+          tier: tierNumber,
+          abilityUuid: this.parent.uuid,
+        };
 
-        // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
-        const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
-          const damage = currentEffect.damage[`tier${tierNumber}`];
-          if (Number(damage.value) !== 0) effects.push(damage);
-          return effects;
-        }, []);
-
-        for (const damageEffect of damageEffects) {
-          // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-          let damageType = "";
-          if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
-          else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
-
-          const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-          const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
-          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
+        for (const damageEffect of this.power.effects.documentsByType.damage) {
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: baseRoll.options.damageSelection });
+          if (!damageRoll) continue;
           await damageRoll.evaluate();
-          messageDataCopy.rolls.push(damageRoll);
+          rollPart.rolls.push(damageRoll);
+          // If there's a roll, add it to the base message data for DSN purposes
+          if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
         }
 
-        if (messages.length > 0) messageDataCopy.system.embedText = false;
-
-        messages.push(DrawSteelChatMessage.create(messageDataCopy));
+        messageData.system.parts.push(rollPart);
       }
-
-      return Promise.allSettled(messages);
     }
-    else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /* -------------------------------------------------- */
@@ -546,6 +605,9 @@ export default class AbilityModel extends BaseItemModel {
 
     // Modifiers requiring just the targeted token to have an actor
     if (targetActor) {
+      modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
+      modifiers.banes += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.banes") ?? 0;
+
       // Frightened condition checks
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
       if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
@@ -568,13 +630,17 @@ export default class AbilityModel extends BaseItemModel {
     if (token && targetActor) {
       //Taunted checks - attacking a token other than the taunted source while having LOE to the taunted source gets a double bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "taunted") === false) {
-        const tauntedSource = fromUuidSync(this.actor.system.statuses.taunted.sources.first());
-        const activeTokens = tauntedSource?.getActiveTokens?.() ?? [];
+        const tauntedSourceUuid = this.actor.system.statuses.taunted.sources.first();
+        const isTauntedSourceTargeted = !!game.user.targets.find(target => target.actor?.uuid === tauntedSourceUuid);
+        if (!isTauntedSourceTargeted) {
+          const tauntedSource = fromUuidSync(tauntedSourceUuid);
+          const activeTokens = tauntedSource?.getActiveTokens?.() ?? [];
 
-        for (const tauntedSourceToken of activeTokens) {
-          if (!token.hasLineOfEffect(tauntedSourceToken)) continue;
-          modifiers.banes += 2;
-          break;
+          for (const tauntedSourceToken of activeTokens) {
+            if (!token.hasLineOfEffect(tauntedSourceToken)) continue;
+            modifiers.banes += 2;
+            break;
+          }
         }
       }
     }

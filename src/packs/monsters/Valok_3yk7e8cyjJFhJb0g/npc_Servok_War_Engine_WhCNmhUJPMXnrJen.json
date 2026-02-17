@@ -604,14 +604,70 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "3sNdUUkRji6g6aBh": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "3sNdUUkRji6g6aBh",
+              "damage": {
+                "tier1": {
+                  "value": "16",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier2": {
+                  "value": "12",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier3": {
+                  "value": "8",
+                  "types": [
+                    "fire"
+                  ]
+                }
+              }
+            },
+            "jmjJj4bM4Hwe9hM3": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "jmjJj4bM4Hwe9hM3",
+              "applied": {
+                "tier1": {
+                  "display": "the target is burning (save ends)",
+                  "effects": {
+                    "jqNAhnhTvxJbLu8w": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is burning (EoT)",
+                  "effects": {
+                    "jqNAhnhTvxJbLu8w": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 fire]]{16 fire damage}; the target is [[/apply jqNAhnhTvxJbLu8w save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 12 fire]]{12 fire damage}; the target is [[/apply jqNAhnhTvxJbLu8w turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 8 fire]]{8 fire damage}</p></dd></dl><p>A burning creature takes [[/damage 1d6 fire]]{1d6 fire damage} at the start of each of their turns. A burning object takes 1d6 fire damage at the end of each round. Additionally, the area is burning until the end of the encounter. While the area is burning, it is difficult terrain and any enemy takes [[/damage 1d6 fire]]{3 fire damage} for each square of the area they enter.</p>",
-          "after": ""
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p>",
+          "after": "<p>A burning creature takes [[/damage 1d6 fire]]{1d6 fire damage} at the start of each of their turns. A burning object takes 1d6 fire damage at the end of each round. Additionally, the area is burning until the end of the encounter. While the area is burning, it is difficult terrain and any enemy takes [[/damage 1d6 fire]]{3 fire damage} for each square of the area they enter.</p>"
         },
         "spend": {
           "text": "",
@@ -676,9 +732,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1026,19 +1082,7 @@
           },
           "changes": [
             {
-              "key": "damage.tier1.value",
-              "mode": 2,
-              "value": "5",
-              "priority": null
-            },
-            {
-              "key": "damage.tier2.value",
-              "mode": 2,
-              "value": "5",
-              "priority": null
-            },
-            {
-              "key": "damage.tier3.value",
+              "key": "damage.bonuses.value",
               "mode": 2,
               "value": "5",
               "priority": null
@@ -1063,10 +1107,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1769970057252
           },
           "_key": "!actors.items.effects!WhCNmhUJPMXnrJen.Lmzc1ztRbziHTA1s.Imfv5uj4pCikQdwu"
         },
@@ -1144,8 +1189,8 @@
     "name": "Servok War Engine",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 3,
+    "height": 3,
     "texture": {
       "src": "systems/draw-steel/assets/roles/brute.webp",
       "anchorX": 0.5,
@@ -1243,7 +1288,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761434669239,

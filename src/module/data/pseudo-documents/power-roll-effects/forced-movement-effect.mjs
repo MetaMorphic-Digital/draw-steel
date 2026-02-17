@@ -12,8 +12,6 @@ const { SetField, StringField } = foundry.data.fields;
 export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
-    const potencyFormula = [null, "@potency.weak", "@potency.average", "@potency.strong"];
-
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
       forced: this.duplicateTierSchema(() => ({
@@ -53,7 +51,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       if (n > 1) {
         /** @type {ForcedMovementSchema} */
         const prevTier = this.forced[`tier${n - 1}`];
-        if (prevTier.display) tierValue.display ||= prevTier.display;
+        if (!this.parent.power.roll.reactive && prevTier.display) tierValue.display ||= prevTier.display;
         if (prevTier.potency.characteristic) tierValue.potency.characteristic ||= prevTier.potency.characteristic;
       }
     }
@@ -66,13 +64,15 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     await super._tierRenderingContext(context, options);
 
     for (const n of [1, 2, 3]) {
+
+      const usePlaceHolder = !this.parent.power.roll.reactive && (n > 1);
       const path = `forced.tier${n}`;
       Object.assign(context.fields[`tier${n}`].forced, {
         display: {
           field: this.schema.getField(`${path}.display`),
           value: this.forced[`tier${n}`].display,
           src: this._source.forced[`tier${n}`].display,
-          placeholder: n > 1 ? this.forced[`tier${n - 1}`].display : "",
+          placeholder: usePlaceHolder ? this.forced[`tier${n - 1}`].display : "",
           name: `${path}.display`,
         },
         movement: {
@@ -108,20 +108,50 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
    */
   toText(tier) {
     const tierValue = this.forced[`tier${tier}`];
-    const distanceValue = this.actor
+    const isVertical = tierValue.properties.has("vertical");
+    const baseDistance = this.actor
       ? ds.utils.evaluateFormula(tierValue.distance, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.distance;
-    const formatter = game.i18n.getListFormatter({ type: "disjunction" });
-    const distanceString = game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
-      movement: formatter.format(tierValue.movement.map(v => {
-        const config = ds.CONFIG.abilities.forcedMovement[v];
-        return tierValue.properties.has("vertical") ? config.vertical : config.label;
-      })),
-      distance: distanceValue,
+
+    // Group movement types by their final distance value (base + bonus)
+    const distanceGroups = Map.groupBy([...tierValue.movement], movementType => {
+      if (!this.actor) return baseDistance;
+      return baseDistance + (this.bonuses ? this.bonuses[movementType] ?? 0 : 0);
     });
+
+    // Format the output
+    const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+    let distanceString;
+
+    if (distanceGroups.size === 1) {
+      // All movement types have the same distance, so group them together
+      const [distance, types] = [...distanceGroups.entries()][0];
+      const movementLabels = types.map(v => {
+        const config = ds.CONFIG.abilities.forcedMovement[v];
+        return isVertical ? config.vertical : config.label;
+      });
+      distanceString = game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
+        movement: formatter.format(movementLabels),
+        distance: distance,
+      });
+    } else {
+      // Different distances for different types, list each separately
+      const formattedParts = [];
+      for (const [distance, types] of distanceGroups) {
+        for (const movementType of types) {
+          const config = ds.CONFIG.abilities.forcedMovement[movementType];
+          const label = isVertical ? config.vertical : config.label;
+          formattedParts.push(game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
+            movement: label,
+            distance: distance,
+          }));
+        }
+      }
+      distanceString = formatter.format(formattedParts);
+    }
+
     const potencyString = this.toPotencyHTML(tier);
-    // Sanitize any HTML that may be in the base display string
-    const escapedDisplay = Handlebars.escapeExpression(this.forced[`tier${tier}`].display);
+    const escapedDisplay = Handlebars.escapeExpression(tierValue.display);
     const finalText = escapedDisplay.replaceAll("{{potency}}", potencyString);
     return finalText.replaceAll("{{forced}}", distanceString);
   }

@@ -41,6 +41,7 @@ All heroes share a "Hero Token" pool from which they can dig deeper. Players can
 - Clicking the "Stamina" button on the character sheet will spend two hero tokens to regain stamina equal to the hero's recovery value.
 - Clicking the "Surges" button will spend a hero token to gain two surges.
 - Saving throws include a button to spend a hero token to turn a failure into a success.
+- Tests include a button to spend a hero token to reroll the test.
 - You can always use the vertical ellipsis menu below the Players list to spend hero tokens without any automated effect.
 
 Directors have additional options in the vertical ellipsis menu, including giving hero tokens and resetting the total to the number of heroes in the game.
@@ -60,3 +61,25 @@ All NPC actors share a malice pool. Any ability that has a Resource Cost listed 
 ## Free Strikes
 
 The Free Strike button on an NPC automatically applies the damage to *targeted* actors.
+
+## Actor Images
+
+The system supports two flags, `"avatarProperties.objectFit"` and `"avatarProperties.objectPosition"`, which correspond to the [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit) and [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-position) css properties for the actor image in the character sheet.
+
+### In-world adjustment
+
+You can set flags for an existing actor with commands like `actor.setFlag("draw-steel", "avatarProperties.objectFit", "contain")` or `actor.setFlag("draw-steel", "avatarProperties.objectPosition", "50% 50%")`. These can be useful when working with existing actors in a world like player characters. The default values for these properties are `"cover"` and `"50% 0"` respectively.
+
+Alternatively, `new ds.applications.apps.ActorAvatarInput({ document: actor }).render({ force: true })` will create a window that allows for easy configuration of the properties.
+
+### Art Mapping Integration
+
+For module developers seeking to use the Art Mapping feature, we have special processing for the `avatarProperties` key. The objectFit and objectPosition properties are both optional if only one is needed.
+
+```json
+"actor": "modules/my-module/asset/gobbo.webp",
+"avatarProperties": {
+  "objectFit": "contain",
+  "objectPosition": "50% 50%"
+}
+```

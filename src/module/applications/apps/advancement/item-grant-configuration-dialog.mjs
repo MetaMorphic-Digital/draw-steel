@@ -1,18 +1,19 @@
-import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
 import DSApplication from "../../api/application.mjs";
-import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";
+ * @import AdvancementNode from "../../../utils/advancement/node.mjs";
+ * @import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
 
 /**
  * @typedef ItemGrantConfigurationOptions
- * @property {AdvancementChain} node   The node to configure.
+ * @property {AdvancementNode} node   The node to configure.
  */
 
 const { DragDrop, TextEditor } = foundry.applications.ux;
@@ -26,7 +27,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    */
   constructor({ node, ...options }) {
     if (!(node.advancement?.type === "itemGrant")) {
-      throw new Error("An item grant configuration dialog must be passed an AdvancementChain with an Item Grant.");
+      throw new Error("An item grant configuration dialog must be passed an AdvancementNode with an Item Grant.");
     }
     super(options);
     this.#node = node;
@@ -68,7 +69,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /**
    * The node this is configuring. May be null.
-   * @type {AdvancementChain | null}
+   * @type {AdvancementNode | null}
    */
   #node;
   // eslint-disable-next-line @jsdoc/require-jsdoc
@@ -91,6 +92,24 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
+   * The set of DSIDs that can be checked to fulfill requirements.
+   * @type {Set<string>}
+   */
+  #fulfilledDSID;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
+  get fulfilledDSID() {
+    if (!this.#fulfilledDSID) {
+      this.#fulfilledDSID = new Set(this.node.chain.actorSubclasses.map(i => i.dsid));
+
+      if (this.node.chain.actorClass) this.#fulfilledDSID.add(this.node.chain.actorClass.dsid);
+    }
+
+    return this.#fulfilledDSID;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Set of uuids chosen by this dialog, which will be saved in the submit process.
    * A new set is constructed each time the form data is processed.
    * @type {Set<string>}
@@ -104,9 +123,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @type {number}
    */
   get totalChosen() {
-    if (!this.advancement.pointBuy) return this.chosen.size;
-    else return this.items.reduce((points, item) => {
-      if (this.chosen.has(item.uuid)) points += item.system.points;
+    return this.items.reduce((points, item) => {
+      // level 1 subclass choices can invalidate later feature choices if redone
+      // don't want disabled inputs to count against what's valid
+      if (this.chosen.has(item.uuid) && this.fulfillsRequirements(item)) points += this.advancement.pointBuy ? item.system.points : 1;
       return points;
     }, 0);
   }
@@ -193,12 +213,13 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     context.items = this.items.map(i => {
       const chosen = this.chosen.has(i.uuid) || (this.advancement.chooseN == null);
       const value = context.points ? i.system.points : 1;
+      const disabled = !this.fulfillsRequirements(i) || (!chosen && (value > (this.advancement.chooseN - totalChosen)));
       return {
-        chosen,
+        disabled,
+        chosen: chosen && !disabled,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
         points: context.points ? i.system.points : false,
-        disabled: !chosen && (value > (this.advancement.chooseN - totalChosen)),
       };
     });
 
@@ -221,12 +242,29 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     });
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Checks if an item fulfills all of its prerequisites.
+   * @param {DrawSteelItem} item
+   * @returns {boolean}
+   */
+  fulfillsRequirements(item) {
+    if (item.system.prerequisites?.dsid?.size) {
+      return this.fulfilledDSID.intersects(item.system.prerequisites.dsid);
+    }
+    return true;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Refresh the disabled state of checkboxes and the submit button in this app.
    */
   #refreshDisabled() {
     if (this.advancement.chooseN == null) return;
 
+    /** @type {HTMLInputElement[]} */
     const checkboxes = [];
     // could be a RadioNodeList or could be a single checkbox
     if (this.form.choices?.length) checkboxes.push(...this.form.choices);
@@ -235,12 +273,14 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     const totalChosen = this.totalChosen;
 
     for (const input of checkboxes) {
+      const item = this.items.find(i => i.uuid === input.value);
+      input.disabled = !this.fulfillsRequirements(item);
       if (this.advancement.pointBuy) {
         // if unchosen, potential value is compared to remaining points
-        const value = !this.chosen.has(input.value) ? this.items.find(i => i.uuid === input.value).system.points : 0;
-        input.disabled = value > (this.advancement.chooseN - totalChosen);
+        const value = !this.chosen.has(input.value) ? item.system.points : 0;
+        input.disabled ||= (value > (this.advancement.chooseN - totalChosen));
       }
-      else input.disabled = !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
+      else input.disabled ||= !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
     }
     this.element.querySelector("button[type='submit']").disabled = totalChosen !== this.advancement.chooseN;
   }
@@ -299,7 +339,8 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     }
     if (allowed && !this.items.has(item)) {
       this.items.add(item);
-      this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node);
+      const leaf = this.node.choices[item.uuid] = new AdvancementLeaf(this.node, item.uuid, item.toAnchor().outerHTML, { item });
+      await Promise.allSettled(this.node.chain.createNodes(item, { parentLeaf: leaf }));
       this.chosen.add(item.uuid);
       this.element.querySelector(".item-choices").insertAdjacentHTML("beforeend", `<div class="form-group">
         <label>${item.toAnchor().outerHTML}</label>

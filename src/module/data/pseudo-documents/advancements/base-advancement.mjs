@@ -1,5 +1,6 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 import { systemPath } from "../../../constants.mjs";
+import * as advancements from "../../../utils/advancement/_module.mjs";
 
 /**
  * @import { DataSchema } from "@common/abstract/_types.mjs"
@@ -7,7 +8,7 @@ import { systemPath } from "../../../constants.mjs";
  * @import AdvancementChain from "../../../utils/advancement-chain.mjs";
  */
 
-const { HTMLField, NumberField, SchemaField } = foundry.data.fields;
+const { HTMLField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * Advancements provide configurable modifications to actors beyond what ActiveEffects can provide.
@@ -31,6 +32,12 @@ export default class BaseAdvancement extends TypedPseudoDocument {
     return Object.assign(super.defineSchema(), {
       description: new HTMLField(),
       requirements: new SchemaField(this.defineRequirements()),
+      repick: new SchemaField({
+        respite: new StringField({ blank: true, choices: {
+          activity: "DRAW_STEEL.ADVANCEMENT.FIELDS.repick.respite.Choices.activity",
+          finish: "DRAW_STEEL.ADVANCEMENT.FIELDS.repick.respite.Choices.finish",
+        } }),
+      }),
     });
   }
 
@@ -102,6 +109,26 @@ export default class BaseAdvancement extends TypedPseudoDocument {
    */
   get levels() {
     return [this.requirements.level];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Populate a node's choices.
+   * @param {advancements.AdvancementNode} node
+   * @abstract
+   */
+  async createLeaves(node) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Was this leaf chosen?
+   * @param {advancements.AdvancementLeaf} leaf
+   * @returns {boolean}
+   */
+  isChosen(leaf) {
+    return !this.isChoice || !!leaf.node.selected[leaf.key];
   }
 
   /* -------------------------------------------------- */

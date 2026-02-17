@@ -5,7 +5,7 @@
   "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Effect:</strong> You return to life 1 minute after being killed with Stamina equal to your winded value. You gain corruption immunity equal to your level and one of the benefits below, based on the type of creature who killed you. If you die again, you rise as an undead creature under the Director’s control.</p><p><em>Ghoul or Vampire:</em> @Embed[Compendium.draw-steel.rewards.Item.WS1B3MGw2rH2bRPI inline]</p><p><em>Incorporeal Undead:</em> @Embed[Compendium.draw-steel.rewards.Item.mvuoYZOsSsROKoCa inline]</p><p><em>Other Corporeal Undead:</em> @Embed[Compendium.draw-steel.rewards.Item.XR5YEaWGLpLqWFUY inline]</p>",
+      "value": "<p><strong>Effect:</strong> You return to life 1 minute after being killed with Stamina equal to [[lookup @stamina.winded]]{your winded value}. You gain corruption immunity equal to [[lookup @level]]{your level} and one of the benefits below, based on the type of creature who killed you. If you die again, you rise as an undead creature under the Director’s control.</p><p><em>Ghoul or Vampire:</em> @Embed[Compendium.draw-steel.rewards.Item.WS1B3MGw2rH2bRPI inline]</p><p><em>Incorporeal Undead:</em> @Embed[Compendium.draw-steel.rewards.Item.mvuoYZOsSsROKoCa inline]</p><p><em>Other Corporeal Undead:</em> @Embed[Compendium.draw-steel.rewards.Item.XR5YEaWGLpLqWFUY inline]</p>",
       "director": ""
     },
     "source": {
@@ -60,7 +60,7 @@
       "changes": [
         {
           "key": "system.damage.immunities.corruption",
-          "mode": 2,
+          "mode": 4,
           "value": "1",
           "priority": null
         }
@@ -103,9 +103,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1761069589333,
     "modifiedTime": null,
     "lastModifiedBy": null

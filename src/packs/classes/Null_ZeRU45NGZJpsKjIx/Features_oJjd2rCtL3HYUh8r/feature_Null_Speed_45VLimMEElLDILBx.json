@@ -6,7 +6,7 @@
   "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
   "system": {
     "description": {
-      "value": "<p>The flow of psionic power through you allows you to achieve high velocity. You gain a bonus to speed and to the number of squares you can shift when you take the Disengage move action equal to your Agility score.</p>",
+      "value": "<p>The flow of psionic power through you allows you to achieve high velocity. You gain a bonus to speed and to the number of squares you can shift when you take the Disengage move action equal to [[lookup @A]]{your Agility score}.</p>",
       "director": ""
     },
     "source": {
@@ -19,7 +19,7 @@
   },
   "effects": [
     {
-      "name": "Null Speed Effect",
+      "name": "Null Speed",
       "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.45VLimMEElLDILBx",
@@ -54,7 +54,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>The flow of psionic power through you allows you to achieve high velocity. You gain a bonus to speed and to the number of squares you can shift when you take the Disengage move action equal to [[lookup @A]]{your Agility score}.</p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -64,7 +64,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "createdTime": 1755805608657,
@@ -83,9 +83,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755805576969,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -587,20 +587,155 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "YGDcCQnZJ86EfV59": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "YGDcCQnZJ86EfV59",
+              "damage": {
+                "tier1": {
+                  "value": "10",
+                  "types": [
+                    "corruption"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "UCKe8AUybTV00Pqo": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "UCKe8AUybTV00Pqo",
+              "applied": {
+                "tier1": {
+                  "display": "the target is soul flensed",
+                  "effects": {
+                    "Su2u2eiXtK14dw1w": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier3": {
+                  "display": "No Effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "Su2u2eiXtK14dw1w": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": "the target is soul flensed",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>One demon acting this turn unleashes their pent-up agony and pain on every non-demon in a 5 burst. Each target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 corruption]] damage; the target is soul flensed</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is soul flensed</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>One demon acting this turn unleashes their pent-up agony and pain on every non-demon in a 5 burst. Each target makes a <strong>Presence test.</strong></p>",
           "after": "<p>The demon removes all conditions and effects on themself that can be ended by a saving throw, and transfers all those effects to each creature soul flensed this way.</p>"
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Soul Flensed",
+          "img": "icons/magic/unholy/energy-smoke-pink.webp",
+          "origin": "Compendium.draw-steel.monster-features.Item.4cNFyCxzxVSM7rml",
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.4cNFyCxzxVSM7rml.ActiveEffect.Su2u2eiXtK14dw1w",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770768868694,
+            "modifiedTime": 1770768868694,
+            "lastModifiedBy": null
+          },
+          "_id": "MdG5erqLdAfDHa25",
+          "sort": 0,
+          "_key": "!actors.items.effects!ZlldlcAUDqx39d5O.syxGnTEj50fmkVMO.MdG5erqLdAfDHa25"
+        }
+      ],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.4cNFyCxzxVSM7rml",
@@ -627,8 +762,8 @@
     "name": "Izyak",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 2,
+    "height": 2,
     "texture": {
       "src": "systems/draw-steel/assets/roles/controller.webp",
       "anchorX": 0.5,
@@ -726,7 +861,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758148863368,

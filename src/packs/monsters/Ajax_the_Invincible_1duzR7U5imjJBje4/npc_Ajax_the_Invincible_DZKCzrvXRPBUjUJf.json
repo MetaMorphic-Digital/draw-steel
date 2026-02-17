@@ -250,23 +250,23 @@
               "img": null,
               "other": {
                 "tier1": {
-                  "display": "M < 4 the target loses 1d3 Recoveries",
+                  "display": "{{potency}} the target loses 1d3 Recoveries",
                   "potency": {
-                    "value": "@potency.weak",
+                    "value": "4",
                     "characteristic": "might"
                   }
                 },
                 "tier2": {
-                  "display": "M < 5 the target loses 1d3 Recoveries",
+                  "display": "{{potency}} the target loses 1d3 Recoveries",
                   "potency": {
-                    "value": "@potency.average",
+                    "value": "5",
                     "characteristic": "might"
                   }
                 },
                 "tier3": {
-                  "display": "M < 6 prone and the target loses 1d3 Recoveries",
+                  "display": "{{potency}} prone and the target loses 1d3 Recoveries",
                   "potency": {
-                    "value": "@potency.strong",
+                    "value": "6",
                     "characteristic": ""
                   }
                 }
@@ -340,9 +340,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -785,7 +785,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Ajax throws a glowing bead to a square within distance, which ignites at the start of Ajax’s next turn and creates an area around it that lasts until the start of Ajax’s following turn. Each enemy in the area when the bead ignites takes 20 fire damage, and if they have a&lt;5, they are [[/apply dazed save]]. Any enemy who starts their turn in the area takes [[/damage 10 fire]]{10 fire damage}.</p>",
+          "before": "<p>Ajax throws a glowing bead to a square within distance, which ignites at the start of Ajax’s next turn and creates an area around it that lasts until the start of Ajax’s following turn. Each enemy in the area when the bead ignites takes 20 fire damage, and if they have [[potency A 5]], they are [[/apply dazed save]]. Any enemy who starts their turn in the area takes [[/damage 10 fire]]{10 fire damage}.</p>",
           "after": ""
         },
         "spend": {
@@ -810,9 +810,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -984,7 +984,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Ajax shifts up to his speed and can make a free strike. If the target has R &lt; 4, this free strike also makes them [[/apply weakened turn]]{weakened} until the end of their next turn.</p>",
+          "before": "<p>Ajax shifts up to his speed and can make a free strike. If the target has [[potency R 4]], this free strike also makes them [[/apply weakened turn]]{weakened} until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -1009,9 +1009,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1052,7 +1052,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>If the target has I &lt; 4, they use a signature ability against a target of Ajax's choice.</p>",
+          "before": "<p>If the target has[[potency I 4]], they use a signature ability against a target of Ajax's choice.</p>",
           "after": ""
         },
         "spend": {
@@ -1077,9 +1077,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1416,7 +1416,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target who has I &lt; 5 is knocked [[/apply prone]] and [[/apply 8PBTSqtB8xUXvdtu]] until Ajax deals damage to them. For each target not knocked prone, Ajax can move up to his speed toward that target and use Blade of the Gol King against them.</p>",
+          "before": "<p>Each target who has [[potency I 5]] is knocked [[/apply prone]] and [[/apply 8PBTSqtB8xUXvdtu]] until Ajax deals damage to them. For each target not knocked prone, Ajax can move up to his speed toward that target and use Blade of the Gol King against them.</p>",
           "after": ""
         },
         "spend": {
@@ -1482,9 +1482,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1753,13 +1753,102 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "might",
+              "agility",
+              "reason",
+              "intuition",
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "bhl2jxko2ROn5cTB": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "bhl2jxko2ROn5cTB",
+              "damage": {
+                "tier1": {
+                  "value": "26",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "22",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "tKr4w034TXF3m59T": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "tKr4w034TXF3m59T",
+              "applied": {
+                "tier1": {
+                  "display": "bleeding and slowed (save ends)",
+                  "effects": {
+                    "qjXeWgkCqr0K87AF": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 26]]{26 damage}; [[/apply qjXeWgkCqr0K87AF save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 22]]{22 damage}; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 16]]{16 damage}</p></dd></dl><p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>",
-          "after": ""
+          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p>",
+          "after": "<p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>"
         },
         "spend": {
           "text": "",
@@ -1777,85 +1866,14 @@
           "magic",
           "ranged",
           "weapon"
-        ]
+        ],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
-        {
-          "name": "Bleeding",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "bleeding"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "mtLHXXDkei6dJVEF",
-          "_key": "!actors.items.effects!DZKCzrvXRPBUjUJf.OzzKADAUbKDjyYzJ.mtLHXXDkei6dJVEF"
-        },
-        {
-          "name": "Bleeding",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "bleeding"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "Ym5ShKw97vJGHU5N",
-          "_key": "!actors.items.effects!DZKCzrvXRPBUjUJf.OzzKADAUbKDjyYzJ.Ym5ShKw97vJGHU5N"
-        },
         {
           "name": "Bleeding and Slowed",
           "img": "icons/skills/melee/strike-slashes-orange.webp",
@@ -1892,10 +1910,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770783301889
           },
           "_key": "!actors.items.effects!DZKCzrvXRPBUjUJf.OzzKADAUbKDjyYzJ.qjXeWgkCqr0K87AF"
         }
@@ -1904,10 +1923,10 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.TYx67L0lNw0axGan",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

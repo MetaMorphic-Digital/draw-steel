@@ -1,4 +1,5 @@
 import { systemID } from "../constants.mjs";
+import { HeroTokenPart } from "../data/pseudo-documents/message-parts/_module.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
 /** @import { DrawSteelActiveEffect, DrawSteelUser } from "../documents/_module.mjs"; */
@@ -31,18 +32,19 @@ export default class DrawSteelSocketHandler {
    * @param {object} payload
    * @param {string} payload.userId
    * @param {string} payload.spendType
-   * @param {string} payload.flavor
+   * @param {string} [payload.flavor]
+   * @param {string} [payload.messageId]
    */
-  async spendHeroToken({ userId, spendType, flavor }) {
+  async spendHeroToken({ userId, spendType, flavor, messageId }) {
     const user = game.users.activeGM;
     if (!user) {
       return void ui.notifications.error("DRAW_STEEL.SOCKET.WARNING.noActiveGM", { localize: true });
     }
 
-    if (user.isSelf) return this.#spendHeroToken({ userId, spendType, flavor });
+    if (user.isSelf) return this.#spendHeroToken({ userId, spendType, flavor, messageId });
     return user.query(systemID, {
       type: "spendHeroToken",
-      config: { userId, spendType, flavor },
+      config: { userId, spendType, flavor, messageId },
     });
   }
 
@@ -53,9 +55,10 @@ export default class DrawSteelSocketHandler {
    * @param {object} payload
    * @param {string} payload.userId
    * @param {string} payload.spendType
-   * @param {string} payload.flavor
+   * @param {string} [payload.flavor]
+   * @param {string} [payload.messageId]
    */
-  async #spendHeroToken({ userId, spendType, flavor }) {
+  async #spendHeroToken({ userId, spendType, flavor, messageId }) {
     const sendingUser = game.users.get(userId);
     const userName = sendingUser?.name ?? userId;
     const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];
@@ -76,10 +79,20 @@ export default class DrawSteelSocketHandler {
     }
 
     game.settings.set(systemID, settingName, { value: heroTokens - tokenSpendConfiguration.tokens });
-    DrawSteelChatMessage.create({
+    if (messageId) {
+      HeroTokenPart.create({
+        spendType,
+        type: "heroToken",
+      }, { parent: game.messages.get(options.messageId) });
+    }
+    else DrawSteelChatMessage.create({
+      title: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
       author: userId,
       content: tokenSpendConfiguration.messageContent,
+      type: "standard",
+      "system.parts": [{ type: "content" }],
       flavor: flavor ?? sendingUser?.character?.name,
+      flags: { core: { canPopout: true } },
     });
   }
 

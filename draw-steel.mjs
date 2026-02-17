@@ -1,4 +1,5 @@
 import * as canvas from "./src/module/canvas/_module.mjs";
+import * as compatibility from "./src/module/compatibility/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
@@ -10,6 +11,7 @@ import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
   canvas,
+  compatibility,
   documents,
   applications,
   helpers,
@@ -18,6 +20,7 @@ globalThis.ds = {
   utils,
   CONST: DS_CONST,
   CONFIG: DS_CONFIG,
+  registry: new helpers.DrawSteelRegistry(),
 };
 
 // Register custom elements.
@@ -37,8 +40,12 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  helpers.registerHandlebars();
-  const templates = ["templates/embeds/item/ability.hbs", "templates/embeds/item/kit.hbs", "templates/embeds/item/project.hbs"].map(t => DS_CONST.systemPath(t));
+  const templates = [
+    "templates/embeds/item/ability.hbs",
+    "templates/embeds/item/kit.hbs",
+    "templates/embeds/item/project.hbs",
+    "templates/embeds/item/treasure.hbs",
+  ].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -50,6 +57,11 @@ Hooks.once("init", function () {
     }
   }
 
+  // Indexing DSID, class primary name, subclass associated classes, and perk types
+  CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
+  // Need to be able to find "configuration" type pages
+  CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
+
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
   CONFIG.Combat.collection = documents.collections.DrawSteelCombatEncounters;
@@ -58,6 +70,7 @@ Hooks.once("init", function () {
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
   CONFIG.Token.hudClass = applications.hud.DrawSteelTokenHUD;
+  CONFIG.Canvas.layers.tokens.layerClass = canvas.layers.DrawSteelTokenLayer;
   canvas.placeables.tokens.DrawSteelTokenRuler.applyDSMovementConfig();
 
   foundry.applications.handlebars.loadTemplates(templates);
@@ -74,7 +87,7 @@ Hooks.once("init", function () {
   }
 
   // Destructuring some pieces for simplification
-  const { Actors, Items } = foundry.documents.collections;
+  const { Actors, Items, Journal } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
@@ -87,6 +100,11 @@ Hooks.once("init", function () {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.NPC",
+  });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelObjectSheet, {
+    types: ["object"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Object",
   });
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
@@ -107,24 +125,72 @@ Hooks.once("init", function () {
     label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
 
+  // Journal Pages
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
+  });
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.ConfigPage,
+    { makeDefault: true, types: ["configuration"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.DrawSteelImageSheet,
+    { makeDefault: true, types: ["image"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.ReferencePage,
+    { makeDefault: true, types: ["reference"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.TierOutcomePage,
+    { makeDefault: true, types: ["tierOutcome"] },
+  );
+
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
     combat: applications.sidebar.tabs.DrawSteelCombatTracker,
     players: applications.ui.DrawSteelPlayers,
   });
 
+  // Register replacements for core ux elements.
+  Object.assign(CONFIG.ux, {
+    TooltipManager: helpers.interaction.DrawSteelTooltipManager,
+  });
+
   // Register dice rolls
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 
   // Register enrichers
-  CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll, applications.ux.enrichers.applyEffect];
+  CONFIG.TextEditor.enrichers = [
+    applications.ux.enrichers.applyEffect,
+    applications.ux.enrichers.lookup,
+    applications.ux.enrichers.reference,
+    applications.ux.enrichers.roll,
+    applications.ux.enrichers.potency,
+  ];
 
-  CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
-    editor: false,
-    fonts: [
-      { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
-    ],
-  };
+  Object.assign(CONFIG.fontDefinitions, {
+    "Draw Steel Glyphs": {
+      editor: false,
+      fonts: [
+        { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
+      ],
+    },
+    "Draw Steel Book": {
+      editor: true,
+      fonts: [
+        { urls: [DS_CONST.systemPath("assets/fonts/MCDM-Book.otf")] },
+      ],
+    },
+  });
+
+  // Register handlebars helpers. This is done after any replacement of ui/ux classes.
+  helpers.registerHandlebars();
 });
 
 /**
@@ -176,11 +242,45 @@ Hooks.once("i18nInit", () => {
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
 });
 
+Hooks.once("setup", () => {
+  applications.sidebar.apps.DrawSteelCompendiumTOC.applyToPacks();
+
+  // Link up various rules & references automatically
+  for (const status of CONFIG.statusEffects) {
+    if (status.rule) ds.CONFIG.references[status.id] = status.rule;
+  }
+
+  // Common/expected structure for reference construction
+  const referenceObjects = [
+    "characteristics",
+    "monsters.keywords",
+    "monsters.organizations",
+    "monsters.roles",
+    "abilities.types",
+    "abilities.distances",
+    "abilities.targets",
+    "abilities.categories",
+    "equipment.categories",
+    "equipment.armor",
+    "equipment.weapon",
+    "projects.types",
+    "effectEnds",
+  ];
+
+  for (const path of referenceObjects) {
+    const config = foundry.utils.getProperty(ds.CONFIG, path);
+    for (const [key, { reference }] of Object.entries(config)) {
+      if (reference) ds.CONFIG.references[reference.identifier ?? key] = reference.uuid;
+    }
+  }
+});
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
 Hooks.once("ready", async function () {
+  game.tooltip.observe();
   await data.migrations.migrateWorld();
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => {
@@ -189,6 +289,9 @@ Hooks.once("ready", async function () {
       return false;
     }
   });
+
+  await ds.registry.initialize();
+
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
@@ -203,5 +306,5 @@ Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 /**
  * Other hooks.
  */
-Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
+Hooks.on("applyCompendiumArt", helpers.applyCompendiumArt);
 Hooks.on("hotReload", helpers.hotReload);

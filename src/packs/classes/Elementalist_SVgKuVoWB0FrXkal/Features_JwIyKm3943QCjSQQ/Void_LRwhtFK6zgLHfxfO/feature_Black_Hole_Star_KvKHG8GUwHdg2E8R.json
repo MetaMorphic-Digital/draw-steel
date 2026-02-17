@@ -6,7 +6,7 @@
   "img": "icons/magic/light/explosion-star-glow-blue.webp",
   "system": {
     "description": {
-      "value": "<p>You warp gravity around your heavenly body and can pull even the sturdiest titans toward your core. At the end of each of your turns, you target one creature or object within distance of your Hurl Element ability and vertical pull that target up to 5 squares. If their stability reduces this forced movement, they are pulled a minimum of 2 squares. This forced movement ignores stability for your allies.</p><p>Additionally, your Mantle of Essence improves. While in the area of the aura, enemies and objects have their stability reduced by an amount equal to your level [[/apply 7Ca4iFaLWCjRQVSt]].</p>",
+      "value": "<p>You warp gravity around your heavenly body and can pull even the sturdiest titans toward your core. At the end of each of your turns, you target one creature or object within distance of your Hurl Element ability and vertical pull that target up to 5 squares. If their stability reduces this forced movement, they are pulled a minimum of 2 squares. This forced movement ignores stability for your allies.</p><p>Additionally, your Mantle of Essence improves. While in the area of the aura, enemies and objects have their stability reduced by an amount equal to [[lookup @level]]{your level}.</p><p>[[/apply 7Ca4iFaLWCjRQVSt]]</p>",
       "director": ""
     },
     "source": {
@@ -42,7 +42,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>While in the area of the aura, enemies and objects have their stability reduced by an amount equal to [[lookup @level]]{your level}.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -51,7 +51,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761514072873,
@@ -70,9 +70,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1761513986768,
     "modifiedTime": null,
     "lastModifiedBy": null

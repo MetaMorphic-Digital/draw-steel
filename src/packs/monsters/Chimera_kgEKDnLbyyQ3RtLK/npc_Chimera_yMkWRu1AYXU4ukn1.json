@@ -1076,17 +1076,20 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>Until the start of the chimera’s next turn, all areas of the encoun ter map are shrouded in a thick cloud of ash. All creatures and objects on the map have concealment that the chimera ignores. Additionally, each enemy in the cloud who has I&lt;2 Until the start of the chimera’s next turn, all areas of the encoun ter map are shrouded in a thick cloud of ash. All creatures and objects on the map have concealment that the chimera ignores. Additionally, each enemy in the cloud who has</p>",
+          "before": "<p>Until the start of the chimera’s next turn, all areas of the encounter map are shrouded in a thick cloud of ash. All creatures and objects on the map have concealment that the chimera ignores. Additionally, each enemy in the cloud who has [[potency I 1]] has line of effect only within 3 squares. The potency of this feature increases by 1 each time it’s used.</p>",
           "after": ""
         },
         "spend": {
@@ -1105,7 +1108,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Y7eAtEZGOYntkMPj",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
@@ -1259,17 +1262,20 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>The chimera shakes the ground, causing an eruption of loose rocks and debris that creates three size 2 stone objects anywhere on the encounter map. Each creature adjacent to one or more objects when they appear who has A&lt;2 takes [[/damage 5]] damage.</p>",
+          "before": "<p>The chimera shakes the ground, causing an eruption of loose rocks and debris that creates three size 2 stone objects anywhere on the encounter map. Each creature adjacent to one or more objects when they appear who has [[potency A 2]] takes [[/damage 5]] damage.</p>",
           "after": ""
         },
         "spend": {
@@ -1288,7 +1294,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.p5r68km6xWRy05C6",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
@@ -1303,8 +1309,8 @@
     "name": "Chimera",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 2,
+    "height": 2,
     "texture": {
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
@@ -1403,7 +1409,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757097576778,

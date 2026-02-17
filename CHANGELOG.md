@@ -18,6 +18,103 @@
 ### Known Issues
 -->
 
+## 0.10.0
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Leveled Treasures
+  - Added free triggered action to the Polder's Reactive Tumble ancestry trait. (#1517)
+  - Added free triggered action to the Memonek's Keeper of Order ancestry trait. (#1518)
+- Added a new "Configuration" journal page to allow users to add new languages and monster keywords without javascript. (#306)
+- Added support for abilities that request a reactive test instead of making their own power roll. (#342)
+- Added hero token reroll for tests. (#444)
+- Added target-based edges and bane tracking, such as the edge against marked targets or the double bane against defending targets. (#546)
+- Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759, #1579)
+- Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
+  - Updated the Infernal Contract complication to make use of this.
+- Implemented `[[/test]]` enricher which can be used to request tests. (#893, #1599)
+- Implemented Reference system. (#945)
+  - Added a `[[reference]]` enricher which implements a tooltip for the text (#1426).
+  - Implemented a Reference page type, which has additional room to specify a tooltip for the reference enricher. (#1423, #1425)
+  - Reworked the rules journal to instead have an expansive list of term references and pages. (#11)
+- Added `system.prerequisites` to abilities, features, and perks to help guide which classes and subclasses something is eligible for. (#950)
+  - The DSID field lists the classes or subclasses the item is for. If multiple are provided, it is eligible for any of them.
+  - The Level field is the minimum level for the item.
+  - These fields are only needed if the item is part of a choice; automatic features/abilities like the Tactician's Mark do not need it.
+- Added a context menu to ability result message parts with options for modifying damage rolls. (#1054)
+  - This allows for adding addtional roll terms or changing the damage type.
+- Added a setting for the XP advancement speed. (#1064)
+- Added `system.characteristics.[chr].banes` and `system.characteristics.[chr].edges` to control the base numbers of edges/banes on tests. (#1067)
+- Added new AE keys treasure bonuses to stamina and damage. (#1140)
+  - Added `system.stamina.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure stamina bonuses.
+  - Added `damage.bonuses.treasure` which should be targeted with the `Upgrade` mode to apply non-stacking treasure damage bonuses.
+- Implemented a Draw Steel Journal Sheet that styles the contained pages in a fashion similar to the core books. (#1170)
+- Added a `[[potency]]` enricher to format potency values with the Draw Steel glyphs. (#1269)
+- New ability modifier keys
+  - Added `power.roll.banes` and `power.roll.edges` to control base numbers of edges/banes. (#1067)
+  - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
+  - Added `keyword` to add keywords to abilities. (#1322)
+  - Added `potency` to adjust the potency of abilities. (#1350)
+- Added new "Object" actor type. (#1347)
+- Added "Gain Resource" power roll effect which covers surges, heroic resources, and epic resources. (#1396)
+- Added simplified damage number view on ability cards to show the total damage instead of the individual parts. A tooltip shows on the damage number for the original, unsimplified damage formula. (#1398)
+- Added support for journal flags that navigate to other journals in the same collection. (#1404)
+- Added `system.artDescription` as a valid property for Image journal entry pages, providing rich alt text. (#1424)
+- Added new embed for treasure items with an option for including project info (defaults to false). (#1462)
+- Implemented a Table of Contents view for journal compendiums. (#1502)
+- Added support for marking actors as not being able to flank with `system.statuses.canFlank`. (#1520)
+- Added a new "Power Roll Tier Outcomes" journal page subtype that can define the tier 1, 2, and 3 results in rich HTML. (#1540)
+- Added new parameters to damage enrichers
+  - Ignore immunities (#1555)
+  - Pick a `@scaling` value (#1578)
+- Implemented a Scene embed which showcases the scene thumbnail and provides buttons to activate or view the scene. (#1598)
+- Made the function to apply an NPC's free strike publicly accessible at `actor.system.performFreeStrike()`.
+- Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added `damage.bonuses.value` which can be targeted to apply a single value to each damage tier.
+- Added a `hideInSheet` flag which can be used for most item types to filter them from display.
+
+### Changed
+
+- Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Current stamina on new actors will change to reflect max stamina. (#890)
+- [BREAKING] Re-implemented system generated chat messages to use a parts system. (#1444)
+  - Many actions that would generate new chat messages instead append to an existing message, such as spending a hero token.
+  - Re-implemented the DSN integration and usage of base vs. target-specific roll copies. (#1445)
+  - Migrated saving throws to use chat parts. (#1447)
+  - Migrated project rolls to use chat parts. (#1448)
+  - Migrated ability rolls to use chat parts. (#1449)
+- The saving throw dialog now has the effect name that's being rolled for. (#1538)
+- Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
+- The actor sheet image now has similar CSS handling to the directory and compendium thumbnails. You can override these properties with the `avatarProperties` flag (see documentation for details). (#1592)
+- Groups and combatants in the combat tracker will use a localized name sort as a fallback if all else is equivalent.
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Significantly refactored how the Conduit is structured to properly give out subclass features and abilities. (#950)
+  - Removed the category from the Conduit's Word of Guidance and Word of Judgement triggered actions. (#1519)
+  - Added missing tier 2 result to concussive push. (#1626)
+  - Fixed tier 1 and 3 damage numbers on Censor's Your Allies Cannot Save You.
+  - Added missing fire immunity effect to Sun Domain's Light of the Burning Scene.
+  - Added missing save bonus to Sun Domain's Inner Light.
+  - Added missing damage immunity effects to Fury's Elemental Form.
+  - Added missing trigger text to Vanguard's Parry.
+  - Added description to many active effects.
+  - Corrected the table formatting for the "Perfect New Recipe" project.
+  - Updated damage immunity and weakness effects to use the UPGRADE mode instead of ADD.
+- Director-Facing Compendium Data Fixes:
+  - Corrected the prototype tokens of various monsters to match their size. (#1523)
+  - Fixed the Omen Dragon's Repent ability not correctly applying the apply effect enricher. (#1524)
+  - Fixed the With Captain effect on the Goblin Sniper. (#1602)
+  - Fixed token scales on the Dwarf Stone Whisperer, Trapper, and Warden, and the Goblin Skitterling.
+  - Standardized token properties on Goblin Skitterling and Human Brawler.
+- Long enricher or roll text will now wrap in the chat log. (#1608)
+- Fixed clicking on the image of a locked document (e.g. ones in a compendium) not opening the image. (#1618)
+- Multitarget abilities that include the source of the taunted condition will no longer apply double banes to non-source targets. (#1629)
+- Fixed source registration logic to match documentation.
+
 ## 0.9.2
 
 ### Added
@@ -148,6 +245,7 @@
 - Added `system.stamina.bonuses.level` which adds bonus stamina per level. (#1120)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
+- Added `system.characteristics.[chr].dice.number` to adjust the number of dice rolled for a tests. (#1199)
 - Added the official licensed glyphs. (#1209)
   - Potency displays will automatically use these glyphs. (#1270)
 - Improved handling of private messages for power and damage rolls. (#1221)

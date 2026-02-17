@@ -37,7 +37,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>You can grab or manipulate the target object with your mind, moving the object up to a number of squares equal to your Reason, Intuition, or Presence score (your choice). You can use this ability to turn doorknobs, pull levers, and so forth. You can manipulate any small movable piece of a larger object as long as the piece is unattended and size 1T. You can’t use this ability to break a smaller piece off a larger object.</p>",
+      "before": "<p>You can grab or manipulate the target object with your mind, moving the object up to a number of squares equal to [[lookup formula=\"max(@R, @I, @P)\" evaluate=true]]{your Reason, Intuition, or Presence score (your choice)}. You can use this ability to turn doorknobs, pull levers, and so forth. You can manipulate any small movable piece of a larger object as long as the piece is unattended and size 1T. You can’t use this ability to break a smaller piece off a larger object.</p>",
       "after": ""
     },
     "spend": {
@@ -55,9 +55,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755830437620,
     "modifiedTime": null,
     "lastModifiedBy": null

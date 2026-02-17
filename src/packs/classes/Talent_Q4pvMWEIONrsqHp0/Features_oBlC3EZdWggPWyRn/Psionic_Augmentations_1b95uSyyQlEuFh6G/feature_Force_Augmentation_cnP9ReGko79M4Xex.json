@@ -18,7 +18,7 @@
   },
   "effects": [
     {
-      "name": "Ability Modifier",
+      "name": "Force Augmentation",
       "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
       "type": "abilityModifier",
       "origin": "Compendium.draw-steel.classes.Item.0lOE0o9Fq4SXbBlu",
@@ -36,19 +36,7 @@
       },
       "changes": [
         {
-          "key": "damage.tier1.value",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        },
-        {
-          "key": "damage.tier2.value",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        },
-        {
-          "key": "damage.tier3.value",
+          "key": "damage.bonuses.value",
           "mode": 2,
           "value": "1",
           "priority": null
@@ -64,7 +52,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>Your damage-dealing psionic abilities gain a +1 bonus to rolled damage.</p><p></p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -74,7 +62,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "lastModifiedBy": null,

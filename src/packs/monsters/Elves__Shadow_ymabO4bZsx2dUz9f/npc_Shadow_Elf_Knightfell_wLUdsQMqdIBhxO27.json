@@ -376,18 +376,20 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>When any shadow elf acting this turn makes a strike against a target who has I&lt;2 in addition to the strike’s regular effects, the target is bleeding (save ends) or slowed (save ends).</p>",
+          "before": "<p>When any shadow elf acting this turn makes a strike against a target who has [[potency I 2]] in addition to the strike’s regular effects, the target is bleeding (save ends) or slowed (save ends).</p>",
           "after": ""
         },
         "spend": {
@@ -410,7 +412,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.f7HTgufTCTdtrgPR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -662,7 +664,7 @@
       "changes": [
         {
           "key": "system.damage.immunities.all",
-          "mode": 2,
+          "mode": 4,
           "value": "3",
           "priority": null
         }
@@ -676,7 +678,7 @@
         "rounds": null,
         "turns": null
       },
-      "description": "<p>While</p><p>the assassin has concealment, they have damage immunity 3.</p>",
+      "description": "<p>While the knightfell has concealment, they have damage immunity 3.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -686,7 +688,7 @@
         "compendiumSource": "Actor.7IkMtaxKh94kecYy.ActiveEffect.tH9tnIAQMwKj9dzQ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -710,7 +712,7 @@
       "changes": [
         {
           "key": "system.damage.weaknesses.all",
-          "mode": 2,
+          "mode": 4,
           "value": "3",
           "priority": null
         }
@@ -724,7 +726,7 @@
         "rounds": null,
         "turns": null
       },
-      "description": "<p>While the assassin is in direct sunlight, they have damage weakness 3.</p>",
+      "description": "<p>While the knightfell is in direct sunlight, they have damage weakness 3.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -734,7 +736,7 @@
         "compendiumSource": "Actor.7IkMtaxKh94kecYy.ActiveEffect.sQKvzbyDJaBJBKMX",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

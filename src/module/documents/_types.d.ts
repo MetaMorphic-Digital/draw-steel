@@ -1,3 +1,4 @@
+import { JournalEntryCategory } from "@client/documents/_module.mjs";
 import {
   ActiveEffectData,
   ActorData,
@@ -7,7 +8,11 @@ import {
   CombatData,
   ItemData,
   JournalEntryPageData,
+  JournalEntryData,
+  SceneData,
   TokenData,
+  UserData,
+  WallData,
 } from "@common/documents/_types.mjs";
 import Collection from "@common/utils/collection.mjs";
 import {
@@ -18,15 +23,17 @@ import {
   Combatant as CombatantModels,
   CombatantGroup as CombatantGroupModels,
   Item as ItemModels,
+  JournalEntryPage as JEPModels,
 } from "../data/_module.mjs";
-import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem } from "./_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem, DrawSteelJournalEntryPage } from "./_module.mjs";
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
-type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
+type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel" | "CreatureModel">];
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
-type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
+type MessageModel = typeof ChatMessageModels[Exclude<keyof typeof ChatMessageModels, "parts">];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
+type JournalEntryPageModel = typeof JEPModels[keyof typeof JEPModels];
 
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
 
@@ -70,10 +77,21 @@ declare module "@client/documents/_module.mjs" {
     system: CombatantModels.BaseCombatantModel;
   }
 
-  interface BaseJournalEntryPage extends JournalEntryPageData, InstanceType<ClientDocument> {
-    type: "text" | "image" | "pdf" | "video";
-    system: Record<string, unknown>;
+  interface BaseJournalEntry extends JournalEntryData, InstanceType<ClientDocument> {
+    pages: Collection<string, DrawSteelJournalEntryPage>;
+    categories: Collection<string, JournalEntryCategory>;
   }
 
+  interface BaseJournalEntryPage<Model extends JournalEntryPageModel = JournalEntryPageModel> extends JournalEntryPageData, InstanceType<ClientDocument> {
+    type: Model["metadata"]["type"];
+    system: InstanceType<Model>;
+  }
+
+  interface BaseScene extends SceneData, InstanceType<ClientDocument> {}
+
   interface BaseToken extends TokenData, InstanceType<ClientDocument> {}
+
+  interface BaseUser extends UserData, InstanceType<ClientDocument> {}
+
+  interface BaseWall extends WallData, InstanceType<ClientDocument> {}
 }

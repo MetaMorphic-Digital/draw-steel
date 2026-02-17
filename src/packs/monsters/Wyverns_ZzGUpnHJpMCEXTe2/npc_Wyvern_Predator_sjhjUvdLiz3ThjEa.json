@@ -829,12 +829,61 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "LJRpJlHxvpuia8WQ": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "LJRpJlHxvpuia8WQ",
+              "applied": {
+                "tier1": {
+                  "display": "The target is taunted by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.",
+                  "effects": {
+                    "l7c999f6gYJkZkbo": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "The target is taunted by the nearest creature or object (save ends).",
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -848,84 +897,64 @@
         },
         "_dsid": "overflowing-rage",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
-          "name": "Taunted",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
+          "name": "Taunted with Double Edge",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "origin": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE",
           "transfer": false,
           "type": "base",
           "system": {
             "end": {
-              "type": "save",
+              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             }
           },
-          "changes": [],
+          "changes": [
+            {
+              "key": "system.combat.targetModifiers.edges",
+              "mode": 2,
+              "value": "2",
+              "priority": null
+            }
+          ],
           "disabled": false,
           "duration": {
-            "rounds": null,
             "startTime": null,
-            "combat": null
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
           },
           "description": "",
           "tint": "#ffffff",
           "statuses": [
             "taunted"
           ],
-          "sort": 0,
           "flags": {},
           "_stats": {
-            "compendiumSource": null,
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE.ActiveEffect.l7c999f6gYJkZkbo",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770786465243,
+            "modifiedTime": 1770786465243,
             "lastModifiedBy": null
           },
-          "_id": "pcBTfPVzDHzCzWgE",
-          "_key": "!actors.items.effects!sjhjUvdLiz3ThjEa.afwiIRP5l4EV8GoE.pcBTfPVzDHzCzWgE"
-        },
-        {
-          "name": "Taunted",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "taunted"
-          ],
+          "_id": "OONR7ZxGbKh1jlPm",
           "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "sytzDKyd0JBLGgCq",
-          "_key": "!actors.items.effects!sjhjUvdLiz3ThjEa.afwiIRP5l4EV8GoE.sytzDKyd0JBLGgCq"
+          "_key": "!actors.items.effects!sjhjUvdLiz3ThjEa.afwiIRP5l4EV8GoE.OONR7ZxGbKh1jlPm"
         }
       ],
       "flags": {},
@@ -933,7 +962,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761436263425,
@@ -956,8 +985,8 @@
     "name": "Wyvern Predator",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 3,
+    "height": 3,
     "texture": {
       "src": "systems/draw-steel/assets/roles/brute.webp",
       "anchorX": 0.5,
@@ -1056,7 +1085,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757729344920,

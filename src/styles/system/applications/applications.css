@@ -1,41 +1,107 @@
 .application.draw-steel {
   max-height: 100vh;
-}
 
-.application.draw-steel .drop-target-area {
-  min-height: 300px;
-  overflow-y: scroll;
-  border-radius: 5px;
-  border: 1px dashed var(--draw-steel-c-tan);
-  margin: 1rem;
-
-  &.dragover {
-    border-style: solid;
+  .controls-dropdown {
+    background: var(--draw-steel-c-white);
   }
-}
 
-.application.draw-steel .section-header {
-  display: flex;
-  justify-content: space-between;
+  .drop-target-area {
+    min-height: 300px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    border: 1px dashed var(--draw-steel-c-tan);
+    margin: 1rem;
+
+    &.dragover {
+      border-style: solid;
+    }
+  }
 }
 
 /**
  * General use CSS
  **/
-dl.power-roll-display {
-  dt.tier1, dt.tier2, dt.tier3 {
-    font-family: "Draw Steel Glyphs";
-    font-size: var(--font-size-24);
-    font-weight: 500;
-    line-height: 0.9;
+.system-draw-steel {
+  dl.power-roll-display {
+    gap: 4px;
+
+    dt.tier1,
+    dt.tier2,
+    dt.tier3 {
+      font-family: "Draw Steel Glyphs";
+      font-size: var(--font-size-24);
+      font-weight: 500;
+      line-height: 0.9;
+    }
+
+    dd>p,
+    dt>p {
+      margin: 0;
+    }
   }
-  span.potency {
-    font-family: "Draw Steel Glyphs";
-    font-size: var(--font-size-16);
-    text-transform: lowercase;
-    line-height: 0.9;
+
+  dl.power-roll-display,
+  enriched-content[enricher="ds.potency"] {
+    span.potency {
+      font-family: "Draw Steel Glyphs";
+      font-size: var(--font-size-16);
+      text-transform: lowercase;
+      line-height: 0.9;
+    }
   }
-  dd > p, dt > p {
-    margin: 0;
+
+  /*laser lines on ALL captions*/
+  caption {
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid #866d4b;
+    line-height: 0.75em;
+    padding-top: 1em;
+    width: 100%;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image-slice: 1;
+
+    strong {
+      background: var(--draw-steel-c-white);
+      padding: 0.5em 1em;
+      margin-top: -0.75em;
+      position: absolute;
+      transform: translate(-50%, 0%);
+    }
+
+    strong::before {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      position: absolute;
+      left: -0.5em;
+    }
+
+    strong::after {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      position: absolute;
+      right: -0.5em;
+    }
+
+    cite {
+      position: absolute;
+      top: 1.25em;
+      right: 0;
+    }
+
+    cite::before {
+      content: '';
+      clear: both;
+      margin-top: 3em;
+    }
+  }
+
+  .roll-table-sheet {
+    thead {
+      border: none;
+      border-color: transparent;
+    }
   }
 }

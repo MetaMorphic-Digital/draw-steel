@@ -53,6 +53,26 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+    if ((game.userId === userId) && this.modifiesActor && this.statuses.has("prone")) {
+      for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    if ((game.userId === userId) && this.modifiesActor && this.statuses.has("prone")) {
+      for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
    * @param {string} statusId
@@ -211,7 +231,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       rollData.effect.statuses[status] = 1;
     }
 
-    if (this.system.modifyRollData instanceof Function) {
+    if (typeof this.system.modifyRollData === "function") {
       this.system.modifyRollData(rollData);
     }
 
@@ -222,7 +242,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   apply(actor, change) {
-    if (this.system.apply instanceof Function) return this.system.apply(actor, change);
+    if (typeof this.system.apply === "function") return this.system.apply(actor, change);
     else return super.apply(actor, change);
   }
 }

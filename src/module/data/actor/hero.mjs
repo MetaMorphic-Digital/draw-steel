@@ -3,7 +3,8 @@ import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mj
 import DSRoll from "../../rolls/base.mjs";
 import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
-import BaseActorModel from "./base.mjs";
+import AdvancementChain from "../../utils/advancement/chain.mjs";
+import CreatureModel from "./creature.mjs";
 
 /**
  * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
@@ -11,14 +12,15 @@ import BaseActorModel from "./base.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
  * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types.js";
  */
 
 const fields = foundry.data.fields;
 
 /**
- * Heroes are controlled by players and have heroic resources and advancement.
+ * A player character, created and run by a player other than the Director.
  */
-export default class HeroModel extends BaseActorModel {
+export default class HeroModel extends CreatureModel {
   /** @inheritdoc */
   static get metadata() {
     return {
@@ -70,8 +72,8 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static actorBiography() {
-    const bio = super.actorBiography();
+  static _actorBiography() {
+    const bio = super._actorBiography();
 
     bio.height = new fields.SchemaField({
       value: new fields.NumberField({ min: 0 }),
@@ -93,6 +95,8 @@ export default class HeroModel extends BaseActorModel {
   /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
+
+    this.combat.initiativeThreshold = 6;
 
     this.recoveries.bonus = 0;
     this.recoveries.divisor = 3;
@@ -160,6 +164,9 @@ export default class HeroModel extends BaseActorModel {
 
       }
     }
+
+    /** @type {Record<string, PowerRollModifiers>} */
+    this.hero.skillModifiers = { };
   }
 
   /* -------------------------------------------------- */
@@ -352,6 +359,17 @@ export default class HeroModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Internal record used to cache advancements that can be repicked on respite.
+   * Each entry is a set of advancement UUIDs.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<"activity" | "finish", Set<string>>}
+   * @internal
+   */
+  _respiteAdvancements = {};
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
@@ -440,8 +458,8 @@ export default class HeroModel extends BaseActorModel {
    * @type {number | null} Null if there is no next level
    */
   get nextLevelXP() {
-    if (this.level >= ds.CONFIG.hero.xp_track.length) return null;
-    return ds.CONFIG.hero.xp_track[this.level];
+    if (this.level >= ds.CONFIG.hero.xpTrack.length) return null;
+    return ds.CONFIG.hero.xpTrack[this.level];
   }
 
   /* -------------------------------------------------- */
@@ -486,28 +504,28 @@ export default class HeroModel extends BaseActorModel {
     if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
-    if (this.level + levels > ds.CONFIG.hero.xp_track.length) {
-      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
+    if (this.level + levels > ds.CONFIG.hero.xpTrack.length) {
+      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xpTrack.length}.`);
     }
 
     if (!cls) item.system.applyAdvancements({ actor: this.parent });
     else {
-      const levelRange = { start: this.level + 1, end: this.level + levels };
-      const chains = (await Promise.all(this.parent.items.map(i => {
-        if (i.supportsAdvancements) return i.system.createChains(levelRange.start, levelRange.end);
-        return [];
-      }))).flat();
+
+      const chain = new AdvancementChain(this.parent, { start: this.level + 1, end: this.level + levels });
+
+      await chain.initializeRoots();
 
       const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-        chains, actor: this.parent, window: {
+        chain,
+        window: {
           title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
         },
       });
       if (!configured) return;
 
-      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": levelRange.end } };
+      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": chain.levelRange.end } };
 
-      this._finalizeAdvancements({ chains, toUpdate }, { levels: levelRange });
+      this._finalizeAdvancements({ chain, toUpdate });
     }
 
     return this.class;
@@ -518,23 +536,22 @@ export default class HeroModel extends BaseActorModel {
   /**
    * Perform document operations for advancements.
    * @param {object} config
-   * @param {AdvancementChain[]} config.chains
+   * @param {AdvancementChain} config.chain
    * @param {ItemData[]} [config.toCreate={}]
    * @param {ItemData[]} [config.toUpdate={}]
    * @param {ActorData} [config.actorUpdate={}]
    * @param {Map<string>} [config._idMap]
    * @param {object} [options]                                      Operation options.
-   * @param {{ start: number, end: number }} [options.levels]       Level information about these advancements.
    * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
    * @internal          End consumers should use the {@link advance}, AdvancementModel#applyAdvancements,
    *                    or ItemGrantAdvancement#reconfigure methods
    */
   async _finalizeAdvancements(
-    { chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
-    { levels } = {},
+    { chain, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
+    options = {},
   ) {
     // First gather all new items that are to be created.
-    for (const chain of chains) for (const node of chain.active()) {
+    for (const node of chain.activeNodes()) {
       if (node.advancement.type === "itemGrant") {
         const parentItem = node.advancement.document;
 
@@ -565,7 +582,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     // Perform item data modifications or store item updates.
-    for (const chain of chains) for (const node of chain.active()) {
+    for (const node of chain.activeNodes()) {
       if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
         const { document: item, id } = node.advancement;
         const isExisting = item.parent === this.parent;
@@ -582,8 +599,9 @@ export default class HeroModel extends BaseActorModel {
       }
     }
 
-    const operationOptions = {};
-    if (levels) operationOptions.levels = levels;
+    const operationOptions = foundry.utils.mergeObject({
+      levels: chain.levelRange,
+    }, options);
 
     return await Promise.all([
       this.parent.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: operationOptions }),

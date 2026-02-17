@@ -1533,7 +1533,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The encounter map suddenly quakes, then begins to sink. Each creature on the ground who has A &lt; 1 is knocked [[/apply prone]]. Until the end of the encounter, each creature who starts their turn on the ground and can’t burrow must spend 1 additional square of move ment to leave their starting position, or 2 squares if they start their turn prone or underground. A creature who starts and ends their turn in the same space on the ground and can’t burrow sinks 1 square into the ground.</p>",
+          "before": "<p>The encounter map suddenly quakes, then begins to sink. Each creature on the ground who has [[potency A 1]] is knocked [[/apply prone]]. Until the end of the encounter, each creature who starts their turn on the ground and can’t burrow must spend 1 additional square of move ment to leave their starting position, or 2 squares if they start their turn prone or underground. A creature who starts and ends their turn in the same space on the ground and can’t burrow sinks 1 square into the ground.</p>",
           "after": ""
         },
         "spend": {
@@ -1547,9 +1547,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.KKzUSNgaxaizzPFf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "createdTime": 1760846827614,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1594,23 +1594,147 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "j8tSJ0oW0hFJmIer": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "j8tSJ0oW0hFJmIer",
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "i5rrgT4VGT14qSM0": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "i5rrgT4VGT14qSM0",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "5",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "w5dbs3ok8hgbXi8j": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "w5dbs3ok8hgbXi8j",
+              "other": {
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "The target shifts to the nearest unoccupied space outside the area",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The arixx’s underground tunnels swell with pressure, causing a sudden influx of hot gas to burst from a 3-square-by-3-square area anywhere on the surface. Each enemy in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 4]] damage; vertical push 5</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]] damage; vertical push 3</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target shifts to the nearest unoccupied space outside the area</p></dd></dl>",
+          "before": "<p>The arixx’s underground tunnels swell with pressure, causing a sudden influx of hot gas to burst from a 3-square-by-3-square area anywhere on the surface. Each enemy in the area makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
       "flags": {},
       "_stats": {
-        "compendiumSource": "Item.9olQD0QjxwdAumC6",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.9olQD0QjxwdAumC6",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.351",

@@ -6,7 +6,7 @@
   "img": "icons/magic/fire/elemental-fire-humanoid.webp",
   "system": {
     "description": {
-      "value": "<p>You exhibit ever-stronger signs of how the force of the Primordial Chaos flows within you. Whenever you show strong emotion or increase your ferocity, elemental motes attuned to your mood flit around you, and your skin changes in appearance to reflect an element of your choice.</p><p>Additionally, if you are a berserker or reaver, you have immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to your Might score [[/apply WCiqfPNIdD6mtKHV]]. If you are a stormwight, you have immunity to the damage type of your Primordial Storm feature equal to twice your Might score. [[/apply tTRJufpV4d3UcJ2H]] or [[/apply 2yrhy36OsqexJ3lr]] or [[/apply NIN16Bgq0gq6a5S9]] or [[/apply gEbfDZ2yKruAeVsE]]</p>",
+      "value": "<p>You exhibit ever-stronger signs of how the force of the Primordial Chaos flows within you. Whenever you show strong emotion or increase your ferocity, elemental motes attuned to your mood flit around you, and your skin changes in appearance to reflect an element of your choice.</p><p>Additionally, if you are a berserker or reaver, you have immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to [[lookup @M]]{your Might score}. If you are a stormwight, you have immunity to the damage type of your Primordial Storm feature equal to [[lookup 2*@M evaluate=true]]{twice your Might score}.</p>",
       "director": ""
     },
     "source": {
@@ -23,7 +23,7 @@
       "img": "icons/magic/fire/elemental-fire-humanoid.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.8nXKqcxlRO87JONl",
-      "transfer": false,
+      "transfer": true,
       "_id": "WCiqfPNIdD6mtKHV",
       "system": {
         "end": {
@@ -31,8 +31,51 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
-      "disabled": false,
+      "changes": [
+        {
+          "key": "system.damage.immunities.acid",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.cold",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.poison",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.sonic",
+          "mode": 4,
+          "value": "4",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": null,
         "combat": null,
@@ -42,7 +85,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p><span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to your Might score</span></p>",
+      "description": "<p>Immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to [[lookup @M]]{your Might score}.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -51,7 +94,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524862840,
@@ -65,7 +108,7 @@
       "img": "icons/magic/fire/elemental-fire-humanoid.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.8nXKqcxlRO87JONl",
-      "transfer": false,
+      "transfer": true,
       "_id": "tTRJufpV4d3UcJ2H",
       "system": {
         "end": {
@@ -73,8 +116,15 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
-      "disabled": false,
+      "changes": [
+        {
+          "key": "system.damage.immunities.cold",
+          "mode": 4,
+          "value": "8",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": null,
         "combat": null,
@@ -84,7 +134,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>Immunity to cold equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -93,7 +143,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524890794,
@@ -107,7 +157,7 @@
       "img": "icons/magic/fire/elemental-fire-humanoid.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.8nXKqcxlRO87JONl",
-      "transfer": false,
+      "transfer": true,
       "_id": "2yrhy36OsqexJ3lr",
       "system": {
         "end": {
@@ -115,8 +165,15 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
-      "disabled": false,
+      "changes": [
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 4,
+          "value": "8",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": null,
         "combat": null,
@@ -126,7 +183,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>Immunity to fire equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -135,7 +192,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524909375,
@@ -149,7 +206,7 @@
       "img": "icons/magic/fire/elemental-fire-humanoid.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.8nXKqcxlRO87JONl",
-      "transfer": false,
+      "transfer": true,
       "_id": "NIN16Bgq0gq6a5S9",
       "system": {
         "end": {
@@ -157,8 +214,15 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
-      "disabled": false,
+      "changes": [
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 4,
+          "value": "8",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": null,
         "combat": null,
@@ -168,7 +232,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>Immunity to corruption equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -177,7 +241,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524924034,
@@ -191,7 +255,7 @@
       "img": "icons/magic/fire/elemental-fire-humanoid.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.8nXKqcxlRO87JONl",
-      "transfer": false,
+      "transfer": true,
       "_id": "gEbfDZ2yKruAeVsE",
       "system": {
         "end": {
@@ -199,8 +263,15 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
-      "disabled": false,
+      "changes": [
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 4,
+          "value": "8",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": null,
         "combat": null,
@@ -210,7 +281,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>Immunity to lightning equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -219,7 +290,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524936635,
@@ -238,9 +309,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1761524685644,
     "modifiedTime": null,
     "lastModifiedBy": null

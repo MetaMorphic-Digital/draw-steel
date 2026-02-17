@@ -158,7 +158,7 @@
       "_id": "jYFBARlwHQxicQvu",
       "effects": [
         {
-          "name": "Slive Servant",
+          "name": "Slime Servant",
           "img": "icons/creatures/slimes/slime-face-melting-green.webp",
           "type": "base",
           "origin": "Actor.bqeXlEbT9eFc3adn.Item.jYFBARlwHQxicQvu",
@@ -190,10 +190,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770751412061
           },
           "_key": "!actors.items.effects!ud72M98Ex1iMTHlZ.jYFBARlwHQxicQvu.uBQLDGNoZMc0EYaE"
         }
@@ -1361,7 +1362,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The olothec slides each target up to 5 squares. Each target takes [[/damage 12 psychic]]{12 psychic damage}, and if they have M &lt; 3 they are [[/apply aZfQ1bJDhcOoegXb save]]{weakened and slimed} (save ends). A slimed target takes [[/damage 4 psychic]]{4 psychic damage} whenever they make a power roll. Additionally, until the start of their next turn, the olothec has [[/apply pCE8TT0vZmNECwM4 turn]]{damage immunity 4.}</p>",
+          "before": "<p>The olothec slides each target up to 5 squares. Each target takes [[/damage 12 psychic]]{12 psychic damage}, and if they have [[potency M 3]] they are [[/apply aZfQ1bJDhcOoegXb save]]{weakened and slimed} (save ends). A slimed target takes [[/damage 4 psychic]]{4 psychic damage} whenever they make a power roll. Additionally, until the start of their next turn, the olothec has [[/apply pCE8TT0vZmNECwM4 turn]]{damage immunity 4.}</p>",
           "after": ""
         },
         "spend": {
@@ -1437,7 +1438,7 @@
           "changes": [
             {
               "key": "system.damage.immunities.all",
-              "mode": 2,
+              "mode": 4,
               "value": "4",
               "priority": null
             }
@@ -1476,9 +1477,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1991,12 +1992,13 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has r&lt;3 is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
+          "before": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has [[potency R 3]] is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -2049,10 +2051,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1769282866586
           },
           "_key": "!actors.items.effects!ud72M98Ex1iMTHlZ.EaAhpwgG42tLj259.XV3JUcixv5fgbYm7"
         }
@@ -2061,10 +2064,10 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.pZaF9Ph74yUFzVyS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -2082,8 +2085,8 @@
     "name": "Olothec",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 2,
+    "height": 2,
     "texture": {
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
@@ -2181,7 +2184,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761505878308,

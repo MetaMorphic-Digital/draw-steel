@@ -998,12 +998,43 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "UchnQ5nqGki2FMn7": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "UchnQ5nqGki2FMn7",
+              "applied": {
+                "tier1": {
+                  "display": "Prone and can't stand (EoT)",
+                  "effects": {
+                    "fTsEsnM6rXSNCoCV": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "No effect."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Special: A target must be on the ground.</p><p>Each target makes a Might test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Prone and can’t stand (EoT)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Prone</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Special: A target must be on the ground.</p><p>Each target makes a Might test.</p>",
           "after": ""
         },
         "spend": {
@@ -1020,7 +1051,52 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.GrwkywAeRHqyGAiu.Item.9764LX5gZxEeFcYD",
+          "transfer": false,
+          "_id": "fTsEsnM6rXSNCoCV",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "prone"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770787484580,
+            "modifiedTime": 1770787514467,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.9764LX5gZxEeFcYD.fTsEsnM6rXSNCoCV"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -1028,9 +1104,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1064,13 +1140,60 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "fNkVOqGZZwfvlezk": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "fNkVOqGZZwfvlezk",
+              "damage": {
+                "tier1": {
+                  "value": "9"
+                },
+                "tier2": {
+                  "value": "5"
+                }
+              }
+            },
+            "F9JqGntzmfys60t7": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "F9JqGntzmfys60t7",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  },
+                  "display": "prone"
+                }
+              }
+            },
+            "D3QqdxJf9rrflkmw": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "D3QqdxJf9rrflkmw",
+              "other": {
+                "tier3": {
+                  "display": "The target moves to the nearest unoccupied space outside the area."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><strong>Special</strong>: A target must be on the ground.</p><p>The area drops 2 squares and is difficult terrain. Each target enemy falls, while each target ally drops safely. Additionally, each target enemy makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 9]] damage; prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 5]] damage</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target moves to the nearest unoccupied space outside the area.</p></dd></dl>",
+          "before": "<p><strong>Special</strong>: A target must be on the ground.</p><p>The area drops 2 squares and is difficult terrain. Each target enemy falls, while each target ally drops safely. Additionally, each target enemy makes an <strong>Agility test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -1095,9 +1218,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1523,17 +1646,20 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>Two pillars of stone 1 square wide either thrust up out of the ground or jut down from the ceiling anywhere on the encounter map, to a height of up to 5 squares. A creature in the area of a pillar before it appears is knocked prone on its surface. If the creature comes into contact with the ceiling above or the floor beneath the pillar and has M&lt;2 they are restrained (save ends).</p>",
+          "before": "<p>Two pillars of stone 1 square wide either thrust up out of the ground or jut down from the ceiling anywhere on the encounter map, to a height of up to 5 squares. A creature in the area of a pillar before it appears is knocked prone on its surface. If the creature comes into contact with the ceiling above or the floor beneath the pillar and has [[potency M 2]] they are restrained (save ends).</p>",
           "after": ""
         },
         "spend": {
@@ -1549,10 +1675,10 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.SGycj4apRIrgGz41",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
@@ -1712,17 +1838,71 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "drYAfy1CM39hLIE0": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "drYAfy1CM39hLIE0",
+              "applied": {
+                "tier1": {
+                  "display": "Until the end of the enemy’s next turn, their stability is reduced to 0, and any forced movement effects targeting them gain a +2 bonus to the distance moved.",
+                  "effects": {
+                    "wcBZLFR2RqTQm9fI": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "The enemy’s stability is halved (EoT).",
+                  "effects": {
+                    "XjhsIBEBU0rhWV0o": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No Effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Until the end of the enemy’s next turn, their [[/apply wcBZLFR2RqTQm9fI turn]]{stability is reduced to 0}, and any forced movement effects targeting them gain a +2 bonus to the distance moved.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The enemy’s [[/apply XjhsIBEBU0rhWV0o turn]]{stability is halved (EoT)}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [
@@ -1766,11 +1946,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1761102404482
+            "modifiedTime": 1770770845252
           },
           "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx.wcBZLFR2RqTQm9fI"
         },
@@ -1814,11 +1994,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1761102405921
+            "modifiedTime": 1770770845252
           },
           "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx.XjhsIBEBU0rhWV0o"
         }
@@ -1828,7 +2008,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.snMRSlLI6Vumz8tx",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761102399379,

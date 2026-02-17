@@ -9,7 +9,7 @@
       "page": "241"
     },
     "description": {
-      "value": "<p>You’re hopelessly nonmagical. When you try to use magic abilities, or even when they’re used on you, they never work right. Even magic devices seem to fizzle in your presence. </p><p><strong>Benefit:</strong> You have immunity to corruption, holy, and psychic damage equal to your level. </p><p><strong>Drawback:</strong> Whenever you carry more than three magic treasures, you take a bane on power rolls.</p>",
+      "value": "<p>You’re hopelessly nonmagical. When you try to use magic abilities, or even when they’re used on you, they never work right. Even magic devices seem to fizzle in your presence.</p><p><strong>Benefit:</strong> You have immunity to corruption, holy, and psychic damage equal to [[lookup @level]]{your level}.</p><p><strong>Drawback:</strong> Whenever you carry more than three magic treasures, you take a bane on power rolls.</p>",
       "director": ""
     },
     "_dsid": "mundane",
@@ -33,19 +33,19 @@
       "changes": [
         {
           "key": "system.damage.immunities.corruption",
-          "mode": 2,
+          "mode": 4,
           "value": "1",
           "priority": null
         },
         {
           "key": "system.damage.immunities.holy",
-          "mode": 2,
+          "mode": 4,
           "value": "1",
           "priority": null
         },
         {
           "key": "system.damage.immunities.psychic",
-          "mode": 2,
+          "mode": 4,
           "value": "1",
           "priority": null
         }
@@ -89,9 +89,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1754715846118,
     "modifiedTime": null,
     "lastModifiedBy": null

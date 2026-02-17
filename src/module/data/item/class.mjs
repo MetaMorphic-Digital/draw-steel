@@ -4,7 +4,7 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Classes provide the bulk of a hero's features and abilities.
+ * A hero’s current role, which largely determines how they interact with the game’s rules.
  */
 export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
@@ -35,7 +35,7 @@ export default class ClassModel extends AdvancementModel {
       nullable: false,
       integer: true,
       min: 0,
-      max: config.hero.xp_track.length,
+      max: config.hero.xpTrack.length,
     });
 
     schema.primary = new fields.StringField({ required: true });

@@ -1,3 +1,4 @@
+import { characteristics } from "../../../config.mjs";
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
@@ -8,6 +9,8 @@ import { parseConfig, createLink, addDataset } from "../helpers.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  */
+
+const { createFormGroup, createNumberInput, createSelectInput } = foundry.applications.fields;
 
 /**
  * Implementation logic for all roll-style enrichers.
@@ -63,7 +66,7 @@ const multiRollTypes = ["damage", "heal", "healing"];
 /**
  * Valid roll types that only allow a single formula.
  */
-const singleRollTypes = Object.keys(GAIN_RESOURCE_LOOKUP).concat("gain");
+const singleRollTypes = Object.keys(GAIN_RESOURCE_LOOKUP).concat(["gain", "test"]);
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${multiRollTypes.concat(singleRollTypes).join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -99,6 +102,7 @@ export function enricher(match, options) {
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
     case "gain": return enrichGain(parsedConfig, label, options);
+    case "test": return enrichTest(parsedConfig, label, options);
   }
 }
 
@@ -109,16 +113,20 @@ export function enricher(match, options) {
  * @param {HTMLEnrichedContentElement} element
  */
 export async function onRender(element) {
-  const link = element.querySelector("a");
-
-  link.addEventListener("click", (ev) => {
-    switch (link.dataset.type) {
-      case "damageHeal":
-        return void rollDamageHeal(link, ev);
-      case "gain":
-        return void rollGain(link, ev);
-    }
-  });
+  for (const link of element.querySelectorAll("a")) {
+    link.addEventListener("click", (ev) => {
+      switch (link.dataset.type) {
+        case "damageHeal":
+          return void rollDamageHeal(link, ev);
+        case "gain":
+          return void rollGain(link, ev);
+        case "test":
+          return void rollTest(link, ev);
+        case "requestTest":
+          return void requestTest(link, ev);
+      }
+    });
+  }
 }
 
 /* -------------------------------------------------- */
@@ -136,15 +144,23 @@ export async function onRender(element) {
  *
  */
 function enrichDamageHeal(parsedConfig, label, options) {
-  const linkConfig = { type: "damageHeal", formulas: [], damageTypes: [], rollType: parsedConfig._isHealing ? "healing" : "damage" };
+  const linkConfig = {
+    type: "damageHeal",
+    formulas: [],
+    damageTypes: [],
+    rollType: parsedConfig._isHealing ? "healing" : "damage",
+    ignoredImmunities: [],
+  };
 
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
     c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
+    c.ignoredImmunities = c.ignoredImmunities?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
-      if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
+      if (normalizedValue === "scaling") c.scaling = true;
+      else if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
       else if (normalizedValue in ds.CONFIG.healingTypes) c.type.push(normalizedValue);
       else if (["heal", "healing"].includes(normalizedValue)) c.type.push("value");
       else if (["temp", "temphp"].includes(normalizedValue)) c.type.push("temporary");
@@ -158,6 +174,8 @@ function enrichDamageHeal(parsedConfig, label, options) {
     if (c.formula) {
       linkConfig.formulas.push(c.formula);
       linkConfig.damageTypes.push(c.type.join("|"));
+      linkConfig.ignoredImmunities.push(c.ignoredImmunities.join("|"));
+      linkConfig.scaling ||= c.scaling;
     }
   }
 
@@ -207,13 +225,14 @@ function enrichDamageHeal(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollDamageHeal(link, event) {
-  let { formulas, rollType, damageTypes } = link.dataset;
+  let { formulas, rollType, damageTypes, ignoredImmunities: rawIgnoredImmunities, scaling } = link.dataset;
   const configKey = rollType === "damage" ? "damageTypes" : "healingTypes";
 
   if (!["damage", "healing"].includes(rollType)) throw new Error("The button's roll type must be damage or healing");
 
   const formulaArray = formulas?.split("&") ?? [];
   const damageTypeArray = damageTypes?.split("&") ?? [];
+  const ignoredImmunities = rawIgnoredImmunities.split("|") ?? [];
 
   /** @type {{ index: number; types: string[] }[]} */
   const typeOptions = [];
@@ -226,42 +245,63 @@ async function rollDamageHeal(link, event) {
     });
     return {
       formula,
-      options: { type: types[0], types, isHeal: rollType !== "damage" },
+      options: { type: types[0], types, isHeal: rollType !== "damage", ignoredImmunities },
     };
   });
 
-  if (typeOptions.length) {
+  const rollData = {};
 
-    const content = typeOptions.reduce((htmlString, choices) => {
+  if (typeOptions.length || scaling) {
+
+    const content = document.createElement("div");
+
+    const typeInputs = typeOptions.map(choices => {
       const options = choices.types.map((type) => ({
         value: type,
         label: ds.CONFIG[configKey][type].label,
       }));
 
-      const input = foundry.applications.fields.createSelectInput({
-        name: "typeChoice." + choices.index,
-        blank: false,
-        options,
-        value: choices.types[0],
+      return createFormGroup({
+        input: createSelectInput({
+          name: "typeChoice." + choices.index,
+          blank: false,
+          options,
+          value: choices.types[0],
+        }),
+        label: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Type", { index: choices.index + 1 }),
+      });
+    });
+
+    content.append(...typeInputs);
+
+    if (scaling) {
+      const scaleInput = createFormGroup({
+        label: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Scaling.label",
+        hint: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Scaling.hint",
+        input: createNumberInput({
+          max: Number.isNumeric(scaling) ? scaling : null,
+          min: 0,
+          value: 0,
+          name: "scaling",
+        }),
+        localize: true,
       });
 
-      const label = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.InputLabel", { index: choices.index + 1 });
+      content.append(scaleInput);
+    }
 
-      htmlString += foundry.applications.fields.createFormGroup({ input, label, localize: true }).outerHTML;
-
-      return htmlString;
-    }, "");
-
-    const typeChoices = await DSDialog.input({
+    const rollChoices = await DSDialog.input({
       content,
       window: {
-        title: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.DialogTitle",
+        title: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.DialogTitle",
       },
     });
 
-    if (!typeChoices) return;
+    if (!rollChoices) return;
 
-    for (const [key, value] of Object.entries(foundry.utils.expandObject(typeChoices).typeChoice)) {
+    rollData.scaling = rollChoices.scaling;
+
+    for (const [key, value] of Object.entries(foundry.utils.expandObject(rollChoices).typeChoice ?? {})) {
       rollPrep[key].options.type = value;
     }
   }
@@ -269,15 +309,23 @@ async function rollDamageHeal(link, event) {
   const rolls = rollPrep.map(({ formula, options }) => {
     options.flavor = ds.CONFIG[configKey][options.type]?.label;
 
-    return new DamageRoll(formula, {}, options);
+    return new DamageRoll(formula, rollData, options);
   });
 
   // One by one evaluation to make it easier on users doing manual rolls
   for (const r of rolls) await r.evaluate();
 
-  DrawSteelChatMessage.create({
-    rolls,
-    flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType),
+  const title = game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType);
+
+  await DrawSteelChatMessage.create({
+    title,
+    rolls: rolls.filter(r => !r.isDeterministic),
+    type: "standard",
+    "system.parts": [{
+      rolls,
+      flavor: title,
+      type: "roll",
+    }],
     flags: { core: { canPopout: true } },
   });
 }
@@ -360,7 +408,7 @@ async function rollGain(link, event) {
   const actors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
 
   if (!actors.size) {
-    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection"));
+    ui.notifications.warn("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection", { localize: true });
     return;
   }
 
@@ -384,10 +432,19 @@ async function rollGain(link, event) {
   // Get the localized resource label
   const resourceLabel = game.i18n.localize(lookup.label);
 
+  const title = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, {
+    type: resourceLabel, targets: targetList ?? "",
+  });
   // Create the chat message
   await DrawSteelChatMessage.create({
-    rolls: [roll],
-    flavor: game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, { type: resourceLabel, targets: targetList ?? "" }),
+    title,
+    rolls: roll.isDeterministic ? [] : [roll],
+    type: "standard",
+    "system.parts": [{
+      type: "roll",
+      flavor: title,
+      rolls: [roll],
+    }],
     flags: { core: { canPopout: true } },
     speaker: DrawSteelChatMessage.getSpeaker(),
     style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
@@ -397,4 +454,162 @@ async function rollGain(link, event) {
   for (const actor of actors) {
     await actor.modifyTokenAttribute(lookup.resource, roll.total, true, false);
   }
+}
+
+/* -------------------------------------------------- */
+/*   Test Enricher                                    */
+/* -------------------------------------------------- */
+
+/**
+ * Enrich a test link.
+ * @param {ParsedConfig} parsedConfig      Configuration data.
+ * @param {string} [label]             Optional label to replace default text.
+ * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
+ * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
+ */
+function enrichTest(parsedConfig, label, options) {
+  const linkConfig = {
+    type: "test",
+    characteristic: (parsedConfig.characteristic ?? "").replaceAll("/", "|"),
+    difficulty: parsedConfig.difficulty,
+    edges: parsedConfig.edges,
+    banes: parsedConfig.banes,
+    resultSource: parsedConfig.resultSource,
+  };
+
+  const letterCharacteristics = {
+    M: "might",
+    A: "agility",
+    R: "reason",
+    I: "intuition",
+    P: "presence",
+  };
+
+  for (const value of parsedConfig.values) {
+    let characteristic;
+    const normalizedValue = value.toLowerCase();
+    if (normalizedValue in ds.CONFIG.characteristics) characteristic = normalizedValue;
+    if (letterCharacteristics[value]) characteristic = letterCharacteristics[value];
+    if (characteristic) linkConfig.characteristic += `${linkConfig.characteristic ? "|" : ""}${characteristic}`;
+    if (normalizedValue in ds.CONST.testOutcomes) linkConfig.difficulty ??= normalizedValue;
+  }
+
+  if (!linkConfig.characteristic) return null;
+
+  label ??= formatTestLabel(linkConfig.characteristic, linkConfig.difficulty);
+
+  const rollTestLink = createLink(label,
+    linkConfig,
+    { icon: "fa-dice-d10" },
+  );
+
+  if (game.user.isGM) {
+    // foundry checks if the returned html element is enriched-content and wraps if it's not.
+    const wrapper = document.createElement("enriched-content");
+    wrapper.appendChild(rollTestLink);
+    wrapper.appendChild(createLink("",
+      { ...linkConfig, type: "requestTest", tooltip: "DRAW_STEEL.EDITOR.Enrichers.Test.Request" },
+      { icon: "fa-comment" },
+    ));
+    return wrapper;
+  }
+  else return rollTestLink;
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Helper function that constructs the test roll.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
+ */
+async function rollTest(link, event) {
+  let { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
+
+  if (!characteristic) throw new Error("Test enricher must provide a characteristic");
+
+  const actors = ds.utils.tokensToActors();
+
+  if (!actors.size) {
+    ui.notifications.warn("DRAW_STEEL.EDITOR.Enrichers.Test.NoSelection", { localize: true });
+    return;
+  }
+
+  if (characteristic.includes("|")) {
+    const chrOptions = characteristic.split("|").map(chr => ({ value: chr, label: ds.CONFIG.characteristics[chr].label }));
+
+    const content = document.createElement("div");
+    const { createFormGroup, createSelectInput } = foundry.applications.fields;
+
+    content.append(createFormGroup({
+      label: "DRAW_STEEL.EDITOR.Enrichers.Test.chooseCharacteristic.inputLabel",
+      localize: true,
+      input: createSelectInput({
+        name: "characteristic",
+        options: chrOptions,
+      }),
+    }));
+
+    const fd = await ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: "DRAW_STEEL.EDITOR.Enrichers.Test.chooseCharacteristic.title",
+      },
+    });
+
+    if (!fd) return;
+
+    characteristic = fd.characteristic;
+  }
+
+  for (const actor of actors) {
+    actor.rollCharacteristic(characteristic, { difficulty, edges, banes, resultSource });
+  }
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Create a test request chat message.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
+ */
+async function requestTest(link, event) {
+  const { characteristic, difficulty, edges, banes, resultSource } = link.dataset;
+  const part = {
+    difficulty, edges, banes, resultSource,
+    flavor: formatTestLabel(characteristic, difficulty),
+    characteristics: characteristic.split("|"),
+    type: "testRequest",
+  };
+
+  await DrawSteelChatMessage.create({
+    title: "DRAW_STEEL.EDITOR.Enrichers.Test.Request",
+    type: "standard",
+    "system.parts": [part],
+    flags: { core: { canPopout: true } },
+  });
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * A helper function that formats the characteristics with the difficulty.
+ * @param {string} characteristics    A list of characteristics split by "|".
+ * @param {string} difficulty         A test difficulty.
+ * @returns {string} The localized string.
+ */
+function formatTestLabel(characteristics, difficulty) {
+  const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+
+  const characteristicLabel = characteristics.includes("|")
+    ? formatter.format(characteristics.split("|").map(chr => ds.CONFIG.characteristics[chr].label))
+    : ds.CONFIG.characteristics[characteristics].label;
+
+  const localizationData = {
+    difficulty: game.i18n.localize(ds.CONST.testOutcomes[difficulty]?.label) ?? "",
+    characteristic: characteristicLabel,
+  };
+
+  return game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
 }

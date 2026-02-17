@@ -1,3 +1,4 @@
+import "./journal/_types";
 import "./pseudo-documents/_types";
 import * as documents from "../../documents/_module.mjs";
 import * as data from "../../data/_module.mjs";
@@ -24,6 +25,12 @@ declare module "./npc.mjs" {
 declare module "./combatant-group-config.mjs" {
   export default interface DrawSteelCombatantGroupConfig extends foundry.applications.api.DocumentSheet {
     document: documents.DrawSteelCombatantGroup;
+  }
+}
+
+declare module "./journal-entry-sheet.mjs" {
+  export default interface DrawSteelJournalEntrySheet extends foundry.applications.api.DocumentSheet {
+    document: foundry.documents.JournalEntry;
   }
 }
 

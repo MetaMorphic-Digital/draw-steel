@@ -161,6 +161,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
+      case "header":
+        context.avatarProperties = this._prepareAvatarCSS();
+        break;
       case "stats":
         context.combatTooltip = this._getCombatTooltip();
         context.movement = this._getMovement();
@@ -186,6 +189,20 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     }
     if (partId in context.tabs) context.tab = context.tabs[partId];
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepare avatar adjustments context.
+   * @returns {object}
+   */
+  _prepareAvatarCSS() {
+    const { objectFit, objectPosition } = this.document.getFlag(ds.CONST.systemID, "avatarProperties") ?? {};
+    return {
+      objectFit: CSS.supports("object-fit", objectFit) ? objectFit : null,
+      objectPosition: CSS.supports("object-position", objectPosition) ? objectPosition : null,
+    };
   }
 
   /* -------------------------------------------------- */
@@ -340,7 +357,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /**
    * Prepare the context for features.
-   * @returns {Array<ActorSheetItemContext>}
+   * @returns {Promise<ActorSheetItemContext[]>}
    * @protected
    */
   async _prepareFeaturesContext() {
@@ -349,7 +366,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       ...this.actor.itemTypes.ancestryTrait,
       ...this.actor.itemTypes.perk,
       ...this.actor.itemTypes.title,
-    ].sort((a, b) => a.sort - b.sort);
+    ].filter(i => !i.getFlag(ds.CONST.systemID, "hideInSheet")).sort((a, b) => a.sort - b.sort);
+
     const context = [];
 
     for (const feature of features) {
@@ -372,7 +390,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
      * @type {Record<string, ActorSheetAbilitiesContext>}
      */
     const context = {};
-    const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
+    const abilities = this.actor.itemTypes.ability
+      .filter(i => !i.getFlag(ds.CONST.systemID, "hideInSheet"))
+      .sort((a, b) => a.sort - b.sort);
 
     // Prepare ability categories for each ability type
     for (const [type, config] of Object.entries(ds.CONFIG.abilities.types)) {
@@ -717,11 +737,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
             content: `@Embed[${document.uuid} caption=false]`,
+            type: "standard",
+            "system.parts": [{ type: "content" }],
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
             title: document.name,
-            flags: {
-              core: { canPopout: true },
-            },
+            flags: { core: { canPopout: true } },
           });
         },
       },
@@ -855,7 +875,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
    */
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
@@ -870,7 +889,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
    */
   static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
@@ -885,7 +903,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
    */
   static async #onRoll(event, target) {
     event.preventDefault();
@@ -906,7 +923,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
    */
   static async #editCombat(event, target) {
     return new ActorCombatStatsInput({ document: this.actor }).render({ force: true });
@@ -920,7 +936,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
    */
   static async #useAbility(event, target) {
     const item = this._getEmbeddedDocument(target);

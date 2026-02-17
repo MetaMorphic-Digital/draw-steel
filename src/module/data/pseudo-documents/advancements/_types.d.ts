@@ -6,6 +6,9 @@ declare module "./base-advancement.mjs" {
       level: number;
     }
     description: string;
+    repick: {
+      respite: null | "activity" | "finish";
+    }
   }
 }
 

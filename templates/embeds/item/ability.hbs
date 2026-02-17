@@ -16,10 +16,10 @@
     <dt class="type">{{systemFields.type.label}}</dt>
     <dd class="type">{{actionTypeLabel}}</dd>
 
-    <dt class="distance">{{systemFields.distance.label}}</dt>
+    <dt class="distance" data-tooltip-text="{{systemFields.distance.label}}">o</dt>
     <dd class="distance">{{distanceLabel}}</dd>
 
-    <dt class="target">{{systemFields.target.label}}</dt>
+    <dt class="target" data-tooltip-text="{{systemFields.target.label}}">x</dt>
     <dd class="target">{{targetLabel}}</dd>
 
     {{#if triggeredAction}}
@@ -38,18 +38,20 @@
 {{/if}}
 {{#if powerRolls}}
 <section class="powerResult">
+  {{#unless system.power.roll.reactive}}
   <p>
     <strong>{{{localize "DRAW_STEEL.ROLL.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
   </p>
+  {{/unless}}
   <dl class="power-roll-display">
     <dt class="tier1">!</dt>
-    <dd class="tier1">{{{powerRollEffects.tier1.text}}}</dd>
+    <dd class="tier1">{{{powerRollEffects.tier1}}}</dd>
 
     <dt class="tier2">@</dt>
-    <dd class="tier2">{{{powerRollEffects.tier2.text}}}</dd>
+    <dd class="tier2">{{{powerRollEffects.tier2}}}</dd>
 
     <dt class="tier3">#</dt>
-    <dd class="tier3">{{{powerRollEffects.tier3.text}}}</dd>
+    <dd class="tier3">{{{powerRollEffects.tier3}}}</dd>
 
   </dl>
 </section>

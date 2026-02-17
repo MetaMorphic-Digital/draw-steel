@@ -182,7 +182,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>When the ashen hoarder is reduced to 0 Stamina, they explode in a swirling singularity of bone shards and soul energy. Each creature within 5 squares of the ashen hoarder who has M &lt; 3 takes [[/damage 11 corruption]] damage. A creature killed by this damage has their soul sucked into the vortex and lost somewhere in the Abyssal Wasteland, and can't be brought back to life until their soul is recovered.</p>",
+          "value": "<p>When the ashen hoarder is reduced to 0 Stamina, they explode in a swirling singularity of bone shards and soul energy. Each creature within 5 squares of the ashen hoarder who has [[potency M 3]] takes [[/damage 11 corruption]] damage. A creature killed by this damage has their soul sucked into the vortex and lost somewhere in the Abyssal Wasteland, and can't be brought back to life until their soul is recovered.</p>",
           "director": ""
         },
         "source": {
@@ -205,9 +205,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -851,7 +851,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The ashen hoarder moves up to twice their speed in a straight line. Each creature or object in the path of this movement is either pushed into the nearest unoccupied space outside the path, or if they have M &lt; 3 is pushed forward until the movement ends. Any creature who is force moved forward into an obstacle is dazed (save ends).</p>",
+          "before": "<p>The ashen hoarder moves up to twice their speed in a straight line. Each creature or object in the path of this movement is either pushed into the nearest unoccupied space outside the path, or if they have [[potency M 3]] is pushed forward until the movement ends. Any creature who is force moved forward into an obstacle is dazed (save ends).</p>",
           "after": ""
         },
         "spend": {
@@ -876,9 +876,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1547,12 +1547,97 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "JxVIN0HpEtdLwfyA": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "JxVIN0HpEtdLwfyA",
+              "damage": {
+                "tier1": {
+                  "value": "14",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "MDDw66IoEB8QMR7B": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "MDDw66IoEB8QMR7B",
+              "applied": {
+                "tier1": {
+                  "display": "restrained and bleeding (save ends)",
+                  "effects": {
+                    "eBrxn3KT6rkdyGUS": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "bleeding (EoT)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The ashen hoarder launches bone lances into the air, raining them down on enemies and impaling those unlucky enough to be on the receiving end. Each enemy within 20 squares of the ashen hoarder makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14]] damage; [[/apply eBrxn3KT6rkdyGUS save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11]] damage; [[/apply bleeding turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6]] damag</p></dd></dl>",
+          "before": "<p>The ashen hoarder launches bone lances into the air, raining them down on enemies and impaling those unlucky enough to be on the receiving end. Each enemy within 20 squares of the ashen hoarder makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1566,85 +1651,14 @@
         },
         "_dsid": "bone-storm",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
-        {
-          "name": "Restrained",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "restrained"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.351",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "iKSKZkUWnJLq8yB9",
-          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.djBaAT7WIWSws808.iKSKZkUWnJLq8yB9"
-        },
-        {
-          "name": "Bleeding",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "turn",
-              "roll": ""
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": 1,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "bleeding"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.351",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "e8jY6RqE90bVzKNF",
-          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.djBaAT7WIWSws808.e8jY6RqE90bVzKNF"
-        },
         {
           "name": "Restrained and Bleeding",
           "img": "icons/skills/wounds/injury-pain-impaled-hand-blood.webp",
@@ -1684,7 +1698,8 @@
             "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770775165756
           },
           "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.djBaAT7WIWSws808.eBrxn3KT6rkdyGUS"
         }
@@ -1716,8 +1731,8 @@
     "name": "Ashen Hoarder",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 3,
+    "height": 3,
     "texture": {
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
@@ -1815,7 +1830,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757726088504,

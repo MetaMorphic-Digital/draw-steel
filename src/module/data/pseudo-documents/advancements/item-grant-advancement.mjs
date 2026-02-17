@@ -2,9 +2,12 @@ import BaseAdvancement from "./base-advancement.mjs";
 import { systemID } from "../../../constants.mjs";
 import { setOptions } from "../../helpers.mjs";
 import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
+import AdvancementChain from "../../../utils/advancement/chain.mjs";
+import { advancement } from "../../../applications/apps/_module.mjs";
 
 /**
- * @import DrawSteelActor from "../../../documents/actor.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
  */
 
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -143,6 +146,24 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async createLeaves(node) {
+    const promises = [];
+    for (const { uuid } of this.pool) {
+      // TODO: Optimize DB calls
+      /** @type {DrawSteelItem} */
+      const item = await fromUuid(uuid);
+      if (!item) continue;
+      const leaf = node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor().outerHTML, { item });
+      if (!item.supportsAdvancements) continue;
+
+      promises.push(...node.chain.createNodes(item, { parentLeaf: leaf }));
+    }
+    return Promise.allSettled(promises);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async configureAdvancement(node) {
     const selection = await ItemGrantConfigurationDialog.create({ node });
 
@@ -176,9 +197,13 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     });
     if (!allowed) return;
 
-    const chains = [await ds.utils.AdvancementChain.create(this, null, { end: actor.system.level })];
+    const chain = new AdvancementChain(actor, { start: null, end: actor.system.level });
+
+    await chain.initializeRoots({ advancement: this });
+
     const configuration = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-      chains, actor, window: { title: "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.reconfigureTitle" },
+      chain,
+      window: { title: "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.reconfigureTitle" },
     });
     if (!configuration) return;
 
@@ -189,7 +214,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       [this.document.id]: { _id: this.document.id },
     };
 
-    await actor.system._finalizeAdvancements({ chains, toUpdate });
+    await actor.system._finalizeAdvancements({ chain, toUpdate });
   }
 
   /* -------------------------------------------------- */

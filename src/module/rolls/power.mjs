@@ -5,7 +5,8 @@ import DSRoll from "./base.mjs";
 /** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
 
 /**
- * Augments the Roll class with specific functionality for power rolls.
+ * A roll of 2d10 plus a characteristic score that has three different possible tier outcomes—tier 1, tier 2, or tier 3.
+ * A power roll can be an ability roll or a test.
  */
 export default class PowerRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {
@@ -138,14 +139,17 @@ export default class PowerRoll extends DSRoll {
     tier1: {
       label: "DRAW_STEEL.ROLL.Power.Tiers.One",
       threshold: -Infinity,
+      glyph: "!",
     },
     tier2: {
       label: "DRAW_STEEL.ROLL.Power.Tiers.Two",
       threshold: 12,
+      glyph: "@",
     },
     tier3: {
       label: "DRAW_STEEL.ROLL.Power.Tiers.Three",
       threshold: 17,
+      glyph: "#",
     },
   };
 
@@ -172,13 +176,15 @@ export default class PowerRoll extends DSRoll {
 
     this.getActorModifiers(options);
     const context = {
+      type,
+      formula: this.replaceFormulaData(formula, options.data, { missing: "0" }),
       modifiers: options.modifiers,
       targets: options.targets,
-      type,
     };
 
     if (options.ability) context.ability = options.ability;
     if (options.skills) context.skills = options.skills;
+    if (options.skillModifiers) context.skillModifiers = options.skillModifiers;
 
     const promptValue = await ds.applications.apps.PowerRollDialog.create({
       context,
@@ -188,21 +194,18 @@ export default class PowerRoll extends DSRoll {
     });
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {
-      baseRoll: true, damageSelection: promptValue.damage, skill: promptValue.skill,
-    });
+    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill });
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
-    const rolls = [baseRoll];
-    // DSN support - ensure that only the base power roll is displayed on screen
+    const rolls = [];
     const termData = baseRoll.terms[0].toJSON();
     // Ensures `termData.options` is a copy instead of reference
-    termData.options = { ...termData.options, rollOrder: 999 };
+    termData.options = foundry.utils.deepClone(termData.options);
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
-      if (promptValue.skill) flavor = `${flavor} - ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
+      if (promptValue.skill) flavor = `${flavor} — ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
       const roll = new this(formula, options.data, { flavor, ...context });
       roll.terms[0] = firstTerm;
       switch (evaluation) {
@@ -210,14 +213,15 @@ export default class PowerRoll extends DSRoll {
           rolls.push(roll);
           break;
         case "evaluate":
-          rolls.push(await roll.evaluate());
+          rolls.push(await roll.evaluate({ allowInteractive: false }));
           break;
         case "message":
+          await roll.evaluate({ allowInteractive: false });
           rolls.push(await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode }));
           break;
       }
     }
-    return { rollMode: promptValue.rollMode, powerRolls: rolls };
+    return { rollMode: promptValue.rollMode, rolls, baseRoll };
   }
 
   /* -------------------------------------------------- */
@@ -243,7 +247,7 @@ export default class PowerRoll extends DSRoll {
    */
   get isValidPowerRoll() {
     const firstTerm = this.terms[0];
-    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
+    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number >= 2);
   }
 
   /* -------------------------------------------------- */

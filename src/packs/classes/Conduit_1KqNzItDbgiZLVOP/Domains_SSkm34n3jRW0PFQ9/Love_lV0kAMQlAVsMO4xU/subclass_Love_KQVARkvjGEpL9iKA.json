@@ -6,7 +6,7 @@
   "img": "icons/magic/life/heart-red-blue.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or any ally within 10 squares uses the Aid Attack maneuver or an ability that targets an ally.</p><p><strong>Prayer Effect:</strong> Each ally within 10 squares of you gains temporary Stamina equal to two times your Intuition score. [[/heal 2*@I type=temporary]]</p>",
+      "value": "<p><strong>Piety:</strong> You [[/gain 2 hr]]{gain 2 piety} the first time in an encounter that you or any ally within 10 squares uses the Aid Attack maneuver or an ability that targets an ally.</p><p><strong>Prayer Effect:</strong> Each ally within 10 squares of you gains [[/heal 2*@I type=temporary]]{temporary Stamina} equal to two times your Intuition score.</p>",
       "director": ""
     },
     "source": {
@@ -15,118 +15,11 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "love",
-    "advancements": {
-      "HtpM2XBKriUfAdUs": {
-        "name": "Skill (Interpersonal)",
-        "img": null,
-        "type": "skill",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "HtpM2XBKriUfAdUs",
-        "chooseN": 1,
-        "skills": {
-          "groups": [
-            "interpersonal"
-          ]
-        },
-        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>"
-      },
-      "Ti0DqYB4LEDAuTnG": {
-        "name": "Domain Feature",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "Ti0DqYB4LEDAuTnG",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.D0ef3sDvAeB8Tre7"
-          }
-        ],
-        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>"
-      },
-      "6iWD4zLBcaTohYsP": {
-        "name": "Domain Feature",
-        "img": "icons/magic/life/heart-area-circle-red-green.webp",
-        "type": "itemGrant",
-        "requirements": {
-          "level": 4
-        },
-        "_id": "6iWD4zLBcaTohYsP",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.YtM8UBnfX1ilf3w6"
-          }
-        ],
-        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>"
-      },
-      "lh2bxeXHPeyhsPtH": {
-        "name": "Domain Ability",
-        "img": "icons/skills/social/diplomacy-peace-alliance.webp",
-        "type": "itemGrant",
-        "requirements": {
-          "level": 6
-        },
-        "_id": "lh2bxeXHPeyhsPtH",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.BpV9vREE34LfeqJG"
-          }
-        ],
-        "description": "<p>Choose one of your domains. You gain a heroic ability from that domain.</p>"
-      },
-      "mpv9GYa6djQirXjK": {
-        "name": "Domain Feature",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 7
-        },
-        "_id": "mpv9GYa6djQirXjK",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.VAxZIJWZaVpi3ysf"
-          }
-        ],
-        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>"
-      },
-      "DTmvNeGspvw7RwZV": {
-        "name": "Domain Ability",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "DTmvNeGspvw7RwZV",
-        "description": "<p>Choose one of your domains. You gain a heroic ability from that domain.</p>",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.vMq4N7eRlhDxXbaJ"
-          }
-        ]
-      },
-      "Ur0A4nXQT8ok0iAB": {
-        "name": "Domain Ability",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 9
-        },
-        "_id": "Ur0A4nXQT8ok0iAB",
-        "description": "<p>Choose one of your domains. You gain a heroic ability from that domain.</p>",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.W8GEYrwdpIQp28gD"
-          }
-        ]
-      }
-    },
+    "advancements": {},
     "classLink": "conduit"
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 500000,
   "ownership": {
     "default": 0
   },
@@ -135,9 +28,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755670975417,
     "modifiedTime": null,
     "lastModifiedBy": null

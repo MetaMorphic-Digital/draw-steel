@@ -25,12 +25,14 @@
       "npc": {
         "htmlFields": ["biography.value", "biography.director"],
         "gmOnlyFields": ["biography.director"]
+      },
+      "object": {
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       }
     },
     "ChatMessage": {
-      "abilityUse": {},
-      "savingThrow": {},
-      "projectRoll": {}
+      "standard": {}
     },
     "CombatantGroup": {
       "squad": {}
@@ -138,6 +140,15 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       }
+    },
+    "JournalEntryPage": {
+      "configuration": {},
+      "reference": {
+        "htmlFields": ["tooltip"]
+      },
+      "tierOutcome": {
+        "htmlFields": ["tier1", "tier2", "tier3"]
+      }
     }
   },
   "flags": {
@@ -158,9 +169,9 @@
       "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
     }
   ],
-  "version": "0.9.2",
+  "version": "0.10.0",
   "compatibility": {
-    "minimum": "13.347",
+    "minimum": "13.351",
     "verified": "13"
   },
   "esmodules": ["draw-steel.mjs"],
@@ -190,7 +201,12 @@
     {
       "name": "journals",
       "label": "DRAW_STEEL.COMPENDIUM.journals",
-      "type": "JournalEntry"
+      "type": "JournalEntry",
+      "flags": {
+        "draw-steel": {
+          "display": "table-of-contents"
+        }
+      }
     },
     {
       "name": "tables",
@@ -202,7 +218,7 @@
       "label": "DRAW_STEEL.COMPENDIUM.monsters",
       "type": "Actor"
     },
-      {
+    {
       "name": "monster-features",
       "label": "DRAW_STEEL.COMPENDIUM.monster-features",
       "type": "Item"
@@ -232,7 +248,7 @@
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
-  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.9.2/draw-steel-release-0.9.2.zip",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.10.0/draw-steel-release-0.10.0.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,

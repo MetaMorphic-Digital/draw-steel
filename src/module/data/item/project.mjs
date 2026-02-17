@@ -1,10 +1,10 @@
-import { systemPath } from "../../constants.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
-import BaseItemModel from "./base.mjs";
+import BaseItemModel from "./base-item.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
@@ -14,7 +14,7 @@ import BaseItemModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Projects are activities (crafting, research, or other) heroes can accomplish during downtime.
+ * A task a hero undertakes during one or more respites.
  */
 export default class ProjectModel extends BaseItemModel {
   /** @inheritdoc */
@@ -193,6 +193,7 @@ export default class ProjectModel extends BaseItemModel {
 
     if (!promptValue) return null;
     const { rollMode, projectRoll } = promptValue;
+    if (projectRoll.isCritical) projectRoll.options.flavor = game.i18n.localize("DRAW_STEEL.ROLL.Project.Breakthrough");
 
     const total = projectRoll.total;
     const previousPoints = this.points;
@@ -200,19 +201,36 @@ export default class ProjectModel extends BaseItemModel {
     await this.parent.update({ "system.points": updatedPoints });
 
     const messageData = {
+      type: "standard",
       system: {
-        uuid: this.parent.uuid,
-        events: this.milestoneEventsOccured(previousPoints, updatedPoints),
+        parts: [],
       },
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],
       title: this.parent.name,
-      content: this.parent.name,
-      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
+      sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
     };
 
-    return await projectRoll.toMessage(messageData, { rollMode });
+    const projectPart = {
+      type: "project",
+      flavor: this.parent.name,
+      projectUuid: this.parent.uuid,
+      rolls: [projectRoll],
+    };
+    messageData.system.parts.push(projectPart);
+
+    if (game.settings.get(systemID, "projectEvents") === "milestone") {
+      const event = !!this.milestoneEventsOccured(previousPoints, updatedPoints);
+      if (event) {
+        projectPart.event = event;
+        messageData.content = game.i18n.localize("DRAW_STEEL.Item.project.Events.EventTriggered");
+        messageData.system.parts.push({ type: "content" });
+      }
+    }
+
+    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /* -------------------------------------------------- */
@@ -232,7 +250,6 @@ export default class ProjectModel extends BaseItemModel {
       actor: this.actor,
       evaluation: "evaluate",
       data: rollData,
-      flavor: this.parent.name,
     });
 
     return promptValue;

@@ -6,7 +6,7 @@
   "img": "icons/magic/light/explosion-star-glow-silhouette.webp",
   "system": {
     "description": {
-      "value": "<p>Each time you finish a respite, you can choose yourself or one ally who is also finishing a respite to gain the benefit of a divine ritual. You place a ray of morning light into the chosen character’s soul, granting them a +1 bonus to saving throws that lasts until you finish another respite.</p>",
+      "value": "<p>Each time you finish a respite, you can choose yourself or one ally who is also finishing a respite to gain the benefit of a divine ritual. You place a ray of morning light into the chosen character’s soul, granting them a +1 bonus to saving throws that lasts until you finish another respite. [[/apply Evwnkn3ZjYyfY427]]</p>",
       "director": ""
     },
     "source": {
@@ -15,9 +15,86 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "inner-light",
-    "advancements": {}
+    "advancements": {
+      "03kX18cISsfiCYO4": {
+        "name": "Skill (Lore)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": null
+        },
+        "_id": "03kX18cISsfiCYO4",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "lore"
+          ],
+          "choices": []
+        },
+        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>",
+        "sort": 0,
+        "repick": {
+          "respite": ""
+        }
+      }
+    },
+    "prerequisites": {
+      "dsid": [
+        "sun"
+      ]
+    }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Inner Light",
+      "img": "icons/magic/light/explosion-star-glow-silhouette.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.DNfK5Uf55DHX2r9h",
+      "transfer": false,
+      "_id": "Evwnkn3ZjYyfY427",
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "combat.save.bonus",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You have a +1 bonus to saving throws that lasts until the next respite.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1771186825963,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!DNfK5Uf55DHX2r9h.Evwnkn3ZjYyfY427"
+    }
+  ],
   "sort": 200000,
   "ownership": {
     "default": 0
@@ -27,9 +104,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755755117328,
     "modifiedTime": null,
     "lastModifiedBy": null

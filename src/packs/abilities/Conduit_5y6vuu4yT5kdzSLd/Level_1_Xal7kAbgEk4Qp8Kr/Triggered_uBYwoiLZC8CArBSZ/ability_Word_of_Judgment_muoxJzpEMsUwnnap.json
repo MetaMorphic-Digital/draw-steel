@@ -17,7 +17,7 @@
       "ranged"
     ],
     "type": "triggered",
-    "category": "freeStrike",
+    "category": "",
     "resource": null,
     "trigger": "The target would take damage from an ability that uses a power roll.",
     "distance": {
@@ -43,6 +43,11 @@
     "spend": {
       "text": "The power roll has a double bane against the target.",
       "value": 1
+    },
+    "prerequisites": {
+      "dsid": [
+        "conduit"
+      ]
     }
   },
   "effects": [],
@@ -55,9 +60,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1755647919721,
     "modifiedTime": null,
     "lastModifiedBy": null

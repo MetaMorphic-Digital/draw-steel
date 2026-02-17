@@ -1,0 +1,28 @@
+{{#if ctx.showContextMenu}}
+<div class="message-part-header">
+  <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="resultPartContext"></a>
+</div>
+{{/if}}
+{{#if part.flavor}}
+<div class="message-part-flavor">{{part.flavor}}</div>
+{{/if}}
+<div class="message-part-rolls">
+  {{#each ctx.rolls}}{{{this}}}{{/each}}
+</div>
+{{#if ctx.resultHTML}}
+<div class="message-part-html">
+  {{#if ctx.foundItem}}
+  <dl class="power-roll-display">
+    <dt class="{{part.tierKey}}">{{ctx.tierSymbol}}</dt>
+    <dd>{{{ctx.resultHTML}}}</dd>
+  </dl>
+  {{else}}
+  <p>{{localize "DRAW_STEEL.Item.ability.EmbedFail"}}</p>
+  {{/if}}
+</div>
+{{/if}}
+{{#if ctx.buttons.length}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
+</footer>
+{{/if}}

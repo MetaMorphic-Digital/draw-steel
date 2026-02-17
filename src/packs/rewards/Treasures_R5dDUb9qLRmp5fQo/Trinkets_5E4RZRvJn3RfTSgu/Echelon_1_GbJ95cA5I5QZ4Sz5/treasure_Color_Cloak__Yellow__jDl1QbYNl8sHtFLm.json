@@ -6,7 +6,7 @@
   "img": "icons/equipment/back/cape-layered-brown-gold.webp",
   "system": {
     "description": {
-      "value": "<p><em>This yellow rubbery hooded cloak is emblazoned with a golden Anjali sigil meaning \"lightning.\"</em></p><p><strong>Effect:</strong> While worn, a yellow Color Cloak grants you lightning immunity equal to your level.</p><p>Additionally, when you are targeted by any effect that deals lightning damage, you can use a triggered action to cause the next damage-dealing ability you use to deal extra lightning damage equal to your level. Once you deal this extra damage, your lightning immunity becomes lightning weakness with the same value until the end of the next round. You can't use this triggered action again until this weakness ends.</p>",
+      "value": "<p><em>This yellow rubbery hooded cloak is emblazoned with a golden Anjali sigil meaning \"lightning.\"</em></p><p><strong>Effect:</strong> While worn, a yellow Color Cloak grants you lightning immunity equal to [[lookup @level]]{your level}.</p><p>Additionally, when you are targeted by any effect that deals lightning damage, you can use a triggered action to cause the next damage-dealing ability you use to deal extra lightning damage equal to [[lookup @level]]{your level}. Once you deal this extra damage, your lightning immunity becomes lightning weakness with the same value until the end of the next round. You can't use this triggered action again until this weakness ends.</p>",
       "director": ""
     },
     "source": {
@@ -53,7 +53,7 @@
       "changes": [
         {
           "key": "system.damage.immunities.lightning",
-          "mode": 2,
+          "mode": 4,
           "value": "1",
           "priority": null
         }
@@ -102,7 +102,7 @@
       "changes": [
         {
           "key": "system.damage.immunities.lightning",
-          "mode": 2,
+          "mode": 4,
           "value": "1",
           "priority": null
         }
@@ -145,9 +145,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1757755155522,
     "modifiedTime": null,
     "lastModifiedBy": null

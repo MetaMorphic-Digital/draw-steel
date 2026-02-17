@@ -6,7 +6,7 @@
   "img": "icons/magic/earth/strike-fist-stone-light.webp",
   "system": {
     "description": {
-      "value": "<p>As a maneuver, you can touch an object with a size equal to your Intuition score or smaller and place a protective spell on it. The object has immunity all to untyped damage. You can maintain this spell on a number of objects equal to your Intuition score, and you can end the spell on any object at any time (no action required).</p><p>Additionally, you can place this spell on a building or vehicle (or a similar structure with the Director’s approval) that is of a size larger than your Intuition score. You can place the spell on only one such target at a time, and you can maintain the spell on a larger target and a number of objects equal to your Intuition score simultaneously.</p>",
+      "value": "<p>As a maneuver, you can touch an object with a size equal to [[lookup @I]]{your Intuition score} or smaller and place a protective spell on it. The object has immunity all to untyped damage. You can maintain this spell on a number of objects equal to[[lookup @I]]{your Intuition score}, and you can end the spell on any object at any time (no action required).</p><p>Additionally, you can place this spell on a building or vehicle (or a similar structure with the Director’s approval) that is of a size larger than [[lookup @I]]{your Intuition score}. You can place the spell on only one such target at a time, and you can maintain the spell on a larger target and a number of objects equal to [[lookup @I]]{your Intuition score} simultaneously.</p>",
       "director": ""
     },
     "source": {
@@ -15,7 +15,12 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "impervious-touch",
-    "advancements": {}
+    "advancements": {},
+    "prerequisites": {
+      "dsid": [
+        "protection"
+      ]
+    }
   },
   "effects": [],
   "sort": 0,
@@ -27,9 +32,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1760684516330,
     "modifiedTime": null,
     "lastModifiedBy": null

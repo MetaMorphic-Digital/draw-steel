@@ -181,7 +181,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the dragon can shift up to their speed, leaving behind a 4 cube area of magical darkness in their starting space that lasts until the end of the encounter. The dragon ignores concealment created by this darkness. Any enemy who ends their turn in the area and has I &lt; 3 is [[/apply frightened turn]] of the dragon until the end of their next turn.</p>",
+          "value": "<p>Once per turn, the dragon can shift up to their speed, leaving behind a 4 cube area of magical darkness in their starting space that lasts until the end of the encounter. The dragon ignores concealment created by this darkness. Any enemy who ends their turn in the area and has [[potency I 3]] is [[/apply frightened turn]] of the dragon until the end of their next turn.</p>",
           "director": ""
         },
         "source": {
@@ -204,9 +204,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -238,12 +238,70 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "uOMnEWtrdibmcR3U": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "uOMnEWtrdibmcR3U",
+              "damage": {
+                "tier1": {
+                  "value": "14",
+                  "types": [
+                    "cold"
+                  ]
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [
+                    "cold"
+                  ]
+                },
+                "tier3": {
+                  "value": "6",
+                  "types": [
+                    "cold"
+                  ]
+                }
+              }
+            },
+            "iaH1fWkFxoD5fOWT": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "iaH1fWkFxoD5fOWT",
+              "applied": {
+                "tier1": {
+                  "display": "the target is dragonsealed (save ends)",
+                  "effects": {
+                    "RoFAZZPRLjVZwjPY": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is dragonsealed (save ends)",
+                  "effects": {
+                    "RoFAZZPRLjVZwjPY": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14 cold]] damage; the target is [[/apply RoFAZZPRLjVZwjPY save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11 cold]] damage; the target is [[/apply RoFAZZPRLjVZwjPY save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6 cold]] damage</p></dd></dl>",
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -276,13 +334,13 @@
           "changes": [
             {
               "key": "system.damage.weaknesses.cold",
-              "mode": 2,
+              "mode": 4,
               "value": "3",
               "priority": null
             },
             {
               "key": "system.damage.weaknesses.psychic",
-              "mode": 2,
+              "mode": 4,
               "value": "3",
               "priority": null
             }
@@ -326,7 +384,7 @@
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -521,7 +579,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target must be dragonsealed. Each target takes [[/damage 3 psychic]] damage, and if they have I &lt; 3 they immediately make a free strike against one ally of the dragon's choice.</p>",
+          "before": "<p>Each target must be dragonsealed. Each target takes [[/damage 3 psychic]] damage, and if they have [[potency I 3]] they immediately make a free strike against one ally of the dragon's choice.</p>",
           "after": ""
         },
         "spend": {
@@ -548,7 +606,7 @@
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -908,7 +966,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>Each target must be dragonsealed. Any target who has I &lt; 3 is also dazed (save ends).</p>"
+          "after": "<p>Each target must be dragonsealed. Any target who has [[potency I 3]] is also dazed (save ends).</p>"
         },
         "spend": {
           "text": "",
@@ -932,9 +990,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1088,12 +1146,97 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "nbiRbDkm9WWwGyEs": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "nbiRbDkm9WWwGyEs",
+              "damage": {
+                "tier1": {
+                  "value": "14",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "fZW95EEuAUMk3LUn": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "fZW95EEuAUMk3LUn",
+              "applied": {
+                "tier1": {
+                  "display": "dazed (save ends)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "dazed (EoT)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The dragon manifests four 2 cubes of nightmarish apparitions anywhere on the encounter map. Each creature in the area when it appears makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14]] damage; [[/apply dazed save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11]] damage; [[/apply dazed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6]] damage</p></dd></dl>",
+          "before": "<p>The dragon manifests four 2 cubes of nightmarish apparitions anywhere on the encounter map. Each creature in the area when it appears makes an <strong>Intuition test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1107,86 +1250,14 @@
         },
         "_dsid": "doleful-visions",
         "story": "",
-        "keywords": []
-      },
-      "effects": [
-        {
-          "name": "Dazed",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "dazed"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "Ko0JnLBGsDeM2GHX",
-          "_key": "!actors.items.effects!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6.Ko0JnLBGsDeM2GHX"
-        },
-        {
-          "name": "Dazed",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "turn",
-              "roll": ""
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": 1,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "dazed"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "ZLT1TAz0WNCRZTMe",
-          "_key": "!actors.items.effects!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6.ZLT1TAz0WNCRZTMe"
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
-      ],
+      },
+      "effects": [],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Z1EoT4Tm4QFmUkw6",
@@ -1342,8 +1413,8 @@
     "name": "Gloom Dragon",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 4,
+    "height": 4,
     "texture": {
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
@@ -1441,7 +1512,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757726953946,

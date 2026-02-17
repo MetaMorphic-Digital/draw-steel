@@ -134,6 +134,25 @@ While there are similarities with roll data, active effects generally lead with 
 |Might value|`system.characteristics.might.value`|
 |Presence value|`system.characteristics.presence.value`|
 |Reason value|`system.characteristics.reason.value`|
+|Edges for Tests|`system.characteristics.[chr].edges`|
+|Banes for Tests|`system.characteristics.[chr].banes`|
+
+Draw Steel also supports modifying the default roll formula for tests. `system.characteristics.[chr].dice.number` will adjust the number of dice rolled, defaulting to keeping the highest two (You should use the UPGRADE mode). You can switch this to keeping the lowest two with `system.characteristics.[chr].dice.mode | OVERRIDE | kl`.
+
+#### Skill Keys
+
+|Purpose|Attribute Key|
+|:---:|---|
+|Edges for skills used in tests|`system.hero.skillModifiers.[skill].edges`|
+|Banes for skills used in tests|`system.hero.skillModifiers.[skill].banes`|
+
+> An example of applying a single edge to uses of the Jump skill would be:
+> |`system.hero.skillModifiers.jump.edges`|Add|`1`|
+> |---|---|---|
+>
+> An example of applying two banes to uses of the Tailoring skill would be:
+> |`system.hero.skillModifiers.tailoring.banes`|Add|`2`|
+> |---|---|---|
 
 #### Common bonus effect examples
 
@@ -144,10 +163,14 @@ While there are similarities with roll data, active effects generally lead with 
 |Actor Size (on sheet, not token size)|`system.combat.size.value`|
 |Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
+|Initiative Threshold|`system.combat.initiativeThreshold`|
+|Edge for abilities targeting you|`system.combat.targetModifiers.edges`|
+|Bane for abilities targeting you|`system.combat.targetModifiers.banes`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Bonus Stamina Per Level|`system.stamina.bonuses.level`|
+|Bonus Stamina From Treasure|`system.stamina.bonuses.treasure`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
 |Bonus Recovery Divisor|`system.recoveries.divisor`|
 |Speed|`system.movement.value`|
@@ -223,6 +246,26 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |Key|Description|
 |---|-----------|
 |`distance`|Gives a bonus to the range of the ability, based on the range type.|
+|`damage.bonuses.value`|Give a bonus to the first damage effect's damage at each tier|
+|`damage.bonuses.treasure`|Give a bonus to the first damage effect's damage at each tier. Should be used with the `Upgrade` mode for non-stacking bonuses.|
 |`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
+|`damage.tier1.ignoredImmunities`|Add immunity types to ignore for tier 1 damage|
+|`damage.tier2.ignoredImmunities`|Add immunity types to ignore for tier 2 damage|
+|`damage.tier3.ignoredImmunities`|Add immunity types to ignore for tier 3 damage|
+|`forced.push`|Give a bonus to push movement distance|
+|`forced.pull`|Give a bonus to pull movement distance|
+|`forced.slide`|Give a bonus to slide movement distance|
+|`keyword`|Add a keyword to an ability|
+|`potency`|Give a bonus to all potency values|
+|`power.roll.banes`|Add banes that apply to the ability's power roll regardless of target|
+|`power.roll.edges`|Add edges that apply to the ability's power roll regardless of target|
+
+**Notes:**
+- For `ignoredImmunities`, use the "Add" change mode with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
+- For `forced...`:
+  - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
+  - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
+- For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+

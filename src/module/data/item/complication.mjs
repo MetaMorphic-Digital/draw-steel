@@ -1,7 +1,7 @@
 import FeatureModel from "./feature.mjs";
 
 /**
- * A complication is an optional feature that provides both a positive benefit and a negative drawback.
+ * A dramatic narrative twist that deepens a hero’s backstory and gives them a rules benefit and drawback.
  */
 export default class ComplicationModel extends FeatureModel {
   /** @inheritdoc */
@@ -10,6 +10,7 @@ export default class ComplicationModel extends FeatureModel {
       ...super.metadata,
       type: "complication",
       invalidActorTypes: ["npc"],
+      detailsPartial: null,
     };
   }
 

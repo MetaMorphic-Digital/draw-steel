@@ -14,7 +14,42 @@
       "monster-features": "Monster Features",
       "origins": "Ancestries & Backgrounds",
       "character-options": "Complications, Perks, and Kits",
-      "rewards": "Projects & Rewards"
+      "rewards": "Projects & Rewards",
+      "TOC": {
+        "configure": {
+          "action": "Configure Table of Contents",
+          "title": "Table of Contents: {title}",
+          "submit": "Update Table of Contents"
+        },
+        "Contents": "Contents",
+        "FIELDS": {
+          "entryType": {
+            "label": "Entry Type"
+          },
+          "showPages": {
+            "label": "Show Pages"
+          },
+          "order": {
+            "label": "Order"
+          },
+          "title": {
+            "label": "Title",
+            "hint": "Replaces the name of the Journal Entry in the TOC display"
+          },
+          "append": {
+            "label": "Append",
+            "hint": "Display this journal as pages of another journal. If Standalone is selected, then this will display after appendices."
+          }
+        },
+        "ENTRY_TYPES": {
+          "hidden": "Hidden",
+          "chapter": "Chapter",
+          "appendix": "Appendix",
+          "special": "Special",
+          "header": "Header"
+        },
+        "blankAppend": "Standalone"
+      }
     },
     "ADVANCEMENT": {
       "FIELDS": {
@@ -26,6 +61,16 @@
           "level": {
             "label": "Level",
             "hint": "The level at which this advancement can be granted."
+          }
+        },
+        "repick": {
+          "label": "Repick",
+          "respite": {
+            "label": "Repick On Respite",
+            "Choices": {
+              "activity": "As a Respite Activity",
+              "finish": "Finish a Respite"
+            }
           }
         }
       },
@@ -164,6 +209,10 @@
         "types": {
           "label": "Damage Types"
         },
+        "ignoredImmunities": {
+          "label": "Ignored Immunities",
+          "hint": "Select which damage immunity types this effect should ignore. Select 'All Immunities' to ignore all immunities."
+        },
         "display": {
           "label": "Display",
           "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
@@ -200,6 +249,14 @@
         },
         "properties": {
           "label": "Properties"
+        },
+        "resource": {
+          "amount": {
+            "label": "Gain Amount"
+          },
+          "type": {
+            "label": "Resource Type"
+          }
         }
       },
       "APPLIED": {
@@ -219,6 +276,8 @@
         "formatted": "{value} {damageTypes} damage",
         "formattedTypeless": "{value} damage",
         "formattedPotency": "{potency} {damage}",
+        "IgnoresAllImmunities": "ignores all immunities",
+        "IgnoresImmunities": "ignores {types} immunity",
         "Properties": {
           "IgnoresImmunity": "Ignores Immunities"
         }
@@ -228,13 +287,25 @@
           "IgnoresStability": "Ignores Stability",
           "Vertical": "Vertical"
         }
+      },
+      "RESOURCE": {
+        "Surge": "Surge",
+        "Surges": "Surges",
+        "HeroicResource": "Heroic Resource",
+        "HeroicResources": "Heroic Resources",
+        "EpicResource": "Epic Resource",
+        "EpicResources": "Epic Resources",
+        "DefaultDisplay": "Each target gains {amount} {resource}.",
+        "ButtonText": "Gain {amount} {resource}"
       }
     },
     "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
+        "Object": "Draw Steel Object Sheet",
         "NPC": "Draw Steel NPC Sheet",
         "Item": "Draw Steel Item Sheet",
+        "JournalEntry": "Draw Steel Journal Entry Sheet",
         "ActiveEffect": "Draw Steel Active Effect Config",
         "CombatantGroup": "Draw Steel Combatant Group Config",
         "WallDocument": "Draw Steel Wall Config"
@@ -257,9 +328,13 @@
       "Enrichers": {
         "DamageHeal": {
           "FormatString": "{formula} {type}",
-          "ChooseType": {
-            "InputLabel": "Type {index}",
-            "DialogTitle": "Choose Damage Types"
+          "RollInput": {
+            "Type": "Type {index}",
+            "Scaling": {
+              "label": "Scaling",
+              "hint": "Value for @scaling in formula"
+            },
+            "DialogTitle": "Choose Damage Options"
           },
           "MessageTitle": {
             "damage": "Damage Roll",
@@ -276,6 +351,17 @@
             "Victory": "Earn {type} {targets}"
           },
           "NoSelection": "You must select hero tokens to gain resources."
+        },
+        "Test": {
+          "FormatString": {
+            "Default": "{difficulty} {characteristic} test"
+          },
+          "chooseCharacteristic": {
+            "title": "Choose Test Characteristic",
+            "inputLabel": "Characteristic"
+          },
+          "Request": "Request Test",
+          "NoSelection": "You must select creature tokens to make the test."
         },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
@@ -341,7 +427,8 @@
       },
       "Licenses": {
         "DSCL": "Draw Steel Creator License"
-      }
+      },
+      "InvalidDSID": "A DSID must be all lowercase with no spaces."
     },
     "MEASUREMENT": {
       "Height": {
@@ -413,9 +500,6 @@
               "label": "Age"
             }
           },
-          "characteristics": {
-            "label": "Characteristics"
-          },
           "stamina": {
             "label": "Stamina",
             "value": {
@@ -443,6 +527,15 @@
               "label": "Size",
               "value": {
                 "label": "Size Number"
+              },
+              "text": {
+                "label": "Size Override"
+              },
+              "direction": {
+                "label": "Direction"
+              },
+              "typical": {
+                "label": "Typical Space"
               }
             },
             "stability": {
@@ -462,6 +555,9 @@
                 "hint": "The total necessary to end a (Save Ends) effect."
               }
             }
+          },
+          "ev": {
+            "label": "Encounter Value"
           },
           "movement": {
             "label": "Movement",
@@ -495,6 +591,12 @@
             }
           }
         },
+        "EVLabel": {
+          "Label": "EV",
+          "Area": "{value} per {area}",
+          "Minion": "{value} for four minions",
+          "Other": "{value}"
+        },
         "sizes": {
           "T": "Tiny",
           "S": "Small",
@@ -512,6 +614,16 @@
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
         },
+        "AvatarInput": {
+          "title": "Avatar Positioning: {name}",
+          "objectFit": {
+            "label": "Object Fit",
+            "optionDefault": "Default"
+          },
+          "objectPosition": {
+            "label": "Object Position"
+          }
+        },
         "CharacteristicInput": {
           "Title": "Edit Characteristics",
           "Advancement": "Advancement Bonus",
@@ -519,6 +631,13 @@
           "Rows": {
             "Input": "Base",
             "Advancement": "Advancement"
+          }
+        }
+      },
+      "creature": {
+        "FIELDS": {
+          "characteristics": {
+            "label": "Characteristics"
           }
         }
       },
@@ -594,9 +713,6 @@
             "level": {
               "label": "Level"
             },
-            "ev": {
-              "label": "Encounter Value"
-            },
             "role": {
               "label": "Creature Role"
             },
@@ -607,11 +723,6 @@
         },
         "MonsterMetadata": {
           "DialogTitle": "Update Monster Metadata"
-        },
-        "EVLabel": {
-          "Label": "EV",
-          "Minion": "{value} for four minions",
-          "Other": "{value}"
         },
         "KEYWORDS": {
           "Abyssal": "Abyssal",
@@ -626,6 +737,7 @@
           "Horror": "Horror",
           "Humanoid": "Humanoid",
           "Infernal": "Infernal",
+          "Ooze": "Ooze",
           "Plant": "Plant",
           "Soulless": "Soulless",
           "Swarm": "Swarm",
@@ -677,8 +789,55 @@
           "DialogButton": "Deal Damage"
         }
       },
+      "object": {
+        "FIELDS": {
+          "object": {
+            "level": {
+              "label": "Level"
+            },
+            "category": {
+              "label": "Category"
+            },
+            "role": {
+              "label": "Creature Role"
+            },
+            "area": {
+              "label": "Area",
+              "hint": "Optional area per section of terrain, e.g. '10 x 10 pool'"
+            },
+            "squareStamina": {
+              "label": "Per Square"
+            }
+          }
+        },
+        "MaxStaminaLabel": {
+          "PerSquare": "{value} per square"
+        },
+        "CATEGORIES": {
+          "hazard": "Hazard",
+          "fortification": "Fortification",
+          "trap": "Trap",
+          "trigger": "Trigger",
+          "relic": "Relic",
+          "siegeEngine": "Siege Engine"
+        },
+        "ObjectMetadata": {
+          "DialogTitle": "Update Object Metadata"
+        }
+      },
       "DamageNotification": {
         "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
+      },
+      "Summoning": {
+        "Errors": {
+          "TOKEN_CREATE": "You do not have permission to create new Tokens!",
+          "WILDCARD": "You must have 'Use File Browser' permissions to summon creatures with wildcard artwork."
+        }
+      }
+    },
+    "Damage": {
+      "Immunities": {
+        "All": "All Immunities"
       }
     },
     "Combat": {
@@ -691,8 +850,8 @@
         },
         "Actions": {
           "RollFirst": {
-            "Heroes": "Heroes Go First!",
-            "Enemies": "Enemies Go First!"
+            "Heroes": "The Heroes Determine Who Goes First!",
+            "Enemies": "The Director Determines Who Goes First!"
           },
           "Act": "Act",
           "Restore": "Restore Action"
@@ -777,6 +936,20 @@
           "_dsid": {
             "label": "DSID",
             "hint": "Draw Steel ID"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            },
+            "dsid": {
+              "label": "DSID",
+              "hint": "The Draw Steel ID of other items (e.g. classes, subclasses) required by this item. Any may be fulfilled. Only needed if this is an option in advancements."
+            },
+            "level": {
+              "label": "Level",
+              "hint": "The minimum level required to choose this item. Only needed if this an option in advancements."
+            }
           }
         }
       },
@@ -789,6 +962,10 @@
       },
       "ability": {
         "FIELDS": {
+          "class": {
+            "label": "Ability Source",
+            "hint": "The DSID of the Class or Subclass this ability belongs to"
+          },
           "story": {
             "label": "Story Text"
           },
@@ -834,8 +1011,9 @@
               "label": "Power Roll Effects"
             },
             "roll": {
-              "flat": {
-                "label": "Flat"
+              "reactive": {
+                "label": "Reactive Test",
+                "hint": "This ability does not require a power roll, but instead each target must make a reactive test to mitigate the result."
               },
               "formula": {
                 "label": "Roll Bonus"
@@ -1290,12 +1468,6 @@
           },
           "story": {
             "label": "Story Text"
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
           }
         }
       },
@@ -1368,8 +1540,7 @@
           "NoTable": "No events roll table found.",
           "DrawEvent": "Draw Event from Roll Table",
           "RollForEvent": "Roll for Event",
-          "RollTriggered": "The event roll triggers an event!",
-          "MilestoneTriggered": "This project has passed the milestone for {events} event(s)!"
+          "EventTriggered": "An event has been triggered for this project."
         },
         "RollBreakThrough": "Roll Breakthrough",
         "Varies": "Varies"
@@ -1475,6 +1646,98 @@
         }
       }
     },
+    "JournalEntry": {
+      "Navigation": {
+        "Up": "Up",
+        "Previous": "Previous",
+        "Next": "Next"
+      }
+    },
+    "JournalEntryPage": {
+      "Tabs": {
+        "languages": "Languages",
+        "monsterKeywords": "Monster Keywords",
+        "content": "Content",
+        "tooltip": "Tooltip",
+        "tier1": "Tier 1",
+        "tier2": "Tier 2",
+        "tier3": "Tier 3"
+      },
+      "configuration": {
+        "FIELDS": {
+          "languages": {
+            "label": "Languages",
+            "element": {
+              "label": {
+                "label": "Label",
+                "hint": "The public name, e.g. 'Orcish'."
+              },
+              "key": {
+                "label": "Key",
+                "hint": "A unique key, e.g. 'orcish'."
+              }
+            }
+          },
+          "monsterKeywords": {
+            "label": "Monster Keywords",
+            "element": {
+              "label": {
+                "label": "Label",
+                "hint": "The public name, e.g. 'Goblin'."
+              },
+              "key": {
+                "label": "Key",
+                "hint": "A unique key, e.g. 'goblin'."
+              },
+              "reference": {
+                "label": "Reference",
+                "hint": "A JournalEntryPage that serves as a full reference description for this keyword."
+              }
+            }
+          }
+        },
+        "addEntry": {
+          "language": "Add Language",
+          "monsterKeyword": "Add Monster Keyword"
+        },
+        "removeEntry": {
+          "language": "Remove Language",
+          "monsterKeyword": "Remove Monster Keyword"
+        },
+        "duplicateEntry": "Key is duplicate of existing CONFIG entry and will be ignored!",
+        "pageNameIsGroup": "The name of this page will be the group for the keywords.",
+        "noPack": "This configuration page is not inside of a pack and will not be used."
+      },
+      "image": {
+        "FIELDS": {
+          "artDescription": {
+            "label": "Art Description",
+            "hint": "The Art Description fills in the alt text attribute of the image, improving accessibility for screen readers and helping viewers discover new elements within an image if they are ambiguous, unfamiliar, or framed in an atypical way."
+          }
+        }
+      },
+      "reference": {
+        "FIELDS": {
+          "tooltip": {
+            "label": "Tooltip",
+            "hint": "Preferred tooltip text. If blank, the normal journal content will be preferred."
+          }
+        }
+      },
+      "tierOutcome": {
+        "FIELDS": {
+          "tier1": {
+            "label": "Tier 1"
+          },
+          "tier2": {
+            "label": "Tier 2"
+          },
+          "tier3": {
+            "label": "Tier 3"
+          }
+        }
+      }
+    },
     "DAMAGE_TYPE": {
       "Acid": "Acid",
       "Cold": "Cold",
@@ -1519,11 +1782,13 @@
     "ROLL": {
       "Prompt": "Roll {prompt}",
       "Button": "Roll",
+      "Damage": {
+        "NoTokenSelected": "You must have at least one token selected."
+      },
       "Power": {
         "Prompt": {
           "Title": "{typeLabel} Power Roll",
           "Total": "Total: {number}",
-          "GlobalModifiers": "Global Modifiers",
           "DamageSelectionLabel": "Damage Type"
         },
         "Tiers": {
@@ -1552,7 +1817,30 @@
           "Bonuses": "Bonuses/Penalties",
           "Bonus": "Bonus",
           "Penalty": "Penalty",
-          "Label": "{number} {mod}"
+          "Label": "{number} {mod}",
+          "Plurals": {
+            "Edge": {
+              "one": "Edge",
+              "other": "Edges"
+            },
+            "Bane": {
+              "one": "Bane",
+              "other": "Banes"
+            }
+          }
+        },
+        "TestDifficulty": {
+          "easy": "Easy",
+          "medium": "Medium",
+          "hard": "Hard",
+          "label": "{difficulty} {characteristic} Test"
+        },
+        "TestResult": {
+          "FailureConsequence": "Failure with a consequence",
+          "Failure": "Failure",
+          "SuccessConsequence": "Success with a consequence",
+          "Success": "Success",
+          "SuccessReward": "Success with a reward"
         },
         "BaseRoll": "Base Power Roll",
         "RollPlusBonus": "Power Roll + {bonus}"
@@ -1567,7 +1855,7 @@
           "Title": "Saving Throw Manager: {name}"
         },
         "Prompt": {
-          "Title": "Roll Saving Throw",
+          "Title": "Roll Saving Throw - {effect}",
           "SituationalBonus": {
             "Label": "Situational Bonus",
             "PlaceHolder": "e.g. 3 or @I",
@@ -1591,9 +1879,11 @@
         "GrantedTokens": "The heroes gain {count} hero token(s).",
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
+        "UnknownType": "Unknown hero token spend type.",
         "Generic": {
           "label": "Spend Token",
-          "messageContent": "Spent a hero token."
+          "messageContent": "Spent a hero token.",
+          "messageTitle": "Spent Hero Token"
         },
         "GainSurges": {
           "tooltip": "Spend a hero token to gain two surges.",
@@ -1605,9 +1895,9 @@
           "label": "Succeed on a Saving Throw",
           "messageContent": "Spends a hero token to succeed on a saving throw instead of failing."
         },
-        "ImproveTest": {
-          "label": "Improve Test Result",
-          "messageContent": "Spends a hero token to succeed on a test and lose any consequences suffered."
+        "RerollTest": {
+          "label": "Reroll Test",
+          "messageContent": "Spends a hero token to reroll a test. They must use the new roll."
         },
         "RegainStamina": {
           "tooltip": "Regain Stamina with Hero Tokens",
@@ -1645,6 +1935,13 @@
       "UpdateFromCompendium": {
         "Label": "Update from Compendium",
         "Hint": "Minimum user level to access the Update from Compendium option in NPC and Item sheets."
+      },
+      "XPAdvancement": {
+        "NormalSpeed": "Normal Speed",
+        "DoubleSpeed": "Double Speed",
+        "HalfSpeed": "Half Speed",
+        "Label": "XP Advancement",
+        "Hint": "The XP advancement pace to use for hero progression. Normal is 16 XP per level. Double is is 8 xp per level. Half is 32 xp per level."
       }
     },
     "SOCKET": {
@@ -1785,20 +2082,55 @@
           }
         }
       },
-      "abilityUse": {
-        "NoTokenSelected": "You must have at least one token selected.",
-        "NoPRE": "The Power Roll Effect could not be found."
-      },
-      "savingThrow": {
-        "Buttons": {
-          "HeroToken": {
-            "Label": "Hero Token",
-            "Tooltip": "Succeed by spending a Hero Token",
-            "NoEffect": "This effect no longer exists.",
-            "NoOwner": "You no longer have update permissions for this effect."
+      "PARTS": {
+        "abilityUse": {
+          "performTest": "{characteristic} Test"
+        },
+        "savingThrow": {
+          "Buttons": {
+            "HeroToken": {
+              "Label": "Hero Token",
+              "Tooltip": "Succeed by spending a Hero Token",
+              "NoEffect": "This effect no longer exists.",
+              "NoOwner": "You no longer have update permissions for this effect."
+            }
+          }
+        },
+        "test": {
+          "HeroTokenReroll": {
+            "label": "Hero Token",
+            "tooltip": "Reroll the test. You must use the new roll.",
+            "flavor": "Hero Token Reroll"
+          },
+          "RollDamage": {
+            "label": "Roll Damage",
+            "DamageType": "Damage Type"
+          }
+        },
+        "project": {
+          "NoCompendiumActor": "The project cannot be on an actor in a compendium."
+        },
+        "abilityResult": {
+          "ContextMenuOptions": {
+            "DamageModification": {
+              "WithType": "Modify {total} {type} Damage Roll",
+              "Typeless": "Modify {total} Damage Roll"
+            }
+          },
+          "DamageModificationDialog": {
+            "Title": "Modify Damage Roll",
+            "AdditionalTerms": {
+              "label": "Additional Terms",
+              "hint": "Additional roll terms to add to the damage roll. (e.g. 1d3)"
+            },
+            "DamageType": {
+              "label": "Damage Type",
+              "hint": "Change the damage type to another type of damage."
+            }
           }
         }
-      }
+      },
+      "NoPRE": "The Power Roll Effect could not be found."
     },
     "Macro": {
       "Warnings": {
@@ -1828,7 +2160,8 @@
     },
     "Actor": {
       "hero": "Hero",
-      "npc": "NPC"
+      "npc": "NPC",
+      "object": "Object"
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",
@@ -1858,10 +2191,16 @@
       "subclass": "Subclass",
       "title": "Title"
     },
+    "JournalEntryPage": {
+      "configuration": "Configuration",
+      "reference": "Reference",
+      "tierOutcome": "Power Roll Tier Outcomes"
+    },
     "PowerRollEffect": {
       "applied": "Applied Effect",
       "damage": "Damage",
       "forced": "Forced Movement",
+      "resource": "Gain Resource",
       "other": "Other"
     }
   },

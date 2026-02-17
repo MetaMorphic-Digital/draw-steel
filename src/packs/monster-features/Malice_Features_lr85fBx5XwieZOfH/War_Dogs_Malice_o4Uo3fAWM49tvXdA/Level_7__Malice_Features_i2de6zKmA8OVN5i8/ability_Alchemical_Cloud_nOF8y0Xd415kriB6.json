@@ -27,12 +27,70 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "ROHaIbh6WUb6znBg": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ROHaIbh6WUb6znBg",
+          "damage": {
+            "tier1": {
+              "value": "8",
+              "types": [
+                "poison"
+              ]
+            },
+            "tier2": {
+              "value": "7",
+              "types": [
+                "poison"
+              ]
+            },
+            "tier3": {
+              "value": "4",
+              "types": [
+                "poison"
+              ]
+            }
+          }
+        },
+        "aG1A04QI2UNK35EM": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "aG1A04QI2UNK35EM",
+          "applied": {
+            "tier1": {
+              "display": "dazed (EoT)",
+              "effects": {
+                "dazed": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "display": "weakened (EoT)",
+              "effects": {
+                "weakened": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8 poison]]{8 poison damage}; [[/apply dazed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 poison]]{7 poison damage}; [[/apply weakened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4 poison]]{4 poison damage}</p></dd></dl>",
+      "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p>",
       "after": ""
     },
     "spend": {
@@ -50,9 +108,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1758219519394,
     "modifiedTime": null,
     "lastModifiedBy": null

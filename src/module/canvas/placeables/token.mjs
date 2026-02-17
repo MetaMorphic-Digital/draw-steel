@@ -28,11 +28,14 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @type {boolean}
    */
   get canFlank() {
-    if (!this.actor) return true;
-    // Dead actors cannot flank
-    if (this.actor.statuses.has("dead")) return false;
+    // For orphaned tokens, assume they cannot flank
+    if (!this.actor) return false;
+    // Defeated/Dead actors cannot flank
+    if (this.actor.statuses.has(CONFIG.specialStatusEffects.DEFEATED)) return false;
+    // Check if active effects have modified the ability to flank
+    if (!this.actor.system.statuses?.canFlank) return false;
     // Checking if active effects have restricted triggered abilities
-    return !this.actor.system.restrictions.type.has("triggered");
+    return !this.actor.system.restrictions?.type.has("triggered");
   }
 
   /* -------------------------------------------------- */
@@ -183,13 +186,15 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   _drawBar(number, bar, data) {
     if (data.attribute !== "stamina") return super._drawBar(number, bar, data);
 
-    const stamina = Number(data.value);
+    const temp = this.document.actor.system.stamina.temporary;
+    const stamina = Number(data.value) - temp;
 
     // Creates a normalized range of 0 to (max stamina - min stamina) used for calculating the token bar percentage
     // Needed to handle actor's negative stamina
     const totalStamina = data.max - data.min;
     const adjustedValue = stamina - data.min;
     const barPct = Math.clamp(adjustedValue, 0, totalStamina) / totalStamina;
+    const tempPct = Math.clamp(temp, 0, data.max) / data.max;
 
     // Determine sizing
     const { width, height } = this.document.getSize();
@@ -216,6 +221,11 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     bar.lineStyle(s, 0x000000, 1.0);
     bar.beginFill(0x000000, 0.5).drawRoundedRect(0, 0, bw, bh, 3 * s);
     bar.beginFill(color, 1.0).drawRoundedRect(0, 0, barPct * bw, bh, 2 * s);
+
+    // Draw the temp stamina
+    if (temp > 0) {
+      bar.beginFill(0x66CCFF, 1.0).drawRoundedRect(2 * s, 2 * s, (tempPct * bw) - (4 * s), bh - (4 * s), s);
+    }
 
     // Set position
     const posY = number === 0 ? height - bh : 0;

@@ -240,13 +240,69 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
-            ]
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "f0XqgVeF17ewpaY4": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "f0XqgVeF17ewpaY4",
+              "damage": {
+                "tier1": {
+                  "value": "12",
+                  "types": [
+                    "poison"
+                  ]
+                },
+                "tier2": {
+                  "value": "9",
+                  "types": [
+                    "poison"
+                  ]
+                },
+                "tier3": {
+                  "value": "5",
+                  "types": [
+                    "poison"
+                  ]
+                }
+              }
+            },
+            "AO7ttReHV2bg6p6g": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "AO7ttReHV2bg6p6g",
+              "applied": {
+                "tier1": {
+                  "display": "the target is dragonsealed (save ends)",
+                  "effects": {
+                    "evd5O1lH9z6bKcPr": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is dragonsealed (save ends)",
+                  "effects": {
+                    "evd5O1lH9z6bKcPr": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 poison]] damage; the target is [[/apply evd5O1lH9z6bKcPr save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 9 poison]] damage; the target is [[/apply evd5O1lH9z6bKcPr save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 poison]] damage</p></dd></dl>",
+          "before": "<p>Each target makes a <strong>Might test.</strong></p>",
           "after": "<p>A dragonsealed creature has their wounds bound by nettles and thorns, causing them to take an extra [[/damage 1d3]] damage whenever they take damage rolled as a d6 or a d3.</p>"
         },
         "spend": {
@@ -312,9 +368,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -620,7 +676,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The target is pulled up to 5 squares toward the dragon, and if they have A &lt; 2, they are [[/apply restrained turn]] until the end of their next turn.</p>",
+          "before": "<p>The target is pulled up to 5 squares toward the dragon, and if they have [[potency A 2]], they are [[/apply restrained turn]] until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -645,9 +701,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -686,7 +742,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon makes a free strike against the target, and if the target has M &lt; 2, they are [[/apply bleeding turn]] until the end of their next turn.</p>",
+          "before": "<p>The dragon makes a free strike against the target, and if the target has [[potency M 2]], they are [[/apply bleeding turn]] until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -711,9 +767,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -965,7 +1021,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Poisonous overgrowth and seeking vines cover all surfaces on the encounter map. The dragon uses their Bramble Barricade Malice feature twice at no cost. Until the end of the encounter, any creature force moved by the dragon takes [[/damage 1d3 poison]] damage, and if they have M &lt; 2, they are [[/apply weakened save]]</p>",
+          "before": "<p>Poisonous overgrowth and seeking vines cover all surfaces on the encounter map. The dragon uses their Bramble Barricade Malice feature twice at no cost. Until the end of the encounter, any creature force moved by the dragon takes [[/damage 1d3 poison]] damage, and if they have [[potency M 2]], they are [[/apply weakened save]]</p>",
           "after": "<p><strong>Special:</strong> If the Thorn Dragon’s Domain trait is in effect, any creature other than the dragon who starts their turn on the encounter map takes [[/damage 1d3 poison]] damage.</p>"
         },
         "spend": {
@@ -990,9 +1046,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1209,22 +1265,126 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "EPpnbnIXcOxPp0Ql": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "EPpnbnIXcOxPp0Ql",
+              "damage": {
+                "tier1": {
+                  "value": "12",
+                  "types": [
+                    "poison"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "9",
+                  "types": [
+                    "poison"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "5",
+                  "types": [
+                    "poison"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "DfxC0ewrUgrsadBA": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "DfxC0ewrUgrsadBA",
+              "applied": {
+                "tier1": {
+                  "display": "retrained (save ends)",
+                  "effects": {
+                    "restrained": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "bleeding (EoT)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 poison]] damage; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 9 poison]] damage; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 poison]] damage; [[/apply bleeding turn]]</p></dd></dl>",
+          "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -1235,10 +1395,10 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.hhJjQjVeeIdnBd69",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -1252,8 +1412,8 @@
     "name": "Thorn Dragon",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 3,
+    "height": 3,
     "texture": {
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
@@ -1394,7 +1554,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757107616495,

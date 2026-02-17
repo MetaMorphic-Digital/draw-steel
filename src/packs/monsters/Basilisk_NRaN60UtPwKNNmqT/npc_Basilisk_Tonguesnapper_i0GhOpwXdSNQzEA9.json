@@ -106,7 +106,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Any creature who starts their turn adjacent to the tonguesnapper and has M &lt; 1 is slowed (save ends).</p>",
+          "value": "<p>Any creature who starts their turn adjacent to the tonguesnapper and has [[potency M 1]] is slowed (save ends).</p>",
           "director": ""
         },
         "source": {
@@ -129,9 +129,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -650,7 +650,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>Each target takes [[/damage 4 acid]] damage. Any target who has M &lt; 2 is also slowed (save ends).</p>"
+          "after": "<p>Each target takes [[/damage 4 acid]] damage. Any target who has [[potency M 2]] is also slowed (save ends).</p>"
         },
         "spend": {
           "text": "",
@@ -674,9 +674,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1074,8 +1074,8 @@
     "name": "Basilisk Tonguesnapper",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 2,
+    "height": 2,
     "texture": {
       "src": "systems/draw-steel/assets/roles/hexer.webp",
       "anchorX": 0.5,
@@ -1173,7 +1173,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757094106613,

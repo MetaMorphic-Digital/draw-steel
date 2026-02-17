@@ -512,7 +512,7 @@
           "changes": [
             {
               "key": "system.damage.weaknesses.lightning",
-              "mode": 2,
+              "mode": 4,
               "value": "5",
               "priority": null
             }
@@ -597,7 +597,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Slide 5, and if the the target has M &lt; 4, they fall prone.</p>",
+          "before": "<p>Slide 5, and if the the target has [[potency M 4]], they fall [[/apply prone]].</p>",
           "after": ""
         },
         "spend": {
@@ -622,9 +622,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -727,14 +727,70 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "reason"
-            ]
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "d8mxelZXgDKHgZdq": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "d8mxelZXgDKHgZdq",
+              "damage": {
+                "tier1": {
+                  "value": "18",
+                  "types": [
+                    "lightning"
+                  ]
+                },
+                "tier2": {
+                  "value": "14",
+                  "types": [
+                    "lightning"
+                  ]
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [
+                    "lightning"
+                  ]
+                }
+              }
+            },
+            "W1nluNXFWHUSKYyo": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "W1nluNXFWHUSKYyo",
+              "applied": {
+                "tier1": {
+                  "display": "the target is thunderstruck (save ends)",
+                  "effects": {
+                    "4mLo7h7x4fOoNZpA": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is thunderstruck (EoT)",
+                  "effects": {
+                    "4mLo7h7x4fOoNZpA": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 18 lightning]]{18 lightning damage}; the target is [[/apply 4mLo7h7x4fOoNZpA save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 14 lightning]]{14 lightning damage}; the target is [[/apply 4mLo7h7x4fOoNZpA turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 9 lightning]]{9 lightning damage}</p></dd></dl>",
-          "after": "<p>See @UUID[Actor.dek0gTmQS4vrSRyZ.Item.IomGrfVzaAr7jf11]{Thunderstruck}. Additionally, until the end of the encounter, any enemy who moves within 3 squares of the taxiarch for the first time in a round or starts their turn there takes [[/damage 3 lightning]]{3 lightning damage}.</p>"
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p>",
+          "after": "<p>See @UUID[Compendium.draw-steel.monsters.Actor.C9jqb1wwJf2JuY8z.Item.IomGrfVzaAr7jf11]{Thunderstruck}. Additionally, until the end of the encounter, any enemy who moves within 3 squares of the taxiarch for the first time in a round or starts their turn there takes [[/damage 3 lightning]]{3 lightning damage}.</p>"
         },
         "spend": {
           "text": "",
@@ -767,7 +823,7 @@
           "changes": [
             {
               "key": "system.damage.weaknesses.lightning",
-              "mode": 2,
+              "mode": 4,
               "value": "5",
               "priority": null
             }
@@ -808,9 +864,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -911,17 +967,113 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "ROHaIbh6WUb6znBg": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "ROHaIbh6WUb6znBg",
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [
+                    "poison"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "7",
+                  "types": [
+                    "poison"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "4",
+                  "types": [
+                    "poison"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "aG1A04QI2UNK35EM": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "aG1A04QI2UNK35EM",
+              "applied": {
+                "tier1": {
+                  "display": "dazed (EoT)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "weakened (EoT)",
+                  "effects": {
+                    "weakened": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8 poison]]{8 poison damage}; [[/apply dazed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 poison]]{7 poison damage}; [[/apply weakened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4 poison]]{4 poison damage}</p></dd></dl>",
+          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -930,7 +1082,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761442313805,

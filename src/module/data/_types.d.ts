@@ -5,6 +5,7 @@ import "./combatant/_types";
 import "./combatant-group/_types";
 import "./effect/_types";
 import "./item/_types";
+import "./journal-entry-pages/_types";
 import "./message/_types";
 import "./models/_types";
 import "./pseudo-documents/_types";
