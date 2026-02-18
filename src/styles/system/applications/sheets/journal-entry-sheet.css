@@ -152,6 +152,10 @@
   /*contents*/
   li .page-heading {}
 
+  .toc li.page {
+    border-top: none;
+  }
+
   .toc ol li ol,
   .toc ol li ol li {
     position: relative;
@@ -419,6 +423,7 @@ aside[role="tooltip"] section.content {
 
   .ability-bordered {
     --ability-border: var(--ability-default-border);
+
     &.quick {
       --ability-border: var(--ability-quick-border);
     }
@@ -604,6 +609,7 @@ aside[role="tooltip"] section.content {
 
 /* dark theme specific art*/
 .theme-dark .draw-steel.journal-sheet:not(.theme-light),
+
 .draw-steel.journal-sheet.theme-dark {
   .journal-sidebar {
     background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');

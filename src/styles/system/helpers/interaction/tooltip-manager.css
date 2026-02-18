@@ -1,20 +1,21 @@
-#tooltip.draw-steel, aside[role="tooltip"] {
-  background: var(--draw-steel-c-white);
-  color: var(--draw-steel-c-light);
-
+#tooltip.draw-steel,
+aside[role="tooltip"] {
   header.metadata {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
+
     h3.name {
       padding-top: 0.5rem;
       margin-bottom: 0;
     }
+
     aside.category {
       border: 2px inset var(--draw-steel-c-laserline);
       background-color: var(--draw-steel-c-black);
       padding: 0.25rem 0.5rem;
       margin: 0.5rem 0;
+
       h4 {
         text-align: right;
         line-height: 1rem;
