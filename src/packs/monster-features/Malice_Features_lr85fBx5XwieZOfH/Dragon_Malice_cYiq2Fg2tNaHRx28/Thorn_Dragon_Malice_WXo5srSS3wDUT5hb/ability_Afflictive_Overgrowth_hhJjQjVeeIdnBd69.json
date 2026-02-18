@@ -28,12 +28,79 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "agility"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "EPpnbnIXcOxPp0Ql": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "EPpnbnIXcOxPp0Ql",
+          "damage": {
+            "tier1": {
+              "value": "12",
+              "types": [
+                "poison"
+              ]
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "poison"
+              ]
+            },
+            "tier3": {
+              "value": "5",
+              "types": [
+                "poison"
+              ]
+            }
+          }
+        },
+        "DfxC0ewrUgrsadBA": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "DfxC0ewrUgrsadBA",
+          "applied": {
+            "tier1": {
+              "display": "retrained (save ends)",
+              "effects": {
+                "restrained": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "bleeding (EoT)",
+              "effects": {
+                "bleeding": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 poison]] damage; restrained (save ends)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 9 poison]] damage; bleeding (save ends)</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 poison]] damage; bleeding (EoT)</p></dd></dl>",
+      "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test</strong>.</p>",
       "after": ""
     },
     "spend": {
@@ -50,9 +117,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1760900311561,
     "modifiedTime": null,
     "lastModifiedBy": null

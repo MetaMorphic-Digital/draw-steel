@@ -1173,12 +1173,61 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "3Sp94TNhFilbkawY": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "3Sp94TNhFilbkawY",
+              "applied": {
+                "tier1": {
+                  "display": "Frightened (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "Frightened (EoT)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The manticore lets out an unnerving cry. Each enemy within the manticore’s line of effect makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Frightened save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Frightened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>The manticore lets out an unnerving cry. Each enemy within the manticore’s line of effect makes an <strong>Intuition test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1192,7 +1241,12 @@
         },
         "_dsid": "desperate-howl",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1225,10 +1279,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770778914660
           },
           "_id": "z433dsU2sYhlYYI5",
           "_key": "!actors.items.effects!8DT1J2OmO380DsYt.kLTUjHwfhlXjjWUh.z433dsU2sYhlYYI5"
@@ -1263,10 +1318,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "13.351",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "modifiedTime": 1770778914660
           },
           "_id": "vk2a7PnHDj4049QY",
           "_key": "!actors.items.effects!8DT1J2OmO380DsYt.kLTUjHwfhlXjjWUh.vk2a7PnHDj4049QY"
@@ -1277,7 +1333,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.kLTUjHwfhlXjjWUh",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761233013541,

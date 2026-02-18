@@ -414,11 +414,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
             content: `@Embed[${document.uuid} caption=false]`,
+            type: "standard",
+            "system.parts": [{ type: "content" }],
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.item.actor }),
             title: document.name,
-            flags: {
-              core: { canPopout: true },
-            },
+            flags: { core: { canPopout: true } },
           });
         },
       },

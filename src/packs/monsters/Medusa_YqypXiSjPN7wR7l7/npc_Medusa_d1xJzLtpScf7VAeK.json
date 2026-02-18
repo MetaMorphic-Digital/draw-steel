@@ -1536,12 +1536,138 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "might"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "qzJ6rOld74Hf1JYH": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "qzJ6rOld74Hf1JYH",
+              "damage": {
+                "tier1": {
+                  "value": "12",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "MZTbrGtV0HIwGSud": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "MZTbrGtV0HIwGSud",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "wj0dCUUMert5o3DP": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "wj0dCUUMert5o3DP",
+              "applied": {
+                "tier1": {
+                  "display": "bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The medusa causes three stone statues within 10 squares of them to each shatter in a 2-cube explosion. Each enemy in one of those areas makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Might test</span></strong></span>. An enemy restrained or slowed by the medusa’s Petrify ability has a double bane on the test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12]]{12 damage}; vertical push 3; [[/apply bleeding save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; vertical push 3</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6]]{6 damage}</p></dd></dl>",
+          "before": "<p>The medusa causes three stone statues within 10 squares of them to each shatter in a 2-cube explosion. Each enemy in one of those areas makes a <strong>Might test</strong>. An enemy restrained or slowed by the medusa’s Petrify ability has a double bane on the test.</p>",
           "after": ""
         },
         "spend": {
@@ -1555,17 +1681,22 @@
         },
         "_dsid": "shatter-victims",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.NUxETExobSeuSDB5",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

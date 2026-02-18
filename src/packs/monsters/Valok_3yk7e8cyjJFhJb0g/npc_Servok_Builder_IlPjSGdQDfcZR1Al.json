@@ -237,12 +237,73 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility",
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "tpgFWacYt15DAsKd": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "tpgFWacYt15DAsKd",
+              "damage": {
+                "tier1": {
+                  "value": "15"
+                },
+                "tier2": {
+                  "value": "12"
+                },
+                "tier3": {
+                  "value": "8"
+                }
+              }
+            },
+            "BOzJHFE1EHgA0SVR": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "BOzJHFE1EHgA0SVR",
+              "forced": {
+                "tier1": {
+                  "distance": "5"
+                },
+                "tier2": {
+                  "distance": "3"
+                },
+                "tier3": {
+                  "display": "",
+                  "movement": [],
+                  "distance": ""
+                }
+              }
+            },
+            "JbY3M6LPIewRkG1U": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "JbY3M6LPIewRkG1U",
+              "applied": {
+                "tier1": {
+                  "display": "prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target must make either an <strong>Agility test</strong> or an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 15]]{15 damage}; push 5, [[/apply prone]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 12]]{12 damage}; push 3</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 8]]{8 damage}.</p></dd></dl>",
+          "before": "<p>Each target must make either an <strong>Agility test</strong> or an <strong>Intuition test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -269,7 +330,7 @@
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -500,12 +561,44 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "CYwibLwLhrYlNgmk": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "CYwibLwLhrYlNgmk",
+              "applied": {
+                "tier1": {
+                  "display": "Restrained (EoT)",
+                  "effects": {
+                    "restrained": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "Slowed (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "No effect."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The area is covered in wet concrete and is difficult terrain. Any enemy who starts their turn in the concrete makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply restrained turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>The area is covered in wet concrete and is difficult terrain. Any enemy who starts their turn in the concrete makes a <strong>Might test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -530,9 +623,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

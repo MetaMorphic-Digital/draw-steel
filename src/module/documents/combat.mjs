@@ -121,7 +121,11 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       }
     }
     if (dc) return dc;
-    return super._sortCombatants(a, b);
+
+    const ia = Number.isNumeric(a.initiative) ? a.initiative : -Infinity;
+    const ib = Number.isNumeric(b.initiative) ? b.initiative : -Infinity;
+    // sort by initiative value, then name, then ID
+    return (ib - ia) || a.name?.localeCompare(b.name, game.i18n.lang, { numeric: true }) || (a.id > b.id ? 1 : -1);
   }
 
   /* -------------------------------------------------- */

@@ -17,12 +17,46 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [
+          "reason"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "HkUVXUa553zpgn7U": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "HkUVXUa553zpgn7U",
+          "applied": {
+            "tier1": {
+              "display": "The target doesn’t have line of effect to any lightbender (save ends).",
+              "effects": {
+                "Jl97IxJJ269HVVdZ": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "The target doesn’t have line of effect to any lightbender (EoT).",
+              "effects": {
+                "Jl97IxJJ269HVVdZ": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier3": {
+              "display": "No effect."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>Each lightbender in the encounter shines radiantly, distorting the senses of any enemy within 5 squares of them. Each affected enemy makes a <strong>Reason test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Jl97IxJJ269HVVdZ save]]{The target doesn’t have line of effect to any lightbender (save ends).}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><dl class=\"power-roll-display\"><dd><p>[[/apply Jl97IxJJ269HVVdZ turn]]{The target doesn’t have line of effect to any lightbender (EoT).}</p></dd></dl></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "before": "<p>Each lightbender in the encounter shines radiantly, distorting the senses of any enemy within 5 squares of them. Each affected enemy makes a <strong>Reason test</strong>.</p>",
       "after": ""
     },
     "spend": {
@@ -88,9 +122,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1757289102580,
     "modifiedTime": null,
     "lastModifiedBy": null

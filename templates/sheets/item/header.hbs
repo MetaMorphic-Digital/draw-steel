@@ -1,5 +1,12 @@
 <header class="sheet-header">
-  <img class="profile-img" src="{{document.img}}" data-edit="img" data-action="{{ifThen isPlay "showImage" "editImage"}}" title="{{document.name}}" alt="{{document.name}}">
+  <img
+    class="profile-img"
+    src="{{document.img}}"
+    alt="{{document.name}}"
+    {{#unless isPlay}}data-edit="img"{{/unless}}
+    data-action="{{ifThen isPlay "showImage" "editImage"}}"
+    title="{{document.name}}"
+  >
   <div class="header-center">
     <div class="document-name">
       {{#if isPlay}}

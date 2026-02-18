@@ -434,14 +434,70 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
-            ]
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "21GBgHp4bm9l7IYS": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "21GBgHp4bm9l7IYS",
+              "damage": {
+                "tier1": {
+                  "value": "16",
+                  "types": [
+                    "corruption"
+                  ]
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "corruption"
+                  ]
+                },
+                "tier3": {
+                  "value": "8",
+                  "types": [
+                    "corruption"
+                  ]
+                }
+              }
+            },
+            "4TXivYCAZab18ki8": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "4TXivYCAZab18ki8",
+              "applied": {
+                "tier1": {
+                  "display": "frightened (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "frightened (EoT)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 corruption]]{16 corruption damage}; [[/apply frightened save]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 13 corruption]]{13 corruption damage}; [[/apply frightened turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 8 corruption]]{8 corruption damage}</p></dd></dl><p>While a target is frightened this way, Rhodar ignores banes and double banes on abilities used against them.</p>",
-          "after": ""
+          "before": "<p>Each target makes an <strong>Intuition test.</strong></p>",
+          "after": "<p>While a target is frightened this way, Rhodar ignores banes and double banes on abilities used against them.</p>"
         },
         "spend": {
           "text": "",
@@ -465,9 +521,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1301,13 +1357,69 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
-            ]
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "lLFR1uFcGPCy2FZl": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "lLFR1uFcGPCy2FZl",
+              "damage": {
+                "tier1": {
+                  "value": "16",
+                  "types": [
+                    "corruption"
+                  ]
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "corruption"
+                  ]
+                },
+                "tier3": {
+                  "value": "8",
+                  "types": [
+                    "corruption"
+                  ]
+                }
+              }
+            },
+            "9WTUHoYlPI1U1eH8": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "9WTUHoYlPI1U1eH8",
+              "applied": {
+                "tier1": {
+                  "display": "the target is bleeding until the end of the encounter",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "encounter"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes a Presence test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 corruption]]{16 corruption damage}; the target is [[/apply bleeding encounter]]{bleeding} until the end of the encounter.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 13 corruption]]{13 corruption damage}; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 8 corruption]]{8 corruption damage}</p></dd></dl>",
+          "before": "<p>Each target makes a Presence test.</p>",
           "after": "<p>Rhodar teleports to an unoccupied space in the area. If he has lost the damage immunity from his Grave Ward trait, he regains it.</p>"
         },
         "spend": {
@@ -1332,9 +1444,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1868,7 +1980,7 @@
       "changes": [
         {
           "key": "system.damage.immunities.all",
-          "mode": 2,
+          "mode": 4,
           "value": "5",
           "priority": null
         }

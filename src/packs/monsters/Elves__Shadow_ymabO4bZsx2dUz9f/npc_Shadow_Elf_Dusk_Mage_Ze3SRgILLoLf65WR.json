@@ -589,7 +589,7 @@
       "changes": [
         {
           "key": "system.damage.immunities.all",
-          "mode": 2,
+          "mode": 4,
           "value": "3",
           "priority": null
         }
@@ -603,7 +603,7 @@
         "rounds": null,
         "turns": null
       },
-      "description": "<p>While</p><p>the assassin has concealment, they have damage immunity 3.</p>",
+      "description": "<p>While the dusk mage has concealment, they have damage immunity 3.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -613,7 +613,7 @@
         "compendiumSource": "Actor.7IkMtaxKh94kecYy.ActiveEffect.tH9tnIAQMwKj9dzQ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -637,7 +637,7 @@
       "changes": [
         {
           "key": "system.damage.weaknesses.all",
-          "mode": 2,
+          "mode": 4,
           "value": "3",
           "priority": null
         }
@@ -651,7 +651,7 @@
         "rounds": null,
         "turns": null
       },
-      "description": "<p>While the assassin is in direct sunlight, they have damage weakness 3.</p>",
+      "description": "<p>While the dusk mage is in direct sunlight, they have damage weakness 3.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -661,7 +661,7 @@
         "compendiumSource": "Actor.7IkMtaxKh94kecYy.ActiveEffect.sQKvzbyDJaBJBKMX",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -673,9 +673,9 @@
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
       "type": "abilityModifier",
-      "origin": "Actor.Ze3SRgILLoLf65WR",
+      "origin": "Compendium.draw-steel.monsters.Actor.Ze3SRgILLoLf65WR",
       "disabled": true,
-      "_id": "MOPMkek0e3lagayU",
+      "_id": "mLlYqBtup086MSW8",
       "system": {
         "end": {
           "type": "",
@@ -687,15 +687,22 @@
           ]
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "power.roll.edges",
+          "mode": 2,
+          "value": "",
+          "priority": null
+        }
+      ],
       "duration": {
         "startTime": 0,
         "combat": null,
-        "startRound": 1,
-        "startTurn": 0,
         "seconds": null,
         "rounds": null,
-        "turns": null
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
       },
       "description": "<p>Gain an edge on strikes.</p>",
       "tint": "#ffffff",
@@ -707,13 +714,14 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.10.0",
+        "createdTime": 1770941180525,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.effects!Ze3SRgILLoLf65WR.MOPMkek0e3lagayU"
+      "_key": "!actors.effects!Ze3SRgILLoLf65WR.mLlYqBtup086MSW8"
     }
   ],
   "sort": 0,

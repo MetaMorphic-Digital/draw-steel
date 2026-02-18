@@ -1361,12 +1361,58 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "oZCaZFEA1QT26XAM": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "oZCaZFEA1QT26XAM",
+              "other": {
+                "tier1": {
+                  "display": "The target must move their speed in a straight line away from the werewolf"
+                }
+              }
+            },
+            "DdVKrbX0durXXUyM": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "DdVKrbX0durXXUyM",
+              "applied": {
+                "tier1": {
+                  "display": "frightened (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "Frightened (EoT)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "No Effect."
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an Intuition test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target must move their speed in a straight line away from the werewolf; [[/apply frightened save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Frightened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Each target makes an Intuition test.</p>",
           "after": "<p>Any enemy in the encounter who has 1 or more rage gains 4 rage and howls along with the werewolf.</p>"
         },
         "spend": {
@@ -1388,9 +1434,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

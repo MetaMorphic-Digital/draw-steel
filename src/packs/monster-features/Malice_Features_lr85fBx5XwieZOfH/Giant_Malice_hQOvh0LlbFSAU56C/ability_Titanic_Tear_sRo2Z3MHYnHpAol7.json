@@ -18,12 +18,73 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [
+          "agility"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "CYTJpjkCGlbZGSMr": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "CYTJpjkCGlbZGSMr",
+          "damage": {
+            "tier1": {
+              "value": "10"
+            },
+            "tier2": {
+              "value": "10"
+            }
+          }
+        },
+        "vYbkVCZQ6D37FAfk": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "vYbkVCZQ6D37FAfk",
+          "applied": {
+            "tier1": {
+              "display": "the target falls into the fissure, and is prone and can’t stand (EoT)",
+              "effects": {
+                "2hXPO1wVP7B7bl2z": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "display": "the target is prone and hanging onto the edge of the fissure",
+              "effects": {
+                "prone": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
+            }
+          }
+        },
+        "xvCwGOhjo135YaxW": {
+          "sort": 300000,
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "xvCwGOhjo135YaxW",
+          "other": {
+            "tier1": {
+              "display": ""
+            },
+            "tier3": {
+              "display": "The target can shift into the nearest unoccupied space outside the fissure."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; the target falls into the fissure, and is [[/apply 2hXPO1wVP7B7bl2z turn]]{prone and can’t stand (EoT)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; the target is [[/apply prone]] and hanging onto the edge of the fissure</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the fissure.</p></dd></dl>",
+      "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
       "after": ""
     },
     "spend": {
@@ -91,9 +152,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1758823084823,
     "modifiedTime": null,
     "lastModifiedBy": null

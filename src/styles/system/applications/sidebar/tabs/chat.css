@@ -1,13 +1,23 @@
 .chat-sidebar,
 #chat-notifications,
 .chat-popout {
+  enriched-content {
+    text-wrap-mode: initial;
+  }
+
   .chat-message {
+
     /* "standard" chat messages that use parts */
     &.draw-steel {
-      > section:not(:last-of-type) {
+      >section:not(:last-of-type) {
         border-bottom: var(--sidebar-separator);
         padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;
+      }
+
+      .message-part-header {
+        display: flex;
+        justify-content: end;
       }
 
       .message-part-flavor {
@@ -20,10 +30,13 @@
         gap: 3px;
       }
     }
+
     footer {
       button {
         margin-top: 3px;
+
         &.apply-effect {
+
           /* Status conditions should be inverted to dark on the light mode chat */
           /* TODO: Use CSS variables & SVG integration */
           .themed.theme-light &[data-type="status"] {
@@ -31,6 +44,7 @@
               filter: invert(1);
             }
           }
+
           img {
             max-height: 1.5rem;
           }

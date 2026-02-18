@@ -382,17 +382,116 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "presence"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "GSqnsU6RaJfA9Wgy": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "GSqnsU6RaJfA9Wgy",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "4",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "op9uqECsT0XsxCpP": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "op9uqECsT0XsxCpP",
+              "applied": {
+                "tier1": {
+                  "display": "the enemy is frightened of the nearest non-minion war dog (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the enemy is frightened of the nearest non-minion war dog (EoT)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><strong>Note:</strong> Targets Two War Dogs</p><p>Each target who has a loyalty collar shifts up to their speed, then is reduced to 0 Stamina. After each target’s Loyalty Collar trait is resolved, each enemy adjacent to either target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Push 4; the enemy is [[/apply frightened save]] of the nearest non-minion war dog</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Push 2; the enemy is [[/apply frightened turn]] of the nearest non-minion war dog</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 2</p></dd></dl>",
+          "before": "<p><strong>Note:</strong> Targets Two War Dogs</p><p>Each target who has a loyalty collar shifts up to their speed, then is reduced to 0 Stamina. After each target’s Loyalty Collar trait is resolved, each enemy adjacent to either target makes a <strong>Presence test.</strong></p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -401,7 +500,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761440376027,
@@ -517,9 +616,9 @@
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
       "type": "abilityModifier",
-      "origin": "Actor.fmxytZ9sMnbdTjJd",
+      "origin": "Compendium.draw-steel.monsters.Actor.IC05elSdNd95PXyP",
       "disabled": true,
-      "_id": "YIP5nfy1sh1oNEmI",
+      "_id": "YciKxMUm3XBHUYlv",
       "system": {
         "end": {
           "type": "",
@@ -531,17 +630,24 @@
           ]
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "power.roll.edges",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
       "duration": {
         "startTime": 0,
         "combat": null,
-        "startRound": 1,
-        "startTurn": 0,
         "seconds": null,
         "rounds": null,
-        "turns": null
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
       },
-      "description": "<p>Gain an edge on strikes</p>",
+      "description": "<p>Gain an edge on strikes.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -551,13 +657,14 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.10.0",
+        "createdTime": 1770943363518,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.effects!IC05elSdNd95PXyP.YIP5nfy1sh1oNEmI"
+      "_key": "!actors.effects!IC05elSdNd95PXyP.YciKxMUm3XBHUYlv"
     }
   ],
   "ownership": {

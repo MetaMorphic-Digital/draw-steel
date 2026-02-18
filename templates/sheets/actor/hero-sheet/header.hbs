@@ -37,7 +37,7 @@
     src="{{document.img}}"
     alt="{{document.name}}"
     data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
-    data-edit="img"
+    {{#unless isPlay}}data-edit="img"{{/unless}}
     title="{{document.name}}"
   >
   <div class="header-center flexcol">

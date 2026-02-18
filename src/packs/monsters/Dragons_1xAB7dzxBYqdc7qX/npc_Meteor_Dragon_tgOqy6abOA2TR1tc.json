@@ -240,12 +240,68 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "MnuOOZy0sIjiWPak": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "MnuOOZy0sIjiWPak",
+              "damage": {
+                "tier1": {
+                  "value": "20",
+                  "types": [
+                    "sonic"
+                  ]
+                },
+                "tier2": {
+                  "value": "16",
+                  "types": [
+                    "sonic"
+                  ]
+                },
+                "tier3": {
+                  "value": "10",
+                  "types": [
+                    "sonic"
+                  ]
+                }
+              }
+            },
+            "Vnqig5oOgJsn92yx": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "Vnqig5oOgJsn92yx",
+              "applied": {
+                "tier1": {
+                  "display": "the target is dragonsealed (save ends)",
+                  "effects": {
+                    "LSJMwYhEddUWz94r": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target is dragonsealed (save ends)",
+                  "effects": {
+                    "LSJMwYhEddUWz94r": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 sonic]] damage; the target is [[/apply LSJMwYhEddUWz94r save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 sonic]] damage; the target is [[/apply LSJMwYhEddUWz94r save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 sonic]] damage</p></dd></dl>",
+          "before": "<p>Each target makes a <strong>Might test.</strong></p>",
           "after": "<p>A dragonsealed target emits a golden aura, and takes 2 damage per square moved when falling or when force moved into an obstacle.</p>"
         },
         "spend": {
@@ -313,7 +369,7 @@
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -938,12 +994,65 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "kPefRBtzFLWNjm76": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "kPefRBtzFLWNjm76",
+              "damage": {
+                "tier1": {
+                  "value": "25"
+                },
+                "tier2": {
+                  "value": "21"
+                },
+                "tier3": {
+                  "value": "15"
+                }
+              }
+            },
+            "3HWoSE6fatFOKwQb": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "3HWoSE6fatFOKwQb",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is annihilated",
+                  "potency": {
+                    "characteristic": "intuition",
+                    "value": "6"
+                  },
+                  "effects": {
+                    "SXJ8WJ7FTcQ6vcLu": {
+                      "condition": "failure"
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} the target is annihilated",
+                  "potency": {
+                    "value": "5"
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} the target is annihilated",
+                  "potency": {
+                    "value": "4"
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p><em>This ability has infinite length</em></p><p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 25]] damage; [[potency I 6]] the target is annihilated</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 21]] damage; [[potency I 5]] the target is annihilated.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 15]] damage; [[potency I 4]] the target is annihilated.</p></dd></dl>",
+          "before": "<p><em>This ability has infinite length</em></p><p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"></dl>",
           "after": "<p>An annihilated target must make the test again, decreasing the potency for themself by 2 each time they are annihilated. A creature reduced to 0 Stamina by this dies and their soul is destroyed.</p>"
         },
         "spend": {
@@ -960,7 +1069,50 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Annihilated",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.tgOqy6abOA2TR1tc.Item.JvXqemGBqPkOQU9i",
+          "transfer": false,
+          "_id": "SXJ8WJ7FTcQ6vcLu",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.0",
+            "createdTime": 1770780870068,
+            "modifiedTime": 1770780882457,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.JvXqemGBqPkOQU9i.SXJ8WJ7FTcQ6vcLu"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -1125,12 +1277,141 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "sNiCMyh5LQQoUDn1": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "sNiCMyh5LQQoUDn1",
+              "damage": {
+                "tier1": {
+                  "value": "20",
+                  "types": [
+                    "holy"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "16",
+                  "types": [
+                    "holy"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "10",
+                  "types": [
+                    "holy"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "d3YqHsRhLTLNMctQ": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "d3YqHsRhLTLNMctQ",
+              "applied": {
+                "tier1": {
+                  "display": "slowed (save ends)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "slowed (save ends)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "always",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "bseehAyhPj3AehTG": {
+              "sort": 300000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "bseehAyhPj3AehTG",
+              "applied": {
+                "tier1": {
+                  "display": "prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 holy]] damage; slowed (save ends), prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 holy]] damage; slowed (save ends)</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 holy]] damage</p></dd></dl>",
+          "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
@@ -1144,91 +1425,19 @@
         },
         "_dsid": "starfall",
         "story": "",
-        "keywords": []
-      },
-      "effects": [
-        {
-          "name": "Slowed",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "slowed"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "VMZcmg6ODTFVScX1",
-          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.mntTpezNK1pTaQsT.VMZcmg6ODTFVScX1"
-        },
-        {
-          "name": "Slowed",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "slowed"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.350",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_id": "v4LTXUAsAmgqCeQM",
-          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.mntTpezNK1pTaQsT.v4LTXUAsAmgqCeQM"
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
-      ],
+      },
+      "effects": [],
       "folder": null,
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.SXDLpoc0LwpQJT1N",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.351",

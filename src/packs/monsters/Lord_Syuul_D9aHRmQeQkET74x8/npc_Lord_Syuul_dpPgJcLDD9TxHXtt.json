@@ -730,12 +730,70 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "intuition"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "IV4cUDWJmGvYwIFe": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "IV4cUDWJmGvYwIFe",
+              "damage": {
+                "tier1": {
+                  "value": "16",
+                  "types": [
+                    "psychic"
+                  ]
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "psychic"
+                  ]
+                },
+                "tier3": {
+                  "value": "7",
+                  "types": [
+                    "psychic"
+                  ]
+                }
+              }
+            },
+            "n3gJ88aA8agscXFU": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "n3gJ88aA8agscXFU",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "bKxYOKRHIGVnxbNQ": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  },
+                  "display": "the target has no line of effect to any crea- ture except Lord Syuul, and takes a bane on strikes targeting Lord Syuul (save ends)"
+                },
+                "tier2": {
+                  "display": "the target has no line of effect to any creature except Lord Syuul (save ends)",
+                  "effects": {
+                    "cjzmFsWWf6SnEKnD": {
+                      "condition": "always",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 psychic]]{16 psychic damage}; the target has no line of effect to any creature [[/apply bKxYOKRHIGVnxbNQ]]{except Lord Syuul}, and takes a bane on strikes targeting Lord Syuul (save ends)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 13 psychic]]{13 psychic damage}; the target has no line of effect to any creature [[/apply cjzmFsWWf6SnEKnD]]{except Lord Syuul (save ends)}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 7 psychic]]{7 psychic damage}</p></dd></dl>",
+          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"></dl>",
           "after": ""
         },
         "spend": {
@@ -843,7 +901,7 @@
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "0.10.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1027,7 +1085,7 @@
           "changes": [
             {
               "key": "system.damage.weaknesses.all",
-              "mode": 2,
+              "mode": 4,
               "value": "3",
               "priority": null
             }
@@ -1099,12 +1157,86 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [
+              "reason"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "oodUnyVFnjYn0Rk8": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "oodUnyVFnjYn0Rk8",
+              "damage": {
+                "tier1": {
+                  "value": "13",
+                  "types": [
+                    "psychic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [
+                    "psychic"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "pGr1YDSG7l7KFJO9": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "other",
+              "_id": "pGr1YDSG7l7KFJO9",
+              "other": {
+                "tier1": {
+                  "display": "the target uses a signature ability against a creature of Lord Syuul’s choice",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target makes a free strike against a creature of Lord Syuul’s choice",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "No effect.",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 13 psychic]]{13 psychic damage}; the target uses a signature ability against a creature of Lord Syuul’s choice</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10 psychic]]{10 psychic damage}; the target makes a free strike against a creature of Lord Syuul’s choice</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p>",
           "after": ""
         },
         "spend": {
@@ -1118,17 +1250,22 @@
         },
         "_dsid": "do-it-for-me",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.No9WuHO95jXubc8M",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -1261,7 +1398,7 @@
           "changes": [
             {
               "key": "system.damage.weaknesses.all",
-              "mode": 2,
+              "mode": 4,
               "value": "5",
               "priority": null
             }
@@ -1308,7 +1445,7 @@
           "changes": [
             {
               "key": "system.damage.immunities.all",
-              "mode": 2,
+              "mode": 4,
               "value": "2",
               "priority": null
             }
@@ -1355,7 +1492,7 @@
           "changes": [
             {
               "key": "system.damage.immunities.all",
-              "mode": 2,
+              "mode": 4,
               "value": "5",
               "priority": null
             }

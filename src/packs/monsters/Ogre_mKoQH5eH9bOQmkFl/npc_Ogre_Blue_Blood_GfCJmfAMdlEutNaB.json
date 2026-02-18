@@ -442,7 +442,7 @@
           "changes": [
             {
               "key": "system.damage.immunities.all",
-              "mode": 2,
+              "mode": 4,
               "value": "5",
               "priority": null
             }
@@ -574,17 +574,112 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "might",
+              "agility"
+            ],
+            "reactive": true
           },
-          "effects": {}
+          "effects": {
+            "V0tANhxukzIPGHo0": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "V0tANhxukzIPGHo0",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "di2PCMJYm4EcbeiC": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "di2PCMJYm4EcbeiC",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 5]]{5 damage}; vertical push 3</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; vertical push 2</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 1</p></dd></dl>",
+          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a <strong>Might test</strong> or <strong>Agility test</strong>.</p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -593,7 +688,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.BfYM0KbWwQsW3CrX",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761239817292,
@@ -708,17 +803,29 @@
     {
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
-      "type": "base",
-      "origin": "Actor.CWgOXJwto3yFjdqq",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.GfCJmfAMdlEutNaB",
       "disabled": true,
-      "_id": "1AQGgxueiF9b82dG",
+      "_id": "cB695apkip0ckl0O",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "power.roll.edges",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
       "duration": {
         "startTime": 0,
         "combat": null,
@@ -728,23 +835,24 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>Gain an edge on strikes</p>",
+      "description": "<p>Gain an edge on strikes.</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
-      "sort": 0,
+      "sort": 100000,
       "flags": {},
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.10.0",
+        "createdTime": 1770942946667,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.effects!GfCJmfAMdlEutNaB.1AQGgxueiF9b82dG"
+      "_key": "!actors.effects!GfCJmfAMdlEutNaB.cB695apkip0ckl0O"
     }
   ],
   "ownership": {

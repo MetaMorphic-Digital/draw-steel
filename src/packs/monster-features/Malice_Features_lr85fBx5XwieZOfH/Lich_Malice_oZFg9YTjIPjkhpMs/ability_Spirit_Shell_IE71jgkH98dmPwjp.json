@@ -19,12 +19,55 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [
+          "presence"
+        ],
+        "reactive": true
       },
-      "effects": {}
+      "effects": {
+        "358De2IiioPuJq8k": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "358De2IiioPuJq8k",
+          "damage": {
+            "tier1": {
+              "value": "16",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "x5Yq93huwTSuJuyp": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "x5Yq93huwTSuJuyp",
+          "applied": {
+            "tier1": {
+              "display": "dazed (save ends)",
+              "effects": {
+                "dazed": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "Dazed (save ends)"
+            },
+            "tier3": {
+              "display": "No effect."
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "<p>The lich summons a swirling cloud of angry spirits to surround them until the start of the next round. Any creature who deals active makes a <strong>Presence test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 psychic]]{16 psychic damage}[[/apply Dazed save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Dazed save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "before": "<p>The lich summons a swirling cloud of angry spirits to surround them until the start of the next round. Any creature who deals active makes a <strong>Presence test</strong>.</p>",
       "after": ""
     },
     "spend": {
@@ -126,9 +169,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1761431512067,
     "modifiedTime": null,
     "lastModifiedBy": null

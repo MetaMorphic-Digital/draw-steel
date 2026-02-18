@@ -7,7 +7,7 @@
   "system": {
     "description": {
       "value": "<p>You have cold immunity equal to twice your Intuition score. Additionally, you ignore difficult terrain related to cold and ice, and you can automatically climb at full speed while moving.</p>",
-      "director": "<p>You need to update the values when you increase your Intuition.</p>"
+      "director": ""
     },
     "source": {
       "book": "Heroes",
@@ -19,7 +19,7 @@
   },
   "effects": [
     {
-      "name": "Entropic Adaptability Effect",
+      "name": "Entropic Adaptability",
       "img": "icons/magic/water/heart-ice-freeze.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.tv0Rt75IyBTY7kbm",
@@ -33,8 +33,8 @@
       "changes": [
         {
           "key": "system.damage.immunities.cold",
-          "mode": 2,
-          "value": "2",
+          "mode": 4,
+          "value": "4",
           "priority": null
         }
       ],
@@ -48,7 +48,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>You have cold immunity equal to twice your Intuition score. Additionally, you ignore difficult terrain related to cold and ice, and you can automatically climb at full speed while moving.</p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -58,7 +58,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1756086444758,
@@ -77,9 +77,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1756086422807,
     "modifiedTime": null,
     "lastModifiedBy": null
