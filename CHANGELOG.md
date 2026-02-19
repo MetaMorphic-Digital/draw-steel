@@ -21,10 +21,15 @@
 
 ## 0.10.1
 
+### Added
+
+- Added `aside.malice` as a new style block.
+
 ### Fixed
 
+- Fixed project roll dialog failing to render. (#1653)
+- Fixed light mode style bleed into tooltips. (#1654)
 - Fixed potency glyph formatting on unowned abilities when the potency strength was a number.
-
 
 ## 0.10.0
 
