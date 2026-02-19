@@ -250,6 +250,7 @@ export default class ProjectModel extends BaseItemModel {
       actor: this.actor,
       evaluation: "evaluate",
       data: rollData,
+      skillModifiers: this.actor?.system.hero?.skillModifiers ?? {},
     });
 
     return promptValue;
