@@ -52,10 +52,6 @@
 
 ## 0.10.1
 
-### Changed
-
-- Increased margin-top of the `div.ability-bordered` block.
-
 ### Added
 
 - Added `aside.malice` as a new style block.
