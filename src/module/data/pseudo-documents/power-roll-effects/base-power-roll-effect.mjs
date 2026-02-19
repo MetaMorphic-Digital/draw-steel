@@ -198,7 +198,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     const characteristic = ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "";
     const strength = this.actor
       ? ds.utils.evaluateFormula(tierValue.potency.value, this.item.getRollData(), { contextName: this.uuid })
-      : tierValue.potency.value.split("@potency.")[1];
+      : tierValue.potency.value.split("@potency.")[1] ?? Number(tierValue.potency.value);
 
     const potencySpan = this.constructor.constructPotencyHTML(characteristic, strength);
     return potencySpan.outerHTML;
