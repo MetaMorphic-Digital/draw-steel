@@ -356,7 +356,26 @@ aside[role="tooltip"] section.content {
     }
   }
 
+  aside.malice {
+    background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.05));
+    padding: 12px;
+    corner-shape: bevel;
+    border-radius: 12px;
 
+    document-embed:after {
+      content: url(/systems/draw-steel/assets/ui/continue.svg);
+      width: 100%;
+      height: auto;
+    }
+
+    document-embed:last-of-type:after {
+      content: url(/systems/draw-steel/assets/ui/continue.svg);
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  /*laser lines on captions */
   /* STANDARD HTML TABLES */
 
   caption {

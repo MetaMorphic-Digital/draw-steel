@@ -97,6 +97,7 @@ export default class ProjectRoll extends DSRoll {
     const context = {
       modifiers: options.modifiers,
       skills: options.skills,
+      skillModifiers: options.skillModifiers,
     };
 
     const promptValue = await PowerRollDialog.create({
