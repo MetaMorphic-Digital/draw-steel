@@ -121,3 +121,12 @@ The `div.ability-bordered` element and class pads the left side of the container
 ```
 
 The "class-spread" block and its descendant elements puts together a contained image with a pull quote positioned in the top left and a class intro positioned in the bottom left.
+
+```html
+<aside class="malice">
+  <div>@Embed[Compendium.draw-steel.abilities.Item.wU69Y06G9lYFrvp6]</div>
+  <div>@Embed[Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ]</div>
+</aside>
+```
+
+The "aside.malice" element and class provides a gray-shaded block for displaying malice abilities and features.
