@@ -34,6 +34,7 @@
 - Fixed forced movement bonuses not stacking properly. (#1652)
 - Fixed project roll dialog failing to render. (#1653)
 - Fixed light mode style bleed into tooltips. (#1654)
+- Successful lookup enrichers without a fallback will provide the formula as a tooltip instead of "undefined". (#1660)
 - Fixed potency glyph formatting on unowned abilities when the potency strength was a number.
 
 ## 0.10.0
