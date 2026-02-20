@@ -25,6 +25,10 @@
 
 - Added `aside.malice` as a new style block.
 
+### Changed
+
+- Added validation to rolls in message parts to ensure they are evaluated.
+
 ### Fixed
 
 - Fixed project roll dialog failing to render. (#1653)
