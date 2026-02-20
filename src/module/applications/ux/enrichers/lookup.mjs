@@ -66,7 +66,8 @@ export async function enricher(match, options) {
   if (!value && (options.documents === false)) return null;
   else if (!value) span.classList.add("not-found");
   span.innerText = value ?? parsedConfig.formula;
-  span.dataset.tooltip = (value === fallback) ? parsedConfig.formula : fallback;
+  console.log(fallback, parsedConfig);
+  span.dataset.tooltip = (!fallback || (value === fallback)) ? parsedConfig.formula : fallback;
   return span;
 }
 
