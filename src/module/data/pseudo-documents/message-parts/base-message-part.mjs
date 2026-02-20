@@ -41,7 +41,7 @@ export default class BaseMessagePart extends TypedPseudoDocument {
   /** @override */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      rolls: new ArrayField(new JSONField({ validate: this.#validateRoll })),
+      rolls: new ArrayField(new JSONField({ validate: BaseMessagePart.#validateRoll })),
       flavor: new StringField({ required: true }),
     });
   }

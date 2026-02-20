@@ -31,6 +31,7 @@
 
 ### Fixed
 
+- Fixed forced movement bonuses not stacking properly. (#1652)
 - Fixed project roll dialog failing to render. (#1653)
 - Fixed light mode style bleed into tooltips. (#1654)
 - Fixed potency glyph formatting on unowned abilities when the potency strength was a number.

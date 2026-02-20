@@ -101,6 +101,14 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Helper for _applyAbilityBonuses.
+   * TODO: Replace with non-persisted fields in v14.
+   */
+  static #forcedBonus = new fields.NumberField();
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static migrateData(data) {
     // Game release updates
@@ -221,13 +229,12 @@ export default class AbilityModel extends BaseItemModel {
 
       const forcedPrefix = "forced.";
       if (bonus.key.startsWith(forcedPrefix)) {
-        const key = bonus.key.substring(forcedPrefix.length);
+        const key = bonus.key.replace(forcedPrefix, "bonuses.");
         // Apply forced movement bonuses to all forced movement effects
-        const forcedEffects = this.power.effects.filter(effect => effect.type === "forced");
-        for (const effect of forcedEffects) {
-          const currentBonuses = foundry.utils.getProperty(effect, "bonuses") ?? {};
-          // Bonus change objects are stored as strings, convert to Number
-          foundry.utils.setProperty(effect, "bonuses", { ...currentBonuses, [key]: Number(bonus.value) });
+        for (const effect of this.power.effects) {
+          if (effect.type !== "forced") continue;
+          const currentBonus = foundry.utils.getProperty(effect, key) ?? 0;
+          foundry.utils.setProperty(effect, key, AbilityModel.#forcedBonus.applyChange(currentBonus, this, bonus));
         }
       }
 
