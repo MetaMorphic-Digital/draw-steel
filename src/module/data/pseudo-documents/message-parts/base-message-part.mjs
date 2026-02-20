@@ -56,6 +56,7 @@ export default class BaseMessagePart extends TypedPseudoDocument {
     const roll = JSON.parse(rollJSON);
     if (!roll.evaluated) throw new Error("Roll objects added to message parts must be evaluated");
   }
+
   /* -------------------------------------------------- */
 
   /**
