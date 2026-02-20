@@ -41,11 +41,21 @@ export default class BaseMessagePart extends TypedPseudoDocument {
   /** @override */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      rolls: new ArrayField(new JSONField()),
+      rolls: new ArrayField(new JSONField({ validate: this.#validateRoll })),
       flavor: new StringField({ required: true }),
     });
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Validate that Rolls belonging to the message part are valid.
+   * @param {string} rollJSON     The serialized Roll data.
+   */
+  static #validateRoll(rollJSON) {
+    const roll = JSON.parse(rollJSON);
+    if (!roll.evaluated) throw new Error("Roll objects added to message parts must be evaluated");
+  }
   /* -------------------------------------------------- */
 
   /**
