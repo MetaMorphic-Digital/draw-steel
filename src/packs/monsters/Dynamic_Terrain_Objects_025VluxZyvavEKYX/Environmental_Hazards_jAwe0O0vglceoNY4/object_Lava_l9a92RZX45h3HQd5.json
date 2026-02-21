@@ -1,0 +1,523 @@
+{
+  "folder": "jAwe0O0vglceoNY4",
+  "name": "Lava",
+  "type": "object",
+  "_id": "l9a92RZX45h3HQd5",
+  "img": "icons/magic/earth/lava-explosion-orange.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 12,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M",
+        "text": "One or more squares of difficult terrain",
+        "direction": "",
+        "typical": ""
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>A patch of blisteringly hot molten rock wells up from the ground, threatening anyone who gets close to it.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": null,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": null
+    },
+    "damage": {
+      "immunities": {
+        "all": 20,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 20,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "ev": 4,
+    "object": {
+      "level": 3,
+      "category": "hazard",
+      "role": "hexer",
+      "area": "10 × 10 patch",
+      "squareStamina": true
+    }
+  },
+  "prototypeToken": {
+    "name": "Lava",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/magic/earth/laval-stone-orange.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "INlE5MPOtYNYjlZH",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>Each square of lava must be individually destroyed</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771704394562,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!l9a92RZX45h3HQd5.INlE5MPOtYNYjlZH"
+    },
+    {
+      "name": "Activate",
+      "type": "feature",
+      "_id": "t6ZByltLffU5raOc",
+      "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
+      "system": {
+        "description": {
+          "value": "<p>A creature or object enters the lava or starts their turn there, or starts their turn adjacent to the lava.</p><p>Effect: The <strong>Liquid Hot Magma</strong> ability.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771704425922,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!l9a92RZX45h3HQd5.t6ZByltLffU5raOc"
+    },
+    {
+      "name": "Liquid Hot Magma",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "A creature or object enters the lava or starts their turn there, or starts their turn adjacent to the lava.",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "The triggering creature or object",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "5qQqBqukR10E8OrE": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "5qQqBqukR10E8OrE",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier2": {
+                  "value": "9",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier3": {
+                  "value": "12",
+                  "types": [
+                    "fire"
+                  ]
+                }
+              }
+            },
+            "iQjgqRDfQ2x4R6rm": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "iQjgqRDfQ2x4R6rm",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is burning (save ends)",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "1"
+                  },
+                  "effects": {
+                    "lR7MvhurAaBlyZ47": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier2": {
+                  "potency": {
+                    "value": "2"
+                  },
+                  "effects": {
+                    "lR7MvhurAaBlyZ47": {
+                      "condition": "failure"
+                    }
+                  }
+                },
+                "tier3": {
+                  "potency": {
+                    "value": "3"
+                  },
+                  "effects": {
+                    "lR7MvhurAaBlyZ47": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>If the target is adjacent to lava but not in it, this ability takes a bane. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "W7mKnde2z3G7gFAb",
+      "img": "icons/magic/earth/explosion-lava-orange.webp",
+      "effects": [
+        {
+          "name": "Burning",
+          "img": "icons/magic/earth/explosion-lava-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.l9a92RZX45h3HQd5.Item.W7mKnde2z3G7gFAb",
+          "transfer": false,
+          "_id": "lR7MvhurAaBlyZ47",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.1",
+            "createdTime": 1771704615688,
+            "modifiedTime": 1771704820432,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!l9a92RZX45h3HQd5.W7mKnde2z3G7gFAb.lR7MvhurAaBlyZ47"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771704473129,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!l9a92RZX45h3HQd5.W7mKnde2z3G7gFAb"
+    }
+  ],
+  "effects": [
+    {
+      "name": "Magma Flow",
+      "img": "icons/magic/earth/explosion-lava-stone-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.l9a92RZX45h3HQd5",
+      "disabled": true,
+      "_id": "buDms5GHtHYxjeQG",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.ev",
+          "mode": 2,
+          "value": "4",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The lava is flowing! At the start of each round, add one square of lava adjacent to an existing square of lava.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771704732480,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!l9a92RZX45h3HQd5.buDms5GHtHYxjeQG"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.10.1",
+    "createdTime": 1771704235773,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!l9a92RZX45h3HQd5"
+}
