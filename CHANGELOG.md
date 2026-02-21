@@ -18,6 +18,13 @@
 ### Known Issues
 -->
 
+## 0.10.2
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Fixed the formatting of Judgment, added a description to the effect.
+  - Updated many complications, including descriptions in effects and using the /test enricher where relevant.
 
 ## 0.10.1
 

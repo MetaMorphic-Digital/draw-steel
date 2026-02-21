@@ -31,37 +31,37 @@ Active statuses are highlighted, while inactive ones are displayed in muted colo
 
 If the `Dazed` effect is applied to an actor, then a warning symbol will appear next to that actor's triggered actions, free triggered actions, and free maneuvers, to indicate that these abilities can't be used while affected by the `Dazed` effect.
 
-### Dying
+#### Dying
 
 If an Actor's stamina falls below zero they automatically get the `Dying` status effect applied to them. This status does not have any effects by itself and is removed automatically if an actor's stamina returns to above zero.
 
-### Frightened
+#### Frightened
 
 If the `Frightened` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the affected actor's fear and the ability power rolls of the frightened actor that are targeted at the source actor automatically have a bane.
 
-### Grabbed
+#### Grabbed
 
 If the `Grabbed` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the Grab and the ability power rolls of the grabbed actor that are targeted at actors other than the source actor automatically have a bane. Additionally the displayed movement speed on the grabbed actor's character sheet is set to zero.
 
-### Prone
+#### Prone
 
 If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***)
 
-### Restrained
+#### Restrained
 
 If the `Restrained` status effect is applied to an actor, the ability power rolls of the restrained actor automatically have a bane and abilities with the restrained actor being targeted have an edge. Additionally the displayed movement speed on the grabbed actor's character sheet is set to zero.
 
-### Slowed
+#### Slowed
 
 If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***)
 
 Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which allows setting the "slowed" speed to 3 instead of 2.
 
-### Taunted
+#### Taunted
 
 If the `Taunted` status effect is applied to an actor while another actor is targeted, the targeted actor becomes the source of the `Taunt`, and afterwards abilities that are targeted at actors other than the `Taunted` source actor automatically have a double bane while in line of effect to the `Taunted` source.
 
-### Flankable
+#### Flankable
 
 By default, all actors can be flanked. If an actor has the `Flankable` condition set to false, they cannot be flanked by enemies regardless of positioning. This prevents adjacent enemies from gaining the flanking bonus against the actor.
 
@@ -70,11 +70,11 @@ An example to make an actor unflankable would be
 |`system.statuses.flankable`|Override|`false`|
 |---|---|---|
 
-### Weakened
+#### Weakened
 
 If the `Weakened` status is applied to an actor, all power rolls of that actor automatically have a bane applied to them.
 
-### Winded
+#### Winded
 
 If an actor falls below 50% of their maximum stamina, they automatically get the `Winded` status effect applied to them. This status does not have any effects by itself. If the actor's stamina gets healed above the 50% threshold, the `Winded` status is automatically removed.
 
