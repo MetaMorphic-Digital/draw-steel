@@ -52,6 +52,14 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
+      "ancestryTrait": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
       "career": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
@@ -84,10 +92,6 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
-      "treasure": {
-        "htmlFields": ["description.value", "description.director"],
-        "gmOnlyFields": ["description.director"]
-      },
       "feature": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
@@ -96,23 +100,7 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
-      "ancestryTrait": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
       "perk": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "title": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
@@ -138,6 +126,18 @@
           "advancements.*.traits.*.img": ["IMAGE"]
         },
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "title": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "treasure": {
+        "htmlFields": ["description.value", "description.director"],
         "gmOnlyFields": ["description.director"]
       }
     },

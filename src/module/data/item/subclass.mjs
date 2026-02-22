@@ -11,7 +11,7 @@ export default class SubclassModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "subclass",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/subclass.hbs")],
     };
   }
