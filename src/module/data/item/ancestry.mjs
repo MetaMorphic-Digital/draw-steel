@@ -9,7 +9,7 @@ export default class AncestryModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "ancestry",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
     };
   }
 
