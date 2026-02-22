@@ -66,6 +66,55 @@
         "lastModifiedBy": null
       },
       "_key": "!items.effects!mMHSYpNEmCeZfW2H.sD3cAsq85sB2gyO8"
+    },
+    {
+      "name": "Curse of Caution Benefit",
+      "img": "icons/magic/control/debuff-chains-shackle-movement-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.character-options.Item.mMHSYpNEmCeZfW2H",
+      "_id": "feT94wSiTXQ2XRuC",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.targetModifiers.banes",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Until you’ve taken your turn in a combat round, any strike made against you takes a bane.</p><section id=\"secret-nSWUdswIlBFR8Szj\" class=\"secret\"><p>Toggle this effect on and off to enable or disable the bane on incoming attacks.</p></section>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.2",
+        "createdTime": 1771692750459,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mMHSYpNEmCeZfW2H.feT94wSiTXQ2XRuC"
     }
   ],
   "sort": 0,
