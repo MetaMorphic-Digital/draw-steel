@@ -18,8 +18,21 @@
 ### Known Issues
 -->
 
+## 0.10.2
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Fixed the formatting of Judgment, added a description to the effect.
+  - Added an applied effect to Behold a Shield of Faith!
+  - Added an applied effect to Vengeance Mark.
+  - Updated many complications, including descriptions in effects and using the /test enricher where relevant.
 
 ## 0.10.1
+
+### Changed
+
+- Increased margin-top of the `div.ability-bordered` block.
 
 ### Added
 

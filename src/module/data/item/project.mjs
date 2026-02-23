@@ -22,6 +22,7 @@ export default class ProjectModel extends BaseItemModel {
     return {
       ...super.metadata,
       type: "project",
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/project.hbs")],
     };
   }

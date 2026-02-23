@@ -12,7 +12,7 @@ export default class ClassModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "class",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/class.hbs")],
     };
   }
