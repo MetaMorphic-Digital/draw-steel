@@ -86,7 +86,7 @@ export default class RetainerModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the hero's stamina and reducing the number of recoveries.
+   * Spend a recovery, adding to the retainer's stamina and reducing the number of recoveries.
    * @returns {Promise<DrawSteelActor>}
    */
   async spendRecovery() {
