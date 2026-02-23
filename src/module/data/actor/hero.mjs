@@ -49,7 +49,7 @@ export default class HeroModel extends CreatureModel {
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
       max: requiredInteger({ max: 0 }),
-    }),
+    });
 
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
