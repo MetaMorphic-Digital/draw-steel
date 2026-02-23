@@ -259,4 +259,20 @@ export default class TokenPlacement {
     if (tokenDocument instanceof foundry.documents.TokenDocument) tokenDocument.updateSource({ name });
     else tokenDocument.name = name;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Place tokens on the current scene from placement data.
+   * @param {TokenPlacementData[]} placements
+   * @returns {Promise<TokenDocument[]>}
+   */
+  static createTokens(placements) {
+    const data = placements.map(placement => {
+      const { x, y, rotation, prototypeToken } = placement;
+      const actorId = prototypeToken.actor.id;
+      return foundry.utils.mergeObject(prototypeToken.toObject(), { x, y, rotation, actorId });
+    });
+    return canvas.scene.createEmbeddedDocuments("Token", data);
+  }
 }

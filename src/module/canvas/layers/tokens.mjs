@@ -19,7 +19,7 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
    * @param {ActorData} [options.actorUpdates]  Additional token data to merge into the placed token.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performTokenPlacement(actor, options = {}) {
+  async placeToken(actor, options = {}) {
     // Ensure the user has permission to drop the actor and create a Token.
     if (!game.user.can("TOKEN_CREATE")) {
       ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.TOKEN_CREATE", { localize: true });
@@ -41,6 +41,8 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
 
     return createdTokens;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Fetch token data, making appropriate adjustments to token and actor data.
@@ -64,13 +66,11 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     if (tokenDocument.actorLink) {
       const { effects, items, ...rest } = actorUpdates;
       await tokenDocument.actor.update(rest);
-      await tokenDocument.actor.updateEmbeddedDocuments("Item", items);
+      await tokenDocument.actor.updateEmbeddedDocuments("Item", items ?? []);
 
-      const { newEffects, oldEffects } = effects.reduce((acc, curr) => {
-        const target = tokenDocument.actor.effects.get(curr._id) ? "oldEffects" : "newEffects";
-        acc[target].push(curr);
-        return acc;
-      }, { newEffects: [], oldEffects: [] });
+      const { newEffects = [], oldEffects = [] } = Object.groupBy(effects ?? [], effect => {
+        return tokenDocument.actor.effects.get(effect._id) ? "oldEffects" : "newEffects";
+      });
 
       await tokenDocument.actor.updateEmbeddedDocuments("ActiveEffect", oldEffects);
       await tokenDocument.actor.createEmbeddedDocuments("ActiveEffect", newEffects, { keepId: true });
@@ -80,5 +80,27 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     }
 
     return tokenDocument.toObject();
+  }
+
+  /* -------------------------------------------------- */
+  /*   Deprecations                                     */
+  /* -------------------------------------------------- */
+
+  /**
+   * Helper function to place a token on the canvas given an actor.
+   * @param {DrawSteelActor} actor              The actor to place one or more copies of.
+   * @param {object} [options]
+   * @param {number} [options.count]            Actor instances to place (default: 1).
+   * @param {TokenData} [options.tokenUpdates]  Additional token data to merge into the placed token.
+   * @param {ActorData} [options.actorUpdates]  Additional token data to merge into the placed token.
+   * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
+   * @deprecated
+   */
+  async performTokenPlacement(actor, options = {}) {
+    foundry.utils.logCompatibilityWarning(
+      "DRAW STEEL | The `canvas.tokens.performTokenPlacement` method has been deprecated in favor of `canvas.tokens.placeToken`.",
+      { once: true, since: "0.11.0", until: "1.0.0" },
+    );
+    return this.placeToken(actor, options);
   }
 }
