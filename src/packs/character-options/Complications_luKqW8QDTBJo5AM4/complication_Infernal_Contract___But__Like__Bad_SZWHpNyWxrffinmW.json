@@ -9,7 +9,7 @@
       "page": "239"
     },
     "description": {
-      "value": "<p>You made a deal with a devil. Not a very good deal, because it wasn’t a very good devil. It’s too late for regrets, though, because your soul is forfeit unless you find a loophole or can convince the devil to void the deal.</p><p><strong>Benefit:</strong> Choose one of the following benefits:</p><ul><li><p>You earn 2 Renown.</p></li><li><p>Your Wealth increases by 2.</p></li><li><p>You gain a +3 bonus to Stamina.</p></li></ul><p>(Delete the unused benefits from Active Effect)</p><p><strong>Drawback:</strong> Your body bears a fiendish mark. Any creature who understands religion and notes the mark can tell that your soul belongs to Hell, imposing a bane on any test you make to interact with those creatures (unless they’re into that). Additionally, when you die, your soul goes to Hell and you can’t be restored to life.</p>",
+      "value": "<p>You made a deal with a devil. Not a very good deal, because it wasn’t a very good devil. It’s too late for regrets, though, because your soul is forfeit unless you find a loophole or can convince the devil to void the deal.</p><p><strong>Benefit:</strong> Choose one of the following benefits:</p><ul><li><p>@UUID[.ActiveEffect.GXdZxi4P7kNxs5S7]: You earn 2 Renown.</p></li><li><p>@UUID[.ActiveEffect.IK7X75h10EbZexU8]: Your Wealth increases by 2.</p></li><li><p>@UUID[.ActiveEffect.z1HULXZKXLfm0WKi]: You gain a +3 bonus to Stamina.</p></li></ul><p><strong>Drawback:</strong> Your body bears a fiendish mark. Any creature who understands religion and notes the mark can tell that your soul belongs to Hell, imposing a bane on any test you make to interact with those creatures (unless they’re into that). Additionally, when you die, your soul goes to Hell and you can’t be restored to life.</p>",
       "director": ""
     },
     "_dsid": "infernal-contract--but-like-bad",
@@ -19,7 +19,7 @@
   "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
   "effects": [
     {
-      "name": "Infernal Contract … But, Like, Bad Benefit",
+      "name": "Fame",
       "origin": "Compendium.draw-steel.character-options.Item.SZWHpNyWxrffinmW",
       "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
       "_id": "GXdZxi4P7kNxs5S7",
@@ -36,13 +36,99 @@
           "mode": 2,
           "value": "2",
           "priority": null
-        },
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You earn 2 Renown.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755113937524,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!SZWHpNyWxrffinmW.GXdZxi4P7kNxs5S7"
+    },
+    {
+      "name": "Money",
+      "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.character-options.Item.SZWHpNyWxrffinmW",
+      "_id": "IK7X75h10EbZexU8",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
         {
           "key": "system.hero.wealth",
           "mode": 2,
-          "value": "5",
+          "value": "2",
           "priority": null
-        },
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Your Wealth increases by 2.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.2",
+        "createdTime": 1771693822205,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!SZWHpNyWxrffinmW.IK7X75h10EbZexU8"
+    },
+    {
+      "name": "Health",
+      "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.character-options.Item.SZWHpNyWxrffinmW",
+      "_id": "z1HULXZKXLfm0WKi",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
         {
           "key": "system.stamina.max",
           "mode": 2,
@@ -60,7 +146,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>You gain a +3 bonus to Stamina.</p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -70,14 +156,14 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755113937524,
+        "systemVersion": "0.10.2",
+        "createdTime": 1771693834771,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!SZWHpNyWxrffinmW.GXdZxi4P7kNxs5S7"
+      "_key": "!items.effects!SZWHpNyWxrffinmW.z1HULXZKXLfm0WKi"
     }
   ],
   "sort": 0,
@@ -89,9 +175,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.10.2",
     "createdTime": 1754715846118,
     "modifiedTime": null,
     "lastModifiedBy": null
