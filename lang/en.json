@@ -825,6 +825,21 @@
           "DialogTitle": "Update Object Metadata"
         }
       },
+      "retainer": {
+        "FIELDS": {
+          "monster": {
+            "freeStrike": {
+              "label": "Free Strike"
+            },
+            "keywords": {
+              "label": "Keywords"
+            },
+            "role": {
+              "label": "Creature Role"
+            }
+          }
+        }
+      },
       "DamageNotification": {
         "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
       },
@@ -2161,7 +2176,8 @@
     "Actor": {
       "hero": "Hero",
       "npc": "NPC",
-      "object": "Object"
+      "object": "Object",
+      "retainer": "Retainer"
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",

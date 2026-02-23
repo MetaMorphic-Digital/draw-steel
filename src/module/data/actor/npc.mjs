@@ -47,7 +47,7 @@ export default class NPCModel extends CreatureModel {
       impression: requiredInteger({ initial: 1 }),
     });
 
-    schema.ev = requiredInteger({ initial: 4 }),
+    schema.ev = requiredInteger({ initial: 4 });
 
     schema.monster = new fields.SchemaField({
       freeStrike: requiredInteger({ initial: 0 }),
