@@ -19,6 +19,12 @@ The `[[lookup]]` enricher allows dynamic display of actor, item, and effect data
 - [&ZeroWidthSpace;[lookup formula=@A+3 evaluate=true]] The formula and evaluate parameters can be defined explicitly.
 - [&ZeroWidthSpace;[lookup formula="@A + 3" evaluate=true]] You must use quotes for formulas with spaces
 
+### Useful Roll Data
+These pieces of roll data return strings rather than numbers.
+
+- Name: `@name`
+- Skills: `@skills.list`
+
 ## Damage and Healing
 
 You can have inline damage enrichers by using `[[/damage]]`; this is the intended way to handle abilities that do damage as part of their effect, such as the Censor's Judgment. The damage is a formula that is evaluated when the text is rendered; closing and re-opening a sheet will recalculate the values. A roll does not have to include dice; Draw Steel frequently involves static damage values.

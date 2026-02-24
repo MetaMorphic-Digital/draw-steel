@@ -1,5 +1,6 @@
 import DrawSteelActor from "../../documents/actor.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
+import { PowerRollModifiers } from "../../_types";
 
 interface BarAttribute {
   value: number,
@@ -50,6 +51,12 @@ interface Combat {
     edges: number;
     banes: number;
   }
+}
+
+interface Skills {
+  value: Set<string>;
+  modifiers: Record<string, PowerRollModifiers>;
+  list: string;
 }
 
 declare module "./base-actor.mjs" {
@@ -132,9 +139,9 @@ declare module "./hero.mjs" {
       xp: number;
       renown: number;
       wealth: number;
-      skills: Set<string>;
       preferredKit: string;
     }
+    skills: Skills;
     biography: Biography & {
       languages: Set<string>;
       age: string;

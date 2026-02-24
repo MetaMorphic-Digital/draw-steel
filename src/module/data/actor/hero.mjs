@@ -12,7 +12,6 @@ import CreatureModel from "./creature.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
  * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
- * @import { PowerRollModifiers } from "../../_types.js";
  */
 
 const fields = foundry.data.fields;
@@ -62,8 +61,11 @@ export default class HeroModel extends CreatureModel {
       victories: requiredInteger(),
       renown: requiredInteger(),
       wealth: requiredInteger({ initial: 1 }),
-      skills: new fields.SetField(setOptions()),
       preferredKit: new fields.DocumentIdField({ readonly: false }),
+    });
+
+    schema.skills = new fields.SchemaField({
+      value: new fields.SetField(setOptions()),
     });
 
     return schema;
@@ -88,6 +90,15 @@ export default class HeroModel extends CreatureModel {
     bio.age = new fields.StringField({ required: true });
 
     return bio;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    foundry.abstract.Document._addDataFieldMigration(data, "hero.skills", "skills.value");
+
+    return super.migrateData(data);
   }
 
   /* -------------------------------------------------- */
@@ -165,8 +176,7 @@ export default class HeroModel extends CreatureModel {
       }
     }
 
-    /** @type {Record<string, PowerRollModifiers>} */
-    this.hero.skillModifiers = { };
+    this.skills.modifiers = {};
   }
 
   /* -------------------------------------------------- */
@@ -193,11 +203,21 @@ export default class HeroModel extends CreatureModel {
 
     // Handling for trait advancements
     for (const skill of this._traits.skill ?? []) {
-      if (skill in ds.CONFIG.skills.list) this.hero.skills.add(skill);
+      if (skill in ds.CONFIG.skills.list) this.skills.value.add(skill);
     }
     for (const lang of this._traits.language ?? []) {
       if (lang in ds.CONFIG.languages) this.biography.languages.add(lang);
     }
+
+    const list = this.skills.value.reduce((skills, skill) => {
+      skill = ds.CONFIG.skills.list[skill]?.label;
+      if (skill) skills.push(skill);
+      return skills;
+    }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
+
+    const formatter = game.i18n.getListFormatter();
+
+    this.skills.list = formatter.format(list);
   }
 
   /* -------------------------------------------------- */
