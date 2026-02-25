@@ -21,7 +21,7 @@ export default class DamageRoll extends DSRoll {
     /** @type {DamageRoll} */
     const roll = part ? message.system.parts.get(part.dataset.messagePart).rolls[idx] : message.rolls[idx];
 
-    await roll.applyDamage(null, { halfDamage: event.shiftKey });
+    await roll.applyDamage(null, { halfDamage: event.shiftKey, cappedDamage: event.ctrlKey });
   }
 
   /* -------------------------------------------------- */
@@ -100,6 +100,7 @@ export default class DamageRoll extends DSRoll {
    * @param {DrawSteelActor[]} [targets]    Actors to apply damage to. Defaults to selected targets.
    * @param {object} [options={}]           Options that modify the damage application.
    * @param {boolean} [options.halfDamage]  Only apply half the total damage.
+   * @param {boolean} [options.cappedDamage]  Caps damage to actor's stamina (minion threshold for squads).
    */
   async applyDamage(targets, options = {}) {
     targets ??= ds.utils.tokensToActors();
@@ -108,6 +109,7 @@ export default class DamageRoll extends DSRoll {
     if (options.halfDamage) amount = Math.floor(amount / 2);
 
     for (const actor of targets) {
+      if (options.cappedDamage) amount = Math.min(amount, actor.system.stamina.max);
       if (this.isHeal) {
         const isTemp = this.type !== "value";
         if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
