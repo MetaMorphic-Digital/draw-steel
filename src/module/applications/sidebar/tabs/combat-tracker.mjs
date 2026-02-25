@@ -266,11 +266,16 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
           }
         });
       } else {
-        if (this.#highlightedTokens.length < 1) return;
         this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
         this.#highlightedTokens.length = 0;
       }
     });
+
+    this.element.addEventListener("pointerout", (event) => {
+        this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
+        this.#highlightedTokens.length = 0;
+    });
+
 
     new ux.DragDrop.implementation({
       dragSelector: ".combatant",
