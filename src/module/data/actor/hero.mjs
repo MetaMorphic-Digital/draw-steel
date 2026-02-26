@@ -207,7 +207,7 @@ export default class HeroModel extends CreatureModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    const updates = {
+    const updates = foundry.utils.mergeObject({
       prototypeToken: {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
@@ -215,7 +215,7 @@ export default class HeroModel extends CreatureModel {
           enabled: true,
         },
       },
-    };
+    }, data, { insertKeys: false, insertValues: false, inplace: false });
 
     const stats = this.parent._stats;
 
