@@ -255,7 +255,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
       const { groupId } = event.target.closest(".combatant-group[data-group-id]")?.dataset ?? {};
 
-      const groupMembers = game.combat.groups.find((group) => group.id === groupId)?.members;
+      const groupMembers = game.combat.groups.get(groupId)?.members;
 
       if (groupMembers) {
         groupMembers.forEach((member, i) => {
