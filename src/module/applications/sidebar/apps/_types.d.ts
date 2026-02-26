@@ -4,7 +4,7 @@ export type EntryType = keyof typeof DrawSteelCompendiumTOC.ENTRY_TYPES | "";
 
 interface PageFlags {
   title: string;
-  /** Explicit false to hide regardless, explicit true to show regardless */
+  /** Explicit false to hide regardless, explicit true to show regardless. */
   show: boolean;
 }
 
@@ -22,7 +22,7 @@ export interface ChapterFlags {
   title: string;
   showPages: boolean;
   order: number;
-  /** Used by "special" pages */
+  /** Used by "special" pages. */
   append: string;
 }
 
@@ -32,9 +32,9 @@ export interface ChapterContext {
   id: string;
   name: string;
   showPages: boolean;
-  /** Not assigned for "special" */
+  /** Not assigned for "special". */
   order: number;
-  /** Special Entries can end up as pages */
+  /** Special Entries can end up as pages. */
   pages: Array<PageContext | SpecialContext>;
 }
 

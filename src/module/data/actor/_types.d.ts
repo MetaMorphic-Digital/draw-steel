@@ -62,7 +62,7 @@ declare module "./base-actor.mjs" {
         echelon: number;
         level: number;
       }
-      /** Added by ObjectModel */
+      /** Added by ObjectModel. */
       maxLabel?: string;
     },
     combat: Combat;

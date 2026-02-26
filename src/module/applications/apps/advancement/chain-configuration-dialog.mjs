@@ -3,13 +3,13 @@ import DSApplication from "../../api/application.mjs";
 
 /**
  * @import DrawSteelActor from "../../../documents/actor.mjs";
- * @import {AdvancementChain, AdvancementNode} from "../../../utils/advancement/_module.mjs";
+ * @import { AdvancementChain, AdvancementNode } from "../../../utils/advancement/_module.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderContext, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  */
 
 /**
  * @typedef ChainConfigurationDialogOptions
- * @property {AdvancementChain} chains
+ * @property {AdvancementChain} chain
  */
 
 export default class ChainConfigurationDialog extends DSApplication {
@@ -94,7 +94,7 @@ export default class ChainConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   *
+   * Enrich HTML and filter nodes to display by active status.
    * @param {ApplicationRenderContext} context      Shared context provided by _preparePartContext, will be mutated.
    * @param {ApplicationRenderOptions} options       Options which configure application rendering behavior.
    */
