@@ -110,17 +110,17 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
   });
-  DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
-  DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
+  DocumentSheetConfig.unregisterSheet(foundry.documents.ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
+  DocumentSheetConfig.registerSheet(foundry.documents.ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.ActiveEffect",
   });
-  DocumentSheetConfig.unregisterSheet(WallDocument, "core", foundry.applications.sheets.WallConfig);
-  DocumentSheetConfig.registerSheet(WallDocument, DS_CONST.systemID, applications.sheets.DrawSteelWallConfig, {
+  DocumentSheetConfig.unregisterSheet(foundry.documents.WallDocument, "core", foundry.applications.sheets.WallConfig);
+  DocumentSheetConfig.registerSheet(foundry.documents.WallDocument, DS_CONST.systemID, applications.sheets.DrawSteelWallConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.WallDocument",
   });
-  DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
+  DocumentSheetConfig.registerSheet(foundry.documents.CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
@@ -131,22 +131,22 @@ Hooks.once("init", function () {
     label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
   });
   DocumentSheetConfig.registerSheet(
-    JournalEntryPage, DS_CONST.systemID,
+    foundry.documents.JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ConfigPage,
     { makeDefault: true, types: ["configuration"] },
   );
   DocumentSheetConfig.registerSheet(
-    JournalEntryPage, DS_CONST.systemID,
+    foundry.documents.JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.DrawSteelImageSheet,
     { makeDefault: true, types: ["image"] },
   );
   DocumentSheetConfig.registerSheet(
-    JournalEntryPage, DS_CONST.systemID,
+    foundry.documents.JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.ReferencePage,
     { makeDefault: true, types: ["reference"] },
   );
   DocumentSheetConfig.registerSheet(
-    JournalEntryPage, DS_CONST.systemID,
+    foundry.documents.JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.TierOutcomePage,
     { makeDefault: true, types: ["tierOutcome"] },
   );

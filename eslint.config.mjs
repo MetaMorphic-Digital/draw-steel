@@ -1,13 +1,13 @@
 import { defineConfig, globalIgnores } from "eslint/config";
-import htmlEslint from "@html-eslint/eslint-plugin";
-import stylistic from "@stylistic/eslint-plugin";
-import jsdoc from "eslint-plugin-jsdoc";
+import { FlatCompat } from "@eslint/eslintrc";
+import { fileURLToPath } from "node:url";
 import globals from "globals";
+import htmlEslint from "@html-eslint/eslint-plugin";
+import js from "@eslint/js";
+import jsdoc from "eslint-plugin-jsdoc";
 import parser from "@html-eslint/parser";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import stylistic from "@stylistic/eslint-plugin";
 import tseslint from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,6 +32,25 @@ export default defineConfig([
     languageOptions: {
       globals: {
         ...globals.browser,
+        CONFIG: "readonly",
+        CONST: "readonly",
+        // Global classes
+        Color: "readonly",
+        Handlebars: "readonly",
+        Hooks: "readonly",
+        PIXI: "readonly",
+        ProseMirror: "readonly",
+        Roll: "readonly",
+        // global namespaces
+        canvas: "readonly",
+        ds: "readonly",
+        foundry: "readonly",
+        game: "readonly",
+        ui: "readonly",
+        // global functions
+        fromUuid: "readonly",
+        fromUuidSync: "readonly",
+        getDocumentClass: "readonly",
       },
 
       ecmaVersion: "latest",
@@ -39,7 +58,7 @@ export default defineConfig([
     },
 
     rules: {
-      "no-undef": "off",
+      // "no-undef": "off",
       "no-unused-vars": 0,
       "sort-imports": ["warn"],
 

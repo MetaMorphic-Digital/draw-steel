@@ -1,4 +1,3 @@
-
 /**
  * Create a Macro from an Item drop.
  * Get an existing item macro if one exists, otherwise create a new one.
@@ -12,7 +11,7 @@ export async function createDocMacro(data, slot) {
     return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Create.NotOwnedItem", { localize: true });
   }
   // If it is, retrieve it based on the uuid.
-  const item = await Item.fromDropData(data);
+  const item = await getDocumentClass("Item").fromDropData(data);
 
   // Create the macro command using the uuid.
   let command;
@@ -30,7 +29,7 @@ export async function createDocMacro(data, slot) {
   }
   let macro = game.macros.find((m) => (m.name === item.name) && (m.command === command));
   if (!macro) {
-    macro = await Macro.create({
+    macro = await getDocumentClass("Macro").create({
       name,
       type: "script",
       img: item.img,

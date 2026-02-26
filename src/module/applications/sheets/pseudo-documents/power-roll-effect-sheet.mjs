@@ -98,8 +98,8 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     else {
       const item = this.document;
 
-      const effect = await ActiveEffect.implementation.create({
-        name: ActiveEffect.implementation.defaultName({ parent: item }),
+      const effect = await getDocumentClass("ActiveEffect").create({
+        name: getDocumentClass("ActiveEffect").defaultName({ parent: item }),
         img: item.img,
         origin: foundry.utils.parseUuid(item.uuid, { relative: item.actor }).uuid,
         transfer: false,
