@@ -502,9 +502,6 @@ export default class AbilityModel extends BaseItemModel {
       }
     }
 
-    // TODO: Figure out how to better handle invocations when this.actor is null
-    if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-
     if (this.power.roll.enabled) {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
@@ -566,6 +563,8 @@ export default class AbilityModel extends BaseItemModel {
         messageData.system.parts.push(rollPart);
       }
     }
+    // TODO: Figure out how to better handle invocations when this.actor is null
+    if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
     return DrawSteelChatMessage.create(messageData);
   }
 
