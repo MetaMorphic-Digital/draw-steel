@@ -224,6 +224,9 @@ export default class AdvancementChain {
    * @param {AdvancementNode} node
    */
   addNode(node) {
+    if (this.nodes.has(node.id)) {
+      console.log(this.nodes.get(node.id), node);
+    }
     this.nodes.set(node.id, node);
   }
 

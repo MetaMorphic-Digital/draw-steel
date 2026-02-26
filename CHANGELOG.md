@@ -20,8 +20,13 @@
 
 ## 0.10.2
 
+### Changed
+
+- Item grant advancements now defer sub-node generation until after they are selected.
+
 ### Fixed
 
+- Fixed the Berserker subclass not granting its kit signature ability (#1665)
 - Player-Facing Compendium Data Fixes:
   - Fixed the formatting of Judgment, added a description to the effect.
   - Added an applied effect to Behold a Shield of Faith!
