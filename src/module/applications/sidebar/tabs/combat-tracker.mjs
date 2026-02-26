@@ -52,9 +52,9 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
   /**
    * Array of currently highlighted tokens.
-   * @type {Array<DrawSteelToken>}
+   * @type {Set<DrawSteelToken>}
    */
-  #highlightedTokens = [];
+  #highlightedTokens = new Set();
 
   /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
@@ -262,20 +262,19 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
           const token = canvas.tokens.get(member?.tokenId);
           if (token && token._canHover(game.user, event) && token.visible) {
             token._onHoverIn(event, { hoverOutOthers: i === 0 });
-            this.#highlightedTokens.push(token);
+            this.#highlightedTokens.add(token);
           }
         });
       } else {
         this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
-        this.#highlightedTokens.length = 0;
+        this.#highlightedTokens.clear();
       }
     });
 
     this.element.addEventListener("pointerout", (event) => {
-        this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
-        this.#highlightedTokens.length = 0;
+      this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
+      this.#highlightedTokens.clear();
     });
-
 
     new ux.DragDrop.implementation({
       dragSelector: ".combatant",
