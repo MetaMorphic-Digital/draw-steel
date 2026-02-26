@@ -20,18 +20,26 @@
 
 ## 0.10.2
 
+### Added
+
+- Hovering a combatant group now highlights all associated tokens. (#1646)
+
 ### Changed
 
+- Using an ability with a power roll only consumes associated resources *after* the power roll dialog is completed.
+- Increased margin above `div.ability-bordered`.
+- Blocked programmatic creation of certain item types on Object actors. (e.g. ancestries, ancestry traits, classes, titles)
 - Item grant advancements now defer sub-node generation until after they are selected.
 
 ### Fixed
 
-- Fixed the Berserker subclass not granting its kit signature ability (#1665)
 - Player-Facing Compendium Data Fixes:
   - Fixed the formatting of Judgment, added a description to the effect.
   - Added an applied effect to Behold a Shield of Faith!
   - Added an applied effect to Vengeance Mark.
   - Updated many complications, including descriptions in effects and using the /test enricher where relevant.
+- Fixed the Berserker subclass not granting its kit signature ability during the advancement dialog. (#1665)
+- Fixed heroes not defaulting to their primary resource as the secondary resource bar.
 
 ## 0.10.1
 
