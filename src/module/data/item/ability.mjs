@@ -1,11 +1,11 @@
-import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { PowerRoll } from "../../rolls/_module.mjs";
-import FormulaField from "../fields/formula-field.mjs";
 import { setOptions, validateDSID } from "../helpers.mjs";
-import enrichHTML from "../../utils/enrich-html.mjs";
-import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base-item.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import PowerRoll from "../../rolls/power.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";

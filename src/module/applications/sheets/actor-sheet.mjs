@@ -1,8 +1,8 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"

@@ -1,31 +1,31 @@
-import { JournalEntryCategory } from "@client/documents/_module.mjs";
 import {
   ActiveEffectData,
   ActorData,
   ChatMessageData,
+  CombatData,
   CombatantData,
   CombatantGroupData,
-  CombatData,
   ItemData,
-  JournalEntryPageData,
   JournalEntryData,
+  JournalEntryPageData,
   SceneData,
   TokenData,
   UserData,
   WallData,
 } from "@common/documents/_types.mjs";
-import Collection from "@common/utils/collection.mjs";
 import {
   ActiveEffect as ActiveEffectModels,
   Actor as ActorModels,
   ChatMessage as ChatMessageModels,
   Combat as CombatModels,
-  Combatant as CombatantModels,
   CombatantGroup as CombatantGroupModels,
+  Combatant as CombatantModels,
   Item as ItemModels,
   JournalEntryPage as JEPModels,
 } from "../data/_module.mjs";
-import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem, DrawSteelJournalEntryPage } from "./_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelItem, DrawSteelJournalEntryPage } from "./_module.mjs";
+import Collection from "@common/utils/collection.mjs";
+import { JournalEntryCategory } from "@client/documents/_module.mjs";
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];

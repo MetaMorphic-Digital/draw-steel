@@ -41,6 +41,7 @@ export default defineConfig([
     rules: {
       "no-undef": "off",
       "no-unused-vars": 0,
+      "sort-imports": ["warn"],
 
       "@stylistic/indent": ["error", 2, {
         SwitchCase: 1,

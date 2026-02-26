@@ -1,6 +1,6 @@
-import { systemID } from "./constants.mjs";
-import { pseudoDocuments } from "./data/_module.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
+import { pseudoDocuments } from "./data/_module.mjs";
+import { systemID } from "./constants.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 

@@ -1,6 +1,6 @@
-import { systemPath } from "../../../constants.mjs";
-import enrichHTML from "../../../utils/enrich-html.mjs";
 import BaseMessagePart from "./base-message-part.mjs";
+import enrichHTML from "../../../utils/enrich-html.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * A simple part that displays the enriched HTML of the `ChatMessage#content` property.

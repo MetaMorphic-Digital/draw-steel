@@ -1,13 +1,13 @@
-import * as canvas from "./src/module/canvas/_module.mjs";
-import * as compatibility from "./src/module/compatibility/_module.mjs";
-import * as documents from "./src/module/documents/_module.mjs";
-import * as applications from "./src/module/applications/_module.mjs";
-import * as helpers from "./src/module/helpers/_module.mjs";
-import * as rolls from "./src/module/rolls/_module.mjs";
-import * as data from "./src/module/data/_module.mjs";
-import * as utils from "./src/module/utils/_module.mjs";
 import * as DS_CONFIG from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
+import * as applications from "./src/module/applications/_module.mjs";
+import * as canvas from "./src/module/canvas/_module.mjs";
+import * as compatibility from "./src/module/compatibility/_module.mjs";
+import * as data from "./src/module/data/_module.mjs";
+import * as documents from "./src/module/documents/_module.mjs";
+import * as helpers from "./src/module/helpers/_module.mjs";
+import * as rolls from "./src/module/rolls/_module.mjs";
+import * as utils from "./src/module/utils/_module.mjs";
 
 globalThis.ds = {
   canvas,

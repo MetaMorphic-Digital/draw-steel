@@ -1,10 +1,11 @@
-import { systemID } from "../../constants.mjs";
+
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import DSRoll from "../../rolls/base.mjs";
-import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
+import BaseEffectModel from "../effect/base.mjs";
 import CreatureModel from "./creature.mjs";
+import DSRoll from "../../rolls/base.mjs";
+import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";

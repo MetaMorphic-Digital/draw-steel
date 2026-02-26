@@ -1,5 +1,5 @@
-import enrichHTML from "../../../utils/enrich-html.mjs";
 import DSApplication from "../../api/application.mjs";
+import enrichHTML from "../../../utils/enrich-html.mjs";
 
 /**
  * @import DrawSteelActor from "../../../documents/actor.mjs";

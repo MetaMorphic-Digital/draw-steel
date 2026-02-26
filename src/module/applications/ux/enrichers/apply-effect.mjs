@@ -1,5 +1,5 @@
-import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 import { createLink, parseConfig } from "../helpers.mjs";
+import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";

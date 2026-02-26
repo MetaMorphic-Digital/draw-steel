@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import RollDialog from "../api/roll-dialog.mjs";
+import { systemPath } from "../../constants.mjs";
 
 const { FormDataExtended } = foundry.applications.ux;
 

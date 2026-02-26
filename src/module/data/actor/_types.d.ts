@@ -1,5 +1,5 @@
-import DrawSteelActor from "../../documents/actor.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
+import DrawSteelActor from "../../documents/actor.mjs";
 
 interface BarAttribute {
   value: number,

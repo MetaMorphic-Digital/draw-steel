@@ -1,10 +1,10 @@
-import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import enrichHTML from "../../utils/enrich-html.mjs";
-import DSDocumentSheet from "../api/document-sheet.mjs";
-import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
+import DSDocumentSheet from "../api/document-sheet.mjs";
+import DocumentSourceInput from "../apps/document-source-input.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";

@@ -1,6 +1,6 @@
-import constructHTMLButton from "../../utils/construct-html-button.mjs";
-import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
+import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
+import constructHTMLButton from "../../utils/construct-html-button.mjs";
 
 /**
  * @import { DragDrop } from "@client/applications/ux/_module.mjs";

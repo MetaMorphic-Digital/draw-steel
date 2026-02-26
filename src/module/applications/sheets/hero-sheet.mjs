@@ -1,8 +1,8 @@
-import { systemPath } from "../../constants.mjs";
-import { AdvancementModel, TreasureModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import { AdvancementModel, KitModel, ProjectModel, TreasureModel } from "../../data/item/_module.mjs";
 import CharacteristicInput from "../apps/characteristic-input.mjs";
-import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
+import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import DrawSteelItem from "../../documents/item.mjs";

@@ -1,5 +1,5 @@
-import { systemPath } from "../../../constants.mjs";
 import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import ActiveEffect from "@client/documents/active-effect.mjs"

@@ -1,5 +1,5 @@
-import { setOptions } from "../../helpers.mjs";
 import TraitAdvancement from "./trait-advancement.mjs";
+import { setOptions } from "../../helpers.mjs";
 
 const { SchemaField, SetField } = foundry.data.fields;
 

@@ -1,7 +1,7 @@
-import { systemPath } from "../../constants.mjs";
-import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * A hero’s current role, which largely determines how they interact with the game’s rules.

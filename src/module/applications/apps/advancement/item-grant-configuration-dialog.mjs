@@ -1,7 +1,7 @@
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import DSApplication from "../../api/application.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
-import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";

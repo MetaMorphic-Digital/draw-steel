@@ -1,6 +1,6 @@
-import { systemID } from "../constants.mjs";
-import { HeroTokenPart } from "../data/pseudo-documents/message-parts/_module.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
+import HeroTokenPart from "../data/pseudo-documents/message-parts/hero-token.mjs";
+import { systemID } from "../constants.mjs";
 
 /** @import { DrawSteelActiveEffect, DrawSteelUser } from "../documents/_module.mjs"; */
 

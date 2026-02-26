@@ -1,6 +1,6 @@
-import { systemID } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import HeroTokenPart from "../pseudo-documents/message-parts/hero-token.mjs";
+import { systemID } from "../../constants.mjs";
 
 const fields = foundry.data.fields;
 

@@ -1,7 +1,6 @@
-import { systemID } from "../../constants.mjs";
-import BaseItemModel from "./base-item.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
-import AdvancementNode from "../../utils/advancement/node.mjs";
+import BaseItemModel from "./base-item.mjs";
+import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
