@@ -90,6 +90,18 @@ export default class BaseMessagePart extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
+   * Are inner pieces of this part visible to players?
+   * @type {boolean}
+   */
+  get isContentVisible() {
+    const whisper = this.message.whisper || [];
+    if (whisper.length) return whisper.includes(game.user.id) || (this.message.isAuthor && !this.message.blind);
+    return true;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Modify the context used to render this part.
    * Called by StandardModel#_renderHTML.
    * @param {object} context    The context object (**will be mutated**).
@@ -97,7 +109,10 @@ export default class BaseMessagePart extends TypedPseudoDocument {
    */
   async _prepareContext(context) {
     context.ctx = {};
-    context.ctx.rolls = await Promise.all(this.rolls.map(roll => roll.render()));
+    const isPrivate = context.ctx.isPrivate = !this.isContentVisible;
+    const name = this.message.author?.name ?? game.i18n.localize("CHAT.UnknownUser");
+    context.ctx.flavor = isPrivate ? game.i18n.format("CHAT.PrivateRollContent", { user: foundry.utils.escapeHTML(name) }) : this.flavor;
+    context.ctx.rolls = await Promise.all(this.rolls.map(roll => roll.render({ isPrivate })));
   }
 
   /* -------------------------------------------------- */

@@ -52,6 +52,13 @@ export default class AbilityUsePart extends BaseMessagePart {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  get visible() {
+    return this.isContentVisible;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
 

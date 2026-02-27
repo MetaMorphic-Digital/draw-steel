@@ -39,6 +39,7 @@
   - Added an applied effect to Vengeance Mark.
   - Updated many complications, including descriptions in effects and using the /test enricher where relevant.
 - Fixed the Berserker subclass not granting its kit signature ability during the advancement dialog. (#1665)
+- Ability and test message parts now respect roll privacy settings better. (#1692)
 - Fixed heroes not defaulting to their primary resource as the secondary resource bar.
 
 ## 0.10.1
