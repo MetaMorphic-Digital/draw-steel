@@ -38,6 +38,9 @@
   - Added an applied effect to Behold a Shield of Faith!
   - Added an applied effect to Vengeance Mark.
   - Updated many complications, including descriptions in effects and using the /test enricher where relevant.
+- Director-Facing Compendium Data Fixes:
+  - Added an effect to the Radenwight's Solo Act villain action. (#1684)
+  - Added description to Trouser Cut's applied effect.
 - Fixed the Berserker subclass not granting its kit signature ability during the advancement dialog. (#1665)
 - Fixed heroes not defaulting to their primary resource as the secondary resource bar.
 
