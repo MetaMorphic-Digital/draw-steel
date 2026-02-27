@@ -34,6 +34,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
+      shareDoc: this.#shareDoc,
     },
     window: {
       controls: [{
@@ -41,6 +42,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,
+      }, {
+        icon: "fa-solid fa-fw fa-share-from-square",
+        label: "DRAW_STEEL.SHEET.Share",
+        action: "shareDoc",
+        visible: DrawSteelItemSheet.#canEmbed,
       }],
     },
   };
@@ -534,6 +540,39 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
   /* -------------------------------------------------- */
   /*   Actions                                          */
+  /* -------------------------------------------------- */
+
+  /**
+   * Whether this item can be updated from a compendium source.
+   *
+   * @this DrawSteelItemSheet
+   */
+  static #canEmbed() {
+    return "toEmbed" in this.document;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Renders an embedded document's sheet in play or edit mode based on the document sheet view mode.
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @protected
+   */
+  static async #shareDoc(event, target) {
+    const document = this.document;
+    await DrawSteelChatMessage.create({
+      content: `@Embed[${document.uuid} caption=false]`,
+      type: "standard",
+      "system.parts": [{ type: "content" }],
+      title: document.name,
+      author: game.user,
+      flags: { core: { canPopout: true } },
+    });
+  }
+
   /* -------------------------------------------------- */
 
   /**
