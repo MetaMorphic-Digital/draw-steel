@@ -543,22 +543,22 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Whether this item can be updated from a compendium source.
+   * Whether item has been configured for embeds.
    *
    * @this DrawSteelItemSheet
    */
   static #canEmbed() {
-    return "toEmbed" in this.document;
+    return this.document.system.toEmbed !== foundry.abstract.TypeDataModel.prototype.toEmbed;
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Renders an embedded document's sheet in play or edit mode based on the document sheet view mode.
+   * Sends item as embed in chat.
    *
    * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @param {HTMLElement} target   The capturing HTML element.
    * @protected
    */
   static async #shareDoc(event, target) {
