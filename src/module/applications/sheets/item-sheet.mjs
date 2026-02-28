@@ -543,7 +543,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Whether item has been configured for embeds.
+   * Whether item has been configured for use with Draw Steel embed enricher.
+   * All Foundry documents have toEmbed by default, but return null (preventing enricher embed).
+   * DrawSteel items extend toEmbed, returning data for use with enricher.
    *
    * @this DrawSteelItemSheet
    */
@@ -554,7 +556,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Sends item as embed in chat.
+   * Sends item with embed enricher in chat.
    *
    * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event.
