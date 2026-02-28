@@ -1805,7 +1805,7 @@ preLocalize("Advancement", { key: "label" });
 
 /**
  * @typedef MessagePartType
- * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
+ * @property {pseudoDocuments.messageParts.BaseMessagePart} documentClass   The pseudo-document class.
  */
 
 /** @type {Record<string, MessagePartType>} */
