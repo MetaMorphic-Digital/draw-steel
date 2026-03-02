@@ -22,7 +22,6 @@ import "./components/embeds.css";
 import "./components/forms.css";
 import "./components/items.css";
 
-import "./sheets/active-effect-config.css";
 import "./sheets/actor-sheet.css";
 import "./sheets/combatant-group-config.css";
 import "./sheets/item-sheet.css";
