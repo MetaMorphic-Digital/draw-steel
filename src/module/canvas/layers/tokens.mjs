@@ -19,7 +19,7 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
    * @param {ActorData} [options.actorUpdates]  Additional token data to merge into the placed token.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async placeToken(actor, options = {}) {
+  async performTokenPlacement(actor, options = {}) {
     // Ensure the user has permission to drop the actor and create a Token.
     if (!game.user.can("TOKEN_CREATE")) {
       ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.TOKEN_CREATE", { localize: true });
@@ -80,27 +80,5 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     }
 
     return tokenDocument.toObject();
-  }
-
-  /* -------------------------------------------------- */
-  /*   Deprecations                                     */
-  /* -------------------------------------------------- */
-
-  /**
-   * Helper function to place a token on the canvas given an actor.
-   * @param {DrawSteelActor} actor              The actor to place one or more copies of.
-   * @param {object} [options]
-   * @param {number} [options.count]            Actor instances to place (default: 1).
-   * @param {TokenData} [options.tokenUpdates]  Additional token data to merge into the placed token.
-   * @param {ActorData} [options.actorUpdates]  Additional token data to merge into the placed token.
-   * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
-   * @deprecated
-   */
-  async performTokenPlacement(actor, options = {}) {
-    foundry.utils.logCompatibilityWarning(
-      "DRAW STEEL | The `canvas.tokens.performTokenPlacement` method has been deprecated in favor of `canvas.tokens.placeToken`.",
-      { once: true, since: "0.11.0", until: "1.0.0" },
-    );
-    return this.placeToken(actor, options);
   }
 }

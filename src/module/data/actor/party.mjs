@@ -1,3 +1,5 @@
+import DrawSteelSystemModel from "../system-model.mjs";
+
 /**
  * @import DrawSteelActor from "../../documents/actor.mjs";
  * @import DrawSteelTokenDocument from "../../documents/token.mjs";
@@ -5,13 +7,21 @@
 
 const { HTMLField, SchemaField, TypedObjectField } = foundry.data.fields;
 
-export default class PartyModel extends foundry.abstract.TypeDataModel {
-  /** @type {*} */
+export default class PartyModel extends DrawSteelSystemModel {
+  /** @inheritdoc */
   static get metadata() {
-    return {
+    return foundry.utils.mergeObject(super.metadata, {
       type: "party",
-    };
+    });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The Actor subtypes allowed as members of a party.
+   * @type {Set<string>}
+   */
+  static ALLOWED_ACTOR_TYPES = new Set(["hero"]);
 
   /* -------------------------------------------------- */
 
@@ -41,15 +51,15 @@ export default class PartyModel extends foundry.abstract.TypeDataModel {
   async _preCreate(data, options, user) {
     if ((await super._preCreate(data, options, user)) === false) return false;
 
-    const update = {};
-    if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink"))
-      foundry.utils.setProperty(update, "prototypeToken.actorLink", true);
-
-    if (!foundry.utils.hasProperty(data, "prototypeToken.sight.enabled"))
-      foundry.utils.setProperty(update, "prototypeToken.sight.enabled", false);
-
-    if (!foundry.utils.hasProperty(data, "prototypeToken.disposition"))
-      foundry.utils.setProperty(update, "prototypeToken.disposition", CONST.TOKEN_DISPOSITIONS.FRIENDLY);
+    const update = foundry.utils.mergeObject({
+      prototypeToken: {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+        sight: {
+          enabled: false,
+        },
+      },
+    }, data, { insertKeys: false, insertValues: false });
 
     if (!foundry.utils.isEmpty(update)) this.parent.updateSource(update);
   }
@@ -80,7 +90,7 @@ export default class PartyModel extends foundry.abstract.TypeDataModel {
    * @returns {boolean}
    */
   validMember(actor) {
-    return (actor instanceof foundry.documents.Actor) && ["hero"].includes(actor.type)
+    return (actor instanceof foundry.documents.Actor) && this.constructor.ALLOWED_ACTOR_TYPES.has(actor.type)
       && !actor.inCompendium && !actor.isToken;
   }
 
@@ -112,8 +122,9 @@ export default class PartyModel extends foundry.abstract.TypeDataModel {
    */
   async removeMembers(actors = []) {
     const update = {};
+    const members = this.members;
     actors.forEach(actor => {
-      if (this.validMember(actor) && this.members.has(actor.id)) update[`-=${actor.id}`] = null;
+      if (members.has(actor.id)) update[`-=${actor.id}`] = null;
     });
     await this.parent.update({ "system.members": update });
     return this.parent;
