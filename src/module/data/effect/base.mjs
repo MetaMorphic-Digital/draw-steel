@@ -15,6 +15,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     return {
       type: "base",
       icon: "fa-solid fa-person-rays",
+      invalidActorTypes: ["party"],
+      invalidItemTypes: [],
     };
   }
 
@@ -61,6 +63,18 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Is this effect suppressed due to some system-specific behavior?
+   * @type {boolean}
+   */
+  get isSuppressed() {
+    const target = this.parent.target ?? {};
+    const invalidTypes = this.constructor.metadata[`invalid${target.documentName}Types`] ?? [];
+    return invalidTypes.includes(target.type);
+  }
+
+  /* -------------------------------------------------- */
+
   /** @import { ActiveEffectDuration, EffectDurationData } from "./_types" */
 
   /**
@@ -76,6 +90,17 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
       remaining: null,
       label: this.durationLabel,
     };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    if ((await super._preCreate(data, options, user)) === false) return false;
+
+    const target = this.parent.parent ?? {};
+    const invalidTypes = this.constructor.metadata[`invalid${target.documentName}Types`] ?? [];
+    if (invalidTypes.includes(target.type)) return false;
   }
 
   /* -------------------------------------------------- */

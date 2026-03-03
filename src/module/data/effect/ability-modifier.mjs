@@ -11,10 +11,10 @@ import { setOptions } from "../helpers.mjs";
 export default class AbilityModifier extends BaseEffectModel {
   /** @inheritdoc */
   static get metadata() {
-    return {
+    return foundry.utils.mergeObject(super.metadata, {
       type: "abilityModifier",
       icon: "fa-solid fa-hand-sparkles",
-    };
+    });
   }
 
   /* -------------------------------------------------- */
