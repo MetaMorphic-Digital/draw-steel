@@ -1,5 +1,6 @@
-import CreatureModel from "./creature.mjs";
+
 import { requiredInteger, setOptions } from "../helpers.mjs";
+import CreatureModel from "./creature.mjs";
 import SourceModel from "../models/source.mjs";
 
 export default class RetainerModel extends CreatureModel {
@@ -63,6 +64,16 @@ export default class RetainerModel extends CreatureModel {
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
+
+    const roles = ds.CONFIG.monsters.roles;
+    this.retainer.roleLabel = roles[this.retainer.role]?.label ?? "";
+
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const monsterKeywords = ds.CONFIG.monsters.keywords;
+    const keywordList = Array.from(this.retainer.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
+    this.retainer.keywords.list = keywordList;
+    this.retainer.keywords.labels = keywordFormatter.format(keywordList);
   }
 
   /* -------------------------------------------------- */
