@@ -22,6 +22,10 @@
 
 ### Added
 
+- New Player-Facing Compendium Content:
+  - Added a triggered ability for the Talent's "Repulsive Ward". (#1649)
+- New Director-Facing Compendium Content:
+  - Environmental Hazard Dynamic Terrain Objects.
 - Hovering a combatant group now highlights all associated tokens. (#1646)
 
 ### Changed
@@ -43,6 +47,7 @@
   - Added description to Trouser Cut's applied effect.
 - Fixed the Berserker subclass not granting its kit signature ability during the advancement dialog. (#1665)
 - Ability and test message parts now respect roll privacy settings better. (#1692)
+- Fixed the display of the Changes tab on the Active Effect Sheet on larger core font sizes. (#1699)
 - Fixed heroes not defaulting to their primary resource as the secondary resource bar.
 
 ## 0.10.1

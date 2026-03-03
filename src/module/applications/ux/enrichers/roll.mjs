@@ -583,7 +583,7 @@ async function requestTest(link, event) {
   };
 
   await DrawSteelChatMessage.create({
-    title: "DRAW_STEEL.EDITOR.Enrichers.Test.Request",
+    title: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Test.Request"),
     type: "standard",
     "system.parts": [part],
     flags: { core: { canPopout: true } },
