@@ -1,8 +1,8 @@
-import { systemPath } from "../../constants.mjs";
-import { AdvancementModel, TreasureModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import { AdvancementModel, KitModel, ProjectModel, TreasureModel } from "../../data/item/_module.mjs";
 import CharacteristicInput from "../apps/characteristic-input.mjs";
-import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
+import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import DrawSteelItem from "../../documents/item.mjs";
@@ -495,19 +495,19 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
 
     const keepId = !this.actor.items.has(item.id);
     const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
-    const result = await Item.implementation.create(itemData, { parent: this.actor, keepId });
+    const result = await getDocumentClass("Item").create(itemData, { parent: this.actor, keepId });
     return result ?? null;
   }
 
   /** @inheritdoc */
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return null;
-    const folder = await Folder.implementation.fromDropData(data);
+    const folder = await getDocumentClass("Folder").fromDropData(data);
     if (folder.type !== "Item") return null;
     const projectDropTarget = event.target.closest("[data-application-part='projects'");
     const droppedItemData = await Promise.all(
       folder.contents.map(async (/** @type {DrawSteelItem} */ item) => {
-        if (!(document instanceof Item)) item = await fromUuid(item.uuid);
+        if (!(document instanceof foundry.documents.Item)) item = await fromUuid(item.uuid);
 
         // If it's a treasure dropped on the project tab, create the item as a project
         if (projectDropTarget && (item.type === "treasure")) {

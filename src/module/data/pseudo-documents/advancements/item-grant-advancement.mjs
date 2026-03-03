@@ -1,10 +1,9 @@
-import BaseAdvancement from "./base-advancement.mjs";
-import { systemID } from "../../../constants.mjs";
-import { setOptions } from "../../helpers.mjs";
-import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
-import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import AdvancementChain from "../../../utils/advancement/chain.mjs";
-import { advancement } from "../../../applications/apps/_module.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
+import BaseAdvancement from "./base-advancement.mjs";
+import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
+import { setOptions } from "../../helpers.mjs";
+import { systemID } from "../../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
@@ -153,10 +152,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       /** @type {DrawSteelItem} */
       const item = await fromUuid(uuid);
       if (!item) continue;
-      const leaf = node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor().outerHTML, { item });
-      if (!item.supportsAdvancements) continue;
-
-      promises.push(...node.chain.createNodes(item, { parentLeaf: leaf }));
+      node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor().outerHTML, { item });
     }
     return Promise.allSettled(promises);
   }
@@ -169,12 +165,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     if (!selection) return null;
 
+    const promises = [];
+
     if (node) {
       node.selected = selection.choices.reduce((selected, uuid) => {
-        selected[uuid] = this.pointBuy ? node.choices[uuid].item.system.points : true;
+        const leaf = node.choices[uuid];
+        selected[uuid] = this.pointBuy ? leaf.item.system.points : true;
+        promises.push(...node.chain.createNodes(leaf.item, { parentLeaf: leaf }));
         return selected;
       }, {});
     }
+
+    await Promise.allSettled(promises);
 
     return { [`flags.draw-steel.advancement.${this.id}.selected`]: selection.choices };
   }

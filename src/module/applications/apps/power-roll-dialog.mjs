@@ -1,6 +1,6 @@
-import { systemPath } from "../../constants.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 import RollDialog from "../api/roll-dialog.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /** @import DrawSteelToken  from "../../canvas/placeables/token.mjs" */
 

@@ -1,6 +1,6 @@
-import BaseMessagePart from "./base-message-part.mjs";
-import { systemID, systemPath } from "../../../constants.mjs";
 import { DSRoll, ProjectRoll } from "../../../rolls/_module.mjs";
+import { systemID, systemPath } from "../../../constants.mjs";
+import BaseMessagePart from "./base-message-part.mjs";
 import ContentPart from "./content.mjs";
 import DrawSteelItem from "../../../documents/item.mjs";
 

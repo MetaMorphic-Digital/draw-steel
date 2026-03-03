@@ -1,0 +1,517 @@
+{
+  "folder": "jAwe0O0vglceoNY4",
+  "name": "Corrosive Pool",
+  "type": "object",
+  "_id": "V85dfK9FOHXoKjii",
+  "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 12,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M",
+        "text": "One or more squares of difficult terrain",
+        "direction": "",
+        "typical": ""
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>This shallow pool bubbles with acid or some other corrosive liquid.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": null,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": null
+    },
+    "damage": {
+      "immunities": {
+        "all": 20,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 20,
+        "corruption": 0,
+        "fire": 20,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "ev": 3,
+    "object": {
+      "level": 2,
+      "category": "hazard",
+      "role": "hexer",
+      "area": "10 × 10 pool",
+      "squareStamina": true
+    }
+  },
+  "prototypeToken": {
+    "name": "Corrosive Pool",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/magic/acid/dissolve-pool-bubbles.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "ut6MYm8ZuaeyUvMb",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>The pool must be completely destroyed.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771702386229,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!V85dfK9FOHXoKjii.ut6MYm8ZuaeyUvMb"
+    },
+    {
+      "name": "Activate",
+      "type": "feature",
+      "_id": "WQvGBnyrx43dTss6",
+      "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
+      "system": {
+        "description": {
+          "value": "<p>A creature or object enters the corrosive pool or starts their turn there. The liquid in the pool is also highly volatile (see <strong>Explosive Reaction</strong> below).</p><p><strong>Effect:</strong> A creature or object takes [[/damage 3 acid]]{3 acid damage} if they start their turn in the pool, and takes [[/damage 3*@scaling acid scaling]]{3 acid damage} for each square of the pool they enter.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771702404075,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!V85dfK9FOHXoKjii.WQvGBnyrx43dTss6"
+    },
+    {
+      "name": "Explosive Reaction",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "The pool takes fire damage.",
+        "distance": {
+          "type": "burst",
+          "primary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "Fklp6GsHj4PVktKc": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "Fklp6GsHj4PVktKc",
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [
+                    "fire"
+                  ]
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [
+                    "fire"
+                  ]
+                }
+              }
+            },
+            "FTvCgKF6NWmcwUGe": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "FTvCgKF6NWmcwUGe",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is burning (save ends)",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "1"
+                  },
+                  "effects": {
+                    "zgkaXJH8MC8pNMAi": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "zgkaXJH8MC8pNMAi": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  },
+                  "potency": {
+                    "value": "2"
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "zgkaXJH8MC8pNMAi": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  },
+                  "potency": {
+                    "value": "3"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The liquid in the pool is consumed. This ability has a double edge against any target in the pool. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. Any target with acid weakness takes extra damage from this ability and while burning as if the fire damage were acid damage.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "LjTLlVrmwpXGE6NC",
+      "img": "icons/magic/fire/explosion-flame-lightning-strike.webp",
+      "effects": [
+        {
+          "name": "Burning",
+          "img": "icons/magic/fire/explosion-flame-lightning-strike.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.V85dfK9FOHXoKjii.Item.LjTLlVrmwpXGE6NC",
+          "transfer": false,
+          "_id": "zgkaXJH8MC8pNMAi",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. Any target with acid weakness takes extra damage from this ability and while burning as if the fire damage were acid damage.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.1",
+            "createdTime": 1771702707116,
+            "modifiedTime": 1771702783297,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!V85dfK9FOHXoKjii.LjTLlVrmwpXGE6NC.zgkaXJH8MC8pNMAi"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771702530448,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!V85dfK9FOHXoKjii.LjTLlVrmwpXGE6NC"
+    },
+    {
+      "name": "Allied Awareness",
+      "type": "feature",
+      "_id": "QOcWPlFIqA3cQCId",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Allies who have weapons are equipped with torches. Any ally can use a maneuver to throw a torch up to 5 squares and deal [[/damage 1 fire]] damage to the pool, triggering Explosive Reaction.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "W0qXZ8d6ruT3Bc1w": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.1",
+        "createdTime": 1771703364014,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!V85dfK9FOHXoKjii.QOcWPlFIqA3cQCId"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.10.1",
+    "createdTime": 1771701733288,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!V85dfK9FOHXoKjii"
+}

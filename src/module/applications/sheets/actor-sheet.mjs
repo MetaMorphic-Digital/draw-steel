@@ -1,8 +1,8 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
@@ -464,7 +464,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     const statusInfo = {};
     for (const status of CONFIG.statusEffects) {
       // Only display if it would show in the token HUD, is marked for sheet display, *and* it has an assigned _id
-      if ((!status._id) || (status.sheet === false) || !ActiveEffect.implementation.validHud(status, this.actor)) continue;
+      if ((!status._id) || (status.sheet === false) || !getDocumentClass("ActiveEffect").validHud(status, this.actor)) continue;
       statusInfo[status.id] = {
         _id: status._id,
         name: status.name,
@@ -959,7 +959,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     }
     const keepId = !this.actor.items.has(item.id);
     const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
-    const result = await Item.implementation.create(itemData, { parent: this.actor, keepId });
+    const result = await getDocumentClass("Item").create(itemData, { parent: this.actor, keepId });
     return result ?? null;
   }
 
@@ -1012,7 +1012,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     }
     const keepId = !this.actor.effects.has(effect.id);
     const effectData = game.items.fromCompendium(effect);
-    const result = await ActiveEffect.implementation.create(effectData, { parent: this.actor, keepId });
+    const result = await getDocumentClass("ActiveEffect").create(effectData, { parent: this.actor, keepId });
     return result ?? null;
   }
 
@@ -1090,7 +1090,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     if (folder.type !== "Item") return []; // V14 - handle ActiveEffect
     const droppedItemData = await Promise.all(
       folder.contents.map(async (item) => {
-        if (!(document instanceof Item)) item = await fromUuid(item.uuid);
+        if (!(document instanceof foundry.documents.Item)) item = await fromUuid(item.uuid);
 
         const keepId = !this.actor.items.has(item.id);
 

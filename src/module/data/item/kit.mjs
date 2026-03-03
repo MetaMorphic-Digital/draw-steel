@@ -1,7 +1,7 @@
-import { systemPath } from "../../constants.mjs";
+import AdvancementModel from "./advancement.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
-import AdvancementModel from "./advancement.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
@@ -16,7 +16,7 @@ export default class KitModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "kit",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/kit.hbs")],
     };
   }

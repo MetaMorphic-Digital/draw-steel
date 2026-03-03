@@ -1,7 +1,7 @@
-import { systemPath } from "../../constants.mjs";
-import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * A hero’s current role, which largely determines how they interact with the game’s rules.
@@ -12,7 +12,7 @@ export default class ClassModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "class",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/class.hbs")],
     };
   }

@@ -1,6 +1,6 @@
+import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import { setOptions } from "../../helpers.mjs";
-import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /** @import { ForcedMovementSchema } from "./_types" */
 

@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import HeroModel from "../actor/hero.mjs";
@@ -14,7 +14,7 @@ export default class CareerModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "career",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/career.hbs")],
     };
   }

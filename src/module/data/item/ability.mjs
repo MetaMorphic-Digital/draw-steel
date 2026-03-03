@@ -1,11 +1,11 @@
-import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { PowerRoll } from "../../rolls/_module.mjs";
-import FormulaField from "../fields/formula-field.mjs";
 import { setOptions, validateDSID } from "../helpers.mjs";
-import enrichHTML from "../../utils/enrich-html.mjs";
-import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base-item.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import PowerRoll from "../../rolls/power.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
@@ -502,9 +502,6 @@ export default class AbilityModel extends BaseItemModel {
       }
     }
 
-    // TODO: Figure out how to better handle invocations when this.actor is null
-    if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-
     if (this.power.roll.enabled) {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
@@ -565,7 +562,11 @@ export default class AbilityModel extends BaseItemModel {
 
         messageData.system.parts.push(rollPart);
       }
+    } else {
+      DrawSteelChatMessage.applyRollMode(messageData, "roll");
     }
+    // TODO: Figure out how to better handle invocations when this.actor is null
+    if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
     return DrawSteelChatMessage.create(messageData);
   }
 

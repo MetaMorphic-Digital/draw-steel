@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import { DSDialog, DocumentInput } from "../api/_module.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * Simple live-updating input for {@linkcode ds.data.models.SourceModel | `SourceModel`}.

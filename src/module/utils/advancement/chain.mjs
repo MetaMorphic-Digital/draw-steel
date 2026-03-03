@@ -224,6 +224,8 @@ export default class AdvancementChain {
    * @param {AdvancementNode} node
    */
   addNode(node) {
+    const existing = this.nodes.get(node.id);
+    if (existing) this.removeNode(existing);
     this.nodes.set(node.id, node);
   }
 
@@ -234,6 +236,7 @@ export default class AdvancementChain {
    * @param {AdvancementNode} node
    */
   removeNode(node) {
+    for (const n of node.children) this.removeNode(n);
     this.nodes.delete(node.id);
   }
 }

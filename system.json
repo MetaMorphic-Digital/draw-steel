@@ -52,6 +52,14 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
+      "ancestryTrait": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
       "career": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
@@ -84,10 +92,6 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
-      "treasure": {
-        "htmlFields": ["description.value", "description.director"],
-        "gmOnlyFields": ["description.director"]
-      },
       "feature": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
@@ -96,23 +100,7 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
-      "ancestryTrait": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
       "perk": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "title": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
@@ -138,6 +126,18 @@
           "advancements.*.traits.*.img": ["IMAGE"]
         },
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "title": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "treasure": {
+        "htmlFields": ["description.value", "description.director"],
         "gmOnlyFields": ["description.director"]
       }
     },
@@ -169,7 +169,7 @@
       "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
     }
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "compatibility": {
     "minimum": "13.351",
     "verified": "13"
@@ -248,7 +248,7 @@
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
-  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.10.1/draw-steel-release-0.10.1.zip",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.10.2/draw-steel-release-0.10.2.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,
@@ -257,6 +257,6 @@
     "diagonals": 0
   },
   "primaryTokenAttribute": "stamina",
-  "secondaryTokenAttribute": "hero.resources",
+  "secondaryTokenAttribute": "hero.primary.value",
   "initiative": "2d10 + @A"
 }

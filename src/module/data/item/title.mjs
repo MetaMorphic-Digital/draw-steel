@@ -1,7 +1,7 @@
 import FeatureModel from "./feature.mjs";
-import { systemPath } from "../../constants.mjs";
-import { requiredInteger } from "../helpers.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
+import { requiredInteger } from "../helpers.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
@@ -16,7 +16,7 @@ export default class TitleModel extends FeatureModel {
     return {
       ...super.metadata,
       type: "title",
-      invalidActorTypes: ["npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/title.hbs")],
     };
   }
