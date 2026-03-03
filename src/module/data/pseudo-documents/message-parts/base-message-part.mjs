@@ -94,8 +94,8 @@ export default class BaseMessagePart extends TypedPseudoDocument {
    * @type {boolean}
    */
   get isContentVisible() {
-    const whisper = this.message.whisper || [];
-    if (whisper.length) return whisper.includes(game.user.id) || (this.message.isAuthor && !this.message.blind);
+    const { whisper, isAuthor, blind } = this.message;
+    if (whisper?.length) return whisper.includes(game.user.id) || (isAuthor && !blind);
     return true;
   }
 
