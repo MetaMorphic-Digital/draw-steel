@@ -7,7 +7,7 @@ export default class DSRoll extends foundry.dice.Roll {
    * The type used for the `part` of a standard message.
    * @type {string}
    */
-  static PART_TYPE = "";
+  static PART_TYPE = "roll";
 
   /* -------------------------------------------------- */
 
@@ -20,6 +20,7 @@ export default class DSRoll extends foundry.dice.Roll {
 
     if (!this._evaluated) await this.evaluate({ allowInteractive: rollMode !== CONST.DICE_ROLL_MODES.BLIND });
 
+    const id = foundry.utils.randomID();
     messageData = foundry.utils.mergeObject({
       type: "standard",
       system: {},
@@ -27,7 +28,8 @@ export default class DSRoll extends foundry.dice.Roll {
       sound: CONFIG.sounds.dice,
     }, messageData);
     messageData.system.parts = {
-      [foundry.utils.randomID()]: {
+      [id]: {
+        _id: id,
         flavor: messageData.flavor,
         rolls: [this],
         type: this.constructor.PART_TYPE,
