@@ -104,6 +104,16 @@ export default class HeroModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static shimData(data, options) {
+    foundry.abstract.Document._addDataFieldShim(data, "hero.skills", "skills.value", { since: "0.11", until: "1.0" });
+    foundry.abstract.Document._addDataFieldShim(data, "hero.skillModifiers", "skills.modifiers", { since: "0.11", until: "1.0" });
+
+    return super.shimData(data, options);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
 
