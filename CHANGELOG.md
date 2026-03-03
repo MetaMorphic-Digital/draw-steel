@@ -18,6 +18,14 @@
 ### Known Issues
 -->
 
+## 0.11.0
+
+### Added
+
+### Changed
+
+### Fixed
+
 ## 0.10.2
 
 ### Added
@@ -51,10 +59,6 @@
 - Fixed heroes not defaulting to their primary resource as the secondary resource bar.
 
 ## 0.10.1
-
-### Changed
-
-- Increased margin-top of the `div.ability-bordered` block.
 
 ### Added
 
