@@ -1,6 +1,6 @@
-import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
+import { setOptions } from "../../helpers.mjs";
 
 /**
  * @import { AppliedEffectSchema } from "./_types";

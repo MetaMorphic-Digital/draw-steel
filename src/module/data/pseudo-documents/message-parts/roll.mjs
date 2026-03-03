@@ -1,6 +1,6 @@
-import { systemPath } from "../../../constants.mjs";
-import DamageRoll from "../../../rolls/damage.mjs";
 import BaseMessagePart from "./base-message-part.mjs";
+import DamageRoll from "../../../rolls/damage.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * A simple part that displays the contained rolls.

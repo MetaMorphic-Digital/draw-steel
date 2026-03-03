@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import RollManager from "../api/roll-manager.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /** @import { DrawSteelActiveEffect, DrawSteelChatMessage, DrawSteelUser } from "../../documents/_module.mjs" */
 

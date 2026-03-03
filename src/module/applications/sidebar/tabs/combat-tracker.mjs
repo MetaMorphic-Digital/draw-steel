@@ -1,5 +1,5 @@
+import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 import { systemPath } from "../../../constants.mjs";
-import { DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";

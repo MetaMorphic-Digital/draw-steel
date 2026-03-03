@@ -1,10 +1,9 @@
-import BaseAdvancement from "./base-advancement.mjs";
-import { systemID } from "../../../constants.mjs";
-import { setOptions } from "../../helpers.mjs";
-import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
-import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import AdvancementChain from "../../../utils/advancement/chain.mjs";
-import { advancement } from "../../../applications/apps/_module.mjs";
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
+import BaseAdvancement from "./base-advancement.mjs";
+import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
+import { setOptions } from "../../helpers.mjs";
+import { systemID } from "../../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";

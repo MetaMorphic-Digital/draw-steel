@@ -1,6 +1,6 @@
-import { systemID } from "../../../constants.mjs";
 import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import BaseAdvancement from "./base-advancement.mjs";
+import { systemID } from "../../../constants.mjs";
 
 const { NumberField, TypedObjectField } = foundry.data.fields;
 

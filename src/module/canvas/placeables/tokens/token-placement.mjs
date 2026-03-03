@@ -256,7 +256,7 @@ export default class TokenPlacement {
     const match = tokenDocument.name?.match(regex);
     if (!match) return;
     const name = tokenDocument.name.replace(regex, `(${Number(match[1]) + placement.index.unique})`);
-    if (tokenDocument instanceof TokenDocument) tokenDocument.updateSource({ name });
+    if (tokenDocument instanceof foundry.documents.TokenDocument) tokenDocument.updateSource({ name });
     else tokenDocument.name = name;
   }
 }

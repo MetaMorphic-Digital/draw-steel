@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import DSApplication from "../api/application.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * Prompt application for configuring the actor UUID that is causing a targeted condition.

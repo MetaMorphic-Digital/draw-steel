@@ -1,5 +1,5 @@
-import { systemPath } from "../../../constants.mjs";
 import BaseMessagePart from "./base-message-part.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";

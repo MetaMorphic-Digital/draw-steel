@@ -1,8 +1,8 @@
-import { systemPath } from "../../constants.mjs";
-import enrichHTML from "../../utils/enrich-html.mjs";
-import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base-item.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -146,6 +146,6 @@ export default class TreasureModel extends BaseItemModel {
     if (!actor) return;
 
     const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
-    return Item.create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
+    return getDocumentClass("Item").create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
   }
 }
