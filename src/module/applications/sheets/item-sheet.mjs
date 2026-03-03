@@ -1,10 +1,10 @@
-import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import enrichHTML from "../../utils/enrich-html.mjs";
-import DSDocumentSheet from "../api/document-sheet.mjs";
-import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
+import DSDocumentSheet from "../api/document-sheet.mjs";
+import DocumentSourceInput from "../apps/document-source-input.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
@@ -34,6 +34,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
+      shareDoc: this.#shareDoc,
     },
     window: {
       controls: [{
@@ -41,6 +42,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,
+      }, {
+        icon: "fa-solid fa-fw fa-share-from-square",
+        label: "DRAW_STEEL.SHEET.Share",
+        action: "shareDoc",
+        visible: DrawSteelItemSheet.#canEmbed,
       }],
     },
   };
@@ -537,6 +543,42 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
+   * Whether item has been configured for use with Draw Steel embed enricher.
+   * All Foundry documents have toEmbed by default, but return null (preventing enricher embed).
+   * DrawSteel items extend toEmbed, returning data for use with enricher.
+   *
+   * @this DrawSteelItemSheet
+   * @returns {boolean}
+   */
+  static #canEmbed() {
+    return this.document.system.toEmbed !== foundry.abstract.TypeDataModel.prototype.toEmbed;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Sends item with embed enricher in chat.
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element.
+   * @protected
+   */
+  static async #shareDoc(event, target) {
+    const document = this.document;
+    await DrawSteelChatMessage.create({
+      content: `@Embed[${document.uuid} caption=false]`,
+      type: "standard",
+      "system.parts": [{ type: "content" }],
+      title: document.name,
+      author: game.user,
+      flags: { core: { canPopout: true } },
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Whether this item can be updated from a compendium source.
    *
    * @this DrawSteelItemSheet
@@ -739,7 +781,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     }
     const keepId = !this.item.effects.has(effect.id);
     const effectData = game.items.fromCompendium(effect);
-    const result = await ActiveEffect.implementation.create(effectData, { parent: this.item, keepId });
+    const result = await getDocumentClass("ActiveEffect").create(effectData, { parent: this.item, keepId });
     return result ?? null;
   }
 

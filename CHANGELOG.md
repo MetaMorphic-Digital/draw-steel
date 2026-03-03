@@ -18,7 +18,30 @@
 ### Known Issues
 -->
 
+## 0.11.0
+
+### Added
+
+### Changed
+
+### Fixed
+
 ## 0.10.2
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Added a triggered ability for the Talent's "Repulsive Ward". (#1649)
+- New Director-Facing Compendium Content:
+  - Environmental Hazard Dynamic Terrain Objects.
+- Hovering a combatant group now highlights all associated tokens. (#1646)
+
+### Changed
+
+- Using an ability with a power roll only consumes associated resources *after* the power roll dialog is completed.
+- Increased margin above `div.ability-bordered`.
+- Blocked programmatic creation of certain item types on Object actors. (e.g. ancestries, ancestry traits, classes, titles)
+- Item grant advancements now defer sub-node generation until after they are selected.
 
 ### Fixed
 
@@ -27,12 +50,15 @@
   - Added an applied effect to Behold a Shield of Faith!
   - Added an applied effect to Vengeance Mark.
   - Updated many complications, including descriptions in effects and using the /test enricher where relevant.
+- Director-Facing Compendium Data Fixes:
+  - Added an effect to the Radenwight's Solo Act villain action. (#1684)
+  - Added description to Trouser Cut's applied effect.
+- Fixed the Berserker subclass not granting its kit signature ability during the advancement dialog. (#1665)
+- Ability and test message parts now respect roll privacy settings better. (#1692)
+- Fixed the display of the Changes tab on the Active Effect Sheet on larger core font sizes. (#1699)
+- Fixed heroes not defaulting to their primary resource as the secondary resource bar.
 
 ## 0.10.1
-
-### Changed
-
-- Increased margin-top of the `div.ability-bordered` block.
 
 ### Added
 

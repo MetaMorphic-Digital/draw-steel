@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import HeroModel from "../actor/hero.mjs";

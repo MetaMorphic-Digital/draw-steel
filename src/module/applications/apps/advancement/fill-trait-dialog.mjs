@@ -1,6 +1,6 @@
 import DSApplication from "../../api/application.mjs";
-import { systemPath } from "../../../constants.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import TraitAdvancement from "../../../data/pseudo-documents/advancements/trait-advancement.mjs";

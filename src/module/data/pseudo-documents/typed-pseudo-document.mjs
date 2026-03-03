@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import PseudoDocument from "./pseudo-document.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 

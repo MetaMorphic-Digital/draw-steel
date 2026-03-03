@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import DrawSteelSystemModel from "../system-model.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { SubtypeMetadata } from "../_types"

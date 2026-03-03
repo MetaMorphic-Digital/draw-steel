@@ -1,10 +1,10 @@
-import { systemID, systemPath } from "../../constants.mjs";
-import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
-import enrichHTML from "../../utils/enrich-html.mjs";
-import FormulaField from "../fields/formula-field.mjs";
-import { requiredInteger, setOptions } from "../helpers.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import BaseItemModel from "./base-item.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
+import { setOptions } from "../helpers.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";

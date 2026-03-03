@@ -6,12 +6,10 @@ import TypedPseudoDocument from "../pseudo-documents/typed-pseudo-document.mjs";
  * @import { DataFieldContext, DataFieldOptions } from "@common/data/_types.mjs";
  */
 
-const { TypedObjectField } = foundry.data.fields;
-
 /**
  * A collection that houses pseudo-documents.
  */
-export default class CollectionField extends TypedObjectField {
+export default class CollectionField extends foundry.data.fields.TypedObjectField {
   /**
    * @param {typeof TypedPseudoDocument} model    The value type of each entry in this object.
    * @param {DataFieldOptions} [options]          Options which configure the behavior of the field.

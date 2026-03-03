@@ -1,6 +1,6 @@
-import { systemPath } from "../../../constants.mjs";
-import { setOptions } from "../../helpers.mjs";
 import BaseMessagePart from "./base-message-part.mjs";
+import { setOptions } from "../../helpers.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 const { BooleanField, DocumentUUIDField, NumberField, SetField, StringField } = foundry.data.fields;
 

@@ -1,10 +1,10 @@
-import { SubtypeMetadata } from "../_types.js";
-import { PowerRollModifiers } from "../../_types.js";
-import DrawSteelItem from "../../documents/item.mjs";
-import ModelCollection from "../../utils/model-collection.mjs";
-import SourceModel from "../models/source.mjs";
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 import { CharacteristicAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import DrawSteelItem from "../../documents/item.mjs";
+import ModelCollection from "../../utils/model-collection.mjs";
+import { PowerRollModifiers } from "../../_types.js";
+import SourceModel from "../models/source.mjs";
+import { SubtypeMetadata } from "../_types.js";
 
 export type ItemMetaData = Readonly<SubtypeMetadata & {
   /** Actor types that this item cannot be placed on. */

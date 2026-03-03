@@ -1,6 +1,6 @@
+import BaseActorModel from "./base-actor.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import PowerRoll from "../../rolls/power.mjs";
-import BaseActorModel from "./base-actor.mjs";
 import { setOptions } from "../helpers.mjs";
 
 const fields = foundry.data.fields;

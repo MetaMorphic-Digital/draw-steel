@@ -1,10 +1,11 @@
-import { systemID } from "../../constants.mjs";
+
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import DSRoll from "../../rolls/base.mjs";
-import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
+import BaseEffectModel from "../effect/base.mjs";
 import CreatureModel from "./creature.mjs";
+import DSRoll from "../../rolls/base.mjs";
+import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
@@ -237,7 +238,7 @@ export default class HeroModel extends CreatureModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    const updates = {
+    const updates = foundry.utils.mergeObject({
       prototypeToken: {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
@@ -245,7 +246,7 @@ export default class HeroModel extends CreatureModel {
           enabled: true,
         },
       },
-    };
+    }, data, { insertKeys: false, insertValues: false, inplace: false });
 
     const stats = this.parent._stats;
 

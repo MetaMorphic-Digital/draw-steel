@@ -1,6 +1,6 @@
+import AdvancementModel from "./advancement.mjs";
 import { systemPath } from "../../constants.mjs";
 import { validateDSID } from "../helpers.mjs";
-import AdvancementModel from "./advancement.mjs";
 
 /**
  * A choice each hero makes at 1st level that determines a specialization within their class.

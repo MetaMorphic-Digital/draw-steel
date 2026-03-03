@@ -8,6 +8,8 @@
   }
 
   .combat-tracker.ds-default {
+    padding-inline: var(--element-spacing);
+
     li.combatant, li.combatant-group {
       --combatantAlpha: 0.1;
       &.active {

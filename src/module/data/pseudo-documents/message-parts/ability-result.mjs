@@ -1,6 +1,6 @@
-import { systemPath } from "../../../constants.mjs";
-import RollPart from "./roll.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
+import RollPart from "./roll.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";

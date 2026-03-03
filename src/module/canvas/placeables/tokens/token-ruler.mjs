@@ -28,7 +28,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       teleport,
       /** @type {TokenMovementActionConfig} */
       climb: {
-        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {
           if (token.movementTypes.has("climb")) return cost => cost;
           else return cost => cost * 2;
@@ -36,21 +36,21 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       crawl: {
-        canSelect: (token) => (token instanceof TokenDocument) && token.hasStatusEffect("prone"),
+        canSelect: (token) => (token instanceof foundry.documents.TokenDocument) && token.hasStatusEffect("prone"),
       },
       /** @type {TokenMovementActionConfig} */
       fly: {
-        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
       },
       /** @type {TokenMovementActionConfig} */
       jump: {
-        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
         // default for jump is cost * 2
         getCostFunction: () => cost => cost,
       },
       /** @type {TokenMovementActionConfig} */
       swim: {
-        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {
           if (token.movementTypes.has("swim")) return cost => cost;
           else return cost => cost * 2;
@@ -58,7 +58,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       walk: {
-        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
       },
     }, { performDeletions: true });
   }
