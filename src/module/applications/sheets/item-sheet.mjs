@@ -548,6 +548,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * DrawSteel items extend toEmbed, returning data for use with enricher.
    *
    * @this DrawSteelItemSheet
+   * @returns {boolean}
    */
   static #canEmbed() {
     return this.document.system.toEmbed !== foundry.abstract.TypeDataModel.prototype.toEmbed;
