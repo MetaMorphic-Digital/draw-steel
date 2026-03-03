@@ -18,6 +18,14 @@
 ### Known Issues
 -->
 
+## 0.11.0
+
+### Added
+
+### Changed
+
+### Fixed
+
 ## 0.10.2
 
 ### Added
