@@ -24,6 +24,9 @@
 
 ### Changed
 
+- Moved skills from `system.hero.skills` to `system.skills.value`. (#1364)
+- Added "Share" button to item sheet header controls. (#1505)
+
 ### Fixed
 
 ## 0.10.2
