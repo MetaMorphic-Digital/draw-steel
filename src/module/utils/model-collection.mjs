@@ -268,7 +268,7 @@ export default class ModelCollection extends foundry.utils.Collection {
     if (strict) console.error(error);
     else console.warn(error);
     if (strict) {
-      globalThis.Hooks?.onError(`${this.constructor.name}#_initializeDocument`, error, { id, documentName });
+      Hooks?.onError(`${this.constructor.name}#_initializeDocument`, error, { id, documentName });
     }
   }
 }

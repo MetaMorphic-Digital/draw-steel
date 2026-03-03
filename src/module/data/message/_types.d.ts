@@ -1,6 +1,6 @@
+import * as part from "../pseudo-documents/message-parts/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
-import * as part from "../pseudo-documents/message-parts/_module.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseMessageModel {

@@ -1,7 +1,7 @@
+import DrawSteelSystemModel from "../system-model.mjs";
+import SourceModel from "../models/source.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { validateDSID } from "../helpers.mjs";
-import SourceModel from "../models/source.mjs";
-import DrawSteelSystemModel from "../system-model.mjs";
 
 /** @import DrawSteelActor from "../../documents/actor.mjs" */
 

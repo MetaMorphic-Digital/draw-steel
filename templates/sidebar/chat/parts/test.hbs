@@ -1,9 +1,10 @@
 {{#if part.flavor}}
-<div class="message-part-flavor">{{part.flavor}}</div>
+<div class="message-part-flavor">{{ctx.flavor}}</div>
 {{/if}}
 <div class="message-part-rolls">
   {{#each ctx.rolls}}{{{this}}}{{/each}}
 </div>
+{{#unless ctx.isPrivate}}
 {{#if ctx.resultHTML}}
 <div class="message-part-html">
   <dl class="power-roll-display">
@@ -17,3 +18,4 @@
   {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
 </footer>
 {{/if}}
+{{/unless}}

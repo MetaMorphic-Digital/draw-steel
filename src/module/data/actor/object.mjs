@@ -1,6 +1,6 @@
 import BaseActorModel from "./base-actor.mjs";
-import SourceModel from "../models/source.mjs";
 import ObjectSizeModel from "../models/object-size.mjs";
+import SourceModel from "../models/source.mjs";
 
 /**
  * Inanimate matter, including walls, rocks, vehicles, and corpses (the kind that can’t move around and bite you), as well as living non-creatures such as plants.

@@ -1,6 +1,6 @@
-import { systemID } from "../constants.mjs";
-import { HeroTokenPart } from "../data/pseudo-documents/message-parts/_module.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
+import HeroTokenPart from "../data/pseudo-documents/message-parts/hero-token.mjs";
+import { systemID } from "../constants.mjs";
 
 /** @import { DrawSteelActiveEffect, DrawSteelUser } from "../documents/_module.mjs"; */
 
@@ -83,7 +83,7 @@ export default class DrawSteelSocketHandler {
       HeroTokenPart.create({
         spendType,
         type: "heroToken",
-      }, { parent: game.messages.get(options.messageId) });
+      }, { parent: game.messages.get(messageId) });
     }
     else DrawSteelChatMessage.create({
       title: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),

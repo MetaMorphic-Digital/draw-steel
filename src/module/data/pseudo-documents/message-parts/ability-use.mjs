@@ -1,5 +1,5 @@
-import { systemPath } from "../../../constants.mjs";
 import BaseMessagePart from "./base-message-part.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";
@@ -47,6 +47,13 @@ export default class AbilityUsePart extends BaseMessagePart {
    */
   get ability() {
     return fromUuidSync(this.abilityUuid);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get visible() {
+    return this.isContentVisible;
   }
 
   /* -------------------------------------------------- */

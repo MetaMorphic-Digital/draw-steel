@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import DocumentInput from "../api/document-input.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * Simple live-updating input for specialized combat data.

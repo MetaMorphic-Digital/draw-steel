@@ -1,8 +1,7 @@
-import { characteristics } from "../../../config.mjs";
-import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
+import { addDataset, createLink, parseConfig } from "../helpers.mjs";
 import DSDialog from "../../api/dialog.mjs";
-import { parseConfig, createLink, addDataset } from "../helpers.mjs";
+import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 
 /**
  * @import { ParsedConfig } from "../helpers.mjs";
