@@ -1,7 +1,6 @@
-import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
-import { systemID } from "../constants.mjs";
 import BaseEffectModel from "../data/effect/base.mjs";
 import DSRoll from "../rolls/base.mjs";
+import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
 
 /**
  * @import ActiveEffectData from "@common/documents/_types.mjs";

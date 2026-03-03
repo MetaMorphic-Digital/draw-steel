@@ -1,7 +1,6 @@
+import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
-import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
-
 /**
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  */

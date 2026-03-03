@@ -1,6 +1,6 @@
+import * as advancements from "../../../utils/advancement/_module.mjs";
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 import { systemPath } from "../../../constants.mjs";
-import * as advancements from "../../../utils/advancement/_module.mjs";
 
 /**
  * @import { DataSchema } from "@common/abstract/_types.mjs"

@@ -1,5 +1,5 @@
-import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
 import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
+import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
 
 /**
  * @import BaseAdvancement from "../../../data/pseudo-documents/advancements/base-advancement.mjs".

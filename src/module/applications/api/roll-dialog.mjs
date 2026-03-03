@@ -1,5 +1,5 @@
-import { systemPath } from "../../constants.mjs";
 import DSApplication from "./application.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * Provides basic framework for roll dialogs.

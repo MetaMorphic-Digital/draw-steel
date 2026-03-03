@@ -1,6 +1,6 @@
-import { systemPath } from "../../constants.mjs";
 import { setOptions, validateDSID } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * A data model directly representing class and monster features as well as the basis for ancestry traits, perks, and titles.

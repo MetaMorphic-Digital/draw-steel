@@ -1,8 +1,7 @@
-
-import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
-import SizeModel from "../models/size.mjs";
 import DrawSteelSystemModel from "../system-model.mjs";
+import FormulaField from "../fields/formula-field.mjs";
+import SizeModel from "../models/size.mjs";
 
 /**
  * @import { DataField } from "@common/data/fields.mjs";

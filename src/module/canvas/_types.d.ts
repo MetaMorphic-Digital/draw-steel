@@ -1,5 +1,5 @@
-import DrawSteelTokenDocument from "../documents/token.mjs";
 import "./placeables/tokens/_types";
+import DrawSteelTokenDocument from "../documents/token.mjs";
 
 declare module "@client/canvas/placeables/token.mjs" {
   export default interface Token {

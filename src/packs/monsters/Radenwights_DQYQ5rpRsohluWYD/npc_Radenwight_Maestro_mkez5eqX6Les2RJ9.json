@@ -698,7 +698,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target can shift up to their speed or take the Defend action.</p>",
+          "before": "<p>Each target can shift up to their speed or take the @UUID[Compendium.draw-steel.abilities.Item.fjtY7RKBGWx2u5tK]{Defend} action.</p>",
           "after": ""
         },
         "spend": {
@@ -720,9 +720,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "0.10.2",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -763,7 +763,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Until the end of their next turn, the target halves any damage they take, gains a +4 damage bonus to strikes, and has their speed doubled.</p>",
+          "before": "<p>Until the end of their next turn, the target halves any damage they take, gains a +4 damage bonus to strikes, and has their speed doubled.</p><p>[[/apply c0PgYvOvY8xsRPjT]]</p><p>[[/apply RKFQudsXXNlFROAm]]</p>",
           "after": ""
         },
         "spend": {
@@ -773,7 +773,111 @@
       },
       "_id": "G4SvMTNo0xhFPyJi",
       "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "effects": [],
+      "effects": [
+        {
+          "name": "Solo Act: Speed Bonus",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.mkez5eqX6Les2RJ9.Item.G4SvMTNo0xhFPyJi",
+          "transfer": false,
+          "_id": "c0PgYvOvY8xsRPjT",
+          "system": {
+            "end": {
+              "type": "turn",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.movement.multiplier",
+              "mode": 1,
+              "value": "2",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You halve any damage you take and your speed is doubled.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.2",
+            "createdTime": 1772209884106,
+            "modifiedTime": 1772210385345,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.G4SvMTNo0xhFPyJi.c0PgYvOvY8xsRPjT"
+        },
+        {
+          "name": "Solo Act: Strike Bonus",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monsters.Actor.mkez5eqX6Les2RJ9.Item.G4SvMTNo0xhFPyJi",
+          "transfer": false,
+          "_id": "RKFQudsXXNlFROAm",
+          "system": {
+            "end": {
+              "type": "turn",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": [
+                "strike"
+              ]
+            }
+          },
+          "changes": [
+            {
+              "key": "damage.bonuses.value",
+              "mode": 2,
+              "value": "4",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have a +4 damage bonus to strikes.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.351",
+            "systemId": "draw-steel",
+            "systemVersion": "0.10.2",
+            "createdTime": 1772209923673,
+            "modifiedTime": 1772210311301,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.G4SvMTNo0xhFPyJi.RKFQudsXXNlFROAm"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -785,9 +889,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.10.2",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1121,7 +1225,7 @@
             "startRound": null,
             "startTurn": null
           },
-          "description": "",
+          "description": "<p>You can't move until you use a maneuver to pull your pants back up.</p>",
           "tint": "#ffffff",
           "statuses": [],
           "sort": 0,

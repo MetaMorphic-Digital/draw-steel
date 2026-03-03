@@ -1,5 +1,5 @@
-import DrawSteelActor from "../../documents/actor.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
+import DrawSteelActor from "../../documents/actor.mjs";
 
 interface BarAttribute {
   value: number,
@@ -62,7 +62,7 @@ declare module "./base-actor.mjs" {
         echelon: number;
         level: number;
       }
-      /** Added by ObjectModel */
+      /** Added by ObjectModel. */
       maxLabel?: string;
     },
     combat: Combat;

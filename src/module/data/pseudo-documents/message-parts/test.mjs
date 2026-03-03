@@ -1,6 +1,6 @@
 import DSDialog from "../../../applications/api/dialog.mjs";
-import { systemPath } from "../../../constants.mjs";
 import RollPart from "./roll.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import DamagePowerRollEffect from "../power-roll-effects/damage-effect.mjs";

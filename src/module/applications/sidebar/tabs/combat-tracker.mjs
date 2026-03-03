@@ -1,5 +1,5 @@
+import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 import { systemPath } from "../../../constants.mjs";
-import { DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
@@ -47,6 +47,14 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       template: systemPath("templates/sidebar/tabs/combat/footer.hbs"),
     },
   };
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Array of currently highlighted tokens.
+   * @type {Set<DrawSteelToken>}
+   */
+  #highlightedTokens = new Set();
 
   /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
@@ -237,6 +245,36 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         }
       }
     }
+
+    // Hover group targets
+    this.element.addEventListener("pointermove", (event) => {
+      if (!canvas.ready) return;
+
+      // Cancel if hovering target within group
+      if (event.target.closest(".combatant[data-combatant-id]")) return;
+
+      const { groupId } = event.target.closest(".combatant-group[data-group-id]")?.dataset ?? {};
+
+      const groupMembers = game.combat.groups.get(groupId)?.members;
+
+      if (groupMembers) {
+        groupMembers.forEach((member, i) => {
+          const token = canvas.tokens.get(member?.tokenId);
+          if (token && token._canHover(game.user, event) && token.visible) {
+            token._onHoverIn(event, { hoverOutOthers: i === 0 });
+            this.#highlightedTokens.add(token);
+          }
+        });
+      } else {
+        this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
+        this.#highlightedTokens.clear();
+      }
+    });
+
+    this.element.addEventListener("pointerout", (event) => {
+      this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
+      this.#highlightedTokens.clear();
+    });
 
     new ux.DragDrop.implementation({
       dragSelector: ".combatant",

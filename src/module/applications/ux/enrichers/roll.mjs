@@ -1,8 +1,7 @@
-import { characteristics } from "../../../config.mjs";
-import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
+import { addDataset, createLink, parseConfig } from "../helpers.mjs";
 import DSDialog from "../../api/dialog.mjs";
-import { parseConfig, createLink, addDataset } from "../helpers.mjs";
+import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 
 /**
  * @import { ParsedConfig } from "../helpers.mjs";
@@ -584,7 +583,7 @@ async function requestTest(link, event) {
   };
 
   await DrawSteelChatMessage.create({
-    title: "DRAW_STEEL.EDITOR.Enrichers.Test.Request",
+    title: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Test.Request"),
     type: "standard",
     "system.parts": [part],
     flags: { core: { canPopout: true } },

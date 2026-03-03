@@ -1,7 +1,7 @@
+import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import DSApplication from "../../api/application.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
-import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 
 /**
  * @import DrawSteelItem from "../../../documents/item.mjs";
@@ -339,8 +339,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     }
     if (allowed && !this.items.has(item)) {
       this.items.add(item);
-      const leaf = this.node.choices[item.uuid] = new AdvancementLeaf(this.node, item.uuid, item.toAnchor().outerHTML, { item });
-      await Promise.allSettled(this.node.chain.createNodes(item, { parentLeaf: leaf }));
+      this.node.choices[item.uuid] = new AdvancementLeaf(this.node, item.uuid, item.toAnchor().outerHTML, { item });
       this.chosen.add(item.uuid);
       this.element.querySelector(".item-choices").insertAdjacentHTML("beforeend", `<div class="form-group">
         <label>${item.toAnchor().outerHTML}</label>

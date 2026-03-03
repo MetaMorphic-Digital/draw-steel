@@ -1,6 +1,6 @@
-import { systemPath } from "../../constants.mjs";
-import DrawSteelActorSheet from "./actor-sheet.mjs";
 import { DocumentSourceInput, ObjectMetadataInput } from "../apps/_module.mjs";
+import DrawSteelActorSheet from "./actor-sheet.mjs";
+import { systemPath } from "../../constants.mjs";
 
 export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
