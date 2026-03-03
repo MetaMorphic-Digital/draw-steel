@@ -158,6 +158,7 @@ Hooks.once("init", function () {
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
+    actors: applications.sidebar.tabs.DrawSteelActorDirectory,
     combat: applications.sidebar.tabs.DrawSteelCombatTracker,
     players: applications.ui.DrawSteelPlayers,
   });
