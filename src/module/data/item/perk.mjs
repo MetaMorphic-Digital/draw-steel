@@ -10,7 +10,7 @@ export default class PerkModel extends FeatureModel {
     return {
       ...super.metadata,
       type: "perk",
-      invalidActorTypes: ["npc", "object"],
+      invalidActorTypes: ["npc", "object", "party"],
       detailsPartial: [systemPath("templates/sheets/item/partials/perk.hbs")],
     };
   }

@@ -16,7 +16,7 @@ export default class KitModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "kit",
-      invalidActorTypes: ["npc", "object"],
+      invalidActorTypes: ["npc", "object", "party"],
       detailsPartial: [systemPath("templates/sheets/item/partials/kit.hbs")],
     };
   }
