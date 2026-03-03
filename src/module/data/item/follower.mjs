@@ -14,7 +14,7 @@ export default class FollowerModel extends BaseItemModel {
       ...super.metadata,
       type: "follower",
       packOnly: false,
-      invalidActorTypes: ["object", "npc"],
+      invalidActorTypes: ["npc", "object"],
       detailsPartial: [systemPath("templates/sheets/item/partials/follower.hbs")],
     };
   }
@@ -86,12 +86,11 @@ export default class FollowerModel extends BaseItemModel {
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
-    rollData.item.chr = -5;
-    for (const [key, obj] of Object.entries(this.characteristics)) {
-      const rollKey = ds.CONFIG.characteristics[key].rollKey;
-      rollData.item[rollKey] = obj.value;
-
-      if (obj.value > rollData.item.chr) rollData.item.chr = obj.value;
-    }
+    const chars = Object.entries(this.characteristics).map(([k, v]) => {
+      const rollKey = ds.CONFIG.characteristics[k].rollKey;
+      rollData.item[rollKey] = v.value;
+      return v.value;
+    });
+    rollData.item.chr = Math.max(...chars);
   }
 }
