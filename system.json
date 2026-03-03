@@ -104,7 +104,11 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
-      "perk": {
+      "follower": {
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "kit": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
@@ -112,7 +116,7 @@
         "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
-      "kit": {
+      "perk": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]

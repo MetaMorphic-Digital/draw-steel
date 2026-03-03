@@ -1,0 +1,6 @@
+<fieldset class="characteristics" {{disabled isPlay}}>
+  <legend>{{systemFields.characteristics.label}}</legend>
+  {{#each characteristics as |chr|}}
+  {{formGroup chr.field value=chr.value hint="" classes="slim"}}
+  {{/each}}
+</fieldset>
