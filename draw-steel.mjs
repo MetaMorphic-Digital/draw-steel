@@ -200,7 +200,8 @@ Hooks.once("i18nInit", () => {
   helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
 
   // These fields are not auto-localized due to having a different location in en.json
-  for (const model of Object.values(CONFIG.Actor.dataModels)) {
+  for (const model of Object.values(CONFIG.Actor.dataModels).concat(CONFIG.Item.dataModels.follower)) {
+    // TODO: Move the characteristics into CONST and let them just be auto-localized
     /** @type {foundry.data.fields.SchemaField} */
     const characteristicSchema = model.schema.getField("characteristics");
     if (characteristicSchema) {
