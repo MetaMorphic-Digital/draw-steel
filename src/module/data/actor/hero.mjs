@@ -106,8 +106,20 @@ export default class HeroModel extends CreatureModel {
 
   /** @inheritdoc */
   static shimData(data, options) {
-    foundry.abstract.Document._addDataFieldShim(data, "hero.skills", "skills.value", { since: "0.11", until: "1.0" });
-    foundry.abstract.Document._addDataFieldShim(data, "hero.skillModifiers", "skills.modifiers", { since: "0.11", until: "1.0" });
+    const shims = {
+      "hero.skills": "skills.value",
+      "hero.skillModifiers": "skills.modifiers",
+    };
+    for (const [oldPath, newPath] of Object.entries(shims)) {
+      // v13 version of _addDataFieldShim fails to properly safeguard dot-split properties. Results in warning spam.
+      const lastKey = oldPath.split(".").at(-1);
+      if (Object.hasOwn(data.hero, lastKey)) continue;
+      // Not using the multi-helper because the message said it was from Document not HeroModel
+      foundry.abstract.Document._addDataFieldShim.call(this, data, oldPath, newPath, {
+        warning: `You are accessing ${this.name}#${oldPath}, which has been migrated to ${this.name}#${newPath}.`,
+        since: "0.11", until: "1.0",
+      });
+    }
 
     return super.shimData(data, options);
   }

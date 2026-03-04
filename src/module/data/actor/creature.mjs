@@ -135,7 +135,7 @@ export default class CreatureModel extends BaseActorModel {
     options.edges = (options.edges ?? 0) + chr.edges;
     options.banes = (options.banes ?? 0) + chr.banes;
 
-    const skills = this.hero?.skills ?? null;
+    const skills = this.skills?.value ?? null;
     const skillModifiers = this.skills?.modifiers ?? null;
 
     const evaluation = "evaluate";

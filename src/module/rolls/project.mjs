@@ -92,7 +92,7 @@ export default class ProjectRoll extends DSRoll {
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
     options.modifiers.bonuses ??= 0;
-    options.skills ??= options.actor?.system.hero?.skills ?? null;
+    options.skills ??= options.actor?.system.skills?.value ?? null;
 
     const context = {
       modifiers: options.modifiers,
