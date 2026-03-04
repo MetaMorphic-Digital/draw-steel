@@ -1,8 +1,6 @@
 import { systemID, systemPath } from "../../constants.mjs";
-import DrawSteelCompendiumTOC from "../sidebar/apps/table-of-contents.mjs";
 
 /**
- * @import { ApplicationRenderOptions } from "@client/applications/_types.mjs"
  * @import FormDataExtended from "@client/applications/ux/form-data-extended.mjs";
  */
 
@@ -95,7 +93,7 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
 
     context.chapterOptions = context.entries.filter(e => e.type === "chapter").map(e => ({ value: e.document.id, label: e.document.name }));
 
-    context.entryTypes = Object.entries(DrawSteelCompendiumTOC.ENTRY_TYPES).map(([value, { label }]) => ({ value, label }));
+    context.entryTypes = Object.entries(ds.applications.sidebar.apps.DrawSteelCompendiumTOC.ENTRY_TYPES).map(([value, { label }]) => ({ value, label }));
 
     return context;
   }
