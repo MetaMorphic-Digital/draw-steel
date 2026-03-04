@@ -190,3 +190,15 @@ declare module "./object.mjs" {
     }
   }
 }
+
+declare module "./retainer.mjs" {
+  export default interface RetainerModel {
+    source: SourceModel;
+    retainer: {
+      freeStrike: number;
+      keywords: Set<string> & { list: string[]; labels: string };
+      role: string;
+      roleLabel: string;
+    }
+  }
+}

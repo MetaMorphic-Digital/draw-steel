@@ -1,0 +1,125 @@
+{{! Stats Tab }}
+<section class="tab stats standard-form {{tab.cssClass}}" data-group="primary" data-tab="stats">
+  <div class="form-group">
+    <fieldset class="resources flexrow">
+      <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
+      <div class="resource stamina flexcol">
+        <label class="resource-label">
+          {{systemFields.stamina.label}}
+        </label>
+        <div class="form-group resource-content">
+          {{#if isPlay}}
+          <div class="resource-temporary">
+            {{formGroup
+            systemFields.stamina.fields.temporary
+            value=system.stamina.temporary
+            dataset=datasets.notSource
+            classes="stacked"
+            }}
+          </div>
+          <div class="resource-current">
+            {{formGroup
+            systemFields.stamina.fields.value
+            value=system.stamina.value
+            dataset=datasets.notSource
+            classes="stacked"
+            }}
+          </div>
+          {{/if}}
+          <span class="resource-max">
+            {{#if isPlay}}
+            <div class="form-group stacked">
+              <label class="input-placeholder-label">
+                {{systemFields.stamina.fields.max.label}}
+              </label>
+              <div class="input-placeholder">
+                {{system.stamina.max}}
+              </div>
+            </div>
+            {{else}}
+            {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
+            {{/if}}
+          </span>
+        </div>
+      </div>
+      <div class="resource recoveries flexcol">
+        <div class="resource-label">
+          {{#if (and isPlay editable)}}
+          <button
+            type="button"
+            data-action="spendRecovery"
+            data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip"
+            data-tooltip-direction="UP"
+          >
+            <i class="fa-solid fa-heart-pulse"></i>
+            {{systemFields.recoveries.label}}
+          </button>
+          {{else}}
+          <span>{{systemFields.recoveries.label}}</span>
+          {{/if}}
+        </div>
+        <div class="form-group resource-content">
+          {{#if isPlay}}
+          <div class="resource-current">
+            {{formGroup systemFields.recoveries.fields.value value=system.recoveries.value dataset=datasets.notSource classes="stacked"}}
+          </div>
+          <span class="resource-max">
+            <div class="form-group stacked">
+              <label class="input-placeholder-label">
+                {{systemFields.recoveries.fields.max.label}}
+              </label>
+              <div class="input-placeholder">
+                {{system.recoveries.max}}
+              </div>
+            </div>
+          </span>
+          <span class="recovery-value">
+            <div class="form-group stacked">
+              <label class="input-placeholder-label">
+                {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.label"}}
+              </label>
+              <div class="input-placeholder">
+                {{system.recoveries.recoveryValue}}
+              </div>
+            </div>
+          </span>
+          {{else}}
+          <span class="resource-max">
+            {{formGroup systemFields.recoveries.fields.max value=systemSource.recoveries.max dataset=datasets.isSource classes="paired"}}
+          </span>
+          {{/if}}
+        </div>
+      </div>
+    </fieldset>
+    <fieldset class="free-strike">
+      <legend>{{systemFields.retainer.fields.freeStrike.label}}</legend>
+      <div class="free-strike-body">
+        {{#if isPlay}}
+        {{#if gm}}
+        <button type="button" data-action="freeStrike">
+          <i class="fa-solid fa-burst"></i>
+          {{system.retainer.freeStrike}}
+        </button>
+        {{else}}
+        <span>
+          {{system.retainer.freeStrike}}
+        </span>
+        {{/if}}
+        {{else}}
+        {{formInput systemFields.retainer.fields.freeStrike value=systemSource.retainer.freeStrike dataset=datasets.isSource}}
+        {{/if}}
+      </div>
+    </fieldset>
+  </div>
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"  editCharacteristics=(not isPlay)}}
+  {{#if isPlay}}
+  <div class="form-group">
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
+  </div>
+  {{else}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
+  {{/if}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
+</section>

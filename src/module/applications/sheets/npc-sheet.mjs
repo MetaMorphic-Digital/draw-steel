@@ -30,7 +30,6 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static PARTS = {
     header: {
       template: systemPath("templates/sheets/actor/npc/header.hbs"),
-      templates: ["templates/sheets/actor/npc/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template

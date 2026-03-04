@@ -302,8 +302,9 @@
     "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
-        "Object": "Draw Steel Object Sheet",
         "NPC": "Draw Steel NPC Sheet",
+        "Object": "Draw Steel Object Sheet",
+        "Retainer": "Draw Steel Retainer Sheet",
         "Item": "Draw Steel Item Sheet",
         "JournalEntry": "Draw Steel Journal Entry Sheet",
         "ActiveEffect": "Draw Steel Active Effect Config",
@@ -823,6 +824,24 @@
         },
         "ObjectMetadata": {
           "DialogTitle": "Update Object Metadata"
+        }
+      },
+      "retainer": {
+        "FIELDS": {
+          "retainer": {
+            "freeStrike": {
+              "label": "Free Strike"
+            },
+            "keywords": {
+              "label": "Keywords"
+            },
+            "role": {
+              "label": "Creature Role"
+            }
+          }
+        },
+        "RetainerMetadata": {
+          "DialogTitle": "Update Retainer Metadata"
         }
       },
       "DamageNotification": {
@@ -2161,7 +2180,8 @@
     "Actor": {
       "hero": "Hero",
       "npc": "NPC",
-      "object": "Object"
+      "object": "Object",
+      "retainer": "Retainer"
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",

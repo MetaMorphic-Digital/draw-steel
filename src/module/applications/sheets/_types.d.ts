@@ -11,26 +11,39 @@ declare module "./active-effect-config.mjs" {
   }
 }
 
-declare module "./hero.mjs" {
-  export default interface DrawSteelHeroSheet {
-    actor: documents.DrawSteelActor & { system: data.Actor.HeroModel };
-  }
-}
-declare module "./npc.mjs" {
-  export default interface DrawSteelNPCSheet {
-    actor: documents.DrawSteelActor & { system: data.Actor.NPCModel };
-  }
-}
-
 declare module "./combatant-group-config.mjs" {
   export default interface DrawSteelCombatantGroupConfig extends foundry.applications.api.DocumentSheet {
     document: documents.DrawSteelCombatantGroup;
   }
 }
 
+declare module "./hero.mjs" {
+  export default interface DrawSteelHeroSheet {
+    actor: Omit<documents.DrawSteelActor, "system"> & { system: data.Actor.HeroModel };
+  }
+}
+
 declare module "./journal-entry-sheet.mjs" {
   export default interface DrawSteelJournalEntrySheet extends foundry.applications.api.DocumentSheet {
     document: foundry.documents.JournalEntry;
+  }
+}
+
+declare module "./npc-sheet.mjs" {
+  export default interface DrawSteelNPCSheet {
+    actor: Omit<documents.DrawSteelActor, "system"> & { system: data.Actor.NPCModel };
+  }
+}
+
+declare module "./object-sheet.mjs" {
+  export default interface DrawSteelObjectSheet {
+    actor: Omit<documents.DrawSteelActor, "system"> & { system: data.Actor.ObjectModel };
+  }
+}
+
+declare module "./retainer-sheet.mjs" {
+  export default interface DrawSteelRetainerSheet {
+    actor: Omit<documents.DrawSteelActor, "system"> & { system: data.Actor.RetainerModel };
   }
 }
 
