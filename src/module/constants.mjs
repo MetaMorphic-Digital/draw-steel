@@ -134,3 +134,18 @@ export const potencyStrengths = Object.freeze({
     glyph: "s",
   },
 });
+
+/* -------------------------------------------------- */
+
+/**
+ * Valid follower types for Follower items (excludes Retainer, which is an Actor subtype).
+ * @type {Record<string, { label: string }>}
+ */
+export const followerTypes = Object.freeze({
+  artisan: {
+    label: "DRAW_STEEL.Item.follower.Types.artisan",
+  },
+  sage: {
+    label: "DRAW_STEEL.Item.follower.Types.sage",
+  },
+});

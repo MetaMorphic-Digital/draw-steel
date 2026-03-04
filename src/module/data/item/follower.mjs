@@ -1,4 +1,5 @@
 import BaseItemModel from "./base-item.mjs";
+import { setOptions } from "../helpers.mjs";
 import { systemPath } from "../../constants.mjs";
 
 const fields = foundry.data.fields;
@@ -30,6 +31,8 @@ export default class FollowerModel extends BaseItemModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
+    schema.followerType = new fields.StringField({ required: true, choices: ds.CONST.followerTypes, initial: "artisan" });
+
     const characteristic = { initial: 0, integer: true, nullable: false };
 
     schema.characteristics = new fields.SchemaField(
@@ -40,6 +43,14 @@ export default class FollowerModel extends BaseItemModel {
         return obj;
       }, {}),
     );
+
+    schema.skills = new fields.SchemaField({
+      value: new fields.SetField(setOptions()),
+    });
+
+    schema.languages = new fields.SchemaField({
+      value: new fields.SetField(setOptions()),
+    });
 
     return schema;
   }
@@ -66,6 +77,31 @@ export default class FollowerModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const skillList = this.skills.value.reduce((skills, skill) => {
+      skill = ds.CONFIG.skills.list[skill]?.label;
+      if (skill) skills.push(skill);
+      return skills;
+    }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
+
+    this.skills.list = formatter.format(skillList);
+
+    const languageList = this.languages.value.reduce((languages, lang) => {
+      lang = ds.CONFIG.languages[lang]?.label;
+      if (lang) languages.push(lang);
+      return languages;
+    }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
+
+    this.languages.list = formatter.format(languageList);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async getSheetContext(context) {
     await super.getSheetContext(context);
 
@@ -78,6 +114,28 @@ export default class FollowerModel extends BaseItemModel {
       };
       return obj;
     }, {});
+
+    const skillOptions = ds.CONFIG.skills.optgroups;
+
+    for (const skill of this.skills.value) {
+      if (!(skill in ds.CONFIG.skills.list)) skillOptions.push({ value: skill });
+    }
+
+    context.skills = {
+      list: this.skills.list,
+      options: skillOptions,
+    };
+
+    const languageOptions = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
+
+    for (const language of this.languages.value) {
+      if (!(language in ds.CONFIG.languages)) languageOptions.push({ value: language });
+    }
+
+    context.languages = {
+      list: this.languages.list,
+      options: languageOptions,
+    };
   }
 
   /* -------------------------------------------------- */
