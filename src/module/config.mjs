@@ -1282,6 +1282,9 @@ const abilityKeywords = {
     label: "DRAW_STEEL.Item.ability.Keywords.Earth",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
   },
+  encounter: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Encounter",
+  },
   fire: {
     label: "DRAW_STEEL.Item.ability.Keywords.Fire",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
@@ -1419,7 +1422,7 @@ const abilityTypes = {
 
 /**
  * Ability category, e.g. "Villain Action".
- * @type {Record<string, {label: string}>}
+ * @type {Record<string, AbilityCategory>}
  */
 const abilityCategories = {
   heroic: {
