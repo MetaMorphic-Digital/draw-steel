@@ -302,8 +302,9 @@
     "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
-        "Object": "Draw Steel Object Sheet",
         "NPC": "Draw Steel NPC Sheet",
+        "Object": "Draw Steel Object Sheet",
+        "Retainer": "Draw Steel Retainer Sheet",
         "Item": "Draw Steel Item Sheet",
         "JournalEntry": "Draw Steel Journal Entry Sheet",
         "ActiveEffect": "Draw Steel Active Effect Config",
@@ -827,7 +828,7 @@
       },
       "retainer": {
         "FIELDS": {
-          "monster": {
+          "retainer": {
             "freeStrike": {
               "label": "Free Strike"
             },
@@ -838,6 +839,9 @@
               "label": "Creature Role"
             }
           }
+        },
+        "RetainerMetadata": {
+          "DialogTitle": "Update Retainer Metadata"
         }
       },
       "DamageNotification": {
