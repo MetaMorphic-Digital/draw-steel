@@ -1,6 +1,27 @@
+{{formGroup systemFields.followerType value=systemSource.followerType disabled=isPlay localize=true}}
 <fieldset class="characteristics" {{disabled isPlay}}>
   <legend>{{systemFields.characteristics.label}}</legend>
   {{#each characteristics as |chr|}}
-  {{formGroup chr.field value=chr.value hint="" classes="slim"}}
+  {{formGroup chr.field value=chr.value hint="" classes="slim" placeholder=0}}
   {{/each}}
+</fieldset>
+<fieldset class="skills" {{disabled isPlay}}>
+  <legend>
+    {{systemFields.skills.fields.value.label}}
+  </legend>
+  {{#if isPlay}}
+  {{skills.list}}
+  {{else}}
+  {{formInput systemFields.skills.fields.value value=systemSource.skills.value options=skills.options}}
+  {{/if}}
+</fieldset>
+<fieldset class="languages" {{disabled isPlay}}>
+  <legend>
+    {{systemFields.languages.fields.value.label}}
+  </legend>
+  {{#if isPlay}}
+  {{languages.list}}
+  {{else}}
+  {{formInput systemFields.languages.fields.value value=systemSource.languages.value options=languages.options sort=true}}
+  {{/if}}
 </fieldset>

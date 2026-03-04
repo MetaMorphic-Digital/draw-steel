@@ -166,6 +166,33 @@ declare module "./feature.mjs" {
   }
 }
 
+interface Characteristic {
+  value: number;
+  edges: number;
+  banes: number;
+  dice: {
+    mode: "kh" | "kl";
+    number: number;
+  }
+}
+
+interface Skills {
+  value: Set<string>;
+  modifiers: Record<string, PowerRollModifiers>;
+  list: string;
+}
+
+declare module "./follower.mjs" {
+  export default interface FollowerModel {
+    characteristics: Record<string, Characteristic>;
+    skills: Skills;
+    languages: {
+      value: Set<string>;
+      list: string;
+    }
+  }
+}
+
 declare module "./kit.mjs" {
 
   type DamageSchema = {
