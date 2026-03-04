@@ -36,7 +36,6 @@ export default class DSRoll extends foundry.dice.Roll {
       },
     };
     delete messageData.flavor;
-    delete messageData.rolls;
 
     const Cls = getDocumentClass("ChatMessage");
     const msg = new Cls(messageData);
