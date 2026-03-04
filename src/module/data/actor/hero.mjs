@@ -104,8 +104,11 @@ export default class HeroModel extends CreatureModel {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  static shimData(data, options) {
+  /**
+   * Shims both source and initialized hero data.
+   * @param {object | HeroModel} data
+   */
+  static shimSkills(data) {
     const shims = {
       "hero.skills": "skills.value",
       "hero.skillModifiers": "skills.modifiers",
@@ -114,13 +117,23 @@ export default class HeroModel extends CreatureModel {
       // v13 version of _addDataFieldShim fails to properly safeguard dot-split properties. Results in warning spam.
       const lastKey = oldPath.split(".").at(-1);
       if (Object.hasOwn(data.hero, lastKey)) continue;
-      // Not using the multi-helper because the message said it was from Document not HeroModel
-      foundry.abstract.Document._addDataFieldShim.call(this, data, oldPath, newPath, {
-        warning: `You are accessing ${this.name}#${oldPath}, which has been migrated to ${this.name}#${newPath}.`,
-        since: "0.11", until: "1.0",
-      });
-    }
+      // Not using the multi-helper to improve message
 
+      let warning = `You are accessing ${this.name}#${oldPath}, which has been migrated to ${this.name}#${newPath}.`;
+
+      if (data instanceof HeroModel) {
+        warning += ` Issue occurred in Actor ${data.parent.uuid}`;
+      }
+
+      foundry.abstract.Document._addDataFieldShim.call(this, data, oldPath, newPath, { warning, since: "0.11", until: "1.0" });
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static shimData(data, options) {
+    this.shimSkills(data);
     return super.shimData(data, options);
   }
 
@@ -129,6 +142,8 @@ export default class HeroModel extends CreatureModel {
   /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
+
+    HeroModel.shimSkills(this);
 
     this.combat.initiativeThreshold = 6;
 
