@@ -245,4 +245,36 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (typeof this.system.apply === "function") return this.system.apply(actor, change);
     else return super.apply(actor, change);
   }
+
+  /* -------------------------------------------- */
+  /*  Deprecations and Compatibility              */
+  /* -------------------------------------------- */
+
+  /**
+   * Keys that need migration in active effects.
+   * @type {Record<string, string>}
+   */
+  static keyMigrations = {
+    // 0.11
+    "hero.skills": "skills.value",
+    "hero.skillModifiers": "skills.modifiers",
+    // 0.10
+    "monster.ev": "ev",
+  };
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    let migrateChanges = false;
+    for (const change of data.changes ?? []) {
+      for (const [oldPath, newPath] of Object.entries(this.keyMigrations)) {
+        const oldKey = change.key;
+        change.key = change.key.replace(oldPath, newPath);
+        if (change.key !== oldKey) migrateChanges ||= true;
+      }
+    }
+
+    if (migrateChanges) foundry.utils.setProperty(data, "flags.draw-steel.migrateChanges", true);
+
+    return super.migrateData(data);
+  }
 }

@@ -31,6 +31,10 @@ export async function migrateWorld() {
       await version_0_10_migration();
       updateVersion = true;
     }
+    if (foundry.utils.isNewerVersion("0.11.0", migrationVersion)) {
+      await version_0_11_migration();
+      updateVersion = true;
+    }
   }
   if (updateVersion) await game.settings.set(systemID, "migrationVersion", game.system.version);
 }
@@ -99,6 +103,45 @@ async function version_0_10_migration() {
 /* -------------------------------------------------- */
 
 /**
+ * Migrate active effect keys for version 0.10.0.
+ */
+async function version_0_11_migration() {
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.11.0" }, progress: true });
+
+  console.log("Migrating active effects inside actors");
+  for (const actor of game.actors) {
+    await migrateChanges(actor);
+  }
+  warning.update({ pct: 0.4 });
+  console.log("Migrating active effects inside items");
+  for (const item of game.items) {
+    await migrateChanges(item);
+  }
+  warning.update({ pct: 0.7 });
+
+  // Current migration does not search for effects created inside deltas
+  // if that is ever necessary, expand to loop through game.scenes => scene.tokens
+
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
+  for (const pack of packsToMigrate) {
+    console.log("Migrating document inside", pack.title);
+    const docs = await pack.getDocuments();
+    const wasLocked = pack.config.locked;
+    if (wasLocked) await pack.configure({ locked: false });
+    for (const doc of docs) await migrateChanges(doc);
+    if (wasLocked) await pack.configure({ locked: true });
+  }
+
+  warning.update({ pct: 1.00 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "0.11.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
+
+/**
  * @typedef {DocumentCollection<Document> | EmbeddedCollection<Document> | CompendiumCollection<Document>} AnyCollection
  */
 
@@ -122,6 +165,27 @@ export async function migrateType(collection, options = {}) {
     const updateData = toMigrate.slice(i * 100, (i + 1) * 100);
     await collection.documentClass.updateDocuments(updateData, { pack: options.pack, parent: options.parent, diff: false });
   }
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Migrate all effects in an Actor or Item.
+ * @param {foundry.documents.Actor | foundry.documents.Item} parentDocument If this is an Actor, also migrate effects on items.
+ */
+export async function migrateChanges(parentDocument) {
+  const toMigrate = parentDocument.effects.filter(effect => effect.getFlag(systemID, "migrateChanges")).map(doc => ({
+    _id: doc.id,
+    "==changes": [...doc.changes],
+    "flags.draw-steel.-=migrateChanges": null,
+  }));
+
+  // TODO: Batch this in v14
+  await parentDocument.updateEmbeddedDocuments("ActiveEffect", toMigrate);
+  if (parentDocument.documentName === "Item") return;
+  const promises = [];
+  for (const item of parentDocument.items) promises.push(migrateChanges(item));
+  return Promise.allSettled(promises);
 }
 
 /* -------------------------------------------------- */

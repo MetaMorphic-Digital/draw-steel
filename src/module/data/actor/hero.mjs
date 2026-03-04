@@ -143,6 +143,7 @@ export default class HeroModel extends CreatureModel {
   prepareBaseData() {
     super.prepareBaseData();
 
+    // Existing DrawSteelActiveEffect#_applyAdd override means this also shims active effects targeting hero.skills
     HeroModel.shimSkills(this);
 
     this.combat.initiativeThreshold = 6;
