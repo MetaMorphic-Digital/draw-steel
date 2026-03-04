@@ -125,7 +125,7 @@ export default class HeroModel extends CreatureModel {
         warning += ` Issue occurred in Actor ${data.parent.uuid}`;
       }
 
-      foundry.abstract.Document._addDataFieldShim.call(this, data, oldPath, newPath, { warning, since: "0.11", until: "1.0" });
+      foundry.abstract.Document._addDataFieldShim(data, oldPath, newPath, { warning, since: "0.11", until: "1.0" });
     }
   }
 
