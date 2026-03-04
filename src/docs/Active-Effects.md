@@ -143,15 +143,15 @@ Draw Steel also supports modifying the default roll formula for tests. `system.c
 
 |Purpose|Attribute Key|
 |:---:|---|
-|Edges for skills used in tests|`system.hero.skillModifiers.[skill].edges`|
-|Banes for skills used in tests|`system.hero.skillModifiers.[skill].banes`|
+|Edges for skills used in tests|`system.skills.modifiers.[skill].edges`|
+|Banes for skills used in tests|`system.skills.modifiers.[skill].banes`|
 
 > An example of applying a single edge to uses of the Jump skill would be:
-> |`system.hero.skillModifiers.jump.edges`|Add|`1`|
+> |`system.skills.modifiers.jump.edges`|Add|`1`|
 > |---|---|---|
 >
 > An example of applying two banes to uses of the Tailoring skill would be:
-> |`system.hero.skillModifiers.tailoring.banes`|Add|`2`|
+> |`system.skills.modifiers.tailoring.banes`|Add|`2`|
 > |---|---|---|
 
 #### Common bonus effect examples

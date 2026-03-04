@@ -135,8 +135,8 @@ export default class CreatureModel extends BaseActorModel {
     options.edges = (options.edges ?? 0) + chr.edges;
     options.banes = (options.banes ?? 0) + chr.banes;
 
-    const skills = this.hero?.skills ?? null;
-    const skillModifiers = this.hero?.skillModifiers ?? null;
+    const skills = this.skills?.value ?? null;
+    const skillModifiers = this.skills?.modifiers ?? null;
 
     const evaluation = "evaluate";
     const baseFormula = chr.dice.number > 2 ? `${chr.dice.number}d10${chr.dice.mode}2` : "2d10";

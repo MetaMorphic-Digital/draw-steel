@@ -130,7 +130,7 @@
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
   <fieldset class="skills">
     <legend>
-      {{systemFields.hero.fields.skills.label}}
+      {{systemFields.skills.fields.value.label}}
       {{#if unfilledSkill}}
       <button
         type="button"
@@ -147,7 +147,7 @@
     {{#if isPlay}}
     {{skills.list}}
     {{else}}
-    {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=skills.options dataset=datasets.isSource}}
+    {{formInput systemFields.skills.fields.value value=systemSource.skills.value options=skills.options dataset=datasets.isSource}}
     {{/if}}
   </fieldset>
 </section>

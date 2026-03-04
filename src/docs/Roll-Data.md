@@ -12,134 +12,132 @@ Foundry's rolls support variable substitution through roll data, as explained in
 
 # Actor Roll Data
 
-## Characteristics
-+ Agility value -`@characteristics.agility.value`
-+ Intuition value - `@characteristics.intuition.value`
-+ Might value - `@characteristics.might.value`
-+ Presence value - `@characteristics.presence.value`
-+ Reason value - `@characteristics.reason.value`
+## General Info
+
+Most actors support the following roll attributes
+
+### Characteristics
++ Might value: `@characteristics.might.value` or `@M`
++ Agility value:`@characteristics.agility.value` or `@A`
++ Reason value: `@characteristics.reason.value` or `@R`
++ Intuition value: `@characteristics.intuition.value` or `@I`
++ Presence value: `@characteristics.presence.value` or `@P`
++ Highest characteristic: `@chr`
 
 ### Combat Data
-+ Save Bonus - `@combat.save.bonus`
-+ Save Threshold - `@combat.save.threshold`
++ Save Bonus: `@combat.save.bonus`
++ Save Threshold: `@combat.save.threshold`
 + Size (1/2/3/4) `@combat.size.value`
-+ Stability - `@combat.stability`
++ Stability: `@combat.stability`
 + Total amount of turns per round of specific actor (e.g. Solos would have 2) `@combat.turns`
-+ Initiative Threshold - `@combat.initiativeThreshold`
++ Initiative Threshold: `@combat.initiativeThreshold`
 
-## Potencies
-+ Strong Potency (= highest characteristic) - `@potency.strong`
-+ Average Potency (= highest characteristic -1) - `@potency.average`
-+ Weak Potency (= highest characteristic -2) - `@potency.weak`
-+ Bonus to Potency - `@potency.bonuses`
+### Potencies
++ Strong Potency: `@potency.strong`
++ Average Potency: `@potency.average`
++ Weak Potency: `@potency.weak`
++ Bonus to Potency: `@potency.bonuses`
 
-## Stamina
-+ Maximum Stamina - `@stamina.max`
-+ Temporary Stamina - `@stamina.temporary`
-+ Current Stamina value - `@stamina.value`
-+ Winded (<50%) Stamina Value - `@stamina.winded`
-+ Is currently winded? (1/yes, 0/no) - `@statuses.winded`
+### Stamina
++ Maximum Stamina: `@stamina.max`
++ Temporary Stamina: `@stamina.temporary`
++ Current Stamina value: `@stamina.value`
++ Winded (<50%) Stamina Value: `@stamina.winded`
++ Is currently winded? (1/yes, 0/no): `@statuses.winded`
 
 ### Recoveries
-+ Recovery value - `@recoveries.recoveryValue`
-+ Current recovery amount - `@recoveries.value`
-+ Maximum amount of recoveries - `@recoveries.max`
-+ Bonus to recovery value - `@recoveries.bonus`
++ Recovery value: `@recoveries.recoveryValue`
++ Current recovery amount: `@recoveries.value`
++ Maximum amount of recoveries: `@recoveries.max`
++ Bonus to recovery value: `@recoveries.bonus`
 
 ### Movement speeds
-+ Speed - `@movement.value`
-+ Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
++ Speed: `@movement.value`
++ Teleport: `@movement.teleport` (Unaffected by most speed adjustments)
 
-## Echelon and Level
-+ Echelon - `@echelon`
-+ Level - `@level`
+### Echelon and Level
++ Echelon: `@echelon`
++ Level: `@level`
 
-## Biography
-+ Number of Languages: `@biography.languages.size`
+### Immunities and Weaknesses
+- Immunity: `@damage.immunities.[type]`, e.g. `@damage.immunities.fire`
+- Weakness: `@damage.weaknesses.[type]`, e.g. `@damage.immunities.fire`
+
+<details>
+<summary>The viable damage types for Immunities and Weaknesses are:</summary>
+|Damage Type|Active Effect Attribute Key|
+|:---:|---|
+|All damage (including untyped)|`all`
+|Acid damage|`acid`
+|Cold damage|`cold`
+|Corruption damage|`corruption`
+|Fire damage|`fire`
+|Holy damage|`holy`
+|Lightning damage|`lightning`
+|Poison damage|`poison`
+|Psychic Damage|`psychic`
+|Sonic Damage|`sonic`
+</details>
+
+### Statuses
+Value indicates if actor currently has status (1/yes, 0/no)
++ Asleep:`@statuses.sleep`
++ Bleeding: `@statuses.bleeding`
++ Burning: `@statuses.burning`
++ Dazed: `@statuses.dazed`
++ Dead: `@statuses.dead`
++ Deaf: `@statuses.deaf`
++ Dying: `@statuses.dying`
++ Frozen: `@statuses.frozen`
++ Frightened: `@statuses.frightened`
++ Grabbed: `@statuses.grabbed`
++ Invisible: `@statuses.invisible`
++ Marked: `@statuses.eye`
++ Prone: `@statuses.prone`
++ Restrained: `@statuses.restrained`
++ Slowed: `@statuses.slowed`
++ Targeted: `@statuses.target`
++ Taunted: `@statuses.taunted`
++ Weakened: `@statuses.weakened`
++ Winded: `@statuses.winded`
 
 ## Hero Roll Data
 
 ### Heroic Resource
-+ Heroic resource label - `@hero.primary.label`
-+ Heroic resource value - `@hero.primary.value`
++ Heroic resource label: `@hero.primary.label`
++ Heroic resource value: `@hero.primary.value`
 
 ### Other Hero values
-+ Renown - `@hero.renown`
-+ Skills - `@hero.skills`
-+ Current amount of Surges - `@hero.surges`
-+ Current Victory Points - `@hero.victories`
-+ Accumulated XP - `@hero.xp`
++ Renown: `@hero.renown`
++ Current amount of Surges: `@hero.surges`
++ Current Victory Points: `@hero.victories`
++ Accumulated XP: `@hero.xp`
 
-### Immunities and Weaknesses
-
-#### Immunities
-+ Acid damage -`@damage.immunities.acid`
-+ All damage (including untyped)- `@damage.immunities.all`
-+ Cold damage - `@damage.immunities.cold`
-+ Corruption damage - `@damage.immunities.corruption`
-+ Fire damage - `@damage.immunities.fire`
-+ Holy damage - `@damage.immunities.holy`
-+ Lightning damage - `@damage.immunities.lightning`
-+ Poison damage - `@damage.immunities.poison`
-+ Psychic Damage - `@damage.immunities.psychic`
-+ Sonic Damage - `@damage.immunities.sonic`
-
-#### Weaknesses
-+ Acid - `@damage.weaknesses.acid`
-+ All damage (including untyped) - `@damage.weaknesses.all`
-+ Cold damage -	`@damage.weaknesses.cold`
-+ Corruption damage - `@damage.weaknesses.corruption`
-+ Fire damage - `@damage.weaknesses.fire`
-+ Holy damage - `@damage.weaknesses.holy`
-+ Lightning damage - `@damage.weaknesses.lightning`
-+ Poison damage - `@damage.weaknesses.poison`
-+ Psychic Damage - `@damage.weaknesses.psychic`
-+ Sonic Damage - `@damage.weaknesses.sonic`
-
-### Statuses
-Value indicates if actor currently has status (1/yes, 0/no)
-+ Asleep -`@statuses.sleep`
-+ Bleeding - `@statuses.bleeding`
-+ Burning - `@statuses.burning`
-+ Dazed - `@statuses.dazed`
-+ Dead - `@statuses.dead`
-+ Deaf - `@statuses.deaf`
-+ Dying - `@statuses.dying`
-+ Frozen - `@statuses.frozen`
-+ Frightened - `@statuses.frightened`
-+ Grabbed - `@statuses.grabbed`
-+ Invisible - `@statuses.invisible`
-+ Marked - `@statuses.eye`
-+ Prone - `@statuses.prone`
-+ Restrained - `@statuses.restrained`
-+ Slowed - `@statuses.slowed`
-+ Targeted - `@statuses.target`
-+ Taunted - `@statuses.taunted`
-+ Weakened - `@statuses.weakened`
-+ Winded - `@statuses.winded`
+## Biography
++ Number of Languages: `@biography.languages.size`
 
 ## NPC Roll Data
 
 ### Monster Roll data
-+ Free Strike damage: - `@monster.freeStrike`
++ Free Strike damage:: `@monster.freeStrike`
 
 ### Monster Negotiation Roll Data
-+ Impression Score - `@negotiation.impression`
-+ Interest - `@negotiation.interest`
-+ Patience - `@negotiation.patience`
++ Impression Score: `@negotiation.impression`
++ Interest: `@negotiation.interest`
++ Patience: `@negotiation.patience`
 
 # Item Roll Data
 
 ## Downtime Project roll data
-+ Project Goal - `@item.project.goal`
++ Project Goal: `@item.project.goal`
 
 ## Abilities
 
-+ Ability primary distance  - `@item.distance.primary`
-+ Ability secondary distance - `@item.distance.secondary`
-+ Ability tertiary distance - `@item.distance.tertiary`
-+ Ability Power Roll Characteristic - `@item.powerRoll.characteristics`
-+ Ability Power Roll Characteristic formula - `@item.powerRoll.formula`
-+ Ability Heroic Resource/Malice Cost -`@item.resource`
-+ Ability Additional Heroic Resource/Malice Cost - `@item.spend.value`
-+ Number of targets - `@item.target.value`
++ Ability primary distance : `@item.distance.primary`
++ Ability secondary distance: `@item.distance.secondary`
++ Ability tertiary distance: `@item.distance.tertiary`
++ Ability Power Roll Characteristic: `@item.powerRoll.characteristics`
++ Ability Power Roll Characteristic formula: `@item.powerRoll.formula`
++ Ability Heroic Resource/Malice Cost:`@item.resource`
++ Ability Additional Heroic Resource/Malice Cost: `@item.spend.value`
++ Number of targets: `@item.target.value`

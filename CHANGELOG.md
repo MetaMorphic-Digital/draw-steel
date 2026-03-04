@@ -27,6 +27,8 @@
 
 ### Changed
 
+- Moved skills from `system.hero.skills` to `system.skills.value`. (#1364)
+
 ### Fixed
 
 - Fixed an issue where guaranteed items like the Tactician's "Field Arsenal" did not offer their advancements.

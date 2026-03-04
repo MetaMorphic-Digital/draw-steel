@@ -116,21 +116,14 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @returns {string}
    */
   _getSkills() {
-    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
-      skill = ds.CONFIG.skills.list[skill]?.label;
-      if (skill) skills.push(skill);
-      return skills;
-    }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
-    const formatter = game.i18n.getListFormatter();
-
     const skillOptions = ds.CONFIG.skills.optgroups;
 
-    for (const skill of this.actor.system.hero.skills) {
+    for (const skill of this.actor.system.skills.value) {
       if (!(skill in ds.CONFIG.skills.list)) skillOptions.push({ value: skill });
     }
 
     return {
-      list: formatter.format(list),
+      list: this.actor.system.skills.list,
       options: skillOptions,
     };
   }
