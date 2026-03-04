@@ -56,7 +56,7 @@
             <a class="fa-fw fa-solid fa-angle-{{ifThen abilityContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
-        <div class="document-description item-embed content-embed {{#if abilityContext.expanded}}expanded{{/if}}">
+        <div class="document-description item-embed {{#if abilityContext.expanded}}expanded{{/if}}">
           {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>

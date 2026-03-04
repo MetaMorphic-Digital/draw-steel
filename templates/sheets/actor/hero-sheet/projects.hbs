@@ -18,7 +18,7 @@
       {{#each followers as |followerContext|}}
       <li class="item project draggable expandable-document" data-document-uuid="{{followerContext.item.uuid}}">
         <div class="item-row">
-          <div class="item-column item-name rollable {{disabled (not @root.owner)}}" data-action="rollProject">
+          <div class="item-column item-name {{disabled (not @root.owner)}}">
             <img class="item-image" src="{{followerContext.item.img}}" alt="{{followerContext.item.name}}">
             <div class="name">
               <div class="label">{{followerContext.item.name}}</div>
