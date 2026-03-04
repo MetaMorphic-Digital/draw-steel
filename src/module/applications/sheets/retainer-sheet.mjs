@@ -10,6 +10,10 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
       spendRecovery: this.#spendRecovery,
       editRetainerMetadata: this.#editRetainerMetadata,
     },
+    position: {
+      // Immunities and Weaknesses section is visible by default
+      height: 650,
+    },
   };
 
   /* -------------------------------------------------- */

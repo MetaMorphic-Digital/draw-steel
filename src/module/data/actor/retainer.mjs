@@ -37,7 +37,7 @@ export default class RetainerModel extends CreatureModel {
 
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
-      max: requiredInteger({ max: 0 }),
+      max: requiredInteger({ initial: 6 }),
     });
 
     return schema;

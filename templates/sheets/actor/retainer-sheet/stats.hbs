@@ -3,7 +3,7 @@
   <div class="form-group">
     <fieldset class="resources flexrow">
       <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
-      <div class="resource stamina">
+      <div class="resource stamina flexcol">
         <label class="resource-label">
           {{systemFields.stamina.label}}
         </label>
@@ -14,46 +14,80 @@
             systemFields.stamina.fields.temporary
             value=system.stamina.temporary
             dataset=datasets.notSource
-            classes="paired"
+            classes="stacked"
             }}
           </div>
           <div class="resource-current">
-            {{#if isSingleSquadMinion}}
-            {{formGroup
-            combatGroup.system.schema.fields.staminaValue
-            value=combatGroup.system.staminaValue
-            name="squadStaminaValue"
-            classes="paired"
-            label=(localize "TYPES.CombatantGroup.squad")
-            }}
-            {{else}}
             {{formGroup
             systemFields.stamina.fields.value
             value=system.stamina.value
             dataset=datasets.notSource
-            classes="paired"
+            classes="stacked"
             }}
-            {{/if}}
           </div>
           {{/if}}
           <span class="resource-max">
             {{#if isPlay}}
-            <div class="form-group paired">
+            <div class="form-group stacked">
               <label class="input-placeholder-label">
                 {{systemFields.stamina.fields.max.label}}
               </label>
               <div class="input-placeholder">
-                {{#if isSingleSquadMinion}}
-                {{combatGroup.system.staminaMax}}
-                {{else}}
                 {{system.stamina.max}}
-                {{/if}}
               </div>
             </div>
             {{else}}
             {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
             {{/if}}
           </span>
+        </div>
+      </div>
+      <div class="resource recoveries flexcol">
+        <div class="resource-label">
+          {{#if (and isPlay editable)}}
+          <button
+            type="button"
+            data-action="spendRecovery"
+            data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip"
+            data-tooltip-direction="UP"
+          >
+            <i class="fa-solid fa-heart-pulse"></i>
+            {{systemFields.recoveries.label}}
+          </button>
+          {{else}}
+          <span>{{systemFields.recoveries.label}}</span>
+          {{/if}}
+        </div>
+        <div class="form-group resource-content">
+          {{#if isPlay}}
+          <div class="resource-current">
+            {{formGroup systemFields.recoveries.fields.value value=system.recoveries.value dataset=datasets.notSource classes="stacked"}}
+          </div>
+          <span class="resource-max">
+            <div class="form-group stacked">
+              <label class="input-placeholder-label">
+                {{systemFields.recoveries.fields.max.label}}
+              </label>
+              <div class="input-placeholder">
+                {{system.recoveries.max}}
+              </div>
+            </div>
+          </span>
+          <span class="recovery-value">
+            <div class="form-group stacked">
+              <label class="input-placeholder-label">
+                {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.label"}}
+              </label>
+              <div class="input-placeholder">
+                {{system.recoveries.recoveryValue}}
+              </div>
+            </div>
+          </span>
+          {{else}}
+          <span class="resource-max">
+            {{formGroup systemFields.recoveries.fields.max value=systemSource.recoveries.max dataset=datasets.isSource classes="paired"}}
+          </span>
+          {{/if}}
         </div>
       </div>
     </fieldset>
