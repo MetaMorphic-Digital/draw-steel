@@ -22,9 +22,14 @@
 
 ### Added
 
+- Added new "Retainer" actor type. (#155)
+- Added a "Share Item" button to the item sheet header controls. (#1505)
+
 ### Changed
 
 ### Fixed
+
+- Fixed an issue where guaranteed items like the Tactician's "Field Arsenal" did not offer their advancements.
 
 ## 0.10.2
 

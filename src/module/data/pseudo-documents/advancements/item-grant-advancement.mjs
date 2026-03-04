@@ -152,7 +152,9 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       /** @type {DrawSteelItem} */
       const item = await fromUuid(uuid);
       if (!item) continue;
-      node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor().outerHTML, { item });
+      const parentLeaf = node.choices[item.uuid] = new AdvancementLeaf(node, item.uuid, item.toAnchor().outerHTML, { item });
+      // item grants with choices create the nodes upon configuration
+      if (!this.isChoice) promises.push(node.chain.createNodes(item, { parentLeaf }));
     }
     return Promise.allSettled(promises);
   }
