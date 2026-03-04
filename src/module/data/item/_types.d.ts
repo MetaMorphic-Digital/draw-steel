@@ -184,6 +184,8 @@ interface Skills {
 
 declare module "./follower.mjs" {
   export default interface FollowerModel {
+    followerType: string;
+    followerTypeLabel: string;
     characteristics: Record<string, Characteristic>;
     skills: Skills;
     languages: {
