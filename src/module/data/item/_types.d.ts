@@ -184,8 +184,8 @@ interface Skills {
 
 declare module "./follower.mjs" {
   export default interface FollowerModel {
+    type: string;
     followerType: string;
-    followerTypeLabel: string;
     characteristics: Record<string, Characteristic>;
     skills: Skills;
     languages: {
@@ -231,6 +231,7 @@ declare module "./project.mjs" {
 
   export default interface ProjectModel {
     type: keyof typeof ds["CONFIG"]["projects"]["types"];
+    projectType: string;
     prerequisites: string;
     projectSource: string;
     rollCharacteristic: Set<string>;

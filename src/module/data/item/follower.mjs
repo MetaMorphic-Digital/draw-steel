@@ -32,7 +32,7 @@ export default class FollowerModel extends BaseItemModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    schema.followerType = new fields.StringField({ required: true, choices: ds.CONST.followerTypes, initial: "artisan" });
+    schema.type = new fields.StringField({ required: true, choices: ds.CONST.followerTypes, initial: "artisan" });
 
     const characteristic = { initial: 0, integer: true, nullable: false };
 
@@ -81,7 +81,7 @@ export default class FollowerModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.followerTypeLabel = game.i18n.localize(ds.CONST.followerTypes[this.followerType].label);
+    this.followerType = game.i18n.localize(ds.CONST.followerTypes[this.type].label);
 
     const formatter = game.i18n.getListFormatter({ type: "unit" });
 
