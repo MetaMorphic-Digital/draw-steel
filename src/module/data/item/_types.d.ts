@@ -166,6 +166,35 @@ declare module "./feature.mjs" {
   }
 }
 
+interface Characteristic {
+  value: number;
+  edges: number;
+  banes: number;
+  dice: {
+    mode: "kh" | "kl";
+    number: number;
+  }
+}
+
+interface Skills {
+  value: Set<string>;
+  modifiers: Record<string, PowerRollModifiers>;
+  list: string;
+}
+
+declare module "./follower.mjs" {
+  export default interface FollowerModel {
+    type: string;
+    followerType: string;
+    characteristics: Record<string, Characteristic>;
+    skills: Skills;
+    languages: {
+      value: Set<string>;
+      list: string;
+    }
+  }
+}
+
 declare module "./kit.mjs" {
 
   type DamageSchema = {
@@ -202,6 +231,7 @@ declare module "./project.mjs" {
 
   export default interface ProjectModel {
     type: keyof typeof ds["CONFIG"]["projects"]["types"];
+    projectType: string;
     prerequisites: string;
     projectSource: string;
     rollCharacteristic: Set<string>;

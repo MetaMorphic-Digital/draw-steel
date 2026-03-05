@@ -1,4 +1,4 @@
-import { AdvancementModel, KitModel, ProjectModel, TreasureModel } from "../../data/item/_module.mjs";
+import { AdvancementModel, FollowerModel, KitModel, ProjectModel, TreasureModel } from "../../data/item/_module.mjs";
 import CharacteristicInput from "../apps/characteristic-input.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
@@ -101,6 +101,8 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         context.treasureFields = TreasureModel.schema.fields;
         break;
       case "projects":
+        context.followers = await this._prepareFollowersContext();
+        context.followerFields = FollowerModel.schema.fields;
         context.projects = await this._prepareProjectsContext();
         context.projectFields = ProjectModel.schema.fields;
         break;
@@ -135,7 +137,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
 
   /**
    * Prepare the context for features.
-   * @returns {Array<ActorSheetItemContext>}
+   * @returns {Promise<ActorSheetItemContext[]>}
    */
   async _prepareKitsContext() {
     const kits = this.actor.itemTypes.kit.toSorted((a, b) => a.sort - b.sort);
@@ -221,8 +223,25 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
+   * Prepare the context for follower items.
+   * @returns {Promise<ActorSheetItemContext[]>}
+   */
+  async _prepareFollowersContext() {
+    const followers = this.actor.itemTypes.follower.toSorted((a, b) => a.sort - b.sort);
+    const context = [];
+
+    for (const follower of followers) {
+      context.push(await this._prepareItemContext(follower));
+    }
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Prepare the context for project items.
-   * @returns {Array<ActorSheetItemContext>}
+   * @returns {Promise<ActorSheetItemContext[]>}
    */
   async _prepareProjectsContext() {
     const projects = this.actor.itemTypes.project.toSorted((a, b) => a.sort - b.sort);

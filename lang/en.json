@@ -1401,6 +1401,30 @@
       "feature": {
         "FIELDS": {}
       },
+      "follower": {
+        "FIELDS": {
+          "type": {
+            "label": "Follower Type"
+          },
+          "characteristics": {
+            "label": "Characteristics"
+          },
+          "skills": {
+            "value": {
+              "label": "Skills"
+            }
+          },
+          "languages": {
+            "value": {
+              "label": "Languages"
+            }
+          }
+        },
+        "Types": {
+          "artisan": "Artisan",
+          "sage": "Sage"
+        }
+      },
       "kit": {
         "FIELDS": {
           "type": {
@@ -2225,6 +2249,7 @@
       "complication": "Complication",
       "culture": "Culture",
       "feature": "Feature",
+      "follower": "Follower",
       "treasure": "Treasure",
       "kit": "Kit",
       "perk": "Perk",

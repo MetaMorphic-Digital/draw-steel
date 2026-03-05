@@ -23,7 +23,8 @@
 ### Added
 
 - Added new "Retainer" actor type. (#155)
-- Added "Encounter" keyword. (This does not yet include tracking the usage)
+  - Added "Encounter" keyword. (This does not yet include tracking the usage)
+- Added new "Follower" item type for Artisans and Sages. (#679)
 - Added a "Share Item" button to the item sheet header controls. (#1505)
 
 ### Changed
