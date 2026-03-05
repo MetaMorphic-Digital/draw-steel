@@ -58,6 +58,10 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Reusable DragDrop instance.
+   * @type {foundry.applications.ux.DragDrop}
+   */
   _dragDrop = new ux.DragDrop.implementation({
     dragSelector: ".combatant",
     dropSelector: ".combatant-group, .combat-tracker",
@@ -289,23 +293,30 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // These buttons/methods are inappropriate for default initiative handling
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollNPC\"]")?.remove();
-    if (game.user.isGM) {
-      const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
-      if (rightControls) {
-        const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
-        if (!endCombat) {
-          rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
-            classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
-            dataset: {
-              action: "endCombat",
-              tooltip: "COMBAT.End",
-            },
-          }));
-        }
-      }
-    }
+    if (game.user.isGM) this._addEndCombatButton();
 
     this._dragDrop.bind(this.element);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Add an "End Combat" button to the combat controls portion of the header.
+   */
+  _addEndCombatButton() {
+    const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
+    if (rightControls) {
+      const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
+      if (!endCombat) {
+        rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
+          classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
+          dataset: {
+            action: "endCombat",
+            tooltip: "COMBAT.End",
+          },
+        }));
+      }
+    }
   }
 
   /* -------------------------------------------------- */
