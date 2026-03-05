@@ -57,6 +57,22 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   #highlightedTokens = new Set();
 
   /* -------------------------------------------------- */
+
+  _dragDrop = new ux.DragDrop.implementation({
+    dragSelector: ".combatant",
+    dropSelector: ".combatant-group, .combat-tracker",
+    permissions: {
+      dragstart: () => game.user.isGM,
+      drop: () => game.user.isGM,
+    },
+    callbacks: {
+      dragstart: this._onDragStart.bind(this),
+      dragover: this._onDragOver.bind(this),
+      drop: this._onDrop.bind(this),
+    },
+  });
+
+  /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
@@ -222,6 +238,49 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
+      hookName: "getCombatantGroupContextOptions",
+      fixed: true,
+      parentClassHooks: false,
+    });
+
+    // Hover group targets
+    this.element.addEventListener("pointermove", (event) => {
+      if (!canvas.ready) return;
+
+      // Cancel if hovering target within group
+      if (event.target.closest(".combatant[data-combatant-id]")) return;
+
+      const { groupId } = event.target.closest(".combatant-group[data-group-id]")?.dataset ?? {};
+
+      const groupMembers = game.combat?.groups.get(groupId)?.members;
+
+      if (groupMembers) {
+        groupMembers.forEach((member, i) => {
+          const token = canvas.tokens.get(member?.tokenId);
+          if (token && token._canHover(game.user, event) && token.visible) {
+            token._onHoverIn(event, { hoverOutOthers: i === 0 });
+            this.#highlightedTokens.add(token);
+          }
+        });
+      } else {
+        this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
+        this.#highlightedTokens.clear();
+      }
+    });
+
+    this.element.addEventListener("pointerout", (event) => {
+      this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
+      this.#highlightedTokens.clear();
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
 
@@ -246,49 +305,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       }
     }
 
-    // Hover group targets
-    this.element.addEventListener("pointermove", (event) => {
-      if (!canvas.ready) return;
-
-      // Cancel if hovering target within group
-      if (event.target.closest(".combatant[data-combatant-id]")) return;
-
-      const { groupId } = event.target.closest(".combatant-group[data-group-id]")?.dataset ?? {};
-
-      const groupMembers = game.combat.groups.get(groupId)?.members;
-
-      if (groupMembers) {
-        groupMembers.forEach((member, i) => {
-          const token = canvas.tokens.get(member?.tokenId);
-          if (token && token._canHover(game.user, event) && token.visible) {
-            token._onHoverIn(event, { hoverOutOthers: i === 0 });
-            this.#highlightedTokens.add(token);
-          }
-        });
-      } else {
-        this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
-        this.#highlightedTokens.clear();
-      }
-    });
-
-    this.element.addEventListener("pointerout", (event) => {
-      this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
-      this.#highlightedTokens.clear();
-    });
-
-    new ux.DragDrop.implementation({
-      dragSelector: ".combatant",
-      dropSelector: ".combatant-group, .combat-tracker",
-      permissions: {
-        dragstart: () => game.user.isGM,
-        drop: () => game.user.isGM,
-      },
-      callbacks: {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      },
-    }).bind(this.element);
+    this._dragDrop.bind(this.element);
   }
 
   /* -------------------------------------------------- */
@@ -348,19 +365,6 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     else {
       combatant.update({ group: null });
     }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _onFirstRender(context, options) {
-    await super._onFirstRender(context, options);
-
-    this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
-      hookName: "getCombatantGroupContextOptions",
-      fixed: true,
-      parentClassHooks: false,
-    });
   }
 
   /* -------------------------------------------------- */
@@ -582,9 +586,17 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const oldValue = group.initiative;
     const newValue = oldValue ? oldValue - 1 : 1;
 
-    if (oldValue) group._expanded = true;
+    if (oldValue) {
+      group._expanded = true;
+
+      const combatant = group.members.find(c => c.initiative);
+      if (combatant) {
+        const newTurn = this.viewed.turns.findIndex((c) => c === combatant);
+        this.viewed.update({ turn: newTurn }, { direction: 1 });
+      }
+
+    }
 
     await group.update({ initiative: newValue });
-
   }
 }
