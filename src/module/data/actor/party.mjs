@@ -90,7 +90,7 @@ export default class PartyModel extends DrawSteelSystemModel {
    * @returns {boolean}
    */
   validMember(actor) {
-    return (actor instanceof foundry.documents.Actor) && this.constructor.ALLOWED_ACTOR_TYPES.has(actor.type)
+    return (actor instanceof foundry.documents.Actor) && PartyModel.ALLOWED_ACTOR_TYPES.has(actor.type)
       && !actor.inCompendium && !actor.isToken;
   }
 

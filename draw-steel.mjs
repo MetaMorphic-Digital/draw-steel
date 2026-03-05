@@ -106,6 +106,11 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Object",
   });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelPartySheet, {
+    types: ["party"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Party",
+  });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelRetainerSheet, {
     types: ["retainer"],
     makeDefault: true,

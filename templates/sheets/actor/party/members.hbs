@@ -1,0 +1,30 @@
+<section data-tab="{{tabs.members.id}}" data-group="{{tabs.members.group}}" class="{{tabs.members.cssClass}}">
+  <div class="contents">
+    {{#each members}}
+    <section class="member" data-member-id="{{actor.id}}">
+      <section class="avatar">
+        <img src="{{actor.img}}" alt="{{actor.name}}">
+      </section>
+      <section class="details">
+        <span class="title">{{actor.name}}</span>
+
+        <section class="resources">
+          <span>{{stamina.value}} / {{stamina.max}}</span>
+        </section>
+      </section>
+      <section class="controls">
+        {{#if @root.isPlay}}
+        <a class="control" data-action="removeMember">
+          <i class="fa-solid fa-fw fa-trash" inert></i>
+        </a>
+        {{/if}}
+        {{#if (and (not @root.isPlay) canView)}}
+        <a class="control" data-action="showMember">
+          <i class="fa-solid fa-fw fa-magnifying-glass" inert></i>
+        </a>
+        {{/if}}
+      </section>
+    </section>
+    {{/each}}
+  </div>
+</section>
