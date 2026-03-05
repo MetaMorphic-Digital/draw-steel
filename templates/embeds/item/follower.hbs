@@ -1,0 +1,21 @@
+<section class="follower-info">
+  <dl>
+    <dt class="follower-type">{{systemFields.followerType.label}}</dt>
+    <dd class="follower-type">{{system.followerTypeLabel}}</dd>
+  </dl>
+  <dl class="characteristics">
+    {{#each characteristics}}
+    <dt class="characteristic">{{field.label}}</dt>
+    <dd class="characteristic">{{value}}</dd>
+    {{/each}}
+
+  </dl>
+  <dl class="skills-languages">
+    <dt class="skills">{{systemFields.skills.fields.value.label}}</dt>
+    <dd class="skills">{{skills.list}}</dd>
+
+    <dt class="languages">{{systemFields.languages.fields.value.label}}</dt>
+    <dd class="languages">{{languages.list}}</dd>
+  </dl>
+  {{{enrichedDescription}}}
+</section>

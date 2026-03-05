@@ -57,6 +57,17 @@ export default class ProjectModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    this.points ??= 0;
+
+    this.typeLabel = game.i18n.localize(ds.CONFIG.projects.types[this.type]?.label ?? "");
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
 

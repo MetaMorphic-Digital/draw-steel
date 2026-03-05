@@ -1,9 +1,9 @@
-/* Sheets do not include the document-embed wrapper but do use a `.content-embed` div class */
-document-embed, .content-embed {
+/* Sheets do not include the document-embed wrapper but do use a `.item-embed` div class */
+document-embed, .item-embed {
   &.inline {
     display: inline;
   }
-  &.ability, &.immediate-embed.ability {
+  &.ability {
     h5 {
       margin: 0;
       font-size: var(--font-h5-size);
@@ -39,7 +39,13 @@ document-embed, .content-embed {
     }
   }
 
-  /* Embeds inside a Draw Steel application */
+  div.follower {
+    .characteristics {
+      grid-template-columns: auto 1fr auto 1fr auto 1fr;
+    }
+  }
+
+  /* Non-Actor/Item Embeds inside a Draw Steel application */
   .draw-steel & {
     .roll-table-embed {
       table-layout: fixed;

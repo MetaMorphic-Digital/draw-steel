@@ -1,4 +1,5 @@
 import BaseItemModel from "./base-item.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
 import { systemPath } from "../../constants.mjs";
 
@@ -80,6 +81,8 @@ export default class FollowerModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    this.followerTypeLabel = game.i18n.localize(ds.CONST.followerTypes[this.followerType].label);
+
     const formatter = game.i18n.getListFormatter({ type: "unit" });
 
     const skillList = this.skills.value.reduce((skills, skill) => {
@@ -102,15 +105,37 @@ export default class FollowerModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async toEmbed(config, options = {}) {
+    const context = {
+      system: this,
+      systemFields: this.schema.fields,
+      config: ds.CONFIG,
+      enrichedDescription: await enrichHTML(this.description.value, { ...options, relativeTo: this.parent }),
+    };
+    await this.getSheetContext(context);
+
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", "follower");
+    if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    const followerBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/follower.hbs"), context);
+    embed.insertAdjacentHTML("beforeend", followerBody);
+    return embed;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async getSheetContext(context) {
     await super.getSheetContext(context);
 
-    const data = context.isPlay ? this : this._source;
+    const useInitialized = context.isPlay ?? true;
+
+    const data = useInitialized ? this : this._source;
     context.characteristics = Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
       const value = foundry.utils.getProperty(data, `characteristics.${chc}.value`);
       obj[chc] = {
         field: this.schema.getField(["characteristics", chc, "value"]),
-        value: context.isPlay ? (value ?? 0) : (value || null),
+        value: useInitialized ? (value ?? 0) : (value || null),
       };
       return obj;
     }, {});
