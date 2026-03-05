@@ -53,6 +53,9 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     const heroes = this.combatants.filter(c => (c.actor?.type === "hero") && c.hasPlayerOwner).map(c => c.actor);
     await malice.startCombat(heroes);
 
+    const combatantGroupUpdates = this.groups.map(c => ({ _id: c.id, initiative: 1 }));
+    await this.updateEmbeddedDocuments("CombatantGroup", combatantGroupUpdates);
+
     return super.startCombat();
   }
 

@@ -19,9 +19,11 @@
           {{initiativeCount}} <i class="fa-solid {{initiativeSymbol}}"></i>
         </a>
         {{else}}
+        {{#if initiative}}
         <span class="activate-combatant">
           {{initiativeCount}} <i class="fa-solid {{initiativeSymbol}}"></i>
         </span>
+        {{/if}}
         {{/if}}
       </div>
     </header>

@@ -30,6 +30,9 @@
 ### Changed
 
 - Moved skills from `system.hero.skills` to `system.skills.value`. (#1364)
+- Combat Tracker improvements
+  - Players no longer see the "Restore Action" button for groups that have gone
+  - Activating a group sets the active turn to one of the members, moving the group to the top of the sorting instead of the bottom.
 
 ### Fixed
 
@@ -37,6 +40,7 @@
   - Added "Performance" keyword to the Blocking ability. (#1709)
   - Removed extraneous characters from "Thunder Mother" story text.
 - Fixed an issue where guaranteed items like the Tactician's "Field Arsenal" did not offer their advancements.
+- Starting a combat refreshes all combat groups to be ready to act, just like advancing the turn.
 
 ## 0.10.2
 

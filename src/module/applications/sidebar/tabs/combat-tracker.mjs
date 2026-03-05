@@ -57,6 +57,26 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   #highlightedTokens = new Set();
 
   /* -------------------------------------------------- */
+
+  /**
+   * Reusable DragDrop instance.
+   * @type {foundry.applications.ux.DragDrop}
+   */
+  _dragDrop = new ux.DragDrop.implementation({
+    dragSelector: ".combatant",
+    dropSelector: ".combatant-group, .combat-tracker",
+    permissions: {
+      dragstart: () => game.user.isGM,
+      drop: () => game.user.isGM,
+    },
+    callbacks: {
+      dragstart: this._onDragStart.bind(this),
+      dragover: this._onDragOver.bind(this),
+      drop: this._onDrop.bind(this),
+    },
+  });
+
+  /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
@@ -222,29 +242,14 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _onRender(context, options) {
-    await super._onRender(context, options);
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
 
-    if (!game.combats.isDefaultInitiativeMode) return;
-
-    // These buttons/methods are inappropriate for default initiative handling
-    this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
-    this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollNPC\"]")?.remove();
-    if (game.user.isGM) {
-      const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
-      if (rightControls) {
-        const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
-        if (!endCombat) {
-          rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
-            classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
-            dataset: {
-              action: "endCombat",
-              tooltip: "COMBAT.End",
-            },
-          }));
-        }
-      }
-    }
+    this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
+      hookName: "getCombatantGroupContextOptions",
+      fixed: true,
+      parentClassHooks: false,
+    });
 
     // Hover group targets
     this.element.addEventListener("pointermove", (event) => {
@@ -255,7 +260,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
       const { groupId } = event.target.closest(".combatant-group[data-group-id]")?.dataset ?? {};
 
-      const groupMembers = game.combat.groups.get(groupId)?.members;
+      const groupMembers = game.combat?.groups.get(groupId)?.members;
 
       if (groupMembers) {
         groupMembers.forEach((member, i) => {
@@ -275,20 +280,43 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       this.#highlightedTokens.forEach((token) => token._onHoverOut(event));
       this.#highlightedTokens.clear();
     });
+  }
 
-    new ux.DragDrop.implementation({
-      dragSelector: ".combatant",
-      dropSelector: ".combatant-group, .combat-tracker",
-      permissions: {
-        dragstart: () => game.user.isGM,
-        drop: () => game.user.isGM,
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    if (!game.combats.isDefaultInitiativeMode) return;
+
+    // These buttons/methods are inappropriate for default initiative handling
+    this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
+    this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollNPC\"]")?.remove();
+    if (game.user.isGM) this._addEndCombatButton();
+
+    this._dragDrop.bind(this.element);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Add an "End Combat" button to the combat controls portion of the header.
+   */
+  _addEndCombatButton() {
+    const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
+    if (!rightControls) return;
+    // Can re-render just the body part without the header.
+    const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
+    if (endCombat) return;
+
+    rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
+      classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
+      dataset: {
+        action: "endCombat",
+        tooltip: "COMBAT.End",
       },
-      callbacks: {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      },
-    }).bind(this.element);
+    }));
   }
 
   /* -------------------------------------------------- */
@@ -348,19 +376,6 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     else {
       combatant.update({ group: null });
     }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _onFirstRender(context, options) {
-    await super._onFirstRender(context, options);
-
-    this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
-      hookName: "getCombatantGroupContextOptions",
-      fixed: true,
-      parentClassHooks: false,
-    });
   }
 
   /* -------------------------------------------------- */
@@ -582,9 +597,17 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const oldValue = group.initiative;
     const newValue = oldValue ? oldValue - 1 : 1;
 
-    if (oldValue) group._expanded = true;
+    if (oldValue) {
+      group._expanded = true;
+
+      const combatant = group.members.find(c => c.initiative);
+      if (combatant) {
+        const newTurn = this.viewed.turns.findIndex((c) => c === combatant);
+        this.viewed.update({ turn: newTurn }, { direction: 1 });
+      }
+
+    }
 
     await group.update({ initiative: newValue });
-
   }
 }
