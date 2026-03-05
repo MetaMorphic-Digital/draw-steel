@@ -33,6 +33,9 @@
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Added "Performance" keyword to the Blocking ability. (#1709)
+  - Removed extraneous characters from "Thunder Mother" story text.
 - Fixed an issue where guaranteed items like the Tactician's "Field Arsenal" did not offer their advancements.
 
 ## 0.10.2

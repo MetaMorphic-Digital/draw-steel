@@ -63,10 +63,12 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: ${{ github.event.release.name }}
+          omitNameDuringUpdate: true
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "./system.json, ./system.zip"
           tag: ${{ github.event.release.tag_name }}
+          makeLatest: false
+          prerelease: true
           body: |
             ${{ github.event.release.body }}
 
