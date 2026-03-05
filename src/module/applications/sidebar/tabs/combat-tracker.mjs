@@ -305,18 +305,18 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
    */
   _addEndCombatButton() {
     const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
-    if (rightControls) {
-      const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
-      if (!endCombat) {
-        rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
-          classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
-          dataset: {
-            action: "endCombat",
-            tooltip: "COMBAT.End",
-          },
-        }));
-      }
-    }
+    if (!rightControls) return;
+    // Can re-render just the body part without the header.
+    const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
+    if (endCombat) return;
+
+    rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
+      classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
+      dataset: {
+        action: "endCombat",
+        tooltip: "COMBAT.End",
+      },
+    }));
   }
 
   /* -------------------------------------------------- */
