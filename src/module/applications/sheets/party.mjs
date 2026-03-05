@@ -2,8 +2,11 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { systemPath } from "../../constants.mjs";
 
+/**
+ * An implementation of an actor sheet for Party actors.
+ */
 export default class DrawSteelPartySheet extends DrawSteelActorSheet {
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
       placeMembers: DrawSteelPartySheet.#placeMembers,
@@ -15,7 +18,7 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     header: {
       template: systemPath("templates/sheets/actor/party/header.hbs"),
@@ -37,7 +40,7 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
@@ -143,7 +146,7 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async _onDropActor(event, actor) {
     await this.document.system.addMembers([actor]);
     return true;

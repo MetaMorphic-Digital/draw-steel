@@ -2,6 +2,9 @@ import { DocumentSourceInput, ObjectMetadataInput } from "../apps/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 import { systemPath } from "../../constants.mjs";
 
+/**
+ * An implementation of an actor sheet for Object actors.
+ */
 export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
