@@ -106,6 +106,11 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Object",
   });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelPartySheet, {
+    types: ["party"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Party",
+  });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelRetainerSheet, {
     types: ["retainer"],
     makeDefault: true,
@@ -158,6 +163,7 @@ Hooks.once("init", function () {
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
+    actors: applications.sidebar.tabs.DrawSteelActorDirectory,
     combat: applications.sidebar.tabs.DrawSteelCombatTracker,
     players: applications.ui.DrawSteelPlayers,
   });

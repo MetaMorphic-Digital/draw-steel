@@ -42,6 +42,8 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     return createdTokens;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetch token data, making appropriate adjustments to token and actor data.
    * @param {DrawSteelActor} actor           The base actor for the token.
@@ -64,13 +66,11 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     if (tokenDocument.actorLink) {
       const { effects, items, ...rest } = actorUpdates;
       await tokenDocument.actor.update(rest);
-      await tokenDocument.actor.updateEmbeddedDocuments("Item", items);
+      await tokenDocument.actor.updateEmbeddedDocuments("Item", items ?? []);
 
-      const { newEffects, oldEffects } = effects.reduce((acc, curr) => {
-        const target = tokenDocument.actor.effects.get(curr._id) ? "oldEffects" : "newEffects";
-        acc[target].push(curr);
-        return acc;
-      }, { newEffects: [], oldEffects: [] });
+      const { newEffects = [], oldEffects = [] } = Object.groupBy(effects ?? [], effect => {
+        return tokenDocument.actor.effects.get(effect._id) ? "oldEffects" : "newEffects";
+      });
 
       await tokenDocument.actor.updateEmbeddedDocuments("ActiveEffect", oldEffects);
       await tokenDocument.actor.createEmbeddedDocuments("ActiveEffect", newEffects, { keepId: true });

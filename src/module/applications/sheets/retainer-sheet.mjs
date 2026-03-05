@@ -2,6 +2,9 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
 import RetainerMetadataInput from "../apps/retainer-metadata-input.mjs";
 import { systemPath } from "../../constants.mjs";
 
+/**
+ * An implementation of an actor sheet for Retainer actors.
+ */
 export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {

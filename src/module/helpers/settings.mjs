@@ -1,4 +1,4 @@
-import { HeroTokenModel, MaliceModel } from "../data/settings/_module.mjs";
+import { HeroTokenModel, MaliceModel, PrimaryPartyModel } from "../data/settings/_module.mjs";
 import DrawSteelHeroSheet from "../applications/sheets/hero-sheet.mjs";
 import { systemID } from "../constants.mjs";
 
@@ -51,6 +51,13 @@ export default class DrawSteelSettingsHandler {
         scope: "world",
         default: { value: 0 },
         onChange: MaliceModel.onChange,
+      },
+      primaryParty: {
+        type: PrimaryPartyModel,
+        scope: "world",
+        default: null,
+        config: false,
+        onChange: () => ui.actors.render(),
       },
       showPlayerMalice: {
         name: "DRAW_STEEL.Setting.ShowPlayerMalice.Label",

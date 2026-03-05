@@ -10,6 +10,9 @@ import { systemPath } from "../../constants.mjs";
  * @import { ActorSheetItemContext, ActorSheetTreasureContext, ActorSheetComplicationsContext } from "./_types.js";
  */
 
+/**
+ * An implementation of an actor sheet for Hero actors.
+ */
 export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {

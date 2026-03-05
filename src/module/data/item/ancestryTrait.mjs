@@ -10,7 +10,7 @@ export default class AncestryTraitModel extends FeatureModel {
     return {
       ...super.metadata,
       type: "ancestryTrait",
-      invalidActorTypes: ["npc", "object"],
+      invalidActorTypes: ["npc", "object", "party"],
       packOnly: true,
       detailsPartial: [systemPath("templates/sheets/item/partials/ancestryTrait.hbs")],
     };
