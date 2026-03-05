@@ -111,9 +111,9 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
     const members = [];
     for (const member of this.document.system.members) {
       const ctx = { ...member };
-      const { stamina } = member.actor.system;
+      const { recoveries, stamina } = member.actor.system;
       Object.assign(ctx, {
-        stamina,
+        recoveries, stamina,
         rootId: [this.id, member.actor.id].join("-"),
         canView: member.actor.testUserPermission(game.user, "OBSERVER"),
       });
