@@ -1,5 +1,6 @@
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 import DrawSteelActiveEffect from "./active-effect.mjs";
+import DrawSteelPartySheet from "../applications/sheets/party.mjs";
 
 /** @import ClassModel from "../data/item/class.mjs" */
 
@@ -54,6 +55,20 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     }
 
     Hooks.callAll("ds.prepareActorData", this);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    // Remove party sheets and re-render them.
+    Object.values(this.apps).forEach(app => {
+      if (!(app instanceof DrawSteelPartySheet)) return;
+      delete this.apps[app.id];
+      if (app.rendered) app.render();
+    });
+
+    super._onDelete(options, userId);
   }
 
   /* -------------------------------------------------- */

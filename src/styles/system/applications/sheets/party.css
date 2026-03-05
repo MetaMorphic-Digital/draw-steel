@@ -1,0 +1,133 @@
+.draw-steel.application.sheet.actor.party {
+  --min-height: 300px;
+  --min-width: 600px;
+  --members-width: 250px;
+
+  &:not(.minimizing, .maximizing, .minimized) {
+    min-height: var(--min-height);
+    min-width: var(--min-width);
+  }
+
+  .window-content {
+    container-type: inline-size;
+  }
+
+  [data-application-part=header] {
+    display: grid;
+    grid-template-columns: min(30%, 15rem) min(25%, 10rem) min(30%, 15rem);
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    @container (width < 800px) {
+      grid: "left avatar" "right avatar" / 15rem 10rem;
+
+      .left-controls { grid-area: left }
+      .right-controls { grid-area: right }
+      .middle-controls { grid-area: avatar }
+    }
+
+    .left-controls {
+      .title {
+        margin: 0;
+        margin-bottom: .5rem;
+        font-size: 30px;
+      }
+    }
+  }
+
+  [data-application-part=navigation] {
+    margin: 1rem 0;
+  }
+
+  [data-application-part=members] {
+    overflow: hidden;
+
+    .contents {
+      overflow: auto;
+      scrollbar-gutter: stable;
+      gap: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      align-content: start;
+      height: 100%;
+    }
+
+    .member {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: .5rem;
+      padding: .5rem;
+      position: relative;
+      border-radius: .5rem;
+      background: rgb(58 55 55 / 0.336);
+
+      .avatar {
+        img {
+          width: 100%;
+          aspect-ratio: 1;
+          overflow: hidden;
+          object-position: top center;
+          object-fit: cover;
+        }
+      }
+
+      .details {
+        margin: 0 1.5rem 0 1rem;
+        overflow: hidden;
+
+        .title {
+          display: block;
+          font-size: 18px;
+          text-wrap: nowrap;
+          overflow: hidden visible;
+          text-overflow: ellipsis;
+          margin-bottom: .5rem;
+        }
+
+        .resources {
+          display: grid;
+        }
+      }
+
+      .controls {
+        position: absolute;
+        inset: 0 0 auto auto;
+        display: flex;
+        flex-direction: row-reverse;
+        text-align: center;
+
+        .control {
+          margin: .5rem;
+
+          .fa-solid {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  [data-application-part=details] {
+    overflow: hidden;
+    height: 100%;
+
+    .contents {
+      overflow: auto;
+      scrollbar-gutter: stable;
+      gap: 1rem;
+      display: grid;
+      grid-template-rows: 0fr 1fr;
+      height: 100%;
+    }
+
+    .inputs {
+      display: grid;
+      gap: .5rem;
+    }
+
+    prose-mirror {
+      height: 100%;
+    }
+  }
+}

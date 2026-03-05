@@ -1,0 +1,15 @@
+<section>
+  <section class="left-controls">
+    <h3 class="title">{{document.name}}</h3>
+    <a data-action="placeMembers" {{disabled (not header.canPlaceMembers)}}>
+      <i class="fa-solid fa-fw fa-bullseye" inert></i>
+      <span>{{localize "DRAW_STEEL.Actor.party.placeMembers"}}</span>
+    </a>
+  </section>
+
+  <section class="middle-controls">
+    <img src="{{document.img}}" alt="{{document.name}}">
+  </section>
+
+  <section class="right-controls"></section>
+</section>
