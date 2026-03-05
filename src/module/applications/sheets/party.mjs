@@ -3,6 +3,10 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
+ * @import DrawSteelActor from "../../documents/actor.mjs";
+ */
+
+/**
  * An implementation of an actor sheet for Party actors.
  */
 export default class DrawSteelPartySheet extends DrawSteelActorSheet {
@@ -56,7 +60,7 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
 
   /**
    * External actors who re-render this application.
-   * @type {Set<RyuutamaActor>}
+   * @type {Set<DrawSteelActor>}
    */
   #appActors = new Set();
 
