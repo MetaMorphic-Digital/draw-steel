@@ -64,9 +64,9 @@ export default class AbilityModel extends BaseItemModel {
     schema.trigger = new fields.StringField({ required: true });
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
-      primary: new fields.NumberField({ integer: true, min: 0 }),
-      secondary: new fields.NumberField({ integer: true, min: 0 }),
-      tertiary: new fields.NumberField({ integer: true, min: 0 }),
+      primary: new FormulaField({ deterministic: true, initial: "1" }),
+      secondary: new FormulaField({ deterministic: true, initial: "1" }),
+      tertiary: new FormulaField({ deterministic: true, initial: "1" }),
     });
     schema.damageDisplay = new fields.StringField({ choices: {
       melee: "DRAW_STEEL.Item.ability.Keywords.Melee",
@@ -156,6 +156,15 @@ export default class AbilityModel extends BaseItemModel {
         }
       }
     }
+
+    // Parse distance formulas
+    const rollData = this.parent.getRollData();
+    const contextName = this.parent.uuid;
+    Object.assign(this.distance, {
+      primary: ds.utils.evaluateFormula(this.distance.primary, rollData, { contextName }),
+      secondary: ds.utils.evaluateFormula(this.distance.secondary, rollData, { contextName }),
+      tertiary: ds.utils.evaluateFormula(this.distance.tertiary, rollData, { contextName }),
+    });
 
     // Prepare PRE data that relies on ability data prep being complete (e.g. treasure damage bonuses).
     for (const effect of this.power.effects) {

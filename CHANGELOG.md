@@ -30,9 +30,11 @@
 ### Changed
 
 - Moved skills from `system.hero.skills` to `system.skills.value`. (#1364)
+- Ability distance values now take roll formulas, e.g. `5 + @R`. (#1466)
 - Combat Tracker improvements
   - Players no longer see the "Restore Action" button for groups that have gone
   - Activating a group sets the active turn to one of the members, moving the group to the top of the sorting instead of the bottom.
+- `ds.utils.evaluateFormula` will now default to a value of "0" if the formula is nullish or blank.
 
 ### Fixed
 
