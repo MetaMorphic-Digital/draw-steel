@@ -63,6 +63,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
     switch (partId) {
       case "header":
         context.retainerKeywords = this._getRetainerKeywords();
+        context.mentorLink = this.document.system.retainer.mentor?.toAnchor();
         break;
       case "stats":
         context.characteristics = this._getCharacteristics(true);

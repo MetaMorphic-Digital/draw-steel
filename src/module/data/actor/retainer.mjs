@@ -33,6 +33,7 @@ export default class RetainerModel extends CreatureModel {
       freeStrike: requiredInteger({ initial: 0 }),
       keywords: new fields.SetField(setOptions()),
       role: new fields.StringField({ required: true }),
+      mentor: new fields.ForeignDocumentField(foundry.documents.Actor),
     });
 
     schema.recoveries = new fields.SchemaField({
