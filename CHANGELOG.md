@@ -39,7 +39,16 @@
 - Player-Facing Compendium Data Fixes:
   - Added "Performance" keyword to the Blocking ability. (#1709)
   - Removed extraneous characters from "Thunder Mother" story text.
+  - Cleaned up up nonfunctional effects on Claw Dirt, Arrest, World Torn Asunder, Impaled, Pounce, Bear Claws, Net and Stab, Anticipating Strike, Gasping in Pain, Shadowgrasp, Their Lack of Focus Is Their Undoing, Upstage, Method Acting, Blood on the Stage, Feedback, and Stone Eyes.
+  - Fixed applied effects on Judgment's Hammer, Vessel of Retribution, Iron Grip, You Talk Too Much, Squad! On Me!, and Mind Snare.
+  - Adjusted a number of title and complication effects to have an actual name.
+- Director-Facing Compendium Data Fixes:
+  - Added damage enricher to the Loyalty Collar feature for War Dog Commando and War Dog Sharpshooter.
+  - Added missing "With Captain" effect to War Dog Commando.
+  - Cleaned up nonfunctional effects on Ashen Hoarder, High Elf "Gift from an Accursed Tome", Dorzinuuth the Base, Olothec, Blood Starved Vampire, Werewolf, Compulsion Eye
+  - Fixed applied effects on Hobgoblin Smokebinder
 - Fixed an issue where guaranteed items like the Tactician's "Field Arsenal" did not offer their advancements.
+- Updating from compendium now preserves document IDs for freshly created items and effects.
 - Starting a combat refreshes all combat groups to be ready to act, just like advancing the turn.
 
 ## 0.10.2

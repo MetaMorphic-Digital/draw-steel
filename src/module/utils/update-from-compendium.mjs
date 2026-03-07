@@ -63,9 +63,9 @@ export default async function updateFromCompendium(doc, options = {}) {
         await updateFromCompendium(currentEntry, { skipDialog: true, uuid: original.uuid, embedOnly: true });
       }
       // Items does not alter WorldCollection#fromCompendium
-      else toCreate.push(game.items.fromCompendium(original));
+      else toCreate.push(game.items.fromCompendium(original, { keepId: true }));
     }
-    await doc.createEmbeddedDocuments(collection.documentName, toCreate);
+    await doc.createEmbeddedDocuments(collection.documentName, toCreate, { keepId: true });
     await doc.updateEmbeddedDocuments(collection.documentName, toUpdate);
     await doc.deleteEmbeddedDocuments(collection.documentName, Array.from(toDelete));
   }
