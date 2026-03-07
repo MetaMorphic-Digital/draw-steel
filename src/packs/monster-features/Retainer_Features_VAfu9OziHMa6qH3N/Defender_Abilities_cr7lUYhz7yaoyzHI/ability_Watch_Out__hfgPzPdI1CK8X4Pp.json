@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "watch-out",
@@ -17,19 +17,23 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "encounter",
+      "melee"
+    ],
+    "type": "triggered",
     "category": "",
     "resource": null,
-    "trigger": "",
+    "trigger": "The target takes damage from a strike.",
     "distance": {
-      "type": "self"
+      "type": "melee",
+      "primary": 1
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
-      "custom": "",
-      "value": null
+      "type": "ally",
+      "custom": "The retainer's mentor",
+      "value": 1
     },
     "power": {
       "roll": {
@@ -40,7 +44,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>The retainer pushes the target or the attacking creature up to 2 squares. If that moves the mentor out of distance of the strike, the strike has no effect.</p>",
       "after": ""
     },
     "spend": {

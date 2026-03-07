@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "last-stand",
@@ -17,31 +17,61 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee",
+      "primary": 1
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "v15bUs3KKm3AXYO5": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "v15bUs3KKm3AXYO5",
+          "damage": {
+            "tier1": {
+              "value": "8"
+            },
+            "tier2": {
+              "value": "13"
+            },
+            "tier3": {
+              "value": "17"
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>The retainer and their mentor each gain [[/heal 10 temporary]]. Additionally, each winded ally within 2 squares of the retainer can spend a Recovery.</p>"
     },
     "spend": {
       "text": "",

@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "359",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "spew-death",
@@ -17,17 +17,22 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "encounter",
+      "magic"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "burst",
+      "primary": 5
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
       "value": null
     },
@@ -35,13 +40,45 @@
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "WCwYGtajK690E4VJ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "WCwYGtajK690E4VJ",
+          "damage": {
+            "tier1": {
+              "value": "11",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "16",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "21",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "",
-      "after": ""
+      "before": "<p><strong>Special:</strong> The Nameless must be winded to use this ability</p>",
+      "after": "<p>Any living minions reduced to 0 Stamina by this ability regain all their Stamina and become corporeal undead under the Nameless’s control until the end of the Nameless’s next turn, after which they are destroyed.</p>"
     },
     "spend": {
       "text": "",

@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "its-me-you-want",
@@ -17,27 +17,93 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee",
+      "primary": 1
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
-      "value": null
+      "value": 2
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "3JPy8yDXiw61wHBh": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "3JPy8yDXiw61wHBh",
+          "damage": {
+            "tier1": {
+              "value": "7"
+            },
+            "tier2": {
+              "value": "11"
+            },
+            "tier3": {
+              "value": "16"
+            }
+          }
+        },
+        "WBZlHLn29mfxWY7X": {
+          "sort": 200000,
+          "name": "Taunted",
+          "img": null,
+          "type": "applied",
+          "_id": "WBZlHLn29mfxWY7X",
+          "applied": {
+            "tier1": {
+              "display": "taunted (EoT)",
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "display": "taunted (save ends)",
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
