@@ -191,9 +191,11 @@ export default class FollowerModel extends BaseItemModel {
   async roll(options = {}) {
     if (!this.actor) throw new Error("Only followers with a hero can ");
     if (!options.project) {
-      const projectOptions = this.actor.itemTypes.project
-        .filter(p => ds.CONST.followerTypes[this.type].projectTypes.has(p.system.type))
-        .map(p => ({ value: p.id, label: p.name }));
+      const projectOptions = this.actor.itemTypes.project.map(p => ({
+        value: p.id,
+        label: p.name,
+        group: ds.CONFIG.projects.types[p.system.type]?.label,
+      }));
 
       if (!projectOptions.length) {
         ui.notifications.error("DRAW_STEEL.Item.follower.ProjectChoice.NoProjects", { localize: true });

@@ -140,7 +140,6 @@ export const potencyStrengths = Object.freeze({
 /**
  * @typedef FollowerType
  * @property {string} label
- * @property {Set<string>} projectTypes
  */
 
 /**
@@ -150,10 +149,8 @@ export const potencyStrengths = Object.freeze({
 export const followerTypes = Object.freeze({
   artisan: {
     label: "DRAW_STEEL.Item.follower.Types.artisan",
-    projectTypes: new Set(["crafting"]),
   },
   sage: {
     label: "DRAW_STEEL.Item.follower.Types.sage",
-    projectTypes: new Set(["research"]),
   },
 });
