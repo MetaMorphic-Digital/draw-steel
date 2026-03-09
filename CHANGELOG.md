@@ -26,10 +26,12 @@
   - Added "Encounter" keyword. (This does not yet include tracking the usage)
 - Added new "Follower" item type for Artisans and Sages. (#679)
 - Added a "Share Item" button to the item sheet header controls. (#1505)
+- Added a "Party" actor which can be designated as the primary party.
 
 ### Changed
 
 - Moved skills from `system.hero.skills` to `system.skills.value`. (#1364)
+- DSRoll#toMessage will now create a message using chat parts. (#1446)
 - Ability distance values now take roll formulas, e.g. `5 + @R`. (#1466)
 - Combat Tracker improvements
   - Players no longer see the "Restore Action" button for groups that have gone
