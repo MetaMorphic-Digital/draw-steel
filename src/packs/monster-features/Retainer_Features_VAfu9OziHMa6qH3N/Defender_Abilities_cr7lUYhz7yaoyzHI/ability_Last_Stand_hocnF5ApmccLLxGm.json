@@ -1,0 +1,99 @@
+{
+  "folder": "cr7lUYhz7yaoyzHI",
+  "name": "Last Stand",
+  "type": "ability",
+  "_id": "hocnF5ApmccLLxGm",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "354",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "last-stand",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": 10
+    },
+    "story": "",
+    "keywords": [
+      "encounter",
+      "melee",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
+      },
+      "effects": {
+        "v15bUs3KKm3AXYO5": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "v15bUs3KKm3AXYO5",
+          "damage": {
+            "tier1": {
+              "value": "8"
+            },
+            "tier2": {
+              "value": "13"
+            },
+            "tier3": {
+              "value": "17"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The retainer and their mentor each gain [[/heal 10 temporary]]. Additionally, each winded ally within 2 squares of the retainer can spend a Recovery.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.11.0",
+    "createdTime": 1772912420449,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!hocnF5ApmccLLxGm"
+}

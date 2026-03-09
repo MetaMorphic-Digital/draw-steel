@@ -87,7 +87,11 @@
                 "characteristic": "reason"
               },
               "effects": {
-                "slowed": {
+                "4VNUTZ3jWRGqD7SQ": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "oCsO9QcithqyHJ9C": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -99,7 +103,11 @@
               },
               "display": "{{potency}}, slowed (save ends)",
               "effects": {
-                "slowed": {
+                "4VNUTZ3jWRGqD7SQ": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "oCsO9QcithqyHJ9C": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -111,7 +119,11 @@
               },
               "display": "{{potency}}, slowed (save ends)",
               "effects": {
-                "slowed": {
+                "4VNUTZ3jWRGqD7SQ": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "oCsO9QcithqyHJ9C": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -123,7 +135,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>While slowed this way, the target takes [[/damage 3 type=psychic]] damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5 type=psychic]] damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
+      "after": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]] damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]] damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
     },
     "spend": {
       "text": "",
@@ -132,7 +144,7 @@
   },
   "effects": [
     {
-      "name": "Slowed",
+      "name": "Mind Snare",
       "img": "icons/magic/control/debuff-energy-snare-blue.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW",
@@ -176,7 +188,7 @@
       "_key": "!items.effects!cgW4PcZmnCxuHfJW.4VNUTZ3jWRGqD7SQ"
     },
     {
-      "name": "Active Effect",
+      "name": "Mind Snare (Strained)",
       "img": "icons/magic/control/debuff-energy-snare-blue.webp",
       "origin": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW",
       "transfer": false,
@@ -194,9 +206,9 @@
         "startTime": null,
         "combat": null
       },
-      "description": "",
+      "description": "<p>While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]] damage for each square they willingly leave.</p>",
       "tint": "#ffffff",
-      "statuses": [],
+      "statuses": ["slowed"],
       "sort": 0,
       "flags": {},
       "_stats": {

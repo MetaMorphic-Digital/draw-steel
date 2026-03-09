@@ -66,7 +66,7 @@
             "tier1": {
               "display": "{{potency}}, grabbed",
               "effects": {
-                "grabbed": {
+                "Zhabg9uE19Jmvl1Z": {
                   "condition": "failure",
                   "end": ""
                 }
@@ -77,7 +77,7 @@
             },
             "tier2": {
               "effects": {
-                "grabbed": {
+                "Zhabg9uE19Jmvl1Z": {
                   "condition": "failure",
                   "end": ""
                 }
@@ -86,7 +86,8 @@
             "tier3": {
               "effects": {
                 "Zhabg9uE19Jmvl1Z": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "end": ""
                 }
               }
             }
@@ -105,7 +106,7 @@
   },
   "effects": [
     {
-      "name": "Active Effect",
+      "name": "Iron Grip",
       "img": "icons/skills/melee/unarmed-punch-fist.webp",
       "origin": "Compendium.draw-steel.abilities.Item.jeABSb6jLwPYdWqZ",
       "transfer": false,
@@ -123,9 +124,9 @@
         "startTime": null,
         "combat": null
       },
-      "description": "",
+      "description": "<p>While grabbed this way, you take a bane on the Escape Grab maneuver. Each time you use that maneuver, you take damage equal to twice the null's Agility score.</p>",
       "tint": "#ffffff",
-      "statuses": [],
+      "statuses": ["grabbed"],
       "sort": 0,
       "flags": {},
       "_stats": {

@@ -1,0 +1,171 @@
+{
+  "folder": "Q5Lw4Lym6Nhbfi8l",
+  "name": "Looming Wings",
+  "type": "ability",
+  "_id": "ADgwIayiPPMc1n98",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "359",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "looming-wings",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": 7
+    },
+    "story": "",
+    "keywords": [
+      "area",
+      "encounter",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "agility",
+          "presence"
+        ]
+      },
+      "effects": {
+        "w5m2e2hPbXlS3lwr": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "w5m2e2hPbXlS3lwr",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "12",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        },
+        "NDCWadr9i57m8And": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "NDCWadr9i57m8And",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} weakened (save ends)",
+              "potency": {
+                "characteristic": "intuition"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>If the Nameless’s mentor is in the area, ability rolls against the mentor have a double bane until the start of their next turn. [[/apply sy6t9EKV2at8PXZ0]]</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Looming Wings",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.ADgwIayiPPMc1n98",
+      "transfer": false,
+      "_id": "sy6t9EKV2at8PXZ0",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.targetModifiers.banes",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 1,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.11.0",
+        "createdTime": 1772916103327,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!ADgwIayiPPMc1n98.sy6t9EKV2at8PXZ0"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.11.0",
+    "createdTime": 1772913401882,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!ADgwIayiPPMc1n98"
+}

@@ -34,6 +34,10 @@ export default class RetainerMetadataInput extends DocumentInput {
     );
     context.monsterRoles = Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label }));
     context.retainerFields = this.document.system.schema.getField("retainer").fields;
+
+    context.mentorOptions = game.actors.filter(a => (a.type === "hero") && (a.isOwner || (a === this.document.system.retainer.mentor)))
+      .map(a => ({ value: a.id, label: a.name }));
+
     return context;
   }
 }
