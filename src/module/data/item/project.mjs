@@ -8,7 +8,7 @@ import { setOptions } from "../helpers.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
- * @import { PowerRollModifiers } from  "../../_types.js"
+ * @import { ProjectRollOptions } from  "../../_types.js"
  */
 
 const fields = foundry.data.fields;
@@ -63,22 +63,6 @@ export default class ProjectModel extends BaseItemModel {
     this.points ??= 0;
 
     this.projectType = game.i18n.localize(ds.CONFIG.projects.types[this.type]?.label ?? "");
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  preparePostActorPrepData() {
-    super.preparePostActorPrepData();
-
-    // Set the highest characteristic amongst the roll characteristics
-    this.characteristic = null;
-    for (const characteristic of this.rollCharacteristic) {
-      if (this.characteristic === null) this.characteristic = characteristic;
-
-      const actorCharacteristics = this.actor.system.characteristics;
-      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.characteristic].value) this.characteristic = characteristic;
-    }
   }
 
   /* -------------------------------------------------- */
@@ -192,7 +176,7 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Make a project roll for this project and update the project points progress.
-   * @param {Partial<PowerRollModifiers>} [options={}]
+   * @param {Partial<ProjectRollOptions>} [options={}]
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(options = {}) {
@@ -249,20 +233,30 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Prompt the player to roll this project.
-   * @param {Partial<PowerRollModifiers>} [options={}]
+   * @param {Partial<ProjectRollOptions>} [options={}]
    * @returns {ProjectRollPrompt}
    */
   async rollPrompt(options = {}) {
-    const rollData = this.parent.getRollData();
-    const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
+    const rollData = options.follower ? options.follower.getRollData() : this.parent.getRollData();
+
+    // Pick the highest characteristic amongst the roll characteristics
+    let chr = null;
+    const characteristicData = options.follower?.system.characteristics ?? this.actor.system.characteristics;
+    for (const characteristic of this.rollCharacteristic) {
+      if (chr === null) chr = characteristic;
+      else if (characteristicData[characteristic].value > characteristicData[chr].value) chr = characteristic;
+    }
+
+    const rollKey = ds.CONFIG.characteristics[chr]?.rollKey ?? "";
+    const rollFormula = rollKey && options.follower ? `item.${rollKey}` : rollKey;
 
     const promptValue = await ProjectRoll.prompt({
-      formula: rollKey ? `2d10 + @${rollKey}` : "2d10",
+      follower: options.follower,
+      formula: rollKey ? `2d10 + @${rollFormula}` : "2d10",
       modifiers: options.modifiers ?? {},
       actor: this.actor,
       evaluation: "evaluate",
       data: rollData,
-      skillModifiers: this.actor?.system.skills?.modifiers ?? {},
     });
 
     return promptValue;

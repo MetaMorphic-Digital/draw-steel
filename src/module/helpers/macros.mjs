@@ -18,6 +18,7 @@ export async function createDocMacro(data, slot) {
   let name;
   switch (item.type) {
     case "ability":
+    case "follower":
     case "project":
       command = `ds.helpers.macros.rollItemMacro("${data.uuid}");`;
       name = item.name;

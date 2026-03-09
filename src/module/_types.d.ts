@@ -7,7 +7,10 @@ import "./utils/advancement/_types";
 import {
   DrawSteelActor,
   DrawSteelChatMessage,
+  DrawSteelItem,
 } from "./documents/_module.mjs";
+
+import FollowerModel from "./data/item/follower.mjs";
 
 import {
   PowerRoll,
@@ -18,6 +21,10 @@ export interface PowerRollModifiers {
   edges: number;
   banes: number;
   bonuses: number;
+}
+
+export interface ProjectRollOptions extends PowerRollModifiers {
+  follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
 }
 
 export interface PowerRollTargets {
@@ -45,6 +52,10 @@ export interface PowerRollPrompt {
   rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
   baseRoll: PowerRoll;
   rolls: Array <PowerRoll | DrawSteelChatMessage | object>;
+}
+
+export interface ProjectRollPromptOptions extends RollPromptOptions {
+  follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
 }
 
 export interface ProjectRollPrompt {

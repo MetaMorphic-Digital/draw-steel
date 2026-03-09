@@ -3,6 +3,10 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
 import { systemPath } from "../../constants.mjs";
 
+/**
+ * @import DrawSteelItem from "../../documents/item.mjs";
+ */
+
 const fields = foundry.data.fields;
 
 /**
@@ -175,5 +179,55 @@ export default class FollowerModel extends BaseItemModel {
       return v.value;
     });
     rollData.item.chr = Math.max(...chars);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform a characteristic roll to assist a project.
+   * @param {object} options
+   * @param {DrawSteelItem} [options.project] A specific project to roll for.
+   */
+  async roll(options = {}) {
+    if (!this.actor) throw new Error("Only followers with a hero can ");
+    if (!options.project) {
+      const projectOptions = this.actor.itemTypes.project
+        .filter(p => ds.CONST.followerTypes[this.type].projectTypes.has(p.system.type))
+        .map(p => ({ value: p.id, label: p.name }));
+
+      if (!projectOptions.length) {
+        ui.notifications.error("DRAW_STEEL.Item.follower.ProjectChoice.NoProjects", { localize: true });
+        return;
+      }
+
+      const content = document.createElement("div");
+
+      const { createFormGroup, createSelectInput } = foundry.applications.fields;
+
+      const projectInput = createFormGroup({
+        label: "TYPES.Item.project",
+        input: createSelectInput({
+          name: "project",
+          options: projectOptions,
+        }),
+        localize: true,
+      });
+
+      content.append(projectInput);
+
+      const fd = await ds.applications.api.DSDialog.input({
+        content,
+        window: {
+          title: game.i18n.format("DRAW_STEEL.Item.follower.ProjectChoice.Title", { name: this.parent.name }),
+          icon: "fa-solid fa-diagram-project",
+        },
+      });
+
+      if (!fd) return;
+
+      options.project = this.actor.items.get(fd.project);
+    }
+
+    return options.project.system.roll({ follower: this.parent });
   }
 }

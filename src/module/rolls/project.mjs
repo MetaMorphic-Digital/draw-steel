@@ -3,7 +3,7 @@ import DrawSteelChatMessage from "../documents/chat-message.mjs";
 import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
 import { systemPath } from "../constants.mjs";
 
-/** @import { RollPromptOptions, ProjectRollPrompt } from "../_types.js" */
+/** @import { ProjectRollPromptOptions, ProjectRollPrompt } from "../_types.js" */
 
 /**
  * A special test a hero makes while working on a downtime project during a respite.
@@ -78,7 +78,7 @@ export default class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog.
-   * @param {Partial<RollPromptOptions>} [options]
+   * @param {Partial<ProjectRollPromptOptions>} [options]
    * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {
@@ -87,12 +87,13 @@ export default class ProjectRoll extends DSRoll {
     if (!["none", "evaluate", "message"].includes(evaluation)) {
       throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     }
-    const flavor = options.flavor ?? game.i18n.localize("DRAW_STEEL.ROLL.Project.Label");
+    const flavor = options.flavor ?? options.follower ? options.follower.name : game.i18n.localize("DRAW_STEEL.ROLL.Project.Label");
     options.modifiers ??= {};
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
     options.modifiers.bonuses ??= 0;
-    options.skills ??= options.actor?.system.skills?.value ?? null;
+    options.skills ??= (options.follower ?? options.actor)?.system.skills?.value ?? null;
+    options.skillModifiers ??= (options.follower ?? options.actor)?.system.skills?.modifiers ?? {};
 
     const context = {
       modifiers: options.modifiers,
