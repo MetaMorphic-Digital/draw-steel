@@ -14,7 +14,7 @@ import DSRoll from "../rolls/base.mjs";
 export default function evaluateFormula(formula, rollData = {}, { strict = false, allowStrings = true, contextName = "unknown" } = {}) {
   let result = 0;
   try {
-    const evaluatedResult = new DSRoll(formula, rollData).evaluateSync({ strict, allowStrings }).total;
+    const evaluatedResult = new DSRoll(formula || "0", rollData).evaluateSync({ strict, allowStrings }).total;
     result = evaluatedResult;
   }
   catch (e) {

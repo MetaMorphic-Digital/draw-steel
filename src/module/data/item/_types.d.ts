@@ -45,9 +45,9 @@ declare module "./ability.mjs" {
     damageDisplay: "melee" | "ranged";
     distance: {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
-      primary: number;
-      secondary: number;
-      tertiary: number;
+      primary: number | string;
+      secondary: number | string;
+      tertiary: number | string;
     }
     trigger: string;
     target: {
