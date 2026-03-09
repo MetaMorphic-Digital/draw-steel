@@ -1,5 +1,5 @@
+import { DocumentSourceInput, RetainerMetadataInput } from "../apps/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
-import RetainerMetadataInput from "../apps/retainer-metadata-input.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
@@ -10,6 +10,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["retainer"],
     actions: {
+      updateSource: this.#updateSource,
       spendRecovery: this.#spendRecovery,
       editRetainerMetadata: this.#editRetainerMetadata,
     },
@@ -86,7 +87,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a recovery, adding to the retainer's stamina and reducing the number of recoveries.
-   * @this RetainerSheet
+   * @this DrawSteelRetainerSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -98,11 +99,24 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
 
   /**
    * Open a dialog to edit the retainer metadata.
-   * @this DrawSteelNPCSheet
+   * @this DrawSteelRetainerSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editRetainerMetadata(event, target) {
     new RetainerMetadataInput({ document: this.document }).render({ force: true });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open the update source dialog.
+   * @this DrawSteelRetainerSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #updateSource(event, target) {
+    new DocumentSourceInput({ document: this.document }).render({ force: true });
+  }
+
 }

@@ -58,6 +58,7 @@ export default class RetainerModel extends CreatureModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+    this.source.prepareData();
 
     // allows for stamina bonuses to apply first
     this.recoveries.recoveryValue = Math.floor(this.stamina.max / this.recoveries.divisor) + this.recoveries.bonus;

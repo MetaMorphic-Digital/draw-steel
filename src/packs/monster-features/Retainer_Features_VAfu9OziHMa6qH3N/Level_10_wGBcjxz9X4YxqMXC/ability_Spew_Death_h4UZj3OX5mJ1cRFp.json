@@ -1,0 +1,106 @@
+{
+  "folder": "wGBcjxz9X4YxqMXC",
+  "name": "Spew Death",
+  "type": "ability",
+  "_id": "h4UZj3OX5mJ1cRFp",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "359",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "spew-death",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": 10
+    },
+    "story": "",
+    "keywords": [
+      "area",
+      "encounter",
+      "magic"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "agility",
+          "presence"
+        ]
+      },
+      "effects": {
+        "WCwYGtajK690E4VJ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "WCwYGtajK690E4VJ",
+          "damage": {
+            "tier1": {
+              "value": "11",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "16",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "21",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p><strong>Special:</strong> The Nameless must be winded to use this ability</p>",
+      "after": "<p>Any living minions reduced to 0 Stamina by this ability regain all their Stamina and become corporeal undead under the Nameless’s control until the end of the Nameless’s next turn, after which they are destroyed.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.11.0",
+    "createdTime": 1772913408491,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!h4UZj3OX5mJ1cRFp"
+}
