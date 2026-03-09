@@ -21,7 +21,7 @@ export default class PartyModel extends DrawSteelSystemModel {
    * The Actor subtypes allowed as members of a party.
    * @type {Set<string>}
    */
-  static ALLOWED_ACTOR_TYPES = new Set(["hero"]);
+  static ALLOWED_ACTOR_TYPES = new Set(["hero", "retainer"]);
 
   /* -------------------------------------------------- */
 

@@ -54,6 +54,7 @@
     }
     .header-right {
       flex: 0 0 160px;
+      max-width: 160px;
       .actor-source {
         margin-top: 5px;
         font-family: var(--font-h4);
@@ -61,6 +62,17 @@
         flex-grow: 1;
         align-items: start;
         text-align: center;
+      }
+      dd.mentor {
+        /* Padding ensures top of content link is visible */
+        padding-top: 0.2rem;
+        overflow-x: hidden;
+        a.content-link {
+          display: inline-block;
+          max-width: 100%;
+          text-overflow: clip;
+          overflow-x: hidden;
+        }
       }
       div.actor-data > div,
       .malice {
