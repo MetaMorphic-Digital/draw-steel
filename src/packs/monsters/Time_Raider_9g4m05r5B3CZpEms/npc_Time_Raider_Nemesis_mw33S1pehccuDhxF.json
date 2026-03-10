@@ -456,7 +456,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>Any creature slowed this way takes [[/damage 2 damage]] for each square they move or are force moved until that condition ends.</p>"
+          "after": "<p>Any creature slowed this way takes [[/damage 2*@scaling damage scaling]]{2 damage} for each square they move or are force moved until that condition ends.</p>"
         },
         "spend": {
           "text": "",
@@ -497,7 +497,7 @@
             "startRound": null,
             "startTurn": null
           },
-          "description": "<p>Any creature slowed this way takes [[/damage 2 damage]] for each square they move or are force moved until that condition ends.</p>",
+          "description": "<p>Any creature slowed this way takes [[/damage 2*@scaling damage scaling]]{2 damage} for each square they move or are force moved until that condition ends.</p>",
           "tint": "#ffffff",
           "statuses": [
             "slowed"
