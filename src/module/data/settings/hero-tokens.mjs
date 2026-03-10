@@ -131,8 +131,14 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     /** @type {foundry.utils.Collection<string, {actor: DrawSteelActor}>} */
     const partyMembers = game.actors.party?.system.members;
 
-    // Use primary party if available, otherwise fall back to non GM users. Retainers do not count towards Hero Tokens.
-    const heroes = partyMembers?.filter(a => a.actor.type === "hero") ?? game.users.filter(u => !u.isGM);
+    if (!partyMembers) {
+      const msg = game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.NoPrimaryParty");
+      ui.notifications.error(msg);
+      throw new Error(msg);
+    }
+
+    // Retainers do not count towards Hero Tokens.
+    const heroes = partyMembers.filter(a => a.actor.type === "hero");
     await game.settings.set(systemID, "heroTokens", { value: heroes.length });
     if (chatMessage) await DrawSteelChatMessage.create({
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: heroes.length })}</p>`,
