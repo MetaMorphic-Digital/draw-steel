@@ -1,6 +1,6 @@
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 import DrawSteelActiveEffect from "./active-effect.mjs";
-import DrawSteelPartySheet from "../applications/sheets/party.mjs";
+import DrawSteelPartySheet from "../applications/sheets/party-sheet.mjs";
 
 /** @import ClassModel from "../data/item/class.mjs" */
 

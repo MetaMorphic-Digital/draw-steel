@@ -25,18 +25,18 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/sheets/actor/party/header.hbs"),
+      template: systemPath("templates/sheets/actor/party-sheet/header.hbs"),
     },
     navigation: {
       template: "templates/generic/tab-navigation.hbs",
     },
     members: {
-      template: systemPath("templates/sheets/actor/party/members.hbs"),
+      template: systemPath("templates/sheets/actor/party-sheet/members.hbs"),
       classes: ["tab"],
       scrollable: [".contents"],
     },
     details: {
-      template: systemPath("templates/sheets/actor/party/details.hbs"),
+      template: systemPath("templates/sheets/actor/party-sheet/details.hbs"),
       classes: ["tab"],
       scrollable: [".contents"],
     },
@@ -123,7 +123,7 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
       });
       members.push(ctx);
     }
-    return members;
+    return members.sort((a, b) => a.actor.name.localeCompare(b.actor.name));
   }
 
   /* -------------------------------------------------- */
