@@ -27,6 +27,7 @@
 - Added new "Follower" item type for Artisans and Sages. (#679)
 - Added a "Share Item" button to the item sheet header controls. (#1505)
 - Added a "Party" actor which can be designated as the primary party.
+  - The primary party is used to determine the number of hero tokens to reset to. (#1725)
 
 ### Changed
 
