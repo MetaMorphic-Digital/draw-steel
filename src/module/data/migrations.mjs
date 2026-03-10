@@ -19,7 +19,8 @@ export async function migrateWorld() {
   let updateVersion = false;
   if (!migrationVersion) {
     // New world - initialize the migration version and rename Gamemaster to Director
-    await game.users.activeGM.update({ name: game.i18n.localize("USER.RoleGamemaster") });
+    if (game.user.name === "Gamemaster") await game.user.update({ name: game.i18n.localize("USER.RoleGamemaster") });
+    await createPrimaryParty();
     updateVersion = true;
   }
   else {
@@ -132,6 +133,10 @@ async function version_0_11_migration() {
     if (wasLocked) await pack.configure({ locked: true });
   }
 
+  warning.update({ pct: 0.95 });
+
+  await createPrimaryParty();
+
   warning.update({ pct: 1.00 });
 
   ui.notifications.remove(warning);
@@ -206,4 +211,19 @@ function shouldMigrateCompendium(pack) {
   // Module compendiums should only be migrated if they don't have a download or manifest URL
   const module = game.modules.get(pack.metadata.packageName);
   return !module.download && !module.manifest;
+}
+
+/**
+ * Create a party actor and mark it as the primary actor.
+ */
+export async function createPrimaryParty() {
+  const party = await getDocumentClass("Actor").create({
+    name: game.i18n.localize("DRAW_STEEL.Actor.party.primary"),
+    type: "party",
+    img: "icons/magic/symbols/chevron-elipse-circle-blue.webp",
+  });
+
+  await party.system.addMembers(game.actors.filter(a => a.type === "hero"));
+
+  return game.actors.setParty(party);
 }
