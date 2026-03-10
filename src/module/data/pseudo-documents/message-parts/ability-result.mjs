@@ -226,6 +226,7 @@ export default class AbilityResultPart extends RollPart {
         hint: game.i18n.format("DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.hint", { damage: surgeDamage }),
         input: createNumberInput({ name: "surges", step: 1, min: 0, max: surgeMax }),
         localize: true,
+        classes: ["slim"],
       });
 
       content.append(surges);
