@@ -10,7 +10,7 @@ import { systemPath } from "../../../constants.mjs";
  */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
-const { createFormGroup, createSelectInput, createTextInput } = foundry.applications.fields;
+const { createFormGroup, createNumberInput, createSelectInput, createTextInput } = foundry.applications.fields;
 
 /**
  * A part that displays the result of an ability power roll and its consequences.
@@ -211,6 +211,26 @@ export default class AbilityResultPart extends RollPart {
   async modifyDamageDialog(roll) {
     const content = document.createElement("div");
 
+    let sourceActor = this.ability?.actor;
+
+    // Retainers use their mentor's surges and surge value
+    if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+
+    const surgeDamage = sourceActor.getRollData()?.chr;
+
+    if (sourceActor.type === "hero") {
+      const surgeMax = Math.min(3, sourceActor.system.hero.surges);
+
+      const surges = createFormGroup({
+        label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.label",
+        hint: game.i18n.format("DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.hint", { damage: surgeDamage }),
+        input: createNumberInput({ name: "surges", step: 1, min: 0, max: surgeMax }),
+        localize: true,
+      });
+
+      content.append(surges);
+    }
+
     const additionalTermGroup = createFormGroup({
       label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.label",
       hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.hint",
@@ -245,8 +265,16 @@ export default class AbilityResultPart extends RollPart {
 
     // If the dialog is closed or submitted without modifications, don't create a new roll.
     if (!modifications) return;
-    if ((modifications.additionalTerms === "") && (modifications.damageType === roll.options.type)) return;
 
-    this.createModifiedDamageRoll(roll, modifications);
+    if (modifications.surges) {
+      await sourceActor.modifyTokenAttribute("hero.surges", -1 * modifications.surges, true, false);
+      if (modifications.additionalTerms) modifications.additionalTerms += `+ ${modifications.surges} * ${surgeDamage}`;
+      else modifications.additionalTerms = `${modifications.surges} * ${surgeDamage}`;
+      delete modifications.surges;
+    }
+
+    if ((!modifications.additionalTerms) && (modifications.damageType === roll.options.type)) return;
+
+    return this.createModifiedDamageRoll(roll, modifications);
   }
 }
