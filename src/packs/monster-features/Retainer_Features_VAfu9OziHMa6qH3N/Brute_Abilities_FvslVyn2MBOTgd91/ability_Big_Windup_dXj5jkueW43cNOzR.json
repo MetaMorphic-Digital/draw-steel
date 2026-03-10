@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "big-windup",
@@ -18,7 +18,7 @@
     },
     "story": "",
     "keywords": [],
-    "type": "main",
+    "type": "maneuver",
     "category": "",
     "resource": null,
     "trigger": "",
@@ -40,7 +40,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>Until the start of the retainer’s next turn, strikes made against the retainer gain an edge [[/apply u5OG1iWWEtgnTnx4]]. At the start of the retainer’s next turn, they [[/gain 2 surges]], and any ability they use before the end of their turn that force moves a creature can move that creature 2 additional squares.</p>",
       "after": ""
     },
     "spend": {
@@ -48,7 +48,121 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Winding Up",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.dXj5jkueW43cNOzR",
+      "transfer": false,
+      "_id": "u5OG1iWWEtgnTnx4",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.targetModifiers.edges",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 1,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Until the start of the retainer’s next turn, strikes made against the retainer gain an edge.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.11.0",
+        "createdTime": 1773167707621,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!dXj5jkueW43cNOzR.u5OG1iWWEtgnTnx4"
+    },
+    {
+      "name": "Wound Up",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monster-features.Item.dXj5jkueW43cNOzR",
+      "transfer": false,
+      "_id": "W4lREA2EcKf6brwK",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "changes": [
+        {
+          "key": "forced.push",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "forced.pull",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "forced.slide",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Any ability the retainer uses before the end of their turn that force moves a creature can move that creature 2 additional squares.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.11.0",
+        "createdTime": 1773167844786,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!dXj5jkueW43cNOzR.W4lREA2EcKf6brwK"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

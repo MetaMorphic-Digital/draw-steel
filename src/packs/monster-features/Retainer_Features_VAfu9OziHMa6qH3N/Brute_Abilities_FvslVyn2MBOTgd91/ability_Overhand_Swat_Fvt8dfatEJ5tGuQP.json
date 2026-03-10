@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "overhand-swat",
@@ -17,31 +17,100 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "nK5VKXPK7UDetMR0": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "nK5VKXPK7UDetMR0",
+          "damage": {
+            "tier1": {
+              "value": "8"
+            },
+            "tier2": {
+              "value": "13"
+            },
+            "tier3": {
+              "value": "16"
+            }
+          }
+        },
+        "vLqra9vbM1EmCBxF": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "vLqra9vbM1EmCBxF",
+          "forced": {
+            "tier1": {
+              "distance": "",
+              "display": ""
+            },
+            "tier2": {
+              "distance": "2"
+            },
+            "tier3": {
+              "distance": "3"
+            }
+          }
+        },
+        "fwwZvQCXBOxDeNTI": {
+          "sort": 300000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "fwwZvQCXBOxDeNTI",
+          "applied": {
+            "tier3": {
+              "display": "{{potency}} prone",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "prone": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>If the target ends any forced movement from this ability in a square adjacent to the retainer’s mentor, the mentor can make a melee free strike against them.</p>"
     },
     "spend": {
       "text": "",

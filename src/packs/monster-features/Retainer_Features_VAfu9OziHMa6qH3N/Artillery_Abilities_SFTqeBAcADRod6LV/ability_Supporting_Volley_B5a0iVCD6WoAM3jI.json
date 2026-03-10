@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "supporting-volley",
@@ -17,19 +17,23 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "ranged",
+      "weapon"
+    ],
+    "type": "triggered",
     "category": "",
     "resource": null,
-    "trigger": "",
+    "trigger": "The retainer's mentor makes a strike against a creature within distance.",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "5"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
-      "custom": "",
-      "value": null
+      "type": "creature",
+      "custom": "The triggering creature",
+      "value": 1
     },
     "power": {
       "roll": {
@@ -40,7 +44,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>The retainer makes a ranged free strike against the target.</p>",
       "after": ""
     },
     "spend": {

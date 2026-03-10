@@ -17,31 +17,59 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "ranged",
+      "strike",
+      "weapon",
+      "encounter"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "15"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creatureObject",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "agility",
+          "intuition"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "sSwO3Cc5DP6BbJch": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "sSwO3Cc5DP6BbJch",
+          "damage": {
+            "tier1": {
+              "value": "7"
+            },
+            "tier2": {
+              "value": "11"
+            },
+            "tier3": {
+              "value": "16"
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>If the arrowswift is hidden when they use this ability, they [[/gain 2 surges]] that can be used immediately</p>"
     },
     "spend": {
       "text": "",

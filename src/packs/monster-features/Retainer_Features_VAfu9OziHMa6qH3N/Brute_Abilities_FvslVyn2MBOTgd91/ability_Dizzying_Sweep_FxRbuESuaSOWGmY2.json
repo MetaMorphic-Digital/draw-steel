@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "dizzying-sweep",
@@ -17,17 +17,20 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "burst"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
       "value": null
     },
@@ -35,13 +38,53 @@
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "YY8GwIBvwpfpCpvh": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "YY8GwIBvwpfpCpvh",
+          "damage": {
+            "tier1": {
+              "value": "10"
+            },
+            "tier2": {
+              "value": "14"
+            },
+            "tier3": {
+              "value": "20"
+            }
+          }
+        },
+        "kdhcudJjhcPe9P5l": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "kdhcudJjhcPe9P5l",
+          "forced": {
+            "tier2": {
+              "distance": "2"
+            },
+            "tier3": {
+              "distance": "3"
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>The retainer is [[/apply dazed turn]] until the end of their next turn</p>"
     },
     "spend": {
       "text": "",

@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "353",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "go-for-the-jugular",
@@ -17,31 +17,98 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "eYhKLKnOcp6ualZP": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "eYhKLKnOcp6ualZP",
+          "damage": {
+            "tier1": {
+              "value": "5"
+            },
+            "tier2": {
+              "value": "9"
+            },
+            "tier3": {
+              "value": "12"
+            }
+          }
+        },
+        "jyw6QMBIt5O1LO9A": {
+          "sort": 200000,
+          "name": "Bleeding",
+          "img": null,
+          "type": "applied",
+          "_id": "jyw6QMBIt5O1LO9A",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} bleeding (save ends)",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>If the target is grabbed or the retainer had an edge on the power roll, the retainer [[/gain 2 surges]].</p>"
     },
     "spend": {
       "text": "",
