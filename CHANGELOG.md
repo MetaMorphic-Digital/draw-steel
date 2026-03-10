@@ -28,6 +28,7 @@
   - Updated abilities that scale with distance to use the `scaling` enricher property.
 - Added new "Retainer" actor type. (#155)
   - Added "Encounter" keyword. (This does not yet include tracking the usage)
+- Added surge expenditure to the "Modify Damage Roll" chat context option for ability results.
 - Added new "Follower" item type for Artisans and Sages. (#679)
 - Added a "Share Item" button to the item sheet header controls. (#1505)
 - Added a "Party" actor which can be designated as the primary party.
