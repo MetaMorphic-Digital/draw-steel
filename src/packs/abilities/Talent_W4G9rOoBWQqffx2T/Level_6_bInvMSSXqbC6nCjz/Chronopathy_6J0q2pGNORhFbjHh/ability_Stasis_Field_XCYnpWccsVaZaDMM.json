@@ -82,7 +82,7 @@
       }
     },
     "effect": {
-      "before": "<p>The area is frozen in time until the start of your next turn. Each object in the area is restrained and can’t fall until the effect ends. Until the effect ends, creatures in the area who are reduced to 0 Stamina or would die stay alive, and objects in the area that are reduced to 0 Stamina remain undestroyed. Make a power roll that targets each enemy in the area.</p><p><strong>Strained:</strong> Any creature or object force moved in the area takes [[/damage 2 corruption]] damage for each square of the area they enter. Creatures and objects restrained in the area can be force moved. You are [[/apply restrained]] until the effect ends.</p>",
+      "before": "<p>The area is frozen in time until the start of your next turn. Each object in the area is restrained and can’t fall until the effect ends. Until the effect ends, creatures in the area who are reduced to 0 Stamina or would die stay alive, and objects in the area that are reduced to 0 Stamina remain undestroyed. Make a power roll that targets each enemy in the area.</p><p><strong>Strained:</strong> Any creature or object force moved in the area takes [[/damage 2*@scaling corruption scaling]]{2 corruption damage} for each square of the area they enter. Creatures and objects restrained in the area can be force moved. You are [[/apply restrained]] until the effect ends.</p>",
       "after": ""
     },
     "spend": {

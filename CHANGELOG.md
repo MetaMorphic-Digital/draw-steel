@@ -22,6 +22,10 @@
 
 ### Added
 
+- New Player-Facing Compendium Content:
+  - Updated abilities that scale with distance to use the `scaling` enricher property.
+- New Director-Facing Compendium Content:
+  - Updated abilities that scale with distance to use the `scaling` enricher property.
 - Added new "Retainer" actor type. (#155)
   - Added "Encounter" keyword. (This does not yet include tracking the usage)
 - Added new "Follower" item type for Artisans and Sages. (#679)

@@ -428,7 +428,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The area is filled with a green haze that lasts until the start of the stinker’s next turn or until the stinker is reduced to 0 Stamina, and which can’t be dispersed by wind. The area is difficult terrain for non-goblins, and each non-goblin who moves in the area takes [[/damage 2 poison]] damage for each square moved.</p>",
+          "before": "<p>The area is filled with a green haze that lasts until the start of the stinker’s next turn or until the stinker is reduced to 0 Stamina, and which can’t be dispersed by wind. The area is difficult terrain for non-goblins, and each non-goblin who moves in the area takes [[/damage 2*@scaling poison scaling]]{2 poison damage} for each square moved.</p>",
           "after": ""
         },
         "spend": {

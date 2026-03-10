@@ -135,7 +135,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]] damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]] damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
+      "after": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]]{3 psychic damage} for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]]{5 psychic damage} for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
     },
     "spend": {
       "text": "",
@@ -166,7 +166,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]]{3 psychic damage} for each square they willingly leave.</p",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [
@@ -206,7 +206,7 @@
         "startTime": null,
         "combat": null
       },
-      "description": "<p>While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]] damage for each square they willingly leave.</p>",
+      "description": "<p>While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]]{5 psychic damage} for each square they willingly leave.</p>",
       "tint": "#ffffff",
       "statuses": [
         "slowed"

@@ -1483,7 +1483,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has [[potency A 3]] is [[/apply bleeding save]]. Additionally, the area is difficult terrain, and any enemy takes [[/damage 3 poison]] damage for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
+          "before": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has [[potency A 3]] is [[/apply bleeding save]]. Additionally, the area is difficult terrain, and any enemy takes [[/damage 3*@scaling poison scaling]]{3 poison damage} for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
           "after": ""
         },
         "spend": {
