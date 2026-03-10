@@ -2,6 +2,10 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import HeroTokenPart from "../pseudo-documents/message-parts/hero-token.mjs";
 import { systemID } from "../../constants.mjs";
 
+/**
+ * @import DrawSteelActor from "../../documents/actor.mjs";
+ */
+
 const fields = foundry.data.fields;
 
 /**
@@ -124,12 +128,20 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
       return;
     }
 
-    // TODO: Revisit after #369
+    /** @type {foundry.utils.Collection<string, {actor: DrawSteelActor}>} */
+    const partyMembers = game.actors.party?.system.members;
 
-    const nonGM = game.users.filter(u => !u.isGM);
-    await game.settings.set(systemID, "heroTokens", { value: nonGM.length });
+    if (!partyMembers) {
+      const msg = game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.NoPrimaryParty");
+      ui.notifications.error(msg);
+      throw new Error(msg);
+    }
+
+    // Retainers do not count towards Hero Tokens.
+    const heroes = partyMembers.filter(a => a.actor.type === "hero");
+    await game.settings.set(systemID, "heroTokens", { value: heroes.length });
     if (chatMessage) await DrawSteelChatMessage.create({
-      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: nonGM.length })}</p>`,
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: heroes.length })}</p>`,
       type: "standard",
       "system.parts": [{ type: "content" }],
     });
