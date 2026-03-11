@@ -1,5 +1,6 @@
 /**
  * Simplistic extension of Collection to allow splitting contents by type.
+ * @extends {foundry.utils.Collection<string, { actor: DrawSteelActor }>}
  */
 export default class MembersCollection extends foundry.utils.Collection {
   /**

@@ -1,6 +1,7 @@
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
-import DrawSteelActor from "../../documents/actor.mjs";
 import { PowerRollModifiers } from "../../_types";
+import DrawSteelActor from "../../documents/actor.mjs";
+import MembersCollection from "../../utils/members-collection.mjs";
 
 interface BarAttribute {
   value: number,
@@ -200,7 +201,7 @@ declare module "./object.mjs" {
 
 declare module "./party.mjs" {
   export default interface PartyModel {
-    members: Map<string, DrawSteelActor>
+    members: MembersCollection
   }
 }
 
