@@ -14,12 +14,12 @@
         </section>
       </section>
       <section class="controls">
-        {{#if @root.isPlay}}
+        {{#if (not @root.isPlay)}}
         <a class="control" data-action="removeMember">
           <i class="fa-solid fa-fw fa-trash" inert></i>
         </a>
         {{/if}}
-        {{#if (and (not @root.isPlay) canView)}}
+        {{#if (and @root.isPlay canView)}}
         <a class="control" data-action="showMember">
           <i class="fa-solid fa-fw fa-magnifying-glass" inert></i>
         </a>
