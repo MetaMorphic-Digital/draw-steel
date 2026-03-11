@@ -67,6 +67,15 @@ export default class PartyModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+
+    if (game.user.isActiveGM && !game.actors.party) game.actors.setParty(this.parent);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
 
