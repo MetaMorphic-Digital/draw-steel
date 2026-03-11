@@ -30,19 +30,19 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/sheets/actor/npc/header.hbs"),
+      template: systemPath("templates/sheets/actor/npc-sheet/header.hbs"),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
-      template: systemPath("templates/sheets/actor/npc/stats.hbs"),
+      template: systemPath("templates/sheets/actor/npc-sheet/stats.hbs"),
       templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/sheets/actor/npc/features.hbs"),
+      template: systemPath("templates/sheets/actor/npc-sheet/features.hbs"),
       templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
       scrollable: [""],
     },
@@ -55,7 +55,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
     biography: {
-      template: systemPath("templates/sheets/actor/npc/biography.hbs"),
+      template: systemPath("templates/sheets/actor/npc-sheet/biography.hbs"),
       templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
