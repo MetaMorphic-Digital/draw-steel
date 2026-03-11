@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "353",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "hold-em-down",
@@ -17,31 +17,99 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "meleeRanged",
+      "secondary": "5"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "DxBBDsw7HEvLzOJp": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "DxBBDsw7HEvLzOJp",
+          "damage": {
+            "tier1": {
+              "value": "11"
+            },
+            "tier2": {
+              "value": "16"
+            },
+            "tier3": {
+              "value": "21"
+            }
+          }
+        },
+        "q1qsV1cDB2doiqBg": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "q1qsV1cDB2doiqBg",
+          "applied": {
+            "tier1": {
+              "display": "a size 1 or smaller target who has {{potency}} is grabbed",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>The retainer [[/gain 2 surges]] when any creature makes a strike against a target grabbed this way.</p>"
     },
     "spend": {
       "text": "",

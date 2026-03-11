@@ -17,19 +17,25 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "5"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creatureObject",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
@@ -37,11 +43,30 @@
         "formula": "@chr",
         "characteristics": []
       },
-      "effects": {}
+      "effects": {
+        "d1NnPd3E8HyWqGQ0": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "d1NnPd3E8HyWqGQ0",
+          "damage": {
+            "tier1": {
+              "value": "9"
+            },
+            "tier2": {
+              "value": "14"
+            },
+            "tier3": {
+              "value": "19"
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>The retainer can target a second creature or object within 5 squares of the original target and that has line of effect to the original target. The retainer doesn’t need line of effect to the second target but must be aware of their location.</p>"
     },
     "spend": {
       "text": "",

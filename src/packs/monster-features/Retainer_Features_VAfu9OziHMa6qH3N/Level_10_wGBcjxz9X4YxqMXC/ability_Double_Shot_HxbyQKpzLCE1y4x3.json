@@ -17,27 +17,55 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "15"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creatureObject",
       "custom": "",
-      "value": null
+      "value": 2
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "agility",
+          "intuition"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "QE6b6dW81V2QNRGn": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "QE6b6dW81V2QNRGn",
+          "damage": {
+            "tier1": {
+              "value": "12"
+            },
+            "tier2": {
+              "value": "17"
+            },
+            "tier3": {
+              "value": "23"
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",

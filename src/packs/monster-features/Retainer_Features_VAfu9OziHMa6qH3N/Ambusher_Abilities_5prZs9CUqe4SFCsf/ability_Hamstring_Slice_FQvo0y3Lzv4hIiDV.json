@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "353",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "hamstring-slice",
@@ -17,38 +17,152 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "meleeRanged",
+      "secondary": "5"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "epUcZjqO68RPGyoV": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "epUcZjqO68RPGyoV",
+          "damage": {
+            "tier1": {
+              "value": "7"
+            },
+            "tier2": {
+              "value": "10"
+            },
+            "tier3": {
+              "value": "15"
+            }
+          }
+        },
+        "lt5CYksaGewD7PW6": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "lt5CYksaGewD7PW6",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} slowed (EoT)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "turn"
+                }
+              },
+              "potency": {
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "{{potency}} slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "{{potency}} slowed and the target can't use triggered actions (save ends)",
+              "effects": {
+                "CwV7kYkNht7Y0v6d": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>The retainer and their mentor can each move up to their speed.</p>"
     },
     "spend": {
       "text": "",
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Hamstring Sliced",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.FQvo0y3Lzv4hIiDV",
+      "transfer": false,
+      "_id": "CwV7kYkNht7Y0v6d",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>[[reference slowed]] and the target can't use triggered actions.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.11.0",
+        "createdTime": 1773166584767,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!FQvo0y3Lzv4hIiDV.CwV7kYkNht7Y0v6d"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
