@@ -66,6 +66,9 @@ Hooks.once("init", function () {
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
   CONFIG.Combat.collection = documents.collections.DrawSteelCombatEncounters;
 
+  // Better art for default roll table pack image
+  CONFIG.RollTable.compendiumBanner = "systems/draw-steel/assets/banners/tables.webp";
+
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;

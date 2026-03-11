@@ -1,6 +1,6 @@
 # Game Rules
 
-The Draw Steel system for Foundry Virtual Tabletop is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL © 2024 MCDM Productions, LLC.
+The Draw Steel system for Foundry Virtual Tabletop is used under license of  MCDM Productions, LLC. DRAW STEEL is © 2026 MCDM Productions, LLC.  This product is not subject to the DRAW STEEL Creator license and permission of use from this license do not apply.
 
 # Code
 

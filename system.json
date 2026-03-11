@@ -176,11 +176,11 @@
   "media": [
     {
       "type": "setup",
-      "url": "systems/draw-steel/assets/anvil-impact.png",
-      "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
+      "url": "systems/draw-steel/assets/system-background.webp",
+      "thumbnail": "systems/draw-steel/assets/system-background.webp"
     }
   ],
-  "version": "0.11.0",
+  "version": "0.11.1",
   "compatibility": {
     "minimum": "13.351",
     "verified": "13"
@@ -202,17 +202,20 @@
     {
       "name": "classes",
       "label": "DRAW_STEEL.COMPENDIUM.classes",
-      "type": "Item"
+      "type": "Item",
+      "banner": "systems/draw-steel/assets/banners/classes.webp"
     },
     {
       "name": "abilities",
       "label": "DRAW_STEEL.COMPENDIUM.abilities",
-      "type": "Item"
+      "type": "Item",
+      "banner": "systems/draw-steel/assets/banners/abilities.webp"
     },
     {
       "name": "journals",
       "label": "DRAW_STEEL.COMPENDIUM.journals",
       "type": "JournalEntry",
+      "banner": "systems/draw-steel/assets/banners/journals.webp",
       "flags": {
         "draw-steel": {
           "display": "table-of-contents"
@@ -227,27 +230,32 @@
     {
       "name": "monsters",
       "label": "DRAW_STEEL.COMPENDIUM.monsters",
-      "type": "Actor"
+      "type": "Actor",
+      "banner": "systems/draw-steel/assets/banners/monsters.webp"
     },
     {
       "name": "monster-features",
       "label": "DRAW_STEEL.COMPENDIUM.monster-features",
-      "type": "Item"
+      "type": "Item",
+      "banner": "systems/draw-steel/assets/banners/monster-features.webp"
     },
     {
       "name": "origins",
       "label": "DRAW_STEEL.COMPENDIUM.origins",
-      "type": "Item"
+      "type": "Item",
+      "banner": "systems/draw-steel/assets/banners/origins.webp"
     },
     {
       "name": "character-options",
       "label": "DRAW_STEEL.COMPENDIUM.character-options",
-      "type": "Item"
+      "type": "Item",
+      "banner": "systems/draw-steel/assets/banners/character-options.webp"
     },
     {
       "name": "rewards",
       "label": "DRAW_STEEL.COMPENDIUM.rewards",
-      "type": "Item"
+      "type": "Item",
+      "banner": "systems/draw-steel/assets/banners/rewards.webp"
     }
   ],
   "packFolders": [
@@ -260,7 +268,7 @@
   "socket": true,
   "manifest": "https://github.com/MetaMorphic-Digital/draw-steel/releases/latest/system.json",
   "download": "",
-  "background": "systems/draw-steel/assets/anvil-impact.png",
+  "background": "systems/draw-steel/assets/system-background.webp",
   "grid": {
     "type": 1,
     "distance": 1,
