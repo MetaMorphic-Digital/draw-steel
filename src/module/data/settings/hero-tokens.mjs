@@ -2,10 +2,6 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import HeroTokenPart from "../pseudo-documents/message-parts/hero-token.mjs";
 import { systemID } from "../../constants.mjs";
 
-/**
- * @import DrawSteelActor from "../../documents/actor.mjs";
- */
-
 const fields = foundry.data.fields;
 
 /**
@@ -87,17 +83,19 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
         flags: { core: { canPopout: true } },
       });
     }
-    else game.system.socketHandler.spendHeroToken({ userId: game.userId, spendType, flavor: options.flavor, messageId: options.messageId });
+    else game.system.socketHandler.spendHeroToken({
+      userId: game.userId, spendType, flavor: options.flavor, messageId: options.messageId,
+    });
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Give out hero tokens.
-   * @param {number} [count=1] How many tokens to give out (default: `1`).
-   * @param {object} [options]  Options.
-   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`).
-   * @returns {number} The new number of hero tokens.
+   * @param {number} [count=1]                      How many tokens to give out (default: `1`).
+   * @param {object} [options]                      Options.
+   * @param {boolean} [options.chatMessage=true]    Should a chat message be created? (default: `true`).
+   * @returns {Promise<number>}                     The new number of hero tokens.
    */
   async giveToken(count = 1, { chatMessage = true } = {}) {
     if (!game.user.isGM) {
@@ -119,8 +117,9 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /**
    * Reset tokens to the number of heroes in the party.
-   * @param {object} [options]  Options.
-   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`).
+   * @param {object} [options]                      Options.
+   * @param {boolean} [options.chatMessage=true]    Should a chat message be created? (default: `true`).
+   * @returns {Promise<void>}
    */
   async resetTokens({ chatMessage = true } = {}) {
     if (!game.user.isGM) {
@@ -128,17 +127,15 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
       return;
     }
 
-    /** @type {foundry.utils.Collection<string, {actor: DrawSteelActor}>} */
-    const partyMembers = game.actors.party?.system.members;
-
-    if (!partyMembers) {
+    const party = game.actors.party;
+    if (!party) {
       const msg = game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.NoPrimaryParty");
       ui.notifications.error(msg);
       throw new Error(msg);
     }
 
     // Retainers do not count towards Hero Tokens.
-    const heroes = partyMembers.filter(a => a.actor.type === "hero");
+    const heroes = party.system.members.documentsByType.hero;
     await game.settings.set(systemID, "heroTokens", { value: heroes.length });
     if (chatMessage) await DrawSteelChatMessage.create({
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: heroes.length })}</p>`,

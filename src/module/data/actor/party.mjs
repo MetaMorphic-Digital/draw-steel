@@ -77,7 +77,7 @@ export default class PartyModel extends DrawSteelSystemModel {
           const actor = game.actors.get(id);
           if (this.validMember(actor)) acc.set(actor.id, { ...data, actor });
           return acc;
-        }, new foundry.utils.Collection());
+        }, new ds.utils.MembersCollection());
       },
     });
   }

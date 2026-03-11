@@ -8,7 +8,6 @@ import DSRoll from "../../rolls/base.mjs";
 import { systemID } from "../../constants.mjs";
 
 /**
- * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
  * @import DrawSteelItem from "../../documents/item.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
