@@ -198,6 +198,12 @@ declare module "./object.mjs" {
   }
 }
 
+declare module "./party.mjs" {
+  export default interface PartyModel {
+    members: Map<string, DrawSteelActor>
+  }
+}
+
 declare module "./retainer.mjs" {
   export default interface RetainerModel {
     source: SourceModel;
