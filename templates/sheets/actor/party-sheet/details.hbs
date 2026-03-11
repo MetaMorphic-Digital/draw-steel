@@ -1,7 +1,7 @@
 <section data-tab="{{tabs.details.id}}" data-group="{{tabs.details.group}}" class="{{tabs.details.cssClass}}">
   <div class="contents">
     <section class="inputs {{#if (or (not details.isOwner) disabled)}} hidden {{/if}}">
-      {{#if (and details.isOwner isPlay)}}
+      {{#if (and details.isOwner (not isPlay))}}
       {{formGroup fields.name value=source.name rootId=rootId}}
       {{formGroup fields.img value=source.img rootId=rootId}}
       {{/if}}
@@ -9,9 +9,9 @@
 
     <section class="description">
       {{#if isPlay}}
-      {{formInput systemFields.description.fields.value value=details.description.value}}
-      {{else}}
       {{{details.description.enriched}}}
+      {{else}}
+      {{formInput systemFields.description.fields.value value=details.description.value}}
       {{/if}}
     </section>
   </div>
