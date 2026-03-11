@@ -123,7 +123,7 @@ export default class DrawSteelPartySheet extends DrawSteelActorSheet {
       });
       members.push(ctx);
     }
-    return members.sort((a, b) => a.actor.name.localeCompare(b.actor.name));
+    return members.sort((a, b) => a.actor._source.name.localeCompare(b.actor._source.name));
   }
 
   /* -------------------------------------------------- */
