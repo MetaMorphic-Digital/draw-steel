@@ -18,6 +18,25 @@
 ### Known Issues
 -->
 
+## 0.11.1
+
+The Draw Steel system is now official! Premium modules, licensed by MCDM and produced by MetaMorphic Digital, are available on the Foundry marketplace.
+- [Road to Broadhurst](https://www.foundryvtt.store/products/draw-steel-road-to-broadhurst)
+- [Draw Steel: Heroes](https://www.foundryvtt.store/products/draw-steel-heroes)
+- [Draw Steel: Monsters](https://www.foundryvtt.store/products/draw-steel-monsters)
+- [The Delian Tomb](https://www.foundryvtt.store/products/draw-steel-delian-tomb)
+
+### Added
+
+- The system now has unique compendium banners and a background drawn from art provided by MCDM.
+
+### Fixed
+
+- Canvas token placement did not work correctly with wildcards. (#1739)
+- Party sheet now correctly works with play/edit mode. (#1740)
+
+### Added
+
 ## 0.11.0
 
 ### Added
