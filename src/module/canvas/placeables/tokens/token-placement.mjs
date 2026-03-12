@@ -267,12 +267,31 @@ export default class TokenPlacement {
    * @param {TokenPlacementData[]} placements
    * @returns {Promise<TokenDocument[]>}
    */
-  static createTokens(placements) {
-    const data = placements.map(placement => {
+  static async createTokens(placements) {
+    let warning = false;
+
+    const data = placements.map(async (placement) => {
       const { x, y, rotation, prototypeToken } = placement;
       const actorId = prototypeToken.actor.id;
-      return foundry.utils.mergeObject(prototypeToken.toObject(), { x, y, rotation, actorId });
+      const update = { x, y, rotation, actorId };
+
+      if (prototypeToken.randomImg) {
+        if (!game.user.can("FILES_BROWSE")) {
+          warning = true;
+          update.texture = { src: prototypeToken.actor.img };
+        } else {
+          const { texture } = await prototypeToken.actor.getTokenDocument();
+          update.texture = { src: texture.src };
+        }
+      }
+
+      return foundry.utils.mergeObject(prototypeToken.toObject(), update);
     });
-    return canvas.scene.createEmbeddedDocuments("Token", data);
+
+    if (warning) {
+      ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.WILDCARD", { localize: true });
+    }
+
+    return canvas.scene.createEmbeddedDocuments("Token", await Promise.all(data));
   }
 }
