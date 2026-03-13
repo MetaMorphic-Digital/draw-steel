@@ -18,10 +18,24 @@
 ### Known Issues
 -->
 
+## 1.0.0
+
+This version of the system does not support v13, it is exclusively for Foundry v14+.
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
 ## 0.11.1
 
 The Draw Steel system is now official! Premium modules, licensed by MCDM and produced by MetaMorphic Digital, are available on the Foundry marketplace.
-- [Road to Broadhurst](https://www.foundryvtt.store/products/draw-steel-road-to-broadhurst)
+- [Road to Broadhurst](https://foundryvtt.com/packages/draw-steel-road-to-broadhurst)
 - [Draw Steel: Heroes](https://www.foundryvtt.store/products/draw-steel-heroes)
 - [Draw Steel: Monsters](https://www.foundryvtt.store/products/draw-steel-monsters)
 - [The Delian Tomb](https://www.foundryvtt.store/products/draw-steel-delian-tomb)
