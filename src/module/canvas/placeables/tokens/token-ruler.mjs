@@ -24,7 +24,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     const teleport = { ...CONFIG.Token.movement.actions.blink, label: "TOKEN.MOVEMENT.ACTIONS.teleport.label" };
     // Optional chaining on canSelect until https://github.com/foundryvtt/foundryvtt/issues/12603 is resolved
     foundry.utils.mergeObject(CONFIG.Token.movement.actions, {
-      "-=blink": null,
+      blink: _del,
       teleport,
       /** @type {TokenMovementActionConfig} */
       climb: {
@@ -60,7 +60,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       walk: {
         canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
       },
-    }, { performDeletions: true });
+    }, { applyOperators: true });
   }
 
   /* -------------------------------------------------- */
