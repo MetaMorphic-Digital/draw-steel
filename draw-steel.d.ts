@@ -24,4 +24,12 @@ declare global {
    * The singleton game canvas.
    */
   const canvas: Canvas;
+  /**
+   * A singleton ForcedDeletion operator instance that can be reused.
+   */
+  const _del: foundry.data.operators.ForcedDeletion;
+  /**
+   * A reference for ForcedReplacement.create that can be easily referenced.
+   */
+  const _replace = foundry.data.operators.ForcedReplacement.create;
 }
