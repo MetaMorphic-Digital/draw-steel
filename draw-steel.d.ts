@@ -1,5 +1,6 @@
 import "./src/module/_types";
 import "@client/global.mjs";
+import "@common/global.mjs";
 import "@common/primitives/global.mjs";
 import Canvas from "@client/canvas/board.mjs";
 
@@ -24,12 +25,4 @@ declare global {
    * The singleton game canvas.
    */
   const canvas: Canvas;
-  /**
-   * A singleton ForcedDeletion operator instance that can be reused.
-   */
-  const _del: foundry.data.operators.ForcedDeletion;
-  /**
-   * A reference for ForcedReplacement.create that can be easily referenced.
-   */
-  const _replace = foundry.data.operators.ForcedReplacement.create;
 }
