@@ -72,4 +72,4 @@ jobs:
           body: |
             ${{ github.event.release.body }}
 
-            **Installation:** To manually install this release, please use the following manifest URL: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/system.zip
+            **Installation:** To manually install this release, please use the following manifest URL: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/system.json
