@@ -1,3 +1,5 @@
+banners/ are cuts from art under special permission from MCDM Productions.
+
 anvil-impact.png by Lorc under CC BY 3.0 from game-icons.net
 barbed-coil.svg under CC BY 3.0 from game-icons.net
 crenulated-shield.svg under CC BY 3.0 from game-icons.net
