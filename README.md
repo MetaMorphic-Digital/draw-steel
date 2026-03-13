@@ -1,23 +1,33 @@
 # Draw Steel!
 
-![Foundry v13](https://img.shields.io/badge/foundry-v13-green)
+![Foundry v14](https://img.shields.io/badge/foundry-v14-green)
 
-> The Draw Steel System for Foundry Virtual Tabletop is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL © 2024 MCDM Productions, LLC.
+> The Draw Steel system for Foundry Virtual Tabletop is used under license of  MCDM Productions, LLC. DRAW STEEL is © 2026 MCDM Productions, LLC.  This product is not subject to the DRAW STEEL Creator license and permission of use from this license do not apply.
 
-This system is still early in development. Feature requests can be made in the [issues](https://github.com/MetaMorphic-Digital/draw-steel/issues) tab.
+![A collection of heroes battle against Bloodlord Varrox](assets/system-background.webp)
+
+This system is constantly improving and under active development. Feature requests can be made in the [issues](https://github.com/MetaMorphic-Digital/draw-steel/issues) tab.
 
 ## Installation Instructions
 
 The latest version of the system can be installed through the in-app System Browser and searching for "Draw Steel".
 
 You can also use one of the following alternative installation methods:
-1. Pasting `https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json` into the **Install System** dialog on the Setup menu of the application.
+1. Pasting `https://github.com/MetaMorphic-Digital/draw-steel/releases/latest/download/system.json` into the **Install System** dialog on the Setup menu of the application.
 2. Browsing the repository's [Releases](https://github.com/MetaMorphic-Digital/draw-steel/releases) page, where you can copy any system.json link for use in the Install System dialog.
 3. Downloading one of the .zip archives from the Releases page and extracting it into your foundry Data folder, under `Data/systems/draw-steel`.
 
 ## Frequently Asked Questions
 
 The [Wiki](https://github.com/MetaMorphic-Digital/draw-steel/wiki) is the best place to find out information about the system's features.
+
+## Premium Content
+
+The following modules have been produced by MetaMorphic Digital for Draw Steel games.
+- [Road to Broadhurst](https://foundryvtt.com/packages/draw-steel-road-to-broadhurst)
+- [Draw Steel: Heroes](https://www.foundryvtt.store/products/draw-steel-heroes)
+- [Draw Steel: Monsters](https://www.foundryvtt.store/products/draw-steel-monsters)
+- [The Delian Tomb](https://www.foundryvtt.store/products/draw-steel-delian-tomb)
 
 ## System Discussion
 
