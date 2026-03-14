@@ -26,8 +26,8 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 - New Player-Facing Compendium Content:
 - New Director-Facing Compendium Content:
-  - Added common effects like Burning, Marked, Petrified, and Wet.
-- Created an "Effects and Imbues" compendium pack.
+  - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Created an "Effects and Imbues" compendium pack. (#1163)
 
 ### Changed
 
