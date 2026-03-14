@@ -594,10 +594,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     return [
       // Kit specific options
       {
-        name: "DRAW_STEEL.Item.kit.PreferredKit.MakePreferred",
-        icon: "<i class=\"fa-solid fa-fw fa-star\"></i>",
-        condition: (target) => this._getEmbeddedDocument(target)?.type === "kit",
-        callback: async (target) => {
+        label: "DRAW_STEEL.Item.kit.PreferredKit.MakePreferred",
+        icon: "fa-solid fa-fw fa-star",
+        visible: (target) => this._getEmbeddedDocument(target)?.type === "kit",
+        onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           await this.actor.update({ "system.hero.preferredKit": item.id });
           await this.render();
@@ -605,10 +605,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       // Equipment specific options
       {
-        name: "DRAW_STEEL.Item.project.Craft.FromTreasure.Label",
-        icon: "<i class=\"fa-solid fa-fw fa-hammer\"></i>",
-        condition: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
-        callback: async (target) => {
+        label: "DRAW_STEEL.Item.project.Craft.FromTreasure.Label",
+        icon: "fa-solid fa-fw fa-hammer",
+        visible: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
+        onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           const project = await item.system.createProject(this.actor);
           if (project) ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromTreasure.Notification", { format: { item: item.name } });
@@ -616,9 +616,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       // Project specific options
       {
-        name: "DRAW_STEEL.Item.project.SpendCareerPoints.Title",
-        icon: "<i class=\"fa-solid fa-fw fa-hammer\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.Item.project.SpendCareerPoints.Title",
+        icon: "fa-solid fa-fw fa-hammer",
+        visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           if (item.type !== "project") return false;
 
@@ -627,70 +627,70 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
           return careerPoints && pointsToCompletion;
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           await item.system.spendCareerPoints();
           await this.render();
         },
       },
       {
-        name: "DRAW_STEEL.Item.project.Events.DrawEvent",
-        icon: "<i class=\"fa-solid fa-fw fa-table-list\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.Item.project.Events.DrawEvent",
+        icon: "fa-solid fa-fw fa-table-list",
+        visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           return item.type === "project";
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           await item.system.drawEventsTable();
         },
       },
       //Ability specific options
       {
-        name: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
-        icon: "<i class=\"fa-solid fa-fw fa-sword\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
+        icon: "fa-solid fa-fw fa-sword",
+        visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "ranged");
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           await item.update({ "system.damageDisplay": "melee" });
         },
       },
       {
-        name: "DRAW_STEEL.Item.ability.SwapUsage.ToRanged",
-        icon: "<i class=\"fa-solid fa-fw fa-bow-arrow\"></i>",
+        label: "DRAW_STEEL.Item.ability.SwapUsage.ToRanged",
+        icon: "fa-solid fa-fw fa-bow-arrow",
         condition: (target) => {
           const item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "melee");
         },
-        callback: async (target) => {
+        callback: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           await item.update({ "system.damageDisplay": "ranged" });
         },
       },
       // Active Effect options
       {
-        name: "DRAW_STEEL.ActiveEffect.RollSave",
-        icon: "<i class=\"fa-solid fa-fw fa-dice-d10\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.ActiveEffect.RollSave",
+        icon: "fa-solid fa-fw fa-dice-d10",
+        visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return (effect.documentName === "ActiveEffect") && (effect.system.end?.type === "save");
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
           await effect.system.rollSave();
         },
       },
       {
-        name: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "<i class=\"fa-solid fa-fw fa-check\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "fa-solid fa-fw fa-check",
+        visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return (effect.documentName === "ActiveEffect") && !effect.active;
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
           const updateData = DrawSteelActiveEffect.getInitialDuration();
 
@@ -700,40 +700,40 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
       },
       {
-        name: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "<i class=\"fa-solid fa-fw fa-times\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "fa-solid fa-fw fa-times",
+        visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return (effect.documentName === "ActiveEffect") && effect.active;
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
           await effect.update({ disabled: true });
         },
       },
       // All applicable options
       {
-        name: "DRAW_STEEL.SHEET.View",
-        icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
-        condition: () => this.isPlayMode,
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.View",
+        icon: "fa-solid fa-fw fa-eye",
+        visible: () => this.isPlayMode,
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await document.sheet.render({ force: true, mode: DSDocumentSheet.MODES.PLAY });
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.Edit",
-        icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
-        condition: () => this.isEditMode,
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.Edit",
+        icon: "fa-solid fa-fw fa-edit",
+        visible: () => this.isEditMode,
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await document.sheet.render({ force: true, mode: DSDocumentSheet.MODES.EDIT });
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.Share",
-        icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.Share",
+        icon: "fa-solid fa-fw fa-share-from-square",
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
             content: `@Embed[${document.uuid} caption=false]`,
@@ -746,10 +746,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.Delete",
-        icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
-        condition: () => this.actor.isOwner,
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.Delete",
+        icon: "fa-solid fa-fw fa-trash",
+        visible: () => this.actor.isOwner,
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           if (document.hasGrantedItems) await document.advancementDeletionPrompt();
           else await document.deleteDialog();
@@ -767,10 +767,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   _createEffectContextOptions() {
     return [
       {
-        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
-        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.base}"></i>`,
-        condition: () => this.isEditable,
-        callback: (target) => {
+        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
+        icon: `${CONFIG.ActiveEffect.typeIcons.base} fa-fw`,
+        visible: () => this.isEditable,
+        onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.actor }),
@@ -787,10 +787,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
       },
       {
-        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
-        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.abilityModifier}"></i>`,
-        condition: () => this.isEditable,
-        callback: (target) => {
+        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
+        visible: () => this.isEditable,
+        onCLick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.actor, type: "abilityModifier" }),

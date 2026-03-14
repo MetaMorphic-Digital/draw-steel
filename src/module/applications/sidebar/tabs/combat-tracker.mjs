@@ -392,13 +392,13 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // Add captain context menu option.
     const getCombatant = li => this.viewed.combatants.get(li.dataset.combatantId);
     entryOptions.push({
-      name: "DRAW_STEEL.Combatant.ToggleCaptain",
-      icon: "<i class=\"fa-solid fa-helmet-battle\"></i>",
-      condition: li => {
+      label: "DRAW_STEEL.Combatant.ToggleCaptain",
+      icon: "fa-solid fa-helmet-battle fa-fw",
+      visible: li => {
         const combatant = getCombatant(li);
         return game.user.isGM && !combatant.actor?.isMinion && (combatant.group?.type === "squad");
       },
-      callback: li => {
+      onClick: (event, li) => {
         const combatant = getCombatant(li);
         const newCaptain = (!combatant.system.isCaptain) ? combatant.id : null;
 
@@ -415,18 +415,18 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   _getCombatContextOptions() {
     const entryOptions = [
       {
-        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
-        icon: "<i class=\"fa-solid fa-users-rectangle\"></i>",
-        callback: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
+        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        icon: "fa-solid fa-users-rectangle fa-fw",
+        onClick: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
       }, {
-        name: "DRAW_STEEL.CombatantGroup.GroupSelected",
-        icon: "<i class=\"fa-solid fa-users-viewfinder\"></i>",
-        callback: async () => DrawSteelCombatantGroup.createFromTokens(this.viewed),
+        label: "DRAW_STEEL.CombatantGroup.GroupSelected",
+        icon: "fa-solid fa-users-viewfinder fa-fw",
+        onClick: async () => DrawSteelCombatantGroup.createFromTokens(this.viewed),
       }, {
-        name: "COMBAT.InitiativeRoll",
-        icon: "<i class=\"fa-solid fa-dice-d10\"></i>",
-        condition: () => game.combats.isDefaultInitiativeMode,
-        callback: () => this.viewed.rollFirst(),
+        label: "COMBAT.InitiativeRoll",
+        icon: "fa-solid fa-dice-d10 fa-fw",
+        visible: () => game.combats.isDefaultInitiativeMode,
+        onClick: () => this.viewed.rollFirst(),
       },
     ];
 
@@ -445,10 +445,10 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const getCombatantGroup = li => this.viewed.groups.get(li.dataset.groupId);
     return [
       {
-        name: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        label: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-edit\"></i>",
-        condition: li => getCombatantGroup(li).isOwner,
-        callback: li => getCombatantGroup(li)?.sheet.render({
+        visible: li => getCombatantGroup(li).isOwner,
+        onClick: (event, li) => getCombatantGroup(li)?.sheet.render({
           force: true,
           position: {
             top: Math.min(li.offsetTop, window.innerHeight - 350),
@@ -457,13 +457,13 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         }),
       },
       {
-        name: "DRAW_STEEL.CombatantGroup.ResetSquadHP",
+        label: "DRAW_STEEL.CombatantGroup.ResetSquadHP",
         icon: "<i class=\"fa-solid fa-rotate\"></i>",
-        condition: li => {
+        visible: li => {
           const group = getCombatantGroup(li);
           return ((group.type === "squad") && group.isOwner);
         },
-        callback: li => {
+        onClick: (event, li) => {
           const group = getCombatantGroup(li);
           group.update({ "system.staminaValue": group.system.staminaMax });
         },
