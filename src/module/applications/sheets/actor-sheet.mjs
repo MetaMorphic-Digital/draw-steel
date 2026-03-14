@@ -661,11 +661,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       {
         label: "DRAW_STEEL.Item.ability.SwapUsage.ToRanged",
         icon: "fa-solid fa-fw fa-bow-arrow",
-        condition: (target) => {
+        visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "melee");
         },
-        callback: async (event, target) => {
+        onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
           await item.update({ "system.damageDisplay": "ranged" });
         },

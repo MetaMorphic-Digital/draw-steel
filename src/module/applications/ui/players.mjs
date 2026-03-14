@@ -48,49 +48,49 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
   _metaCurrencyContextMenuOptions() {
     return [
       {
-        name: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
-        icon: "<i class=\"fa-solid fa-fw fa-plus\"></i>",
-        condition: li => game.user.isGM,
-        callback: async li => {
+        label: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
+        icon: "fa-solid fa-fw fa-plus",
+        visible: li => game.user.isGM,
+        onClick: async (event, li) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.giveToken();
         },
       },
       {
-        name: "DRAW_STEEL.Setting.HeroTokens.SpendToken",
-        icon: "<i class=\"fa-solid fa-fw fa-minus\"></i>",
-        callback: async li => {
+        label: "DRAW_STEEL.Setting.HeroTokens.SpendToken",
+        icon: "fa-solid fa-fw fa-minus",
+        onClick: async (event, li) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.spendToken("generic");
         },
       },
       {
-        name: "DRAW_STEEL.Setting.HeroTokens.ResetToken",
-        icon: "<i class=\"fa-solid fa-fw fa-rotate\"></i>",
-        condition: li => game.user.isGM,
-        callback: async li => {
+        label: "DRAW_STEEL.Setting.HeroTokens.ResetToken",
+        icon: "fa-solid fa-fw fa-rotate",
+        visible: li => game.user.isGM,
+        onClick: async (event, li) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.resetTokens();
         },
       },
       {
-        name: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
-        icon: "<i class=\"fa-solid fa-fw fa-plus-minus\"></i>",
-        condition: li => game.user.isGM && game.combat,
-        callback: async li => {
+        label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
+        icon: "fa-solid fa-fw fa-plus-minus",
+        visible: li => game.user.isGM && game.combat,
+        onClick: async (event, li) => {
           /** @type {MaliceModel} */
           const malice = game.actors.malice;
           await malice.adjustMalice();
         },
       },
       {
-        name: "DRAW_STEEL.Setting.Malice.ResetMalice",
-        icon: "<i class=\"fa-solid fa-fw fa-rotate\"></i>",
-        condition: li => game.user.isGM && game.combat,
-        callback: async li => {
+        label: "DRAW_STEEL.Setting.Malice.ResetMalice",
+        icon: "fa-solid fa-fw fa-rotate",
+        visible: li => game.user.isGM && game.combat,
+        onClick: async (event, li) => {
           /** @type {MaliceModel} */
           const malice = game.actors.malice;
           await malice.resetMalice();

@@ -189,15 +189,15 @@ export default class AbilityResultPart extends RollPart {
     const baseLocalizationPath = "DRAW_STEEL.ChatMessage.PARTS.abilityResult.ContextMenuOptions.DamageModification";
     return damageRolls.map(roll => {
       const damageType = ds.CONFIG.damageTypes[roll.options.type]?.label ?? roll.options.type;
-      const name = game.i18n.format(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
+      const label = game.i18n.format(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
         total: roll.total,
         type: damageType,
       });
       return {
-        name,
-        icon: "<i class=\"fa-fw fa-solid fa-gear\"></i>",
-        condition: this.message.isOwner,
-        callback: () => this.modifyDamageDialog(roll),
+        label,
+        icon: "fa-fw fa-solid fa-gear",
+        visible: this.message.isOwner,
+        onClick: () => this.modifyDamageDialog(roll),
       };
     });
   }
