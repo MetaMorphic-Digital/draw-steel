@@ -47,26 +47,23 @@
         "end": {
           "type": "",
           "roll": ""
-        }
+        },
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
       "_id": "aDFBAt6bAypcSJF2",
-      "changes": [
-        {
-          "key": "system.movement.value",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 1,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": 1,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -78,12 +75,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!0UEuam82ZIE31Qv7.aDFBAt6bAypcSJF2"
     }
   ],
@@ -96,7 +97,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1757755174216,

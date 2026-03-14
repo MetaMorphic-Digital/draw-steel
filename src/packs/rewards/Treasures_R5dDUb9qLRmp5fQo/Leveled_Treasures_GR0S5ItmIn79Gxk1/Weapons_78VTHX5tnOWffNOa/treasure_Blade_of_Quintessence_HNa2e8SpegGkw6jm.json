@@ -19,25 +19,22 @@
           "keywords": [
             "weapon"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "value": 1,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "damage.bonuses.treasure",
-          "mode": 4,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -49,13 +46,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764264882755,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!HNa2e8SpegGkw6jm.Gnsu1r6Co0bNTN4s"
     },
     {
@@ -73,25 +73,22 @@
           "keywords": [
             "weapon"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "value": 2,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "damage.bonuses.treasure",
-          "mode": 4,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -103,13 +100,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764264901536,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!HNa2e8SpegGkw6jm.iOq0uDUCwLeC5r9f"
     },
     {
@@ -127,25 +127,22 @@
           "keywords": [
             "weapon"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "value": 3,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "damage.bonuses.treasure",
-          "mode": 4,
-          "value": "3",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -157,13 +154,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764264910711,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!HNa2e8SpegGkw6jm.cK2EhVgiEE5qr82q"
     },
     {
@@ -182,25 +182,22 @@
             "ranged",
             "weapon"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "distance",
+            "value": 3,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "distance",
-          "mode": 2,
-          "value": "3",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -212,13 +209,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764265193185,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!HNa2e8SpegGkw6jm.MHbbzVEpGixag4YK"
     },
     {
@@ -231,43 +231,40 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.cold",
+            "value": 10,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.fire",
+            "value": 10,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.lightning",
+            "value": 10,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.sonic",
+            "value": 10,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.cold",
-          "mode": 4,
-          "value": "10",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.fire",
-          "mode": 4,
-          "value": "10",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.lightning",
-          "mode": 4,
-          "value": "10",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.sonic",
-          "mode": 4,
-          "value": "10",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -279,13 +276,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764265259652,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!HNa2e8SpegGkw6jm.3HSYQpwAEWpso0yA"
     }
   ],
@@ -333,7 +333,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1763173316034,

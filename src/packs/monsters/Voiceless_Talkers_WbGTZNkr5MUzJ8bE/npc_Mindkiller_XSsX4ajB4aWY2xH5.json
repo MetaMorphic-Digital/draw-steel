@@ -129,11 +129,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!XSsX4ajB4aWY2xH5.g8H6AW1QJcvPrOXg"
     },
@@ -166,11 +167,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!XSsX4ajB4aWY2xH5.WuVd8qlmVOVH1KsN"
     },
@@ -203,11 +205,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!XSsX4ajB4aWY2xH5.ia9zv1bueOU3zQvi"
     },
@@ -348,11 +351,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "4Rs4y8By9F6i1IyZ",
       "ownership": {
@@ -507,18 +511,15 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": []
           },
-          "changes": [],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>the mindkiller is invisible to the target (save ends).</p>",
           "tint": "#ffffff",
@@ -529,11 +530,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "createdTime": null,
+            "modifiedTime": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.oliXUlVLZHMnKgwI.2bvdFg7R1NMVCCsc"
         }
       ],
@@ -544,11 +550,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "oliXUlVLZHMnKgwI",
       "ownership": {
@@ -617,25 +624,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.characteristics.reason.value",
+                "value": -1,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.characteristics.reason.value",
-              "mode": 2,
-              "value": "-1",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You take a −1 penalty to your Reason until the end of the encounter</p>",
           "tint": "#ffffff",
@@ -646,13 +650,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761774532418,
             "modifiedTime": 1761775037634,
             "lastModifiedBy": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.QJD07ykXK9ynKVyU"
         },
         {
@@ -666,25 +673,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.characteristics.presence.value",
+                "value": -1,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.characteristics.presence.value",
-              "mode": 2,
-              "value": "-1",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": 0,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": 1,
-            "startTurn": 0
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You take a −1 penalty to your Presence until the end of the encounter</p>",
           "tint": "#ffffff",
@@ -695,13 +699,23 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761774655849,
             "modifiedTime": 1761775313600,
             "lastModifiedBy": null
           },
+          "start": {
+            "combat": null,
+            "round": 1,
+            "time": 0,
+            "turn": 0,
+            "combatant": null,
+            "initiative": null
+          },
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.D9K9nIHqOpI70W1l"
         },
         {
@@ -715,25 +729,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.characteristics.intuition.value",
+                "value": -1,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.characteristics.intuition.value",
-              "mode": 2,
-              "value": "-1",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You take a −1 penalty to your Intuition until the end of the encounter</p>",
           "tint": "#ffffff",
@@ -744,13 +755,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761774791145,
             "modifiedTime": 1761775045337,
             "lastModifiedBy": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.owxjyMnwOLFLKpB7"
         },
         {
@@ -763,25 +777,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.characteristics.reason.value",
+                "value": 1,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.characteristics.reason.value",
-              "mode": 2,
-              "value": "1",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": 0,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": 1,
-            "startTurn": 0
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>The mindkiller gains a +1 to their Reason until the end of the encounter</p>",
           "tint": "#ffffff",
@@ -791,7 +802,7 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl.ActiveEffect.QJD07ykXK9ynKVyU",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761774907258,
@@ -800,6 +811,16 @@
           },
           "_id": "MrktnfyqwSaXC5o8",
           "sort": 0,
+          "start": {
+            "combat": null,
+            "round": 1,
+            "time": 0,
+            "turn": 0,
+            "combatant": null,
+            "initiative": null
+          },
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.MrktnfyqwSaXC5o8"
         },
         {
@@ -812,25 +833,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.characteristics.presence.value",
+                "value": 1,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.characteristics.presence.value",
-              "mode": 2,
-              "value": "1",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": 0,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": 1,
-            "startTurn": 0
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>The mindkiller gains a +1 to their presence until the end of the encounter</p>",
           "tint": "#ffffff",
@@ -840,7 +858,7 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl.ActiveEffect.D9K9nIHqOpI70W1l",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761774959753,
@@ -849,6 +867,16 @@
           },
           "_id": "U6fh4AYL9femqSMD",
           "sort": 0,
+          "start": {
+            "combat": null,
+            "round": 1,
+            "time": 0,
+            "turn": 0,
+            "combatant": null,
+            "initiative": null
+          },
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.U6fh4AYL9femqSMD"
         },
         {
@@ -861,25 +889,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.characteristics.intuition.value",
+                "value": 1,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.characteristics.intuition.value",
-              "mode": 2,
-              "value": "1",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": 0,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": 1,
-            "startTurn": 0
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>The mindkiller gains a +1 to their intuition until the end of the encounter</p>",
           "tint": "#ffffff",
@@ -889,7 +914,7 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl.ActiveEffect.owxjyMnwOLFLKpB7",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761775057553,
@@ -898,6 +923,16 @@
           },
           "_id": "y81L7TWJ4MeEKBKF",
           "sort": 0,
+          "start": {
+            "combat": null,
+            "round": 1,
+            "time": 0,
+            "turn": 0,
+            "combatant": null,
+            "initiative": null
+          },
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.y81L7TWJ4MeEKBKF"
         }
       ],
@@ -908,11 +943,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "6eldOC0ap5Kpjytl",
       "ownership": {
@@ -972,11 +1008,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "QBw7cc4l9l1Js8ZJ",
       "ownership": {
@@ -1032,11 +1069,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.oVRW83m5Ek3HZp4m",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "ownership": {
         "default": 0,
@@ -1094,11 +1132,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.m4MUGQHH7OKJq56b",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "ownership": {
         "default": 0,
@@ -1259,18 +1298,15 @@
             "end": {
               "type": "save",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": []
           },
-          "changes": [],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>The target can't treat their allies as allies</p>",
           "tint": "#ffffff",
@@ -1281,11 +1317,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "createdTime": null,
+            "modifiedTime": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.chjWo71vjEugh9fC.pimQVRZtdUDI911o"
         },
         {
@@ -1299,18 +1340,15 @@
             "end": {
               "type": "save",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": []
           },
-          "changes": [],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>The target perceives their allies as enemies.</p>",
           "tint": "#ffffff",
@@ -1321,11 +1359,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "createdTime": null,
+            "modifiedTime": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.chjWo71vjEugh9fC.WeIzrImwA15HNJCA"
         }
       ],
@@ -1334,7 +1377,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761435096856,
@@ -1363,12 +1406,9 @@
       "src": "systems/draw-steel/assets/roles/hexer.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -1419,7 +1459,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -1445,7 +1485,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 1
   },
   "effects": [],
   "sort": 0,
@@ -1457,7 +1498,7 @@
     "compendiumSource": "Actor.XSsX4ajB4aWY2xH5",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758822607606,
