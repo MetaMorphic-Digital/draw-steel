@@ -38,7 +38,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     },
     window: {
       controls: [{
-        icon: "fa-solid fa-file-arrow-down",
+        icon: "fa-solid fa-fw fa-file-arrow-down",
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,

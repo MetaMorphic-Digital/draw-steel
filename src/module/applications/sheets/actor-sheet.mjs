@@ -39,28 +39,28 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       controls: [
         {
           action: "configureToken",
-          icon: "fa-regular fa-circle-user",
+          icon: "fa-regular fa-fw fa-circle-user",
           label: "DOCUMENT.Token",
           visible: this.#canConfigureToken,
           ownership: "OWNER",
         },
         {
           action: "configurePrototypeToken",
-          icon: "fa-solid fa-circle-user",
+          icon: "fa-solid fa-fw fa-circle-user",
           label: "TOKEN.TitlePrototype",
           visible: this.#canConfigurePrototype,
           ownership: "OWNER",
         },
         {
           action: "showPortraitArtwork",
-          icon: "fa-solid fa-image",
+          icon: "fa-solid fa-fw fa-image",
           label: "SIDEBAR.CharArt",
           visible: this.#canViewCharacterArt,
           ownership: "OWNER",
         },
         {
           action: "showTokenArtwork",
-          icon: "fa-solid fa-image",
+          icon: "fa-solid fa-fw fa-image",
           label: "SIDEBAR.TokenArt",
           visible: this.#canViewTokenArt,
           ownership: "OWNER",
