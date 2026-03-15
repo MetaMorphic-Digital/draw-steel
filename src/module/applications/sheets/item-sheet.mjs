@@ -31,7 +31,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       showImage: this.#showImage,
       updateSource: this.#updateSource,
       editHTML: this.#editHTML,
-      toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
       shareDoc: this.#shareDoc,
@@ -255,7 +254,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Item.
-   * @return {Record<string, ActiveEffectCategory>} Data for rendering.
+   * @return {Promise<Record<string, ActiveEffectCategory>>} Data for rendering.
    * @protected
    */
   async _prepareActiveEffectCategories() {
@@ -286,13 +285,16 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     // Iterate over active effects, classifying them into categories
     const effects = this.item.effects.contents.sort((a, b) => a.sort - b.sort);
     for (const e of effects) {
+      const durationLabel = e.duration.expired ?
+        _loc("DRAW_STEEL.ActiveEffect.Expired") :
+        _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration;
       const effectContext = {
         id: e.id,
+        durationLabel,
         uuid: e.uuid,
         name: e.name,
         img: e.img,
         sourceName: e.sourceName,
-        duration: e.duration,
         disabled: e.disabled,
         expanded: false,
       };
@@ -376,11 +378,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
-          const updateData = DrawSteelActiveEffect.getInitialDuration();
 
-          updateData.disabled = false;
-
-          await effect.update(updateData);
+          await effect.update({
+            disabled: false,
+            start: DrawSteelActiveEffect.getEffectStart(),
+            "duration.expired": false,
+          });
         },
       },
       {
@@ -677,21 +680,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         }),
       },
     });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Determines effect parent to pass to helper.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #toggleEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.update({ disabled: !effect.disabled });
   }
 
   /* -------------------------------------------------- */

@@ -30,7 +30,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Because these actions are all hard private, the best place to access them is via static DEFAULT_OPTIONS
       ...sheets.ActorSheet.DEFAULT_OPTIONS.actions,
       toggleStatus: this.#toggleStatus,
-      toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
       editCombat: this.#editCombat,
       useAbility: this.#useAbility,
@@ -883,20 +882,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
     await this.actor.toggleStatusEffect(status);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Toggles an active effect from disabled to enabled.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #toggleEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.update({ disabled: !effect.disabled });
   }
 
   /* -------------------------------------------------- */
