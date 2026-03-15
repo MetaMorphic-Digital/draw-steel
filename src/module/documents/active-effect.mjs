@@ -33,6 +33,16 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
+  /**
+   * Prefer falsy fall through to expired rather than null coalescing; expiration can always suppress an AE.
+   * @inheritdoc
+   */
+  get isSuppressed() {
+    return this.system.isSuppressed || this.duration.expired;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   isExpiryEvent(event, context) {
     const dsEvents = new Set("save", "respite");
