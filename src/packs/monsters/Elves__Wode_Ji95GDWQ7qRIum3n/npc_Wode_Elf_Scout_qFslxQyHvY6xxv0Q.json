@@ -130,11 +130,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!qFslxQyHvY6xxv0Q.IUxkt7sls2PdNlOJ"
     },
@@ -167,11 +168,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!qFslxQyHvY6xxv0Q.QSUzYtCPbo3WArxk"
     },
@@ -270,11 +272,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "4sEL8uvAHMA5daMm",
       "ownership": {
@@ -335,11 +338,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DNQTI31GwxJLJaKh",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!qFslxQyHvY6xxv0Q.DNQTI31GwxJLJaKh"
     },
@@ -396,11 +400,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.4M0YYV4gUX0n98tl",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!qFslxQyHvY6xxv0Q.4M0YYV4gUX0n98tl"
     },
@@ -543,7 +548,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Xo0apOKkrnZ7lnKM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761099540400,
@@ -571,12 +576,9 @@
       "src": "systems/draw-steel/assets/roles/minion.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -627,7 +629,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -653,7 +655,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 1
   },
   "effects": [
     {
@@ -672,24 +675,21 @@
           "keywords": [
             "strike"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "power.roll.edges",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "power.roll.edges",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": 0,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Gain an edge on strikes.</p>",
       "tint": "#ffffff",
@@ -701,13 +701,23 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1770941293024,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": {
+        "combat": null,
+        "round": null,
+        "time": 0,
+        "turn": null,
+        "combatant": null,
+        "initiative": null
+      },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!actors.effects!qFslxQyHvY6xxv0Q.k4po575RMG7at9Nt"
     }
   ],
@@ -720,7 +730,7 @@
     "compendiumSource": "Actor.qFslxQyHvY6xxv0Q",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757131092988,

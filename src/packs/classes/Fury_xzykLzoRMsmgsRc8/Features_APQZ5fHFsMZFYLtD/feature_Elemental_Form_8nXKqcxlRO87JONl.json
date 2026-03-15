@@ -29,61 +29,58 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.acid",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.cold",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.corruption",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.fire",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.lightning",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.poison",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.sonic",
+            "value": 4,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.acid",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.cold",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.corruption",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.fire",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.lightning",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.poison",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        },
-        {
-          "key": "system.damage.immunities.sonic",
-          "mode": 4,
-          "value": "4",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to [[lookup @M]]{your Might score}.</p>",
       "tint": "#ffffff",
@@ -94,13 +91,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524862840,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!8nXKqcxlRO87JONl.WCiqfPNIdD6mtKHV"
     },
     {
@@ -114,25 +114,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.cold",
+            "value": 8,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.cold",
-          "mode": 4,
-          "value": "8",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Immunity to cold equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
@@ -143,13 +140,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524890794,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!8nXKqcxlRO87JONl.tTRJufpV4d3UcJ2H"
     },
     {
@@ -163,25 +163,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.fire",
+            "value": 8,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.fire",
-          "mode": 4,
-          "value": "8",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Immunity to fire equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
@@ -192,13 +189,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524909375,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!8nXKqcxlRO87JONl.2yrhy36OsqexJ3lr"
     },
     {
@@ -212,25 +212,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.corruption",
+            "value": 8,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.corruption",
-          "mode": 4,
-          "value": "8",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Immunity to corruption equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
@@ -241,13 +238,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524924034,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!8nXKqcxlRO87JONl.NIN16Bgq0gq6a5S9"
     },
     {
@@ -261,25 +261,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.lightning",
+            "value": 8,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.lightning",
-          "mode": 4,
-          "value": "8",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Immunity to lightning equal to [[lookup 2*@M]]{twice your Might score}.</p>",
       "tint": "#ffffff",
@@ -290,13 +287,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761524936635,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!8nXKqcxlRO87JONl.gEbfDZ2yKruAeVsE"
     }
   ],
@@ -309,7 +309,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1761524685644,

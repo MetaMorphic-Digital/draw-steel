@@ -111,12 +111,9 @@
       "src": "systems/draw-steel/assets/roles/minion.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -167,7 +164,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -193,7 +190,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 1
   },
   "items": [
     {
@@ -226,7 +224,7 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.3y2tRRGSXTCi59k3.Item.cD0TrJyrk2SfV6Zx",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1756956838812,
@@ -334,7 +332,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1756957011728,
@@ -511,18 +509,15 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": []
           },
-          "changes": [],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You cannot stand up.</p>",
           "tint": "#ffffff",
@@ -532,14 +527,18 @@
             "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.351",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770785549792
+            "modifiedTime": 1770785549792,
+            "createdTime": null
           },
           "_id": "6tfLepwkoZo1d24S",
           "sort": 0,
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!EXcMJH79Q4vMPtm4.OMNyXoF5k0h6ffBa.6tfLepwkoZo1d24S"
         }
       ],
@@ -548,7 +547,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761240792278,
@@ -612,7 +611,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761240793310,
@@ -807,7 +806,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wRlM0yKql0bXpAAe",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761240798040,
@@ -840,24 +839,21 @@
           "keywords": [
             "strike"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "damage.bonuses.value",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "damage.bonuses.value",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": 0,
-        "combat": null,
-        "startRound": 1,
-        "startTurn": 0,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -869,13 +865,23 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761240749124,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": {
+        "combat": null,
+        "round": 1,
+        "time": 0,
+        "turn": 0,
+        "combatant": null,
+        "initiative": null
+      },
+      "showIcon": 1,
+      "folder": null,
       "_key": "!actors.effects!EXcMJH79Q4vMPtm4.uUcbP2JoQSp9rFzM"
     }
   ],
@@ -888,7 +894,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1756956636257,

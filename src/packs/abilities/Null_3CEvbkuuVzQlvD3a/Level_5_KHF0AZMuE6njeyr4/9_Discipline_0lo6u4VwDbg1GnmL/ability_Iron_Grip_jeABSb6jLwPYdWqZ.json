@@ -116,13 +116,15 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": []
       },
-      "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>While grabbed this way, you take a bane on the Escape Grab maneuver. Each time you use that maneuver, you take damage equal to twice the null's Agility score.</p>",
       "tint": "#ffffff",
@@ -135,13 +137,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760974247602,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!jeABSb6jLwPYdWqZ.Zhabg9uE19Jmvl1Z"
     }
   ],
@@ -154,7 +159,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1760973272895,

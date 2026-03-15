@@ -36,25 +36,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "combat.save.bonus",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "combat.save.bonus",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>You have a +1 bonus to saving throws that lasts until the next respite.</p>",
       "tint": "#ffffff",
@@ -65,13 +62,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "createdTime": 1754936468740,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!LJ2tJSML9R829mPJ.W0e9SMh7huuVY745"
     }
   ],
@@ -84,7 +84,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1754754580348,

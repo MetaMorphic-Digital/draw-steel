@@ -131,11 +131,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!8mtdeNsfNA2Tboih.aUH5x3sedhmIZvPo"
     },
@@ -288,11 +289,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "uX9utPjrTirN98pc",
       "ownership": {
@@ -470,11 +472,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "ZeNU9GKeksZKwTSN",
       "ownership": {
@@ -539,11 +542,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "P1JwtWGyiJC3IdsL",
       "ownership": {
@@ -699,11 +703,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "7KrVcPHcVppSIFgm",
       "ownership": {
@@ -762,11 +767,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.q0vibNzVqcIeS9TW",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "9h00oriZAzpCN0IE",
       "ownership": {
@@ -868,11 +874,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "BxFw4dJ0i30pmAPm",
       "ownership": {
@@ -1024,31 +1031,28 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.damage.weaknesses.all",
-              "mode": 4,
-              "value": "5",
-              "priority": null
             },
-            {
-              "key": "system.combat.turns",
-              "mode": 4,
-              "value": "2",
-              "priority": null
-            }
-          ],
+            "changes": [
+              {
+                "key": "system.damage.weaknesses.all",
+                "value": 5,
+                "priority": null,
+                "type": "upgrade"
+              },
+              {
+                "key": "system.combat.turns",
+                "value": 2,
+                "priority": null,
+                "type": "upgrade"
+              }
+            ]
+          },
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>The draconian’s scales shatter from battle damage. The draconian has damage weakness 5 but can take two turns per round until the end of the encounter.</p>",
           "tint": "#ffffff",
@@ -1059,12 +1063,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1759975847060
+            "modifiedTime": 1759975847060,
+            "createdTime": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!8mtdeNsfNA2Tboih.x4LQVDZ4kQnlUzZK.Coc2cQHJclPUxtAU"
         }
       ],
@@ -1075,11 +1083,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "x4LQVDZ4kQnlUzZK",
       "ownership": {
@@ -1100,12 +1109,9 @@
       "src": "systems/draw-steel/assets/roles/controller.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -1156,7 +1162,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -1182,7 +1188,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 1
   },
   "effects": [],
   "sort": 0,
@@ -1194,7 +1201,7 @@
     "compendiumSource": "Actor.8mtdeNsfNA2Tboih",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758730573415,

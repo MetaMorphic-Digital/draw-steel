@@ -48,25 +48,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.cold",
+            "value": 1,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.cold",
-          "mode": 4,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>While worn, a blue Color Cloak grants you cold immunity equal to your level.</p>",
       "tint": "#ffffff",
@@ -78,13 +75,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757914155621,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!zIWGFr3n5qDmAR1t.gfVgPV1HVUECIQ90"
     },
     {
@@ -98,24 +98,21 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.weaknesses.cold",
+            "value": 1,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.weaknesses.cold",
-          "mode": 4,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 1,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": 1,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>The cold immunity granted by the cloak becomes cold weakness with the same value until the end of the next round</p>",
       "tint": "#ffffff",
@@ -127,13 +124,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757914189575,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!zIWGFr3n5qDmAR1t.JQzBbpEg27tg34dV"
     }
   ],
@@ -146,7 +146,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1757757078946,

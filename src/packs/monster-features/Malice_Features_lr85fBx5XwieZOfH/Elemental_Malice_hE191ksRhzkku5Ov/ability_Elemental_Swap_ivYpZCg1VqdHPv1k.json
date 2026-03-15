@@ -52,24 +52,21 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.all",
+            "value": 2,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.all",
-          "mode": 4,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Two elementals on the encounter map teleport to swap places, and each has damage immunity 2 until the end of the round.</p>",
       "tint": "#ffffff",
@@ -81,13 +78,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757108240989,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!ivYpZCg1VqdHPv1k.0q7DcAIYxiQ09fCG"
     }
   ],
@@ -100,7 +100,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757107830407,

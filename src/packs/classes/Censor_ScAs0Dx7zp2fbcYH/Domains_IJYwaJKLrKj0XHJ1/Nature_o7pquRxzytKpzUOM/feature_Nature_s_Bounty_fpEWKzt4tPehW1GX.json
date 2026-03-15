@@ -28,25 +28,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.movement.value",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains a +1 bonus to speed.</p>",
       "tint": "#ffffff",
@@ -56,7 +53,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.PEBzKcJ0CObveH4p",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284154522,
@@ -65,6 +62,9 @@
       },
       "_id": "YyEuFQOWQG5lb3tY",
       "sort": 100000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.YyEuFQOWQG5lb3tY"
     },
     {
@@ -77,25 +77,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.combat.save.threshold",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.combat.save.threshold",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p> Each creature gains a +1 bonus to saving throws.</p>",
       "tint": "#ffffff",
@@ -105,7 +102,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.dlw4NFzF507dk8ui",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284157668,
@@ -114,6 +111,9 @@
       },
       "_id": "dIGYuPH4MvIjttBJ",
       "sort": 200000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.dIGYuPH4MvIjttBJ"
     },
     {
@@ -126,25 +126,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.acid",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.acid",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to acid damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -154,7 +151,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.Wxs2FU26E89kePKO",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284159357,
@@ -163,6 +160,9 @@
       },
       "_id": "oT4yvGPLAsChcJJ2",
       "sort": 300000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.oT4yvGPLAsChcJJ2"
     },
     {
@@ -175,25 +175,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.cold",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.cold",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to cold damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -203,7 +200,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.cNgt67I3KzdcLCIj",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284160487,
@@ -212,6 +209,9 @@
       },
       "_id": "z8a6AJazFVHu5MnC",
       "sort": 400000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.z8a6AJazFVHu5MnC"
     },
     {
@@ -224,25 +224,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.corruption",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.corruption",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to corruption damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -252,7 +249,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.JNwnNUeLwK9Nn5xb",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284162103,
@@ -261,6 +258,9 @@
       },
       "_id": "z1m9QCKa08EP2vqK",
       "sort": 500000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.z1m9QCKa08EP2vqK"
     },
     {
@@ -273,25 +273,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.fire",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.fire",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to fire damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -301,7 +298,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.L9ezn20AAjsHxnV0",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284163975,
@@ -310,6 +307,9 @@
       },
       "_id": "VpEIkmBpEqJwrIJ1",
       "sort": 600000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.VpEIkmBpEqJwrIJ1"
     },
     {
@@ -322,25 +322,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.poison",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.poison",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to poison damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -350,7 +347,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.J7GED0lgtMJGiy2v",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284165336,
@@ -359,6 +356,9 @@
       },
       "_id": "7n6o9BYz2H9YCgqV",
       "sort": 800000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.7n6o9BYz2H9YCgqV"
     },
     {
@@ -371,25 +371,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.sonic",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.sonic",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to sonic damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -399,7 +396,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.CVKrHW9ex8doTr34",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284167714,
@@ -408,6 +405,9 @@
       },
       "_id": "AXKn2yiMQpG9dAKQ",
       "sort": 900000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.AXKn2yiMQpG9dAKQ"
     },
     {
@@ -420,25 +420,22 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.damage.immunities.lightning",
+            "value": 7,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.damage.immunities.lightning",
-          "mode": 4,
-          "value": "7",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each creature gains immunity to lightning damage equal to your level.</p>",
       "tint": "#ffffff",
@@ -448,7 +445,7 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.ArVE1nyjiwuG3CjM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762284179188,
@@ -457,6 +454,9 @@
       },
       "_id": "28KSxWBBFnMmXzXs",
       "sort": 700000,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!fpEWKzt4tPehW1GX.28KSxWBBFnMmXzXs"
     }
   ],
@@ -469,7 +469,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1761261268797,

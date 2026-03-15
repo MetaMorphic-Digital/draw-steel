@@ -52,18 +52,15 @@
         "end": {
           "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": []
       },
-      "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>While wet, an angulotl doesn’t provoke opportunity attacks by moving.</p><p>While wet, any non-angulotl who is wet and ends their turn with none of their movement remaining slips and falls prone.</p>",
       "tint": "#ffffff",
@@ -74,13 +71,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757015077426,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk"
     }
   ],
@@ -93,7 +93,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1757014034853,

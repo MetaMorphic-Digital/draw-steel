@@ -34,24 +34,21 @@
           "keywords": [
             "strike"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "damage.bonuses.value",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "damage.bonuses.value",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 1,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": 1,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>At the start of each of your turns during combat, you can forgo gaining your Heroic Resource until the start of your next turn. If you do, your strikes gain a damage bonus equal to [[lookup @chr]]{your highest characteristic score} until the start of your next turn.</p>",
       "tint": "#ffffff",
@@ -63,13 +60,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.2",
         "createdTime": 1771718720803,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!JZAngQzOciGBOGRC.7APtZCMRGqp3qVTk"
     }
   ],
@@ -82,7 +82,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1754715846118,

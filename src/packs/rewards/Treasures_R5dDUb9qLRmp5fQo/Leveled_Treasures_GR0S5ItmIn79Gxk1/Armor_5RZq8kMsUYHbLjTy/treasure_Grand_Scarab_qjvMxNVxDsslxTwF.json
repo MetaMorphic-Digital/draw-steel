@@ -14,31 +14,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.stamina.bonuses.treasure",
-          "mode": 4,
-          "value": "6",
-          "priority": null
         },
-        {
-          "key": "system.movement.types",
-          "mode": 2,
-          "value": "fly",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "value": 6,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.movement.types",
+            "value": "fly",
+            "priority": null,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -50,13 +47,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1764170882518,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!qjvMxNVxDsslxTwF.kgy0gYUlJfTuD4a6"
     },
     {
@@ -69,31 +69,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.stamina.bonuses.treasure",
-          "mode": 4,
-          "value": "12",
-          "priority": null
         },
-        {
-          "key": "system.movement.types",
-          "mode": 2,
-          "value": "fly",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "value": 12,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.movement.types",
+            "value": "fly",
+            "priority": null,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -105,13 +102,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1764170894843,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!qjvMxNVxDsslxTwF.k1gkwE0TuI7mWsIB"
     },
     {
@@ -124,31 +124,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.stamina.bonuses.treasure",
-          "mode": 4,
-          "value": "21",
-          "priority": null
         },
-        {
-          "key": "system.movement.types",
-          "mode": 2,
-          "value": "fly",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "value": 21,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.movement.types",
+            "value": "fly",
+            "priority": null,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -160,13 +157,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1764170908252,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!qjvMxNVxDsslxTwF.34S2UhT7PLcnlRfR"
     }
   ],
@@ -214,7 +214,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1763173306105,

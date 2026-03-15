@@ -28,25 +28,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "value": -2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.movement.value",
-          "mode": 2,
-          "value": "-2",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>While you are winded, you take a −2 penalty to speed.</p>",
       "tint": "#ffffff",
@@ -58,13 +55,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "createdTime": 1755155590076,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!9R4U3FWq9YmMxdLu.rWJ0NdsKqgTiRYHa"
     }
   ],
@@ -77,7 +77,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1754715846118,

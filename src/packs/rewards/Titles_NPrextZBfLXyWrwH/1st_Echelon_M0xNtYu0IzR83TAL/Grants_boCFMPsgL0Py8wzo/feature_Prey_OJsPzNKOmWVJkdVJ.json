@@ -28,31 +28,28 @@
         "end": {
           "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.movement.value",
-          "mode": 2,
-          "value": "1",
-          "priority": null
         },
-        {
-          "key": "system.recoveries.max",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          },
+          {
+            "key": "system.recoveries.max",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Each of you is given a medicinal draught that grants a +1 bonus to speed and increases your Recoveries by 2. This benefit lasts until the end of your next respite.</p>",
       "tint": "#ffffff",
@@ -64,13 +61,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757916274362,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!OJsPzNKOmWVJkdVJ.ufbvzQJZ11EDkVJj"
     }
   ],
@@ -83,7 +83,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757643915456,

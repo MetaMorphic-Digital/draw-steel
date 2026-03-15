@@ -60,25 +60,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.combat.targetModifiers.edges",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.combat.targetModifiers.edges",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 1,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": 1,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Until the start of the retainer’s next turn, strikes made against the retainer gain an edge.</p>",
       "tint": "#ffffff",
@@ -89,13 +86,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.11.0",
         "createdTime": 1773167707621,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!dXj5jkueW43cNOzR.u5OG1iWWEtgnTnx4"
     },
     {
@@ -112,37 +112,34 @@
         },
         "filters": {
           "keywords": []
-        }
+        },
+        "changes": [
+          {
+            "key": "forced.push",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          },
+          {
+            "key": "forced.pull",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          },
+          {
+            "key": "forced.slide",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "forced.push",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        },
-        {
-          "key": "forced.pull",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        },
-        {
-          "key": "forced.slide",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Any ability the retainer uses before the end of their turn that force moves a creature can move that creature 2 additional squares.</p>",
       "tint": "#ffffff",
@@ -153,13 +150,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.11.0",
         "createdTime": 1773167844786,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!dXj5jkueW43cNOzR.W4lREA2EcKf6brwK"
     }
   ],
@@ -172,7 +172,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.11.0",
     "createdTime": 1772912354904,

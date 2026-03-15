@@ -14,25 +14,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "value": 6,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.stamina.bonuses.treasure",
-          "mode": 4,
-          "value": "6",
-          "priority": null
-        }
-      ],
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -44,13 +41,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764192748822,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MkhZTYkvAicHZXL9.o5a2Mt4kCoq5FWSa"
     },
     {
@@ -63,31 +63,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.stamina.bonuses.treasure",
-          "mode": 4,
-          "value": "12",
-          "priority": null
         },
-        {
-          "key": "system.damage.immunities.all",
-          "mode": 4,
-          "value": "2",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "value": 12,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.all",
+            "value": 2,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
+      },
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -99,13 +96,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764192759584,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MkhZTYkvAicHZXL9.RBGWlyuD5QfGmAmg"
     },
     {
@@ -118,31 +118,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.stamina.bonuses.treasure",
-          "mode": 4,
-          "value": "21",
-          "priority": null
         },
-        {
-          "key": "system.damage.immunities.all",
-          "mode": 4,
-          "value": "2",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "value": 21,
+            "priority": null,
+            "type": "upgrade"
+          },
+          {
+            "key": "system.damage.immunities.all",
+            "value": 2,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
+      },
       "disabled": true,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -154,13 +151,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764192770959,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MkhZTYkvAicHZXL9.zVJGgaNEWxxX4u06"
     },
     {
@@ -174,18 +174,15 @@
         "end": {
           "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": []
       },
-      "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "",
       "tint": "#ffffff",
@@ -196,13 +193,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "createdTime": 1764192847637,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!MkhZTYkvAicHZXL9.RSTGVD3iEuERHmYI"
     }
   ],
@@ -250,7 +250,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1763173310918,
