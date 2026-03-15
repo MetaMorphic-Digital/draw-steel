@@ -221,8 +221,8 @@ export default class HeroModel extends CreatureModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
-    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
-    this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label");
+    this.hero.primary.label = _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+    this.hero.epic.label = _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label");
     const heroClass = this.class;
     if (heroClass) {
       if (heroClass.system.primary) this.hero.primary.label = heroClass.system.primary;
@@ -306,7 +306,7 @@ export default class HeroModel extends CreatureModel {
       });
       await recoveryRoll.toMessage({
         speaker: DrawSteelChatMessage.getSpeaker({ token: combatant.token }),
-        flavor: game.i18n.localize("DRAW_STEEL.Actor.hero.HeroicResourceGain"),
+        flavor: _loc("DRAW_STEEL.Actor.hero.HeroicResourceGain"),
       });
       await this.updateResource(recoveryRoll.total);
     }
@@ -380,7 +380,7 @@ export default class HeroModel extends CreatureModel {
       window: {
         title: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
       },
-      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
+      content: `<p>${_loc("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
         value: heroTokens.value,
       })}</p>`,
     });
@@ -442,7 +442,7 @@ export default class HeroModel extends CreatureModel {
     if (classModel) minimum = ds.utils.evaluateFormula(classModel.minimum, classModel.parent.getRollData());
 
     return {
-      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label"),
+      name: this.class?.system.primary ?? _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label"),
       target: this.parent,
       path: "system.hero.primary.value",
       minimum,
@@ -576,7 +576,7 @@ export default class HeroModel extends CreatureModel {
       const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
         chain,
         window: {
-          title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
+          title: _loc("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
         },
       });
       if (!configured) return;

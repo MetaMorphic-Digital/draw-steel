@@ -415,7 +415,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   _getCombatContextOptions() {
     const entryOptions = [
       {
-        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        label: _loc("DOCUMENT.Create", { type: _loc("DOCUMENT.CombatantGroup") }),
         icon: "fa-solid fa-fw fa-users-rectangle",
         onClick: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
       }, {
@@ -445,7 +445,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const getCombatantGroup = target => this.viewed.groups.get(target.dataset.groupId);
     return [
       {
-        label: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        label: _loc("DOCUMENT.Update", { type: _loc("DOCUMENT.CombatantGroup") }),
         icon: "fa-solid fa-fw fa-edit",
         visible: (target) => getCombatantGroup(target).isOwner,
         onClick: (event, target) => getCombatantGroup(target)?.sheet.render({
@@ -483,7 +483,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         },
       },
       {
-        label: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        label: _loc("DOCUMENT.Delete", { type: _loc("DOCUMENT.CombatantGroup") }),
         icon: "fa-solid fa-fw fa-trash",
         visible: () => game.user.isGM,
         onClick: (event, target) => getCombatantGroup(target).delete(),

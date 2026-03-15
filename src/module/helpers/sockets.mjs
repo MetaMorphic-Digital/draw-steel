@@ -86,7 +86,7 @@ export default class DrawSteelSocketHandler {
       }, { parent: game.messages.get(messageId) });
     }
     else DrawSteelChatMessage.create({
-      title: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
+      title: _loc("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
       author: userId,
       content: tokenSpendConfiguration.messageContent,
       type: "standard",

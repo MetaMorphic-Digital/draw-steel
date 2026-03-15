@@ -197,7 +197,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
         icon: "fa-solid fa-arrow-rotate-right",
         title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
       },
-      content: `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
+      content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
     });
     if (!allowed) return;
 
@@ -233,7 +233,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       ctx.itemPool.push({
         ...pool,
         index: i,
-        link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
+        link: item ? item.toAnchor() : _loc("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
       });
     }
 

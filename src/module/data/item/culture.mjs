@@ -29,8 +29,8 @@ export default class CultureModel extends AdvancementModel {
       const lang = {
         type: "language",
         chooseN: 1,
-        name: game.i18n.localize("DRAW_STEEL.Item.culture.AnyLanguageAdvancement.name"),
-        description: `<p>${game.i18n.localize("DRAW_STEEL.Item.culture.AnyLanguageAdvancement.description")}</p>`,
+        name: _loc("DRAW_STEEL.Item.culture.AnyLanguageAdvancement.name"),
+        description: `<p>${_loc("DRAW_STEEL.Item.culture.AnyLanguageAdvancement.description")}</p>`,
         requirements: {
           level: null,
         },

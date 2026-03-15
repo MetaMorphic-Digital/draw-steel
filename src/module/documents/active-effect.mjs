@@ -45,7 +45,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (immuneList.size) {
       // Warn the user with a list of condition names
       const formatter = game.i18n.getListFormatter({ type: "unit" });
-      const formattedConditions = formatter.format(immuneList.map(id => game.i18n.localize(ds.CONFIG.conditions[id]?.name ?? id)));
+      const formattedConditions = formatter.format(immuneList.map(id => _loc(ds.CONFIG.conditions[id]?.name ?? id)));
 
       ui.notifications.warn("DRAW_STEEL.ActiveEffect.ImmunityWarning", { localize: true, format: { conditions: formattedConditions } });
     }
@@ -113,13 +113,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
   /** @inheritdoc */
   get sourceName() {
-    if (!this.origin) return game.i18n.localize("None");
+    if (!this.origin) return _loc("None");
     let name;
     try {
       // Only difference from core is use of relative-to-target
       name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
     } catch (e) { /* empty */ }
-    return name || game.i18n.localize("Unknown");
+    return name || _loc("Unknown");
   }
 
   /* -------------------------------------------------- */
@@ -160,7 +160,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   _getDurationLabel(rounds, turns) {
     if ((rounds + turns) !== 0) return super._getDurationLabel(rounds, turns);
     // Lines up with our effect suppression
-    return game.i18n.localize("DRAW_STEEL.ActiveEffect.Expired");
+    return _loc("DRAW_STEEL.ActiveEffect.Expired");
   }
 
   /* -------------------------------------------------- */

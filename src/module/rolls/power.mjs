@@ -28,7 +28,7 @@ export default class PowerRoll extends DSRoll {
         const number = new foundry.dice.terms.NumericTerm({
           number: 2,
           options: {
-            flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.ROLL.Power.Modifier.Edge" : "DRAW_STEEL.ROLL.Power.Modifier.Bane"),
+            flavor: _loc(this.netBoon > 0 ? "DRAW_STEEL.ROLL.Power.Modifier.Edge" : "DRAW_STEEL.ROLL.Power.Modifier.Bane"),
           },
         });
         this.terms.push(operation, number);
@@ -40,7 +40,7 @@ export default class PowerRoll extends DSRoll {
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
           options: {
-            flavor: game.i18n.localize(this.options.bonuses > 0 ? "DRAW_STEEL.ROLL.Power.Modifier.Bonus" : "DRAW_STEEL.ROLL.Power.Modifier.Penalty"),
+            flavor: _loc(this.options.bonuses > 0 ? "DRAW_STEEL.ROLL.Power.Modifier.Bonus" : "DRAW_STEEL.ROLL.Power.Modifier.Penalty"),
           },
         });
         this.terms.push(operation, number);
@@ -171,7 +171,7 @@ export default class PowerRoll extends DSRoll {
     options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
-    const typeLabel = game.i18n.localize(this.TYPES[type].label);
+    const typeLabel = _loc(this.TYPES[type].label);
     let flavor = options.flavor ?? typeLabel;
 
     this.getActorModifiers(options);
@@ -189,7 +189,7 @@ export default class PowerRoll extends DSRoll {
     const promptValue = await ds.applications.apps.PowerRollDialog.create({
       context,
       window: {
-        title: game.i18n.format("DRAW_STEEL.ROLL.Power.Prompt.Title", { typeLabel }),
+        title: _loc("DRAW_STEEL.ROLL.Power.Prompt.Title", { typeLabel }),
       },
     });
     if (!promptValue) return null;
@@ -341,7 +341,7 @@ export default class PowerRoll extends DSRoll {
     const context = await super._prepareChatRenderContext({ flavor, isPrivate, ...options });
 
     context.tier = {
-      label: isPrivate ? "" : game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),
+      label: isPrivate ? "" : _loc(this.constructor.RESULT_TIERS[this.tier].label),
       class: this.tier,
     };
 
@@ -364,7 +364,7 @@ export default class PowerRoll extends DSRoll {
 
     context.modifier = {
       number: Math.abs(this.netBoon),
-      mod: game.i18n.localize(modString),
+      mod: _loc(modString),
     };
 
     if (this.options.target) context.target = await fromUuid(this.options.target);

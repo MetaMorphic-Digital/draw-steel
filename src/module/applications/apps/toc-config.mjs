@@ -62,7 +62,7 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format("DRAW_STEEL.COMPENDIUM.TOC.configure.title", { title: game.i18n.localize(this.compendium.title) });
+    return _loc("DRAW_STEEL.COMPENDIUM.TOC.configure.title", { title: _loc(this.compendium.title) });
   }
 
   /* -------------------------------------------------- */

@@ -51,7 +51,7 @@ export default class AbilityModel extends BaseItemModel {
       value: new fields.StringField({ required: true }),
       dsid: new fields.SetField(setOptions({
         validate: validateDSID,
-        validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+        validationError: _loc("DRAW_STEEL.SOURCE.InvalidDSID"),
       })),
       level: new fields.NumberField({ required: true, integer: true, positive: true }),
     });
@@ -315,12 +315,12 @@ export default class AbilityModel extends BaseItemModel {
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
     labels.keywords = keywordFormatter.format(keywordList) || "—";
 
-    labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
+    labels.distance = _loc(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
     const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
     labels.target = this.target.custom || (this.target.value == null ?
-      targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
-      game.i18n.format(targetConfig.embedLabel, { value: this.target.value }));
+      targetConfig.all ?? _loc(targetConfig.embedLabel) :
+      _loc(targetConfig.embedLabel, { value: this.target.value }));
 
     return labels;
   }
@@ -332,7 +332,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 
@@ -381,7 +381,7 @@ export default class AbilityModel extends BaseItemModel {
     context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
     context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
 
-    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+    context.spendLabel = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
       value: this.spend.value ?? "",
       name: resourceName,
     });
@@ -451,14 +451,14 @@ export default class AbilityModel extends BaseItemModel {
 
       let hint = null;
       if (this.spend.value) {
-        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
+        hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
           value: current,
           name: coreResource.name,
         });
       }
 
       const spendGroup = foundry.applications.fields.createFormGroup({
-        label: game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+        label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name,
         }),
@@ -504,7 +504,7 @@ export default class AbilityModel extends BaseItemModel {
     if (configuration) {
       if (configuration.spend) {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
+        messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
           name: coreResource.name,
         });

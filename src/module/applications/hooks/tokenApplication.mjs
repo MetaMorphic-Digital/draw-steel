@@ -24,7 +24,7 @@ export function renderTokenApplication(app, html, context, options) {
       for (const opt of options) {
         const field = schema.getField(opt.value);
         if (field?.label) opt.label = field.label;
-        if (!field || (opt.parentElement.label === game.i18n.localize("TOKEN.BarAttributes"))) continue;
+        if (!field || (opt.parentElement.label === _loc("TOKEN.BarAttributes"))) continue;
         // Build groups by going to the highest level ancestor with a label
         let ancestor = field;
         let p = field.parent;

@@ -123,8 +123,8 @@ export default class CreatureModel extends BaseActorModel {
         return b;
       }, []);
       type = await ds.applications.api.DSDialog.wait({
-        window: { title: game.i18n.localize("DRAW_STEEL.ROLL.Power.ChooseType.Title") },
-        content: game.i18n.localize("DRAW_STEEL.ROLL.Power.ChooseType.Content"),
+        window: { title: _loc("DRAW_STEEL.ROLL.Power.ChooseType.Title") },
+        content: _loc("DRAW_STEEL.ROLL.Power.ChooseType.Content"),
         buttons,
         rejectClose: true,
       });
@@ -168,8 +168,8 @@ export default class CreatureModel extends BaseActorModel {
 
     const testConfig = ds.CONST.testOutcomes[options.difficulty];
 
-    const flavor = game.i18n.format("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
-      difficulty: game.i18n.localize(testConfig?.label) ?? "",
+    const flavor = _loc("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
+      difficulty: _loc(testConfig?.label) ?? "",
       characteristic: ds.CONFIG.characteristics[characteristic].label,
     });
 

@@ -10,7 +10,7 @@ export default class DrawSteelWallConfig extends foundry.applications.sheets.Wal
 
     const fieldset = document.createElement("fieldset");
     const legend = document.createElement("legend");
-    legend.textContent = game.i18n.localize("DRAW_STEEL.Wall.Config.Legend");
+    legend.textContent = _loc("DRAW_STEEL.Wall.Config.Legend");
 
     const checkbox = foundry.applications.fields.createCheckboxInput({
       name: `flags.${systemID}.blocksLineOfEffect`,

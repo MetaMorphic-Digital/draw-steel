@@ -68,7 +68,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
           field: pseudo.schema.getField("name"),
           src: pseudo._source.name,
           name: "name",
-          placeholder: game.i18n.localize(`TYPES.PowerRollEffect.${pseudo.type}`),
+          placeholder: _loc(`TYPES.PowerRollEffect.${pseudo.type}`),
         },
         tier1: {},
         tier2: {},

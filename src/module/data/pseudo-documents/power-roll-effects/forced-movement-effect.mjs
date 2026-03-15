@@ -143,7 +143,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         const config = ds.CONFIG.abilities.forcedMovement[v];
         return isVertical ? config.vertical : config.label;
       });
-      distanceString = game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
+      distanceString = _loc("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
         movement: formatter.format(movementLabels),
         distance: distance,
       });
@@ -154,7 +154,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         for (const movementType of types) {
           const config = ds.CONFIG.abilities.forcedMovement[movementType];
           const label = isVertical ? config.vertical : config.label;
-          formattedParts.push(game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
+          formattedParts.push(_loc("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
             movement: label,
             distance: distance,
           }));

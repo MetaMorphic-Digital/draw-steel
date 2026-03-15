@@ -173,7 +173,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     // Append right bracket to get the rounded edge on the end.
     else if (typeof strength === "number") strength = `${strength}]`;
 
-    const potencyString = game.i18n.format("DRAW_STEEL.Item.ability.Potency.Embed", {
+    const potencyString = _loc("DRAW_STEEL.Item.ability.Potency.Embed", {
       characteristic,
       value: strength,
     });

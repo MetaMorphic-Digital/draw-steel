@@ -18,7 +18,7 @@ export default async function updateFromCompendium(doc, options = {}) {
     const content = document.createElement("div");
 
     content.insertAdjacentHTML("afterbegin", `<p>${
-      game.i18n.format("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Content", { name: doc.name })
+      _loc("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Content", { name: doc.name })
     }</p>`);
 
     const proceed = await ds.applications.api.DSDialog.confirm({
