@@ -1,4 +1,4 @@
-import BaseEffectModel from "./base.mjs";
+import BaseEffectModel from "./base-effect.mjs";
 import { setOptions } from "../helpers.mjs";
 
 /**

@@ -1,9 +1,11 @@
+import { EffectChangeData } from "@common/documents/_types.mjs";
 import { DrawSteelActiveEffect, DrawSteelCombat } from "../../documents/_module.mjs";
 import { AbilityFilters } from "../_types";
 
 declare module "./base.mjs" {
   export default interface BaseEffectModel {
     parent: DrawSteelActiveEffect;
+    changes: EffectChangeData[];
     end: {
       type: keyof typeof ds["CONFIG"]["effectEnds"] | "";
       roll: string;

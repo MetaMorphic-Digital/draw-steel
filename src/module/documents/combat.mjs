@@ -1,4 +1,4 @@
-import BaseEffectModel from "../data/effect/base.mjs";
+import BaseEffectModel from "../data/effect/base-effect.mjs";
 import DSRoll from "../rolls/base.mjs";
 import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
 

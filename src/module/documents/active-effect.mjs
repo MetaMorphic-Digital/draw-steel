@@ -124,18 +124,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
-  /**
-   * Automatically deactivate effects with expired durations.
-   * @inheritdoc
-   */
-  get isSuppressed() {
-    if (Number.isNumeric(this.duration.remaining)) return this.duration.remaining <= 0;
-    // Checks `system.isSuppressed`
-    else return super.isSuppressed;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
