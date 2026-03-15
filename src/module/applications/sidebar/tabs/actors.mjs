@@ -1,12 +1,12 @@
 export default class DrawSteelActorDirectory extends foundry.applications.sidebar.tabs.ActorDirectory {
   /** @inheritdoc */
   _getEntryContextOptions() {
-    const getActor = li => game.actors.get(li.dataset.entryId);
+    const getActor = target => game.actors.get(target.dataset.entryId);
 
     const options = [{
       label: "DRAW_STEEL.SIDEBAR.ACTORS.contextMenuAssignPrimaryParty",
       icon: "fa-solid fa-fw fa-medal",
-      visible: target => {
+      visible: (target) => {
         const actor = getActor(target);
         return game.user.isGM && (actor.type === "party") && (actor !== game.actors.party);
       },
@@ -15,7 +15,7 @@ export default class DrawSteelActorDirectory extends foundry.applications.sideba
     }, {
       label: "DRAW_STEEL.SIDEBAR.ACTORS.contextMenuRemovePrimaryParty",
       icon: "fa-solid fa-fw fa-times",
-      visible: target => game.user.isGM && (getActor(target) === game.actors.party),
+      visible: (target) => game.user.isGM && (getActor(target) === game.actors.party),
       onClick: (event, target) => game.actors.unsetParty(),
       group: "system",
     }];

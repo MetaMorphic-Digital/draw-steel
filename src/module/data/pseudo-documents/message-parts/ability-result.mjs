@@ -196,7 +196,7 @@ export default class AbilityResultPart extends RollPart {
       return {
         label,
         icon: "fa-fw fa-solid fa-gear",
-        visible: this.message.isOwner,
+        visible: () => this.message.isOwner,
         onClick: () => this.modifyDamageDialog(roll),
       };
     });

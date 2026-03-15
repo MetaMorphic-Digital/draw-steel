@@ -790,7 +790,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
         icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
         visible: () => this.isEditable,
-        onCLick: (event, target) => {
+        onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.actor, type: "abilityModifier" }),

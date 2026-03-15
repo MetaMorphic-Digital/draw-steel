@@ -50,8 +50,8 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       {
         label: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
         icon: "fa-solid fa-fw fa-plus",
-        visible: li => game.user.isGM,
-        onClick: async (event, li) => {
+        visible: () => game.user.isGM,
+        onClick: async (event, target) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.giveToken();
@@ -60,7 +60,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       {
         label: "DRAW_STEEL.Setting.HeroTokens.SpendToken",
         icon: "fa-solid fa-fw fa-minus",
-        onClick: async (event, li) => {
+        onClick: async (event, target) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.spendToken("generic");
@@ -69,8 +69,8 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       {
         label: "DRAW_STEEL.Setting.HeroTokens.ResetToken",
         icon: "fa-solid fa-fw fa-rotate",
-        visible: li => game.user.isGM,
-        onClick: async (event, li) => {
+        visible: () => game.user.isGM,
+        onClick: async (event, target) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.resetTokens();
@@ -79,8 +79,8 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       {
         label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
         icon: "fa-solid fa-fw fa-plus-minus",
-        visible: li => game.user.isGM && game.combat,
-        onClick: async (event, li) => {
+        visible: () => game.user.isGM && game.combat,
+        onClick: async (event, target) => {
           /** @type {MaliceModel} */
           const malice = game.actors.malice;
           await malice.adjustMalice();
@@ -89,8 +89,8 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       {
         label: "DRAW_STEEL.Setting.Malice.ResetMalice",
         icon: "fa-solid fa-fw fa-rotate",
-        visible: li => game.user.isGM && game.combat,
-        onClick: async (event, li) => {
+        visible: () => game.user.isGM && game.combat,
+        onClick: async (event, target) => {
           /** @type {MaliceModel} */
           const malice = game.actors.malice;
           await malice.resetMalice();
