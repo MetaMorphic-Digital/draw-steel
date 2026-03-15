@@ -38,7 +38,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     },
     window: {
       controls: [{
-        icon: "fa-solid fa-file-arrow-down",
+        icon: "fa-solid fa-fw fa-file-arrow-down",
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,
@@ -356,25 +356,25 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   _getDocumentListContextOptions() {
     return [
       {
-        name: "DRAW_STEEL.ActiveEffect.RollSave",
-        icon: "<i class=\"fa-solid fa-fw fa-dice-d10\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.ActiveEffect.RollSave",
+        icon: "fa-solid fa-fw fa-dice-d10",
+        visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return effect.system.end?.type === "save";
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
           await effect.system.rollSave();
         },
       },
       {
-        name: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "<i class=\"fa-solid fa-fw fa-check\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "fa-solid fa-fw fa-check",
+        visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return !effect.active;
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
           const updateData = DrawSteelActiveEffect.getInitialDuration();
 
@@ -384,39 +384,39 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         },
       },
       {
-        name: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "<i class=\"fa-solid fa-fw fa-times\"></i>",
-        condition: (target) => {
+        label: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "fa-solid fa-fw fa-times",
+        visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return effect.active;
         },
-        callback: async (target) => {
+        onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
           await effect.update({ disabled: true });
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.View",
-        icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
-        condition: () => this.isPlayMode,
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.View",
+        icon: "fa-solid fa-fw fa-eye",
+        visible: () => this.isPlayMode,
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await document.sheet.render({ force: true });
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.Edit",
-        icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
-        condition: () => this.isEditMode,
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.Edit",
+        icon: "fa-solid fa-fw fa-edit",
+        visible: () => this.isEditMode,
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await document.sheet.render({ force: true });
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.Share",
-        icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.Share",
+        icon: "fa-solid fa-fw fa-share-from-square",
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
             content: `@Embed[${document.uuid} caption=false]`,
@@ -429,10 +429,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         },
       },
       {
-        name: "DRAW_STEEL.SHEET.Delete",
-        icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
-        condition: () => this.item.isOwner,
-        callback: async (target) => {
+        label: "DRAW_STEEL.SHEET.Delete",
+        icon: "fa-solid fa-fw fa-trash",
+        visible: () => this.item.isOwner,
+        onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           document.deleteDialog();
         },
@@ -447,10 +447,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   _createEffectContextOptions() {
     return [
       {
-        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
-        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.base}"></i>`,
-        condition: () => this.isEditable,
-        callback: (target) => {
+        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
+        icon: `${CONFIG.ActiveEffect.typeIcons.base} fa-fw`,
+        visible: () => this.isEditable,
+        onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
 
           const effectData = {
@@ -469,10 +469,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         },
       },
       {
-        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
-        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.abilityModifier}"></i>`,
-        condition: () => this.isEditable,
-        callback: (target) => {
+        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
+        visible: () => this.isEditable,
+        onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.item, type: "abilityModifier" }),
