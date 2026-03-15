@@ -130,6 +130,7 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
    * @param {object} [messageOptions={}]  Additional options which modify the created message.
    * @returns {Promise<DrawSteelChatMessage|object>} A promise which resolves to the created ChatMessage document if create is
    *                                                 true, or the Object of prepared chatData otherwise.
+   * TODO: Move to DrawSteelActiveEffect.
    */
   async rollSave(rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {}) {
     const rollData = this.parent.getRollData();
@@ -157,7 +158,7 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
     await roll.evaluate();
 
-    if (roll.product) await this.parent.update({ disabled: true });
+    if (roll.product) await this.parent.update({ "duration.expired": true });
 
     messageData.speaker ??= DrawSteelChatMessage.getSpeaker({ actor: this.parent.target });
 

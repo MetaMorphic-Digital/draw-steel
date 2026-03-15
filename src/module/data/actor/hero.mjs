@@ -1,15 +1,12 @@
-
-import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
-import BaseEffectModel from "../effect/base-effect.mjs";
 import CreatureModel from "./creature.mjs";
 import DSRoll from "../../rolls/base.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { systemID } from "../../constants.mjs";
 
 /**
- * @import DrawSteelItem from "../../documents/item.mjs";
- * @import ActiveEffectData from "@common/documents/_types.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
  * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
  */
@@ -320,13 +317,7 @@ export default class HeroModel extends CreatureModel {
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
-    /** @type {ActiveEffectData[]} */
-    const updates = [];
-    for (const effect of this.parent.appliedEffects) {
-      if (!(effect.system instanceof BaseEffectModel)) continue;
-      if (effect.system.end.type === "respite") updates.push({ _id: effect.id, disabled: true });
-    }
-    await this.parent.updateEmbeddedDocuments("ActiveEffect", updates);
+    await foundry.documents.ActiveEffect.registry.refresh("respite", { actors: [this.parent] });
 
     return this.parent.update({
       system: {
