@@ -83,12 +83,12 @@ export default class ObjectModel extends BaseActorModel {
     else {
       const evData = { value: this.ev, area: this.object.area };
       this.evLabel = this.object.area
-        ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Area", evData)
-        : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
+        ? _loc("DRAW_STEEL.Actor.base.EVLabel.Area", evData)
+        : _loc("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
     }
 
     this.stamina.maxLabel = this.object.squareStamina
-      ? game.i18n.format("DRAW_STEEL.Actor.object.MaxStaminaLabel.PerSquare", { value: this.stamina.max })
+      ? _loc("DRAW_STEEL.Actor.object.MaxStaminaLabel.PerSquare", { value: this.stamina.max })
       : String(this.stamina.max);
   }
 }

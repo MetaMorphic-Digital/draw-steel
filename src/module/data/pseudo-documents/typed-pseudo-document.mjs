@@ -69,7 +69,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   prepareDerivedData() {
     super.prepareDerivedData();
     if (!this.name) {
-      this.name = game.i18n.localize(`TYPES.${this.documentName}.${this.type}`);
+      this.name = _loc(`TYPES.${this.documentName}.${this.type}`);
     }
   }
 

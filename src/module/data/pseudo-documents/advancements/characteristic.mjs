@@ -69,7 +69,7 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
   async createLeaves(node) {
     for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
       if (!(this.characteristics[chr] >= 0)) continue;
-      const leafLabel = game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", { chr: label });
+      const leafLabel = _loc("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", { chr: label });
       node.choices[chr] = new AdvancementLeaf(node, chr, leafLabel);
     }
   }
@@ -85,7 +85,7 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
 
   /** @inheritdoc */
   leafLabel(leaf) {
-    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", ds.CONFIG.characteristics[leaf.key].label);
+    return _loc("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease", ds.CONFIG.characteristics[leaf.key].label);
   }
 
   /* -------------------------------------------------- */
@@ -127,8 +127,8 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
 
     const formGroup = foundry.applications.fields.createFormGroup({
       input: choiceSelect,
-      label: game.i18n.localize("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Characteristic.label"),
-      hint: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Characteristic.hint", { n: this.max }),
+      label: _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Characteristic.label"),
+      hint: _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Characteristic.hint", { n: this.max }),
     });
 
     content.append(formGroup);
@@ -137,7 +137,7 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
       content,
       classes: ["configure-advancement"],
       window: {
-        title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
+        title: _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
         icon: "fa-solid fa-edit",
       },
     });

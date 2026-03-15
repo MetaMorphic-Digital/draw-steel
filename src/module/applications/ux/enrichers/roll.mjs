@@ -204,7 +204,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
       type: game.i18n.getListFormatter({ type: "disjunction" }).format(types),
     };
 
-    parts.push(game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.FormatString", localizationData));
+    parts.push(_loc("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.FormatString", localizationData));
   }
 
   const link = document.createElement("a");
@@ -267,7 +267,7 @@ async function rollDamageHeal(link, event) {
           options,
           value: choices.types[0],
         }),
-        label: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Type", { index: choices.index + 1 }),
+        label: _loc("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.RollInput.Type", { index: choices.index + 1 }),
       });
     });
 
@@ -314,7 +314,7 @@ async function rollDamageHeal(link, event) {
   // One by one evaluation to make it easier on users doing manual rolls
   for (const r of rolls) await r.evaluate();
 
-  const title = game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType);
+  const title = _loc("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType);
 
   await DrawSteelChatMessage.create({
     title,
@@ -373,7 +373,7 @@ function enrichGain(parsedConfig, label, options) {
   }
 
   const lookup = GAIN_RESOURCE_LOOKUP[linkConfig.gainType];
-  const resourceType = game.i18n.localize(lookup.label);
+  const resourceType = _loc(lookup.label);
 
   const localizationData = {
     formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
@@ -385,7 +385,7 @@ function enrichGain(parsedConfig, label, options) {
   const link = document.createElement("a");
   link.className = "roll-link";
   addDataset(link, linkConfig);
-  link.innerHTML = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString.${resourceFormatString}`, localizationData);
+  link.innerHTML = _loc(`DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString.${resourceFormatString}`, localizationData);
 
   return link;
 }
@@ -429,9 +429,9 @@ async function rollGain(link, event) {
   const resourceFormatString = lookup.resourceFormatString ?? "Default";
 
   // Get the localized resource label
-  const resourceLabel = game.i18n.localize(lookup.label);
+  const resourceLabel = _loc(lookup.label);
 
-  const title = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, {
+  const title = _loc(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, {
     type: resourceLabel, targets: targetList ?? "",
   });
   // Create the chat message
@@ -583,7 +583,7 @@ async function requestTest(link, event) {
   };
 
   await DrawSteelChatMessage.create({
-    title: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Test.Request"),
+    title: _loc("DRAW_STEEL.EDITOR.Enrichers.Test.Request"),
     type: "standard",
     "system.parts": [part],
     flags: { core: { canPopout: true } },
@@ -606,9 +606,9 @@ function formatTestLabel(characteristics, difficulty) {
     : ds.CONFIG.characteristics[characteristics].label;
 
   const localizationData = {
-    difficulty: game.i18n.localize(ds.CONST.testOutcomes[difficulty]?.label) ?? "",
+    difficulty: _loc(ds.CONST.testOutcomes[difficulty]?.label) ?? "",
     characteristic: characteristicLabel,
   };
 
-  return game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
+  return _loc("DRAW_STEEL.EDITOR.Enrichers.Test.FormatString.Default", localizationData);
 }

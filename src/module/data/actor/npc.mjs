@@ -140,8 +140,8 @@ export default class NPCModel extends CreatureModel {
 
     const evData = { value: this.ev };
     this.evLabel = this.isMinion
-      ? game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Minion", evData)
-      : game.i18n.format("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
+      ? _loc("DRAW_STEEL.Actor.base.EVLabel.Minion", evData)
+      : _loc("DRAW_STEEL.Actor.base.EVLabel.Other", evData);
   }
 
   /* -------------------------------------------------- */
@@ -149,7 +149,7 @@ export default class NPCModel extends CreatureModel {
   /** @inheritdoc */
   get coreResource() {
     return {
-      name: game.i18n.localize("DRAW_STEEL.Setting.Malice.Label"),
+      name: _loc("DRAW_STEEL.Setting.Malice.Label"),
       /** @type {MaliceModel} */
       target: game.actors.malice,
       path: "value",
@@ -224,7 +224,7 @@ export default class NPCModel extends CreatureModel {
     const freeStrike = this.freeStrike;
 
     if (configure !== false) {
-      const damageLabel = game.i18n.format("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
+      const damageLabel = _loc("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
         value: freeStrike.value,
         type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
       });

@@ -62,7 +62,7 @@ export default class ProjectModel extends BaseItemModel {
 
     this.points ??= 0;
 
-    this.projectType = game.i18n.localize(ds.CONFIG.projects.types[this.type]?.label ?? "");
+    this.projectType = _loc(ds.CONFIG.projects.types[this.type]?.label ?? "");
   }
 
   /* -------------------------------------------------- */
@@ -205,7 +205,7 @@ export default class ProjectModel extends BaseItemModel {
 
     if (!promptValue) return null;
     const { rollMode, projectRoll } = promptValue;
-    if (projectRoll.isCritical) projectRoll.options.flavor = game.i18n.localize("DRAW_STEEL.ROLL.Project.Breakthrough");
+    if (projectRoll.isCritical) projectRoll.options.flavor = _loc("DRAW_STEEL.ROLL.Project.Breakthrough");
 
     const total = projectRoll.total;
     const previousPoints = this.points;
@@ -236,7 +236,7 @@ export default class ProjectModel extends BaseItemModel {
       const event = !!this.milestoneEventsOccured(previousPoints, updatedPoints);
       if (event) {
         projectPart.event = event;
-        messageData.content = game.i18n.localize("DRAW_STEEL.Item.project.Events.EventTriggered");
+        messageData.content = _loc("DRAW_STEEL.Item.project.Events.EventTriggered");
         messageData.system.parts.push({ type: "content" });
       }
     }

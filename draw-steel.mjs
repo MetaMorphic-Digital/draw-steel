@@ -232,12 +232,12 @@ Hooks.once("i18nInit", () => {
     if (damageSchema) {
       for (const field of Object.values(damageSchema.fields.immunities.fields)) {
         if (field.label) {
-          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", { type: game.i18n.localize(field.label) });
+          field.label = _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", { type: _loc(field.label) });
         }
       }
       for (const field of Object.values(damageSchema.fields.weaknesses.fields)) {
         if (field.label) {
-          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", { type: game.i18n.localize(field.label) });
+          field.label = _loc("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", { type: _loc(field.label) });
         }
       }
     }

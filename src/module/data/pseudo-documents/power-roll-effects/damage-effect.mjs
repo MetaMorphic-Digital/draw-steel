@@ -135,7 +135,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     }
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
     context.fields.immunityTypes = [
-      { value: "all", label: game.i18n.localize("DRAW_STEEL.Damage.Immunities.All") },
+      { value: "all", label: _loc("DRAW_STEEL.Damage.Immunities.All") },
       { rule: true },
       ...Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label })),
     ];
@@ -161,7 +161,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     }
 
     const simplifiedFormula = this.actor ? ds.utils.simplifyRollFormula(value, this.item.getRollData()) : value;
-    const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value: simplifiedFormula, damageTypes }));
+    const formattedDamageString = Handlebars.escapeExpression(_loc(i18nString, { value: simplifiedFormula, damageTypes }));
 
     let result = `<span data-tooltip="${value}" data-tooltip-direction="UP">${formattedDamageString}</span>`;
 
@@ -169,12 +169,12 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       const ignoredTypes = Array.from(ignoredImmunities);
       // Special case for "all" immunity
       if (ignoredImmunities.has("all")) {
-        result += ` <em>(${game.i18n.localize("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresAllImmunities")})</em>`;
+        result += ` <em>(${_loc("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresAllImmunities")})</em>`;
       } else {
         const formatter = game.i18n.getListFormatter({ type: "conjunction" });
         const typeLabels = ignoredTypes.map(t => ds.CONFIG.damageTypes[t]?.label).filter(_ => _);
         if (typeLabels.length > 0) {
-          result += ` <em>(${game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresImmunities", { types: formatter.format(typeLabels) })})</em>`;
+          result += ` <em>(${_loc("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresImmunities", { types: formatter.format(typeLabels) })})</em>`;
         }
       }
     }
@@ -183,7 +183,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     const potencyString = this.toPotencyHTML(tier);
 
-    return game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
+    return _loc("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
       damage: result,
       potency: potencyString,
     });
@@ -207,7 +207,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     else if (effectTier.types.size > 1) damageType = options.damageSelection;
 
     const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-    const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+    const flavor = _loc("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
 
     // Extract ignoredImmunities from the damage effect
     const ignoredImmunities = Array.from(effectTier.ignoredImmunities);

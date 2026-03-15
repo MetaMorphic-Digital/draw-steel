@@ -66,7 +66,7 @@ export default class AbilityUsePart extends BaseMessagePart {
 
     if (!item) {
       context.ctx.embed = document.createElement("p");
-      context.ctx.embed.innerText = game.i18n.localize("DRAW_STEEL.Item.ability.EmbedFail");
+      context.ctx.embed.innerText = _loc("DRAW_STEEL.Item.ability.EmbedFail");
       return;
     }
 
@@ -84,7 +84,7 @@ export default class AbilityUsePart extends BaseMessagePart {
         const characteristic = ds.CONFIG.characteristics[chr]?.label ?? "";
 
         context.ctx.buttons.push(ds.utils.constructHTMLButton({
-          label: game.i18n.format("DRAW_STEEL.ChatMessage.PARTS.abilityUse.performTest", { characteristic }),
+          label: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityUse.performTest", { characteristic }),
           icon: "fa-solid fa-dice-d10",
           dataset: {
             chr,

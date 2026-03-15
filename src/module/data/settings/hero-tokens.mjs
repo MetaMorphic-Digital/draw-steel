@@ -24,7 +24,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /** Localized name for the setting. */
   get label() {
-    return game.i18n.localize(this.constructor.label);
+    return _loc(this.constructor.label);
   }
 
   /* -------------------------------------------------- */
@@ -36,7 +36,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /** Localized helper text for Hero Token. */
   get hint() {
-    return game.i18n.localize(this.constructor.hint);
+    return _loc(this.constructor.hint);
   }
 
   /* -------------------------------------------------- */
@@ -75,7 +75,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
         }, { parent: game.messages.get(options.messageId) });
       }
       else await DrawSteelChatMessage.create({
-        title: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
+        title: _loc("DRAW_STEEL.Setting.HeroTokens.Generic.messageTitle"),
         content: tokenSpendConfiguration.messageContent,
         type: "standard",
         "system.parts": [{ type: "content" }],
@@ -106,7 +106,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     const value = currentTokens + count;
     await game.settings.set(systemID, "heroTokens", { value });
     if (chatMessage) await DrawSteelChatMessage.create({
-      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count })}</p>`,
+      content: `<p>${_loc("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count })}</p>`,
       type: "standard",
       "system.parts": [{ type: "content" }],
     });
@@ -129,7 +129,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
     const party = game.actors.party;
     if (!party) {
-      const msg = game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.NoPrimaryParty");
+      const msg = _loc("DRAW_STEEL.Setting.HeroTokens.NoPrimaryParty");
       ui.notifications.error(msg);
       throw new Error(msg);
     }
@@ -138,7 +138,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     const heroes = party.system.members.documentsByType.hero;
     await game.settings.set(systemID, "heroTokens", { value: heroes.length });
     if (chatMessage) await DrawSteelChatMessage.create({
-      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: heroes.length })}</p>`,
+      content: `<p>${_loc("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: heroes.length })}</p>`,
       type: "standard",
       "system.parts": [{ type: "content" }],
     });
