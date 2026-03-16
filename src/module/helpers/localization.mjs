@@ -59,7 +59,7 @@ export function performPreLocalization(config) {
     if (settings.sort) foundry.utils.setProperty(config, keyPath, sortObjectEntries(target, settings.keys[0]));
   }
 
-  // Localize status effects
+  // Localize status effects. TODO: Evaluate if still actually relevant/wanted.
   Object.values(CONFIG.statusEffects).forEach(s => s.name = _loc(s.name));
 }
 
