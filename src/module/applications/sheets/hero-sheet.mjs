@@ -172,7 +172,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the hero sheet
     context["other"] = {
-      label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
+      label: _loc("DRAW_STEEL.SHEET.Other"),
       treasure: [],
       showAdd: false,
       // Show "other" if and only if there is treasure of that category
@@ -206,7 +206,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
 
     /** @type {ActorSheetComplicationsContext} */
     const context = {
-      label: game.i18n.localize("TYPES.Item.complication"),
+      label: _loc("TYPES.Item.complication"),
       complications: [],
       showAdd: this.isEditMode,
       showHeader: complications.length || this.isEditMode,
@@ -333,7 +333,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         title: "DRAW_STEEL.Setting.HeroTokens.GainSurges.label",
         icon: "fa-solid fa-bolt-lightning",
       },
-      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GainSurges.dialogContent", {
+      content: `<p>${_loc("DRAW_STEEL.Setting.HeroTokens.GainSurges.dialogContent", {
         value: heroTokens.value,
       })}</p>`,
       rejectClose: false,
@@ -472,8 +472,8 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     if (item.type === "class") {
       const cls = this.actor.system.class;
       if (cls && (cls.dsid !== item.dsid)) {
-        const message = game.i18n.format("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
-          type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]),
+        const message = _loc("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
+          type: _loc(CONFIG.Item.typeLabels[item.type]),
         });
         ui.notifications.error(message, { console: false });
         throw new Error(message);
@@ -483,12 +483,12 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       if (item.type === "subclass") {
         const cls = this.actor.system.class;
         if (!cls) {
-          const message = game.i18n.localize("DRAW_STEEL.Item.subclass.ERRORS.NeedClass");
+          const message = _loc("DRAW_STEEL.Item.subclass.ERRORS.NeedClass");
           ui.notifications.error(message, { console: false });
           throw new Error(message);
         }
         else if (cls.dsid !== item.system.classLink) {
-          const message = game.i18n.format("DRAW_STEEL.Item.subclass.ERRORS.WrongDSID", {
+          const message = _loc("DRAW_STEEL.Item.subclass.ERRORS.WrongDSID", {
             expected: item.system.classLink,
             actual: cls.dsid,
           });
@@ -526,7 +526,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
 
         // If it's a treasure dropped on the project tab, create the item as a project
         if (projectDropTarget && (item.type === "treasure")) {
-          const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
+          const name = _loc("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
           return { name, type: "project", "system.yield.item": item.uuid };
         }
         else if (item.supportsAdvancements && (item.getEmbeddedCollection("Advancement").size > 0)) {

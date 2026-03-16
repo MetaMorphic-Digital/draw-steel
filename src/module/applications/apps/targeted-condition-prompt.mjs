@@ -62,7 +62,7 @@ export default class TargetedConditionPrompt extends DSApplication {
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format("DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Title", {
+    return _loc("DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Title", {
       condition: this.condition,
     });
   }

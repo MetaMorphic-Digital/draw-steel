@@ -131,7 +131,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
 
     const content = document.createElement("div");
 
-    content.insertAdjacentHTML("afterbegin", `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.DeleteDialog.Content")}</p>`);
+    content.insertAdjacentHTML("afterbegin", `<p>${_loc("DRAW_STEEL.ADVANCEMENT.DeleteDialog.Content")}</p>`);
     content.append(this.toAnchor());
 
     const itemIds = new Set([this.id]);
@@ -143,7 +143,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     }
 
     if (!skipDialog) {
-      const title = game.i18n.format(
+      const title = _loc(
         replacement ? "DRAW_STEEL.ADVANCEMENT.DeleteDialog.ReplaceTitle" : "DOCUMENT.Delete",
         { type: this.name },
       );

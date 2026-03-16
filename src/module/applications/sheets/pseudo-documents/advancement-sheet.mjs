@@ -108,7 +108,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     if (!item || (item.documentName !== "Item")) return;
     const subclassException = (item.type === "subclass") && (this.pseudoDocument.document.type === "class");
     if (!ItemGrantAdvancement.ALLOWED_TYPES.has(item.type) && !subclassException) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedType", {
-      format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
+      format: { type: _loc(CONFIG.Item.typeLabels[item.type]) },
     });
     if (!item.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePack", { localize: true });
     if (item.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.forbidParent", { localize: true });

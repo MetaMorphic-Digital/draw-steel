@@ -64,7 +64,7 @@ export default class TitleModel extends FeatureModel {
     const showPrerequisites = (config.values?.includes("prerequisites") || config.prerequisites);
     if (showPrerequisites) embed.insertAdjacentHTML("afterbegin",
       `<p><strong>${this.schema.getField("prerequisites").label}</strong>:
-      ${this.prerequisites.value || game.i18n.localize("DRAW_STEEL.Item.NoPrerequisites")}</p>`,
+      ${this.prerequisites.value || _loc("DRAW_STEEL.Item.NoPrerequisites")}</p>`,
     );
 
     return embed;

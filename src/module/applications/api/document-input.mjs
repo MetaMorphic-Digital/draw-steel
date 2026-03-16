@@ -22,7 +22,7 @@ export default class DocumentInput extends HandlebarsApplicationMixin(DocumentSh
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.localize(this.options.window.title) || super.title;
+    return _loc(this.options.window.title) || super.title;
   }
 
   /* -------------------------------------------------- */

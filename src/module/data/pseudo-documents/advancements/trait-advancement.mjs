@@ -100,7 +100,7 @@ export default class TraitAdvancement extends BaseAdvancement {
     const formGroup = foundry.applications.fields.createFormGroup({
       classes: ["stacked"],
       input: choiceSelect,
-      label: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: chooseN }),
+      label: _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: chooseN }),
     });
 
     content.append(formGroup);
@@ -126,7 +126,7 @@ export default class TraitAdvancement extends BaseAdvancement {
       render: render.bind(this),
       classes: ["configure-advancement"],
       window: {
-        title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
+        title: _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
         icon: "fa-solid fa-edit",
       },
     });

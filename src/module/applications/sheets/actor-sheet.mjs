@@ -257,11 +257,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     const actorMovement = this.actor.system.movement;
     const canHover = actorMovement.types.has("fly") || actorMovement.types.has("teleport");
     const movementList = Array.from(actorMovement.types).map(m => {
-      let label = game.i18n.localize(CONFIG.Token.movement.actions[m]?.label ?? m);
+      let label = _loc(CONFIG.Token.movement.actions[m]?.label ?? m);
       if ((m === "teleport") && (actorMovement.teleport !== actorMovement.value)) label += " " + actorMovement.teleport;
       return label;
     });
-    if (canHover && actorMovement.hover) movementList.push(game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
+    if (canHover && actorMovement.hover) movementList.push(_loc("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
     return {
       canHover,
       list: formatter.format(movementList),
@@ -301,7 +301,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    */
   _getImmunitiesWeaknesses() {
     const labels = {
-      all: game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
+      all: _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
       ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, { label }]) => {
         acc[type] = label;
         return acc;
@@ -408,7 +408,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the actor sheet
     context["other"] = {
-      label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
+      label: _loc("DRAW_STEEL.SHEET.Other"),
       abilities: [],
       showAdd: false,
       // Show "other" if and only if there are abilities of that type
@@ -503,17 +503,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     const categories = {
       temporary: {
         type: "temporary",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Temporary"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Temporary"),
         effects: [],
       },
       passive: {
         type: "passive",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Passive"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Passive"),
         effects: [],
       },
       inactive: {
         type: "inactive",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Inactive"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Inactive"),
         effects: [],
       },
     };
@@ -770,7 +770,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   _createEffectContextOptions() {
     return [
       {
-        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
+        label: _loc("DOCUMENT.Create", { type: _loc("DOCUMENT.ActiveEffect") }),
         icon: `${CONFIG.ActiveEffect.typeIcons.base} fa-fw`,
         visible: () => this.isEditable,
         onClick: (event, target) => {
@@ -790,7 +790,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
       },
       {
-        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        label: _loc("DOCUMENT.Create", { type: _loc("TYPES.ActiveEffect.abilityModifier") }),
         icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
         visible: () => this.isEditable,
         onClick: (event, target) => {

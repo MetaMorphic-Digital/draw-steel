@@ -47,7 +47,7 @@ export default class SavingThrowRoll extends DSRoll {
     const context = await super._prepareChatRenderContext({ flavor, isPrivate, ...options });
 
     if (!isPrivate) {
-      context.flavor ??= game.i18n.localize("DRAW_STEEL.ROLL.Save.Label");
+      context.flavor ??= _loc("DRAW_STEEL.ROLL.Save.Label");
       context.result = this.product ? "critical" : "failure";
     }
 

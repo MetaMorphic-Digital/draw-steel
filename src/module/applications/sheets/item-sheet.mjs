@@ -221,8 +221,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     for (const model of models) {
       if (!advs[model.requirements.level]) {
         const section = Number.isNumeric(model.requirements.level) ?
-          game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }) :
-          game.i18n.localize("DRAW_STEEL.ADVANCEMENT.HEADERS.null");
+          _loc("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }) :
+          _loc("DRAW_STEEL.ADVANCEMENT.HEADERS.null");
         advs[model.requirements.level] = {
           section,
           level: model.requirements.level,
@@ -262,22 +262,22 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     const categories = {
       temporary: {
         type: "temporary",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Temporary"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Temporary"),
         effects: [],
       },
       passive: {
         type: "passive",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Passive"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Passive"),
         effects: [],
       },
       inactive: {
         type: "inactive",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Inactive"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Inactive"),
         effects: [],
       },
       applied: {
         type: "applied",
-        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Applied"),
+        label: _loc("DRAW_STEEL.ActiveEffect.Applied"),
         effects: [],
       },
     };
@@ -450,7 +450,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   _createEffectContextOptions() {
     return [
       {
-        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
+        label: _loc("DOCUMENT.Create", { type: _loc("DOCUMENT.ActiveEffect") }),
         icon: `${CONFIG.ActiveEffect.typeIcons.base} fa-fw`,
         visible: () => this.isEditable,
         onClick: (event, target) => {
@@ -472,7 +472,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         },
       },
       {
-        label: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        label: _loc("DOCUMENT.Create", { type: _loc("TYPES.ActiveEffect.abilityModifier") }),
         icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
         visible: () => this.isEditable,
         onClick: (event, target) => {
@@ -709,7 +709,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     const result = await ds.applications.api.DSDialog.input({
       window: {
-        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize("DOCUMENT.Advancement") }),
+        title: _loc("DOCUMENT.New", { type: _loc("DOCUMENT.Advancement") }),
         icon: BaseAdvancement.metadata.icon,
       },
       content,
@@ -842,8 +842,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     if (!ds.CONFIG.Advancement[advancement.type].itemTypes.has(this.item.type)) {
       ui.notifications.error("DRAW_STEEL.ADVANCEMENT.SHEET.warnDrop", { format: {
-        itemType: game.i18n.localize(CONFIG.Item.typeLabels[this.item.type]),
-        advancementType: game.i18n.localize(ds.CONFIG.Advancement[advancement.type].label),
+        itemType: _loc(CONFIG.Item.typeLabels[this.item.type]),
+        advancementType: _loc(ds.CONFIG.Advancement[advancement.type].label),
       } });
       return null;
     }

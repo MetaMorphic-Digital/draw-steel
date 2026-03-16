@@ -33,7 +33,7 @@ export default class FeatureModel extends AdvancementModel {
       value: new fields.StringField({ required: true }),
       dsid: new fields.SetField(setOptions({
         validate: validateDSID,
-        validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+        validationError: _loc("DRAW_STEEL.SOURCE.InvalidDSID"),
       })),
       level: new fields.NumberField({ required: true, integer: true, positive: true }),
     });

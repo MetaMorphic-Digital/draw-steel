@@ -75,7 +75,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (immuneList.size) {
       // Warn the user with a list of condition names
       const formatter = game.i18n.getListFormatter({ type: "unit" });
-      const formattedConditions = formatter.format(immuneList.map(id => game.i18n.localize(ds.CONFIG.conditions[id]?.name ?? id)));
+      const formattedConditions = formatter.format(immuneList.map(id => _loc(ds.CONFIG.conditions[id]?.name ?? id)));
 
       ui.notifications.warn("DRAW_STEEL.ActiveEffect.ImmunityWarning", { localize: true, format: { conditions: formattedConditions } });
     }
@@ -143,13 +143,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
   /** @inheritdoc */
   get sourceName() {
-    if (!this.origin) return game.i18n.localize("COMMON.None");
+    if (!this.origin) return _loc("COMMON.None");
     let name;
     try {
       // Only difference from core is use of relative-to-target
       name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
     } catch (e) { /* empty */ }
-    return name || game.i18n.localize("COMMON.Unknown");
+    return name || _loc("COMMON.Unknown");
   }
 
   /* -------------------------------------------------- */

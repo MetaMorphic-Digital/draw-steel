@@ -78,14 +78,14 @@ export default class DamageRoll extends DSRoll {
     const tooltipPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip";
 
     return ds.utils.constructHTMLButton({
-      label: game.i18n.format(labelPath, {
+      label: _loc(labelPath, {
         type: this.typeLabel ? " " + this.typeLabel : "",
         amount: this.total,
       }),
       dataset: {
         action: "applyDamage",
         index,
-        tooltip: game.i18n.localize(tooltipPath),
+        tooltip: _loc(tooltipPath),
         tooltipDirection: "UP",
       },
       classes: ["apply-damage"],

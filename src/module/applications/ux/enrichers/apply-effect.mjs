@@ -84,12 +84,12 @@ export async function enricher(match, options) {
 
   if (!linkConfig.type) return null;
 
-  if (parsedConfig.name) linkConfig.tooltip = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.LinkTooltip", { name: parsedConfig.name });
+  if (parsedConfig.name) linkConfig.tooltip = _loc("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.LinkTooltip", { name: parsedConfig.name });
 
   label ||= linkConfig.end ?
-    game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.FormatString", {
+    _loc("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.FormatString", {
       name: parsedConfig.name,
-      end: game.i18n.localize(`DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.EffectEnds.${linkConfig.end}`),
+      end: _loc(`DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.EffectEnds.${linkConfig.end}`),
     }) :
     parsedConfig.name;
 
@@ -161,7 +161,7 @@ async function onClickAnchor() {
     if (this.dataset.type !== "status") {
       const scrollingTextArgs = [
         token.center,
-        game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
+        _loc("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
         {
           fill: "white",
           fontSize: 32,

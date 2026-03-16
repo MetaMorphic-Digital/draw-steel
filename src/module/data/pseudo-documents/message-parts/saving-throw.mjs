@@ -60,7 +60,7 @@ export default class SavingThrowPart extends BaseMessagePart {
     if (effect?.hasPlayerOwner && effect?.isOwner) {
       context.ctx.buttons.push(ds.utils.constructHTMLButton({
         action: "heroToken",
-        label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.savingThrow.Buttons.HeroToken.Label"),
+        label: _loc("DRAW_STEEL.ChatMessage.PARTS.savingThrow.Buttons.HeroToken.Label"),
         icon: "fa-solid fa-shield",
         classes: ["hero-token"],
         dataset: {

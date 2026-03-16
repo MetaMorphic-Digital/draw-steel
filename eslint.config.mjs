@@ -51,9 +51,9 @@ export default defineConfig([
         fromUuid: "readonly",
         fromUuidSync: "readonly",
         getDocumentClass: "readonly",
-        _loc: "readonly",
         _del: "readonly",
         _replace: "readonly",
+        _loc: "readonly",
       },
 
       ecmaVersion: "latest",

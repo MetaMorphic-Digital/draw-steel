@@ -24,7 +24,7 @@ export async function createDocMacro(data, slot) {
       break;
     default:
       command = `await foundry.applications.ui.Hotbar.toggleDocumentSheet("${item.uuid}");`;
-      name = `${game.i18n.localize("Display")} ${item.name}`;
+      name = `${_loc("Display")} ${item.name}`;
       break;
   }
   let macro = game.macros.find((m) => (m.name === item.name) && (m.command === command));
