@@ -64,7 +64,7 @@ export async function enricher(match, options) {
     }
 
     // Canonical Statuses
-    const status = CONFIG.statusEffects.find(s => s.id === normalizedValue);
+    const status = CONFIG.statusEffects[normalizedValue];
     if (status) {
       linkConfig.type = "status";
       linkConfig.status = status.id;

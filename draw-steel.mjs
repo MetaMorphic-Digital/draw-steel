@@ -82,15 +82,30 @@ Hooks.once("init", function () {
   CONFIG.ActiveEffect.expiryEvents.save = "DRAW_STEEL.ActiveEffect.Ends.Save.Label";
   CONFIG.ActiveEffect.expiryEvents.respite = "DRAW_STEEL.ActiveEffect.Ends.Respite.Label";
 
-  //Remove Status Effects Not Available in DrawSteel
-  const toRemove = ["bleeding", "bless", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
-  CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
+  /**
+   * A mapping of statuses to their order.
+   * @type {Record<string, number>}
+   */
+  const toKeep = {
+    dead: 0,
+    sleep: 0.5,
+    fly: 1,
+    burrow: 1,
+    // 2 is reserved for DS statuses
+    blind: 3,
+    deaf: 3,
+    invisible: 3,
+  };
+  for (const status of Object.keys(CONFIG.statusEffects)) {
+    if (!(status in toKeep)) delete CONFIG.statusEffects[status];
+    else CONFIG.statusEffects[status].order = toKeep[status];
+  }
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DS_CONFIG.conditions)) {
-    CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
+    CONFIG.statusEffects[id] = { id, _id: id.padEnd(16, "0"), order: 2, ...value };
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
-    CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
+    CONFIG.statusEffects[id] = { id, _id: id.padEnd(16, "0"), order: 4, ...value };
   }
 
   // Destructuring some pieces for simplification
