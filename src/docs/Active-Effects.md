@@ -109,7 +109,7 @@ The system also supports timed durations. Effects that have outlasted their dura
 
 The last tab includes the meat of the active effect system, where the actual changes from the effect are defined.
 
-#### Active effect change modes
+#### Active effect change types
 
 |Change Type|Description|
 |:-----------:|--------|
