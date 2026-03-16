@@ -168,7 +168,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       case "footer":
         context.buttons = [{
           type: "submit",
-          label: "Confirm",
+          label: "COMMON.Confirm",
           icon: "fa-solid fa-fw fa-check",
           disabled: (this.advancement.chooseN == null) || (this.totalChosen !== this.advancement.chooseN),
         }];
