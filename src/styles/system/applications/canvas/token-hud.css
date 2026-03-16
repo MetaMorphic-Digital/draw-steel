@@ -2,7 +2,7 @@
   .status-effects.palette {
     display: flex;
     flex-direction: column;
-    /* Undoes v14 status palette changes */
+    /* Undoes v14 status palette changes from https://github.com/foundryvtt/foundryvtt/issues/3175 */
     overflow: inherit;
     height: revert;
     section.effect-pane {
