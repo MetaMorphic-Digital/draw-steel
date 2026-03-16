@@ -88,7 +88,6 @@ function compendiumUpdateData(doc) {
         _id: doc.id,
         "==system": documentData.system,
         duration: documentData.duration,
-        changes: documentData.changes,
         description: documentData.description,
       };
   }

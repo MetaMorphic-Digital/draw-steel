@@ -83,10 +83,11 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       let imposingActorUuid = await TargetedConditionPrompt.create({ context: { statusId } });
 
       if (foundry.utils.parseUuid(imposingActorUuid)) {
-        effectData.changes = this.changes ?? [];
-        effectData.changes.push({
+        effectData.system ??= {};
+        effectData.system.changes = this.system?.changes ?? [];
+        effectData.system.changes.push({
           key: `system.statuses.${statusId}.sources`,
-          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+          type: "add",
           value: imposingActorUuid,
         });
       }
