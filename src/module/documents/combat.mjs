@@ -253,6 +253,9 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (!actor) return;
     const combatEvents = new Set("save", "combatEnd", "roundStart", "roundEnd", "turnStart", "turnEnd");
     const toDelete = actor.effects.filter(e => e.duration.expired || (combatEvents.has(e.duration.expiry) && (e.start.combat === this.id)));
+
+    // TODO: Consider if we need some notification or message here.
+
     // Don't need to await
     actor.deleteEmbeddedDocuments("ActiveEffect", toDelete.map(e => e.id));
   }

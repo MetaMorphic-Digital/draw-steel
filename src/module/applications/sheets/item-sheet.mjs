@@ -287,7 +287,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     for (const e of effects) {
       const durationLabel = e.duration.expired ?
         _loc("DRAW_STEEL.ActiveEffect.Expired") :
-        _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration;
+        _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration.label;
       const effectContext = {
         id: e.id,
         durationLabel,

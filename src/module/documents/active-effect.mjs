@@ -49,6 +49,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (!dsEvents.has(event) || !dsEvents.has(this.duration.expiry)) return super.isExpiryEvent(event, context);
 
     if (event === "save") {
+      // copies core combat duration logic
       /** @type {DrawSteelCombat|null} */
       const combat = context.combat ?? game.combat;
       /** @type {DrawSteelCombatant|null|undefined} */
@@ -59,6 +60,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
         : null;
       return !!effectCombatant;
     }
+    // respite
     else return context.actors?.includes(this.target);
   }
 
@@ -252,7 +254,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /** @inheritdoc */
   static migrateData(data) {
     let migrateChanges = false;
-    for (const change of data.changes ?? []) {
+    for (const change of data.system?.changes ?? []) {
       for (const [oldPath, newPath] of Object.entries(this.keyMigrations)) {
         const oldKey = change.key;
         change.key = change.key.replace(oldPath, newPath);
@@ -261,6 +263,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     }
 
     if (migrateChanges) foundry.utils.setProperty(data, "flags.draw-steel.migrateChanges", true);
+
+    const oldExpiry = "system.effect.end";
+    const newExpiry = "duration.expiry";
+    foundry.abstract.Document._addDataFieldMigration(data, oldExpiry, newExpiry, data => {
+      const oldValue = foundry.utils.getProperty(data, oldExpiry);
+      return ds.CONFIG.effectEnds[oldValue]?.expiryEvent ?? "";
+    });
 
     return super.migrateData(data);
   }
