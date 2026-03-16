@@ -179,7 +179,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * @override Implementation copied from core.
    */
   async toggleStatusEffect(statusId, { active, overlay = false, effectEnd = "" } = {}) {
-    const status = CONFIG.statusEffects.find(e => e.id === statusId);
+    const status = CONFIG.statusEffects[statusId];
     if (!status) throw new Error(`Invalid status ID "${statusId}" provided to Actor#toggleStatusEffect`);
     const existing = [];
 

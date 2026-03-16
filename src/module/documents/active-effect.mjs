@@ -181,7 +181,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     // If it does exist, convert the Set to an Array.
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = CONFIG.statusEffects.find(e => e.id === condition);
+    const config = CONFIG.statusEffects[condition];
     if (config) {
       if (current) current = Array.from(current);
       else if (!current) current = [];
@@ -205,7 +205,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     // If the property is a condition or a Set, convert the delta to a Set
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = CONFIG.statusEffects.find(e => e.id === condition);
+    const config = CONFIG.statusEffects[condition];
     const isSetChange = (foundry.utils.getType(current) === "Set") || config;
     if (isSetChange) delta = new Set([delta]);
 

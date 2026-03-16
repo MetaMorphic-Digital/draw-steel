@@ -106,7 +106,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       canFlank: true,
       flankable: true,
       slowed: {
-        speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
+        speed: CONFIG.statusEffects.slowed.defaultSpeed,
       },
     });
 
@@ -163,7 +163,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     this.combat.stability = Math.max(0, this.combat.stability);
 
     // Add restrictions based on status effects
-    for (const effect of CONFIG.statusEffects) {
+    for (const effect of Object.values(CONFIG.statusEffects)) {
       if (!this.parent.statuses.has(effect.id) || !effect.restrictions) continue;
 
       effect.restrictions.type?.forEach(t => this.restrictions.type.add(t));
