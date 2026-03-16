@@ -59,11 +59,8 @@ export function performPreLocalization(config) {
     if (settings.sort) foundry.utils.setProperty(config, keyPath, sortObjectEntries(target, settings.keys[0]));
   }
 
-  // Localize & sort status effects
-  CONFIG.statusEffects.forEach(s => s.name = _loc(s.name));
-  CONFIG.statusEffects.sort((lhs, rhs) =>
-    lhs.id === "dead" ? -1 : rhs.id === "dead" ? 1 : lhs.name.localeCompare(rhs.name, game.i18n.lang),
-  );
+  // Localize status effects
+  Object.values(CONFIG.statusEffects).forEach(s => s.name = _loc(s.name));
 }
 
 /* -------------------------------------------------- */

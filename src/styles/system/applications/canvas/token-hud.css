@@ -2,6 +2,9 @@
   .status-effects.palette {
     display: flex;
     flex-direction: column;
+    /* Undoes v14 status palette changes */
+    overflow: inherit;
+    height: revert;
     section.effect-pane {
       display: grid;
       grid-template-columns: repeat(2, 100px);

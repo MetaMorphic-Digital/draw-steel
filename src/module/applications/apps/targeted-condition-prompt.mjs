@@ -55,7 +55,7 @@ export default class TargetedConditionPrompt extends DSApplication {
    * @type {string}
    */
   get condition() {
-    return CONFIG.statusEffects.find(condition => condition.id === this.options.context.statusId)?.name ?? "";
+    return CONFIG.statusEffects[this.options.context.statusId]?.name ?? "";
   }
 
   /* -------------------------------------------------- */
