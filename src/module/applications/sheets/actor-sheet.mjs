@@ -30,7 +30,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Because these actions are all hard private, the best place to access them is via static DEFAULT_OPTIONS
       ...sheets.ActorSheet.DEFAULT_OPTIONS.actions,
       toggleStatus: this.#toggleStatus,
-      toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
       editCombat: this.#editCombat,
       useAbility: this.#useAbility,
@@ -522,14 +521,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     // Iterate over active effects, classifying them into categories
     const applicableEffects = [...this.actor.allApplicableEffects()].sort((a, b) => a.sort - b.sort);
     for (const e of applicableEffects) {
+      const durationLabel = e.duration.expired ?
+        _loc("DRAW_STEEL.ActiveEffect.Expired") :
+        _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration;
       const effectContext = {
+        durationLabel,
         id: e.id,
         uuid: e.uuid,
         name: e.name,
         img: e.img,
         parent: e.parent,
         sourceName: e.sourceName,
-        duration: e.duration,
         disabled: e.disabled,
         expanded: false,
       };
@@ -676,7 +678,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         icon: "fa-solid fa-fw fa-dice-d10",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
-          return (effect.documentName === "ActiveEffect") && (effect.system.end?.type === "save");
+          return (effect.documentName === "ActiveEffect") && (effect.duration.expiry === "save");
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
@@ -692,11 +694,12 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
-          const updateData = DrawSteelActiveEffect.getInitialDuration();
 
-          updateData.disabled = false;
-
-          await effect.update(updateData);
+          await effect.update({
+            disabled: false,
+            start: DrawSteelActiveEffect.getEffectStart(),
+            "duration.expired": false,
+          });
         },
       },
       {
@@ -879,20 +882,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
     await this.actor.toggleStatusEffect(status);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Toggles an active effect from disabled to enabled.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #toggleEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.update({ disabled: !effect.disabled });
   }
 
   /* -------------------------------------------------- */

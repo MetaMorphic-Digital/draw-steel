@@ -2,8 +2,7 @@ import TargetedConditionPrompt from "../applications/apps/targeted-condition-pro
 
 /**
  * @import { StatusEffectConfig } from "@client/config.mjs";
- * @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types";
- * @import DrawSteelActor from "./actor.mjs";
+ * @import { DrawSteelActor, DrawSteelCombat, DrawSteelCombatant } from "./_module.mjs";
  */
 
 /**
@@ -30,6 +29,37 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
     const effect = await super._fromStatusEffect(statusId, effectData, options);
     return effect;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prefer falsy fall through to expired rather than null coalescing; expiration can always suppress an AE.
+   * @inheritdoc
+   */
+  get isSuppressed() {
+    return this.system.isSuppressed || this.duration.expired;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  isExpiryEvent(event, context) {
+    const dsEvents = new Set("save", "respite");
+    if (!dsEvents.has(event) || !dsEvents.has(this.duration.expiry)) return super.isExpiryEvent(event, context);
+
+    if (event === "save") {
+      /** @type {DrawSteelCombat|null} */
+      const combat = context.combat ?? game.combat;
+      /** @type {DrawSteelCombatant|null|undefined} */
+      const effectCombatant = combat?.started
+        ? combat === this.start.combat
+          ? combat.combatants.get(this.start.combatant)
+          : combat.getCombatantsByActor(this.actor ?? "")[0]
+        : null;
+      return !!effectCombatant;
+    }
+    else return context.actors?.includes(this.target);
   }
 
   /* -------------------------------------------------- */
@@ -113,25 +143,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
   /** @inheritdoc */
   get sourceName() {
-    if (!this.origin) return _loc("None");
+    if (!this.origin) return _loc("COMMON.None");
     let name;
     try {
       // Only difference from core is use of relative-to-target
       name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
     } catch (e) { /* empty */ }
-    return name || _loc("Unknown");
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Automatically deactivate effects with expired durations.
-   * @inheritdoc
-   */
-  get isSuppressed() {
-    if (Number.isNumeric(this.duration.remaining)) return this.duration.remaining <= 0;
-    // Checks `system.isSuppressed`
-    else return super.isSuppressed;
+    return name || _loc("COMMON.Unknown");
   }
 
   /* -------------------------------------------------- */
@@ -140,37 +158,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActiveEffectData", this);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Compute derived data related to active effect duration.
-   * @returns {Omit<ActiveEffectDuration, keyof EffectDurationData>}
-   * @protected
-   * @inheritdoc
-   */
-  _prepareDuration() {
-    return this.system._prepareDuration ?? super._prepareDuration();
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  _getDurationLabel(rounds, turns) {
-    if ((rounds + turns) !== 0) return super._getDurationLabel(rounds, turns);
-    // Lines up with our effect suppression
-    return _loc("DRAW_STEEL.ActiveEffect.Expired");
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check.
-   * @inheritdoc
-   */
-  get isTemporary() {
-    return this.system._isTemporary ?? super.isTemporary;
   }
 
   /* -------------------------------------------------- */

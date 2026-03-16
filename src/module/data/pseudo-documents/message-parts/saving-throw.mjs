@@ -1,6 +1,10 @@
 import BaseMessagePart from "./base-message-part.mjs";
 import { systemPath } from "../../../constants.mjs";
 
+/**
+ * @import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
+ */
+
 const { DocumentUUIDField } = foundry.data.fields;
 
 /**
@@ -63,7 +67,7 @@ export default class SavingThrowPart extends BaseMessagePart {
           action: "heroToken",
           tooltip: "DRAW_STEEL.ChatMessage.PARTS.savingThrow.Buttons.HeroToken.Tooltip",
         },
-        disabled: effect.disabled,
+        disabled: effect.duration.expired,
       }));
     }
   }
@@ -91,7 +95,7 @@ export default class SavingThrowPart extends BaseMessagePart {
     const token = await game.actors.heroTokens.spendToken("succeedSave", { messageId: this.message.id });
 
     if (token !== false) {
-      await effect.update({ disabled: true });
+      await effect.update({ "duration.expired": true });
       return ui.chat.updateMessage(this.message, { notify: true });
     }
   }

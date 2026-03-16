@@ -1,9 +1,7 @@
-import BaseEffectModel from "../data/effect/base.mjs";
 import DSRoll from "../rolls/base.mjs";
 import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
 
 /**
- * @import ActiveEffectData from "@common/documents/_types.mjs";
  * @import { MaliceModel } from "../data/settings/malice.mjs";
  * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs";
  */
@@ -177,18 +175,6 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire at the end of combat to render the player UI. */
     await ui.players.render();
 
-    for (const combatant of this.combatants) {
-      const actor = combatant.actor;
-      if (!actor) continue;
-      /** @type {ActiveEffectData[]} */
-      const updates = [];
-      for (const effect of actor.appliedEffects) {
-        if (!(effect.system instanceof BaseEffectModel)) continue;
-        if (["turn", "save", "encounter"].includes(effect.system.end.type)) updates.push({ _id: effect.id, disabled: true });
-      }
-      actor.updateEmbeddedDocuments("ActiveEffect", updates);
-    }
-
     await this.completeEncounter();
   }
 
@@ -260,28 +246,32 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _onExit(combatant) {
+    /** @type {DrawSteelActor} */
+    const actor = combatant.actor;
+    if (!actor) return;
+    const combatEvents = new Set("save", "combatEnd", "roundStart", "roundEnd", "turnStart", "turnEnd");
+    const toDelete = actor.effects.filter(e => e.duration.expired || (combatEvents.has(e.duration.expiry) && (e.start.combat === this.id)));
+    // Don't need to await
+    actor.deleteEmbeddedDocuments("ActiveEffect", toDelete.map(e => e.id));
+  }
+
+  /* -------------------------------------------------- */
+
   /**
-   * Handle Draw Steel effect expiration logic.
+   * Handle Saving Throw expiration logic.
    * @inheritdoc
    */
   async _onEndTurn(combatant, context) {
     /** @type {DrawSteelActor} */
     const actor = combatant.actor;
     if (!actor || context.skipped) return;
-    /** @type {ActiveEffectData[]} */
-    const updates = [];
     for (const effect of actor.appliedEffects) {
-      if (!(effect.system instanceof BaseEffectModel)) continue;
-      switch (effect.system.end.type) {
-        case "turn":
-          updates.push({ _id: effect.id, disabled: true });
-          break;
-        case "save":
-          SavingThrowManager.delegateSavingThrow(effect);
-          break;
+      if (effect.duration.expiry === "save") {
+        SavingThrowManager.delegateSavingThrow(effect);
       }
     }
-    actor.updateEmbeddedDocuments("ActiveEffect", updates);
   }
 
   /* -------------------------------------------------- */

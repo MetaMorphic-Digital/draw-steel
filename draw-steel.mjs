@@ -78,6 +78,10 @@ Hooks.once("init", function () {
 
   foundry.applications.handlebars.loadTemplates(templates);
 
+  // ActiveEffect adjustments
+  CONFIG.ActiveEffect.expiryEvents.save = "DRAW_STEEL.ActiveEffect.Ends.Save.Label";
+  CONFIG.ActiveEffect.expiryEvents.respite = "DRAW_STEEL.ActiveEffect.Ends.Respite.Label";
+
   //Remove Status Effects Not Available in DrawSteel
   const toRemove = ["bleeding", "bless", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
