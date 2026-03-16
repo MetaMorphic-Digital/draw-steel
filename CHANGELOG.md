@@ -27,7 +27,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 ### Changed
 
 - ActiveEffect changes for v14
-  - Migrated `system.effect.end` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
+  - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
 
 ### Deprecated
