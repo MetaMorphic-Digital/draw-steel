@@ -84,10 +84,10 @@ Hooks.once("init", function () {
    */
   const toKeep = {
     dead: 0,
+    sleep: 0.5,
     fly: 1,
     burrow: 1,
     // 2 is reserved for DS statuses
-    sleep: 3,
     blind: 3,
     deaf: 3,
     invisible: 3,
