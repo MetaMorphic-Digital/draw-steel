@@ -174,7 +174,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /** @inheritdoc */
   async _renderFrame(options) {
     const frame = await super._renderFrame(options);
-    const copyLabel = _loc("SHEETS.CopyUuid");
+    const copyLabel = _loc("APPLICATION.ACTIONS.CopyUuid");
 
     const properties = Object.entries({
       type: "button",

@@ -113,13 +113,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
   /** @inheritdoc */
   get sourceName() {
-    if (!this.origin) return _loc("None");
+    if (!this.origin) return _loc("COMMON.None");
     let name;
     try {
       // Only difference from core is use of relative-to-target
       name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
     } catch (e) { /* empty */ }
-    return name || _loc("Unknown");
+    return name || _loc("COMMON.Unknown");
   }
 
   /* -------------------------------------------------- */
