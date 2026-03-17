@@ -1,9 +1,9 @@
+import { requiredInteger, setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
-import { setOptions } from "../../helpers.mjs";
 
-const { SetField } = foundry.data.fields;
+const { SchemaField, SetField } = foundry.data.fields;
 
 /**
  * For abilities that do damage.
@@ -11,17 +11,23 @@ const { SetField } = foundry.data.fields;
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
-    // TODO: Remove manual label assignment when localization bug is fixed
-    return Object.assign(super.defineSchema(), {
-      damage: this.duplicateTierSchema((n) => ({
-        value: new FormulaField({ initial: n === 1 ? "2 + @chr" : "", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
-        types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
-        ignoredImmunities: new SetField(setOptions(), {
-          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.label",
-          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.hint",
-        }),
-      })),
+    const damage = this.duplicateTierSchema((n) => ({
+      value: new FormulaField({ initial: n === 1 ? "2 + @chr" : "", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
+      types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
+      ignoredImmunities: new SetField(setOptions(), {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.label",
+        hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.hint",
+      }),
+    }));
+
+    damage.extendFields({
+      bonuses: new SchemaField({
+        value: requiredInteger({ min: null }),
+        treasure: requiredInteger({ min: null }),
+      }, { persisted: false }),
     });
+
+    return Object.assign(super.defineSchema(), { damage });
   }
 
   /* -------------------------------------------------- */
@@ -29,20 +35,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static get TYPE() {
     return "damage";
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    Object.assign(this.damage, {
-      bonuses: {
-        value: 0,
-        treasure: 0,
-      },
-    });
   }
 
   /* -------------------------------------------------- */

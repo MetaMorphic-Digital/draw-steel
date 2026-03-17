@@ -29,12 +29,14 @@ This version of the system does not support v13, it is exclusively for Foundry v
 ### Changed
 
 - Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
+- Refactored data preparation pipeline to use non-persisted effects. (#1521)
 
 ### Deprecated
 
 ### Removed
 
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
+- Removed various Active Effect methods overrides that are no longer necessary with core v14 improvements. (#1417)
 
 ### Fixed
 

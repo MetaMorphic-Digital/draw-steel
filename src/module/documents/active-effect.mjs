@@ -176,45 +176,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _applyAdd(actor, change, current, delta, changes) {
-    // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array.
-    // If it does exist, convert the Set to an Array.
-    const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
-    const condition = match?.groups.condition;
-    const config = CONFIG.statusEffects[condition];
-    if (config) {
-      if (current) current = Array.from(current);
-      else if (!current) current = [];
-    }
-
-    // If the type is Set, add to it, otherwise have the base class apply the changes
-    if (foundry.utils.getType(current) === "Set") current.add(delta);
-    else super._applyAdd(actor, change, current, delta, changes);
-
-    // If we're modifying a condition source, slice the array to the max length if applicable, then convert back to Set
-    if (config) {
-      if (config.maxSources) changes[change.key] = changes[change.key].slice(-config.maxSources);
-      changes[change.key] = new Set(changes[change.key]);
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  _applyOverride(actor, change, current, delta, changes) {
-    // If the property is a condition or a Set, convert the delta to a Set
-    const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
-    const condition = match?.groups.condition;
-    const config = CONFIG.statusEffects[condition];
-    const isSetChange = (foundry.utils.getType(current) === "Set") || config;
-    if (isSetChange) delta = new Set([delta]);
-
-    super._applyOverride(actor, change, current, delta, changes);
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * Return a data object which defines the data schema against which dice rolls can be evaluated.
    * Potentially usable in the future. May also want to adjust details to care about.

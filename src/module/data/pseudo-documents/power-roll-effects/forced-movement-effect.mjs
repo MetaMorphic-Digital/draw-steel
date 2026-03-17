@@ -1,10 +1,10 @@
+import { requiredInteger, setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
-import { setOptions } from "../../helpers.mjs";
 
 /** @import { ForcedMovementSchema } from "./_types" */
 
-const { SetField, StringField } = foundry.data.fields;
+const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 
 /**
  * For abilities that inflict forced movement.
@@ -28,6 +28,11 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         distance: new FormulaField({ deterministic: true, initial: "1", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
         properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
+      bonuses: new SchemaField({
+        push: requiredInteger({ min: null }),
+        pull: requiredInteger({ min: null }),
+        slide: requiredInteger({ min: null }),
+      }, { persisted: false }),
     });
   }
 
@@ -36,19 +41,6 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static get TYPE() {
     return "forced";
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    this.bonuses = {
-      push: 0,
-      pull: 0,
-      slide: 0,
-    };
   }
 
   /* -------------------------------------------------- */

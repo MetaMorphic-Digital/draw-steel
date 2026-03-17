@@ -39,19 +39,11 @@ export default class RetainerModel extends CreatureModel {
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
       max: requiredInteger({ initial: 6 }),
+      bonus: requiredInteger({ persisted: false }),
+      divisor: new fields.NumberField({ initial: 3, nullable: false, persisted: false }),
     });
 
     return schema;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    this.recoveries.bonus = 0;
-    this.recoveries.divisor = 3;
   }
 
   /* -------------------------------------------------- */
