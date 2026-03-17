@@ -200,7 +200,7 @@ export default class HeroModel extends CreatureModel {
           this._abilityBonuses.push({
             key,
             value,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: "add",
             priority: 0,
             filters: {
               keywords: new Set([keyword, "weapon"]),

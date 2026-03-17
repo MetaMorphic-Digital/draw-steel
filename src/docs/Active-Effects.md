@@ -109,16 +109,16 @@ The system also supports timed durations. Effects that have outlasted their dura
 
 The last tab includes the meat of the active effect system, where the actual changes from the effect are defined.
 
-#### Active effect change modes
+#### Active effect change types
 
-|Change Mode|Description|
+|Change Type|Description|
 |:-----------:|--------|
 |Add|Adds the provided value to the specified attribute. For attributes, this can be used to both add and subtract from a particular value by specifying 1 or -1 as the value to add.|
 |Multiply|Multiplies the defined attribute by the value in the Effect Value field.|
 |Override|Replaces the defined attribute with the value provided in the Effect Value field.|
 |Downgrade|Reduces the defined attribute only in cases where the current the value of that attribute would be greater than value specified in the Effect Value field.|
 |Upgrade|Increases the defined attribute only in cases where the current value of that attribute would be less than value specified in the Effect Value field.|
-|Custom|The Custom change mode applies logic defined by a game system or add-on module. The Draw Steel system does not utilize the Custom Change Mode.|
+|Custom|The Custom change type applies logic defined by a game system or add-on module. The Draw Steel system does not utilize the Custom Change Type.|
 
 While there are similarities with roll data, active effects generally lead with `system.` instead of `@`. To add a temporary bonus to stability via an active effect, the active effect will need to look as the following example:
 
@@ -137,7 +137,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Edges for Tests|`system.characteristics.[chr].edges`|
 |Banes for Tests|`system.characteristics.[chr].banes`|
 
-Draw Steel also supports modifying the default roll formula for tests. `system.characteristics.[chr].dice.number` will adjust the number of dice rolled, defaulting to keeping the highest two (You should use the UPGRADE mode). You can switch this to keeping the lowest two with `system.characteristics.[chr].dice.mode | OVERRIDE | kl`.
+Draw Steel also supports modifying the default roll formula for tests. `system.characteristics.[chr].dice.number` will adjust the number of dice rolled, defaulting to keeping the highest two (You should use the UPGRADE type). You can switch this to keeping the lowest two with `system.characteristics.[chr].dice.mode | OVERRIDE | kl`.
 
 #### Skill Keys
 
@@ -241,13 +241,13 @@ Ability modifiers currently support keyword filters. An ability must have all se
 
 ### Changes
 
-Ability modifiers support a far more limited set of keys, but still use the same mode & value logic as normal active effects.
+Ability modifiers support a far more limited set of keys, but still use the same type & value logic as normal active effects.
 
 |Key|Description|
 |---|-----------|
 |`distance`|Gives a bonus to the range of the ability, based on the range type.|
 |`damage.bonuses.value`|Give a bonus to the first damage effect's damage at each tier|
-|`damage.bonuses.treasure`|Give a bonus to the first damage effect's damage at each tier. Should be used with the `Upgrade` mode for non-stacking bonuses.|
+|`damage.bonuses.treasure`|Give a bonus to the first damage effect's damage at each tier. Should be used with the `Upgrade` type for non-stacking bonuses.|
 |`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
@@ -263,9 +263,9 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`power.roll.edges`|Add edges that apply to the ability's power roll regardless of target|
 
 **Notes:**
-- For `ignoredImmunities`, use the "Add" change mode with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
+- For `ignoredImmunities`, use the "Add" change type with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
 - For `forced...`:
   - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
   - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
-- For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+- For `keyword`, use the "Add" change type with values like `magic` or `strike`
 

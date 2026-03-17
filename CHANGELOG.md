@@ -24,6 +24,8 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Added
 
+- Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
+
 ### Changed
 
 - ActiveEffect changes for v14

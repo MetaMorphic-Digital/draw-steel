@@ -68,7 +68,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       for (const n of [1, 2, 3]) {
         const damageTier = this.damage[`tier${n}`];
         const formulaField = this.schema.getField(`damage.tier${n}.value`);
-        const change = { mode: CONST.ACTIVE_EFFECT_MODES.ADD };
+        const change = { type: "add" };
 
         if (bonuses.value) {
           change.value = bonuses.value;

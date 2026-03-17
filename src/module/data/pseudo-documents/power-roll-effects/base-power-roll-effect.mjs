@@ -153,7 +153,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
     context.fields.characteristic = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
       value: "none",
-      label: "None",
+      label: "COMMON.None",
     }]);
   }
 
