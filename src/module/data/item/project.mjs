@@ -192,16 +192,18 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Make a project roll for this project and update the project points progress.
-   * @param {Partial<PowerRollModifiers>} [options={}]
+   * @param {Partial<PowerRollModifiers>} [config={}]  Roll options.
+   * @param {object} [dialogOptions={}]                Options to be forwarded to the roll dialog.
+   * @param {object} [messageOptions]                  Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
-  async roll(options = {}) {
+  async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) {
       console.error("To roll a project, it must have an actor owner");
       return null;
     }
 
-    const promptValue = await this.rollPrompt(options);
+    const promptValue = await this.rollPrompt(config);
 
     if (!promptValue) return null;
     const { rollMode, projectRoll } = promptValue;

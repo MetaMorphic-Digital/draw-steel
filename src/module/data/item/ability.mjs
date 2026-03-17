@@ -415,11 +415,13 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll.
-   * @param {Partial<AbilityUseOptions>} [options={}] Configuration.
-   * @returns {Promise<DrawSteelChatMessage[] | null>}
+   * @param {Partial<AbilityUseOptions>} [config={}] Usage Configuration.
+   * @param {object} [dialogOptions={}]              Options to be forwarded to the roll dialog.
+   * @param {object} [messageOptions]                Options to be forwarded to the final created chat message.
+   * @returns {Promise<DrawSteelChatMessage | null>}
    * TODO: Add hooks based on discussion with module authors.
    */
-  async use(options = {}) {
+  async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     /**
      * Configuration information.
      * @type {object | null}
@@ -516,12 +518,12 @@ export default class AbilityModel extends BaseItemModel {
     if (this.power.roll.enabled) {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
-      options.modifiers ??= {};
-      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
-      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
-      options.modifiers.bonuses ??= 0;
+      config.modifiers ??= {};
+      config.modifiers.banes = (config.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      config.modifiers.edges = (config.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
+      config.modifiers.bonuses ??= 0;
 
-      this.getActorModifiers(options);
+      this.getActorModifiers(config);
 
       // Get the power rolls made per target, or if no targets, then just one power roll
       const promptValue = await PowerRoll.prompt({
@@ -531,7 +533,7 @@ export default class AbilityModel extends BaseItemModel {
         evaluation: "evaluate",
         actor: this.actor,
         ability: this.parent.uuid,
-        modifiers: options.modifiers,
+        modifiers: config.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             tokenUuid: target.document.uuid,
@@ -586,8 +588,8 @@ export default class AbilityModel extends BaseItemModel {
   /**
    * An alias of {@linkcode use}.
    */
-  async roll(options = {}) {
-    this.use(options);
+  async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
+    return this.use(config, dialogOptions, messageOptions);
   }
 
   /* -------------------------------------------------- */
