@@ -687,9 +687,8 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Create a region template based on this ability's distance data.
-   * @param {object} options
    */
-  async placeTemplate(options) {
+  async placeTemplate() {
     const distanceConfig = ds.CONFIG.abilities.distances[this.distance.type];
 
     if (typeof distanceConfig.area !== "object") {
