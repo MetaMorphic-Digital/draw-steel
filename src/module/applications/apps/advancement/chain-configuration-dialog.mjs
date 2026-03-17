@@ -84,7 +84,7 @@ export default class ChainConfigurationDialog extends DSApplication {
         await this._prepareChainContext(context, options);
         break;
       case "footer":
-        context.buttons = [{ type: "submit", label: "Confirm", icon: "fa-solid fa-fw fa-check" }];
+        context.buttons = [{ type: "submit", label: "COMMON.Confirm", icon: "fa-solid fa-fw fa-check" }];
         break;
     }
 
