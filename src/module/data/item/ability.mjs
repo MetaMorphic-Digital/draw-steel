@@ -430,63 +430,8 @@ export default class AbilityModel extends BaseItemModel {
     let resourceSpend = this.resource ?? 0;
     const coreResource = this.actor?.system.coreResource;
 
-    // Determine if the configuration form should even run.
-    // Can be factored out if/when complexity increases
     if (this.spend.value || this.spend.text) {
-      let content = "";
-
-      const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
-
-      /**
-       * Range picker config is ignored by the checkbox element.
-       * @type {FormInputConfig}
-       */
-      const spendInputConfig = {
-        name: "spend",
-        min: 0,
-        max: current - coreResource.minimum,
-        step: 1,
-      };
-
-      // Nullish value with text means X spend
-      const spendInput = this.spend.value ?
-        foundry.applications.fields.createCheckboxInput(spendInputConfig) :
-        foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
-
-      let hint = null;
-      if (this.spend.value) {
-        hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
-          value: current,
-          name: coreResource.name,
-        });
-      }
-
-      const spendGroup = foundry.applications.fields.createFormGroup({
-        label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
-          value: this.spend.value || "",
-          name: coreResource.name,
-        }),
-        input: spendInput,
-        hint,
-      });
-
-      // Style fix
-      if (this.spend.value) {
-        const label = spendGroup.querySelector("label");
-        label.classList.add("checkbox");
-        label.style = "font-size: inherit;";
-      }
-
-      content += spendGroup.outerHTML;
-
-      configuration = await ds.applications.api.DSDialog.input({
-        content,
-        window: {
-          title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
-          icon: "fa-solid fa-gear",
-        },
-      });
-
+      configuration = await this._determineSpendConfiguration();
       if (!configuration) return null;
     }
 
@@ -505,14 +450,12 @@ export default class AbilityModel extends BaseItemModel {
       flags: { core: { canPopout: true } },
     };
 
-    if (configuration) {
-      if (configuration.spend) {
-        resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-        messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
-          value: resourceSpend,
-          name: coreResource.name,
-        });
-      }
+    if (configuration?.spend) {
+      resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
+      messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
+        value: resourceSpend,
+        name: coreResource.name,
+      });
     }
 
     if (this.power.roll.enabled) {
@@ -667,6 +610,69 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     return modifiers;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Evaluate additional resource expenditure.
+   * @returns {Promise<{ spend: number | boolean } | null>}
+   */
+  async _determineSpendConfiguration() {
+    let content = "";
+    const coreResource = this.actor?.system.coreResource;
+
+    const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
+
+    /**
+       * Range picker config is ignored by the checkbox element.
+       * @type {FormInputConfig}
+       */
+    const spendInputConfig = {
+      name: "spend",
+      min: 0,
+      max: current - coreResource.minimum,
+      step: 1,
+    };
+
+    // Nullish value with text means X spend
+    const spendInput = this.spend.value ?
+      foundry.applications.fields.createCheckboxInput(spendInputConfig) :
+      foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
+
+    let hint = null;
+    if (this.spend.value) {
+      hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
+        value: current,
+        name: coreResource.name,
+      });
+    }
+
+    const spendGroup = foundry.applications.fields.createFormGroup({
+      label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+        value: this.spend.value || "",
+        name: coreResource.name,
+      }),
+      input: spendInput,
+      hint,
+    });
+
+    // Style fix
+    if (this.spend.value) {
+      const label = spendGroup.querySelector("label");
+      label.classList.add("checkbox");
+      label.style = "font-size: inherit;";
+    }
+
+    content += spendGroup.outerHTML;
+
+    return ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
+        icon: "fa-solid fa-gear",
+      },
+    });
   }
 
   /* -------------------------------------------------- */
