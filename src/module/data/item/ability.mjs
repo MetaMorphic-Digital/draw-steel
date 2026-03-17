@@ -9,6 +9,7 @@ import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import RegionDocument from "@client/documents/region.mjs";
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
@@ -687,6 +688,11 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Create a region template based on this ability's distance data.
+   * @returns {Promise<RegionDocument>} The Region document that was placed or null if
+   *  - the placements of all shapes were skipped,
+   *  - the dismiss key was pressed,
+   *  - the game is paused and the user is not a GM, or
+   *  - the Region creation was rejected by preCreate.
    */
   async placeTemplate() {
     const distanceConfig = ds.CONFIG.abilities.distances[this.distance.type];
