@@ -11,7 +11,8 @@ import { systemPath } from "../../constants.mjs";
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
- * @import DrawSteelToken from "../../canvas/placeables/token.mjs"
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
+ * @import DrawSteelTokenDocument from "../../documents/token.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -680,5 +681,67 @@ export default class AbilityModel extends BaseItemModel {
     if (restrictions.dsid.has(this.parent.dsid)) return true;
 
     return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create a region template based on this ability's distance data.
+   * @param {object} options
+   */
+  async placeTemplate(options) {
+    const distanceConfig = ds.CONFIG.abilities.distances[this.distance.type];
+
+    if (typeof distanceConfig.area !== "object") {
+      const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
+      ui.notifications.error(msg);
+      throw new Error(msg);
+    }
+
+    /** @type {DrawSteelTokenDocument} */
+    const tokenInfo = this.actor.token ?? this.actor.getActiveTokens(true, true)[0];
+
+    const { type, count, ...shapeProperties } = distanceConfig.area;
+
+    const shapeCount = typeof count === "string" ? this.distance[count] : 1;
+
+    const shapes = Array.fromRange(shapeCount).map(() => {
+      const shapeData = { type, gridBased: true, x: 0, y: 0 };
+      for (const [key, path] of Object.entries(shapeProperties)) {
+        shapeData[key] = this.distance[path] * canvas.dimensions.distancePixels;
+      }
+      // additional adjustments to conform to DS rules
+      switch (type) {
+        case "rectangle": // Special wall handling since it's a bunch of 1 x 1 spots.
+          shapeData.width ??= canvas.dimensions.distancePixels;
+          shapeData.height ??= canvas.dimensions.distancePixels;
+          break;
+        case "emanation":
+          shapeData.base = {
+            hole: true,
+            type: "token",
+            x: 0,
+            y: 0,
+            width: tokenInfo.width,
+            height: tokenInfo.width,
+            shape: tokenInfo.shape,
+          };
+      }
+
+      return shapeData;
+    });
+
+    const regionData = {
+      shapes,
+      name: this.parent.name,
+      color: game.user.color,
+      levels: [canvas.level.id],
+      highlightMode: "coverage",
+      displayMeasurements: true,
+      visibility: CONST.REGION_VISIBILITY.OBSERVER,
+      ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
+    };
+
+    return canvas.regions.placeRegion(regionData);
   }
 }
