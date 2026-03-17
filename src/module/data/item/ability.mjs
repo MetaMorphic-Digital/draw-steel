@@ -693,7 +693,7 @@ export default class AbilityModel extends BaseItemModel {
 
     if (typeof distanceConfig.area !== "object") {
       const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
-      ui.notifications.error(msg);
+      ui.notifications.error(msg, { console: false });
       throw new Error(msg);
     }
 

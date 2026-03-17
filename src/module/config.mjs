@@ -1471,7 +1471,7 @@ const abilityCategories = {
  * @property {string} [primary]     Distance measurement label.
  * @property {string} [secondary]   Distance measurement label.
  * @property {string} [tertiary]    Distance measurement label.
- * @property {AreaInfo} [area]      Does this count as an area measurment?
+ * @property {AreaInfo} [area]      Does this count as an area measurement?
  * @property {string} embedLabel    Format string for the display in the ability embed.
  * @property {Reference} [reference]
  */
