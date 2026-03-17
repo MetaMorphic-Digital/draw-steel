@@ -488,12 +488,12 @@ export default class AbilityModel extends BaseItemModel {
       });
 
       if (!promptValue) return null;
-      const { rollMode, rolls, baseRoll } = promptValue;
+      const { messageMode, rolls, baseRoll } = promptValue;
 
       // Base roll for DSN purposes
       messageData.rolls.push(baseRoll);
 
-      DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+      DrawSteelChatMessage.applyMode(messageData, messageMode);
 
       // Power Rolls grouped by tier of success
       const groupedRolls = Object.groupBy(rolls, roll => roll.product);
@@ -519,7 +519,7 @@ export default class AbilityModel extends BaseItemModel {
         messageData.system.parts.push(rollPart);
       }
     } else {
-      DrawSteelChatMessage.applyRollMode(messageData, "roll");
+      DrawSteelChatMessage.applyMode(messageData, "roll");
     }
     // TODO: Figure out how to better handle invocations when this.actor is null
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);

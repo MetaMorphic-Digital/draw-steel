@@ -206,7 +206,7 @@ export default class ProjectModel extends BaseItemModel {
     const promptValue = await this.rollPrompt(config);
 
     if (!promptValue) return null;
-    const { rollMode, projectRoll } = promptValue;
+    const { messageMode, projectRoll } = promptValue;
     if (projectRoll.isCritical) projectRoll.options.flavor = _loc("DRAW_STEEL.ROLL.Project.Breakthrough");
 
     const total = projectRoll.total;
@@ -243,7 +243,7 @@ export default class ProjectModel extends BaseItemModel {
       }
     }
 
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    DrawSteelChatMessage.applyMode(messageData, messageMode);
     return DrawSteelChatMessage.create(messageData);
   }
 

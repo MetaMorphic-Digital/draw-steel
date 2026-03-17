@@ -12,13 +12,18 @@ export default class DSRoll extends foundry.dice.Roll {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async toMessage(messageData = {}, { rollMode, create = true } = {}) {
+  async toMessage(messageData = {}, { messageMode, rollMode, create = true } = {}) {
     if (!this.constructor.PART_TYPE) return super.toMessage(messageData, { rollMode, create });
 
-    if (rollMode === "roll") rollMode = undefined;
-    rollMode ||= game.settings.get("core", "rollMode");
+    if (rollMode) {
+      foundry.utils.logCompatibilityWarning("The rollMode option of Roll#toMessage is deprecated in favor of"
+        + " messageMode, a string value in CONFIG.ChatMessage.modes", { since: 14, until: 16 });
+      messageMode = DSRoll._mapLegacyRollMode(rollMode);
+    }
+    messageMode ||= game.settings.get("core", "messageMode");
 
-    if (!this._evaluated) await this.evaluate({ allowInteractive: rollMode !== CONST.DICE_ROLL_MODES.BLIND });
+    // Perform the roll, if it has not yet been rolled
+    if (!this._evaluated) await this.evaluate({ allowInteractive: messageMode !== "blind" });
 
     const id = foundry.utils.randomID();
     messageData = foundry.utils.mergeObject({
@@ -39,7 +44,7 @@ export default class DSRoll extends foundry.dice.Roll {
 
     const Cls = getDocumentClass("ChatMessage");
     const msg = new Cls(messageData);
-    msg.applyRollMode(rollMode);
+    msg.applyMode(messageMode);
 
     if (create) return Cls.create(msg);
     return msg.toObject();
