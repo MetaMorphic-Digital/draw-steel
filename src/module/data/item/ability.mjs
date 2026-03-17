@@ -318,7 +318,7 @@ export default class AbilityModel extends BaseItemModel {
 
     labels.distance = _loc(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
-    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
+    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "COMMON.Unknown" };
     labels.target = this.target.custom || (this.target.value == null ?
       targetConfig.all ?? _loc(targetConfig.embedLabel) :
       _loc(targetConfig.embedLabel, { value: this.target.value }));
