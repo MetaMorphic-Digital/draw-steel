@@ -4,9 +4,9 @@
     {{#if caption}}<figcaption>{{ caption }}</figcaption>{{/if}}
   </figure>
 
-  {{formField fields.src value=source.src label="JOURNALENTRYPAGE.FIELDS.src.label" input=srcInput localize=true }}
+  {{formField fields.src value=source.src input=srcInput }}
 
-  {{formField fields.image.fields.caption value=source.image.caption label="JOURNALENTRYPAGE.FIELDS.image.caption.label" localize=true }}
+  {{formField fields.image.fields.caption value=source.image.caption }}
 
   {{~formField systemFields.artDescription value=system.artDescription elementType="textarea"}}
 </section>
