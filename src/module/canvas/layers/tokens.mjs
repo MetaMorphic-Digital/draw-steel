@@ -1,9 +1,6 @@
-import TokenPlacement from "../placeables/tokens/token-placement.mjs";
-
 /**
  * @import {TokenData} from "@common/documents/_types.mjs"
  * @import {DrawSteelActor, DrawSteelTokenDocument} from "../../documents/_module.mjs";
- * @import {TokenPlacementData} from "../placeables/tokens/_types"
  */
 
 /**
@@ -19,7 +16,7 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
    * @param {ActorData} [options.actorUpdates]  Additional token data to merge into the placed token.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performTokenPlacement(actor, options = {}) {
+  async placeActor(actor, options = {}) {
     // Ensure the user has permission to drop the actor and create a Token.
     if (!game.user.can("TOKEN_CREATE")) {
       ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.TOKEN_CREATE", { localize: true });
@@ -27,19 +24,11 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
       return null;
     }
 
-    const createData = [];
+    const tokenPromises = Array.fromRange(options.count ?? 1).map(index => this.#getTokenData(actor, index, options.tokenUpdates, options.actorUpdates));
 
-    const placements = await TokenPlacement.place({ tokens: Array(options.count ?? 1).fill(actor.prototypeToken) });
+    const createData = await Promise.all(tokenPromises);
 
-    for (const placement of placements) {
-      const tokenData = await this.#getTokenData(actor, placement, options.tokenUpdates, options.actorUpdates);
-
-      createData.push(tokenData);
-    }
-
-    const createdTokens = await canvas.scene.createEmbeddedDocuments("Token", createData);
-
-    return createdTokens;
+    return this.placeTokens(createData);
   }
 
   /* -------------------------------------------------- */
@@ -47,19 +36,20 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
   /**
    * Fetch token data, making appropriate adjustments to token and actor data.
    * @param {DrawSteelActor} actor           The base actor for the token.
-   * @param {TokenPlacementData} placement   Placement data.
+   * @param {number} [index]                 The index of the token for.
    * @param {TokenData} [tokenUpdates]       Additional token data to merge into the placed token.
    * @param {ActorData} [actorUpdates]       Additional token data to merge into the placed token.
+   * @return {Promise<TokenData>}
    */
-  async #getTokenData(actor, placement, tokenUpdates = {}, actorUpdates = {}) {
+  async #getTokenData(actor, index, tokenUpdates = {}, actorUpdates = {}) {
+
     if (actor.prototypeToken.randomImg && !game.user.can("FILES_BROWSE")) {
       tokenUpdates.texture ??= {};
       tokenUpdates.texture.src ??= actor.img;
       ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.WILDCARD", { localize: true });
     }
 
-    delete placement.prototypeToken;
-    const tokenDocument = await actor.getTokenDocument(foundry.utils.mergeObject(placement, tokenUpdates));
+    const tokenDocument = await actor.getTokenDocument(tokenUpdates);
 
     // Linked summons require more explicit updates before token creation.
     // Unlinked summons can take actor delta directly.
@@ -76,9 +66,32 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
       await tokenDocument.actor.createEmbeddedDocuments("ActiveEffect", newEffects, { keepId: true });
     } else {
       tokenDocument.delta.updateSource(actorUpdates);
-      if (actor.prototypeToken.appendNumber) TokenPlacement.adjustAppendedNumber(tokenDocument, placement);
+      // Foundry will automatically increment but we need to add in our indices
+      if (actor.prototypeToken.appendNumber) {
+        const regex = new RegExp(/\((\d+)\)$/);
+        const match = tokenDocument.name?.match(regex);
+        if (match) {
+          const name = tokenDocument.name.replace(regex, `(${Number(match[1]) + index})`);
+          tokenDocument.updateSource({ name });
+        }
+      }
     }
 
     return tokenDocument.toObject();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @deprecated
+   * @see {DrawSteelTokenLayer.placeActor}
+   */
+  async performTokenPlacement(actor, options = {}) {
+    foundry.utils.logCompatibilityWarning("canvas.layer.performTokenPlacement has been deprecated in favor of canvas.layer.placeActor", {
+      since: "1.0",
+      until: "1.2",
+    });
+
+    return this.placeActor(actor, options);
   }
 }
