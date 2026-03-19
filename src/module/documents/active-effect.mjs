@@ -54,6 +54,14 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static applyChange(targetDoc, change, options = {}) {
+    if (typeof change.effect.system.apply === "function") return change.effect.system.apply(targetDoc, change, options);
+    return super.applyChange(targetDoc, change, options);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
     if ((game.userId === userId) && this.modifiesActor && this.statuses.has("prone")) {
@@ -237,14 +245,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     }
 
     return rollData;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  apply(actor, change) {
-    if (typeof this.system.apply === "function") return this.system.apply(actor, change);
-    else return super.apply(actor, change);
   }
 
   /* -------------------------------------------- */
