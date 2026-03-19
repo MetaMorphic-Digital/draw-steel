@@ -76,7 +76,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     for (const status of Object.values(CONFIG.statusEffects)) {
       if (status.targeted) {
         const existing = schema.statuses.getField(status.id);
-        const sources = new fields.SetField(setOptions(), { persisted: false, max: status.maxSources });
+        const sources = new fields.SetField(new fields.DocumentUUIDField({ type: "Actor" }), { persisted: false, max: status.maxSources });
         if (existing instanceof fields.SchemaField) existing.extendFields({ sources });
         else schema.statuses.extendFields({
           [status.id]: new fields.SchemaField({ sources }, { persisted: false }),
