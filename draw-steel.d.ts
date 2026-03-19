@@ -3,26 +3,25 @@ import "@client/global.mjs";
 import "@common/global.mjs";
 import "@common/primitives/global.mjs";
 import Canvas from "@client/canvas/board.mjs";
+import DrawSteelTokenLayer from "./src/module/canvas/layers/tokens.mjs";
 
 // Foundry's use of `Object.assign(globalThis) means many globally available objects are not read as such
 // This declare global hopefully fixes that
 declare global {
-  // not a real extension of course but simplest way for this to work with the intellisense.
-  /**
-   * A simple event framework used throughout Foundry Virtual Tabletop.
-   * When key actions or events occur, a "hook" is defined where user-defined callback functions can execute.
-   * This class manages the registration and execution of hooked callback functions.
-   */
-  class Hooks extends foundry.helpers.Hooks {}
-  /**
-   * A representation of a color in hexadecimal format.
-   * This class provides methods for transformations and manipulations of colors.
-   */
-  class Color extends foundry.utils.Color {}
-  const fromUuid = foundry.utils.fromUuid;
-  const fromUuidSync = foundry.utils.fromUuidSync;
-  /**
-   * The singleton game canvas.
-   */
-  const canvas: Canvas;
+  namespace globalThis {
+    // not a real extension of course but simplest way for this to work with the intellisense.
+    /**
+     * A simple event framework used throughout Foundry Virtual Tabletop.
+     * When key actions or events occur, a "hook" is defined where user-defined callback functions can execute.
+     * This class manages the registration and execution of hooked callback functions.
+     */
+    class Hooks extends foundry.helpers.Hooks {}
+    /**
+     * A representation of a color in hexadecimal format.
+     * This class provides methods for transformations and manipulations of colors.
+     */
+    class Color extends foundry.utils.Color {}
+    const fromUuid = foundry.utils.fromUuid;
+    const fromUuidSync = foundry.utils.fromUuidSync;
+  }
 }
