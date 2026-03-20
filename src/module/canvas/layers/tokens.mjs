@@ -49,7 +49,7 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
       ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.WILDCARD", { localize: true });
     }
 
-    const tokenDocument = await actor.getTokenDocument(tokenUpdates);
+    const tokenDocument = await actor.getTokenDocument(tokenUpdates, { parent: canvas.scene });
 
     // Linked summons require more explicit updates before token creation.
     // Unlinked summons can take actor delta directly.

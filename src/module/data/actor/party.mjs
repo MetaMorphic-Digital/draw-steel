@@ -146,7 +146,13 @@ export default class PartyModel extends DrawSteelSystemModel {
    * @returns {Promise<DrawSteelTokenDocument[]>}    A promise that resolves to the created tokens.
    */
   async placeMembers() {
-    const tokenPromises = this.members.map(m => m.actor.getTokenDocument());
+    if (!canvas?.scene) {
+      const msg = _loc("DRAW_STEEL.Actor.party.NoScene");
+      ui.notifications.error(msg, { console: false });
+      throw new Error(msg);
+    }
+
+    const tokenPromises = this.members.map(m => m.actor.getTokenDocument({}, { parent: canvas.scene }));
 
     const createData = await Promise.all(tokenPromises);
 
