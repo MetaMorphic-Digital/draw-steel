@@ -188,7 +188,7 @@ Draw Steel also supports modifying the default roll formula for tests. `system.c
 
 > <details><summary>The viable damage [types] for Immunities and Weaknesses are:</summary>
 >
-> |Damage Type|Active Effect Attribute Key|
+> |Damage Type|Attribute Key|
 > |:---:|---|
 > |All damage (including untyped)|`all`
 > |Acid damage|`acid`
@@ -210,7 +210,7 @@ Draw Steel also supports modifying the default roll formula for tests. `system.c
 
 > <details><summary>The viable conditions for Immunities are:</summary>
 >
-> |Condition|Active Effect Attribute Key|
+> |Condition|Attribute Key|
 > |:---:|---|
 > |Bleeding|`bleeding`
 > |Dazed|`dazed`
@@ -230,6 +230,28 @@ Draw Steel also supports modifying the default roll formula for tests. `system.c
 > |---|---|---|
 >
 ></details>
+
+#### Token Properties
+
+Token properties can be targeted by prefixing with `token.`. The following properties are some of the valid targets for these changes.
+
+|Property|Attribute Key|
+|:---:|---|
+| Name |`token.name`|
+| Size (x-axis) |`token.width`|
+| Size (y-axis) |`token.height`|
+| Size (z-axis) |`token.depth`|
+| Image (Static) |`token.texture.src`|
+| Opacity (0–1) |`token.alpha`|
+| Disposition* |`token.disposition`|
+| Use dynamic token ring |`token.ring.enabled`|
+| Image (Dynamic Token Ring) |`token.ring.subject.texture`|
+| Turn marker image |`token.turnMarker`|
+| Movement Action** |`token.movementAction`|
+
+*Token dispositions are -2 for Secret, -1 for Hostile, 0 for Neutral, and 1 for Friendly.
+
+**Movement actions include "climb", "fly", "swim", "teleport", and "walk"
 
 ## Ability Modifiers
 

@@ -25,6 +25,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 ### Added
 
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
+- Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
 
 ### Changed
 
