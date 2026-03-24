@@ -235,7 +235,7 @@ export default class PowerRollDialog extends RollDialog {
       rolls: [],
       damage: null,
       skill: null,
-      rollMode: this.options.context.rollMode,
+      messageMode: this.options.context.messageMode,
     };
 
     const targets = this.options.context.targets;

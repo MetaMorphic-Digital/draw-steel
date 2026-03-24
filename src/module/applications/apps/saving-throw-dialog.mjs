@@ -58,7 +58,7 @@ export default class SavingThrowDialog extends RollDialog {
 
     return {
       rollConfig: formData,
-      rollMode: this.options.context.rollMode,
+      messageMode: this.options.context.messageMode,
     };
   }
 }

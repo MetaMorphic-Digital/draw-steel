@@ -146,12 +146,12 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
     if (!fd) return;
 
-    const { rollConfig, rollMode } = fd;
+    const { rollConfig, messageMode } = fd;
 
     if (rollConfig.situationalBonus) formula += ` + ${rollConfig.situationalBonus}`;
     rollOptions.successThreshold = rollConfig.successThreshold;
 
-    messageOptions.rollMode = rollMode;
+    messageOptions.messageMode = messageMode;
 
     const roll = new SavingThrowRoll(formula, rollData, rollOptions);
 
