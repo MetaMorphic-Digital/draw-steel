@@ -265,15 +265,18 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
     if (migrateChanges) foundry.utils.setProperty(data, "flags.draw-steel.migrateChanges", true);
 
-    if (game.ready) console.log(data, data.system, data.system?.end);
-
     const oldExpiry = "system.end.type";
     const newExpiry = "duration.expiry";
+    // only works for *freshly* created documents, existing ones are server migrated and get skipped
     foundry.abstract.Document._addDataFieldMigration(data, oldExpiry, newExpiry, data => {
       const oldValue = foundry.utils.getProperty(data, oldExpiry);
-      console.log(oldValue, ds.CONFIG.effectEnds[oldValue]?.expiryEvent);
       return ds.CONFIG.effectEnds[oldValue]?.expiryEvent ?? "";
     });
+
+    // Server migrated
+    if (foundry.utils.hasProperty(data, oldExpiry) && (data.duration?.expiry === null)) {
+      foundry.utils.setProperty(data, "flags.draw-steel.oldExpiry", data.system.end.type);
+    }
 
     return super.migrateData(data);
   }
