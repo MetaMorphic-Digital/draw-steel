@@ -95,7 +95,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
           nameInput.placeholder = cls.defaultName({ type: e.target.value, parent, pack });
         });
         // On-render addition to avoid having to use a new template
-        const hint = document.createElement("p");
+        const hint = dialog.element.ownerDocument.createElement("p");
         hint.className = "hint";
         hint.innerText = _loc("DRAW_STEEL.CombatantGroup.TypeHint");
         const group = typeInput.closest(".form-group");
