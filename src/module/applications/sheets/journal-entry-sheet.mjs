@@ -34,9 +34,9 @@ export default class DrawSteelJournalEntrySheet extends foundry.applications.she
     const previous = nav.previous ? await getDocument(nav.previous) : null;
     const up = nav.up ? await getDocument(nav.up) : null;
     const next = nav.next ? await getDocument(nav.next) : null;
-    const element = document.createElement("nav");
+    const element = this.element.ownerDocument.createElement("nav");
     element.classList.add("book-navigation");
-    const list = document.createElement("ul");
+    const list = this.element.ownerDocument.createElement("ul");
     element.append(list);
     list.append(this.#makeNavigation(previous, "prev"));
     list.append(this.#makeNavigation(up, "up"));
@@ -53,9 +53,9 @@ export default class DrawSteelJournalEntrySheet extends foundry.applications.she
    * @returns {HTMLLIElement}
    */
   #makeNavigation(doc, dir) {
-    const li = document.createElement("li");
+    const li = this.element.ownerDocument.createElement("li");
     if (!doc?.testUserPermission(game.user, "OBSERVER")) return li;
-    const anchor = document.createElement("a");
+    const anchor = this.element.ownerDocument.createElement("a");
     anchor.classList.add("content-link");
     if (dir === "up") anchor.classList.add("parent");
     else {

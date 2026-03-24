@@ -202,7 +202,7 @@ export default class TestPart extends RollPart {
     let damageSelection;
 
     if (damageInfo.types.size > 1) {
-      const content = document.createElement("div");
+      const content = target.ownerDocument.createElement("div");
 
       const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
