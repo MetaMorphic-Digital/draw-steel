@@ -153,9 +153,7 @@ export default class PartyModel extends DrawSteelSystemModel {
     }
 
     const tokenPromises = this.members.map(m => m.actor.getTokenDocument({}, { parent: canvas.scene }));
-
     const createData = await Promise.all(tokenPromises);
-
     return canvas.tokens.placeTokens(createData.map(t => t.toObject()));
   }
 }

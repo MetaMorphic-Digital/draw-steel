@@ -17,14 +17,18 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
   async placeActor(actor, options = {}) {
+    if (actor.inCompendium) {
+      throw new Error("Placing actors from compendiums is currently not supported.");
+    }
+
     // Ensure the user has permission to drop the actor and create a Token.
     if (!game.user.can("TOKEN_CREATE")) {
       ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.TOKEN_CREATE", { localize: true });
-
       return null;
     }
 
-    const tokenPromises = Array.fromRange(options.count ?? 1).map(index => this.#getTokenData(actor, index, options.tokenUpdates, options.actorUpdates));
+    const tokenPromises = Array.fromRange(options.count ?? 1)
+      .map(index => this.#getTokenData(actor, index, options.tokenUpdates, options.actorUpdates));
 
     const createData = await Promise.all(tokenPromises);
 
