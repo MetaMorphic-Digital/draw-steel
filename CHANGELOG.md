@@ -43,6 +43,8 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Fixed
 
+- Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
+
 ## 0.11.1
 
 The Draw Steel system is now official! Premium modules, licensed by MCDM and produced by MetaMorphic Digital, are available on the Foundry marketplace.

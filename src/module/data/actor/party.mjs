@@ -61,7 +61,7 @@ export default class PartyModel extends DrawSteelSystemModel {
       },
     }, data, { insertKeys: false, insertValues: false });
 
-    if (!foundry.utils.isEmpty(update)) this.parent.updateSource(update);
+    this.parent.updateSource(update);
   }
 
   /* -------------------------------------------------- */
