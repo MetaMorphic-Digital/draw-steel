@@ -49,42 +49,39 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "value": 2,
+            "priority": null,
+            "type": "multiply"
+          },
+          {
+            "key": "system.combat.stability",
+            "value": 2,
+            "priority": null,
+            "type": "multiply"
+          },
+          {
+            "key": "system.combat.size.value",
+            "value": 1,
+            "priority": null,
+            "type": "add"
+          },
+          {
+            "key": "system.combat.size.value",
+            "value": 2,
+            "priority": null,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.stamina.max",
-          "mode": 1,
-          "value": "2",
-          "priority": null
-        },
-        {
-          "key": "system.combat.stability",
-          "mode": 1,
-          "value": "2",
-          "priority": null
-        },
-        {
-          "key": "system.combat.size.value",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        },
-        {
-          "key": "system.combat.size.value",
-          "mode": 4,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 3,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": 3,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>The target's size increases by 1, to a minimum size of 2. Your Stamina maximum and Stability are doubled, you gain an edge on Might tests.</p>",
       "tint": "#ffffff",
@@ -96,13 +93,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757914485517,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!gh6oypQTAhZ91yxu.h6xPQ3vK1jUzSvI4"
     },
     {
@@ -121,24 +121,21 @@
           "keywords": [
             "weapon"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "damage.bonuses.value",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "damage.bonuses.value",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": 3,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": 3,
+        "units": "rounds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Your weapon abilities that deal rolled damage gain a damage bonus equal to your highest characteristic score.</p>",
       "tint": "#ffffff",
@@ -150,13 +147,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757914557229,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!gh6oypQTAhZ91yxu.Bxpt1cQjVxJzkmAv"
     }
   ],
@@ -169,7 +169,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.10.0",
     "createdTime": 1757755174216,

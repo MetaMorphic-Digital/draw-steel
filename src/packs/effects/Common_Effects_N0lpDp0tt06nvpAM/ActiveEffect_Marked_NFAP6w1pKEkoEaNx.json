@@ -1,0 +1,50 @@
+{
+  "folder": "N0lpDp0tt06nvpAM",
+  "name": "Marked",
+  "type": "base",
+  "_id": "NFAP6w1pKEkoEaNx",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
+  "system": {
+    "changes": [
+      {
+        "key": "system.combat.targetModifiers.edges",
+        "type": "add",
+        "value": 1,
+        "priority": null,
+        "phase": "initial"
+      }
+    ],
+    "end": {
+      "type": "",
+      "roll": "1d10 + @combat.save.bonus"
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Creatures gain an edge on abilities against a target marked by their ally.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.356",
+    "systemId": "draw-steel",
+    "systemVersion": "1.0.0",
+    "createdTime": 1773512253158,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!NFAP6w1pKEkoEaNx"
+}
