@@ -131,7 +131,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
 
     const activePlayerOwner = game.users.find(user => !user.isGM && user.active && this.parent.testUserPermission(user, "OWNER") && minions.every(minion => minion.testUserPermission(user, "OWNER")));
     const promptedUser = activePlayerOwner ?? game.users.activeGM;
-    if (game.user !== promptedUser) return;
+    if (!promptedUser?.isSelf) return;
 
     const { defeated = [], undefeated = [] } = Object.groupBy(minions, minion => minion.defeated ? "defeated" : "undefeated");
     const staminaPerMinion = foundry.utils.getProperty(minions.first().actor, "system.stamina.max") ?? 0;
