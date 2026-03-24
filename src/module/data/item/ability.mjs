@@ -181,7 +181,7 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _applyAbilityBonuses() {
-    const replacementData = this.getRollData();
+    const replacementData = this.parent.getRollData();
 
     // Apply keyword modifiers first to ensure later effects operate on the modified set
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {

@@ -62,6 +62,11 @@ The Draw Steel system is now official! Premium modules, licensed by MCDM and pro
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Fixed missing effect end on Kinetic Strike. (#1756)
+  - Corrected Tactician and Troubadour level 5 advancements. (#1769)
+- Director-Facing Compendium Data Fixes:
+  - Added slide effect to Dwarf Stone Whisperer Tile Slide ability. (#1679)
 - Canvas token placement did not work correctly with wildcards. (#1739)
 - Party sheet now correctly works with play/edit mode. (#1740)
 
