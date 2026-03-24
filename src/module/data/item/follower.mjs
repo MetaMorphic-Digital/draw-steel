@@ -81,7 +81,7 @@ export default class FollowerModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.followerType = game.i18n.localize(ds.CONST.followerTypes[this.type].label);
+    this.followerType = _loc(ds.CONST.followerTypes[this.type].label);
 
     const formatter = game.i18n.getListFormatter({ type: "unit" });
 

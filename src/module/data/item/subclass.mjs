@@ -31,7 +31,7 @@ export default class SubclassModel extends AdvancementModel {
     schema.classLink = new fields.StringField({
       required: true,
       validate: validateDSID,
-      validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+      validationError: _loc("DRAW_STEEL.SOURCE.InvalidDSID"),
     });
 
     return schema;

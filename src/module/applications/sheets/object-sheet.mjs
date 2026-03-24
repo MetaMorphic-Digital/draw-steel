@@ -15,7 +15,7 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
     },
     window: {
       controls: [{
-        icon: "fa-solid fa-file-arrow-down",
+        icon: "fa-solid fa-fw fa-file-arrow-down",
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelObjectSheet.#canUpdateFromCompendium,

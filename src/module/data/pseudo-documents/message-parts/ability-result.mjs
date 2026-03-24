@@ -153,7 +153,7 @@ export default class AbilityResultPart extends RollPart {
       newRoll.options = { ...newRoll.options };
       newRoll.options.type = damageType;
       const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-      const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+      const flavor = _loc("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
       newRoll.options.flavor = flavor;
     }
 
@@ -189,15 +189,15 @@ export default class AbilityResultPart extends RollPart {
     const baseLocalizationPath = "DRAW_STEEL.ChatMessage.PARTS.abilityResult.ContextMenuOptions.DamageModification";
     return damageRolls.map(roll => {
       const damageType = ds.CONFIG.damageTypes[roll.options.type]?.label ?? roll.options.type;
-      const name = game.i18n.format(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
+      const label = _loc(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
         total: roll.total,
         type: damageType,
       });
       return {
-        name,
-        icon: "<i class=\"fa-fw fa-solid fa-gear\"></i>",
-        condition: this.message.isOwner,
-        callback: () => this.modifyDamageDialog(roll),
+        label,
+        icon: "fa-fw fa-solid fa-gear",
+        visible: () => this.message.isOwner,
+        onClick: () => this.modifyDamageDialog(roll),
       };
     });
   }
@@ -223,7 +223,7 @@ export default class AbilityResultPart extends RollPart {
 
       const surges = createFormGroup({
         label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.label",
-        hint: game.i18n.format("DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.hint", { damage: surgeDamage }),
+        hint: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.hint", { damage: surgeDamage }),
         input: createNumberInput({ name: "surges", step: 1, min: 0, max: surgeMax }),
         localize: true,
         classes: ["slim"],

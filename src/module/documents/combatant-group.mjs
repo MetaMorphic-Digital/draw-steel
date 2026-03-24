@@ -56,7 +56,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     for (const type of this.TYPES) {
       if (types && !types.includes(type)) continue;
       let label = CONFIG[this.documentName]?.typeLabels?.[type];
-      label = label && game.i18n.has(label) ? game.i18n.localize(label) : type;
+      label = label && game.i18n.has(label) ? _loc(label) : type;
       documentTypes.push({ value: type, label });
       if (type === defaultType) defaultTypeAllowed = true;
     }
@@ -66,8 +66,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     documentTypes.sort((a, b) => a.label.localeCompare(b.label, game.i18n.lang));
 
     // Collect Data
-    const label = game.i18n.localize(this.metadata.label);
-    const title = game.i18n.format("DOCUMENT.Create", { type: label });
+    const label = _loc(this.metadata.label);
+    const title = _loc("DOCUMENT.Create", { type: label });
     const type = data.type || defaultType;
 
     // Render the document creation form
@@ -97,7 +97,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
         // On-render addition to avoid having to use a new template
         const hint = document.createElement("p");
         hint.className = "hint";
-        hint.innerText = game.i18n.localize("DRAW_STEEL.CombatantGroup.TypeHint");
+        hint.innerText = _loc("DRAW_STEEL.CombatantGroup.TypeHint");
         const group = typeInput.closest(".form-group");
         group.append(hint);
       },

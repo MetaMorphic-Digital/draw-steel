@@ -46,7 +46,7 @@ export default class BaseItemModel extends DrawSteelSystemModel {
       required: true,
       readonly: true,
       validate: validateDSID,
-      validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+      validationError: _loc("DRAW_STEEL.SOURCE.InvalidDSID"),
     });
 
     return schema;
@@ -108,7 +108,7 @@ export default class BaseItemModel extends DrawSteelSystemModel {
       }
     }
 
-    const defaultName = game.i18n.localize(CONFIG.Item.typeLabels[data.type]);
+    const defaultName = _loc(CONFIG.Item.typeLabels[data.type]);
 
     if (!this._dsid && !data.name.startsWith(defaultName)) updates._dsid = this.parent.constructor.generateDSID(data.name);
 

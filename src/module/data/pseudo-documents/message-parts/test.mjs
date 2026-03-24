@@ -63,7 +63,7 @@ export default class TestPart extends RollPart {
 
     if (this.message.isOwner && lastTestPart && (this.message.speakerActor?.type === "hero")) {
       context.ctx.buttons.unshift(ds.utils.constructHTMLButton({
-        label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label"),
+        label: _loc("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.label"),
         icon: "fa-solid fa-dice-d10",
         dataset: {
           tooltip: "DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.tooltip",
@@ -88,7 +88,7 @@ export default class TestPart extends RollPart {
           const newButtons = pre.constructButtons(latestRoll.product) ?? [];
           if (pre.type === "damage") {
             newButtons.push(ds.utils.constructHTMLButton({
-              label: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.RollDamage.label"),
+              label: _loc("DRAW_STEEL.ChatMessage.PARTS.test.RollDamage.label"),
               icon: "fa-solid fa-dice-d6",
               dataset: {
                 action: "rollDamage",
@@ -132,7 +132,7 @@ export default class TestPart extends RollPart {
 
       if (token === false) return false;
 
-      newRoll.options = { ...newRoll.options, flavor: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor") };
+      newRoll.options = { ...newRoll.options, flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.test.HeroTokenReroll.flavor") };
     }
 
     await this.update({ rolls: this.rolls.concat(newRoll) }, { notify: true, ds: {

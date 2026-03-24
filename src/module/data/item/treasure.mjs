@@ -145,7 +145,7 @@ export default class TreasureModel extends BaseItemModel {
   async createProject(actor) {
     if (!actor) return;
 
-    const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
+    const name = _loc("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
     return getDocumentClass("Item").create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
   }
 }

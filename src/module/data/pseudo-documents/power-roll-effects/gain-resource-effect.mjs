@@ -96,9 +96,9 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
    * @returns {string}    The default value.
    */
   #defaultDisplayText(n) {
-    return game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.RESOURCE.DefaultDisplay", {
+    return _loc("DRAW_STEEL.POWER_ROLL_EFFECT.RESOURCE.DefaultDisplay", {
       amount: this.resource[`tier${n}`].amount ?? 0,
-      resource: game.i18n.localize(this.#getResourceKey(n)),
+      resource: _loc(this.#getResourceKey(n)),
     });
   }
 
@@ -156,8 +156,8 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
     const { amount, type } = this.resource[`tier${tier}`];
     if (!amount || !type) return [];
 
-    const resource = game.i18n.localize(this.#getResourceKey(tier));
-    const label = game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.RESOURCE.ButtonText", { amount, resource });
+    const resource = _loc(this.#getResourceKey(tier));
+    const label = _loc("DRAW_STEEL.POWER_ROLL_EFFECT.RESOURCE.ButtonText", { amount, resource });
     const button = ds.utils.constructHTMLButton({
       label,
       icon: "fa-solid fa-bolt",

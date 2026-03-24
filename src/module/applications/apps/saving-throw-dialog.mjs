@@ -20,7 +20,7 @@ export default class SavingThrowDialog extends RollDialog {
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format(this.options.window.title, {
+    return _loc(this.options.window.title, {
       effect: this.options.context.effect.name,
     });
   }

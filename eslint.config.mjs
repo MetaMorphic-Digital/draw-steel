@@ -53,6 +53,7 @@ export default defineConfig([
         getDocumentClass: "readonly",
         _del: "readonly",
         _replace: "readonly",
+        _loc: "readonly",
       },
 
       ecmaVersion: "latest",

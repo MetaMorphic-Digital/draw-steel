@@ -27,7 +27,7 @@ export default class ProjectRoll extends DSRoll {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.min(4, 2 * Math.abs(this.netBoon)),
-          flavor: game.i18n.localize(`DRAW_STEEL.ROLL.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`),
+          flavor: _loc(`DRAW_STEEL.ROLL.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`),
         });
         this.terms.push(operation, number);
       }
@@ -37,7 +37,7 @@ export default class ProjectRoll extends DSRoll {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.options.bonuses > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
-          flavor: game.i18n.localize("DRAW_STEEL.ROLL.Power.Modifier.Bonuses"),
+          flavor: _loc("DRAW_STEEL.ROLL.Power.Modifier.Bonuses"),
         });
         this.terms.push(operation, number);
       }
@@ -87,7 +87,7 @@ export default class ProjectRoll extends DSRoll {
     if (!["none", "evaluate", "message"].includes(evaluation)) {
       throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     }
-    const flavor = options.flavor ?? game.i18n.localize("DRAW_STEEL.ROLL.Project.Label");
+    const flavor = options.flavor ?? _loc("DRAW_STEEL.ROLL.Project.Label");
     options.modifiers ??= {};
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
@@ -227,7 +227,7 @@ export default class ProjectRoll extends DSRoll {
 
     context.modifier = {
       number: Math.abs(this.netBoon),
-      mod: game.i18n.localize(modString),
+      mod: _loc(modString),
     };
 
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";

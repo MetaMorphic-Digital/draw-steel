@@ -59,11 +59,8 @@ export function performPreLocalization(config) {
     if (settings.sort) foundry.utils.setProperty(config, keyPath, sortObjectEntries(target, settings.keys[0]));
   }
 
-  // Localize & sort status effects
-  CONFIG.statusEffects.forEach(s => s.name = game.i18n.localize(s.name));
-  CONFIG.statusEffects.sort((lhs, rhs) =>
-    lhs.id === "dead" ? -1 : rhs.id === "dead" ? 1 : lhs.name.localeCompare(rhs.name, game.i18n.lang),
-  );
+  // Localize status effects. TODO: Evaluate if still actually relevant/wanted.
+  Object.values(CONFIG.statusEffects).forEach(s => s.name = _loc(s.name));
 }
 
 /* -------------------------------------------------- */
@@ -78,7 +75,7 @@ function _localizeObject(obj, keys) {
   for (const [k, v] of Object.entries(obj)) {
     const type = typeof v;
     if (type === "string") {
-      obj[k] = game.i18n.localize(v);
+      obj[k] = _loc(v);
       continue;
     }
 
@@ -98,7 +95,7 @@ function _localizeObject(obj, keys) {
     for (const key of keys) {
       const value = foundry.utils.getProperty(v, key);
       if (!value) continue;
-      foundry.utils.setProperty(v, key, game.i18n.localize(value));
+      foundry.utils.setProperty(v, key, _loc(value));
     }
   }
 }

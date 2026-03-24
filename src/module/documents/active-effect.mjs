@@ -45,7 +45,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (immuneList.size) {
       // Warn the user with a list of condition names
       const formatter = game.i18n.getListFormatter({ type: "unit" });
-      const formattedConditions = formatter.format(immuneList.map(id => game.i18n.localize(ds.CONFIG.conditions[id]?.name ?? id)));
+      const formattedConditions = formatter.format(immuneList.map(id => _loc(ds.CONFIG.conditions[id]?.name ?? id)));
 
       ui.notifications.warn("DRAW_STEEL.ActiveEffect.ImmunityWarning", { localize: true, format: { conditions: formattedConditions } });
     }
@@ -83,10 +83,11 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       let imposingActorUuid = await TargetedConditionPrompt.create({ context: { statusId } });
 
       if (foundry.utils.parseUuid(imposingActorUuid)) {
-        effectData.changes = this.changes ?? [];
-        effectData.changes.push({
+        effectData.system ??= {};
+        effectData.system.changes = this.system?.changes ?? [];
+        effectData.system.changes.push({
           key: `system.statuses.${statusId}.sources`,
-          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+          type: "add",
           value: imposingActorUuid,
         });
       }
@@ -113,13 +114,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
   /** @inheritdoc */
   get sourceName() {
-    if (!this.origin) return game.i18n.localize("None");
+    if (!this.origin) return _loc("COMMON.None");
     let name;
     try {
       // Only difference from core is use of relative-to-target
       name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
     } catch (e) { /* empty */ }
-    return name || game.i18n.localize("Unknown");
+    return name || _loc("COMMON.Unknown");
   }
 
   /* -------------------------------------------------- */
@@ -160,7 +161,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   _getDurationLabel(rounds, turns) {
     if ((rounds + turns) !== 0) return super._getDurationLabel(rounds, turns);
     // Lines up with our effect suppression
-    return game.i18n.localize("DRAW_STEEL.ActiveEffect.Expired");
+    return _loc("DRAW_STEEL.ActiveEffect.Expired");
   }
 
   /* -------------------------------------------------- */
@@ -181,7 +182,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     // If it does exist, convert the Set to an Array.
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = CONFIG.statusEffects.find(e => e.id === condition);
+    const config = CONFIG.statusEffects[condition];
     if (config) {
       if (current) current = Array.from(current);
       else if (!current) current = [];
@@ -205,7 +206,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     // If the property is a condition or a Set, convert the delta to a Set
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = CONFIG.statusEffects.find(e => e.id === condition);
+    const config = CONFIG.statusEffects[condition];
     const isSetChange = (foundry.utils.getType(current) === "Set") || config;
     if (isSetChange) delta = new Set([delta]);
 

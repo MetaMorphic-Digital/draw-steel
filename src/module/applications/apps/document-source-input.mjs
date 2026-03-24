@@ -92,7 +92,7 @@ export default class DocumentSourceInput extends DocumentInput {
         title: "DRAW_STEEL.SOURCE.CompendiumSource.ConfirmDeleteTitle",
         icon: "fa-solid fa-triangle-exclamation",
       },
-      content: game.i18n.localize("DRAW_STEEL.SOURCE.CompendiumSource.ConfirmDeleteContent"),
+      content: _loc("DRAW_STEEL.SOURCE.CompendiumSource.ConfirmDeleteContent"),
     });
     if (confirm) await this.document.update({ "_stats.compendiumSource": null });
   }

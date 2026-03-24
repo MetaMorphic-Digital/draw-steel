@@ -13,14 +13,14 @@
     </strong>
     <div class="combatant-controls">
       {{#if @root.user.isGM}}
-      <button type="button" class="inline-control combatant-control icon fa-solid fa-eye-slash {{#if hidden}}active{{/if}}" data-action="toggleHidden" data-tooltip="COMBAT.ToggleVis" aria-label="{{ localize " COMBAT.ToggleVis" }}"></button>
-      <button type="button" class="inline-control combatant-control icon fa-solid fa-skull {{#if isDefeated}}active{{/if}}" data-action="toggleDefeated" data-tooltip="COMBAT.ToggleDead" aria-label="{{ localize " COMBAT.ToggleDead" }}"></button>
+      <button type="button" class="inline-control combatant-control icon fa-solid fa-eye-slash {{#if hidden}}active{{/if}}" data-action="toggleHidden" data-tooltip="COMBATANT.ToggleVis" aria-label="{{ localize "COMBATANT.ToggleVis" }}"></button>
+      <button type="button" class="inline-control combatant-control icon fa-solid fa-skull {{#if isDefeated}}active{{/if}}" data-action="toggleDefeated" data-tooltip="COMBATANT.ToggleDead" aria-label="{{ localize "COMBATANT.ToggleDead" }}"></button>
       {{/if}}
       {{#if canPing}}
-      <button type="button" class="inline-control combatant-control icon fa-solid fa-bullseye-arrow" data-action="pingCombatant" data-tooltip="COMBAT.PingCombatant" aria-label="{{ localize " COMBAT.PingCombatant" }}"></button>
+      <button type="button" class="inline-control combatant-control icon fa-solid fa-bullseye-arrow" data-action="pingCombatant" data-tooltip="COMBATANT.Ping" aria-label="{{ localize "COMBATANT.Ping" }}"></button>
       {{/if}}
       {{#unless @root.user.isGM}}
-      <button type="button" class="inline-control combatant-control icon fa-solid fa-arrows-to-eye" data-action="panToCombatant" data-tooltip="COMBAT.PanToCombatant" aria-label="{{ localize " COMBAT.PanToCombatant" }}"></button>
+      <button type="button" class="inline-control combatant-control icon fa-solid fa-arrows-to-eye" data-action="panToCombatant" data-tooltip="COMBATANT.PanTo" aria-label="{{ localize "COMBATANT.PanTo" }}"></button>
       {{/unless}}
       {{!-- Foundry TODO: Target Control --}}
       <div class="token-effects" data-tooltip-html="{{ effects.tooltip }}">

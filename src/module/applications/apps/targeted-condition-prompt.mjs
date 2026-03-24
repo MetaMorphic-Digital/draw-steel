@@ -55,14 +55,14 @@ export default class TargetedConditionPrompt extends DSApplication {
    * @type {string}
    */
   get condition() {
-    return CONFIG.statusEffects.find(condition => condition.id === this.options.context.statusId)?.name ?? "";
+    return CONFIG.statusEffects[this.options.context.statusId]?.name ?? "";
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format("DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Title", {
+    return _loc("DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Title", {
       condition: this.condition,
     });
   }

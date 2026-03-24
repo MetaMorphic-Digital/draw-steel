@@ -41,7 +41,7 @@ export default class ProjectPart extends BaseMessagePart {
         nullable: false,
         type: "Item",
         validate: (uuid) => !uuid.startsWith("Compendium"),
-        validationError: game.i18n.localize("DRAW_STEEL.ChatMessage.PARTS.project.NoCompendiumActor"),
+        validationError: _loc("DRAW_STEEL.ChatMessage.PARTS.project.NoCompendiumActor"),
       }),
       event: new BooleanField(),
     });
@@ -77,7 +77,7 @@ export default class ProjectPart extends BaseMessagePart {
         },
         classes: ["roll-breakthrough"],
         icon: "fa-solid fa-hammer",
-        label: game.i18n.localize("DRAW_STEEL.Item.project.RollBreakThrough"),
+        label: _loc("DRAW_STEEL.Item.project.RollBreakThrough"),
       }));
     }
 
@@ -87,7 +87,7 @@ export default class ProjectPart extends BaseMessagePart {
         dataset: {
           action: "rollEvent",
         },
-        label: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
+        label: _loc("DRAW_STEEL.Item.project.Events.RollForEvent"),
         icon: "fa-solid fa-dice-d6",
         classes: ["roll-event"],
       }));
@@ -106,7 +106,7 @@ export default class ProjectPart extends BaseMessagePart {
     const eventPart = this.parent.parts.documentsByType.content[0];
     if (eventPart) return;
 
-    const eventText = game.i18n.localize("DRAW_STEEL.Item.project.Events.EventTriggered");
+    const eventText = _loc("DRAW_STEEL.Item.project.Events.EventTriggered");
     const updates = { content: eventText };
 
     const parts = { ...this.parent.parts };
@@ -143,7 +143,7 @@ export default class ProjectPart extends BaseMessagePart {
     const promptValue = await project.system.rollPrompt();
     if (!promptValue) return;
     const breakthroughRoll = promptValue.projectRoll;
-    if (breakthroughRoll.isCritical) breakthroughRoll.options.flavor = game.i18n.localize("DRAW_STEEL.ROLL.Project.Breakthrough");
+    if (breakthroughRoll.isCritical) breakthroughRoll.options.flavor = _loc("DRAW_STEEL.ROLL.Project.Breakthrough");
 
     const previousPoints = project.system.points;
     const updatedPoints = previousPoints + breakthroughRoll.total;
@@ -185,7 +185,7 @@ export default class ProjectPart extends BaseMessagePart {
    */
   async rollEvent() {
     const eventRoll = await new DSRoll("1d6", {}, {
-      flavor: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
+      flavor: _loc("DRAW_STEEL.Item.project.Events.RollForEvent"),
     });
     await eventRoll.evaluate();
     const eventTriggered = eventRoll.total === 6;

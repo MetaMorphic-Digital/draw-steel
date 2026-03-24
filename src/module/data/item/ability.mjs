@@ -9,9 +9,11 @@ import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import RegionDocument from "@client/documents/region.mjs";
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
- * @import DrawSteelToken from "../../canvas/placeables/token.mjs"
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
+ * @import DrawSteelTokenDocument from "../../documents/token.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -51,7 +53,7 @@ export default class AbilityModel extends BaseItemModel {
       value: new fields.StringField({ required: true }),
       dsid: new fields.SetField(setOptions({
         validate: validateDSID,
-        validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+        validationError: _loc("DRAW_STEEL.SOURCE.InvalidDSID"),
       })),
       level: new fields.NumberField({ required: true, integer: true, positive: true }),
     });
@@ -182,7 +184,7 @@ export default class AbilityModel extends BaseItemModel {
     // Apply keyword modifiers first to ensure later effects operate on the modified set
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (bonus.key !== "keyword") continue;
-      if (bonus.mode !== CONST.ACTIVE_EFFECT_MODES.ADD) continue;
+      if (bonus.type !== "add") continue;
       if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
 
       this.keywords.add(bonus.value);
@@ -315,12 +317,12 @@ export default class AbilityModel extends BaseItemModel {
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
     labels.keywords = keywordFormatter.format(keywordList) || "—";
 
-    labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
+    labels.distance = _loc(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
-    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
+    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "COMMON.Unknown" };
     labels.target = this.target.custom || (this.target.value == null ?
-      targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
-      game.i18n.format(targetConfig.embedLabel, { value: this.target.value }));
+      targetConfig.all ?? _loc(targetConfig.embedLabel) :
+      _loc(targetConfig.embedLabel, { value: this.target.value }));
 
     return labels;
   }
@@ -332,7 +334,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 
@@ -381,7 +383,7 @@ export default class AbilityModel extends BaseItemModel {
     context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
     context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
 
-    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+    context.spendLabel = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
       value: this.spend.value ?? "",
       name: resourceName,
     });
@@ -451,14 +453,14 @@ export default class AbilityModel extends BaseItemModel {
 
       let hint = null;
       if (this.spend.value) {
-        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
+        hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
           value: current,
           name: coreResource.name,
         });
       }
 
       const spendGroup = foundry.applications.fields.createFormGroup({
-        label: game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+        label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name,
         }),
@@ -504,7 +506,7 @@ export default class AbilityModel extends BaseItemModel {
     if (configuration) {
       if (configuration.spend) {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
+        messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
           name: coreResource.name,
         });
@@ -680,5 +682,71 @@ export default class AbilityModel extends BaseItemModel {
     if (restrictions.dsid.has(this.parent.dsid)) return true;
 
     return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create a region template based on this ability's distance data.
+   * @returns {Promise<RegionDocument>} The Region document that was placed or null if
+   *  - the placements of all shapes were skipped,
+   *  - the dismiss key was pressed,
+   *  - the game is paused and the user is not a GM, or
+   *  - the Region creation was rejected by preCreate.
+   */
+  async placeTemplate() {
+    const distanceConfig = ds.CONFIG.abilities.distances[this.distance.type];
+
+    if (typeof distanceConfig.area !== "object") {
+      const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
+      ui.notifications.error(msg, { console: false });
+      throw new Error(msg);
+    }
+
+    /** @type {DrawSteelTokenDocument} */
+    const tokenInfo = this.actor.token ?? this.actor.getActiveTokens(true, true)[0];
+
+    const { type, count, ...shapeProperties } = distanceConfig.area;
+
+    const shapeCount = typeof count === "string" ? this.distance[count] : 1;
+
+    const shapes = Array.fromRange(shapeCount).map(() => {
+      const shapeData = { type, gridBased: true, x: 0, y: 0 };
+      for (const [key, path] of Object.entries(shapeProperties)) {
+        shapeData[key] = this.distance[path] * canvas.dimensions.distancePixels;
+      }
+      // additional adjustments to conform to DS rules
+      switch (type) {
+        case "rectangle": // Special wall handling since it's a bunch of 1 x 1 spots.
+          shapeData.width ??= canvas.dimensions.distancePixels;
+          shapeData.height ??= canvas.dimensions.distancePixels;
+          break;
+        case "emanation":
+          shapeData.base = {
+            hole: true,
+            type: "token",
+            x: 0,
+            y: 0,
+            width: tokenInfo.width,
+            height: tokenInfo.width,
+            shape: tokenInfo.shape,
+          };
+      }
+
+      return shapeData;
+    });
+
+    const regionData = {
+      shapes,
+      name: this.parent.name,
+      color: game.user.color,
+      levels: [canvas.level.id],
+      highlightMode: "coverage",
+      displayMeasurements: true,
+      visibility: CONST.REGION_VISIBILITY.OBSERVER,
+      ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
+    };
+
+    return canvas.regions.placeRegion(regionData);
   }
 }

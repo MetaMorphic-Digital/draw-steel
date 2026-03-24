@@ -15,7 +15,7 @@ export default class ActorAvatarInput extends DocumentInput {
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format("DRAW_STEEL.Actor.base.AvatarInput.title", { name: this.document.name });
+    return _loc("DRAW_STEEL.Actor.base.AvatarInput.title", { name: this.document.name });
   }
 
   /* -------------------------------------------------- */
@@ -27,11 +27,11 @@ export default class ActorAvatarInput extends DocumentInput {
     const flags = this.document.getFlag(ds.CONST.systemID, "avatarProperties") ?? {};
     Object.assign(context, {
       objectFit: {
-        field: new StringField({ label: game.i18n.localize("DRAW_STEEL.Actor.base.AvatarInput.objectFit.label") }),
+        field: new StringField({ label: _loc("DRAW_STEEL.Actor.base.AvatarInput.objectFit.label") }),
         value: flags.objectFit,
         name: "flags.draw-steel.avatarProperties.objectFit",
         options: [
-          { value: "", label: game.i18n.localize("DRAW_STEEL.Actor.base.AvatarInput.objectFit.optionDefault") },
+          { value: "", label: _loc("DRAW_STEEL.Actor.base.AvatarInput.objectFit.optionDefault") },
           { value: "contain" },
           { value: "cover" },
           { value: "fill" },
@@ -39,7 +39,7 @@ export default class ActorAvatarInput extends DocumentInput {
         ],
       },
       objectPosition: {
-        field: new StringField({ label: game.i18n.localize("DRAW_STEEL.Actor.base.AvatarInput.objectPosition.label") }),
+        field: new StringField({ label: _loc("DRAW_STEEL.Actor.base.AvatarInput.objectPosition.label") }),
         value: flags.objectPosition,
         name: "flags.draw-steel.avatarProperties.objectPosition",
       },

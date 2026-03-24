@@ -19,7 +19,7 @@ export async function migrateWorld() {
   let updateVersion = false;
   if (!migrationVersion) {
     // New world - initialize the migration version and rename Gamemaster to Director
-    if (game.user.name === "Gamemaster") await game.user.update({ name: game.i18n.localize("USER.RoleGamemaster") });
+    if (game.user.name === "Gamemaster") await game.user.update({ name: _loc("USER.RoleGamemaster") });
     updateVersion = true;
   }
   else {

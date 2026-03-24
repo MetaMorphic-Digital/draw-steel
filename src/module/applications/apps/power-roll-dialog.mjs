@@ -165,13 +165,13 @@ export default class PowerRollDialog extends RollDialog {
 
         const edges = skillModifiers[value].edges;
         const edgeCategory = pr.select(edges);
-        const edgeName = game.i18n.format(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Edge.${edgeCategory}`);
-        if (edges > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${edges}`, mod: edgeName }));
+        const edgeName = _loc(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Edge.${edgeCategory}`);
+        if (edges > 0) modifiers.push(_loc("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${edges}`, mod: edgeName }));
 
         const banes = skillModifiers[value].banes;
         const baneCategory = pr.select(banes);
-        const baneName = game.i18n.format(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Bane.${baneCategory}`);
-        if (banes > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${banes}`, mod: baneName }));
+        const baneName = _loc(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Bane.${baneCategory}`);
+        if (banes > 0) modifiers.push(_loc("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${banes}`, mod: baneName }));
 
         const formatter = game.i18n.getListFormatter("narrow");
         label += ` (${formatter.format(modifiers)})`;

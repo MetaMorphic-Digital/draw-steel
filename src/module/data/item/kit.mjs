@@ -73,8 +73,8 @@ export default class KitModel extends AdvancementModel {
       const signature = {
         type: "itemGrant",
         chooseN: 1,
-        name: game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.name"),
-        description: `<p>${game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.description")}</p>`,
+        name: _loc("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.name"),
+        description: `<p>${_loc("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.description")}</p>`,
         requirements: {
           level: null,
         },

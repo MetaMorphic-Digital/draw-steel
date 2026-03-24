@@ -19,11 +19,11 @@ export function renderCombatantConfig(app, html, context, options) {
 
   if (combatant.type !== "base") return;
 
-  const dispositions = Object.entries(CONST.TOKEN_DISPOSITIONS).map(([key, value]) => ({ value, label: game.i18n.localize(`TOKEN.DISPOSITION.${key}`) }));
+  const dispositions = Object.entries(CONST.TOKEN_DISPOSITIONS).map(([key, value]) => ({ value, label: _loc(`TOKEN.DISPOSITION.${key}`) }));
 
   const dispositionInput = combatant.system.schema.getField("disposition")?.toFormGroup(
     {},
-    { options: dispositions, value: combatant.system.disposition, blank: game.i18n.localize("DRAW_STEEL.Combatant.base.FIELDS.disposition.blank"), dataset: { dtype: "Number" } },
+    { options: dispositions, value: combatant.system.disposition, blank: _loc("DRAW_STEEL.Combatant.base.FIELDS.disposition.blank"), dataset: { dtype: "Number" } },
   );
 
   const groups = combatant.parent.groups.map(g => ({ value: g.id, label: g.name }));
