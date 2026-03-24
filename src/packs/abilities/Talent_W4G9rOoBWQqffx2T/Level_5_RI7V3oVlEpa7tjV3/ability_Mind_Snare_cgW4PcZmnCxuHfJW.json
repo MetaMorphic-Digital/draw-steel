@@ -152,21 +152,18 @@
         "end": {
           "type": "save",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": []
       },
       "_id": "4VNUTZ3jWRGqD7SQ",
-      "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
-      "description": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]]{3 psychic damage} for each square they willingly leave.</p",
+      "description": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]]{3 psychic damage} for each square they willingly leave.</p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [
@@ -178,13 +175,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760901185426,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!cgW4PcZmnCxuHfJW.4VNUTZ3jWRGqD7SQ"
     },
     {
@@ -198,13 +198,15 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": []
       },
-      "changes": [],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]]{5 psychic damage} for each square they willingly leave.</p>",
       "tint": "#ffffff",
@@ -217,13 +219,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760912956745,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
       "_key": "!items.effects!cgW4PcZmnCxuHfJW.oCsO9QcithqyHJ9C"
     }
   ],
@@ -236,7 +241,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1760749557007,

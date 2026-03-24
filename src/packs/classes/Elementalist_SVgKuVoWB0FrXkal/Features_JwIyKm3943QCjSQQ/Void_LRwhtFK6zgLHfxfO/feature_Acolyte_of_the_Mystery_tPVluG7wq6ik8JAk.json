@@ -35,25 +35,22 @@
             "ranged",
             "void"
           ]
-        }
+        },
+        "changes": [
+          {
+            "key": "distance",
+            "value": 2,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "distance",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>The distance of all your abilities that have the Magic, Ranged, and Void keywords increases by 2 squares.</p>",
       "tint": "#ffffff",
@@ -65,13 +62,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1762317024629,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!tPVluG7wq6ik8JAk.y4ZEDyhNfkqeHfsH"
     }
   ],
@@ -84,7 +84,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1755712332817,

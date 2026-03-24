@@ -42,13 +42,13 @@ export interface PowerRollPromptOptions extends RollPromptOptions {
 }
 
 export interface PowerRollPrompt {
-  rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
+  messageMode: string;
   baseRoll: PowerRoll;
   rolls: Array <PowerRoll | DrawSteelChatMessage | object>;
 }
 
 export interface ProjectRollPrompt {
-  rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
+  messageMode: string;
   projectRoll: ProjectRoll | DrawSteelChatMessage;
 }
 

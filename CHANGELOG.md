@@ -24,12 +24,18 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Added
 
+- New Player-Facing Compendium Content:
+- New Director-Facing Compendium Content:
+  - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Created an "Effects and Imbues" compendium pack. (#1163)
+- Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
 - Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
 
 ### Changed
 
 - Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
+- Migrated roll modes to the new core message modes. (#1681)
 
 ### Deprecated
 
@@ -38,6 +44,9 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
 
 ### Fixed
+
+- Corrected CSS URL asset handling, restoring decorative boxes to asides.
+- Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
 
 ## 0.11.1
 

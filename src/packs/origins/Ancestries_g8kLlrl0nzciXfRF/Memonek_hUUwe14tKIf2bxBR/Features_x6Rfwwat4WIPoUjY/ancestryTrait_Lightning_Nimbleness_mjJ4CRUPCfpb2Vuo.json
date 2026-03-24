@@ -29,25 +29,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "value": 7,
+            "priority": 5,
+            "type": "upgrade"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.movement.value",
-          "mode": 4,
-          "value": "7",
-          "priority": 5
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>You can push your body to move at incredible speeds. Your speed is 7.</p>",
       "tint": "#ffffff",
@@ -59,13 +56,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "createdTime": 1754622222710,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!mjJ4CRUPCfpb2Vuo.LoeKi3NNJ9QfPmvm"
     }
   ],
@@ -78,7 +78,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1754621248387,
