@@ -273,7 +273,7 @@ export default class HeroModel extends CreatureModel {
           enabled: true,
         },
       },
-    }, data, { insertKeys: false, insertValues: false, inplace: false });
+    }, data, { insertKeys: false, insertValues: false });
 
     const stats = this.parent._stats;
 
