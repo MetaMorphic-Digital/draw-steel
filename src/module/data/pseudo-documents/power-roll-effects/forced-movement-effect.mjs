@@ -12,28 +12,31 @@ const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-      // TODO: Remove manual label assignment when localization bug is fixed
-      forced: this.duplicateTierSchema(() => ({
-        display: new StringField({
-          required: true,
-          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.label",
-          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.hintForced",
-          initial: "{{forced}}",
-        }),
-        movement: new SetField(
-          setOptions(),
-          { initial: ["push"], label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.movement.label" },
-        ),
-        distance: new FormulaField({ deterministic: true, initial: "1", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
-        properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
-      })),
+    const forced = this.duplicateTierSchema(() => ({
+      display: new StringField({
+        required: true,
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.label",
+        hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.hintForced",
+        initial: "{{forced}}",
+      }),
+      movement: new SetField(
+        setOptions(),
+        { initial: ["push"], label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.movement.label" },
+      ),
+      distance: new FormulaField({ deterministic: true, initial: "1", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
+      properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
+    }));
+
+    forced.extendFields({
+
       bonuses: new SchemaField({
         push: requiredInteger({ min: null }),
         pull: requiredInteger({ min: null }),
         slide: requiredInteger({ min: null }),
       }, { persisted: false }),
     });
+
+    return Object.assign(super.defineSchema(), { forced });
   }
 
   /* -------------------------------------------------- */
@@ -121,7 +124,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     // Group movement types by their final distance value (base + bonus)
     const distanceGroups = Map.groupBy([...tierValue.movement], movementType => {
       if (!this.actor) return baseDistance;
-      return baseDistance + this.bonuses[movementType];
+      return baseDistance + this.forced.bonuses[movementType];
     });
 
     // Format the output

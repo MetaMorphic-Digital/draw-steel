@@ -30,6 +30,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 - Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
+- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 
 ### Deprecated
 

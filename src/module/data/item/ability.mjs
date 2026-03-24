@@ -213,24 +213,22 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          // TODO: Remove in v14 with non-persisted schema fields.
-          const field = (bonus.key.startsWith("damage.bonuses")) ? new fields.NumberField({ integer: true }) : DamagePowerRollEffect.schema.getField(bonus.key);
-          const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
-          if (!firstDamageEffect) return;
+          const field = DamagePowerRollEffect.schema.getField(bonus.key);
+          const firstDamageEffect = this.power.effects.documentsByType.damage.sort((a, b) => a.sort - b.sort)[0];
+          // Damage bonuses only apply to the first entry
+          if (!firstDamageEffect || !field) continue;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
           foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus));
         }
       }
 
-      const forcedPrefix = "forced.";
-      if (bonus.key.startsWith(forcedPrefix)) {
-        const key = bonus.key.replace(forcedPrefix, "bonuses.");
-        // Apply forced movement bonuses to all forced movement effects
-        for (const effect of this.power.effects) {
-          if (effect.type !== "forced") continue;
-          const numberField = effect.schema.getField(key);
-          const currentBonus = foundry.utils.getProperty(effect, key) ?? 0;
-          foundry.utils.setProperty(effect, key, numberField.applyChange(currentBonus, this, bonus));
+      if (bonus.key.startsWith("forced")) {
+        // Forced movement bonuses apply to all entries
+        for (const effect of this.power.effects.documentsByType.forced) {
+          const field = effect.schema.getField(bonus.key);
+          if (!field) continue;
+          const currentBonus = foundry.utils.getProperty(effect, bonus.key) ?? 0;
+          foundry.utils.setProperty(effect, bonus.key, field.applyChange(currentBonus, this, bonus));
         }
       }
 

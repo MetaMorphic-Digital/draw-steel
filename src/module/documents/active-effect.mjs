@@ -217,6 +217,10 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
    * @type {Record<string, string>}
    */
   static keyMigrations = {
+    // 1.0
+    "forced.pull": "forced.bonuses.pull",
+    "forced.push": "forced.bonuses.push",
+    "forced.slide": "forced.bonuses.slide",
     // 0.11
     "hero.skills": "skills.value",
     "hero.skillModifiers": "skills.modifiers",
