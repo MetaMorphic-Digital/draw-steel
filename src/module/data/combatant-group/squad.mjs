@@ -90,7 +90,10 @@ export default class SquadModel extends BaseCombatantGroupModel {
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
 
-    if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
+    if (changed.system && ("staminaValue" in changed.system)) {
+      this.refreshSquad();
+      this.checkDefeatedMinions();
+    }
     if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff, options.ds.damageType);
   }
 
@@ -115,5 +118,32 @@ export default class SquadModel extends BaseCombatantGroupModel {
     super._onDelete(options, userId);
 
     this.refreshSquad();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Determine if any minions should be defeated based on stamina value and threshold and prompt the active owner to mark them as defeated.
+   */
+  async checkDefeatedMinions() {
+    const minions = this.minions;
+    if (!minions.size) return;
+
+    const activePlayerOwner = game.users.find(user => !user.isGM && user.active && this.parent.testUserPermission(user, "OWNER") && this.minions.every(minion => minion.testUserPermission(user, "OWNER")));
+    const promptedUser = activePlayerOwner ?? game.users.activeGM;
+    if (game.user !== promptedUser) return;
+
+    const { defeated = [], undefeated = [] } = Object.groupBy(minions, minion => minion.defeated ? "defeated" : "undefeated");
+    const staminaPerMinion = foundry.utils.getProperty(minions.first().actor, "system.stamina.max") ?? 0;
+    const shouldBeDefeated = Math.clamp(minions.size - Math.ceil(this.staminaValue / staminaPerMinion), 0, minions.size);
+    const needToDefeat = shouldBeDefeated - defeated.length;
+    // Only prompt if the number of minions that need to be defeated exceeds 0.
+    if (needToDefeat <= 0) return;
+
+    const fd = await ds.applications.apps.DefeatedMinionSelection.create({ context: { undefeated, needToDefeat, combat: this.combat, squad: this.parent } });
+    if (!fd || !fd.selectedMinions.length) return;
+
+    const selectedMinions = fd.selectedMinions.map(id => this.combat.combatants.get(id));
+    for (const minion of selectedMinions) ui.combat._onToggleDefeatedStatus(minion);
   }
 }
