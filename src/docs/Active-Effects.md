@@ -242,16 +242,8 @@ Token properties can be targeted by prefixing with `token.`. The following prope
 | Size (y-axis) |`token.height`|
 | Size (z-axis) |`token.depth`|
 | Image (Static) |`token.texture.src`|
-| Opacity (0–1) |`token.alpha`|
-| Disposition* |`token.disposition`|
 | Use dynamic token ring |`token.ring.enabled`|
 | Image (Dynamic Token Ring) |`token.ring.subject.texture`|
-| Turn marker image |`token.turnMarker`|
-| Movement Action** |`token.movementAction`|
-
-*Token dispositions are -2 for Secret, -1 for Hostile, 0 for Neutral, and 1 for Friendly.
-
-**Movement actions include "climb", "fly", "swim", "teleport", and "walk"
 
 ## Ability Modifiers
 
