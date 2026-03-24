@@ -52,31 +52,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.damage.weakness.fire",
-          "mode": 2,
-          "value": "5",
-          "priority": null
         },
-        {
-          "key": "system.damage.weakness.lightning",
-          "mode": 2,
-          "value": "5",
-          "priority": null
-        }
-      ],
+        "changes": [
+          {
+            "key": "system.damage.weakness.fire",
+            "value": 5,
+            "priority": null,
+            "type": "add"
+          },
+          {
+            "key": "system.damage.weakness.lightning",
+            "value": 5,
+            "priority": null,
+            "type": "add"
+          }
+        ]
+      },
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>You have lightning weakness 5 and fire weakness 5 until the end of the encounter.</p>",
       "tint": "#ffffff",
@@ -87,12 +84,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!BBDl1nS9LEM0HDjF.ApDXogBwQd5y8qS8"
     }
   ],
@@ -102,7 +103,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761532245900,

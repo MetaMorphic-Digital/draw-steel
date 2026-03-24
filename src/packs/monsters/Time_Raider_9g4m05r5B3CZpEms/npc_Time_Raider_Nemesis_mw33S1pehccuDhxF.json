@@ -130,11 +130,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mw33S1pehccuDhxF.ZgAESC89gUdJxk63"
     },
@@ -317,11 +318,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "PJjd9VRoJ5uuFMei",
       "ownership": {
@@ -484,18 +486,15 @@
             "end": {
               "type": "save",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": []
           },
-          "changes": [],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>Any creature slowed this way takes [[/damage 2*@scaling damage scaling]]{2 damage} for each square they move or are force moved until that condition ends.</p>",
           "tint": "#ffffff",
@@ -508,11 +507,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "createdTime": null,
+            "modifiedTime": null
           },
+          "showIcon": 2,
+          "start": null,
+          "folder": null,
           "_key": "!actors.items.effects!mw33S1pehccuDhxF.rdkXxShTVENsgFKv.wcRFIIgjuxEiWtuz"
         }
       ],
@@ -523,11 +527,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "rdkXxShTVENsgFKv",
       "ownership": {
@@ -597,11 +602,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DWLBSTbhAO4dJSvg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mw33S1pehccuDhxF.DWLBSTbhAO4dJSvg"
     },
@@ -660,11 +666,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2rKjwi2thIVeeFZf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mw33S1pehccuDhxF.2rKjwi2thIVeeFZf"
     },
@@ -811,11 +818,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.ELtwiIpyMZafdAEM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "ownership": {
         "default": 0,
@@ -838,12 +846,9 @@
       "src": "systems/draw-steel/assets/roles/harrier.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -894,7 +899,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -920,7 +925,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 1
   },
   "effects": [],
   "sort": 0,
@@ -932,7 +938,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761424412513,

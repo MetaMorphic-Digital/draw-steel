@@ -51,25 +51,22 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.combat.stability",
+            "value": -3,
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.combat.stability",
-          "mode": 2,
-          "value": "-3",
-          "priority": null
-        }
-      ],
       "disabled": false,
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>Any creature who can't fly takes a -3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures.</p>",
       "tint": "#ffffff",
@@ -79,7 +76,7 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.QQdv4SeqY90z8Yee.ActiveEffect.GuQPGtkIXZ53LJsT",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761703584742,
@@ -88,6 +85,9 @@
       },
       "_id": "RqFsTSh2IaSnituD",
       "sort": 0,
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!3OjDHHSuYkgtEe7T.RqFsTSh2IaSnituD"
     }
   ],
@@ -97,7 +97,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1761602037083,

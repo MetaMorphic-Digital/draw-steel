@@ -121,11 +121,11 @@ export default class ProjectRoll extends DSRoll {
         projectRoll = await roll.evaluate();
         break;
       case "message":
-        projectRoll = await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode });
+        projectRoll = await roll.toMessage({ speaker }, { messageMode: promptValue.messageMode });
         break;
     }
 
-    return { rollMode: promptValue.rollMode, projectRoll };
+    return { messageMode: promptValue.messageMode, projectRoll };
   }
 
   /* -------------------------------------------------- */

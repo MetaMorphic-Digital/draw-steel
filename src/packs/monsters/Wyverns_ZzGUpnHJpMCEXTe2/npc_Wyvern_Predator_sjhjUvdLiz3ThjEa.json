@@ -129,11 +129,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!sjhjUvdLiz3ThjEa.Iscpgq8f65lfhbhW"
     },
@@ -166,11 +167,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!sjhjUvdLiz3ThjEa.2rDHq8Ca7SYU9IyY"
     },
@@ -310,11 +312,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "FhU4qIuYyBbH2uSJ",
       "ownership": {
@@ -456,11 +459,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "gMvsHF0x4tkfpD8Q",
       "ownership": {
@@ -610,11 +614,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "2PgK1mKNBIfNStQS",
       "ownership": {
@@ -676,11 +681,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "vMNDxNv6mXUguSLg",
       "ownership": {
@@ -736,11 +742,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "X9NSXYzexHGypi0z",
       "ownership": {
@@ -796,11 +803,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "tXNKd0ts9zW5ffvx",
       "ownership": {
@@ -915,25 +923,22 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.combat.targetModifiers.edges",
+                "value": 2,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.combat.targetModifiers.edges",
-              "mode": 2,
-              "value": "2",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "",
           "tint": "#ffffff",
@@ -945,7 +950,7 @@
             "compendiumSource": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE.ActiveEffect.l7c999f6gYJkZkbo",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.351",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.10.0",
             "createdTime": 1770786465243,
@@ -954,6 +959,9 @@
           },
           "_id": "OONR7ZxGbKh1jlPm",
           "sort": 0,
+          "showIcon": 2,
+          "start": null,
+          "folder": null,
           "_key": "!actors.items.effects!sjhjUvdLiz3ThjEa.afwiIRP5l4EV8GoE.OONR7ZxGbKh1jlPm"
         }
       ],
@@ -962,7 +970,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761436263425,
@@ -991,12 +999,9 @@
       "src": "systems/draw-steel/assets/roles/brute.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -1047,7 +1052,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -1073,7 +1078,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 3
   },
   "effects": [],
   "sort": 0,
@@ -1085,7 +1091,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757729344920,

@@ -112,12 +112,9 @@
       "src": "systems/draw-steel/assets/roles/leader.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -168,7 +165,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -194,7 +191,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 1
   },
   "items": [
     {
@@ -227,11 +225,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.XH4vZB3sYVedBsAB"
     },
@@ -291,11 +290,12 @@
         "compendiumSource": "Actor.KwdPnQj8bc4JlTqB.Item.RnL0XP3PK3GN0KUJ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.RnL0XP3PK3GN0KUJ"
     },
@@ -353,11 +353,12 @@
         "compendiumSource": "Item.0zjdyVm5OyRADecM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.0zjdyVm5OyRADecM"
     },
@@ -537,11 +538,12 @@
         "compendiumSource": "Actor.mkez5eqX6Les2RJ9.Item.tJYaTxI5TNRE43vR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.tJYaTxI5TNRE43vR"
     },
@@ -654,11 +656,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.ZTYorvjqkIX017CE"
     },
@@ -720,11 +723,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.2",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.OhkUbrUbTjwLxKfG"
     },
@@ -785,25 +789,22 @@
             "end": {
               "type": "turn",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": [
+              {
+                "key": "system.movement.multiplier",
+                "value": 2,
+                "priority": null,
+                "type": "multiply"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "system.movement.multiplier",
-              "mode": 1,
-              "value": "2",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You halve any damage you take and your speed is doubled.</p>",
           "tint": "#ffffff",
@@ -814,13 +815,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.351",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.10.2",
             "createdTime": 1772209884106,
             "modifiedTime": 1772210385345,
             "lastModifiedBy": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.G4SvMTNo0xhFPyJi.c0PgYvOvY8xsRPjT"
         },
         {
@@ -839,25 +843,22 @@
               "keywords": [
                 "strike"
               ]
-            }
+            },
+            "changes": [
+              {
+                "key": "damage.bonuses.value",
+                "value": 4,
+                "priority": null,
+                "type": "add"
+              }
+            ]
           },
-          "changes": [
-            {
-              "key": "damage.bonuses.value",
-              "mode": 2,
-              "value": "4",
-              "priority": null
-            }
-          ],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You have a +4 damage bonus to strikes.</p>",
           "tint": "#ffffff",
@@ -868,13 +869,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.351",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.10.2",
             "createdTime": 1772209923673,
             "modifiedTime": 1772210311301,
             "lastModifiedBy": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.G4SvMTNo0xhFPyJi.RKFQudsXXNlFROAm"
         }
       ],
@@ -889,11 +893,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.2",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.G4SvMTNo0xhFPyJi"
     },
@@ -955,11 +960,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!mkez5eqX6Les2RJ9.8qkZEGBWsbju8FyQ"
     },
@@ -1199,31 +1205,28 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.movement.multiplier",
-              "mode": 1,
-              "value": "0",
-              "priority": null
             },
-            {
-              "key": "system.movement.disengage",
-              "mode": 3,
-              "value": "0",
-              "priority": null
-            }
-          ],
+            "changes": [
+              {
+                "key": "system.movement.multiplier",
+                "value": 0,
+                "priority": null,
+                "type": "multiply"
+              },
+              {
+                "key": "system.movement.disengage",
+                "value": 0,
+                "priority": null,
+                "type": "downgrade"
+              }
+            ]
+          },
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You can't move until you use a maneuver to pull your pants back up.</p>",
           "tint": "#ffffff",
@@ -1234,11 +1237,16 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.347",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "createdTime": null,
+            "modifiedTime": null
           },
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.wXnCVvnrDSeah9ks.iwDfJBIJlMiF4Olr"
         }
       ],
@@ -1252,7 +1260,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wXnCVvnrDSeah9ks",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1758946135928,
@@ -1315,18 +1323,15 @@
             "end": {
               "type": "respite",
               "roll": "1d10 + @combat.save.bonus"
-            }
+            },
+            "changes": []
           },
-          "changes": [],
           "disabled": false,
           "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>You cannot take a respite ability during your next respite.</p>",
           "tint": "#ffffff",
@@ -1336,13 +1341,18 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.UxoLvIdRzgdLOAY0.Item.YXm8ANjisAFpg6gn.ActiveEffect.zCKnRU0EG6qDeLzQ",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "createdTime": null,
+            "modifiedTime": null
           },
           "_id": "X45S09BuckEngWpQ",
           "sort": 0,
+          "start": null,
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.jhYQClVszlAUFkeJ.X45S09BuckEngWpQ"
         }
       ],
@@ -1351,7 +1361,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.jhYQClVszlAUFkeJ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761242273077,
@@ -1377,7 +1387,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1755708893523,
