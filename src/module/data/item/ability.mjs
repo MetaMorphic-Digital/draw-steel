@@ -181,6 +181,8 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _applyAbilityBonuses() {
+    const replacementData = this.getRollData();
+
     // Apply keyword modifiers first to ensure later effects operate on the modified set
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (bonus.key !== "keyword") continue;
@@ -199,18 +201,18 @@ export default class AbilityModel extends BaseItemModel {
         switch (this.distance.type) {
           case "melee":
           case "ranged":
-            this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
+            this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus, { replacementData });
             break;
           case "meleeRanged":
-            if (bonus.filters.keywords.has("melee")) this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
-            if (bonus.filters.keywords.has("ranged")) this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            if (bonus.filters.keywords.has("melee")) this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus, { replacementData });
+            if (bonus.filters.keywords.has("ranged")) this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus, { replacementData });
             break;
           case "wall":
           case "cube":
-            this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus, { replacementData });
             break;
           case "line":
-            this.distance.tertiary = distanceValueField.applyChange(this.distance.tertiary, this, bonus);
+            this.distance.tertiary = distanceValueField.applyChange(this.distance.tertiary, this, bonus, { replacementData });
             break;
           case "aura":
           case "burst":
@@ -234,7 +236,7 @@ export default class AbilityModel extends BaseItemModel {
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
-          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus));
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
         }
       }
 
@@ -245,7 +247,7 @@ export default class AbilityModel extends BaseItemModel {
         for (const effect of this.power.effects) {
           if (effect.type !== "forced") continue;
           const currentBonus = foundry.utils.getProperty(effect, key) ?? 0;
-          foundry.utils.setProperty(effect, key, AbilityModel.#forcedBonus.applyChange(currentBonus, this, bonus));
+          foundry.utils.setProperty(effect, key, AbilityModel.#forcedBonus.applyChange(currentBonus, this, bonus, { replacementData }));
         }
       }
 
@@ -256,7 +258,7 @@ export default class AbilityModel extends BaseItemModel {
             const key = `${effect.constructor.TYPE}.tier${tierNumber}.potency.value`;
             const formulaField = effect.schema.getField(key);
             const currentValue = foundry.utils.getProperty(effect, key);
-            foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus));
+            foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus, { replacementData }));
           }
         }
       }
