@@ -24,6 +24,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Added
 
+- Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
 
 ### Changed
@@ -37,6 +38,8 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
 
 ### Fixed
+
+- Corrected CSS URL asset handling, restoring decorative boxes to asides.
 
 ## 0.11.1
 
