@@ -30,6 +30,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
+- Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
 
 ### Changed
 
@@ -61,6 +62,11 @@ The Draw Steel system is now official! Premium modules, licensed by MCDM and pro
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Fixed missing effect end on Kinetic Strike. (#1756)
+  - Corrected Tactician and Troubadour level 5 advancements. (#1769)
+- Director-Facing Compendium Data Fixes:
+  - Added slide effect to Dwarf Stone Whisperer Tile Slide ability. (#1679)
 - Canvas token placement did not work correctly with wildcards. (#1739)
 - Party sheet now correctly works with play/edit mode. (#1740)
 
