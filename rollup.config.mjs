@@ -12,7 +12,7 @@ function replaceAbsolutePaths(asset) {
   if (!asset.url) return asset.url;
   const absolutePath = "/systems/draw-steel/";
   if (asset.url.startsWith(absolutePath)) {
-    return asset.url.slice(absolutePath.length);
+    return asset.url.replace(absolutePath, "../");
   } else {
     console.warn("URL THAT ISN'T IN PACKAGE REPOSITORY:", asset.url);
   }
