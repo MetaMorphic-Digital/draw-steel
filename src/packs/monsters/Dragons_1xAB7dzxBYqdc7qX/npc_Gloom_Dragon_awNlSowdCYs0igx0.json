@@ -130,11 +130,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!awNlSowdCYs0igx0.wEAZVxDLqOFov1iI"
     },
@@ -167,11 +168,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!awNlSowdCYs0igx0.Bsicf9e6oV3SioG1"
     },
@@ -204,11 +206,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_key": "!actors.items!awNlSowdCYs0igx0.mERCrYNfbZTbrq1d"
     },
@@ -329,31 +332,28 @@
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.damage.weaknesses.cold",
-              "mode": 4,
-              "value": "3",
-              "priority": null
             },
-            {
-              "key": "system.damage.weaknesses.psychic",
-              "mode": 4,
-              "value": "3",
-              "priority": null
-            }
-          ],
+            "changes": [
+              {
+                "key": "system.damage.weaknesses.cold",
+                "value": 3,
+                "priority": null,
+                "type": "upgrade"
+              },
+              {
+                "key": "system.damage.weaknesses.psychic",
+                "value": 3,
+                "priority": null,
+                "type": "upgrade"
+              }
+            ]
+          },
           "disabled": true,
           "duration": {
-            "startTime": 0,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": 1,
-            "startTurn": 0
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
           },
           "description": "<p>A dragonsealed creature has psychic weakness 3 and cold weakness 3.</p>",
           "tint": "#ffffff",
@@ -363,7 +363,7 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.350",
+            "coreVersion": "14.356",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "createdTime": 1761168466523,
@@ -372,6 +372,16 @@
           },
           "_id": "RoFAZZPRLjVZwjPY",
           "sort": 0,
+          "start": {
+            "combat": null,
+            "round": 1,
+            "time": 0,
+            "turn": 0,
+            "combatant": null,
+            "initiative": null
+          },
+          "showIcon": 1,
+          "folder": null,
           "_key": "!actors.items.effects!awNlSowdCYs0igx0.rlV6oPVV1KR3Y4iQ.RoFAZZPRLjVZwjPY"
         }
       ],
@@ -382,11 +392,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "rlV6oPVV1KR3Y4iQ",
       "ownership": {
@@ -537,11 +548,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "W8sPCSpWTpkM3eyF",
       "ownership": {
@@ -604,11 +616,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "cJC17ju0XxXeacoJ",
       "ownership": {
@@ -667,11 +680,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "9lmbnnRpiwhFrTh7",
       "ownership": {
@@ -830,11 +844,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "81MHP5127w5z13uI",
       "ownership": {
@@ -990,11 +1005,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.10.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "J4SrPa1Xb4awe0s9",
       "ownership": {
@@ -1053,11 +1069,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "rchyNugzoECUyQ0Z",
       "ownership": {
@@ -1113,11 +1130,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
-        "modifiedTime": null
+        "modifiedTime": null,
+        "createdTime": null
       },
       "_id": "AXBlkjqVdirSBFwS",
       "ownership": {
@@ -1263,7 +1281,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Z1EoT4Tm4QFmUkw6",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.351",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760901535912,
@@ -1327,7 +1345,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.dC861UmVU30rAYsf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760901536856,
@@ -1391,7 +1409,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sb9X9PBRRHhwcgOq",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760901538215,
@@ -1419,12 +1437,9 @@
       "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
       "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
-      "rotation": 0,
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
@@ -1475,7 +1490,7 @@
       "saturation": 0,
       "contrast": 0
     },
-    "detectionModes": [],
+    "detectionModes": {},
     "occludable": {
       "radius": 0
     },
@@ -1501,7 +1516,8 @@
     "flags": {},
     "randomImg": false,
     "appendNumber": false,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "depth": 4
   },
   "effects": [],
   "ownership": {
@@ -1512,7 +1528,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757726953946,

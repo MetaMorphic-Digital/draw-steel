@@ -198,6 +198,8 @@ Hooks.once("init", function () {
   // Register dice rolls
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 
+  documents.DrawSteelJournalEntryPage.addProseMirrorInserts();
+
   // Register enrichers
   CONFIG.TextEditor.enrichers = [
     applications.ux.enrichers.applyEffect,

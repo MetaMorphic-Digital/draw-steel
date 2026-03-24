@@ -13,7 +13,7 @@ export default class RollDialog extends DSApplication {
       icon: "fa-solid fa-dice-d10",
     },
     actions: {
-      setRollMode: this.#setRollMode,
+      setMessageMode: this.#setMessageMode,
     },
     context: null,
   };
@@ -32,7 +32,7 @@ export default class RollDialog extends DSApplication {
   /** @inheritdoc */
   _initializeApplicationOptions(options) {
     options.context ??= {};
-    options.context.rollMode = game.settings.get("core", "rollMode");
+    options.context.messageMode = game.settings.get("core", "messageMode");
     return super._initializeApplicationOptions(options);
   }
 
@@ -49,7 +49,7 @@ export default class RollDialog extends DSApplication {
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
 
-    if (partId === "footer") context.rollModes = CONFIG.Dice.rollModes;
+    if (partId === "footer") context.messageModes = CONFIG.ChatMessage.modes;
 
     return context;
   }
@@ -62,8 +62,8 @@ export default class RollDialog extends DSApplication {
    * @param {PointerEvent} event    The originating click event.
    * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
    */
-  static #setRollMode(event, target) {
-    this.options.context.rollMode = target.dataset.rollMode;
+  static #setMessageMode(event, target) {
+    this.options.context.messageMode = target.dataset.messageMode;
     this.render({ parts: ["footer"] });
   }
 }

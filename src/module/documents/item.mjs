@@ -113,6 +113,22 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
+   * Perform a roll with this item, failing gracefully if the item subtype does not support rolls.
+   * @param {object} [config]         Configuration specific to this item's rolling operation.
+   * @param {object} [dialogOptions]  Options to be forwarded to the roll dialog.
+   * @param {object} [messageOptions] Options to be forwarded to the final created chat message.
+   * @returns {Promise<DrawSteelChatMessage | null>} The created chat message,
+   * or null if the roll operation was canceled or could not be completed.
+   */
+  async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
+    if (typeof this.system.roll === "function") return this.system.roll(config, dialogOptions, messageOptions);
+    console.error(`Item ${this.name} of type ${this.type} cannot perform a roll`);
+    return null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * An alternative to the document delete method, this deletes the item as well as any items that were
    * added as a result of this item's creation via advancements.
    * @param {Object} options

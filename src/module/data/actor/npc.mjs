@@ -115,7 +115,7 @@ export default class NPCModel extends CreatureModel {
       }
     }
 
-    if (!foundry.utils.isEmpty(updates)) this.updateSource(updates);
+    this.updateSource(updates);
   }
 
   /* -------------------------------------------------- */

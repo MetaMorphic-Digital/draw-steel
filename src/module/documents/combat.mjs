@@ -35,7 +35,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
     roll.toMessage({
       flavor: _loc(resultMessage),
-    }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
+    }, { messageMode: "public" });
   }
 
   /* -------------------------------------------------- */

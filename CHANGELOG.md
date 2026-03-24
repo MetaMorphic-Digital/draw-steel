@@ -24,13 +24,20 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Added
 
+- New Player-Facing Compendium Content:
+- New Director-Facing Compendium Content:
+  - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Created an "Effects and Imbues" compendium pack. (#1163)
+- Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
+- Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
 
 ### Changed
 
 - ActiveEffect changes for v14
   - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
+- Migrated roll modes to the new core message modes. (#1681)
 
 ### Deprecated
 
@@ -39,6 +46,9 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
 
 ### Fixed
+
+- Corrected CSS URL asset handling, restoring decorative boxes to asides.
+- Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
 
 ## 0.11.1
 
@@ -54,6 +64,11 @@ The Draw Steel system is now official! Premium modules, licensed by MCDM and pro
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Fixed missing effect end on Kinetic Strike. (#1756)
+  - Corrected Tactician and Troubadour level 5 advancements. (#1769)
+- Director-Facing Compendium Data Fixes:
+  - Added slide effect to Dwarf Stone Whisperer Tile Slide ability. (#1679)
 - Canvas token placement did not work correctly with wildcards. (#1739)
 - Party sheet now correctly works with play/edit mode. (#1740)
 

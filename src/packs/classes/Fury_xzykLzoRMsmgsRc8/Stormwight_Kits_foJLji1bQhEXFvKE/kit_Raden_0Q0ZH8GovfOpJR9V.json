@@ -138,36 +138,33 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        }
+        },
+        "changes": [
+          {
+            "key": "system.combat.size.letter",
+            "value": "T",
+            "priority": null,
+            "type": "override"
+          },
+          {
+            "key": "system.combat.size.value",
+            "value": 1,
+            "priority": null,
+            "type": "override"
+          },
+          {
+            "key": "system.movement.types",
+            "value": "climb",
+            "priority": null,
+            "type": "add"
+          }
+        ]
       },
-      "changes": [
-        {
-          "key": "system.combat.size.letter",
-          "mode": 5,
-          "value": "T",
-          "priority": null
-        },
-        {
-          "key": "system.combat.size.value",
-          "mode": 5,
-          "value": "1",
-          "priority": null
-        },
-        {
-          "key": "system.movement.types",
-          "mode": 2,
-          "value": "climb",
-          "priority": null
-        }
-      ],
       "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
       },
       "description": "<p>While you are in your rat form, your size is 1T and you can automatically climb at full speed while moving. You can use the Hide maneuver as a free maneuver, you can use your allies as cover when you hide, and you can stay hidden while you move through squares occupied by any creature. Additionally, you gain an edge on tests made to climb other creatures. You can’t use any abilities while in this form except for Aspect of the Wild.</p>",
       "tint": "#ffffff",
@@ -179,13 +176,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.350",
+        "coreVersion": "14.356",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1760557942812,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
       "_key": "!items.effects!0Q0ZH8GovfOpJR9V.vhGGmg02MqMrS1ku"
     }
   ],
@@ -198,7 +198,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.356",
     "systemId": "draw-steel",
     "systemVersion": "0.9.2",
     "createdTime": 1755756108267,

@@ -112,7 +112,7 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
     if (!this._dsid && !data.name.startsWith(defaultName)) updates._dsid = this.parent.constructor.generateDSID(data.name);
 
-    if (!foundry.utils.isEmpty(updates)) this.updateSource(updates);
+    this.updateSource(updates);
   }
 
   /* -------------------------------------------------- */
