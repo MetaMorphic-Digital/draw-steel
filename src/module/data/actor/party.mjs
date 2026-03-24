@@ -118,7 +118,7 @@ export default class PartyModel extends DrawSteelSystemModel {
       return acc;
     }, {});
     ids.forEach(id => update[id] = {});
-    await this.parent.update({ "system.==members": update });
+    await this.parent.update({ "system.members": _replace(update) });
     return this.parent;
   }
 
@@ -133,7 +133,7 @@ export default class PartyModel extends DrawSteelSystemModel {
     const update = {};
     const members = this.members;
     actors.forEach(actor => {
-      if (members.has(actor.id)) update[`-=${actor.id}`] = null;
+      if (members.has(actor.id)) update[actor.id] = _del;
     });
     await this.parent.update({ "system.members": update });
     return this.parent;
