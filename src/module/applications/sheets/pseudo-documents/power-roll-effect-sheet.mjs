@@ -123,7 +123,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     const fieldset = target.closest("fieldset");
     const path = fieldset.dataset.path;
     const effectId = fieldset.dataset.effectId;
-    this.pseudoDocument.update({ [`${path}.-=${effectId}`]: null });
+    this.pseudoDocument.update({ [`${path}.${effectId}`]: _del });
   }
 
   /* -------------------------------------------------- */
