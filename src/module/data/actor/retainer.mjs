@@ -77,7 +77,7 @@ export default class RetainerModel extends CreatureModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    this.parent.updateSource({
+    const update = foundry.utils.mergeObject({
       prototypeToken: {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
@@ -85,7 +85,9 @@ export default class RetainerModel extends CreatureModel {
           enabled: true,
         },
       },
-    });
+    }, data, { insertKeys: false, insertValues: false });
+
+    this.parent.updateSource(update);
   }
 
   /* -------------------------------------------------- */

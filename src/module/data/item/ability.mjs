@@ -165,6 +165,8 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _applyAbilityBonuses() {
+    const replacementData = this.getRollData();
+
     // Apply keyword modifiers first to ensure later effects operate on the modified set
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (bonus.key !== "keyword") continue;
@@ -183,18 +185,18 @@ export default class AbilityModel extends BaseItemModel {
         switch (this.distance.type) {
           case "melee":
           case "ranged":
-            this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
+            this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus, { replacementData });
             break;
           case "meleeRanged":
-            if (bonus.filters.keywords.has("melee")) this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
-            if (bonus.filters.keywords.has("ranged")) this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            if (bonus.filters.keywords.has("melee")) this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus, { replacementData });
+            if (bonus.filters.keywords.has("ranged")) this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus, { replacementData });
             break;
           case "wall":
           case "cube":
-            this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus, { replacementData });
             break;
           case "line":
-            this.distance.tertiary = distanceValueField.applyChange(this.distance.tertiary, this, bonus);
+            this.distance.tertiary = distanceValueField.applyChange(this.distance.tertiary, this, bonus, { replacementData });
             break;
           case "aura":
           case "burst":
@@ -218,7 +220,7 @@ export default class AbilityModel extends BaseItemModel {
           // Damage bonuses only apply to the first entry
           if (!firstDamageEffect || !field) continue;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
-          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus));
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
         }
       }
 
@@ -228,7 +230,7 @@ export default class AbilityModel extends BaseItemModel {
           const field = effect.schema.getField(bonus.key);
           if (!field) continue;
           const currentBonus = foundry.utils.getProperty(effect, bonus.key) ?? 0;
-          foundry.utils.setProperty(effect, bonus.key, field.applyChange(currentBonus, this, bonus));
+          foundry.utils.setProperty(effect, bonus.key, field.applyChange(currentBonus, this, bonus, { replacementData }));
         }
       }
 
@@ -239,7 +241,7 @@ export default class AbilityModel extends BaseItemModel {
             const key = `${effect.constructor.TYPE}.tier${tierNumber}.potency.value`;
             const formulaField = effect.schema.getField(key);
             const currentValue = foundry.utils.getProperty(effect, key);
-            foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus));
+            foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus, { replacementData }));
           }
         }
       }
@@ -398,11 +400,13 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll.
-   * @param {Partial<AbilityUseOptions>} [options={}] Configuration.
-   * @returns {Promise<DrawSteelChatMessage[] | null>}
+   * @param {Partial<AbilityUseOptions>} [config={}] Usage Configuration.
+   * @param {object} [dialogOptions={}]              Options to be forwarded to the roll dialog.
+   * @param {object} [messageOptions]                Options to be forwarded to the final created chat message.
+   * @returns {Promise<DrawSteelChatMessage | null>}
    * TODO: Add hooks based on discussion with module authors.
    */
-  async use(options = {}) {
+  async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     /**
      * Configuration information.
      * @type {object | null}
@@ -411,63 +415,8 @@ export default class AbilityModel extends BaseItemModel {
     let resourceSpend = this.resource ?? 0;
     const coreResource = this.actor?.system.coreResource;
 
-    // Determine if the configuration form should even run.
-    // Can be factored out if/when complexity increases
     if (this.spend.value || this.spend.text) {
-      let content = "";
-
-      const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
-
-      /**
-       * Range picker config is ignored by the checkbox element.
-       * @type {FormInputConfig}
-       */
-      const spendInputConfig = {
-        name: "spend",
-        min: 0,
-        max: current - coreResource.minimum,
-        step: 1,
-      };
-
-      // Nullish value with text means X spend
-      const spendInput = this.spend.value ?
-        foundry.applications.fields.createCheckboxInput(spendInputConfig) :
-        foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
-
-      let hint = null;
-      if (this.spend.value) {
-        hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
-          value: current,
-          name: coreResource.name,
-        });
-      }
-
-      const spendGroup = foundry.applications.fields.createFormGroup({
-        label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
-          value: this.spend.value || "",
-          name: coreResource.name,
-        }),
-        input: spendInput,
-        hint,
-      });
-
-      // Style fix
-      if (this.spend.value) {
-        const label = spendGroup.querySelector("label");
-        label.classList.add("checkbox");
-        label.style = "font-size: inherit;";
-      }
-
-      content += spendGroup.outerHTML;
-
-      configuration = await ds.applications.api.DSDialog.input({
-        content,
-        window: {
-          title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
-          icon: "fa-solid fa-gear",
-        },
-      });
-
+      configuration = await this._determineSpendConfiguration();
       if (!configuration) return null;
     }
 
@@ -486,25 +435,23 @@ export default class AbilityModel extends BaseItemModel {
       flags: { core: { canPopout: true } },
     };
 
-    if (configuration) {
-      if (configuration.spend) {
-        resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-        messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
-          value: resourceSpend,
-          name: coreResource.name,
-        });
-      }
+    if (configuration?.spend) {
+      resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
+      messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
+        value: resourceSpend,
+        name: coreResource.name,
+      });
     }
 
     if (this.power.roll.enabled) {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
-      options.modifiers ??= {};
-      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
-      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
-      options.modifiers.bonuses ??= 0;
+      config.modifiers ??= {};
+      config.modifiers.banes = (config.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      config.modifiers.edges = (config.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
+      config.modifiers.bonuses ??= 0;
 
-      this.getActorModifiers(options);
+      this.getActorModifiers(config);
 
       // Get the power rolls made per target, or if no targets, then just one power roll
       const promptValue = await PowerRoll.prompt({
@@ -514,7 +461,7 @@ export default class AbilityModel extends BaseItemModel {
         evaluation: "evaluate",
         actor: this.actor,
         ability: this.parent.uuid,
-        modifiers: options.modifiers,
+        modifiers: config.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             tokenUuid: target.document.uuid,
@@ -526,12 +473,12 @@ export default class AbilityModel extends BaseItemModel {
       });
 
       if (!promptValue) return null;
-      const { rollMode, rolls, baseRoll } = promptValue;
+      const { messageMode, rolls, baseRoll } = promptValue;
 
       // Base roll for DSN purposes
       messageData.rolls.push(baseRoll);
 
-      DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+      DrawSteelChatMessage.applyMode(messageData, messageMode);
 
       // Power Rolls grouped by tier of success
       const groupedRolls = Object.groupBy(rolls, roll => roll.product);
@@ -557,7 +504,7 @@ export default class AbilityModel extends BaseItemModel {
         messageData.system.parts.push(rollPart);
       }
     } else {
-      DrawSteelChatMessage.applyRollMode(messageData, "roll");
+      DrawSteelChatMessage.applyMode(messageData, "roll");
     }
     // TODO: Figure out how to better handle invocations when this.actor is null
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
@@ -569,8 +516,8 @@ export default class AbilityModel extends BaseItemModel {
   /**
    * An alias of {@linkcode use}.
    */
-  async roll(options = {}) {
-    this.use(options);
+  async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
+    return this.use(config, dialogOptions, messageOptions);
   }
 
   /* -------------------------------------------------- */
@@ -648,6 +595,69 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     return modifiers;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Evaluate additional resource expenditure.
+   * @returns {Promise<{ spend: number | boolean } | null>}
+   */
+  async _determineSpendConfiguration() {
+    let content = "";
+    const coreResource = this.actor?.system.coreResource;
+
+    const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
+
+    /**
+       * Range picker config is ignored by the checkbox element.
+       * @type {FormInputConfig}
+       */
+    const spendInputConfig = {
+      name: "spend",
+      min: 0,
+      max: current - coreResource.minimum,
+      step: 1,
+    };
+
+    // Nullish value with text means X spend
+    const spendInput = this.spend.value ?
+      foundry.applications.fields.createCheckboxInput(spendInputConfig) :
+      foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
+
+    let hint = null;
+    if (this.spend.value) {
+      hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
+        value: current,
+        name: coreResource.name,
+      });
+    }
+
+    const spendGroup = foundry.applications.fields.createFormGroup({
+      label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+        value: this.spend.value || "",
+        name: coreResource.name,
+      }),
+      input: spendInput,
+      hint,
+    });
+
+    // Style fix
+    if (this.spend.value) {
+      const label = spendGroup.querySelector("label");
+      label.classList.add("checkbox");
+      label.style = "font-size: inherit;";
+    }
+
+    content += spendGroup.outerHTML;
+
+    return ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
+        icon: "fa-solid fa-gear",
+      },
+    });
   }
 
   /* -------------------------------------------------- */

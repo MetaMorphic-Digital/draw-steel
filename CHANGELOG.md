@@ -24,12 +24,18 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Added
 
+- New Player-Facing Compendium Content:
+- New Director-Facing Compendium Content:
+  - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Created an "Effects and Imbues" compendium pack. (#1163)
+- Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
 
 ### Changed
 
 - Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
+- Migrated roll modes to the new core message modes. (#1681)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 
 ### Deprecated
@@ -40,6 +46,9 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Removed various Active Effect methods overrides that are no longer necessary with core v14 improvements. (#1417)
 
 ### Fixed
+
+- Corrected CSS URL asset handling, restoring decorative boxes to asides.
+- Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
 
 ## 0.11.1
 

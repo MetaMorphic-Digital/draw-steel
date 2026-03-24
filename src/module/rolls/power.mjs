@@ -217,11 +217,11 @@ export default class PowerRoll extends DSRoll {
           break;
         case "message":
           await roll.evaluate({ allowInteractive: false });
-          rolls.push(await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode }));
+          rolls.push(await roll.toMessage({ speaker }, { messageMode: promptValue.messageMode }));
           break;
       }
     }
-    return { rollMode: promptValue.rollMode, rolls, baseRoll };
+    return { messageMode: promptValue.messageMode, rolls, baseRoll };
   }
 
   /* -------------------------------------------------- */

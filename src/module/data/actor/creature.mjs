@@ -152,7 +152,7 @@ export default class CreatureModel extends BaseActorModel {
     });
 
     if (!promptValue) return null;
-    const { rollMode, rolls, baseRoll } = promptValue;
+    const { messageMode, rolls, baseRoll } = promptValue;
 
     const testConfig = ds.CONST.testOutcomes[options.difficulty];
 
@@ -179,7 +179,7 @@ export default class CreatureModel extends BaseActorModel {
 
     messageData.system.parts.push(testPart);
 
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    DrawSteelChatMessage.applyMode(messageData, messageMode);
     return DrawSteelChatMessage.create(messageData);
   }
 
