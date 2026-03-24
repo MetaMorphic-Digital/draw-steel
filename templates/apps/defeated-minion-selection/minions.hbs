@@ -1,9 +1,11 @@
 <section>
   {{#each undefeatedMinions}}
   <div class="combatant" data-combatant-id="{{minion.id}}">
-    <img alt="{{minion.name}}" src="{{minion.img}}">
-    <span>{{minion.name}}</span>
-    <input type="checkbox" name="minion-selection" value="{{minion.id}}" {{checked selected}} {{disabled disabled}}>
+    <label for="{{minion.id}}">
+      <img alt="{{minion.name}}" src="{{minion.img}}">
+      <span>{{minion.name}}</span>
+    </label>
+    <input type="checkbox" name="minion-selection" id="{{minion.id}}" value="{{minion.id}}" {{checked selected}} {{disabled disabled}}>
   </div>
   {{/each}}
 </section>
