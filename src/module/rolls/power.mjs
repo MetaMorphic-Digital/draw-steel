@@ -182,7 +182,6 @@ export default class PowerRoll extends DSRoll {
       targets: options.targets,
     };
 
-    if (options.ability) context.ability = options.ability;
     if (options.skills) context.skills = options.skills;
     if (options.skillModifiers) context.skillModifiers = options.skillModifiers;
 

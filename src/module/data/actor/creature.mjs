@@ -103,7 +103,6 @@ export default class CreatureModel extends BaseActorModel {
    * Perform a power roll using a characteristic.
    * @param {string} characteristic   The characteristic to roll.
    * @param {object} [options]        Options to modify the characteristic roll.
-   * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic.
    * @param {number} [options.edges]                    Base edges for the roll.
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
@@ -112,24 +111,6 @@ export default class CreatureModel extends BaseActorModel {
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
-    const types = options.types ?? ["test"];
-
-    let type = types[0];
-
-    if (types.length > 1) {
-      const buttons = types.reduce((b, action) => {
-        const { label, icon } = PowerRoll.TYPES[action];
-        b.push({ label, icon, action });
-        return b;
-      }, []);
-      type = await ds.applications.api.DSDialog.wait({
-        window: { title: _loc("DRAW_STEEL.ROLL.Power.ChooseType.Title") },
-        content: _loc("DRAW_STEEL.ROLL.Power.ChooseType.Content"),
-        buttons,
-        rejectClose: true,
-      });
-    }
-
     const chr = this.characteristics[characteristic];
 
     options.edges = (options.edges ?? 0) + chr.edges;
@@ -151,11 +132,11 @@ export default class CreatureModel extends BaseActorModel {
     const doc = await fromUuid(options.resultSource);
 
     const promptValue = await PowerRoll.prompt({
-      type,
       evaluation,
       formula,
       data,
       modifiers,
+      type: "test",
       actor: this.parent,
       characteristic,
       skills,

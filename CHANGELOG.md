@@ -27,6 +27,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - New Player-Facing Compendium Content:
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Added a unified Ability Configuration dialog for rolls as well as resource expenditure. (#161)
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
@@ -44,6 +45,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Removed
 
+- Removed PowerRoll.prompt in favor of keeping the roll dialog logic within the relevant roll methods for tests and abilities. (#161)
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
 - Removed `ds.canvas.placeables.tokens.TokenPlacement` in favor of delegating to `canvas.tokens.placeTokens`. (#1742)
 

@@ -1086,9 +1086,19 @@
         },
         "ResourceCost": "Costs {value} {name}",
         "ConfigureUse": {
-          "Title": "Configure Ability Use",
-          "SpendLabel": "Spend {value} {name}",
-          "SpendHint": "Current: {value}",
+          "Tabs": {
+            "roll": "Power Roll",
+            "ability": "Configure Use"
+          },
+          "ResourceLegend": "Current: {value} {name}",
+          "Resource": {
+            "label": "Resource Cost",
+            "hint": "This resource costs {value} {name}. You can adjust the value to account for conditional adjustments."
+          },
+          "Spend": {
+            "label": "Spend {value} {name}",
+            "hint": "Optional additional resource expenditure."
+          },
           "SpendWarning": "Warning: You only have {value} {name}!",
           "SpentFlavor": "Spent {value} {name}"
         },
@@ -1194,6 +1204,7 @@
           "Special": "Special"
         },
         "DamageFlavor": "{type} Damage",
+        "SpendLabel": "Spend {value} {name}",
         "ForcedMovement": {
           "Push": "Push",
           "VerticalPush": "Vertical Push",
