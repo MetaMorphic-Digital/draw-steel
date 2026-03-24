@@ -129,7 +129,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
     const minions = this.minions;
     if (!minions.size) return;
 
-    const activePlayerOwner = game.users.find(user => !user.isGM && user.active && this.parent.testUserPermission(user, "OWNER") && this.minions.every(minion => minion.testUserPermission(user, "OWNER")));
+    const activePlayerOwner = game.users.find(user => !user.isGM && user.active && this.parent.testUserPermission(user, "OWNER") && minions.every(minion => minion.testUserPermission(user, "OWNER")));
     const promptedUser = activePlayerOwner ?? game.users.activeGM;
     if (game.user !== promptedUser) return;
 
@@ -144,6 +144,11 @@ export default class SquadModel extends BaseCombatantGroupModel {
     if (!fd || !fd.selectedMinions.length) return;
 
     const selectedMinions = fd.selectedMinions.map(id => this.combat.combatants.get(id));
-    for (const minion of selectedMinions) ui.combat._onToggleDefeatedStatus(minion);
+    const combatantUpdates = [];
+    for (const minion of selectedMinions) {
+      combatantUpdates.push({ _id: minion.id, defeated: true });
+      await minion.actor?.toggleStatusEffect(CONFIG.specialStatusEffects.DEFEATED, { overlay: true, active: true });
+    }
+    await this.combat.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
 }
