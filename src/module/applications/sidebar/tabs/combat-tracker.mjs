@@ -393,7 +393,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const getCombatant = target => this.viewed.combatants.get(target.dataset.combatantId);
     entryOptions.push({
       label: "DRAW_STEEL.Combatant.ToggleCaptain",
-      icon: "fa-solid fa-fw fa-helmet-battle",
+      icon: "fa-solid fa-helmet-battle",
       visible: (target) => {
         const combatant = getCombatant(target);
         return game.user.isGM && !combatant.actor?.isMinion && (combatant.group?.type === "squad");
@@ -416,15 +416,15 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const entryOptions = [
       {
         label: _loc("DOCUMENT.Create", { type: _loc("DOCUMENT.CombatantGroup") }),
-        icon: "fa-solid fa-fw fa-users-rectangle",
+        icon: "fa-solid fa-users-rectangle",
         onClick: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
       }, {
         label: "DRAW_STEEL.CombatantGroup.GroupSelected",
-        icon: "fa-solid fa-fw fa-users-viewfinder",
+        icon: "fa-solid fa-users-viewfinder",
         onClick: async () => DrawSteelCombatantGroup.createFromTokens(this.viewed),
       }, {
         label: "COMBAT.InitiativeRoll",
-        icon: "fa-solid fa-fw fa-dice-d10",
+        icon: "fa-solid fa-dice-d10",
         visible: () => game.combats.isDefaultInitiativeMode,
         onClick: () => this.viewed.rollFirst(),
       },
@@ -446,7 +446,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     return [
       {
         label: _loc("DOCUMENT.Update", { type: _loc("DOCUMENT.CombatantGroup") }),
-        icon: "fa-solid fa-fw fa-edit",
+        icon: "fa-solid fa-edit",
         visible: (target) => getCombatantGroup(target).isOwner,
         onClick: (event, target) => getCombatantGroup(target)?.sheet.render({
           force: true,
@@ -458,7 +458,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       },
       {
         label: "DRAW_STEEL.CombatantGroup.ResetSquadHP",
-        icon: "fa-solid fa-fw fa-rotate",
+        icon: "fa-solid fa-rotate",
         visible: (target) => {
           const group = getCombatantGroup(target);
           return ((group.type === "squad") && group.isOwner);
@@ -470,13 +470,13 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       },
       {
         label: "COMBAT.ClearMovementHistories",
-        icon: "fa-solid fa-fw fa-shoe-prints",
+        icon: "fa-solid fa-shoe-prints",
         visible: () => game.user.isGM,
         onClick: (event, target) => getCombatantGroup(target).clearMovementHistories(),
       },
       {
         label: "DRAW_STEEL.CombatantGroup.ColorTokens.Label",
-        icon: "fa-solid fa-fw fa-palette",
+        icon: "fa-solid fa-palette",
         visible: (target) => getCombatantGroup(target).members.every(c => c.isOwner),
         onClick: async (event, target) => {
           await getCombatantGroup(target).colorTokensDialog();
@@ -484,13 +484,13 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       },
       {
         label: _loc("DOCUMENT.Delete", { type: _loc("DOCUMENT.CombatantGroup") }),
-        icon: "fa-solid fa-fw fa-trash",
+        icon: "fa-solid fa-trash",
         visible: () => game.user.isGM,
         onClick: (event, target) => getCombatantGroup(target).delete(),
       },
       {
         label: "OWNERSHIP.Configure",
-        icon: "fa-solid fa-fw fa-lock",
+        icon: "fa-solid fa-lock",
         visible: () => game.user.isGM,
         onClick: (event, target) => new foundry.applications.apps.DocumentOwnershipConfig({
           document: getCombatantGroup(target),
@@ -502,7 +502,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       },
       {
         label: "DRAW_STEEL.CombatantGroup.ToggleVisibility",
-        icon: "fa-solid fa-fw fa-eye-slash",
+        icon: "fa-solid fa-eye-slash",
         visible: (target) => game.user.isGM && getCombatantGroup(target).members.size,
         onClick: (event, target) => {
           const combatantGroup = getCombatantGroup(target);
