@@ -9,7 +9,9 @@ import { setOptions } from "../helpers.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
- * @import { PowerRollModifiers, ProjectRollPrompt } from  "../../_types.js"
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
+ * @import { ProjectRollModifiers, ProjectRollPrompt, ProjectRollPromptOptions } from  "../../_types.js"
  */
 
 const fields = foundry.data.fields;
@@ -64,22 +66,6 @@ export default class ProjectModel extends BaseItemModel {
     this.points ??= 0;
 
     this.projectType = _loc(ds.CONFIG.projects.types[this.type]?.label ?? "");
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  preparePostActorPrepData() {
-    super.preparePostActorPrepData();
-
-    // Set the highest characteristic amongst the roll characteristics
-    this.characteristic = null;
-    for (const characteristic of this.rollCharacteristic) {
-      if (this.characteristic === null) this.characteristic = characteristic;
-
-      const actorCharacteristics = this.actor.system.characteristics;
-      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.characteristic].value) this.characteristic = characteristic;
-    }
   }
 
   /* -------------------------------------------------- */
@@ -193,9 +179,9 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Make a project roll for this project and update the project points progress.
-   * @param {Partial<PowerRollModifiers>} [config={}]  Roll options.
-   * @param {object} [dialogOptions={}]                Options to be forwarded to the roll dialog.
-   * @param {object} [messageOptions]                  Options to be forwarded to the final created chat message.
+   * @param {Partial<ProjectRollModifiers>} [config={}]   Roll options.
+   * @param {ApplicationConfiguration} [dialogOptions={}] Options to be forwarded to the roll dialog.
+   * @param {DatabaseCreateOperation} [messageOptions]    Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
@@ -256,21 +242,32 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Prompt the player to roll this project.
-   * @param {Partial<PowerRollModifiers>} [config={}]
+   * @param {Partial<ProjectRollPromptOptions>} [config={}]
+   * @param {ApplicationConfiguration} [dialogOptions={}]
    * @returns {Promise<ProjectRollPrompt>}
    */
   async rollPrompt(config = {}, dialogOptions = {}) {
-    const rollData = this.parent.getRollData();
-    const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
+    const rollData = config.follower ? config.follower.getRollData() : this.parent.getRollData();
 
-    const formula = rollKey ? `2d10 + @${rollKey}` : "2d10";
+    // Pick the highest characteristic amongst the roll characteristics
+    let chr = null;
+    const characteristicData = config.follower?.system.characteristics ?? this.actor.system.characteristics;
+    for (const characteristic of this.rollCharacteristic) {
+      if (chr === null) chr = characteristic;
+      else if (characteristicData[characteristic].value > characteristicData[chr].value) chr = characteristic;
+    }
+
+    const rollKey = ds.CONFIG.characteristics[chr]?.rollKey ?? "";
+    const rollFormula = rollKey && config.follower ? `item.${rollKey}` : rollKey;
+
+    const formula = rollKey ? `2d10 + @${rollFormula}` : "2d10";
 
     const dialogConfig = foundry.utils.mergeObject({
       context: {
         modifiers: config.modifiers ?? {},
         formula: ProjectRoll.replaceFormulaData(formula, rollData, { missing: "0" }),
-        skills: this.actor.system.skills?.value ?? null,
-        skillModifiers: this.actor.system.skills?.modifiers ?? null,
+        skills: (config.follower ?? this.actor).system.skills?.value ?? null,
+        skillModifiers: (config.follower ?? this.actor).system.skills?.modifiers ?? null,
       },
       window: {
         title: this.parent.name,
