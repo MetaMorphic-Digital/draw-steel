@@ -65,15 +65,14 @@
         <label>{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Spend.label" value=spendConfig.value name=resource.name}}</label>
         <div class="form-fields">
           {{#if spendConfig.slider}}
-          <range-picker name="spend" max="{{spendConfig.max}}" min="0" step="1"></range-picker>
+          <range-picker name="spend" max="{{spendConfig.max}}" min="0" step="1" value="{{spend}}"></range-picker>
           {{else}}
-          <input type="checkbox" name="spend">
+          <input type="checkbox" name="spend" {{checked spend}}>
           {{/if}}
         </div>
         <p class="hint">{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Spend.hint"}}</p>
       </div>
       {{/if}}
-
     </fieldset>
     {{/if}}
     {{#if damageOptions}}

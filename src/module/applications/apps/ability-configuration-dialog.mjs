@@ -23,6 +23,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   static PARTS = {
     content: {
       template: systemPath("templates/apps/ability-configuration-dialog.hbs"),
+      root: true,
     },
     footer: super.PARTS.footer,
   };
@@ -137,11 +138,11 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
       context.resource.show = true;
       const coreResource = this.actor.system.coreResource;
 
-      const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
-      context.spendConfig = {
+      const max = foundry.utils.getProperty(coreResource.target, coreResource.path) - coreResource.minimum;
+      if (max) context.spendConfig = {
+        max,
         slider: !this.item.system.spend.value,
         value: this.item.system.spend.value || "",
-        max: current - coreResource.minimum,
         name: coreResource.name,
       };
     }
