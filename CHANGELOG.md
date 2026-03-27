@@ -51,6 +51,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.
 - Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
+- Fixed typo renaming `ProjectModel#milestoneEventsOccured` to `ProjectModel#milestoneEventsOccurred`
 
 ## 0.11.1
 
