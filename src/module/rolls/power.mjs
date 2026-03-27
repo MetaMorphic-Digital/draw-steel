@@ -161,6 +161,8 @@ export default class PowerRoll extends DSRoll {
    * @return {Promise<PowerRollPrompt>} Based on evaluation made can either return an array of power rolls or chat messages.
    */
   static async prompt(options = {}) {
+    foundry.utils.logCompatibilityWarning("PowerRoll.prompt is deprecated without replacement.", { since: "1.0", until: "1.2" });
+
     const type = options.type ?? "test";
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";

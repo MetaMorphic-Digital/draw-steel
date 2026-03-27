@@ -10,8 +10,9 @@ import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
  * @import RegionDocument from "@client/documents/region.mjs";
- * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import DrawSteelTokenDocument from "../../documents/token.mjs";
@@ -418,34 +419,14 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll.
-   * @param {Partial<AbilityUseOptions>} [config={}] Usage Configuration.
-   * @param {object} [dialogOptions={}]              Options to be forwarded to the roll dialog.
-   * @param {object} [messageOptions]                Options to be forwarded to the final created chat message.
+   * @param {Partial<AbilityUseOptions>} [config={}]        Usage Configuration.
+   * @param {ApplicationConfiguration} [dialogOptions={}]   Options to be forwarded to the roll dialog.
+   * @param {DatabaseCreateOperation} [messageOptions]      Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
    * TODO: Add hooks based on discussion with module authors.
    */
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Abilities can only be used while embedded");
-
-    const abilityPartId = "abilityUse".padEnd(16, "0");
-
-    const messageData = foundry.utils.mergeObject({
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      type: "standard",
-      rolls: [],
-      title: this.parent.name,
-      content: this.parent.name,
-      system: {
-        parts: {
-          [abilityPartId]: {
-            _id: abilityPartId,
-            type: "abilityUse",
-            abilityUuid: this.parent.uuid,
-          },
-        },
-      },
-      flags: { core: { canPopout: true } },
-    }, messageOptions.data ?? {});
 
     const coreResource = this.actor.system.coreResource;
 
@@ -489,6 +470,28 @@ export default class AbilityModel extends BaseItemModel {
     const fd = await AbilityConfigurationDialog.create(dialogConfig);
 
     if (!fd) return null;
+
+    const abilityPartId = "abilityUse".padEnd(16, "0");
+
+    const messageData = foundry.utils.mergeObject({
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
+      type: "standard",
+      rolls: [],
+      title: this.parent.name,
+      content: this.parent.name,
+      system: {
+        parts: {
+          [abilityPartId]: {
+            _id: abilityPartId,
+            type: "abilityUse",
+            abilityUuid: this.parent.uuid,
+          },
+        },
+      },
+      flags: { core: { canPopout: true } },
+    }, messageOptions.data ?? {});
+
+    delete messageOptions.data;
 
     DrawSteelChatMessage.applyMode(messageData, fd.messageMode);
 
@@ -550,7 +553,7 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-    return DrawSteelChatMessage.create(messageData);
+    return DrawSteelChatMessage.create(messageData, messageOptions);
   }
 
   /* -------------------------------------------------- */

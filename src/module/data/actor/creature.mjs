@@ -1,7 +1,14 @@
 import BaseActorModel from "./base-actor.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import PowerRoll from "../../rolls/power.mjs";
+import PowerRollDialog from "../../applications/apps/power-roll-dialog.mjs";
 import { setOptions } from "../helpers.mjs";
+
+/**
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types";
+ */
 
 const fields = foundry.data.fields;
 
@@ -102,78 +109,101 @@ export default class CreatureModel extends BaseActorModel {
   /**
    * Perform a power roll using a characteristic.
    * @param {string} characteristic   The characteristic to roll.
-   * @param {object} [options]        Options to modify the characteristic roll.
-   * @param {number} [options.edges]                    Base edges for the roll.
-   * @param {number} [options.banes]                    Base banes for the roll.
-   * @param {number} [options.bonuses]                  Base bonuses for the roll.
-   * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
-   * @param {string} [options.resultSource]             A UUID pointing to an ability or power roll result page.
+   * @param {object} [config]        Options to modify the characteristic roll.
+   * @param {number} [config.edges]                     Base edges for the roll.
+   * @param {number} [config.banes]                     Base banes for the roll.
+   * @param {number} [config.bonuses]                   Base bonuses for the roll.
+   * @param {"easy" | "medium" | "hard"} [config.difficulty] Test difficulty.
+   * @param {string} [config.resultSource]              A UUID pointing to an ability or power roll result page.
+   * @param {ApplicationConfiguration} [dialogOptions]  Options to be forwarded to the roll dialog.
+   * @param {DatabaseCreateOperation} messageOptions    Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
-  async rollCharacteristic(characteristic, options = {}) {
+  async rollCharacteristic(characteristic, config = {}, dialogOptions = {}, messageOptions = {}) {
     const chr = this.characteristics[characteristic];
 
-    options.edges = (options.edges ?? 0) + chr.edges;
-    options.banes = (options.banes ?? 0) + chr.banes;
-
-    const skills = this.skills?.value ?? null;
-    const skillModifiers = this.skills?.modifiers ?? null;
-
-    const evaluation = "evaluate";
+    const testConfig = ds.CONST.testOutcomes[config.difficulty];
     const baseFormula = chr.dice.number > 2 ? `${chr.dice.number}d10${chr.dice.mode}2` : "2d10";
     const formula = `${baseFormula} + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
-    const data = this.parent.getRollData();
+    const rollData = this.parent.getRollData();
     const modifiers = {
-      edges: options.edges,
-      banes: options.banes,
-      bonuses: options.bonuses,
+      edges: (config.edges ?? 0) + chr.edges,
+      banes: (config.banes ?? 0) + chr.banes,
+      bonuses: config.bonuses,
     };
-
-    const doc = await fromUuid(options.resultSource);
-
-    const promptValue = await PowerRoll.prompt({
-      evaluation,
-      formula,
-      data,
-      modifiers,
-      type: "test",
-      actor: this.parent,
-      characteristic,
-      skills,
-      skillModifiers,
-      flavor: doc?.name,
-    });
-
-    if (!promptValue) return null;
-    const { messageMode, rolls, baseRoll } = promptValue;
-
-    const testConfig = ds.CONST.testOutcomes[options.difficulty];
 
     const flavor = _loc("DRAW_STEEL.ROLL.Power.TestDifficulty.label", {
       difficulty: _loc(testConfig?.label) ?? "",
       characteristic: ds.CONFIG.characteristics[characteristic].label,
-    });
+    }).trim();
 
-    const messageData = {
+    this.#applyStatusModifiers(modifiers, { characteristic });
+
+    const dialogConfig = foundry.utils.mergeObject({
+      context: {
+        modifiers,
+        formula: PowerRoll.replaceFormulaData(formula, rollData, { missing: "0" }),
+        skills: this.skills?.value ?? null,
+        skillModifiers: this.skills?.modifiers ?? null,
+      },
+      window: {
+        title: flavor,
+      },
+    }, dialogOptions);
+
+    const fd = await PowerRollDialog.create(dialogConfig);
+
+    if (!fd) return;
+
+    const [rollOptions] = fd.rolls;
+
+    rollOptions.skill = fd.skill;
+
+    rollOptions.flavor = fd.skill ? `${flavor} — ${ds.CONFIG.skills.list[fd.skill]?.label ?? fd.skill}` : flavor;
+
+    const roll = new PowerRoll(formula, rollData, rollOptions);
+    await roll.evaluate();
+
+    const testPartId = "test".padEnd(16, "0");
+
+    const messageData = foundry.utils.mergeObject({
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       title: flavor,
-      rolls: [baseRoll],
+      rolls: [roll],
       system: {
-        parts: [],
+        parts: {
+          [testPartId]: {
+            flavor,
+            _id: testPartId,
+            type: "test",
+            rolls: [roll],
+            resultSource: config.resultSource,
+          },
+        },
       },
       sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
-    };
+    }, messageOptions.data ?? {});
 
-    const testPart = { type: "test", flavor, rolls };
+    delete messageOptions.data;
 
-    if (doc) testPart.resultSource = options.resultSource;
-
-    messageData.system.parts.push(testPart);
-
-    DrawSteelChatMessage.applyMode(messageData, messageMode);
-    return DrawSteelChatMessage.create(messageData);
+    DrawSteelChatMessage.applyMode(messageData, fd.messageMode);
+    return DrawSteelChatMessage.create(messageData, messageOptions);
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Adjust the modifiers object for a test based on the actor's statuses.
+   * @param {PowerRollModifiers} modifiers
+   * @param {object} [options={}]
+   * @param {string} [options.characteristic]
+   */
+  #applyStatusModifiers(modifiers, options = {}) {
+    if (this.parent.statuses.has("weakened")) modifiers.banes += 1;
+
+    // Restrained condition - might and agility tests take a bane
+    if (this.parent.statuses.has("restrained") && ["might", "agility"].includes(options.characteristic)) modifiers.banes += 1;
+  }
 }

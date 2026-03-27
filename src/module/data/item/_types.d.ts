@@ -83,8 +83,8 @@ declare module "./ability.mjs" {
   }
 
   export interface AbilityUseOptions {
-    event: UIEvent,
-    modifiers: PowerRollModifiers
+    event: UIEvent;
+    modifiers: PowerRollModifiers;
   }
 }
 
