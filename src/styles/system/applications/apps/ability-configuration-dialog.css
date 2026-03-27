@@ -1,0 +1,18 @@
+.draw-steel.ability-configuration-dialog {
+  &.two-column {
+    [data-application-part="content"] {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin: 0;
+      gap: 0.5rem;
+      .roll-config {
+        flex: 1;
+      }
+      .ability-config {
+        flex: 1;
+      }
+    }
+  }
+}

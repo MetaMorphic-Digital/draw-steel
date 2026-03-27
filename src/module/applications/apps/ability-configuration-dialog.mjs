@@ -5,6 +5,7 @@ import { systemPath } from "../../constants.mjs";
 /**
  * @import AbilityModel from "../../data/item/ability.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import DrawSteelToken  from "../../canvas/placeables/token.mjs"
  */
 
 /**
@@ -19,29 +20,9 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static TABS = {
-    primary: {
-      tabs: [
-        { id: "roll" },
-        { id: "ability" },
-      ],
-      labelPrefix: "DRAW_STEEL.Item.ability.ConfigureUse.Tabs",
-    },
-  };
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   static PARTS = {
-    tabs: {
-      // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    roll: {
-      template: systemPath("templates/apps/ability-configuration-dialog/roll.hbs"),
-    },
-    ability: {
-      template: systemPath("templates/apps/ability-configuration-dialog/ability.hbs"),
+    content: {
+      template: systemPath("templates/apps/ability-configuration-dialog.hbs"),
     },
     footer: super.PARTS.footer,
   };
@@ -77,24 +58,16 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _configureRenderParts(options) {
-    const { tabs, roll, ability, footer } = super._configureRenderParts(options);
+  _initializeApplicationOptions(options) {
+    const initializedOptions = super._initializeApplicationOptions(options);
 
-    if (this.item.system.power.roll.enabled) return { tabs, roll, ability, footer };
-    else return { ability, footer };
-  }
+    // Two column layout if width > 700
+    if (initializedOptions.ability.system.power.roll.enabled && (initializedOptions.context.targets?.length > 2)) {
+      initializedOptions.position.width = 700;
+      initializedOptions.classes.push("two-column");
+    }
 
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _prepareContext(options) {
-    const context = await super._prepareContext(options);
-
-    this.tabGroups.primary ??= this.item.system.power.roll.enabled ? "roll" : "ability";
-
-    context.tabs = this._prepareTabs("primary");
-
-    return context;
+    return initializedOptions;
   }
 
   /* -------------------------------------------------- */
@@ -104,11 +77,12 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     context = await super._preparePartContext(partId, context, options);
 
     switch (partId) {
-      case "roll":
+      case "content":
         if (context.targets) await this._prepareTargets(context);
-        break;
-      case "ability":
         await this._prepareAbilityContext(context);
+        break;
+      case "footer":
+        if (!this.item.system.power.roll.enabled) context.buttonLabel = _loc("DRAW_STEEL.Item.ability.ConfigureUse.UseButton");
         break;
     }
 
@@ -156,8 +130,11 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
       break;
     }
 
+    context.resource.show = this.item.system.resource;
+
     // Heroic resource/malice spend
     if (this.item.system.spend.value || this.item.system.spend.text) {
+      context.resource.show = true;
       const coreResource = this.actor.system.coreResource;
 
       const current = foundry.utils.getProperty(coreResource.target, coreResource.path);

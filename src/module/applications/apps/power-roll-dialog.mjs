@@ -2,8 +2,6 @@ import PowerRoll from "../../rolls/power.mjs";
 import RollDialog from "../api/roll-dialog.mjs";
 import { systemPath } from "../../constants.mjs";
 
-/** @import DrawSteelToken  from "../../canvas/placeables/token.mjs" */
-
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
@@ -52,21 +50,11 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _prepareContext(options) {
-    const context = await super._prepareContext(options);
-    context.modChoices = PowerRollDialog.#modChoices;
-
-    return context;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
 
     if (partId === "content") {
-
+      context.modChoices = PowerRollDialog.#modChoices;
       if (context.skills?.size > 0) this._prepareSkillOptions(context);
     }
 

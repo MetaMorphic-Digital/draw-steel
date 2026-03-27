@@ -1,11 +1,16 @@
 .draw-steel.power-roll-dialog {
   .group {
+    &.global:has(+ .target) {
+      padding-bottom: 1rem;
+    }
     .header {
       text-align: center;
       font-weight: bold;
       margin-bottom: 5px;
       font-size: var(--font-size-16);
     }
+    label.edges-banes {
+      flex: 0 0 75px;
+    }
   }
-
 }

@@ -49,7 +49,10 @@ export default class RollDialog extends DSApplication {
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
 
-    if (partId === "footer") context.messageModes = CONFIG.ChatMessage.modes;
+    if (partId === "footer") {
+      context.buttonLabel = _loc("DRAW_STEEL.ROLL.Button");
+      context.messageModes = CONFIG.ChatMessage.modes;
+    }
 
     return context;
   }
