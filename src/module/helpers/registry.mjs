@@ -1,7 +1,7 @@
 import DrawSteelItem from "../documents/item.mjs";
 
 /**
- * @import { RegistryEntry } from "./_types";
+ * @import { AbilityRegistryEntry, RegistryEntry } from "./_types";
  */
 
 /**
@@ -11,6 +11,7 @@ import DrawSteelItem from "../documents/item.mjs";
 export default class DrawSteelRegistry {
   constructor() {
     Object.defineProperties(this, {
+      abilities: { value: new foundry.utils.Collection(), writable: false, configurable: false },
       class: { value: new DSRegistryCollection(), writable: false, configurable: false },
       subclass: { value: new DSRegistryCollection(), writable: false, configurable: false },
       perk: { value: new DSRegistryCollection(), writable: false, configurable: false },
@@ -35,7 +36,7 @@ export default class DrawSteelRegistry {
       return typeMap[a.metadata.packageType] - typeMap[b.metadata.packageType];
     });
 
-    const registryTypes = new Set(["class", "subclass", "perk", "kit"]);
+    const registryTypes = new Set(["ability", "class", "subclass", "perk", "kit"]);
 
     for (const pack of itemPacks) {
       // Need to re-call `getIndex` for `system._dsid` to be populated
@@ -60,12 +61,26 @@ export default class DrawSteelRegistry {
         };
 
         switch (idx.type) {
+          case "ability":
+            if (idx.system.prerequisites?.dsid?.length) this.#registerAbility(idx, registryEntry);
+            break;
           case "class":
             registryEntry.primary = idx.system.primary;
+            Object.defineProperties(registryEntry, {
+              abilities: {
+                get: () => this.abilities.get(dsid),
+              },
+              subclasses: {
+                get: () => this.subclass.filter(e => e.classLink === dsid),
+              },
+            });
             this.class.set(key, registryEntry);
             break;
           case "subclass":
             registryEntry.classLink = idx.system.classLink;
+            Object.defineProperty(registryEntry, "abilities", {
+              get: () => this.abilities.get(dsid),
+            });
             this.subclass.set(key, registryEntry);
             break;
           case "perk":
@@ -83,6 +98,30 @@ export default class DrawSteelRegistry {
   }
 
   /* -------------------------------------------------- */
+
+  /**
+   * Handle registering an ability. Only register abilities that have associated classes or subclasses.
+   * @param {object} index
+   */
+  #registerAbility(index) {
+    // This will be length 1 for all known classes and subclasses
+    for (const dsid of index.system.prerequisites.dsid) {
+      let entry = this.abilities.get(dsid);
+      if (!entry) {
+        entry = {
+          key: dsid,
+          signature: new Set(),
+          heroic3: new Set(),
+          heroic5: new Set(),
+          heroic7: new Set(),
+          heroic9: new Set(),
+          heroic11: new Set(),
+        };
+        this.abilities.set(dsid, entry);
+      }
+      index.system.resource ? entry[`heroic${index.system.resource}`]?.add(index.uuid) : entry.signature.add(index.uuid);
+    }
+  }
 
   /**
    * Called once in `ready` after migrations.
@@ -130,6 +169,12 @@ export default class DrawSteelRegistry {
 
   /**
    * A registry of classes mapping DSID to registry entries.
+   * @type {DSAbilityRegistry}
+   */
+  abilities;
+
+  /**
+   * A registry of classes mapping DSID to registry entries.
    * @type {DSRegistryCollection}
    */
   class;
@@ -157,6 +202,22 @@ export default class DrawSteelRegistry {
    * @type {DSRegistryCollection}
    */
   kit;
+
+  /* -------------------------------------------------- */
+  /*  Methods                                           */
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetch all entry info for a given class.
+   * @param {string} dsid
+   * @returns {{ entry: RegistryEntry, subclasses: RegistryEntry[] }}
+   */
+  getClassInfo(dsid) {
+    const entry = this.class.filter(e => e.dsid === dsid);
+    const subclasses = this.subclass.filter(e => e.classLink === dsid);
+
+    return { entry, subclasses };
+  }
 }
 
 /* -------------------------------------------------- */
@@ -166,3 +227,9 @@ export default class DrawSteelRegistry {
  * @extends {foundry.utils.Collection<string, RegistryEntry>}
  */
 class DSRegistryCollection extends foundry.utils.Collection {}
+
+/**
+ * A collection subclass for the registries. The keys are expected to be the DSID of registry entries.
+ * @extends {foundry.utils.Collection<string, AbilityRegistryEntry>}
+ */
+class DSAbilityRegistry extends foundry.utils.Collection {}

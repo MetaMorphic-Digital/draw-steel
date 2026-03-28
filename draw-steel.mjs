@@ -64,7 +64,14 @@ Hooks.once("init", function () {
   }
 
   // Indexing DSID, class primary name, subclass associated classes, and perk types
-  CONFIG.Item.compendiumIndexFields.push("system._dsid", "system.primary", "system.classLink", "system.perkType");
+  CONFIG.Item.compendiumIndexFields.push(
+    "system._dsid",
+    "system.primary",
+    "system.classLink",
+    "system.perkType",
+    "system.prerequisites",
+    "system.resource",
+  );
   // Need to be able to find "configuration" type pages
   CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
 
