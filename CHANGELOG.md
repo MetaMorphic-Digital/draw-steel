@@ -45,6 +45,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 ### Removed
 
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
+- Document helper sheets (like monster metadata inputs) no longer show the "import" button in the header. (#1584)
 - Removed `ds.canvas.placeables.tokens.TokenPlacement` in favor of delegating to `canvas.tokens.placeTokens`. (#1742)
 
 ### Fixed
