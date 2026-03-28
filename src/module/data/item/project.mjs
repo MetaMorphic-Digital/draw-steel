@@ -340,7 +340,9 @@ export default class ProjectModel extends BaseItemModel {
       await this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
-    ui.notifications.success("DRAW_STEEL.Item.project.Craft.CompletedNotification", {
+    const labelSuffix = game.i18n.pluralRules.select(amount);
+
+    ui.notifications.success(`DRAW_STEEL.Item.project.Craft.CompletedNotification.${labelSuffix}`, {
       format: {
         actor: this.actor.name,
         amount,

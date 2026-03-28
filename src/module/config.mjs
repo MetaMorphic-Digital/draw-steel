@@ -1584,7 +1584,7 @@ const abilityDistances = {
  * @typedef AbilityTarget
  * @property {string} label
  * @property {string} [all]       I18n key for an ability that targets everything within an area.
- * @property {string} embedLabel  Format string for display in the ability embed.
+ * @property {string} embedLabel  Format string for display in the ability embed. Can point to a plural object @see Intl.PluralRules.
  * @property {Reference} [reference] An optional UUID with a description of the ability targets.
  */
 

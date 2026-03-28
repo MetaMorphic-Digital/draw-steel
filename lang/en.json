@@ -915,7 +915,14 @@
       },
       "DefeatedMinionSelection": {
         "Title": "Defeated Minion Selection",
-        "Header": "Choose {number} minion(s) to mark as defeated"
+        "Header":  {
+          "zero": "Choose {number} minions to mark as defeated",
+          "one": "Choose {number} minion to mark as defeated",
+          "two": "Choose {number} minions to mark as defeated",
+          "few": "Choose {number} minions to mark as defeated",
+          "many": "Choose {number} minions to mark as defeated",
+          "other": "Choose {number} minions to mark as defeated"
+        }
       }
     },
     "Combatant": {
@@ -1168,29 +1175,78 @@
         "Target": {
           "All": "All",
           "Creature": "Creature",
-          "CreatureEmbed": "{value} creature(s)",
+          "CreatureEmbed": {
+            "zero": "{value} creatures",
+            "one": "{value} creature",
+            "two": "{value} creatures",
+            "few": "{value} creatures",
+            "many": "{value} creatures",
+            "other": "{value} creatures"
+          },
           "AllCreatures": "Each creature",
           "Object": "Object",
-          "ObjectEmbed": "{value} object(s)",
+          "ObjectEmbed": {
+            "zero": "{value} objects",
+            "one": "{value} object",
+            "two": "{value} objects",
+            "few": "{value} objects",
+            "many": "{value} objects",
+            "other": "{value} objects"
+          },
           "AllObjects": "Each object",
           "CreatureObject": "Creature or Object",
-          "CreatureObjectEmbed": "{value} creature(s) or object(s)",
+          "CreatureObjectEmbed": {
+            "zero": "{value} creatures or objects",
+            "one": "{value} creature or object",
+            "two": "{value} creatures or objects",
+            "few": "{value} creatures or objects",
+            "many": "{value} creatures or objects",
+            "other": "{value} creatures or objects"
+          },
           "AllCreatureObject": "Each creature and object",
           "Enemy": "Enemy",
-          "EnemyEmbed": "{value} enemies",
+          "EnemyEmbed": {
+            "zero": "{value} enemies",
+            "one": "{value} enemy",
+            "two": "{value} enemies",
+            "few": "{value} enemies",
+            "many": "{value} enemies",
+            "other": "{value} enemies"
+          },
           "EnemyObject": "Enemy or Object",
           "AllEnemyObject": "Each enemy or object",
-          "EnemyObjectEmbed": "{value} enemies or object(s)",
+          "EnemyObjectEmbed": {
+            "zero": "{value} enemies or objects",
+            "one": "{value} enemy or object",
+            "two": "{value} enemies or objects",
+            "few": "{value} enemies or objects",
+            "many": "{value} enemies or objects",
+            "other": "{value} enemies or objects"
+          },
           "AllEnemies": "Each enemy",
           "Ally": "Ally",
-          "AllyEmbed": "{value} allies",
+          "AllyEmbed": {
+            "zero": "{value} allies",
+            "one": "{value} ally",
+            "two": "{value} allies",
+            "few": "{value} allies",
+            "many": "{value} allies",
+            "other": "{value} allies"
+          },
           "AllAllies": "Each ally",
           "Self": "Self",
           "SelfOrAlly": "Self or one ally",
           "SelfOrCreature": "Self or one creature",
           "SelfAlly": "Self and allies",
           "AllSelfAllies": "Self and each ally",
-          "SelfAllyEmbed": "Self and {value} allies",
+          "SelfAllyEmbed": {
+            "zero": "Self and {value} allies",
+            "one": "Self and {value} ally",
+            "two": "Self and {value} allies",
+            "few": "Self and {value} allies",
+            "many": "Self and {value} allies",
+            "other": "Self and {value} allies"
+          },
           "Special": "Special"
         },
         "DamageFlavor": "{type} Damage",
@@ -1593,7 +1649,14 @@
         "CompletedNotification": "{actor} has achieved enough project points to complete the {project} project.",
         "Craft": {
           "ItemName": "Craft {name}",
-          "CompletedNotification": "{actor} successfully crafted {amount} {item}(s).",
+          "CompletedNotification": {
+            "zero": "{actor} successfully crafted {amount} {item}s.",
+            "one": "{actor} successfully crafted {amount} {item}.",
+            "two": "{actor} successfully crafted {amount} {item}s.",
+            "few": "{actor} successfully crafted {amount} {item}s.",
+            "many": "{actor} successfully crafted {amount} {item}s.",
+            "other": "{actor} successfully crafted {amount} {item}s."
+          },
           "FromTreasure": {
             "Label": "Start Crafting Project",
             "Notification": "Started crafting project for {item}."
@@ -1957,7 +2020,14 @@
         "WarnDirectorBadSpend": "{name} attempted to spend a hero token while none were available.",
         "SpendToken": "Spend Token",
         "GiveToken": "Give Token",
-        "GrantedTokens": "The heroes gain {count} hero token(s).",
+        "GrantedTokens": {
+          "zero": "The heroes gain {count} hero tokens.",
+          "one": "The heroes gain {count} hero token.",
+          "two": "The heroes gain {count} hero tokens.",
+          "few": "The heroes gain {count} hero tokens.",
+          "many": "The heroes gain {count} hero tokens.",
+          "other": "The heroes gain {count} hero tokens."
+        },
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
         "UnknownType": "Unknown hero token spend type.",

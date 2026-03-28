@@ -53,12 +53,6 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
 
   /* -------------------------------------------------- */
 
-  /** The i18n plural rules to apply.
-   * @type {Intl.PluralRules | null} */
-  static pluralRules = null;
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
@@ -78,11 +72,9 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
    * @returns {string}    The default value.
    */
   #getResourceKey(n) {
-    this.constructor.pluralRules ||= new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
-
     const tierAmount = this.resource[`tier${n}`].amount;
     const resourceType = this.resource[`tier${n}`].type;
-    const labelKey = this.constructor.pluralRules.select(tierAmount) === "one" ? "label" : "plural";
+    const labelKey = game.i18n.pluralRules.select(tierAmount) === "one" ? "label" : "plural";
 
     return this.constructor.resourceTypes[resourceType][labelKey];
   }
