@@ -48,6 +48,16 @@ export default class FormulaField extends foundry.data.fields.StringField {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  _applyChangeSubtract(value, delta, model, change) {
+    const operator = delta.startsWith("-") ? "+" : "-";
+    delta = delta.replace(/^[+-]/, "").trim();
+    if (!value) return (operator === "-") ? `-${delta}` : delta;
+    return `${value} ${operator} ${delta}`;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _applyChangeMultiply(value, delta, model, change) {
     if (!value) return delta;
     const terms = new foundry.dice.Roll(value).terms;
@@ -75,7 +85,9 @@ export default class FormulaField extends foundry.data.fields.StringField {
     return `min(${value}, ${delta})`;
   }
 
-  /** @override*/
+  /* -------------------------------------------------- */
+
+  /** @override */
   _toInput(config) {
     config.value ??= this.getInitialValue({}) ?? "";
     return foundry.applications.elements.HTMLFormulaInputElement.create(config);
