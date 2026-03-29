@@ -87,7 +87,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _toInput(config) {
     config.value ??= this.getInitialValue({}) ?? "";
     return foundry.applications.elements.HTMLFormulaInputElement.create(config);

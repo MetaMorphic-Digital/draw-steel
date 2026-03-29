@@ -2607,6 +2607,9 @@ export const formulaEditorContexts = {
     level: {
       label: "DRAW_STEEL.FormulaEditor.Level",
     },
+    echelon: {
+      label: "DRAW_STEEL.FormulaEditor.Echelon",
+    },
     "potency.weak": {
       label: "DRAW_STEEL.FormulaEditor.Potency.Weak",
     },
