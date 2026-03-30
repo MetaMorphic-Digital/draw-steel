@@ -35,9 +35,14 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Changed
 
-- Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
+- ActiveEffect changes for v14
+  - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
+  - Refactored CONFIG.statusEffects usage from array to record. (#1166)
+- Implemented field placeholders where possible. (#1326)
 - Compendium abilities now use the name of the associated class's heroic resource instead of a generic "Heroic Resource" if possible. (#1419)
+- Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Migrated roll modes to the new core message modes. (#1681)
+- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 
 ### Deprecated
 
@@ -46,6 +51,8 @@ This version of the system does not support v13, it is exclusively for Foundry v
 ### Removed
 
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
+- Removed various Active Effect methods overrides that are no longer necessary with core v14 improvements. (#1417)
+- Document helper sheets (like monster metadata inputs) no longer show the "import" button in the header. (#1584)
 - Removed `ds.canvas.placeables.tokens.TokenPlacement` in favor of delegating to `canvas.tokens.placeTokens`. (#1742)
 
 ### Fixed

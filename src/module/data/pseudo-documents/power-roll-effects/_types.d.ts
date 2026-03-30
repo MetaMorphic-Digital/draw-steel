@@ -17,6 +17,10 @@ declare module "./damage-effect.mjs" {
       tier1: DamageSchema;
       tier2: DamageSchema;
       tier3: DamageSchema;
+      bonuses: {
+        value: number;
+        treasure: number;
+      }
     }
   }
 }
@@ -72,6 +76,11 @@ declare module "./forced-movement-effect.mjs" {
       tier1: ForcedMovementSchema;
       tier2: ForcedMovementSchema;
       tier3: ForcedMovementSchema;
+      bonuses: {
+        push: number;
+        pull: number;
+        slide: number;
+      }
     }
   }
 }

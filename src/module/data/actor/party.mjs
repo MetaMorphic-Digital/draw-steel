@@ -79,6 +79,7 @@ export default class PartyModel extends DrawSteelSystemModel {
   prepareBaseData() {
     super.prepareBaseData();
 
+    // TODO: Consider making a bespoke field to handle this initialization transformation
     Object.defineProperty(this, "members", {
       enumerable: true,
       get() {

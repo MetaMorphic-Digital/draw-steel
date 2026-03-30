@@ -212,7 +212,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       // reusing the ID will block creation if it's already on the actor
       const existing = actor.effects.get(tempEffect.id);
       // deleting instead of updating because there may be variances between the old copy and new
-      if (existing?.disabled) await existing.delete();
+      if (existing?.disabled || existing?.duration.expired) await existing.delete();
       // not awaited to allow parallel processing
       actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
     }
