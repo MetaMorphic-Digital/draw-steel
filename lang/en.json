@@ -100,7 +100,8 @@
         "FIELDS": {
           "chooseN": {
             "label": "Choice",
-            "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+            "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted.",
+            "placeholder": "Choose All"
           },
           "additional": {
             "type": {
@@ -124,7 +125,8 @@
         "FIELDS": {
           "chooseN": {
             "label": "Choice",
-            "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted."
+            "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted.",
+            "placeholder": "Choose All"
           },
           "any": {
             "label": "Pick Any",
@@ -153,7 +155,6 @@
       "SHEET": {
         "requirements": "Requirements",
         "additional": "Additional",
-        "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
         "reconfigure": "Reconfigure Advancement",
         "warnDrop": "{itemType} items do not support {advancementType} advancements."
@@ -1044,7 +1045,8 @@
               "label": "Custom Label"
             },
             "value": {
-              "label": "Value"
+              "label": "Value",
+              "placeholder": "All"
             }
           },
           "power": {
@@ -1166,7 +1168,6 @@
           "Wall": "{primary} wall within {secondary}"
         },
         "Target": {
-          "All": "All",
           "Creature": "Creature",
           "CreatureEmbed": "{value} creature(s)",
           "AllCreatures": "Each creature",

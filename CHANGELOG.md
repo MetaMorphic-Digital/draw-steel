@@ -36,6 +36,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 ### Changed
 
 - Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
+- Implemented field placeholders where possible. (#1326)
 - Migrated roll modes to the new core message modes. (#1681)
 
 ### Deprecated
