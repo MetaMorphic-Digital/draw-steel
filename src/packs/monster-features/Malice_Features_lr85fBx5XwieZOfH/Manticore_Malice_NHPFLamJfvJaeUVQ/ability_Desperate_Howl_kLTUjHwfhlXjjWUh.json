@@ -81,7 +81,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -90,7 +89,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -104,12 +103,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.0.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1774890073124
       },
       "_id": "z433dsU2sYhlYYI5",
       "showIcon": 2,
@@ -125,7 +124,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "turn",
           "roll": ""
         },
         "changes": []
@@ -134,7 +132,7 @@
       "duration": {
         "value": 1,
         "units": "rounds",
-        "expiry": null,
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "",
@@ -148,12 +146,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.0.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1774890073124
       },
       "_id": "vk2a7PnHDj4049QY",
       "showIcon": 2,

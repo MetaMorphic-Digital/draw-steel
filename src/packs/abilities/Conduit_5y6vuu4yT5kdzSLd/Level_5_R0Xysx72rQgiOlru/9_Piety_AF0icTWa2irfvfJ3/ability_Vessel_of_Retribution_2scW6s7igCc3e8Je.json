@@ -60,7 +60,6 @@
       "_id": "Uc05Rj0NhhletAjB",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -69,7 +68,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "<p>The first time the target is dying or winded before the end of the encounter, each enemy within 5 squares of them takes [[/damage 15 holy]].</p>",
@@ -81,9 +80,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760687117704,
         "modifiedTime": null,
         "lastModifiedBy": null

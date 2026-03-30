@@ -86,7 +86,6 @@
       "_id": "34o9p6INyWzWvwiN",
       "system": {
         "end": {
-          "type": "turn",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -94,7 +93,8 @@
             "key": "system.damage.weaknesses.all",
             "value": 5,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -102,7 +102,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "",
@@ -114,9 +114,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761072481922,
         "modifiedTime": null,
         "lastModifiedBy": null

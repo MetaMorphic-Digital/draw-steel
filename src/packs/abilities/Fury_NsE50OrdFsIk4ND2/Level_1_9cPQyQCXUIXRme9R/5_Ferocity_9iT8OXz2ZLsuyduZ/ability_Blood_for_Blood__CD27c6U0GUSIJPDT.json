@@ -96,7 +96,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -105,7 +104,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "<p>@Embed[Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.YzgERGFhFphgpjKQ inline]</p><p>@Embed[Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.QZpLhRT6imKlqZ1n inline]</p>",
@@ -120,9 +119,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1755646165971,
         "modifiedTime": null,
         "lastModifiedBy": null
