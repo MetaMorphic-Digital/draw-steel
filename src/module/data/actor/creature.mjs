@@ -1,8 +1,8 @@
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base-actor.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 import PowerRollDialog from "../../applications/apps/power-roll-dialog.mjs";
-import { setOptions } from "../helpers.mjs";
 
 /**
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
@@ -25,16 +25,30 @@ export default class CreatureModel extends BaseActorModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    const characteristic = { initial: 0, integer: true, nullable: false };
+    const characteristic = { initial: 0, integer: true, nullable: false, placeholder: "0" };
 
     schema.characteristics = new fields.SchemaField(
       Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {
         obj[chc] = new fields.SchemaField({
           value: new fields.NumberField({ ...characteristic, label, hint }),
+          edges: requiredInteger({ min: null, persisted: false }),
+          banes: requiredInteger({ min: null, persisted: false }),
+          dice: new fields.SchemaField({
+            mode: new fields.StringField({ choices: "kh" }),
+            number: requiredInteger({ initial: 2 }),
+            faces: requiredInteger({ initial: 10 }),
+          }, { persisted: false }),
         });
         return obj;
       }, {}),
     );
+
+    schema.potency = new fields.SchemaField({
+      bonuses: requiredInteger({ min: null }),
+      weak: requiredInteger({ min: null }),
+      average: requiredInteger({ min: null }),
+      strong: requiredInteger({ min: null }),
+    }, { persisted: false });
 
     return schema;
   }
@@ -48,32 +62,6 @@ export default class CreatureModel extends BaseActorModel {
     bio.languages = new fields.SetField(setOptions());
 
     return bio;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    this.potency = {
-      bonuses: 0,
-      weak: 0,
-      average: 0,
-      strong: 0,
-    };
-
-    Object.values(this.characteristics).forEach((chr) => {
-      Object.assign(chr, {
-        edges: 0,
-        banes: 0,
-        dice: {
-          mode: "kh",
-          number: 2,
-          faces: 10,
-        },
-      });
-    });
   }
 
   /* -------------------------------------------------- */
