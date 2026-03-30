@@ -119,7 +119,7 @@ export default class PartyModel extends DrawSteelSystemModel {
       return acc;
     }, {});
     ids.forEach(id => update[id] = {});
-    await this.parent.update({ "system.==members": update });
+    await this.parent.update({ "system.members": _replace(update) });
     return this.parent;
   }
 
@@ -134,7 +134,7 @@ export default class PartyModel extends DrawSteelSystemModel {
     const update = {};
     const members = this.members;
     actors.forEach(actor => {
-      if (members.has(actor.id)) update[`-=${actor.id}`] = null;
+      if (members.has(actor.id)) update[actor.id] = _del;
     });
     await this.parent.update({ "system.members": update });
     return this.parent;
@@ -147,8 +147,14 @@ export default class PartyModel extends DrawSteelSystemModel {
    * @returns {Promise<DrawSteelTokenDocument[]>}    A promise that resolves to the created tokens.
    */
   async placeMembers() {
-    const config = { tokens: this.members.map(m => m.actor.prototypeToken) };
-    const data = await ds.canvas.placeables.tokens.TokenPlacement.place(config);
-    return ds.canvas.placeables.tokens.TokenPlacement.createTokens(data);
+    if (!canvas?.scene) {
+      const msg = _loc("DRAW_STEEL.Actor.party.NoScene");
+      ui.notifications.error(msg, { console: false });
+      throw new Error(msg);
+    }
+
+    const tokenPromises = this.members.map(m => m.actor.getTokenDocument({}, { parent: canvas.scene }));
+    const createData = await Promise.all(tokenPromises);
+    return canvas.tokens.placeTokens(createData.map(t => t.toObject()));
   }
 }

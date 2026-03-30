@@ -30,7 +30,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Because these actions are all hard private, the best place to access them is via static DEFAULT_OPTIONS
       ...sheets.ActorSheet.DEFAULT_OPTIONS.actions,
       toggleStatus: this.#toggleStatus,
-      toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
       editCombat: this.#editCombat,
       useAbility: this.#useAbility,
@@ -39,28 +38,28 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       controls: [
         {
           action: "configureToken",
-          icon: "fa-regular fa-fw fa-circle-user",
+          icon: "fa-regular fa-circle-user",
           label: "DOCUMENT.Token",
           visible: this.#canConfigureToken,
           ownership: "OWNER",
         },
         {
           action: "configurePrototypeToken",
-          icon: "fa-solid fa-fw fa-circle-user",
+          icon: "fa-solid fa-circle-user",
           label: "TOKEN.TitlePrototype",
           visible: this.#canConfigurePrototype,
           ownership: "OWNER",
         },
         {
           action: "showPortraitArtwork",
-          icon: "fa-solid fa-fw fa-image",
+          icon: "fa-solid fa-image",
           label: "SIDEBAR.CharArt",
           visible: this.#canViewCharacterArt,
           ownership: "OWNER",
         },
         {
           action: "showTokenArtwork",
-          icon: "fa-solid fa-fw fa-image",
+          icon: "fa-solid fa-image",
           label: "SIDEBAR.TokenArt",
           visible: this.#canViewTokenArt,
           ownership: "OWNER",
@@ -522,14 +521,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     // Iterate over active effects, classifying them into categories
     const applicableEffects = [...this.actor.allApplicableEffects()].sort((a, b) => a.sort - b.sort);
     for (const e of applicableEffects) {
+      const durationLabel = e.duration.expired ?
+        _loc("DRAW_STEEL.ActiveEffect.Expired") :
+        _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration.label;
       const effectContext = {
+        durationLabel,
         id: e.id,
         uuid: e.uuid,
         name: e.name,
         img: e.img,
         parent: e.parent,
         sourceName: e.sourceName,
-        duration: e.duration,
         disabled: e.disabled,
         expanded: false,
       };
@@ -595,7 +597,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Kit specific options
       {
         label: "DRAW_STEEL.Item.kit.PreferredKit.MakePreferred",
-        icon: "fa-solid fa-fw fa-star",
+        icon: "fa-solid fa-star",
         visible: (target) => this._getEmbeddedDocument(target)?.type === "kit",
         onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
@@ -606,7 +608,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Equipment specific options
       {
         label: "DRAW_STEEL.Item.project.Craft.FromTreasure.Label",
-        icon: "fa-solid fa-fw fa-hammer",
+        icon: "fa-solid fa-hammer",
         visible: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
         onClick: async (event, target) => {
           const item = this._getEmbeddedDocument(target);
@@ -617,7 +619,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Project specific options
       {
         label: "DRAW_STEEL.Item.project.SpendCareerPoints.Title",
-        icon: "fa-solid fa-fw fa-hammer",
+        icon: "fa-solid fa-hammer",
         visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           if (item.type !== "project") return false;
@@ -635,7 +637,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.Item.project.Events.DrawEvent",
-        icon: "fa-solid fa-fw fa-table-list",
+        icon: "fa-solid fa-table-list",
         visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           return item.type === "project";
@@ -648,7 +650,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       //Ability specific options
       {
         label: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
-        icon: "fa-solid fa-fw fa-sword",
+        icon: "fa-solid fa-sword",
         visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "ranged");
@@ -660,7 +662,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.Item.ability.SwapUsage.ToRanged",
-        icon: "fa-solid fa-fw fa-bow-arrow",
+        icon: "fa-solid fa-bow-arrow",
         visible: (target) => {
           const item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "melee");
@@ -673,10 +675,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // Active Effect options
       {
         label: "DRAW_STEEL.ActiveEffect.RollSave",
-        icon: "fa-solid fa-fw fa-dice-d10",
+        icon: "fa-solid fa-dice-d10",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
-          return (effect.documentName === "ActiveEffect") && (effect.system.end?.type === "save");
+          return (effect.documentName === "ActiveEffect") && (effect.duration.expiry === "save");
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
@@ -685,23 +687,24 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "fa-solid fa-fw fa-check",
+        icon: "fa-solid fa-check",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return (effect.documentName === "ActiveEffect") && !effect.active;
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
-          const updateData = DrawSteelActiveEffect.getInitialDuration();
 
-          updateData.disabled = false;
-
-          await effect.update(updateData);
+          await effect.update({
+            disabled: false,
+            start: DrawSteelActiveEffect.getEffectStart(),
+            "duration.expired": false,
+          });
         },
       },
       {
         label: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "fa-solid fa-fw fa-times",
+        icon: "fa-solid fa-times",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return (effect.documentName === "ActiveEffect") && effect.active;
@@ -714,7 +717,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // All applicable options
       {
         label: "DRAW_STEEL.SHEET.View",
-        icon: "fa-solid fa-fw fa-eye",
+        icon: "fa-solid fa-eye",
         visible: () => this.isPlayMode,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
@@ -723,7 +726,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.Edit",
-        icon: "fa-solid fa-fw fa-edit",
+        icon: "fa-solid fa-edit",
         visible: () => this.isEditMode,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
@@ -732,7 +735,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.Share",
-        icon: "fa-solid fa-fw fa-share-from-square",
+        icon: "fa-solid fa-share-from-square",
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
@@ -747,7 +750,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.Delete",
-        icon: "fa-solid fa-fw fa-trash",
+        icon: "fa-solid fa-trash",
         visible: () => this.actor.isOwner,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
@@ -768,7 +771,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     return [
       {
         label: _loc("DOCUMENT.Create", { type: _loc("DOCUMENT.ActiveEffect") }),
-        icon: `${CONFIG.ActiveEffect.typeIcons.base} fa-fw`,
+        icon: CONFIG.ActiveEffect.typeIcons.base,
         visible: () => this.isEditable,
         onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
@@ -788,7 +791,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       },
       {
         label: _loc("DOCUMENT.Create", { type: _loc("TYPES.ActiveEffect.abilityModifier") }),
-        icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
+        icon: CONFIG.ActiveEffect.typeIcons.abilityModifier,
         visible: () => this.isEditable,
         onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
@@ -879,20 +882,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
     await this.actor.toggleStatusEffect(status);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Toggles an active effect from disabled to enabled.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #toggleEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.update({ disabled: !effect.disabled });
   }
 
   /* -------------------------------------------------- */

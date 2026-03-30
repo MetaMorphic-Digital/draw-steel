@@ -10,29 +10,35 @@ import * as rolls from "./src/module/rolls/_module.mjs";
 import * as utils from "./src/module/utils/_module.mjs";
 
 globalThis.ds = {
+  applications,
   canvas,
   compatibility,
+  data,
   documents,
-  applications,
   helpers,
   rolls,
-  data,
   utils,
-  CONST: DS_CONST,
   CONFIG: DS_CONFIG,
+  CONST: DS_CONST,
   registry: new helpers.DrawSteelRegistry(),
 };
 
-// Register custom elements.
-for (const element of Object.values(applications.elements)) {
-  window.customElements.define(element.tagName, element);
-}
+/* -------------------------------------------------- */
+/*   Init Hook                                        */
+/* -------------------------------------------------- */
 
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DS_CONFIG;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
   helpers.DrawSteelSettingsHandler.registerSettings();
   applications.apps.DocumentSourceInput.addModuleSources();
+
+  // Define custom elements.
+  const defineElements = window => {
+    window.customElements.define(applications.elements.DSIconElement.tagName, applications.elements.DSIconElement);
+  };
+  defineElements(window);
+  Hooks.on("openDetachedWindow", (id, window) => defineElements(window));
 
   // Assign document classes
   for (const docCls of Object.values(documents)) {
@@ -77,6 +83,10 @@ Hooks.once("init", function () {
   canvas.placeables.tokens.DrawSteelTokenRuler.applyDSMovementConfig();
 
   foundry.applications.handlebars.loadTemplates(templates);
+
+  // ActiveEffect adjustments
+  CONFIG.ActiveEffect.expiryEvents.save = "DRAW_STEEL.ActiveEffect.Ends.Save.Label";
+  CONFIG.ActiveEffect.expiryEvents.respite = "DRAW_STEEL.ActiveEffect.Ends.Respite.Label";
 
   /**
    * A mapping of statuses to their order.
@@ -224,10 +234,12 @@ Hooks.once("init", function () {
   helpers.registerHandlebars();
 });
 
-/**
- * Perform one-time pre-localization and sorting of some configuration objects.
- */
+/* -------------------------------------------------- */
+/*   I18n Hook                                        */
+/* -------------------------------------------------- */
+
 Hooks.once("i18nInit", () => {
+  // Perform one-time pre-localization and sorting of some configuration objects.
   helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
 
   // These fields are not auto-localized due to having a different location in en.json
@@ -272,7 +284,16 @@ Hooks.once("i18nInit", () => {
 
   localizePseudos(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.TYPES);
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
+
+  // Register formula editor autocomplete contexts after ds.CONFIG localization so labels show localized.
+  CONFIG.formulaEditor.contexts.default = {
+    labels: Object.fromEntries(Object.entries(ds.CONFIG.formulaEditorContexts.default).map(([key, value]) => [key, value.label])),
+  };
 });
+
+/* -------------------------------------------------- */
+/*   Setup Hook                                       */
+/* -------------------------------------------------- */
 
 Hooks.once("setup", () => {
   applications.sidebar.apps.DrawSteelCompendiumTOC.applyToPacks();
@@ -307,9 +328,9 @@ Hooks.once("setup", () => {
   }
 });
 
-/* -------------------------------------------- */
-/*  Ready Hook                                  */
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
+/*   Ready Hook                                       */
+/* -------------------------------------------------- */
 
 Hooks.once("ready", async function () {
   game.tooltip.observe();
@@ -328,15 +349,17 @@ Hooks.once("ready", async function () {
   console.log(DS_CONST.ASCII);
 });
 
-/**
- * Render hooks.
- */
+/* -------------------------------------------------- */
+/*   Render Hooks                                     */
+/* -------------------------------------------------- */
+
 Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
-/**
- * Other hooks.
- */
+/* -------------------------------------------------- */
+/*   Other Hooks                                      */
+/* -------------------------------------------------- */
+
 Hooks.on("applyCompendiumArt", helpers.applyCompendiumArt);
 Hooks.on("hotReload", helpers.hotReload);

@@ -49,7 +49,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
     return [
       {
         label: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
-        icon: "fa-solid fa-fw fa-plus",
+        icon: "fa-solid fa-plus",
         visible: () => game.user.isGM,
         onClick: async (event, target) => {
           /** @type {HeroTokenModel} */
@@ -59,7 +59,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       },
       {
         label: "DRAW_STEEL.Setting.HeroTokens.SpendToken",
-        icon: "fa-solid fa-fw fa-minus",
+        icon: "fa-solid fa-minus",
         onClick: async (event, target) => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
@@ -68,7 +68,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       },
       {
         label: "DRAW_STEEL.Setting.HeroTokens.ResetToken",
-        icon: "fa-solid fa-fw fa-rotate",
+        icon: "fa-solid fa-rotate",
         visible: () => game.user.isGM,
         onClick: async (event, target) => {
           /** @type {HeroTokenModel} */
@@ -78,7 +78,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       },
       {
         label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
-        icon: "fa-solid fa-fw fa-plus-minus",
+        icon: "fa-solid fa-plus-minus",
         visible: () => game.user.isGM && game.combat,
         onClick: async (event, target) => {
           /** @type {MaliceModel} */
@@ -88,7 +88,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       },
       {
         label: "DRAW_STEEL.Setting.Malice.ResetMalice",
-        icon: "fa-solid fa-fw fa-rotate",
+        icon: "fa-solid fa-rotate",
         visible: () => game.user.isGM && game.combat,
         onClick: async (event, target) => {
           /** @type {MaliceModel} */

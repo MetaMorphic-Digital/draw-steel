@@ -1,4 +1,8 @@
 /**
+ * @import DrawSteelActor from "../documents/actor.mjs";
+ */
+
+/**
  * Simplistic extension of Collection to allow splitting contents by type.
  * @extends {foundry.utils.Collection<string, { actor: DrawSteelActor }>}
  */

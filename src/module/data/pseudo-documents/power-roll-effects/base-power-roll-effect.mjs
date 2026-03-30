@@ -48,7 +48,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       tiersSchema[`tier${n}`] = new SchemaField({
         ...fieldsFn(n),
         potency: new SchemaField({
-          value: new FormulaField({ deterministic: true, initial: potencyFormula[n], label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
+          value: new FormulaField({ deterministic: true, initial: potencyFormula[n], label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.potency.value.label", placeholder: potencyFormula[n] }),
           characteristic: new StringField({
             required: true,
             initial: n > 1 ? "" : "none",

@@ -252,7 +252,7 @@ async function rollDamageHeal(link, event) {
 
   if (typeOptions.length || scaling) {
 
-    const content = document.createElement("div");
+    const content = link.ownerDocument.createElement("div");
 
     const typeInputs = typeOptions.map(choices => {
       const options = choices.types.map((type) => ({
@@ -537,7 +537,7 @@ async function rollTest(link, event) {
   if (characteristic.includes("|")) {
     const chrOptions = characteristic.split("|").map(chr => ({ value: chr, label: ds.CONFIG.characteristics[chr].label }));
 
-    const content = document.createElement("div");
+    const content = link.ownerDocument.createElement("div");
     const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
     content.append(createFormGroup({

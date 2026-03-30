@@ -37,7 +37,7 @@ export function renderTokenApplication(app, html, context, options) {
             groups[ancestor.name].appendChild(opt);
           }
           else {
-            const g = document.createElement("optgroup");
+            const g = html.ownerDocument.createElement("optgroup");
             g.label = ancestor.label;
             bar.appendChild(g);
             groups[ancestor.name] = g;

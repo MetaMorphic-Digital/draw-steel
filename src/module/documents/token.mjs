@@ -89,6 +89,15 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _onOverrideSize(changes) {
+    return this.resize(changes, { pan: false, animation: {
+      duration: 500,
+    } });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   getBarAttribute(barName, { alternative } = {}) {
     const barData = super.getBarAttribute(barName, { alternative });
     if (barData == null) return null;

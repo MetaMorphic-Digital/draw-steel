@@ -289,19 +289,21 @@ export const conditions = {
 
 /**
  * @typedef EffectEnd
- * @property {string} label
- * @property {string} abbreviation
+ * @property {string} label           An i18n string for the full effect end.
+ * @property {string} abbreviation    An i18n string for places with limited word length.
+ * @property {string} expiryEvent     The core expiry event this corresponds to.
  * @property {Reference} reference
  */
 
 /**
  * Times when an effect can end.
- * @type {Record<string, {label: string, abbreviation: string}>}
+ * @type {Record<string, EffectEnd>}
  */
 export const effectEnds = {
   turn: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Turn.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Turn.Abbr",
+    expiryEvent: "turnEnd",
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.SIMO12AE8JWh7yVz",
       identifier: "eot",
@@ -310,6 +312,7 @@ export const effectEnds = {
   save: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Save.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Save.Abbr",
+    expiryEvent: "save",
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.RujpMmSDb3eaV6DS",
       identifier: "saveEnds",
@@ -317,11 +320,13 @@ export const effectEnds = {
   },
   encounter: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Label",
+    expiryEvent: "combatEnd",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Abbr",
   },
   respite: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Respite.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Respite.Abbr",
+    expiryEvent: "respite",
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.CXUmteRo8UJ2UPr9",
     },
@@ -2577,3 +2582,48 @@ export const references = {
   wealth: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.I38Puf98ti2zZbiz",
   winded: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.3yd9XsnxkDbR7Ywd",
 };
+
+/* -------------------------------------------------- */
+
+/**
+ * Default formula editor context for autocompletion.
+ * @type {Record<string, { label: string }>}    A record of roll data paths to labels.
+ */
+export const formulaEditorContexts = {
+  default: {
+    M: {
+      label: "DRAW_STEEL.Actor.characteristics.might.full",
+    },
+    A: {
+      label: "DRAW_STEEL.Actor.characteristics.agility.full",
+    },
+    R: {
+      label: "DRAW_STEEL.Actor.characteristics.reason.full",
+    },
+    I: {
+      label: "DRAW_STEEL.Actor.characteristics.intuition.full",
+    },
+    P: {
+      label: "DRAW_STEEL.Actor.characteristics.presence.full",
+    },
+    chr: {
+      label: "DRAW_STEEL.FormulaEditor.Chr",
+    },
+    level: {
+      label: "DRAW_STEEL.FormulaEditor.Level",
+    },
+    echelon: {
+      label: "DRAW_STEEL.FormulaEditor.Echelon",
+    },
+    "potency.weak": {
+      label: "DRAW_STEEL.FormulaEditor.Potency.Weak",
+    },
+    "potency.average": {
+      label: "DRAW_STEEL.FormulaEditor.Potency.Average",
+    },
+    "potency.strong": {
+      label: "DRAW_STEEL.FormulaEditor.Potency.Strong",
+    },
+  },
+};
+preLocalize("formulaEditorContexts.default", { key: "label" });

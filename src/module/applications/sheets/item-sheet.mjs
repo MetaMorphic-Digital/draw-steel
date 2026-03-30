@@ -31,19 +31,18 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       showImage: this.#showImage,
       updateSource: this.#updateSource,
       editHTML: this.#editHTML,
-      toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
       shareDoc: this.#shareDoc,
     },
     window: {
       controls: [{
-        icon: "fa-solid fa-fw fa-file-arrow-down",
+        icon: "fa-solid fa-file-arrow-down",
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,
       }, {
-        icon: "fa-solid fa-fw fa-share-from-square",
+        icon: "fa-solid fa-share-from-square",
         label: "DRAW_STEEL.SHEET.Share",
         action: "shareDoc",
         visible: DrawSteelItemSheet.#canEmbed,
@@ -255,7 +254,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Item.
-   * @return {Record<string, ActiveEffectCategory>} Data for rendering.
+   * @return {Promise<Record<string, ActiveEffectCategory>>} Data for rendering.
    * @protected
    */
   async _prepareActiveEffectCategories() {
@@ -286,13 +285,16 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     // Iterate over active effects, classifying them into categories
     const effects = this.item.effects.contents.sort((a, b) => a.sort - b.sort);
     for (const e of effects) {
+      const durationLabel = e.duration.expired ?
+        _loc("DRAW_STEEL.ActiveEffect.Expired") :
+        _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration.label;
       const effectContext = {
         id: e.id,
+        durationLabel,
         uuid: e.uuid,
         name: e.name,
         img: e.img,
         sourceName: e.sourceName,
-        duration: e.duration,
         disabled: e.disabled,
         expanded: false,
       };
@@ -357,7 +359,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     return [
       {
         label: "DRAW_STEEL.ActiveEffect.RollSave",
-        icon: "fa-solid fa-fw fa-dice-d10",
+        icon: "fa-solid fa-dice-d10",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return effect.system.end?.type === "save";
@@ -369,23 +371,23 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "fa-solid fa-fw fa-check",
+        icon: "fa-solid fa-check",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return !effect.active;
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
-          const updateData = DrawSteelActiveEffect.getInitialDuration();
-
-          updateData.disabled = false;
-
-          await effect.update(updateData);
+          await effect.update({
+            disabled: false,
+            start: DrawSteelActiveEffect.getEffectStart(),
+            "duration.expired": false,
+          });
         },
       },
       {
         label: "DRAW_STEEL.ActiveEffect.Toggle",
-        icon: "fa-solid fa-fw fa-times",
+        icon: "fa-solid fa-times",
         visible: (target) => {
           const effect = this._getEmbeddedDocument(target);
           return effect.active;
@@ -397,7 +399,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.View",
-        icon: "fa-solid fa-fw fa-eye",
+        icon: "fa-solid fa-eye",
         visible: () => this.isPlayMode,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
@@ -406,7 +408,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.Edit",
-        icon: "fa-solid fa-fw fa-edit",
+        icon: "fa-solid fa-edit",
         visible: () => this.isEditMode,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
@@ -415,7 +417,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.Share",
-        icon: "fa-solid fa-fw fa-share-from-square",
+        icon: "fa-solid fa-share-from-square",
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
@@ -430,7 +432,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       },
       {
         label: "DRAW_STEEL.SHEET.Delete",
-        icon: "fa-solid fa-fw fa-trash",
+        icon: "fa-solid fa-trash",
         visible: () => this.item.isOwner,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
@@ -448,7 +450,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     return [
       {
         label: _loc("DOCUMENT.Create", { type: _loc("DOCUMENT.ActiveEffect") }),
-        icon: `${CONFIG.ActiveEffect.typeIcons.base} fa-fw`,
+        icon: CONFIG.ActiveEffect.typeIcons.base,
         visible: () => this.isEditable,
         onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
@@ -470,7 +472,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       },
       {
         label: _loc("DOCUMENT.Create", { type: _loc("TYPES.ActiveEffect.abilityModifier") }),
-        icon: `${CONFIG.ActiveEffect.typeIcons.abilityModifier} fa-fw`,
+        icon: CONFIG.ActiveEffect.typeIcons.abilityModifier,
         visible: () => this.isEditable,
         onClick: (event, target) => {
           const effectClass = getDocumentClass("ActiveEffect");
@@ -677,21 +679,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         }),
       },
     });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Determines effect parent to pass to helper.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #toggleEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.update({ disabled: !effect.disabled });
   }
 
   /* -------------------------------------------------- */
