@@ -27,6 +27,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - New Player-Facing Compendium Content:
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
@@ -34,16 +35,22 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Changed
 
+
 - ActiveEffect changes for v14
   - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
+- Implemented field placeholders where possible. (#1326)
 - Migrated roll modes to the new core message modes. (#1681)
 
 ### Deprecated
 
+- Deprecated `canvas.tokens.performTokenPlacement` in favor of `canvas.tokens.placeActor`. (#1742)
+
 ### Removed
 
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
+- Document helper sheets (like monster metadata inputs) no longer show the "import" button in the header. (#1584)
+- Removed `ds.canvas.placeables.tokens.TokenPlacement` in favor of delegating to `canvas.tokens.placeTokens`. (#1742)
 
 ### Fixed
 

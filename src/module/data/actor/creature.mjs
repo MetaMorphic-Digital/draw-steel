@@ -18,7 +18,7 @@ export default class CreatureModel extends BaseActorModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    const characteristic = { initial: 0, integer: true, nullable: false };
+    const characteristic = { initial: 0, integer: true, nullable: false, placeholder: "0" };
 
     schema.characteristics = new fields.SchemaField(
       Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {

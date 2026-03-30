@@ -83,7 +83,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.power = new fields.SchemaField({
       roll: new fields.SchemaField({
         reactive: new fields.BooleanField(),
-        formula: new FormulaField({ blank: true, initial: "@chr" }),
+        formula: new FormulaField({ blank: true, initial: "@chr", placeholder: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
       }),
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),

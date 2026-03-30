@@ -7,6 +7,7 @@ const { HandlebarsApplicationMixin, DocumentSheet } = foundry.applications.api;
 export default class DocumentInput extends HandlebarsApplicationMixin(DocumentSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
+    canImport: false,
     sheetConfig: false,
     classes: ["draw-steel"],
     form: {

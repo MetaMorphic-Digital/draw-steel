@@ -14,7 +14,6 @@ export function hotReload(data) {
   // Possible need to update this if we add other languages into the base system
   if (data.path === systemPath("lang/en.json")) {
     // Hook is called *before* i18n is updated so need to wait for that to resolve
-    // Revisit in v14 vis a vis https://github.com/foundryvtt/foundryvtt/issues/13285
     queueMicrotask(() => {
       // Repeat the i18n process from Localization.#localizeDataModels
       for (const documentName of CONST.ALL_DOCUMENT_TYPES) {
@@ -26,21 +25,5 @@ export function hotReload(data) {
       for (const appV1 of Object.values(ui.windows)) appV1.render();
       for (const appV2 of foundry.applications.instances.values()) appV2.render();
     });
-  }
-  else if (data.path.includes(systemPath("src/styles"))) {
-    let path = systemPath("css/draw-steel-");
-    if (data.path.includes("styles/elements")) path += "elements.css";
-    else if (data.path.includes("styles/system")) path += "system.css";
-    else if (data.path.includes("styles/variables")) path += "variables.css";
-
-    // Taken from core's `Game##hotReloadCSS`
-    const pathRegex = new RegExp(`@import "${path}(?:\\?[^"]+)?"`);
-    for (const style of document.querySelectorAll("style")) {
-      const [match] = style.textContent.match(pathRegex) ?? [];
-      if (match) {
-        style.textContent = style.textContent.replace(match, `@import "${path}?${Date.now()}"`);
-        return;
-      }
-    }
   }
 }

@@ -8,8 +8,8 @@ export default class DrawSteelWallConfig extends foundry.applications.sheets.Wal
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    const fieldset = document.createElement("fieldset");
-    const legend = document.createElement("legend");
+    const fieldset = this.element.ownerDocument.createElement("fieldset");
+    const legend = this.element.ownerDocument.createElement("legend");
     legend.textContent = _loc("DRAW_STEEL.Wall.Config.Legend");
 
     const checkbox = foundry.applications.fields.createCheckboxInput({

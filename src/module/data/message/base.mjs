@@ -66,7 +66,7 @@ export default class BaseMessageModel extends DrawSteelSystemModel {
   async alterMessageHTML(html) {
     const footerButtons = await this._constructFooterButtons();
     if (footerButtons.length) {
-      const footer = document.createElement("footer");
+      const footer = html.ownerDocument.createElement("footer");
       footer.append(...footerButtons);
       html.insertAdjacentElement("beforeend", footer);
     }

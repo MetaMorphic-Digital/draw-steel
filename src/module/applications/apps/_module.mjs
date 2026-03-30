@@ -10,5 +10,6 @@ export { default as SavingThrowDialog } from "./saving-throw-dialog.mjs";
 export { default as SavingThrowManager } from "./saving-throw-manager.mjs";
 export { default as TargetedConditionPrompt } from "./targeted-condition-prompt.mjs";
 export { default as CompendiumTOCConfig } from "./toc-config.mjs";
+export { default as DefeatedMinionSelection } from "./defeated-minion-selection.mjs";
 
 export * as advancement from "./advancement/_module.mjs";

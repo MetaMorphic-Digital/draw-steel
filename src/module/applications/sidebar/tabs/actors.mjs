@@ -5,7 +5,7 @@ export default class DrawSteelActorDirectory extends foundry.applications.sideba
 
     const options = [{
       label: "DRAW_STEEL.SIDEBAR.ACTORS.contextMenuAssignPrimaryParty",
-      icon: "fa-solid fa-fw fa-medal",
+      icon: "fa-solid fa-medal",
       visible: (target) => {
         const actor = getActor(target);
         return game.user.isGM && (actor.type === "party") && (actor !== game.actors.party);
@@ -14,7 +14,7 @@ export default class DrawSteelActorDirectory extends foundry.applications.sideba
       group: "system",
     }, {
       label: "DRAW_STEEL.SIDEBAR.ACTORS.contextMenuRemovePrimaryParty",
-      icon: "fa-solid fa-fw fa-times",
+      icon: "fa-solid fa-times",
       visible: (target) => game.user.isGM && (getActor(target) === game.actors.party),
       onClick: (event, target) => game.actors.unsetParty(),
       group: "system",

@@ -131,7 +131,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /**
    * An alternative to the document delete method, this deletes the item as well as any items that were
    * added as a result of this item's creation via advancements.
-   * @param {Object} options
+   * @param {object} options
    * @param {boolean} [options.replacement=false]   Should the window title indicate that this is a replacement?
    * @param {boolean} [options.skipDialog=false]    Whether to skip the confirmation dialog, e.g., if there's already been another.
    * @returns {Promise<foundry.documents.Item[]|null>}   A promise that resolves to the deleted items.
