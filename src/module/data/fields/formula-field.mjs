@@ -49,10 +49,8 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /** @inheritdoc */
   _applyChangeSubtract(value, delta, model, change) {
-    const operator = delta.startsWith("-") ? "+" : "-";
-    delta = delta.replace(/^[+-]/, "").trim();
-    if (!value) return (operator === "-") ? `-${delta}` : delta;
-    return `${value} ${operator} ${delta}`;
+    if (!value) return `-(${delta})`;
+    return `${value} - (${delta})`;
   }
 
   /* -------------------------------------------------- */
