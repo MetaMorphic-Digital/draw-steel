@@ -84,6 +84,10 @@ Hooks.once("init", function () {
 
   foundry.applications.handlebars.loadTemplates(templates);
 
+  // ActiveEffect adjustments
+  CONFIG.ActiveEffect.expiryEvents.save = "DRAW_STEEL.ActiveEffect.Ends.Save.Label";
+  CONFIG.ActiveEffect.expiryEvents.respite = "DRAW_STEEL.ActiveEffect.Ends.Respite.Label";
+
   /**
    * A mapping of statuses to their order.
    * @type {Record<string, number>}

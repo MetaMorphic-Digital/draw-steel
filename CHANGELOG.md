@@ -35,7 +35,10 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Changed
 
-- Refactored CONFIG.statusEffects usage from array to record, in accordance with core migration. (#1166)
+
+- ActiveEffect changes for v14
+  - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
+  - Refactored CONFIG.statusEffects usage from array to record. (#1166)
 - Implemented field placeholders where possible. (#1326)
 - Migrated roll modes to the new core message modes. (#1681)
 

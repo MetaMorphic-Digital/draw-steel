@@ -4,6 +4,7 @@ import { systemID } from "../constants.mjs";
  * @import DocumentCollection from "@client/documents/abstract/document-collection.mjs";
  * @import CompendiumCollection from "@client/documents/collections/compendium-collection.mjs";
  * @import {Document, EmbeddedCollection} from "@common/abstract/_module.mjs";
+ * @import {DatabaseWriteOperation} from "@common/abstract/_types.mjs";
  */
 
 /**
@@ -33,6 +34,10 @@ export async function migrateWorld() {
     }
     if (foundry.utils.isNewerVersion("0.11.0", migrationVersion)) {
       await version_0_11_migration();
+      updateVersion = true;
+    }
+    if (foundry.utils.isNewerVersion("1.0.0", migrationVersion)) {
+      await version_1_0_migration();
       updateVersion = true;
     }
   }
@@ -103,7 +108,7 @@ async function version_0_10_migration() {
 /* -------------------------------------------------- */
 
 /**
- * Migrate active effect keys for version 0.10.0.
+ * Migrate active effect keys for version 0.11.0.
  */
 async function version_0_11_migration() {
   const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.11.0" }, progress: true });
@@ -142,6 +147,59 @@ async function version_0_11_migration() {
 /* -------------------------------------------------- */
 
 /**
+ * Migrate active effect keys and expiries for version 1.0.0.
+ */
+async function version_1_0_migration() {
+
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "1.0.0" }, progress: true });
+
+  console.log("Migrating active effects inside actors");
+  for (const actor of game.actors) {
+    const operation = [];
+    migrateEffectSystem(actor, operation);
+    await foundry.documents.modifyBatch(operation);
+  }
+  warning.update({ pct: 0.2 });
+  console.log("Migrating active effects inside items");
+  const worldItemOperation = [];
+  for (const item of game.items) {
+    migrateEffectSystem(item, worldItemOperation);
+  }
+  await foundry.documents.modifyBatch(worldItemOperation);
+  warning.update({ pct: 0.4 });
+
+  for (const scene of game.scenes) {
+    const operation = [];
+    for (const token of scene.tokens) {
+      if (!token.actor) continue;
+      migrateEffectSystem(token.actor, operation);
+    }
+    await foundry.documents.modifyBatch(operation);
+  }
+  warning.update({ pct: 0.8 });
+
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
+  for (const pack of packsToMigrate) {
+    console.log("Migrating document inside", pack.title);
+    const docs = await pack.getDocuments();
+    const wasLocked = pack.config.locked;
+    if (wasLocked) await pack.configure({ locked: false });
+    const operation = [];
+    docs.forEach(doc => migrateChanges(doc, operation));
+    await foundry.documents.modifyBatch(operation);
+    if (wasLocked) await pack.configure({ locked: true });
+  }
+
+  warning.update({ pct: 1.00 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.0.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
+
+/**
  * @typedef {DocumentCollection<Document> | EmbeddedCollection<Document> | CompendiumCollection<Document>} AnyCollection
  */
 
@@ -156,8 +214,8 @@ export async function migrateType(collection, options = {}) {
   const toMigrate = collection.filter(doc => doc.getFlag(systemID, "migrateType")).map(doc => ({
     _id: doc.id,
     type: doc.type,
-    "==system": doc.system.toObject(),
-    "flags.draw-steel.-=migrateType": null,
+    system: _replace(doc.system.toObject()),
+    "flags.draw-steel.migrateType": _del,
   }));
   // update in increments of 100
   const batches = Math.ceil(toMigrate.length / 100);
@@ -176,8 +234,8 @@ export async function migrateType(collection, options = {}) {
 export async function migrateChanges(parentDocument) {
   const toMigrate = parentDocument.effects.filter(effect => effect.getFlag(systemID, "migrateChanges")).map(doc => ({
     _id: doc.id,
-    "==changes": [...doc.changes],
-    "flags.draw-steel.-=migrateChanges": null,
+    "system.changes": [...doc.system.changes],
+    "flags.draw-steel.migrateChanges": _del,
   }));
 
   // TODO: Batch this in v14
@@ -186,6 +244,38 @@ export async function migrateChanges(parentDocument) {
   const promises = [];
   for (const item of parentDocument.items) promises.push(migrateChanges(item));
   return Promise.allSettled(promises);
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Construct migration data for all effects in an Actor or Item.
+ * @param {foundry.documents.Actor | foundry.documents.Item} parentDocument If this is an Actor, also migrate effects on items.
+ * @param {DatabaseWriteOperation[]} operation An operation array to push to.
+ */
+export function migrateEffectSystem(parentDocument, operation) {
+  const updates = parentDocument.effects.filter(effect => effect.getFlag(systemID, "migrateChanges") || effect.getFlag(systemID, "oldExpiry")).map(doc => {
+    const updateData = {
+      _id: doc.id,
+      system: _replace(doc.system.toObject()),
+    };
+
+    const oldExpiry = doc.getFlag(systemID, "oldExpiry");
+    if (oldExpiry) updateData["duration.expiry"] = ds.CONFIG.effectEnds[oldExpiry]?.expiryEvent;
+
+    return updateData;
+  });
+
+  operation.push({
+    updates,
+    action: "update",
+    documentName: "ActiveEffect",
+    parent: parentDocument,
+  });
+
+  if (parentDocument.documentName === "Actor") {
+    for (const item of parentDocument.items) migrateEffectSystem(item, operation);
+  }
 }
 
 /* -------------------------------------------------- */

@@ -2,8 +2,7 @@ import TargetedConditionPrompt from "../applications/apps/targeted-condition-pro
 
 /**
  * @import { StatusEffectConfig } from "@client/config.mjs";
- * @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types";
- * @import DrawSteelActor from "./actor.mjs";
+ * @import { DrawSteelActor, DrawSteelCombat, DrawSteelCombatant } from "./_module.mjs";
  */
 
 /**
@@ -30,6 +29,39 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
     const effect = await super._fromStatusEffect(statusId, effectData, options);
     return effect;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prefer falsy fall through to expired rather than null coalescing; expiration can always suppress an AE.
+   * @inheritdoc
+   */
+  get isSuppressed() {
+    return this.system.isSuppressed || this.duration.expired;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  isExpiryEvent(event, context) {
+    const dsEvents = new Set("save", "respite");
+    if (!dsEvents.has(event) || !dsEvents.has(this.duration.expiry)) return super.isExpiryEvent(event, context);
+
+    if (event === "save") {
+      // copies core combat duration logic
+      /** @type {DrawSteelCombat|null} */
+      const combat = context.combat ?? game.combat;
+      /** @type {DrawSteelCombatant|null|undefined} */
+      const effectCombatant = combat?.started
+        ? combat === this.start.combat
+          ? combat.combatants.get(this.start.combatant)
+          : combat.getCombatantsByActor(this.actor ?? "")[0]
+        : null;
+      return !!effectCombatant;
+    }
+    // respite
+    else return context.actors?.includes(this.target);
   }
 
   /* -------------------------------------------------- */
@@ -133,53 +165,10 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
-  /**
-   * Automatically deactivate effects with expired durations.
-   * @inheritdoc
-   */
-  get isSuppressed() {
-    if (Number.isNumeric(this.duration.remaining)) return this.duration.remaining <= 0;
-    // Checks `system.isSuppressed`
-    else return super.isSuppressed;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActiveEffectData", this);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Compute derived data related to active effect duration.
-   * @returns {Omit<ActiveEffectDuration, keyof EffectDurationData>}
-   * @protected
-   * @inheritdoc
-   */
-  _prepareDuration() {
-    return this.system._prepareDuration ?? super._prepareDuration();
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  _getDurationLabel(rounds, turns) {
-    if ((rounds + turns) !== 0) return super._getDurationLabel(rounds, turns);
-    // Lines up with our effect suppression
-    return _loc("DRAW_STEEL.ActiveEffect.Expired");
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check.
-   * @inheritdoc
-   */
-  get isTemporary() {
-    return this.system._isTemporary ?? super.isTemporary;
   }
 
   /* -------------------------------------------------- */
@@ -266,7 +255,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /** @inheritdoc */
   static migrateData(data) {
     let migrateChanges = false;
-    for (const change of data.changes ?? []) {
+    for (const change of data.system?.changes ?? []) {
       for (const [oldPath, newPath] of Object.entries(this.keyMigrations)) {
         const oldKey = change.key;
         change.key = change.key.replace(oldPath, newPath);
@@ -275,6 +264,19 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     }
 
     if (migrateChanges) foundry.utils.setProperty(data, "flags.draw-steel.migrateChanges", true);
+
+    const oldExpiry = "system.end.type";
+    const newExpiry = "duration.expiry";
+    // only works for *freshly* created documents, existing ones are server migrated and get skipped
+    foundry.abstract.Document._addDataFieldMigration(data, oldExpiry, newExpiry, data => {
+      const oldValue = foundry.utils.getProperty(data, oldExpiry);
+      return ds.CONFIG.effectEnds[oldValue]?.expiryEvent ?? "";
+    });
+
+    // Server migrated
+    if (foundry.utils.hasProperty(data, oldExpiry) && (data.duration?.expiry === null)) {
+      foundry.utils.setProperty(data, "flags.draw-steel.oldExpiry", data.system.end.type);
+    }
 
     return super.migrateData(data);
   }
