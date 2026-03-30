@@ -28,7 +28,6 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     }));
 
     forced.extendFields({
-
       bonuses: new SchemaField({
         push: requiredInteger({ min: null }),
         pull: requiredInteger({ min: null }),
