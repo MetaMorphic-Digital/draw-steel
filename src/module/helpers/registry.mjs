@@ -119,7 +119,9 @@ export default class DrawSteelRegistry {
         };
         this.abilities.set(dsid, entry);
       }
-      index.system.resource ? entry[`heroic${index.system.resource}`]?.add(index.uuid) : entry.signature.add(index.uuid);
+      if (index.system.resource) entry[`heroic${index.system.resource}`]?.add(index.uuid);
+      else if (index.system.category === "signature") entry.signature.add(index.uuid);
+      // abilities without a resource cost or signature category don't need to be registered
     }
   }
 

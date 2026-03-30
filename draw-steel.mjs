@@ -71,6 +71,7 @@ Hooks.once("init", function () {
     "system.perkType",
     "system.prerequisites",
     "system.resource",
+    "system.category",
   );
   // Need to be able to find "configuration" type pages
   CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
