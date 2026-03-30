@@ -25,6 +25,12 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       value: new fields.NumberField({ initial: null, nullable: true, integer: true }),
       max: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
+      min: requiredInteger({ persisted: false }),
+      bonuses: new fields.SchemaField({
+        echelon: requiredInteger(),
+        level: requiredInteger(),
+        treasure: requiredInteger(),
+      }, { persisted: false }),
     });
 
     schema.combat = new fields.SchemaField({
@@ -35,15 +41,21 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       size: new fields.EmbeddedDataField(this._sizeModel()),
       stability: requiredInteger(),
       turns: requiredInteger({ initial: 1 }),
+      targetModifiers: new fields.SchemaField({
+        edges: requiredInteger({ min: null }),
+        banes: requiredInteger({ min: null }),
+      }, { persisted: false }),
     });
 
     schema.biography = new fields.SchemaField(this._actorBiography());
 
     schema.movement = new fields.SchemaField({
-      value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 5 }),
+      value: requiredInteger({ initial: 5 }),
       types: new fields.SetField(setOptions(), { initial: ["walk"] }),
       hover: new fields.BooleanField(),
-      disengage: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 1 }),
+      disengage: requiredInteger({ initial: 1 }),
+      teleport: new fields.NumberField({ integer: true, min: 0, persisted: false }),
+      multiplier: new fields.NumberField({ initial: 1, persisted: false }),
     });
 
     schema.damage = new fields.SchemaField({
@@ -53,7 +65,29 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     schema.statuses = new fields.SchemaField({
       immunities: new fields.SetField(setOptions()),
+      canFlank: new fields.BooleanField({ initial: true, persisted: false }),
+      flankable: new fields.BooleanField({ initial: true, persisted: false }),
+      // Fields for individual statuses *must* be SchemaFields
+      slowed: new fields.SchemaField({
+        speed: requiredInteger({ initial: () => CONFIG.statusEffects.slowed.defaultSpeed }),
+      }, { persisted: false }),
     });
+
+    for (const status of Object.values(CONFIG.statusEffects)) {
+      if (status.targeted) {
+        const existing = schema.statuses.getField(status.id);
+        const sources = new fields.SetField(new fields.DocumentUUIDField({ type: "Actor" }), { persisted: false, max: status.maxSources });
+        if (existing instanceof fields.SchemaField) existing.extendFields({ sources });
+        else schema.statuses.extendFields({
+          [status.id]: new fields.SchemaField({ sources }, { persisted: false }),
+        });
+      }
+    }
+
+    schema.restrictions = new fields.SchemaField({
+      type: new fields.SetField(setOptions()),
+      dsid: new fields.SetField(setOptions()),
+    }, { persisted: false });
 
     return schema;
   }
@@ -102,37 +136,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
-    Object.assign(this.statuses, {
-      canFlank: true,
-      flankable: true,
-      slowed: {
-        speed: CONFIG.statusEffects.slowed.defaultSpeed,
-      },
-    });
 
-    this.restrictions = {
-      type: new Set(),
-      dsid: new Set(),
-    };
-
-    Object.assign(this.stamina, {
-      min: 0,
-      bonuses: {
-        echelon: 0,
-        level: 0,
-        treasure: 0,
-      },
-    });
-
-    Object.assign(this.movement, {
-      // Teleport speeds are unaffected by conditions and effects
-      teleport: this.movement.types.has("teleport") ? this.movement.value : null,
-      // Kit bonus is added in derived data, which means multipliers need to happen after
-      // Can consider removing in v14 after phases are introduced
-      multiplier: 1,
-    });
-
-    this.combat.targetModifiers = { edges: 0, banes: 0 };
+    this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
   }
 
   /* -------------------------------------------------- */
@@ -158,9 +163,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     this.combat.save.bonus ||= "0";
 
     this.movement.value = Math.floor(this.movement.value * this.movement.multiplier);
-
-    // Enforce a minimum of 0 for stability
-    this.combat.stability = Math.max(0, this.combat.stability);
 
     // Add restrictions based on status effects
     for (const effect of Object.values(CONFIG.statusEffects)) {

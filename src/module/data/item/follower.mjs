@@ -1,6 +1,6 @@
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base-item.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import { setOptions } from "../helpers.mjs";
 import { systemPath } from "../../constants.mjs";
 
 const fields = foundry.data.fields;
@@ -40,6 +40,13 @@ export default class FollowerModel extends BaseItemModel {
       Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {
         obj[chc] = new fields.SchemaField({
           value: new fields.NumberField({ ...characteristic, label, hint }),
+          edges: requiredInteger({ min: null, persisted: false }),
+          banes: requiredInteger({ min: null, persisted: false }),
+          dice: new fields.SchemaField({
+            mode: new fields.StringField({ choices: "kh" }),
+            number: requiredInteger({ initial: 2 }),
+            faces: requiredInteger({ initial: 10 }),
+          }, { persisted: false }),
         });
         return obj;
       }, {}),
@@ -54,25 +61,6 @@ export default class FollowerModel extends BaseItemModel {
     });
 
     return schema;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    Object.values(this.characteristics).forEach((chr) => {
-      Object.assign(chr, {
-        edges: 0,
-        banes: 0,
-        dice: {
-          mode: "kh",
-          number: 2,
-          faces: 10,
-        },
-      });
-    });
   }
 
   /* -------------------------------------------------- */

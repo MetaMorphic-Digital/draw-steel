@@ -23,7 +23,7 @@ import {
   Item as ItemModels,
   JournalEntryPage as JEPModels,
 } from "../data/_module.mjs";
-import { DrawSteelActiveEffect, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelItem, DrawSteelJournalEntryPage } from "./_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelItem, DrawSteelJournalEntryPage, DrawSteelTokenDocument, DrawSteelWallDocument } from "./_module.mjs";
 import Collection from "@common/utils/collection.mjs";
 import { JournalEntryCategory } from "@client/documents/_module.mjs";
 
@@ -87,7 +87,10 @@ declare module "@client/documents/_module.mjs" {
     system: InstanceType<Model>;
   }
 
-  interface BaseScene extends SceneData, InstanceType<ClientDocument> {}
+  interface BaseScene extends SceneData, InstanceType<ClientDocument> {
+    tokens: Collection<string, DrawSteelTokenDocument>;
+    walls: Collection<string, DrawSteelWallDocument>;
+  }
 
   interface BaseToken extends TokenData, InstanceType<ClientDocument> {}
 

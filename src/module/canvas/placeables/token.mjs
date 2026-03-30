@@ -186,13 +186,15 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   _drawBar(number, bar, data) {
     if (data.attribute !== "stamina") return super._drawBar(number, bar, data);
 
-    const temp = this.document.actor.system.stamina.temporary;
+    const staminaData = foundry.utils.getProperty(this, "document.actor.system.stamina");
+    const temp = staminaData?.temporary ?? 0;
+    const min = staminaData?.min ?? 0;
     const stamina = Number(data.value) - temp;
 
     // Creates a normalized range of 0 to (max stamina - min stamina) used for calculating the token bar percentage
     // Needed to handle actor's negative stamina
-    const totalStamina = data.max - data.min;
-    const adjustedValue = stamina - data.min;
+    const totalStamina = data.max - min;
+    const adjustedValue = stamina - min;
     const barPct = Math.clamp(adjustedValue, 0, totalStamina) / totalStamina;
     const tempPct = Math.clamp(temp, 0, data.max) / data.max;
 

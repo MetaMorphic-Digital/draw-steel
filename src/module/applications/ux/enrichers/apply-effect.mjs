@@ -6,7 +6,8 @@ import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  * @import { ParsedConfig } from "../helpers.mjs";
- * @import { DrawSteelItem } from "../../../documents/_module.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
+ * @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
  */
 
 /** @type {TextEditorEnricherConfig["id"]} */
@@ -114,6 +115,7 @@ export async function onRender(element) {
  * @this {HTMLAnchorElement}
  */
 async function onClickAnchor() {
+  /** @type {DrawSteelToken[]} */
   const tokens = canvas?.tokens?.controlled ?? [];
   if (!tokens.length) {
     ui.notifications.error("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.NoSelection", { localize: true });
@@ -137,6 +139,7 @@ async function onClickAnchor() {
   if (this.dataset.end) updates.system.end = { type: this.dataset.end };
   tempEffect.updateSource(updates);
 
+  /** @type {Set<DrawSteelActor>} */
   const actors = new Set();
 
   // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
@@ -149,7 +152,7 @@ async function onClickAnchor() {
     // reusing the ID will block creation if it's already on the actor
     const existing = actor.effects.get(tempEffect.id);
     // deleting instead of updating because there may be variances between the old copy and new
-    if (existing?.disabled) await existing.delete();
+    if (existing?.disabled || existing?.duration.expired) await existing.delete();
 
     // not awaited to allow parallel processing
     actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
