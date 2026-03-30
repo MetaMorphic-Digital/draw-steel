@@ -36,14 +36,17 @@ export default class HeroModel extends CreatureModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    schema.stamina = new fields.SchemaField({
-      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
-      temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
-    }, { trackedAttribute: true });
+    schema.stamina.fields.max.persisted = schema.stamina.fields.max.options.persisted = false;
+
+    schema.combat.extendFields({
+      initiativeThreshold: requiredInteger({ initial: 6, persisted: false }),
+    });
 
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
       max: requiredInteger({ max: 0 }),
+      bonus: requiredInteger({ persisted: false }),
+      divisor: new fields.NumberField({ initial: 3, nullable: false, persisted: false }),
     });
 
     schema.hero = new fields.SchemaField({
@@ -63,6 +66,11 @@ export default class HeroModel extends CreatureModel {
 
     schema.skills = new fields.SchemaField({
       value: new fields.SetField(setOptions()),
+      modifiers: new fields.TypedObjectField(new fields.SchemaField({
+        edges: requiredInteger({ min: null }),
+        banes: requiredInteger({ min: null }),
+        bonuses: requiredInteger({ min: null }),
+      }), { persisted: false }),
     });
 
     return schema;
@@ -142,11 +150,6 @@ export default class HeroModel extends CreatureModel {
     // Existing DrawSteelActiveEffect#_applyAdd override means this also shims active effects targeting hero.skills
     HeroModel.shimSkills(this);
 
-    this.combat.initiativeThreshold = 6;
-
-    this.recoveries.bonus = 0;
-    this.recoveries.divisor = 3;
-
     const kitBonuses = {
       stamina: 0,
       speed: 0,
@@ -210,8 +213,6 @@ export default class HeroModel extends CreatureModel {
 
       }
     }
-
-    this.skills.modifiers = {};
   }
 
   /* -------------------------------------------------- */

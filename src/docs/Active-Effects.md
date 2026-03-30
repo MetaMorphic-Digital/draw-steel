@@ -268,9 +268,9 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier1.ignoredImmunities`|Add immunity types to ignore for tier 1 damage|
 |`damage.tier2.ignoredImmunities`|Add immunity types to ignore for tier 2 damage|
 |`damage.tier3.ignoredImmunities`|Add immunity types to ignore for tier 3 damage|
-|`forced.push`|Give a bonus to push movement distance|
-|`forced.pull`|Give a bonus to pull movement distance|
-|`forced.slide`|Give a bonus to slide movement distance|
+|`forced.bonuses.push`|Give a bonus to push movement distance|
+|`forced.bonuses.pull`|Give a bonus to pull movement distance|
+|`forced.bonuses.slide`|Give a bonus to slide movement distance|
 |`keyword`|Add a keyword to an ability|
 |`potency`|Give a bonus to all potency values|
 |`power.roll.banes`|Add banes that apply to the ability's power roll regardless of target|

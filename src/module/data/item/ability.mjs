@@ -1,5 +1,5 @@
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { setOptions, validateDSID } from "../helpers.mjs";
+import { requiredInteger, setOptions, validateDSID } from "../helpers.mjs";
 import BaseItemModel from "./base-item.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import FormulaField from "../fields/formula-field.mjs";
@@ -87,6 +87,11 @@ export default class AbilityModel extends BaseItemModel {
         characteristics: new fields.SetField(setOptions()),
       }),
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
+
+      characteristic: new fields.SchemaField({
+        key: new fields.StringField({ choices: Object.keys(ds.CONFIG.characteristics) }),
+        value: requiredInteger({ initial: -5, min: null }),
+      }, { persisted: false }),
     });
 
     schema.effect = new fields.SchemaField({
@@ -103,33 +108,12 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Helper for _applyAbilityBonuses.
-   * TODO: Replace with non-persisted fields in v14.
-   */
-  static #forcedBonus = new fields.NumberField();
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   static migrateData(data) {
     // Game release updates
     if (data.type === "action") data.type = "main";
 
     return super.migrateData(data);
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-    for (const effect of this.power.effects) effect.prepareBaseData();
-
-    this.power.characteristic = {
-      key: "",
-      value: -5,
-    };
   }
 
   /* -------------------------------------------- */
@@ -231,23 +215,22 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          // TODO: Remove in v14 with non-persisted schema fields.
-          const field = (bonus.key.startsWith("damage.bonuses")) ? new fields.NumberField({ integer: true }) : DamagePowerRollEffect.schema.getField(bonus.key);
-          const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
-          if (!firstDamageEffect) return;
+          const field = DamagePowerRollEffect.schema.getField(bonus.key);
+          const firstDamageEffect = this.power.effects.documentsByType.damage.sort((a, b) => a.sort - b.sort)[0];
+          // Damage bonuses only apply to the first entry
+          if (!firstDamageEffect || !field) continue;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
           foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
         }
       }
 
-      const forcedPrefix = "forced.";
-      if (bonus.key.startsWith(forcedPrefix)) {
-        const key = bonus.key.replace(forcedPrefix, "bonuses.");
-        // Apply forced movement bonuses to all forced movement effects
-        for (const effect of this.power.effects) {
-          if (effect.type !== "forced") continue;
-          const currentBonus = foundry.utils.getProperty(effect, key) ?? 0;
-          foundry.utils.setProperty(effect, key, AbilityModel.#forcedBonus.applyChange(currentBonus, this, bonus, { replacementData }));
+      if (bonus.key.startsWith("forced")) {
+        // Forced movement bonuses apply to all entries
+        for (const effect of this.power.effects.documentsByType.forced) {
+          const field = effect.schema.getField(bonus.key);
+          if (!field) continue;
+          const currentBonus = foundry.utils.getProperty(effect, bonus.key) ?? 0;
+          foundry.utils.setProperty(effect, bonus.key, field.applyChange(currentBonus, this, bonus, { replacementData }));
         }
       }
 
