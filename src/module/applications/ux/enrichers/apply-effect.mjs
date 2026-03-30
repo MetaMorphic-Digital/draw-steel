@@ -3,6 +3,7 @@ import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
+ * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  * @import { ParsedConfig } from "../helpers.mjs";
@@ -133,16 +134,20 @@ async function onClickAnchor() {
   const updates = {
     transfer: true,
     origin: this.dataset.origin,
-    system: {},
   };
-
-  if (this.dataset.end) updates.system.end = { type: this.dataset.end };
-  tempEffect.updateSource(updates);
+  if (this.dataset.end) updates.duration = { expiry: ds.CONFIG.effectEnds[this.dataset.end].expiryEvent };
+  // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
+  const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
 
   /** @type {Set<DrawSteelActor>} */
   const actors = new Set();
 
-  // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
+  // Need separate operations because all deletions must be done before creations to avoid id collisions
+  /** @type {DatabaseWriteOperation[]} */
+  const toDelete = [];
+  /** @type {DatabaseWriteOperation[]} */
+  const toCreate = [];
+
   for (const token of tokens) {
     const actor = token.actor;
     if (!actor) continue;
@@ -152,25 +157,22 @@ async function onClickAnchor() {
     // reusing the ID will block creation if it's already on the actor
     const existing = actor.effects.get(tempEffect.id);
     // deleting instead of updating because there may be variances between the old copy and new
-    if (existing?.disabled || existing?.duration.expired) await existing.delete();
-
-    // not awaited to allow parallel processing
-    actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+    if (existing) toDelete.push({ action: "delete", parent: actor, documentName: "ActiveEffect", ids: [tempEffect.id] });
+    toCreate.push({ action: "create", parent: actor, documentName: "ActiveEffect", data: [createData], keepId: noStack });
 
     // statuses automatically create scrolling text themselves
-    if (this.dataset.type !== "status") {
-      const scrollingTextArgs = [
-        token.center,
+    if (this.dataset.type === "custom") {
+      canvas.interface.createScrollingText(token.center,
         _loc("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
         {
           fill: "white",
           fontSize: 32,
           stroke: 0x000000,
           strokeThickness: 4,
-        },
-      ];
-
-      canvas.interface.createScrollingText(...scrollingTextArgs);
+        });
     }
   }
+
+  await foundry.documents.modifyBatch(toDelete);
+  await foundry.documents.modifyBatch(toCreate);
 }
