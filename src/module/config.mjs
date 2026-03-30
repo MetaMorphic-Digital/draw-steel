@@ -2577,3 +2577,48 @@ export const references = {
   wealth: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.I38Puf98ti2zZbiz",
   winded: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.3yd9XsnxkDbR7Ywd",
 };
+
+/* -------------------------------------------------- */
+
+/**
+ * Default formula editor context for autocompletion.
+ * @type {Record<string, { label: string }>}    A record of roll data paths to labels.
+ */
+export const formulaEditorContexts = {
+  default: {
+    M: {
+      label: "DRAW_STEEL.Actor.characteristics.might.full",
+    },
+    A: {
+      label: "DRAW_STEEL.Actor.characteristics.agility.full",
+    },
+    R: {
+      label: "DRAW_STEEL.Actor.characteristics.reason.full",
+    },
+    I: {
+      label: "DRAW_STEEL.Actor.characteristics.intuition.full",
+    },
+    P: {
+      label: "DRAW_STEEL.Actor.characteristics.presence.full",
+    },
+    chr: {
+      label: "DRAW_STEEL.FormulaEditor.Chr",
+    },
+    level: {
+      label: "DRAW_STEEL.FormulaEditor.Level",
+    },
+    echelon: {
+      label: "DRAW_STEEL.FormulaEditor.Echelon",
+    },
+    "potency.weak": {
+      label: "DRAW_STEEL.FormulaEditor.Potency.Weak",
+    },
+    "potency.average": {
+      label: "DRAW_STEEL.FormulaEditor.Potency.Average",
+    },
+    "potency.strong": {
+      label: "DRAW_STEEL.FormulaEditor.Potency.Strong",
+    },
+  },
+};
+preLocalize("formulaEditorContexts.default", { key: "label" });
