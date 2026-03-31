@@ -3,9 +3,11 @@ import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 import { setOptions } from "../../helpers.mjs";
 
 /**
+ * @import { ActiveEffectData } from "@common/documents/_types.mjs";
+ * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
+ * @import { StatusEffectConfig } from "@client/config.mjs";
  * @import { AppliedEffectSchema } from "./_types";
  * @import { DrawSteelActor } from "../../../documents/_module.mjs";
- * @import { StatusEffectConfig } from "@client/config.mjs";
  */
 
 const { SchemaField, SetField, StringField, TypedObjectField } = foundry.data.fields;
@@ -178,6 +180,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    * @param {string} effectId   A status effect or AE id.
    * @param {object} [options]
    * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected actors.
+   * @returns {Promise<DrawSteelActiveEffect[][]>} The batched operation of created effects.
    */
   async applyEffect(tierKey, effectId, options = {}) {
     if (Array.from(options.targets ?? []).some(a => !a.isOwner)) {
@@ -198,24 +201,30 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     /** @type {ActiveEffectData} */
     const updates = {
       transfer: true,
-      // v14 is turning this into a DocumentUUID field so needs to be a real document
       origin: this.item.uuid,
-      system: {},
     };
-    if (config.end) updates.system.end = { type: config.end };
-    tempEffect.updateSource(updates);
+    if (config.end) updates.duration = { expiry: ds.CONFIG.effectEnds[config.end].expiryEvent };
+    // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
+    const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
 
     const targetActors = options.targets ?? ds.utils.tokensToActors();
 
-    // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
+    // Need separate operations because all deletions must be done before creations to avoid id collisions
+    /** @type {DatabaseWriteOperation[]} */
+    const toDelete = [];
+    /** @type {DatabaseWriteOperation[]} */
+    const toCreate = [];
+
     for (const actor of targetActors) {
       // reusing the ID will block creation if it's already on the actor
       const existing = actor.effects.get(tempEffect.id);
       // deleting instead of updating because there may be variances between the old copy and new
-      if (existing?.disabled || existing?.duration.expired) await existing.delete();
-      // not awaited to allow parallel processing
-      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+      if (existing) toDelete.push({ action: "delete", parent: actor, documentName: "ActiveEffect", ids: [tempEffect.id] });
+      toCreate.push({ action: "create", parent: actor, documentName: "ActiveEffect", data: [createData], keepId: noStack });
     }
+
+    await foundry.documents.modifyBatch(toDelete);
+    return foundry.documents.modifyBatch(toCreate);
   }
 
   /* -------------------------------------------------- */
