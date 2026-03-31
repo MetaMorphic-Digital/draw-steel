@@ -82,6 +82,7 @@ export default class ProjectRoll extends DSRoll {
    * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {
+    foundry.utils.logCompatibilityWarning("ProjectRoll.prompt is deprecated without replacement.", { since: "1.0", until: "1.2" });
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
     if (!["none", "evaluate", "message"].includes(evaluation)) {
