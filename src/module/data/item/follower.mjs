@@ -4,7 +4,7 @@ import { setOptions } from "../helpers.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
- * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
  */
@@ -191,6 +191,7 @@ export default class FollowerModel extends BaseItemModel {
    * @param {DrawSteelItem} [config.project] A specific project to roll for.
    * @param {ApplicationConfiguration} [dialogOptions={}] Options to be forwarded to the roll dialog.
    * @param {DatabaseCreateOperation} [messageOptions]    Options to be forwarded to the final created chat message.
+   * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Only followers with a hero can perform a roll");
