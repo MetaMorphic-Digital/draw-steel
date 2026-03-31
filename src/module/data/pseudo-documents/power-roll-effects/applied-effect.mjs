@@ -180,6 +180,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    * @param {string} effectId   A status effect or AE id.
    * @param {object} [options]
    * @param {Iterable<DrawSteelActor>} [options.targets] Defaults to all selected actors.
+   * @returns {Promise<DrawSteelActiveEffect[][]>} The batched operation of created effects.
    */
   async applyEffect(tierKey, effectId, options = {}) {
     if (Array.from(options.targets ?? []).some(a => !a.isOwner)) {
