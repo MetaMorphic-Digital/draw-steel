@@ -138,8 +138,13 @@ export const potencyStrengths = Object.freeze({
 /* -------------------------------------------------- */
 
 /**
+ * @typedef FollowerType
+ * @property {string} label
+ */
+
+/**
  * Valid follower types for Follower items (excludes Retainer, which is an Actor subtype).
- * @type {Record<string, { label: string }>}
+ * @type {Record<string, FollowerType>}
  */
 export const followerTypes = Object.freeze({
   artisan: {

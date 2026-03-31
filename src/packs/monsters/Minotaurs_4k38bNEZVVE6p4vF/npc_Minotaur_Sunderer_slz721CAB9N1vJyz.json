@@ -940,7 +940,6 @@
           "_id": "j05qfRBPuK0wvtpo",
           "system": {
             "end": {
-              "type": "turn",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": []
@@ -949,7 +948,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "turnEnd",
             "expired": false
           },
           "description": "<p>The target has line of effect only within 3 squares.</p>",
@@ -961,12 +960,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.1",
+            "systemVersion": "1.0.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770785019779,
-            "createdTime": null
+            "modifiedTime": 1774890079047,
+            "createdTime": 1774890079047
           },
           "start": null,
           "showIcon": 1,
@@ -982,7 +981,6 @@
           "_id": "F2fGz4WjWIom6q2J",
           "system": {
             "end": {
-              "type": "save",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": []
@@ -991,7 +989,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "save",
             "expired": false
           },
           "description": "<p>You have line of effect only within 3 squares and are frightened of all minotaurs</p>",
@@ -1005,12 +1003,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.1",
+            "systemVersion": "1.0.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770785019779,
-            "createdTime": null
+            "modifiedTime": 1774890079047,
+            "createdTime": 1774890079047
           },
           "showIcon": 2,
           "start": null,

@@ -77,7 +77,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
    */
   async endTurn() {
     const updateData = { round: this.round, turn: null };
-    const updateOptions = { direction: 1, worldTime: { delta: null }, endTurn: true };
+    const updateOptions = { direction: 1, worldTime: { delta: null } };
     Hooks.callAll("combatTurn", this, updateData, updateOptions);
     await this.update(updateData, updateOptions);
     return this;
@@ -135,29 +135,6 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     super._onCreate(data, options, userId);
 
     ui.players.render();
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _onUpdate(changed, options, userId) {
-    super._onUpdate(changed, options, userId);
-
-    // Need to special case endTurn setting the turn to null but still triggering end of turn events
-    if (options.endTurn && game.user.isActiveGM) {
-      const prev = this.previous;
-      const combatant = this.combatants.get(prev.combatantId);
-      if (combatant && (this.current.turn == null)) {
-        if (CONFIG.debug.combat) console.debug(` | Combat End Turn: ${combatant.name}`);
-        const context = { round: prev.round, turn: prev.turn, skipped: false };
-        await this._onEndTurn(combatant, context);
-        const token = combatant.token;
-        if (token) {
-          const regionEvents = token.regions.map(r => r._triggerEvent(CONST.REGION_EVENTS.TOKEN_TURN_END, { token, combatant, combat: this, ...context }));
-          await Promise.allSettled(regionEvents);
-        }
-      }
-    }
   }
 
   /* -------------------------------------------------- */
@@ -247,6 +224,70 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _manageTurnEvents() {
+    if (!game.combats.isDefaultInitiativeMode) return super._manageTurnEvents();
+
+    // Capture current and previous states
+    const { current, previous } = this;
+
+    // Director handling only
+    if (game.user.isActiveGM) await this.#triggerDSTurnEvents();
+
+    // Hooks handled by all clients
+    Hooks.callAll("combatTurnChange", this, previous, current);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A Draw Steel alternative to the core #triggerTurnEvents which does not properly handle nonlinear turn orders.
+   * The fundamental issue is that the core implementation
+   * - does not proc turn events when going in "reverse" order (so monster to hero) because it assumes we're rewinding
+   * - *does* proc turn events of "skipped" tokens
+   * This is highly undesirable when interacting with the core region triggers.
+   * See https://github.com/foundryvtt/foundryvtt/issues/13983 for core ticket.
+   */
+  async #triggerDSTurnEvents() {
+    const { current, previous } = this;
+
+    const previousCombatant = this.combatants.get(previous?.combatantId);
+
+    if (previousCombatant) {
+      // end turn
+      const context = { round: previous.round, turn: previous.turn, skipped: false };
+      if (CONFIG.debug.combat) console.debug(` | Combat End Turn: ${previousCombatant.name}`);
+      await this._onEndTurn(previousCombatant, context);
+      await foundry.documents.ActiveEffect.registry.refresh("turnEnd", { ...context, combat: this });
+      this.#triggerDSRegionEvents(CONST.REGION_EVENTS.TOKEN_TURN_END, context, [previousCombatant]);
+    }
+    if (current.round !== previous.round) {
+      // end round
+      if (CONFIG.debug.combat) console.debug(` | Combat End Round: ${previous.round}`);
+      await this._onEndRound({ round: previous.round, skipped: false });
+      await foundry.documents.ActiveEffect.registry.refresh("roundEnd", { round: previous.round, skipped: false, combat: this });
+      this.#triggerDSRegionEvents(CONST.REGION_EVENTS.TOKEN_ROUND_END, { round: previous.round, skipped: false }, this.combatants);
+      // start round
+      if (CONFIG.debug.combat) console.debug(` | Combat Start Round: ${current.round}`);
+      await this._onStartRound({ round: current.round, skipped: false });
+      await foundry.documents.ActiveEffect.registry.refresh("roundStart", { round: current.round, skipped: false, combat: this });
+      this.#triggerDSRegionEvents(CONST.REGION_EVENTS.TOKEN_ROUND_START, { round: current.round, skipped: false }, this.combatants);
+    }
+    const currentCombatant = this.combatants.get(current?.combatantId);
+    // Do not proc start of turn effects when transitioning rounds since it just goes to the first person
+    if (currentCombatant) {
+      // start turn
+      const context = { round: current.round, turn: current.turn, skipped: false };
+      if (CONFIG.debug.combat) console.debug(` | Combat Start Turn: ${currentCombatant.name}`);
+      await this._onStartTurn(currentCombatant, context);
+      await this._clearMovementHistoryOnStartTurn(currentCombatant, context);
+      await foundry.documents.ActiveEffect.registry.refresh("turnStart", { ...context, combat: this });
+      this.#triggerDSRegionEvents(CONST.REGION_EVENTS.TOKEN_TURN_START, context, [currentCombatant]);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _onExit(combatant) {
     /** @type {DrawSteelActor} */
     const actor = combatant.actor;
@@ -287,6 +328,28 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       .filter(c => (c.actor?.type === "hero") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
       .map(c => c.actor);
     await malice._onStartRound(this, aliveHeroes);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Trigger Region events for Combat events.
+   * @param {string} eventName                  The event name.
+   * @param {object & {token: never, combatant: never, combat: never}} eventData
+   *                                            The event data (without `token`, `combatant`, and `combat`).
+   * @param {Iterable<Combatant>} combatants    The combatants to trigger the event for.
+   * @returns {Promise<void>}
+   */
+  async #triggerDSRegionEvents(eventName, eventData, combatants) {
+    const promises = [];
+    for (const combatant of combatants) {
+      const token = combatant.token;
+      if (!token) continue;
+      for (const region of token.regions) {
+        promises.push(region._triggerEvent(eventName, { token, combatant, combat: this, ...eventData }));
+      }
+    }
+    await Promise.allSettled(promises);
   }
 
   /* -------------------------------------------------- */

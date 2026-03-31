@@ -128,7 +128,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "turn",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -137,7 +136,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes fire damage equal to twice your Reason score. Each affected enemy then gains this same effect [[/apply .kpvI9YZtx2l4kCrq]].</p>",
@@ -149,9 +148,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761071787649,
         "modifiedTime": null,
         "lastModifiedBy": null

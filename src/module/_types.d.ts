@@ -7,7 +7,9 @@ import "./utils/advancement/_types";
 import {
   DrawSteelActor,
   DrawSteelChatMessage,
+  DrawSteelItem,
 } from "./documents/_module.mjs";
+import FollowerModel from "./data/item/follower.mjs";
 
 import {
   PowerRoll,
@@ -41,6 +43,10 @@ export interface PowerRollPromptOptions extends RollPromptOptions {
   ability ?: string
 }
 
+export interface ProjectRollOptions extends PowerRollModifiers {
+  follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
+}
+
 export interface PowerRollPrompt {
   messageMode: string;
   baseRoll: PowerRoll;
@@ -51,6 +57,11 @@ export interface ProjectRollPrompt {
   messageMode: string;
   projectRoll: ProjectRoll | DrawSteelChatMessage;
 }
+
+export interface ProjectRollPromptOptions extends RollPromptOptions {
+  follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
+}
+
 
 declare module "./utils/advancement/node.mjs" {
   export default interface AdvancementNode {

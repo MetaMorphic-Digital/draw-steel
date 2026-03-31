@@ -68,6 +68,9 @@ export default class DefeatedMinionSelection extends DSApplication {
     context = await super._preparePartContext(partId, context, options);
 
     switch (partId) {
+      case "header":
+        context.headerLabel = `DRAW_STEEL.Combat.DefeatedMinionSelection.Header.${game.i18n.pluralRules.select(context.needToDefeat)}`;
+        break;
       case "minions":
         await this._prepareMinionsContext(context);
         break;

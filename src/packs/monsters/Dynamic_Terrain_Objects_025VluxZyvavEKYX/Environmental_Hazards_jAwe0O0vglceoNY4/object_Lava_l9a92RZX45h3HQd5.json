@@ -395,7 +395,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "save",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": []
@@ -404,7 +403,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "save",
             "expired": false
           },
           "description": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>",
@@ -416,11 +415,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.1",
+            "systemVersion": "1.0.0",
             "createdTime": 1771704615688,
-            "modifiedTime": 1771704820432,
+            "modifiedTime": 1774890078994,
             "lastModifiedBy": null
           },
           "start": null,

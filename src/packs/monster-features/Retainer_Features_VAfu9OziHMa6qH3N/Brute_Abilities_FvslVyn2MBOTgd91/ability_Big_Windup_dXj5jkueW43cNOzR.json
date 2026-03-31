@@ -107,7 +107,6 @@
       "_id": "W4lREA2EcKf6brwK",
       "system": {
         "end": {
-          "type": "turn",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -115,22 +114,25 @@
         },
         "changes": [
           {
-            "key": "forced.push",
+            "key": "forced.bonuses.push",
+            "type": "add",
             "value": 2,
-            "priority": null,
-            "type": "add"
+            "phase": "initial",
+            "priority": 0
           },
           {
-            "key": "forced.pull",
+            "key": "forced.bonuses.pull",
+            "type": "add",
             "value": 2,
-            "priority": null,
-            "type": "add"
+            "phase": "initial",
+            "priority": 0
           },
           {
-            "key": "forced.slide",
+            "key": "forced.bonuses.slide",
+            "type": "add",
             "value": 2,
-            "priority": null,
-            "type": "add"
+            "phase": "initial",
+            "priority": 0
           }
         ]
       },
@@ -138,7 +140,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "<p>Any ability the retainer uses before the end of their turn that force moves a creature can move that creature 2 additional squares.</p>",
@@ -150,9 +152,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1773167844786,
         "modifiedTime": null,
         "lastModifiedBy": null

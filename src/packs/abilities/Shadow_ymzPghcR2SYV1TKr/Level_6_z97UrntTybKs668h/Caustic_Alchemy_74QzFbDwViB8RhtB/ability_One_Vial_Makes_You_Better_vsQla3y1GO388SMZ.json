@@ -55,7 +55,6 @@
       "_id": "gPSTSVl1YfozOgDm",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -63,7 +62,8 @@
             "key": "system.damage.immunities.acid",
             "value": 1,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -71,7 +71,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "",
@@ -83,9 +83,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760896677272,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -104,7 +104,6 @@
       "_id": "usvjXrtFf4YXNXLZ",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -112,7 +111,8 @@
             "key": "system.damage.immunities.fire",
             "value": 1,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -120,7 +120,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "",
@@ -132,9 +132,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760896821914,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -153,7 +153,6 @@
       "_id": "Yy1yU4WvrXGAvOUY",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -161,7 +160,8 @@
             "key": "system.damage.immunities.poison",
             "value": 1,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -169,7 +169,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "",
@@ -181,9 +181,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760896919725,
         "modifiedTime": null,
         "lastModifiedBy": null

@@ -185,7 +185,7 @@ async function version_1_0_migration() {
     const wasLocked = pack.config.locked;
     if (wasLocked) await pack.configure({ locked: false });
     const operation = [];
-    docs.forEach(doc => migrateChanges(doc, operation));
+    docs.forEach(doc => migrateEffectSystem(doc, operation));
     await foundry.documents.modifyBatch(operation);
     if (wasLocked) await pack.configure({ locked: true });
   }
@@ -238,7 +238,6 @@ export async function migrateChanges(parentDocument) {
     "flags.draw-steel.migrateChanges": _del,
   }));
 
-  // TODO: Batch this in v14
   await parentDocument.updateEmbeddedDocuments("ActiveEffect", toMigrate);
   if (parentDocument.documentName === "Item") return;
   const promises = [];
@@ -258,6 +257,10 @@ export function migrateEffectSystem(parentDocument, operation) {
     const updateData = {
       _id: doc.id,
       system: _replace(doc.system.toObject()),
+      "flags.draw-steel": {
+        migrateChanges: _del,
+        oldExpiry: _del,
+      },
     };
 
     const oldExpiry = doc.getFlag(systemID, "oldExpiry");

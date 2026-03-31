@@ -621,7 +621,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "save",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -629,7 +628,8 @@
                 "key": "",
                 "value": "",
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
             ]
           },
@@ -637,7 +637,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "save",
             "expired": false
           },
           "description": "<p>The target is restrained and takes [[/damage 2 fire]] at the start of each of their turns. (Save Ends).</p>",
@@ -651,11 +651,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.0.0",
             "createdTime": 1756950023706,
-            "modifiedTime": 1756950228554,
+            "modifiedTime": 1774890078768,
             "lastModifiedBy": null
           },
           "showIcon": 2,
