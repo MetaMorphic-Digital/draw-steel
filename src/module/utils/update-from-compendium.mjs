@@ -1,11 +1,15 @@
 /**
+ * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
+ * @import EmbeddedCollection from "@common/abstract/embedded-collection.mjs";
+ */
+
+/**
  * Updates a document to match the compendium copy.
  * @param {foundry.abstract.Document} doc  The root document being updated.
  * @param {object} [options={}]
  * @param {string}  [options.uuid]         An optional reference for a UUID to use in place of the stored compendiumSource.
  * @param {boolean} [options.skipDialog]   Whether to skip the confirmation dialog.
- * @param {boolean} [options.embedOnly]    Whether to only process updates for embedded documents and not this one.
- * TODO: Update to use batched operations in v14.
+ * @returns {foundry.abstract.Document[][]} The successful batched operation
  */
 export default async function updateFromCompendium(doc, options = {}) {
   const uuid = options.uuid ?? doc._stats.compendiumSource;
@@ -32,45 +36,41 @@ export default async function updateFromCompendium(doc, options = {}) {
     if (!proceed) return;
   }
 
-  if (!options.embedOnly) {
-    let savedProps = {};
-    switch (doc.type) {
-      case "career":
-        savedProps["system.projectPoints"] = doc.system.projectPoints;
-        break;
-      case "class":
-        savedProps["system.level"] = doc.system.level;
-        break;
-      case "project":
-        savedProps["system.points"] = doc.system.points;
-        break;
-    }
-    await doc.update(compendiumUpdateData(compendiumDocument));
-    await doc.update(savedProps);
+  const sourceUpdateData = compendiumUpdateData(compendiumDocument);
+  sourceUpdateData._id = doc.id;
+
+  /** @type {DatabaseWriteOperation[]} */
+  const operation = [{
+    updates: [sourceUpdateData],
+    action: "update",
+    documentName: doc.documentName,
+    parent: doc.parent,
+  }];
+
+  const savedProps = {};
+  switch (doc.type) {
+    case "career":
+      savedProps["system.projectPoints"] = doc.system.projectPoints;
+      break;
+    case "class":
+      savedProps["system.level"] = doc.system.level;
+      break;
+    case "project":
+      savedProps["system.points"] = doc.system.points;
+      break;
   }
 
-  for (const [field, collection] of Object.entries(compendiumDocument.collections)) {
-    const toCreate = [];
-    const toUpdate = [];
-    const toDelete = new Set(doc[field].map(d => d.id));
-    for (const original of collection) {
-      toDelete.delete(original.id);
-      const currentEntry = doc[field].get(original.id);
-      if (currentEntry) {
-        toUpdate.push(compendiumUpdateData(original));
+  Object.entries(compendiumDocument.collections).forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, doc[field]));
 
-        // This specifically will get refactored in the batch update improvements
-        await updateFromCompendium(currentEntry, { skipDialog: true, uuid: original.uuid, embedOnly: true });
-      }
-      // Items does not alter WorldCollection#fromCompendium
-      else toCreate.push(game.items.fromCompendium(original, { keepId: true }));
-    }
-    await doc.createEmbeddedDocuments(collection.documentName, toCreate, { keepId: true });
-    await doc.updateEmbeddedDocuments(collection.documentName, toUpdate);
-    await doc.deleteEmbeddedDocuments(collection.documentName, Array.from(toDelete));
-  }
+  console.log(operation);
 
-  ui.notifications.success("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Completion", { format: { name: doc.name } });
+  const result = await foundry.documents.modifyBatch(operation);
+
+  if (!foundry.utils.isEmpty(savedProps)) await doc.update(savedProps);
+
+  if (result) ui.notifications.success("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Completion", { format: { name: doc.name } });
+  else ui.notifications.error("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Failure", { format: { name: doc.name } });
+  return result;
 }
 
 /**
@@ -91,4 +91,49 @@ function compendiumUpdateData(doc) {
         description: documentData.description,
       };
   }
+}
+
+/**
+ * Helper function to fill in the operation for a pair of collections.
+ * @param {DatabaseWriteOperation[]} operation      The operation to push to.
+ * @param {EmbeddedCollection} originalCollection   An embedded collection from the compendium document.
+ * @param {EmbeddedCollection} currentCollection    The document being updated's embedded collection.
+ */
+function gatherCollectionUpdates(operation, originalCollection, currentCollection) {
+  const toCreate = [];
+  const toUpdate = [];
+  const toDelete = new Set(currentCollection.map(d => d.id));
+  for (const original of originalCollection) {
+    toDelete.delete(original.id);
+    const currentEntry = currentCollection.get(original.id);
+    if (currentEntry) {
+      toUpdate.push(compendiumUpdateData(original));
+
+      Object.entries(original.collections).forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, currentEntry[field]));
+    }
+    // Items does not alter WorldCollection#fromCompendium
+    // TODO: Fix how this handles Active Effects
+    else toCreate.push(game.items.fromCompendium(original, { keepId: true, clearOwnership: false }));
+  }
+  const documentName = originalCollection.documentName;
+  operation.push(
+    {
+      documentName,
+      action: "create",
+      parent: currentCollection.model,
+      data: toCreate,
+    },
+    {
+      documentName,
+      action: "update",
+      parent: currentCollection.model,
+      updates: toUpdate,
+    },
+    {
+      documentName,
+      action: "delete",
+      parent: currentCollection.model,
+      ids: Array.from(toDelete),
+    },
+  );
 }
