@@ -167,28 +167,15 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /**
    * Construct a UUID relative to another document.
-   * @param {Document} relative  The document to compare against.
+   * While ClientDocument#getRelativeUUID is deprecated, this is is still useful
+   * because buildRelativeUUID does not directly accept pseudodocuments.
+   * @param {Document | PseudoDocument | string} relative  The document to compare against.
+   * @returns {string} The relative UUID.
    */
   getRelativeUUID(relative) {
+    const origin = relative instanceof PseudoDocument ? relative.uuid : relative;
 
-    // This PseudoDocument is a sibling of the relative Document.
-    if (this.collection === relative.collection) return `.${this.id}`;
-
-    // This PseudoDocument may be a descendant of the relative Document, so walk up the hierarchy to check.
-    const parts = [this.documentName, this.id];
-    let parent = this.parent;
-    while (parent) {
-      if (parent === relative) break;
-      // Skip intermediate non-Document/PseudoDocument data models
-      if (parent.documentName) parts.unshift(parent.documentName, parent.id);
-      parent = parent.parent;
-    }
-
-    // The relative Document was a parent or grandparent of this one.
-    if (parent === relative) return `.${parts.join(".")}`;
-
-    // The relative Document was unrelated to this one.
-    return this.uuid;
+    return foundry.utils.buildRelativeUuid(this.uuid, origin);
   }
 
   /* -------------------------------------------------- */
