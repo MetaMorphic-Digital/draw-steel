@@ -149,7 +149,7 @@ export default class PowerRollDialog extends RollDialog {
    */
   _prepareSkillOptions(context) {
     const { list, groups } = ds.CONFIG.skills;
-    const skillModifiers = context.skillModifiers;
+    const skillModifiers = context.skillModifiers ?? {};
 
     if (!this.constructor.EdgePluralFormatter) {
       this.constructor.EdgePluralFormatter = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
