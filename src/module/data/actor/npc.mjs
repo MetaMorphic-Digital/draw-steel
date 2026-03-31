@@ -1,8 +1,7 @@
-import { systemID, systemPath } from "../../constants.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
 import SourceModel from "../models/source.mjs";
-import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
