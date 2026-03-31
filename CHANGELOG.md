@@ -40,6 +40,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
   - Applying a new copy of a status effect always removes the old one if it's not a stacking effect.
 - Implemented field placeholders where possible. (#1326)
+- Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Migrated roll modes to the new core message modes. (#1681)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`

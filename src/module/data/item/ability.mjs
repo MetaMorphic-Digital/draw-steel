@@ -305,9 +305,16 @@ export default class AbilityModel extends BaseItemModel {
     labels.distance = _loc(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
     const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "COMMON.Unknown" };
-    labels.target = this.target.custom || (this.target.value == null ?
-      targetConfig.all ?? _loc(targetConfig.embedLabel) :
-      _loc(targetConfig.embedLabel, { value: this.target.value }));
+    if (this.target.custom) labels.target = this.target.custom;
+    else if (this.target.value === null) labels.target = targetConfig.all;
+    if (!labels.target) {
+      // Non-plural dependent labels
+      if (game.i18n.has(targetConfig.embedLabel)) labels.target = _loc(targetConfig.embedLabel);
+      else {
+        const labelSuffix = game.i18n.pluralRules.select(this.target.value);
+        labels.target = _loc(`${targetConfig.embedLabel}.${labelSuffix}`, { value: this.target.value });
+      }
+    }
 
     return labels;
   }

@@ -105,8 +105,9 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     const currentTokens = game.actors.heroTokens.value;
     const value = currentTokens + count;
     await game.settings.set(systemID, "heroTokens", { value });
+    const labelSuffix = game.i18n.pluralRules.select(count);
     if (chatMessage) await DrawSteelChatMessage.create({
-      content: `<p>${_loc("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count })}</p>`,
+      content: `<p>${_loc(`DRAW_STEEL.Setting.HeroTokens.GrantedTokens.${labelSuffix}`, { count })}</p>`,
       type: "standard",
       "system.parts": [{ type: "content" }],
     });
