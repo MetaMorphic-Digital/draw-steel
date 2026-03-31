@@ -241,6 +241,11 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /**
    * A Draw Steel alternative to the core #triggerTurnEvents which does not properly handle nonlinear turn orders.
+   * The fundamental issue is that the core implementation
+   * - does not proc turn events when going in "reverse" order (so monster to hero) because it assumes we're rewinding
+   * - *does* proc turn events of "skipped" tokens
+   * This is highly undesirable when interacting with the core region triggers.
+   * See https://github.com/foundryvtt/foundryvtt/issues/13983 for core ticket.
    */
   async #triggerDSTurnEvents() {
     const { current, previous } = this;
@@ -268,6 +273,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       this.#triggerDSRegionEvents(CONST.REGION_EVENTS.TOKEN_ROUND_START, { round: current.round, skipped: false }, this.combatants);
     }
     const currentCombatant = this.combatants.get(current?.combatantId);
+    // Do not proc start of turn effects when transitioning rounds since it just goes to the first person
     if (currentCombatant) {
       // start turn
       const context = { round: current.round, turn: current.turn, skipped: false };
