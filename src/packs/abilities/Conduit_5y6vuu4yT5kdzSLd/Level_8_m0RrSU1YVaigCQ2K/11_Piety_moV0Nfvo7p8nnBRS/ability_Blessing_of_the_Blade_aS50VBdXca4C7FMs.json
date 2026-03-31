@@ -61,7 +61,6 @@
       "_id": "IAPHOHz2VAgzR1NT",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -70,7 +69,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "<p>At the end of each of your turns until the end of the encounter or until you are dying, each target gains 3 surges.</p>",
@@ -82,9 +81,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760806610222,
         "modifiedTime": null,
         "lastModifiedBy": null

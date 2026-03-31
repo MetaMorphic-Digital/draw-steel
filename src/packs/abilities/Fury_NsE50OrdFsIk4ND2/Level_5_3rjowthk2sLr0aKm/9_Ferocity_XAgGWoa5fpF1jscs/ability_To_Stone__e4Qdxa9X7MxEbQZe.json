@@ -115,7 +115,6 @@
       "_id": "IOeJcovdBiIZuh35",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -124,7 +123,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "<p>While the target is slowed this way, any other effect that would make the target slowed instead makes them [[/apply restrained]] by this ability. Additionally, a creature who fails the saving throw while restrained this way is petrified until they are given a supernatural cure or you choose to reverse the effect (no action required). </p>",
@@ -138,9 +137,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760994108426,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -159,7 +158,6 @@
       "_id": "1NiegIDac5q4O7Qv",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": []
@@ -168,7 +166,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "<p>While the target is slowed this way, any other effect that would make the target slowed instead makes them restrained by this ability. Additionally, a creature who fails the saving throw while restrained this way is petrified until they are given a supernatural cure or you choose to reverse the effect (no action required).</p>",
@@ -182,9 +180,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760994180904,
         "modifiedTime": null,
         "lastModifiedBy": null

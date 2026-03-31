@@ -54,7 +54,6 @@
       "_id": "Asn2N3mCLAZ6jkKV",
       "system": {
         "end": {
-          "type": "respite",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -67,7 +66,8 @@
             "key": "damage.bonuses.value",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
         ]
       },
@@ -75,7 +75,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "respite",
         "expired": false
       },
       "description": "<p>Any creature who wields the weapon gains a +1 bonus to rolled damage with abilities that use the weapon.</p>",
@@ -87,9 +87,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760685385854,
         "modifiedTime": null,
         "lastModifiedBy": null

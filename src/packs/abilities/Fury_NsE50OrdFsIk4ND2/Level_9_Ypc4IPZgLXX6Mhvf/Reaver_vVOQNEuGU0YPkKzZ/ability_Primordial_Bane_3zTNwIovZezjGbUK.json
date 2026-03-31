@@ -105,7 +105,6 @@
       "_id": "MGQmrgFa7IchnX8z",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -113,13 +112,15 @@
             "key": "system.damage.immunities.acid",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.acid",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -127,7 +128,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -139,9 +140,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761576348803,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -160,7 +161,6 @@
       "_id": "Z25OIEpHpelUvKWe",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -168,13 +168,15 @@
             "key": "system.damage.immunities.cold",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.cold",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -182,7 +184,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -194,9 +196,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761576583111,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -215,7 +217,6 @@
       "_id": "Tp4YLa282D8CY9eX",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -223,13 +224,15 @@
             "key": "system.damage.immunities.corruption",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.corruption",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -237,7 +240,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -249,9 +252,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761576642342,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -270,7 +273,6 @@
       "_id": "GZkQv6kUtb5gccNI",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -278,13 +280,15 @@
             "key": "system.damage.immunities.fire",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.fire",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -292,7 +296,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -304,9 +308,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761576942180,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -325,7 +329,6 @@
       "_id": "2SJ7L3LBeALSQ4JA",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -333,13 +336,15 @@
             "key": "system.damage.immunities.lightning",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.lightning",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -347,7 +352,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -359,9 +364,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761577045516,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -380,7 +385,6 @@
       "_id": "d12CIjzP0dulOpUI",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -388,13 +392,15 @@
             "key": "system.damage.immunities.poison",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.poison",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -402,7 +408,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -414,9 +420,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761577121050,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -435,7 +441,6 @@
       "_id": "twQIogmZMlG19c4n",
       "system": {
         "end": {
-          "type": "save",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -443,13 +448,15 @@
             "key": "system.damage.immunities.sonic",
             "value": 0,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weaknesses.sonic",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
         ]
       },
@@ -457,7 +464,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "save",
         "expired": false
       },
       "description": "",
@@ -469,9 +476,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1761577184017,
         "modifiedTime": null,
         "lastModifiedBy": null

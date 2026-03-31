@@ -60,7 +60,6 @@
       "_id": "1mtIinANapevdBhp",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -74,7 +73,8 @@
             "key": "power.roll.edges",
             "value": "",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
         ]
       },
@@ -82,7 +82,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "<p>Whenever you make a ranged strike, it gains an edge and you [[/gain 1 surge]] that must be used immediately.</p>",
@@ -94,9 +94,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1773162444926,
         "modifiedTime": null,
         "lastModifiedBy": null
