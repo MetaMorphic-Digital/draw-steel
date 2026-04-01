@@ -190,18 +190,15 @@ export default class HeroModel extends CreatureModel {
     for (const keyword of ["melee", "ranged"]) {
       const bonuses = foundry.utils.flattenObject(kitAbilityBonuses[keyword]);
       for (const [key, value] of Object.entries(bonuses)) {
-        if (value) {
-          this._abilityBonuses.push({
-            key,
-            value,
-            type: "add",
-            priority: 0,
-            filters: {
-              keywords: new Set([keyword, "weapon"]),
-            },
-          });
-        }
-
+        if (!value) continue;
+        this._abilityBonuses.push({
+          key, value,
+          type: "add",
+          priority: 0,
+          filters: {
+            keywords: new Set([keyword, "weapon"]),
+          },
+        });
       }
     }
   }

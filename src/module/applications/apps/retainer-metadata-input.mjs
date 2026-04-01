@@ -29,13 +29,13 @@ export default class RetainerMetadataInput extends DocumentInput {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const monsterConfig = ds.CONFIG.monsters;
-    context.monsterKeywords = Object.entries(monsterConfig.keywords).map(([value, { label, group }]) =>
-      ({ value, label, group }),
-    );
+    context.monsterKeywords = Object.entries(monsterConfig.keywords)
+      .map(([value, { label, group }]) => ({ value, label, group }));
     context.monsterRoles = Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label }));
     context.retainerFields = this.document.system.schema.getField("retainer").fields;
 
-    context.mentorOptions = game.actors.filter(a => (a.type === "hero") && (a.isOwner || (a === this.document.system.retainer.mentor)))
+    context.mentorOptions = game.actors
+      .filter(a => (a.type === "hero") && (a.isOwner || (a === this.document.system.retainer.mentor)))
       .map(a => ({ value: a.id, label: a.name }));
 
     return context;

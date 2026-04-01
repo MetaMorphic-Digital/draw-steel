@@ -19,7 +19,8 @@ export function renderCombatantConfig(app, html, context, options) {
 
   if (combatant.type !== "base") return;
 
-  const dispositions = Object.entries(CONST.TOKEN_DISPOSITIONS).map(([key, value]) => ({ value, label: _loc(`TOKEN.DISPOSITION.${key}`) }));
+  const dispositions = Object.entries(CONST.TOKEN_DISPOSITIONS)
+    .map(([key, value]) => ({ value, label: _loc(`TOKEN.DISPOSITION.${key}`) }));
 
   const dispositionInput = combatant.system.schema.getField("disposition")?.toFormGroup(
     {},

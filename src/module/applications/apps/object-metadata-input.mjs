@@ -29,9 +29,8 @@ export default class ObjectMetadataInput extends DocumentInput {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const objectConfig = ds.CONFIG.objects;
-    context.objectCategories = Object.entries(objectConfig.categories).map(([value, { label }]) =>
-      ({ value, label }),
-    );
+    context.objectCategories = Object.entries(objectConfig.categories)
+      .map(([value, { label }]) => ({ value, label }));
     context.objectRoles = Object.entries(objectConfig.roles).map(([value, { label }]) => ({ value, label }));
     context.objectFields = this.document.system.schema.getField("object").fields;
     return context;

@@ -29,12 +29,10 @@ export default class MonsterMetadataInput extends DocumentInput {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const monsterConfig = ds.CONFIG.monsters;
-    context.monsterKeywords = Object.entries(monsterConfig.keywords).map(([value, { label, group }]) =>
-      ({ value, label, group }),
-    );
-    context.monsterOrganizations = Object.entries(monsterConfig.organizations).map(([value, { label }]) =>
-      ({ value, label }),
-    );
+    context.monsterKeywords = Object.entries(monsterConfig.keywords)
+      .map(([value, { label, group }]) => ({ value, label, group }));
+    context.monsterOrganizations = Object.entries(monsterConfig.organizations)
+      .map(([value, { label }]) => ({ value, label }));
     context.monsterRoles = Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label }));
     context.monsterFields = this.document.system.schema.getField("monster").fields;
     return context;

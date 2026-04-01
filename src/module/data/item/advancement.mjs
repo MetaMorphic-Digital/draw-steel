@@ -125,8 +125,8 @@ export default class AdvancementModel extends BaseItemModel {
 
     await chain.initializeRoots({ item: this.parent });
 
-    const [firstUpdate, ...rest] = Object.values(toUpdate);
-    const noUpdates = (Object.keys(firstUpdate ?? {}).length <= 1) && (rest.length === 0);
+    const iter = foundry.utils.objectValues(toUpdate);
+    const noUpdates = (Object.keys(iter.next().value ?? {}).length <= 1) && iter.next().done;
 
     if (!chain.nodes.size && foundry.utils.isEmpty(toCreate) && noUpdates) {
       console.debug("No advancements to apply for", this.parent.name);

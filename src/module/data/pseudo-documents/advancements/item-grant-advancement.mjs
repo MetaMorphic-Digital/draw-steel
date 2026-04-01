@@ -238,7 +238,8 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     }
 
     // Drop logic
-    ctx.additionalTypes = Object.entries(ItemGrantAdvancement.ADDITIONAL_TYPES).map(([value, { label }]) => ({ value, label }));
+    ctx.additionalTypes = Object.entries(ItemGrantAdvancement.ADDITIONAL_TYPES)
+      .map(([value, { label }]) => ({ value, label }));
     switch (this.additional.type) {
       case "perk":
         ctx.perkTypes = ds.CONFIG.perks.typeOptions;

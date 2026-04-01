@@ -308,8 +308,12 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       }, {}),
     };
 
-    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
+    const immunities = Object.entries(this.actor.system.damage.immunities)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
 
     const formatter = game.i18n.getListFormatter({ type: "unit" });
     return {
@@ -484,7 +488,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       for (const id of effect.statuses) {
         if (!(id in statusInfo)) continue;
         statusInfo[id].active = "active";
-        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
+        if (!foundry.utils.objectValues(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
       }
     }
 

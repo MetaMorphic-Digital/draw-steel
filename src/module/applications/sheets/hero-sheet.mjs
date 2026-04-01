@@ -262,12 +262,18 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @returns {{ heightUnit: string; heightOptions: FormSelectOption[]; weightUnit: string; weightOptions: FormSelectOption[] }}
    */
   _getMeasurements() {
-    const heightOptions = Object.entries(ds.CONFIG.measurements.height).map(([value, config]) => ({
-      value, label: config.label, group: ds.CONFIG.measurements.groups[config.group]?.label,
-    }));
-    const weightOptions = Object.entries(ds.CONFIG.measurements.weight).map(([value, config]) => ({
-      value, label: config.label, group: ds.CONFIG.measurements.groups[config.group]?.label,
-    }));
+    const heightOptions = Object.entries(ds.CONFIG.measurements.height)
+      .map(([value, config]) => ({
+        value,
+        label: config.label,
+        group: ds.CONFIG.measurements.groups[config.group]?.label,
+      }));
+    const weightOptions = Object.entries(ds.CONFIG.measurements.weight)
+      .map(([value, config]) => ({
+        value,
+        label: config.label,
+        group: ds.CONFIG.measurements.groups[config.group]?.label,
+      }));
 
     return {
       heightUnit: ds.CONFIG.measurements.height[this.actor.system.biography.height.units]?.label ?? this.actor.system.biography.height.units,
