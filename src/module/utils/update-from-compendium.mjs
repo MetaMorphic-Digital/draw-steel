@@ -62,8 +62,6 @@ export default async function updateFromCompendium(doc, options = {}) {
 
   Object.entries(compendiumDocument.collections).forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, doc[field]));
 
-  console.log(operation);
-
   const result = await foundry.documents.modifyBatch(operation);
 
   if (!foundry.utils.isEmpty(savedProps)) await doc.update(savedProps);
