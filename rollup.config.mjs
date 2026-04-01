@@ -1,23 +1,39 @@
 import path from "path";
 import postcss from "rollup-plugin-postcss";
 import postcssImport from "postcss-import";
-import postcssUrl from "postcss-url";
+import postcssValueParser from "postcss-value-parser";
 import resolve from "@rollup/plugin-node-resolve";
 
 /**
- * Replaces all absolute asset paths with relative ones to preserve compatibility with route prefixing.
- * @type {postcssUrl.CustomTransformFunction}
+ * Absolute path to replace.
+ * @type {string}
  */
-function replaceAbsolutePaths(asset) {
-  if (!asset.url) return asset.url;
-  const absolutePath = "/systems/draw-steel/";
-  if (asset.url.startsWith(absolutePath)) {
-    return asset.url.replace(absolutePath, "../");
-  } else {
-    console.warn("URL THAT ISN'T IN PACKAGE REPOSITORY:", asset.url);
-  }
-  return asset.url;
+const absolutePath = "/systems/draw-steel/";
+
+/**
+ * Replaces all absolute asset paths with relative ones to preserve compatibility with route prefixing.
+ * @returns {object}
+ */
+function adjustCSSUrls() {
+  return {
+    postcssPlugin: "rewrite-system-urls",
+    Declaration(decl) {
+      const parsed = postcssValueParser(decl.value);
+
+      parsed.walk(node => {
+        if ((node.type === "function") && (node.value === "url")) {
+          const urlNode = node.nodes[0];
+          const url = urlNode?.value;
+          if (!url?.startsWith(absolutePath)) return;
+          urlNode.value = url.slice(absolutePath.length);
+        }
+      });
+
+      decl.value = parsed.toString();
+    },
+  };
 }
+adjustCSSUrls.postcss = true;
 
 export default [{
   input: "./_main.mjs",
@@ -31,7 +47,7 @@ export default [{
     postcss({
       plugins: [
         postcssImport(),
-        postcssUrl({ url: replaceAbsolutePaths }),
+        adjustCSSUrls(),
       ],
       extract: path.resolve("./public/css/draw-steel-system.css"),
     }),
@@ -47,7 +63,7 @@ export default [{
     postcss({
       plugins: [
         postcssImport(),
-        postcssUrl({ url: replaceAbsolutePaths }),
+        adjustCSSUrls(),
       ],
       extract: path.resolve("./public/css/draw-steel-elements.css"),
     }),
@@ -63,7 +79,7 @@ export default [{
     postcss({
       plugins: [
         postcssImport(),
-        postcssUrl({ url: replaceAbsolutePaths }),
+        adjustCSSUrls(),
       ],
       extract: path.resolve("./public/css/draw-steel-variables.css"),
     }),
