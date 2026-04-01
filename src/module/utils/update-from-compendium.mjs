@@ -9,7 +9,7 @@
  * @param {object} [options={}]
  * @param {string}  [options.uuid]         An optional reference for a UUID to use in place of the stored compendiumSource.
  * @param {boolean} [options.skipDialog]   Whether to skip the confirmation dialog.
- * @returns {foundry.abstract.Document[][]} The successful batched operation
+ * @returns {foundry.abstract.Document[][]} The successful batched operation.
  */
 export default async function updateFromCompendium(doc, options = {}) {
   const uuid = options.uuid ?? doc._stats.compendiumSource;
@@ -60,7 +60,8 @@ export default async function updateFromCompendium(doc, options = {}) {
       break;
   }
 
-  Object.entries(compendiumDocument.collections).forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, doc[field]));
+  Object.entries(compendiumDocument.collections)
+    .forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, doc[field]));
 
   const result = await foundry.documents.modifyBatch(operation);
 
@@ -107,7 +108,8 @@ function gatherCollectionUpdates(operation, originalCollection, currentCollectio
     if (currentEntry) {
       toUpdate.push(compendiumUpdateData(original));
 
-      Object.entries(original.collections).forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, currentEntry[field]));
+      Object.entries(original.collections)
+        .forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, currentEntry[field]));
     }
     // Items does not alter WorldCollection#fromCompendium
     // TODO: Fix how this handles Active Effects

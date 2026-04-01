@@ -2311,7 +2311,9 @@ export const perks = {
    */
   get typeOptions() {
     const skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, entry]) => ({ value, label: entry.label }));
-    return skillGroups.concat(Object.entries(ds.CONFIG.perks.types).map(([value, entry]) => ({ value, label: entry.label })));
+    return skillGroups.concat(
+      Object.entries(ds.CONFIG.perks.types).map(([value, entry]) => ({ value, label: entry.label })),
+    );
   },
 };
 preLocalize("perks.types", { key: "label" });

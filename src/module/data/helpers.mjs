@@ -39,11 +39,7 @@ export const damageTypes = (inner, { all = false } = {}) => {
   const config = ds.CONFIG;
 
   if (all) schema.all = inner();
-
-  Object.entries(config.damageTypes).reduce((obj, [type, value]) => {
-    obj[type] = inner({ label: value.label });
-    return obj;
-  }, schema);
+  Object.entries(config.damageTypes).forEach(([type, value]) => schema[type] = inner({ label: value.label }));
 
   return new SchemaField(schema);
 };

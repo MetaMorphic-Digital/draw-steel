@@ -308,8 +308,12 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       }, {}),
     };
 
-    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
+    const immunities = Object.entries(this.actor.system.damage.immunities)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
 
     const formatter = game.i18n.getListFormatter({ type: "unit" });
     return {
