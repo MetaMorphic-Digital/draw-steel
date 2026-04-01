@@ -488,7 +488,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       for (const id of effect.statuses) {
         if (!(id in statusInfo)) continue;
         statusInfo[id].active = "active";
-        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
+        if (!foundry.utils.objectValues(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
       }
     }
 

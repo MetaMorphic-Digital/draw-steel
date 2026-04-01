@@ -915,7 +915,8 @@ export const hero = {
   get xpTrack() {
     const xpSetting = game.settings.get(systemID, "xpAdvancement");
     // In case a module added track is removed.
-    const fallbackTrack = ds.CONFIG.hero.xpTracks.normal?.track ?? Object.values(ds.CONFIG.hero.xpTracks)[0].track;
+    const fallbackTrack = ds.CONFIG.hero.xpTracks.normal?.track
+      ?? foundry.utils.objectValues(ds.CONFIG.hero.xpTracks).next().value.track;
 
     return ds.CONFIG.hero.xpTracks[xpSetting]?.track ?? fallbackTrack;
   },

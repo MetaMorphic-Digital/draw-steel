@@ -40,8 +40,8 @@ export async function enricher(match, options) {
   const characteristics = ds.CONFIG.characteristics;
   const potencyStrengths = ds.CONST.potencyStrengths;
   // Caching the rollKeys this way as ds.CONFIG is not available at the time rollKeys is initially set.
-  if (rollKeys.size === 0) {
-    for (const characteristic of Object.values(characteristics)) rollKeys.add(characteristic.rollKey.toLocaleLowerCase());
+  if (!rollKeys.size) {
+    foundry.utils.objectValues(characteristics).forEach(char => rollKeys.add(char.rollKey.toLocaleLowerCase()));
   }
 
   for (const val of parsedConfig.values) {
