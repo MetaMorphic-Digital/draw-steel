@@ -140,7 +140,7 @@ export default class PowerRollDialog extends RollDialog {
    */
   _prepareSkillOptions(context) {
     const { list, groups } = ds.CONFIG.skills;
-    const skillModifiers = context.skillModifiers;
+    const skillModifiers = context.skillModifiers ?? {};
 
     // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
     context.skillOptions = Array.from(context.skills).map(value => {
