@@ -74,6 +74,15 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _prepareContext(options) {
+    return Object.assign(await super._prepareContext(options), {
+      rootId: this.id,
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
 
