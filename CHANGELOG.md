@@ -20,7 +20,13 @@
 
 ## 1.0.0
 
-This version of the system does not support v13, it is exclusively for Foundry v14+.
+The latest version of Draw Steel is v14-exclusive. You can see the full v14 stable release notes [here](https://foundryvtt.com/releases/14.359). This Draw Steel release fully incorporates new features like:
+- Scene Levels
+- Pop-out applications
+- Scene levels
+- The Placeables Sidebar
+- Active Effects V2 (Improved duration tracking, roll data values, and effect compendiums)
+- Template Regions
 
 ### Added
 
@@ -28,6 +34,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
+- Enabled full support of pop-out applications. (#1161)
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
@@ -45,6 +52,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Migrated roll modes to the new core message modes. (#1681)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
+- Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
 
 ### Deprecated
 
