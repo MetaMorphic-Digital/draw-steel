@@ -78,7 +78,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /** @inheritdoc */
   static async create(data = {}, { parent, ...operation } = {}) {
     data = foundry.utils.deepClone(data);
-    if (!data.type) data.type = Object.keys(this.TYPES)[0];
+    if (!data.type) data.type = foundry.utils.objectKeys(this.TYPES).next().value;
     if (!(data.type in this.TYPES)) {
       throw new Error(`The '${data.type}' type is not a valid type for a '${this.metadata.documentName}' pseudo-document!`);
     }
