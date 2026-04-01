@@ -26,7 +26,6 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   static PARTS = {
     content: {
       template: systemPath("templates/apps/ability-configuration-dialog.hbs"),
-      root: true,
     },
     footer: super.PARTS.footer,
   };
