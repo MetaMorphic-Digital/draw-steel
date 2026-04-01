@@ -175,7 +175,6 @@
       "_id": "om8bpobSQ2agKz2C",
       "system": {
         "end": {
-          "type": "encounter",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -183,7 +182,8 @@
             "key": "system.combat.save.bonus",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
         ]
       },
@@ -191,7 +191,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "<p>Gains a +1 bonus to saving throws.</p>",
@@ -203,9 +203,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1764264404882,
         "modifiedTime": null,
         "lastModifiedBy": null

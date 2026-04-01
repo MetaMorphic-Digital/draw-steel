@@ -47,7 +47,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       }, { persisted: false }),
     });
 
-    schema.biography = new fields.SchemaField(this._actorBiography());
+    schema.biography = new fields.SchemaField({
+      value: new fields.HTMLField(),
+      director: new fields.HTMLField({ gmOnly: true }),
+    });
 
     schema.movement = new fields.SchemaField({
       value: requiredInteger({ initial: 5 }),
@@ -96,20 +99,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Actor.base"];
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Helper function to fill in the `biography` property.
-   * @protected
-   * @returns {Record<string, DataField>}
-   */
-  static _actorBiography() {
-    return {
-      value: new fields.HTMLField(),
-      director: new fields.HTMLField({ gmOnly: true }),
-    };
-  }
 
   /* -------------------------------------------------- */
 

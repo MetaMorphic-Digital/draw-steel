@@ -25,6 +25,10 @@ export default class CreatureModel extends BaseActorModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
+    schema.biography.extendFields({
+      languages: new fields.SetField(setOptions()),
+    });
+
     const characteristic = { initial: 0, integer: true, nullable: false, placeholder: "0" };
 
     schema.characteristics = new fields.SchemaField(
@@ -51,17 +55,6 @@ export default class CreatureModel extends BaseActorModel {
     }, { persisted: false });
 
     return schema;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static _actorBiography() {
-    const bio = super._actorBiography();
-
-    bio.languages = new fields.SetField(setOptions());
-
-    return bio;
   }
 
   /* -------------------------------------------------- */

@@ -394,7 +394,6 @@
           "_id": "GBfX5suOOpdcyNgM",
           "system": {
             "end": {
-              "type": "turn",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -402,14 +401,15 @@
                 "key": "system.damage.immunities.fire",
                 "value": 5,
                 "priority": null,
-                "type": "override"
+                "type": "override",
+                "phase": "initial"
               }
             ]
           },
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "turnEnd",
             "expired": false
           },
           "description": "",
@@ -422,12 +422,12 @@
             "compendiumSource": "Actor.65JYST23SoHMm6FN.Item.hWLPbVDJfxBlpikW.ActiveEffect.GBfX5suOOpdcyNgM",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.0.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1774890078792,
+            "modifiedTime": 1774890078792
           },
           "start": null,
           "showIcon": 1,
@@ -755,7 +755,6 @@
           "_id": "Hba04T6CgjrjwaOu",
           "system": {
             "end": {
-              "type": "encounter",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -763,7 +762,8 @@
                 "key": "system.movement.value",
                 "value": 5,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
             ]
           },
@@ -771,7 +771,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "combatEnd",
             "expired": false
           },
           "description": "",
@@ -784,12 +784,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.0.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1774890078799,
+            "modifiedTime": 1774890078799
           },
           "start": {
             "combat": null,
@@ -811,7 +811,6 @@
           "_id": "oOlOeEi6rpWKvkJ4",
           "system": {
             "end": {
-              "type": "encounter",
               "roll": "1d10 + @combat.save.bonus"
             },
             "filters": {
@@ -824,7 +823,8 @@
                 "key": "damage.bonuses.value",
                 "value": 5,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
             ]
           },
@@ -832,7 +832,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "combatEnd",
             "expired": false
           },
           "description": "",
@@ -845,12 +845,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.0.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1769969182980,
-            "createdTime": null
+            "modifiedTime": 1774890078799,
+            "createdTime": 1774890078799
           },
           "start": {
             "combat": null,

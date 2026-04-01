@@ -379,7 +379,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "save",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": []
@@ -388,7 +387,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "save",
             "expired": false
           },
           "description": "",
@@ -400,11 +399,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.1",
+            "systemVersion": "1.0.0",
             "createdTime": 1771703650926,
-            "modifiedTime": 1771703677391,
+            "modifiedTime": 1774890078887,
             "lastModifiedBy": null
           },
           "start": null,

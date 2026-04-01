@@ -38,6 +38,18 @@ export default class HeroModel extends CreatureModel {
 
     schema.stamina.fields.max.persisted = schema.stamina.fields.max.options.persisted = false;
 
+    schema.biography.extendFields({
+      height: new fields.SchemaField({
+        value: new fields.NumberField({ min: 0 }),
+        units: new fields.StringField({ blank: false, required: true, initial: "inches" }),
+      }),
+      weight: new fields.SchemaField({
+        value: new fields.NumberField({ min: 0 }),
+        units: new fields.StringField({ blank: false, required: true, initial: "pounds" }),
+      }),
+      age: new fields.StringField({ required: true }),
+    });
+
     schema.combat.extendFields({
       initiativeThreshold: requiredInteger({ initial: 6, persisted: false }),
     });
@@ -74,27 +86,6 @@ export default class HeroModel extends CreatureModel {
     });
 
     return schema;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static _actorBiography() {
-    const bio = super._actorBiography();
-
-    bio.height = new fields.SchemaField({
-      value: new fields.NumberField({ min: 0 }),
-      units: new fields.StringField({ blank: false, required: true, initial: "inches" }),
-    });
-
-    bio.weight = new fields.SchemaField({
-      value: new fields.NumberField({ min: 0 }),
-      units: new fields.StringField({ blank: false, required: true, initial: "pounds" }),
-    });
-
-    bio.age = new fields.StringField({ required: true });
-
-    return bio;
   }
 
   /* -------------------------------------------------- */

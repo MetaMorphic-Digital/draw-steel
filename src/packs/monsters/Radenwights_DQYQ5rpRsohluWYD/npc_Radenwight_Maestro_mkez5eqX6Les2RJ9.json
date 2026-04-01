@@ -787,7 +787,6 @@
           "_id": "c0PgYvOvY8xsRPjT",
           "system": {
             "end": {
-              "type": "turn",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -795,7 +794,8 @@
                 "key": "system.movement.multiplier",
                 "value": 2,
                 "priority": null,
-                "type": "multiply"
+                "type": "multiply",
+                "phase": "initial"
               }
             ]
           },
@@ -803,7 +803,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "turnEnd",
             "expired": false
           },
           "description": "<p>You halve any damage you take and your speed is doubled.</p>",
@@ -815,11 +815,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.2",
+            "systemVersion": "1.0.0",
             "createdTime": 1772209884106,
-            "modifiedTime": 1772210385345,
+            "modifiedTime": 1774890079006,
             "lastModifiedBy": null
           },
           "start": null,
@@ -836,7 +836,6 @@
           "_id": "RKFQudsXXNlFROAm",
           "system": {
             "end": {
-              "type": "turn",
               "roll": "1d10 + @combat.save.bonus"
             },
             "filters": {
@@ -849,7 +848,8 @@
                 "key": "damage.bonuses.value",
                 "value": 4,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
             ]
           },
@@ -857,7 +857,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "turnEnd",
             "expired": false
           },
           "description": "<p>You have a +4 damage bonus to strikes.</p>",
@@ -869,11 +869,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.2",
+            "systemVersion": "1.0.0",
             "createdTime": 1772209923673,
-            "modifiedTime": 1772210311301,
+            "modifiedTime": 1774890079007,
             "lastModifiedBy": null
           },
           "start": null,
@@ -1321,7 +1321,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "respite",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": []
@@ -1330,7 +1329,7 @@
           "duration": {
             "value": null,
             "units": "seconds",
-            "expiry": null,
+            "expiry": "respite",
             "expired": false
           },
           "description": "<p>You cannot take a respite ability during your next respite.</p>",
@@ -1341,12 +1340,12 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.UxoLvIdRzgdLOAY0.Item.YXm8ANjisAFpg6gn.ActiveEffect.zCKnRU0EG6qDeLzQ",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.358",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.0.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1774890079015,
+            "modifiedTime": 1774890079015
           },
           "_id": "X45S09BuckEngWpQ",
           "sort": 0,

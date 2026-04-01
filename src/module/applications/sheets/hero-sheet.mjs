@@ -21,6 +21,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       addOrigin: this.#addOrigin,
       levelUp: this.#levelUp,
       gainSurges: this.#gainSurges,
+      rollFollower: this.#rollFollower,
       rollProject: this.#rollProject,
       takeRespite: this.#takeRespite,
       spendRecovery: this.#spendRecovery,
@@ -345,6 +346,19 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         this.actor.update({ "system.hero.surges": this.actor.system.hero.surges + 2 });
       }
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Make a project roll using a follower.
+   * @this DrawSteelHeroSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #rollFollower(event, target) {
+    const follower = this._getEmbeddedDocument(target);
+    await follower.system.roll();
   }
 
   /* -------------------------------------------------- */

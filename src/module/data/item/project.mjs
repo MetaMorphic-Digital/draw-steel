@@ -3,12 +3,15 @@ import { systemID, systemPath } from "../../constants.mjs";
 import BaseItemModel from "./base-item.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import FormulaField from "../fields/formula-field.mjs";
+import PowerRollDialog from "../../applications/apps/power-roll-dialog.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
- * @import { PowerRollModifiers } from  "../../_types.js"
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
+ * @import { ProjectRollModifiers, ProjectRollPrompt, ProjectRollPromptOptions } from  "../../_types.js"
  */
 
 const fields = foundry.data.fields;
@@ -63,22 +66,6 @@ export default class ProjectModel extends BaseItemModel {
     this.points ??= 0;
 
     this.projectType = _loc(ds.CONFIG.projects.types[this.type]?.label ?? "");
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  preparePostActorPrepData() {
-    super.preparePostActorPrepData();
-
-    // Set the highest characteristic amongst the roll characteristics
-    this.characteristic = null;
-    for (const characteristic of this.rollCharacteristic) {
-      if (this.characteristic === null) this.characteristic = characteristic;
-
-      const actorCharacteristics = this.actor.system.characteristics;
-      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.characteristic].value) this.characteristic = characteristic;
-    }
   }
 
   /* -------------------------------------------------- */
@@ -192,9 +179,9 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Make a project roll for this project and update the project points progress.
-   * @param {Partial<PowerRollModifiers>} [config={}]  Roll options.
-   * @param {object} [dialogOptions={}]                Options to be forwarded to the roll dialog.
-   * @param {object} [messageOptions]                  Options to be forwarded to the final created chat message.
+   * @param {Partial<ProjectRollModifiers>} [config={}]   Roll options.
+   * @param {ApplicationConfiguration} [dialogOptions={}] Options to be forwarded to the roll dialog.
+   * @param {DatabaseCreateOperation} [messageOptions]    Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(config = {}, dialogOptions = {}, messageOptions = {}) {
@@ -203,7 +190,7 @@ export default class ProjectModel extends BaseItemModel {
       return null;
     }
 
-    const promptValue = await this.rollPrompt(config);
+    const promptValue = await this.rollPrompt(config, dialogOptions);
 
     if (!promptValue) return null;
     const { messageMode, projectRoll } = promptValue;
@@ -214,60 +201,91 @@ export default class ProjectModel extends BaseItemModel {
     const updatedPoints = previousPoints + total;
     await this.parent.update({ "system.points": updatedPoints });
 
-    const messageData = {
+    const projectPartId = "project".padEnd(16, "0");
+
+    const event = game.settings.get(systemID, "projectEvents") === "milestone" ? !!this.milestoneEventsOccurred(previousPoints, updatedPoints) : null;
+
+    const messageData = foundry.utils.mergeObject({
       type: "standard",
       system: {
-        parts: [],
+        parts: {
+          [projectPartId]: {
+            event,
+            _id: projectPartId,
+            type: "project",
+            flavor: this.parent.name,
+            projectUuid: this.parent.uuid,
+            rolls: [projectRoll],
+          },
+        },
       },
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],
       title: this.parent.name,
       sound: CONFIG.sounds.dice,
       flags: { core: { canPopout: true } },
-    };
+    }, messageOptions.data ?? {});
 
-    const projectPart = {
-      type: "project",
-      flavor: this.parent.name,
-      projectUuid: this.parent.uuid,
-      rolls: [projectRoll],
-    };
-    messageData.system.parts.push(projectPart);
-
-    if (game.settings.get(systemID, "projectEvents") === "milestone") {
-      const event = !!this.milestoneEventsOccured(previousPoints, updatedPoints);
-      if (event) {
-        projectPart.event = event;
-        messageData.content = _loc("DRAW_STEEL.Item.project.Events.EventTriggered");
-        messageData.system.parts.push({ type: "content" });
-      }
+    if (event) {
+      const contentId = "content".padEnd(16, "0");
+      messageData.content = _loc("DRAW_STEEL.Item.project.Events.EventTriggered");
+      messageData.system.parts[contentId] = { _id: contentId, type: "content" };
     }
 
+    delete messageOptions.data;
+
     DrawSteelChatMessage.applyMode(messageData, messageMode);
-    return DrawSteelChatMessage.create(messageData);
+    return DrawSteelChatMessage.create(messageData, messageOptions);
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Prompt the player to roll this project.
-   * @param {Partial<PowerRollModifiers>} [options={}]
-   * @returns {ProjectRollPrompt}
+   * @param {Partial<ProjectRollPromptOptions>} [config={}]
+   * @param {ApplicationConfiguration} [dialogOptions={}]
+   * @returns {Promise<ProjectRollPrompt>}
    */
-  async rollPrompt(options = {}) {
-    const rollData = this.parent.getRollData();
-    const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
+  async rollPrompt(config = {}, dialogOptions = {}) {
+    const rollData = config.follower ? config.follower.getRollData() : this.parent.getRollData();
 
-    const promptValue = await ProjectRoll.prompt({
-      formula: rollKey ? `2d10 + @${rollKey}` : "2d10",
-      modifiers: options.modifiers ?? {},
-      actor: this.actor,
-      evaluation: "evaluate",
-      data: rollData,
-      skillModifiers: this.actor?.system.skills?.modifiers ?? {},
+    // Pick the highest characteristic amongst the roll characteristics
+    let chr = null;
+    const characteristicData = config.follower?.system.characteristics ?? this.actor.system.characteristics;
+    for (const characteristic of this.rollCharacteristic) {
+      if (chr === null) chr = characteristic;
+      else if (characteristicData[characteristic].value > characteristicData[chr].value) chr = characteristic;
+    }
+
+    const rollKey = ds.CONFIG.characteristics[chr]?.rollKey ?? "";
+    const rollFormula = rollKey && config.follower ? `item.${rollKey}` : rollKey;
+
+    const formula = rollKey ? `2d10 + @${rollFormula}` : "2d10";
+
+    const dialogConfig = foundry.utils.mergeObject({
+      context: {
+        modifiers: config.modifiers ?? {},
+        formula: ProjectRoll.replaceFormulaData(formula, rollData, { missing: "0" }),
+        skills: (config.follower ?? this.actor).system.skills?.value ?? null,
+        skillModifiers: (config.follower ?? this.actor).system.skills?.modifiers ?? null,
+      },
+      window: {
+        title: this.parent.name,
+      },
+    }, dialogOptions);
+
+    const fd = await PowerRollDialog.create(dialogConfig);
+
+    if (!fd) return null;
+
+    const projectRoll = new ProjectRoll(formula, rollData, {
+      flavor: config.flavor ?? _loc("DRAW_STEEL.ROLL.Project.Label"),
+      ...fd.rolls[0],
     });
 
-    return promptValue;
+    await projectRoll.evaluate();
+
+    return { projectRoll, messageMode: fd.messageMode };
   }
 
   /* -------------------------------------------------- */
@@ -340,7 +358,9 @@ export default class ProjectModel extends BaseItemModel {
       await this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
-    ui.notifications.success("DRAW_STEEL.Item.project.Craft.CompletedNotification", {
+    const labelSuffix = game.i18n.pluralRules.select(amount);
+
+    ui.notifications.success(`DRAW_STEEL.Item.project.Craft.CompletedNotification.${labelSuffix}`, {
       format: {
         actor: this.actor.name,
         amount,
@@ -379,7 +399,7 @@ export default class ProjectModel extends BaseItemModel {
    * @param {number} updatedPoints  The project points after the project roll.
    * @returns {number}
    */
-  milestoneEventsOccured(previousPoints, updatedPoints) {
+  milestoneEventsOccurred(previousPoints, updatedPoints) {
     const thresholds = this.milestoneEventThresholds;
     if (thresholds.length === 0) return 0;
 

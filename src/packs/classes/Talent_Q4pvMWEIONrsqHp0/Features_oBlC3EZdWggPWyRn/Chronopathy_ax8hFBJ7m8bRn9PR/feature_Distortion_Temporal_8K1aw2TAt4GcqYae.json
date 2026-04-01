@@ -27,7 +27,6 @@
       "_id": "9CYjhNAgMVIOQxve",
       "system": {
         "end": {
-          "type": "turn",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -35,7 +34,8 @@
             "key": "system.movement.value",
             "value": 2,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
         ]
       },
@@ -43,7 +43,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "turnEnd",
         "expired": false
       },
       "description": "<p>When an ally enters the area for the first time in a combat round or starts their turn there, they gain a +2 bonus to speed until the end of the turn.</p>",
@@ -55,9 +55,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.358",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1762399737325,
         "modifiedTime": null,
         "lastModifiedBy": null

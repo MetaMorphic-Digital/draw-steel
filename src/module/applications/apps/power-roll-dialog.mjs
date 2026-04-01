@@ -30,15 +30,6 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
-   * Formatter to select the correct plural form for "Edge".
-   * Must be initialized before first use to ensure language is available.
-   * @type {Intl.PluralRules | null}
-   */
-  static EdgePluralFormatter = null;
-
-  /* -------------------------------------------------- */
-
-  /**
    * Cached object for edge and bane options.
    * @type {Record<number, number>}
    */
@@ -67,12 +58,7 @@ export default class PowerRollDialog extends RollDialog {
    */
   _prepareSkillOptions(context) {
     const { list, groups } = ds.CONFIG.skills;
-    const skillModifiers = context.skillModifiers;
-
-    if (!this.constructor.EdgePluralFormatter) {
-      this.constructor.EdgePluralFormatter = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
-    }
-    const pr = this.constructor.EdgePluralFormatter;
+    const skillModifiers = context.skillModifiers ?? {};
 
     // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
     context.skillOptions = Array.from(context.skills).map(value => {
@@ -82,12 +68,12 @@ export default class PowerRollDialog extends RollDialog {
         const modifiers = [];
 
         const edges = skillModifiers[value].edges;
-        const edgeCategory = pr.select(edges);
+        const edgeCategory = game.i18n.pluralRules.select(edges);
         const edgeName = _loc(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Edge.${edgeCategory}`);
         if (edges > 0) modifiers.push(_loc("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${edges}`, mod: edgeName }));
 
         const banes = skillModifiers[value].banes;
-        const baneCategory = pr.select(banes);
+        const baneCategory = game.i18n.pluralRules.select(banes);
         const baneName = _loc(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Bane.${baneCategory}`);
         if (banes > 0) modifiers.push(_loc("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${banes}`, mod: baneName }));
 

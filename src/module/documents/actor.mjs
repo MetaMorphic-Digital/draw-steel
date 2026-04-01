@@ -206,7 +206,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
     // Create a new effect unless the status effect is forced inactive
     if (!active && (active !== undefined)) return;
-    const effect = await DrawSteelActiveEffect.fromStatusEffect(statusId);
+    const effect = await DrawSteelActiveEffect.fromStatusEffect(statusId, { parent: this });
     if (overlay) effect.updateSource({ "flags.core.overlay": true });
     if (effectEnd) {
       const expiry = ds.CONFIG.effectEnds[effectEnd].expiryEvent;

@@ -33,13 +33,16 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
 - Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
+- Added roll functionality to followers. Rolling with a follower first prompts for a project, then performs the roll. (#1722)
 
 ### Changed
 
 - ActiveEffect changes for v14
   - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
+  - Applying a new copy of a status effect always removes the old one if it's not a stacking effect.
 - Implemented field placeholders where possible. (#1326)
+- Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Migrated roll modes to the new core message modes. (#1681)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
@@ -58,8 +61,10 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Fixed
 
+- Corrected end/start of turn logic when going directly from monster to hero turns as well as overall processing for scene regions. (#1771)
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.
 - Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
+- Fixed typo renaming `ProjectModel#milestoneEventsOccured` to `ProjectModel#milestoneEventsOccurred`
 
 ## 0.11.1
 
