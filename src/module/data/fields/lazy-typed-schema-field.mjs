@@ -12,12 +12,15 @@ export default class LazyTypedSchemaField extends foundry.data.fields.TypedSchem
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /**
+   * TODO: This is suspect in v14 we should evaluate if this can be removed.
+   * @inheritdoc
+   */
   _updateCommit(source, key, value, diff, options) {
-    const s = source[key];
+    const src = source[key];
 
     // Special Cases: * -> undefined, * -> null, undefined -> *, null -> *
-    if (!s || !value) {
+    if (!src || !value) {
       source[key] = value;
       return;
     }
@@ -28,7 +31,7 @@ export default class LazyTypedSchemaField extends foundry.data.fields.TypedSchem
       k = foundry.utils.isDeletionKey(k) ? k.slice(2) : k;
       const field = element.getField(k);
       if (!field) continue;
-      field._updateCommit(s, k, value[k], d, options);
+      field._updateCommit(src, k, value[k], d, options);
     }
   }
 }

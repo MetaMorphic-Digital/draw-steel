@@ -81,7 +81,6 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
     }
 
     // Reconstruct the source array, retaining object references
-    // TODO: support v14 operators
     for (let [id, d] of Object.entries(diff)) {
       if (foundry.utils.isDeletionKey(id)) {
         if (id.startsWith("-")) {
@@ -89,6 +88,9 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
           continue;
         }
         id = id.slice(2);
+      } else if (d instanceof foundry.data.operators.ForcedDeletion) {
+        delete source[key][id];
+        continue;
       }
       const prior = src[id];
       if (prior) {
