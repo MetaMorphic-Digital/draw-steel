@@ -59,6 +59,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Fixed
 
+- Fixed DSN not playing for certain system rolls. (#1753)
 - Corrected end/start of turn logic when going directly from monster to hero turns as well as overall processing for scene regions. (#1771)
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.
 - Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.

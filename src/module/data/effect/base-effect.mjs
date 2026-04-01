@@ -119,15 +119,21 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
     messageData.speaker ??= DrawSteelChatMessage.getSpeaker({ actor: this.parent.target });
 
-    messageData.rolls = [roll];
-    messageData.type = "standard";
-    messageData.system ??= {};
-    messageData.system.parts ??= [];
+    const savingThrowId = "savingThrow".padEnd(16, "0");
 
-    messageData.system.parts.push({
-      type: "savingThrow",
-      effectUuid: this.parent.uuid,
+    foundry.utils.mergeObject(messageData, {
       rolls: [roll],
+      type: "standard",
+      system: {
+        parts: {
+          [savingThrowId]: {
+            _id: savingThrowId,
+            type: "savingThrow",
+            effectUuid: this.parent.uuid,
+            rolls: [roll],
+          },
+        },
+      },
     });
 
     return roll.toMessage(messageData, messageOptions);

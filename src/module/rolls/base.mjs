@@ -32,6 +32,10 @@ export default class DSRoll extends foundry.dice.Roll {
       author: game.user.id,
       sound: CONFIG.sounds.dice,
     }, messageData);
+
+    // Needed for Dice So Nice
+    if (!this.isDeterministic) messageData.rolls ??= [this];
+
     messageData.system.parts = {
       [id]: {
         _id: id,
