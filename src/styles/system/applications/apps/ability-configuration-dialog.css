@@ -17,5 +17,9 @@
   button.header {
     border: none;
     width: 100%;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
   }
 }
