@@ -15,6 +15,9 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["ability-configuration-dialog"],
+    actions: {
+      panToken: this.#panToken,
+    },
   };
 
   /* -------------------------------------------------- */
@@ -210,5 +213,19 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     if (formData["damage-selection"]) config.damage = formData["damage-selection"];
 
     return config;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Pan to a token on the canvas.
+   * @this AbilityConfigurationDialog
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #panToken(event, target) {
+    const { tokenUuid } = target.closest("[data-token-uuid]").dataset;
+    const token = fromUuidSync(tokenUuid);
+    await canvas.animatePan({ x: token.x, y: token.y });
   }
 }

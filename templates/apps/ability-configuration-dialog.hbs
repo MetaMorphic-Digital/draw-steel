@@ -24,7 +24,10 @@
     </div>
     {{#each targets as |target|}}
     <div class="target group" data-token-uuid="{{target.token.uuid}}">
-      <div class="header">{{target.token.name}}</div>
+      <button type="button" class="header" data-action="panToken">
+        {{target.token.name}}
+        <i class="fa-solid fa-bullseye-pointer"></i>
+      </button>
       <div class="form-group">
         <label class="edges-banes">
           <select name="targets.{{@index}}.modifiers.edges" data-dtype="Number">
