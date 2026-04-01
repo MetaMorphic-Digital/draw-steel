@@ -2,6 +2,7 @@ import DSDialog from "../applications/api/dialog.mjs";
 import DrawSteelTokenDocument from "./token.mjs";
 
 /**
+ * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs"
  * @import { CombatantGroupData } from "@common/documents/_types.mjs";
  */
 
@@ -274,16 +275,22 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
    * @returns {Promise<DrawSteelTokenDocument[][]>} An array of updated token arrays.
    */
   async updateTokens(fieldPath, data, options = {}) {
-    // TODO: Implement v14 batch update operation
     const tokens = Array.from(this.members).map(c => c.token).filter(_ => _);
     const batchData = tokens.reduce((batch, t) => {
       batch[t.parent.id] ??= [];
       batch[t.parent.id].push({ _id: t.id, [fieldPath]: data });
       return batch;
     }, {});
-    return Promise.all(
-      Object.entries(batchData)
-        .map(([sceneId, updateData]) => game.scenes.get(sceneId).updateEmbeddedDocuments("Token", updateData, options)),
-    );
+
+    /** @type {DatabaseWriteOperation[]} */
+    const operation = Object.entries(batchData).map(([sceneId, updates]) => ({
+      updates,
+      action: "update",
+      documentName: "Token",
+      parent: game.scenes.get(sceneId),
+      ...options,
+    }));
+
+    return foundry.documents.modifyBatch(operation);
   }
 }
