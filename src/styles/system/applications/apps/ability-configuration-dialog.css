@@ -1,16 +1,15 @@
 .draw-steel.ability-configuration-dialog {
   &.two-column section.window-content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin: 0;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: auto auto;
     .roll-config {
-      flex: 1;
+      grid-row: 1 / span 2;
     }
     .ability-config {
-      flex: 1;
+      align-self: end;
+    }
+    footer {
+      align-self: start;
     }
   }
 

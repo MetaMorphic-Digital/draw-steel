@@ -1,0 +1,40 @@
+
+<section class="ability-config">
+  {{#if resource.show}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.Item.ability.ConfigureUse.ResourceLegend" value=resource.current name=resource.name}}</legend>
+    {{#if ability.system.resource}}
+    <div class="form-group">
+      <label for="{{rootId}}-resource">{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Resource.label"}}</label>
+      <div class="form-fields">
+        <input type="number" name="resource" value="{{resource.value}}" id="{{rootId}}-resource">
+      </div>
+      <p class="hint">{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Resource.hint" value=ability.system.resource name=resource.name}}</p>
+    </div>
+    {{/if}}
+    {{#if spendConfig}}
+    <div class="form-group">
+      <label>{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Spend.label" value=spendConfig.value name=resource.name}}</label>
+      <div class="form-fields">
+        {{#if spendConfig.slider}}
+        <range-picker name="spend" max="{{spendConfig.max}}" min="0" step="1" value="{{spend}}"></range-picker>
+        {{else}}
+        <input type="checkbox" name="spend" {{checked spend}}>
+        {{/if}}
+      </div>
+      <p class="hint">{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Spend.hint"}}</p>
+    </div>
+    {{/if}}
+  </fieldset>
+  {{/if}}
+  {{#if damageOptions}}
+  <div class="form-group">
+    <label for="damage-selection">{{localize "DRAW_STEEL.ROLL.Power.Prompt.DamageSelectionLabel"}}</label>
+    <div class="form-fields">
+      <select name="damage-selection" id="{{rootId}}-damage-selection">
+        {{selectOptions damageOptions selected=damage}}
+      </select>
+    </div>
+  </div>
+  {{/if}}
+</section>

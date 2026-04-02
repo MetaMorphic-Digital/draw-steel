@@ -24,8 +24,11 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
   /** @inheritdoc */
   static PARTS = {
-    content: {
-      template: systemPath("templates/apps/ability-configuration-dialog.hbs"),
+    roll: {
+      template: systemPath("templates/apps/ability-configuration-dialog/roll.hbs"),
+    },
+    ability: {
+      template: systemPath("templates/apps/ability-configuration-dialog/ability.hbs"),
     },
     footer: super.PARTS.footer,
   };
@@ -89,8 +92,10 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     context = await super._preparePartContext(partId, context, options);
 
     switch (partId) {
-      case "content":
+      case "roll":
         if (context.targets) await this._prepareTargets(context);
+        break;
+      case "ability":
         await this._prepareAbilityContext(context);
         break;
       case "footer":

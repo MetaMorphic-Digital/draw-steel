@@ -21,7 +21,7 @@ export default class PowerRollDialog extends RollDialog {
 
   /** @inheritdoc */
   static PARTS = {
-    content: {
+    roll: {
       template: systemPath("templates/apps/power-roll-dialog.hbs"),
     },
     footer: super.PARTS.footer,
@@ -44,7 +44,7 @@ export default class PowerRollDialog extends RollDialog {
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
 
-    if (partId === "content") {
+    if (partId === "roll") {
       context.modChoices = PowerRollDialog.#modChoices;
       if (context.skills?.size > 0) this._prepareSkillOptions(context);
     }
@@ -93,7 +93,8 @@ export default class PowerRollDialog extends RollDialog {
 
     this._refreshInputs(formData);
 
-    this.render();
+    // Ensures the next input can be selected before re-rendering, maintaining focus while transitioning inputs.
+    setTimeout(() => this.render(), 50);
   }
 
   /* -------------------------------------------------- */
