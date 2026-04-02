@@ -44,6 +44,26 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /**
+   * Hook reference for adding or removing tokens from the context.
+   * @type {number}
+   */
+  #targetHook = Hooks.on("targetToken", (user, token, targeted) => {
+    if (user !== game.user) return;
+
+    if (targeted) this.options.context.targets[token.id] = {
+      tokenUuid: token.document.uuid,
+      uuid: token.actor?.uuid ?? "",
+      modifiers: this.item.system.getTargetModifiers(token),
+    };
+    else delete this.options.context.targets[token.id];
+
+    // Re-render to update the target list and modifiers.
+    this.render();
+  });
+
+  /* -------------------------------------------------- */
+
+  /**
    * The ability item.
    * @type {Omit<DrawSteelItem, "system"> & { system: AbilityModel }}
    */
@@ -68,7 +88,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     const initializedOptions = super._initializeApplicationOptions(options);
 
     // Two column layout if width > 700
-    if (initializedOptions.ability.system.power.roll.enabled && (initializedOptions.context.targets?.length > 2)) {
+    if (initializedOptions.ability.system.power.roll.enabled && (Object.keys(initializedOptions.context.targets)?.length > 2)) {
       initializedOptions.position.width = 700;
       initializedOptions.classes.push("two-column");
     }
@@ -93,10 +113,11 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     switch (partId) {
       case "roll":
-        if (context.targets) await this._prepareTargets(context);
+        context.targets ??= {};
+        this._prepareTargets(context);
         break;
       case "ability":
-        await this._prepareAbilityContext(context);
+        this._prepareAbilityContext(context);
         break;
       case "footer":
         if (!this.item.system.power.roll.enabled) context.buttonLabel = _loc("DRAW_STEEL.Item.ability.ConfigureUse.UseButton");
@@ -112,10 +133,10 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * Prepare targets by adding the actor and combinging modifiers.
    * @param {object} context The context from _prepareContext.
    */
-  async _prepareTargets(context) {
-    for (const target of context.targets) {
-      if (!target.actor) target.actor = await fromUuid(target.uuid);
-      if (!target.token) target.token = await fromUuid(target.tokenUuid);
+  _prepareTargets(context) {
+    for (const target of Object.values(context.targets)) {
+      target.actor ??= fromUuidSync(target.uuid);
+      target.token ??= fromUuidSync(target.tokenUuid);
 
       target.combinedModifiers = {
         edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
@@ -131,7 +152,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * Prepare the ability context.
    * @param {object} context
    */
-  async _prepareAbilityContext(context) {
+  _prepareAbilityContext(context) {
     context.ability = this.item;
 
     // Find the first instance of multiple damage types and create the options to provide a select
@@ -167,25 +188,24 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _onRender(context, options) {
-    await super._onRender(context, options);
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
 
-    if (context.targets) {
-      // Add event listeners to trigger target token hovering.
-      this.element.addEventListener("pointermove", event => {
-        if (!canvas.ready) return;
+    // Add event listeners to trigger target token hovering.
+    this.element.addEventListener("pointermove", event => {
+      if (!canvas.ready) return;
 
-        const tokenUuid = event.target.closest(".target.group[data-token-uuid]")?.dataset.tokenUuid;
-        const token = this.options.context.targets.find(target => target.tokenUuid === tokenUuid)?.token.object;
-        if (token && token._canHover(game.user, event) && token.visible) {
-          token._onHoverIn(event, { hoverOutOthers: true });
-          this.#highlightedToken = token;
-        } else {
-          this.#highlightedToken?._onHoverOut(event);
-          this.#highlightedToken = null;
-        }
-      });
-    }
+      const tokenUuid = event.target.closest(".target.group[data-token-uuid]")?.dataset.tokenUuid;
+      const token = fromUuidSync(tokenUuid)?.object;
+      if (token && token._canHover(game.user, event) && token.visible) {
+        token._onHoverIn(event, { hoverOutOthers: true });
+        this.#highlightedToken = token;
+      } else {
+        this.#highlightedToken?._onHoverOut(event);
+        this.#highlightedToken = null;
+      }
+    });
+
   }
 
   /* -------------------------------------------------- */
@@ -211,10 +231,12 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   _processFormData(event, form, formData) {
     const config = super._processFormData(event, form, formData);
 
-    const targets = this.options.context.targets;
+    const targets = Object.values(this.options.context.targets);
     if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid }));
 
     if (formData["damage-selection"]) config.damage = formData["damage-selection"];
+
+    Hooks.off("targetToken", this.#targetHook);
 
     return config;
   }

@@ -28,6 +28,8 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
 - Added a unified Ability Configuration dialog for rolls as well as resource expenditure. (#161)
+  - Targets are now added/removed dynamically instead of being set when the ability is first used
+  - You can adjust the normal resource usage (helpful for temporary reductions like the Shadow as well as "free" casts available to the Elementalist)
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)

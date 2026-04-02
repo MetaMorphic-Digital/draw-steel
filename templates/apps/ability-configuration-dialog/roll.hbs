@@ -1,5 +1,6 @@
 
 <section class="roll-config">
+  {{#if ability.system.power.roll.enabled}}
   <div class="global group">
     <div class="header">{{formula}}</div>
     <div class="form-group general">
@@ -21,7 +22,7 @@
       </label>
     </div>
   </div>
-  {{#each targets as |target|}}
+  {{#each targets as |target tokenId|}}
   <div class="target group" data-token-uuid="{{target.token.uuid}}">
     <button type="button" class="header" data-action="panToken">
       {{target.token.name}}
@@ -29,22 +30,23 @@
     </button>
     <div class="form-group">
       <label class="edges-banes">
-        <select name="targets.{{@index}}.modifiers.edges" data-dtype="Number">
+        <select name="targets.{{tokenId}}.modifiers.edges" data-dtype="Number">
           {{selectOptions @root.modChoices selected=target.modifiers.edges}}
         </select>
         <span class="total-edges">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.edges}}</span>
       </label>
       <label class="edges-banes">
-        <select name="targets.{{@index}}.modifiers.banes" data-dtype="Number">
+        <select name="targets.{{tokenId}}.modifiers.banes" data-dtype="Number">
           {{selectOptions @root.modChoices selected=target.modifiers.banes}}
         </select>
         <span class="total-banes">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
       </label>
       <label>
-        {{numberInput target.modifiers.bonuses name=(concat "targets." @index ".modifiers.bonuses") step=1}}
+        {{numberInput target.modifiers.bonuses name=(concat "targets." tokenId ".modifiers.bonuses") step=1}}
         <span class="total-bonuses">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.bonuses}}</span>
       </label>
     </div>
   </div>
   {{/each}}
+  {{/if}}
 </section>

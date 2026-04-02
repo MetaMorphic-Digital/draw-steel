@@ -445,14 +445,14 @@ export default class AbilityModel extends BaseItemModel {
       dialogConfig.context.modifiers.edges = (config.modifiers?.edges ?? 0) + (this.power.roll.edges ?? 0);
       dialogConfig.context.modifiers.bonuses ??= 0;
 
-      dialogConfig.context.targets ??= [...game.user.targets].reduce((accumulator, target) => {
-        accumulator.push({
+      dialogConfig.context.targets ??= game.user.targets.reduce((accumulator, target) => {
+        accumulator[target.id] = {
           tokenUuid: target.document.uuid,
           uuid: target.actor?.uuid ?? "",
           modifiers: this.getTargetModifiers(target),
-        });
+        };
         return accumulator;
-      }, []);
+      }, {});
 
       this.getActorModifiers(dialogConfig.context);
     }
