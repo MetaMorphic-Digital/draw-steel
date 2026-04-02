@@ -27,7 +27,7 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static hierarchical = true;
 
   /* -------------------------------------------------- */
@@ -70,7 +70,7 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _updateCommit(source, key, value, diff, options) {
     let src = source[key];
 

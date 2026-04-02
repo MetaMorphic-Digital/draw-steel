@@ -93,7 +93,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     const path = target.dataset.path;
     const createSelect = this.element.querySelector(`select[data-name="${path}"]`);
     if (createSelect.value) {
-      this.pseudoDocument.update({ [`${path}.${createSelect.value}.condition`]: "failure" });
+      this.pseudoDocument.update(foundry.utils.expandObject({ [`${path}.${createSelect.value}.condition`]: "failure" }));
     }
     else {
       const item = this.document;
@@ -106,7 +106,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       }, { parent: item });
 
       if (effect) {
-        this.pseudoDocument.update({ [`${path}.${effect.id}.condition`]: "failure" });
+        this.pseudoDocument.update(foundry.utils.expandObject({ [`${path}.${effect.id}.condition`]: "failure" }));
       }
     }
   }
@@ -123,7 +123,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     const fieldset = target.closest("fieldset");
     const path = fieldset.dataset.path;
     const effectId = fieldset.dataset.effectId;
-    this.pseudoDocument.update({ [`${path}.${effectId}`]: _del });
+    this.pseudoDocument.update(foundry.utils.expandObject({ [`${path}.${effectId}`]: _del }));
   }
 
   /* -------------------------------------------------- */
