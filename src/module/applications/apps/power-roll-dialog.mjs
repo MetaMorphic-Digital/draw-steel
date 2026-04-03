@@ -87,14 +87,14 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _onChangeForm(formConfig, event) {
+  async _onChangeForm(formConfig, event) {
     super._onChangeForm(formConfig, event);
     const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
 
     this._refreshInputs(formData);
 
     // Ensures the next input can be selected before re-rendering, maintaining focus while transitioning inputs.
-    setTimeout(() => this.render(), 50);
+    setTimeout(() => this.render(), 20);
   }
 
   /* -------------------------------------------------- */

@@ -102,6 +102,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   async _prepareContext(options) {
     return Object.assign(await super._prepareContext(options), {
       rootId: this.id,
+      ability: this.item,
     });
   }
 
@@ -153,8 +154,6 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * @param {object} context
    */
   _prepareAbilityContext(context) {
-    context.ability = this.item;
-
     // Find the first instance of multiple damage types and create the options to provide a select
     context.damageOptions = null;
     for (const tier of PowerRoll.TIER_NAMES) {
