@@ -511,7 +511,7 @@ export default class AbilityModel extends BaseItemModel {
         messageData.system.parts.push(rollPart);
       }
     } else {
-      DrawSteelChatMessage.applyMode(messageData, "roll");
+      DrawSteelChatMessage.applyMode(messageData);
     }
     // TODO: Figure out how to better handle invocations when this.actor is null
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
@@ -720,6 +720,8 @@ export default class AbilityModel extends BaseItemModel {
         case "rectangle": // Special wall handling since it's a bunch of 1 x 1 spots.
           shapeData.width ??= canvas.dimensions.distancePixels;
           shapeData.height ??= canvas.dimensions.distancePixels;
+          shapeData.anchorX = 0.5;
+          shapeData.anchorY = 0.5;
           break;
         case "emanation":
           shapeData.base = {

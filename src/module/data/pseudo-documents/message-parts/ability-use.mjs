@@ -23,6 +23,7 @@ export default class AbilityUsePart extends BaseMessagePart {
   static ACTIONS = {
     ...super.ACTIONS,
     rollTest: this.#rollTest,
+    placeTemplate: this.#placeTemplate,
   };
 
   /* -------------------------------------------------- */
@@ -79,6 +80,18 @@ export default class AbilityUsePart extends BaseMessagePart {
 
     context.ctx.buttons = [];
 
+    const distanceConfig = ds.CONFIG.abilities.distances[item.system.distance.type];
+
+    if (item.isOwner && (typeof distanceConfig.area === "object")) {
+      context.ctx.buttons.push(ds.utils.constructHTMLButton({
+        label: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityUse.placeTemplate"),
+        icon: "fa-solid fa-ruler-combined",
+        dataset: {
+          action: "placeTemplate",
+        },
+      }));
+    }
+
     if (item.system.power.roll.reactive) {
       for (const chr of item.system.power.roll.characteristics) {
         const characteristic = ds.CONFIG.characteristics[chr]?.label ?? "";
@@ -110,5 +123,18 @@ export default class AbilityUsePart extends BaseMessagePart {
     for (const actor of ds.utils.tokensToActors()) {
       actor.rollCharacteristic(chr, { resultSource: this.abilityUuid });
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Place the template for this ability.
+   *
+   * @this AbilityUsePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #placeTemplate(event, target) {
+    this.ability.system.placeTemplate();
   }
 }
