@@ -1,196 +1,26 @@
 {
   "id": "draw-steel",
   "title": "Draw Steel",
-  "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
-  "authors": [
-    {
-      "name": "Joseph M.",
-      "url": "https://joseph-meehan.carrd.co/",
-      "discord": "chaosos"
-    },
-    {
-      "name": "Zhell",
-      "discord": "zhell9201"
-    }
-  ],
-  "documentTypes": {
-    "ActiveEffect": {
-      "abilityModifier": {}
-    },
-    "Actor": {
-      "hero": {
-        "htmlFields": ["biography.value", "biography.director"],
-        "gmOnlyFields": ["biography.director"]
-      },
-      "npc": {
-        "htmlFields": ["biography.value", "biography.director"],
-        "gmOnlyFields": ["biography.director"]
-      },
-      "object": {
-        "htmlFields": ["biography.value", "biography.director"],
-        "gmOnlyFields": ["biography.director"]
-      },
-      "party": {
-        "htmlFields": ["description.value"]
-      },
-      "retainer": {
-        "htmlFields": ["biography.value", "biography.director"],
-        "gmOnlyFields": ["biography.director"]
-      }
-    },
-    "ChatMessage": {
-      "standard": {}
-    },
-    "CombatantGroup": {
-      "squad": {}
-    },
-    "Item": {
-      "ability": {
-        "filePathFields": {
-          "power.effects.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["effect.before", "effect.after"]
-      },
-      "ancestry": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "ancestryTrait": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "career": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "class": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "complication": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "culture": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "feature": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "follower": {
-        "htmlFields": ["description.value", "description.director"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "kit": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "perk": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "project": {
-        "htmlFields": ["description.value", "description.director"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "subclass": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "title": {
-        "filePathFields": {
-          "advancements.*.img": ["IMAGE"],
-          "advancements.*.traits.*.img": ["IMAGE"]
-        },
-        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
-        "gmOnlyFields": ["description.director"]
-      },
-      "treasure": {
-        "htmlFields": ["description.value", "description.director"],
-        "gmOnlyFields": ["description.director"]
-      }
-    },
-    "JournalEntryPage": {
-      "configuration": {},
-      "reference": {
-        "htmlFields": ["tooltip"]
-      },
-      "tierOutcome": {
-        "htmlFields": ["tier1", "tier2", "tier3"]
-      }
-    }
-  },
-  "flags": {
-    "hotReload": {
-      "extensions": ["css", "html", "hbs", "json"],
-      "paths": ["css", "src/styles", "lang", "templates"]
-    }
-  },
-  "url": "https://github.com/MetaMorphic-Digital/draw-steel",
-  "license": "LICENSE.md",
-  "readme": "README.md",
-  "bugs": "https://github.com/MetaMorphic-Digital/draw-steel/issues",
-  "changelog": "CHANGELOG.md",
-  "media": [
-    {
-      "type": "setup",
-      "url": "systems/draw-steel/assets/system-background.webp",
-      "thumbnail": "systems/draw-steel/assets/system-background.webp"
-    }
-  ],
+  "description": "A simple, lightweight d100 combat system for Foundry VTT.",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "14.357",
-    "verified": "14"
+    "minimum": "12",
+    "verified": "12"
   },
-  "esmodules": ["draw-steel.mjs"],
-  "styles": [
-    { "src": "css/draw-steel-system.css", "layer": "system" },
-    { "src": "css/draw-steel-variables.css", "layer": "variables" },
-    { "src": "css/draw-steel-elements.css", "layer": "elements" }
+  "authors": [
+    {
+      "name": "metamorphic-digital",
+      "url": "https://github.com/MetaMorphic-Digital",
+      "discord": "metamorphic_digital"
+    }
   ],
+  "esmodules": [
+    "_main.mjs"
+  ],
+  "styles": [
+    "css/draw-steel-system.css"
+  ],
+  "packs": [],
   "languages": [
     {
       "lang": "en",
@@ -198,90 +28,30 @@
       "path": "lang/en.json"
     }
   ],
-  "packs": [
-    {
-      "name": "classes",
-      "label": "DRAW_STEEL.COMPENDIUM.classes",
-      "type": "Item",
-      "banner": "systems/draw-steel/assets/banners/classes.webp"
-    },
-    {
-      "name": "abilities",
-      "label": "DRAW_STEEL.COMPENDIUM.abilities",
-      "type": "Item",
-      "banner": "systems/draw-steel/assets/banners/abilities.webp"
-    },
-    {
-      "name": "journals",
-      "label": "DRAW_STEEL.COMPENDIUM.journals",
-      "type": "JournalEntry",
-      "banner": "systems/draw-steel/assets/banners/journals.webp",
-      "flags": {
-        "draw-steel": {
-          "display": "table-of-contents"
-        }
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power",
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "label": "draw-steel.character"
+      },
+      "npc": {
+        "label": "draw-steel.npc"
       }
     },
-    {
-      "name": "tables",
-      "label": "DRAW_STEEL.COMPENDIUM.tables",
-      "type": "RollTable"
-    },
-    {
-      "name": "monsters",
-      "label": "DRAW_STEEL.COMPENDIUM.monsters",
-      "type": "Actor",
-      "banner": "systems/draw-steel/assets/banners/monsters.webp"
-    },
-    {
-      "name": "monster-features",
-      "label": "DRAW_STEEL.COMPENDIUM.monster-features",
-      "type": "Item",
-      "banner": "systems/draw-steel/assets/banners/monster-features.webp"
-    },
-    {
-      "name": "origins",
-      "label": "DRAW_STEEL.COMPENDIUM.origins",
-      "type": "Item",
-      "banner": "systems/draw-steel/assets/banners/origins.webp"
-    },
-    {
-      "name": "character-options",
-      "label": "DRAW_STEEL.COMPENDIUM.character-options",
-      "type": "Item",
-      "banner": "systems/draw-steel/assets/banners/character-options.webp"
-    },
-    {
-      "name": "rewards",
-      "label": "DRAW_STEEL.COMPENDIUM.rewards",
-      "type": "Item",
-      "banner": "systems/draw-steel/assets/banners/rewards.webp"
-    },
-    {
-      "name": "effects",
-      "label": "DRAW_STEEL.COMPENDIUM.effects",
-      "type": "ActiveEffect",
-      "banner": "systems/draw-steel/assets/banners/effects.webp"
+    "Item": {
+      "feature": {
+        "label": "draw-steel.feature"
+      },
+      "weapon": {
+        "label": "draw-steel.weapon"
+      }
     }
-  ],
-  "packFolders": [
-    {
-      "name": "Draw Steel System",
-      "color": "#483D8B",
-      "packs": ["abilities", "classes", "journals", "monsters", "monster-features", "tables", "character-options", "origins", "rewards", "effects"]
-    }
-  ],
-  "socket": true,
-  "manifest": "https://github.com/MetaMorphic-Digital/draw-steel/releases/latest/download/system.json",
-  "download": "",
-  "background": "systems/draw-steel/assets/system-background.webp",
-  "grid": {
-    "type": 1,
-    "distance": 1,
-    "units": "sq",
-    "diagonals": 0
   },
-  "primaryTokenAttribute": "stamina",
-  "secondaryTokenAttribute": "hero.primary.value",
-  "initiative": "2d10 + @A"
+  "url": "https://github.com/MetaMorphic-Digital/draw-steel",
+  "manifest": "https://github.com/MetaMorphic-Digital/draw-steel/releases/latest/download/system.json",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/latest/download/draw-steel.zip",
+  "license": "LICENSE"
 }
