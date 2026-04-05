@@ -306,7 +306,7 @@ export default class HeroModel extends CreatureModel {
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
-    await foundry.documents.ActiveEffect.registry.refresh("respite", { actors: [this.parent] });
+    await foundry.documents.ActiveEffect.registry.refresh("respite", { actors: new Set([this.parent]) });
 
     return this.parent.update({
       system: {
