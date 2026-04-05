@@ -40,7 +40,6 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
-- Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
 - Added roll functionality to followers. Rolling with a follower first prompts for a project, then performs the roll. (#1722)
 
 ### Changed
@@ -52,6 +51,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - Implemented field placeholders where possible. (#1326)
 - Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
+- Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 - Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)

@@ -160,7 +160,7 @@ Draw Steel also supports modifying the default roll formula for tests. `system.c
 |:---:|---|
 |Save Bonus|`system.combat.save.bonus`|
 |Save Threshold|`system.combat.save.threshold`|
-|Actor Size (on sheet, not token size)|`system.combat.size.value`|
+|Actor Size|`system.combat.size.value`|
 |Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
 |Initiative Threshold|`system.combat.initiativeThreshold`|
@@ -244,6 +244,8 @@ Token properties can be targeted by prefixing with `token.`. The following prope
 | Image (Static) |`token.texture.src`|
 | Use dynamic token ring |`token.ring.enabled`|
 | Image (Dynamic Token Ring) |`token.ring.subject.texture`|
+
+Note that width, height, depth are all by default inferred from `system.combat.size.value`, so for most use cases only that key is needed.
 
 ## Ability Modifiers
 

@@ -61,6 +61,31 @@ export default class CreatureModel extends BaseActorModel {
     this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;
     this.potency.average += highestCharacteristic - 1 + this.potency.bonuses;
     this.potency.strong += highestCharacteristic + this.potency.bonuses;
+
+    // Creature token sizes can be strongly determined from actor size
+    this.parent.tokenActiveEffectChanges.initial.push(
+      {
+        key: "width",
+        phase: "initial",
+        priority: 5,
+        type: "override",
+        value: this.combat.size.value,
+      },
+      {
+        key: "height",
+        phase: "initial",
+        priority: 5,
+        type: "override",
+        value: this.combat.size.value,
+      },
+      {
+        key: "depth",
+        phase: "initial",
+        priority: 5,
+        type: "override",
+        value: this.combat.size.value,
+      },
+    );
   }
 
   /* -------------------------------------------------- */
