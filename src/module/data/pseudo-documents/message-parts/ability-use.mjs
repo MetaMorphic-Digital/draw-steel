@@ -80,11 +80,9 @@ export default class AbilityUsePart extends BaseMessagePart {
 
     context.ctx.buttons = [];
 
-    const distanceConfig = ds.CONFIG.abilities.distances[item.system.distance.type];
-
-    if (item.isOwner && (typeof distanceConfig.area === "object")) {
+    if (item.isOwner && item.system.hasTemplate) {
       context.ctx.buttons.push(ds.utils.constructHTMLButton({
-        label: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityUse.placeTemplate"),
+        label: _loc("DRAW_STEEL.Item.ability.placeTemplate"),
         icon: "fa-solid fa-ruler-combined",
         dataset: {
           action: "placeTemplate",

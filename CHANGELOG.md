@@ -28,6 +28,7 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
 - Added button to area abilities to place a template for the ability based on its configuration. (#215)
+  - This button is available both in the context menu for an ability as well as the chat message to use the ability.
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
