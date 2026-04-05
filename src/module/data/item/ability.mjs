@@ -511,7 +511,7 @@ export default class AbilityModel extends BaseItemModel {
         messageData.system.parts.push(rollPart);
       }
     } else {
-      DrawSteelChatMessage.applyMode(messageData, "roll");
+      DrawSteelChatMessage.applyMode(messageData);
     }
     // TODO: Figure out how to better handle invocations when this.actor is null
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
