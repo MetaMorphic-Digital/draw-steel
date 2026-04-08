@@ -51,6 +51,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
   - Applying a new copy of a status effect always removes the old one if it's not a stacking effect.
 - Implemented field placeholders where possible. (#1326)
+- Compendium abilities now use the name of the associated class's heroic resource instead of a generic "Heroic Resource" if possible. (#1419)
 - Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)

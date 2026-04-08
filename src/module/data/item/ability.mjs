@@ -327,7 +327,19 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+    let resourceName = this.actor?.system.coreResource?.name;
+
+    if (!resourceName && (this.prerequisites.dsid.size === 1)) {
+      const dsid = this.prerequisites.dsid.first();
+      let classEntry = ds.registry.class.filter(e => e.dsid === dsid).at(-1);
+      if (!classEntry) {
+        const subclass = ds.registry.subclass.filter(e => e.dsid === dsid).at(-1);
+        if (subclass) classEntry = ds.registry.class.filter(e => e.dsid === subclass.dsid).at(-1);
+      }
+      if (classEntry) resourceName = classEntry.primary;
+    }
+
+    resourceName ??= _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 
