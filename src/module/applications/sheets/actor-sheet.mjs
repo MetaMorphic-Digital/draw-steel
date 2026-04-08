@@ -656,11 +656,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         label: "DRAW_STEEL.Item.ability.placeTemplate",
         icon: "fa-solid fa-ruler-combined",
         visible: (target) => {
-          return canvas?.ready && this._getEmbeddedDocument(target)?.system.hasTemplate && foundry.documents.RegionDocument.canUserCreate(game.user);
+          return canvas?.ready
+            && this._getEmbeddedDocument(target).system.hasTemplate
+            && foundry.documents.RegionDocument.canUserCreate(game.user);
         },
-        onClick: async (event, target) => {
-          const item = this._getEmbeddedDocument(target);
-          return item.system.placeTemplate();
+        onClick: (event, target) => this._getEmbeddedDocument(target).system.placeTemplate(),
         },
       },
       {
