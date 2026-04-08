@@ -49,14 +49,15 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - ActiveEffect changes for v14
   - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
+  - Improved handling of disabled and expired status conditions on the actor sheet to more accurately convey what is active and reduce clicks. (#1694)
   - Applying a new copy of a status effect always removes the old one if it's not a stacking effect.
 - Implemented field placeholders where possible. (#1326)
 - Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
-- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 - Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
+- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`.
 
 ### Deprecated
 

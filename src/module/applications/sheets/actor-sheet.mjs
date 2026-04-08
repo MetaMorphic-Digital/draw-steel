@@ -485,6 +485,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     // If the actor has the status and it's not from the canonical statusEffect
     // Then we want to force more individual control rather than allow toggleStatusEffect
     for (const effect of this.actor.allApplicableEffects()) {
+      if (!effect.active) continue;
       for (const id of effect.statuses) {
         if (!(id in statusInfo)) continue;
         statusInfo[id].active = "active";
@@ -895,7 +896,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    */
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
-    await this.actor.toggleStatusEffect(status);
+    const hasStatus = this.actor.statuses.has(status);
+    const toggle = await this.actor.toggleStatusEffect(status);
+    // if an actor did not have the status active but had disabled/expired effects to clear, toggle again
+    if (!hasStatus && (toggle === false)) await this.actor.toggleStatusEffect(status);
   }
 
   /* -------------------------------------------------- */
