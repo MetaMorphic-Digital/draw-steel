@@ -499,7 +499,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
-   * @return {Record<string, ActiveEffectCategory>} Data for rendering.
+   * @return {Promise<Record<string, ActiveEffectCategory>>} Data for rendering.
    * @protected
    */
   async _prepareActiveEffectCategories() {
@@ -652,6 +652,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
       },
       //Ability specific options
+      {
+        label: "DRAW_STEEL.Item.ability.placeTemplate",
+        icon: "fa-solid fa-ruler-combined",
+        visible: (target) => {
+          return canvas?.ready
+            && this._getEmbeddedDocument(target).system.hasTemplate
+            && foundry.documents.RegionDocument.canUserCreate(game.user);
+        },
+        onClick: (event, target) => this._getEmbeddedDocument(target).system.placeTemplate(),
+        },
+      },
       {
         label: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
         icon: "fa-solid fa-sword",

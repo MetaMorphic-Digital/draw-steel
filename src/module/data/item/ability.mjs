@@ -5,11 +5,12 @@ import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage
 import FormulaField from "../fields/formula-field.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import { systemPath } from "../../constants.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import RegionDocument from "@client/documents/region.mjs";
+ * @import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs"
  * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
@@ -687,26 +688,38 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
+   * Does this ability have a valid, inferrable template to place?
+   * @type {boolean}
+   */
+  get hasTemplate() {
+    return typeof ds.CONFIG.abilities.distances[this.distance.type]?.area === "object";
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Create a region template based on this ability's distance data.
+   * @param {RegionPlacementOptions} [options={}] Options to forward to canvas.regions.placeRegion.
    * @returns {Promise<RegionDocument>} The Region document that was placed or null if
    *  - the placements of all shapes were skipped,
    *  - the dismiss key was pressed,
    *  - the game is paused and the user is not a GM, or
    *  - the Region creation was rejected by preCreate.
    */
-  async placeTemplate() {
-    const distanceConfig = ds.CONFIG.abilities.distances[this.distance.type];
-
-    if (typeof distanceConfig.area !== "object") {
+  async placeTemplate(options = {}) {
+    if (!this.hasTemplate) {
       const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
       ui.notifications.error(msg, { console: false });
       throw new Error(msg);
     }
 
+    // Special case
+    if (this.distance.type === "aura") options.attachToToken ??= true;
+
     /** @type {DrawSteelTokenDocument} */
     const tokenInfo = this.actor.token ?? this.actor.getActiveTokens(true, true)[0];
 
-    const { type, count, ...shapeProperties } = distanceConfig.area;
+    const { type, count, ...shapeProperties } = ds.CONFIG.abilities.distances[this.distance.type].area;
 
     const shapeCount = typeof count === "string" ? this.distance[count] : 1;
 
@@ -720,9 +733,12 @@ export default class AbilityModel extends BaseItemModel {
         case "rectangle": // Special wall handling since it's a bunch of 1 x 1 spots.
           shapeData.width ??= canvas.dimensions.distancePixels;
           shapeData.height ??= canvas.dimensions.distancePixels;
+          shapeData.anchorX = 0.5;
+          shapeData.anchorY = 0.5;
           break;
         case "emanation":
           shapeData.base = {
+            // TODO: Infer if the target type includes "self"
             hole: true,
             type: "token",
             x: 0,
@@ -731,6 +747,7 @@ export default class AbilityModel extends BaseItemModel {
             height: tokenInfo.width,
             shape: tokenInfo.shape,
           };
+          break;
       }
 
       return shapeData;
@@ -745,8 +762,13 @@ export default class AbilityModel extends BaseItemModel {
       displayMeasurements: true,
       visibility: CONST.REGION_VISIBILITY.OBSERVER,
       ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
+      flags: {
+        [systemID]: {
+          abilitySource: this.parent.uuid,
+        },
+      },
     };
 
-    return canvas.regions.placeRegion(regionData);
+    return canvas.regions.placeRegion(regionData, options);
   }
 }

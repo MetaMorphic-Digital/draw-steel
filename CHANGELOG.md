@@ -35,6 +35,8 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
   - Added a Test Outcome page for the Advanced Studies complication. (#1666)
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Added button to area abilities to place a template for the ability based on its configuration. (#215)
+  - This button is available both in the context menu for an ability as well as the chat message to use the ability.
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
 - Enabled full support of pop-out applications. (#1161)
 - Created an "Effects and Imbues" compendium pack. (#1163)
