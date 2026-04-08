@@ -48,7 +48,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * @type {number}
    */
   #targetHook = Hooks.on("targetToken", (user, token, targeted) => {
-    if (user !== game.user) return;
+    if ((user !== game.user) || !this.options.context.targets) return;
 
     if (targeted) this.options.context.targets[token.id] = {
       tokenUuid: token.document.uuid,
