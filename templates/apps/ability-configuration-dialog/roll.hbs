@@ -24,9 +24,11 @@
   </div>
   {{#each targets as |target tokenId|}}
   <div class="target group" data-token-uuid="{{target.token.uuid}}">
-    <div class="header" data-action="panToken" data-tooltip="DRAW_STEEL.Item.ability.ConfigureUse.PanToken">
-      <a>{{target.token.name}}</a>
-      <i class="fa-solid fa-bullseye-pointer"></i>
+    <div class="header">
+      {{target.token.name}}
+      <a data-action="panToken" data-tooltip="DRAW_STEEL.Item.ability.ConfigureUse.PanToken">
+        <i class="fa-solid fa-bullseye-pointer"></i>
+      </a>
     </div>
     <div class="form-group">
       <label class="edges-banes">

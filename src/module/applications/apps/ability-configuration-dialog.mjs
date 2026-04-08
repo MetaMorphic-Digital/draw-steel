@@ -50,9 +50,15 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   #targetHook = Hooks.on("targetToken", (user, token, targeted) => {
     if ((user !== game.user) || !this.options.context.targets) return;
 
+    for (const targetData of foundry.utils.iterateValues(this.options.context.targets)) {
+      if (targetData.uuid === token.actor.uuid) return;
+    }
+
     if (targeted) this.options.context.targets[token.id] = {
+      actor: token.actor,
+      token: token.document,
       tokenUuid: token.document.uuid,
-      uuid: token.actor?.uuid ?? "",
+      uuid: token.actor.uuid,
       modifiers: this.item.system.getTargetModifiers(token),
     };
     else delete this.options.context.targets[token.id];
