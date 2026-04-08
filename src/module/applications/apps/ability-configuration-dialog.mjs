@@ -87,8 +87,8 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   _initializeApplicationOptions(options) {
     const initializedOptions = super._initializeApplicationOptions(options);
 
-    // Two column layout if width > 700
-    if (initializedOptions.ability.system.power.roll.enabled && (Object.keys(initializedOptions.context.targets)?.length > 2)) {
+    // Two column layout if there's rolls
+    if (initializedOptions.ability.system.power.roll.enabled) {
       initializedOptions.position.width = 700;
       initializedOptions.classes.push("two-column");
     }
