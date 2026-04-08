@@ -661,7 +661,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
             && foundry.documents.RegionDocument.canUserCreate(game.user);
         },
         onClick: (event, target) => this._getEmbeddedDocument(target).system.placeTemplate(),
-        },
       },
       {
         label: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
