@@ -562,7 +562,67 @@
       "_key": "!actors.items!jCFtKlDWA1VRIanb.KOsnxnQvSid3ZahG"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.jCFtKlDWA1VRIanb",
+      "disabled": true,
+      "_id": "xCCgZx0G4FruaFM7",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 1,
+            "priority": null,
+            "phase": "initial"
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>+1 bonus to speed</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1775092643769,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!jCFtKlDWA1VRIanb.xCCgZx0G4FruaFM7"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

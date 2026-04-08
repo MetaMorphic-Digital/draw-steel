@@ -20,7 +20,7 @@ export default class DrawSteelImageSheet extends foundry.applications.sheets.jou
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static VIEW_PARTS = {
     content: {
       template: systemPath("templates/sheets/journal/pages/image/view.hbs"),

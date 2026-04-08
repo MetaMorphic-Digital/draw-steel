@@ -20,18 +20,28 @@
 
 ## 1.0.0
 
-This version of the system does not support v13, it is exclusively for Foundry v14+.
+The latest version of Draw Steel is v14-exclusive. You can see the full v14 stable release notes [here](https://foundryvtt.com/releases/14.359). This Draw Steel release fully incorporates new features like:
+- Scene Levels
+- Pop-out applications
+- Scene levels
+- The Placeables Sidebar
+- Active Effects V2 (Improved duration tracking, roll data values, and effect compendiums)
+- Template Regions
 
 ### Added
 
 - New Player-Facing Compendium Content:
+  - Added enrichers to all class resource abilities (#1765)
+  - Added a Test Outcome page for the Advanced Studies complication. (#1666)
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Added button to area abilities to place a template for the ability based on its configuration. (#215)
+  - This button is available both in the context menu for an ability as well as the chat message to use the ability.
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
+- Enabled full support of pop-out applications. (#1161)
 - Created an "Effects and Imbues" compendium pack. (#1163)
 - Added Draw Steel inserts to the "Custom" section of prosemirror, allowing users to easily format their text with system-specific html. (#1267)
 - Updated formula fields to use the new core `HTMLFormulaInputElement`. (#1501)
-- Active Effects can now modify token properties, e.g. `token.height` and `token.width`. (#1528)
 - Added roll functionality to followers. Rolling with a follower first prompts for a project, then performs the roll. (#1722)
 
 ### Changed
@@ -43,8 +53,10 @@ This version of the system does not support v13, it is exclusively for Foundry v
 - Implemented field placeholders where possible. (#1326)
 - Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
+- Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
+- Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
 
 ### Deprecated
 
@@ -59,6 +71,10 @@ This version of the system does not support v13, it is exclusively for Foundry v
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Corrected tier 2 and 3 fire weakness on Purifying Fire. (#1799)
+- Director-Facing Compendium Data Fixes:
+  - Added missing "With Captain" effects to the Kobold Princeps, Sagittarion, and Veles (#1759)
 - Fixed DSN not playing for certain system rolls. (#1753)
 - Corrected end/start of turn logic when going directly from monster to hero turns as well as overall processing for scene regions. (#1771)
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.
