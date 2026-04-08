@@ -63,14 +63,20 @@ Hooks.once("init", function () {
     }
   }
 
-  // Indexing DSID, class primary name, subclass associated classes, and perk types
   CONFIG.Item.compendiumIndexFields.push(
+    // DSID
     "system._dsid",
+    // Class heroic resource name
     "system.primary",
+    // Subclass associated class
     "system.classLink",
+    // Perk type
     "system.perkType",
+    // prerequisites object
     "system.prerequisites",
+    // Heroic resource cost
     "system.resource",
+    // Ability category (e.g. signature)
     "system.category",
   );
   // Need to be able to find "configuration" type pages
