@@ -78,6 +78,9 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    */
   get uuid() {
     let parent = this.parent;
+    // Model validation now constructs this without a parent during diff checking
+    // which causes an error when they try to access the UUID for potential logging purposes.
+    if (!parent) return this.id ? `${this.documentName}.${this.id}` : null;
     while (!(parent instanceof PseudoDocument) && !(parent instanceof foundry.abstract.Document)) parent = parent.parent;
     return [parent.uuid, this.documentName, this.id].join(".");
   }

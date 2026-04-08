@@ -102,8 +102,10 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         },
       });
 
-      context.fields.movement = Object.entries(ds.CONFIG.abilities.forcedMovement).map(([value, { label }]) => ({ value, label }));
-      context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.forced.properties).map(([value, { label }]) => ({ value, label }));
+      context.fields.movement = Object.entries(ds.CONFIG.abilities.forcedMovement)
+        .map(([value, { label }]) => ({ value, label }));
+      context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.forced.properties)
+        .map(([value, { label }]) => ({ value, label }));
     }
   }
 

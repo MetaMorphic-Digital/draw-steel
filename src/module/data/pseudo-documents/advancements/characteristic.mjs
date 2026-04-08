@@ -60,7 +60,7 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
 
   /** @inheritdoc */
   get isChoice() {
-    return Object.values(this.characteristics).some(v => v === 0);
+    return foundry.utils.objectValues(this.characteristics).some(v => v === 0);
   }
 
   /* -------------------------------------------------- */

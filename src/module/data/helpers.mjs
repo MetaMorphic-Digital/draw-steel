@@ -7,10 +7,10 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
  * @param {number} [options.min=0]      The minimum value for the field.
  * @param {number} [options.max]        The maximum value for the field.
  * @param {string} [options.label]      Label for the field.
- * @param {boolean} [options.persisted] Is the field saved to the database?
+ * @param {boolean} [options.persisted=true] Is the field saved to the database?
  * @returns A number field that is non-nullable and always defined.
  */
-export const requiredInteger = ({ initial = 0, min = 0, max, label, persisted } = {}) => new NumberField({ initial, label, min, max, persisted, required: true, nullable: false, integer: true });
+export const requiredInteger = ({ initial = 0, min = 0, max, label, persisted = true } = {}) => new NumberField({ initial, label, min, max, persisted, required: true, nullable: false, integer: true });
 
 /* -------------------------------------------------- */
 
@@ -39,11 +39,7 @@ export const damageTypes = (inner, { all = false } = {}) => {
   const config = ds.CONFIG;
 
   if (all) schema.all = inner();
-
-  Object.entries(config.damageTypes).reduce((obj, [type, value]) => {
-    obj[type] = inner({ label: value.label });
-    return obj;
-  }, schema);
+  Object.entries(config.damageTypes).forEach(([type, value]) => schema[type] = inner({ label: value.label }));
 
   return new SchemaField(schema);
 };

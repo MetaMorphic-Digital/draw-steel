@@ -308,8 +308,12 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       }, {}),
     };
 
-    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
+    const immunities = Object.entries(this.actor.system.damage.immunities)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
 
     const formatter = game.i18n.getListFormatter({ type: "unit" });
     return {
@@ -484,7 +488,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       for (const id of effect.statuses) {
         if (!(id in statusInfo)) continue;
         statusInfo[id].active = "active";
-        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
+        if (!foundry.utils.objectValues(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
       }
     }
 
@@ -495,7 +499,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
-   * @return {Record<string, ActiveEffectCategory>} Data for rendering.
+   * @return {Promise<Record<string, ActiveEffectCategory>>} Data for rendering.
    * @protected
    */
   async _prepareActiveEffectCategories() {
@@ -648,6 +652,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         },
       },
       //Ability specific options
+      {
+        label: "DRAW_STEEL.Item.ability.placeTemplate",
+        icon: "fa-solid fa-ruler-combined",
+        visible: (target) => {
+          return canvas?.ready
+            && this._getEmbeddedDocument(target).system.hasTemplate
+            && foundry.documents.RegionDocument.canUserCreate(game.user);
+        },
+        onClick: (event, target) => this._getEmbeddedDocument(target).system.placeTemplate(),
+        },
+      },
       {
         label: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
         icon: "fa-solid fa-sword",

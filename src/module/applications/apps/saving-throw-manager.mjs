@@ -31,7 +31,7 @@ export default class SavingThrowManager extends RollManager {
     else {
       const activeOwners = game.users.filter(u => effect.testUserPermission(u, "OWNER") && u.active);
       const queryResult = await this.create({ users: activeOwners, effect });
-      return Object.values(queryResult).filter(r => typeof r === "boolean")[0];
+      return foundry.utils.objectValues(queryResult).find(r => typeof r === "boolean");
     }
   }
 

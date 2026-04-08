@@ -93,7 +93,8 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
 
     context.chapterOptions = context.entries.filter(e => e.type === "chapter").map(e => ({ value: e.document.id, label: e.document.name }));
 
-    context.entryTypes = Object.entries(ds.applications.sidebar.apps.DrawSteelCompendiumTOC.ENTRY_TYPES).map(([value, { label }]) => ({ value, label }));
+    context.entryTypes = Object.entries(ds.applications.sidebar.apps.DrawSteelCompendiumTOC.ENTRY_TYPES)
+      .map(([value, { label }]) => ({ value, label }));
 
     return context;
   }
@@ -118,13 +119,7 @@ export default class CompendiumTOCConfig extends HandlebarsApplicationMixin(Appl
    */
   static async #submitHandler(event, form, formData, submitOptions = {}) {
     const fd = foundry.utils.expandObject(formData.object);
-
-    const updateData = [];
-
-    for (const [_id, data] of Object.entries(fd)) {
-      updateData.push({ _id, [CompendiumTOCConfig.flagPath]: data });
-    }
-
+    const updateData = Object.entries(fd).map(([_id, data]) => ({ _id, [CompendiumTOCConfig.flagPath]: data }));
     await getDocumentClass("JournalEntry").updateDocuments(updateData, { pack: this.compendium.collection });
 
     // Also includes this application

@@ -23,6 +23,7 @@ export default class AbilityUsePart extends BaseMessagePart {
   static ACTIONS = {
     ...super.ACTIONS,
     rollTest: this.#rollTest,
+    placeTemplate: this.#placeTemplate,
   };
 
   /* -------------------------------------------------- */
@@ -79,6 +80,16 @@ export default class AbilityUsePart extends BaseMessagePart {
 
     context.ctx.buttons = [];
 
+    if (item.isOwner && item.system.hasTemplate) {
+      context.ctx.buttons.push(ds.utils.constructHTMLButton({
+        label: _loc("DRAW_STEEL.Item.ability.placeTemplate"),
+        icon: "fa-solid fa-ruler-combined",
+        dataset: {
+          action: "placeTemplate",
+        },
+      }));
+    }
+
     if (item.system.power.roll.reactive) {
       for (const chr of item.system.power.roll.characteristics) {
         const characteristic = ds.CONFIG.characteristics[chr]?.label ?? "";
@@ -110,5 +121,18 @@ export default class AbilityUsePart extends BaseMessagePart {
     for (const actor of ds.utils.tokensToActors()) {
       actor.rollCharacteristic(chr, { resultSource: this.abilityUuid });
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Place the template for this ability.
+   *
+   * @this AbilityUsePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #placeTemplate(event, target) {
+    this.ability.system.placeTemplate();
   }
 }

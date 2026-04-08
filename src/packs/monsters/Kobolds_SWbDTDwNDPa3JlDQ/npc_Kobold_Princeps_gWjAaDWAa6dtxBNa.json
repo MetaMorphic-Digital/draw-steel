@@ -40,7 +40,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
@@ -561,7 +561,67 @@
       "_key": "!actors.items!gWjAaDWAa6dtxBNa.KOsnxnQvSid3ZahG"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa",
+      "disabled": true,
+      "_id": "eYVxXy8EhCgRypZU",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 2,
+            "priority": null,
+            "phase": "initial"
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>+2 bonus to Stamina</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1775092168040,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!gWjAaDWAa6dtxBNa.eYVxXy8EhCgRypZU"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -571,9 +631,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.359",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.0.0",
     "createdTime": 1756946256884,
     "modifiedTime": null,
     "lastModifiedBy": null

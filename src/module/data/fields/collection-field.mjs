@@ -27,7 +27,7 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static hierarchical = true;
 
   /* -------------------------------------------------- */
@@ -70,7 +70,7 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _updateCommit(source, key, value, diff, options) {
     let src = source[key];
 
@@ -88,6 +88,9 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
           continue;
         }
         id = id.slice(2);
+      } else if (d instanceof foundry.data.operators.ForcedDeletion) {
+        delete source[key][id];
+        continue;
       }
       const prior = src[id];
       if (prior) {
