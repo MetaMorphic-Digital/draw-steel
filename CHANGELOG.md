@@ -75,6 +75,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
   - Corrected tier 2 and 3 fire weakness on Purifying Fire. (#1799)
 - Director-Facing Compendium Data Fixes:
   - Added missing "With Captain" effects to the Kobold Princeps, Sagittarion, and Veles (#1759)
+- Fixed DSN not playing for certain system rolls. (#1753)
 - Corrected end/start of turn logic when going directly from monster to hero turns as well as overall processing for scene regions. (#1771)
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.
 - Fixed an issue where retainer creation would not respect explicitly provided prototype token properties.
