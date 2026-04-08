@@ -87,7 +87,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   static applyChange(targetDoc, change, options = {}) {
-    if (typeof change.effect?.system.apply === "function") return change.effect.system.apply(targetDoc, change, options);
+    if (typeof change.effect?.system.apply === "function")
+      return change.effect.system.apply(targetDoc, change, options);
     return super.applyChange(targetDoc, change, options);
   }
 
