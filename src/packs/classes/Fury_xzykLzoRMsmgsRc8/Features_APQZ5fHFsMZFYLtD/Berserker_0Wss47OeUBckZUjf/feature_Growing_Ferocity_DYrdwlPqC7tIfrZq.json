@@ -5,7 +5,7 @@
   "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
   "system": {
     "description": {
-      "value": "<p>You gain certain benefits in combat based on the amount of ferocity you have. These benefits last until the end of your turn, even if a benefit would become unavailable to you because of the amount of ferocity you spend during your turn. Some Growing Ferocity benefits can be applied only if you are a specific level or higher, with the level of those benefits noted in the various Growing Ferocity tables in this section.</p><table><thead><tr><th><p>Ferocity</p></th><th><p>Benefit</p></th></tr></thead><tbody><tr><td><p>2</p></td><td><p>Whenever you use the Knockback maneuver, the forced movement distance gains a bonus equal to [[lookup @M]]{your Might score}.</p></td></tr><tr><td><p>4</p></td><td><p>The first time you push a creature on a turn, you [[/surge 1]].</p></td></tr><tr><td><p>6</p></td><td><p>You gain an edge on Might tests and the Knockback maneuver</p></td></tr><tr><td><p>8 (4th Level)</p></td><td><p>The first time you push a creature on a turn, you [[/surge 2]].</p></td></tr><tr><td><p>10 (7th Level)</p></td><td><p>You have a double edge on Might tests and the Knockback maneuver.</p></td></tr><tr><td><p>12 (10th Level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temporary]]. Additionally, whenever you make a power roll that imposes forced movement on a target, the forced movement distance gains a bonus equal to [[lookup @M]]{your Might score}.</p></td></tr></tbody></table>",
+      "value": "<p>You gain certain benefits in combat based on the amount of ferocity you have. These benefits last until the end of your turn, even if a benefit would become unavailable to you because of the amount of ferocity you spend during your turn. Some Growing Ferocity benefits can be applied only if you are a specific level or higher, with the level of those benefits noted in the various Growing Ferocity tables in this section.</p><table><thead><tr><th><p>Ferocity</p></th><th><p>Benefit</p></th></tr></thead><tbody><tr><td><p>2</p></td><td><p>Whenever you use the Knockback maneuver, the forced movement distance gains a [[/apply sMnPGxuE2lVGqWOf]]{bonus equal to your Might score}.</p></td></tr><tr><td><p>4</p></td><td><p>The first time you push a creature on a turn, you [[/surge 1]].</p></td></tr><tr><td><p>6</p></td><td><p>You gain an [[/apply LsDas4YTxb8dw3WP]]{edge} on Might tests and the Knockback maneuver</p></td></tr><tr><td><p>8 (4th Level)</p></td><td><p>The first time you push a creature on a turn, you [[/surge 2]].</p></td></tr><tr><td><p>10 (7th Level)</p></td><td><p>You have a [[/apply GHT8Tooakz5DvxgE]]{double edge} on Might tests and the Knockback maneuver.</p></td></tr><tr><td><p>12 (10th Level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temporary]]. Additionally, whenever you make a power roll that imposes forced movement on a target, the forced movement distance gains a bonus equal to [[lookup @M]]{your Might score}.</p></td></tr></tbody></table>",
       "director": ""
     },
     "source": {
@@ -16,7 +16,171 @@
     "_dsid": "growing-ferocity",
     "advancements": {}
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Knockback Bonus",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.DYrdwlPqC7tIfrZq",
+      "system": {
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": "@M",
+            "priority": null,
+            "phase": "initial"
+          }
+        ],
+        "filters": {
+          "keywords": []
+        }
+      },
+      "duration": {
+        "expiry": "turnEnd",
+        "value": null,
+        "units": "seconds",
+        "expired": false
+      },
+      "_id": "sMnPGxuE2lVGqWOf",
+      "disabled": true,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1775775886010,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DYrdwlPqC7tIfrZq.sMnPGxuE2lVGqWOf"
+    },
+    {
+      "name": "Might/Knockback Edge",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.DYrdwlPqC7tIfrZq",
+      "disabled": true,
+      "_id": "LsDas4YTxb8dw3WP",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.edges",
+            "type": "add",
+            "value": 1,
+            "priority": null,
+            "phase": "initial"
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1775776804312,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DYrdwlPqC7tIfrZq.LsDas4YTxb8dw3WP"
+    },
+    {
+      "name": "Might/Knockback Double Edge",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.DYrdwlPqC7tIfrZq",
+      "disabled": true,
+      "_id": "GHT8Tooakz5DvxgE",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.edges",
+            "type": "add",
+            "value": 2,
+            "priority": null,
+            "phase": "initial"
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1775777022163,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DYrdwlPqC7tIfrZq.GHT8Tooakz5DvxgE"
+    }
+  ],
   "ownership": {
     "default": 0
   },
@@ -25,9 +189,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.359",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1761543334834,
     "modifiedTime": null,
     "lastModifiedBy": null
