@@ -56,6 +56,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
+- Hard fixed the list of characteristics. (#1705)
 - Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 - Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
 

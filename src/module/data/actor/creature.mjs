@@ -1,5 +1,6 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base-actor.mjs";
+import CharacteristicsField from "../fields/characteristics-field.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 
@@ -22,23 +23,7 @@ export default class CreatureModel extends BaseActorModel {
       languages: new fields.SetField(setOptions()),
     });
 
-    const characteristic = { initial: 0, integer: true, nullable: false, placeholder: "0" };
-
-    schema.characteristics = new fields.SchemaField(
-      Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {
-        obj[chc] = new fields.SchemaField({
-          value: new fields.NumberField({ ...characteristic, label, hint }),
-          edges: requiredInteger({ min: null, persisted: false }),
-          banes: requiredInteger({ min: null, persisted: false }),
-          dice: new fields.SchemaField({
-            mode: new fields.StringField({ choices: "kh" }),
-            number: requiredInteger({ initial: 2 }),
-            faces: requiredInteger({ initial: 10 }),
-          }, { persisted: false }),
-        });
-        return obj;
-      }, {}),
-    );
+    schema.characteristics = new CharacteristicsField();
 
     schema.potency = new fields.SchemaField({
       bonuses: requiredInteger({ min: null }),
