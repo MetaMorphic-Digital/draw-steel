@@ -2,12 +2,12 @@
  * @import { DataFieldContext, DataFieldOptions } from "@common/data/_types.mjs";
  */
 
-const { SchemaField, StringField, NumberField } = foundry.data.fields;
+const { NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * A field that unifies and hardens the Characteristic data across creatures and followers.
  */
-export default class CharacteristicsField extends foundry.data.fields.SchemaField {
+export default class CharacteristicsField extends SchemaField {
   /**
    * @param {DataFieldOptions} [options]        Options which configure the behavior of the field.
    * @param {DataFieldContext} [context]        Additional context which describes the field.
