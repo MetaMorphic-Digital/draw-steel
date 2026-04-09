@@ -39,7 +39,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the start of your next turn, the target can move through solid matter, they ignore difficult terrain, and their movement can’t provoke opportunity attacks. If the target ends their turn inside solid matter, they are forced out into the space where they entered it and this effect ends.</p><p><strong>Persistent 1:</strong> The effect lasts until the start of your next turn.</p>",
+      "before": "<p>Until the start of your next turn, the target can move through solid matter, they ignore difficult terrain, and their movement can’t provoke opportunity attacks. If the target ends their turn inside solid matter, they are forced out into the space where they entered it and this effect ends. [[/apply LA17VDt3bDbNwIJs]]</p><p><strong>Persistent 1:</strong> The effect lasts until the start of your next turn.</p>",
       "after": ""
     },
     "spend": {
@@ -52,7 +52,49 @@
       ]
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "No More Than a Breeze",
+      "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.aHY1IaEDjeFArXVy",
+      "system": {
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "changes": []
+      },
+      "duration": {
+        "expiry": "turnStart",
+        "value": null,
+        "units": "seconds",
+        "expired": false
+      },
+      "_id": "LA17VDt3bDbNwIJs",
+      "disabled": false,
+      "start": null,
+      "description": "<p>Until the start of your next turn, the target can move through solid matter, they ignore difficult terrain, and their movement can’t provoke opportunity attacks. </p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1775774359180,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!aHY1IaEDjeFArXVy.LA17VDt3bDbNwIJs"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
