@@ -336,7 +336,7 @@ export default class AbilityModel extends BaseItemModel {
       let classEntry = ds.registry.class.filter(e => e.dsid === dsid).at(-1);
       if (!classEntry) {
         const subclass = ds.registry.subclass.filter(e => e.dsid === dsid).at(-1);
-        if (subclass) classEntry = ds.registry.class.filter(e => e.dsid === subclass.dsid).at(-1);
+        if (subclass) classEntry = ds.registry.class.filter(e => e.dsid === subclass.classLink).at(-1);
       }
       if (classEntry) resourceName = classEntry.primary;
     }
