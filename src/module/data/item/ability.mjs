@@ -1,17 +1,19 @@
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import { requiredInteger, setOptions, validateDSID } from "../helpers.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
+import AbilityConfigurationDialog from "../../applications/apps/ability-configuration-dialog.mjs";
 import BaseItemModel from "./base-item.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import { systemID, systemPath } from "../../constants.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
  * @import RegionDocument from "@client/documents/region.mjs";
  * @import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs"
- * @import { FormInputConfig } from "@common/data/_types.mjs";
  * @import { PowerRollModifiers } from "../../_types.js";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import DrawSteelTokenDocument from "../../documents/token.mjs";
@@ -388,7 +390,7 @@ export default class AbilityModel extends BaseItemModel {
     context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
     context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
 
-    context.spendLabel = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
+    context.spendLabel = _loc("DRAW_STEEL.Item.ability.SpendLabel", {
       value: this.spend.value ?? "",
       name: resourceName,
     });
@@ -420,92 +422,107 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll.
-   * @param {Partial<AbilityUseOptions>} [config={}] Usage Configuration.
-   * @param {object} [dialogOptions={}]              Options to be forwarded to the roll dialog.
-   * @param {object} [messageOptions]                Options to be forwarded to the final created chat message.
+   * @param {Partial<AbilityUseOptions>} [config={}]        Usage Configuration.
+   * @param {ApplicationConfiguration} [dialogOptions={}]   Options to be forwarded to the roll dialog.
+   * @param {DatabaseCreateOperation} [messageOptions]      Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
    * TODO: Add hooks based on discussion with module authors.
    */
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
-    /**
-     * Configuration information.
-     * @type {object | null}
-     */
-    let configuration = null;
-    let resourceSpend = this.resource ?? 0;
-    const coreResource = this.actor?.system.coreResource;
+    if (!this.actor) throw new Error("Abilities can only be used while embedded");
 
-    if (this.spend.value || this.spend.text) {
-      configuration = await this._determineSpendConfiguration();
-      if (!configuration) return null;
+    const coreResource = this.actor.system.coreResource;
+
+    const dialogConfig = foundry.utils.mergeObject({
+      ability: this.parent,
+      context: {
+        resource: {
+          current: foundry.utils.getProperty(coreResource.target, coreResource.path),
+          value: this.resource,
+          name: coreResource.name,
+        },
+      },
+      window: {
+        title: this.parent.name,
+      },
+    }, dialogOptions);
+
+    if (this.power.roll.enabled) {
+      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
+      const rollData = this.parent.getRollData();
+
+      dialogConfig.context.formula ??= PowerRoll.replaceFormulaData(formula, rollData, { missing: "0" });
+
+      dialogConfig.context.modifiers ??= {};
+      dialogConfig.context.modifiers.banes = (config.modifiers?.banes ?? 0) + (this.power.roll.banes ?? 0);
+      dialogConfig.context.modifiers.edges = (config.modifiers?.edges ?? 0) + (this.power.roll.edges ?? 0);
+      dialogConfig.context.modifiers.bonuses ??= 0;
+
+      dialogConfig.context.targets ??= game.user.targets.reduce((accumulator, target) => {
+        accumulator[target.id] = {
+          tokenUuid: target.document.uuid,
+          uuid: target.actor?.uuid ?? "",
+          modifiers: this.getTargetModifiers(target),
+        };
+        return accumulator;
+      }, {});
+
+      this.getActorModifiers(dialogConfig.context);
     }
 
-    const messageData = {
+    const fd = await AbilityConfigurationDialog.create(dialogConfig);
+
+    if (!fd) return null;
+
+    const abilityPartId = "abilityUse".padEnd(16, "0");
+
+    const messageData = foundry.utils.mergeObject({
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       type: "standard",
       rolls: [],
       title: this.parent.name,
       content: this.parent.name,
       system: {
-        parts: [{
-          type: "abilityUse",
-          abilityUuid: this.parent.uuid,
-        }],
+        parts: {
+          [abilityPartId]: {
+            _id: abilityPartId,
+            type: "abilityUse",
+            abilityUuid: this.parent.uuid,
+          },
+        },
       },
       flags: { core: { canPopout: true } },
-    };
+    }, messageOptions.data ?? {});
 
-    if (configuration?.spend) {
-      resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-      messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
-        value: resourceSpend,
-        name: coreResource.name,
-      });
-    }
+    delete messageOptions.data;
+
+    DrawSteelChatMessage.applyMode(messageData, fd.messageMode);
 
     if (this.power.roll.enabled) {
-      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
-      const rollData = this.parent.getRollData();
-      config.modifiers ??= {};
-      config.modifiers.banes = (config.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
-      config.modifiers.edges = (config.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
-      config.modifiers.bonuses ??= 0;
 
-      this.getActorModifiers(config);
-
-      // Get the power rolls made per target, or if no targets, then just one power roll
-      const promptValue = await PowerRoll.prompt({
-        type: "ability",
-        formula,
-        data: rollData,
-        evaluation: "evaluate",
-        actor: this.actor,
-        ability: this.parent.uuid,
-        modifiers: config.modifiers,
-        targets: [...game.user.targets].reduce((accumulator, target) => {
-          accumulator.push({
-            tokenUuid: target.document.uuid,
-            uuid: target.actor?.uuid ?? "",
-            modifiers: this.getTargetModifiers(target),
-          });
-          return accumulator;
-        }, []),
-      });
-
-      if (!promptValue) return null;
-      const { messageMode, rolls, baseRoll } = promptValue;
-
-      // Base roll for DSN purposes
+      const baseRoll = new PowerRoll(dialogConfig.context.formula);
+      await baseRoll.evaluate();
       messageData.rolls.push(baseRoll);
 
-      DrawSteelChatMessage.applyMode(messageData, messageMode);
+      const evaluatedRolls = [];
+
+      for (const context of fd.rolls) {
+        const roll = new PowerRoll(dialogConfig.context.formula, {}, { flavor: _loc(PowerRoll.TYPES.ability.label), ...context });
+        roll.terms[0] = baseRoll.terms[0];
+        await roll.evaluate({ allowInteractive: false });
+
+        evaluatedRolls.push(roll);
+      }
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = Object.groupBy(rolls, roll => roll.product);
+      const groupedRolls = Object.groupBy(evaluatedRolls, roll => roll.product);
 
       // Each tier group gets a message part. Rolls within a group are in the same message part
       for (const tierNumber in groupedRolls) {
+        const partId = `tier${tierNumber}Result`.padEnd(16, "0");
+
         const rollPart = {
+          _id: partId,
           type: "abilityResult",
           rolls: groupedRolls[tierNumber],
           tier: tierNumber,
@@ -513,7 +530,7 @@ export default class AbilityModel extends BaseItemModel {
         };
 
         for (const damageEffect of this.power.effects.documentsByType.damage) {
-          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: baseRoll.options.damageSelection });
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: fd.damage });
           if (!damageRoll) continue;
           await damageRoll.evaluate();
           rollPart.rolls.push(damageRoll);
@@ -521,14 +538,25 @@ export default class AbilityModel extends BaseItemModel {
           if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
         }
 
-        messageData.system.parts.push(rollPart);
+        messageData.system.parts[partId] = rollPart;
       }
-    } else {
-      DrawSteelChatMessage.applyMode(messageData);
     }
-    // TODO: Figure out how to better handle invocations when this.actor is null
+
+    let resourceSpend = fd.resource ?? 0;
+
+    if (fd.spend) {
+      resourceSpend += typeof fd.spend === "boolean" ? this.spend.value : fd.spend;
+    }
+
+    if (resourceSpend) {
+      messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
+        value: resourceSpend,
+        name: this.actor.system.coreResource.name,
+      });
+    }
+
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-    return DrawSteelChatMessage.create(messageData);
+    return DrawSteelChatMessage.create(messageData, messageOptions);
   }
 
   /* -------------------------------------------------- */
@@ -548,10 +576,10 @@ export default class AbilityModel extends BaseItemModel {
    */
   getActorModifiers(options) {
     if (!this.actor) return;
-    //TODO: CONDITION CHECKS
 
-    // Restrained conditions check
+    if (this.actor.statuses.has("weakened")) options.modifiers.banes += 1;
     if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
+    // TODO: Consider hook
   }
 
   /* -------------------------------------------------- */
@@ -615,69 +643,6 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     return modifiers;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Evaluate additional resource expenditure.
-   * @returns {Promise<{ spend: number | boolean } | null>}
-   */
-  async _determineSpendConfiguration() {
-    let content = "";
-    const coreResource = this.actor?.system.coreResource;
-
-    const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
-
-    /**
-       * Range picker config is ignored by the checkbox element.
-       * @type {FormInputConfig}
-       */
-    const spendInputConfig = {
-      name: "spend",
-      min: 0,
-      max: current - coreResource.minimum,
-      step: 1,
-    };
-
-    // Nullish value with text means X spend
-    const spendInput = this.spend.value ?
-      foundry.applications.fields.createCheckboxInput(spendInputConfig) :
-      foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
-
-    let hint = null;
-    if (this.spend.value) {
-      hint = _loc(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
-        value: current,
-        name: coreResource.name,
-      });
-    }
-
-    const spendGroup = foundry.applications.fields.createFormGroup({
-      label: _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
-        value: this.spend.value || "",
-        name: coreResource.name,
-      }),
-      input: spendInput,
-      hint,
-    });
-
-    // Style fix
-    if (this.spend.value) {
-      const label = spendGroup.querySelector("label");
-      label.classList.add("checkbox");
-      label.style = "font-size: inherit;";
-    }
-
-    content += spendGroup.outerHTML;
-
-    return ds.applications.api.DSDialog.input({
-      content,
-      window: {
-        title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
-        icon: "fa-solid fa-gear",
-      },
-    });
   }
 
   /* -------------------------------------------------- */

@@ -35,6 +35,9 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
   - Added a Test Outcome page for the Advanced Studies complication. (#1666)
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Added a unified Ability Configuration dialog for rolls as well as resource expenditure. (#161)
+  - Targets are now added/removed dynamically instead of being set when the ability is first used
+  - You can adjust the normal resource usage (helpful for temporary reductions like the Shadow as well as "free" casts available to the Elementalist)
 - Added button to area abilities to place a template for the ability based on its configuration. (#215)
   - This button is available both in the context menu for an ability as well as the chat message to use the ability.
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
@@ -65,6 +68,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 
 ### Removed
 
+- Removed PowerRoll.prompt in favor of keeping the roll dialog logic within the relevant roll methods for tests and abilities. (#161)
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
 - Removed various Active Effect methods overrides that are no longer necessary with core v14 improvements. (#1417)
 - Document helper sheets (like monster metadata inputs) no longer show the "import" button in the header. (#1584)

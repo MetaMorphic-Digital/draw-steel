@@ -1,0 +1,19 @@
+.draw-steel.ability-configuration-dialog {
+  &.two-column section.window-content {
+    display: grid;
+    grid-template-columns: auto auto;
+    .roll-config {
+      grid-row: 1 / span 2;
+    }
+    .ability-config {
+      align-self: end;
+    }
+    footer {
+      align-self: start;
+    }
+  }
+
+  a.header {
+    width: 100%;
+  }
+}
