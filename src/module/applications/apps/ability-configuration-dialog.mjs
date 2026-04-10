@@ -236,10 +236,12 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   _processFormData(event, form, formData) {
     const config = super._processFormData(event, form, formData);
 
-    const targets = Object.values(this.options.context.targets);
+    const targets = Object.values(this.options.context.targets ?? {});
     if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid }));
 
     if (formData["damage-selection"]) config.damage = formData["damage-selection"];
+    if ("resource" in formData) config.resource = formData.resource;
+    if ("spend" in formData) config.spend = formData.spend;
 
     Hooks.off("targetToken", this.#targetHook);
 
