@@ -371,7 +371,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {object} [options] Options to modify the damage application.
    * @param {string} [options.type]   Valid damage type.
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
-   * @returns {{weakness?: number, immunity?: number}}
+   * @returns {{immunity?: number, weakness?: number }}
    */
   calculateImmunityAndWeakness(options = {}) {
     const immunityAndWeakness = {};
@@ -405,20 +405,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
    */
   async takeDamage(damage, options = {}) {
-    const { weakness = 0, immunity = 0 } = this.calculateImmunityAndWeakness(options);
-
-    damage = Math.max(0, damage + weakness - immunity);
-
-    if (damage === 0) {
-      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
-      return this.parent;
-    }
-
-    const damageTypeOption = { ds: { damageType: options.type } };
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage }, damageTypeOption);
+        return this.combatGroup.system.takeDamage([this.parent], damage, options);
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
@@ -427,6 +417,16 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.TooManySquad", { localize: true });
       }
     }
+
+    const { immunity = 0, weakness = 0 } = this.calculateImmunityAndWeakness(options);
+
+    damage = Math.max(0, damage + weakness - immunity);
+
+    if (damage === 0) {
+      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
+      return this.parent;
+    }
+
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
     return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
   }

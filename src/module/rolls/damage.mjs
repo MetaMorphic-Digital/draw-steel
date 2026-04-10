@@ -68,6 +68,16 @@ export default class DamageRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
+   * Is this damage from an AOE ability?
+   * @type {boolean}
+   */
+  get aoe() {
+    return this.options.aoe || false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Produces a button with relevant data to applying this damage.
    * @param {number} index The index of this roll in the `rolls` array of the message.
    * @returns {HTMLButtonElement} A button that.
@@ -104,10 +114,17 @@ export default class DamageRoll extends DSRoll {
   async applyDamage(targets, options = {}) {
     targets ??= ds.utils.tokensToActors();
 
+    // Group actors by combatant group if they are a minion with only one combat group, otherwise group the rest in a single array.
+    const { actors = [], ...groups } = Object.groupBy(targets, (target => {
+      if (!target.isMinion || !target.system.combatGroup || (target.system.combatGroups.size > 1)) return "actors";
+      else return target.system.combatGroup.id;
+    }));
+
     let amount = this.total;
     if (options.halfDamage) amount = Math.floor(amount / 2);
 
-    for (const actor of targets) {
+    // Damage actors that aren't minions or in a combat group.
+    for (const actor of actors) {
       if (this.isHeal) {
         const isTemp = this.type !== "value";
         if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
@@ -116,6 +133,12 @@ export default class DamageRoll extends DSRoll {
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
       }
       else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities });
+    }
+
+    // Damage minion sqauds
+    for (const actors of Object.values(groups)) {
+      const group = actors[0].system.combatGroup;
+      group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe });
     }
   }
 }
