@@ -112,7 +112,6 @@ function gatherCollectionUpdates(operation, originalCollection, currentCollectio
         .forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, currentEntry[field]));
     }
     // Items does not alter WorldCollection#fromCompendium
-    // TODO: Fix how this handles Active Effects
     else toCreate.push(game.items.fromCompendium(original, { keepId: true, clearOwnership: false }));
   }
   const documentName = originalCollection.documentName;
@@ -122,6 +121,7 @@ function gatherCollectionUpdates(operation, originalCollection, currentCollectio
       action: "create",
       parent: currentCollection.model,
       data: toCreate,
+      keepId: true,
     },
     {
       documentName,
