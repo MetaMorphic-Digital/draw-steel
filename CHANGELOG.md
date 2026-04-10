@@ -33,6 +33,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - New Player-Facing Compendium Content:
   - Added enrichers to all class resource abilities (#1765)
   - Added a Test Outcome page for the Advanced Studies complication. (#1666)
+  - Added an effect to "No More than a Breeze". (#1821)
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
 - Added a unified Ability Configuration dialog for rolls as well as resource expenditure. (#161)
@@ -81,6 +82,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
   - Corrected tier 2 and 3 fire weakness on Purifying Fire. (#1799)
 - Director-Facing Compendium Data Fixes:
   - Added missing "With Captain" effects to the Kobold Princeps, Sagittarion, and Veles (#1759)
+  - Corrected range on the Tonguelasher signature attack. (#1826)
 - Fixed DSN not playing for certain system rolls. (#1753)
 - Corrected end/start of turn logic when going directly from monster to hero turns as well as overall processing for scene regions. (#1771)
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.
