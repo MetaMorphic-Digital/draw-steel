@@ -80,6 +80,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 
 - Player-Facing Compendium Data Fixes:
   - Corrected tier 2 and 3 fire weakness on Purifying Fire. (#1799)
+  - Added fire damage to Infernal Gavotte.
 - Director-Facing Compendium Data Fixes:
   - Added missing "With Captain" effects to the Kobold Princeps, Sagittarion, and Veles (#1759)
   - Corrected range on the Tonguelasher signature attack. (#1826)
