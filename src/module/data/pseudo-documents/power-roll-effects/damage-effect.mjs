@@ -208,7 +208,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       flavor,
       type: damageType,
       ignoredImmunities,
-      aoe: this.parent.hasTemplate,
+      aoe: this.parent.keywords.has("area"),
     });
   }
 

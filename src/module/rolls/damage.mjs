@@ -117,7 +117,7 @@ export default class DamageRoll extends DSRoll {
     // Group actors by combatant group if they are a minion with only one combat group, otherwise group the rest in a single array.
     const { actors = [], ...groups } = Object.groupBy(targets, (target => {
       if (!target.isMinion || !target.system.combatGroup || (target.system.combatGroups.size > 1)) return "actors";
-      else return target.system.combatGroup.id;
+      else return target.system.combatGroup.uuid;
     }));
 
     let amount = this.total;
@@ -136,8 +136,8 @@ export default class DamageRoll extends DSRoll {
     }
 
     // Damage minion sqauds
-    for (const actors of Object.values(groups)) {
-      const group = actors[0].system.combatGroup;
+    for (const [uuid, actors] of Object.entries(groups)) {
+      const group = fromUuidSync(uuid);
       group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe });
     }
   }
