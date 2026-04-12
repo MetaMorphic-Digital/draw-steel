@@ -156,7 +156,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
   /* -------------------------------------------------- */
 
   /**
-   * Deal damage to the squad, accounting for immunities and resistances which are applied only once per squad.
+   * Deal damage to the squad's minion stamina pool, accounting for immunities and resistances which are applied only once per squad.
    * @param {Array<DrawSteelActor>} minions    The minions that are taking the damage.
    * @param {number} damagePerMinion           The amount of damage to take.
    * @param {object} [options]                 Options to modify the damage application.
@@ -166,12 +166,14 @@ export default class SquadModel extends BaseCombatantGroupModel {
    * @returns {Promise<DrawSteelCombatantGroup>}
    */
   async takeDamage(minions, damagePerMinion, options = {}) {
-    // Converting this.minions to an Array of associated actors since the minions parameter is an Array of actors.
-    const squadActors = Array.from(this.minions.map(minion => minion.actor));
-    // Filtering the minions parameter to only actors in the squad.
-    minions = minions.filter(minion => squadActors.includes(minion));
-
     if (!minions.length) return this;
+
+    // Return early if the provided minion actors are not part of this squad.
+    const squadActors = Array.from(this.minions.map(minion => minion.actor));
+    if (!minions.every(minion => squadActors.includes(minion))) {
+      ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.DamagingInapplicableActors", { localize: true });
+      return this;
+    }
 
     // Get all minions immunities and weaknesses and reduce it to the highest ones.
     const applicableImmunityWeakness = { immunity: 0, weakness: 0 };
