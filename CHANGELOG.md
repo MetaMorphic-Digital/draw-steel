@@ -23,6 +23,7 @@
 ### Fixed
 
 - Fixed application of Active Effects that modified a hero's max recoveries. (#1847)
+- Fixed inability to remove targets from ability configuration dialog. (#1850)
 
 ## 1.0.0
 
