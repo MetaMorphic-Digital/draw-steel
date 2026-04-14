@@ -18,6 +18,12 @@
 ### Known Issues
 -->
 
+## 1.0.1
+
+### Fixed
+
+- Fixed application of Active Effects that modified a hero's max recoveries. (#1847)
+
 ## 1.0.0
 
 The latest version of Draw Steel is v14-exclusive. You can see the full v14 stable release notes [here](https://foundryvtt.com/releases/14.359) as well as the Stable 2 bugfixes [here](https://foundryvtt.com/releases/14.360) (Foundry Version 14.360 is a required minimum, please update if you already installed v14.359). This Draw Steel release fully incorporates new features like:
