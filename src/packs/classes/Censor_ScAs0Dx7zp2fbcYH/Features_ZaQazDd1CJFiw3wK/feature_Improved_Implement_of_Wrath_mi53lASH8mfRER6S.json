@@ -6,7 +6,7 @@
   "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-red.webp",
   "system": {
     "description": {
-      "value": "<p>The weapon you target with your Implement of Wrath feature gains the following additional benefits:</p><ul><li><p>The weapon’s wielder and each ally adjacent to them gain a +2 bonus to saving throws.</p></li><li><p>At the end of each of the weapon wielder’s turns, each ally adjacent to the wielder makes a saving throw against each effect on them that is ended by a saving throw.</p></li><li><p>The weapon’s wielder has corruption immunity 10.</p></li></ul>",
+      "value": "<p>The weapon you target with your Implement of Wrath feature gains the following additional benefits:</p><ul><li><p>The weapon’s wielder and each ally adjacent to them gain a +2 bonus to saving throws.</p></li><li><p>At the end of each of the weapon wielder’s turns, each ally adjacent to the wielder makes a saving throw against each effect on them that is ended by a saving throw.</p></li><li><p>The weapon’s wielder has corruption immunity 10.</p></li></ul><p>[[/apply T5tZYK5VNeOmwMGw]] [[/apply vyL5wZ5z8EmCn3y9]]</p>",
       "director": ""
     },
     "source": {
@@ -17,7 +17,113 @@
     "_dsid": "improved-implement-of-wrath",
     "advancements": {}
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Improved Implement of Wrath - Wielder",
+      "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.mi53lASH8mfRER6S",
+      "_id": "T5tZYK5VNeOmwMGw",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.save.bonus",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.damage.immunities.corruption",
+            "type": "upgrade",
+            "value": 10,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<ul><li><p>The weapon’s wielder and each ally adjacent to them gain a +2 bonus to saving throws.</p></li><li><p>At the end of each of the weapon wielder’s turns, each ally adjacent to the wielder makes a saving throw against each effect on them that is ended by a saving throw.</p></li><li><p>The weapon’s wielder has corruption immunity 10.</p></li></ul>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776290449715,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!mi53lASH8mfRER6S.T5tZYK5VNeOmwMGw"
+    },
+    {
+      "name": "Improved Implement of Wrath - Adjacent Ally",
+      "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.mi53lASH8mfRER6S",
+      "_id": "vyL5wZ5z8EmCn3y9",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.save.bonus",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The weapon’s wielder and each ally adjacent to them gain a +2 bonus to saving throws.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776290540544,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!mi53lASH8mfRER6S.vyL5wZ5z8EmCn3y9"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -27,9 +133,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1761428799377,
     "modifiedTime": null,
     "lastModifiedBy": null
