@@ -431,7 +431,7 @@ export default class AbilityModel extends BaseItemModel {
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Abilities can only be used while embedded");
 
-    const coreResource = this.actor.system.coreResource;
+    const coreResource = this.actor.system.coreResource ?? {};
 
     const dialogConfig = foundry.utils.mergeObject({
       ability: this.parent,
