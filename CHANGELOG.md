@@ -20,6 +20,10 @@
 
 ## 1.0.1
 
+### Changed
+
+- Tweaked styling of Ability Configuration dialog. (#1845)
+
 ### Fixed
 
 - Fixed application of Active Effects that modified a hero's max recoveries. (#1847)

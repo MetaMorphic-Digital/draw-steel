@@ -1,19 +1,27 @@
 .draw-steel.ability-configuration-dialog {
   &.two-column section.window-content {
     display: grid;
-    grid-template-columns: auto auto;
+    grid: "targets resource" "targets damage" / 1fr 1fr;
     .roll-config {
       grid-row: 1 / span 2;
     }
     .ability-config {
-      align-self: end;
+      align-self: flex-start;
     }
     footer {
-      align-self: start;
+      align-self: flex-end;
     }
   }
 
   a.header {
     width: 100%;
+  }
+
+  .group label span {
+    white-space: nowrap;
+  }
+
+  fieldset + .form-group {
+    margin-top: 0.5rem;
   }
 }
