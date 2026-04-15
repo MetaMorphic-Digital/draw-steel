@@ -18,7 +18,57 @@
     "advancements": {},
     "points": null
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Runic Carving: Light",
+      "img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.origins.Item.7UBJoBRNKS0DseiW",
+      "transfer": true,
+      "_id": "DGHkBa7s3PiLrHiB",
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "type": "upgrade",
+            "value": 10,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": true,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Your skin sheds light for 10 squares. You can turn this light on and off as a maneuver.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776278055049,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!7UBJoBRNKS0DseiW.DGHkBa7s3PiLrHiB"
+    }
+  ],
   "sort": 100000,
   "ownership": {
     "default": 0
