@@ -20,6 +20,13 @@
 
 ## 1.0.1
 
+### Changed
+
+- Updated Player-Facing Compendium Content:
+  - Implemented roll-data scaling change values for ancestry traits.
+  - Updated many censor and conduit abilities to feature new AE keys like improved forced movement distance and scaling with roll data.
+- Tweaked styling of Ability Configuration dialog. (#1845)
+
 ### Fixed
 
 - Fixed application of Active Effects that modified a hero's max recoveries. (#1847)
