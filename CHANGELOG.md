@@ -28,6 +28,7 @@
 
 - Fixed application of Active Effects that modified a hero's max recoveries. (#1847)
 - Fixed inability to remove targets from ability configuration dialog. (#1850)
+- Fixed retainers and objects not being able to use abilities. (#1856)
 
 ## 1.0.0
 

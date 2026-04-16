@@ -66,9 +66,17 @@
         "changes": [
           {
             "key": "system.damage.immunities.all",
+            "type": "upgrade",
             "value": 5,
-            "priority": null,
-            "type": "upgrade"
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.combat.targetModifiers.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
           }
         ]
       },
@@ -88,9 +96,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.360",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1760806404623,
         "modifiedTime": null,
         "lastModifiedBy": null

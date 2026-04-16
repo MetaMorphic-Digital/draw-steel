@@ -18,7 +18,78 @@
     "advancements": {},
     "points": 1
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Forceful",
+      "img": "icons/magic/earth/strike-fist-stone-light.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.origins.Item.gaIIzsI313sAC206",
+      "_id": "QFHiYFNFP8aH1mAq",
+      "system": {
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.pull",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.slide",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Whenever you force move a creature or object, the forced movement distance gains a +1 bonus.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {
+        "draw-steel": {
+          "migrateChanges": true
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776278711550,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!gaIIzsI313sAC206.QFHiYFNFP8aH1mAq"
+    }
+  ],
   "sort": 87500,
   "ownership": {
     "default": 0

@@ -6,7 +6,7 @@
   "img": "icons/magic/light/light-lantern-lit-white.webp",
   "system": {
     "description": {
-      "value": "<p>As a maneuver, you make your body shine brightly, illuminating your space and each square within 5 squares. This light shines through any darkness. Hidden creatures in the area are automatically revealed, and creatures in the light, including you, can’t hide. While this feature is active, you gain an edge on tests made to notice hidden objects and entrances and to detect supernatural illusions.</p>",
+      "value": "<p>As a maneuver, you make your body shine brightly, illuminating your space and each square within 5 squares. This light shines through any darkness. Hidden creatures in the area are automatically revealed, and creatures in the light, including you, can’t hide. While this feature is active, you gain an edge on tests made to notice hidden objects and entrances and to detect supernatural illusions.</p><p></p><p>[[/apply c6hZMQO69C2SRb2i]]</p>",
       "director": ""
     },
     "source": {
@@ -22,7 +22,57 @@
       ]
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Light of Revelation",
+      "img": "icons/magic/light/light-lantern-lit-white.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.bPqv99ZpZ2CLp2Rt",
+      "transfer": false,
+      "_id": "c6hZMQO69C2SRb2i",
+      "system": {
+        "changes": [
+          {
+            "key": "token.light.bright",
+            "type": "upgrade",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>As a maneuver, you make your body shine brightly, illuminating your space and each square within 5 squares until you dismiss the light (no action required).</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776292341942,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!bPqv99ZpZ2CLp2Rt.c6hZMQO69C2SRb2i"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -32,9 +82,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1760684793204,
     "modifiedTime": null,
     "lastModifiedBy": null

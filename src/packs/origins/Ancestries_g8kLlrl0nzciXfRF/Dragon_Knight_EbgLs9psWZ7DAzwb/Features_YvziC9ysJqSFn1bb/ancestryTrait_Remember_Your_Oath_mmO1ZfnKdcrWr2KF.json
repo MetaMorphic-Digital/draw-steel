@@ -35,7 +35,57 @@
     },
     "points": 1
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Remember Your Oath",
+      "img": "icons/magic/holy/barrier-shield-winged-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.origins.Item.mmO1ZfnKdcrWr2KF",
+      "transfer": true,
+      "_id": "avYN1YHrtZY3biV1",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.save.threshold",
+            "type": "downgrade",
+            "value": 4,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": true,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "<p>Until the start of your next turn, whenever you make a saving throw, you succeed on a 4 or higher.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776277841522,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!mmO1ZfnKdcrWr2KF.avYN1YHrtZY3biV1"
+    }
+  ],
   "sort": 700000,
   "ownership": {
     "default": 0

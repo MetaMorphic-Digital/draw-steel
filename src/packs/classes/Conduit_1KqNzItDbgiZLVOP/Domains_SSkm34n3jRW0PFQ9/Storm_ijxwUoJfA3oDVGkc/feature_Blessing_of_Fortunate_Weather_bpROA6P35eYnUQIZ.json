@@ -6,7 +6,7 @@
   "img": "icons/magic/air/weather-sunlight-sky.webp",
   "system": {
     "description": {
-      "value": "<p>Each time you finish a respite, you can decide the weather conditions within 100 squares. Until you finish another respite, the weather conditions you establish follow you through any mundane outdoor locations. Choose one of the following types of weather, each of which grants a benefit to you and your allies:</p><ul><li><p><strong>Clear:</strong> You and your allies gain an edge on tests that use the Search or Navigate skills.</p></li><li><p><strong>Foggy:</strong> You and your allies gain an edge on tests that use the Hide skill.</p></li><li><p><strong>Overcast:</strong> You and your allies gain an edge on tests that use the Endurance skill.</p></li><li><p><strong>Precipitation:</strong> When the ground is muddy or snowy, you and your allies gain an edge on tests that use the Track skill.</p></li></ul><p>If you are in the same area as a creature using this or a similar feature who has chosen a different weather effect, the features negate each other where their areas overlap.</p>",
+      "value": "<p>Each time you finish a respite, you can decide the weather conditions within 100 squares. Until you finish another respite, the weather conditions you establish follow you through any mundane outdoor locations. Choose one of the following types of weather, each of which grants a benefit to you and your allies:</p><ul><li><p><strong>[[/apply i35jMhP907RFukH1]]:</strong> You and your allies gain an edge on tests that use the Search or Navigate skills.</p></li><li><p><strong>[[/apply ZZRki2GZgfpS806U]]:</strong> You and your allies gain an edge on tests that use the Hide skill.</p></li><li><p><strong>[[/apply 0dwHEJNdYMLtc3VG]]:</strong> You and your allies gain an edge on tests that use the Endurance skill.</p></li><li><p><strong>[[/apply fYxsZCLIQVZ1JPXl]]:</strong> When the ground is muddy or snowy, you and your allies gain an edge on tests that use the Track skill.</p></li></ul><p>If you are in the same area as a creature using this or a similar feature who has chosen a different weather effect, the features negate each other where their areas overlap.</p>",
       "director": ""
     },
     "source": {
@@ -44,7 +44,211 @@
       ]
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Clear",
+      "img": "icons/magic/air/weather-sunlight-sky.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ",
+      "transfer": false,
+      "_id": "i35jMhP907RFukH1",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.search.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.navigate.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You and your allies gain an edge on tests that use the Search or Navigate skills.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776286675285,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!bpROA6P35eYnUQIZ.i35jMhP907RFukH1"
+    },
+    {
+      "name": "Foggy",
+      "img": "icons/magic/air/weather-sunlight-sky.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ",
+      "transfer": false,
+      "_id": "ZZRki2GZgfpS806U",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.hide.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You and your allies gain an edge on tests that use the Hide skill.<br class=\"Apple-interchange-newline\"></p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776286677703,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!bpROA6P35eYnUQIZ.ZZRki2GZgfpS806U"
+    },
+    {
+      "name": "Overcast",
+      "img": "icons/magic/air/weather-sunlight-sky.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ",
+      "transfer": false,
+      "_id": "0dwHEJNdYMLtc3VG",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.endurance.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You and your allies gain an edge on tests that use the Endurance skill.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776286678733,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!bpROA6P35eYnUQIZ.0dwHEJNdYMLtc3VG"
+    },
+    {
+      "name": "Precipitation",
+      "img": "icons/magic/air/weather-sunlight-sky.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ",
+      "transfer": false,
+      "_id": "fYxsZCLIQVZ1JPXl",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.track.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776286689966,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!bpROA6P35eYnUQIZ.fYxsZCLIQVZ1JPXl"
+    }
+  ],
   "sort": 200000,
   "ownership": {
     "default": 0
@@ -54,9 +258,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1755755102286,
     "modifiedTime": null,
     "lastModifiedBy": null
