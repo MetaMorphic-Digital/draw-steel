@@ -1587,11 +1587,17 @@ const abilityDistances = {
 };
 
 /**
+ * Valid target options for a given entry.
+ * @typedef {"ally" | "enemy" | "self" | "object"} TargetOptions
+ */
+
+/**
  * @typedef AbilityTarget
  * @property {string} label
  * @property {string} [all]       I18n key for an ability that targets everything within an area.
- * @property {string} embedLabel  Format string for display in the ability embed. Can point to a plural object @see Intl.PluralRules.
+ * @property {string} embedLabel  Format string for display in the ability embed. Can point to a plural object.
  * @property {Reference} [reference] An optional UUID with a description of the ability targets.
+ * @property {Set<TargetOptions>} targetOptions Target options.
  */
 
 /**
@@ -1606,6 +1612,7 @@ const abilityTargets = {
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.jddHzKU7bglBs7HT",
     },
+    targetOptions: new Set(["ally", "enemy"]),
   },
   object: {
     label: "DRAW_STEEL.Item.ability.Target.Object",
@@ -1614,11 +1621,13 @@ const abilityTargets = {
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.RxEqh3LC1WvIdPs0",
     },
+    targetOptions: new Set(["object"]),
   },
   creatureObject: {
     label: "DRAW_STEEL.Item.ability.Target.CreatureObject",
     all: "DRAW_STEEL.Item.ability.Target.AllCreatureObject",
     embedLabel: "DRAW_STEEL.Item.ability.Target.CreatureObjectEmbed",
+    targetOptions: new Set(["ally", "enemy", "object"]),
   },
   enemy: {
     label: "DRAW_STEEL.Item.ability.Target.Enemy",
@@ -1627,11 +1636,13 @@ const abilityTargets = {
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.Yqr9RRDEeyf5mD2n",
     },
+    targetOptions: new Set(["enemy"]),
   },
   enemyObject: {
     label: "DRAW_STEEL.Item.ability.Target.EnemyObject",
     all: "DRAW_STEEL.Item.ability.Target.AllEnemyObject",
     embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyObjectEmbed",
+    targetOptions: new Set(["enemy", "object"]),
   },
   ally: {
     label: "DRAW_STEEL.Item.ability.Target.Ally",
@@ -1640,27 +1651,33 @@ const abilityTargets = {
     reference: {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.xX77jHOwOS8XTJS7",
     },
+    targetOptions: new Set(["ally"]),
   },
   self: {
     label: "DRAW_STEEL.Item.ability.Target.Self",
     embedLabel: "DRAW_STEEL.Item.ability.Target.Self",
+    targetOptions: new Set(["self"]),
   },
   selfOrAlly: {
     label: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
     embedLabel: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
+    targetOptions: new Set(["ally", "self"]),
   },
   selfOrCreature: {
     label: "DRAW_STEEL.Item.ability.Target.SelfOrCreature",
     embedLabel: "DRAW_STEEL.Item.ability.Target.SelfOrCreature",
+    targetOptions: new Set(["ally", "enemy", "self"]),
   },
   selfAlly: {
     label: "DRAW_STEEL.Item.ability.Target.SelfAlly",
     all: "DRAW_STEEL.Item.ability.Target.AllSelfAllies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.SelfAllyEmbed",
+    targetOptions: new Set(["ally", "self"]),
   },
   special: {
     label: "DRAW_STEEL.Item.ability.Target.Special",
     embedLabel: "DRAW_STEEL.Item.ability.Target.Special",
+    targetOptions: new Set(["ally", "self", "enemy", "object"]),
   },
 };
 

@@ -17,6 +17,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     classes: ["ability-configuration-dialog"],
     actions: {
       panToken: this.#panToken,
+      placeTemplate: this.#placeTemplate,
     },
   };
 
@@ -264,5 +265,27 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     const { tokenUuid } = target.closest("[data-token-uuid]").dataset;
     const token = fromUuidSync(tokenUuid);
     await canvas.animatePan({ x: token.x, y: token.y });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Place a template on the canvas and select all tokens inside.
+   * @this AbilityConfigurationDialog
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #placeTemplate(event, target) {
+    const region = await this.item.system.placeTemplate();
+    if (!region) return;
+
+    /** @type {Set<DrawSteelToken>} */
+    const tokens = canvas.tokens.quadtree.getObjects(region.bounds);
+    for (const token of tokens) {
+      const tokenDoc = token.document;
+      if (!this.item.system.validTarget(tokenDoc)) continue;
+      if (!tokenDoc.testInsideRegion(region, tokenDoc._source)) continue;
+      token._updateTarget(true, game.user);
+    }
   }
 }

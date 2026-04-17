@@ -748,4 +748,31 @@ export default class AbilityModel extends BaseItemModel {
 
     return canvas.regions.placeRegion(regionData, options);
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Validates a given token against this ability's.
+   * @param {DrawSteelTokenDocument} token The token to potentially target.
+   * @returns {boolean}
+   */
+  validTarget(token) {
+    const sourceDisposition = this.actor.getDependentTokens({ scenes: canvas.scene })?.at(0)?.disposition ?? this.actor.prototypeToken.disposition;
+
+    const polarization = [CONST.TOKEN_DISPOSITIONS.FRIENDLY, CONST.TOKEN_DISPOSITIONS.HOSTILE];
+
+    const targetOptions = ds.CONFIG.abilities.targets[this.target.type]?.targetOptions;
+
+    if (!targetOptions) return false;
+
+    if (token.actor === this.actor) return targetOptions.has("self");
+    if (token.actor.system.isObject && targetOptions.has("object")) return true;
+
+    if (token.actor.system.isCreature) {
+      if (targetOptions.has("ally") && targetOptions.has("enemy")) return true;
+      else if (targetOptions.has("ally")) return sourceDisposition === token.disposition;
+      else if (targetOptions.has("enemy")) return (sourceDisposition !== token.disposition) && polarization.includes(sourceDisposition);
+    }
+    return false;
+  }
 }
