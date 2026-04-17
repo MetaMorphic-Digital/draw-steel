@@ -1,6 +1,7 @@
-import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base-item.mjs";
+import CharacteristicsField from "../fields/characteristics-field.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
+import { setOptions } from "../helpers.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
@@ -42,21 +43,7 @@ export default class FollowerModel extends BaseItemModel {
 
     const characteristic = { initial: 0, integer: true, nullable: false };
 
-    schema.characteristics = new fields.SchemaField(
-      Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {
-        obj[chc] = new fields.SchemaField({
-          value: new fields.NumberField({ ...characteristic, label, hint }),
-          edges: requiredInteger({ min: null, persisted: false }),
-          banes: requiredInteger({ min: null, persisted: false }),
-          dice: new fields.SchemaField({
-            mode: new fields.StringField({ choices: "kh" }),
-            number: requiredInteger({ initial: 2 }),
-            faces: requiredInteger({ initial: 10 }),
-          }, { persisted: false }),
-        });
-        return obj;
-      }, {}),
-    );
+    schema.characteristics = new CharacteristicsField();
 
     schema.skills = new fields.SchemaField({
       value: new fields.SetField(setOptions()),

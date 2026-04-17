@@ -25,7 +25,7 @@ function adjustCSSUrls() {
           const urlNode = node.nodes[0];
           const url = urlNode?.value;
           if (!url?.startsWith(absolutePath)) return;
-          urlNode.value = url.slice(absolutePath.length);
+          urlNode.value = url.replace(absolutePath, "../");
         }
       });
 

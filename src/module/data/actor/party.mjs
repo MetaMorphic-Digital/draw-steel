@@ -31,10 +31,7 @@ export default class PartyModel extends DrawSteelSystemModel {
       description: new SchemaField({
         value: new HTMLField(),
       }),
-      members: new TypedObjectField(
-        new SchemaField({}),
-        { validateKey: key => foundry.data.validators.isValidId(key) },
-      ),
+      members: new ds.data.fields.MembersField(),
     };
   }
 
@@ -75,31 +72,12 @@ export default class PartyModel extends DrawSteelSystemModel {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  prepareBaseData() {
-    super.prepareBaseData();
-
-    // TODO: Consider making a bespoke field to handle this initialization transformation
-    Object.defineProperty(this, "members", {
-      enumerable: true,
-      get() {
-        return Object.entries(this._source.members).reduce((acc, [id, data]) => {
-          const actor = game.actors.get(id);
-          if (this.validMember(actor)) acc.set(actor.id, { ...data, actor });
-          return acc;
-        }, new ds.utils.MembersCollection());
-      },
-    });
-  }
-
-  /* -------------------------------------------------- */
-
   /**
-   * Is a given actor valid to be a member of this party?
+   * Is a given actor valid to be a member of a party?
    * @param {DrawSteelActor} actor
    * @returns {boolean}
    */
-  validMember(actor) {
+  static validMember(actor) {
     return (actor instanceof foundry.documents.Actor) && PartyModel.ALLOWED_ACTOR_TYPES.has(actor.type)
       && !actor.inCompendium && !actor.isToken;
   }
@@ -112,7 +90,7 @@ export default class PartyModel extends DrawSteelSystemModel {
    * @returns {Promise<DrawSteelActor>}    A promise that resolves to the updated party actor.
    */
   async addMembers(actors = []) {
-    actors = new Set(actors.filter(this.validMember)).filter(actor => !this.members.has(actor.id));
+    actors = new Set(actors.filter(this.constructor.validMember)).filter(actor => !this.members.has(actor.id));
     const ids = [...this.members.keys(), ...actors.map(a => a.id)];
     const update = Object.entries(this.toObject().members).reduce((acc, [id, src]) => {
       if (ids.includes(id)) acc[id] = src;

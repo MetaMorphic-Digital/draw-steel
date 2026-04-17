@@ -18,9 +18,32 @@
 ### Known Issues
 -->
 
+## 1.1.0
+
+### Changed
+
+- Improved Minion Squad damage handling, including only adjusting for immunities/resistances once per AOE and capping damage for AOEs. (#1353)
+- Improved handling of disabled and expired status conditions on the actor sheet to more accurately convey what is active and reduce clicks. (#1694)
+
+## 1.0.1
+
+### Changed
+
+- Updated Player-Facing Compendium Content:
+  - Implemented roll-data scaling change values for ancestry traits.
+  - Updated many censor and conduit abilities to feature new AE keys like improved forced movement distance and scaling with roll data.
+- Tweaked styling of Ability Configuration dialog. (#1845)
+
+### Fixed
+
+- Fixed application of Active Effects that modified a hero's max recoveries. (#1847)
+- Fixed inability to remove targets from ability configuration dialog. (#1850)
+- Fixed retainers and objects not being able to use abilities. (#1856)
+- Fixed a bug where players could not create actors or items even with the appropriate permissions.
+
 ## 1.0.0
 
-The latest version of Draw Steel is v14-exclusive. You can see the full v14 stable release notes [here](https://foundryvtt.com/releases/14.359). This Draw Steel release fully incorporates new features like:
+The latest version of Draw Steel is v14-exclusive. You can see the full v14 stable release notes [here](https://foundryvtt.com/releases/14.359) as well as the Stable 2 bugfixes [here](https://foundryvtt.com/releases/14.360) (Foundry Version 14.360 is a required minimum, please update if you already installed v14.359). This Draw Steel release fully incorporates new features like:
 - Scene Levels
 - Pop-out applications
 - Scene levels
@@ -33,8 +56,12 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - New Player-Facing Compendium Content:
   - Added enrichers to all class resource abilities (#1765)
   - Added a Test Outcome page for the Advanced Studies complication. (#1666)
+  - Added an effect to "No More than a Breeze". (#1821)
 - New Director-Facing Compendium Content:
   - Added common effects like Burning, Marked, Petrified, and Wet. (#552, #1254)
+- Added a unified Ability Configuration dialog for rolls as well as resource expenditure. (#161)
+  - Targets are now added/removed dynamically instead of being set when the ability is first used
+  - You can adjust the normal resource usage (helpful for temporary reductions like the Shadow as well as "free" casts available to the Elementalist)
 - Added button to area abilities to place a template for the ability based on its configuration. (#215)
   - This button is available both in the context menu for an ability as well as the chat message to use the ability.
 - Added a dialog for marking minions as defeated once a squads stamina thresholds have been met. (#662)
@@ -49,15 +76,16 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - ActiveEffect changes for v14
   - Migrated `system.end.type` to `duration.expiry` to leverage the new built-in duration tracking. (#1166)
   - Refactored CONFIG.statusEffects usage from array to record. (#1166)
-  - Improved handling of disabled and expired status conditions on the actor sheet to more accurately convey what is active and reduce clicks. (#1694)
   - Applying a new copy of a status effect always removes the old one if it's not a stacking effect.
 - Implemented field placeholders where possible. (#1326)
+- Compendium abilities now use the name of the associated class's heroic resource instead of a generic "Heroic Resource" if possible. (#1419)
 - Restructured i18n usage to conform to Intl.PluralRules. (#1436)
 - Refactored data preparation pipeline to use non-persisted effects. (#1521)
 - Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
+- Hard fixed the list of characteristics. (#1705)
+- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 - Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
-- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`.
 
 ### Deprecated
 
@@ -65,6 +93,7 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 
 ### Removed
 
+- Removed PowerRoll.prompt in favor of keeping the roll dialog logic within the relevant roll methods for tests and abilities. (#161)
 - Removed generic Burning, Frozen, Marked, Targeted statuses from the token HUD. You can use an Active Effect compendium to create generic and reusable statuses. (#1256)
 - Removed various Active Effect methods overrides that are no longer necessary with core v14 improvements. (#1417)
 - Document helper sheets (like monster metadata inputs) no longer show the "import" button in the header. (#1584)
@@ -74,8 +103,10 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 
 - Player-Facing Compendium Data Fixes:
   - Corrected tier 2 and 3 fire weakness on Purifying Fire. (#1799)
+  - Added fire damage to Infernal Gavotte.
 - Director-Facing Compendium Data Fixes:
   - Added missing "With Captain" effects to the Kobold Princeps, Sagittarion, and Veles (#1759)
+  - Corrected range on the Tonguelasher signature attack. (#1826)
 - Fixed DSN not playing for certain system rolls. (#1753)
 - Corrected end/start of turn logic when going directly from monster to hero turns as well as overall processing for scene regions. (#1771)
 - Corrected CSS URL asset handling, restoring decorative boxes to asides.

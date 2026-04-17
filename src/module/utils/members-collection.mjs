@@ -8,6 +8,16 @@
  */
 export default class MembersCollection extends foundry.utils.Collection {
   /**
+   * The actors in the party.
+   * @type {Collection<string, DrawSteelActor>}
+   */
+  get actors() {
+    return this.reduce((acc, { actor }) => acc.set(actor.id, actor), new foundry.utils.Collection());
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Cached members by type.
    * @type {Record<string, DrawSteelActor[]>|void}
    */

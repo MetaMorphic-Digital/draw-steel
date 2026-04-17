@@ -56,7 +56,7 @@ export default class HeroModel extends CreatureModel {
 
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
-      max: requiredInteger({ max: 0 }),
+      max: requiredInteger({ persisted: false }),
       bonus: requiredInteger({ persisted: false }),
       divisor: new fields.NumberField({ initial: 3, nullable: false, persisted: false }),
     });

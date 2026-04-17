@@ -18,7 +18,64 @@
     "advancements": {},
     "points": 2
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Great Fortitude",
+      "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.origins.Item.IgT9T3b93zMIDDDO",
+      "transfer": true,
+      "_id": "bun50o8PySDQ7rpK",
+      "system": {
+        "changes": [
+          {
+            "key": "system.statuses.immunities",
+            "type": "add",
+            "value": "weakened",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": "m2pjCBJJXTIJpgYF",
+        "combatant": "Wyc97da6IS9gEqyH",
+        "initiative": 0,
+        "round": 2,
+        "turn": 0
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Your hearty constitution prevents you from losing strength. You can’t be made weakened.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776278221087,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!IgT9T3b93zMIDDDO.bun50o8PySDQ7rpK"
+    }
+  ],
   "sort": 200000,
   "ownership": {
     "default": 0

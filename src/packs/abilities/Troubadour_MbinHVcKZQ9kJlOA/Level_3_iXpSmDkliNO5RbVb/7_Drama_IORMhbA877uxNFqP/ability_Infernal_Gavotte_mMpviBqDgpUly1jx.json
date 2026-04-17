@@ -46,13 +46,22 @@
           "_id": "dFPKd9NwZwpdaHXs",
           "damage": {
             "tier1": {
-              "value": "5 + @chr"
+              "value": "5 + @chr",
+              "types": [
+                "fire"
+              ]
             },
             "tier2": {
-              "value": "7 + @chr"
+              "value": "7 + @chr",
+              "types": [
+                "fire"
+              ]
             },
             "tier3": {
-              "value": "10 + @chr"
+              "value": "10 + @chr",
+              "types": [
+                "fire"
+              ]
             }
           }
         },
@@ -101,6 +110,11 @@
     "spend": {
       "text": "",
       "value": null
+    },
+    "prerequisites": {
+      "dsid": [
+        "troubadour"
+      ]
     }
   },
   "effects": [],
@@ -113,9 +127,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.359",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.0.0",
     "createdTime": 1756691259268,
     "modifiedTime": null,
     "lastModifiedBy": null

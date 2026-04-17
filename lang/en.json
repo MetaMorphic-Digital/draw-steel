@@ -1117,11 +1117,19 @@
         },
         "ResourceCost": "Costs {value} {name}",
         "ConfigureUse": {
-          "Title": "Configure Ability Use",
-          "SpendLabel": "Spend {value} {name}",
-          "SpendHint": "Current: {value}",
+          "PanToken": "Pan to Token",
+          "ResourceLegend": "Current: {value} {name}",
+          "Resource": {
+            "label": "Resource Cost",
+            "hint": "This ability costs {value} {name}. You can adjust the value to account for conditional adjustments."
+          },
+          "Spend": {
+            "label": "Spend {value} {name}",
+            "hint": "Optional additional resource expenditure."
+          },
           "SpendWarning": "Warning: You only have {value} {name}!",
-          "SpentFlavor": "Spent {value} {name}"
+          "SpentFlavor": "Spent {value} {name}",
+          "UseButton": "Use Ability"
         },
         "KeywordGroups": {
           "Elementalist": "Elementalist",
@@ -1273,6 +1281,7 @@
           "Special": "Special"
         },
         "DamageFlavor": "{type} Damage",
+        "SpendLabel": "Spend {value} {name}",
         "ForcedMovement": {
           "Push": "Push",
           "VerticalPush": "Vertical Push",

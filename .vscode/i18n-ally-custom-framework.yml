@@ -14,6 +14,7 @@ usageMatchRegex:
   # The following example shows how to detect `t("your.i18n.keys")`
   # the `{key}` will be placed by a proper keypath matching regex,
   # you can ignore it and use your own matching rules as well
+  - "[^\\w\\d]\\{\\{localize ['\"`]({key})['\"`]"
   - "[^\\w\\d]_loc\\(['\"`]({key})['\"`]"
   - "[^\\w\\d]ui\\.notifications\\.\\w+\\(['\"`]({key})['\"`],\\s{\\s*.*\\s(localize|format)"
   - "[^\\w\\d]label: \"({key})\""

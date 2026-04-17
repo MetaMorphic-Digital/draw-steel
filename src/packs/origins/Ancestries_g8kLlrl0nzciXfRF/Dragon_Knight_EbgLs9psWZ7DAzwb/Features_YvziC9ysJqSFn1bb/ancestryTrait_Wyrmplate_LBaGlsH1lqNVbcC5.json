@@ -7,7 +7,7 @@
   "system": {
     "description": {
       "value": "<p>Your hardened scales grant you damage immunity equal to [[lookup @level]]{your level} to one of the following damage types: acid, cold, corruption, fire, lightning, or poison. You can change your damage immunity type when you finish a respite.</p>",
-      "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
+      "director": "<p>The effect of this item needs to be customized to the damage type of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
     },
     "source": {
       "book": "Heroes",
@@ -34,9 +34,10 @@
         "changes": [
           {
             "key": "system.damage.immunities.acid",
-            "value": 1,
-            "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "value": "@level",
+            "phase": "initial",
+            "priority": null
           }
         ]
       },
@@ -56,9 +57,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.360",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.0.0",
         "createdTime": 1754523115273,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -78,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1754522554970,
     "modifiedTime": null,
     "lastModifiedBy": null
