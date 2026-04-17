@@ -17,4 +17,14 @@
   {{/if}}
 
   {{formGroup fields.statuses value=source.statuses options=statuses rootId=rootId classes="statuses"}}
+
+  <fieldset>
+    <legend>{{systemFields.project.label}}</legend>
+    {{formGroup systemFields.project.fields.prerequisites value=source.system.project.prerequisites}}
+    {{formGroup systemFields.project.fields.source value=source.system.project.source}}
+    {{formGroup systemFields.project.fields.rollCharacteristic value=source.system.project.rollCharacteristic options=characteristicOptions}}
+    {{formGroup systemFields.project.fields.goal value=source.system.project.goal}}
+    {{formGroup systemFields.project.fields.yield.fields.amount value=source.system.project.yield.amount}}
+    {{formGroup systemFields.project.fields.yield.fields.display value=source.system.project.yield.display}}
+  </fieldset>
 </section>

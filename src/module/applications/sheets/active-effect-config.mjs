@@ -52,6 +52,7 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
     switch (partId) {
       case "details":
         context.keywordOptions = ds.CONFIG.abilities.keywordOptions;
+        context.characteristicOptions = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
         break;
     }
 
