@@ -17,7 +17,57 @@
     "_dsid": "master-of-green",
     "advancements": {}
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Master of Green",
+      "img": "icons/magic/unholy/hands-praying-fire-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.Qd6WzX6YiyGItlqo",
+      "_id": "uDosjiqXRcebo12w",
+      "system": {
+        "changes": [
+          {
+            "key": "system.recoveries.max",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The number of Recoveries you have increases by 2.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776465365671,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!Qd6WzX6YiyGItlqo.uDosjiqXRcebo12w"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
