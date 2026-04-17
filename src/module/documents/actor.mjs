@@ -2,7 +2,9 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
 import DrawSteelActiveEffect from "./active-effect.mjs";
 import DrawSteelPartySheet from "../applications/sheets/party-sheet.mjs";
 
-/** @import ClassModel from "../data/item/class.mjs" */
+/**
+ * @import ClassModel from "../data/item/class.mjs"
+*/
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass.
@@ -173,8 +175,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * @param {string} [options.effectEnd]        Value for `system.end.type`.
    * @returns {Promise<DrawSteelActiveEffect|boolean|undefined>}  A promise which resolves to one of the following values:
    *                                 - ActiveEffect if a new effect need to be created
-   *                                 - true if was already an existing effect
-   *                                 - false if an existing effect needed to be removed
+   *                                 - true if was already an existing effect was active
+   *                                 - false if an existing effect needed to be removed and no effects were created
    *                                 - undefined if no changes need to be made.
    * @override Implementation copied from core.
    */
@@ -182,26 +184,37 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     const status = CONFIG.statusEffects[statusId];
     if (!status) throw new Error(`Invalid status ID "${statusId}" provided to Actor#toggleStatusEffect`);
     const existing = [];
+    // Was at least one of the effects to be disabled active?
+    // If there were only disabled & expired effects, we want to clean them up and still toggle on.
+    let existingActive = true;
 
     // Find the effect with the static _id of the status effect
     if (status._id) {
       const effect = this.effects.get(status._id);
-      if (effect) existing.push(effect.id);
+      if (effect) {
+        existing.push(effect.id);
+        existingActive &&= effect.active;
+      }
     }
 
     // If no static _id, find all single-status effects that have this status
     else {
       for (const effect of this.effects) {
         const statuses = effect.statuses;
-        if ((statuses.size === 1) && statuses.has(status.id)) existing.push(effect.id);
+        if ((statuses.size === 1) && statuses.has(status.id)) {
+          existing.push(effect.id);
+          existingActive &&= effect.active;
+        }
       }
     }
 
     // Remove the existing effects unless the status effect is forced active
     if (existing.length) {
-      if (active) return true;
+      if (active && existingActive) return true;
+      // We can't batch this update because sometimes we are cleaning up an inactive copy of a canonical status effect
+      // And foundry doesn't like it when we've got a matching ID delete + create.
       await this.deleteEmbeddedDocuments("ActiveEffect", existing);
-      return false;
+      if (existingActive) return false;
     }
 
     // Create a new effect unless the status effect is forced inactive

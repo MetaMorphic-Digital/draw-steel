@@ -897,9 +897,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   static async #toggleStatus(event, target) {
     const status = target.dataset.statusId;
     const hasStatus = this.actor.statuses.has(status);
-    const toggle = await this.actor.toggleStatusEffect(status);
-    // if an actor did not have the status active but had disabled/expired effects to clear, toggle again
-    if (!hasStatus && (toggle === false)) await this.actor.toggleStatusEffect(status);
+    return this.actor.toggleStatusEffect(status, { active: !hasStatus });
   }
 
   /* -------------------------------------------------- */
