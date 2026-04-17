@@ -281,11 +281,13 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     /** @type {Set<DrawSteelToken>} */
     const tokens = canvas.tokens.quadtree.getObjects(region.bounds);
+    const targetIds = [];
     for (const token of tokens) {
       const tokenDoc = token.document;
       if (!this.item.system.validTarget(tokenDoc)) continue;
       if (!tokenDoc.testInsideRegion(region, tokenDoc._source)) continue;
-      token._updateTarget(true, game.user);
+      targetIds.push(token.id);
     }
+    if (targetIds.length) canvas.tokens.setTargets(targetIds, { mode: "acquire" });
   }
 }
