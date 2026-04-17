@@ -367,18 +367,20 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Deal damage to the actor, accounting for immunities and resistances.
-   * @param {number} damage    The amount of damage to take.
+   * Calculate the applicable immunity and weakness based on the damage type and ignored immunities.
    * @param {object} [options] Options to modify the damage application.
    * @param {string} [options.type]   Valid damage type.
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
-   * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
+   * @returns {{immunity?: number, weakness?: number }}
    */
-  async takeDamage(damage, options = {}) {
+  calculateImmunityAndWeakness(options = {}) {
+    const immunityAndWeakness = {};
+
     // Determine highest weakness between all weakness and the damage's type weakness
     const allWeakness = this.damage.weaknesses.all;
     const specificWeakness = this.damage.weaknesses[options.type] ?? 0; // Null check in case the damage type is untyped
     const weaknessAmount = Math.max(allWeakness, specificWeakness);
+    if (weaknessAmount > 0) immunityAndWeakness.weakness = weaknessAmount;
 
     options.ignoredImmunities ??= [];
     // Reduce the immunities list to non-ignored immunities
@@ -387,19 +389,26 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       return acc;
     }, {});
     const immunityAmount = Math.max(immunities.all ?? 0, immunities[options.type] ?? 0); // Null check in case type is not in immunities
+    if (immunityAmount > 0) immunityAndWeakness.immunity = immunityAmount;
 
-    damage = Math.max(0, damage + weaknessAmount - immunityAmount);
+    return immunityAndWeakness;
+  }
 
-    if (damage === 0) {
-      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
-      return this.parent;
-    }
+  /* -------------------------------------------------- */
 
-    const damageTypeOption = { ds: { damageType: options.type } };
+  /**
+   * Deal damage to the actor, accounting for immunities and resistances.
+   * @param {number} damage    The amount of damage to take.
+   * @param {object} [options] Options to modify the damage application.
+   * @param {string} [options.type]   Valid damage type.
+   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
+   * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
+   */
+  async takeDamage(damage, options = {}) {
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage }, damageTypeOption);
+        return this.combatGroup.system.takeDamage([this.parent], damage, options);
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
@@ -408,6 +417,16 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.TooManySquad", { localize: true });
       }
     }
+
+    const { immunity = 0, weakness = 0 } = this.calculateImmunityAndWeakness(options);
+
+    damage = Math.max(0, damage + weakness - immunity);
+
+    if (damage === 0) {
+      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
+      return this.parent;
+    }
+
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
     return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
   }
