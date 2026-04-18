@@ -17,7 +17,57 @@
     "_dsid": "relentless-hunter",
     "advancements": {}
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Relentless Hunter",
+      "img": "icons/magic/nature/stealth-hide-beast-eyes-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.nzPvUlVTEr1pXtfl",
+      "_id": "iZo1u4PY2DySq5EA",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.track.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You gain an edge on tests made using the Track skill.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776535957591,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!nzPvUlVTEr1pXtfl.iZo1u4PY2DySq5EA"
+    }
+  ],
   "sort": 100000,
   "ownership": {
     "default": 0
