@@ -18,6 +18,12 @@
 ### Known Issues
 -->
 
+## 1.1.0
+
+### Added
+
+- Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
+
 ## 1.0.1
 
 ### Changed
