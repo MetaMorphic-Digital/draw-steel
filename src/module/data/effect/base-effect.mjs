@@ -3,6 +3,7 @@ import FormulaField from "../fields/formula-field.mjs";
 import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
 import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
+import { setOptions } from "../helpers.mjs";
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
@@ -35,6 +36,17 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
     schema.end = new fields.SchemaField({
       roll: new FormulaField({ initial: "1d10 + @combat.save.bonus" }),
+    });
+
+    schema.project = new fields.SchemaField({
+      prerequisites: new fields.StringField({ required: true }),
+      source: new fields.StringField({ required: true }),
+      rollCharacteristic: new fields.SetField(setOptions()),
+      goal: new fields.NumberField(),
+      yield: new fields.SchemaField({
+        amount: new FormulaField({ initial: "1" }),
+        display: new fields.StringField({ required: true }),
+      }),
     });
 
     return schema;
