@@ -18,6 +18,7 @@
 
   {{formGroup fields.statuses value=source.statuses options=statuses rootId=rootId classes="statuses"}}
 
+  {{#unless document.parent}}
   <fieldset>
     <legend>{{systemFields.project.label}}</legend>
     {{formGroup systemFields.project.fields.prerequisites value=source.system.project.prerequisites}}
@@ -27,4 +28,5 @@
     {{formGroup systemFields.project.fields.yield.fields.amount value=source.system.project.yield.amount}}
     {{formGroup systemFields.project.fields.yield.fields.display value=source.system.project.yield.display}}
   </fieldset>
+  {{/unless}}
 </section>
