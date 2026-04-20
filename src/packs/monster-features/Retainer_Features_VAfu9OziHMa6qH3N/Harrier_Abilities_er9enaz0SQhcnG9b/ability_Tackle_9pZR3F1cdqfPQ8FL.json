@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "355",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "tackle",
@@ -17,27 +17,120 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "charge",
+      "melee",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "V40b6JrhpbUq9dGK": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "V40b6JrhpbUq9dGK",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "9",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "12",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "o7EDKsm2ZTelCpVh": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "o7EDKsm2ZTelCpVh",
+          "forced": {
+            "tier1": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "1",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "2",
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "4",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
@@ -58,9 +151,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772912429698,
     "modifiedTime": null,
     "lastModifiedBy": null

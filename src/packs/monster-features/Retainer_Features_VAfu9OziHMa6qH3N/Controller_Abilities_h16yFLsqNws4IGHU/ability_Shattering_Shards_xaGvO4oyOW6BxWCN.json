@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "354",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "shattering-shards",
@@ -17,31 +17,79 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "ranged",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "10"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "object",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "yWugTf85Vwrw5PYu": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "yWugTf85Vwrw5PYu",
+          "damage": {
+            "tier1": {
+              "value": "7",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "11",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "",
-      "after": ""
+      "before": "<p><strong>Special:</strong> The target must be size 1M or smaller.</p>",
+      "after": "<p>The area within 2 squares of the target is difficult terrain, and each enemy in the area takes the same damage the object took.</p>"
     },
     "spend": {
       "text": "",
@@ -58,9 +106,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772912400085,
     "modifiedTime": null,
     "lastModifiedBy": null

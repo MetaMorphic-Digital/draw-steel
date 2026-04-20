@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "355",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "battlefield-medic",
@@ -17,17 +17,19 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "melee"
+    ],
+    "type": "maneuver",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "selfOrAlly",
       "custom": "",
       "value": null
     },
@@ -40,7 +42,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>The target spends a Recovery, and ability rolls against the target take a bane until the start of the retainer’s next turn [[/apply uz9ScsWUVyeUwB0u]].</p>",
       "after": ""
     },
     "spend": {
@@ -48,7 +50,66 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Battlefield Medic",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.gLr92vVSzNHTlQC1",
+      "transfer": false,
+      "_id": "uz9ScsWUVyeUwB0u",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.targetModifiers.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "turns",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "<p>The target spends a Recovery, and ability rolls against the target take a bane until the start of the retainer’s next turn.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776649342173,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!gLr92vVSzNHTlQC1.uz9ScsWUVyeUwB0u"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -58,9 +119,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772912599439,
     "modifiedTime": null,
     "lastModifiedBy": null
