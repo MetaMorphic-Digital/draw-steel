@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "360",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "signal-shell",
@@ -17,17 +17,22 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "encounter",
+      "ranged",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "special"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
       "value": null
     },
@@ -35,12 +40,61 @@
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "fXYtFnMPEEDklYhQ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "fXYtFnMPEEDklYhQ",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [
+                "fire"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "8",
+              "types": [
+                "fire"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "11",
+              "types": [
+                "fire"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
-      "before": "",
+      "before": "<p>The mortar fires a shell straight upward, which hovers 3 squares up in the air and sheds light below it in a 3 cube. Enemies illuminated by this light can’t hide or turn invisible and can’t benefit from concealment or cover. At the start of the mortar’s next turn, the shell explodes to deal damage to enemies in the area.</p>",
       "after": ""
     },
     "spend": {
@@ -58,9 +112,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913419044,
     "modifiedTime": null,
     "lastModifiedBy": null

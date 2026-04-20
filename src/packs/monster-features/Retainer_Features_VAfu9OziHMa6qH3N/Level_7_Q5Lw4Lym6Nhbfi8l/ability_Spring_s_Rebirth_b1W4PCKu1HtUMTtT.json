@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "361",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "springs-rebirth",
@@ -17,17 +17,22 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "encounter",
+      "magic"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "burst",
+      "primary": "3"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "ally",
       "custom": "",
       "value": null
     },
@@ -40,7 +45,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>Each target can spend a Recovery, and can choose one effect on them that can be ended by a saving throw. That effect instead ends at the end of their turn.</p>",
       "after": ""
     },
     "spend": {
@@ -58,9 +63,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913482183,
     "modifiedTime": null,
     "lastModifiedBy": null

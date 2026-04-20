@@ -23,7 +23,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
@@ -191,7 +191,461 @@
     "prependAdjective": false,
     "depth": 1
   },
-  "items": [],
+  "items": [
+    {
+      "name": "Infernal Ichor",
+      "type": "feature",
+      "_id": "BbxoAb5HswCs4WyY",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>When the flameslinger is reduced to 0 Stamina, they spray burning blood. Each creature adjacent to the flameslinger takes [[/damage 3 fire]] damage.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "366",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776723949193,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!elfz5R3WwPHgVVeN.BbxoAb5HswCs4WyY"
+    },
+    {
+      "name": "Fire Curse",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "366",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": [
+              "might",
+              "agility",
+              "reason",
+              "intuition",
+              "presence"
+            ]
+          },
+          "effects": {
+            "ZmiEd35Vd9YIo4TB": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "ZmiEd35Vd9YIo4TB",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "9",
+                  "types": [
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "12",
+                  "types": [
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "7GLawQmfYy0aymNM": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "7GLawQmfYy0aymNM",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} the target is burning (save ends)",
+                  "effects": {
+                    "uSiuJsuXzztvGskS": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "87adaBCm9MTOO60z",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Burning",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.elfz5R3WwPHgVVeN.Item.87adaBCm9MTOO60z",
+          "transfer": false,
+          "_id": "uSiuJsuXzztvGskS",
+          "type": "base",
+          "system": {
+            "changes": [],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": "save",
+            "expired": false
+          },
+          "description": "<p>A burning creature takes 1d6 fire damage at the start of each of their turns. A burning object takes 1d6 fire damage at the end of each round.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776724231348,
+            "modifiedTime": 1776724276525,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!elfz5R3WwPHgVVeN.87adaBCm9MTOO60z.uSiuJsuXzztvGskS"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776724004697,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!elfz5R3WwPHgVVeN.87adaBCm9MTOO60z"
+    },
+    {
+      "name": "Fuel for the Fire",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "366",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the flameslinger’s next turn, the target has fire weakness equal to the flameslinger’s level [[/apply xpXhX8TuNQbdX1Hh]]. If the target is the flameslinger’s mentor, they instead have fire immunity equal to the flameslinger’s level [[/apply dL9nDn48owmaCRIW]].</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Yim8w8qqIID0C78N",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Fuel for the Fire (Immunity)",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.elfz5R3WwPHgVVeN.Item.Yim8w8qqIID0C78N",
+          "transfer": false,
+          "_id": "dL9nDn48owmaCRIW",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.fire",
+                "type": "upgrade",
+                "value": 4,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": 1,
+            "units": "turns",
+            "expiry": "turnEnd",
+            "expired": false
+          },
+          "description": "<p>If the target is the flameslinger’s mentor, they instead have fire immunity equal to the flameslinger’s level.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776724812155,
+            "modifiedTime": 1776724947997,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!elfz5R3WwPHgVVeN.Yim8w8qqIID0C78N.dL9nDn48owmaCRIW"
+        },
+        {
+          "name": "Fuel for the Fire (Weakness)",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.elfz5R3WwPHgVVeN.Item.Yim8w8qqIID0C78N",
+          "transfer": false,
+          "_id": "xpXhX8TuNQbdX1Hh",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.weaknesses.fire",
+                "type": "upgrade",
+                "value": 4,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": 1,
+            "units": "turns",
+            "expiry": "turnEnd",
+            "expired": false
+          },
+          "description": "<p>Until the end of the flameslinger’s next turn, the target has fire weakness equal to the flameslinger’s level.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776724906777,
+            "modifiedTime": 1776724984006,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!elfz5R3WwPHgVVeN.Yim8w8qqIID0C78N.xpXhX8TuNQbdX1Hh"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776724035542,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!elfz5R3WwPHgVVeN.Yim8w8qqIID0C78N"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {
@@ -202,9 +656,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772906719602,
     "modifiedTime": null,
     "lastModifiedBy": null

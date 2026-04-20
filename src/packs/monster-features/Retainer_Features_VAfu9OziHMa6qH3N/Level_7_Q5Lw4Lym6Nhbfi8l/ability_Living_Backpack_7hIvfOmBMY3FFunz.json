@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "368",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "living-backpack",
@@ -17,18 +17,20 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "melee"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
-      "custom": "",
+      "type": "ally",
+      "custom": "The shieldbearer’s mentor",
       "value": null
     },
     "power": {
@@ -40,7 +42,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>The shieldbearer straps their shield on their back and climbs onto their mentor’s back, entering the mentor’s space. While the shieldbearer is on their mentor’s back, each of them gains [[/heal 10 temp]] and can use Shield Block as a triggered action targeting an ally instead of the shieldbearer’s mentor. Additionally, the shieldbearer moves with the mentor, and they can’t use main actions, maneuvers, or move actions except to end this effect as a maneuver. The effect also ends if the shieldbearer is force moved away from their mentor or knocked prone. If the shieldbearer is still in their mentor’s space when the effect ends, they move into an adjacent unoccupied space of their choice.</p>",
       "after": ""
     },
     "spend": {
@@ -58,9 +60,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913712835,
     "modifiedTime": null,
     "lastModifiedBy": null
