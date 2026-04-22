@@ -40,7 +40,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>If the sidekick’s mentor moves adjacent to the sidekick at any point during the mentor’s turn, the mentor gains a +1 bonus to speed and can automatically climb at full speed while moving until the end of their turn.</p>",
+      "before": "<p>If the sidekick’s mentor moves adjacent to the sidekick at any point during the mentor’s turn, the mentor gains a +1 bonus to speed and can automatically climb at full speed while moving until the end of their turn [[/apply HhUFLQe5GuSeMpgg]].</p>",
       "after": ""
     },
     "spend": {
@@ -48,7 +48,66 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Boost",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.u7rVLekkxbdePofg",
+      "transfer": false,
+      "_id": "HhUFLQe5GuSeMpgg",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "turns",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "<p>If the sidekick’s mentor moves adjacent to the sidekick at any point during the mentor’s turn, the mentor gains a +1 bonus to speed and can automatically climb at full speed while moving until the end of their turn.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776834219915,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!u7rVLekkxbdePofg.HhUFLQe5GuSeMpgg"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
