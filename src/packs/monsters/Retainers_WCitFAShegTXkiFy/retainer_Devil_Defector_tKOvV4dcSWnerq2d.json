@@ -23,7 +23,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
@@ -191,7 +191,258 @@
     "prependAdjective": false,
     "depth": 1
   },
-  "items": [],
+  "items": [
+    {
+      "name": "True Name",
+      "type": "feature",
+      "_id": "O0KOwSJ1aTa3kTVo",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If a creature within 10 squares speaks the defector’s true name, the defector loses their damage immunities and their Tempting Offer triggered action until the end of the encounter.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "359",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776707568024,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!tKOvV4dcSWnerq2d.O0KOwSJ1aTa3kTVo"
+    },
+    {
+      "name": "Black Flame",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "359",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": [
+              "might",
+              "agility",
+              "reason",
+              "intuition",
+              "presence"
+            ]
+          },
+          "effects": {
+            "oVRpWzJfRW0cIdIJ": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "oVRpWzJfRW0cIdIJ",
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [
+                    "corruption",
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [
+                    "corruption",
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [
+                    "corruption",
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "pgGIcT8Xx63Dj1ef",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776707721727,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!tKOvV4dcSWnerq2d.pgGIcT8Xx63Dj1ef"
+    },
+    {
+      "name": "Tempting Offer",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "359",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "ranged",
+          "strike",
+          "encounter"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "A sapient enemy is reduced to 0 Stamina.",
+        "distance": {
+          "type": "ranged",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "custom": "The triggering creature",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The defector makes an offer to keep the target alive. If the target accepts, they are reduced to 1 Stamina instead. On the target’s next turn, the defector controls their move action and the target must use a signature ability against a creature of the defector’s choice or immediately die. To have the target turn down the offer, the Director must spend 3 Malice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Srtb9C5hDqVCSmFP",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776707876294,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!tKOvV4dcSWnerq2d.Srtb9C5hDqVCSmFP"
+    }
+  ],
   "effects": [],
   "sort": 0,
   "ownership": {
@@ -202,9 +453,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772902955441,
     "modifiedTime": null,
     "lastModifiedBy": null

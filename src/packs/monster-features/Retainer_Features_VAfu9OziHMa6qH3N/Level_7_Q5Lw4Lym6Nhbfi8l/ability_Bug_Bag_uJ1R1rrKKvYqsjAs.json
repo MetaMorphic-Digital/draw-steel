@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "371",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "bug-bag",
@@ -17,17 +17,23 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "encounter",
+      "ranged"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "cube",
+      "primary": "3",
+      "secondary": "3"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
       "value": null
     },
@@ -35,9 +41,109 @@
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "h51FqlwmRCfTCkuY": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "h51FqlwmRCfTCkuY",
+          "damage": {
+            "tier1": {
+              "value": "6",
+              "types": [
+                "poison"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "poison"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "13",
+              "types": [
+                "poison"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "G8x9xSjj5YGEGPSA": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "G8x9xSjj5YGEGPSA",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} weakened (save ends)",
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
@@ -58,9 +164,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913927376,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "355",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "backfire-curse",
@@ -17,38 +17,195 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike",
+      "encounter"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "10"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "KP8pO64eN7k0Cwvf": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "KP8pO64eN7k0Cwvf",
+          "damage": {
+            "tier1": {
+              "value": "2",
+              "types": [
+                "corruption"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "5",
+              "types": [
+                "corruption"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "7",
+              "types": [
+                "corruption"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "85SObiABsLC1G0O2": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "85SObiABsLC1G0O2",
+          "applied": {
+            "tier1": {
+              "display": "the target is cursed (EoT)",
+              "effects": {
+                "ia7GRPll25KgTeQd": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "turn"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "ia7GRPll25KgTeQd": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "turn"
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "ia7GRPll25KgTeQd": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "turn"
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>While the target is cursed this way, whenever they make a strike that targets only one creature, the retainer can use a free triggered action to choose a second target for the strike within its distance.</p>"
     },
     "spend": {
       "text": "",
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Cursed",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.tBcznXlpqzRDTrEX",
+      "transfer": false,
+      "_id": "ia7GRPll25KgTeQd",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "turns",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "<p> While the target is cursed this way, whenever they make a strike that targets only one creature, the retainer can use a free triggered action to choose a second target for the strike within its distance.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776647359276,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!tBcznXlpqzRDTrEX.ia7GRPll25KgTeQd"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -58,9 +215,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772912493714,
     "modifiedTime": null,
     "lastModifiedBy": null

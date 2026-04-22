@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "356",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "trip-of-the-tongue",
@@ -17,19 +17,23 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "melee",
+      "encounter"
+    ],
+    "type": "triggered",
     "category": "",
     "resource": null,
-    "trigger": "",
+    "trigger": "A creature moves within distance",
     "distance": {
-      "type": "self"
+      "type": "melee",
+      "primary": "5"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creatureObject",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
@@ -40,7 +44,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>If the target has [[potency M average]], heir movement ends, they are knocked [[/apply prone]], and one ally within distance [[/gain 2 surges]].</p>",
       "after": ""
     },
     "spend": {
@@ -58,9 +62,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913340653,
     "modifiedTime": null,
     "lastModifiedBy": null

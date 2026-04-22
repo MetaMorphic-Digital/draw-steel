@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "367",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "scuse-me-boss",
@@ -17,18 +17,21 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "melee",
+      "encounter"
+    ],
+    "type": "triggered",
     "category": "",
     "resource": null,
-    "trigger": "",
+    "trigger": "The warrior’s mentor is targeted by a strike while within  distance.",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
-      "custom": "",
+      "type": "special",
+      "custom": "The warrior’s mentor",
       "value": null
     },
     "power": {
@@ -40,7 +43,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>The warrior and the mentor switch places. The warrior is the strike’s new target and the strike has a double bane.</p>",
       "after": ""
     },
     "spend": {
@@ -58,9 +61,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913627603,
     "modifiedTime": null,
     "lastModifiedBy": null
