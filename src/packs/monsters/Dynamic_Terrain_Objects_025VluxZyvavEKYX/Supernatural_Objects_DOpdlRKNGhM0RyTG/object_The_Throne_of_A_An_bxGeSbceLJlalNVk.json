@@ -1,0 +1,790 @@
+{
+  "folder": "DOpdlRKNGhM0RyTG",
+  "name": "The Throne of A’An",
+  "type": "object",
+  "_id": "bxGeSbceLJlalNVk",
+  "img": "icons/environment/wilderness/altar-hidden.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 140,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 2,
+        "letter": "M",
+        "text": "",
+        "direction": "",
+        "typical": ""
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>The throne of A’An, sun god of the Antical Protectorate in what is now Vanigar, retains some of her power from the age before she was slain to end the Age of Suns—and plunge the region into eternal winter.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": null,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": null
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "349",
+      "license": ""
+    },
+    "ev": 24,
+    "object": {
+      "level": 4,
+      "category": "relic",
+      "role": "controller",
+      "area": "",
+      "squareStamina": false
+    }
+  },
+  "prototypeToken": {
+    "name": "The Throne of A’An",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "depth": 1,
+    "texture": {
+      "src": "icons/environment/wilderness/altar-hidden.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.primary.value"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "IH5FLoADa8goJep5",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>The throne of A’An can be deactivated only by the current hierophant of A’An (see <strong>Sitting on the Throne</strong>), who must succeed on a [[/test P]] that takes a bane to do so.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The hierophant triggers the <strong>Nova</strong> ability.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The hierophant fails to deactivate the throne.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The throne is deactivated until the end of the encounter.</p></dd></dl>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "349",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776878012443,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!bxGeSbceLJlalNVk.IH5FLoADa8goJep5"
+    },
+    {
+      "name": "Light of the Northern Sun",
+      "type": "feature",
+      "_id": "gxoZoXAoEzfZOJOO",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>In the Age of Suns, there was no darkness and no night. Even among the many suns of that time, the light of A’An was the brightest. The throne of A’An manifests the sun powers of that god, even when no one is seated in it. The following effects always occur within 10 squares of the throne:</p><ul><li><p>The throne sheds bright light that negates all darkness and concealment, and which prevents creatures from being hidden.</p></li><li><p>Any creature with cold immunity has [[/apply z0LKZFWBkw7TbYlb]]{fire weakness 10}.</p></li><li><p>Any creature who uses an ability that deals cold damage takes [[/damage 11 fire]] damage.</p></li></ul>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "349",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Light of the Northern Sun",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.bxGeSbceLJlalNVk.Item.gxoZoXAoEzfZOJOO",
+          "transfer": false,
+          "_id": "z0LKZFWBkw7TbYlb",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.weaknesses.fire",
+                "type": "upgrade",
+                "value": 10,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "<p>Any creature with cold immunity has fire weakness 10.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776878272225,
+            "modifiedTime": 1776878336895,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!bxGeSbceLJlalNVk.gxoZoXAoEzfZOJOO.z0LKZFWBkw7TbYlb"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776878127370,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!bxGeSbceLJlalNVk.gxoZoXAoEzfZOJOO"
+    },
+    {
+      "name": "Sitting on the Throne",
+      "type": "feature",
+      "_id": "BQeiX0n3grXzEf0Q",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Only a creature attuned to the throne can sit on it. A creature adjacent to the throne can use a main action to attune to it by succeeding on a [[/test P]].</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature takes [[/damage 11 fire]] damage.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to attune to the throne</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The creature attunes to the throne and can sit on it [[/apply sMfNE1Rk8xBrl1y0]].</p></dd></dl><p>A creature seated on the throne becomes the hierophant of A’An and gains the following benefits:</p><ul><li><p>The hierophant and each of their allies within 10 squares of the throne have fire immunity 10.</p></li><li><p>The hierophant and each of their allies within 10 squares of the throne can choose to have their abilities deal fire damage instead of their usual damage.</p></li><li><p>The hierophant has a +5 bonus to stability, and any strike made against them takes a bane unless the attacker is also attuned to the throne.</p></li><li><p>The hierophant can use the <strong>Primordial Flare</strong> and <strong>Solar Accretion</strong> abilities.</p></li></ul>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "349",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Sitting on the Throne",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.bxGeSbceLJlalNVk.Item.BQeiX0n3grXzEf0Q",
+          "transfer": false,
+          "_id": "sMfNE1Rk8xBrl1y0",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.fire",
+                "type": "upgrade",
+                "value": 10,
+                "phase": "initial",
+                "priority": null
+              },
+              {
+                "key": "system.combat.stability",
+                "type": "add",
+                "value": 5,
+                "phase": "initial",
+                "priority": null
+              },
+              {
+                "key": "system.combat.targetModifiers.banes",
+                "type": "add",
+                "value": 1,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "<p>The hierophant and each of their allies within 10 squares of the throne have fire immunity 10.</p><p>The hierophant and each of their allies within 10 squares of the throne can choose to have their abilities deal fire damage instead of their usual damage.</p><p>The hierophant has a +5 bonus to stability, and any strike made against them takes a bane unless the attacker is also attuned to the throne.</p><p>The hierophant can use the Primordial Flare and Solar Accretion abilities.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776878529452,
+            "modifiedTime": 1776878716444,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!bxGeSbceLJlalNVk.BQeiX0n3grXzEf0Q.sMfNE1Rk8xBrl1y0"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776878366666,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!bxGeSbceLJlalNVk.BQeiX0n3grXzEf0Q"
+    },
+    {
+      "name": "Primordial Flare",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "349",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": "20",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "G3SrMng8XolAjc9C": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "G3SrMng8XolAjc9C",
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [
+                    "fire"
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The target has [[/apply yvKBtMUxAIfTSG3Y]]{fire weakness 10} until the start of the hierophant’s next turn.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "GXtweQzQSwFzBvPN",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Primordial Flare",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.bxGeSbceLJlalNVk.Item.GXtweQzQSwFzBvPN",
+          "transfer": false,
+          "_id": "yvKBtMUxAIfTSG3Y",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.weaknesses.fire",
+                "type": "upgrade",
+                "value": 10,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": 1,
+            "units": "turns",
+            "expiry": "turnStart",
+            "expired": false
+          },
+          "description": "<p>The target has fire weakness 10 until the start of the hierophant’s next turn.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776878898655,
+            "modifiedTime": 1776878939278,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!bxGeSbceLJlalNVk.GXtweQzQSwFzBvPN.yvKBtMUxAIfTSG3Y"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776878767302,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!bxGeSbceLJlalNVk.GXtweQzQSwFzBvPN"
+    },
+    {
+      "name": "Solar Accretion",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "349",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "A target within distance is made winded or is reduced to 0 Stamina by fire damage.",
+        "distance": {
+          "type": "ranged",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>If the hierophant is a hero, they [[/gain 3 hr]]{of their Heroic Resource}. If the hierophant is a Director-controlled creature, the Director gains 3 Malice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "N7eheK5YcpFab1wy",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776878997401,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!bxGeSbceLJlalNVk.N7eheK5YcpFab1wy"
+    },
+    {
+      "name": "Nova",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "349",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "The throne is destroyed or the hierophant obtains a tier 1 outcome on the test to deactivate it.",
+        "distance": {
+          "type": "burst",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target takes [[/damage 14 fire]] damage and the Hierophant gains the Incubator of A’An complication (see the sidebar). If there is no hierophant, one creature within 10 squares of the throne chosen by the Director gains this complication.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "OI1Um4GlmQOX8HiM",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776879186245,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!bxGeSbceLJlalNVk.OI1Um4GlmQOX8HiM"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.360",
+    "systemId": "draw-steel",
+    "systemVersion": "1.0.0",
+    "createdTime": 1776873876661,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!bxGeSbceLJlalNVk"
+}

@@ -1,0 +1,386 @@
+{
+  "folder": "I0WwqpVWZFeDnUzo",
+  "name": "Tree of Might",
+  "type": "object",
+  "_id": "dAiY3t5caCGFZSuc",
+  "img": "icons/magic/nature/tree-twisted-glow-yellow.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 60,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 3,
+        "letter": "M",
+        "text": "",
+        "direction": "",
+        "typical": ""
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>A gnarled tree has unearthed roots that writhe and curl.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": null,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": null
+    },
+    "damage": {
+      "immunities": {
+        "all": 5,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 5,
+        "fire": 5,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "343",
+      "license": ""
+    },
+    "ev": 14,
+    "object": {
+      "level": 5,
+      "category": "hazard",
+      "role": "hexer",
+      "area": "",
+      "squareStamina": false
+    }
+  },
+  "prototypeToken": {
+    "name": "Tree of Might",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 3,
+    "height": 3,
+    "depth": 1,
+    "texture": {
+      "src": "icons/magic/nature/tree-twisted-glow-yellow.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.primary.value"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "scUNV1HE7aaREyg4",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>The tree of might must be completely destroyed.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "343",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776875024887,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!dAiY3t5caCGFZSuc.scUNV1HE7aaREyg4"
+    },
+    {
+      "name": "Tree’s Nourishment",
+      "type": "feature",
+      "_id": "86AuccEv932jGg0f",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the start of each round while the tree of might is intact, each enemy touching the ground in the encounter area who has [[potency M 0]] takes [[/damage 10 corruption]] damage, and the tree of might grows a fruit. The potency increases by 1 each subsequent round.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "343",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776875136292,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!dAiY3t5caCGFZSuc.86AuccEv932jGg0f"
+    },
+    {
+      "name": "Mighty Fruit",
+      "type": "feature",
+      "_id": "ATM9RffT50qfdxyR",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Once per round, any creature adjacent to the tree of might can take a fruit from the tree and eat it (no action required). The creature gains [[/heal 10 temp]] and has their Might score increased by 1 (to a maximum of 6) until the end of the encounter [[/apply LN6EVLCDrr5lbmas]].</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "343",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Mighty Fruit",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.dAiY3t5caCGFZSuc.Item.ATM9RffT50qfdxyR",
+          "transfer": false,
+          "_id": "LN6EVLCDrr5lbmas",
+          "system": {
+            "changes": [
+              {
+                "key": "system.characteristics.might.value",
+                "type": "add",
+                "value": 1,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": "combatEnd",
+            "expired": false
+          },
+          "description": "<p>Once per round, any creature adjacent to the tree of might can take a fruit from the tree and eat it (no action required). The creature gains [[/heal 10 temp]] and has their Might score increased by 1 (to a maximum of 6) until the end of the encounter.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776875371776,
+            "modifiedTime": 1776875463422,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!dAiY3t5caCGFZSuc.ATM9RffT50qfdxyR.LN6EVLCDrr5lbmas"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776875252294,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!dAiY3t5caCGFZSuc.ATM9RffT50qfdxyR"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.360",
+    "systemId": "draw-steel",
+    "systemVersion": "1.0.0",
+    "createdTime": 1776873754567,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!dAiY3t5caCGFZSuc"
+}
