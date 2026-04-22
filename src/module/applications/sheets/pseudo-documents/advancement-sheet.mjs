@@ -15,7 +15,8 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
-      deletePoolItem: AdvancementSheet.#deletePoolItem,
+      deletePoolEffect: AdvancementSheet.#deletePoolDocument,
+      deletePoolItem: AdvancementSheet.#deletePoolDocument,
     },
     classes: ["advancement"],
   };
@@ -85,12 +86,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    new DragDrop.implementation({
-      dropSelector: ".drop-target-area",
-      callbacks: {
-        drop: AdvancementSheet.#onDropTargetArea.bind(this),
-      },
-    }).bind(this.element);
+    this.#dragDrop.bind(this.element);
   }
 
   /* -------------------------------------------------- */
@@ -98,27 +94,27 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
+   * A reusable DragDrop instance.
+   * @type {DragDrop}
+   */
+  #dragDrop = new DragDrop.implementation({
+    dropSelector: ".drop-target-area",
+    callbacks: {
+      drop: AdvancementSheet.#onDropTargetArea.bind(this),
+    },
+  });
+
+  /**
    * Handle drop events in the pool area.
    * @this {AdvancementSheet}
    * @param {DragEvent} event   The initiating drag event.
    */
   static async #onDropTargetArea(event) {
-    const item = await fromUuid(TextEditor.implementation.getDragEventData(event).uuid);
+    const document = await fromUuid(TextEditor.implementation.getDragEventData(event).uuid);
 
-    if (!item || (item.documentName !== "Item")) return;
-    const subclassException = (item.type === "subclass") && (this.pseudoDocument.document.type === "class");
-    if (!ItemGrantAdvancement.ALLOWED_TYPES.has(item.type) && !subclassException) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedType", {
-      format: { type: _loc(CONFIG.Item.typeLabels[item.type]) },
-    });
-    if (!item.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePack", { localize: true });
-    if (item.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.forbidParent", { localize: true });
+    if (!document || (typeof this.pseudoDocument.handleDrop !== "function")) return;
 
-    const exists = this.pseudoDocument.pool.some(k => k.uuid === item.uuid);
-    if (exists) return;
-
-    const pool = foundry.utils.deepClone(this.pseudoDocument._source.pool);
-    pool.push({ uuid: item.uuid, optional: !!pool.length && pool.every(p => p.optional) });
-    this.pseudoDocument.update({ pool });
+    return this.pseudoDocument.handleDrop(document);
   }
 
   /* -------------------------------------------------- */
@@ -129,7 +125,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @param {PointerEvent} event    The initiating click event.
    * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
    */
-  static async #deletePoolItem(event, target) {
+  static async #deletePoolDocument(event, target) {
     const index = Number(target.closest("[data-pool-index]").dataset.poolIndex);
     const pool = foundry.utils.deepClone(this.pseudoDocument._source.pool);
     pool.splice(index, 1);

@@ -42,6 +42,20 @@
   </section>
   {{/if}}
 
+  {{!-- ITEM GRANT POOL --}}
+  {{#if (eq document.type "effectGrant")}}
+  <section class="drop-target-area">
+    {{#each ctx.effectPool}}
+    <div class="form-group" data-pool-index="{{@index}}">
+      <label>{{{link.outerHTML}}}</label>
+      <div class="form-fields">
+        <button type="button" data-action="deletePoolEffect" class="icon fa-solid fa-trash"></button>
+      </div>
+    </div>
+    {{/each}}
+  </section>
+  {{/if}}
+
   {{!-- TRAIT LIST --}}
   {{#if (eq document.type "skill")}}
   {{formGroup fields.skills.fields.groups value=source.skills.groups name="skills.groups" options=ctx.skillGroups}}

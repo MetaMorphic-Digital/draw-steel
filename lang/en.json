@@ -121,6 +121,15 @@
           "subclass": "Drop any {itemName} subclass here."
         }
       },
+      "EFFECT_GRANT": {
+        "FIELDS": {
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many of the active effects can be picked when this advancement is configured. If left blank or if the number is greater than the number of effects available, all the effects are granted.",
+            "placeholder": "Choose All"
+          }
+        }
+      },
       "TRAIT": {
         "FIELDS": {
           "chooseN": {
@@ -156,14 +165,15 @@
         "requirements": "Requirements",
         "additional": "Additional",
         "unknownItem": "Unknown Item",
+        "unknownEffect": "Unknown Effect",
         "reconfigure": "Reconfigure Advancement",
         "warnDrop": "{itemType} items do not support {advancementType} advancements."
       },
       "WARNING": {
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
         "restrictedType": "{type} items cannot be added as advancements.",
-        "requirePack": "Granted items must come from a compendium pack.",
-        "forbidParent": "Granted items cannot be embedded in an actor."
+        "requirePack": "Granted documents must come from a compendium pack.",
+        "forbidParent": "Granted documents cannot be embedded in an actor."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -2407,6 +2417,7 @@
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",
+      "effectGrant": "Effect Grant",
       "itemGrant": "Item Grant",
       "skill": "Skill",
       "language": "Language"

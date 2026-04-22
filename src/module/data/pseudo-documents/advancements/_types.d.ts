@@ -19,6 +19,18 @@ declare module "./characteristic.mjs" {
   }
 }
 
+interface EffectGrantPool {
+  uuid: string;
+}
+
+declare module "./effect-grant-advancement.mjs" {
+  export default interface EffectGrantAdvancement {
+    pool: EffectGrantPool[];
+    /** If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool. */
+    chooseN: number | null;
+  }
+}
+
 interface ItemGrantPool {
   uuid: string;
 }

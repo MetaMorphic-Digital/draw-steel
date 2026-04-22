@@ -1,7 +1,8 @@
 import AdvancementNode from "./node.mjs";
+import { systemID } from "../../constants.mjs";
 
 /**
- * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import BaseAdvancement from "../../data/pseudo-documents/advancements/base.mjs";
  * @import AdvancementLeaf from "./leaf.mjs";
  */
@@ -238,5 +239,127 @@ export default class AdvancementChain {
   removeNode(node) {
     for (const n of node.children) this.removeNode(n);
     this.nodes.delete(node.id);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform the final document operations for this chain.
+   * @param {object} config
+   * @param {ItemData[]} [config.toCreate={}]
+   * @param {ItemData[]} [config.toUpdate={}]
+   * @param {ActorData} [config.actorUpdate={}]
+   * @param {Map<string, string>} [config._idMap]
+   * @param {object} [options]                                      Operation options.
+   * @returns {Promise<[DrawSteelItem[], DrawSteelItem[], DrawSteelActor[], DrawSteelActiveEffect[]]>}
+   */
+  async finalize({ toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, options = {}) {
+    const operationOptions = foundry.utils.mergeObject({
+      levels: this.levelRange,
+    }, options);
+
+    const effectOperation = {
+      action: "create",
+      data: [],
+      ds: operationOptions,
+      documentName: "ActiveEffect",
+      keepId: true,
+      pack: this.actor.pack,
+      parent: this.actor,
+    };
+    actorUpdate._id = this.actor.id;
+
+    // First gather all new items that are to be created.
+    for (const node of this.activeNodes()) {
+      if (node.advancement.type === "itemGrant") {
+        const parentItem = node.advancement.document;
+
+        for (const uuid of node.chosenSelection ?? []) {
+          const item = node.choices[uuid].item;
+          const keepId = !this.actor.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
+          const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+          if (!keepId) itemData._id = foundry.utils.randomID();
+          toCreate[item.uuid] = itemData;
+          _idMap.set(item.id, itemData._id);
+          itemData._parentId = parentItem.id;
+          itemData._advId = node.advancement.id;
+        }
+      }
+      else if (node.advancement.type === "effectGrant") {
+        const parentItem = node.advancement.document;
+
+        for (const uuid of node.chosenSelection ?? []) {
+          const effect = node.choices[uuid].effect;
+          const keepId = !this.actor.effects.has(effect.id) && !Array.from(_idMap.values()).includes(effect.id);
+          // there's no global effects collection but game.items is generic and safe
+          const effectData = game.items.fromCompendium(effect, { keepId, clearFolder: true });
+          effectData.origin = parentItem.uuid;
+          foundry.utils.setProperty(effectData, `flags.${systemID}.advancement`, { parentId: parentItem.id, advancementId: node.advancement.id });
+          if (!keepId) effectData._id = foundry.utils.randomID();
+          effectOperation.data.push(effectData);
+          _idMap.set(effect.id, effectData._id);
+        }
+      }
+    }
+
+    // Apply flags to store "parent" item's id and origin advancement.
+    for (const uuid in toCreate) {
+      const itemData = toCreate[uuid];
+      const { _parentId, _advId } = itemData;
+      delete itemData._parentId;
+      delete itemData._advId;
+
+      // Fall back to the _parentId, in the case of existing items being
+      // updated to grant more items (eg a class leveling up).
+      const parentId = _idMap.get(_parentId) ?? _parentId;
+      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement`, { parentId: parentId, advancementId: _advId });
+    }
+
+    // Perform item data modifications or store item updates.
+    for (const node of this.activeNodes()) {
+      if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
+        const { document: item, id } = node.advancement;
+        const isExisting = item.parent === this.actor;
+        let itemData;
+
+        if (isExisting) {
+          toUpdate[item.id] ??= { _id: item.id };
+          itemData = toUpdate[item.id];
+        } else {
+          itemData = toCreate[item.uuid];
+        }
+
+        foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
+      }
+    }
+
+    return foundry.documents.modifyBatch([
+      {
+        action: "create",
+        data: Object.values(toCreate),
+        ds: operationOptions,
+        documentName: "Item",
+        keepId: true,
+        pack: this.actor.pack,
+        parent: this.actor,
+      },
+      {
+        documentName: "Item",
+        action: "update",
+        updates: Object.values(toUpdate),
+        ds: operationOptions,
+        parent: this.actor,
+        pack: this.actor.pack,
+      },
+      {
+        documentName: "Actor",
+        action: "update",
+        changes: [actorUpdate],
+        ds: operationOptions,
+        parent: this.actor.parent,
+        pack: this.actor.pack,
+      },
+      effectOperation,
+    ]);
   }
 }

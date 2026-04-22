@@ -2,6 +2,10 @@ import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
+ * @import { DrawSteelActiveEffect } from "./_module.mjs";
+ */
+
+/**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass.
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
@@ -98,16 +102,30 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
-   * Has this item granted other items via advancements?
+   * Has this item granted other documents via advancements?
    * @type {boolean}
    */
-  get hasGrantedItems() {
+  get hasGrantedDocuments() {
     if (!this.supportsAdvancements || !this.parent) return false;
     return this.collection.some(item => {
       if (item.getFlag(systemID, "advancement.parentId") === this.id)
         return !!this.getEmbeddedCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
       return false;
+    }) || this.parent.effects.some(effect => {
+      if (effect.getFlag(systemID, "advancement.parentId") === this.id)
+        return !!this.getEmbeddedCollection("Advancement").get(effect.getFlag(systemID, "advancement.advancementId"));
+      return false;
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @deprecated */
+  get hasGrantedItems() {
+    foundry.utils.logCompatibilityWarning("DrawSteelItem#hasGrantedItems has been deprecated in favor of DrawSteelItem#hasGrantedDocuments", {
+      since: 1.1, until: 1.3, once: true,
+    });
+    return this.hasGrantedDocuments;
   }
 
   /* -------------------------------------------------- */
@@ -129,12 +147,12 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
-   * An alternative to the document delete method, this deletes the item as well as any items that were
+   * An alternative to the document delete method, this deletes the item as well as any documents that were
    * added as a result of this item's creation via advancements.
    * @param {object} options
    * @param {boolean} [options.replacement=false]   Should the window title indicate that this is a replacement?
    * @param {boolean} [options.skipDialog=false]    Whether to skip the confirmation dialog, e.g., if there's already been another.
-   * @returns {Promise<foundry.documents.Item[]|null>}   A promise that resolves to the deleted items.
+   * @returns {Promise<[DrawSteelItem, DrawSteelActiveEffect]|null>}   A promise that resolves to the deleted items.
    */
   async advancementDeletionPrompt({ replacement = false, skipDialog = false } = {}) {
     if (!this.isEmbedded) {
@@ -151,10 +169,24 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     content.append(this.toAnchor());
 
     const itemIds = new Set([this.id]);
-    for (const advancement of this.getEmbeddedCollection("Advancement").documentsByType.itemGrant) {
-      for (const item of advancement.grantedItemsChain()) {
-        content.append(item.toAnchor());
-        itemIds.add(item.id);
+    const effectIds = new Set();
+    const advancementCollection = this.getEmbeddedCollection("Advancement");
+    for (const advancement of advancementCollection.documentsByType.itemGrant) {
+      const [items, effects] = advancement.grantedDocumentsChain();
+      for (const i of items ?? []) {
+        content.append(i.toAnchor());
+        itemIds.add(i.id);
+      }
+      for (const e of effects ?? []) {
+        content.append(e.toAnchor());
+        effectIds.add(e.id);
+      }
+    }
+    for (const advancement of advancementCollection.documentsByType.effectGrant) {
+      const effects = advancement.grantedEffects();
+      for (const e of effects ?? []) {
+        content.append(e.toAnchor());
+        effectIds.add(e.id);
       }
     }
 
@@ -173,6 +205,18 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       if (!confirm) return;
     }
 
-    return this.actor.deleteEmbeddedDocuments("Item", Array.from(itemIds));
+    return foundry.documents.modifyBatch([{
+      action: "delete",
+      documentName: "Item",
+      ids: Array.from(itemIds),
+      pack: this.actor.pack,
+      parent: this.actor,
+    }, {
+      action: "delete",
+      documentName: "ActiveEffect",
+      ids: Array.from(effectIds),
+      pack: this.actor.pack,
+      parent: this.actor,
+    }]);
   }
 }

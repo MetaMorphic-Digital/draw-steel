@@ -1827,6 +1827,12 @@ export const Advancement = {
     itemTypes: new Set(["ancestry", "ancestryTrait", "career", "class", "complication", "feature", "kit", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
+  effectGrant: {
+    label: "TYPES.Advancement.effectGrant",
+    defaultImage: "icons/svg/aura.svg",
+    itemTypes: new Set(["ancestry", "ancestryTrait", "career", "class", "complication", "feature", "perk", "subclass", "title"]),
+    documentClass: pseudoDocuments.advancements.EffectGrantAdvancement,
+  },
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
