@@ -85,6 +85,12 @@
     {{formGroup systemFields.combat.fields.size.fields.text value=systemSource.combat.size.text placeholder=system.combat.size.textPlaceholder}}
     {{formGroup systemFields.combat.fields.size.fields.direction value=systemSource.combat.size.direction}}
     {{formGroup systemFields.combat.fields.size.fields.typical value=systemSource.combat.size.typical}}
+    <div class="form-group">
+      <label>{{systemFields.combat.fields.size.fields.shapes.label}}</label>
+      <div class="form-fields">
+        <button class="icon fa-solid fa-gear" type="button" data-tooltip="" data-action="editShapes"></button>
+      </div>
+    </div>
   </fieldset>
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
   {{/if}}

@@ -1,4 +1,4 @@
-import { DocumentSourceInput, ObjectMetadataInput } from "../apps/_module.mjs";
+import { DocumentSourceInput, ObjectMetadataInput, ObjectSizesInput } from "../apps/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 import { systemPath } from "../../constants.mjs";
 
@@ -12,6 +12,7 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
     actions: {
       updateSource: this.#updateSource,
       editObjectMetadata: this.#editObjectMetadata,
+      editShapes: this.#editShapes,
     },
     window: {
       controls: [{
@@ -96,5 +97,17 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
    */
   static async #editObjectMetadata(event, target) {
     this.renderChild(new ObjectMetadataInput({ document: this.document }));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a dialog to edit the object shapes.
+   * @this DrawSteelObjectSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editShapes(event, target) {
+    this.renderChild(new ObjectSizesInput({ document: this.document }));
   }
 }
