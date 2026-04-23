@@ -3,11 +3,11 @@
   "name": "Exploding Mill Wheel",
   "type": "object",
   "_id": "JEV9LdEDMnjJxwm4",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "icons/commodities/tech/wheel.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 0,
+      "max": 25,
       "temporary": 0
     },
     "combat": {
@@ -16,7 +16,7 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
+        "value": 2,
         "letter": "M",
         "text": "",
         "direction": "",
@@ -26,7 +26,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p>A massive wooden wheel is loaded with explosives and rolled toward enemy forces or fortifications, ready to explode.</p>",
       "director": ""
     },
     "movement": {
@@ -67,15 +67,15 @@
       "immunities": []
     },
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "346",
       "license": ""
     },
-    "ev": null,
+    "ev": 10,
     "object": {
-      "level": null,
-      "category": "",
-      "role": "",
+      "level": 3,
+      "category": "siegeEngine",
+      "role": "artillery",
       "area": "",
       "squareStamina": false
     }
@@ -84,11 +84,11 @@
     "name": "Exploding Mill Wheel",
     "displayName": 0,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 2,
+    "height": 2,
     "depth": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg",
+      "src": "icons/commodities/tech/wheel.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "contain",
@@ -172,8 +172,371 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
-  "effects": [],
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "Bn0na0fPsSKZaQLt",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>As a maneuver, a creature adjacent to an exploding mill wheel that isn’t rolling can make an [[/test A]].</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature accidentally activates the <strong>Roll the Wheel</strong> ability.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The exploding mill wheel is deactivated but the creature is [[/apply slowed turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The exploding mill wheel is deactivated and can’t be used.</p></dd></dl><p>Once the wheel is rolling, it can’t be deactivated. However, it can be exploded early by destroying it or blocking its movement with a suitably large creature or object. </p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "346",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776899442360,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!JEV9LdEDMnjJxwm4.Bn0na0fPsSKZaQLt"
+    },
+    {
+      "name": "Roll the Wheel",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "346",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "B3ISMY9TufdNHAcK": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "B3ISMY9TufdNHAcK",
+              "damage": {
+                "tier1": {
+                  "value": "2",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "9",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "12",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "CMqGj9k2ULnXlkvy": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "CMqGj9k2ULnXlkvy",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "<p>When this ability is used and at the start of every turn thereafter, the exploding mill wheel rolls, moving 2 squares in a straight line. Each creature and object of size 2 or smaller in the area defined by the wheel’s movement is targeted by the following power roll. A target force moved this way is moved to either side of the wheel, as the Director determines.</p>",
+          "after": "<p>If the wheel enters the space of any creature or object of size 3 or larger, or if it is reduced to 0 Stamina, its movement stops and it explodes. Each creature and object in a 5 burst centered on the wheel is targeted by the following power roll.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>5 damage; push 1; [[potency M 0]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>9 damage; push 2; [[potency M 1]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>12 damage; push 3; [[potency M 2]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd></dl><p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "UMJP51xJh5nRvZCi",
+      "img": "icons/commodities/tech/wheel.webp",
+      "effects": [
+        {
+          "name": "Burning",
+          "img": "icons/magic/fire/flame-burning-skull-orange.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.JEV9LdEDMnjJxwm4.Item.UMJP51xJh5nRvZCi",
+          "transfer": false,
+          "_id": "nKPgAzQFXgDWpDKU",
+          "system": {
+            "changes": [],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": "save",
+            "expired": false
+          },
+          "description": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776900913702,
+            "modifiedTime": 1776900975449,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!JEV9LdEDMnjJxwm4.UMJP51xJh5nRvZCi.nKPgAzQFXgDWpDKU"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776899853261,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!JEV9LdEDMnjJxwm4.UMJP51xJh5nRvZCi"
+    },
+    {
+      "name": "Piloted",
+      "type": "feature",
+      "_id": "nKqhux44qD2gIrMZ",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The wheel has been fitted with a control mechanism and a pilot’s seat for a creature of size 1M or smaller. As a move action, the pilot can turn the wheel in any direction while it is moving. As a main action, the pilot can leap out of the pilot’s seat, landing in an adjacent space while the wheel continues moving in a straight line. Without proper training, determining how to pilot the wheel requires a [[/test R]].</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The wheel immediately explodes as if striking a size 3 or largercreature or object.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to pilot the wheel.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The creature can pilot the wheel.</p></dd></dl><p>On a natural 19 or 20, a creature can both pilot the wheel and can disarm its explosives as a maneuver.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "346",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776901060455,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!JEV9LdEDMnjJxwm4.nKqhux44qD2gIrMZ"
+    }
+  ],
+  "effects": [
+    {
+      "name": "Piloted",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.JEV9LdEDMnjJxwm4.Item.nKqhux44qD2gIrMZ",
+      "transfer": false,
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 4,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": true,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776901301891,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.JEV9LdEDMnjJxwm4.Item.nKqhux44qD2gIrMZ.ActiveEffect.CK1nUE4DYiJaUpY6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "GJRP7iXTmqDSklSJ",
+      "sort": 0,
+      "_key": "!actors.effects!JEV9LdEDMnjJxwm4.GJRP7iXTmqDSklSJ"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

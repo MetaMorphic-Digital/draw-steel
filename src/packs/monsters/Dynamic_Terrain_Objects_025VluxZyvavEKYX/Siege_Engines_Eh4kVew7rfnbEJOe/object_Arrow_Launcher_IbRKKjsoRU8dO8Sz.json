@@ -3,11 +3,11 @@
   "name": "Arrow Launcher",
   "type": "object",
   "_id": "IbRKKjsoRU8dO8Sz",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "icons/skills/ranged/arrows-flying-salvo-blue-light.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 0,
+      "max": 30,
       "temporary": 0
     },
     "combat": {
@@ -17,7 +17,7 @@
       },
       "size": {
         "value": 1,
-        "letter": "M",
+        "letter": "L",
         "text": "",
         "direction": "",
         "typical": ""
@@ -26,7 +26,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "<p>A small wooden cart uses alchemical rockets to launch up to a hundred arrows at a time across a wide area.</p>",
       "director": ""
     },
     "movement": {
@@ -67,15 +67,15 @@
       "immunities": []
     },
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "344",
       "license": ""
     },
-    "ev": null,
+    "ev": 8,
     "object": {
-      "level": null,
-      "category": "",
-      "role": "",
+      "level": 2,
+      "category": "siegeEngine",
+      "role": "artillery",
       "area": "",
       "squareStamina": false
     }
@@ -88,7 +88,7 @@
     "height": 1,
     "depth": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg",
+      "src": "icons/weapons/artillery/ballista-wood-green.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "contain",
@@ -172,8 +172,748 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [],
-  "effects": [],
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "8BYeL1FOrEJO7LST",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>As a maneuver, a creature adjacent to an arrow launcher can make an [[/test A]].</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature accidentally activates the <strong>Arrow Storm</strong> ability.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The arrow launcher is deactivated but the creature is [[/apply slowed turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The arrow launcher is deactivated and can’t be used.</p></dd></dl>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "344",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776895518028,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!IbRKKjsoRU8dO8Sz.8BYeL1FOrEJO7LST"
+    },
+    {
+      "name": "Arrow Storm",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "344",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": "5",
+          "secondary": "20",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "0CB4yDYyIFkNBgAI": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "0CB4yDYyIFkNBgAI",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "8",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "11",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>This ability can’t be used again until the arrow launcher is reloaded.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "LYVeuNqjycEQ5Aak",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776895675981,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!IbRKKjsoRU8dO8Sz.LYVeuNqjycEQ5Aak"
+    },
+    {
+      "name": "Reload",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "344",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The arrow launcher is reloaded, allowing <strong>Arrow Storm</strong> to be used again. This action can be used only once per round.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "3lbXcqZeq8J7H1kA",
+      "img": "icons/magic/time/arrows-circling-pink.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776895823514,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!IbRKKjsoRU8dO8Sz.3lbXcqZeq8J7H1kA"
+    },
+    {
+      "name": "Spot",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "344",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The next use of <strong>Arrow Storm</strong> gains an edge and has a +10 bonus to ranged distance[[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "7qkhpNHywcugZJ5l",
+      "img": "icons/skills/targeting/crosshair-scope-sniper-green.webp",
+      "effects": [
+        {
+          "name": "Spot",
+          "img": "icons/skills/targeting/crosshair-scope-sniper-green.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.IbRKKjsoRU8dO8Sz.Item.7qkhpNHywcugZJ5l",
+          "transfer": false,
+          "_id": "3jAQaXms6LpJ8Euf",
+          "system": {
+            "changes": [
+              {
+                "key": "distance",
+                "type": "add",
+                "value": 10,
+                "phase": "initial",
+                "priority": null
+              },
+              {
+                "key": "power.roll.edges",
+                "type": "add",
+                "value": 1,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": 1,
+            "units": "turns",
+            "expiry": "turnEnd",
+            "expired": false
+          },
+          "description": "<p>The next use of Arrow Storm gains an edge and has a +10 bonus to ranged distance. This action can be used only once per round.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.360",
+            "systemId": "draw-steel",
+            "systemVersion": "1.0.0",
+            "createdTime": 1776896290064,
+            "modifiedTime": 1776896449305,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!IbRKKjsoRU8dO8Sz.7qkhpNHywcugZJ5l.3jAQaXms6LpJ8Euf"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776895954699,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!IbRKKjsoRU8dO8Sz.7qkhpNHywcugZJ5l"
+    },
+    {
+      "name": "Move",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "344",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The arrow launcher and the creature using this action move together up to 3 squares. </p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "QA8XmLYDTnhcqkn2",
+      "img": "icons/skills/movement/arrow-upward-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776896492383,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!IbRKKjsoRU8dO8Sz.QA8XmLYDTnhcqkn2"
+    },
+    {
+      "name": "Screamers",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "344",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": "5",
+          "secondary": "20",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "9nB3PDTpmaBG452K": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "9nB3PDTpmaBG452K",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "8",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "11",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "xvym1strlg3HClGR": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "xvym1strlg3HClGR",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "0",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "1",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "2",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>This ability can’t be used again until the arrow launcher is reloaded.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "vCdQBAGzwq7ZnkE8",
+      "img": "icons/skills/ranged/arrow-flying-spiral-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776896689772,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!IbRKKjsoRU8dO8Sz.vCdQBAGzwq7ZnkE8"
+    }
+  ],
+  "effects": [
+    {
+      "name": "Flaming Arrows",
+      "img": "icons/skills/ranged/arrows-flying-salvo-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.IbRKKjsoRU8dO8Sz",
+      "disabled": true,
+      "_id": "UPorml0SeVcF2AJE",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p><strong>Arrow Storm</strong> deals fire damage, and can ignite flammable objects in its area.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776897052066,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!IbRKKjsoRU8dO8Sz.UPorml0SeVcF2AJE"
+    },
+    {
+      "name": "Screamers",
+      "img": "icons/skills/ranged/arrow-flying-spiral-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.IbRKKjsoRU8dO8Sz",
+      "disabled": true,
+      "_id": "M23foXlRvBl88Qtu",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The arrows make a high-pitched screaming noise as they are fired and descend onto their targets. The <strong>Screamers</strong> ability replaces <strong>Arrow Storm</strong>.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776897125794,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!IbRKKjsoRU8dO8Sz.M23foXlRvBl88Qtu"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
