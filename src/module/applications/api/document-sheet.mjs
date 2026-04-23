@@ -191,7 +191,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    */
   static async #deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
-    if (doc.hasGrantedDocuments) await doc.advancementDeletionPrompt();
+    if (doc.hasGrantedItems) await doc.advancementDeletionPrompt();
     else await doc.deleteDialog();
   }
 

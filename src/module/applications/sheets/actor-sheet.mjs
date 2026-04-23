@@ -689,7 +689,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         visible: () => this.actor.isOwner,
         onClick: async (event, target) => {
           const document = this._getEmbeddedDocument(target);
-          if (document.hasGrantedDocuments) await document.advancementDeletionPrompt();
+          if (document.hasGrantedItems) await document.advancementDeletionPrompt();
           else await document.deleteDialog();
         },
       },

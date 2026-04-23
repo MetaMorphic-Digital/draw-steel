@@ -2,6 +2,8 @@ import AdvancementNode from "./node.mjs";
 import { systemID } from "../../constants.mjs";
 
 /**
+ * @import { ActiveEffectData, ActorData, ItemData } from "@common/documents/_types.mjs"
+ * @import { DatabaseCreateOperation, DatabaseWriteOperation } from "@common/abstract/_types.mjs";
  * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import BaseAdvancement from "../../data/pseudo-documents/advancements/base.mjs";
  * @import AdvancementLeaf from "./leaf.mjs";
@@ -246,28 +248,45 @@ export default class AdvancementChain {
   /**
    * Perform the final document operations for this chain.
    * @param {object} config
-   * @param {ItemData[]} [config.toCreate={}]
-   * @param {ItemData[]} [config.toUpdate={}]
+   * @param {Record<string, ItemData>} [config.toCreate={}]
+   * @param {Record<string, ItemData>} [config.toUpdate={}]
    * @param {ActorData} [config.actorUpdate={}]
    * @param {Map<string, string>} [config._idMap]
    * @param {object} [options]                                      Operation options.
-   * @returns {Promise<[DrawSteelItem[], DrawSteelItem[], DrawSteelActor[], DrawSteelActiveEffect[]]>}
+   * @returns {Promise<[DrawSteelItem[], DrawSteelItem[], DrawSteelActor[], ...DrawSteelActiveEffect[][]]>}
    */
   async finalize({ toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, options = {}) {
     const operationOptions = foundry.utils.mergeObject({
       levels: this.levelRange,
     }, options);
-
-    const effectOperation = {
-      action: "create",
-      data: [],
-      ds: operationOptions,
-      documentName: "ActiveEffect",
-      keepId: true,
-      pack: this.actor.pack,
-      parent: this.actor,
-    };
     actorUpdate._id = this.actor.id;
+
+    /** @type {DatabaseWriteOperation[]} */
+    const operations = [
+      {
+        action: "create",
+        ds: operationOptions,
+        documentName: "Item",
+        keepId: true,
+        pack: this.actor.pack,
+        parent: this.actor,
+      },
+      {
+        documentName: "Item",
+        action: "update",
+        ds: operationOptions,
+        pack: this.actor.pack,
+        parent: this.actor,
+      },
+      {
+        documentName: "Actor",
+        action: "update",
+        changes: [actorUpdate],
+        ds: operationOptions,
+        parent: this.actor.parent,
+        pack: this.actor.pack,
+      },
+    ];
 
     // First gather all new items that are to be created.
     for (const node of this.activeNodes()) {
@@ -283,21 +302,6 @@ export default class AdvancementChain {
           _idMap.set(item.id, itemData._id);
           itemData._parentId = parentItem.id;
           itemData._advId = node.advancement.id;
-        }
-      }
-      else if (node.advancement.type === "effectGrant") {
-        const parentItem = node.advancement.document;
-
-        for (const uuid of node.chosenSelection ?? []) {
-          const effect = node.choices[uuid].effect;
-          const keepId = !this.actor.effects.has(effect.id) && !Array.from(_idMap.values()).includes(effect.id);
-          // there's no global effects collection but game.items is generic and safe
-          const effectData = game.items.fromCompendium(effect, { keepId, clearFolder: true });
-          effectData.origin = parentItem.uuid;
-          foundry.utils.setProperty(effectData, `flags.${systemID}.advancement`, { parentId: parentItem.id, advancementId: node.advancement.id });
-          if (!keepId) effectData._id = foundry.utils.randomID();
-          effectOperation.data.push(effectData);
-          _idMap.set(effect.id, effectData._id);
         }
       }
     }
@@ -319,10 +323,10 @@ export default class AdvancementChain {
     for (const node of this.activeNodes()) {
       if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
         const { document: item, id } = node.advancement;
-        const isExisting = item.parent === this.actor;
+        /** @type {ItemData} */
         let itemData;
 
-        if (isExisting) {
+        if (item.parent === this.actor) {
           toUpdate[item.id] ??= { _id: item.id };
           itemData = toUpdate[item.id];
         } else {
@@ -331,35 +335,51 @@ export default class AdvancementChain {
 
         foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
       }
+      else if (node.advancement.type === "effectGrant") {
+        const item = node.advancement.document;
+        /** @type {ActiveEffectData[]} */
+        let createData;
+
+        // If the item already exists, need a fresh create operation
+        // Otherwise we can hijack the existing creation workflow
+        if (item.parent === this.actor) {
+          /** @type {DatabaseCreateOperation} */
+          let op = operations.find(o => o.parent === item);
+          if (!op) {
+            op = {
+              action: "create",
+              data: [],
+              ds: operationOptions,
+              documentName: "ActiveEffect",
+              keepId: true,
+              pack: item.pack,
+              parent: item,
+            };
+            operations.push(op);
+          }
+          createData = op.data;
+        }
+        else {
+          createData = toCreate[item.uuid].effects ??= [];
+        }
+
+        for (const uuid of node.chosenSelection ?? []) {
+          const effect = node.choices[uuid].effect;
+          const keepId = !this.actor.effects.has(effect.id) && !Array.from(_idMap.values()).includes(effect.id);
+          // there's no global effects collection but game.items is generic and safe
+          const effectData = game.items.fromCompendium(effect, { keepId, clearFolder: true });
+          effectData.origin = item.uuid;
+          foundry.utils.setProperty(effectData, `flags.${systemID}.advancement`, { advancementId: node.advancement.id });
+          if (!keepId) effectData._id = foundry.utils.randomID();
+          createData.push(effectData);
+          _idMap.set(effect.id, effectData._id);
+        }
+      }
     }
 
-    return foundry.documents.modifyBatch([
-      {
-        action: "create",
-        data: Object.values(toCreate),
-        ds: operationOptions,
-        documentName: "Item",
-        keepId: true,
-        pack: this.actor.pack,
-        parent: this.actor,
-      },
-      {
-        documentName: "Item",
-        action: "update",
-        updates: Object.values(toUpdate),
-        ds: operationOptions,
-        parent: this.actor,
-        pack: this.actor.pack,
-      },
-      {
-        documentName: "Actor",
-        action: "update",
-        changes: [actorUpdate],
-        ds: operationOptions,
-        parent: this.actor.parent,
-        pack: this.actor.pack,
-      },
-      effectOperation,
-    ]);
+    operations[0].data = Object.values(toCreate);
+    operations[1].changes = Object.values(toUpdate);
+
+    return foundry.documents.modifyBatch(operations);
   }
 }

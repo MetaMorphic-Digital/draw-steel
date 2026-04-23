@@ -3,12 +3,10 @@ import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
-import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
- * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
  */
 
 const fields = foundry.data.fields;

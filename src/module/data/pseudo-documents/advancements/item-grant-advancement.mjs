@@ -6,9 +6,7 @@ import { setOptions } from "../../helpers.mjs";
 import { systemID } from "../../../constants.mjs";
 
 /**
- * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
- * @import EffectGrantAdvancement from "./effect-grant-advancement.mjs";
- * @import ModelCollection from "../../../utils/model-collection.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
  */
 
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
@@ -120,47 +118,28 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * Recursive method to find all documents that were added to an actor by this advancement.
-   * If the item is unowned, this returns an empty array.
-   * @returns {[Set<DrawSteelItem>, Set<DrawSteelActiveEffect>]}
+   * Recursive method to find all items that were added to an actor by this advancement.
+   * If the item is unowned, this returns `null`.
+   * @returns {Set<DrawSteelItem> | null}
    */
-  grantedDocumentsChain() {
-    if (!this.document.parent) return [];
-    const allItems = new Set();
-    const allEffects = new Set();
+  grantedItemsChain() {
+    if (!this.document.parent) return null;
+    const items = new Set();
     // There is probably a more efficient function that uses less recursion
     // but it is unlikely that even deleting a level 10 class will have a noticeable performance cost.
     for (const item of this.document.collection) {
       const advancementFlags = item.getFlag(systemID, "advancement");
       if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) {
-        allItems.add(item);
-        if (item.hasGrantedDocuments) {
-          /** @type {ModelCollection<ItemGrantAdvancement | EffectGrantAdvancement>} */
-          const advancementCollection = item.getEmbeddedCollection("Advancement");
-          for (const advancement of advancementCollection.documentsByType.itemGrant) {
-            const [items, effects] = advancement.grantedDocumentsChain();
-            for (const i of items ?? []) allItems.add(i);
-            for (const e of effects ?? []) allEffects.add(e);
-          }
-          for (const advancement of advancementCollection.documentsByType.effectGrant) {
-            for (const e of advancement.grantedEffects() ?? []) allEffects.add(e);
+        items.add(item);
+        if (item.hasGrantedItems) {
+          for (const advancement of item.getEmbeddedCollection("Advancement").documentsByType.itemGrant) {
+            for (const a of advancement.grantedItemsChain()) items.add(a);
           }
         }
       }
 
     }
-    return [allItems, allEffects];
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @deprecated */
-  grantedItemsChain() {
-    foundry.utils.logCompatibilityWarning("ItemGrantAdvancement#grantedItemsChain has been deprecated in favor of ItemGrantAdvancement#grantedDocumentsChain", {
-      since: 1.1, until: 1.3, once: true,
-    });
-    const chainedDocuments = this.grantedDocumentsChain();
-    return chainedDocuments[0] ?? null;
+    return items;
   }
 
   /* -------------------------------------------------- */
@@ -212,15 +191,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     /** @type {DrawSteelActor} */
     const actor = this.document.parent;
+    const toDelete = this.grantedItemsChain();
 
-    const allowed = await ds.applications.api.DSDialog.confirm({
-      window: {
-        icon: "fa-solid fa-arrow-rotate-right",
-        title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
-      },
-      content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
-    });
-    if (!allowed) return;
+    if (toDelete.size) {
+      const allowed = await ds.applications.api.DSDialog.confirm({
+        window: {
+          icon: "fa-solid fa-arrow-rotate-right",
+          title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
+        },
+        content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
+      });
+      if (!allowed) return;
+    }
 
     const chain = new AdvancementChain(actor, { start: null, end: actor.system.level });
 
@@ -232,23 +214,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     });
     if (!configuration) return;
 
-    const [deleteItems, deleteEffects] = this.grantedDocumentsChain();
-    await foundry.documents.modifyBatch([
-      {
-        action: "delete",
-        documentName: "Item",
-        ids: Array.from(deleteItems.map(i => i.id)),
-        parent: actor,
-        pack: actor.pack,
-      },
-      {
-        action: "delete",
-        documentName: "Item",
-        ids: Array.from(deleteEffects.map(i => i.id)),
-        parent: actor,
-        pack: actor.pack,
-      },
-    ]);
+    if (toDelete.size) await actor.deleteEmbeddedDocuments("Item", Array.from(toDelete).map(i => i.id));
 
     const toUpdate = {
       [this.document.id]: { _id: this.document.id },

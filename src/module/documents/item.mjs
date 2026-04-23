@@ -102,30 +102,16 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
-   * Has this item granted other documents via advancements?
+   * Has this item granted other items via advancements?
    * @type {boolean}
    */
-  get hasGrantedDocuments() {
+  get hasGrantedItems() {
     if (!this.supportsAdvancements || !this.parent) return false;
     return this.collection.some(item => {
       if (item.getFlag(systemID, "advancement.parentId") === this.id)
         return !!this.getEmbeddedCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
       return false;
-    }) || this.parent.effects.some(effect => {
-      if (effect.getFlag(systemID, "advancement.parentId") === this.id)
-        return !!this.getEmbeddedCollection("Advancement").get(effect.getFlag(systemID, "advancement.advancementId"));
-      return false;
     });
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @deprecated */
-  get hasGrantedItems() {
-    foundry.utils.logCompatibilityWarning("DrawSteelItem#hasGrantedItems has been deprecated in favor of DrawSteelItem#hasGrantedDocuments", {
-      since: 1.1, until: 1.3, once: true,
-    });
-    return this.hasGrantedDocuments;
   }
 
   /* -------------------------------------------------- */
@@ -169,24 +155,10 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     content.append(this.toAnchor());
 
     const itemIds = new Set([this.id]);
-    const effectIds = new Set();
-    const advancementCollection = this.getEmbeddedCollection("Advancement");
-    for (const advancement of advancementCollection.documentsByType.itemGrant) {
-      const [items, effects] = advancement.grantedDocumentsChain();
-      for (const i of items ?? []) {
-        content.append(i.toAnchor());
-        itemIds.add(i.id);
-      }
-      for (const e of effects ?? []) {
-        content.append(e.toAnchor());
-        effectIds.add(e.id);
-      }
-    }
-    for (const advancement of advancementCollection.documentsByType.effectGrant) {
-      const effects = advancement.grantedEffects();
-      for (const e of effects ?? []) {
-        content.append(e.toAnchor());
-        effectIds.add(e.id);
+    for (const advancement of this.getEmbeddedCollection("Advancement").documentsByType.itemGrant) {
+      for (const item of advancement.grantedItemsChain()) {
+        content.append(item.toAnchor());
+        itemIds.add(item.id);
       }
     }
 
@@ -205,18 +177,6 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       if (!confirm) return;
     }
 
-    return foundry.documents.modifyBatch([{
-      action: "delete",
-      documentName: "Item",
-      ids: Array.from(itemIds),
-      pack: this.actor.pack,
-      parent: this.actor,
-    }, {
-      action: "delete",
-      documentName: "ActiveEffect",
-      ids: Array.from(effectIds),
-      pack: this.actor.pack,
-      parent: this.actor,
-    }]);
+    return this.actor.deleteEmbeddedDocuments("Item", Array.from(itemIds));
   }
 }

@@ -90,9 +90,9 @@ export default class EffectGrantAdvancement extends BaseAdvancement {
     const actor = this.document.parent;
     if (!actor) return null;
 
-    return actor.effects.filter(effect => {
+    return this.document.effects.filter(effect => {
       const advancementFlags = effect.getFlag(systemID, "advancement");
-      return (advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id);
+      return advancementFlags?.advancementId === this.id;
     });
   }
 
@@ -143,14 +143,18 @@ export default class EffectGrantAdvancement extends BaseAdvancement {
     /** @type {DrawSteelActor} */
     const actor = this.document.parent;
 
-    const allowed = await ds.applications.api.DSDialog.confirm({
-      window: {
-        icon: "fa-solid fa-arrow-rotate-right",
-        title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
-      },
-      content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
-    });
-    if (!allowed) return;
+    const ids = this.grantedEffects();
+
+    if (ids.length) {
+      const allowed = await ds.applications.api.DSDialog.confirm({
+        window: {
+          icon: "fa-solid fa-arrow-rotate-right",
+          title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmEffectGrant.Title",
+        },
+        content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmEffectGrant.Content")}</p>`,
+      });
+      if (!allowed) return;
+    }
 
     const chain = new AdvancementChain(actor, { start: null, end: actor.system.level });
 
@@ -162,9 +166,7 @@ export default class EffectGrantAdvancement extends BaseAdvancement {
     });
     if (!configuration) return;
 
-    const ids = this.grantedEffects();
-
-    if (ids?.length) actor.deleteEmbeddedDocuments("ActiveEffect", ids.map(i => i.id));
+    if (ids?.length) this.document.deleteEmbeddedDocuments("ActiveEffect", ids.map(i => i.id));
 
     const toUpdate = {
       [this.document.id]: { _id: this.document.id },
