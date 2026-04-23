@@ -75,13 +75,13 @@ export default class ProjectModel extends BaseItemModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    // If creating with item UUID, transfer the item project data to the project item
-    const itemUUID = data.system?.yield?.item;
-    const yieldItem = await fromUuid(itemUUID);
-    if (yieldItem?.type === "treasure") {
-      const { prerequisites, rollCharacteristic, goal, source } = yieldItem.system.project;
+    // If creating with a doucment UUID, transfer the document's project data to the project item.
+    const uuid = data.system?.yield?.item;
+    const yieldDocument = await fromUuid(uuid);
+    if ((yieldDocument?.type === "treasure") || (yieldDocument.documentName === "ActiveEffect")) {
+      const { prerequisites, rollCharacteristic, goal, source } = yieldDocument.system.project;
       this.parent.updateSource({
-        img: yieldItem.img,
+        img: yieldDocument.img,
         system: {
           type: "crafting",
           prerequisites,
@@ -89,9 +89,9 @@ export default class ProjectModel extends BaseItemModel {
           goal,
           projectSource: source,
           yield: {
-            item: itemUUID,
-            amount: yieldItem.system.project.yield.amount,
-            display: yieldItem.system.project.yield.display,
+            item: uuid,
+            amount: yieldDocument.system.project.yield.amount,
+            display: yieldDocument.system.project.yield.display,
           },
         },
       });
@@ -344,19 +344,12 @@ export default class ProjectModel extends BaseItemModel {
   async completeCraftingProject() {
     if (!this.actor) return console.error("This project has no owner actor.");
 
-    const item = await fromUuid(this.yield.item);
-    const existingItem = this.actor.items.find(i => i.dsid === item.dsid);
+    const doc = await fromUuid(this.yield.item);
     const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
     const amount = yieldRoll.total;
 
-    // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
-    if (existingItem) {
-      await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
-    } else {
-      const itemData = game.items.fromCompendium(item, { clearFolder: true });
-      itemData.system.quantity = amount;
-      await this.actor.createEmbeddedDocuments("Item", [itemData]);
-    }
+    if (doc.documentName === "Item") await this._createCraftedItem(doc, amount);
+    else if (doc.documentName === "ActiveEffect") await this._createCraftedEffect(doc, amount);
 
     const labelSuffix = game.i18n.pluralRules.select(amount);
 
@@ -364,9 +357,70 @@ export default class ProjectModel extends BaseItemModel {
       format: {
         actor: this.actor.name,
         amount,
-        item: item.name,
+        item: doc.name,
       },
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform the item creation and updates when the yielded document is an Item.
+   * @param {*} doc      The document yielded from this project.
+   * @param {*} amount   The amount yielded.
+   */
+  async _createCraftedItem(doc, amount) {
+    // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
+    const existingItem = this.actor.items.find(i => i.dsid === doc.dsid);
+    if (existingItem) {
+      await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
+    } else {
+      const itemData = game.items.fromCompendium(doc, { clearFolder: true });
+      itemData.system.quantity = amount;
+      await this.actor.createEmbeddedDocuments("Item", [itemData]);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform the item creation and updates when the yielded document is an Item.
+   * @param {*} doc      The document yielded from this project.
+   * @param {*} amount   The amount yielded.
+   */
+  async _createCraftedEffect(doc, amount) {
+    // Prompt for adding to existing item, or adding to a new item.
+    const treasures = this.actor.items.documentsByType.treasure.filter(treasure => treasure.system.category === "leveled").map(treasure => ({ label: treasure.name, value: treasure.id }));
+    const { createFormGroup, createSelectInput } = foundry.applications.fields;
+
+    const content = document.createElement("div");
+
+    content.append(createFormGroup({
+      label: "DRAW_STEEL.Item.project.Craft.EffectDialog.Label",
+      hint: "DRAW_STEEL.Item.project.Craft.EffectDialog.Hint",
+      localize: true,
+      input: createSelectInput({
+        name: "treasure",
+        options: treasures,
+        blank: "",
+      }),
+    }));
+
+    const fd = await ds.applications.api.DSDialog.input({
+      content,
+      window: { title: "DRAW_STEEL.Item.project.Craft.EffectDialog.Title" },
+    });
+
+    let item;
+    if (fd?.treasure) item = this.actor.items.get(fd.treasure);
+    else {
+      const defaultName = getDocumentClass("Item").defaultName({ type: "treasure", parent: this.actor });
+      item = (await this.actor.createEmbeddedDocuments("Item", [{ name: defaultName, type: "treasure", "system.category": "leveled" }]))[0];
+    }
+
+    const effectData = doc.toObject();
+    effectData.transfer = true;
+    await item.createEmbeddedDocuments("ActiveEffect", [effectData]);
   }
 
   /* -------------------------------------------------- */

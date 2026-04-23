@@ -562,4 +562,18 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     await this.actor.createEmbeddedDocuments("Item", droppedItemData.filter(_ => _), { keepId: true });
     return folder;
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDropActiveEffect(event, effect) {
+    // If the effect is dropped onto the project tab, create the effect as a project instead
+    const projectDropTarget = event.target.closest("[data-application-part='projects']");
+    if (projectDropTarget && (this.actor.uuid !== effect.parent?.uuid)) {
+      await effect.system.createProject(this.actor);
+      return;
+    }
+
+    return super._onDropActiveEffect(event, effect);
+  }
 }
