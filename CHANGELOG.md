@@ -18,6 +18,14 @@
 ### Known Issues
 -->
 
+## 1.0.2
+
+### Fixed
+
+- Corrected combatant linkage for applied effects, ensuring they expire at the appropriate time. (#1858)
+- Cleaned up a console error that would appear when creating a combat. (#1873)
+- Fixed the ability configuration dialog to allow 0 cost abilities. (#1876)
+
 ## 1.0.1
 
 ### Changed
