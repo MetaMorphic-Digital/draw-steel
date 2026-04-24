@@ -130,15 +130,6 @@ async function onClickAnchor() {
     (await fromUuid(this.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
     await DrawSteelActiveEffect.fromStatusEffect(this.dataset.status);
 
-  /** @type {ActiveEffectData} */
-  const updates = {
-    transfer: true,
-    origin: this.dataset.origin,
-  };
-  if (this.dataset.end) updates.duration = { expiry: ds.CONFIG.effectEnds[this.dataset.end].expiryEvent };
-  // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
-  const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
-
   /** @type {Set<DrawSteelActor>} */
   const actors = new Set();
 
@@ -148,11 +139,30 @@ async function onClickAnchor() {
   /** @type {DatabaseWriteOperation[]} */
   const toCreate = [];
 
+  // Only keep the initiative value if using the "alternative" (D&D style countdown) initiative.
+  const keepInitiative = !game.combats.isDefaultInitiativeMode;
+
   for (const token of tokens) {
     const actor = token.actor;
     if (!actor) continue;
     else if (actors.has(actor)) continue;
     else actors.add(actor);
+
+    const combatant = game.combat?.getCombatantsByActor(actor)[0];
+
+    /** @type {ActiveEffectData} */
+    const updates = {
+      transfer: true,
+      origin: this.dataset.origin,
+    };
+    if (this.dataset.end) updates.duration = { expiry: ds.CONFIG.effectEnds[this.dataset.end].expiryEvent };
+    if (combatant) updates.start = {
+      combatant,
+      initiative: keepInitiative ? combatant.initiative : null,
+      time: game.time.worldTime,
+    };
+    // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
+    const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
 
     // reusing the ID will block creation if it's already on the actor
     const existing = actor.effects.get(tempEffect.id);

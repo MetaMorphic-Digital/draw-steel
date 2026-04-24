@@ -20,6 +20,12 @@
 
 ## 1.0.1
 
+### Fixed
+
+- Corrected combatant linkage for applied effects, ensuring they expire at the appropriate time (#1858).
+
+## 1.0.1
+
 ### Changed
 
 - Updated Player-Facing Compendium Content:
