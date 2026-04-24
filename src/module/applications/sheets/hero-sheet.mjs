@@ -294,19 +294,25 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #addOrigin(event, target) {
+    // Not as clean as renderChild because there's less automatic cleanup, but at least guarantees these things end up in the same detached window
+    const renderOptions = {
+      window: {
+        windowId: this.window.windowId,
+      },
+    };
     // TODO: Replace this with opening a compendium browser as part of #130
     switch (target.dataset.type) {
       case "ancestry":
-        game.packs.get("draw-steel.origins").render({ force: true });
+        game.packs.get("draw-steel.origins").render(true, renderOptions);
         break;
       case "culture":
-        game.packs.get("draw-steel.origins").render({ force: true });
+        game.packs.get("draw-steel.origins").render(true, renderOptions);
         break;
       case "career":
-        game.packs.get("draw-steel.origins").render({ force: true });
+        game.packs.get("draw-steel.origins").render(true, renderOptions);
         break;
       case "class":
-        game.packs.get("draw-steel.classes").render({ force: true });
+        game.packs.get("draw-steel.classes").render(true, renderOptions);
         break;
     }
   }
@@ -425,7 +431,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editCharacteristics(event, target) {
-    return new CharacteristicInput({ document: this.document }).render({ force: true });
+    return this.renderChild(new CharacteristicInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
