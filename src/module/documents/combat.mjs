@@ -225,6 +225,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /** @inheritdoc */
   async _manageTurnEvents() {
+    if (!this.started) return;
     if (!game.combats.isDefaultInitiativeMode) return super._manageTurnEvents();
 
     // Capture current and previous states
