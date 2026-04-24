@@ -227,8 +227,8 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
       });
     }
 
-    if (formData.resource) this.options.context.resource.value = formData.resource;
-    if (formData.spend) this.options.context.spend = formData.spend;
+    if ("resource" in formData) this.options.context.resource.value = formData.resource;
+    if ("spend" in formData) this.options.context.spend = formData.spend;
     if (formData["damage-selection"]) this.options.context.damage = formData["damage-selection"];
   }
 
