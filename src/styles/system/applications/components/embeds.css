@@ -50,7 +50,6 @@ document-embed, .item-embed {
 
     background-image: linear-gradient(var(--color-statblock), transparent);
     border-radius: 8px 8px 0px 0px ;
-    border-bottom: 1px solid gray;
 
     header {
       display: flex;
@@ -59,11 +58,16 @@ document-embed, .item-embed {
 
       font-family: 'Newsreader', serif;
 
+      border-bottom: 1px solid gray;
       padding-inline-end: 1rem;
 
       img {
         flex: 0 0 5rem;
         width: 5rem;
+      }
+
+      h2 {
+        margin: 0;
       }
 
       .level-ev {
@@ -88,8 +92,46 @@ document-embed, .item-embed {
           flex-direction: column;
         }
       }
-      .characteristics legend button {
-        display: none;
+
+      .secondary-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        margin: 8px;
+
+        div:nth-child(even) {
+          text-align: end;
+        }
+      }
+
+      .characteristics {
+        display: flex;
+        justify-content: space-around;
+        border-block: 1px solid gray;
+
+        .characteristic {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+
+
+          .label {
+            font-weight: 600;
+
+            &::first-letter {
+              font-family: 'Draw Steel Glyphs';
+              font-weight: normal;
+              letter-spacing: 1px;
+            }
+          }
+
+          .value {
+            font-weight: normal;
+          }
+
+        }
+
       }
     }
   }

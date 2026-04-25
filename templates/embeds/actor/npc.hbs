@@ -59,11 +59,26 @@
     </div>
   </div>
 
-  <div class="immunities">
-
+  <div class="secondary-stats">
+    <div class="immunities">
+      <span class="label">{{systemFields.damage.fields.immunities.label}}:</span>
+    </div>
+    <div class="weakness">{{systemFields.damage.fields.weaknesses.label}}:</div>
+    <div class="movement">{{systemFields.movement.label}}:</div>
+    <div class="with-captain">{{localize "With Captain"}}:</div>
   </div>
 
-  <div class="characteristics">
+  <div class="characteristics flexrow">
+    {{#each characteristics as |chr key|}}
+    <div class="characteristic">
+      <div class="label">
+        {{chr.field.label}}
+      </div>
+      <div class="value">
+        {{numberFormat chr.value sign=true}}
+      </div>
+    </div>
+    {{/each}}
   </div>
 
 </section>

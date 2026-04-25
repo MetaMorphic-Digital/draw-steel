@@ -204,10 +204,10 @@ export default class NPCModel extends CreatureModel {
   async toEmbed(config, options) {
     // All NPCs are rendered inline
     config.inline = true;
-    // console.log(config, options);
 
     const context = {
       actor: this.parent,
+      characteristics: this.parent.sheet._getCharacteristics(true),
       monsterKeywords: this.parent.sheet._getMonsterKeywords(),
       system: this,
       systemFields: this.schema.fields,
