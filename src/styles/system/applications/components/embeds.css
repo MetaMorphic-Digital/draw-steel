@@ -46,11 +46,33 @@ document-embed, .item-embed {
   }
 
   div.actor.npc {
+    --color-statblock: rgb(175, 175, 175);
+
+    background-image: linear-gradient(var(--color-statblock), transparent);
+    border-radius: 8px 8px 0px 0px ;
+    border-bottom: 1px solid gray;
+
     header {
+      display: flex;
+      justify-content: space-between;
+
+      font-family: 'Newsreader', serif;
+
+
+      padding-inline-end: 1rem;
 
       img {
-        flex: 0 0 150px;
-        width: 150px;
+        flex: 0 0 5rem;
+        width: 5rem;
+      }
+
+      .level-ev {
+        justify-content: center;
+        text-align: right;
+
+        .level {
+          font-weight: bold;
+        }
       }
     }
 
