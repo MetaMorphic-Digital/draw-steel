@@ -34,3 +34,36 @@
     </div>
   </div>
 </header>
+
+<section class="stats flexcol">
+  <div class="basic-stats flexrow">
+    <div class="size">
+      {{system.combat.size}}
+      <strong>{{systemFields.combat.fields.size.label}}</strong>
+    </div>
+    <div class="speed">
+      {{system.movement.value}}
+      <strong>{{localize "DRAW_STEEL.Actor.base.FIELDS.movement.value.label"}}</strong>
+    </div>
+    <div class="stamina">
+      {{system.stamina.max}}
+      <strong>{{systemFields.stamina.label}}</strong>
+    </div>
+    <div class="stability">
+      {{system.combat.stability}}
+      <strong>{{systemFields.combat.fields.stability.label}}</strong>
+    </div>
+    <div class="free-strike">
+      {{system.monster.freeStrike}}
+      <strong>{{systemFields.monster.fields.freeStrike.label}}</strong>
+    </div>
+  </div>
+
+  <div class="immunities">
+
+  </div>
+
+  <div class="characteristics">
+  </div>
+
+</section>

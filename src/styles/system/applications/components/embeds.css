@@ -55,9 +55,9 @@ document-embed, .item-embed {
     header {
       display: flex;
       justify-content: space-between;
+      gap: 8px;
 
       font-family: 'Newsreader', serif;
-
 
       padding-inline-end: 1rem;
 
@@ -76,7 +76,18 @@ document-embed, .item-embed {
       }
     }
 
-    section {
+    section.stats {
+      .basic-stats {
+        gap: 8px;
+
+        font-size: 1.125rem;
+        text-align: center;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+        }
+      }
       .characteristics legend button {
         display: none;
       }
