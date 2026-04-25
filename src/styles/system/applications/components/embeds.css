@@ -45,7 +45,21 @@ document-embed, .item-embed {
     }
   }
 
-  div.actor.npc {}
+  div.actor.npc {
+    header {
+
+      img {
+        flex: 0 0 150px;
+        width: 150px;
+      }
+    }
+
+    section {
+      .characteristics legend button {
+        display: none;
+      }
+    }
+  }
 
   /* Non-Actor/Item Embeds inside a Draw Steel application */
   .draw-steel & {
