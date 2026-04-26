@@ -61,14 +61,17 @@ document-embed, .item-embed {
       border-bottom: 1px solid gray;
       padding-inline-end: 1rem;
 
-      img {
-        flex: 0 0 5rem;
-        width: 5rem;
+      .image-name-keywords {
+        img {
+          flex: 0 0 5rem;
+          width: 5rem;
+        }
+
+        h2 {
+            margin: 0;
+        }
       }
 
-      h2 {
-        margin: 0;
-      }
 
       .level-ev {
         justify-content: center;

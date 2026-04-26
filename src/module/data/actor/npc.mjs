@@ -206,13 +206,13 @@ export default class NPCModel extends CreatureModel {
     config.inline = true;
 
     const walkLabel = game.i18n.localize(CONFIG.Token.movement.actions.walk.label);
-    const walkRe = new RegExp(`${walkLabel}[,]?`, "i");
+    const walkRe = new RegExp(`${walkLabel}[,]?`);
 
     const context = {
       actor: this.parent,
       characteristics: this.parent.sheet._getCharacteristics(true),
       damageIW: this.parent.sheet._getImmunitiesWeaknesses(),
-      monsterKeywords: this.parent.sheet._getMonsterKeywords(),
+      monsterKeywords: this.parent.sheet._getMonsterKeywords().join(", "),
       movement: this.parent.sheet._getMovement().list.replace(walkRe, "").trim(),
       system: this,
       systemFields: this.schema.fields,

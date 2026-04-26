@@ -1,32 +1,26 @@
 <header>
-  <div class="flexrow">
+  <div class="flexrow image-name-keywords">
     <img src="{{actor.img}}" alt="{{actor.name}}">
-    <div class="flexcol">
-      <h2>
+    <div class="flexcol name-keywords">
+      <h2 class="name">
         {{actor.name}}
       </h2>
-      <div class="tags flexrow">
-        {{#each monsterKeywords as |keyword|}}
-        <div class="tag">{{keyword}}{{#unless @last}},{{/unless}}</div>
-        {{/each}}
+      <div class="keywords">
+        {{monsterKeywords}}
       </div>
     </div>
   </div>
   <div class="flexcol level-ev">
     <div class="level">
-      <span>
-        {{systemFields.monster.fields.level.label}}
-        {{system.level}}
-        <span class="tags">
-          {{!-- Organization/Role Tags --}}
-          {{#if system.monster.organizationLabel}}
-          <span class="tag">{{system.monster.organizationLabel}}</span>
-          {{/if}}
-          {{#if system.monster.roleLabel}}
-          <span class="tag">{{system.monster.roleLabel}}</span>
-          {{/if}}
-        </span>
-      </span>
+      {{systemFields.monster.fields.level.label}}
+      {{system.level}}
+      {{!-- Organization/Role Tags --}}
+      {{#if system.monster.organizationLabel}}
+      {{system.monster.organizationLabel}}
+      {{/if}}
+      {{#if system.monster.roleLabel}}
+      {{system.monster.roleLabel}}
+      {{/if}}
     </div>
     <div class="ev">
       {{localize "DRAW_STEEL.Actor.base.EVLabel.Label"}}
