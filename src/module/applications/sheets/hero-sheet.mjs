@@ -547,7 +547,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         // If it's a treasure dropped on the project tab, create the item as a project
         if (projectDropTarget && (item.type === "treasure")) {
           const name = _loc("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
-          return { name, type: "project", "system.yield.item": item.uuid };
+          return { name, type: "project", "system.yield.document": item.uuid };
         }
         else if (item.supportsAdvancements && (item.getEmbeddedCollection("Advancement").size > 0)) {
           ui.notifications.error("DRAW_STEEL.SHEET.NoCreateAdvancement", { format: { name: item.name } });

@@ -50,12 +50,22 @@ export default class ProjectModel extends BaseItemModel {
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
     schema.events = new fields.DocumentUUIDField({ initial: "Compendium.draw-steel.tables.RollTable.ebiZk3Sfa6Jw1JKk", type: "RollTable" });
     schema.yield = new fields.SchemaField({
-      item: new fields.DocumentUUIDField(),
+      document: new fields.DocumentUUIDField(),
       amount: new FormulaField({ initial: "1" }),
       display: new fields.StringField({ required: true }),
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    // 1.1 migration
+    foundry.abstract.Document._addDataFieldMigration(data, "yield.item", "yield.document");
+
+    return super.migrateData(data);
   }
 
   /* -------------------------------------------------- */
@@ -77,7 +87,7 @@ export default class ProjectModel extends BaseItemModel {
     if (allowed === false) return false;
 
     // If creating with a doment UUID, transfer the document's project data to the project item.
-    const uuid = data.system?.yield?.item;
+    const uuid = data.system?.yield?.document;
     const yieldDocument = await fromUuid(uuid);
     if ((yieldDocument?.type === "treasure") || (yieldDocument.documentName === "ActiveEffect")) {
       const { prerequisites, rollCharacteristic, goal, source } = yieldDocument.system.project;
@@ -131,7 +141,7 @@ export default class ProjectModel extends BaseItemModel {
         },
       });
 
-      if (this.yield.item) this.completeCraftingProject();
+      if (this.yield.document) this.completeCraftingProject();
     }
   }
 
@@ -170,8 +180,8 @@ export default class ProjectModel extends BaseItemModel {
     const characteristicList = Array.from(this.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
     context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
 
-    if (this.yield.item) {
-      const item = await fromUuid(this.yield.item);
+    if (this.yield.document) {
+      const item = await fromUuid(this.yield.document);
       context.itemLink = item?.toAnchor().outerHTML;
     }
   }
@@ -345,7 +355,7 @@ export default class ProjectModel extends BaseItemModel {
   async completeCraftingProject() {
     if (!this.actor) return console.error("This project has no owner actor.");
 
-    const doc = await fromUuid(this.yield.item);
+    const doc = await fromUuid(this.yield.document);
     const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
     const amount = yieldRoll.total;
 
