@@ -69,8 +69,17 @@ document-embed, .item-embed {
         }
 
         h2 {
-        font-size: 1.125em;
-            margin: 0;
+          font-size: 1.125em;
+          margin: 0;
+
+          a {
+            color: unset !important;
+
+          }
+
+          a:hover {
+            text-decoration: underline;
+          }
         }
       }
 
