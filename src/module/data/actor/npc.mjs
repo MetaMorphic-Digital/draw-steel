@@ -205,7 +205,7 @@ export default class NPCModel extends CreatureModel {
     // All NPCs are rendered inline
     config.inline = true;
 
-    const walkLabel = game.i18n.localize(CONFIG.Token.movement.actions.walk.label);
+    const walkLabel = _loc(CONFIG.Token.movement.actions.walk.label);
     const walkRe = new RegExp(`${walkLabel}[,]?`);
 
     const context = {
@@ -220,7 +220,7 @@ export default class NPCModel extends CreatureModel {
 
     const embed = document.createElement("div");
 
-    embed.classList.add("draw-steel", "actor", "npc");
+    embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
 
     embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
 

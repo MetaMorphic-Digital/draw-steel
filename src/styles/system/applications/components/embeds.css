@@ -48,7 +48,7 @@ document-embed, .item-embed {
   div.actor.npc {
     --color-statblock: rgb(175, 175, 175);
 
-    background-image: linear-gradient(var(--color-statblock), transparent);
+    background-image: linear-gradient(var(--color-statblock), transparent 5rem);
     border-radius: 8px 8px 0px 0px ;
 
     header {
@@ -143,6 +143,43 @@ document-embed, .item-embed {
 
       }
     }
+
+    &.ambusher {
+      --color-statblock: #F9DD63;
+    }
+
+    &.artillery {
+      --color-statblock: #CAC6DC;
+    }
+
+    &.brute {
+      --color-statblock: #9CBADF;
+    }
+
+    &.controller {
+      --color-statblock: #F5918F;
+    }
+
+    &.defender {
+      --color-statblock: #CEC9AA;
+    }
+
+    &.harrier {
+      --color-statblock: #E8C0C3;
+    }
+
+    &.hexer {
+      --color-statblock: #D8E1C3;
+    }
+
+    &.mount {
+      --color-statblock: #BADDEA;
+    }
+
+    &.support {
+      --color-statblock: #F4D8C2;
+    }
+
   }
 
   /* Non-Actor/Item Embeds inside a Draw Steel application */
