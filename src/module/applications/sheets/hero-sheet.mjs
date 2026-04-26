@@ -569,7 +569,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
   async _onDropActiveEffect(event, effect) {
     // If the effect is dropped onto the project tab, create the effect as a project instead
     const projectDropTarget = event.target.closest("[data-application-part='projects']");
-    if (projectDropTarget && (this.actor.uuid !== effect.parent?.uuid)) {
+    if (projectDropTarget && (this.actor !== effect.parent)) {
       await effect.system.createProject(this.actor);
       return;
     }

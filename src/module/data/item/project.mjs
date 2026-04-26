@@ -11,7 +11,8 @@ import { setOptions } from "../helpers.mjs";
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
- * @import { ProjectRollModifiers, ProjectRollPrompt, ProjectRollPromptOptions } from  "../../_types.js"
+ * @import { ProjectRollModifiers, ProjectRollPrompt, ProjectRollPromptOptions } from  "../../_types.js";
+ * @import { DrawSteelItem, DrawSteelActiveEffect } from "../../documents/_module.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -75,7 +76,7 @@ export default class ProjectModel extends BaseItemModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    // If creating with a doucment UUID, transfer the document's project data to the project item.
+    // If creating with a doment UUID, transfer the document's project data to the project item.
     const uuid = data.system?.yield?.item;
     const yieldDocument = await fromUuid(uuid);
     if ((yieldDocument?.type === "treasure") || (yieldDocument.documentName === "ActiveEffect")) {
@@ -366,8 +367,9 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Perform the item creation and updates when the yielded document is an Item.
-   * @param {*} doc      The document yielded from this project.
-   * @param {*} amount   The amount yielded.
+   * @param {DrawSteelItem} doc    The document yielded from this project.
+   * @param {number} amount        The amount yielded.
+   * @protected
    */
   async _createCraftedItem(doc, amount) {
     // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
@@ -385,12 +387,15 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Perform the item creation and updates when the yielded document is an Item.
-   * @param {*} doc      The document yielded from this project.
-   * @param {*} amount   The amount yielded.
+   * @param {DrawSteelActiveEffect} doc   The document yielded from this project.
+   * @param {number} amount               The amount yielded.
+   * @protected
    */
   async _createCraftedEffect(doc, amount) {
     // Prompt for adding to existing item, or adding to a new item.
-    const treasures = this.actor.items.documentsByType.treasure.filter(treasure => treasure.system.category === "leveled").map(treasure => ({ label: treasure.name, value: treasure.id }));
+    const treasures = this.actor.items.documentsByType.treasure
+      .filter(treasure => treasure.system.category === "leveled")
+      .map(treasure => ({ label: treasure.name, value: treasure.id }));
     const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
     const content = document.createElement("div");
@@ -415,7 +420,7 @@ export default class ProjectModel extends BaseItemModel {
     if (fd?.treasure) item = this.actor.items.get(fd.treasure);
     else {
       const defaultName = getDocumentClass("Item").defaultName({ type: "treasure", parent: this.actor });
-      item = (await this.actor.createEmbeddedDocuments("Item", [{ name: defaultName, type: "treasure", "system.category": "leveled" }]))[0];
+      item = await getDocumentClass("Item").create({ name: defaultName, type: "treasure", "system.category": "leveled" }, { parent: this.actor });
     }
 
     const effectData = doc.toObject();
