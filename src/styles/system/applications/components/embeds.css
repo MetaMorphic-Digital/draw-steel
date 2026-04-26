@@ -81,11 +81,19 @@ document-embed, .item-embed {
     }
 
     section.stats {
+      gap: 8px;
+
+      .label {
+        font-weight: 600;
+      }
+
       .basic-stats {
         gap: 8px;
 
         font-size: 1.125rem;
         text-align: center;
+
+        margin-block: 8px 0;
 
         > div {
           display: flex;
@@ -96,8 +104,10 @@ document-embed, .item-embed {
       .secondary-stats {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        font-size: 1.125em;
 
-        margin: 8px;
+        padding-inline: 8px;
 
         div:nth-child(even) {
           text-align: end;
@@ -113,22 +123,16 @@ document-embed, .item-embed {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
+          gap: 0.5ch;
 
 
-          .label {
-            font-weight: 600;
-
-            &::first-letter {
+          .label::first-letter {
               font-family: 'Draw Steel Glyphs';
               font-weight: normal;
               letter-spacing: 1px;
             }
-          }
 
-          .value {
-            font-weight: normal;
-          }
+
 
         }
 
