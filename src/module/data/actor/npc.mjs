@@ -212,7 +212,7 @@ export default class NPCModel extends CreatureModel {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
-      monsterKeywords: this.parent.sheet._getMonsterKeywords().join(", "),
+      monsterKeywords: this._getMonsterKeywords().join(", "),
       movement: this.parent.sheet._getMovement().list.replace(walkRe, "").trim(),
       system: this,
       systemFields: this.schema.fields,
@@ -305,5 +305,16 @@ export default class NPCModel extends CreatureModel {
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
     await game.settings.set(systemID, "malice", { value: malice.value + delta });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the printable string for the monster's keywords.
+   * @returns {string[]}
+   */
+  _getMonsterKeywords() {
+    const monsterKeywords = ds.CONFIG.monsters.keywords;
+    return Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
   }
 }

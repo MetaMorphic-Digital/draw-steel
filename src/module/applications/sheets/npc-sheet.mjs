@@ -68,7 +68,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "header":
-        context.monsterKeywords = this._getMonsterKeywords();
+        context.monsterKeywords = this.actor.system._getMonsterKeywords();
         context.showMalice = game.user.isGM && !this.actor.system.isMinion;
         context.malice = game.actors.malice;
         break;
@@ -82,17 +82,6 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         break;
     }
     return context;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the printable string for the monster's keywords.
-   * @returns {string[]}
-   */
-  _getMonsterKeywords() {
-    const monsterKeywords = ds.CONFIG.monsters.keywords;
-    return Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
   }
 
   /* -------------------------------------------------- */
