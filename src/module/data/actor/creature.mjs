@@ -180,6 +180,8 @@ export default class CreatureModel extends BaseActorModel {
     if (this.parent.statuses.has("restrained") && ["might", "agility"].includes(options.characteristic)) modifiers.banes += 1;
   }
 
+  /* ------------------------------------------------- */
+
   /**
      * Constructs a record of valid characteristics and their associated field.
      * @param {boolean} fromSource If true, use Actor's source data; else, use prepared data.

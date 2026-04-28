@@ -484,4 +484,40 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       labels,
     };
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions.
+   * @param {boolean} [excludeWalk=false] Whether to include the Walk movement type.
+   * @returns {{canHover: boolean, list: string, options: FormSelectOption[]}}
+   * @protected
+   */
+  _getMovement(excludeWalk = false) {
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+    const actorMovement = this.movement;
+    const canHover = actorMovement.types.has("fly") || actorMovement.types.has("teleport");
+    const movementList = Array.from(actorMovement.types).map(m => {
+      let label = _loc(CONFIG.Token.movement.actions[m]?.label ?? m);
+      if ((m === "teleport") && (actorMovement.teleport !== actorMovement.value)) label += " " + actorMovement.teleport;
+      return label;
+    });
+
+    if (canHover && actorMovement.hover) movementList.push(_loc("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
+
+    if (excludeWalk) {
+      const walkIndex = movementList.indexOf(_loc(CONFIG.Token.movement.actions.walk.label));
+      movementList.splice(walkIndex, 1);
+    }
+
+    return {
+      canHover,
+      list: formatter.format(movementList),
+      options: Object.entries(CONFIG.Token.movement.actions)
+        .filter(([key, _action]) => ds.CONFIG.speedOptions.includes(key))
+        .map(([value, { label }]) => ({ value, label })),
+      show: !!this.movement.value,
+
+    };
+  }
 }

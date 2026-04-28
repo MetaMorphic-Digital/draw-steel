@@ -213,7 +213,7 @@ export default class NPCModel extends CreatureModel {
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
       monsterKeywords: this._getMonsterKeywords().join(", "),
-      movement: this.parent.sheet._getMovement().list.replace(walkRe, "").trim(),
+      movement: this._getMovement(true).list,
       system: this,
       systemFields: this.schema.fields,
     };
