@@ -67,7 +67,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
         context.mentorLink = this.document.system.retainer.mentor?.toAnchor();
         break;
       case "stats":
-        context.characteristics = this._getCharacteristics(true);
+        context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
         break;
     }
     return context;

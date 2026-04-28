@@ -73,7 +73,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         context.malice = game.actors.malice;
         break;
       case "stats":
-        context.characteristics = this._getCharacteristics(true);
+        context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
         context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
         if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
         break;

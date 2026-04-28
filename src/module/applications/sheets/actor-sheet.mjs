@@ -207,28 +207,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Constructs a record of valid characteristics and their associated field.
-   * @param {boolean} edit Are the characteristics editable inline?
-   * @returns {Record<string, {field: NumberField, value: number}>}
-   * @protected
-   */
-  _getCharacteristics(edit) {
-    const isEdit = this.isEditMode && edit;
-    const data = isEdit ? this.actor._source : this.actor;
-    return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
-      const value = foundry.utils.getProperty(data, `system.characteristics.${chc}.value`);
-      obj[chc] = {
-        isEdit,
-        field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: isEdit ? (value || null) : (value ?? 0),
-      };
-      return obj;
-    }, {});
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Constructs a tooltip of data paths.
    * @protected
    */
