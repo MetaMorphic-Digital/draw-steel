@@ -78,13 +78,7 @@
     </div>
     <div class="movement">
       <span class="label">{{systemFields.movement.label}}:</span>
-      <span class="value">
-        {{#if movement}}
-        {{movement}}
-        {{else}}
-        —
-        {{/if}}
-      </span>
+      <span class="value">{{ifThen movement movement "—"}}</span>
     </div>
     <div class="with-captain">
       <span class="label">{{localize "With Captain"}}:</span>
