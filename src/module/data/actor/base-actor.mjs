@@ -453,4 +453,35 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   async updateResource(delta) {
     throw new Error("This method is abstract and must be implemented by a subclass");
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs an object with the formatted immunities and weaknesses with a list of damage labels.
+   * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
+   * @protected
+   */
+  _getImmunitiesWeaknesses() {
+    const labels = {
+      all: _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
+      ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, { label }]) => {
+        acc[type] = label;
+        return acc;
+      }, {}),
+    };
+
+    const immunities = Object.entries(this.damage.immunities)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.damage.weaknesses)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
+
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+    return {
+      immunities: formatter.format(immunities),
+      weaknesses: formatter.format(weaknesses),
+      labels,
+    };
+  }
 }

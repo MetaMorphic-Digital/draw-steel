@@ -211,7 +211,7 @@ export default class NPCModel extends CreatureModel {
     const context = {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
-      damageIW: this.parent.sheet._getImmunitiesWeaknesses(),
+      damageIW: this._getImmunitiesWeaknesses(),
       monsterKeywords: this.parent.sheet._getMonsterKeywords().join(", "),
       movement: this.parent.sheet._getMovement().list.replace(walkRe, "").trim(),
       system: this,
