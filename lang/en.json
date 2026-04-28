@@ -2,7 +2,8 @@
   "DOCUMENT": {
     "Advancement": "Advancement",
     "AdvancementPl": "Advancements",
-    "PowerRollEffect": "Power Roll Effect"
+    "PowerRollEffect": "Power Roll Effect",
+    "SpecialEffect": "Special Effect"
   },
   "DRAW_STEEL": {
     "COMPENDIUM": {
@@ -320,6 +321,22 @@
         },
         "DefaultDisplay": "Each target gains {amount} {resource}.",
         "ButtonText": "Gain {amount} {resource}"
+      }
+    },
+    "SPECIAL_EFFECT": {
+      "FIELDS": {
+        "before": {
+          "label": "Before Power Roll",
+          "hint": "Place this effect before the power roll. Sort order determines display relative to other special effects."
+        },
+        "description": {
+          "label": "Description"
+        },
+        "resource": {
+          "multiple": {
+            "label": "Multiple"
+          }
+        }
       }
     },
     "SHEET": {
@@ -2445,6 +2462,10 @@
       "forced": "Forced Movement",
       "resource": "Gain Resource",
       "other": "Other"
+    },
+    "SpecialEffect": {
+      "base": "Effect",
+      "spend": "Spend"
     }
   },
   "TOKEN.MOVEMENT": {

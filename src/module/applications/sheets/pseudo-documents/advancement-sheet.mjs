@@ -24,7 +24,6 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
 
   /** @inheritdoc */
   static PARTS = {
-    ...super.PARTS,
     tabs: {
       template: "templates/generic/tab-navigation.hbs",
     },

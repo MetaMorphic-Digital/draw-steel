@@ -1,12 +1,13 @@
+import BaseAdvancement from "../data/pseudo-documents/advancements/base-advancement.mjs";
+import BaseMessagePart from "../data/pseudo-documents/message-parts/base-message-part.mjs";
+import BasePowerRollEffect from "../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
+import BaseSpecialEffect from "../data/pseudo-documents/special-effect/base-special-effect.mjs";
+
 /**
  * @import DataModel from "@common/abstract/data.mjs";
  * @import PseudoDocument from "../data/pseudo-documents/pseudo-document.mjs";
  * @import Collection from "@common/utils/collection.mjs";
  */
-
-import BaseAdvancement from "../data/pseudo-documents/advancements/base-advancement.mjs";
-import BaseMessagePart from "../data/pseudo-documents/message-parts/base-message-part.mjs";
-import BasePowerRollEffect from "../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 
 /**
  * Specialized collection type for stored data models.
@@ -46,6 +47,7 @@ export default class ModelCollection extends foundry.utils.Collection {
     Advancement: BaseAdvancement,
     MessagePart: BaseMessagePart,
     PowerRollEffect: BasePowerRollEffect,
+    SpecialEffect: BaseSpecialEffect,
   };
 
   /* -------------------------------------------------- */

@@ -33,6 +33,7 @@ export default class AbilityModel extends BaseItemModel {
       detailsPartial: [systemPath("templates/sheets/item/partials/ability.hbs")],
       embedded: {
         PowerRollEffect: "system.power.effects",
+        SpecialEffect: "system.effect.special",
       },
     };
   }
@@ -100,6 +101,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.effect = new fields.SchemaField({
       before: new fields.HTMLField(),
       after: new fields.HTMLField(),
+      special: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.specialEffects.BaseSpecialEffect),
     });
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
