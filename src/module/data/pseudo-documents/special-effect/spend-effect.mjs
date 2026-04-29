@@ -36,6 +36,13 @@ export default class SpendSpecialEffect extends BaseSpecialEffect {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  get label() {
+    return _loc(`DRAW_STEEL.SPECIAL_EFFECT.spend.${this.resource.multiple ? "multiple" : "single"}`, { value: this.resource.value, resourceName: this.parent.resourceName });
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Type-specific context prep for this Special Effect.
    * Called by SpecialEffectSheet##prepareDetailsContext.
@@ -44,7 +51,7 @@ export default class SpendSpecialEffect extends BaseSpecialEffect {
    */
   async getSheetContext(options) {
     return {
-      resourceName: this.document.actor?.system.coreResource?.name ?? _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label"),
+      resourceName: this.parent.resourceName,
     };
   }
 }

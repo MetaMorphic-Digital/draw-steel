@@ -1,5 +1,6 @@
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 import { CharacteristicAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import { BaseSpecialEffect, SpendSpecialEffect } from "../pseudo-documents/special-effect/_module.mjs"
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import { PowerRollModifiers } from "../../_types.js";
@@ -31,6 +32,7 @@ declare module "./base-item.mjs" {
 declare module "./ability.mjs" {
 
   type PowerRollEffects = AppliedPowerRollEffect | DamagePowerRollEffect | ForcedMovementPowerRollEffect | OtherPowerRollEffect;
+  type SpecialEffect = BaseSpecialEffect | SpendSpecialEffect;
 
   export default interface AbilityModel {
     description: never;
@@ -79,6 +81,7 @@ declare module "./ability.mjs" {
     effect: {
       before: string;
       after: string;
+      special: ModelCollection<SpecialEffect>;
     };
   }
 

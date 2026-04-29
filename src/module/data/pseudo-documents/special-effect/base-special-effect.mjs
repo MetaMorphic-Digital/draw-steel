@@ -51,6 +51,16 @@ export default class BaseSpecialEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
+   * The label for this in the ability display.
+   * @type {string}
+   */
+  get label() {
+    return this.name;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Type-specific context prep for this Special Effect.
    * Called by SpecialEffectSheet##prepareDetailsContext.
    * @param {object} options The rendering options.
