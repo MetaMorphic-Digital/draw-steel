@@ -50,6 +50,8 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
       }),
     });
 
+    schema.isWithCaptain = new fields.BooleanField({ initial: false });
+
     return schema;
   }
 
