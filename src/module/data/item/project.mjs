@@ -355,12 +355,12 @@ export default class ProjectModel extends BaseItemModel {
   async completeCraftingProject() {
     if (!this.actor) return console.error("This project has no owner actor.");
 
-    const doc = await fromUuid(this.yield.document);
+    const document = await fromUuid(this.yield.document);
     const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
     const amount = yieldRoll.total;
 
-    if (doc.documentName === "Item") await this._createCraftedItem(doc, amount);
-    else if (doc.documentName === "ActiveEffect") await this._createCraftedEffect(doc, amount);
+    if (document.documentName === "Item") await this._createCraftedItem(document, amount);
+    else if (document.documentName === "ActiveEffect") await this._createCraftedEffect(document, amount);
 
     const labelSuffix = game.i18n.pluralRules.select(amount);
 
@@ -368,7 +368,7 @@ export default class ProjectModel extends BaseItemModel {
       format: {
         actor: this.actor.name,
         amount,
-        item: doc.name,
+        item: document.name,
       },
     });
   }
@@ -377,17 +377,17 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Perform the item creation and updates when the yielded document is an Item.
-   * @param {DrawSteelItem} doc    The document yielded from this project.
-   * @param {number} amount        The amount yielded.
+   * @param {DrawSteelItem} item    The yielded item from this project.
+   * @param {number} amount         The amount yielded.
    * @protected
    */
-  async _createCraftedItem(doc, amount) {
+  async _createCraftedItem(item, amount) {
     // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
-    const existingItem = this.actor.items.find(i => i.dsid === doc.dsid);
+    const existingItem = this.actor.items.find(i => i.dsid === item.dsid);
     if (existingItem) {
       await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
     } else {
-      const itemData = game.items.fromCompendium(doc, { clearFolder: true });
+      const itemData = game.items.fromCompendium(item, { clearFolder: true });
       itemData.system.quantity = amount;
       await this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
@@ -396,15 +396,15 @@ export default class ProjectModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Perform the item creation and updates when the yielded document is an Item.
-   * @param {DrawSteelActiveEffect} doc   The document yielded from this project.
-   * @param {number} amount               The amount yielded.
+   * Prompt for treasure selection and create the effect on the chosen item.
+   * @param {DrawSteelActiveEffect} effect   The yielded effect from this project.
+   * @param {number} amount                  The amount yielded.
    * @protected
    */
-  async _createCraftedEffect(doc, amount) {
+  async _createCraftedEffect(effect, amount) {
     // Prompt for adding to existing item, or adding to a new item.
     const treasures = this.actor.items.documentsByType.treasure
-      .filter(treasure => (treasure.system.category === "leveled") && (treasure.system.kind === doc.system.project.yield.kind))
+      .filter(treasure => (treasure.system.category === "leveled") && (treasure.system.kind === effect.system.project.yield.kind))
       .map(treasure => ({ label: treasure.name, value: treasure.id }));
     const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
@@ -421,11 +421,12 @@ export default class ProjectModel extends BaseItemModel {
       }),
     }));
 
+    const kindConfig = ds.CONFIG.equipment.kinds;
     const fd = await ds.applications.api.DSDialog.input({
       content,
       window: {
         title: "DRAW_STEEL.Item.project.Craft.EffectDialog.Title",
-        icon: ds.CONFIG.equipment.kinds[doc.system.project.yield.kind ?? "other"].icon,
+        icon: kindConfig[effect.system.project.yield.kind]?.icon ?? kindConfig.other.icon,
       },
     });
 
@@ -438,12 +439,12 @@ export default class ProjectModel extends BaseItemModel {
         type: "treasure",
         system: {
           category: "leveled",
-          kind: doc.system.project.yield.kind,
+          kind: effect.system.project.yield.kind,
         },
       }, { parent: this.actor });
     }
 
-    const effectData = doc.toObject();
+    const effectData = effect.toObject();
     effectData.transfer = true;
     await item.createEmbeddedDocuments("ActiveEffect", [effectData]);
   }
