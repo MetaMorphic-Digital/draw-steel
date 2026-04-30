@@ -459,7 +459,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /**
    * Constructs an object with the formatted immunities and weaknesses with a list of damage labels.
    * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
-   * @protected
    */
   _getImmunitiesWeaknesses() {
     const labels = {
@@ -491,7 +490,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions.
    * @param {boolean} [excludeWalk=false] Whether to include the Walk movement type.
    * @returns {{canHover: boolean, list: string, options: FormSelectOption[]}}
-   * @protected
    */
   _getMovement(excludeWalk = false) {
     const formatter = game.i18n.getListFormatter({ type: "unit" });
