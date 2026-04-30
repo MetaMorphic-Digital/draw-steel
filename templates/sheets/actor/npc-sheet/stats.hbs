@@ -76,6 +76,15 @@
         {{/if}}
       </div>
     </fieldset>
+    {{#if withCaptain.exists}}
+    <fieldset class="with-captain">
+      <legend>{{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}</legend>
+      <div>
+        <input type="checkbox" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}" id="{{concat rootId "-withCaptainToggle"}}" {{checked withCaptain.effectEnabled}}>
+        <label for="{{concat rootId "-withCaptainToggle"}}">{{withCaptain.description}}</label>
+      </div>
+    </fieldset>
+    {{/if}}
   </div>
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"  editCharacteristics=(not isPlay)}}
   {{#if isPlay}}
