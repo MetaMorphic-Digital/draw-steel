@@ -1,16 +1,5 @@
 {{! Impact Tab }}
 <section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="impact" data-subtype="{{document.type}}">
-  <div class="effect form-group stacked">
-    <label>{{systemFields.effect.fields.before.label}}</label>
-    {{#if isPlay}}
-    {{{enrichedBeforeEffect}}}
-    {{else}}
-    <div class="form-fields">
-      {{formInput systemFields.effect.fields.before value=system.effect.before height="200"}}
-    </div>
-    {{/if}}
-  </div>
-
   <fieldset class="power-roll-data">
     <legend>{{localize "DRAW_STEEL.Item.ability.FIELDS.power.label"}}</legend>
     {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
@@ -45,20 +34,32 @@
     {{/each}}
   </fieldset>
 
+  <fieldset data-pseudo-document-name="SpecialEffect">
+    <legend>{{systemFields.effects.label}}</legend>
+    {{#unless isPlay}}
+    <div class="section-header">
+      <button type="button" data-action="createPseudoDocument">
+        <i class="{{specialEffectIcon}}"></i>
+        {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.SpecialEffect")}}
+      </button>
+    </div>
+    {{/unless}}
+    {{!-- Using document.system to ensure initialized values in edit mode --}}
+    {{#each document.system.effects.sortedContents}}
+    <div class="form-group draggable" data-pseudo-id="{{id}}">
+      <img class="pre-img" src="{{img}}" alt="{{name}}">
+      <label> {{name}} </label>
+      <div class="form-fields">
+        <button type="button" data-action="renderPseudoDocumentSheet" class="icon fa-fw fa-solid fa-cog" {{disabled (not @root.editable)}}></button>
+        <button type="button" data-action="deletePseudoDocument" class="icon fa-fw fa-solid fa-trash" {{disabled @root.isPlay}}></button>
+      </div>
+    </div>
+    {{/each}}
+  </fieldset>
+
   <fieldset>
     <legend>{{systemFields.spend.label}}</legend>
     {{formGroup systemFields.spend.fields.value value=system.spend.value disabled=@root.isPlay}}
     {{formGroup systemFields.spend.fields.text value=system.spend.text disabled=@root.isPlay}}
   </fieldset>
-
-  <div class="effect form-group stacked">
-    <label>{{systemFields.effect.fields.after.label}}</label>
-    {{#if isPlay}}
-    {{{enrichedAfterEffect}}}
-    {{else}}
-    <div class="form-fields">
-      {{formInput systemFields.effect.fields.after value=system.effect.after height="200"}}
-    </div>
-    {{/if}}
-  </div>
 </section>

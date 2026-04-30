@@ -29,12 +29,6 @@
   </dl>
 </section>
 <section class="effect before">
-  {{#if system.effect.before}}
-  <dl>
-    <dt class="effect">{{systemFields.effect.label}}</dt>
-    <dd class="effect">{{{enrichedBeforeEffect}}}</dd>
-  </dl>
-  {{/if}}
   {{#each beforeEffects}}
   <dl>
     <dt class="effect">{{label}}</dt>
@@ -63,12 +57,6 @@
 </section>
 {{/if}}
 <section class="effect after">
-  {{#if system.effect.after}}
-  <dl>
-    <dt class="effect">{{systemFields.effect.label}}</dt>
-    <dd class="effect">{{{enrichedAfterEffect}}}</dd>
-  </dl>
-  {{/if}}
   {{#each afterEffects}}
   <dl>
     <dt class="effect">{{label}}</dt>

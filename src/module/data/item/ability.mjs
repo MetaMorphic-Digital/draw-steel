@@ -33,7 +33,7 @@ export default class AbilityModel extends BaseItemModel {
       detailsPartial: [systemPath("templates/sheets/item/partials/ability.hbs")],
       embedded: {
         PowerRollEffect: "system.power.effects",
-        SpecialEffect: "system.effect.special",
+        SpecialEffect: "system.effects",
       },
     };
   }
@@ -98,11 +98,8 @@ export default class AbilityModel extends BaseItemModel {
       }, { persisted: false }),
     });
 
-    schema.effect = new fields.SchemaField({
-      before: new fields.HTMLField(),
-      after: new fields.HTMLField(),
-      special: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.specialEffects.BaseSpecialEffect),
-    });
+    schema.effects = new ds.data.fields.CollectionField(ds.data.pseudoDocuments.specialEffects.BaseSpecialEffect);
+
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
       text: new fields.StringField({ required: true }),
@@ -120,19 +117,46 @@ export default class AbilityModel extends BaseItemModel {
 
     // 1.1 effect migration, based on Document._addDataFieldMigration
     const { hasProperty, getProperty, setProperty, deleteProperty } = foundry.utils;
-    const spendId = "spend".padEnd(16, "0");
-    if ((hasProperty(data, "spend.value") || hasProperty(data, "spend.text")) && !hasProperty(data, `effect.special.${spendId}`)) {
-      const value = getProperty(data, "spend.value");
-      setProperty(data, `effect.special.${spendId}`, {
-        type: "spend",
-        _id: spendId,
-        resource: {
-          value,
-          multiple: value === null,
-        },
-        description: `<p>${getProperty(data, "spend.text") ?? ""}</p>`,
-      });
-      deleteProperty(data, "spend");
+    const { Document } = foundry.abstract;
+    if (!hasProperty(data, "effects")) {
+      const spendID = "spend".padEnd(16, "0");
+      if ((getProperty(data, "spend.value") || getProperty(data, "spend.text")) && !hasProperty(data, `effects.${spendID}`)) {
+        const value = getProperty(data, "spend.value");
+        setProperty(data, `effects.${spendID}`, {
+          _id: spendID,
+          type: "spend",
+          sort: CONST.SORT_INTEGER_DENSITY, // guarantees after "after" effects if present
+          resource: {
+            value,
+            multiple: value === null,
+          },
+          description: `<p>${getProperty(data, "spend.text") ?? ""}</p>`,
+        });
+        deleteProperty(data, "spend");
+      }
+      if (data.effect?.before) {
+        const beforeID = "before".padEnd(16, "0");
+        Document._addDataFieldMigration(data, "effect.before", `effects.${beforeID}`, (data) => {
+          const description = getProperty(data, "effect.before");
+          return {
+            _id: beforeID,
+            type: "base",
+            description,
+            before: true,
+          };
+        });
+      }
+      if (data.effect?.after) {
+        const afterID = "after".padEnd(16, "0");
+        Document._addDataFieldMigration(data, "effect.after", `effects.${afterID}`, (data) => {
+          const description = getProperty(data, "effect.after");
+          return {
+            _id: afterID,
+            type: "base",
+            description,
+          };
+        });
+      }
     }
 
     return super.migrateData(data);
@@ -424,16 +448,13 @@ export default class AbilityModel extends BaseItemModel {
 
     context.beforeEffects = [];
     context.afterEffects = [];
-    for (const effect of this.effect.special) {
+    for (const effect of this.effects.sortedContents) {
       const displayData = {
         label: effect.label,
         text: await enrichHTML(effect.description, { relativeTo: this.parent }),
       };
       context[effect.before ? "beforeEffects" : "afterEffects"].push(displayData);
     }
-
-    context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
-    context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
 
     context.spendLabel = _loc("DRAW_STEEL.Item.ability.SpendLabel", {
       value: this.spend.value ?? "",

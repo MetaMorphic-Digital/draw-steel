@@ -78,11 +78,7 @@ declare module "./ability.mjs" {
       value: number;
       text: string;
     };
-    effect: {
-      before: string;
-      after: string;
-      special: ModelCollection<SpecialEffect>;
-    };
+    effects: ModelCollection<SpecialEffect>;
   }
 
   export interface AbilityUseOptions {
