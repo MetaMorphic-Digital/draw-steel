@@ -2063,20 +2063,24 @@ const treasureCategories = {
 
 /**
  * Used by Leveled Treasures and Artifacts.
- * @type {Record<string, {label: string}>}
+ * @type {Record<string, {label: string, icon: string}>}
  */
 const equipmentKinds = {
   other: {
     label: "DRAW_STEEL.Item.treasure.Kinds.Other",
+    icon: "fa-solid fa-suitcase",
   },
   armor: {
     label: "DRAW_STEEL.Item.treasure.Kinds.Armor",
+    icon: "fa-solid fa-shield",
   },
   implement: {
     label: "DRAW_STEEL.Item.treasure.Kinds.Implement",
+    icon: "fa-solid fa-wand-sparkles",
   },
   weapon: {
     label: "DRAW_STEEL.Item.treasure.Kinds.Weapon",
+    icon: "",
   },
 };
 

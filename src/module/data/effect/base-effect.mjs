@@ -44,6 +44,7 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
       rollCharacteristic: new fields.SetField(setOptions()),
       goal: new fields.NumberField(),
       yield: new fields.SchemaField({
+        kind: new fields.StringField({ required: true, initial: "weapon" }),
         amount: new FormulaField({ initial: "1" }),
         display: new fields.StringField({ required: true }),
       }),

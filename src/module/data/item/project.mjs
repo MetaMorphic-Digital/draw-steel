@@ -404,7 +404,7 @@ export default class ProjectModel extends BaseItemModel {
   async _createCraftedEffect(doc, amount) {
     // Prompt for adding to existing item, or adding to a new item.
     const treasures = this.actor.items.documentsByType.treasure
-      .filter(treasure => treasure.system.category === "leveled")
+      .filter(treasure => (treasure.system.category === "leveled") && (treasure.system.kind === doc.system.project.yield.kind))
       .map(treasure => ({ label: treasure.name, value: treasure.id }));
     const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
@@ -423,14 +423,24 @@ export default class ProjectModel extends BaseItemModel {
 
     const fd = await ds.applications.api.DSDialog.input({
       content,
-      window: { title: "DRAW_STEEL.Item.project.Craft.EffectDialog.Title" },
+      window: {
+        title: "DRAW_STEEL.Item.project.Craft.EffectDialog.Title",
+        icon: ds.CONFIG.equipment.kinds[doc.system.project.yield.kind ?? "other"].icon,
+      },
     });
 
     let item;
     if (fd?.treasure) item = this.actor.items.get(fd.treasure);
     else {
       const defaultName = getDocumentClass("Item").defaultName({ type: "treasure", parent: this.actor });
-      item = await getDocumentClass("Item").create({ name: defaultName, type: "treasure", "system.category": "leveled" }, { parent: this.actor });
+      item = await getDocumentClass("Item").create({
+        name: defaultName,
+        type: "treasure",
+        system: {
+          category: "leveled",
+          kind: doc.system.project.yield.kind,
+        },
+      }, { parent: this.actor });
     }
 
     const effectData = doc.toObject();
