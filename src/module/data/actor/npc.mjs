@@ -207,9 +207,6 @@ export default class NPCModel extends CreatureModel {
     // All NPCs are rendered inline
     config.inline = true;
 
-    const walkLabel = _loc(CONFIG.Token.movement.actions.walk.label);
-    const walkRe = new RegExp(`${walkLabel}[,]?`);
-
     const context = {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
@@ -218,6 +215,7 @@ export default class NPCModel extends CreatureModel {
       movement: this._getMovement(true).list,
       system: this,
       systemFields: this.schema.fields,
+      withCaptain: this._getWithCaptainDescription(),
     };
 
     const embed = document.createElement("div");
@@ -348,5 +346,19 @@ export default class NPCModel extends CreatureModel {
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
     return Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
+  }
+
+  /* ------------------------------------------------- */
+
+  /**
+   * Fetches the description for the "With Captain" effect.
+   * @returns {string|null} The inner HTML of the first element of the description.
+   *                        Null if no such effect exists.
+   */
+  _getWithCaptainDescription() {
+    const withCaptainAE = this.parent.effects.find(e => e.system.isWithCaptain);
+    let html = foundry.utils.parseHTML(withCaptainAE?.description);
+    if (html instanceof HTMLCollection) html = html[0];
+    return html?.innerHTML ?? null;
   }
 }
