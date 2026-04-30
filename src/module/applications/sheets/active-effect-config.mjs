@@ -54,6 +54,7 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
         context.keywordOptions = ds.CONFIG.abilities.keywordOptions;
         context.characteristicOptions = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
         context.kindOptions = Object.entries(ds.CONFIG.equipment.kinds).map(([value, { label }]) => ({ value, label }));
+        context.hideWithCaptainField = this.document.parent.effects.some((e) => e.system.isWithCaptain && (e.id !== this.document.id));
         break;
     }
 

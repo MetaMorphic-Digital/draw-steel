@@ -11,7 +11,10 @@
 
   {{#if isActorEffect}}
   {{formGroup fields.origin value=source.origin rootId=rootId disabled=true}}
+
+  {{#unless hideWithCaptainField}}
   {{formGroup systemFields.isWithCaptain value=source.system.isWithCaptain rootId=rootId}}
+  {{/unless}}
   {{/if}}
 
   {{#if isItemEffect}}
