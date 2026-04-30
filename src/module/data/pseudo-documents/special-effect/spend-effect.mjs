@@ -43,12 +43,7 @@ export default class SpendSpecialEffect extends BaseSpecialEffect {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Type-specific context prep for this Special Effect.
-   * Called by SpecialEffectSheet##prepareDetailsContext.
-   * @param {object} options The rendering options.
-   * @returns {Promise<object>} Additional context information.
-   */
+  /** @inheritdoc */
   async getSheetContext(options) {
     return {
       resourceName: this.parent.resourceName,

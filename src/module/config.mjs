@@ -1900,6 +1900,11 @@ export const SpecialEffect = {
     defaultImage: "icons/svg/book.svg",
     documentClass: pseudoDocuments.specialEffects.BaseSpecialEffect,
   },
+  persistent: {
+    label: "TYPES.SpecialEffect.persistent",
+    defaultImage: "icons/svg/fire-shield.svg",
+    documentClass: pseudoDocuments.specialEffects.PersistentSpecialEffect,
+  },
   spend: {
     label: "TYPES.SpecialEffect.spend",
     defaultImage: "icons/svg/coins.svg",

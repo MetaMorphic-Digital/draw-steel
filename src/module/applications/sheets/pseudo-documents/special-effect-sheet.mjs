@@ -14,7 +14,7 @@ export default class SpecialEffectSheet extends PseudoDocumentSheet {
     details: {
       template: systemPath("templates/sheets/pseudo-documents/special-effect/content.hbs"),
       // Modules can push to this or otherwise load their details partial templates
-      templates: ["spend.hbs"].map(t => systemPath(`templates/sheets/pseudo-documents/special-effect/${t}`)),
+      templates: ["persistent.hbs", "spend.hbs"].map(t => systemPath(`templates/sheets/pseudo-documents/special-effect/${t}`)),
     },
   };
 

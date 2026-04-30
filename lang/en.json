@@ -332,12 +332,16 @@
         "description": {
           "label": "Description"
         },
+        "essence": {
+          "label": "Essence Cost"
+        },
         "resource": {
           "multiple": {
             "label": "Multiple"
           }
         }
       },
+      "persistent": "Persistent {value}",
       "spend": {
         "single": "Spend {value} {resourceName}",
         "multiple": "Spend {value}+ {resourceName}"
@@ -2454,6 +2458,7 @@
     },
     "SpecialEffect": {
       "base": "Effect",
+      "persistent": "Persistent",
       "spend": "Spend"
     }
   },
