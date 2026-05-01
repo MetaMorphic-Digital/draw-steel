@@ -22,6 +22,8 @@
 
 ### Added
 
+- Added project data to Active Effects to help implement Imbued treasures. (#1843)
+
 ### Changed
 
 ### Deprecated

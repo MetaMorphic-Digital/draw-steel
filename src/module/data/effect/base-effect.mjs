@@ -44,6 +44,7 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
       rollCharacteristic: new fields.SetField(setOptions()),
       goal: new fields.NumberField(),
       yield: new fields.SchemaField({
+        kind: new fields.StringField({ required: true, initial: "weapon" }),
         amount: new FormulaField({ initial: "1" }),
         display: new fields.StringField({ required: true }),
       }),
@@ -149,5 +150,19 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     });
 
     return roll.toMessage(messageData, messageOptions);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Creates a project for this equipment on the provided actor.
+   * @param {DrawSteelActor} actor
+   * @returns {DrawSteelItem}
+   */
+  async createProject(actor) {
+    if (!actor) return;
+
+    const name = _loc("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
+    return getDocumentClass("Item").create({ name, type: "project", "system.yield.document": this.parent.uuid }, { parent: actor });
   }
 }

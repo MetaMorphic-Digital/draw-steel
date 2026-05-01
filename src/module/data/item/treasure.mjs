@@ -146,6 +146,6 @@ export default class TreasureModel extends BaseItemModel {
     if (!actor) return;
 
     const name = _loc("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
-    return getDocumentClass("Item").create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
+    return getDocumentClass("Item").create({ name, type: "project", "system.yield.document": this.parent.uuid }, { parent: actor });
   }
 }
