@@ -380,7 +380,7 @@ export default class AbilityModel extends BaseItemModel {
    * @type {string}
    */
   get resourceName() {
-    if (!this.#resourceName) this.#resourceName = this.actor?.system.coreResource?.name;
+    this.#resourceName ??= this.actor?.system.coreResource?.name;
 
     if (!this.#resourceName && (this.prerequisites.dsid.size === 1)) {
       const dsid = this.prerequisites.dsid.first();
@@ -455,11 +455,6 @@ export default class AbilityModel extends BaseItemModel {
       };
       context[effect.before ? "beforeEffects" : "afterEffects"].push(displayData);
     }
-
-    context.spendLabel = _loc("DRAW_STEEL.Item.ability.SpendLabel", {
-      value: this.spend.value ?? "",
-      name: this.resourceName,
-    });
   }
 
   /* -------------------------------------------------- */
@@ -610,9 +605,7 @@ export default class AbilityModel extends BaseItemModel {
 
     let resourceSpend = fd.resource ?? 0;
 
-    if (fd.spend) {
-      resourceSpend += typeof fd.spend === "boolean" ? this.spend.value : fd.spend;
-    }
+    for (const spend of Object.values(fd.spend ?? {})) resourceSpend += spend;
 
     if (resourceSpend) {
       messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
