@@ -1910,6 +1910,11 @@ export const SpecialEffect = {
     defaultImage: "icons/svg/coins.svg",
     documentClass: pseudoDocuments.specialEffects.SpendSpecialEffect,
   },
+  strained: {
+    label: "TYPES.SpecialEffect.strained",
+    defaultImage: "icons/svg/anchor.svg",
+    documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
+  },
 };
 preLocalize("SpecialEffect", { key: "label" });
 
