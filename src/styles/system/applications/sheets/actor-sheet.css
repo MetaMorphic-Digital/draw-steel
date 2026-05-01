@@ -110,12 +110,15 @@
 
   .resources {
     align-items: flex-start;
+    padding-bottom: 0;
+
     .form-group.stacked {
       flex-direction: column-reverse;
     }
 
     .resource {
       gap: 0.5rem;
+
       input[type=number] {
         width: 60px;
         flex: 0 0 50px;
@@ -132,11 +135,30 @@
     }
 
     .resource-label {
+      font-size: 1.1em;
       font-weight: 600;
       text-align: center;
-      display: flex;
-      justify-content: space-around;
       line-height: var(--input-height);
+
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: 6px;
+    }
+
+
+    .resource-content {
+      align-items: center;
+
+      > * > .form-group {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0px;
+
+        > .form-fields {
+          justify-content: center;
+        }
+      }
     }
 
     .resource-divider {
@@ -150,12 +172,30 @@
     }
   }
 
-  .free-strike {
-    flex: 0 0 120px;
+  fieldset.free-strike {
+    flex: 0 0 fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
     .free-strike-body {
       text-align: center;
-      height: 100%;
       padding: 10px 0;
+      margin-inline: auto;
+    }
+  }
+
+  fieldset.with-captain {
+    flex: 0 0 fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    > div {
+      display: flex;
+      align-items: center;
     }
   }
 
