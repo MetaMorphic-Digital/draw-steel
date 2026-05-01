@@ -23,7 +23,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     classes: ["actor"],
     position: {
       width: 700,
-      height: 600,
+      height: 620,
     },
     actions: {
       // We're not extending ActorSheetV2 because we ultimately don't want to inherit most of the framework Foundry defaults to
