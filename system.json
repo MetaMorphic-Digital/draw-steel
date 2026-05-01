@@ -43,9 +43,10 @@
     "Item": {
       "ability": {
         "filePathFields": {
-          "power.effects.*.img": ["IMAGE"]
+          "power.effects.*.img": ["IMAGE"],
+          "effects.*.img": ["IMAGE"]
         },
-        "htmlFields": ["effect.before", "effect.after", "effect.special.*.description"]
+        "htmlFields": ["effects.*.description"]
       },
       "ancestry": {
         "filePathFields": {
