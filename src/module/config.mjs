@@ -2080,7 +2080,7 @@ const equipmentKinds = {
   },
   weapon: {
     label: "DRAW_STEEL.Item.treasure.Kinds.Weapon",
-    icon: "",
+    icon: "fa-solid fa-sword",
   },
 };
 
