@@ -1,4 +1,5 @@
 import BaseCombatantGroupModel from "./base.mjs";
+import { DrawSteelActor } from "../../documents/_module.mjs";
 import DrawSteelCombatant from "../../documents/combatant.mjs";
 
 const fields = foundry.data.fields;
@@ -150,5 +151,41 @@ export default class SquadModel extends BaseCombatantGroupModel {
       await minion.actor?.toggleStatusEffect(CONFIG.specialStatusEffects.DEFEATED, { overlay: true, active: true });
     }
     await this.combat.updateEmbeddedDocuments("Combatant", combatantUpdates);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Deal damage to the squad's minion stamina pool, accounting for immunities and resistances which are applied only once per squad.
+   * @param {Array<DrawSteelActor>} minions    The minions that are taking the damage.
+   * @param {number} damagePerMinion           The amount of damage to take.
+   * @param {object} [options]                 Options to modify the damage application.
+   * @param {string} [options.type]            Valid damage type.
+   * @param {boolean} [options.aoe]            Is this an AOE that should have the damage capped?
+   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
+   * @returns {Promise<DrawSteelCombatantGroup>}
+   */
+  async takeDamage(minions, damagePerMinion, options = {}) {
+    if (!minions.length) return this;
+
+    // Return early if the provided minion actors are not part of this squad.
+    const squadActors = Array.from(this.minions.map(minion => minion.actor));
+    if (!minions.every(minion => squadActors.includes(minion))) {
+      ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.DamagingInapplicableActors", { localize: true });
+      return this;
+    }
+
+    // Get all minions immunities and weaknesses and reduce it to the highest ones.
+    const applicableImmunityWeakness = { immunity: 0, weakness: 0 };
+    for (const minion of minions) {
+      const { immunity = 0, weakness = 0 } = minion.system.calculateImmunityAndWeakness(options);
+      applicableImmunityWeakness.immunity = Math.max(immunity, applicableImmunityWeakness.immunity);
+      applicableImmunityWeakness.weakness = Math.max(weakness, applicableImmunityWeakness.weakness);
+    }
+
+    if (options.aoe) damagePerMinion = Math.min(damagePerMinion, minions[0].system.stamina.max);
+    const damage = Math.max(0, (damagePerMinion * minions.length) + applicableImmunityWeakness.weakness - applicableImmunityWeakness.immunity);
+
+    return this.parent.update({ "system.staminaValue": this.staminaValue - damage }, { ds: { damageType: options.type } });
   }
 }

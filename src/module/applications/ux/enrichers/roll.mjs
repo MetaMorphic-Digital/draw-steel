@@ -151,6 +151,9 @@ function enrichDamageHeal(parsedConfig, label, options) {
     ignoredImmunities: [],
   };
 
+  const doc = options.relativeTo;
+  if (doc && (doc.documentName === "Item") && (doc.type === "ability") && doc.system.keywords.has("area")) linkConfig.aoe = true;
+
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
@@ -159,6 +162,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
       if (normalizedValue === "scaling") c.scaling = true;
+      else if (normalizedValue === "aoe") c.aoe = true;
       else if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
       else if (normalizedValue in ds.CONFIG.healingTypes) c.type.push(normalizedValue);
       else if (["heal", "healing"].includes(normalizedValue)) c.type.push("value");
@@ -175,6 +179,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
       linkConfig.damageTypes.push(c.type.join("|"));
       linkConfig.ignoredImmunities.push(c.ignoredImmunities.join("|"));
       linkConfig.scaling ||= c.scaling;
+      linkConfig.aoe ||= c.aoe;
     }
   }
 
@@ -224,7 +229,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollDamageHeal(link, event) {
-  let { formulas, rollType, damageTypes, ignoredImmunities: rawIgnoredImmunities, scaling } = link.dataset;
+  let { formulas, rollType, damageTypes, ignoredImmunities: rawIgnoredImmunities, scaling, aoe } = link.dataset;
   const configKey = rollType === "damage" ? "damageTypes" : "healingTypes";
 
   if (!["damage", "healing"].includes(rollType)) throw new Error("The button's roll type must be damage or healing");
@@ -244,7 +249,7 @@ async function rollDamageHeal(link, event) {
     });
     return {
       formula,
-      options: { type: types[0], types, isHeal: rollType !== "damage", ignoredImmunities },
+      options: { type: types[0], types, isHeal: rollType !== "damage", ignoredImmunities, aoe },
     };
   });
 

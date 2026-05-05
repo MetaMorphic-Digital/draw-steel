@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "370",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "blood-oath",
@@ -17,8 +17,10 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "encounter"
+    ],
+    "type": "maneuver",
     "category": "",
     "resource": null,
     "trigger": "",
@@ -40,7 +42,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>Until the start of the charger’s next turn, the charger and their mentor each have [[/heal @recoveries.recoveryValue temp]]{temporary Stamina equal to their Recovery value} and a +2 bonus to speed, and they each gain an edge on reactive tests [[/apply r5FMtOUtZjVe4TAq]].</p>",
       "after": ""
     },
     "spend": {
@@ -48,7 +50,66 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Blood Oath",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.oEHj8TgHAqdoB7lL",
+      "transfer": false,
+      "_id": "r5FMtOUtZjVe4TAq",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "turns",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "<p>Until the start of the charger’s next turn, the charger and their mentor each have temporary Stamina equal to their Recovery value and a +2 bonus to speed, and they each gain an edge on reactive tests.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776805225354,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!oEHj8TgHAqdoB7lL.r5FMtOUtZjVe4TAq"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -58,9 +119,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913894571,
     "modifiedTime": null,
     "lastModifiedBy": null

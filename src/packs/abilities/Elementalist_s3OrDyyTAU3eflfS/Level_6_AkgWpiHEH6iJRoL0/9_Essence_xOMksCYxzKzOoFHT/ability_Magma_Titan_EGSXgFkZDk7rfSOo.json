@@ -56,7 +56,7 @@
   },
   "effects": [
     {
-      "name": "Magma Champion",
+      "name": "Magma Titan",
       "img": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.abilities.Item.EGSXgFkZDk7rfSOo",
@@ -104,7 +104,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.360",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "createdTime": 1761510413139,
@@ -115,6 +115,72 @@
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!EGSXgFkZDk7rfSOo.csn3x2B2RfWh6loO"
+    },
+    {
+      "name": "Magma Titan - Forced Movement Bonus",
+      "img": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.abilities.Item.EGSXgFkZDk7rfSOo",
+      "transfer": false,
+      "_id": "JOVF0GLiDUm6ahJD",
+      "system": {
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.pull",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.slide",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>When the target force moves a creature or object, the forced movement distance gains a +2 bonus.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776464848239,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!EGSXgFkZDk7rfSOo.JOVF0GLiDUm6ahJD"
     }
   ],
   "sort": 0,

@@ -11,7 +11,8 @@ import { setOptions } from "../helpers.mjs";
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
- * @import { ProjectRollModifiers, ProjectRollPrompt, ProjectRollPromptOptions } from  "../../_types.js"
+ * @import { ProjectRollModifiers, ProjectRollPrompt, ProjectRollPromptOptions } from  "../../_types.js";
+ * @import { DrawSteelItem, DrawSteelActiveEffect } from "../../documents/_module.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -49,12 +50,22 @@ export default class ProjectModel extends BaseItemModel {
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
     schema.events = new fields.DocumentUUIDField({ initial: "Compendium.draw-steel.tables.RollTable.ebiZk3Sfa6Jw1JKk", type: "RollTable" });
     schema.yield = new fields.SchemaField({
-      item: new fields.DocumentUUIDField(),
+      document: new fields.DocumentUUIDField(),
       amount: new FormulaField({ initial: "1" }),
       display: new fields.StringField({ required: true }),
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    // 1.1 migration
+    foundry.abstract.Document._addDataFieldMigration(data, "yield.item", "yield.document");
+
+    return super.migrateData(data);
   }
 
   /* -------------------------------------------------- */
@@ -75,13 +86,13 @@ export default class ProjectModel extends BaseItemModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    // If creating with item UUID, transfer the item project data to the project item
-    const itemUUID = data.system?.yield?.item;
-    const yieldItem = await fromUuid(itemUUID);
-    if (yieldItem?.type === "treasure") {
-      const { prerequisites, rollCharacteristic, goal, source } = yieldItem.system.project;
+    // If creating with a doment UUID, transfer the document's project data to the project item.
+    const uuid = data.system?.yield?.document;
+    const yieldDocument = await fromUuid(uuid);
+    if ((yieldDocument?.type === "treasure") || (yieldDocument.documentName === "ActiveEffect")) {
+      const { prerequisites, rollCharacteristic, goal, source } = yieldDocument.system.project;
       this.parent.updateSource({
-        img: yieldItem.img,
+        img: yieldDocument.img,
         system: {
           type: "crafting",
           prerequisites,
@@ -89,9 +100,9 @@ export default class ProjectModel extends BaseItemModel {
           goal,
           projectSource: source,
           yield: {
-            item: itemUUID,
-            amount: yieldItem.system.project.yield.amount,
-            display: yieldItem.system.project.yield.display,
+            item: uuid,
+            amount: yieldDocument.system.project.yield.amount,
+            display: yieldDocument.system.project.yield.display,
           },
         },
       });
@@ -130,7 +141,7 @@ export default class ProjectModel extends BaseItemModel {
         },
       });
 
-      if (this.yield.item) this.completeCraftingProject();
+      if (this.yield.document) this.completeCraftingProject();
     }
   }
 
@@ -169,8 +180,8 @@ export default class ProjectModel extends BaseItemModel {
     const characteristicList = Array.from(this.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
     context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
 
-    if (this.yield.item) {
-      const item = await fromUuid(this.yield.item);
+    if (this.yield.document) {
+      const item = await fromUuid(this.yield.document);
       context.itemLink = item?.toAnchor().outerHTML;
     }
   }
@@ -344,19 +355,12 @@ export default class ProjectModel extends BaseItemModel {
   async completeCraftingProject() {
     if (!this.actor) return console.error("This project has no owner actor.");
 
-    const item = await fromUuid(this.yield.item);
-    const existingItem = this.actor.items.find(i => i.dsid === item.dsid);
+    const document = await fromUuid(this.yield.document);
     const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
     const amount = yieldRoll.total;
 
-    // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
-    if (existingItem) {
-      await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
-    } else {
-      const itemData = game.items.fromCompendium(item, { clearFolder: true });
-      itemData.system.quantity = amount;
-      await this.actor.createEmbeddedDocuments("Item", [itemData]);
-    }
+    if (document.documentName === "Item") await this._createCraftedItem(document, amount);
+    else if (document.documentName === "ActiveEffect") await this._createCraftedEffect(document, amount);
 
     const labelSuffix = game.i18n.pluralRules.select(amount);
 
@@ -364,9 +368,85 @@ export default class ProjectModel extends BaseItemModel {
       format: {
         actor: this.actor.name,
         amount,
-        item: item.name,
+        item: document.name,
       },
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform the item creation and updates when the yielded document is an Item.
+   * @param {DrawSteelItem} item    The yielded item from this project.
+   * @param {number} amount         The amount yielded.
+   * @protected
+   */
+  async _createCraftedItem(item, amount) {
+    // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
+    const existingItem = this.actor.items.find(i => i.dsid === item.dsid);
+    if (existingItem) {
+      await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
+    } else {
+      const itemData = game.items.fromCompendium(item, { clearFolder: true });
+      itemData.system.quantity = amount;
+      await this.actor.createEmbeddedDocuments("Item", [itemData]);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt for treasure selection and create the effect on the chosen item.
+   * @param {DrawSteelActiveEffect} effect   The yielded effect from this project.
+   * @param {number} amount                  The amount yielded.
+   * @protected
+   */
+  async _createCraftedEffect(effect, amount) {
+    // Prompt for adding to existing item, or adding to a new item.
+    const treasures = this.actor.items.documentsByType.treasure
+      .filter(treasure => (treasure.system.category === "leveled") && (treasure.system.kind === effect.system.project.yield.kind))
+      .map(treasure => ({ label: treasure.name, value: treasure.id }));
+    const { createFormGroup, createSelectInput } = foundry.applications.fields;
+
+    const content = document.createElement("div");
+
+    content.append(createFormGroup({
+      label: "DRAW_STEEL.Item.project.Craft.EffectDialog.Label",
+      hint: "DRAW_STEEL.Item.project.Craft.EffectDialog.Hint",
+      localize: true,
+      input: createSelectInput({
+        name: "treasure",
+        options: treasures,
+        blank: "",
+      }),
+    }));
+
+    const kindConfig = ds.CONFIG.equipment.kinds;
+    const fd = await ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: "DRAW_STEEL.Item.project.Craft.EffectDialog.Title",
+        icon: kindConfig[effect.system.project.yield.kind]?.icon ?? kindConfig.other.icon,
+      },
+    });
+
+    let item;
+    if (fd?.treasure) item = this.actor.items.get(fd.treasure);
+    else {
+      const defaultName = getDocumentClass("Item").defaultName({ type: "treasure", parent: this.actor });
+      item = await getDocumentClass("Item").create({
+        name: defaultName,
+        type: "treasure",
+        system: {
+          category: "leveled",
+          kind: effect.system.project.yield.kind,
+        },
+      }, { parent: this.actor });
+    }
+
+    const effectData = effect.toObject();
+    effectData.transfer = true;
+    await item.createEmbeddedDocuments("ActiveEffect", [effectData]);
   }
 
   /* -------------------------------------------------- */

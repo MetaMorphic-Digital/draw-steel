@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "368",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "shield-block",
@@ -17,18 +17,22 @@
       "level": 4
     },
     "story": "",
-    "keywords": [],
-    "type": "main",
+    "keywords": [
+      "encounter",
+      "ranged"
+    ],
+    "type": "triggered",
     "category": "",
     "resource": null,
-    "trigger": "",
+    "trigger": "The mentor takes damage from a strike while within distance.",
     "distance": {
-      "type": "self"
+      "type": "ranged",
+      "primary": "5"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
-      "custom": "",
+      "type": "ally",
+      "custom": "The shieldbearer’s mentor",
       "value": null
     },
     "power": {
@@ -40,7 +44,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p>The shieldbearer blocks the strike (if adjacent to the mentor) or throws their shield into the mentor’s space. The triggering strike’s damage is halved and the potency of any potency effects is reduced by 1. If the shieldbearer threw their shield, it bounces back to their hand.</p>",
       "after": ""
     },
     "spend": {
@@ -58,9 +62,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913706174,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -17,7 +17,57 @@
     "_dsid": "the-mountain-does-not-move",
     "advancements": {}
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "The Mountain Does Not Move",
+      "img": "icons/magic/control/silhouette-aura-energy.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.9pxUudHdB77pOKLi",
+      "_id": "7S2XCkptsBzZXsrk",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.stability",
+            "type": "add",
+            "value": "@level",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You stand firm and magnetize your allies to stay grounded. Your stability increases by your level.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776464570826,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!9pxUudHdB77pOKLi.7S2XCkptsBzZXsrk"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
