@@ -100,24 +100,23 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _renderFrame(options) {
-    const frame = await super._renderFrame(options);
-    const buttons = [constructHTMLButton({
-      label: "",
-      classes: ["header-control", "icon", "fa-solid", "fa-user-lock"],
-      dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.SHEET.ToggleMode" },
-    })];
+  _getFrameButtons(options) {
+    const buttons = super._getFrameButtons(options);
 
+    buttons.push({
+      icon: "fa-solid fa-user-lock",
+      label: "DRAW_STEEL.SHEET.ToggleMode",
+      action: "toggleMode",
+    });
     if (this.document.system.source) {
-      buttons.push(constructHTMLButton({
-        label: "",
-        classes: ["header-control", "icon", "fa-solid", "fa-book"],
-        dataset: { action: "updateSource", tooltip: "DRAW_STEEL.SOURCE.Update" },
-      }));
+      buttons.push({
+        icon: "fa-solid fa-book",
+        action: "updateSource",
+        label: "DRAW_STEEL.SOURCE.Update",
+      });
     }
-    this.window.controls.after(...buttons);
 
-    return frame;
+    return buttons;
   }
 
   /* -------------------------------------------------- */
