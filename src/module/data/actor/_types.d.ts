@@ -1,7 +1,7 @@
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
-import { PowerRollModifiers } from "../../_types";
 import DrawSteelActor from "../../documents/actor.mjs";
 import MembersCollection from "../../utils/members-collection.mjs";
+import { PowerRollModifiers } from "../../_types";
 
 interface BarAttribute {
   value: number,
