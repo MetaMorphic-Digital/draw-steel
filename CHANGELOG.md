@@ -26,6 +26,8 @@
 
 ### Changed
 
+- Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
+
 ### Deprecated
 
 ### Removed
