@@ -142,25 +142,10 @@ Please understand that large and sprawling PRs are exceptionally difficult to re
 
 ## Releases
 
-This repository includes a GitHub Actions configuration which automates the compilation and bundling required for a release when a Tag is pushed or created with the name `release-x.y.z`.
+This repository includes a GitHub Actions configuration which automates the compilation and bundling required for a release whenever a release is published. New releases are automatically tagged as prereleases so there can be time for final evaluation before a release is downloadable for users. If a release has been deemed ready for public usage, it should be marked as latest so the in-foundry updater can identify it and a new release should be made on the [official package page](https://foundryvtt.com/packages/draw-steel). The expectation is the package page maintains a listing of the latest in each x.y versioning, but does not need the *full* x.y.z listing (e.g. remove 1.1.0 after releasing 1.1.1). Users who desire to investigate individual hotfix releases can use the github releases listing.
 
-### Prerequisites
+Draw Steel does not exactly use semantic versioning, although it does use x.y.z formatting. Major releases (x) indicate the minimum foundry generation requirement has increased, such as going from v14 to v15. Minor releases (y) represent feature updates for the system and may include fresh new migrations. Hotfix releases (z) are for bugfixes and other minor adjustments necessary to ensure a high quality user experience.
 
-If either of these conditions are not met on the commit that tag points at, the workflow will error out and release assets will not be created.
+### Hotfixes and the Moving Development Branch
 
-- The `system.json` file's `version` must match the `x.y.z` part of the tag name.
-- The `system.json` file's `download` url must match the expected outcome of the release CI artifact. This should simply be changing version numbers in the url to match the release version.
-
-```text
-https://github.com/foundryvtt/dnd5e/releases/download/release-1.6.3/dnd5e-1.6.3.zip
-                                                     └─ Tag Name ──┘     └─ V ─┘ (version)
-```
-
-### Process for Release
-
-`main` is to be kept as the "most recently released" version of the system. All work is done on development branches matching the milestone the work is a part of. Once the work on a milestone is complete, the following steps will create a system release:
-
-1. [ ] The `system.json` file's `version` and `download` fields are updated on the development branch (e.g. `1.2.3`).
-2. [ ] A tag is created at the tip of the development branch with the format `release-x.y.z`, triggering the CI workflow.
-3. [ ] The `develop` Branch is merged to `main` after the workflow is completed.
-4. [ ] The foundryvtt.com admin listing is updated with the `manifest` url pointing to the `system.json` attached to the workflow-created release.
+Beginning with `0.11`, Draw Steel preserves branches for each feature release. After a feature release, the primary repository branch will move to a new branch (e.g. from `1.0.x` to `1.1.x`). Sometimes this means that a hotfix needs to be released even after work on that new branch has begun. Hotfix changes should target the appropriate prior branch, and then a release can be made from that branch by adjusting the appropriate dropdown in the github releases page.

@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "360",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "pacifier-shell",
@@ -17,17 +17,24 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "encounter",
+      "ranged",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "cube",
+      "primary": "3",
+      "secondary": "15"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
       "value": null
     },
@@ -35,9 +42,107 @@
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "YJgAYGP6fwkS4ZKW": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "YJgAYGP6fwkS4ZKW",
+          "damage": {
+            "tier1": {
+              "value": "8",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "12",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "6ziEjNeBgKVbESIJ": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "6ziEjNeBgKVbESIJ",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} dazed (save ends)",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "intuition"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{potency}} dazed (save ends) and prone",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                },
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
@@ -58,9 +163,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913447170,
     "modifiedTime": null,
     "lastModifiedBy": null

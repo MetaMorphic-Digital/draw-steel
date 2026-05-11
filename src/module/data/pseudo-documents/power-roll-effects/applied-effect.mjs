@@ -198,15 +198,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       ? await DrawSteelActiveEffect.fromStatusEffect(effectId)
       : this.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
 
-    /** @type {ActiveEffectData} */
-    const updates = {
-      transfer: true,
-      origin: this.item.uuid,
-    };
-    if (config.end) updates.duration = { expiry: ds.CONFIG.effectEnds[config.end].expiryEvent };
-    // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
-    const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
-
     const targetActors = options.targets ?? ds.utils.tokensToActors();
 
     // Need separate operations because all deletions must be done before creations to avoid id collisions
@@ -215,11 +206,31 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     /** @type {DatabaseWriteOperation[]} */
     const toCreate = [];
 
+    // Only keep the initiative value if using the "alternative" (D&D style countdown) initiative.
+    const keepInitiative = !game.combats.isDefaultInitiativeMode;
+
     for (const actor of targetActors) {
+      const combatant = game.combat?.getCombatantsByActor(actor)[0];
+
+      /** @type {ActiveEffectData} */
+      const updates = {
+        transfer: true,
+        origin: this.item.uuid,
+      };
+      if (config.end) updates.duration = { expiry: ds.CONFIG.effectEnds[config.end].expiryEvent };
+      if (combatant) updates.start = {
+        combatant,
+        initiative: keepInitiative ? combatant.initiative : null,
+        time: game.time.worldTime,
+      };
+      // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
+      const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
+
       // reusing the ID will block creation if it's already on the actor
       const existing = actor.effects.get(tempEffect.id);
       // deleting instead of updating because there may be variances between the old copy and new
       if (existing) toDelete.push({ action: "delete", parent: actor, documentName: "ActiveEffect", ids: [tempEffect.id] });
+
       toCreate.push({ action: "create", parent: actor, documentName: "ActiveEffect", data: [createData], keepId: noStack });
     }
 

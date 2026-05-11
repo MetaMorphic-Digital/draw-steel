@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "369",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "horn-rake",
@@ -17,17 +17,21 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "area",
+      "encounter",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "burst"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
       "value": null
     },
@@ -35,9 +39,103 @@
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "FcYTHMtC9kD6kYaf": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "FcYTHMtC9kD6kYaf",
+          "damage": {
+            "tier1": {
+              "value": "11",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "21",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "YEiYJe7ndikGTTlC": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "YEiYJe7ndikGTTlC",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{potency}} prone and can’t stand (save ends)",
+              "effects": {
+                "u5yQ6goTzgS6VuR4": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
@@ -48,7 +146,60 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Prone and can't stand",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.DHOfD1GGVgA7vS6G",
+      "transfer": false,
+      "_id": "u5yQ6goTzgS6VuR4",
+      "type": "base",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "save",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "prone"
+      ],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776803664572,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DHOfD1GGVgA7vS6G.u5yQ6goTzgS6VuR4"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -58,9 +209,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913768202,
     "modifiedTime": null,
     "lastModifiedBy": null

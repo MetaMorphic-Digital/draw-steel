@@ -1,0 +1,426 @@
+{
+  "folder": "DOpdlRKNGhM0RyTG",
+  "name": "The Black Obelisk",
+  "type": "object",
+  "_id": "RNYkQzN6C2bnI7y2",
+  "img": "icons/magic/unholy/orb-stone-pink.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 100,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 2,
+        "letter": "M",
+        "text": "",
+        "direction": "",
+        "typical": ""
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>A foreboding obelisk shaped of dark stone harrows the minds and spirits of those around it.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": null,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": null
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "348",
+      "license": ""
+    },
+    "ev": 20,
+    "object": {
+      "level": 3,
+      "category": "relic",
+      "role": "controller",
+      "area": "",
+      "squareStamina": false
+    }
+  },
+  "prototypeToken": {
+    "name": "The Black Obelisk",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "depth": 1,
+    "texture": {
+      "src": "icons/magic/unholy/orb-stone-pink.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.primary.value"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "dY8rYQwtH3zLg8xi",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>As a maneuver, a creature adjacent to the black obelisk can make a [[/test R]].</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature accidentally activates the <strong>Your Fears</strong> <strong>Become Manifest</strong> ability, which gains an edge.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature must make another test to deactivate the obelisk. If they obtain this outcome a second time, they accidentally activate <strong>Your Fears Become Manifest</strong>.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The obelisk is deactivated until the end of the encounter.</p></dd></dl>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "348",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776875876979,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!RNYkQzN6C2bnI7y2.dY8rYQwtH3zLg8xi"
+    },
+    {
+      "name": "Activate",
+      "type": "feature",
+      "_id": "h6KuhKacd9KRkl1j",
+      "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
+      "system": {
+        "description": {
+          "value": "<p>A new round starts.</p><p>Effect: The <strong>Your Fears Become Manifest</strong> ability.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "348",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776876024488,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!RNYkQzN6C2bnI7y2.h6KuhKacd9KRkl1j"
+    },
+    {
+      "name": "Your Fears Become Manifest",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "348",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "A new round starts.",
+        "distance": {
+          "type": "burst",
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "f0NxCD8jShl5zFZk": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "f0NxCD8jShl5zFZk",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} slowed (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "turn"
+                    }
+                  },
+                  "potency": {
+                    "value": "1",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} slowed and weakened (EoT)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "turn"
+                    },
+                    "weakened": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "turn"
+                    }
+                  },
+                  "potency": {
+                    "value": "2",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} frightened, slowed and weakened (EoT)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "turn"
+                    },
+                    "slowed": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "turn"
+                    },
+                    "weakened": {
+                      "condition": "failure",
+                      "properties": [],
+                      "end": "turn"
+                    }
+                  },
+                  "potency": {
+                    "value": "3",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The target is pushed 2 squares.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "3FJDQs9HAazuJVMB",
+      "img": "icons/magic/unholy/orb-stone-pink.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776876066032,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!RNYkQzN6C2bnI7y2.3FJDQs9HAazuJVMB"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.360",
+    "systemId": "draw-steel",
+    "systemVersion": "1.0.0",
+    "createdTime": 1776873850312,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!RNYkQzN6C2bnI7y2"
+}

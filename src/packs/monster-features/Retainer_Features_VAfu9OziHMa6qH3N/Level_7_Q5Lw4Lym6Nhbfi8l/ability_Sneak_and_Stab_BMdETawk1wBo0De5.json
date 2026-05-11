@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "365",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "sneak-and-stab",
@@ -17,31 +17,109 @@
       "level": 7
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "encounter",
+      "melee",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "creature",
       "custom": "",
-      "value": null
+      "value": 1
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "mSz9e51WCj1T5sgQ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "mSz9e51WCj1T5sgQ",
+          "damage": {
+            "tier1": {
+              "value": "8",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "12",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "5kgIAYlqV7XlLPfV": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "5kgIAYlqV7XlLPfV",
+          "other": {
+            "tier1": {
+              "display": "",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "the guide and their mentor can each move up to  their speed",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "the guide and their mentor can each move up to  their speed, then attempt to hide",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>If the guide is hidden from the target, this ability has a double edge.</p>"
     },
     "spend": {
       "text": "",
@@ -58,9 +136,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913570225,
     "modifiedTime": null,
     "lastModifiedBy": null

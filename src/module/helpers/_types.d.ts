@@ -13,7 +13,7 @@ export interface RegistryEntry {
   classLink?: string;
   /** Perk type for perks. */
   perkType?: string;
-  /** Abilities for a class or subclass */
+  /** Abilities for a class or subclass. */
   abilities?: Readonly<AbilityRegistryEntry>;
 }
 
@@ -24,16 +24,16 @@ export interface RegistryEntry {
 export interface AbilityRegistryEntry {
   /** The Key used for the entry. */
   key: string;
-  /** Abilities without a heroic resource cost are signature abilities */
+  /** Abilities without a heroic resource cost are signature abilities. */
   signature: Set<string>;
-  /** 3 cost abilities are usually available at levels 1 and 2 */
+  /** 3 cost abilities are usually available at levels 1 and 2. */
   heroic3: Set<string>;
-  /** 5 cost abilities are usually available at levels 1 and 3 */
+  /** 5 cost abilities are usually available at levels 1 and 3. */
   heroic5: Set<string>;
-  /** 7 cost abilities are usually available at levels 5 and 6 */
+  /** 7 cost abilities are usually available at levels 5 and 6. */
   heroic7: Set<string>;
-  /** 9 cost abilities are usually available at levels 8 and 9 */
+  /** 9 cost abilities are usually available at levels 8 and 9. */
   heroic9: Set<string>;
-  /** 11 cost abilities are usually available at level 10 */
+  /** 11 cost abilities are usually available at level 10. */
   heroic11: Set<string>;
 }

@@ -1,0 +1,995 @@
+{
+  "folder": "DsVjSYOXAtjFIT4P",
+  "name": "Ram",
+  "type": "object",
+  "_id": "kIv17sAtEn9ppJCy",
+  "img": "icons/commodities/wood/log-cut-maple-brown.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 3,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M",
+        "text": "Any area; the area can’t be moved through",
+        "direction": "One side of the ram is defined as the front.",
+        "typical": "1 × 3-square area or a 2 × 2-square area"
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p>A heavy wooden ram drops down or swings into the fray, crushing all in its path.</p>",
+      "director": ""
+    },
+    "movement": {
+      "value": null,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": null
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "342",
+      "license": ""
+    },
+    "ev": 3,
+    "object": {
+      "level": 2,
+      "category": "trap",
+      "role": "ambusher",
+      "area": "",
+      "squareStamina": true
+    }
+  },
+  "prototypeToken": {
+    "name": "Ram",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "depth": 1,
+    "texture": {
+      "src": "icons/commodities/wood/log-cut-maple-brown.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.primary.value"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Deactivate",
+      "type": "feature",
+      "_id": "xm8ax4I0tfWO0JEF",
+      "img": "icons/commodities/tech/console-steel.webp",
+      "system": {
+        "description": {
+          "value": "<p>As a maneuver, a creature adjacent to a ram can make an [[/test A]].</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature triggers the ram and is affected as if in its space.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The ram is deactivated but the creature is [[/apply slowed turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The ram is deactivated and doesn’t trigger.</p></dd></dl>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "342",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776831148701,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!kIv17sAtEn9ppJCy.xm8ax4I0tfWO0JEF"
+    },
+    {
+      "name": "Activate",
+      "type": "feature",
+      "_id": "Hr1ltfpxLu1bw5BJ",
+      "img": "icons/skills/targeting/crosshair-ringed-gray.webp",
+      "system": {
+        "description": {
+          "value": "<p>A pressure plate, switch, or other linked trigger is activated.</p><p><strong>Effect</strong>: The <strong>Ram</strong> ability.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "342",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776831249169,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!kIv17sAtEn9ppJCy.Hr1ltfpxLu1bw5BJ"
+    },
+    {
+      "name": "Hidden",
+      "type": "feature",
+      "_id": "NwAx80O1n36mOBse",
+      "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+      "system": {
+        "description": {
+          "value": "<p>The ram is hidden until triggered or detected.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "342",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776831295409,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!kIv17sAtEn9ppJCy.NwAx80O1n36mOBse"
+    },
+    {
+      "name": "Ram",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "342",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "A pressure plate, switch, or other linked trigger is activated.",
+        "distance": {
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "H4YYpl5uFon4pfdp": {
+              "sort": 100000,
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "H4YYpl5uFon4pfdp",
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "frksIdbI0JtvuF8c": {
+              "sort": 200000,
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "frksIdbI0JtvuF8c",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}, ignoring stability",
+                  "movement": [
+                    "slide"
+                  ],
+                  "distance": "1",
+                  "properties": [
+                    "ignoresImmunity"
+                  ],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "5",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "<p><strong>Special</strong>: The area of this ability is the path the ram moves through from its starting position.</p>",
+          "after": "<p>A target slid by the ram ends up on one side of it or the other (choose randomly). The ram must be manually reset.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "2LNLKO7nRO4wqMpB",
+      "img": "icons/commodities/wood/log-cut-maple-brown.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "DcmbB64w9fyCBClJ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776831328676,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!kIv17sAtEn9ppJCy.2LNLKO7nRO4wqMpB"
+    }
+  ],
+  "effects": [
+    {
+      "name": "Stone (Damage Bonus)",
+      "img": "icons/commodities/stone/paver-grey.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "DCNWGZgxsd62GHUP",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.tier1.value",
+            "type": "add",
+            "value": "1d3",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "damage.tier2.value",
+            "type": "add",
+            "value": "1d3",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "damage.tier3.value",
+            "type": "add",
+            "value": "1d3",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "area"
+          ]
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The ram is made of stone, has 6 Stamina per square, and deals an extra 1d3 damage.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 100000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776831933575,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.DCNWGZgxsd62GHUP"
+    },
+    {
+      "name": "Stone",
+      "img": "icons/commodities/stone/paver-grey.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "vovj3V92geBc7koQ",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The ram is made of stone, has 6 Stamina per square, and deals an extra 1d3 damage.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776832316097,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.vovj3V92geBc7koQ"
+    },
+    {
+      "name": "Metal",
+      "img": "icons/commodities/metal/ingot-steel.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "7KIXpPplcqEO3HUS",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 6,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The ram is made of metal, has 9 Stamina per square, and deals an extra 1d6 damage.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 300000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776832811732,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.7KIXpPplcqEO3HUS"
+    },
+    {
+      "name": "Metal (Damage Bonus)",
+      "img": "icons/commodities/metal/ingot-steel.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "p3vO0mjEIIKfp8gg",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.tier1.value",
+            "type": "add",
+            "value": "1d6",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "damage.tier2.value",
+            "type": "add",
+            "value": "1d6",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "damage.tier3.value",
+            "type": "add",
+            "value": "1d6",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "area"
+          ]
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 400000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776833050582,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.p3vO0mjEIIKfp8gg"
+    },
+    {
+      "name": "Repeating",
+      "img": "icons/commodities/wood/log-stack-hickory-brown.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "hPWCfT7QVnZOpU8B",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The ram automatically resets at the start of each round.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 500000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776833198700,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.hPWCfT7QVnZOpU8B"
+    },
+    {
+      "name": "Rapid Repeating",
+      "img": "icons/commodities/wood/logs-rough-brown.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "QKig5FI64G3JU8tb",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The ram automatically resets at the start of each turn.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 600000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776833250769,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.QKig5FI64G3JU8tb"
+    },
+    {
+      "name": "Multiple Rams",
+      "img": "icons/commodities/wood/log-stack-maple-brown.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.kIv17sAtEn9ppJCy",
+      "disabled": true,
+      "_id": "WLD1QwYzKmWjoZsK",
+      "system": {
+        "changes": [
+          {
+            "key": "system.ev",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": "pa0IOSwsAIiKdt8u",
+        "combatant": null,
+        "initiative": null,
+        "round": 1,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p><strong>(+3 EV per additional ram)</strong> Multiple rams can be used to represent a larger mechanism, such as a stack of tumbling logs.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 700000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.360",
+        "systemId": "draw-steel",
+        "systemVersion": "1.0.0",
+        "createdTime": 1776833334641,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!kIv17sAtEn9ppJCy.WLD1QwYzKmWjoZsK"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.360",
+    "systemId": "draw-steel",
+    "systemVersion": "1.0.0",
+    "createdTime": 1776816275764,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!kIv17sAtEn9ppJCy"
+}

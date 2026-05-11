@@ -6,8 +6,8 @@
   "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Monsters",
+      "page": "368",
       "license": "Draw Steel Creator License"
     },
     "_dsid": "lets-go-sledding",
@@ -17,31 +17,130 @@
       "level": 10
     },
     "story": "",
-    "keywords": [],
+    "keywords": [
+      "charge",
+      "encounter",
+      "melee",
+      "strike",
+      "weapon"
+    ],
     "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "melee"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self",
+      "type": "enemy",
       "custom": "",
-      "value": null
+      "value": 3
     },
     "power": {
       "roll": {
         "reactive": false,
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "might",
+          "agility",
+          "reason",
+          "intuition",
+          "presence"
+        ]
       },
-      "effects": {}
+      "effects": {
+        "rVH1w2dpPwLOvzwH": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "rVH1w2dpPwLOvzwH",
+          "damage": {
+            "tier1": {
+              "value": "6",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "10",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "14",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "7Lgfol9JUSUkOBGz": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "7Lgfol9JUSUkOBGz",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": ""
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": ""
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>If this ability is used as part of the Charge main action, the shieldbearer [[/gain 2 surges]] that can be used immediately.</p>"
     },
     "spend": {
       "text": "",
@@ -58,9 +157,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.360",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.0.0",
     "createdTime": 1772913738352,
     "modifiedTime": null,
     "lastModifiedBy": null

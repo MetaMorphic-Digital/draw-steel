@@ -1668,8 +1668,8 @@
           },
           "yield": {
             "label": "Yield",
-            "item": {
-              "label": "Yield Item UUID"
+            "document": {
+              "label": "Yield Document UUID"
             },
             "amount": {
               "label": "Yield Amount"
@@ -1698,6 +1698,11 @@
           "FromTreasure": {
             "Label": "Start Crafting Project",
             "Notification": "Started crafting project for {item}."
+          },
+          "EffectDialog": {
+            "Title": "Leveled Treasure Selection",
+            "Label": "Leveled Treasure",
+            "Hint": "Which leveled treasure item do you want to add this effect to? Selecting blank or closing without selection will create a new leveled treasure."
           }
         },
         "SpendCareerPoints": {
@@ -1799,6 +1804,32 @@
             },
             "roll": {
               "label": "Saving Throw Formula"
+            }
+          },
+          "project": {
+            "label": "Project",
+            "prerequisites": {
+              "label": "Item Prerequisites"
+            },
+            "source": {
+              "label": "Project Source"
+            },
+            "rollCharacteristic": {
+              "label": "Roll Characteristic"
+            },
+            "goal": {
+              "label": "Project Goal"
+            },
+            "yield": {
+              "kind": {
+                "label": "Treasure Kind"
+              },
+              "amount": {
+                "label": "Yield Amount"
+              },
+              "display": {
+                "label": "Yield Display"
+              }
             }
           }
         }
