@@ -225,7 +225,6 @@ export default class NPCModel extends CreatureModel {
     embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
 
     return embed;
-
   }
 
   /* -------------------------------------------------- */
@@ -315,6 +314,6 @@ export default class NPCModel extends CreatureModel {
    */
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
-    return Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
+    return Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
   }
 }
