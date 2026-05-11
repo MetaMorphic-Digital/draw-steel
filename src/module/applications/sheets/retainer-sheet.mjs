@@ -105,7 +105,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editRetainerMetadata(event, target) {
-    return this.renderChild(new RetainerMetadataInput({ document: this.document }));
+    this.renderChild(new RetainerMetadataInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
@@ -117,7 +117,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    return this.renderChild(new DocumentSourceInput({ document: this.document }));
+    this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
 }

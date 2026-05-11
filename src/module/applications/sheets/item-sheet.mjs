@@ -601,7 +601,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    */
   static async #showImage(event, target) {
     const { img, name, uuid } = this.item;
-    return this.renderChild(new foundry.applications.apps.ImagePopout({ src: img, uuid, window: { title: name } }));
+    this.renderChild(new foundry.applications.apps.ImagePopout({ src: img, uuid, window: { title: name } }));
   }
 
   /* -------------------------------------------------- */
@@ -614,7 +614,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    return this.renderChild(new DocumentSourceInput({ document: this.item }));
+    this.renderChild(new DocumentSourceInput({ document: this.item }));
   }
 
   /* -------------------------------------------------- */

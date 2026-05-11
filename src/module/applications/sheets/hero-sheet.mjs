@@ -431,7 +431,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editCharacteristics(event, target) {
-    return this.renderChild(new CharacteristicInput({ document: this.document }));
+    this.renderChild(new CharacteristicInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
