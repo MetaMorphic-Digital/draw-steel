@@ -13,8 +13,8 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
  * @import RegionDocument from "@client/documents/region.mjs";
- * @import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs"
- * @import { PowerRollModifiers } from "../../_types.js";
+ * @import { PowerRollModifiers } from "../../_types";
+ * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import DrawSteelTokenDocument from "../../documents/token.mjs";
  */
@@ -676,14 +676,14 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Create a region template based on this ability's distance data.
-   * @param {RegionPlacementOptions} [options={}] Options to forward to canvas.regions.placeRegion.
+   * @param {PlaceAbilityOptions} [options={}] Options to forward to canvas.regions.placeRegion.
    * @returns {Promise<RegionDocument>} The Region document that was placed or null if
    *  - the placements of all shapes were skipped,
    *  - the dismiss key was pressed,
    *  - the game is paused and the user is not a GM, or
    *  - the Region creation was rejected by preCreate.
    */
-  async placeTemplate(options = {}) {
+  async placeTemplate({ setTargets, ...options } = {}) {
     if (!this.hasTemplate) {
       const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
       ui.notifications.error(msg, { console: false });
@@ -746,7 +746,20 @@ export default class AbilityModel extends BaseItemModel {
       },
     };
 
-    return canvas.regions.placeRegion(regionData, options);
+    const region = await canvas.regions.placeRegion(regionData, options);
+    if (!setTargets || !region) return region;
+
+    /** @type {Set<DrawSteelToken>} */
+    const tokens = canvas.tokens.quadtree.getObjects(region.bounds);
+    const targetIds = [];
+    for (const token of tokens) {
+      const tokenDoc = token.document;
+      if (!this.validTarget(tokenDoc)) continue;
+      if (!tokenDoc.testInsideRegion(region)) continue;
+      targetIds.push(token.id);
+    }
+    if (targetIds.length) canvas.tokens.setTargets(targetIds, { mode: setTargets });
+    return region;
   }
 
   /* -------------------------------------------------- */

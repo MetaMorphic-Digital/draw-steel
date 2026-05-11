@@ -276,18 +276,6 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #placeTemplate(event, target) {
-    const region = await this.item.system.placeTemplate();
-    if (!region) return;
-
-    /** @type {Set<DrawSteelToken>} */
-    const tokens = canvas.tokens.quadtree.getObjects(region.bounds);
-    const targetIds = [];
-    for (const token of tokens) {
-      const tokenDoc = token.document;
-      if (!this.item.system.validTarget(tokenDoc)) continue;
-      if (!tokenDoc.testInsideRegion(region, tokenDoc._source)) continue;
-      targetIds.push(token.id);
-    }
-    if (targetIds.length) canvas.tokens.setTargets(targetIds, { mode: "acquire" });
+    await this.item.system.placeTemplate({ setTargets: "acquire" });
   }
 }

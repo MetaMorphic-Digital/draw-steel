@@ -3,6 +3,7 @@ import { CharacteristicAdvancement, ItemGrantAdvancement, LanguageAdvancement, S
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import { PowerRollModifiers } from "../../_types.js";
+import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs";
 import SourceModel from "../models/source.mjs";
 import { SubtypeMetadata } from "../_types.js";
 
@@ -26,6 +27,11 @@ declare module "./base-item.mjs" {
     /** The Draw Steel ID, indicating a unique game rules element. */
     _dsid: string;
   }
+}
+
+export interface PlaceAbilityOptions extends RegionPlacementOptions {
+  /** Whether to update the user's targets based off of tokens included in the region. A falsy value means do not adjust targets. */
+  setTargets?: "acquire" | "replace";
 }
 
 declare module "./ability.mjs" {
