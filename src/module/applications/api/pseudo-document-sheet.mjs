@@ -172,20 +172,16 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _renderFrame(options) {
-    const frame = await super._renderFrame(options);
-    const copyLabel = _loc("APPLICATION.ACTIONS.CopyUuid");
+  _getFrameButtons(options) {
+    const buttons = super._getFrameButtons(options);
 
-    const properties = Object.entries({
-      type: "button",
-      class: "header-control fa-solid fa-passport icon",
-      "data-action": "copyUuid",
-      "data-tooltip": copyLabel,
-      "aria-label": copyLabel,
-    }).map(([k, v]) => `${k}="${v}"`).join(" ");
-    const copyId = `<button ${properties}></button>`;
-    this.window.close.insertAdjacentHTML("beforebegin", copyId);
-    return frame;
+    buttons.push({
+      icon: "fa-solid fa-passport",
+      action: "copyUuid",
+      label: "APPLICATION.ACTIONS.CopyUuid",
+    });
+
+    return buttons;
   }
 
   /* -------------------------------------------------- */
