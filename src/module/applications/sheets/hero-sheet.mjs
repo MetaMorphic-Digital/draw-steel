@@ -294,25 +294,19 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #addOrigin(event, target) {
-    // Not as clean as renderChild because there's less automatic cleanup, but at least guarantees these things end up in the same detached window
-    const renderOptions = {
-      window: {
-        windowId: this.window.windowId,
-      },
-    };
     // TODO: Replace this with opening a compendium browser as part of #130
     switch (target.dataset.type) {
       case "ancestry":
-        game.packs.get("draw-steel.origins").render(true, renderOptions);
+        game.packs.get("draw-steel.origins").render(true);
         break;
       case "culture":
-        game.packs.get("draw-steel.origins").render(true, renderOptions);
+        game.packs.get("draw-steel.origins").render(true);
         break;
       case "career":
-        game.packs.get("draw-steel.origins").render(true, renderOptions);
+        game.packs.get("draw-steel.origins").render(true);
         break;
       case "class":
-        game.packs.get("draw-steel.classes").render(true, renderOptions);
+        game.packs.get("draw-steel.classes").render(true);
         break;
     }
   }
