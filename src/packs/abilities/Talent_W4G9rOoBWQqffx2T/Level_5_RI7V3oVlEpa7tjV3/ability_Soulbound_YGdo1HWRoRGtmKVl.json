@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "t4OekUSe1r27wUte": {
@@ -49,22 +52,32 @@
             "tier1": {
               "value": "8",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "13",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "17",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "types": [],
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "D1d4phISaR4pfXsf": {
           "name": "Stitched",
@@ -75,23 +88,27 @@
             "tier1": {
               "display": "{{potency}}, stitched (save ends)",
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.weak"
               },
               "effects": {
                 "VbUIoNCHnJmdmHOA": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "properties": []
                 }
               }
             },
             "tier2": {
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.average"
               },
               "display": "{{potency}}, stitched (save ends)",
               "effects": {
                 "VbUIoNCHnJmdmHOA": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -99,21 +116,20 @@
               "effects": {
                 "VbUIoNCHnJmdmHOA": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "display": "{{potency}}, stitched (save ends)",
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.strong"
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>If any target becomes [[/apply stitched]] to the other, both targets are stitched together. While stitched together, a target takes a bane on power rolls while not adjacent to a creature they’re stitched to.</p><p>Whenever a stitched target takes damage that wasn’t dealt by or also taken by another stitched target, each other stitched target takes half the damage the initial target took.</p><p><strong>Strained</strong>: You target yourself and three enemies instead.</p>"
     },
     "spend": {
       "text": "",
@@ -122,7 +138,20 @@
     "prerequisites": {
       "dsid": [
         "talent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If any target becomes [[/apply stitched]] to the other, both targets are stitched together. While stitched together, a target takes a bane on power rolls while not adjacent to a creature they’re stitched to.</p><p>Whenever a stitched target takes damage that wasn’t dealt by or also taken by another stitched target, each other stitched target takes half the damage the initial target took.</p><p><strong>Strained</strong>: You target yourself and three enemies instead.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -135,10 +164,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -156,9 +194,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760750417962,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -178,9 +216,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760750166728,
     "modifiedTime": null,
     "lastModifiedBy": null

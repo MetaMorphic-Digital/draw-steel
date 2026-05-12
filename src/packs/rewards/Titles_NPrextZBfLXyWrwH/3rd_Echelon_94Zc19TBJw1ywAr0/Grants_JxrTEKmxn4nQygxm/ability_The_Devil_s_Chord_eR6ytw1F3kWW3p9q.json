@@ -22,7 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 5
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +37,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "23kNhR5uY5G0lh3V": {
@@ -48,21 +51,37 @@
               "value": "4",
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "6",
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "10",
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "xkLSOFH171Ek9gvo": {
           "name": "",
@@ -73,12 +92,14 @@
             "tier2": {
               "display": "{{potency}}, weakened (save ends)",
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.average"
               },
               "effects": {
                 "weakened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -87,15 +108,30 @@
               "effects": {
                 "weakened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             }
-          }
+          },
+          "sort": 0
         },
         "S6Jgo0aw7EVltNJc": {
           "name": "",
@@ -104,19 +140,50 @@
           "_id": "S6Jgo0aw7EVltNJc",
           "other": {
             "tier1": {
-              "display": "the damage is taken by you, unless you have the Performance skill"
+              "display": "the damage is taken by you, unless you have the Performance skill",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>The soul of any creature killed by this ability is dragged to Hell.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The soul of any creature killed by this ability is dragged to Hell.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -129,9 +196,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1762008304068,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -286,7 +286,9 @@
         "trigger": "The pool takes fire damage.",
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -312,19 +314,34 @@
                   "value": "3",
                   "types": [
                     "fire"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "6",
                   "types": [
                     "fire"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "9",
                   "types": [
                     "fire"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -344,7 +361,8 @@
                   "effects": {
                     "zgkaXJH8MC8pNMAi": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   }
                 },
@@ -352,35 +370,48 @@
                   "effects": {
                     "zgkaXJH8MC8pNMAi": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   },
                   "potency": {
-                    "value": "2"
-                  }
+                    "value": "2",
+                    "characteristic": ""
+                  },
+                  "display": ""
                 },
                 "tier3": {
                   "effects": {
                     "zgkaXJH8MC8pNMAi": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   },
                   "potency": {
-                    "value": "3"
-                  }
+                    "value": "3",
+                    "characteristic": ""
+                  },
+                  "display": ""
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The liquid in the pool is consumed. This ability has a double edge against any target in the pool. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. Any target with acid weakness takes extra damage from this ability and while burning as if the fire damage were acid damage.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The liquid in the pool is consumed. This ability has a double edge against any target in the pool. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. Any target with acid weakness takes extra damage from this ability and while burning as if the fire damage were acid damage.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "LjTLlVrmwpXGE6NC",
@@ -397,7 +428,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -415,11 +456,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1771702707116,
-            "modifiedTime": 1774890078916,
+            "modifiedTime": 1778620831127,
             "lastModifiedBy": null
           },
           "start": null,
@@ -439,9 +480,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771702530448,
         "modifiedTime": null,
         "lastModifiedBy": null

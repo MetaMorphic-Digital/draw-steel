@@ -267,7 +267,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -287,11 +288,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776878272225,
-            "modifiedTime": 1776878336895,
+            "modifiedTime": 1778620832113,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -384,7 +385,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -404,11 +406,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776878529452,
-            "modifiedTime": 1776878716444,
+            "modifiedTime": 1778620832116,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -525,13 +527,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The target has [[/apply yvKBtMUxAIfTSG3Y]]{fire weakness 10} until the start of the hierophant’s next turn.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target has [[/apply yvKBtMUxAIfTSG3Y]]{fire weakness 10} until the start of the hierophant’s next turn.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "GXtweQzQSwFzBvPN",
@@ -563,7 +572,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -583,11 +593,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776878898655,
-            "modifiedTime": 1776878939278,
+            "modifiedTime": 1778620832118,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -604,9 +614,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776878767302,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -660,13 +670,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>If the hierophant is a hero, they [[/gain 3 hr]]{of their Heroic Resource}. If the hierophant is a Director-controlled creature, the Director gains 3 Malice.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>If the hierophant is a hero, they [[/gain 3 hr]]{of their Heroic Resource}. If the hierophant is a Director-controlled creature, the Director gains 3 Malice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "N7eheK5YcpFab1wy",
@@ -680,9 +697,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776878997401,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -736,13 +753,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>Each target takes [[/damage 14 fire]] damage and the Hierophant gains the Incubator of A’An complication (see the sidebar). If there is no hierophant, one creature within 10 squares of the throne chosen by the Director gains this complication.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target takes [[/damage 14 fire]] damage and the Hierophant gains the Incubator of A’An complication (see the sidebar). If there is no hierophant, one creature within 10 squares of the throne chosen by the Director gains this complication.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "OI1Um4GlmQOX8HiM",
@@ -756,9 +780,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776879186245,
         "modifiedTime": null,
         "lastModifiedBy": null,

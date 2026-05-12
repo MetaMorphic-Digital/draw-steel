@@ -16,12 +16,10 @@
     },
     "_dsid": "sanctified-weapon",
     "advancements": {},
-    "type": {
-      "value": "",
-      "subtype": ""
-    },
     "prerequisites": {
-      "value": ""
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -48,7 +46,17 @@
             "type": "add",
             "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -65,9 +73,9 @@
         "compendiumSource": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX.ActiveEffect.Asn2N3mCLAZ6jkKV",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1762818267918,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -89,9 +97,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754754755006,
     "modifiedTime": null,
     "lastModifiedBy": null

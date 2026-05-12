@@ -23,12 +23,15 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
@@ -37,7 +40,8 @@
           "reason",
           "intuition",
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "O0oqBRawI1CmWlu5": {
@@ -47,12 +51,34 @@
           "_id": "O0oqBRawI1CmWlu5",
           "damage": {
             "tier2": {
-              "value": "5 + @chr"
+              "value": "5 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "7 + @chr"
+              "value": "7 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "vT0GlOzfvjAUxakK": {
           "name": "",
@@ -63,15 +89,39 @@
             "tier1": {
               "distance": "",
               "movement": [],
-              "display": ""
+              "display": "",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier3": {
-              "distance": "2"
+              "distance": "2",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             },
             "tier2": {
-              "distance": "1"
+              "distance": "1",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "xZj2sEiKQnyUNAXC": {
           "name": "",
@@ -82,26 +132,47 @@
             "tier3": {
               "display": "{{potency}}, prone",
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.strong"
               },
               "effects": {
                 "prone": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "properties": []
                 }
               }
+            },
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
-    }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 100000,
@@ -113,9 +184,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754630162821,
     "modifiedTime": null,
     "lastModifiedBy": null

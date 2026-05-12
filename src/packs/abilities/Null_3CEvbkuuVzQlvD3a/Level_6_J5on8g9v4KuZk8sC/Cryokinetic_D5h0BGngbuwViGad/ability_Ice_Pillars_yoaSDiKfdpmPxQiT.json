@@ -22,7 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +37,8 @@
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "FjscdJ9bA4iDE8LD": {
@@ -51,7 +54,12 @@
               "distance": "6",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "distance": "8",
@@ -60,7 +68,12 @@
               ],
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "movement": [
@@ -69,15 +82,17 @@
               "properties": [
                 "vertical"
               ],
-              "distance": "10"
+              "distance": "10",
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>The pillars vanish as soon as the effects of the forced movement are resolved.</p>"
     },
     "spend": {
       "text": "",
@@ -86,7 +101,20 @@
     "prerequisites": {
       "dsid": [
         "cryokinetic"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The pillars vanish as soon as the effects of the forced movement are resolved.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -99,9 +127,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761156623193,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -96,9 +96,12 @@
         "humanoid"
       ],
       "level": 6,
-      "ev": 32,
       "role": "leader",
       "organization": "leader"
+    },
+    "ev": 32,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -117,7 +120,12 @@
           "page": "89"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "47GwjQViJtAAnavJ",
       "effects": [],
@@ -131,12 +139,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_key": "!actors.items!LZZdXxEXueaF9pfJ.47GwjQViJtAAnavJ"
     },
@@ -155,7 +163,12 @@
           "page": "89"
         },
         "_dsid": "remember-your-oath",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "WO8YgnvObSgoVLjo",
       "effects": [],
@@ -169,12 +182,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_key": "!actors.items!LZZdXxEXueaF9pfJ.WO8YgnvObSgoVLjo"
     },
@@ -193,7 +206,12 @@
           "page": "89"
         },
         "_dsid": "sheltering-wings",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "4ME9soi52Qadvn0G",
       "effects": [],
@@ -207,12 +225,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_key": "!actors.items!LZZdXxEXueaF9pfJ.4ME9soi52Qadvn0G"
     },
@@ -230,7 +248,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -243,7 +263,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "fHIgzvokKywMTKSI": {
@@ -255,31 +276,32 @@
                 "tier1": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "19",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "87a3ihIZyhqnaXAO": {
               "_id": "87a3ihIZyhqnaXAO",
@@ -329,7 +351,8 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "OqICjNVaFqPsYqVB": {
               "name": "Bleeding",
@@ -379,17 +402,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
-        "spend": {
-          "text": "If the target has M < 4, they are also bleeding (save ends).",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -399,7 +415,30 @@
         "_dsid": "punishing-flail",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>If the target has M &lt; 4, they are also bleeding (save ends).</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -409,12 +448,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_id": "W0AKJ4xOMuIKlAQD",
       "ownership": {
@@ -435,9 +474,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 5,
-          "secondary": 2,
-          "tertiary": 1
+          "primary": "5",
+          "secondary": "2",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -450,7 +489,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "d54WvlHzgzw7NYsl": {
@@ -462,31 +502,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "FombNRR4mSyGnf32": {
               "_id": "FombNRR4mSyGnf32",
@@ -530,13 +571,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "<p>Before the power roll is made, Dorzinuuth shifts to an unoccupied space adjacent to the end of the line.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -550,7 +588,23 @@
         "_dsid": "ill-cut-a-path",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Before the power roll is made, Dorzinuuth shifts to an unoccupied space adjacent to the end of the line.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -560,12 +614,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_id": "hN8Eu38xrf3iDqLs",
       "ownership": {
@@ -585,7 +639,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
@@ -598,13 +654,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Dorzinuuth shields the triggering ally with his wings, halving the damage.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -618,7 +671,23 @@
         "_dsid": "watch-your-six",
         "story": "",
         "resource": null,
-        "trigger": "An ally within distance takes damage while Dorzinuuth isn't flying."
+        "trigger": "An ally within distance takes damage while Dorzinuuth isn't flying.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Dorzinuuth shields the triggering ally with his wings, halving the damage.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -628,12 +697,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_id": "FNQyso52WvmObD0j",
       "ownership": {
@@ -653,7 +722,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -681,30 +752,41 @@
                   "effects": {
                     "frightened": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
-                  "display": "Frightened (save ends)"
+                  "display": "Frightened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "display": "Frightened (EoT)",
                   "effects": {
                     "frightened": {
                       "condition": "always",
-                      "end": "turn"
+                      "end": "turn",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "display": "No effect."
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>Dorzinuuth lets loose a powerful roar. Each target makes a <strong>Reason test.</strong></p>",
-          "after": "<p>Each ally in the area gains an edge on their next strike.</p>"
         },
         "spend": {
           "text": "",
@@ -718,7 +800,32 @@
         "_dsid": "roaring-gambit",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Dorzinuuth lets loose a powerful roar. Each target makes a <strong>Reason test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each ally in the area gains an edge on their next strike.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -728,12 +835,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_id": "QJsdmElmoptrd5Hw",
       "ownership": {
@@ -753,7 +860,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
@@ -766,13 +875,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target shifts or flies up to their speed and regains [[/heal 10]].</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -786,7 +892,23 @@
         "_dsid": "wings-of-second-wind",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target shifts or flies up to their speed and regains [[/heal 10]].</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -796,12 +918,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_id": "1UCL5qMDiPuIKU9V",
       "ownership": {
@@ -822,7 +944,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
@@ -835,13 +959,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Dorzinuuth covers the targets in an electrifying mesh. Whenever a target takes damage from a melee ability, the attacker takes [[/damage 6 lightning]] damage.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -855,7 +976,23 @@
         "_dsid": "snap-crackle-pop",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Dorzinuuth covers the targets in an electrifying mesh. Whenever a target takes damage from a melee ability, the attacker takes [[/damage 6 lightning]] damage.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -865,12 +1002,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "_id": "Gff3hsZVJvAsxjEi",
       "ownership": {
@@ -889,9 +1026,9 @@
         "trigger": "A draconian starts its turn.",
         "distance": {
           "type": "line",
-          "primary": 4,
-          "secondary": 2,
-          "tertiary": 1
+          "primary": "4",
+          "secondary": "2",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -902,7 +1039,8 @@
         "power": {
           "roll": {
             "formula": "3",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "Q0i1ASkbNyfx8Pw3": {
@@ -919,37 +1057,34 @@
                     "poison",
                     "lightning"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "<p><strong>Special:</strong> The damage dealt by this ability matches a damage type the draconian has immunity to.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -962,7 +1097,23 @@
         },
         "_dsid": "breath-weapon",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p><strong>Special:</strong> The damage dealt by this ability matches a damage type the draconian has immunity to.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "Anf2Qw7ez1DyXYy7",
@@ -971,12 +1122,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sYhsflyKKJHDSS8C",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "ownership": {
         "default": 0,
@@ -996,7 +1147,10 @@
         "resource": 3,
         "trigger": "A draconian starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1012,10 +1166,6 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have [[potency M 2]], they are knocked [[/apply prone]].</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1027,7 +1177,23 @@
         },
         "_dsid": "guarding-gale",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have [[potency M 2]], they are knocked [[/apply prone]].</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "Anf2Qw7ez1DyXYy7",
@@ -1036,12 +1202,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.q0vibNzVqcIeS9TW",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620829690
       },
       "ownership": {
         "default": 0,
@@ -1062,7 +1228,9 @@
         "trigger": "A draconian starts its turn.",
         "distance": {
           "type": "burst",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1073,7 +1241,8 @@
         "power": {
           "roll": {
             "formula": "3",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "Q18h2Wjclz24QIuF": {
@@ -1085,31 +1254,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "Y6vZdfP1VIsrjzLf": {
               "name": "Shattered Scales",
@@ -1159,13 +1329,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The draconian’s scales shatter from battle damage. The draconian has damage weakness 5 but can take two turns per round until the end of the encounter.</p>"
         },
         "spend": {
           "text": "",
@@ -1181,7 +1348,23 @@
         "keywords": [
           "area",
           "magic"
-        ]
+        ],
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The draconian’s scales shatter from battle damage. The draconian has damage weakness 5 but can take two turns per round until the end of the encounter.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1193,7 +1376,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1201,15 +1383,27 @@
                 "key": "system.damage.weaknesses.all",
                 "value": 5,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               },
               {
                 "key": "system.combat.turns",
                 "value": 2,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1227,12 +1421,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1778620829686,
+            "modifiedTime": 1778620829686
           },
           "start": null,
           "showIcon": 1,
@@ -1246,9 +1440,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wsFt66DHjAhjWcgR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1759975909666,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1366,9 +1560,9 @@
     "compendiumSource": "Actor.LZZdXxEXueaF9pfJ",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758730573415,
     "modifiedTime": null,
     "lastModifiedBy": null

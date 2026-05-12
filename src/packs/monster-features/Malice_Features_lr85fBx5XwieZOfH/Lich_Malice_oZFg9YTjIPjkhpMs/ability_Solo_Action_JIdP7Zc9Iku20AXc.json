@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A lich starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -19,13 +22,10 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The lich takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -38,7 +38,23 @@
     },
     "_dsid": "solo-action",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The lich takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "oZFg9YTjIPjkhpMs",
@@ -47,9 +63,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761431510811,
     "modifiedTime": null,
     "lastModifiedBy": null

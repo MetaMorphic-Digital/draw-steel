@@ -18,25 +18,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "10",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 2
+      "value": 2,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each target is marked by you, and must immediately make a free strike against a creature of your choice within 5 squares of them.</p><p><strong>Mark Benefit:</strong> Until the end of the encounter, whenever you or any ally makes a strike against a creature marked by you, you can spend 2 focus to force that target to make a free strike against a creature of your choice within 5 squares of them.</p>",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -46,7 +44,20 @@
     "prerequisites": {
       "dsid": [
         "insurgent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each target is marked by you, and must immediately make a free strike against a creature of your choice within 5 squares of them.</p><p><strong>Mark Benefit:</strong> Until the end of the encounter, whenever you or any ally makes a strike against a creature marked by you, you can spend 2 focus to force that target to make a free strike against a creature of your choice within 5 squares of them.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -56,9 +67,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140881536,
     "modifiedTime": null,
     "lastModifiedBy": null

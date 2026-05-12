@@ -24,9 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "line",
-      "primary": 5,
-      "secondary": 2,
-      "tertiary": 1
+      "primary": "5",
+      "secondary": "2",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -39,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "OAwMXupfVvNWOE1o": {
@@ -53,18 +54,22 @@
                 "sonic"
               ],
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.weak"
               },
-              "value": "12"
+              "value": "12",
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "18",
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.average"
               },
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "24",
@@ -72,16 +77,15 @@
                 "sonic"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You teleport to a square on the opposite side of the area before making the power roll.</p>",
-      "after": "<p><strong>Strained</strong>: If you obtain a tier 2 outcome or better, you are [[/apply slowed turn]] until the end of your turn and each target is [[/apply slowed turn]] until the end of their turn.</p>"
     },
     "spend": {
       "text": "",
@@ -90,7 +94,29 @@
     "prerequisites": {
       "dsid": [
         "talent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You teleport to a square on the opposite side of the area before making the power roll.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p><strong>Strained</strong>: If you obtain a tier 2 outcome or better, you are [[/apply slowed turn]] until the end of your turn and each target is [[/apply slowed turn]] until the end of their turn.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -103,9 +129,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760749175568,
     "modifiedTime": null,
     "lastModifiedBy": null

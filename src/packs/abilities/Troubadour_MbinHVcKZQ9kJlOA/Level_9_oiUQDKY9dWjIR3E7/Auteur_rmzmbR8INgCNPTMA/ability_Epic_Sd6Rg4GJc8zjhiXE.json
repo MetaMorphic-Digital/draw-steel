@@ -23,8 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 10
+      "primary": "1",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "GzmBItxwvaqDWN0c": {
@@ -47,21 +49,30 @@
           "_id": "GzmBItxwvaqDWN0c",
           "other": {
             "tier1": {
-              "display": "The target takes a bane on ability rolls (save ends)."
+              "display": "The target takes a bane on ability rolls (save ends).",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "The target has a double bane on ability rolls (save ends)."
+              "display": "The target has a double bane on ability rolls (save ends).",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "The target has a double bane on power rolls (save ends)."
+              "display": "The target has a double bane on power rolls (save ends).",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Choose one ally within distance. While the target is affected by this ability, each time they use an ability, that ally can make a free strike against them after the ability is resolved.</p>"
     },
     "spend": {
       "text": "",
@@ -70,7 +81,20 @@
     "prerequisites": {
       "dsid": [
         "auteur"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Choose one ally within distance. While the target is affected by this ability, each time they use an ability, that ally can make a free strike against them after the ability is resolved.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -83,9 +107,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761340423970,
     "modifiedTime": null,
     "lastModifiedBy": null

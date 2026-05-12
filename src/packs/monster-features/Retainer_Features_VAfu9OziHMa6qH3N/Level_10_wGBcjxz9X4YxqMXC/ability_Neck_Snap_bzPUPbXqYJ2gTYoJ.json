@@ -26,7 +26,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "melee"
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -85,13 +88,20 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The target takes [[/damage 15]] damage, they are no longer grabbed, and they fall [[/apply prone]].</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The target takes [[/damage 15]] damage, they are no longer grabbed, and they fall [[/apply prone]].</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -104,9 +114,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913366236,
     "modifiedTime": null,
     "lastModifiedBy": null

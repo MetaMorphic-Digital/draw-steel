@@ -12,7 +12,6 @@
       "_id": "kgy0gYUlJfTuD4a6",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -20,15 +19,27 @@
             "key": "system.stamina.bonuses.treasure",
             "value": 6,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           },
           {
             "key": "system.movement.types",
             "value": "fly",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -47,9 +58,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1764170882518,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -67,7 +78,6 @@
       "_id": "k1gkwE0TuI7mWsIB",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -75,15 +85,27 @@
             "key": "system.stamina.bonuses.treasure",
             "value": 12,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           },
           {
             "key": "system.movement.types",
             "value": "fly",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -102,9 +124,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1764170894843,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -122,7 +144,6 @@
       "_id": "34S2UhT7PLcnlRfR",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -130,15 +151,27 @@
             "key": "system.stamina.bonuses.treasure",
             "value": 21,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           },
           {
             "key": "system.movement.types",
             "value": "fly",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -157,9 +190,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1764170908252,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -173,7 +206,7 @@
   "flags": {},
   "system": {
     "description": {
-      "value": "<p><em>The blue-purple carapace and wings of a gigantic scarab beetle have been formed into an ornate breastplate.</em></p><p><strong>1st Level:</strong> While you wear this armor, you gain a +6 bonus to Stamina and you can fly. If you don’t end your turn on the ground, you fall.</p><p><strong>5th Level:</strong> The armor’s bonus to Stamina increases to +12. Additionally, you no longer need to end your turn on the ground to avoid falling.</p><p><strong>9th Level:</strong> The armor’s bonus to Stamina increases to +21. Additionally, <span class=\"fontstyle0\">if you fly any distance before making a strike, that strike gains an edge.</span> <br style=\"font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:normal;orphans:2;text-align:-webkit-auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-size-adjust:auto;-webkit-text-stroke-width:0px\" /></p>",
+      "value": "<p><em>The blue-purple carapace and wings of a gigantic scarab beetle have been formed into an ornate breastplate.</em></p><p><strong>1st Level:</strong> While you wear this armor, you gain a +6 bonus to Stamina and you can fly. If you don’t end your turn on the ground, you fall.</p><p><strong>5th Level:</strong> The armor’s bonus to Stamina increases to +12. Additionally, you no longer need to end your turn on the ground to avoid falling.</p><p><strong>9th Level:</strong> The armor’s bonus to Stamina increases to +21. Additionally, <span class=\"fontstyle0\">if you fly any distance before making a strike, that strike gains an edge.</span> <br style=\"font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:normal;orphans:2;text-align:-webkit-auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-size-adjust:auto;-webkit-text-stroke-width:0px\"></p>",
       "director": ""
     },
     "source": {
@@ -214,9 +247,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1763173306105,
     "modifiedTime": null,
     "lastModifiedBy": null

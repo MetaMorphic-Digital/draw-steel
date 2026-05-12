@@ -23,8 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 5,
-      "secondary": 10
+      "primary": "5",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "ByMHDv84pobN5NKk": {
@@ -99,10 +101,6 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>This ability deals your primordial damage type and ignores damage immunity.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
@@ -110,7 +108,20 @@
     "prerequisites": {
       "dsid": [
         "stormwight"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>This ability deals your primordial damage type and ignores damage immunity.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -123,9 +134,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761572846230,
     "modifiedTime": null,
     "lastModifiedBy": null

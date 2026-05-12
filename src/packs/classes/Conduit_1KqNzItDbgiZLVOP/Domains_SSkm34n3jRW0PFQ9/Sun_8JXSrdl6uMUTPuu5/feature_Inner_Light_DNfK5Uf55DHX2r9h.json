@@ -41,7 +41,9 @@
     "prerequisites": {
       "dsid": [
         "sun"
-      ]
+      ],
+      "value": "",
+      "level": null
     }
   },
   "effects": [
@@ -64,7 +66,17 @@
             "type": "add",
             "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -82,9 +94,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1771186825963,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -104,9 +116,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755755117328,
     "modifiedTime": null,
     "lastModifiedBy": null

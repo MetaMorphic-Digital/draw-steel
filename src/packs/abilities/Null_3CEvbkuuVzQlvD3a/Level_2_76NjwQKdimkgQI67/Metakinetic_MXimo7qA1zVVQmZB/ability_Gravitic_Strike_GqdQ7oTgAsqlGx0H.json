@@ -24,19 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "E4XyGS8iE5OekANl": {
@@ -49,21 +53,37 @@
               "value": "8 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "12 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "16 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "YtPt7w4mhVRliWVj": {
           "name": "Pull",
@@ -78,7 +98,12 @@
               "movement": [
                 "pull"
               ],
-              "distance": "3"
+              "distance": "3",
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "movement": [
@@ -87,7 +112,12 @@
               "distance": "5",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "distance": "7",
@@ -96,15 +126,17 @@
               ],
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -113,8 +145,11 @@
     "prerequisites": {
       "dsid": [
         "metakinetic"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -126,9 +161,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756087360439,
     "modifiedTime": null,
     "lastModifiedBy": null

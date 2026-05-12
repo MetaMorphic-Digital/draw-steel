@@ -22,27 +22,43 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "special",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p><strong>Special Target:</strong> Each undead enemy in the area</p><p>Each target takes [[/damage max(@R, @I, @P) holy]]{holy damage} equal to your Reason, Intuition, or Presence score (your choice). Additionally, each target who has [[potency P strong]] is [[/apply frightened save]].</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p><strong>Special Target:</strong> Each undead enemy in the area</p><p>Each target takes [[/damage max(@R, @I, @P) holy]]{holy damage} equal to your Reason, Intuition, or Presence score (your choice). Additionally, each target who has [[potency P strong]] is [[/apply frightened save]].</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -55,9 +71,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757644190466,
     "modifiedTime": null,
     "lastModifiedBy": null

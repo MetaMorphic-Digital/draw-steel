@@ -95,9 +95,12 @@
       "freeStrike": 5,
       "keywords": [],
       "level": 8,
-      "ev": 4,
       "role": "brute",
       "organization": ""
+    },
+    "ev": 4,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -216,8 +219,9 @@
         "trigger": "",
         "distance": {
           "type": "meleeRanged",
-          "primary": 2,
-          "secondary": 10
+          "primary": "2",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -230,7 +234,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "9CAH69NkRjVF7BS0": {
@@ -240,15 +245,34 @@
               "_id": "9CAH69NkRjVF7BS0",
               "damage": {
                 "tier1": {
-                  "value": "5"
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "9"
+                  "value": "9",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "12"
+                  "value": "12",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "BLcHX4GdZ8xbz3AZ": {
               "name": "",
@@ -257,26 +281,56 @@
               "_id": "BLcHX4GdZ8xbz3AZ",
               "forced": {
                 "tier1": {
-                  "distance": "3"
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "distance": "4"
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "distance": "5"
+                  "distance": "5",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "_id": "MMZkeTDabCAl7A45",
       "img": "icons/svg/item-bag.svg",
@@ -292,9 +346,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761512413113,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -317,7 +371,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "feature",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -331,9 +390,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761512577957,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -356,7 +415,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "feature",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -370,9 +434,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761512609181,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -395,7 +459,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "feature",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -409,9 +478,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761512628421,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -429,9 +498,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761512318289,
     "modifiedTime": null,
     "lastModifiedBy": null

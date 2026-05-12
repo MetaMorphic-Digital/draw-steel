@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A crucible starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -33,13 +36,31 @@
           "_id": "AjQl6hfxNXNnOjeh",
           "damage": {
             "tier1": {
-              "value": "16"
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "13"
+              "value": "13",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "7"
+              "value": "7",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -54,27 +75,41 @@
               "effects": {
                 "bleeding": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
-              "display": "bleeding (save ends)"
+              "display": "bleeding (save ends)",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "display": "bleeding (EoT)",
               "effects": {
                 "bleeding": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>The dragon shakes loose a cloud of shattered weapons in a 6 × 4 line within 1 square of them. Each creature and object in the area makes an <strong>Agility test</strong>.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -87,7 +122,23 @@
     },
     "_dsid": "shower-of-blades",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The dragon shakes loose a cloud of shattered weapons in a 6 × 4 line within 1 square of them. Each creature and object in the area makes an <strong>Agility test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "cx9N3RRMIVHM0HVm",
@@ -96,9 +147,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760902104207,
     "modifiedTime": null,
     "lastModifiedBy": null

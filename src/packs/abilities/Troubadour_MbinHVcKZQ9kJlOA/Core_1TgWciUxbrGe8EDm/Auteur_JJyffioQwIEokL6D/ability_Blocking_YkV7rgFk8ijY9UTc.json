@@ -23,23 +23,23 @@
     "trigger": "A round of combat starts.",
     "distance": {
       "type": "aura",
-      "primary": 2
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>At the end of each of your turns while this performance is active, you can choose up to a number of targets equal to [[lookup @P]]{your Presence score} and teleport those targets to unoccupied spaces in the area. A target can’t be teleported in a way that would harm them (such as over a cliff), leave them dying, or result in them suffering a condition or other negative effect. </p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -48,7 +48,20 @@
     "prerequisites": {
       "dsid": [
         "auteur"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>At the end of each of your turns while this performance is active, you can choose up to a number of targets equal to [[lookup @P]]{your Presence score} and teleport those targets to unoccupied spaces in the area. A target can’t be teleported in a way that would harm them (such as over a cliff), leave them dying, or result in them suffering a condition or other negative effect. </p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -61,9 +74,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755794113296,
     "modifiedTime": null,
     "lastModifiedBy": null

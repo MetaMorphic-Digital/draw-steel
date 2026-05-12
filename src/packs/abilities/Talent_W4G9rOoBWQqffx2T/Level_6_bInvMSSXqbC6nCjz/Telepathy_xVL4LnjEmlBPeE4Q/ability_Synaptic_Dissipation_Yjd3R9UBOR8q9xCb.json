@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "GuHzoNwaEtGoVPit": {
@@ -47,21 +50,30 @@
           "_id": "GuHzoNwaEtGoVPit",
           "other": {
             "tier1": {
-              "display": "Two creatures"
+              "display": "Two creatures",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "Three creatures"
+              "display": "Three creatures",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "Five creatures"
+              "display": "Five creatures",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You target a number of creatures with this ability determined by the outcome of your power roll. You and your allies are [[/apply invisible]] to each target until the start of your next turn.</p><p><strong>Strained:</strong> The effect ends early if you take damage from an enemy’s ability.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -70,7 +82,20 @@
     "prerequisites": {
       "dsid": [
         "telepathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You target a number of creatures with this ability determined by the outcome of your power roll. You and your allies are [[/apply invisible]] to each target until the start of your next turn.</p><p><strong>Strained:</strong> The effect ends early if you take damage from an enemy’s ability.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -83,9 +108,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761078486147,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -27,7 +27,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "burst"
+      "type": "burst",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -56,13 +59,31 @@
           "_id": "YY8GwIBvwpfpCpvh",
           "damage": {
             "tier1": {
-              "value": "10"
+              "value": "10",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "14"
+              "value": "14",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "20"
+              "value": "20",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -113,13 +134,20 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The retainer is [[/apply dazed turn]] until the end of their next turn</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The retainer is [[/apply dazed turn]] until the end of their next turn</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -132,9 +160,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912370431,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "Bcs0oMTE2zUFWL5E": {
@@ -47,15 +50,34 @@
           "_id": "Bcs0oMTE2zUFWL5E",
           "damage": {
             "tier1": {
-              "value": "8"
+              "value": "8",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "13"
+              "value": "13",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "17"
+              "value": "17",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "xEfbL9T5qoqW1hhW": {
           "name": "",
@@ -65,13 +87,15 @@
           "applied": {
             "tier1": {
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.weak"
               },
               "display": "{{potency}}, grabbed",
               "effects": {
                 "grabbed": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             },
@@ -79,24 +103,33 @@
               "effects": {
                 "grabbed": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "grabbed": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>You can shift up to 4 squares, bringing the target with you. While grabbed this way, the target takes [[/damage 2*@M]]{damage} equal to twice your Might score at the start of each of your turns .</p>"
     },
     "spend": {
       "text": "",
@@ -105,7 +138,20 @@
     "prerequisites": {
       "dsid": [
         "stormwight"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>You can shift up to 4 squares, bringing the target with you. While grabbed this way, the target takes [[/damage 2*@M]]{damage} equal to twice your Might score at the start of each of your turns .</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -118,9 +164,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761523661098,
     "modifiedTime": null,
     "lastModifiedBy": null

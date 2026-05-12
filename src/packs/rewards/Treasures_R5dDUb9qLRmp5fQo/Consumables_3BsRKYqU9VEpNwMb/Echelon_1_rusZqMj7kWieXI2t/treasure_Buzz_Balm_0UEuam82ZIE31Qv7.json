@@ -45,7 +45,6 @@
       "origin": "Compendium.draw-steel.rewards.Item.0UEuam82ZIE31Qv7",
       "system": {
         "end": {
-          "type": "",
           "roll": ""
         },
         "changes": [
@@ -53,9 +52,20 @@
             "key": "system.movement.value",
             "value": 2,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "_id": "aDFBAt6bAypcSJF2",
       "disabled": false,
@@ -75,12 +85,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620837432
       },
       "start": null,
       "showIcon": 1,

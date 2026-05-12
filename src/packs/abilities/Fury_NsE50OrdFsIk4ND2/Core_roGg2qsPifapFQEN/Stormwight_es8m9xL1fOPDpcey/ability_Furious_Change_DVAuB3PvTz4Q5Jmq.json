@@ -18,31 +18,57 @@
     "trigger": "You lose Stamina and are not dying.",
     "distance": {
       "type": "self",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You gain [[/heal @M temp]]{temporary Stamina} equal to your Might score and can enter your animal form or hybrid form.</p>",
-      "after": ""
-    },
-    "spend": {
-      "text": "if you are not dying, you can spend a Recovery.",
-      "value": 1
     },
     "prerequisites": {
       "dsid": [
         "stormwight"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        },
+        "description": "<p>if you are not dying, you can spend a Recovery.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You gain [[/heal @M temp]]{temporary Stamina} equal to your Might score and can enter your animal form or hybrid form.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -54,9 +80,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755577635719,
     "modifiedTime": null,
     "lastModifiedBy": null

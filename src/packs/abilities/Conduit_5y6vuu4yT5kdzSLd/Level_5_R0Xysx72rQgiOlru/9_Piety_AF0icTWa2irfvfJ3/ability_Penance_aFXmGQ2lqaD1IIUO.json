@@ -23,8 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 4,
-      "secondary": 10
+      "primary": "4",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "YIMeBCf9KmiiypNc": {
@@ -50,21 +52,37 @@
               "value": "4",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "7",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "11",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "2zKgXR17r87C5hwD": {
           "name": "",
@@ -76,48 +94,62 @@
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "T5p8yJuoCFL4cqtM": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
               "display": "{{potency}}, prone and can't stand (save ends)",
               "potency": {
-                "characteristic": "intuition"
+                "characteristic": "intuition",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "T5p8yJuoCFL4cqtM": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "T5p8yJuoCFL4cqtM": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -126,8 +158,11 @@
     "prerequisites": {
       "dsid": [
         "conduit"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [
     {
@@ -141,7 +176,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -159,9 +204,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760686686714,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -181,9 +226,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760686534699,
     "modifiedTime": null,
     "lastModifiedBy": null

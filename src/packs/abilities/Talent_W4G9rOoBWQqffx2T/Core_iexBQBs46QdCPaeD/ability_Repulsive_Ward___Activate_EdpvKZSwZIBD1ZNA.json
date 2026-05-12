@@ -24,7 +24,9 @@
     "trigger": "An adjacent creature deals damage to you",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -40,13 +42,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>Push the triggering creature up to a number of squares equal to [[lookup @R]]{your Reason score}.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Push the triggering creature up to a number of squares equal to [[lookup @R]]{your Reason score}.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -59,9 +68,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.2",
+    "systemVersion": "1.1.0",
     "createdTime": 1772174794651,
     "modifiedTime": null,
     "lastModifiedBy": null

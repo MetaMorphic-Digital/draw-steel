@@ -36,7 +36,9 @@
         "additional": {
           "type": "",
           "perkType": []
-        }
+        },
+        "sort": 0,
+        "repick": {}
       },
       "wjCnH9cOfQON5aTl": {
         "name": "Purchased Traits",
@@ -68,7 +70,9 @@
         "additional": {
           "type": "ancestryTrait",
           "perkType": []
-        }
+        },
+        "sort": 0,
+        "repick": {}
       }
     }
   },
@@ -81,7 +85,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -89,9 +92,20 @@
             "key": "system.combat.size.letter",
             "value": "S",
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -110,9 +124,9 @@
         "compendiumSource": "Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT.ActiveEffect.zA4EgMRsL0I76cou",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760633087503,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -128,9 +142,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760629197193,
     "modifiedTime": null,
     "lastModifiedBy": null

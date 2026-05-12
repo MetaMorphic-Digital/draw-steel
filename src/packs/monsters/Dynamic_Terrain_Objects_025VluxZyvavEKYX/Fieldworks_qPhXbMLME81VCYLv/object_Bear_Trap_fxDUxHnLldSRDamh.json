@@ -288,7 +288,9 @@
         "trigger": "A creature or object of the appropriate size enters the trap’s space.",
         "distance": {
           "type": "melee",
-          "primary": 0
+          "primary": "0",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -311,7 +313,25 @@
               "_id": "KSIjJSlhn6KsA9E1",
               "other": {
                 "tier1": {
-                  "display": "The target shifts 1 square away from the trap"
+                  "display": "The target shifts 1 square away from the trap",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -323,13 +343,31 @@
               "_id": "fT2G1Q7uF546XRQG",
               "damage": {
                 "tier1": {
-                  "value": "0"
+                  "value": "0",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "3"
+                  "value": "3",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "5"
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -348,38 +386,52 @@
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "display": "{{potency}} slowed (save ends)"
                 },
                 "tier1": {
                   "potency": {
-                    "characteristic": "agility"
-                  }
+                    "characteristic": "agility",
+                    "value": "@potency.weak"
+                  },
+                  "display": "",
+                  "effects": {}
                 },
                 "tier3": {
                   "potency": {
-                    "value": "2"
+                    "value": "2",
+                    "characteristic": ""
                   },
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The bear trap must be manually reset.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The bear trap must be manually reset.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "v8Lwlkw6WddUbF8m",
@@ -396,9 +448,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772932841467,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -460,7 +512,6 @@
       "_id": "ttdoGOjyAPBe0LcX",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -468,9 +519,20 @@
             "key": "system.ev",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -488,9 +550,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772933966149,
         "modifiedTime": null,
         "lastModifiedBy": null

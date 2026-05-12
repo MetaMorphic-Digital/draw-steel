@@ -91,7 +91,8 @@
       "keywords": [
         "humanoid"
       ],
-      "role": "support"
+      "role": "support",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -329,13 +330,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>If the mind healer targets an ally, the ability deals no damage. Additionally, the target can end one effect on them that can be ended by a saving throw or that ends at the end of their turn.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the mind healer targets an ally, the ability deals no damage. Additionally, the target can end one effect on them that can be ended by a saving throw or that ends at the end of their turn.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "o7ZHnEdQ02cAMp6d",
@@ -349,9 +357,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776808200880,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -372,9 +380,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772907458119,
     "modifiedTime": null,
     "lastModifiedBy": null

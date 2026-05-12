@@ -28,7 +28,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": "3"
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -138,13 +140,20 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The weatherwise can teleport up to 5 squares before or after using this ability.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The weatherwise can teleport up to 5 squares before or after using this ability.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -157,9 +166,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913475408,
     "modifiedTime": null,
     "lastModifiedBy": null

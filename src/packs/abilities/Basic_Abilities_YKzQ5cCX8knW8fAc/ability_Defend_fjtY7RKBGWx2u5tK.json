@@ -11,24 +11,21 @@
     },
     "_dsid": "defend",
     "keywords": [],
-    "type": "action",
+    "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
       "type": "self",
-      "primary": null,
-      "secondary": null,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "self",
-      "value": null
-    },
-    "effect": {
-      "before": "<p>When a creature takes the [[/apply TYggdI2Kwa302NjW]]{Defend main action}, ability rolls made against them have a double bane until the start of their next turn. Additionally, you have a double edge on tests when called for to resist environmental effects or a creature’s traits or abilities. A creature gains no benefit from this action while another creature is taunted by them.</p>",
-      "after": ""
+      "value": null,
+      "custom": ""
     },
     "spend": {
       "value": null,
@@ -38,9 +35,26 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>When a creature takes the [[/apply TYggdI2Kwa302NjW]]{Defend main action}, ability rolls made against them have a double bane until the start of their next turn. Additionally, you have a double edge on tests when called for to resist environmental effects or a creature’s traits or abilities. A creature gains no benefit from this action while another creature is taunted by them.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -51,7 +65,6 @@
       "origin": "Compendium.draw-steel.abilities.Item.fjtY7RKBGWx2u5tK",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -59,9 +72,20 @@
             "key": "system.combat.targetModifiers.banes",
             "value": 2,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "_id": "TYggdI2Kwa302NjW",
       "disabled": false,
@@ -81,9 +105,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1770706662192,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -99,9 +123,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1749702844092,
     "modifiedTime": null,
     "lastModifiedBy": null

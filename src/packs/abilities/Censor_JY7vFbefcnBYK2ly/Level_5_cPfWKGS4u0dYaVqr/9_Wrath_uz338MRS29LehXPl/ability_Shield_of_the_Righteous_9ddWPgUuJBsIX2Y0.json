@@ -23,7 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "Zr12SkFuJJIpGs8m": {
@@ -46,21 +49,34 @@
           "_id": "Zr12SkFuJJIpGs8m",
           "damage": {
             "tier1": {
-              "value": "10 + @chr"
+              "value": "10 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "14 + @chr",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "20 + @chr",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "types": [],
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "tKpkDSp7qKl2q2nH": {
           "name": "",
@@ -69,27 +85,30 @@
           "_id": "tKpkDSp7qKl2q2nH",
           "other": {
             "tier1": {
-              "display": "you and each ally adjacent to you gain 10 temporary Stamina"
+              "display": "you and each ally adjacent to you gain 10 temporary Stamina",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "display": "you and each ally adjacent to you gain 15 temporary Stamina",
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.average"
               }
             },
             "tier3": {
               "display": "you and each ally adjacent to you gain 20 temporary Stamina",
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.strong"
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>[[/heal 10 temp]] [[/heal 15 temp]] [[/heal 20 temp]]</p>"
     },
     "spend": {
       "text": "",
@@ -98,7 +117,20 @@
     "prerequisites": {
       "dsid": [
         "censor"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>[[/heal 10 temp]] [[/heal 15 temp]] [[/heal 20 temp]]</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -111,9 +143,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760990890076,
     "modifiedTime": null,
     "lastModifiedBy": null

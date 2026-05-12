@@ -23,7 +23,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -39,13 +42,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>Until the start of the retainer’s next turn, strikes made against the retainer gain an edge [[/apply u5OG1iWWEtgnTnx4]]. At the start of the retainer’s next turn, they [[/gain 2 surges]], and any ability they use before the end of their turn that force moves a creature can move that creature 2 additional squares.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the start of the retainer’s next turn, strikes made against the retainer gain an edge [[/apply u5OG1iWWEtgnTnx4]]. At the start of the retainer’s next turn, they [[/gain 2 surges]], and any ability they use before the end of their turn that force moves a creature can move that creature 2 additional squares.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [
@@ -58,7 +68,6 @@
       "_id": "u5OG1iWWEtgnTnx4",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -66,9 +75,20 @@
             "key": "system.combat.targetModifiers.edges",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -86,9 +106,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1773167707621,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -134,7 +154,17 @@
             "phase": "initial",
             "priority": 0
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -152,9 +182,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1773167844786,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -174,9 +204,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912354904,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -44,7 +44,6 @@
       "_id": "ZsZmCflAcicrTNus",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -52,15 +51,27 @@
             "key": "system.combat.stability",
             "value": 0,
             "priority": null,
-            "type": "downgrade"
+            "type": "downgrade",
+            "phase": "initial"
           },
           {
             "key": "system.movement.types",
             "value": "fly",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -78,12 +89,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620837724
       },
       "start": null,
       "showIcon": 1,

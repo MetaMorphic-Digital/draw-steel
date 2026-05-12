@@ -22,8 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 2,
-      "secondary": 10
+      "primary": "2",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -34,17 +35,42 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>Each target takes [[/damage @A acid]]{acid}, [[/damage @A fire]]{fire}, or [[/damage @A poison]]{poison} damage (your choice) equal to your Agility score.</p><p>For each combat round that has passed since this ability was last used in the current encounter, the area increases by 1 and you [[/surge 1]] that must be used with this ability. After using the ability or at the end of the encounter, its area and surges are reset.</p>",
-      "after": ""
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 2,
+          "multiple": false
+        },
+        "description": "<p>For every 2 insight spent, you increase the cube’s size by 1 and gain 1 surge that can be used only with this ability.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each target takes [[/damage @A acid]]{acid}, [[/damage @A fire]]{fire}, or [[/damage @A poison]]{poison} damage (your choice) equal to your Agility score.</p><p>For each combat round that has passed since this ability was last used in the current encounter, the area increases by 1 and you [[/surge 1]] that must be used with this ability. After using the ability or at the end of the encounter, its area and surges are reset.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     },
     "spend": {
-      "text": "For every 2 insight spent, you increase the cube’s size by 1 and gain 1 surge that can be used only with this ability.",
-      "value": 2
+      "text": ""
     }
   },
   "effects": [],
@@ -57,9 +83,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760923163964,
     "modifiedTime": null,
     "lastModifiedBy": null

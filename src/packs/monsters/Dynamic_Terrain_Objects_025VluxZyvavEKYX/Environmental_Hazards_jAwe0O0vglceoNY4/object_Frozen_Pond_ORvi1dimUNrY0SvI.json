@@ -287,7 +287,9 @@
         "trigger": "A creature or object enters a square of the frozen pond without shifting",
         "distance": {
           "type": "melee",
-          "primary": 0
+          "primary": "0",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -310,15 +312,40 @@
               "_id": "lHdRxYJgFs4whX60",
               "forced": {
                 "tier1": {
-                  "display": "{{forced}} in the direction the target was moving"
+                  "display": "{{forced}} in the direction the target was moving",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "distance": "2",
-                  "display": ""
+                  "display": "",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "distance": "3",
-                  "display": ""
+                  "display": "",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -337,7 +364,8 @@
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "display": "{{potency}} slowed (save ends)"
@@ -346,25 +374,42 @@
                   "effects": {
                     "JAc95wBa4mvhR6gi": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "display": "{{potency}} prone and can't stand (save ends)",
                   "potency": {
-                    "value": "2"
+                    "value": "2",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The triggering creature’s movement ends, then they are force moved. If the target triggered this ability by being force moved, this ability gains an edge and any remaining forced movement distance is added to the ability’s forced movement. The ability’s forced movement doesn’t trigger the ability again.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The triggering creature’s movement ends, then they are force moved. If the target triggered this ability by being force moved, this ability gains an edge and any remaining forced movement distance is added to the ability’s forced movement. The ability’s forced movement doesn’t trigger the ability again.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "I5IBU6vEavU2Kqs3",
@@ -381,7 +426,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -399,11 +454,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1771703650926,
-            "modifiedTime": 1774890078887,
+            "modifiedTime": 1778620830186,
             "lastModifiedBy": null
           },
           "start": null,
@@ -423,9 +478,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771703172320,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -458,7 +513,9 @@
         "trigger": "A creature or object enters or falls prone in a square of the frozen pond.",
         "distance": {
           "type": "melee",
-          "primary": 0
+          "primary": "0",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -483,17 +540,34 @@
                 "tier1": {
                   "movement": [
                     "slide"
-                  ]
+                  ],
+                  "display": "{{forced}}",
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "display": "",
                   "movement": [],
-                  "distance": ""
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "display": "",
                   "movement": [],
-                  "distance": ""
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -506,19 +580,34 @@
               "damage": {
                 "tier1": {
                   "value": "0",
-                  "types": []
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "1",
                   "types": [
                     "cold"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "3",
                   "types": [
                     "cold"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -538,33 +627,51 @@
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 },
                 "tier3": {
                   "potency": {
-                    "value": "2"
+                    "value": "2",
+                    "characteristic": ""
                   },
                   "display": "{{potency}} restrained (save ends)",
                   "effects": {
                     "restrained": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The triggering creature’s movement ends, then they are force moved if applicable.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The triggering creature’s movement ends, then they are force moved if applicable.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "80rCUSX4LXkqUn7r",
@@ -581,9 +688,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771703889309,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -601,10 +708,19 @@
       "_id": "5evrTxFfClGgyGfd",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -622,9 +738,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771703757546,
         "modifiedTime": null,
         "lastModifiedBy": null

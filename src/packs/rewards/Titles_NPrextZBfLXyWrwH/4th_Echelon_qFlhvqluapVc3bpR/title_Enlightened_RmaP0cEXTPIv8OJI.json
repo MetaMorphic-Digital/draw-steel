@@ -29,7 +29,9 @@
           "intuition": 0
         },
         "max": 6,
-        "description": "<p>Your choice of your Reason or Intuition increases by 1 (to a maximum of 6).</p>"
+        "description": "<p>Your choice of your Reason or Intuition increases by 1 (to a maximum of 6).</p>",
+        "sort": 0,
+        "repick": {}
       },
       "5vi5zQ2TrZiMiGcL": {
         "name": "Benefit",
@@ -51,13 +53,21 @@
           {
             "uuid": "Compendium.draw-steel.rewards.Item.xbMmK6ANQ5hSyNE5"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
     },
     "echelon": 4,
     "story": "Don’t you see? This world that seems so real to you is nothing but a game, and all the people merely pieces!",
     "prerequisites": {
-      "value": "You learn a cosmic truth that alters your understanding of reality"
+      "value": "You learn a cosmic truth that alters your understanding of reality",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -70,9 +80,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1762184189854,
     "modifiedTime": null,
     "lastModifiedBy": null

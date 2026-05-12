@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A  starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -36,13 +39,32 @@
               "value": "13",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "10",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -54,21 +76,29 @@
           "_id": "pGr1YDSG7l7KFJO9",
           "other": {
             "tier1": {
-              "display": "the target uses a signature ability against a creature of Lord Syuul’s choice"
+              "display": "the target uses a signature ability against a creature of Lord Syuul’s choice",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "the target makes a free strike against a creature of Lord Syuul’s choice"
+              "display": "the target makes a free strike against a creature of Lord Syuul’s choice",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "No effect."
+              "display": "No effect.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -81,7 +111,23 @@
     },
     "_dsid": "do-it-for-me",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "w3nS8umrXc9FhzTb",
@@ -90,9 +136,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761531097476,
     "modifiedTime": null,
     "lastModifiedBy": null

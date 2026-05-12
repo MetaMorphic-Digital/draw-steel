@@ -15,27 +15,29 @@
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "heroic",
     "resource": 5,
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 5,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "rkb8ZcMP3CS4K9nX": {
@@ -50,7 +52,7 @@
                 "characteristic": "none",
                 "value": "@potency.weak"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier2": {
               "types": [],
@@ -59,7 +61,7 @@
                 "characteristic": "",
                 "value": "@potency.average"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier3": {
               "types": [],
@@ -68,9 +70,11 @@
                 "characteristic": "",
                 "value": "@potency.strong"
               },
-              "properties": []
+              "ignoredImmunities": []
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         },
         "K5pY5eWy45ipOoCU": {
           "type": "applied",
@@ -82,29 +86,30 @@
                 "characteristic": "none",
                 "value": "@potency.weak"
               },
-              "display": "one ally within 10 squares can make a signature strike against the target as a free triggered action"
+              "display": "one ally within 10 squares can make a signature strike against the target as a free triggered action",
+              "effects": {}
             },
             "tier2": {
               "potency": {
                 "characteristic": "",
                 "value": "@potency.average"
               },
-              "display": "one ally within 10 squares can make a signature strike that gains an edge against the target as a free triggered action"
+              "display": "one ally within 10 squares can make a signature strike that gains an edge against the target as a free triggered action",
+              "effects": {}
             },
             "tier3": {
               "potency": {
                 "characteristic": "",
                 "value": "@potency.strong"
               },
-              "display": "two allies within 10 squares can each make a signature strike that gains an edge against the target as free triggered actions"
+              "display": "two allies within 10 squares can each make a signature strike that gains an edge against the target as free triggered actions",
+              "effects": {}
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>If the target is reduced to 0 Stamina and a strike granted by this ability hasn’t been made, the striker can pick a different target.</p>"
     },
     "spend": {
       "value": null,
@@ -114,7 +119,20 @@
     "prerequisites": {
       "dsid": [
         "tactician"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If the target is reduced to 0 Stamina and a strike granted by this ability hasn’t been made, the striker can pick a different target.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -124,9 +142,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140754845,
     "modifiedTime": null,
     "lastModifiedBy": null

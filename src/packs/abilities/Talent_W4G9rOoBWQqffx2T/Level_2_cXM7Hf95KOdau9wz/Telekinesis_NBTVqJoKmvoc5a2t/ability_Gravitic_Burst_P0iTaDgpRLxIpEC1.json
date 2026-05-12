@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "xFCaB8yjvFpTXiz2": {
@@ -45,15 +49,34 @@
           "_id": "xFCaB8yjvFpTXiz2",
           "damage": {
             "tier1": {
-              "value": "3"
+              "value": "3",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6"
+              "value": "6",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "9"
+              "value": "9",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "QxznIXoeMBbhmsln": {
           "name": "Push",
@@ -65,27 +88,48 @@
               "distance": "2",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "distance": "4",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "distance": "6",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p><strong>Strained:</strong> The size of the burst increases by 1, and you are [[/apply weakened turn]] until the end of your turn.</p>"
     },
     "spend": {
       "text": "",
@@ -94,7 +138,20 @@
     "prerequisites": {
       "dsid": [
         "telekinesis"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p><strong>Strained:</strong> The size of the burst increases by 1, and you are [[/apply weakened turn]] until the end of your turn.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -107,9 +164,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756181944464,
     "modifiedTime": null,
     "lastModifiedBy": null

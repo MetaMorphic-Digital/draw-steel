@@ -15,27 +15,29 @@
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "heroic",
     "resource": 3,
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 5,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "8b0IjcpC8H5jsALA": {
@@ -50,7 +52,7 @@
                 "characteristic": "none",
                 "value": "@potency.weak"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier2": {
               "types": [],
@@ -59,7 +61,7 @@
                 "characteristic": "",
                 "value": "@potency.average"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier3": {
               "types": [],
@@ -68,9 +70,11 @@
                 "characteristic": "",
                 "value": "@potency.strong"
               },
-              "properties": []
+              "ignoredImmunities": []
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         },
         "JuGJkTS6GFA0naaW": {
           "name": "Recovery",
@@ -79,21 +83,30 @@
           "_id": "JuGJkTS6GFA0naaW",
           "other": {
             "tier1": {
-              "display": "you or one ally within 10 squares of you can spend a Recovery"
+              "display": "you or one ally within 10 squares of you can spend a Recovery",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "you or one ally within 10 squares of you can spend a Recovery"
+              "display": "you or one ally within 10 squares of you can spend a Recovery",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "you or one ally within 10 squares of you can spend a Recovery, and each of you gains an edge on the next ability roll you make during the encounter"
+              "display": "you or one ally within 10 squares of you can spend a Recovery, and each of you gains an edge on the next ability roll you make during the encounter",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -103,8 +116,11 @@
     "prerequisites": {
       "dsid": [
         "tactician"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "folder": "rTZbhhWgJJlUsz0q",
@@ -113,9 +129,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140634396,
     "modifiedTime": null,
     "lastModifiedBy": null

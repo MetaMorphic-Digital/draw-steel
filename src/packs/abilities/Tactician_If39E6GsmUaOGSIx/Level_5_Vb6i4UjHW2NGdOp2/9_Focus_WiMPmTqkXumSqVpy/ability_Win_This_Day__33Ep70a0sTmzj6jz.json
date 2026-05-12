@@ -21,7 +21,9 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -32,13 +34,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each target [[/surge 2]]. Additionally, they can spend a Recovery, remove any conditions or effects on them, and stand up if they are prone.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -47,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "tactician"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each target [[/surge 2]]. Additionally, they can spend a Recovery, remove any conditions or effects on them, and stand up if they are prone.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -60,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760643716329,
     "modifiedTime": null,
     "lastModifiedBy": null

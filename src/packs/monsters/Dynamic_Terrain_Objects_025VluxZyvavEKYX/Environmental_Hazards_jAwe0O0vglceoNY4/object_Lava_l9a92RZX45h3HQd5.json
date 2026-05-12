@@ -287,7 +287,9 @@
         "trigger": "A creature or object enters the lava or starts their turn there, or starts their turn adjacent to the lava.",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -313,19 +315,34 @@
                   "value": "5",
                   "types": [
                     "fire"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "9",
                   "types": [
                     "fire"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "12",
                   "types": [
                     "fire"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -345,42 +362,56 @@
                   "effects": {
                     "lR7MvhurAaBlyZ47": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   }
                 },
                 "tier2": {
                   "potency": {
-                    "value": "2"
-                  },
-                  "effects": {
-                    "lR7MvhurAaBlyZ47": {
-                      "condition": "failure"
-                    }
-                  }
-                },
-                "tier3": {
-                  "potency": {
-                    "value": "3"
+                    "value": "2",
+                    "characteristic": ""
                   },
                   "effects": {
                     "lR7MvhurAaBlyZ47": {
                       "condition": "failure",
-                      "end": ""
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
+                },
+                "tier3": {
+                  "potency": {
+                    "value": "3",
+                    "characteristic": ""
+                  },
+                  "effects": {
+                    "lR7MvhurAaBlyZ47": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": ""
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>If the target is adjacent to lava but not in it, this ability takes a bane. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the target is adjacent to lava but not in it, this ability takes a bane. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "W7mKnde2z3G7gFAb",
@@ -397,7 +428,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -415,11 +456,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.361",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1771704615688,
-            "modifiedTime": 1774890078994,
+            "modifiedTime": 1778620833719,
             "lastModifiedBy": null
           },
           "start": null,
@@ -439,9 +480,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771704473129,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -459,7 +500,6 @@
       "_id": "buDms5GHtHYxjeQG",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -467,9 +507,20 @@
             "key": "system.ev",
             "value": 4,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -487,9 +538,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771704732480,
         "modifiedTime": null,
         "lastModifiedBy": null
