@@ -67,7 +67,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
         context.mentorLink = this.document.system.retainer.mentor?.toAnchor();
         break;
       case "stats":
-        context.characteristics = this._getCharacteristics(true);
+        context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
         break;
     }
     return context;
@@ -105,7 +105,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editRetainerMetadata(event, target) {
-    new RetainerMetadataInput({ document: this.document }).render({ force: true });
+    this.renderChild(new RetainerMetadataInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
@@ -117,7 +117,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    new DocumentSourceInput({ document: this.document }).render({ force: true });
+    this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
 }

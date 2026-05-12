@@ -142,7 +142,7 @@ export default class AdvancementModel extends BaseItemModel {
     });
     if (!configured) return;
 
-    const transactions = await actor.system._finalizeAdvancements({ chain, toCreate, toUpdate, actorUpdate, _idMap });
+    const transactions = await chain.finalize({ toCreate, toUpdate, actorUpdate, _idMap });
 
     return transactions[0].find(i => i.type === this.parent.type);
   }

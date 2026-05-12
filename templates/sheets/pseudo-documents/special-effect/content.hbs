@@ -1,0 +1,9 @@
+<section class="standard-form">
+  {{formGroup fields.name value=source.name placeholder=(localize (concat "TYPES.SpecialEffect." source.type)) name="name"}}
+  {{formGroup fields.img value=source.img name="img"}}
+  {{#if detailsPartial}}
+  {{> (lookup @root "detailsPartial") @root}}
+  {{/if}}
+  {{formGroup fields.before value=source.before name="before"}}
+  {{formInput fields.description value=source.description height=300 name="description"}}
+</section>

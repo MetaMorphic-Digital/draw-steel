@@ -15,6 +15,7 @@ export default class RollPart extends BaseMessagePart {
 
   /** @inheritdoc */
   static ACTIONS = {
+    ...super.ACTIONS,
     applyDamage: (event) => DamageRoll.applyDamageCallback(event),
   };
 

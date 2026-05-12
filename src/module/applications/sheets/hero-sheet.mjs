@@ -88,7 +88,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
-        context.characteristics = this._getCharacteristics(false);
+        context.characteristics = this.actor.system._getCharacteristics(false);
         context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
         context.skills = this._getSkills();
         break;
@@ -297,16 +297,16 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     // TODO: Replace this with opening a compendium browser as part of #130
     switch (target.dataset.type) {
       case "ancestry":
-        game.packs.get("draw-steel.origins").render({ force: true });
+        game.packs.get("draw-steel.origins").render(true);
         break;
       case "culture":
-        game.packs.get("draw-steel.origins").render({ force: true });
+        game.packs.get("draw-steel.origins").render(true);
         break;
       case "career":
-        game.packs.get("draw-steel.origins").render({ force: true });
+        game.packs.get("draw-steel.origins").render(true);
         break;
       case "class":
-        game.packs.get("draw-steel.classes").render({ force: true });
+        game.packs.get("draw-steel.classes").render(true);
         break;
     }
   }
@@ -425,7 +425,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editCharacteristics(event, target) {
-    return new CharacteristicInput({ document: this.document }).render({ force: true });
+    this.renderChild(new CharacteristicInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */

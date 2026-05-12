@@ -68,6 +68,16 @@ export default class ObjectModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Simple getter to indicate this counts as an object for targeting purposes.
+   * @returns {boolean}
+   */
+  get isObject() {
+    return true;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
@@ -79,6 +89,7 @@ export default class ObjectModel extends BaseActorModel {
     const roles = ds.CONFIG.objects.roles;
     this.object.roleLabel = roles[this.object.role]?.label ?? "";
 
+    // == null covers null & undefined
     if (this.ev == null) this.evLabel = "—";
     else {
       const evData = { value: this.ev, area: this.object.area };

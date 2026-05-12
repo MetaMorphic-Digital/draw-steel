@@ -289,6 +289,7 @@ Hooks.once("i18nInit", () => {
   // Localize pseudo-documents. Base first, then loop through the types in use
   foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect);
   foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.advancements.BaseAdvancement);
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.specialEffects.BaseSpecialEffect);
 
   const localizePseudos = record => {
     for (const cls of Object.values(record)) {
@@ -298,6 +299,7 @@ Hooks.once("i18nInit", () => {
 
   localizePseudos(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.TYPES);
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
+  localizePseudos(data.pseudoDocuments.specialEffects.BaseSpecialEffect.TYPES);
 
   // Register formula editor autocomplete contexts after ds.CONFIG localization so labels show localized.
   CONFIG.formulaEditor.contexts.default = {
