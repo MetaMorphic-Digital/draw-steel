@@ -20,7 +20,6 @@
 
 ## 1.1.0
 
-
 ### Added
 
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)
@@ -29,6 +28,7 @@
 
 - Improved Minion Squad damage handling, including only adjusting for immunities/resistances once per AOE and capping damage for AOEs. (#1353)
 - Improved handling of disabled and expired status conditions on the actor sheet to more accurately convey what is active and reduce clicks. (#1694)
+- Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 
 ### Deprecated
 
