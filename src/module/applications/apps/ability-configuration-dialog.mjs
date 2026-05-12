@@ -178,17 +178,17 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     context.resource.show = this.item.system.resource;
 
     // Heroic resource/malice spend
-    if (this.item.system.spend.value || this.item.system.spend.text) {
+    if (this.item.system.effects.documentsByType.spend.length) {
       context.resource.show = true;
       const coreResource = this.actor.system.coreResource;
+      context.resource.name = coreResource.name;
+      context.resource.max = foundry.utils.getProperty(coreResource.target, coreResource.path) - coreResource.minimum;
 
-      const max = foundry.utils.getProperty(coreResource.target, coreResource.path) - coreResource.minimum;
-      if (max) context.spendConfig = {
-        max,
-        slider: !this.item.system.spend.value,
-        value: this.item.system.spend.value || "",
-        name: coreResource.name,
-      };
+      context.spendConfig = this.item.system.effects.documentsByType.spend.map(e => ({
+        id: e.id,
+        multiple: e.resource.multiple,
+        value: e.resource.value,
+      }));
     }
   }
 
