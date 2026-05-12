@@ -40,6 +40,10 @@ export async function migrateWorld() {
       await version_1_0_migration();
       updateVersion = true;
     }
+    if (foundry.utils.isNewerVersion("1.1.0", migrationVersion)) {
+      await version_1_1_migration();
+      updateVersion = true;
+    }
   }
   if (updateVersion) await game.settings.set(systemID, "migrationVersion", game.system.version);
 }
@@ -69,7 +73,7 @@ async function version_0_8_migration() {
   // Current migration does not search for items created inside deltas
   // if that is ever necessary, expand to loop through game.scenes => scene.tokens
 
-  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     await pack.getDocuments();
@@ -127,7 +131,7 @@ async function version_0_11_migration() {
   // Current migration does not search for effects created inside deltas
   // if that is ever necessary, expand to loop through game.scenes => scene.tokens
 
-  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     const docs = await pack.getDocuments();
@@ -178,7 +182,7 @@ async function version_1_0_migration() {
   }
   warning.update({ pct: 0.8 });
 
-  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p));
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     const docs = await pack.getDocuments();
@@ -187,6 +191,55 @@ async function version_1_0_migration() {
     const operation = [];
     docs.forEach(doc => migrateEffectSystem(doc, operation));
     await foundry.documents.modifyBatch(operation);
+    if (wasLocked) await pack.configure({ locked: true });
+  }
+
+  warning.update({ pct: 1.00 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.0.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Migrate abilities for version 1.1.0.
+ */
+async function version_1_1_migration() {
+
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "1.1.0" }, progress: true });
+
+  await migrateActorItems(game.actors);
+
+  warning.update({ pct: 0.3 });
+
+  for (const scene of game.scenes) {
+    const operation = scene.tokens.map(t => {
+      if (t.isLinked) return null;
+      return {
+        action: "update",
+        updates: t.actor.itemTypes.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
+        documentName: "Item",
+        parent: t.actor,
+      };
+    }).filter(_ => _);
+    await foundry.documents.modifyBatch(operation);
+  }
+
+  warning.update({ pct: 0.5 });
+
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
+  for (const pack of packsToMigrate) {
+    console.log("Migrating document inside", pack.title);
+    const docs = await pack.getDocuments();
+    const wasLocked = pack.config.locked;
+    if (wasLocked) await pack.configure({ locked: false });
+    if (pack.type === "Actor") await migrateActorItems(pack);
+    else {
+      const updates = docs.filter(i => i.type === "ability").map(i => ({ _id: i.id, system: _replace(i.system.toObject()) }));
+      await foundry.documents.Item.updateDocuments(updates, { pack: pack.collection });
+    }
     if (wasLocked) await pack.configure({ locked: true });
   }
 
@@ -284,13 +337,40 @@ export function migrateEffectSystem(parentDocument, operation) {
 /* -------------------------------------------------- */
 
 /**
+ * Force-updates the `system` property of all ability items in the provided actor collection.
+ * @param {AnyCollection} actorCollection
+ */
+export async function migrateActorItems(actorCollection) {
+  const operation = [];
+  let count = 0;
+  for (const actor of actorCollection) {
+    const updateOperation = {
+      action: "update",
+      updates: actor.itemTypes.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
+      documentName: "Item",
+      parent: actor,
+    };
+    count += updateOperation.updates.length;
+    operation.push(updateOperation);
+    if (count >= 100) {
+      await foundry.documents.modifyBatch(operation);
+      operation.length = 0;
+      count = 0;
+    }
+  }
+  if (operation.length) await foundry.documents.modifyBatch(operation);
+}
+
+/* -------------------------------------------------- */
+
+/**
  * Determine whether a compendium pack should be migrated during `migrateWorld`.
  * @param {CompendiumCollection} pack
+ * @param {string[]} [types=["Actor", "Item", "ActiveEffect"]] Document names to migrate.
  * @returns {boolean}
  */
-function shouldMigrateCompendium(pack) {
-  // We only care about actor and item migrations
-  if (!["Actor", "Item"].includes(pack.documentName)) return false;
+function shouldMigrateCompendium(pack, types = ["Actor", "Item", "ActiveEffect"]) {
+  if (!types.includes(pack.documentName)) return false;
 
   // World compendiums should all be migrated, system ones should never by migrated
   if (pack.metadata.packageType === "world") return true;
