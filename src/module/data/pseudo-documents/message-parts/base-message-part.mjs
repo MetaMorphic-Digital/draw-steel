@@ -158,11 +158,11 @@ export default class BaseMessagePart extends TypedPseudoDocument {
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
-  static async #selectToken(event, target) {
+  static #selectToken(event, target) {
     const { uuid } = target.dataset;
 
     /** @type {DrawSteelActor} */
-    const actor = await fromUuid(uuid);
+    const actor = fromUuidSync(uuid);
 
     const tokens = actor.getDependentTokens({ scenes: canvas.scene });
 
