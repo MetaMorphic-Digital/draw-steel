@@ -127,9 +127,9 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
     if (options.isFirstRender) {
       this.#effects = new Set(Object.values(this.node.choices).map(choice => choice.effect));
 
-      for (const effect of this.effects) {
+      this.effects.forEach(effect => {
         if (this.node.selected[effect.uuid]) this.chosen.add(effect.uuid);
-      }
+      });
     }
 
     return super._prepareContext(options);
@@ -167,9 +167,9 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
    * @protected
    */
   async _prepareBody(context, options) {
-    context.chooseLabel = (this.advancement.chooseN == null) ?
-      _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseNull") :
-      _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: this.advancement.chooseN });
+    context.chooseLabel = (this.advancement.chooseN == null)
+      ? _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseNull")
+      : _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: this.advancement.chooseN });
 
     const totalChosen = this.totalChosen;
 
@@ -186,7 +186,6 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
     });
 
     context.enrichedDescription = await enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
-
   }
 
   /* -------------------------------------------------- */

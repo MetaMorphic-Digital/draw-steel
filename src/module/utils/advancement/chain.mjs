@@ -252,7 +252,7 @@ export default class AdvancementChain {
    * @param {Record<string, ItemData>} [config.toUpdate={}]
    * @param {ActorData} [config.actorUpdate={}]
    * @param {Map<string, string>} [config._idMap]
-   * @param {object} [options]                                      Operation options.
+   * @param {object} [options]    Operation options.
    * @returns {Promise<[DrawSteelItem[], DrawSteelItem[], DrawSteelActor[], ...DrawSteelActiveEffect[][]]>}
    */
   async finalize({ toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, options = {}) {
@@ -265,26 +265,26 @@ export default class AdvancementChain {
     const operations = [
       {
         action: "create",
-        ds: operationOptions,
         documentName: "Item",
+        ds: operationOptions,
         keepId: true,
         pack: this.actor.pack,
         parent: this.actor,
       },
       {
-        documentName: "Item",
         action: "update",
+        documentName: "Item",
         ds: operationOptions,
         pack: this.actor.pack,
         parent: this.actor,
       },
       {
-        documentName: "Actor",
         action: "update",
-        changes: [actorUpdate],
+        documentName: "Actor",
         ds: operationOptions,
-        parent: this.actor.parent,
         pack: this.actor.pack,
+        parent: this.actor.parent,
+        updates: [actorUpdate],
       },
     ];
 
@@ -349,8 +349,8 @@ export default class AdvancementChain {
             op = {
               action: "create",
               data: [],
-              ds: operationOptions,
               documentName: "ActiveEffect",
+              ds: operationOptions,
               keepId: true,
               pack: item.pack,
               parent: item,
@@ -378,7 +378,7 @@ export default class AdvancementChain {
     }
 
     operations[0].data = Object.values(toCreate);
-    operations[1].changes = Object.values(toUpdate);
+    operations[1].updates = Object.values(toUpdate);
 
     return foundry.documents.modifyBatch(operations);
   }
