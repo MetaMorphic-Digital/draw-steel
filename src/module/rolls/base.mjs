@@ -53,4 +53,15 @@ export default class DSRoll extends foundry.dice.Roll {
     if (create) return Cls.create(msg);
     return msg.toObject();
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareChatRenderContext(options = {}) {
+    const context = await super._prepareChatRenderContext(options);
+
+    context.isGM = game.user.isGM;
+
+    return context;
+  }
 }

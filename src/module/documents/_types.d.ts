@@ -26,6 +26,7 @@ import {
 import { DrawSteelActiveEffect, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelItem, DrawSteelJournalEntryPage, DrawSteelTokenDocument, DrawSteelWallDocument } from "./_module.mjs";
 import Collection from "@common/utils/collection.mjs";
 import { JournalEntryCategory } from "@client/documents/_module.mjs";
+import DrawSteelToken from "../canvas/placeables/token.mjs";
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
@@ -36,6 +37,7 @@ type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGro
 type JournalEntryPageModel = typeof JEPModels[keyof typeof JEPModels];
 
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
+type CanvasDocument = ReturnType<typeof foundry.documents.abstract.CanvasDocumentMixin>
 
 declare module "@client/documents/_module.mjs" {
   interface BaseActiveEffect<Model extends ActiveEffectModel = ActiveEffectModel> extends ActiveEffectData, InstanceType<ClientDocument> {
@@ -92,9 +94,11 @@ declare module "@client/documents/_module.mjs" {
     walls: Collection<string, DrawSteelWallDocument>;
   }
 
-  interface BaseToken extends TokenData, InstanceType<ClientDocument> {}
+  interface BaseToken extends TokenData, InstanceType<CanvasDocument>{
+    object: DrawSteelToken;
+  }
 
   interface BaseUser extends UserData, InstanceType<ClientDocument> {}
 
-  interface BaseWall extends WallData, InstanceType<ClientDocument> {}
+  interface BaseWall extends WallData, InstanceType<CanvasDocument> {}
 }

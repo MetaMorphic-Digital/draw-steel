@@ -1,8 +1,12 @@
 <div class="dice-roll" data-action="expandRoll">
   {{#if target}}
-  <div class="header" data-uuid="{{target.uuid}}">
+  {{#if isGM}}
+  <a class="header" data-uuid="{{target.uuid}}" data-tooltip="DRAW_STEEL.ROLL.Power.SelectToken" data-action="selectToken">
     {{target.name}}
-  </div>
+  </a>
+  {{else}}
+  <div class="header" data-uuid="{{target.uuid}}">{{target.name}}</div>
+  {{/if}}
   {{/if}}
 
   <div class="tier {{tier.class}}">

@@ -23,6 +23,7 @@
 ### Added
 
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)
+- Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
 
 ### Changed
 

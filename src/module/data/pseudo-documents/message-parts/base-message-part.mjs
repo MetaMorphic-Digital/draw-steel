@@ -1,7 +1,7 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
 /**
- * @import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
+ * @import { DrawSteelActor, DrawSteelChatMessage } from "../../../documents/_module.mjs";
  * @import DSRoll from "../../../rolls/base.mjs";
  */
 
@@ -26,7 +26,9 @@ export default class BaseMessagePart extends TypedPseudoDocument {
    * Standard click event listeners.
    * @type {Record<string, Function>}
    */
-  static ACTIONS = {};
+  static ACTIONS = {
+    selectToken: this.#selectToken,
+  };
 
   /* -------------------------------------------------- */
 
@@ -145,5 +147,45 @@ export default class BaseMessagePart extends TypedPseudoDocument {
       }
       return rolls;
     }, []);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Select a targeted actor. Only available to Directors.
+   *
+   * @this BaseMessagePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static #selectToken(event, target) {
+    const { uuid } = target.dataset;
+
+    /** @type {DrawSteelActor} */
+    const actor = fromUuidSync(uuid);
+
+    const tokens = actor.getDependentTokens({ scenes: canvas.scene });
+
+    const releaseOthers = !event.shiftKey;
+
+    const newSet = new Set(tokens.map(t => t.object));
+
+    const oldSet = new Set(canvas.tokens.controlled);
+
+    let toRelease;
+    if (releaseOthers) toRelease = oldSet.difference(newSet);
+    else if (newSet.isSubsetOf(oldSet)) toRelease = newSet;
+    if (toRelease?.size) toRelease.forEach(placeable => {
+      placeable.release({ renderSidebar: false });
+    });
+
+    // Control tokens that were not controlled before
+    const toControl = newSet.difference(oldSet);
+    toControl.forEach(placeable => placeable.control({ releaseOthers: false, renderSidebar: false }));
+
+    if ((releaseOthers && (toRelease?.size > 0)) || (toControl.size > 0)) {
+      ui.placeables.render();
+      if (game.activeTool === "select") ui.placeablesPalette?.render();
+    }
   }
 }

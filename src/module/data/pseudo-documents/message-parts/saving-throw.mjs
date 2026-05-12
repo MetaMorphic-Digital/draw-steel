@@ -20,6 +20,7 @@ export default class SavingThrowPart extends BaseMessagePart {
 
   /** @inheritdoc */
   static ACTIONS = {
+    ...super.ACTIONS,
     heroToken: this.#heroToken,
   };
 
