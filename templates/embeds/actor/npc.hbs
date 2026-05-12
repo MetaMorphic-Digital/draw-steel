@@ -1,0 +1,100 @@
+<header>
+  <div class="flexrow image-name-keywords">
+    <img src="{{actor.img}}" alt="{{actor.name}}">
+    <div class="flexcol name-keywords">
+      <h2 class="name">
+        <a data-action="openSheet">{{actor.name}}</a>
+      </h2>
+      <div class="keywords">
+        {{monsterKeywords}}
+      </div>
+    </div>
+  </div>
+  <div class="flexcol level-ev">
+    <div class="level">
+      {{systemFields.monster.fields.level.label}}
+      {{system.level}}
+      {{!-- Organization/Role Tags --}}
+      {{#if system.monster.organizationLabel}}
+      {{system.monster.organizationLabel}}
+      {{/if}}
+      {{#if system.monster.roleLabel}}
+      {{system.monster.roleLabel}}
+      {{/if}}
+    </div>
+    <div class="ev">
+      {{localize "DRAW_STEEL.Actor.base.EVLabel.Label"}}
+      {{system.evLabel}}
+    </div>
+  </div>
+</header>
+
+<section class="stats flexcol">
+  <div class="basic-stats flexrow">
+    <div class="size">
+      {{system.combat.size}}
+      <strong>{{systemFields.combat.fields.size.label}}</strong>
+    </div>
+    <div class="speed">
+      {{system.movement.value}}
+      <strong>{{localize "DRAW_STEEL.Actor.base.FIELDS.movement.value.label"}}</strong>
+    </div>
+    <div class="stamina">
+      {{system.stamina.max}}
+      <strong>{{systemFields.stamina.label}}</strong>
+    </div>
+    <div class="stability">
+      {{system.combat.stability}}
+      <strong>{{systemFields.combat.fields.stability.label}}</strong>
+    </div>
+    <div class="free-strike">
+      {{system.monster.freeStrike}}
+      <strong>{{systemFields.monster.fields.freeStrike.label}}</strong>
+    </div>
+  </div>
+
+  <div class="secondary-stats">
+    <div class="immunities">
+      <span class="label">
+        {{systemFields.damage.fields.immunities.label}}:
+      </span>
+      <span class="value">
+        {{#if damageIW.immunities}}
+        {{{damageIW.immunities}}}
+        {{else}}
+        —
+        {{/if}}
+      </span>
+    </div>
+    <div class="weakness">
+      <span class="label">{{systemFields.damage.fields.weaknesses.label}}:</span>
+      <span class="value">
+        {{#if damageIW.weaknesses}}
+        {{{damageIW.weaknesses}}}
+        {{else}}
+        —
+        {{/if}}
+      </span>
+    </div>
+    <div class="movement">
+      <span class="label">{{systemFields.movement.label}}:</span>
+      <span class="value">{{ifThen movement movement "—"}}</span>
+    </div>
+    <div class="with-captain">
+      <span class="label">{{localize "With Captain"}}:</span>
+    </div>
+  </div>
+
+  <div class="characteristics">
+    {{#each characteristics as |chr key|}}
+    <div class="characteristic">
+      <div class="label">
+        {{chr.field.label}}
+      </div>
+      <div class="value">
+        {{numberFormat chr.value sign=true}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>

@@ -120,7 +120,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /**
    * Recursive method to find all items that were added to an actor by this advancement.
    * If the item is unowned, this returns `null`.
-   * @returns {Set<foundry.documents.Item> | null}
+   * @returns {Set<DrawSteelItem> | null}
    */
   grantedItemsChain() {
     if (!this.document.parent) return null;
@@ -132,8 +132,8 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) {
         items.add(item);
         if (item.hasGrantedItems) {
-          for (const advancement of item.getEmbeddedCollection("Advancement")) {
-            for (const a of advancement.grantedItemsChain?.() ?? []) items.add(a);
+          for (const advancement of item.getEmbeddedCollection("Advancement").documentsByType.itemGrant) {
+            for (const a of advancement.grantedItemsChain()) items.add(a);
           }
         }
       }
@@ -191,15 +191,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     /** @type {DrawSteelActor} */
     const actor = this.document.parent;
+    const toDelete = this.grantedItemsChain();
 
-    const allowed = await ds.applications.api.DSDialog.confirm({
-      window: {
-        icon: "fa-solid fa-arrow-rotate-right",
-        title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
-      },
-      content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
-    });
-    if (!allowed) return;
+    if (toDelete.size) {
+      const allowed = await ds.applications.api.DSDialog.confirm({
+        window: {
+          icon: "fa-solid fa-arrow-rotate-right",
+          title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
+        },
+        content: `<p>${_loc("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
+      });
+      if (!allowed) return;
+    }
 
     const chain = new AdvancementChain(actor, { start: null, end: actor.system.level });
 
@@ -211,14 +214,13 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     });
     if (!configuration) return;
 
-    const toDelete = this.grantedItemsChain().map(i => i.id);
-    if (toDelete.size) await actor.deleteEmbeddedDocuments("Item", Array.from(toDelete));
+    if (toDelete.size) await actor.deleteEmbeddedDocuments("Item", Array.from(toDelete).map(i => i.id));
 
     const toUpdate = {
       [this.document.id]: { _id: this.document.id },
     };
 
-    await actor.system._finalizeAdvancements({ chain, toUpdate });
+    await chain.finalize({ toUpdate });
   }
 
   /* -------------------------------------------------- */
@@ -247,5 +249,30 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     }
 
     return ctx;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Process a dropped item.
+   * @param {DrawSteelItem} document
+   * @returns {Promise<DrawSteelItem>}
+   */
+  handleDrop(document) {
+    if (document.documentName !== "Item") return;
+
+    const subclassException = (document.type === "subclass") && (this.document.type === "class");
+    if (!ItemGrantAdvancement.ALLOWED_TYPES.has(document.type) && !subclassException) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedType", {
+      format: { type: _loc(CONFIG.Item.typeLabels[document.type]) },
+    });
+    if (!document.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePack", { localize: true });
+    if (document.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.forbidParent", { localize: true });
+
+    const exists = this.pool.some(k => k.uuid === document.uuid);
+    if (exists) return;
+
+    const pool = foundry.utils.deepClone(this._source.pool);
+    pool.push({ uuid: document.uuid });
+    return this.update({ pool });
   }
 }

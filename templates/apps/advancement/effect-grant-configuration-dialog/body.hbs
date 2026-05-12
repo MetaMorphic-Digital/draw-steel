@@ -1,0 +1,16 @@
+<section>
+  {{#if enrichedDescription}}
+  {{{enrichedDescription}}}
+  {{/if}}
+  <fieldset class="effect-choices">
+    <legend>{{chooseLabel}}</legend>
+    {{#each effects}}
+    <div class="form-group">
+      <label>{{{link}}}</label>
+      <div class="form-fields">
+        <input type="checkbox" value="{{uuid}}" name="choices" {{checked chosen}} {{disabled disabled}}>
+      </div>
+    </div>
+    {{/each}}
+  </fieldset>
+</section>

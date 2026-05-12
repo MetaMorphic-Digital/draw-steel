@@ -68,12 +68,12 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "header":
-        context.monsterKeywords = this._getMonsterKeywords();
+        context.monsterKeywords = this.actor.system._getMonsterKeywords();
         context.showMalice = game.user.isGM && !this.actor.system.isMinion;
         context.malice = game.actors.malice;
         break;
       case "stats":
-        context.characteristics = this._getCharacteristics(true);
+        context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
         context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
         if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
         break;
@@ -82,17 +82,6 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         break;
     }
     return context;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the printable string for the monster's keywords.
-   * @returns {string[]}
-   */
-  _getMonsterKeywords() {
-    const monsterKeywords = ds.CONFIG.monsters.keywords;
-    return Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
   }
 
   /* -------------------------------------------------- */
@@ -174,7 +163,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    new DocumentSourceInput({ document: this.document }).render({ force: true });
+    this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
@@ -186,7 +175,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editMonsterMetadata(event, target) {
-    new MonsterMetadataInput({ document: this.document }).render({ force: true });
+    this.renderChild(new MonsterMetadataInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */

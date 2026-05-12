@@ -3,12 +3,10 @@ import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
-import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
- * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -546,7 +544,7 @@ export default class HeroModel extends CreatureModel {
       throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xpTrack.length}.`);
     }
 
-    if (!cls) item.system.applyAdvancements({ actor: this.parent });
+    if (!cls) await item.system.applyAdvancements({ actor: this.parent });
     else {
 
       const chain = new AdvancementChain(this.parent, { start: this.level + 1, end: this.level + levels });
@@ -563,88 +561,9 @@ export default class HeroModel extends CreatureModel {
 
       const toUpdate = { [cls.id]: { _id: cls.id, "system.level": chain.levelRange.end } };
 
-      this._finalizeAdvancements({ chain, toUpdate });
+      await chain.finalize({ toUpdate });
     }
 
     return this.class;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Perform document operations for advancements.
-   * @param {object} config
-   * @param {AdvancementChain} config.chain
-   * @param {ItemData[]} [config.toCreate={}]
-   * @param {ItemData[]} [config.toUpdate={}]
-   * @param {ActorData} [config.actorUpdate={}]
-   * @param {Map<string>} [config._idMap]
-   * @param {object} [options]                                      Operation options.
-   * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
-   * @internal          End consumers should use the {@link advance}, AdvancementModel#applyAdvancements,
-   *                    or ItemGrantAdvancement#reconfigure methods
-   */
-  async _finalizeAdvancements(
-    { chain, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
-    options = {},
-  ) {
-    // First gather all new items that are to be created.
-    for (const node of chain.activeNodes()) {
-      if (node.advancement.type === "itemGrant") {
-        const parentItem = node.advancement.document;
-
-        for (const uuid of node.chosenSelection ?? []) {
-          const item = node.choices[uuid].item;
-          const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
-          const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
-          if (!keepId) itemData._id = foundry.utils.randomID();
-          toCreate[item.uuid] = itemData;
-          _idMap.set(item.id, itemData._id);
-          itemData._parentId = parentItem.id;
-          itemData._advId = node.advancement.id;
-        }
-      }
-    }
-
-    // Apply flags to store "parent" item's id and origin advancement.
-    for (const uuid in toCreate) {
-      const itemData = toCreate[uuid];
-      const { _parentId, _advId } = itemData;
-      delete itemData._parentId;
-      delete itemData._advId;
-
-      // Fall back to the _parentId, in the case of existing items being
-      // updated to grant more items (eg a class leveling up).
-      const parentId = _idMap.get(_parentId) ?? _parentId;
-      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement`, { parentId: parentId, advancementId: _advId });
-    }
-
-    // Perform item data modifications or store item updates.
-    for (const node of chain.activeNodes()) {
-      if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
-        const { document: item, id } = node.advancement;
-        const isExisting = item.parent === this.parent;
-        let itemData;
-
-        if (isExisting) {
-          toUpdate[item.id] ??= { _id: item.id };
-          itemData = toUpdate[item.id];
-        } else {
-          itemData = toCreate[item.uuid];
-        }
-
-        foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
-      }
-    }
-
-    const operationOptions = foundry.utils.mergeObject({
-      levels: chain.levelRange,
-    }, options);
-
-    return await Promise.all([
-      this.parent.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: operationOptions }),
-      this.parent.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: operationOptions }),
-      this.parent.update(actorUpdate, { ds: operationOptions }),
-    ]);
   }
 }

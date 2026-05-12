@@ -28,14 +28,14 @@
     {{/if}}
   </dl>
 </section>
-{{#if system.effect.before}}
 <section class="effect before">
+  {{#each beforeEffects}}
   <dl>
-    <dt class="effect">{{systemFields.effect.label}}</dt>
-    <dd class="effect">{{{enrichedBeforeEffect}}}</dd>
+    <dt class="effect">{{label}}</dt>
+    <dd class="effect">{{{text}}}</dd>
   </dl>
+  {{/each}}
 </section>
-{{/if}}
 {{#if powerRolls}}
 <section class="powerResult">
   {{#unless system.power.roll.reactive}}
@@ -56,19 +56,11 @@
   </dl>
 </section>
 {{/if}}
-{{#if system.effect.after}}
 <section class="effect after">
+  {{#each afterEffects}}
   <dl>
-    <dt class="effect">{{systemFields.effect.label}}</dt>
-    <dd class="effect">{{{enrichedAfterEffect}}}</dd>
+    <dt class="effect">{{label}}</dt>
+    <dd class="effect">{{{text}}}</dd>
   </dl>
+  {{/each}}
 </section>
-{{/if}}
-{{#if system.spend.text}}
-<section class="spend">
-  <dl>
-    <dt>{{spendLabel}}</dt>
-    <dd>{{{system.spend.text}}}</dd>
-  </dl>
-</section>
-{{/if}}

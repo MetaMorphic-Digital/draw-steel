@@ -179,4 +179,23 @@ export default class CreatureModel extends BaseActorModel {
     // Restrained condition - might and agility tests take a bane
     if (this.parent.statuses.has("restrained") && ["might", "agility"].includes(options.characteristic)) modifiers.banes += 1;
   }
+
+  /* ------------------------------------------------- */
+
+  /**
+     * Constructs a record of valid characteristics and their associated field.
+     * @param {boolean} fromSource If true, use Actor's source data; else, use prepared data.
+     * @returns {Record<string, {field: NumberField, value: number}}
+     */
+  _getCharacteristics(fromSource) {
+    const data = fromSource ? this._source : this;
+    return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
+      const value = foundry.utils.getProperty(data, `characteristics.${chc}.value`);
+      obj[chc] = {
+        field: this.schema.getField(["characteristics", chc, "value"]),
+        value: value ?? 0,
+      };
+      return obj;
+    }, {});
+  }
 }

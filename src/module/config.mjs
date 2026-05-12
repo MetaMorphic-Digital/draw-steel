@@ -1827,6 +1827,12 @@ export const Advancement = {
     itemTypes: new Set(["ancestry", "ancestryTrait", "career", "class", "complication", "feature", "kit", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
+  effectGrant: {
+    label: "TYPES.Advancement.effectGrant",
+    defaultImage: "icons/svg/aura.svg",
+    itemTypes: new Set(["ancestry", "ancestryTrait", "career", "class", "complication", "feature", "perk", "subclass", "title"]),
+    documentClass: pseudoDocuments.advancements.EffectGrantAdvancement,
+  },
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
@@ -1880,6 +1886,43 @@ export const MessagePart = {
   },
 };
 preLocalize("MessagePart", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef SpecialEffectType
+ * @property {string} label                                                     Human-readable label.
+ * @property {string} defaultImage                                              The default image for PowerRollEffects of this type.
+ * @property {pseudoDocuments.specialEffects.BaseSpecialEffect} documentClass   The pseudo-document class.
+ */
+
+/**
+ * Valid types for the SpecialEffect pseudo-document.
+ * @type {Record<string, SpecialEffectType>}
+ */
+export const SpecialEffect = {
+  base: {
+    label: "TYPES.SpecialEffect.base",
+    defaultImage: "icons/svg/book.svg",
+    documentClass: pseudoDocuments.specialEffects.BaseSpecialEffect,
+  },
+  persistent: {
+    label: "TYPES.SpecialEffect.persistent",
+    defaultImage: "icons/svg/fire-shield.svg",
+    documentClass: pseudoDocuments.specialEffects.PersistentSpecialEffect,
+  },
+  spend: {
+    label: "TYPES.SpecialEffect.spend",
+    defaultImage: "icons/svg/coins.svg",
+    documentClass: pseudoDocuments.specialEffects.SpendSpecialEffect,
+  },
+  strained: {
+    label: "TYPES.SpecialEffect.strained",
+    defaultImage: "icons/svg/anchor.svg",
+    documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
+  },
+};
+preLocalize("SpecialEffect", { key: "label" });
 
 /* -------------------------------------------------- */
 

@@ -2,7 +2,8 @@
   "DOCUMENT": {
     "Advancement": "Advancement",
     "AdvancementPl": "Advancements",
-    "PowerRollEffect": "Power Roll Effect"
+    "PowerRollEffect": "Power Roll Effect",
+    "SpecialEffect": "Special Effect"
   },
   "DRAW_STEEL": {
     "COMPENDIUM": {
@@ -121,6 +122,15 @@
           "subclass": "Drop any {itemName} subclass here."
         }
       },
+      "EFFECT_GRANT": {
+        "FIELDS": {
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many of the active effects can be picked when this advancement is configured. If left blank or if the number is greater than the number of effects available, all the effects are granted.",
+            "placeholder": "Choose All"
+          }
+        }
+      },
       "TRAIT": {
         "FIELDS": {
           "chooseN": {
@@ -156,14 +166,15 @@
         "requirements": "Requirements",
         "additional": "Additional",
         "unknownItem": "Unknown Item",
+        "unknownEffect": "Unknown Effect",
         "reconfigure": "Reconfigure Advancement",
         "warnDrop": "{itemType} items do not support {advancementType} advancements."
       },
       "WARNING": {
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
         "restrictedType": "{type} items cannot be added as advancements.",
-        "requirePack": "Granted items must come from a compendium pack.",
-        "forbidParent": "Granted items cannot be embedded in an actor."
+        "requirePack": "Granted documents must come from a compendium pack.",
+        "forbidParent": "Granted documents cannot be embedded in an actor."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -200,6 +211,10 @@
         "ConfirmItemGrant": {
           "Title": "Reconfigure Item Grant",
           "Content": "This will delete and recreate the granted items."
+        },
+        "ConfirmEffectGrant": {
+          "Title": "Reconfigure Effect Grant",
+          "Content": "This will delete and recreate the granted effects."
         }
       }
     },
@@ -320,6 +335,30 @@
         },
         "DefaultDisplay": "Each target gains {amount} {resource}.",
         "ButtonText": "Gain {amount} {resource}"
+      }
+    },
+    "SPECIAL_EFFECT": {
+      "FIELDS": {
+        "before": {
+          "label": "Before Power Roll",
+          "hint": "Place this effect before the power roll. Sort order determines display relative to other special effects."
+        },
+        "description": {
+          "label": "Description"
+        },
+        "essence": {
+          "label": "Essence Cost"
+        },
+        "resource": {
+          "multiple": {
+            "label": "Multiple"
+          }
+        }
+      },
+      "persistent": "Persistent {value}",
+      "spend": {
+        "single": "Spend {value} {resourceName}",
+        "multiple": "Spend {value}+ {resourceName}"
       }
     },
     "SHEET": {
@@ -1097,23 +1136,8 @@
               }
             }
           },
-          "effect": {
-            "label": "Effect",
-            "before": {
-              "label": "Effect (Before Power Roll)"
-            },
-            "after": {
-              "label": "Effect (After Power Roll)"
-            }
-          },
-          "spend": {
-            "label": "Spend",
-            "value": {
-              "label": "Spend Cost"
-            },
-            "text": {
-              "label": "Spend Effect"
-            }
+          "effects": {
+            "label": "Effects"
           }
         },
         "ResourceCost": "Costs {value} {name}",
@@ -2408,6 +2432,7 @@
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",
+      "effectGrant": "Effect Grant",
       "itemGrant": "Item Grant",
       "skill": "Skill",
       "language": "Language"
@@ -2446,6 +2471,12 @@
       "forced": "Forced Movement",
       "resource": "Gain Resource",
       "other": "Other"
+    },
+    "SpecialEffect": {
+      "base": "Effect",
+      "persistent": "Persistent",
+      "spend": "Spend",
+      "strained": "Strained"
     }
   },
   "TOKEN.MOVEMENT": {
