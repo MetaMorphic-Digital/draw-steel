@@ -2,7 +2,8 @@
   "DOCUMENT": {
     "Advancement": "Advancement",
     "AdvancementPl": "Advancements",
-    "PowerRollEffect": "Power Roll Effect"
+    "PowerRollEffect": "Power Roll Effect",
+    "SpecialEffect": "Special Effect"
   },
   "DRAW_STEEL": {
     "COMPENDIUM": {
@@ -320,6 +321,30 @@
         },
         "DefaultDisplay": "Each target gains {amount} {resource}.",
         "ButtonText": "Gain {amount} {resource}"
+      }
+    },
+    "SPECIAL_EFFECT": {
+      "FIELDS": {
+        "before": {
+          "label": "Before Power Roll",
+          "hint": "Place this effect before the power roll. Sort order determines display relative to other special effects."
+        },
+        "description": {
+          "label": "Description"
+        },
+        "essence": {
+          "label": "Essence Cost"
+        },
+        "resource": {
+          "multiple": {
+            "label": "Multiple"
+          }
+        }
+      },
+      "persistent": "Persistent {value}",
+      "spend": {
+        "single": "Spend {value} {resourceName}",
+        "multiple": "Spend {value}+ {resourceName}"
       }
     },
     "SHEET": {
@@ -1097,23 +1122,8 @@
               }
             }
           },
-          "effect": {
-            "label": "Effect",
-            "before": {
-              "label": "Effect (Before Power Roll)"
-            },
-            "after": {
-              "label": "Effect (After Power Roll)"
-            }
-          },
-          "spend": {
-            "label": "Spend",
-            "value": {
-              "label": "Spend Cost"
-            },
-            "text": {
-              "label": "Spend Effect"
-            }
+          "effects": {
+            "label": "Effects"
           }
         },
         "ResourceCost": "Costs {value} {name}",
@@ -2445,6 +2455,12 @@
       "forced": "Forced Movement",
       "resource": "Gain Resource",
       "other": "Other"
+    },
+    "SpecialEffect": {
+      "base": "Effect",
+      "persistent": "Persistent",
+      "spend": "Spend",
+      "strained": "Strained"
     }
   },
   "TOKEN.MOVEMENT": {

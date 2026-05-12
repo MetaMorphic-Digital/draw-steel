@@ -1,6 +1,7 @@
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
+import BaseSpecialEffect from "../../data/pseudo-documents/special-effect/base-special-effect.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
@@ -169,9 +170,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         context.advancementIcon = BaseAdvancement.metadata.icon;
         break;
       case "impact":
+        context.specialEffectIcon = BaseSpecialEffect.metadata.icon;
         context.powerRollEffectIcon = BasePowerRollEffect.metadata.icon;
-        context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
-        context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
       case "effects":
         context.effects = await this._prepareActiveEffectCategories();
@@ -822,6 +822,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         return (await this._onDropAdvancement(event, pseudo)) ?? null;
       case "PowerRollEffect":
         return (await this._onDropPowerRollEffect(event, pseudo)) ?? null;
+      case "SpecialEffect":
+        return (await this._onDropSpecialEffect(event, pseudo)) ?? null;
     }
     return null;
   }
@@ -885,6 +887,34 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     return result ?? null;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Handle a dropped SpecialEffect.
+   * @param {DragEvent} event             The initiating drop event.
+   * @param {BaseSpecialEffect} effect  The dropped SpecialEffect.
+   * @returns {Promise<BaseSpecialEffect|null>} A Promise resolving to the dropped SpecialEffect (if sorting), a newly created SpecialEffect,
+   *                                         or null in case of failure or no action being taken.
+   * @protected
+   */
+  async _onDropSpecialEffect(event, effect) {
+    if (!this.item.isOwner || !effect) return null;
+
+    if (this.item.uuid === effect.document?.uuid) {
+      const result = await this._onSortPseudoDocument(event, effect);
+      return result?.length ? effect : null;
+    }
+
+    const keepId = !this.item.getEmbeddedCollection("SpecialEffect").has(effect.id);
+    const effectData = effect.toObject();
+
+    const result = await BaseSpecialEffect.create(effectData, { keepId, parent: this.item, renderSheet: false });
+
+    return result ?? null;
+  }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle a drop event for an existing embedded PseudoDocument to sort that PseudoDocument relative to its siblings.

@@ -33,6 +33,7 @@ export default class AbilityModel extends BaseItemModel {
       detailsPartial: [systemPath("templates/sheets/item/partials/ability.hbs")],
       embedded: {
         PowerRollEffect: "system.power.effects",
+        SpecialEffect: "system.effects",
       },
     };
   }
@@ -97,10 +98,8 @@ export default class AbilityModel extends BaseItemModel {
       }, { persisted: false }),
     });
 
-    schema.effect = new fields.SchemaField({
-      before: new fields.HTMLField(),
-      after: new fields.HTMLField(),
-    });
+    schema.effects = new ds.data.fields.CollectionField(ds.data.pseudoDocuments.specialEffects.BaseSpecialEffect);
+
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
       text: new fields.StringField({ required: true }),
@@ -116,6 +115,50 @@ export default class AbilityModel extends BaseItemModel {
     // Game release updates
     if (data.type === "action") data.type = "main";
 
+    // 1.1 effect migration, based on Document._addDataFieldMigration
+    const { hasProperty, getProperty, setProperty, deleteProperty } = foundry.utils;
+    const { Document } = foundry.abstract;
+    if (!hasProperty(data, "effects")) {
+      const spendID = "spend".padEnd(16, "0");
+      if ((getProperty(data, "spend.value") || getProperty(data, "spend.text")) && !hasProperty(data, `effects.${spendID}`)) {
+        const value = getProperty(data, "spend.value");
+        setProperty(data, `effects.${spendID}`, {
+          _id: spendID,
+          type: "spend",
+          sort: CONST.SORT_INTEGER_DENSITY, // guarantees after "after" effects if present
+          resource: {
+            value,
+            multiple: value === null,
+          },
+          description: `<p>${getProperty(data, "spend.text") ?? ""}</p>`,
+        });
+        deleteProperty(data, "spend");
+      }
+      if (data.effect?.before) {
+        const beforeID = "before".padEnd(16, "0");
+        Document._addDataFieldMigration(data, "effect.before", `effects.${beforeID}`, (data) => {
+          const description = getProperty(data, "effect.before");
+          return {
+            _id: beforeID,
+            type: "base",
+            description,
+            before: true,
+          };
+        });
+      }
+      if (data.effect?.after) {
+        const afterID = "after".padEnd(16, "0");
+        Document._addDataFieldMigration(data, "effect.after", `effects.${afterID}`, (data) => {
+          const description = getProperty(data, "effect.after");
+          return {
+            _id: afterID,
+            type: "base",
+            description,
+          };
+        });
+      }
+    }
+
     return super.migrateData(data);
   }
 
@@ -124,6 +167,8 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    this.#resourceName = null;
 
     this.power.roll.enabled = !this.power.roll.reactive && (this.power.effects.size > 0);
   }
@@ -324,26 +369,40 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  async getSheetContext(context) {
-    const config = ds.CONFIG.abilities;
-    const formattedLabels = this.formattedLabels;
+  /**
+   * Cached reference to the resource name, reset during data prep.
+   * @type {string}
+   */
+  #resourceName = null;
 
-    let resourceName = this.actor?.system.coreResource?.name;
+  /**
+   * A cached reference to the heroic resource consumed by this ability.
+   * @type {string}
+   */
+  get resourceName() {
+    this.#resourceName ??= this.actor?.system.coreResource?.name;
 
-    if (!resourceName && (this.prerequisites.dsid.size === 1)) {
+    if (!this.#resourceName && (this.prerequisites.dsid.size === 1)) {
       const dsid = this.prerequisites.dsid.first();
       let classEntry = ds.registry.class.filter(e => e.dsid === dsid).at(-1);
       if (!classEntry) {
         const subclass = ds.registry.subclass.filter(e => e.dsid === dsid).at(-1);
         if (subclass) classEntry = ds.registry.class.filter(e => e.dsid === subclass.classLink).at(-1);
       }
-      if (classEntry) resourceName = classEntry.primary;
+      if (classEntry) this.#resourceName = classEntry.primary;
     }
 
-    resourceName ??= _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+    return this.#resourceName ??= _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+  }
 
-    context.resourceName = resourceName;
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async getSheetContext(context) {
+    const config = ds.CONFIG.abilities;
+    const formattedLabels = this.formattedLabels;
+
+    context.resourceName = this.resourceName;
 
     context.keywordList = formattedLabels.keywords;
 
@@ -387,13 +446,15 @@ export default class AbilityModel extends BaseItemModel {
       context.powerRollBonus = this.power.roll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
     }
 
-    context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
-    context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
-
-    context.spendLabel = _loc("DRAW_STEEL.Item.ability.SpendLabel", {
-      value: this.spend.value ?? "",
-      name: resourceName,
-    });
+    context.beforeEffects = [];
+    context.afterEffects = [];
+    for (const effect of this.effects.sortedContents) {
+      const displayData = {
+        label: effect.label,
+        text: await enrichHTML(effect.description, { relativeTo: this.parent }),
+      };
+      context[effect.before ? "beforeEffects" : "afterEffects"].push(displayData);
+    }
   }
 
   /* -------------------------------------------------- */
@@ -544,9 +605,7 @@ export default class AbilityModel extends BaseItemModel {
 
     let resourceSpend = fd.resource ?? 0;
 
-    if (fd.spend) {
-      resourceSpend += typeof fd.spend === "boolean" ? this.spend.value : fd.spend;
-    }
+    for (const spend of Object.values(fd.spend ?? {})) resourceSpend += spend;
 
     if (resourceSpend) {
       messageData.flavor = _loc("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {

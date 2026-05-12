@@ -1884,6 +1884,43 @@ preLocalize("MessagePart", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * @typedef SpecialEffectType
+ * @property {string} label                                                     Human-readable label.
+ * @property {string} defaultImage                                              The default image for PowerRollEffects of this type.
+ * @property {pseudoDocuments.specialEffects.BaseSpecialEffect} documentClass   The pseudo-document class.
+ */
+
+/**
+ * Valid types for the SpecialEffect pseudo-document.
+ * @type {Record<string, SpecialEffectType>}
+ */
+export const SpecialEffect = {
+  base: {
+    label: "TYPES.SpecialEffect.base",
+    defaultImage: "icons/svg/book.svg",
+    documentClass: pseudoDocuments.specialEffects.BaseSpecialEffect,
+  },
+  persistent: {
+    label: "TYPES.SpecialEffect.persistent",
+    defaultImage: "icons/svg/fire-shield.svg",
+    documentClass: pseudoDocuments.specialEffects.PersistentSpecialEffect,
+  },
+  spend: {
+    label: "TYPES.SpecialEffect.spend",
+    defaultImage: "icons/svg/coins.svg",
+    documentClass: pseudoDocuments.specialEffects.SpendSpecialEffect,
+  },
+  strained: {
+    label: "TYPES.SpecialEffect.strained",
+    defaultImage: "icons/svg/anchor.svg",
+    documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
+  },
+};
+preLocalize("SpecialEffect", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
  * @typedef CultureAspect
  * @property {string} label         Human-readable label.
  * @property {string} skillGroups   A set of skill groups this aspect gives access to.
