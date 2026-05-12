@@ -227,6 +227,13 @@ export default class NPCModel extends CreatureModel {
     return embed;
   }
 
+  /* ------------------------------------------------- */
+
+  /** @inheritdoc */
+  onEmbed(element) {
+    element.querySelector("a[data-action='openSheet']")?.addEventListener("click", () => this.parent.sheet.render({ force: true }));
+  }
+
   /* -------------------------------------------------- */
 
   /**
