@@ -2,6 +2,10 @@ import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
+ * @import { DrawSteelActiveEffect } from "./_module.mjs";
+ */
+
+/**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass.
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
@@ -129,12 +133,12 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
-   * An alternative to the document delete method, this deletes the item as well as any items that were
+   * An alternative to the document delete method, this deletes the item as well as any documents that were
    * added as a result of this item's creation via advancements.
    * @param {object} options
    * @param {boolean} [options.replacement=false]   Should the window title indicate that this is a replacement?
    * @param {boolean} [options.skipDialog=false]    Whether to skip the confirmation dialog, e.g., if there's already been another.
-   * @returns {Promise<foundry.documents.Item[]|null>}   A promise that resolves to the deleted items.
+   * @returns {Promise<[DrawSteelItem, DrawSteelActiveEffect]|null>}   A promise that resolves to the deleted items.
    */
   async advancementDeletionPrompt({ replacement = false, skipDialog = false } = {}) {
     if (!this.isEmbedded) {

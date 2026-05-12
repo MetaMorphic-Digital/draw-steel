@@ -1,5 +1,5 @@
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
-import { CharacteristicAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import { CharacteristicAdvancement, EffectGrantAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
 import { BaseSpecialEffect, SpendSpecialEffect } from "../pseudo-documents/special-effect/_module.mjs"
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
@@ -88,7 +88,7 @@ declare module "./ability.mjs" {
 }
 
 declare module "./advancement.mjs" {
-  type Advancement = CharacteristicAdvancement | ItemGrantAdvancement | LanguageAdvancement | SkillAdvancement;
+  type Advancement = CharacteristicAdvancement | ItemGrantAdvancement | EffectGrantAdvancement | LanguageAdvancement | SkillAdvancement;
 
   export default interface AdvancementModel {
     advancements: ModelCollection<Advancement>;

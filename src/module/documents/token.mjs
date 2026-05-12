@@ -100,6 +100,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /** @inheritdoc */
   getBarAttribute(barName, { alternative } = {}) {
     const barData = super.getBarAttribute(barName, { alternative });
+    // == null covers null & undefined
     if (barData == null) return null;
 
     if (barData?.attribute !== "stamina") return barData;
