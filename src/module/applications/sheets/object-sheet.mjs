@@ -83,7 +83,7 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    new DocumentSourceInput({ document: this.document }).render({ force: true });
+    this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
@@ -95,6 +95,6 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editObjectMetadata(event, target) {
-    new ObjectMetadataInput({ document: this.document }).render({ force: true });
+    this.renderChild(new ObjectMetadataInput({ document: this.document }));
   }
 }
