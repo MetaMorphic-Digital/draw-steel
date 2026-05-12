@@ -61,17 +61,6 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
   };
 
   /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  _getMovement() {
-    const data = super._getMovement();
-
-    data.show = !!this.actor.system.movement.value;
-
-    return data;
-  }
-
-  /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
 

@@ -1,7 +1,7 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
 import SourceModel from "../models/source.mjs";
-import { systemID } from "../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -200,6 +200,42 @@ export default class NPCModel extends CreatureModel {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async toEmbed(config, options) {
+    // All NPCs are rendered inline
+    config.inline = true;
+
+    const walkLabel = _loc(CONFIG.Token.movement.actions.walk.label);
+    const walkRe = new RegExp(`${walkLabel}[,]?`);
+
+    const context = {
+      actor: this.parent,
+      characteristics: this._getCharacteristics(false),
+      damageIW: this._getImmunitiesWeaknesses(),
+      monsterKeywords: this._getMonsterKeywords().join(", "),
+      movement: this._getMovement(true).list,
+      system: this,
+      systemFields: this.schema.fields,
+    };
+
+    const embed = document.createElement("div");
+
+    embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
+
+    embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
+
+    return embed;
+  }
+
+  /* ------------------------------------------------- */
+
+  /** @inheritdoc */
+  onEmbed(element) {
+    element.querySelector("a[data-action='openSheet']")?.addEventListener("click", () => this.parent.sheet.render({ force: true }));
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Perform a free strike against one or more enemies.
    * @param {object} [options]
@@ -275,5 +311,16 @@ export default class NPCModel extends CreatureModel {
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
     await game.settings.set(systemID, "malice", { value: malice.value + delta });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the printable string for the monster's keywords.
+   * @returns {string[]}
+   */
+  _getMonsterKeywords() {
+    const monsterKeywords = ds.CONFIG.monsters.keywords;
+    return Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
   }
 }

@@ -165,8 +165,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         break;
       case "stats":
         context.combatTooltip = this._getCombatTooltip();
-        context.movement = this._getMovement();
-        context.damageIW = this._getImmunitiesWeaknesses();
+        context.movement = this.actor.system._getMovement?.();
+        context.damageIW = this.actor.system._getImmunitiesWeaknesses?.();
         break;
       case "features":
         context.features = await this._prepareFeaturesContext();
@@ -207,28 +207,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Constructs a record of valid characteristics and their associated field.
-   * @param {boolean} edit Are the characteristics editable inline?
-   * @returns {Record<string, {field: NumberField, value: number}>}
-   * @protected
-   */
-  _getCharacteristics(edit) {
-    const isEdit = this.isEditMode && edit;
-    const data = isEdit ? this.actor._source : this.actor;
-    return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
-      const value = foundry.utils.getProperty(data, `system.characteristics.${chc}.value`);
-      obj[chc] = {
-        isEdit,
-        field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: isEdit ? (value || null) : (value ?? 0),
-      };
-      return obj;
-    }, {});
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Constructs a tooltip of data paths.
    * @protected
    */
@@ -243,32 +221,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       }
     }
     return tooltip;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions.
-   * @returns {{flying: boolean, list: string, options: FormSelectOption[]}}
-   * @protected
-   */
-  _getMovement() {
-    const formatter = game.i18n.getListFormatter({ type: "unit" });
-    const actorMovement = this.actor.system.movement;
-    const canHover = actorMovement.types.has("fly") || actorMovement.types.has("teleport");
-    const movementList = Array.from(actorMovement.types).map(m => {
-      let label = _loc(CONFIG.Token.movement.actions[m]?.label ?? m);
-      if ((m === "teleport") && (actorMovement.teleport !== actorMovement.value)) label += " " + actorMovement.teleport;
-      return label;
-    });
-    if (canHover && actorMovement.hover) movementList.push(_loc("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
-    return {
-      canHover,
-      list: formatter.format(movementList),
-      options: Object.entries(CONFIG.Token.movement.actions)
-        .filter(([key, _action]) => ds.CONFIG.speedOptions.includes(key))
-        .map(([value, { label }]) => ({ value, label })),
-    };
   }
 
   /* -------------------------------------------------- */
@@ -289,37 +241,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     return {
       list: formatter.format(languageList),
       options: languageOptions,
-    };
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Constructs an object with the formatted immunities and weaknesses with a list of damage labels.
-   * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
-   * @protected
-   */
-  _getImmunitiesWeaknesses() {
-    const labels = {
-      all: _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
-      ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, { label }]) => {
-        acc[type] = label;
-        return acc;
-      }, {}),
-    };
-
-    const immunities = Object.entries(this.actor.system.damage.immunities)
-      .filter(([damageType, value]) => value > 0)
-      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses)
-      .filter(([damageType, value]) => value > 0)
-      .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
-
-    const formatter = game.i18n.getListFormatter({ type: "unit" });
-    return {
-      immunities: formatter.format(immunities),
-      weaknesses: formatter.format(weaknesses),
-      labels,
     };
   }
 
