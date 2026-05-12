@@ -811,14 +811,10 @@ export default class AbilityModel extends BaseItemModel {
 
     /** @type {Set<DrawSteelToken>} */
     const tokens = canvas.tokens.quadtree.getObjects(region.bounds);
-    const targetIds = [];
-    for (const token of tokens) {
-      const tokenDoc = token.document;
-      if (!this.validTarget(tokenDoc)) continue;
-      if (!tokenDoc.testInsideRegion(region)) continue;
-      targetIds.push(token.id);
-    }
-    if (targetIds.length) canvas.tokens.setTargets(targetIds, { mode: setTargets });
+    const targetIds = tokens.filter(token => {
+      return this.validTarget(token.document) && token.document.testInsideRegion(region);
+    }).map(token => token.id);
+    if (targetIds.size) canvas.tokens.setTargets(targetIds, { mode: setTargets });
     return region;
   }
 

@@ -1587,17 +1587,12 @@ const abilityDistances = {
 };
 
 /**
- * Valid target options for a given entry.
- * @typedef {"ally" | "enemy" | "self" | "object"} TargetOptions
- */
-
-/**
  * @typedef AbilityTarget
  * @property {string} label
  * @property {string} [all]       I18n key for an ability that targets everything within an area.
  * @property {string} embedLabel  Format string for display in the ability embed. Can point to a plural object.
  * @property {Reference} [reference] An optional UUID with a description of the ability targets.
- * @property {Set<TargetOptions>} targetOptions Target options.
+ * @property {Set<"ally" | "enemy" | "self" | "object">} targetOptions Target options.
  */
 
 /**

@@ -22,12 +22,17 @@
 
 ### Added
 
+- Abilities can now have any number of HTML sections, and they can have additional info. (#475)
+  - This includes promoting the "spend" field to have an HTML entry. (#329)
+- Added `@Embed` support for NPC actors. (#901)
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)
+- Added ability to place a template from the ability use dialog that will intelligently target tokens inside the region. (#1864)
 - Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
 
 ### Changed
 
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
+- Various "extra field input" forms now render inside the parent sheet's detached window.
 
 ### Deprecated
 
