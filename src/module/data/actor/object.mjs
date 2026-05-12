@@ -68,6 +68,16 @@ export default class ObjectModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Simple getter to indicate this counts as an object for targeting purposes.
+   * @returns {boolean}
+   */
+  get isObject() {
+    return true;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();

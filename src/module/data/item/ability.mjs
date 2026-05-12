@@ -13,8 +13,8 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
  * @import RegionDocument from "@client/documents/region.mjs";
- * @import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs"
- * @import { PowerRollModifiers } from "../../_types.js";
+ * @import { PowerRollModifiers } from "../../_types";
+ * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import DrawSteelTokenDocument from "../../documents/token.mjs";
  */
@@ -736,14 +736,14 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Create a region template based on this ability's distance data.
-   * @param {RegionPlacementOptions} [options={}] Options to forward to canvas.regions.placeRegion.
+   * @param {PlaceAbilityOptions} [options={}] Options to forward to canvas.regions.placeRegion.
    * @returns {Promise<RegionDocument>} The Region document that was placed or null if
    *  - the placements of all shapes were skipped,
    *  - the dismiss key was pressed,
    *  - the game is paused and the user is not a GM, or
    *  - the Region creation was rejected by preCreate.
    */
-  async placeTemplate(options = {}) {
+  async placeTemplate({ setTargets, ...options } = {}) {
     if (!this.hasTemplate) {
       const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
       ui.notifications.error(msg, { console: false });
@@ -806,6 +806,40 @@ export default class AbilityModel extends BaseItemModel {
       },
     };
 
-    return canvas.regions.placeRegion(regionData, options);
+    const region = await canvas.regions.placeRegion(regionData, options);
+    if (!setTargets || !region) return region;
+
+    /** @type {Set<DrawSteelToken>} */
+    const tokens = canvas.tokens.quadtree.getObjects(region.bounds);
+    const targetIds = tokens.filter(token => {
+      return this.validTarget(token.document) && token.document.testInsideRegion(region);
+    }).map(token => token.id);
+    if (targetIds.size) canvas.tokens.setTargets(targetIds, { mode: setTargets });
+    return region;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Validates a given token against this ability's.
+   * @param {DrawSteelTokenDocument} token The token to potentially target.
+   * @returns {boolean}
+   */
+  validTarget(token) {
+    const targetOptions = ds.CONFIG.abilities.targets[this.target.type]?.targetOptions;
+    if (!targetOptions) return false;
+
+    if (token.actor.uuid === this.actor.uuid) return targetOptions.has("self");
+    if (token.actor.system.isObject && targetOptions.has("object")) return true;
+
+    if (token.actor.system.isCreature) {
+      const sourceDisposition = this.actor.getDependentTokens({ scenes: canvas.scene })?.at(0)?.disposition
+        ?? this.actor.prototypeToken.disposition;
+      const polarization = [CONST.TOKEN_DISPOSITIONS.FRIENDLY, CONST.TOKEN_DISPOSITIONS.HOSTILE];
+      if (targetOptions.has("ally") && targetOptions.has("enemy")) return true;
+      else if (targetOptions.has("ally")) return sourceDisposition === token.disposition;
+      else if (targetOptions.has("enemy")) return (sourceDisposition !== token.disposition) && polarization.includes(sourceDisposition);
+    }
+    return false;
   }
 }
