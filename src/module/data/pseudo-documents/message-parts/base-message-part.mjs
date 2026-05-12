@@ -172,8 +172,10 @@ export default class BaseMessagePart extends TypedPseudoDocument {
 
     const oldSet = new Set(canvas.tokens.controlled);
 
-    const toRelease = oldSet.difference(newSet);
-    if (releaseOthers) toRelease.forEach(placeable => {
+    let toRelease;
+    if (releaseOthers) toRelease = oldSet.difference(newSet);
+    else if (newSet.isSubsetOf(oldSet)) toRelease = newSet;
+    if (toRelease?.size) toRelease.forEach(placeable => {
       placeable.release({ renderSidebar: false });
     });
 
@@ -181,7 +183,7 @@ export default class BaseMessagePart extends TypedPseudoDocument {
     const toControl = newSet.difference(oldSet);
     toControl.forEach(placeable => placeable.control({ releaseOthers: false, renderSidebar: false }));
 
-    if ((releaseOthers && (toRelease.size > 0)) || (toControl.size > 0)) {
+    if ((releaseOthers && (toRelease?.size > 0)) || (toControl.size > 0)) {
       ui.placeables.render();
       if (game.activeTool === "select") ui.placeablesPalette?.render();
     }
