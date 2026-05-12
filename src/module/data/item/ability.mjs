@@ -309,6 +309,7 @@ export default class AbilityModel extends BaseItemModel {
 
     const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "COMMON.Unknown" };
     if (this.target.custom) labels.target = this.target.custom;
+    // == null covers null & undefined
     else if (this.target.value === null) labels.target = targetConfig.all;
     if (!labels.target) {
       // Non-plural dependent labels

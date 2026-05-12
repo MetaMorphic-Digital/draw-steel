@@ -170,6 +170,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
           type: "submit",
           label: "COMMON.Confirm",
           icon: "fa-solid fa-fw fa-check",
+          // == null covers null & undefined
           disabled: (this.advancement.chooseN == null) || (this.totalChosen !== this.advancement.chooseN),
         }];
         break;
@@ -187,6 +188,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @protected
    */
   async _prepareBody(context, options) {
+    // == null covers null & undefined
     context.chooseLabel = (this.advancement.chooseN == null) ?
       _loc("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseNull") :
       this.advancement.pointBuy ?
@@ -262,6 +264,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * Refresh the disabled state of checkboxes and the submit button in this app.
    */
   #refreshDisabled() {
+    // == null covers null & undefined
     if (this.advancement.chooseN == null) return;
 
     /** @type {HTMLInputElement[]} */
