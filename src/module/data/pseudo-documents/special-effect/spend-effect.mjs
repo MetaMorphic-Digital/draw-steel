@@ -38,7 +38,9 @@ export default class SpendSpecialEffect extends BaseSpecialEffect {
 
   /** @inheritdoc */
   get label() {
-    return _loc(`DRAW_STEEL.SPECIAL_EFFECT.spend.${this.resource.multiple ? "multiple" : "single"}`, { value: this.resource.value, resourceName: this.parent.resourceName });
+    return _loc(`DRAW_STEEL.SPECIAL_EFFECT.spend.${this.resource.multiple ? "multiple" : "single"}`,
+      { value: this.resource.value, resourceName: this.parent.resourceName },
+    );
   }
 
   /* -------------------------------------------------- */

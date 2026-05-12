@@ -40,12 +40,8 @@ export default class SpecialEffectSheet extends PseudoDocumentSheet {
    * @returns {Promise<object>}     Mutated rendering context.
    */
   async #prepareDetailsContext(context, options) {
-
     context.detailsPartial = this.pseudoDocument.detailsPartial;
-
     context.ctx = await this.pseudoDocument.getSheetContext(options);
-
     return context;
   }
-
 }

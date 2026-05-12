@@ -1885,8 +1885,8 @@ preLocalize("MessagePart", { key: "label" });
 
 /**
  * @typedef SpecialEffectType
- * @property {string} label                                                 Human-readable label.
- * @property {string} defaultImage                                          The default image for PowerRollEffects of this type.
+ * @property {string} label                                                     Human-readable label.
+ * @property {string} defaultImage                                              The default image for PowerRollEffects of this type.
  * @property {pseudoDocuments.specialEffects.BaseSpecialEffect} documentClass   The pseudo-document class.
  */
 
