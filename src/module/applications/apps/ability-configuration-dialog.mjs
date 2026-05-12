@@ -6,6 +6,7 @@ import { systemPath } from "../../constants.mjs";
  * @import AbilityModel from "../../data/item/ability.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import DrawSteelToken  from "../../canvas/placeables/token.mjs"
+ * @import RegionDocument from "@client/documents/region.mjs";
  */
 
 /**
@@ -250,6 +251,8 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     Hooks.off("targetToken", this.#targetHook);
 
+    this.#region.delete();
+
     return config;
   }
 
@@ -270,12 +273,21 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /**
+   * The region currently placed by the ability. Replaced if place template is reused.
+   * @type {RegionDocument | null}
+   */
+  #region = null;
+
+  /* -------------------------------------------------- */
+
+  /**
    * Place a template on the canvas and select all tokens inside.
    * @this AbilityConfigurationDialog
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #placeTemplate(event, target) {
-    this.item.system.placeTemplate({ setTargets: "acquire" });
+    if (this.#region) await this.#region.delete();
+    this.#region = await this.item.system.placeTemplate({ setTargets: "replace" });
   }
 }
