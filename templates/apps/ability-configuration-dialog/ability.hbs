@@ -12,19 +12,19 @@
       <p class="hint">{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Resource.hint" value=ability.system.resource name=resource.name}}</p>
     </div>
     {{/if}}
-    {{#if spendConfig}}
+    {{#each spendConfig}}
     <div class="form-group">
-      <label>{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Spend.label" value=spendConfig.value name=resource.name}}</label>
+      <label>{{localize (concat "DRAW_STEEL.SPECIAL_EFFECT.spend." (ifThen multiple "multiple" "single")) value=value resourceName=@root.resource.name}}</label>
       <div class="form-fields">
-        {{#if spendConfig.slider}}
-        <range-picker name="spend" max="{{spendConfig.max}}" min="0" step="1" value="{{spend}}"></range-picker>
+        {{#if multiple}}
+        <range-picker name="{{concat "spend." id}}" max="{{@root.resource.max}}" min="0" step="{{value}}" value="{{lookup @root.spend id}}"></range-picker>
         {{else}}
-        <input type="checkbox" name="spend" {{checked spend}}>
+        <input type="checkbox" name="{{concat "spend." id}}" {{checked (lookup @root.spend id)}} data-dtype="Number" value="{{value}}">
         {{/if}}
       </div>
       <p class="hint">{{localize "DRAW_STEEL.Item.ability.ConfigureUse.Spend.hint"}}</p>
     </div>
-    {{/if}}
+    {{/each}}
   </fieldset>
   {{/if}}
   {{#if damageOptions}}

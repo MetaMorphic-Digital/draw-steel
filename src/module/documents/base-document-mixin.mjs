@@ -1,6 +1,7 @@
 /**
  * @import Document from "@common/abstract/document.mjs";
  * @import { Constructor } from "@common/_types.mjs";
+ * @import ModelCollection from "../utils/model-collection.mjs";
  */
 
 /**
@@ -31,7 +32,10 @@ export default base => {
 
     /* -------------------------------------------------- */
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     * @returns {foundry.abstract.EmbeddedCollection | ModelCollection}
+     */
     getEmbeddedCollection(embeddedName) {
       return this.pseudoCollections[embeddedName] ?? super.getEmbeddedCollection(embeddedName);
     }

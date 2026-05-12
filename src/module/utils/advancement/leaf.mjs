@@ -1,7 +1,7 @@
 import AdvancementNode from "./node.mjs";
 
 /**
- * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs";
  */
 
 /**
@@ -21,6 +21,7 @@ export default class AdvancementLeaf {
       key: { value: key, configurable: false, writable: false },
       label: { value: label, configurable: false, writable: false },
       item: { value: options.item ?? null, configurable: false, writable: false },
+      effect: { value: options.effect ?? null, configurable: false, writable: false },
     });
   }
 
@@ -74,4 +75,12 @@ export default class AdvancementLeaf {
    * @type {DrawSteelItem | null}
    */
   item = null;
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The effect associated with this leaf's key. Only used by effect grant advancements.
+   * @type {DrawSteelActiveEffect | null}
+   */
+  effect = null;
 }

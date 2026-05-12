@@ -474,7 +474,6 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
       return this._onDropDocument(event, document);
     }
 
-    // TODO: Add drag and drop for PseudoDocuments
     const pseudoClass = ModelCollection.documentClasses[data.type];
     if (pseudoClass) {
       const pseudo = await pseudoClass.fromDropData(data);
