@@ -770,18 +770,16 @@ export default class AbilityModel extends BaseItemModel {
    * @returns {boolean}
    */
   validTarget(token) {
-    const sourceDisposition = this.actor.getDependentTokens({ scenes: canvas.scene })?.at(0)?.disposition ?? this.actor.prototypeToken.disposition;
-
-    const polarization = [CONST.TOKEN_DISPOSITIONS.FRIENDLY, CONST.TOKEN_DISPOSITIONS.HOSTILE];
-
     const targetOptions = ds.CONFIG.abilities.targets[this.target.type]?.targetOptions;
-
     if (!targetOptions) return false;
 
-    if (token.actor === this.actor) return targetOptions.has("self");
+    if (token.actor.uuid === this.actor.uuid) return targetOptions.has("self");
     if (token.actor.system.isObject && targetOptions.has("object")) return true;
 
     if (token.actor.system.isCreature) {
+      const sourceDisposition = this.actor.getDependentTokens({ scenes: canvas.scene })?.at(0)?.disposition
+        ?? this.actor.prototypeToken.disposition;
+      const polarization = [CONST.TOKEN_DISPOSITIONS.FRIENDLY, CONST.TOKEN_DISPOSITIONS.HOSTILE];
       if (targetOptions.has("ally") && targetOptions.has("enemy")) return true;
       else if (targetOptions.has("ally")) return sourceDisposition === token.disposition;
       else if (targetOptions.has("enemy")) return (sourceDisposition !== token.disposition) && polarization.includes(sourceDisposition);

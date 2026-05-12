@@ -276,6 +276,6 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #placeTemplate(event, target) {
-    await this.item.system.placeTemplate({ setTargets: "acquire" });
+    this.item.system.placeTemplate({ setTargets: "acquire" });
   }
 }

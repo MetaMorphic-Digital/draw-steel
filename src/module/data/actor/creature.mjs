@@ -45,7 +45,7 @@ export default class CreatureModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Simple getter to indicate this counts as an creature for targeting purposes.
+   * Simple getter to indicate this counts as a creature for targeting purposes.
    * @returns {boolean}
    */
   get isCreature() {
