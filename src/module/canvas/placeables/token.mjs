@@ -183,6 +183,17 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  _draw(options = {}) {
+    if (this.actor.system.combatGroups.size === 1) {
+      this.document._prepareBars();
+    }
+
+    super._draw(options);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _drawBar(number, bar, data) {
     if (data.attribute !== "stamina") return super._drawBar(number, bar, data);
 

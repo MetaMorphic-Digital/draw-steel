@@ -81,6 +81,11 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
    * Needed when the squad stamina changes or the combatant is added or removed from a squad to ensure correct stamina value and inputs are used.
    */
   refreshCombatant() {
+    if (this.actor.system.combatGroups.size === 1) {
+      this.token?._prepareBars();
+      this.token?.object?.animate(this.token?.object?._getAnimationData());
+    }
+
     this.token?.object?.renderFlags.set({ refreshBars: true });
     // refresh any rendered sheets but only if the current user has permission to have it rendered anyways
     if (this.actor?.sheet.isVisible) this.actor.sheet.render({ parts: ["stats"] });
