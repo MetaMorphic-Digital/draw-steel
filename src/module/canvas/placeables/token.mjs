@@ -184,11 +184,12 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
 
   /** @inheritdoc */
   _draw(options = {}) {
+    super._draw(options);
+
     if (this.actor.system.combatGroups.size === 1) {
       this.document._prepareBars();
+      this.animate(this._getAnimationData(), { duration: 0 });
     }
-
-    super._draw(options);
   }
 
   /* -------------------------------------------------- */
