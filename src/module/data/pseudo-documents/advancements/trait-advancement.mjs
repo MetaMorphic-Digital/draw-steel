@@ -115,7 +115,10 @@ export default class TraitAdvancement extends BaseAdvancement {
       const multiCheckbox = dialog.element.querySelector("multi-checkbox[name=choices]");
       const submit = dialog.element.querySelector(".form-footer [type=submit]");
       multiCheckbox.addEventListener("change", () => {
-        for (const checkbox of multiCheckbox.querySelectorAll("input")) checkbox.disabled = !multiCheckbox.value.includes(checkbox.value) && (multiCheckbox.value.length >= chooseN);
+        for (const checkbox of multiCheckbox.querySelectorAll("input")) {
+          const disabled = !multiCheckbox.value.includes(checkbox.value) && (multiCheckbox.value.length >= chooseN);
+          multiCheckbox.disableOption(checkbox.value, disabled);
+        }
         submit.disabled = multiCheckbox.value.length > chooseN;
       });
       multiCheckbox.dispatchEvent(new Event("change"));
