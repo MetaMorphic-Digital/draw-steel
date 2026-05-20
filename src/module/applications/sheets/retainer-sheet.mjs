@@ -13,6 +13,8 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
       updateSource: this.#updateSource,
       spendRecovery: this.#spendRecovery,
       editRetainerMetadata: this.#editRetainerMetadata,
+      levelUp: this.#levelUp,
+      openAdvancements: this.#openAdvancements,
     },
     position: {
       // Immunities and Weaknesses section is visible by default
@@ -120,4 +122,33 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
     this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Advance this retainer one level.
+   * @this DrawSteelRetainerSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #levelUp(event, target) {
+    await this.actor.system.advance();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open the update source dialog.
+   * @this DrawSteelRetainerSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #openAdvancements(event, target) {
+    const cls = this.actor.itemTypes.class.at(0);
+    if (cls) await cls.sheet.render({ force: true });
+    else {
+      const retainerClass = await fromUuid(ds.CONFIG.retainer.retainerClass);
+      const classData = game.items.fromCompendium(retainerClass);
+      await this.actor.createEmbeddedDocuments("Item", [classData], { renderSheet: true });
+    }
+  }
 }

@@ -434,7 +434,7 @@ export default class HeroModel extends CreatureModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
    */
   get ancestry() {
-    return this.parent.itemTypes.ancestry[0];
+    return this.parent.itemTypes.ancestry.at(0);
   }
 
   /* -------------------------------------------------- */
@@ -444,7 +444,7 @@ export default class HeroModel extends CreatureModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "career", system: import("../item/career.mjs").default})}
    */
   get career() {
-    return this.parent.itemTypes.career[0];
+    return this.parent.itemTypes.career.at(0);
   }
 
   /* -------------------------------------------------- */
@@ -454,7 +454,7 @@ export default class HeroModel extends CreatureModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
    */
   get class() {
-    return this.parent.itemTypes.class[0];
+    return this.parent.itemTypes.class.at(0);
   }
 
   /* -------------------------------------------------- */
@@ -474,7 +474,7 @@ export default class HeroModel extends CreatureModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */
   get culture() {
-    return this.parent.itemTypes.culture[0];
+    return this.parent.itemTypes.culture.at(0);
   }
 
   /* -------------------------------------------------- */
