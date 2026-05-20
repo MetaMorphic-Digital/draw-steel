@@ -201,7 +201,7 @@ export default class AbilityResultPart extends RollPart {
         const actor = fromUuidSync(uuid);
         if (actor) {
           const potencyNumber = Number(potencyValue);
-          if (!actor.checkPotency(potencyNumber, potencyCharacteristic)) return;
+          if (!actor.testUserPermission(game.user, "OBSERVER") || !actor.checkPotency(potencyNumber, potencyCharacteristic)) return;
           el.classList.add("potency-target");
           this.#potencyTargets.add(el);
         }
