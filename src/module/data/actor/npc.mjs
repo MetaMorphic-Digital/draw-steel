@@ -1,6 +1,8 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import SourceModel from "../models/source.mjs";
 
 /**
@@ -238,6 +240,7 @@ export default class NPCModel extends CreatureModel {
 
   /**
    * Perform a free strike against one or more enemies.
+   * If the user is not a director, this creates a chat message with a damage roll.
    * @param {object} [options]
    * @param {DrawSteelActor[]} [options.targets]    Actors to apply the free strike damage to.
    *                                                Defaults to all current targets.
@@ -245,6 +248,30 @@ export default class NPCModel extends CreatureModel {
    * @returns {Promise<void>}
    */
   async performFreeStrike({ targets, configure = true } = {}) {
+    const freeStrike = this.freeStrike;
+    if (!game.user.isGM) {
+
+      const title = _loc("DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle");
+
+      const roll = new DamageRoll(String(freeStrike.value), {
+        type: freeStrike.type,
+        flavor: ds.CONFIG.damageTypes[freeStrike.type]?.label,
+      });
+
+      await roll.evaluate();
+
+      await DrawSteelChatMessage.create({
+        title,
+        speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+        type: "standard",
+        "system.parts": [{
+          rolls: [roll],
+          flavor: title,
+          type: "roll",
+        }],
+        flags: { core: { canPopout: true } },
+      });
+    }
     if (!targets) {
       try {
         targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
@@ -257,7 +284,6 @@ export default class NPCModel extends CreatureModel {
       ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.NoTargets", { localize: true });
       return;
     }
-    const freeStrike = this.freeStrike;
 
     if (configure !== false) {
       const damageLabel = _loc("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
