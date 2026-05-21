@@ -202,6 +202,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       const perkLabels = Array.from(this.advancement.additional.perkType).map(p => perkOptions.find(o => o.value === p)?.label).filter(_ => _);
       const listFormatter = game.i18n.getListFormatter({ type: "disjunction" });
       const formatData = {
+        cost: _loc(`DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.CostDrop.${this.advancement.additional.cost ? "heroic" : "signature"}`, { value: this.advancement.additional.cost }),
         perkTypes: listFormatter.format(perkLabels),
         itemName: this.advancement.document.name,
       };
@@ -328,11 +329,16 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.MustItem", { localize: true });
       return;
     }
-    let allowed = true;
+    let allowed = this.fulfillsRequirements(item);
     const additionalInfo = this.advancement.additional;
     if (item.type !== this.advancement.additional.type) allowed = false;
+    if (!allowed) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.FilterFail", { localize: true });
     // specific filtering per type
     switch (item.type) {
+      case "ability":
+        if (additionalInfo.cost !== item.system.resource) allowed = false;
+        if (this.advancement.requirements.level < item.system.prerequisites.level) allowed = false;
+        break;
       case "perk":
         if (additionalInfo.perkType.size && !additionalInfo.perkType.has(item.system.perkType)) allowed = false;
         break;

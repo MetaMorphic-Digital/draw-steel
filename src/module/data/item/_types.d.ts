@@ -45,6 +45,7 @@ declare module "./ability.mjs" {
     prerequisites: {
       value: string;
       dsid: Set<string>;
+      level: number;
     }
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];

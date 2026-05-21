@@ -43,6 +43,7 @@ declare module "./item-grant-advancement.mjs" {
     additional: {
       type: string | undefined;
       perkType: Set<string>;
+      cost: number | null;
     }
   }
 }

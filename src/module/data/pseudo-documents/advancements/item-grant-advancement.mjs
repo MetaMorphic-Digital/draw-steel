@@ -25,6 +25,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       additional: new SchemaField({
         type: new StringField({ required: true }),
         perkType: new SetField(setOptions()),
+        cost: new NumberField({ required: true, integer: true, min: 1 }),
       }),
     });
   }
@@ -59,6 +60,9 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     ancestryTrait: {
       label: "TYPES.Item.ancestryTrait",
       points: true,
+    },
+    ability: {
+      label: "TYPES.Item.ability",
     },
     kit: {
       label: "TYPES.Item.kit",
