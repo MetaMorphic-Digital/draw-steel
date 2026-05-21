@@ -797,7 +797,7 @@ export default class AbilityModel extends BaseItemModel {
       levels: [canvas.level.id],
       highlightMode: "coverage",
       displayMeasurements: true,
-      visibility: CONST.REGION_VISIBILITY.OBSERVER,
+      visibility: CONST.REGION_VISIBILITY.ALWAYS,
       ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
       flags: {
         [systemID]: {
