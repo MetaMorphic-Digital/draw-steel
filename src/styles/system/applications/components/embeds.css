@@ -50,7 +50,7 @@ document-embed, .item-embed {
     min-width: unset;
 
     background-image: linear-gradient(var(--color-statblock), transparent 5rem);
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 8px;
 
     margin-inline: 1rem;
 
@@ -60,7 +60,6 @@ document-embed, .item-embed {
       gap: 8px;
       font-size: 1.125em;
       font-family: 'Newsreader', serif;
-      border-bottom: 1px solid gray;
       padding-inline-end: 1rem;
 
       .image-name-keywords {
@@ -99,6 +98,20 @@ document-embed, .item-embed {
 
     section.stats {
       gap: 8px;
+
+      &:before {
+        content: "";
+        height: 15px;
+
+        background-image: url("/systems/draw-steel/assets/ui/continue.svg");
+        background-repeat: no-repeat;
+        background-size: 200%;
+        background-position: center;
+
+        margin-block: -8px;
+
+        filter: grayscale(0.8) brightness(0.2);
+      }
 
       .label {
         font-weight: 600;
