@@ -115,10 +115,14 @@ export default class TraitAdvancement extends BaseAdvancement {
       const multiCheckbox = dialog.element.querySelector("multi-checkbox[name=choices]");
       const submit = dialog.element.querySelector(".form-footer [type=submit]");
       multiCheckbox.addEventListener("change", () => {
-        for (const checkbox of multiCheckbox.querySelectorAll("input")) checkbox.disabled = !multiCheckbox.value.includes(checkbox.value) && (multiCheckbox.value.length >= chooseN);
+        for (const checkbox of multiCheckbox.querySelectorAll("input")) {
+          if (!multiCheckbox.value.includes(checkbox.value) && (multiCheckbox.value.length >= chooseN)) multiCheckbox._disabledOptions.add(checkbox.value);
+          else multiCheckbox._disabledOptions.delete(checkbox.value);
+        }
         submit.disabled = multiCheckbox.value.length > chooseN;
       });
       multiCheckbox.dispatchEvent(new Event("change"));
+      multiCheckbox._refresh();
     }
 
     const selection = await ds.applications.api.DSDialog.input({
