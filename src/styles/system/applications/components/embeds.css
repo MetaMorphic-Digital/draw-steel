@@ -176,6 +176,35 @@ document-embed, .item-embed {
       }
     }
 
+    ul.abilities-list {
+      list-style: none;
+
+      border-radius: inherit;
+      padding-inline: 0;
+      margin-block-end: 0;
+
+      li {
+        margin-inline: 32px 4px;
+
+        &:not(:last-child)::after {
+          content: "";
+          display: block;
+          height: 15px;
+          width: calc(100% + 36px);
+          transform: translate(-32px, 0);
+
+          background-image: url("/systems/draw-steel/assets/ui/continue.svg");
+          background-repeat: no-repeat;
+          background-size: 200%;
+          background-position: center;
+
+          margin-bottom: 8px;
+
+          filter: grayscale(0.8) brightness(0.2);
+        }
+      }
+    }
+
     &.ambusher {
       --color-statblock: #F9DD63;
     }

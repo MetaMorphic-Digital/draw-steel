@@ -226,6 +226,19 @@ export default class NPCModel extends CreatureModel {
 
     embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
 
+    // Prepare abilities list (`ul`).
+    const abilities = this.parent.itemTypes.ability;
+    const abilitiesList = document.createElement("ul");
+    abilitiesList.classList.add("abilities-list");
+    for (const ability of abilities) {
+      const abilityEmbed = await ability.system.toEmbed({});
+      const li = document.createElement("li");
+      li.innerHTML = abilityEmbed.outerHTML;
+      abilitiesList.append(li);
+    }
+
+    context.abilitiesList = abilitiesList.outerHTML;
+
     embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
 
     return embed;
