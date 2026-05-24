@@ -64,7 +64,13 @@
         font-weight: bold;
 
         &.potency-target {
-          color: var(--color-level-success);
+          &.apply {
+            color: var(--color-level-success);
+            /* text-shadow: var(--color-level-success) 1px 0 10px; */
+          }
+          &.resist {
+            text-shadow: var(--color-level-error) 1px 0 10px;
+          }
         }
       }
 

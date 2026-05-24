@@ -212,7 +212,7 @@ export default class CreatureModel extends BaseActorModel {
   /* ------------------------------------------------- */
 
   /**
-   * Checks if this character passes a potency check.
+   * Checks if this character fails a potency check.
    * @param {number} value
    * @param {string} characteristic A valid characteristic key.
    * @returns {boolean} Returns true if the value is greater than this character's effective characteristic.

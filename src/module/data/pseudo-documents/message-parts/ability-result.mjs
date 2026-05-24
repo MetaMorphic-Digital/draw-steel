@@ -201,15 +201,15 @@ export default class AbilityResultPart extends RollPart {
         const actor = fromUuidSync(uuid);
         if (actor) {
           const potencyNumber = Number(potencyValue);
-          if (!actor.testUserPermission(game.user, "OBSERVER") || !actor.checkPotency(potencyNumber, potencyCharacteristic)) return;
-          el.classList.add("potency-target");
+          if (!actor.testUserPermission(game.user, "OBSERVER")) return;
+          el.classList.add("potency-target", actor.checkPotency(potencyNumber, potencyCharacteristic) ? "apply" : "resist");
           this.#potencyTargets.add(el);
         }
       });
     }
     else {
       for (const el of this.#potencyTargets) {
-        el.classList.remove("potency-target");
+        el.classList.remove("potency-target", "apply", "resist");
       }
       this.#potencyTargets.clear();
     }
