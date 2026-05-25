@@ -12,6 +12,10 @@ Damage effects allow specifying the damage amount (as a formula that takes both 
 
 Applied effects allow abilities to apply conditions to actors. This application is not fully automated; the owners of those actors must use the "Apply Effect" button to execute this. Each tier can have any number of effects, including both canonical status conditions as well as custom effects. The "Create Custom Effect" button will create a new ActiveEffect under the "Applied Effects" section of the item sheet; if you create a custom effect but no longer wish to use it, it must be fully deleted from the ability via its Effects tab.
 
+The "Stacking" property, if present, means that rather than keeping a single ID, a unique one will be created each time the effect is applied. This ensures that new instances will always be created when attempting to apply the effect.
+
+The "Origin Duration" property, if present, will tie to the effect's duration to the actor using the ability rather than the target. This is generally only relevant for turn-ends effects. For non-triggered abilities, a duration of 0 means "End of this turn" while a duration of 1 round means "End of your next turn".
+
 ## Forced Movement
 
 Forced Movement effects allow specifying the direction and distance of an ability that pushes, pulls, or slides. There is currently no automation for this feature; owners of the appropriate tokens must apply the position changes themselves.
