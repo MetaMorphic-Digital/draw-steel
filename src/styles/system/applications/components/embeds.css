@@ -198,6 +198,10 @@ document-embed, .item-embed {
       thead {
         border: none;
         border-color: transparent;
+
+        th:has(.roll-table-embed-description) {
+          padding: 1rem 1rem 0.25rem 1rem !important;
+        }
       }
 
       th,

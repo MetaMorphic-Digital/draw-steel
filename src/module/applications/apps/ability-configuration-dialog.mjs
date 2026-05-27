@@ -251,7 +251,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     Hooks.off("targetToken", this.#targetHook);
 
-    this.#region.delete();
+    if (this.#region) this.#region.delete();
 
     return config;
   }
