@@ -93,7 +93,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @returns {{description: string; exists: boolean; effectEnabled: boolean; effectId: string}}
    */
   _getWithCaptainContext() {
-    const effect = this.actor.effects.find((e) => e.system.isWithCaptain);
+    const effect = this.actor.effects.find((e) => e.id === this.actor.system.monster.withCaptainEffect);
     return {
       description: this.actor.system._getWithCaptainDescription(),
       effectEnabled: !effect?.disabled,

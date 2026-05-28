@@ -357,7 +357,8 @@ export default class NPCModel extends CreatureModel {
    *                        Null if no such effect exists.
    */
   _getWithCaptainDescription() {
-    const withCaptainAE = this.parent.effects.find(e => e.system.isWithCaptain);
+    const withCaptainAE = this.parent.effects.find(e => e.id === this.monster.withCaptainEffect);
+    if (!withCaptainAE) return null;
     let html = foundry.utils.parseHTML(withCaptainAE?.description);
     if (html instanceof HTMLCollection) html = html[0];
     return html?.innerHTML ?? null;
