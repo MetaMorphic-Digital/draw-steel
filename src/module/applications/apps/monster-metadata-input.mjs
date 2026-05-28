@@ -34,6 +34,7 @@ export default class MonsterMetadataInput extends DocumentInput {
     context.monsterOrganizations = Object.entries(monsterConfig.organizations)
       .map(([value, { label }]) => ({ value, label }));
     context.monsterRoles = Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label }));
+    context.effects = this.document.effects.filter(e => !e.transfer).map(e => ({ label: e.name, value: e.id }));
     context.monsterFields = this.document.system.schema.getField("monster").fields;
     return context;
   }

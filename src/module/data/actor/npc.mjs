@@ -57,6 +57,7 @@ export default class NPCModel extends CreatureModel {
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
+      withCaptainEffect: new fields.DocumentIdField({ required: false }),
     });
 
     return schema;
