@@ -1,6 +1,8 @@
 
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import CreatureModel from "./creature.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import SourceModel from "../models/source.mjs";
 
 export default class RetainerModel extends CreatureModel {
@@ -110,5 +112,77 @@ export default class RetainerModel extends CreatureModel {
     await this.parent.update({ "system.recoveries.value": this.recoveries.value - 1 });
 
     return this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetch the traits of this creature's free strike.
+   * The value is stored in `this.retainer.freeStrike`.
+   * @returns {import("./_types").FreeStrike}
+   */
+  get freeStrike() {
+    /** @type {DrawSteelItem & {system: AbilityModel}} */
+    const signature = this.parent.items.documentsByType.ability.find(item => item.system.category === "signature");
+    /** @type {Set<string>} */
+    const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
+
+    /** @type {DamagePowerRollEffect} */
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage;
+
+    const freeStrike = {
+      value: this.retainer.freeStrike,
+      keywords: keywords.add("strike"),
+      type: firstDamage?.damage.tier1.types.first() ?? "",
+      range: {
+        melee: 1,
+        ranged: 5,
+      },
+    };
+    switch (signature?.system.distance.type) {
+      case "melee":
+        freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
+        break;
+      case "ranged":
+        freeStrike.range.ranged = Math.max(5, signature.system.distance.primary ?? 0);
+        break;
+      case "meleeRanged":
+        freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
+        freeStrike.range.ranged = Math.max(5, signature.system.distance.secondary ?? 0);
+        break;
+    }
+
+    return freeStrike;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create a chat message with the damage roll from this retainer.
+   * @returns {Promise<void>}
+   */
+  async performFreeStrike() {
+    const freeStrike = this.freeStrike;
+
+    const title = _loc("DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle");
+
+    const roll = new DamageRoll(String(freeStrike.value), {
+      type: freeStrike.type,
+      flavor: ds.CONFIG.damageTypes[freeStrike.type]?.label,
+    });
+
+    await roll.evaluate();
+
+    await DrawSteelChatMessage.create({
+      title,
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+      type: "standard",
+      "system.parts": [{
+        rolls: [roll],
+        flavor: title,
+        type: "roll",
+      }],
+      flags: { core: { canPopout: true } },
+    });
   }
 }
