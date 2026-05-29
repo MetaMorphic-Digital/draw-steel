@@ -32,6 +32,7 @@
 ### Changed
 
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
+- Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
 
 ### Deprecated
