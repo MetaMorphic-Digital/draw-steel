@@ -57,7 +57,7 @@ export default class NPCModel extends CreatureModel {
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
-      withCaptainEffect: new fields.DocumentIdField({ required: false }),
+      withCaptainEffect: new fields.DocumentIdField({ required: false, readonly: false }),
     });
 
     return schema;
@@ -357,7 +357,7 @@ export default class NPCModel extends CreatureModel {
    *                        Null if no such effect exists.
    */
   _getWithCaptainDescription() {
-    const withCaptainAE = this.parent.effects.find(e => e.id === this.monster.withCaptainEffect);
+    const withCaptainAE = this.parent.effects.get(this.monster.withCaptainEffect);
     if (!withCaptainAE) return null;
     let html = foundry.utils.parseHTML(withCaptainAE?.description);
     if (html instanceof HTMLCollection) html = html[0];
