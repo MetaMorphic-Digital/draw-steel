@@ -48,7 +48,7 @@
         {{#if system.advancementReady}}
         <button type="button" {{disabled (not editable)}} data-action="levelUp" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
           {{system.level}}
-          <i class="fa-solid fa-up-long"></i>
+          <i class="fa-solid fa-up-long" inert></i>
         </button>
         {{else}}
         {{system.level}}
@@ -57,7 +57,7 @@
     </dl>
     {{#unless isPlay}}
     <button type="button" data-action="openAdvancements">
-      <i class="fa-solid fa-circle-nodes"></i>
+      <i class="fa-solid fa-circle-nodes" inert></i>
       {{localize "DOCUMENT.AdvancementPl"}}
     </button>
     {{/unless}}

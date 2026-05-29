@@ -143,7 +143,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #openAdvancements(event, target) {
-    const cls = this.actor.itemTypes.class.at(0);
+    const [cls] = this.actor.items.documentsByType.class;
     if (cls) await cls.sheet.render({ force: true });
     else {
       const retainerClass = await fromUuid(ds.CONFIG.retainer.retainerClass);

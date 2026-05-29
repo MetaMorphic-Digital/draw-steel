@@ -960,7 +960,10 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
  * Configuration information for retainers.
  */
 export const retainer = {
-  // The default class added to retainers.
+  /**
+   * The default class added to retainers.
+   * @type {string}
+   */
   retainerClass: "Compendium.draw-steel.monster-features.Item.ReGdXUMQtcAlBBM3",
 };
 
