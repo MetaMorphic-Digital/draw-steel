@@ -209,20 +209,23 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     // Only keep the initiative value if using the "alternative" (D&D style countdown) initiative.
     const keepInitiative = !game.combats.isDefaultInitiativeMode;
 
+    // Some abilities have durations tied to the user of the ability, rather than the target.
+    let combatant = config.properties.has("originDuration") ? game.combat?.getCombatantsByActor(this.document.parent)[0] ?? "" : null;
+
     for (const actor of targetActors) {
-      const combatant = game.combat?.getCombatantsByActor(actor)[0];
+      combatant ??= game.combat?.getCombatantsByActor(actor)[0];
 
       /** @type {ActiveEffectData} */
       const updates = {
+        start: DrawSteelActiveEffect.getEffectStart(),
         transfer: true,
         origin: this.item.uuid,
       };
       if (config.end) updates.duration = { expiry: ds.CONFIG.effectEnds[config.end].expiryEvent };
-      if (combatant) updates.start = {
-        combatant,
-        initiative: keepInitiative ? combatant.initiative : null,
-        time: game.time.worldTime,
-      };
+      if (combatant) {
+        updates.start.combatant = combatant;
+        if (keepInitiative) updates.start.initiative = combatant.initiative;
+      }
       // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
       const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
 
