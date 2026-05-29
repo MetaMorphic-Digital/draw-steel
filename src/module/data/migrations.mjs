@@ -346,7 +346,7 @@ export async function migrateActorItems(actorCollection) {
   for (const actor of actorCollection) {
     const updateOperation = {
       action: "update",
-      updates: actor.itemTypes.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
+      updates: actor.items.documentsByType.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
       documentName: "Item",
       parent: actor,
     };
