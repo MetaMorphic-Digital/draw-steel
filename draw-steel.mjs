@@ -82,6 +82,10 @@ Hooks.once("init", function () {
   // Need to be able to find "configuration" type pages
   CONFIG.JournalEntry.compendiumIndexFields.push("pages.type");
 
+  // Add browser-required fields.
+  CONFIG.Actor.compendiumIndexFields.push(...applications.apps.DrawSteelCompendiumBrowser.COMPENDIUM_INDEX_PATHS.Actor);
+  CONFIG.Item.compendiumIndexFields.push(...applications.apps.DrawSteelCompendiumBrowser.COMPENDIUM_INDEX_PATHS.Item);
+
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
   CONFIG.Combat.collection = documents.collections.DrawSteelCombatEncounters;
@@ -360,6 +364,9 @@ Hooks.once("ready", async function () {
       return false;
     }
   });
+
+  const packs = game.packs.filter(pack => ["Actor", "Item", "JournalEntry"].includes(pack.metadata.type));
+  await Promise.all(packs.map(pack => pack.getIndex()));
 
   await ds.registry.initialize();
 

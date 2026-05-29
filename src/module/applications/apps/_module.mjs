@@ -2,7 +2,10 @@ export { default as AbilityConfigurationDialog } from "./ability-configuration-d
 export { default as ActorAvatarInput } from "./actor-avatar-input.mjs";
 export { default as ActorCombatStatsInput } from "./actor-combat-stats-input.mjs";
 export { default as CharacteristicInput } from "./characteristic-input.mjs";
+export { default as CompendiumTOCConfig } from "./toc-config.mjs";
+export { default as DefeatedMinionSelection } from "./defeated-minion-selection.mjs";
 export { default as DocumentSourceInput } from "./document-source-input.mjs";
+export { default as DrawSteelCompendiumBrowser } from "./compendium-browser.mjs";
 export { default as MonsterMetadataInput } from "./monster-metadata-input.mjs";
 export { default as ObjectMetadataInput } from "./object-metadata-input.mjs";
 export { default as PowerRollDialog } from "./power-roll-dialog.mjs";
@@ -10,7 +13,5 @@ export { default as RetainerMetadataInput } from "./retainer-metadata-input.mjs"
 export { default as SavingThrowDialog } from "./saving-throw-dialog.mjs";
 export { default as SavingThrowManager } from "./saving-throw-manager.mjs";
 export { default as TargetedConditionPrompt } from "./targeted-condition-prompt.mjs";
-export { default as CompendiumTOCConfig } from "./toc-config.mjs";
-export { default as DefeatedMinionSelection } from "./defeated-minion-selection.mjs";
 
 export * as advancement from "./advancement/_module.mjs";
