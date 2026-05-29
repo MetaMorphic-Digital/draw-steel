@@ -95,6 +95,14 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static _applyChangeUnguided(targetDoc, change, changes, options = {}) {
+    if (!change.key || !(change.key.startsWith?.("flags."))) return;
+    super._applyChangeUnguided(targetDoc, change, changes, options);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
     if ((game.userId === userId) && this.modifiesActor && this.statuses.has("prone")) {
