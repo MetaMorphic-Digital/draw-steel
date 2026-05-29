@@ -123,12 +123,12 @@ export default class RetainerModel extends CreatureModel {
    */
   get freeStrike() {
     /** @type {DrawSteelItem & {system: AbilityModel}} */
-    const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
+    const signature = this.parent.items.documentsByType.ability.find(item => item.system.category === "signature");
     /** @type {Set<string>} */
-    const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+    const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
     /** @type {DamagePowerRollEffect} */
-    const firstDamage = signature?.system.power.effects.find(e => e.type === "damage");
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage;
 
     const freeStrike = {
       value: this.retainer.freeStrike,
