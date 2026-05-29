@@ -38,6 +38,7 @@ export async function enricher(match, options) {
   if (parsedConfig.status) linkConfig.status = parsedConfig.status;
   if (parsedConfig.uuid) linkConfig.uuid = parsedConfig.uuid;
   if (parsedConfig.stacking) linkConfig.stacking = parsedConfig.stacking;
+  if (parsedConfig.originDuration) linkConfig.originDuration = parsedConfig.originDuration;
   if (options.relativeTo) linkConfig.origin = options.relativeTo.uuid;
 
   /** @type {DrawSteelItem} */
@@ -142,25 +143,30 @@ async function onClickAnchor() {
   // Only keep the initiative value if using the "alternative" (D&D style countdown) initiative.
   const keepInitiative = !game.combats.isDefaultInitiativeMode;
 
+  // Some abilities have durations tied to the origin rather than the target.
+  const origin = fromUuidSync(this.dataset.origin);
+  const originActor = origin?.documentName === "Actor" ? origin : origin?.actor;
+  let combatant = this.dataset.originDuration ? game.combat?.getCombatantsByActor(originActor)[0] ?? "" : null;
+
   for (const token of tokens) {
     const actor = token.actor;
     if (!actor) continue;
     else if (actors.has(actor)) continue;
     else actors.add(actor);
 
-    const combatant = game.combat?.getCombatantsByActor(actor)[0];
+    combatant ??= game.combat?.getCombatantsByActor(actor)[0];
 
     /** @type {ActiveEffectData} */
     const updates = {
+      start: DrawSteelActiveEffect.getEffectStart(),
       transfer: true,
       origin: this.dataset.origin,
     };
     if (this.dataset.end) updates.duration = { expiry: ds.CONFIG.effectEnds[this.dataset.end].expiryEvent };
-    if (combatant) updates.start = {
-      combatant,
-      initiative: keepInitiative ? combatant.initiative : null,
-      time: game.time.worldTime,
-    };
+    if (combatant) {
+      updates.start.combatant = combatant;
+      if (keepInitiative) updates.start.initiative = combatant.initiative;
+    }
     // can't updateSource => toObject due to `origin` field triggering a warning when it checks for relative uuid
     const createData = foundry.utils.mergeObject(tempEffect.toObject(), updates);
 
