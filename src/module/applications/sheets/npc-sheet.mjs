@@ -75,7 +75,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         break;
       case "stats":
         context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
-        context.withCaptain = this._getWithCaptainContext();
+        context.withCaptain = await this._getWithCaptainContext();
         context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
         if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
         break;
@@ -92,10 +92,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * Fetches the context for the "With Captain" effect.
    * @returns {{description: string; exists: boolean; effectEnabled: boolean; effectId: string}}
    */
-  _getWithCaptainContext() {
+  async _getWithCaptainContext() {
     const effect = this.actor.effects.find((e) => e.id === this.actor.system.monster.withCaptainEffect);
     return {
-      description: this.actor.system._getWithCaptainDescription(),
+      description: await this.actor.system._getWithCaptainDescription(),
       effectEnabled: !effect?.disabled,
       effectId: effect?.id,
       exists: !!effect,

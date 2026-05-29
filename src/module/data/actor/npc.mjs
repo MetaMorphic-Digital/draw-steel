@@ -216,7 +216,7 @@ export default class NPCModel extends CreatureModel {
       movement: this._getMovement(true).list,
       system: this,
       systemFields: this.schema.fields,
-      withCaptain: this._getWithCaptainDescription(),
+      withCaptain: await this._getWithCaptainDescription(),
     };
 
     const embed = document.createElement("div");
@@ -359,8 +359,6 @@ export default class NPCModel extends CreatureModel {
   _getWithCaptainDescription() {
     const withCaptainAE = this.parent.effects.get(this.monster.withCaptainEffect);
     if (!withCaptainAE) return null;
-    let html = foundry.utils.parseHTML(withCaptainAE?.description);
-    if (html instanceof HTMLCollection) html = html[0];
-    return html?.innerHTML ?? null;
+    return CONFIG.ux.TextEditor.enrichHTML(withCaptainAE.description);
   }
 }

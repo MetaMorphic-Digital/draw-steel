@@ -81,7 +81,7 @@
       <legend>{{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}</legend>
       <div>
         <input type="checkbox" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}" id="{{concat rootId "-withCaptainToggle"}}" {{checked withCaptain.effectEnabled}}>
-        <label for="{{concat rootId "-withCaptainToggle"}}">{{withCaptain.description}}</label>
+        <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
       </div>
     </fieldset>
     {{/if}}
