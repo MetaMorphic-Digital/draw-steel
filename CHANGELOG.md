@@ -34,6 +34,7 @@
 - Improved Minion Squad damage handling, including only adjusting for immunities/resistances once per AOE and capping damage for AOEs. (#1353)
 - Improved handling of disabled and expired status conditions on the actor sheet to more accurately convey what is active and reduce clicks. (#1694)
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
+- Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
 
 ### Deprecated
