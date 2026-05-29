@@ -378,9 +378,13 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         },
         onClick: async (event, target) => {
           const effect = this._getEmbeddedDocument(target);
+
           await effect.update({
+            start: {
+              time: game.time.worldTime,
+              round: game.combat?.round ?? null,
+            },
             disabled: false,
-            start: DrawSteelActiveEffect.getEffectStart(),
             "duration.expired": false,
           });
         },
