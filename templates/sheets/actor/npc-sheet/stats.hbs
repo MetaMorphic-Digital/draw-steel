@@ -79,10 +79,10 @@
     {{#if withCaptain.exists}}
     <fieldset class="with-captain">
       <legend>{{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}</legend>
-      <div>
-        <input type="checkbox" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}" id="{{concat rootId "-withCaptainToggle"}}" {{checked withCaptain.effectEnabled}}>
-        <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
-      </div>
+      <button id="{{concat rootId "-withCaptainToggle"}}" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}">
+        <i class="fa-solid fa-lg {{ifThen withCaptain.effectEnabled "fa-toggle-on" "fa-toggle-off"}}"></i>
+      </button>
+      <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
     </fieldset>
     {{/if}}
   </div>

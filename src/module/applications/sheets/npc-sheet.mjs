@@ -219,6 +219,6 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static #toggleWithCaptainEffect(event, target) {
     const id = target.closest("[data-effect-id]").dataset.effectId;
     const effect = this.actor.effects.get(id);
-    effect.update({ disabled: !target.checked });
+    effect.update({ disabled: !effect.disabled });
   }
 }

@@ -189,13 +189,15 @@
   fieldset.with-captain {
     flex: 0 0 fit-content;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    gap: 4px;
 
-    > div {
-      display: flex;
-      align-items: center;
+    padding-block-start: 8px;
+
+    button {
+      width: 90%;
     }
   }
 
