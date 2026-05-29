@@ -202,7 +202,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       const perkLabels = Array.from(this.advancement.additional.perkType).map(p => perkOptions.find(o => o.value === p)?.label).filter(_ => _);
       const listFormatter = game.i18n.getListFormatter({ type: "disjunction" });
       const formatData = {
-        cost: _loc(`DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.CostDrop.${this.advancement.additional.cost ? "heroic" : "signature"}`, { value: this.advancement.additional.cost }),
+        cost: _loc(
+          `DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.CostDrop.${this.advancement.additional.cost ? "heroic" : "signature"}`,
+          { value: this.advancement.additional.cost },
+        ),
         perkTypes: listFormatter.format(perkLabels),
         itemName: this.advancement.document.name,
       };
