@@ -13,6 +13,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
       updateSource: this.#updateSource,
       spendRecovery: this.#spendRecovery,
       editRetainerMetadata: this.#editRetainerMetadata,
+      freeStrike: this.#freeStrike,
     },
     position: {
       // Immunities and Weaknesses section is visible by default
@@ -120,4 +121,15 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
     this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform a free strike.
+   * @this DrawSteelNPCSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #freeStrike(event, target) {
+    this.actor.system.performFreeStrike();
+  }
 }
