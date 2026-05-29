@@ -5,8 +5,8 @@
 
 /**
  * @typedef _LocalDocumentFieldOptions
- * @property {boolean} idOnly   Read the value as a string instead of a model?
- * @property {string} subtype   The document subtype referenced by this field.
+ * @property {boolean} idOnly     Read the value as a string instead of a model?
+ * @property {string} [subtype]   The document subtype referenced by this field.
  */
 
 /**
@@ -14,8 +14,7 @@
  */
 
 /**
- * A string field that allows referencing an embedded document of a parent model,
- * such as an actor's item. A subtype must be specified.
+ * A string field that allows referencing an embedded document of a parent model, such as an actor's item.
  */
 export default class LocalDocumentField extends foundry.data.fields.DocumentIdField {
   /**
@@ -35,15 +34,15 @@ export default class LocalDocumentField extends foundry.data.fields.DocumentIdFi
      */
     this.model = model;
 
-    if (!(options.subtype in CONFIG[model.documentName].dataModels)) {
+    if (options.subtype && !(options.subtype in CONFIG[model.documentName].dataModels)) {
       throw new Error("A LocalDocumentField must specify a specific document subtype.");
     }
 
     /**
      * A reference to the document subtype that is stored in this field.
-     * @type {string}
+     * @type {string|null}
      */
-    this.subtype = options.subtype;
+    this.subtype = options.subtype || null;
   }
 
   /* -------------------------------------------------- */
@@ -59,7 +58,7 @@ export default class LocalDocumentField extends foundry.data.fields.DocumentIdFi
   _cast(value) {
     if (typeof value === "string") return value;
     if (value instanceof this.model) {
-      if (value.type !== this.subtype) {
+      if ((this.subtype !== null) && (value.type !== this.subtype)) {
         throw new Error("The value of a LocalDocumentField must adhere to the specific subtype.");
       }
       return value._id;
@@ -74,7 +73,7 @@ export default class LocalDocumentField extends foundry.data.fields.DocumentIdFi
     if (this.idOnly) return value;
     return () => {
       const item = model.parent.getEmbeddedDocument(this.model.documentName, value) ?? null;
-      return item && (item.type === this.subtype) ? item : null;
+      return item && ((item.type === this.subtype) || (this.subtype === null)) ? item : null;
     };
   }
 
