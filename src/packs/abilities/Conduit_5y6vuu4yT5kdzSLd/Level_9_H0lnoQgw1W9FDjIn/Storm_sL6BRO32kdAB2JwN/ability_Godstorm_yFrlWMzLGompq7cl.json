@@ -23,8 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 5,
-      "secondary": 5
+      "primary": "5",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "mUtjr6JI1M2i3kj0": {
@@ -50,21 +52,37 @@
               "value": "2",
               "types": [
                 "lightning"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "3",
               "types": [
                 "lightning"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "5",
               "types": [
                 "lightning"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "HL3DIy874s4FOTcX": {
           "name": "",
@@ -76,27 +94,39 @@
               "value": "2",
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "3",
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "5",
               "types": [
                 "sonic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>A raging storm fills the area until the end of the encounter or until you are dying. At the start of each of your turns, you can move the storm up to 5 squares (no action required). On subsequent turns while the storm is active, you can use a maneuver to make its power roll.</p>"
     },
     "spend": {
       "text": "",
@@ -105,7 +135,20 @@
     "prerequisites": {
       "dsid": [
         "storm"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>A raging storm fills the area until the end of the encounter or until you are dying. At the start of each of your turns, you can move the storm up to 5 squares (no action required). On subsequent turns while the storm is active, you can use a maneuver to make its power roll.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -118,9 +161,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761426778434,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -95,9 +95,12 @@
         "giant"
       ],
       "level": 8,
-      "ev": 10,
       "role": "controller",
       "organization": "minion"
+    },
+    "ev": 10,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "145"
         },
         "_dsid": "stonebreaker-flesh",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "cSYeWinn2KL6XKCc",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886284071
       },
       "_key": "!actors.items!hd854shZ53uki7UL.cSYeWinn2KL6XKCc"
     },
@@ -154,7 +162,12 @@
           "page": "145"
         },
         "_dsid": "stone-steps",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "VGVGUgNza75PbfQd",
       "effects": [],
@@ -168,12 +181,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886284071
       },
       "_key": "!actors.items!hd854shZ53uki7UL.VGVGUgNza75PbfQd"
     },
@@ -192,7 +205,12 @@
           "page": "145"
         },
         "_dsid": "stone-swim",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "WYHK9223O3kaUWq6",
       "effects": [],
@@ -206,12 +224,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886284071
       },
       "_key": "!actors.items!hd854shZ53uki7UL.WYHK9223O3kaUWq6"
     },
@@ -229,7 +247,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -242,7 +262,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "9vGIxqxKAtcbj9so": {
@@ -254,31 +275,32 @@
                 "tier1": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "etTRZrcRm0KYPeEI": {
               "_id": "etTRZrcRm0KYPeEI",
@@ -322,7 +344,8 @@
                     "characteristic": "might"
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "bhawOIqs0cGXXt0l": {
               "_id": "bhawOIqs0cGXXt0l",
@@ -366,13 +389,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -386,7 +406,13 @@
         "_dsid": "buried-in-sand",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -396,12 +422,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886284071
       },
       "_id": "1XSt6M05ixrBh7cY",
       "ownership": {
@@ -419,23 +445,24 @@
         "resource": 5,
         "trigger": "A giant starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each giant in the encounter takes a deep breath and yells, pushing each creature within 3 squares of them up to 10 squares. A creature giant of your choice.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -448,7 +475,23 @@
         },
         "_dsid": "bellow",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each giant in the encounter takes a deep breath and yells, pushing each creature within 3 squares of them up to 10 squares. A creature giant of your choice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "hQOvh0LlbFSAU56C",
@@ -457,12 +500,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.F1EpvH1YM6k7hgia",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886284071
       },
       "ownership": {
         "default": 0,
@@ -483,8 +526,9 @@
         "trigger": "A giant starts its turn.",
         "distance": {
           "type": "cube",
-          "primary": 4,
-          "secondary": 10
+          "primary": "4",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -584,10 +628,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -608,6 +648,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [
@@ -620,10 +671,19 @@
           "_id": "dx8loOnogA4DqJ4J",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -643,12 +703,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770778755395,
-            "createdTime": null
+            "modifiedTime": 1779886284065,
+            "createdTime": 1779886284065
           },
           "showIcon": 2,
           "start": null,
@@ -661,9 +721,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761167271222,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -687,7 +747,10 @@
         "resource": 7,
         "trigger": "A giant starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -817,10 +880,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -837,6 +896,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [
@@ -848,10 +918,19 @@
           "transfer": false,
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -870,12 +949,12 @@
             "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770784073894,
-            "createdTime": null
+            "modifiedTime": 1779886284067,
+            "createdTime": 1779886284067
           },
           "_id": "2hXPO1wVP7B7bl2z",
           "sort": 0,
@@ -890,9 +969,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sRo2Z3MHYnHpAol7",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761167272199,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1011,7 +1090,6 @@
       "_id": "O9tfXMwW9a9sUpRY",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -1019,9 +1097,20 @@
             "key": "system.stamina.max",
             "value": 6,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -1039,12 +1128,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886284073
       },
       "start": {
         "combat": null,
@@ -1068,9 +1157,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758827761768,
     "modifiedTime": null,
     "lastModifiedBy": null

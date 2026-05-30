@@ -22,7 +22,10 @@
     "resource": 11,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "YCJiZ9PqddRufvjR": {
@@ -45,21 +49,30 @@
           "_id": "YCJiZ9PqddRufvjR",
           "other": {
             "tier1": {
-              "display": "An enemy takes 6 damage; an ally can teleport up to 3 squares."
+              "display": "An enemy takes 6 damage; an ally can teleport up to 3 squares.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "An enemy takes 10 damage; an ally can teleport up to 5 squares"
+              "display": "An enemy takes 10 damage; an ally can teleport up to 5 squares",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "An enemy takes 14 damage; an ally can teleport up to 7 squares."
+              "display": "An enemy takes 14 damage; an ally can teleport up to 7 squares.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You shift up to twice your speed, making one power roll that targets each creature you come adjacent to during the shift.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -68,7 +81,20 @@
     "prerequisites": {
       "dsid": [
         "college-of-black-ash"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You shift up to twice your speed, making one power roll that targets each creature you come adjacent to during the shift.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -81,9 +107,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760926283767,
     "modifiedTime": null,
     "lastModifiedBy": null

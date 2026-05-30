@@ -21,7 +21,9 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 4
+      "primary": "4",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -34,13 +36,10 @@
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each target can teleport up to 5 squares. For each target in addition to you who teleports away from or into a space adjacent to an enemy, that enemy takes [[/damage @A fire]]{fire damage} equal to your Agility score. Additionally, a target who ends this movement in concealment or cover can use the Hide maneuver even if they are observed.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -49,7 +48,20 @@
     "prerequisites": {
       "dsid": [
         "college-of-black-ash"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each target can teleport up to 5 squares. For each target in addition to you who teleports away from or into a space adjacent to an enemy, that enemy takes [[/damage @A fire]]{fire damage} equal to your Agility score. Additionally, a target who ends this movement in concealment or cover can use the Hide maneuver even if they are observed.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -62,9 +74,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760836101120,
     "modifiedTime": null,
     "lastModifiedBy": null

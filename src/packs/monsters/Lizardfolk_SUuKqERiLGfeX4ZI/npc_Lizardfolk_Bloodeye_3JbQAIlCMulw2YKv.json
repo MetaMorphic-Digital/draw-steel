@@ -94,9 +94,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 6,
       "role": "hexer",
       "organization": "platoon"
+    },
+    "ev": 6,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "200"
         },
         "_dsid": "reptilian-escape",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "Ezpp7kVL2L4qPsdY",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886276598
       },
       "_key": "!actors.items!3JbQAIlCMulw2YKv.Ezpp7kVL2L4qPsdY"
     },
@@ -152,11 +160,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -164,7 +175,8 @@
             "formula": "@chr",
             "characteristics": [
               "intuition"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "9SDYkrDvnRWKosjp": {
@@ -176,31 +188,32 @@
                 "tier1": {
                   "value": "5",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "Jp0fAMyvMGrDHcQC": {
               "_id": "Jp0fAMyvMGrDHcQC",
@@ -250,13 +263,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -270,7 +280,13 @@
         "_dsid": "bola-knock",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -280,12 +296,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886276598
       },
       "_id": "Ji5l9wdgjvn8Lzsc",
       "ownership": {
@@ -307,11 +323,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -319,7 +338,8 @@
             "formula": "@chr",
             "characteristics": [
               "intuition"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "gqTZcKiW2MumEkYw": {
@@ -333,35 +353,36 @@
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "jjDb1yvmsx0azqxW": {
               "name": "Line of Effect",
@@ -377,7 +398,8 @@
                   },
                   "effects": {
                     "CeHsuaeJBSk9zHLW": {
-                      "condition": "failure"
+                      "condition": "failure",
+                      "properties": []
                     }
                   }
                 },
@@ -389,7 +411,8 @@
                   },
                   "effects": {
                     "fsrOwbQJuzkl0P5M": {
-                      "condition": "failure"
+                      "condition": "failure",
+                      "properties": []
                     }
                   }
                 },
@@ -401,17 +424,15 @@
                   },
                   "effects": {
                     "5foqFKboxvzrPq2M": {
-                      "condition": "failure"
+                      "condition": "failure",
+                      "properties": []
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -425,7 +446,13 @@
         "_dsid": "bloodshot",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [
         {
@@ -439,7 +466,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -457,11 +494,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1757995793921,
-            "modifiedTime": 1774890078764,
+            "modifiedTime": 1779886276594,
             "lastModifiedBy": null
           },
           "start": null,
@@ -480,7 +517,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -498,11 +545,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1757995849693,
-            "modifiedTime": 1774890078764,
+            "modifiedTime": 1779886276594,
             "lastModifiedBy": null
           },
           "start": null,
@@ -521,7 +568,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -539,11 +596,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1757995873996,
-            "modifiedTime": 1774890078764,
+            "modifiedTime": 1779886276595,
             "lastModifiedBy": null
           },
           "start": null,
@@ -559,12 +616,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886276598
       },
       "_id": "tcUbBtABqk8S0zI9",
       "ownership": {
@@ -591,7 +648,10 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -602,17 +662,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Waist-high water floods the entire encounter map. Any lizardfolk submerged in water gains an edge on abilities and doubles their speed while swimming. If there are no open water pits on the encounter map, the water drains away at the end of the round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Waist-high water floods the entire encounter map. Any lizardfolk submerged in water gains an edge on abilities and doubles their speed while swimming. If there are no open water pits on the encounter map, the water drains away at the end of the round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -621,9 +694,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.TEOzrcBNKq1Fc4o4",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761232328012,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -655,7 +728,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -666,17 +742,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature falls into the pit and is knocked [[/apply prone]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to empty the pit.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pit empties of water.</p></dd></dl>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature falls into the pit and is knocked [[/apply prone]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to empty the pit.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pit empties of water.</p></dd></dl>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -685,9 +774,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.CB5NDqhUUzTqd4Vh",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761232330042,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -724,8 +813,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 1,
-          "secondary": 3
+          "primary": "1",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -789,10 +879,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p>",
-          "after": "<p>Any creature not also restrained by a net trap who is adjacent to a creature restrained by the trap can free them as a maneuver.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -801,6 +887,26 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Any creature not also restrained by a net trap who is adjacent to a creature restrained by the trap can free them as a maneuver.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "effects": [],
@@ -809,9 +915,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.4d4NnHVbTRHl3HFV",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761232545619,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -929,9 +1035,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757292921660,
     "modifiedTime": null,
     "lastModifiedBy": null

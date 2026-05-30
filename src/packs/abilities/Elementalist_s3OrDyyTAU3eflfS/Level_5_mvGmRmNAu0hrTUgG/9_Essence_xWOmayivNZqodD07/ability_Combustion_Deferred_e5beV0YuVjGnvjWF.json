@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "FDrMRrm2YZeQ7Xag": {
@@ -50,7 +53,12 @@
               "value": "8 + @chr",
               "types": [
                 "fire"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "13 + @chr",
@@ -58,16 +66,22 @@
                 "fire"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "17 + @chr",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "types": [],
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "ZcYZrItCZhvvcsYR": {
           "name": "Combustion",
@@ -79,39 +93,48 @@
               "effects": {
                 "kpvI9YZtx2l4kCrq": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
-              "display": "Combustion Deferred"
+              "display": "Combustion Deferred",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "display": "Combustion Deferred",
               "effects": {
                 "kpvI9YZtx2l4kCrq": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "display": "Combustion Deferred",
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.strong"
               },
               "effects": {
                 "kpvI9YZtx2l4kCrq": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes [[/damage 2% fire]]{fire damage} equal to twice your Reason score. Each affected enemy then gains this same effect [[/apply kpvI9YZtx2l4kCrq]]</p>"
     },
     "spend": {
       "text": "",
@@ -120,7 +143,20 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes [[/damage 2% fire]]{fire damage} equal to twice your Reason score. Each affected enemy then gains this same effect [[/apply kpvI9YZtx2l4kCrq]]</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -135,7 +171,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -153,9 +199,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761071787649,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -175,9 +221,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761071092397,
     "modifiedTime": null,
     "lastModifiedBy": null

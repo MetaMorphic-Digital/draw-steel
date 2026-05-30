@@ -18,7 +18,10 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -29,17 +32,30 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -52,9 +68,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1763781538105,
     "modifiedTime": null,
     "lastModifiedBy": null

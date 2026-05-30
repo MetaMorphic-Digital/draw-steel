@@ -94,9 +94,12 @@
         "humanoid"
       ],
       "level": 10,
-      "ev": 48,
       "role": "leader",
       "organization": "leader"
+    },
+    "ev": 48,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "320"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "gzVE92EYccwdvUAU",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_key": "!actors.items!DjfBIgTui8rwRvDr.gzVE92EYccwdvUAU"
     },
@@ -153,7 +161,12 @@
           "page": "320"
         },
         "_dsid": "tactical-brilliance",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "tviDiXHLf7cprXvL",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_key": "!actors.items!DjfBIgTui8rwRvDr.tviDiXHLf7cprXvL"
     },
@@ -191,12 +204,14 @@
         ],
         "distance": {
           "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 10
+          "primary": "1",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -204,7 +219,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "VVJt10Y876gYi4mw": {
@@ -216,31 +232,32 @@
                 "tier1": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "21",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "25",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "vYDUV3SASDew5ukV": {
               "_id": "vYDUV3SASDew5ukV",
@@ -290,17 +307,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Each target loses [[/r 1d3]]{1d3 Recoveries}.</p>"
-        },
-        "spend": {
-          "text": "When a target is made bleeding this way, each ally adjacent to them can make a free strike against the target.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -310,7 +320,39 @@
         "_dsid": "houndgun-and-houndblade",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>When a target is made bleeding this way, each ally adjacent to them can make a free strike against the target.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each target loses [[/r 1d3]]{1d3 Recoveries}.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -320,12 +362,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_id": "2ljob9pQMpNymoxZ",
       "ownership": {
@@ -345,11 +387,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 15
+          "primary": "15",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -357,13 +402,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the start of Alkestis's next turn, any effect that reduces the damage taken by the target has no effect.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -377,7 +419,23 @@
         "_dsid": "focus-fire",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the start of Alkestis's next turn, any effect that reduces the damage taken by the target has no effect.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -387,12 +445,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_id": "Shjfh8KIhYUfZCHS",
       "ownership": {
@@ -414,9 +472,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 7,
-          "secondary": 3,
-          "tertiary": 10
+          "primary": "7",
+          "secondary": "3",
+          "tertiary": "10"
         },
         "target": {
           "type": "creatureObject",
@@ -429,7 +487,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "44GaJQtTi1qiaj13": {
@@ -441,31 +500,32 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "NIf41KN15pBytApI": {
               "_id": "NIf41KN15pBytApI",
@@ -515,13 +575,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The area is difficult terrain until the start of the next round</p>"
         },
         "spend": {
           "text": "",
@@ -535,7 +592,23 @@
         "_dsid": "artillery-enfilade",
         "story": "",
         "resource": 2,
-        "trigger": "An ally is reduced to 0 Stamina within 10 squares of Alkestis."
+        "trigger": "An ally is reduced to 0 Stamina within 10 squares of Alkestis.",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The area is difficult terrain until the start of the next round</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -545,12 +618,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_id": "yuvFYLtJmEFigiZ5",
       "ownership": {
@@ -567,7 +640,10 @@
         "category": "villain",
         "keywords": [],
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
@@ -580,13 +656,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target can disappear, then reappear anywhere on the encounter map 3 or more squares away from any enemy. Additionally, each target has a double edge on their next power roll.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -600,7 +673,23 @@
         "_dsid": "fog-of-war",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target can disappear, then reappear anywhere on the encounter map 3 or more squares away from any enemy. Additionally, each target has a double edge on their next power roll.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -610,12 +699,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_id": "xQVhqtOaxCujuK5R",
       "ownership": {
@@ -635,11 +724,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 15
+          "primary": "15",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -647,13 +739,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>For each war dog reduced to 0 Stamina in the encounter, a war dog shriketrooper appears in an unoccupied space within distance.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -667,7 +756,23 @@
         "_dsid": "send-in-the-second-wave",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>For each war dog reduced to 0 Stamina in the encounter, a war dog shriketrooper appears in an unoccupied space within distance.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -677,12 +782,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828240
       },
       "_id": "cwf50PLxYZvWoirY",
       "ownership": {
@@ -703,7 +808,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -716,13 +823,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the start of the next round, each target enemy who has [[potency I 4]] is dazed, each target enemy who has [[potency M 4]] is restrained, and each target enemy who has [[potency A 4]] can't use triggered actions. Additionally, until the end of the encounter, Alkestis and each target ally have damage immunity 3 and deal an extra 5 damage with strikes.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -736,7 +840,23 @@
         "_dsid": "the-silver-wolfs-final-stratagem",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the start of the next round, each target enemy who has [[potency I 4]] is dazed, each target enemy who has [[potency M 4]] is restrained, and each target enemy who has [[potency A 4]] can't use triggered actions. Additionally, until the end of the encounter, Alkestis and each target ally have damage immunity 3 and deal an extra 5 damage with strikes.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -746,12 +866,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828241
       },
       "_id": "BidgrtuoKr0w5cRq",
       "ownership": {
@@ -778,26 +898,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -810,12 +948,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620828241
       },
       "_id": "RnsgvVE79ASj5Wjw",
       "sort": 0,
@@ -844,7 +982,9 @@
         "trigger": "",
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -855,7 +995,8 @@
         "power": {
           "roll": {
             "formula": "5",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "TzboLJifDtxVNw6n": {
@@ -869,33 +1010,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -947,13 +1088,25 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -962,9 +1115,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wbJTnyESAACLBdwU",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761443839142,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1080,9 +1233,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758226859422,
     "modifiedTime": null,
     "lastModifiedBy": null

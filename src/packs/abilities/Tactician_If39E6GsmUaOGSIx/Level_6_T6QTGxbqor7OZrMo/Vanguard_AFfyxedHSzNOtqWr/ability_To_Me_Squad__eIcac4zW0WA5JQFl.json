@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "tgw2n69CnrgEiKC8": {
@@ -47,15 +50,34 @@
           "_id": "tgw2n69CnrgEiKC8",
           "damage": {
             "tier1": {
-              "value": "6 + @chr"
+              "value": "6 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "9 + @chr"
+              "value": "9 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "13 + @chr"
+              "value": "13 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "lrbiTPntXAOWt86f": {
           "name": "",
@@ -64,21 +86,30 @@
           "_id": "lrbiTPntXAOWt86f",
           "other": {
             "tier1": {
-              "display": "one ally within 10 squares can use the Charge main action as a free triggered action, and can use a melee strike signature ability instead of a free strike for the charge"
+              "display": "one ally within 10 squares can use the Charge main action as a free triggered action, and can use a melee strike signature ability instead of a free strike for the charge",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "one ally within 10 squares can use the Charge main action as a free triggered action, and can use a melee strike signature ability that gains an edge instead of a free strike for the charge"
+              "display": "one ally within 10 squares can use the Charge main action as a free triggered action, and can use a melee strike signature ability that gains an edge instead of a free strike for the charge",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "two allies within 10 squares can use the Charge main action as a free triggered action, and can each use a melee strike signature ability that gains an edge instead of a free strike for the charge"
+              "display": "two allies within 10 squares can use the Charge main action as a free triggered action, and can each use a melee strike signature ability that gains an edge instead of a free strike for the charge",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>If the target is hit with two or more strikes as part of this ability and they have [[potency R strong]] , they are [[/apply dazed save]]. If the target is reduced to 0 Stamina before one or both allies has made their strike, the ally or allies can pick a different target.</p>"
     },
     "spend": {
       "text": "",
@@ -87,7 +118,20 @@
     "prerequisites": {
       "dsid": [
         "vanguard"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If the target is hit with two or more strikes as part of this ability and they have [[potency R strong]] , they are [[/apply dazed save]]. If the target is reduced to 0 Stamina before one or both allies has made their strike, the ally or allies can pick a different target.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -100,9 +144,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761253893443,
     "modifiedTime": null,
     "lastModifiedBy": null

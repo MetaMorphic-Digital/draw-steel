@@ -96,9 +96,12 @@
         "infernal"
       ],
       "level": 6,
-      "ev": 16,
       "role": "hexer",
       "organization": "platoon"
+    },
+    "ev": 16,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -117,7 +120,12 @@
           "page": "175"
         },
         "_dsid": "infernal-ichor",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "NHaVPm3lFha72LAg",
       "effects": [],
@@ -131,12 +139,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285902
       },
       "_key": "!actors.items!tndVGqeVnBt44q3j.NHaVPm3lFha72LAg"
     },
@@ -154,7 +162,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -167,7 +177,8 @@
             "formula": "@chr",
             "characteristics": [
               "intuition"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "fjnhCUjiDrIymlr8": {
@@ -181,35 +192,36 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "14",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "17",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "v6skfE0GhOVW7C9p": {
               "_id": "v6skfE0GhOVW7C9p",
@@ -259,13 +271,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -279,7 +288,13 @@
         "_dsid": "eye-flash",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -289,12 +304,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285903
       },
       "_id": "NpUQJzEbXeX2caMG",
       "ownership": {
@@ -316,7 +331,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -329,7 +346,8 @@
             "formula": "@chr",
             "characteristics": [
               "intuition"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "ZD4GciOhWBmvoc1F": {
@@ -343,33 +361,34 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "0",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "mP8BgXOjeQnwHyO0": {
               "name": "Judged",
@@ -407,13 +426,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Until the end of the encounter, a judged target takes [[/damage 10 corruption]] damage at the start of each of their turns, and regains [[/heal 5]] each time they use an ability or other effect that allows another creature to spend a Recovery.</p>"
         },
         "spend": {
           "text": "",
@@ -427,7 +443,23 @@
         "_dsid": "glare-of-the-old-judgments",
         "story": "",
         "resource": 5,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Until the end of the encounter, a judged target takes [[/damage 10 corruption]] damage at the start of each of their turns, and regains [[/heal 5]] each time they use an ability or other effect that allows another creature to spend a Recovery.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -439,10 +471,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -460,12 +501,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886285899,
+            "modifiedTime": 1779886285899
           },
           "start": null,
           "showIcon": 1,
@@ -480,12 +521,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285903
       },
       "_id": "r3vFEeIJ1SwqZ3kG",
       "ownership": {
@@ -512,27 +553,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The hobgoblin activates a Malice feature available to goblins.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The hobgoblin activates a Malice feature available to goblins.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -545,12 +603,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285903
       },
       "_id": "UGHCecFaMdu6mGLU",
       "sort": 100000,
@@ -566,23 +624,24 @@
         "resource": 7,
         "trigger": "A hobgoblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, the ground throughout the encounter map becomes blazing hot. Any enemy takes [[/damage @scaling fire scaling]]{1 fire damage} for each square of the ground they enter. Any enemy who ends their turn on the ground has fire weakness 2 until the start of their next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -595,7 +654,23 @@
         },
         "_dsid": "operation-earth-sear",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, the ground throughout the encounter map becomes blazing hot. Any enemy takes [[/damage @scaling fire scaling]]{1 fire damage} for each square of the ground they enter. Any enemy who ends their turn on the ground has fire weakness 2 until the start of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "T4SAnS1vRpGBktJS",
@@ -604,12 +679,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285903
       },
       "ownership": {
         "default": 0,
@@ -629,23 +704,24 @@
         "resource": 3,
         "trigger": "A hobgoblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each goblin in the encounter gains a +3 bonus to speed until the end of the round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -658,7 +734,23 @@
         },
         "_dsid": "operation-goblin-mode",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each goblin in the encounter gains a +3 bonus to speed until the end of the round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "T4SAnS1vRpGBktJS",
@@ -667,12 +759,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285903
       },
       "ownership": {
         "default": 0,
@@ -692,23 +784,24 @@
         "resource": 5,
         "trigger": "A hobgoblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each hobgoblin in the encounter shifts up to their speed and can take the Defend main action.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -721,7 +814,23 @@
         },
         "_dsid": "operation-tactical-swarm",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each hobgoblin in the encounter shifts up to their speed and can take the Defend main action.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "T4SAnS1vRpGBktJS",
@@ -730,12 +839,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285903
       },
       "ownership": {
         "default": 0,
@@ -848,9 +957,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758773982630,
     "modifiedTime": null,
     "lastModifiedBy": null

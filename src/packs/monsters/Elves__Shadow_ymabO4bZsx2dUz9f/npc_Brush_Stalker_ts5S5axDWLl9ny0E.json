@@ -95,9 +95,12 @@
         "fey"
       ],
       "level": 4,
-      "ev": 12,
       "role": "mount",
       "organization": "platoon"
+    },
+    "ev": 12,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "133"
         },
         "_dsid": "suneater",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "f6xiV97zUzEmC3Zx",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834967
       },
       "_key": "!actors.items!ts5S5axDWLl9ny0E.f6xiV97zUzEmC3Zx"
     },
@@ -154,7 +162,12 @@
           "page": "133"
         },
         "_dsid": "wyrd-dyr",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "1SuIWYWcFCcHvYOi",
       "effects": [],
@@ -168,12 +181,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834967
       },
       "_key": "!actors.items!ts5S5axDWLl9ny0E.1SuIWYWcFCcHvYOi"
     },
@@ -192,7 +205,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -205,7 +220,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "SpaW4OMIhJlvJ7Iv": {
@@ -217,37 +233,34 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -261,7 +274,13 @@
         "_dsid": "gore",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -271,12 +290,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834967
       },
       "_id": "81PjdN4kQxPTnrPt",
       "ownership": {
@@ -297,7 +316,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -310,7 +331,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "zWzvj5yDRU4FMYLR": {
@@ -324,35 +346,36 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "10",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "VIzpOL6ipUoKQpNH": {
               "_id": "VIzpOL6ipUoKQpNH",
@@ -402,13 +425,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -422,7 +442,13 @@
         "_dsid": "reclamation",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -432,12 +458,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834967
       },
       "_id": "29MZw4AjL5vC2s1v",
       "ownership": {
@@ -455,23 +481,24 @@
         "resource": 3,
         "trigger": "A shadow starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each shadow elf acting this turn can attempt to hide as a free maneuver if they have concealment.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -484,7 +511,23 @@
         },
         "_dsid": "watch-me-disappear",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each shadow elf acting this turn can attempt to hide as a free maneuver if they have concealment.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -494,12 +537,12 @@
         "compendiumSource": "Actor.ts5S5axDWLl9ny0E.Item.XBE9Sxq8c48xNrnz",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834968
       },
       "_id": "XBE9Sxq8c48xNrnz",
       "ownership": {
@@ -517,7 +560,10 @@
         "resource": 5,
         "trigger": "A shadow starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -533,10 +579,6 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>When any shadow elf acting this turn makes a strike against a target who has [[potency I 2]] in addition to the strike’s regular effects, the target is bleeding (save ends) or slowed (save ends).</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -548,7 +590,23 @@
         },
         "_dsid": "extra-dimension",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>When any shadow elf acting this turn makes a strike against a target who has [[potency I 2]] in addition to the strike’s regular effects, the target is bleeding (save ends) or slowed (save ends).</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -558,12 +616,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.f7HTgufTCTdtrgPR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834968
       },
       "_id": "cFzcJnJcZ6Ls3kvy",
       "ownership": {
@@ -581,23 +639,24 @@
         "resource": 10,
         "trigger": "A shadow starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The shadow elves synthesize a concentrated pocket manifold reminiscent of Equinox and graft it onto the encounter map. Until the end of the encounter, all creatures can see shadow elves in full color, and shadow elves no longer benefit from their Of the Umbra trait. Additionally, the potency of all shadow elf abilities increases by 2, and any enemy making a saving throw against an effect imposed by a shadow elf ability must roll an 8 or higher as they feel the effect across two worlds.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -610,7 +669,23 @@
         },
         "_dsid": "home-is-where-the-hurt-is",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The shadow elves synthesize a concentrated pocket manifold reminiscent of Equinox and graft it onto the encounter map. Until the end of the encounter, all creatures can see shadow elves in full color, and shadow elves no longer benefit from their Of the Umbra trait. Additionally, the potency of all shadow elf abilities increases by 2, and any enemy making a saving throw against an effect imposed by a shadow elf ability must roll an 8 or higher as they feel the effect across two worlds.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -620,12 +695,12 @@
         "compendiumSource": "Actor.ts5S5axDWLl9ny0E.Item.cXEbdf12Pb7hOpZY",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834968
       },
       "_id": "cXEbdf12Pb7hOpZY",
       "ownership": {
@@ -738,9 +813,9 @@
     "compendiumSource": "Actor.ts5S5axDWLl9ny0E",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758744028420,
     "modifiedTime": null,
     "lastModifiedBy": null

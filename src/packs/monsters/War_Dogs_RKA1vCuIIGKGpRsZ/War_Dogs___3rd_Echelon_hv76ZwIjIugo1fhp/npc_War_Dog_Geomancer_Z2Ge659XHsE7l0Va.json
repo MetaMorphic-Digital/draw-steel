@@ -95,9 +95,12 @@
         "soulless"
       ],
       "level": 8,
-      "ev": 10,
       "role": "controller",
       "organization": "horde"
+    },
+    "ev": 10,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "313"
         },
         "_dsid": "dust-cloud",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "BvCddKBM63H9Isq4",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831609
       },
       "_key": "!actors.items!Z2Ge659XHsE7l0Va.BvCddKBM63H9Isq4"
     },
@@ -154,7 +162,12 @@
           "page": "313"
         },
         "_dsid": "loyalty-collar",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "ypaGyM2w5iBuuxty",
       "effects": [],
@@ -168,12 +181,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831610
       },
       "_key": "!actors.items!Z2Ge659XHsE7l0Va.ypaGyM2w5iBuuxty"
     },
@@ -191,9 +204,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 7,
-          "secondary": 2,
-          "tertiary": 10
+          "primary": "7",
+          "secondary": "2",
+          "tertiary": "10"
         },
         "target": {
           "type": "creature",
@@ -206,7 +219,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "GIX09oFgXtngmvce": {
@@ -218,31 +232,32 @@
                 "tier1": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "eg9Ya2chgHrQMsJ9": {
               "name": "Push",
@@ -282,7 +297,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "Pon7kA73uocQZmcg": {
               "name": "prone",
@@ -319,17 +335,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>This ability ignores stability. The geomancer declares a direction for the area, and any creature pushed by this ability is pushed to the last space in the area in the chosen direction.</p>"
-        },
-        "spend": {
-          "text": "The ground beneath the area becomes a 2-square-deep trench after the power roll is resolved.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -339,7 +348,39 @@
         "_dsid": "earthwave",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>The ground beneath the area becomes a 2-square-deep trench after the power roll is resolved.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>This ability ignores stability. The geomancer declares a direction for the area, and any creature pushed by this ability is pushed to the last space in the area in the chosen direction.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -349,12 +390,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831610
       },
       "_id": "ZmVSjCJglig396QV",
       "ownership": {
@@ -376,12 +417,14 @@
         ],
         "distance": {
           "type": "wall",
-          "primary": 5,
-          "secondary": 10
+          "primary": "5",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -389,13 +432,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The geomancer raises a wall of stone set with viewing gaps. Creatures have line of effect through the wall while adjacent to it.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -409,7 +449,23 @@
         "_dsid": "siegeworks",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The geomancer raises a wall of stone set with viewing gaps. Creatures have line of effect through the wall while adjacent to it.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -419,12 +475,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831610
       },
       "_id": "H40HpJGLVuT1Ltde",
       "ownership": {
@@ -451,26 +507,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -483,12 +557,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831610
       },
       "_id": "ffAT6RdoCBdyscSr",
       "sort": 0,
@@ -514,7 +588,10 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -620,10 +697,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -632,6 +705,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -645,12 +729,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831610
       },
       "_key": "!actors.items!Z2Ge659XHsE7l0Va.nOF8y0Xd415kriB6"
     }
@@ -757,9 +841,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758223822897,
     "modifiedTime": null,
     "lastModifiedBy": null

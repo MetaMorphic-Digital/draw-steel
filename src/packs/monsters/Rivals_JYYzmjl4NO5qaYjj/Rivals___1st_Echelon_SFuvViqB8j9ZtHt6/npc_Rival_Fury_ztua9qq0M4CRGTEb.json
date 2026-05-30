@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 2,
-      "ev": 16,
       "role": "brute",
       "organization": "elite"
+    },
+    "ev": 16,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -215,20 +218,23 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1,
-          "secondary": 10
+          "primary": "1",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "rt0uXwE7aQACHFZN": {
@@ -240,31 +246,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "smuXsLN43WJjOgyP": {
               "name": "Push",
@@ -273,12 +280,43 @@
               "_id": "smuXsLN43WJjOgyP",
               "forced": {
                 "tier2": {
-                  "distance": "2"
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "distance": "3"
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "9zBpmWpDVZDE3atd": {
               "name": "Slowed",
@@ -290,36 +328,70 @@
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
                   "effects": {
                     "slowed": {
-                      "condition": "failure"
+                      "condition": "failure",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>Each target who has m&lt;1 is slowed (save ends).</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "Each target who has m<1 is slowed (save ends).",
-          "value": 2
+          "text": ""
         }
       },
       "_id": "699RPA9nBU4TISRj",
@@ -336,12 +408,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835993
       },
       "_key": "!actors.items!ztua9qq0M4CRGTEb.699RPA9nBU4TISRj"
     },
@@ -361,7 +433,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "rivalry",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -375,12 +452,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835993
       },
       "_key": "!actors.items!ztua9qq0M4CRGTEb.ahe8G0HyhONI7mZv"
     },
@@ -406,19 +483,23 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "gygFwEgqw0eQwsrf": {
@@ -430,31 +511,32 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "PRKPnOiId48gwUIp": {
               "name": "grabbed",
@@ -492,17 +574,30 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The target must be the fury’s size or smaller. While the target is grabbed this way, the fury gains an edge on strikes against them.</p>"
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target must be the fury’s size or smaller. While the target is grabbed this way, the fury gains an edge on strikes against them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "xFUV5WsLp9fuleT8",
@@ -519,12 +614,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835993
       },
       "_key": "!actors.items!ztua9qq0M4CRGTEb.xFUV5WsLp9fuleT8"
     },
@@ -544,7 +639,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "overwhelm",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -558,12 +658,12 @@
         "compendiumSource": "Actor.hTF6vMqyzn5lkLDl.Item.e1zlPDYoYxwlrXIF",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835993
       },
       "_key": "!actors.items!ztua9qq0M4CRGTEb.e1zlPDYoYxwlrXIF"
     },
@@ -584,26 +684,44 @@
         "resource": 5,
         "trigger": "A rival's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each rival regains [[/heal 10]] Until the end of the round, when ever a rival uses an ability against an enemy, each other rival adjacent to that enemy can make a free strike against them.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each rival regains [[/heal 10]] Until the end of the round, when ever a rival uses an ability against an enemy, each other rival adjacent to that enemy can make a free strike against them.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "xB9Vd4t5keqs1JDR",
@@ -620,9 +738,9 @@
         "compendiumSource": "Actor.EhnU9L0Aew7nM5aT.Item.z3xzUCsBYvDhJ9qD",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755714415895,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -646,26 +764,44 @@
         "resource": 10,
         "trigger": "A Rival's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "NC26Xynp5N9nETPD",
@@ -682,9 +818,9 @@
         "compendiumSource": "Actor.EhnU9L0Aew7nM5aT.Item.b6CWx7xWLAhDmI3v",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755714418254,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -708,26 +844,44 @@
         "resource": 3,
         "trigger": "A rival's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, whenever any rival makes a power roll against the target of their Rivalry trait, they roll a [[/r d3]] and add it to the power roll.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, whenever any rival makes a power roll against the target of their Rivalry trait, they roll a [[/r d3]] and add it to the power roll.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "8e54PBDCLRgBpCkU",
@@ -744,9 +898,9 @@
         "compendiumSource": "Actor.EhnU9L0Aew7nM5aT.Item.kfBTgkWGXfngw1kJ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755714419282,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -770,26 +924,44 @@
         "resource": 3,
         "trigger": "A rival's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, each rival can impose a bane on a strike made against an adjacent rival as a free triggered action.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, each rival can impose a bane on a strike made against an adjacent rival as a free triggered action.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "9wDgHxxo5PamhM3w",
@@ -806,9 +978,9 @@
         "compendiumSource": "Actor.EhnU9L0Aew7nM5aT.Item.wXU0ItiOUr3Al6Zb",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755714420344,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -832,7 +1004,10 @@
         "resource": 5,
         "trigger": "A rival's turn starts",
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -964,10 +1139,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an <strong>Agility test</strong>. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -976,6 +1147,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an <strong>Agility test</strong>. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "UarPvMGwBUArRMi9",
@@ -986,9 +1168,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.UarPvMGwBUArRMi9",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761243222149,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1012,9 +1194,9 @@
     "compendiumSource": null,
     "duplicateSource": "Actor.EhnU9L0Aew7nM5aT",
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755701956284,
     "modifiedTime": null,
     "lastModifiedBy": null

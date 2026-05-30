@@ -94,9 +94,12 @@
         "abyssal"
       ],
       "level": 4,
-      "ev": 6,
       "role": "harrier",
       "organization": "horde"
+    },
+    "ev": 6,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "66"
         },
         "_dsid": "made-of-teeth",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "vdqceWMLAOD7vqj8",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_key": "!actors.items!AXJ1tMkKqDLh29ok.vdqceWMLAOD7vqj8"
     },
@@ -153,7 +161,12 @@
           "page": "66"
         },
         "_dsid": "lethe",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "KDTHTB1ravmgloxb",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_key": "!actors.items!AXJ1tMkKqDLh29ok.KDTHTB1ravmgloxb"
     },
@@ -191,7 +204,12 @@
           "page": "66"
         },
         "_dsid": "soulsight",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "M3t2NJLg0x0lM2vr",
       "effects": [],
@@ -205,12 +223,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_key": "!actors.items!AXJ1tMkKqDLh29ok.M3t2NJLg0x0lM2vr"
     },
@@ -228,11 +246,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -240,7 +261,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "g3m739U6zPG8LaLv": {
@@ -252,37 +274,34 @@
                 "tier1": {
                   "value": "5",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Each enemy adjacent to the fangling takes [[/damage 2]] damage.</p>"
         },
         "spend": {
           "text": "",
@@ -296,7 +315,23 @@
         "_dsid": "tooth-tusk-claw",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each enemy adjacent to the fangling takes [[/damage 2]] damage.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -306,12 +341,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_id": "uh3bENXudWX5tEVi",
       "ownership": {
@@ -332,13 +367,14 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 8,
-          "secondary": 3,
-          "tertiary": 1
+          "primary": "8",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -346,7 +382,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "8eE9A508Rmiikni7": {
@@ -358,31 +395,32 @@
                 "tier1": {
                   "value": "2",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "4",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "srpBz4jbK5RcZESX": {
               "_id": "srpBz4jbK5RcZESX",
@@ -426,7 +464,8 @@
                     "characteristic": "might"
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "Ao6YOr6vP3MAe6Rm": {
               "_id": "Ao6YOr6vP3MAe6Rm",
@@ -476,13 +515,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -496,7 +532,13 @@
         "_dsid": "tumbling-gore",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -506,12 +548,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_id": "bFb9bcwkS3do29Rv",
       "ownership": {
@@ -539,26 +581,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -572,12 +632,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_key": "!actors.items!AXJ1tMkKqDLh29ok.2PmYNyLNcEt2Ufaa"
     },
@@ -601,26 +661,44 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -634,12 +712,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827508
       },
       "_key": "!actors.items!AXJ1tMkKqDLh29ok.d298nvIWsIOh0Kl7"
     }
@@ -746,9 +824,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758136954294,
     "modifiedTime": null,
     "lastModifiedBy": null

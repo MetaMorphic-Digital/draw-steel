@@ -94,9 +94,12 @@
         "humanoid"
       ],
       "level": 3,
-      "ev": 5,
       "role": "brute",
       "organization": "minion"
+    },
+    "ev": 5,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "249"
         },
         "_dsid": "foresight",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "ywzfklpdEtbdDQK9",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834417
       },
       "_key": "!actors.items!pU91Jsq2kqf4Dino.ywzfklpdEtbdDQK9"
     },
@@ -153,7 +161,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -166,7 +176,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "aVfolVlaU4Df8bSi": {
@@ -178,29 +189,29 @@
                 "tier1": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "5",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -291,10 +302,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -307,7 +314,13 @@
         "_dsid": "fifth-fist",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -317,12 +330,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834417
       },
       "_id": "SjetAwK5W6ex7oeD",
       "ownership": {
@@ -356,8 +369,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 5,
-          "secondary": 3
+          "primary": "5",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -368,17 +382,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>A time raider acting this turn activates a gravity well in the area. The gravity well sits at the center of the cube and lasts until the end of the encounter, or until a creature adjacent to the well uses a maneuver to deactivate it. The area is difficult terrain for enemies. Any enemy who ends their turn in the area is pulled up to 4 squares toward the well.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A time raider acting this turn activates a gravity well in the area. The gravity well sits at the center of the cube and lasts until the end of the encounter, or until a creature adjacent to the well uses a maneuver to deactivate it. The area is difficult terrain for enemies. Any enemy who ends their turn in the area is pulled up to 4 squares toward the well.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -392,12 +419,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DWLBSTbhAO4dJSvg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834417
       },
       "_key": "!actors.items!pU91Jsq2kqf4Dino.DWLBSTbhAO4dJSvg"
     },
@@ -421,7 +448,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -432,17 +462,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, each time raider gains a +3 bonus to speed, and can teleport up to their speed as a move action.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, each time raider gains a +3 bonus to speed, and can teleport up to their speed as a move action.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -456,12 +499,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2rKjwi2thIVeeFZf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834417
       },
       "_key": "!actors.items!pU91Jsq2kqf4Dino.2rKjwi2thIVeeFZf"
     },
@@ -484,7 +527,10 @@
         "resource": 10,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -588,10 +634,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -600,6 +642,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -608,12 +661,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.ELtwiIpyMZafdAEM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834417
       },
       "ownership": {
         "default": 0,
@@ -728,7 +781,6 @@
       "_id": "ujzyZJGcop9p4eAQ",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -741,9 +793,20 @@
             "key": "damage.bonuses.value",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -761,12 +824,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620834419
       },
       "start": {
         "combat": null,
@@ -790,9 +853,9 @@
     "compendiumSource": "Actor.pU91Jsq2kqf4Dino",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761424412513,
     "modifiedTime": null,
     "lastModifiedBy": null

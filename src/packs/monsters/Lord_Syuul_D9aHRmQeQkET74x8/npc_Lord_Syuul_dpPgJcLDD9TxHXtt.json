@@ -94,9 +94,12 @@
         "horror"
       ],
       "level": 6,
-      "ev": 96,
       "role": "solo",
       "organization": "solo"
+    },
+    "ev": 96,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "294"
         },
         "_dsid": "solo-monster",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "2LUgyKg86SRmr22j",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_key": "!actors.items!dpPgJcLDD9TxHXtt.2LUgyKg86SRmr22j"
     },
@@ -153,7 +161,12 @@
           "page": "294"
         },
         "_dsid": "mind-over-manners",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "5I0t4rDy6fc0TywY",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_key": "!actors.items!dpPgJcLDD9TxHXtt.5I0t4rDy6fc0TywY"
     },
@@ -190,7 +203,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -203,7 +218,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "lhDWtu5ShrOBWg6V": {
@@ -215,29 +231,29 @@
                 "tier1": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "17",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "20",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -295,14 +311,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Lord Syuul can have up to four targets grabbed at once</p>"
-        },
-        "spend": {
-          "text": "The distance of this ability increases to melee 10. Each target grabbed by Lord Syuul is pulled up to 10 squares.",
-          "value": 2
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -311,7 +319,39 @@
         "_dsid": "tentacle-grab",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>The distance of this ability increases to melee 10. Each target grabbed by Lord Syuul is pulled up to 10 squares.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul can have up to four targets grabbed at once</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -321,12 +361,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "JBYppmKgxBuxhx6z",
       "ownership": {
@@ -348,8 +388,9 @@
         ],
         "distance": {
           "type": "cube",
-          "primary": 2,
-          "secondary": 5
+          "primary": "2",
+          "secondary": "5",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -362,7 +403,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "vUCRufT5spcCZzfK": {
@@ -374,29 +416,29 @@
                 "tier1": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -433,10 +475,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Any supernatural ability used by a creature in the area has a double bane. All reactive tests made against magic or psionic effects in the area have a double edge.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -449,7 +487,23 @@
         "_dsid": "dampening-grenade",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Any supernatural ability used by a creature in the area has a double bane. All reactive tests made against magic or psionic effects in the area have a double edge.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -459,12 +513,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "x5BNIVOTcOGMRx93",
       "ownership": {
@@ -486,7 +540,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -499,7 +555,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "CQC56EwHxEKSH1UC": {
@@ -511,38 +568,34 @@
                 "tier1": {
                   "value": "12",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "20",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "24",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>If this action reduces the target to 0 Stamina and they have a brain, their brain explodes, instantly killing them.</p>"
         },
         "spend": {
           "text": "",
@@ -556,7 +609,23 @@
         "_dsid": "mind-blown",
         "story": "",
         "resource": 7,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If this action reduces the target to 0 Stamina and they have a brain, their brain explodes, instantly killing them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -566,12 +635,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "Ym7Rsb2avdgSuHEg",
       "ownership": {
@@ -590,7 +659,10 @@
           "psionic"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -603,13 +675,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Lord Syuul can teleport up to 5 squares along with each creature and object he has grabbed. He can release grabbed creatures and objects before or after teleporting</p>"
         },
         "spend": {
           "text": "",
@@ -623,7 +692,23 @@
         "_dsid": "you-come-with-me",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul can teleport up to 5 squares along with each creature and object he has grabbed. He can release grabbed creatures and objects before or after teleporting</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -633,12 +718,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "3GkJES5Hh5oN1mxY",
       "ownership": {
@@ -657,7 +742,10 @@
           "psionic"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -670,13 +758,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the start of his next turn, Lord Syuul gains immunity 5 to the triggering damage type.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -690,7 +775,23 @@
         "_dsid": "adaptability",
         "story": "",
         "resource": null,
-        "trigger": "Lord Syuul takes damage that has a damage type."
+        "trigger": "Lord Syuul takes damage that has a damage type.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the start of his next turn, Lord Syuul gains immunity 5 to the triggering damage type.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -700,12 +801,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "Ci0PM6tjTalFRsNd",
       "ownership": {
@@ -726,7 +827,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -754,19 +857,34 @@
                   "value": "16",
                   "types": [
                     "psychic"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "13",
                   "types": [
                     "psychic"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "7",
                   "types": [
                     "psychic"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -781,27 +899,41 @@
                   "effects": {
                     "bKxYOKRHIGVnxbNQ": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
-                  "display": "the target has no line of effect to any crea- ture except Lord Syuul, and takes a bane on strikes targeting Lord Syuul (save ends)"
+                  "display": "the target has no line of effect to any crea- ture except Lord Syuul, and takes a bane on strikes targeting Lord Syuul (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "display": "the target has no line of effect to any creature except Lord Syuul (save ends)",
                   "effects": {
                     "cjzmFsWWf6SnEKnD": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"></dl>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -815,7 +947,23 @@
         "_dsid": "see-only-me",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"></dl>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -827,10 +975,19 @@
           "_id": "bKxYOKRHIGVnxbNQ",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -848,12 +1005,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283495,
+            "modifiedTime": 1779886283495
           },
           "start": null,
           "showIcon": 1,
@@ -869,10 +1026,19 @@
           "_id": "cjzmFsWWf6SnEKnD",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -890,12 +1056,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283495,
+            "modifiedTime": 1779886283495
           },
           "start": null,
           "showIcon": 1,
@@ -910,12 +1076,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "Epq2bolWftwHg3Z1",
       "ownership": {
@@ -934,7 +1100,10 @@
           "psionic"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -947,13 +1116,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Lord Syuul becomes invisible, can teleport up to 10 squares, and projects an illusory double within 10 squares. The double can't move or act, but Lord Syuul can use psionic abilities as if he were in its square. Whenever a creature touches or damages the double with a melee strike, they take [[/damage 10 psychic]]{10 psychic damage}. If Lord Syuul takes damage, his invisibility ends and the double disappears.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -967,7 +1133,23 @@
         "_dsid": "phantom-pain",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul becomes invisible, can teleport up to 10 squares, and projects an illusory double within 10 squares. The double can't move or act, but Lord Syuul can use psionic abilities as if he were in its square. Whenever a creature touches or damages the double with a melee strike, they take [[/damage 10 psychic]]{10 psychic damage}. If Lord Syuul takes damage, his invisibility ends and the double disappears.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -977,12 +1159,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "jUo8IHRQrZBsliBs",
       "ownership": {
@@ -1003,7 +1185,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -1016,7 +1200,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "hmSmLrF83rKrX2t7": {
@@ -1030,42 +1215,38 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "16",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "<p>Until the end of the encounter, each target has [[/apply RFz5KOyfwPAefYKV]]damage weakness 3.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1079,7 +1260,23 @@
         "_dsid": "mindshatter",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the encounter, each target has [[/apply RFz5KOyfwPAefYKV]]damage weakness 3.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1091,7 +1288,6 @@
           "_id": "RFz5KOyfwPAefYKV",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1099,9 +1295,20 @@
                 "key": "system.damage.weaknesses.all",
                 "value": 3,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1119,12 +1326,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283498,
+            "modifiedTime": 1779886283498
           },
           "start": null,
           "showIcon": 1,
@@ -1139,12 +1346,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "iBwjjFiwK9UXQcQ6",
       "ownership": {
@@ -1162,7 +1369,10 @@
         "resource": 5,
         "trigger": "A  starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1251,10 +1461,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1271,6 +1477,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -1281,12 +1498,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.No9WuHO95jXubc8M",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283508
       },
       "_id": "NzLViANmt5HGRow2",
       "ownership": {
@@ -1304,7 +1521,10 @@
         "resource": 5,
         "trigger": "A  starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1315,13 +1535,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Lord Syuul takes an additional main action on his turn. He can use this feature even if he is dazed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1334,7 +1551,23 @@
         },
         "_dsid": "solo-action",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul takes an additional main action on his turn. He can use this feature even if he is dazed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1344,12 +1577,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283509
       },
       "_id": "VrmCzUdjjQmM5sCL",
       "ownership": {
@@ -1367,7 +1600,10 @@
         "resource": 7,
         "trigger": "A  starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1378,13 +1614,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Lord Syuul sends out a psionic burst to completely overpower his greatest threats. He makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Reason test</span></strong></span> (2d10 + 4).</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd></dl><p>Once per round as a maneuver, Lord Syuul can repeat this test, replacing the previous Overpower effect.</p><p>Whenever an Overpower effect is active, any hero who has one or more psionic abilities can use a maneuver to push back by making a <strong>Reason test</strong>, replacing the previous Overpower effect.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd></dl><p>The Overpower effect lasts until the end of the encounter.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1397,7 +1630,23 @@
         },
         "_dsid": "overpower",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul sends out a psionic burst to completely overpower his greatest threats. He makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Reason test</span></strong></span> (2d10 + 4).</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd></dl><p>Once per round as a maneuver, Lord Syuul can repeat this test, replacing the previous Overpower effect.</p><p>Whenever an Overpower effect is active, any hero who has one or more psionic abilities can use a maneuver to push back by making a <strong>Reason test</strong>, replacing the previous Overpower effect.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd></dl><p>The Overpower effect lasts until the end of the encounter.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1409,7 +1658,6 @@
           "_id": "G3pmIisK48BtlWbz",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1417,9 +1665,20 @@
                 "key": "system.damage.weaknesses.all",
                 "value": 5,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1437,12 +1696,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283502,
+            "modifiedTime": 1779886283502
           },
           "start": null,
           "showIcon": 1,
@@ -1458,7 +1717,6 @@
           "_id": "jYSbHU5vWJKVYLb1",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1466,9 +1724,20 @@
                 "key": "system.damage.immunities.all",
                 "value": 2,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1486,12 +1755,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283502,
+            "modifiedTime": 1779886283502
           },
           "start": null,
           "showIcon": 1,
@@ -1507,7 +1776,6 @@
           "_id": "dablVHoMkSQAjH4U",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1515,9 +1783,20 @@
                 "key": "system.damage.immunities.all",
                 "value": 5,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1535,12 +1814,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283502,
+            "modifiedTime": 1779886283502
           },
           "start": null,
           "showIcon": 1,
@@ -1555,12 +1834,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283509
       },
       "_id": "DMmMxLn4okIAt3Zw",
       "ownership": {
@@ -1585,7 +1864,10 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -1596,17 +1878,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Lord Syuul projects a psionic screen over his body, preventing other creatures from treating him as an enemy until the end of his next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Lord Syuul projects a psionic screen over his body, preventing other creatures from treating him as an enemy until the end of his next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "96tTG4IFYxVi8e9Q",
@@ -1623,12 +1918,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283509
       },
       "_key": "!actors.items!dpPgJcLDD9TxHXtt.96tTG4IFYxVi8e9Q"
     }
@@ -1735,9 +2030,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761531145140,
     "modifiedTime": null,
     "lastModifiedBy": null

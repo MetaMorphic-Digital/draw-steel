@@ -95,9 +95,12 @@
         "horror"
       ],
       "level": 6,
-      "ev": 96,
       "role": "",
       "organization": "solo"
+    },
+    "ev": 96,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "213"
         },
         "_dsid": "solo-monster",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "1VGQnC85Gqcl6byR",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286171
       },
       "_key": "!actors.items!ud72M98Ex1iMTHlZ.1VGQnC85Gqcl6byR"
     },
@@ -154,7 +162,12 @@
           "page": "213"
         },
         "_dsid": "gelatinosis",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "jYFBARlwHQxicQvu",
       "effects": [
@@ -167,10 +180,19 @@
           "_id": "uBQLDGNoZMc0EYaE",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -188,12 +210,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770751412061,
-            "createdTime": null
+            "modifiedTime": 1779886286142,
+            "createdTime": 1779886286142
           },
           "start": null,
           "showIcon": 1,
@@ -211,12 +233,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286171
       },
       "_key": "!actors.items!ud72M98Ex1iMTHlZ.jYFBARlwHQxicQvu"
     },
@@ -235,7 +257,12 @@
           "page": "213"
         },
         "_dsid": "primordial-mind",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "nHLJqGJilrWfYKXo",
       "effects": [],
@@ -249,12 +276,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286171
       },
       "_key": "!actors.items!ud72M98Ex1iMTHlZ.nHLJqGJilrWfYKXo"
     },
@@ -273,7 +300,12 @@
           "page": "213"
         },
         "_dsid": "slime-sense",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "37XkArPpEXEfe8A6",
       "effects": [],
@@ -287,12 +319,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286171
       },
       "_key": "!actors.items!ud72M98Ex1iMTHlZ.37XkArPpEXEfe8A6"
     },
@@ -310,7 +342,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -323,7 +357,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "p97htGA8VoMWaQ2C": {
@@ -335,29 +370,29 @@
                 "tier1": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "17",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "20",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -420,10 +455,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>A slimed target takes 4 psychic damage whenever they make a power roll.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -436,7 +467,23 @@
         "_dsid": "devolving-tentacles",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A slimed target takes 4 psychic damage whenever they make a power roll.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -448,10 +495,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -469,12 +525,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286148,
+            "modifiedTime": 1779886286148
           },
           "start": null,
           "showIcon": 1,
@@ -490,10 +546,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -513,12 +578,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286148,
+            "modifiedTime": 1779886286148
           },
           "showIcon": 2,
           "start": null,
@@ -533,12 +598,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286171
       },
       "_id": "P0HcRFQAnhsOcRQB",
       "ownership": {
@@ -559,9 +624,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 7,
-          "secondary": 2,
-          "tertiary": 1
+          "primary": "7",
+          "secondary": "2",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -574,7 +639,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "rodBC1Jfx3xJGCUK": {
@@ -588,33 +654,33 @@
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "13",
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -690,14 +756,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each creature pushed this way is pushed to an unoccupied space in the area as far as possible from the olothec.</p>"
-        },
-        "spend": {
-          "text": "The area is difficult terrain. Any creature who enters the area or moves within it for the first time on a turn and has A < 3 is knocked prone.",
-          "value": 1
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -706,7 +764,39 @@
         "_dsid": "slime-spew",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": false
+            },
+            "description": "<p>The area is difficult terrain. Any creature who enters the area or moves within it for the first time on a turn and has A &lt; 3 is knocked prone.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each creature pushed this way is pushed to an unoccupied space in the area as far as possible from the olothec.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -716,12 +806,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "Qic6S0qZsvwTtRJU",
       "ownership": {
@@ -743,7 +833,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -756,7 +848,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "Kl6GbV9TsD7s5Sie": {
@@ -770,33 +863,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "20",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "23",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -884,10 +977,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each time a target is transformed, the Director chooses one of the following transformations. When a target ends the transformed effect, all transformations on them end.</p><p><strong>Head:</strong> The target's head becomes a ball of slime. They can't communicate and have line of effect only within 3 squares.</p><p><strong>Legs:</strong> The target's legs become pillars of ooze. They are slowed while on land and can automatically swim at full speed while moving.</p><p><strong>Torso:</strong> The target's arms become gelatinous. They can't benefit from edges or double edges and can't gain or use surges.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -900,7 +989,23 @@
         "_dsid": "oozing-transformation",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each time a target is transformed, the Director chooses one of the following transformations. When a target ends the transformed effect, all transformations on them end.</p><p><strong>Head:</strong> The target's head becomes a ball of slime. They can't communicate and have line of effect only within 3 squares.</p><p><strong>Legs:</strong> The target's legs become pillars of ooze. They are slowed while on land and can automatically swim at full speed while moving.</p><p><strong>Torso:</strong> The target's arms become gelatinous. They can't benefit from edges or double edges and can't gain or use surges.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -912,10 +1017,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -933,12 +1047,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286152,
+            "modifiedTime": 1779886286152
           },
           "start": null,
           "showIcon": 1,
@@ -954,10 +1068,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -977,12 +1100,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286152,
+            "modifiedTime": 1779886286152
           },
           "showIcon": 2,
           "start": null,
@@ -998,10 +1121,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1019,12 +1151,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286152,
+            "modifiedTime": 1779886286152
           },
           "start": null,
           "showIcon": 1,
@@ -1039,12 +1171,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "nqdKkBApPIBMN5OB",
       "ownership": {
@@ -1063,7 +1195,10 @@
           "psionic"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -1076,13 +1211,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The olothec teleports to an unoccupied space within 10 squares. Alternatively, they swap places with a creature or object within 5 squares of them.</p>"
         },
         "spend": {
           "text": "",
@@ -1096,7 +1228,23 @@
         "_dsid": "jaunt",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The olothec teleports to an unoccupied space within 10 squares. Alternatively, they swap places with a creature or object within 5 squares of them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1106,12 +1254,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "XNxrPJpFkl7hujeO",
       "ownership": {
@@ -1132,7 +1280,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1145,13 +1295,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target takes [[/damage 8 psychic]]{8 psychic damage} and has psychic weakness 3 until the end of the olothec's next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1165,7 +1312,23 @@
         "_dsid": "liquify",
         "story": "",
         "resource": null,
-        "trigger": "An enemy within distance deals damage to the olothec."
+        "trigger": "An enemy within distance deals damage to the olothec.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target takes [[/damage 8 psychic]]{8 psychic damage} and has psychic weakness 3 until the end of the olothec's next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1175,12 +1338,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "ESZbFgkIl6ZgMEHo",
       "ownership": {
@@ -1202,7 +1365,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 20
+          "primary": "20",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1215,7 +1380,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "71f4fpJ5GFomn09u": {
@@ -1229,33 +1395,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "14",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "17",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -1313,10 +1479,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>While frightened this way, a target can't make saving throws to end any other effects</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1329,7 +1491,23 @@
         "_dsid": "horrifying-form",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>While frightened this way, a target can't make saving throws to end any other effects</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1339,12 +1517,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "fWNbWhT1RtoqbQPP",
       "ownership": {
@@ -1365,7 +1543,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -1378,13 +1558,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The olothec slides each target up to 5 squares. Each target takes [[/damage 12 psychic]]{12 psychic damage}, and if they have [[potency M 3]] they are [[/apply aZfQ1bJDhcOoegXb save]]{weakened and slimed} (save ends). A slimed target takes [[/damage 4 psychic]]{4 psychic damage} whenever they make a power roll. Additionally, until the start of their next turn, the olothec has [[/apply pCE8TT0vZmNECwM4 turn]]{damage immunity 4.}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1398,7 +1575,23 @@
         "_dsid": "psychic-pulse",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The olothec slides each target up to 5 squares. Each target takes [[/damage 12 psychic]]{12 psychic damage}, and if they have [[potency M 3]] they are [[/apply aZfQ1bJDhcOoegXb save]]{weakened and slimed} (save ends). A slimed target takes [[/damage 4 psychic]]{4 psychic damage} whenever they make a power roll. Additionally, until the start of their next turn, the olothec has [[/apply pCE8TT0vZmNECwM4 turn]]{damage immunity 4.}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1409,10 +1602,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1431,12 +1633,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286157,
+            "modifiedTime": 1779886286157
           },
           "_id": "aZfQ1bJDhcOoegXb",
           "sort": 0,
@@ -1454,7 +1656,6 @@
           "_id": "pCE8TT0vZmNECwM4",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1462,9 +1663,20 @@
                 "key": "system.damage.immunities.all",
                 "value": 4,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1482,12 +1694,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286157,
+            "modifiedTime": 1779886286157
           },
           "start": null,
           "showIcon": 1,
@@ -1502,12 +1714,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "obEmSv1IUgWvwQMT",
       "ownership": {
@@ -1528,7 +1740,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -1541,7 +1755,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "YrkV0FAPWY2U3Vn2": {
@@ -1555,33 +1770,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "16",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -1639,10 +1854,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>A devolved creature has a −1 score for all their characteristics other than Reason.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1655,7 +1866,23 @@
         "_dsid": "return-to-perfection",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A devolved creature has a −1 score for all their characteristics other than Reason.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1667,7 +1894,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1675,27 +1901,41 @@
                 "key": "system.characteristics.agility.value",
                 "value": -1,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               },
               {
                 "key": "system.characteristics.intuition.value",
                 "value": -1,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               },
               {
                 "key": "system.characteristics.might.value",
                 "value": -1,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               },
               {
                 "key": "system.characteristics.presence.value",
                 "value": -1,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": true,
           "duration": {
@@ -1713,12 +1953,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886286161,
+            "modifiedTime": 1779886286161
           },
           "start": null,
           "showIcon": 1,
@@ -1733,12 +1973,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "Sq95qazc782Z4baz",
       "ownership": {
@@ -1756,7 +1996,10 @@
         "resource": 4,
         "trigger": "A olothec starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1767,13 +2010,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The olothec takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1786,7 +2026,23 @@
         },
         "_dsid": "solo-action",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The olothec takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1796,12 +2052,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "cWnY5IlEJQvvlafq",
       "ownership": {
@@ -1820,7 +2076,9 @@
         "trigger": "A olothec starts its turn.",
         "distance": {
           "type": "melee",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -1831,7 +2089,8 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "HG0MQLQEoaEfSovw": {
@@ -1846,33 +2105,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "17",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "20",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               }
             },
@@ -1928,10 +2187,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The olothec can pull a target grabbed this way adjacent to them. While grabbed this way, a target can’t make saving throws to end any other effects, and the olothec has a double edge on strikes against them.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1943,7 +2198,23 @@
         },
         "_dsid": "writhing-envelopment",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The olothec can pull a target grabbed this way adjacent to them. While grabbed this way, a target can’t make saving throws to end any other effects, and the olothec has a double edge on strikes against them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1953,12 +2224,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "8r0KNCthuq1DqT2m",
       "ownership": {
@@ -1976,7 +2247,10 @@
         "resource": 6,
         "trigger": "A olothec starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1992,10 +2266,6 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has [[potency R 3]] is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -2007,7 +2277,23 @@
         },
         "_dsid": "memory-of-chaos",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has [[potency R 3]] is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -2019,10 +2305,19 @@
           "_id": "XV3JUcixv5fgbYm7",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -2043,12 +2338,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1769282866586,
-            "createdTime": null
+            "modifiedTime": 1779886286165,
+            "createdTime": 1779886286165
           },
           "showIcon": 2,
           "start": null,
@@ -2063,12 +2358,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.pZaF9Ph74yUFzVyS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286172
       },
       "_id": "EaAhpwgG42tLj259",
       "ownership": {
@@ -2179,9 +2474,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761505878308,
     "modifiedTime": null,
     "lastModifiedBy": null

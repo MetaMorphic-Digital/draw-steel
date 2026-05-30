@@ -20,11 +20,16 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -32,7 +37,8 @@
         "characteristics": [
           "intuition",
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "L61gFY3hLi3mtkUU": {
@@ -42,25 +48,50 @@
           "_id": "L61gFY3hLi3mtkUU",
           "other": {
             "tier1": {
-              "display": "You take corruption damage equal to 5 + your level."
+              "display": "You take corruption damage equal to 5 + your level.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "The spirit of anyone you know of who has died speaks to you, provided they are on the same world as you. You learn how they died and can ask them one question, which they can answer truthfully or untruthfully. The spirit knows everything they knew in life, and is aware of events that took place in their immediate surroundings since their death."
+              "display": "The spirit of anyone you know of who has died speaks to you, provided they are on the same world as you. You learn how they died and can ask them one question, which they can answer truthfully or untruthfully. The spirit knows everything they knew in life, and is aware of events that took place in their immediate surroundings since their death.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "As tier 2, but you can ask three questions."
+              "display": "As tier 2, but you can ask three questions.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>If any sapient creatures have died nearby within the last 24 hours, you have a double bane on the power roll for this ability if any of those creatures were hostile to you, or a double edge if any of them were friendly to you. When you use this ability, you can’t do so again until you earn 1 or more Victories.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If any sapient creatures have died nearby within the last 24 hours, you have a double bane on the power roll for this ability if any of those creatures were hostile to you, or a double edge if any of them were friendly to you. When you use this ability, you can’t do so again until you earn 1 or more Victories.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -73,9 +104,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755182195398,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -21,32 +21,57 @@
     "trigger": "The target makes an ability roll that has an edge, a double  edge, a bane, or a double bane.",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>An edge on the triggering roll becomes a bane, or a double edge becomes an edge. A bane becomes an edge, or a double bane becomes a bane.</p>",
-      "after": ""
-    },
-    "spend": {
-      "text": "An edge on the triggering roll becomes a double  bane, or a double edge is negated. A bane becomes a double edge, or  a double bane is negated.",
-      "value": 3
     },
     "prerequisites": {
       "dsid": [
         "auteur"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 3,
+          "multiple": false
+        },
+        "description": "<p>An edge on the triggering roll becomes a double  bane, or a double edge is negated. A bane becomes a double edge, or  a double bane is negated.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>An edge on the triggering roll becomes a bane, or a double edge becomes an edge. A bane becomes an edge, or a double bane becomes a bane.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -59,9 +84,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755797897073,
     "modifiedTime": null,
     "lastModifiedBy": null

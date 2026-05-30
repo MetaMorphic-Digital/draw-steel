@@ -95,9 +95,12 @@
         "soulless"
       ],
       "level": 10,
-      "ev": 48,
       "role": "hexer",
       "organization": "elite"
+    },
+    "ev": 48,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "319"
         },
         "_dsid": "immortal-soul",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "29ac5qgYyLLVMDoy",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_key": "!actors.items!oS8EWVjvENliQ9Dg.29ac5qgYyLLVMDoy"
     },
@@ -153,11 +161,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -165,7 +176,8 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "lPNy11XYumJjZSCM": {
@@ -179,35 +191,36 @@
                   "types": [
                     "holy"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "20",
                   "types": [
                     "holy"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "24",
                   "types": [
                     "holy"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "rb1YtyqdXoiwUd7O": {
               "name": "Soulbound",
@@ -257,13 +270,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A soulbound creature can't benefit from edges or double edges, and can't gain or use surges.</p>"
         },
         "spend": {
           "text": "",
@@ -277,7 +287,23 @@
         "_dsid": "soulbind",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A soulbound creature can't benefit from edges or double edges, and can't gain or use surges.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -289,10 +315,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -310,12 +345,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886285094,
+            "modifiedTime": 1779886285094
           },
           "start": null,
           "showIcon": 1,
@@ -330,12 +365,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "HknAYRTvcHDB0PQk",
       "ownership": {
@@ -357,8 +392,9 @@
         ],
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "primary": "3",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -371,7 +407,8 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "NOqTlm1BAK5eCFdh": {
@@ -385,35 +422,36 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "GMX3zmtgToXMzs2M": {
               "_id": "GMX3zmtgToXMzs2M",
@@ -463,17 +501,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The area is difficult terrain until the start of Psyche's next turn At the start of each of her turns, Psyche can use a maneuver to maintain this effect, move the area up to 5 squares, and make the power roll against each creature in the area's new location.</p>"
-        },
-        "spend": {
-          "text": "Until the start of Psyche’s next turn, if this ability makes a  creature weakened, that creature is also soulbound (save ends; see Soulbind above).",
-          "value": 1
         },
         "source": {
           "book": "Monsters",
@@ -483,7 +514,39 @@
         "_dsid": "soulstorm",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": false
+            },
+            "description": "<p>Until the start of Psyche’s next turn, if this ability makes a  creature weakened, that creature is also soulbound (save ends; see Soulbind above).</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The area is difficult terrain until the start of Psyche's next turn At the start of each of her turns, Psyche can use a maneuver to maintain this effect, move the area up to 5 squares, and make the power roll against each creature in the area's new location.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -493,12 +556,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "aLMazyjt56Vcctn4",
       "ownership": {
@@ -519,7 +582,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -532,13 +597,10 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target takes [[/damage 5]]{5 damage} from a self-inflicted wound, and if they have [[potency M 4]] Psyche slides them up to 5 squares.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -552,7 +614,23 @@
         "_dsid": "command-the-awakened",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target takes [[/damage 5]]{5 damage} from a self-inflicted wound, and if they have [[potency M 4]] Psyche slides them up to 5 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -562,12 +640,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "sdDdDGPq2iQNtCBS",
       "ownership": {
@@ -584,11 +662,15 @@
         "category": "",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -596,13 +678,10 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Psyche moves up to 5 squares, and has damage immunity 5 and ignores difficult terrain during this movement. The first time she moves through any creature during this movement, that creature takes [[/damage 5 corruption]] damage.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -616,7 +695,23 @@
         "_dsid": "spirit-form",
         "story": "",
         "resource": null,
-        "trigger": "An enemy moves within 2 squares of Psyche."
+        "trigger": "An enemy moves within 2 squares of Psyche.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Psyche moves up to 5 squares, and has damage immunity 5 and ignores difficult terrain during this movement. The first time she moves through any creature during this movement, that creature takes [[/damage 5 corruption]] damage.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -626,12 +721,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "ZcJCdU2drTZDbmcd",
       "ownership": {
@@ -651,11 +746,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -663,13 +761,10 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target loses all their surges and takes [[/damage 5 corruption]]{5 corruption damage}.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -683,7 +778,23 @@
         "_dsid": "vengeance-for-the-slain",
         "story": "",
         "resource": null,
-        "trigger": "A war dog within distance is made winded or reduced to 0 Stamina."
+        "trigger": "A war dog within distance is made winded or reduced to 0 Stamina.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target loses all their surges and takes [[/damage 5 corruption]]{5 corruption damage}.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -693,12 +804,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "2zZ6uBMYKshv1tpW",
       "ownership": {
@@ -725,26 +836,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -757,12 +886,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "RnsgvVE79ASj5Wjw",
       "sort": 0,
@@ -781,11 +910,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -793,13 +925,10 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>See @UUID[Actor.Ozz8z2f2DK8fsWVY.Item.29ac5qgYyLLVMDoy]{Immortal Soul}</p><p>The target takes [[/damage 10 psychic]]{10 psychic damage}.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -813,7 +942,23 @@
         "_dsid": "immortal-flare",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>See @UUID[Actor.Ozz8z2f2DK8fsWVY.Item.29ac5qgYyLLVMDoy]{Immortal Soul}</p><p>The target takes [[/damage 10 psychic]]{10 psychic damage}.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -823,12 +968,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886285097
       },
       "_id": "UjWlYBYDqsoNJpdu",
       "ownership": {
@@ -860,7 +1005,9 @@
         "trigger": "",
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -871,7 +1018,8 @@
         "power": {
           "roll": {
             "formula": "5",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "TzboLJifDtxVNw6n": {
@@ -885,33 +1033,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -963,13 +1111,25 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -978,9 +1138,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wbJTnyESAACLBdwU",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761444135022,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1096,9 +1256,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758226857854,
     "modifiedTime": null,
     "lastModifiedBy": null

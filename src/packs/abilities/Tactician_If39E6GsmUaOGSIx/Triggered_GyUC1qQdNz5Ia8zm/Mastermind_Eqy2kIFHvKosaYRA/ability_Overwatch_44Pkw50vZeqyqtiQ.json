@@ -18,35 +18,58 @@
     "trigger": "The target moves.",
     "distance": {
       "type": "ranged",
-      "primary": 10,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "10",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>At any point during the target’s movement, one ally can make a free strike against them.</p>",
-      "after": ""
-    },
-    "spend": {
-      "value": 1,
-      "text": "If the target has R < Average, they are slowed (EoT)."
     },
     "story": "Under your direction, an ally waits for just the right moment to strike.",
     "prerequisites": {
       "dsid": [
         "mastermind"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        },
+        "description": "<p>If the target has R &lt; Average, they are slowed (EoT).</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>At any point during the target’s movement, one ally can make a free strike against them.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -56,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751141727577,
     "modifiedTime": null,
     "lastModifiedBy": null

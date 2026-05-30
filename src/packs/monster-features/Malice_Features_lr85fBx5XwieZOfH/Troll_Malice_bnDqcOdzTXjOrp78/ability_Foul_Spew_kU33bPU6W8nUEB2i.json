@@ -8,7 +8,10 @@
     "resource": 3,
     "trigger": "A troll starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -36,19 +39,34 @@
               "value": "12",
               "types": [
                 "acid"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "10",
               "types": [
                 "acid"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "6",
               "types": [
                 "acid"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -64,26 +82,40 @@
               "effects": {
                 "dazed": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             },
             "tier2": {
               "effects": {
                 "weakened": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               },
-              "display": "weakened (EoT)"
+              "display": "weakened (EoT)",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>One troll acting this turn spews out a half-digested meal in a 5 × 1 line within 1 square of them. Each troll in the area regains 3 Stamina. Each enemy in the area makes a <strong>Might test</strong>.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -96,7 +128,23 @@
     },
     "_dsid": "foul-spew",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>One troll acting this turn spews out a half-digested meal in a 5 × 1 line within 1 square of them. Each troll in the area regains 3 Stamina. Each enemy in the area makes a <strong>Might test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "bnDqcOdzTXjOrp78",
@@ -105,9 +153,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761424384592,
     "modifiedTime": null,
     "lastModifiedBy": null

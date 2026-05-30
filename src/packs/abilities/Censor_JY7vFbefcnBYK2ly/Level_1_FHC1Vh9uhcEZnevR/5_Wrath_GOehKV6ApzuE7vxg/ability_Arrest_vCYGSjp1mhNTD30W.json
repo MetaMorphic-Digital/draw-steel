@@ -24,19 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "TeeWOuqOGRHYu15Z": {
@@ -49,21 +53,37 @@
               "value": "6 + @chr",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "9 + @chr",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "13 + @chr",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "TJTTNx0iPK1ZQFuj": {
           "name": "Grabbed",
@@ -75,34 +95,48 @@
               "effects": {
                 "grabbed": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
-              "display": "grabbed"
+              "display": "grabbed",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "effects": {
                 "grabbed": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "grabbed": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>If the target makes a strike against a creature while grabbed this way, you can spend 3 wrath to deal [[/damage @P holy]]{holy damage} to them equal to your Presence score, then change the target of the strike to another target within the strike’s distance.</p>"
     },
     "spend": {
       "text": "",
@@ -111,7 +145,20 @@
     "prerequisites": {
       "dsid": [
         "censor"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If the target makes a strike against a creature while grabbed this way, you can spend 3 wrath to deal [[/damage @P holy]]{holy damage} to them equal to your Presence score, then change the target of the strike to another target within the strike’s distance.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -124,9 +171,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754756694090,
     "modifiedTime": null,
     "lastModifiedBy": null

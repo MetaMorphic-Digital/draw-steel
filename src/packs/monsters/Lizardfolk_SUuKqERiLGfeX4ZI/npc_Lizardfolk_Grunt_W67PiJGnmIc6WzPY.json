@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 3,
       "role": "harrier",
       "organization": "minion"
+    },
+    "ev": 3,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "199"
         },
         "_dsid": "reptilian-escape",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "H0QoJbSGkQpXSTcc",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831158
       },
       "_key": "!actors.items!W67PiJGnmIc6WzPY.H0QoJbSGkQpXSTcc"
     },
@@ -153,7 +161,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -166,7 +176,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "MEc7R1tJ8JEzaTWo": {
@@ -178,31 +189,32 @@
                 "tier1": {
                   "value": "1",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "2",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "o3SNDQLlmJmCvRIi": {
               "_id": "o3SNDQLlmJmCvRIi",
@@ -244,13 +256,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -264,7 +273,13 @@
         "_dsid": "snap-and-toss",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -274,12 +289,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831158
       },
       "_id": "MiVmEthm1OvhQx4y",
       "ownership": {
@@ -306,7 +321,10 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -317,17 +335,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Waist-high water floods the entire encounter map. Any lizardfolk submerged in water gains an edge on abilities and doubles their speed while swimming. If there are no open water pits on the encounter map, the water drains away at the end of the round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Waist-high water floods the entire encounter map. Any lizardfolk submerged in water gains an edge on abilities and doubles their speed while swimming. If there are no open water pits on the encounter map, the water drains away at the end of the round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -336,9 +367,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.TEOzrcBNKq1Fc4o4",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761232244396,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -370,7 +401,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -381,17 +415,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature falls into the pit and is knocked [[/apply prone]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to empty the pit.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pit empties of water.</p></dd></dl>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature falls into the pit and is knocked [[/apply prone]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to empty the pit.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pit empties of water.</p></dd></dl>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -400,9 +447,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.CB5NDqhUUzTqd4Vh",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761232246098,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -439,8 +486,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 1,
-          "secondary": 3
+          "primary": "1",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -504,10 +552,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p>",
-          "after": "<p>Any creature not also restrained by a net trap who is adjacent to a creature restrained by the trap can free them as a maneuver.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -516,6 +560,26 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Any creature not also restrained by a net trap who is adjacent to a creature restrained by the trap can free them as a maneuver.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "effects": [],
@@ -524,9 +588,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.4d4NnHVbTRHl3HFV",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761232616020,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -643,7 +707,6 @@
       "_id": "QC5Hde3Wb5aSDPtq",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -651,9 +714,20 @@
             "key": "system.movement.value",
             "value": 2,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -672,12 +746,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831159
       },
       "start": {
         "combat": null,
@@ -701,9 +775,9 @@
     "compendiumSource": "Actor.W67PiJGnmIc6WzPY",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757292921660,
     "modifiedTime": null,
     "lastModifiedBy": null

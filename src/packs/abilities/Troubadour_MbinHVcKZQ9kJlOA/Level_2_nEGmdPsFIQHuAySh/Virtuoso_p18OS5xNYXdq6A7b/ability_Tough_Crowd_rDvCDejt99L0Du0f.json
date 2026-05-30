@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 3,
-      "secondary": 10
+      "primary": "3",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "n7hgJ0Am7blxXk6Y": {
@@ -50,25 +54,35 @@
                 "corruption"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "potency": {
-                "characteristic": ""
+                "characteristic": "",
+                "value": "@potency.average"
               },
               "value": "9",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "12",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "NPtZfTYajGAZPNK9": {
           "name": "",
@@ -82,30 +96,40 @@
               ],
               "display": "{{potency}}, {{forced}} toward the center of the area",
               "potency": {
-                "characteristic": "might"
-              }
+                "characteristic": "might",
+                "value": "@potency.weak"
+              },
+              "distance": "1",
+              "properties": []
             },
             "tier2": {
               "movement": [
                 "pull"
               ],
               "display": "{{potency}}, {{forced}} toward the center of the area",
-              "distance": "2"
+              "distance": "2",
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "movement": [
                 "pull"
               ],
               "distance": "3",
-              "display": "{{potency}}, {{forced}} toward the center of the area"
+              "display": "{{potency}}, {{forced}} toward the center of the area",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>The area is haunted by a swirling horde of phantoms until the end of the encounter. Allies can enter any square of the area without spending movement.</p><p>At the end of each of your turns, you can make one power roll that targets each enemy in the area.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -114,7 +138,20 @@
     "prerequisites": {
       "dsid": [
         "virtuoso"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The area is haunted by a swirling horde of phantoms until the end of the encounter. Allies can enter any square of the area without spending movement.</p><p>At the end of each of your turns, you can make one power roll that targets each enemy in the area.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -127,9 +164,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755824224805,
     "modifiedTime": null,
     "lastModifiedBy": null

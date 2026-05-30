@@ -258,13 +258,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The field ballista is reloaded, allowing <strong>Release Bolt</strong> to be used again. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The field ballista is reloaded, allowing <strong>Release Bolt</strong> to be used again. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "3lbXcqZeq8J7H1kA",
@@ -272,9 +279,9 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776901701335,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -331,13 +338,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The next use of Release Bolt gains an edge and has a +10 bonus to ranged distance.[[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The next use of Release Bolt gains an edge and has a +10 bonus to ranged distance.[[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "7qkhpNHywcugZJ5l",
@@ -376,7 +390,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -396,11 +411,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776901476036,
-            "modifiedTime": 1776901799315,
+            "modifiedTime": 1779886279380,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -411,9 +426,9 @@
       ],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776901743133,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -470,13 +485,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The field ballista and the creature using this action move together up to 3 squares. </p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The field ballista and the creature using this action move together up to 3 squares. </p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "QA8XmLYDTnhcqkn2",
@@ -484,9 +506,9 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776901882940,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -627,13 +649,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>This ability can’t be used again until the field ballista is reloaded.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>This ability can’t be used again until the field ballista is reloaded.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "Ir6fXHKiSzWR4uNi",
@@ -647,9 +676,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776902176876,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -786,13 +815,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>This ability can’t be used again until the field ballista is reloaded.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>This ability can’t be used again until the field ballista is reloaded.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "IvgyVS8dVoIBMW8I",
@@ -806,9 +842,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776902385513,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -909,13 +945,29 @@
             }
           }
         },
-        "effect": {
-          "before": "<p><strong>Special</strong>: The target must be slowed by the field ballista.</p>",
-          "after": "<p>This forced movement triggers opportunity attacks.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p><strong>Special</strong>: The target must be slowed by the field ballista.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>This forced movement triggers opportunity attacks.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "erL9o9BZaOU6riR5",
@@ -929,9 +981,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776902576480,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -969,7 +1021,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -996,9 +1049,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776902731762,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -1034,7 +1087,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -1061,9 +1115,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776902779164,
         "modifiedTime": null,
         "lastModifiedBy": null,

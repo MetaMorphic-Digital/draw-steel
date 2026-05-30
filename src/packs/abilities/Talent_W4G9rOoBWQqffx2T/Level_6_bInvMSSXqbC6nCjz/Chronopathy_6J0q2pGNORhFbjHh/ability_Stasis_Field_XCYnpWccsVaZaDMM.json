@@ -24,8 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 4,
-      "secondary": 10
+      "primary": "4",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -38,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "pmFfAi9a7UaludUt": {
@@ -50,12 +52,14 @@
             "tier1": {
               "display": "{{potency}}, the target is slowed until the effect ends",
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               },
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             },
@@ -64,8 +68,13 @@
               "effects": {
                 "700rOMhDVKSYsMeO": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -73,17 +82,19 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>The area is frozen in time until the start of your next turn. Each object in the area is restrained and can’t fall until the effect ends. Until the effect ends, creatures in the area who are reduced to 0 Stamina or would die stay alive, and objects in the area that are reduced to 0 Stamina remain undestroyed. Make a power roll that targets each enemy in the area.</p><p><strong>Strained:</strong> Any creature or object force moved in the area takes [[/damage 2*@scaling corruption scaling]]{2 corruption damage} for each square of the area they enter. Creatures and objects restrained in the area can be force moved. You are [[/apply restrained]] until the effect ends.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -92,7 +103,20 @@
     "prerequisites": {
       "dsid": [
         "chronopathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The area is frozen in time until the start of your next turn. Each object in the area is restrained and can’t fall until the effect ends. Until the effect ends, creatures in the area who are reduced to 0 Stamina or would die stay alive, and objects in the area that are reduced to 0 Stamina remain undestroyed. Make a power roll that targets each enemy in the area.</p><p><strong>Strained:</strong> Any creature or object force moved in the area takes [[/damage 2*@scaling corruption scaling]]{2 corruption damage} for each square of the area they enter. Creatures and objects restrained in the area can be force moved. You are [[/apply restrained]] until the effect ends.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [
@@ -105,7 +129,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -113,9 +136,20 @@
             "key": "system.movement.multiplier",
             "value": 0,
             "priority": null,
-            "type": "multiply"
+            "type": "multiply",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -133,9 +167,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761075030898,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -155,9 +189,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761073953525,
     "modifiedTime": null,
     "lastModifiedBy": null

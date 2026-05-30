@@ -18,7 +18,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -31,7 +34,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "gwwGZVwMTP51E7sH": {
@@ -44,38 +48,67 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 },
                 "weakened": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               },
-              "display": "You can move 1 square into, out of, or through ground you are touching that can be burrowed through, and you are slowed and weakened (EoT)."
+              "display": "You can move 1 square into, out of, or through ground you are touching that can be burrowed through, and you are slowed and weakened (EoT).",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "display": "You can use your main action this turn to move 1 square into, out of, or through ground you are touching that can be burrowed through, and you are slowed (EoT).",
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
-              "display": "You can move 1 square into, out of, or through ground you are touching that can be burrowed through."
+              "display": "You can move 1 square into, out of, or through ground you are touching that can be burrowed through.",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>If a creature who can’t burrow wants to dig into the ground, they can use the following ability provided their speed is 2 or more.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>If a creature who can’t burrow wants to dig into the ground, they can use the following ability provided their speed is 2 or more.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -88,9 +121,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1764882253444,
     "modifiedTime": null,
     "lastModifiedBy": null

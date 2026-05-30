@@ -17,18 +17,21 @@
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
@@ -36,7 +39,8 @@
         "characteristics": [
           "might",
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "PYG6jE7eJ6CbbxDI": {
@@ -44,25 +48,58 @@
           "_id": "PYG6jE7eJ6CbbxDI",
           "damage": {
             "tier1": {
-              "value": "3 + @chr"
+              "value": "3 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6 + @chr"
+              "value": "6 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "9 + @chr"
+              "value": "9 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "name": "",
+          "img": null,
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>The target is taunted until the end of their next turn</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The target is taunted until the end of their next turn</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -75,9 +112,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751910010822,
     "modifiedTime": null,
     "lastModifiedBy": null

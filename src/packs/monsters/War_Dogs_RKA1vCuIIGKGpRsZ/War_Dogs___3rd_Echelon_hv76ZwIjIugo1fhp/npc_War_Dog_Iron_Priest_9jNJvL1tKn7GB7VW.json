@@ -95,9 +95,12 @@
         "soulless"
       ],
       "level": 8,
-      "ev": 10,
       "role": "support",
       "organization": "horde"
+    },
+    "ev": 10,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "313"
         },
         "_dsid": "chosen-of-the-iron-saint",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "IGGciVcZHC8ShWvA",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827495
       },
       "_key": "!actors.items!9jNJvL1tKn7GB7VW.IGGciVcZHC8ShWvA"
     },
@@ -152,9 +160,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 7,
-          "secondary": 1,
-          "tertiary": 1
+          "primary": "7",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -167,7 +175,8 @@
             "formula": "@chr",
             "characteristics": [
               "intuition"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "jwXmKEKHlAw7Mf4u": {
@@ -179,31 +188,32 @@
                 "tier1": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "FafPCLTO2kQXgW2x": {
               "_id": "FafPCLTO2kQXgW2x",
@@ -247,13 +257,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Any ally within 2 squares of the iron priest gains an edge on their next strike. If any target lost a Recovery, any affected ally has a double edge instead.</p>"
         },
         "spend": {
           "text": "",
@@ -267,7 +274,23 @@
         "_dsid": "houndcannon",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Any ally within 2 squares of the iron priest gains an edge on their next strike. If any target lost a Recovery, any affected ally has a double edge instead.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -277,12 +300,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827495
       },
       "_id": "3Eugxe03u2w9x1CW",
       "ownership": {
@@ -303,7 +326,9 @@
         ],
         "distance": {
           "type": "aura",
-          "primary": 4
+          "primary": "4",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -316,13 +341,10 @@
             "formula": "@chr",
             "characteristics": [
               "intuition"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 2 Malice spent, each target gains one of the following effects until the start of the iron priest's next turn - The target has damage immunity 2. - The target's strikes deal an extra 3 holy damage. - The target has a +3 bonus to speed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -336,7 +358,23 @@
         "_dsid": "iron-banner",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>For every 2 Malice spent, each target gains one of the following effects until the start of the iron priest's next turn - The target has damage immunity 2. - The target's strikes deal an extra 3 holy damage. - The target has a +3 bonus to speed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -346,12 +384,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827495
       },
       "_id": "jpRU8rUQE1IIOMa3",
       "ownership": {
@@ -378,26 +416,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -410,12 +466,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827495
       },
       "_id": "ffAT6RdoCBdyscSr",
       "sort": 0,
@@ -441,7 +497,10 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -547,10 +606,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -559,6 +614,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -572,12 +638,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827495
       },
       "_key": "!actors.items!9jNJvL1tKn7GB7VW.nOF8y0Xd415kriB6"
     }
@@ -684,9 +750,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758223824644,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -96,9 +96,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 3,
       "role": "controller",
       "organization": "horde"
+    },
+    "ev": 3,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -210,7 +213,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "crafty",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -224,12 +232,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827945
       },
       "_key": "!actors.items!CWcc0FNUfUaiYyH7.2Quyj2OrUK73MORn"
     },
@@ -255,8 +263,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 15
+          "primary": "3",
+          "secondary": "15",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -269,7 +278,8 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "yk0suOBE0jUfjiXA": {
@@ -283,35 +293,36 @@
                   "types": [
                     "poison"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "2",
                   "types": [
                     "poison"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "3",
                   "types": [
                     "poison"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "ZOrEybwKmRCeq1wk": {
               "name": "slide",
@@ -355,17 +366,33 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": true
+            },
+            "description": "<p>For each Malice spent, one target can be force moved 1  additional square.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "For each Malice spent, one target can be force moved 1  additional square.",
-          "value": null
+          "text": ""
         }
       },
       "_id": "bDq7lLayp0y29p91",
@@ -382,12 +409,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827945
       },
       "_key": "!actors.items!CWcc0FNUfUaiYyH7.bDq7lLayp0y29p91"
     },
@@ -413,27 +440,43 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "primary": "3",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The area is filled with a green haze that lasts until the start of the stinker’s next turn or until the stinker is reduced to 0 Stamina, and which can’t be dispersed by wind. The area is difficult terrain for non-goblins, and each non-goblin who moves in the area takes [[/damage 2*@scaling poison scaling]]{2 poison damage} for each square moved.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The area is filled with a green haze that lasts until the start of the stinker’s next turn or until the stinker is reduced to 0 Stamina, and which can’t be dispersed by wind. The area is difficult terrain for non-goblins, and each non-goblin who moves in the area takes [[/damage 2*@scaling poison scaling]]{2 poison damage} for each square moved.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "Bhf0gCeJTeMX9EGJ",
@@ -450,12 +493,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827946
       },
       "_key": "!actors.items!CWcc0FNUfUaiYyH7.Bhf0gCeJTeMX9EGJ"
     },
@@ -476,26 +519,44 @@
         "resource": 3,
         "trigger": "A goblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each goblin in the encounter gains a +2 bonus to speed until the end of the round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each goblin in the encounter gains a +2 bonus to speed until the end of the round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "4IYmvaux8p8vaWR6",
@@ -512,12 +573,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827946
       },
       "_key": "!actors.items!CWcc0FNUfUaiYyH7.4IYmvaux8p8vaWR6"
     },
@@ -538,26 +599,44 @@
         "resource": 5,
         "trigger": "A goblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "Oa0MhwS1yeyeJ5qG",
@@ -574,12 +653,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620827946
       },
       "_key": "!actors.items!CWcc0FNUfUaiYyH7.Oa0MhwS1yeyeJ5qG"
     },
@@ -600,7 +679,10 @@
         "resource": 7,
         "trigger": "A goblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -702,10 +784,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>The encounter map is covered in a green mist that lasts until the end of the round, and which can’t be dispersed by wind. All areas of the map are difficult terrain for non-goblins, and each non-goblin on the map makes a <strong>Might test.</strong></p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -714,6 +792,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The encounter map is covered in a green mist that lasts until the end of the round, and which can’t be dispersed by wind. All areas of the map are difficult terrain for non-goblins, and each non-goblin on the map makes a <strong>Might test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "vZMdicLidQzWMkgm",
@@ -724,9 +813,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761170013459,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -749,9 +838,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755922157792,
     "modifiedTime": null,
     "lastModifiedBy": null

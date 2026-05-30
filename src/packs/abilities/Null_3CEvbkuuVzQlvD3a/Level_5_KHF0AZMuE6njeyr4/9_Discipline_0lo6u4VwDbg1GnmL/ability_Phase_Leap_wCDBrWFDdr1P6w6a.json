@@ -20,7 +20,10 @@
     "resource": 9,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -31,13 +34,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You jump up to your speed without provoking opportunity attacks. Until the end of your next turn, a static afterimage of you remains in the space you left, and any enemy adjacent to your afterimage takes a bane on ability rolls. You can use your abilities from your own space or from the space of your afterimage as if you were still there. Additionally, if your Null Field ability is active, your afterimage also projects the aura from that ability, which you control as if you were in the afterimage’s space.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -46,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "null"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You jump up to your speed without provoking opportunity attacks. Until the end of your next turn, a static afterimage of you remains in the space you left, and any enemy adjacent to your afterimage takes a bane on ability rolls. You can use your abilities from your own space or from the space of your afterimage as if you were still there. Additionally, if your Null Field ability is active, your afterimage also projects the aura from that ability, which you control as if you were in the afterimage’s space.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -59,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760974296386,
     "modifiedTime": null,
     "lastModifiedBy": null

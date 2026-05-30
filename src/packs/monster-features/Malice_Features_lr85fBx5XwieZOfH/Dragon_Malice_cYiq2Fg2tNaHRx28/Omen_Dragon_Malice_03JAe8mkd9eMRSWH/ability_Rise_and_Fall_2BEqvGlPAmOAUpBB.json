@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A omen starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -39,7 +42,12 @@
               "movement": [
                 "pull"
               ],
-              "distance": "10"
+              "distance": "10",
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "movement": [
@@ -48,7 +56,12 @@
               "distance": "6",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "movement": [
@@ -57,15 +70,16 @@
               "distance": "4",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>The dragon flies up to 10 squares and carries fated souls with them. Each creature in the area of the dragon’s Stagnant Wyrmscale Aura trait makes a <strong>Presence test</strong>.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -78,7 +92,23 @@
     },
     "_dsid": "rise-and-fall",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The dragon flies up to 10 squares and carries fated souls with them. Each creature in the area of the dragon’s Stagnant Wyrmscale Aura trait makes a <strong>Presence test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "03JAe8mkd9eMRSWH",
@@ -87,9 +117,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760903464250,
     "modifiedTime": null,
     "lastModifiedBy": null

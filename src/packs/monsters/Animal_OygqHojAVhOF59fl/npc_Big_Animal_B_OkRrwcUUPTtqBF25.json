@@ -94,9 +94,12 @@
         "animal"
       ],
       "level": 2,
-      "ev": 16,
       "role": "mount",
       "organization": "elite"
+    },
+    "ev": 16,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "42"
         },
         "_dsid": "beast-of-burden",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "mb0Y0jjQbSOylZ4g",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830193
       },
       "_key": "!actors.items!OkRrwcUUPTtqBF25.mb0Y0jjQbSOylZ4g"
     },
@@ -153,7 +161,12 @@
           "page": "42"
         },
         "_dsid": "natures-spirit",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "0VprRmBzv6l0wgdL",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830193
       },
       "_key": "!actors.items!OkRrwcUUPTtqBF25.0VprRmBzv6l0wgdL"
     },
@@ -190,11 +203,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -202,7 +218,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "lJwsoXz5H5JIukHw": {
@@ -214,31 +231,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "oHpZCeTaHFi4B2JU": {
               "_id": "oHpZCeTaHFi4B2JU",
@@ -280,13 +298,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -300,7 +315,13 @@
         "_dsid": "natural-weapon",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -310,12 +331,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830193
       },
       "_id": "ZwvIS6NfIUQjEugS",
       "ownership": {
@@ -332,11 +353,15 @@
         "category": "",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -344,13 +369,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The animal moves up to their speed. They can make a free strike against each creature who makes an opportunity attack against them during this movement.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -364,7 +386,23 @@
         "_dsid": "trundle",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The animal moves up to their speed. They can make a free strike against each creature who makes an opportunity attack against them during this movement.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -374,12 +412,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830193
       },
       "_id": "yRbGn8cOIAQKSGAa",
       "ownership": {
@@ -397,11 +435,14 @@
         "keywords": [],
         "distance": {
           "type": "ranged",
-          "primary": 20
+          "primary": "20",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -409,13 +450,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The animal moves up to their speed. If they end their turn adjacent to the target, they can use the Stand Up maneuver to let the target stand, then get on to ride them.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -429,7 +467,23 @@
         "_dsid": "animal-rally",
         "story": "",
         "resource": null,
-        "trigger": "The target is knocked prone."
+        "trigger": "The target is knocked prone.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The animal moves up to their speed. If they end their turn adjacent to the target, they can use the Stand Up maneuver to let the target stand, then get on to ride them.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -439,12 +493,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830193
       },
       "_id": "GmYR1017gPqTwIVz",
       "ownership": {
@@ -555,9 +609,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757708526427,
     "modifiedTime": null,
     "lastModifiedBy": null

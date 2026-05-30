@@ -25,7 +25,8 @@
         },
         "_id": "cFdtJhoNoq44SHjA",
         "additional": {
-          "type": "kit"
+          "type": "kit",
+          "perkType": []
         },
         "chooseN": 1,
         "pool": [
@@ -93,13 +94,17 @@
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
         ],
-        "description": "<p>You can use and gain the benefits of a kit.</p>"
+        "description": "<p>You can use and gain the benefits of a kit.</p>",
+        "sort": 0,
+        "repick": {}
       }
     },
     "echelon": 3,
     "story": "I’m not picky. Any tool will suffice. A sword seems a most appropriate tool for this job.",
     "prerequisites": {
-      "value": "You can’t use kits, and you defeat five non-minion enemies using weapon abilities that don’t have the Magic or Psionic keyword."
+      "value": "You can’t use kits, and you defeat five non-minion enemies using weapon abilities that don’t have the Magic or Psionic keyword.",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -112,9 +117,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761854218654,
     "modifiedTime": null,
     "lastModifiedBy": null

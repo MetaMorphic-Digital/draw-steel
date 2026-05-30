@@ -15,26 +15,44 @@
     "resource": 10,
     "trigger": "A Rival's turn starts",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "_id": "NC26Xynp5N9nETPD",
@@ -50,9 +68,9 @@
     "compendiumSource": "Actor.EhnU9L0Aew7nM5aT.Item.b6CWx7xWLAhDmI3v",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755702078259,
     "modifiedTime": null,
     "lastModifiedBy": null

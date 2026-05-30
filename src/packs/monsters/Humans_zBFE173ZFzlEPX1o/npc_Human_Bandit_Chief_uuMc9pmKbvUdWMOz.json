@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 3,
-      "ev": 20,
       "role": "",
       "organization": "leader"
+    },
+    "ev": 20,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -209,7 +212,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "supernatural-insight",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -223,12 +231,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.fw1RNfMAcPUklAxZ"
     },
@@ -248,7 +256,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -262,12 +275,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.O52S6ySgUTmV9LyY"
     },
@@ -294,19 +307,23 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "3YfCJEZjmvlPUly5": {
@@ -318,31 +335,32 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "xBm6TF2HWLIP15Gh": {
               "name": "pull",
@@ -386,17 +404,42 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Any target who is adjacent to the bandit chief after the power roll is resolved takes [[/damage 3]]{3 corruption damage.}</p>"
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>This ability targets one additional target.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Any target who is adjacent to the bandit chief after the power roll is resolved takes [[/damage 3]]{3 corruption damage.}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "This ability targets one additional target.",
-          "value": 2
+          "text": ""
         }
       },
       "_id": "i7hAMySPmf4WSwls",
@@ -413,12 +456,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.i7hAMySPmf4WSwls"
     },
@@ -442,7 +485,9 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -455,7 +500,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "WVRfyc2hoPNEGS8T": {
@@ -500,7 +546,8 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "fLCpuzqBdRLuekcq": {
               "name": "Prone",
@@ -550,17 +597,33 @@
                   },
                   "display": ""
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>The ability takes the Area keyword, loses the Melee key word, and is a 1 burst that targets each enemy in the area.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "The ability takes the Area keyword, loses the Melee key word, and is a 1 burst that targets each enemy in the area.",
-          "value": 2
+          "text": ""
         }
       },
       "_id": "bGxXqKH4lbvCtWIU",
@@ -577,12 +640,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.bGxXqKH4lbvCtWIU"
     },
@@ -605,26 +668,44 @@
         "resource": null,
         "trigger": "The bandit chief makes a power roll.",
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "self"
+          "type": "self",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The bandit chief takes [[/damage 5 corruption]]{5 corruption damage} and increases the outcome of the power roll by one tier. This damage can’t be reduced in any way.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The bandit chief takes [[/damage 5 corruption]]{5 corruption damage} and increases the outcome of the power roll by one tier. This damage can’t be reduced in any way.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "g6nqiLi2Pd9FMcOv",
@@ -641,12 +722,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.g6nqiLi2Pd9FMcOv"
     },
@@ -670,7 +751,9 @@
         "trigger": "",
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -681,17 +764,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target makes a ranged free strike.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target makes a ranged free strike.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "96GkzifQXhzvXLHW",
@@ -708,12 +804,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.96GkzifQXhzvXLHW"
     },
@@ -737,7 +833,9 @@
         "trigger": "",
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -748,17 +846,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target shifts up to their speed. Additionally, until the end of the encounter, while the bandit chief or any ally is adjacent to a target, they have damage immunity 2.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target shifts up to their speed. Additionally, until the end of the encounter, while the bandit chief or any ally is adjacent to a target, they have damage immunity 2.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "kn7n0r5tWYEFo8vX",
@@ -775,12 +886,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.kn7n0r5tWYEFo8vX"
     },
@@ -801,26 +912,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "self"
+          "type": "self",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The bandit chief shifts up to 10 squares regardless of their speed. During or after this movement, they can use their Whip and Magic Longsword against up to four targets. Additionally, one ally adjacent to each target can make a free strike against that target.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The bandit chief shifts up to 10 squares regardless of their speed. During or after this movement, they can use their Whip and Magic Longsword against up to four targets. Additionally, one ally adjacent to each target can make a free strike against that target.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "90votFIJKdfQvMBq",
@@ -837,12 +966,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835239
       },
       "_key": "!actors.items!uuMc9pmKbvUdWMOz.90votFIJKdfQvMBq"
     },
@@ -863,26 +992,44 @@
         "resource": 5,
         "trigger": "A human's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each human acting this turn gains an edge on abilities until the end of their turn, or has a double edge on any ability that targets an enemy affected by a condition.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each human acting this turn gains an edge on abilities until the end of their turn, or has a double edge on any ability that targets an enemy affected by a condition.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "LYYyN9iD2PjepIFo",
@@ -895,12 +1042,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835240
       },
       "ownership": {
         "default": 0,
@@ -930,8 +1077,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "primary": "3",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -942,7 +1090,8 @@
         "power": {
           "roll": {
             "formula": "2",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "MhQwsOqVGfNaQFua": {
@@ -956,33 +1105,33 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -1040,13 +1189,25 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
@@ -1056,9 +1217,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.lVlwo9eIp8HBjfth",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1762796298086,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1082,9 +1243,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755922195388,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -29,7 +29,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "10"
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -88,13 +90,29 @@
         }
       }
     },
-    "effect": {
-      "before": "<p><strong>Special:</strong> The target must be size 1M or smaller.</p>",
-      "after": "<p>The area within 2 squares of the target is difficult terrain, and each enemy in the area takes the same damage the object took.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p><strong>Special:</strong> The target must be size 1M or smaller.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The area within 2 squares of the target is difficult terrain, and each enemy in the area takes the same damage the object took.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -107,9 +125,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912400085,
     "modifiedTime": null,
     "lastModifiedBy": null

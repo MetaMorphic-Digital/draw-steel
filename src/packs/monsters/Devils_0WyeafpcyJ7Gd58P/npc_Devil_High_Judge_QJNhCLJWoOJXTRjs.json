@@ -95,9 +95,12 @@
         "infernal"
       ],
       "level": 6,
-      "ev": 32,
       "role": "leader",
       "organization": "leader"
+    },
+    "ev": 32,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "82"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "bVKisSDB6go4OWeb",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280983
       },
       "_key": "!actors.items!QJNhCLJWoOJXTRjs.bVKisSDB6go4OWeb"
     },
@@ -154,7 +162,12 @@
           "page": "82"
         },
         "_dsid": "true-name",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "BB1R9CXTuGeOgNc6",
       "effects": [],
@@ -168,12 +181,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280983
       },
       "_key": "!actors.items!QJNhCLJWoOJXTRjs.BB1R9CXTuGeOgNc6"
     },
@@ -191,7 +204,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 12
+          "primary": "12",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -204,7 +219,8 @@
             "formula": "@chr",
             "characteristics": [
               "presence"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "sa2z7nucJHTqzBK1": {
@@ -216,31 +232,32 @@
                 "tier1": {
                   "value": "10",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "19",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "dc5zA0gPlNmOKjsD": {
               "name": "Can't Hide",
@@ -290,17 +307,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
-        "spend": {
-          "text": "While a target is unable to hide this way, any strike against them made by a devil gains an edge.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -310,7 +320,30 @@
         "_dsid": "infernal-decree",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>While a target is unable to hide this way, any strike against them made by a devil gains an edge.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [
         {
@@ -322,10 +355,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -343,12 +385,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886280971,
+            "modifiedTime": 1779886280971
           },
           "start": null,
           "showIcon": 1,
@@ -363,12 +405,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280983
       },
       "_id": "DT0W9PtAWFstGheT",
       "ownership": {
@@ -390,7 +432,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 12
+          "primary": "12",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -403,7 +447,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "itebqcMqxqZZfDr0": {
@@ -454,13 +499,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>"
         },
         "spend": {
           "text": "",
@@ -474,7 +516,23 @@
         "_dsid": "compel-the-jury",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -486,10 +544,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -507,12 +574,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886280974,
+            "modifiedTime": 1779886280974
           },
           "start": null,
           "showIcon": 1,
@@ -527,12 +594,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280983
       },
       "_id": "jFEOAFPc4BxLTIuP",
       "ownership": {
@@ -553,7 +620,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -581,19 +650,34 @@
                   "value": "15",
                   "types": [
                     "psychic"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "12",
                   "types": [
                     "psychic"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "7",
                   "types": [
                     "psychic"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -608,27 +692,41 @@
                   "effects": {
                     "N0ynZgktrAovgRLC": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
-                  "display": "the target is charmed (save ends)"
+                  "display": "the target is charmed (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "effects": {
                     "N0ynZgktrAovgRLC": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
-                  "display": "the target is charmed (save ends)"
+                  "display": "the target is charmed (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>The target makes a <strong>Presence test.</strong></p><p></p>",
-          "after": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>"
         },
         "spend": {
           "text": "",
@@ -642,7 +740,32 @@
         "_dsid": "all-rise",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target makes a <strong>Presence test.</strong></p><p></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -654,10 +777,19 @@
           "_id": "N0ynZgktrAovgRLC",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -675,11 +807,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1770769393227,
-            "modifiedTime": 1770769400234,
+            "modifiedTime": 1779886280977,
             "lastModifiedBy": null
           },
           "start": null,
@@ -695,12 +827,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280983
       },
       "_id": "0uPSa1xfRM4JGKIh",
       "ownership": {
@@ -720,7 +852,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
@@ -733,13 +867,10 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target shifts up to their speed. The high judge can make each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion move up to half that creature's speed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -753,7 +884,23 @@
         "_dsid": "heed-my-decree",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target shifts up to their speed. The high judge can make each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion move up to half that creature's speed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -763,12 +910,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280984
       },
       "_id": "IZFzsIn8PS1h8q9j",
       "ownership": {
@@ -789,7 +936,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 12
+          "primary": "12",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -802,13 +951,10 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>If the target is an ally or a creature charmed by All Rise, Compel the Jury, or Devilish Suggestion, the high judge and the target teleport to swap places. Each ally within 12 squares of the high judge can then make a free strike against a target of the high judge's choice. Each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion makes a free strike against a target of the high judge's choice.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -822,7 +968,23 @@
         "_dsid": "deceptive-stratagem",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>If the target is an ally or a creature charmed by All Rise, Compel the Jury, or Devilish Suggestion, the high judge and the target teleport to swap places. Each ally within 12 squares of the high judge can then make a free strike against a target of the high judge's choice. Each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion makes a free strike against a target of the high judge's choice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -832,12 +994,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280984
       },
       "_id": "OghjJFgeY3lxYyfR",
       "ownership": {
@@ -858,7 +1020,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -887,18 +1051,36 @@
                   "effects": {
                     "5uNe4RjWi8IjnpgW": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier3": {
                   "effects": {
                     "zxIxqckAKsXiTwyK": {
                       "condition": "always",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   },
-                  "display": "The target takes a bane on the strike."
+                  "display": "The target takes a bane on the strike.",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -910,15 +1092,29 @@
               "_id": "XHj9NmUxty2C9hmz",
               "other": {
                 "tier2": {
-                  "display": "The high judge chooses a new target for the strike"
+                  "display": "The high judge chooses a new target for the strike",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>The target makes a <strong>Presence test.</strong></p><p></p>",
-          "after": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>"
         },
         "spend": {
           "text": "",
@@ -932,7 +1128,32 @@
         "_dsid": "devilish-suggestion",
         "story": "",
         "resource": 2,
-        "trigger": "A creature targets the magistrate with a strike."
+        "trigger": "A creature targets the magistrate with a strike.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target makes a <strong>Presence test.</strong></p><p></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -943,10 +1164,19 @@
           "disabled": true,
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "duration": {
             "value": null,
@@ -963,11 +1193,11 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.QJNhCLJWoOJXTRjs.Item.0uPSa1xfRM4JGKIh.ActiveEffect.ihY2t3izjbz7mvnu",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1761167569597,
-            "modifiedTime": 1761167579844,
+            "modifiedTime": 1779886280980,
             "lastModifiedBy": null
           },
           "_id": "5uNe4RjWi8IjnpgW",
@@ -986,7 +1216,6 @@
           "_id": "zxIxqckAKsXiTwyK",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "filters": {
@@ -997,9 +1226,20 @@
                 "key": "power.roll.banes",
                 "value": 1,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1017,11 +1257,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1770769573654,
-            "modifiedTime": 1770769595071,
+            "modifiedTime": 1779886280980,
             "lastModifiedBy": null
           },
           "start": null,
@@ -1037,12 +1277,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280984
       },
       "_id": "xOe0dvNF9lYVASWj",
       "ownership": {
@@ -1154,9 +1394,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758248177166,
     "modifiedTime": null,
     "lastModifiedBy": null

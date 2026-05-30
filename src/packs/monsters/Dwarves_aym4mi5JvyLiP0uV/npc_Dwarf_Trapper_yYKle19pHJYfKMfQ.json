@@ -96,9 +96,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 6,
       "role": "harrier",
       "organization": "platoon"
+    },
+    "ev": 6,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -227,8 +230,9 @@
         "trigger": "",
         "distance": {
           "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 10
+          "primary": "1",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -241,7 +245,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "xeub4baM7rhH9jm5": {
@@ -251,33 +256,34 @@
                 "tier1": {
                   "value": "5",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "name": "",
-              "img": null
+              "img": null,
+              "sort": 0
             },
             "y9TvTaVKxHrPu9Ri": {
               "type": "forced",
@@ -321,17 +327,30 @@
                   }
                 }
               },
-              "img": null
+              "img": null,
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A target restrained by a dwarf can be force moved by this ability. This forced movement doesn’t end the restrained condition unless the Director determines otherwise.</p>"
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A target restrained by a dwarf can be force moved by this ability. This forced movement doesn’t end the restrained condition unless the Director determines otherwise.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "QRCTe3bXst1BHm9g",
@@ -344,12 +363,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835741
       },
       "ownership": {
         "default": 0
@@ -378,8 +397,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 5
+          "primary": "3",
+          "secondary": "5",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -404,10 +424,31 @@
               "_id": "wEhfDiVWpI8VyBYL",
               "damage": {
                 "tier1": {
-                  "value": "7"
+                  "value": "7",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "5"
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -423,8 +464,13 @@
                   "effects": {
                     "restrained": {
                       "condition": "always",
-                      "end": "turn"
+                      "end": "turn",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
@@ -432,24 +478,55 @@
                   "effects": {
                     "slowed": {
                       "condition": "always",
-                      "end": "turn"
+                      "end": "turn",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "display": "No effect."
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p>",
-          "after": "<p>The snare remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target makes a <strong>Might test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The snare remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "ParOIEUV5a83gikW",
@@ -462,12 +539,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835741
       },
       "ownership": {
         "default": 0
@@ -491,26 +568,44 @@
         "resource": 5,
         "trigger": "A dwarf starts their turn",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each dwarf acting this turn can automatically climb at full speed while moving. At any point during this movement, they can make a free strike.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each dwarf acting this turn can automatically climb at full speed while moving. At any point during this movement, they can make a free strike.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "jeKfV8aI1rqyfkj4",
@@ -527,9 +622,9 @@
         "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.AEnNkuhdPqY0mGNo",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755714185049,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -553,26 +648,44 @@
         "resource": 3,
         "trigger": "A dwarf starts their turn",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>A dwarf can destroy one adjacent object or square of wall for each 3 Malice spent. Each enemy adjacent to the destroyed object or square takes the object’s Stamina in damage ([[/damage 3]] for wood, [[/damage 6]] for stone, or [[/damage 9]] for metal).</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A dwarf can destroy one adjacent object or square of wall for each 3 Malice spent. Each enemy adjacent to the destroyed object or square takes the object’s Stamina in damage ([[/damage 3]] for wood, [[/damage 6]] for stone, or [[/damage 9]] for metal).</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "UsBSwuFSEE8zpLvM",
@@ -589,9 +702,9 @@
         "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.BTY5NhyrQYgUF5Aw",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755715169974,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -620,9 +733,9 @@
         "trigger": "",
         "distance": {
           "type": "line",
-          "primary": 10,
-          "secondary": 1,
-          "tertiary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "10"
         },
         "damageDisplay": "melee",
         "target": {
@@ -722,10 +835,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>Each target makes an Agility Test.</p>",
-          "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><strong>Special:</strong> This ability canʼt be used by a minion.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -734,6 +843,26 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target makes an Agility Test.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><strong>Special:</strong> This ability canʼt be used by a minion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "UrwLwfDVlxJTNQTd",
@@ -744,9 +873,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.iV1xZa3LFqKK1Xgu",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1763817195042,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -770,9 +899,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755639582980,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -9,8 +9,9 @@
     "trigger": "A ajax’s starts its turn.",
     "distance": {
       "type": "cube",
-      "primary": 3,
-      "secondary": 10
+      "primary": "3",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "target": {
       "type": "enemyObject",
@@ -39,13 +40,31 @@
           "_id": "bhl2jxko2ROn5cTB",
           "damage": {
             "tier1": {
-              "value": "26"
+              "value": "26",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "22"
+              "value": "22",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "16"
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -61,8 +80,13 @@
               "effects": {
                 "qjXeWgkCqr0K87AF": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             },
             "tier2": {
@@ -70,17 +94,26 @@
               "effects": {
                 "bleeding": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p>",
-      "after": "<p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>"
     },
     "spend": {
       "text": "",
@@ -98,7 +131,32 @@
       "magic",
       "ranged",
       "weapon"
-    ]
+    ],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -110,10 +168,19 @@
       "_id": "qjXeWgkCqr0K87AF",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -134,12 +201,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620836374
       },
       "showIcon": 2,
       "start": null,
@@ -153,9 +220,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761602032783,
     "modifiedTime": null,
     "lastModifiedBy": null

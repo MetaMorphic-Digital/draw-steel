@@ -94,9 +94,12 @@
         "undead"
       ],
       "level": 4,
-      "ev": 6,
       "role": "defender",
       "organization": "horde"
+    },
+    "ev": 6,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "266"
         },
         "_dsid": "arise",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "9fHZqgq4IjT4VY72",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277926
       },
       "_key": "!actors.items!B7lTgkUo7Kew8TFy.9fHZqgq4IjT4VY72"
     },
@@ -153,7 +161,12 @@
           "page": "266"
         },
         "_dsid": "immutable-form",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "SMAGQ19TMPBjudSu",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277926
       },
       "_key": "!actors.items!B7lTgkUo7Kew8TFy.SMAGQ19TMPBjudSu"
     },
@@ -190,11 +203,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -202,7 +218,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "EpzlWXjm0H3alclq": {
@@ -214,41 +231,34 @@
                 "tier1": {
                   "value": "5",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The target can't shift until the end of their next turn</p>"
-        },
-        "spend": {
-          "text": "This ability targets one additional target.",
-          "value": 1
         },
         "source": {
           "book": "Monsters",
@@ -258,7 +268,39 @@
         "_dsid": "multiarm-strike",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": false
+            },
+            "description": "<p>This ability targets one additional target.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target can't shift until the end of their next turn</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -268,12 +310,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277926
       },
       "_id": "7h3x0kHd839yJ0KS",
       "ownership": {
@@ -294,7 +336,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -307,7 +351,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "jyS0qMCMk90VDQYw": {
@@ -321,35 +366,36 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "3",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "4",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "SLDMavodbsvGE8x1": {
               "_id": "SLDMavodbsvGE8x1",
@@ -393,7 +439,8 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "NeOyw3cd8sAHno8z": {
               "name": "Fearful Respite",
@@ -405,33 +452,48 @@
                   "effects": {
                     "Dz2Oa3riW6CPOgnR": {
                       "condition": "always",
-                      "end": "respite"
+                      "end": "respite",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
                   "effects": {
                     "Dz2Oa3riW6CPOgnR": {
                       "condition": "always",
-                      "end": "respite"
+                      "end": "respite",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
                   "effects": {
                     "Dz2Oa3riW6CPOgnR": {
                       "condition": "always",
-                      "end": "respite"
+                      "end": "respite",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A target who is still frightened this way at the end of the encounter can't take a respite activity during their next respite.</p>"
         },
         "spend": {
           "text": "",
@@ -445,7 +507,23 @@
         "_dsid": "horrid-wail",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A target who is still frightened this way at the end of the encounter can't take a respite activity during their next respite.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -457,10 +535,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -478,11 +565,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1761425728179,
-            "modifiedTime": 1761425811882,
+            "modifiedTime": 1779886277923,
             "lastModifiedBy": null
           },
           "start": null,
@@ -498,12 +585,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277926
       },
       "_id": "nwRjDvXnnQ0QDrLi",
       "ownership": {
@@ -531,26 +618,44 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>One undead acting this turn uses a signature ability against a creature who is bleeding. As a free triggered action, each undead within 5 squares of the first undead moves up to their speed and can make a free strike against the same target.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>One undead acting this turn uses a signature ability against a creature who is bleeding. As a free triggered action, each undead within 5 squares of the first undead moves up to their speed and can make a free strike against the same target.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -564,12 +669,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277926
       },
       "_key": "!actors.items!B7lTgkUo7Kew8TFy.g3I8pfaRJv4SU7k0"
     },
@@ -592,26 +697,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The undead activates a Malice feature available to undead of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.EzWvhVW1uXUmKhV5]{Dread March}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3]{Paranormal Fling}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf]{Ravenous Horde}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw]{The Grasping, the Hungry}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The undead activates a Malice feature available to undead of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.EzWvhVW1uXUmKhV5]{Dread March}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3]{Paranormal Fling}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf]{Ravenous Horde}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw]{The Grasping, the Hungry}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -624,12 +747,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277926
       },
       "_id": "lql6HakCaCi05z5P",
       "sort": -100000,
@@ -738,9 +861,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758166815011,
     "modifiedTime": null,
     "lastModifiedBy": null

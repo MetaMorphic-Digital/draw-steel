@@ -15,27 +15,56 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "special",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>One or two devils can teleport to a space adjacent to one or more creatures who aren’t hidden and make a free strike.</p>",
-      "after": ""
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": true
+        },
+        "description": "<p>For each 2 additional Malice spent on this feature, one additional devil can teleport.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>One or two devils can teleport to a space adjacent to one or more creatures who aren’t hidden and make a free strike.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     },
     "spend": {
-      "text": "For each 2 additional Malice spent on this feature, one additional devil can teleport.",
-      "value": null
+      "text": ""
     }
   },
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
@@ -49,9 +78,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758245377277,
     "modifiedTime": null,
     "lastModifiedBy": null

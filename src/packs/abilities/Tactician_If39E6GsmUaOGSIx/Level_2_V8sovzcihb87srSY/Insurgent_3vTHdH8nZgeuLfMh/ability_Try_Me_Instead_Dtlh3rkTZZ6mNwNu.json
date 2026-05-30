@@ -14,27 +14,29 @@
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "heroic",
     "resource": 5,
     "trigger": "",
     "distance": {
       "type": "self",
-      "primary": 1,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "self",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "inOTUdFXYJuIR75k": {
@@ -49,7 +51,7 @@
                 "characteristic": "none",
                 "value": "@potency.weak"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier2": {
               "types": [],
@@ -58,7 +60,7 @@
                 "characteristic": "",
                 "value": "@potency.average"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier3": {
               "types": [],
@@ -67,9 +69,11 @@
                 "characteristic": "",
                 "value": "@potency.strong"
               },
-              "properties": []
+              "ignoredImmunities": []
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         },
         "9EgqMwDRInYiAOXb": {
           "type": "applied",
@@ -85,7 +89,8 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -98,7 +103,8 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -111,17 +117,16 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You shift up to your speed directly toward an ally, ending adjacent to them, then swapping locations with that ally as long as you can fit into each other’s spaces. The ally can spend a Recovery, and you can make the following weapon strike with a distance of melee 1 against a creature.</p>",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -131,7 +136,20 @@
     "prerequisites": {
       "dsid": [
         "insurgent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You shift up to your speed directly toward an ally, ending adjacent to them, then swapping locations with that ally as long as you can fit into each other’s spaces. The ally can spend a Recovery, and you can make the following weapon strike with a distance of melee 1 against a creature.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -141,9 +159,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140886742,
     "modifiedTime": null,
     "lastModifiedBy": null

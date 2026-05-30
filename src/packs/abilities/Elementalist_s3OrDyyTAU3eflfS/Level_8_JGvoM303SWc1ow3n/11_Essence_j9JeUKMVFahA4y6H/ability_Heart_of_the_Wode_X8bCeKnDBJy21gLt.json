@@ -23,7 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -34,13 +36,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>A @UUID[Compendium.draw-steel.monsters.Actor.3Gnf8kMjxxOojitk]{size 5 tree} appears in an unoccupied space within distance. The tree has 100 Stamina and can’t be force moved. You and any ally can touch the tree to use the Catch Breath maneuver as a free maneuver. Additionally, when you start your turn with line of effect to the tree, you can end one effect on yourself that is ended by a saving throw or that ends at the end of your turn, or you can stand up if you are prone. Each ally within distance also gains this benefit.</p><p>Each enemy who ends their turn within 3 squares of the tree is [[/apply R9eQ7pFQKtNiW37G]] until the end of their next turn. A creature restrained this way can use a main action to end the effect early.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -49,7 +48,20 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>A @UUID[Compendium.draw-steel.monsters.Actor.3Gnf8kMjxxOojitk]{size 5 tree} appears in an unoccupied space within distance. The tree has 100 Stamina and can’t be force moved. You and any ally can touch the tree to use the Catch Breath maneuver as a free maneuver. Additionally, when you start your turn with line of effect to the tree, you can end one effect on yourself that is ended by a saving throw or that ends at the end of your turn, or you can stand up if you are prone. Each ally within distance also gains this benefit.</p><p>Each enemy who ends their turn within 3 squares of the tree is [[/apply R9eQ7pFQKtNiW37G]] until the end of their next turn. A creature restrained this way can use a main action to end the effect early.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [
@@ -64,7 +76,17 @@
         "end": {
           "roll": ""
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -84,9 +106,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761514719198,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -106,9 +128,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761514522314,
     "modifiedTime": null,
     "lastModifiedBy": null

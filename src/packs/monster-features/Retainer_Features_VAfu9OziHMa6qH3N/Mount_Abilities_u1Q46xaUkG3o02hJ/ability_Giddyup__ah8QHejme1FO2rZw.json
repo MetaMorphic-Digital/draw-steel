@@ -26,7 +26,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "5"
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -42,13 +44,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>The mount shifts twice their speed. They can jump as part of this movement.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The mount shifts twice their speed. They can jump as part of this movement.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -61,9 +70,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912574419,
     "modifiedTime": null,
     "lastModifiedBy": null

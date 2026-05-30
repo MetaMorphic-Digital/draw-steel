@@ -17,18 +17,15 @@
     "trigger": "",
     "distance": {
       "type": "self",
-      "primary": 1,
-      "secondary": null,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": 1
-    },
-    "effect": {
-      "before": "<p>A creature who is grabbed by another creature, an object, or an effect (see Grab below) can attempt to escape by using the following ability.</p>",
-      "after": "<p>You take a bane on this maneuver if your size is smaller than the size of the creature, object, or effect that has you grabbed.</p>"
+      "value": 1,
+      "custom": ""
     },
     "spend": {
       "value": null,
@@ -41,7 +38,8 @@
           "might",
           "agility"
         ],
-        "formula": "@chr"
+        "formula": "@chr",
+        "reactive": false
       },
       "effects": {
         "9IqHcvFKmPUnGT2i": {
@@ -70,9 +68,36 @@
               }
             }
           },
-          "name": ""
+          "name": "",
+          "img": null,
+          "sort": 0
         }
       }
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>A creature who is grabbed by another creature, an object, or an effect (see Grab below) can attempt to escape by using the following ability.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>You take a bane on this maneuver if your size is smaller than the size of the creature, object, or effect that has you grabbed.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -81,9 +106,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1749702844706,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -8,22 +8,24 @@
     "resource": 7,
     "trigger": "A manticore starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has [[potency A 3]] is [[/apply bleeding save]]. Additionally, the area is difficult terrain, and any enemy takes [[/damage 3*@scaling poison scaling]]{3 poison damage} for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -36,7 +38,23 @@
     },
     "_dsid": "barrage-of-barbs",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has [[potency A 3]] is [[/apply bleeding save]]. Additionally, the area is difficult terrain, and any enemy takes [[/damage 3*@scaling poison scaling]]{3 poison damage} for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "NHPFLamJfvJaeUVQ",
@@ -45,9 +63,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757287711235,
     "modifiedTime": null,
     "lastModifiedBy": null

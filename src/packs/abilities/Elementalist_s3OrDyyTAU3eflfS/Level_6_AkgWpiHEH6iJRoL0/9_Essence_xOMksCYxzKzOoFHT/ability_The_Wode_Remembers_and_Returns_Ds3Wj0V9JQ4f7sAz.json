@@ -25,7 +25,9 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 4
+      "primary": "4",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,13 +38,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The area becomes dark and verdant, with trees and plant life appearing in unoccupied spaces within it until the start of your next turn. The area is difficult terrain for enemies, and any ally who ends their turn in the area has cover.</p><p><strong>Persistent 2</strong>: The area remains until the start of your next turn. Additionally, at the start of your turn, each ally in the area can spend a Recovery.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -51,7 +50,20 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The area becomes dark and verdant, with trees and plant life appearing in unoccupied spaces within it until the start of your next turn. The area is difficult terrain for enemies, and any ally who ends their turn in the area has cover.</p><p><strong>Persistent 2</strong>: The area remains until the start of your next turn. Additionally, at the start of your turn, each ally in the area can spend a Recovery.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -64,9 +76,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761510922676,
     "modifiedTime": null,
     "lastModifiedBy": null

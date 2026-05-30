@@ -94,9 +94,12 @@
         "beast"
       ],
       "level": 2,
-      "ev": 16,
       "role": "brute",
       "organization": "elite"
+    },
+    "ev": 16,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "167"
         },
         "_dsid": "beast-of-prey",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "iLMBTkBQqDHmfUyL",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830934
       },
       "_key": "!actors.items!TkLz5ooBo5ojam6p.iLMBTkBQqDHmfUyL"
     },
@@ -153,7 +161,12 @@
           "page": "167"
         },
         "_dsid": "steady",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "HwOlk3dumdTDUV36",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_key": "!actors.items!TkLz5ooBo5ojam6p.HwOlk3dumdTDUV36"
     },
@@ -191,7 +204,12 @@
           "page": "167"
         },
         "_dsid": "banded-predator",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "jDbvsTZciMlNrWJe",
       "effects": [],
@@ -205,12 +223,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_key": "!actors.items!TkLz5ooBo5ojam6p.jDbvsTZciMlNrWJe"
     },
@@ -228,11 +246,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 2
+          "primary": "2",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -240,7 +261,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "kEN2KR7aBZ1FqLZL": {
@@ -252,31 +274,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "cD24mxVwrOtA4gKt": {
               "_id": "cD24mxVwrOtA4gKt",
@@ -324,13 +347,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -344,7 +364,13 @@
         "_dsid": "violent-thrashing",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -354,12 +380,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_id": "CAx66AuezHqVp9oL",
       "ownership": {
@@ -376,11 +402,15 @@
         "category": "heroic",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -388,13 +418,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The griffon shifts up to their speed along the ground in straight line. Each enemy who comes adjacent to the griffon during this shift can choose to either take 5 damage or be knocked [[/apply prone]].</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -408,7 +435,23 @@
         "_dsid": "bound-ahead",
         "story": "",
         "resource": 5,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The griffon shifts up to their speed along the ground in straight line. Each enemy who comes adjacent to the griffon during this shift can choose to either take 5 damage or be knocked [[/apply prone]].</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -418,12 +461,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_id": "QwWAJwBoV1eku636",
       "ownership": {
@@ -443,13 +486,14 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 5,
-          "secondary": 3,
-          "tertiary": 1
+          "primary": "5",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -457,7 +501,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "0ovZQzixH1noXITs": {
@@ -502,13 +547,10 @@
                     "characteristic": "might"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -522,7 +564,13 @@
         "_dsid": "power-wing-buffet",
         "story": "",
         "resource": 3,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -532,12 +580,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_id": "9xlcg5mgvfHoYJDx",
       "ownership": {
@@ -557,7 +605,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -570,13 +620,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The griffon dives down onto the target, taking no damage from falling if they reach the ground. The target takes [[/damage 3*@scaling scaling]]{3 damage} for each square the griffon dove, and if they have [[potency A 2]] they are [[/apply grabbed]] or knocked [[/apply prone]].</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -590,7 +637,23 @@
         "_dsid": "circle-and-strike",
         "story": "",
         "resource": null,
-        "trigger": "The griffon flies directly above a creature within distance"
+        "trigger": "The griffon flies directly above a creature within distance",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The griffon dives down onto the target, taking no damage from falling if they reach the ground. The target takes [[/damage 3*@scaling scaling]]{3 damage} for each square the griffon dove, and if they have [[potency A 2]] they are [[/apply grabbed]] or knocked [[/apply prone]].</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -600,12 +663,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_id": "jHgUHxYCzHB4926r",
       "ownership": {
@@ -633,26 +696,44 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "self"
+          "type": "self",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The griffon flies up to their speed, and can make a free strike against each creature who makes an opportunity attack against them during this movement.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The griffon flies up to their speed, and can make a free strike against each creature who makes an opportunity attack against them during this movement.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -666,12 +747,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.bizrmMLXIn2MZWsn",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_key": "!actors.items!TkLz5ooBo5ojam6p.bizrmMLXIn2MZWsn"
     },
@@ -695,26 +776,44 @@
         "resource": 10,
         "trigger": "",
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "self"
+          "type": "self",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Winds bluster and blow across the encounter map. Until the end of the encounter, each creature who can’t fly or isn’t mounted on a fly ing creature takes a −3 penalty to stability, and any forced movement effect targeting such a creature moves them an additional 5 squares.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Winds bluster and blow across the encounter map. Until the end of the encounter, each creature who can’t fly or isn’t mounted on a fly ing creature takes a −3 penalty to stability, and any forced movement effect targeting such a creature moves them an additional 5 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -728,12 +827,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Uudy5DxOsE8X0LQ3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830935
       },
       "_key": "!actors.items!TkLz5ooBo5ojam6p.Uudy5DxOsE8X0LQ3"
     },
@@ -756,7 +855,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -820,10 +922,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A griffon acting this turn unleashes a hideous screech at one enemy within 5 squares of them, forcing that creature to make an <strong>Intuition test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -832,6 +930,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A griffon acting this turn unleashes a hideous screech at one enemy within 5 squares of them, forcing that creature to make an <strong>Intuition test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -840,9 +949,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.IB3YILLtoEUj58Ha",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761172003193,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -960,9 +1069,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757285040458,
     "modifiedTime": null,
     "lastModifiedBy": null

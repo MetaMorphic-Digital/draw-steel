@@ -98,9 +98,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 3,
       "role": "harrier",
       "organization": "minion"
+    },
+    "ev": 3,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -212,7 +215,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "quick-snack",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -226,9 +234,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757014499948,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -255,26 +263,44 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, when an angulotl moves through an inactive angulotl’s space, the inactive angulotl can use a free triggered action to jump 3 squares.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, when an angulotl moves through an inactive angulotl’s space, the inactive angulotl can use a free triggered action to jump 3 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -288,9 +314,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.UZtOR8SSJC71RuS3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757014540910,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -319,7 +345,9 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -332,7 +360,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "hTnPV4q2g47SGeOP": {
@@ -345,21 +374,37 @@
                   "value": "1",
                   "types": [
                     "poison"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "2",
                   "types": [
                     "poison"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "3",
                   "types": [
                     "poison"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "eY6UfxdqmHVa1kPs": {
               "name": "Shift",
@@ -368,23 +413,41 @@
               "_id": "eY6UfxdqmHVa1kPs",
               "other": {
                 "tier2": {
-                  "display": "the pollywog can shift 1 square"
+                  "display": "the pollywog can shift 1 square",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "display": "the pollywog shifts up to 3 squares"
+                  "display": "the pollywog shifts up to 3 squares",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "_id": "oZj88yJp3cJPxc9S",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -400,9 +463,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1757014547764,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -425,7 +488,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "wet",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -437,10 +505,19 @@
           "_id": "X66mp8MbRILfgKS6",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "duration": {
             "value": null,
@@ -458,12 +535,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886281712,
+            "modifiedTime": 1779886281712
           },
           "start": {
             "combat": null,
@@ -489,9 +566,9 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.R1CEitcfoGyEwRZY.Item.LCVUFvkic3ekh34p",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757015178127,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -517,7 +594,10 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -528,17 +608,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is [[/apply Du8EMyrd7nZQ66Yk encounter]] until the end of the encounter.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is [[/apply Du8EMyrd7nZQ66Yk encounter]] until the end of the encounter.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [
@@ -553,7 +646,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -571,12 +674,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
             "createdTime": 1774890078908,
-            "modifiedTime": 1774890078908
+            "modifiedTime": 1779886281714
           },
           "start": null,
           "showIcon": 1,
@@ -589,9 +692,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chuInXNQ28dtiMPI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760845621815,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -623,7 +726,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -715,10 +821,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -727,6 +829,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -735,9 +848,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.SMNH5LxY8st7IyDf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1763816555532,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -761,7 +874,6 @@
       "_id": "2Toweer0WvuwEauu",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -769,9 +881,20 @@
             "key": "system.movement.value",
             "value": 2,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -789,9 +912,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757277085882,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -818,9 +941,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757014398206,
     "modifiedTime": null,
     "lastModifiedBy": null

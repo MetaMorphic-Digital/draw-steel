@@ -18,26 +18,44 @@
     "resource": 7,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The encounter map suddenly quakes, then begins to sink. Each creature on the ground who has [[potency A 1]] is knocked [[/apply prone]]. Until the end of the encounter, each creature who starts their turn on the ground and can’t burrow must spend 1 additional square of movement to leave their starting position, or 2 squares if they start their turn prone or underground. A creature who starts and ends their turn in the same space on the ground and can’t burrow sinks 1 square into the ground.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The encounter map suddenly quakes, then begins to sink. Each creature on the ground who has [[potency A 1]] is knocked [[/apply prone]]. Until the end of the encounter, each creature who starts their turn on the ground and can’t burrow must spend 1 additional square of movement to leave their starting position, or 2 squares if they start their turn prone or underground. A creature who starts and ends their turn in the same space on the ground and can’t burrow sinks 1 square into the ground.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -50,9 +68,9 @@
     "compendiumSource": "Item.KKzUSNgaxaizzPFf",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755922242457,
     "modifiedTime": null,
     "lastModifiedBy": null

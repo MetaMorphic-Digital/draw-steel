@@ -18,26 +18,56 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>The monster pours all their animosity into their attack. Their next strike deals extra damage to one target equal to the monster’s [[lookup @chr]]{highest characteristic score}. The extra damage increases by 1 for each additional Malice spent on this feature (to a maximum of three times the monster’s highest characteristic). This feature can’t be used two rounds in a row, even by different monsters.</p>",
-      "after": ""
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": true
+        },
+        "description": "<p>The extra damage increases by 1 for each additional Malice spent on this feature (to a maximum of three times the monster’s highest characteristic).</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The monster pours all their animosity into their attack. Their next strike deals extra damage to one target equal to the monster’s [[lookup @chr]]{highest characteristic score}. The extra damage increases by 1 for each additional Malice spent on this feature (to a maximum of three times the monster’s highest characteristic). This feature can’t be used two rounds in a row, even by different monsters.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     },
     "spend": {
-      "text": "The extra damage increases by 1 for each additional Malice spent on this feature (to a maximum of three times the monster’s highest characteristic).",
-      "value": null
+      "text": ""
     }
   },
   "effects": [],
@@ -50,9 +80,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758032559916,
     "modifiedTime": null,
     "lastModifiedBy": null

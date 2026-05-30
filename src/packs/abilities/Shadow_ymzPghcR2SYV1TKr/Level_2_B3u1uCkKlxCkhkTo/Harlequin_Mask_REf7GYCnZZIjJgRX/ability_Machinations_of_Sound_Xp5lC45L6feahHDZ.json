@@ -23,20 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 3,
-      "secondary": 10
+      "primary": "3",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "tODm3eK8eNbCPZBY": {
@@ -52,7 +55,12 @@
               "distance": "4",
               "properties": [
                 "ignoresImmunity"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "movement": [
@@ -61,7 +69,12 @@
               "distance": "5",
               "properties": [
                 "ignoresImmunity"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "movement": [
@@ -70,15 +83,17 @@
               "distance": "7",
               "properties": [
                 "ignoresImmunity"
-              ]
+              ],
+              "display": "{{forced}}",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>This forced movement ignores stability. Instead, the forced movement is reduced by a number equal to the target’s Intuition score.</p>"
     },
     "spend": {
       "text": "",
@@ -87,7 +102,20 @@
     "prerequisites": {
       "dsid": [
         "college-of-the-harlequin-mask"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>This forced movement ignores stability. Instead, the forced movement is reduced by a number equal to the target’s Intuition score.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -100,9 +128,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756090347968,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -23,7 +23,10 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -39,13 +42,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>The creature takes an additional main action on their turn.</p><p>They can use this feature even if they are dazed.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The creature takes an additional main action on their turn.</p><p>They can use this feature even if they are dazed.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -58,9 +68,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1770754905742,
     "modifiedTime": null,
     "lastModifiedBy": null

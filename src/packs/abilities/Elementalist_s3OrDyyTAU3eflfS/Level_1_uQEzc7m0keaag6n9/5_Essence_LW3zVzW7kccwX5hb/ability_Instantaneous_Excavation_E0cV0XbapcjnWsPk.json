@@ -23,18 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "lwaZ7JaY5fGQyjUI": {
@@ -44,21 +49,30 @@
           "_id": "lwaZ7JaY5fGQyjUI",
           "other": {
             "tier1": {
-              "display": "The target can shift 1 square from the edge of the hole to the  nearest unoccupied space of their choice."
+              "display": "The target can shift 1 square from the edge of the hole to the  nearest unoccupied space of their choice.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "The target falls into the hole."
+              "display": "The target falls into the hole.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "The target falls into the hole and can’t reduce the height of the  fall."
+              "display": "The target falls into the hole and can’t reduce the height of the  fall.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You open up two holes with 1-square openings that are 4 squares deep, which can be placed on any mundane surface within distance. You can place these holes next to each other to create fewer holes with wider openings. When the holes open, make a separate power roll for each creature on the ground above a hole and small enough to fall in. (You can’t score a critical hit with this ability because it uses a maneuver.)</p>",
-      "after": "<p><strong>Persistent 1</strong>: At the start of your turn, you open another hole, making a power roll against each creature who could fall into the hole when it opens without spending essence.</p>"
     },
     "spend": {
       "text": "",
@@ -67,7 +81,29 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You open up two holes with 1-square openings that are 4 squares deep, which can be placed on any mundane surface within distance. You can place these holes next to each other to create fewer holes with wider openings. When the holes open, make a separate power roll for each creature on the ground above a hole and small enough to fall in. (You can’t score a critical hit with this ability because it uses a maneuver.)</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p><strong>Persistent 1</strong>: At the start of your turn, you open another hole, making a power roll against each creature who could fall into the hole when it opens without spending essence.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -80,9 +116,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755743761655,
     "modifiedTime": null,
     "lastModifiedBy": null

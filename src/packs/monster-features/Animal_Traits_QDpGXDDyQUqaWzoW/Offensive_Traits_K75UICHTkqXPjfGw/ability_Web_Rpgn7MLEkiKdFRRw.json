@@ -22,13 +22,15 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 3,
-      "secondary": 1
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
@@ -39,7 +41,8 @@
           "reason",
           "intuition",
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "443gvof3EVCp7ZSm": {
@@ -57,7 +60,8 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -65,35 +69,54 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "value": "1"
-              }
+                "value": "1",
+                "characteristic": ""
+              },
+              "display": ""
             },
             "tier3": {
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "value": "2"
-              }
+                "value": "2",
+                "characteristic": ""
+              },
+              "display": ""
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>The area is difficult terrain for enemies until the end of the encounter.</p><ul><li><p><strong>Typically Used By:</strong> Pelagic snails, spiders.</p></li></ul>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The area is difficult terrain for enemies until the end of the encounter.</p><ul><li><p><strong>Typically Used By:</strong> Pelagic snails, spiders.</p></li></ul>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -106,9 +129,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757722811585,
     "modifiedTime": null,
     "lastModifiedBy": null

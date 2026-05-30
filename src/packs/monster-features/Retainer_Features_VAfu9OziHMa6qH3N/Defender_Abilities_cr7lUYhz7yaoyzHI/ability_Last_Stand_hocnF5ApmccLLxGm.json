@@ -28,7 +28,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -57,25 +59,50 @@
           "_id": "v15bUs3KKm3AXYO5",
           "damage": {
             "tier1": {
-              "value": "8"
+              "value": "8",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "13"
+              "value": "13",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "17"
+              "value": "17",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The retainer and their mentor each gain [[/heal 10 temporary]]. Additionally, each winded ally within 2 squares of the retainer can spend a Recovery.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The retainer and their mentor each gain [[/heal 10 temporary]]. Additionally, each winded ally within 2 squares of the retainer can spend a Recovery.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -88,9 +115,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912420449,
     "modifiedTime": null,
     "lastModifiedBy": null

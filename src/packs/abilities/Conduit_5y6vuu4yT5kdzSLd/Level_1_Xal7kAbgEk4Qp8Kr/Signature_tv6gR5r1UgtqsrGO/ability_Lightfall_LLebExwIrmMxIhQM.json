@@ -22,19 +22,23 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 2
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "NnrNfE7Ohg9x3i6s": {
@@ -47,27 +51,39 @@
               "value": "3",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "5",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             },
             "tier1": {
               "types": [
                 "holy"
               ],
-              "value": "2"
+              "value": "2",
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>You can teleport yourself and each ally in the area to unoccupied spaces in the area.</p>"
     },
     "spend": {
       "text": "",
@@ -76,7 +92,20 @@
     "prerequisites": {
       "dsid": [
         "conduit"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>You can teleport yourself and each ally in the area to unoccupied spaces in the area.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -89,9 +118,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755646475332,
     "modifiedTime": null,
     "lastModifiedBy": null

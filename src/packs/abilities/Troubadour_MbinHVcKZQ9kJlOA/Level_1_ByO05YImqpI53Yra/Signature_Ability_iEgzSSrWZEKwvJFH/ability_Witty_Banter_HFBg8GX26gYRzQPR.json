@@ -24,20 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 5
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "yzfxWdEPtzL67S4X": {
@@ -50,36 +53,73 @@
               "value": "4 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "5 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "7 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>One ally within 10 squares of you can end one effect on them that is ended by a saving throw or that ends at the end of their turn.</p>"
-    },
-    "spend": {
-      "text": "The chosen ally can spend a Recovery.",
-      "value": 1
     },
     "prerequisites": {
       "dsid": [
         "troubadour"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        },
+        "description": "<p>The chosen ally can spend a Recovery.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>One ally within 10 squares of you can end one effect on them that is ended by a saving throw or that ends at the end of their turn.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -92,9 +132,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755799435410,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -16,7 +16,12 @@
     },
     "_dsid": "wyrmplate",
     "advancements": {},
-    "points": null
+    "points": null,
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -28,7 +33,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -39,7 +43,17 @@
             "phase": "initial",
             "priority": null
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -57,9 +71,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1754523115273,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -79,9 +93,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754522554970,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 6,
       "role": "artillery",
       "organization": "platoon"
+    },
+    "ev": 6,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -209,7 +212,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "supernatural-insight",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -223,12 +231,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831870
       },
       "_key": "!actors.items!aky9I9tbWEWgNQ25.qizjNOgSeA1odtUQ"
     },
@@ -255,20 +263,23 @@
         "trigger": "",
         "distance": {
           "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 15
+          "primary": "1",
+          "secondary": "15",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "aylCzCUm6Be7bIu9": {
@@ -280,41 +291,66 @@
                 "tier1": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "9",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "12",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>This ability ignores cover and concealment.</p>"
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 3,
+              "multiple": false
+            },
+            "description": "<p>This ability targets one additional target.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>This ability ignores cover and concealment.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "This ability targets one additional target.",
-          "value": 3
+          "text": ""
         }
       },
       "_id": "Hy5QNQVTfh8tPpWE",
@@ -331,12 +367,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831870
       },
       "_key": "!actors.items!aky9I9tbWEWgNQ25.Hy5QNQVTfh8tPpWE"
     },
@@ -357,26 +393,44 @@
         "resource": 5,
         "trigger": "A human's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each human acting this turn gains an edge on abilities until the end of their turn, or has a double edge on any ability that targets an enemy affected by a condition.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each human acting this turn gains an edge on abilities until the end of their turn, or has a double edge on any ability that targets an enemy affected by a condition.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "LYYyN9iD2PjepIFo",
@@ -389,12 +443,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831870
       },
       "ownership": {
         "default": 0,
@@ -419,26 +473,44 @@
         "resource": 7,
         "trigger": "a human's turn starts",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each non-minion human in the encounter regains Stamina equal to 5 times their level.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each non-minion human in the encounter regains Stamina equal to 5 times their level.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "vxocmPyA9uKwrgEq",
@@ -451,12 +523,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620831870
       },
       "ownership": {
         "default": 0,
@@ -486,8 +558,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "primary": "3",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -498,7 +571,8 @@
         "power": {
           "roll": {
             "formula": "2",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "MhQwsOqVGfNaQFua": {
@@ -512,33 +586,33 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -596,13 +670,25 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "lVlwo9eIp8HBjfth",
@@ -613,9 +699,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.lVlwo9eIp8HBjfth",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1762797189729,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -638,9 +724,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755922189438,
     "modifiedTime": null,
     "lastModifiedBy": null

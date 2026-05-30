@@ -22,9 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "line",
-      "primary": 5,
-      "secondary": 1,
-      "tertiary": 1
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +35,8 @@
     "power": {
       "roll": {
         "formula": "2",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {
         "MHZRMgetPqMBjeRG": {
@@ -50,7 +51,12 @@
                 "cold",
                 "corruption",
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "9",
@@ -58,7 +64,12 @@
                 "cold",
                 "corruption",
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "12",
@@ -66,9 +77,15 @@
                 "cold",
                 "corruption",
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "7wFlAnp9aHcFYTRq": {
           "name": "chosen condition",
@@ -85,67 +102,102 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "weakened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
             "tier2": {
               "potency": {
-                "value": "2"
+                "value": "2",
+                "characteristic": ""
               },
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "weakened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
-              }
+              },
+              "display": ""
             },
             "tier3": {
               "potency": {
-                "value": "3"
+                "value": "3",
+                "characteristic": ""
               },
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "weakened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
-              }
+              },
+              "display": ""
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>The high elf chooses a damage type and condition from one of the following combinations: cold damage and slowed, poison damage and weakened, or corruption damage and frightened.</p>",
-      "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The high elf chooses a damage type and condition from one of the following combinations: cold damage and slowed, poison damage and weakened, or corruption damage and frightened.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -158,9 +210,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757111299243,
     "modifiedTime": null,
     "lastModifiedBy": null

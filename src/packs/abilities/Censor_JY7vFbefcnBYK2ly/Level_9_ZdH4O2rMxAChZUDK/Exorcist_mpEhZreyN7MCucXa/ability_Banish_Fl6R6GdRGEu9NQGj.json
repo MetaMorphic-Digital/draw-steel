@@ -23,7 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "39MyuAhmna8wkyqr": {
@@ -46,15 +49,34 @@
           "_id": "39MyuAhmna8wkyqr",
           "damage": {
             "tier1": {
-              "value": "5 + @chr"
+              "value": "5 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "8 + @chr"
+              "value": "8 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "11 + @chr"
+              "value": "11 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "KTdDH8oq11MII1K8": {
           "name": "Banished",
@@ -67,36 +89,47 @@
               "effects": {
                 "ztBgmMZaY9rbNmZD": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "ztBgmMZaY9rbNmZD": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "ztBgmMZaY9rbNmZD": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>This ability gains an edge against demons, devils, undead, and creatures not native to your current world. If you know the target’s true name, this ability has a double edge. While [[/apply ztBgmMZaY9rbNmZD]], the target is sent to another manifold in the timescape and removed from the encounter map. A banished target can do nothing but make saving throws, and takes [[/damage 10 holy]] damage each time they do so. If the target is reduced to 0 Stamina while banished, they are lost to the timescape.</p>"
     },
     "spend": {
       "text": "",
@@ -105,7 +138,20 @@
     "prerequisites": {
       "dsid": [
         "exorcist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>This ability gains an edge against demons, devils, undead, and creatures not native to your current world. If you know the target’s true name, this ability has a double edge. While [[/apply ztBgmMZaY9rbNmZD]], the target is sent to another manifold in the timescape and removed from the encounter map. A banished target can do nothing but make saving throws, and takes [[/damage 10 holy]] damage each time they do so. If the target is reduced to 0 Stamina while banished, they are lost to the timescape.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -118,10 +164,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -139,9 +194,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761429104701,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -161,9 +216,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761428955264,
     "modifiedTime": null,
     "lastModifiedBy": null

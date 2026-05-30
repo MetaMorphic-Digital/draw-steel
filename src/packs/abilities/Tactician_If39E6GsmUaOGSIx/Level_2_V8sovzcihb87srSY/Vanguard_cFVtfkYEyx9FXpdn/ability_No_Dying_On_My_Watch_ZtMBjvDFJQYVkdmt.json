@@ -20,21 +20,23 @@
     "trigger": "The target deals damage to an ally.",
     "distance": {
       "type": "ranged",
-      "primary": 5,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "5",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "gsngfBcksXZXNbJ1": {
@@ -51,7 +53,8 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -64,7 +67,8 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -77,17 +81,16 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You move up to your speed toward the triggering ally, ending this movement adjacent to them or in the nearest square if you can’t reach an adjacent square. The triggering ally can spend a Recovery and gains [[/heal 5 temporary]] for each enemy you came adjacent to during the move. You then make a power roll against the target.</p>",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -97,7 +100,20 @@
     "prerequisites": {
       "dsid": [
         "vanguard"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You move up to your speed toward the triggering ally, ending this movement adjacent to them or in the nearest square if you can’t reach an adjacent square. The triggering ally can spend a Recovery and gains [[/heal 5 temporary]] for each enemy you came adjacent to during the move. You then make a power roll against the target.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -107,9 +123,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140822395,
     "modifiedTime": null,
     "lastModifiedBy": null

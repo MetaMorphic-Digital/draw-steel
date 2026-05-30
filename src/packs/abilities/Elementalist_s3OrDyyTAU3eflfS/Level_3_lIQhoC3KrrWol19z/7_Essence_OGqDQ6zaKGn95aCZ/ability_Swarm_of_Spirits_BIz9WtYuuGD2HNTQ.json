@@ -23,7 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "aura",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "viUtV7VobcZmNpsf": {
@@ -46,21 +49,36 @@
           "_id": "viUtV7VobcZmNpsf",
           "damage": {
             "tier1": {
-              "value": "3"
+              "value": "3",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6"
+              "value": "6",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "9"
+              "value": "9",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Until the end of your next turn, each ally in the area has each of their characteristic scores treated as 1 higher for the purpose of resisting potencies, and has a +1 bonus to saving throws.</p><p><strong>Persistent 1</strong>: You make the power roll again to target each enemy in the area without spending essence, and the effect lasts until the start of your next turn.</p>"
     },
     "spend": {
       "text": "",
@@ -69,7 +87,20 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Until the end of your next turn, each ally in the area has each of their characteristic scores treated as 1 higher for the purpose of resisting potencies, and has a +1 bonus to saving throws.</p><p><strong>Persistent 1</strong>: You make the power roll again to target each enemy in the area without spending essence, and the effect lasts until the start of your next turn.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -92,6 +123,16 @@
         ],
         "end": {
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
         }
       },
       "disabled": false,
@@ -110,9 +151,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776464308158,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -132,9 +173,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756684281985,
     "modifiedTime": null,
     "lastModifiedBy": null

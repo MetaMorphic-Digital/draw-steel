@@ -29,7 +29,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "15"
+      "primary": "15",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -55,25 +57,50 @@
           "_id": "sSwO3Cc5DP6BbJch",
           "damage": {
             "tier1": {
-              "value": "7"
+              "value": "7",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "11"
+              "value": "11",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "16"
+              "value": "16",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>If the arrowswift is hidden when they use this ability, they [[/gain 2 surges]] that can be used immediately</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If the arrowswift is hidden when they use this ability, they [[/gain 2 surges]] that can be used immediately</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -86,9 +113,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913515033,
     "modifiedTime": null,
     "lastModifiedBy": null

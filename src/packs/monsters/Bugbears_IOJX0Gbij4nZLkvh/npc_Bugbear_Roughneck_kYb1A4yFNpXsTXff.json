@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 2,
-      "ev": 16,
       "role": "brute",
       "organization": "elite"
+    },
+    "ev": 16,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,11 +118,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -127,7 +133,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "8ccAKB83thHuyqty": {
@@ -139,31 +146,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "DNTLGrB8tVpKwG2o": {
               "_id": "DNTLGrB8tVpKwG2o",
@@ -207,7 +215,8 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "XHFtYA8aGJx1sjej": {
               "name": "Push",
@@ -251,17 +260,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The ability takes the Area keyword and loses the Strike keyword, its distance becomes a 1 burst, and it targets each enemy in the area.</p>"
-        },
-        "spend": {
-          "text": "The ability takes the Area keyword and loses the Strike  keyword, its distance becomes a 1 burst, and it targets each enemy in the area.",
-          "value": 5
         },
         "source": {
           "book": "Monsters",
@@ -271,7 +273,39 @@
         "_dsid": "haymaker",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 5,
+              "multiple": false
+            },
+            "description": "<p>The ability takes the Area keyword and loses the Strike  keyword, its distance becomes a 1 burst, and it targets each enemy in the area.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The ability takes the Area keyword and loses the Strike keyword, its distance becomes a 1 burst, and it targets each enemy in the area.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -281,12 +315,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833696
       },
       "_id": "SUZ0PWGPwRWDwLuI",
       "ownership": {
@@ -308,11 +342,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -320,7 +357,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "F49rXI7CIPzntWS6": {
@@ -332,31 +370,32 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "Fv1JN2h7XFojm2ZP": {
               "_id": "Fv1JN2h7XFojm2ZP",
@@ -406,13 +445,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The roughneck can jump up to 5 squares to an unoccupied space within distance of the target before making this strike.</p>"
         },
         "spend": {
           "text": "",
@@ -426,7 +462,23 @@
         "_dsid": "leaping-fury",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The roughneck can jump up to 5 squares to an unoccupied space within distance of the target before making this strike.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -436,12 +488,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833697
       },
       "_id": "T7UfS2awa4j6d6XQ",
       "ownership": {
@@ -461,11 +513,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -473,13 +528,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p><strong>Special:</strong> The target must be grabbed by the roughneck.</p>",
-          "after": "<p>The roughneck moves up to their speed across the ground, dragging the target with them. The target takes [[/damage 2*@scaling damage scaling]]{2 damage} for each square they were dragged through. When this movement ends, the target is no longer grabbed and falls prone. Each square the target was dragged through is difficult terrain for enemies.</p>"
         },
         "spend": {
           "text": "",
@@ -493,7 +545,32 @@
         "_dsid": "drag-through-hell",
         "story": "",
         "resource": 3,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p><strong>Special:</strong> The target must be grabbed by the roughneck.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The roughneck moves up to their speed across the ground, dragging the target with them. The target takes [[/damage 2*@scaling damage scaling]]{2 damage} for each square they were dragged through. When this movement ends, the target is no longer grabbed and falls prone. Each square the target was dragged through is difficult terrain for enemies.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -503,12 +580,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833697
       },
       "_id": "cgU2wcPDWLS83GsI",
       "ownership": {
@@ -529,11 +606,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -541,13 +621,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Special: The target must be grabbed by the roughneck.</p>",
-          "after": "<p>The target is vertical pushed up to 5 squares. An ally doesn’t take damage from being force moved this way.</p>"
         },
         "spend": {
           "text": "",
@@ -561,7 +638,32 @@
         "_dsid": "throw",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Special: The target must be grabbed by the roughneck.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target is vertical pushed up to 5 squares. An ally doesn’t take damage from being force moved this way.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -571,12 +673,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833697
       },
       "_id": "BRTkdIGhWAqc4mMP",
       "ownership": {
@@ -596,11 +698,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -608,13 +713,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The target is grabbed by the roughneck.</p>"
         },
         "spend": {
           "text": "",
@@ -628,7 +730,23 @@
         "_dsid": "catcher",
         "story": "",
         "resource": null,
-        "trigger": "A size 1 creature or object is force moved within distance, or a size 1 ally willingly moves within distance."
+        "trigger": "A size 1 creature or object is force moved within distance, or a size 1 ally willingly moves within distance.",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target is grabbed by the roughneck.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -638,12 +756,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833697
       },
       "_id": "qS9ztqMGYanupTP7",
       "ownership": {
@@ -662,11 +780,15 @@
           "melee"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -674,13 +796,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The roughneck uses Haymaker against a creature or object at any point during the forced movement, or after falling as a result of it.</p>"
         },
         "spend": {
           "text": "",
@@ -694,7 +813,23 @@
         "_dsid": "flying-sawblade",
         "story": "",
         "resource": null,
-        "trigger": "The roughneck is vertical force moved by another creature."
+        "trigger": "The roughneck is vertical force moved by another creature.",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The roughneck uses Haymaker against a creature or object at any point during the forced movement, or after falling as a result of it.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -704,12 +839,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833697
       },
       "_id": "6LgZlB5l1QUT1KBM",
       "ownership": {
@@ -737,26 +872,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -770,9 +923,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.06sDqIj5EE1bUxw1",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757089859491,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -799,7 +952,10 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -815,13 +971,25 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have [[potency M 1]] they are slowed (save ends).</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have [[potency M 1]] they are slowed (save ends).</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -835,9 +1003,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.OE8d20QnSaE7ZHfI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757089861194,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -864,7 +1032,10 @@
         "resource": 10,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -880,13 +1051,25 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has [[potency I 1]] the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has [[potency I 1]] the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -900,9 +1083,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.XPiOlpj5iRNcFIvP",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757089864076,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -928,7 +1111,10 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -944,13 +1130,25 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have [[potency M 1]] they are [[/apply bleeding save]]. While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have [[potency M 1]] they are [[/apply bleeding save]]. While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -959,9 +1157,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1763816733785,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1077,9 +1275,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757089809246,
     "modifiedTime": null,
     "lastModifiedBy": null

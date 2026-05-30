@@ -20,18 +20,24 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "CDJI6TH7I43rbSf8": {
@@ -41,21 +47,30 @@
           "_id": "CDJI6TH7I43rbSf8",
           "other": {
             "tier1": {
-              "display": "You gain 10 temporary Stamina"
+              "display": "You gain 10 temporary Stamina",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "You gain 15 temporary Stamina"
+              "display": "You gain 15 temporary Stamina",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "You gain 20 temporary Stamina"
+              "display": "You gain 20 temporary Stamina",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>While you have temporary Stamina from this ability, you can’t be made bleeding even while dying.</p><p>[[/heal 10 temp]] [[/heal 15 temp]] [[/heal 20 temp]]</p><p>[[/apply xEuVdei0qGpsyKcF]]{Bleeding Immunity}</p>"
     },
     "spend": {
       "text": "",
@@ -64,7 +79,20 @@
     "prerequisites": {
       "dsid": [
         "metakinetic"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>While you have temporary Stamina from this ability, you can’t be made bleeding even while dying.</p><p>[[/heal 10 temp]] [[/heal 15 temp]] [[/heal 20 temp]]</p><p>[[/apply xEuVdei0qGpsyKcF]]{Bleeding Immunity}</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -87,6 +115,16 @@
         ],
         "end": {
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
         }
       },
       "disabled": false,
@@ -105,9 +143,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776553097968,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -127,9 +165,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756087730304,
     "modifiedTime": null,
     "lastModifiedBy": null

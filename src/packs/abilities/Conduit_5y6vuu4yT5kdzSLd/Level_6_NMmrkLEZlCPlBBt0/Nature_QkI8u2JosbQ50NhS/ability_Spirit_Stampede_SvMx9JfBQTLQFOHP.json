@@ -23,21 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "line",
-      "primary": 10,
-      "secondary": 2,
-      "tertiary": 5
+      "primary": "10",
+      "secondary": "2",
+      "tertiary": "5"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "2G8FLU6OsFPFVlun": {
@@ -47,15 +49,34 @@
           "_id": "2G8FLU6OsFPFVlun",
           "damage": {
             "tier1": {
-              "value": "5"
+              "value": "5",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "8"
+              "value": "8",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "11"
+              "value": "11",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "BYZ8b03nBymOonb5": {
           "name": "",
@@ -66,16 +87,19 @@
             "tier1": {
               "display": "{{potency}}, prone and can't stand (save ends)",
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.weak"
               },
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "qxQPIegZ3H871SGG": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             },
@@ -83,32 +107,43 @@
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "qxQPIegZ3H871SGG": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "qxQPIegZ3H871SGG": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -117,8 +152,11 @@
     "prerequisites": {
       "dsid": [
         "nature"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [
     {
@@ -132,7 +170,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -150,9 +198,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760801445038,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -172,9 +220,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760801296028,
     "modifiedTime": null,
     "lastModifiedBy": null

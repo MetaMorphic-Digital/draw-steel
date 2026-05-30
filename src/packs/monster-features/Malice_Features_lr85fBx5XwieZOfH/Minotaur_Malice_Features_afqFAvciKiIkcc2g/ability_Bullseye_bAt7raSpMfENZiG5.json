@@ -8,7 +8,10 @@
     "resource": 7,
     "trigger": "A minotaur starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -37,8 +40,13 @@
               "effects": {
                 "F2fGz4WjWIom6q2J": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             },
             "tier2": {
@@ -46,20 +54,26 @@
               "effects": {
                 "j05qfRBPuK0wvtpo": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
-              "display": "No effect."
+              "display": "No effect.",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -72,7 +86,23 @@
     },
     "_dsid": "bullseye",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -86,7 +116,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -104,9 +144,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1774890073108
@@ -127,7 +167,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -147,9 +197,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1774890073108
@@ -165,9 +215,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761233936752,
     "modifiedTime": null,
     "lastModifiedBy": null

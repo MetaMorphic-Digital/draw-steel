@@ -26,8 +26,21 @@
           {
             "uuid": "Compendium.draw-steel.character-options.Item.R0853kqCl1p0tQSx"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "_id": "Bcz1AHXYec61V023",
@@ -41,7 +54,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -49,9 +61,20 @@
             "key": "system.damage.weakness.holy",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -70,9 +93,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755119461055,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -92,9 +115,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754715846118,
     "modifiedTime": null,
     "lastModifiedBy": null

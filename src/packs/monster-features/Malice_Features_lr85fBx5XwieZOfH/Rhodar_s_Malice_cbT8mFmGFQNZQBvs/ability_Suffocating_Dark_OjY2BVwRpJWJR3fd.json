@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A  starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -19,13 +22,10 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Rhodar throws one of his spears into an unoccupied space within 10 squares, or chooses one of his spears that he has already thrown. Until that spear returns to him or he uses this feature again, the spear emanates magical darkness in a 5 aura. Rhodar can see through this darkness, and any enemy is suffocating while in the darkness.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -38,7 +38,23 @@
     },
     "_dsid": "suffocating-dark",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Rhodar throws one of his spears into an unoccupied space within 10 squares, or chooses one of his spears that he has already thrown. Until that spear returns to him or he uses this feature again, the spear emanates magical darkness in a 5 aura. Rhodar can see through this darkness, and any enemy is suffocating while in the darkness.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "cbT8mFmGFQNZQBvs",
@@ -47,9 +63,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761429794074,
     "modifiedTime": null,
     "lastModifiedBy": null

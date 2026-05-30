@@ -25,19 +25,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "IDVk94H8WvvIugWG": {
@@ -50,21 +54,37 @@
               "value": "5 + @chr",
               "types": [
                 "fire"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "9 + @chr",
               "types": [
                 "fire"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "12 + @chr",
               "types": [
                 "fire"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "n8OL9seUarjQi9Gn": {
           "name": "restrained",
@@ -75,12 +95,14 @@
             "tier1": {
               "display": "{{potency}}, restrained (save ends)",
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.weak"
               },
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -88,25 +110,34 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -115,8 +146,11 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -128,9 +162,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756084918503,
     "modifiedTime": null,
     "lastModifiedBy": null

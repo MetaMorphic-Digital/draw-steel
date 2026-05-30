@@ -22,7 +22,9 @@
     "trigger": "The target takes damage.",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -33,13 +35,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The target is teleported to an unoccupied space adjacent to you, taking no damage and suffering no additional effects if this movement would get them out of harm’s way.</p><p><strong>Strained:</strong> You can’t target yourself, and you take the damage and any additional effects instead of the target.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -48,7 +47,20 @@
     "prerequisites": {
       "dsid": [
         "chronopathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The target is teleported to an unoccupied space adjacent to you, taking no damage and suffering no additional effects if this movement would get them out of harm’s way.</p><p><strong>Strained:</strong> You can’t target yourself, and you take the damage and any additional effects instead of the target.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -61,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761098525303,
     "modifiedTime": null,
     "lastModifiedBy": null

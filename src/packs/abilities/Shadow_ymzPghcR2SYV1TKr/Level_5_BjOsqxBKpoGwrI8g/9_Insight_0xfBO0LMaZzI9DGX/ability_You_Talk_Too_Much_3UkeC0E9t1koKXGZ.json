@@ -24,8 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 5
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -38,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "K5kDZkgvrOrvvsu5": {
@@ -50,22 +52,32 @@
             "tier1": {
               "value": "10+ @chr",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "15 + @chr",
               "potency": {
-                "characteristic": ""
-              }
+                "characteristic": "",
+                "value": "@potency.average"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "21 + @chr",
               "potency": {
-                "characteristic": ""
-              }
+                "characteristic": "",
+                "value": "@potency.strong"
+              },
+              "types": [],
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "ojTOHnIXcwECLQYI": {
           "name": "Dazed",
@@ -75,13 +87,15 @@
           "applied": {
             "tier1": {
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               },
               "display": "{{potency}}, dazed (save ends)",
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -89,25 +103,34 @@
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>The target can’t communicate with anyone until the end of the encounter. [[/apply QcDNVWsfPwbqgWbU]]</p>"
     },
     "spend": {
       "text": "",
@@ -116,7 +139,20 @@
     "prerequisites": {
       "dsid": [
         "shadow"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The target can’t communicate with anyone until the end of the encounter. [[/apply QcDNVWsfPwbqgWbU]]</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -129,10 +165,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -150,9 +195,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760804473896,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -172,9 +217,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760804038659,
     "modifiedTime": null,
     "lastModifiedBy": null

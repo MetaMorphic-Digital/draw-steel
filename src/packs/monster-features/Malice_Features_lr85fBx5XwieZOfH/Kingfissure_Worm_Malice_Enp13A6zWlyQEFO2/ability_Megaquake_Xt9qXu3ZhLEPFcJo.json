@@ -9,7 +9,9 @@
     "trigger": "A  starts its turn.",
     "distance": {
       "type": "burst",
-      "primary": 5
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "enemy",
@@ -22,7 +24,8 @@
         "formula": "",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "8mipGCSaI9SK8OQy": {
@@ -35,29 +38,29 @@
             "tier1": {
               "value": "8",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "13",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "17",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             }
           }
         },
@@ -108,10 +111,6 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>Until the end of the next round, each target takes a [[/apply l6fW3mUd5FgAYUOf]]{−3 penalty} to stability, treats all terrain as difficult terrain, and takes [[/damage 10]]{10 damage} whenever they are knocked prone.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
@@ -126,7 +125,23 @@
     "keywords": [
       "area",
       "weapon"
-    ]
+    ],
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Until the end of the next round, each target takes a [[/apply l6fW3mUd5FgAYUOf]]{−3 penalty} to stability, treats all terrain as difficult terrain, and takes [[/damage 10]]{10 damage} whenever they are knocked prone.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -138,7 +153,6 @@
       "_id": "l6fW3mUd5FgAYUOf",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -146,9 +160,20 @@
             "key": "system.combat.stability",
             "value": -3,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -166,12 +191,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620836375
       },
       "start": null,
       "showIcon": 1,
@@ -185,9 +210,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761597507008,
     "modifiedTime": null,
     "lastModifiedBy": null

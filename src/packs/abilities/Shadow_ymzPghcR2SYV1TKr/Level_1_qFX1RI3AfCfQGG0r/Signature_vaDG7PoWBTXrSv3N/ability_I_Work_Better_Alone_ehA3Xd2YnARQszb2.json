@@ -23,20 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 5
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "LSya3EucBwfM9AhF": {
@@ -48,37 +51,34 @@
             "tier1": {
               "value": "3 + @chr",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "6 + @chr",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "9 + @chr",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>If the target has none of your allies adjacent to them, you [[/surge 1]] before making the power roll.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -87,7 +87,20 @@
     "prerequisites": {
       "dsid": [
         "shadow"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>If the target has none of your allies adjacent to them, you [[/surge 1]] before making the power roll.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -99,9 +112,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754652139983,
     "modifiedTime": null,
     "lastModifiedBy": null

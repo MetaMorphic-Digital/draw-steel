@@ -24,19 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "RaRxs6RM15VRz7oK": {
@@ -49,21 +53,37 @@
               "value": "6 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "10 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "14 + @chr",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "2PZZdVD0LbFtqUdu": {
           "name": "",
@@ -74,12 +94,14 @@
             "tier1": {
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
-                "characteristic": "intuition"
+                "characteristic": "intuition",
+                "value": "@potency.weak"
               },
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -88,8 +110,13 @@
               "effects": {
                 "weakened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -97,17 +124,19 @@
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p><strong>Strained:</strong> You start crying, and you can’t use triggered actions or make free strikes until the end of the target’s next turn. </p>"
     },
     "spend": {
       "text": "",
@@ -116,7 +145,20 @@
     "prerequisites": {
       "dsid": [
         "telepathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p><strong>Strained:</strong> You start crying, and you can’t use triggered actions or make free strikes until the end of the target’s next turn. </p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -129,9 +171,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756182307231,
     "modifiedTime": null,
     "lastModifiedBy": null

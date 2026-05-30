@@ -96,9 +96,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 3,
       "role": "brute",
       "organization": "minion"
+    },
+    "ev": 3,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -210,7 +213,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "bloodfire-burn",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -224,9 +232,9 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.3y2tRRGSXTCi59k3.Item.cD0TrJyrk2SfV6Zx",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756956838812,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -255,19 +263,23 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "jMG02168KP341FJk": {
@@ -277,15 +289,34 @@
               "_id": "jMG02168KP341FJk",
               "damage": {
                 "tier1": {
-                  "value": "2"
+                  "value": "2",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "4"
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "5"
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "7FZxbu8MCbHOR9CG": {
               "name": "Push",
@@ -296,26 +327,61 @@
                 "tier1": {
                   "movement": [],
                   "display": "",
-                  "distance": ""
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "distance": "3"
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "distance": "3",
-                  "display": "{{forced}} or prone"
+                  "display": "{{forced}} or prone",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The razor gains an edge against any target affected by a condi tion.</p>"
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The razor gains an edge against any target affected by a condi tion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "JstelykkvcfAnN0V",
@@ -332,9 +398,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756957011728,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -360,7 +426,10 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -484,10 +553,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an <strong>Agility test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -496,6 +561,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an <strong>Agility test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [
@@ -507,10 +583,19 @@
           "transfer": false,
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -527,12 +612,12 @@
             "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770785549792,
-            "createdTime": null
+            "modifiedTime": 1779886278552,
+            "createdTime": 1779886278552
           },
           "_id": "6tfLepwkoZo1d24S",
           "sort": 0,
@@ -547,9 +632,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761240792278,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -581,7 +666,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -592,17 +680,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -611,9 +712,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761240793310,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -645,7 +746,10 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -786,10 +890,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>Each orc shifts up to their speed, moving through enemy spaces if they can. Each enemy passed through during this movement makes a <strong>Might test.</strong></p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -798,6 +898,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each orc shifts up to their speed, moving through enemy spaces if they can. Each enemy passed through during this movement makes a <strong>Might test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -806,9 +917,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wRlM0yKql0bXpAAe",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761240798040,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -832,7 +943,6 @@
       "_id": "uUcbP2JoQSp9rFzM",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -845,9 +955,20 @@
             "key": "damage.bonuses.value",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -865,9 +986,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761240749124,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -894,9 +1015,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1756956636257,
     "modifiedTime": null,
     "lastModifiedBy": null

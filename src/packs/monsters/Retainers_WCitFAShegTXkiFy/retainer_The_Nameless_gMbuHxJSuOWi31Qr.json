@@ -93,7 +93,8 @@
         "dragon",
         "humanoid"
       ],
-      "role": "defender"
+      "role": "defender",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -221,7 +222,9 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -250,13 +253,31 @@
               "_id": "O3wk3X7fEyIsUhA2",
               "damage": {
                 "tier1": {
-                  "value": "6"
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "11"
+                  "value": "11",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "14"
+                  "value": "14",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -268,27 +289,50 @@
               "_id": "7ZGtAo6GpTBJcqDu",
               "forced": {
                 "tier1": {
-                  "display": ""
+                  "display": "",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "display": "",
-                  "distance": "1"
+                  "distance": "1",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "distance": "2"
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "effects": {}
       },
       "_id": "fasyta56Rk8eugw7",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -304,9 +348,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772915687450,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -339,7 +383,9 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -355,13 +401,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The Nameless’s mentor enters the Nameless’s space and rides on their back. The Nameless or the mentor can move the mentor to an adjacent space as a free maneuver. While in the Nameless’s space, the mentor moves with them and can’t use their move action, and ability rolls against the mentor take a bane.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The Nameless’s mentor enters the Nameless’s space and rides on their back. The Nameless or the mentor can move the mentor to an adjacent space as a free maneuver. While in the Nameless’s space, the mentor moves with them and can’t use their move action, and ability rolls against the mentor take a bane.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "S8eUU7hlb53fIsfP",
@@ -378,9 +431,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772915896654,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -442,9 +495,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772903093312,
     "modifiedTime": null,
     "lastModifiedBy": null

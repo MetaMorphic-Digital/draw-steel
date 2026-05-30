@@ -214,13 +214,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The iron dragon is reloaded, allowing <strong>Gout of Flame</strong> to be used again. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The iron dragon is reloaded, allowing <strong>Gout of Flame</strong> to be used again. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "3lbXcqZeq8J7H1kA",
@@ -228,9 +235,9 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776904124041,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -287,13 +294,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The next use of Gout of Flame gains an edge and has a +10 bonus to ranged distance [[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The next use of Gout of Flame gains an edge and has a +10 bonus to ranged distance [[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "7qkhpNHywcugZJ5l",
@@ -332,7 +346,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -352,11 +367,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776903969403,
-            "modifiedTime": 1776904178388,
+            "modifiedTime": 1779886277439,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -367,9 +382,9 @@
       ],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776904136120,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -426,13 +441,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The iron dragon and the creature using this action move together up to 2 squares</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The iron dragon and the creature using this action move together up to 2 squares</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "QA8XmLYDTnhcqkn2",
@@ -440,9 +462,9 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776904205528,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -634,13 +656,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. This ability can’t be used again until the iron dragon is reloaded.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. This ability can’t be used again until the iron dragon is reloaded.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "NiJQQh5zrQ5852Jn",
@@ -664,7 +693,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -684,11 +714,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776904395132,
-            "modifiedTime": 1776904431092,
+            "modifiedTime": 1779886277441,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -705,9 +735,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776904214992,
         "modifiedTime": null,
         "lastModifiedBy": null,

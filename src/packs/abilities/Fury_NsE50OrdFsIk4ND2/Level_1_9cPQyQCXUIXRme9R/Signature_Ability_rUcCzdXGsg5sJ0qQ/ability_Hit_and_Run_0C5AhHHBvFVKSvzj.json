@@ -22,19 +22,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "kMEMHtTjiF7Nyu1O": {
@@ -46,31 +50,32 @@
             "tier1": {
               "value": "2 + @chr",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "5 + @chr",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "7 + @chr",
               "types": [],
-              "properties": [],
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "QjWvwRqV5ATsZRmr": {
           "name": "Slowed",
@@ -108,13 +113,10 @@
                 "characteristic": "agility"
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>You can shift 1 square.</p>"
     },
     "spend": {
       "text": "",
@@ -123,7 +125,20 @@
     "prerequisites": {
       "dsid": [
         "fury"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>You can shift 1 square.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -135,9 +150,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755578525448,
     "modifiedTime": null,
     "lastModifiedBy": null

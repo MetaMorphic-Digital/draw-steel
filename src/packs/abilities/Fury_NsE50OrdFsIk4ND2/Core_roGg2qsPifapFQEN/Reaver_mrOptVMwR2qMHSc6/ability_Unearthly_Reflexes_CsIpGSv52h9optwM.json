@@ -18,31 +18,57 @@
     "trigger": "You take damage.",
     "distance": {
       "type": "self",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You take half the damage from the triggering effect and can shift up to a number of squares equal to [[lookup @A]]{your Agility score}.</p>",
-      "after": ""
-    },
-    "spend": {
-      "text": "If the damage has any potency effects associated  with it, the potency is reduced by 1 for you.",
-      "value": 1
     },
     "prerequisites": {
       "dsid": [
         "reaver"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        },
+        "description": "<p>If the damage has any potency effects associated  with it, the potency is reduced by 1 for you.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You take half the damage from the triggering effect and can shift up to a number of squares equal to [[lookup @A]]{your Agility score}.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -54,9 +80,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755577324840,
     "modifiedTime": null,
     "lastModifiedBy": null

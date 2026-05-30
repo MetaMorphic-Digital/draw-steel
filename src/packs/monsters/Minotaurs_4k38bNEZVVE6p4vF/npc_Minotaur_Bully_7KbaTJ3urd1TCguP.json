@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 8,
-      "ev": 10,
       "role": "brute",
       "organization": "minion"
+    },
+    "ev": 10,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "208"
         },
         "_dsid": "minotaur-sense",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "E0sHLtMViGgc2ldj",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277155
       },
       "_key": "!actors.items!7KbaTJ3urd1TCguP.E0sHLtMViGgc2ldj"
     },
@@ -155,8 +163,9 @@
         ],
         "distance": {
           "type": "meleeRanged",
-          "primary": 2,
-          "secondary": 5
+          "primary": "2",
+          "secondary": "5",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -169,7 +178,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "TJyv5hsz9akdlOdd": {
@@ -181,31 +191,32 @@
                 "tier1": {
                   "value": "4",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "9",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "lM1lbGiwLFCvUfdY": {
               "_id": "lM1lbGiwLFCvUfdY",
@@ -248,13 +259,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -268,7 +276,13 @@
         "_dsid": "javelin-and-bellow",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -278,12 +292,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277155
       },
       "_id": "5RPBFQ2YuKxKTCPY",
       "ownership": {
@@ -301,7 +315,10 @@
         "resource": 3,
         "trigger": "A minotaur starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -312,13 +329,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>For each 3 Malice spent, one minotaur acting this turn gains a +4 bonus to speed and ignores difficult terrain until the start of their next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -331,7 +345,23 @@
         },
         "_dsid": "bull-rush",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>For each 3 Malice spent, one minotaur acting this turn gains a +4 bonus to speed and ignores difficult terrain until the start of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "flags": {},
@@ -339,9 +369,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.eNlTRp36SIVxLFt4",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761234016791,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -365,7 +395,10 @@
         "resource": 5,
         "trigger": "A minotaur starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -376,13 +409,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>One minotaur acting this turn halves any damage they take, and can use the Knockback maneuver as a free triggered action whenever an enemy comes adjacent to them, all until the start of their next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -395,7 +425,23 @@
         },
         "_dsid": "cut-the--nonsense",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>One minotaur acting this turn halves any damage they take, and can use the Knockback maneuver as a free triggered action whenever an enemy comes adjacent to them, all until the start of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "flags": {},
@@ -403,9 +449,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.NnMyD6br3ACf0Ea3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761234018360,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -429,7 +475,10 @@
         "resource": 7,
         "trigger": "A minotaur starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -493,10 +542,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -513,6 +558,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [
@@ -527,7 +583,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -545,11 +611,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1774890078803,
+            "modifiedTime": 1779886277152,
             "createdTime": 1774890078803
           },
           "start": null,
@@ -568,7 +634,17 @@
             "end": {
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -588,11 +664,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.358",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1774890078803,
+            "modifiedTime": 1779886277152,
             "createdTime": 1774890078803
           },
           "showIcon": 2,
@@ -606,9 +682,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.bAt7raSpMfENZiG5",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1765844739760,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -726,7 +802,6 @@
       "_id": "DmT8Bg2b5RmxGRBo",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -739,9 +814,20 @@
             "key": "damage.bonuses.value",
             "value": 3,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -760,12 +846,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886277158
       },
       "start": {
         "combat": null,
@@ -789,9 +875,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757728401104,
     "modifiedTime": null,
     "lastModifiedBy": null

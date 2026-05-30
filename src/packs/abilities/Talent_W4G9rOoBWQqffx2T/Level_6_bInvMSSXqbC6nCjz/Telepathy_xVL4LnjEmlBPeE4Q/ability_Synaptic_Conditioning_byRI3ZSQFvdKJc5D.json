@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 2
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "qsCasGcrXlJk6lut": {
@@ -50,21 +53,37 @@
               "value": "10",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "14",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "20",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "vChGqfpzo6xKwtZg": {
           "name": "",
@@ -73,21 +92,30 @@
           "_id": "vChGqfpzo6xKwtZg",
           "other": {
             "tier1": {
-              "display": "the target takes a bane on ability rolls made to harm you or your allies (save ends)"
+              "display": "the target takes a bane on ability rolls made to harm you or your allies (save ends)",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "the target has a double bane on ability rolls made to harm you or your allies (save ends)"
+              "display": "the target has a double bane on ability rolls made to harm you or your allies (save ends)",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "the target considers you and your allies to be their allies when using abilities and features (save ends)"
+              "display": "the target considers you and your allies to be their allies when using abilities and features (save ends)",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p><strong>Strained:</strong> While the target is under this effect, you no longer consider your enemies to be your enemies when using your abilities and features.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -96,7 +124,20 @@
     "prerequisites": {
       "dsid": [
         "telepathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p><strong>Strained:</strong> While the target is under this effect, you no longer consider your enemies to be your enemies when using your abilities and features.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -109,9 +150,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761077739922,
     "modifiedTime": null,
     "lastModifiedBy": null

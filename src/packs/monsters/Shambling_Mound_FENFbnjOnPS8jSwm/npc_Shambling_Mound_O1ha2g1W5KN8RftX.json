@@ -94,9 +94,12 @@
         "plant"
       ],
       "level": 5,
-      "ev": 84,
       "role": "solo",
       "organization": "solo"
+    },
+    "ev": 84,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "247"
         },
         "_dsid": "solo-monster",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "OMZUzZzHUikl6MQl",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280621
       },
       "_key": "!actors.items!O1ha2g1W5KN8RftX.OMZUzZzHUikl6MQl"
     },
@@ -153,7 +161,12 @@
           "page": "247"
         },
         "_dsid": "engulfing-sac",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "P6LtcTGBP6poft47",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280621
       },
       "_key": "!actors.items!O1ha2g1W5KN8RftX.P6LtcTGBP6poft47"
     },
@@ -191,7 +204,12 @@
           "page": "247"
         },
         "_dsid": "false-appearance",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "Ker9UmYBHVSTOpY1",
       "effects": [],
@@ -205,12 +223,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280621
       },
       "_key": "!actors.items!O1ha2g1W5KN8RftX.Ker9UmYBHVSTOpY1"
     },
@@ -229,7 +247,12 @@
           "page": "247"
         },
         "_dsid": "frothing-flora",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "84O47TupX3fbW1Nn",
       "effects": [],
@@ -243,12 +266,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280621
       },
       "_key": "!actors.items!O1ha2g1W5KN8RftX.84O47TupX3fbW1Nn"
     },
@@ -266,7 +289,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -279,7 +304,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "zgNiqpuZ7YqABVRv": {
@@ -291,29 +317,29 @@
                 "tier1": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "19",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -371,14 +397,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each target takes 7 poison damage.</p>"
-        },
-        "spend": {
-          "text": "The shambling mound can slide each target up to 6 squares.",
-          "value": 2
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -387,7 +405,39 @@
         "_dsid": "vine-lash",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>The shambling mound can slide each target up to 6 squares.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each target takes 7 poison damage.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -397,12 +447,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280621
       },
       "_id": "zKyiCatPaFmQx4NA",
       "ownership": {
@@ -423,7 +473,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 6
+          "primary": "6",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -436,7 +488,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "ogOU8SmMgVxJfs3E": {
@@ -448,29 +501,29 @@
                 "tier1": {
                   "value": "4",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -528,10 +581,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -544,7 +593,13 @@
         "_dsid": "seismic-slam",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -554,12 +609,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "WH1dvvF4M01mjFUU",
       "ownership": {
@@ -579,7 +634,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 6
+          "primary": "6",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -592,17 +649,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target must be size 1L or smaller. The shambling mound reaches out with writhing vines, and if the target has [[potency A 3]], they are engulfed into the shambling mound's @UUID[Compendium.draw-steel.monsters.Actor.OSs5E643DHaEh2zJ]{sack}. If the target is grabbed by the shambling mound, the potency increases by 1. An engulfed creature is [[/apply restrained]], takes [[/damage 3 poison]]{3 poison damage} at the start of each turn, and can't take damage from abilities used from outside the sack. When the shambling mound moves, the engulfed creature moves with them. If the shambling mound dies or their sack is destroyed, each engulfed creature is freed and appears in an unoccupied space within 2 squares of the shambling mound.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "The shambling mound can engulf one additional target for each 2 Malice spent.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -612,7 +662,39 @@
         "_dsid": "engulf",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>The shambling mound can engulf one additional target for each 2 Malice spent.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target must be size 1L or smaller. The shambling mound reaches out with writhing vines, and if the target has [[potency A 3]], they are engulfed into the shambling mound's @UUID[Compendium.draw-steel.monsters.Actor.OSs5E643DHaEh2zJ]{sack}. If the target is grabbed by the shambling mound, the potency increases by 1. An engulfed creature is [[/apply restrained]], takes [[/damage 3 poison]]{3 poison damage} at the start of each turn, and can't take damage from abilities used from outside the sack. When the shambling mound moves, the engulfed creature moves with them. If the shambling mound dies or their sack is destroyed, each engulfed creature is freed and appears in an unoccupied space within 2 squares of the shambling mound.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -622,12 +704,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "OUPNximK4KgZQWGn",
       "ownership": {
@@ -644,7 +726,10 @@
         "category": "",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -657,13 +742,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each creature engulfed by the shambling mound takes [[/damage 5 poison]]{5 poison damage}. The shambling mound gains [[/heal 5 temp]] for each creature who takes damage this way.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -677,7 +759,23 @@
         "_dsid": "leech",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each creature engulfed by the shambling mound takes [[/damage 5 poison]]{5 poison damage}. The shambling mound gains [[/heal 5 temp]] for each creature who takes damage this way.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -687,12 +785,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "9tDzEVaO6sxZ0ajN",
       "ownership": {
@@ -712,7 +810,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 6
+          "primary": "6",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -725,7 +825,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "LLcUdvMdQg8enCd6": {
@@ -737,29 +838,29 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -817,10 +918,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -833,7 +930,13 @@
         "_dsid": "tether-down",
         "story": "",
         "resource": null,
-        "trigger": "A creature within distance willingly moves."
+        "trigger": "A creature within distance willingly moves.",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -843,12 +946,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "yV1oYb5Jh6XRXlrr",
       "ownership": {
@@ -869,9 +972,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 10,
-          "secondary": 2,
-          "tertiary": 1
+          "primary": "10",
+          "secondary": "2",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -884,7 +987,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "gPgxmjetJI2TvI4r": {
@@ -896,29 +1000,29 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -1015,10 +1119,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1031,7 +1131,13 @@
         "_dsid": "ravenous-overgrowth",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [
         {
@@ -1043,7 +1149,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1051,9 +1156,20 @@
                 "key": "system.damage.weaknesses.poison",
                 "value": 5,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1071,12 +1187,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886280613,
+            "modifiedTime": 1779886280613
           },
           "start": null,
           "showIcon": 1,
@@ -1092,7 +1208,6 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1100,9 +1215,20 @@
                 "key": "system.damage.weaknesses.poison",
                 "value": 3,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1120,12 +1246,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886280613,
+            "modifiedTime": 1779886280613
           },
           "start": null,
           "showIcon": 1,
@@ -1140,12 +1266,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "IxK7PQO5m2UxfWLp",
       "ownership": {
@@ -1165,7 +1291,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 6
+          "primary": "6",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1178,13 +1306,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The shambling mound uses Engulf against each target without spending Malice.</p>"
         },
         "spend": {
           "text": "",
@@ -1198,7 +1323,23 @@
         "_dsid": "composting",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The shambling mound uses Engulf against each target without spending Malice.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1208,12 +1349,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "UBCtisJwiDYIOOkj",
       "ownership": {
@@ -1232,7 +1373,10 @@
           "melee"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -1245,13 +1389,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The shambling mound rips themself apart, exposing the [[/apply FBlwLn4umUPrTDcC]]{crux of magic} holding them together. The distance of the shambling mound's melee abilities increases to melee 10, the creature has a double edge on power rolls, and strikes made against them gain an edge.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1265,7 +1406,23 @@
         "_dsid": "exposed-crux",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The shambling mound rips themself apart, exposing the [[/apply FBlwLn4umUPrTDcC]]{crux of magic} holding them together. The distance of the shambling mound's melee abilities increases to melee 10, the creature has a double edge on power rolls, and strikes made against them gain an edge.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1277,7 +1434,6 @@
           "_id": "FBlwLn4umUPrTDcC",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "filters": {
@@ -1290,9 +1446,20 @@
                 "key": "distance",
                 "value": 5,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1310,12 +1477,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886280616,
+            "modifiedTime": 1779886280616
           },
           "start": null,
           "showIcon": 1,
@@ -1330,12 +1497,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "x5y0pJkJrLHuqW9r",
       "ownership": {
@@ -1353,7 +1520,10 @@
         "resource": 3,
         "trigger": "A shambling starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1364,13 +1534,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The shambling mound seeps noxious residue from their vines. of their next turn, they deal an extra [[/damage 12 poison]]{12 poison damage} to each target.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1383,7 +1550,23 @@
         },
         "_dsid": "poisoned-vines",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The shambling mound seeps noxious residue from their vines. of their next turn, they deal an extra [[/damage 12 poison]]{12 poison damage} to each target.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1393,12 +1576,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "o16pqZfW5JZWO1lk",
       "ownership": {
@@ -1416,7 +1599,10 @@
         "resource": 5,
         "trigger": "A shambling starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1553,10 +1739,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>The shambling mound lashes out at each enemy within 10 squares of them, driving them back or into the air. Each target makes an <strong>Agility test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1573,6 +1755,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The shambling mound lashes out at each enemy within 10 squares of them, driving them back or into the air. Each target makes an <strong>Agility test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -1583,12 +1776,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.yGR6YZbVo7U8k4JI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "vIWsD3glFNfqu9Jf",
       "ownership": {
@@ -1606,7 +1799,10 @@
         "resource": 5,
         "trigger": "A shambling starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1617,13 +1813,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The shambling mound takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1636,7 +1829,23 @@
         },
         "_dsid": "solo-action",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The shambling mound takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1646,12 +1855,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "0hOjccxTTwyPbJDa",
       "ownership": {
@@ -1669,7 +1878,10 @@
         "resource": 7,
         "trigger": "A shambling starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1680,13 +1892,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the shambling mound’s next turn, the area within 10 squares of them is difficult terrain for enemies, and any enemy in the area takes a bane on power rolls. Any enemy who starts their turn in the area takes [[/damage 4 acid]] damage, and the shambling mound regains an equal amount of Stamina.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1699,7 +1908,23 @@
         },
         "_dsid": "leeching-wilds",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the shambling mound’s next turn, the area within 10 squares of them is difficult terrain for enemies, and any enemy in the area takes a bane on power rolls. Any enemy who starts their turn in the area takes [[/damage 4 acid]] damage, and the shambling mound regains an equal amount of Stamina.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1709,12 +1934,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_id": "cSyv4Ayh9SAm3HMg",
       "ownership": {
@@ -1738,7 +1963,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "alchemical-ingredients",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1752,12 +1982,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886280622
       },
       "_key": "!actors.items!O1ha2g1W5KN8RftX.kgVBF9jh3oXqX9i9"
     }
@@ -1864,9 +2094,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761529291855,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -22,19 +22,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "ally",
-      "value": 4
+      "value": 4,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "KJ9ruY4GXEnl5zkF": {
@@ -44,21 +48,30 @@
           "_id": "KJ9ruY4GXEnl5zkF",
           "other": {
             "tier1": {
-              "display": "The target gains 5 temporary Stamina"
+              "display": "The target gains 5 temporary Stamina",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "The target gains 10 temporary Stamina"
+              "display": "The target gains 10 temporary Stamina",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "The target gains 15 temporary Stamina"
+              "display": "The target gains 15 temporary Stamina",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You can target yourself instead of one ally with this ability.</p><p>[[/heal 5 temp]] [[/heal 10 temp]] [[/heal 15 temp]]</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -67,7 +80,20 @@
     "prerequisites": {
       "dsid": [
         "conduit"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You can target yourself instead of one ally with this ability.</p><p>[[/heal 5 temp]] [[/heal 10 temp]] [[/heal 15 temp]]</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -80,9 +106,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755646984040,
     "modifiedTime": null,
     "lastModifiedBy": null

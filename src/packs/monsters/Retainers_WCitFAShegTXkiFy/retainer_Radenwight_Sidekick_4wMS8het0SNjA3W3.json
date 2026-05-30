@@ -92,7 +92,8 @@
       "keywords": [
         "humanoid"
       ],
-      "role": "support"
+      "role": "support",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -281,14 +282,11 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "effects": {}
       },
       "_id": "Kyl80bmQzOA3Grmn",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -301,9 +299,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776807289740,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -357,13 +355,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The sidekick makes a free strike against the target.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The sidekick makes a free strike against the target.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "T2Wn7wJjlSwNoeUk",
@@ -377,9 +382,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776807401559,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -400,9 +405,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772907315575,
     "modifiedTime": null,
     "lastModifiedBy": null

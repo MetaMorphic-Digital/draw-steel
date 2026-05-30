@@ -31,7 +31,6 @@
       "_id": "GrJKRE9RfdY78y8a",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -39,15 +38,27 @@
             "key": "system.statuses.immunities",
             "value": "frightened",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           },
           {
             "key": "system.statuses.immunities",
             "value": "taunted",
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -66,9 +77,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1770754062876,
         "modifiedTime": null,
         "lastModifiedBy": null

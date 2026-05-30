@@ -30,7 +30,13 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.NkmO3IZcwqQUowkY"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "P7kbja2xWUlhBZwv": {
         "name": "Aspect of the Wild",
@@ -45,7 +51,14 @@
             "uuid": "Compendium.draw-steel.abilities.Item.1Syy7WKXEGvFRO2o"
           }
         ],
-        "description": "<p>All stormwight kits grant the following ability.</p>"
+        "description": "<p>All stormwight kits grant the following ability.</p>",
+        "sort": 0,
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "ox1Tip9QevSM77xu": {
         "name": "Growing Ferocity",
@@ -59,7 +72,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.OCJ74gnW8SwcTdFL"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "1AkPzphBBiChbc4e": {
         "name": "Growing Ferocity Improvement",
@@ -76,7 +97,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.OCJ74gnW8SwcTdFL"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "FmM2nG1tgb2DyW7V": {
         "name": "Growing Ferocity Improvement",
@@ -93,7 +122,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.Sy8x4zFqIgYU75DB"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
     },
     "equipment": {
@@ -136,7 +173,6 @@
       "_id": "CkDT1M6b0pBoFhqF",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -144,9 +180,20 @@
             "key": "system.combat.size.value",
             "value": 2,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -164,9 +211,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760557604208,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -185,7 +232,6 @@
       "_id": "PnCzrxUY9S5Gr9q9",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -198,9 +244,20 @@
             "key": "distance",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -218,9 +275,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760557681400,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -240,9 +297,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.2",
+    "systemVersion": "1.1.0",
     "createdTime": 1755754199506,
     "modifiedTime": null,
     "lastModifiedBy": null

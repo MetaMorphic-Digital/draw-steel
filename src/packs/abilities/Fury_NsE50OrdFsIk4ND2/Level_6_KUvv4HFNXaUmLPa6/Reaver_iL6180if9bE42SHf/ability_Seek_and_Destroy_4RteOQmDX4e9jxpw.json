@@ -22,7 +22,10 @@
     "resource": 9,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "e08cgScJoDNm1eSl": {
@@ -45,15 +49,34 @@
           "_id": "e08cgScJoDNm1eSl",
           "damage": {
             "tier1": {
-              "value": "4 + @chr"
+              "value": "4 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6 + @chr"
+              "value": "6 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "10 + @chr"
+              "value": "10 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "NYVcSO7ZwHe7C6qH": {
           "name": "",
@@ -64,12 +87,14 @@
             "tier1": {
               "display": "{{potency}}, frightened (save ends)",
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               },
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             },
@@ -77,24 +102,33 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "frightened": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You shift up to your speed.</p>",
-      "after": "<p>If a target who is not a leader or solo creature is winded by this strike, they are reduced to 0 Stamina and you choose an enemy within 5 squares of you. If that enemy has [[potency P average]], they are [[/apply frightened save]].</p>"
     },
     "spend": {
       "text": "",
@@ -103,7 +137,29 @@
     "prerequisites": {
       "dsid": [
         "reaver"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You shift up to your speed.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If a target who is not a leader or solo creature is winded by this strike, they are reduced to 0 Stamina and you choose an enemy within 5 squares of you. If that enemy has [[potency P average]], they are [[/apply frightened save]].</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -116,9 +172,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761523308183,
     "modifiedTime": null,
     "lastModifiedBy": null

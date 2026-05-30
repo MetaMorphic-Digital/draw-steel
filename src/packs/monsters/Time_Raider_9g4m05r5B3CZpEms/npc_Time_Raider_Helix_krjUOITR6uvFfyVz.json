@@ -94,9 +94,12 @@
         "humanoid"
       ],
       "level": 3,
-      "ev": 10,
       "role": "controller",
       "organization": "platoon"
+    },
+    "ev": 10,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "250"
         },
         "_dsid": "foresight",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "hdyVB5s8TWUAz1sh",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833718
       },
       "_key": "!actors.items!krjUOITR6uvFfyVz.hdyVB5s8TWUAz1sh"
     },
@@ -153,7 +161,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -166,7 +176,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "xoVp7N9I7nLpfxdU": {
@@ -180,33 +191,33 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "8",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "11",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -297,10 +308,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -313,7 +320,13 @@
         "_dsid": "blaster-volley",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "effects": [],
       "folder": null,
@@ -323,12 +336,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833718
       },
       "_id": "fvvrg3c2fDRhdgzp",
       "ownership": {
@@ -350,9 +363,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 4,
-          "secondary": 2,
-          "tertiary": 10
+          "primary": "4",
+          "secondary": "2",
+          "tertiary": "10"
         },
         "target": {
           "type": "special",
@@ -365,17 +378,10 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The area is a psionically charged treadmill that pushes creatures and objects at high speed in one direction of the helix's choice. Any creature who enters the area or starts their turn there slides 3 squares toward the end of the area in the chosen direction. Each enemy in the area when it first appears takes [[/damage 3 damage]] before they slide.</p>"
-        },
-        "spend": {
-          "text": "The helix creates a second kinetic lane.",
-          "value": 3
         },
         "source": {
           "book": "Monsters",
@@ -385,7 +391,39 @@
         "_dsid": "kinetic-lane",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 3,
+              "multiple": false
+            },
+            "description": "<p>The helix creates a second kinetic lane.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The area is a psionically charged treadmill that pushes creatures and objects at high speed in one direction of the helix's choice. Any creature who enters the area or starts their turn there slides 3 squares toward the end of the area in the chosen direction. Each enemy in the area when it first appears takes [[/damage 3 damage]] before they slide.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -395,12 +433,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833718
       },
       "_id": "fBBQLGgx58YLnKCW",
       "ownership": {
@@ -434,8 +472,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 5,
-          "secondary": 3
+          "primary": "5",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -446,17 +485,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>A time raider acting this turn activates a gravity well in the area. The gravity well sits at the center of the cube and lasts until the end of the encounter, or until a creature adjacent to the well uses a maneuver to deactivate it. The area is difficult terrain for enemies. Any enemy who ends their turn in the area is pulled up to 4 squares toward the well.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A time raider acting this turn activates a gravity well in the area. The gravity well sits at the center of the cube and lasts until the end of the encounter, or until a creature adjacent to the well uses a maneuver to deactivate it. The area is difficult terrain for enemies. Any enemy who ends their turn in the area is pulled up to 4 squares toward the well.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -470,12 +522,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DWLBSTbhAO4dJSvg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833718
       },
       "_key": "!actors.items!krjUOITR6uvFfyVz.DWLBSTbhAO4dJSvg"
     },
@@ -499,7 +551,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -510,17 +565,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, each time raider gains a +3 bonus to speed, and can teleport up to their speed as a move action.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, each time raider gains a +3 bonus to speed, and can teleport up to their speed as a move action.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -534,12 +602,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2rKjwi2thIVeeFZf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833718
       },
       "_key": "!actors.items!krjUOITR6uvFfyVz.2rKjwi2thIVeeFZf"
     },
@@ -562,7 +630,10 @@
         "resource": 10,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -666,10 +737,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -678,6 +745,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [],
@@ -686,12 +764,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.ELtwiIpyMZafdAEM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620833718
       },
       "ownership": {
         "default": 0,
@@ -806,9 +884,9 @@
     "compendiumSource": "Actor.krjUOITR6uvFfyVz",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761424412513,
     "modifiedTime": null,
     "lastModifiedBy": null

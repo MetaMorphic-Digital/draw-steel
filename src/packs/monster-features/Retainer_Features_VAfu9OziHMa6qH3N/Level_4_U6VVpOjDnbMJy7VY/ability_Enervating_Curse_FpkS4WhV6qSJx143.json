@@ -29,7 +29,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "10"
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -124,13 +126,20 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The next creature to make a strike against the target [[/gain 1 surge]] for each level of drain, which must be used on that strike.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The next creature to make a strike against the target [[/gain 1 surge]] for each level of drain, which must be used on that strike.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -143,9 +152,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772914011574,
     "modifiedTime": null,
     "lastModifiedBy": null

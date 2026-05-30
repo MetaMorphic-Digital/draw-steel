@@ -92,7 +92,8 @@
         "fey",
         "humanoid"
       ],
-      "role": "ambusher"
+      "role": "ambusher",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -280,13 +281,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>If the commando started their turn with concealment from the target or hidden from them, they [[/gain 1 surge]] that can be used immediately.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the commando started their turn with concealment from the target or hidden from them, they [[/gain 1 surge]] that can be used immediately.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "TtlcxAhdWNkioMZt",
@@ -300,9 +308,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776705281449,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -351,10 +359,6 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>Special: The target must be grabbed by the commander.</p><p>The target is vertical pushed up to 5 squares. An ally doesn’t take damage from being force moved this way.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -363,6 +367,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Special: The target must be grabbed by the commander.</p><p>The target is vertical pushed up to 5 squares. An ally doesn’t take damage from being force moved this way.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "WCfg0aigzL7qmkBi",
@@ -373,9 +388,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1776705683204
@@ -426,10 +441,6 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The target is grabbed by the commander.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -438,6 +449,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target is grabbed by the commander.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "E1rzwE72ls2rnpO6",
@@ -448,9 +470,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1776705891309
@@ -474,9 +496,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772902902600,
     "modifiedTime": null,
     "lastModifiedBy": null
