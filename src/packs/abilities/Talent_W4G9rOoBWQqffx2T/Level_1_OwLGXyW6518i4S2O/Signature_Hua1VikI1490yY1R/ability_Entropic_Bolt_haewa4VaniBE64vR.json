@@ -150,14 +150,23 @@
       "level": null
     },
     "effects": {
-      "before0000000000": {
-        "_id": "before0000000000",
+      "after00000000000": {
+        "_id": "after00000000000",
         "type": "base",
-        "description": "<p>The target takes an extra [[/damage 1 corruption]] damage for each additional time they are targeted by this ability during the encounter.</p><p><strong>Strained:</strong> You [[/gain 1 heroic]]{gain 1 clarity} when you obtain a tier 2 or tier 3 outcome on the power roll.</p>",
-        "before": true,
+        "description": "<p>The target takes an extra [[/damage 1 corruption]] damage for each additional time they are targeted by this ability during the encounter.</p>",
+        "before": false,
         "name": "",
         "img": null,
         "sort": 0
+      },
+      "iZTiwRozAYr60dQ7": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "strained",
+        "_id": "iZTiwRozAYr60dQ7",
+        "description": "<p>You [[/gain 1 heroic]]{gain 1 clarity} when you obtain a tier 2 or tier 3 outcome on the power roll.</p>",
+        "before": false
       }
     }
   },
@@ -171,7 +180,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.363",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755842473508,

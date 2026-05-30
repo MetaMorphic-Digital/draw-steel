@@ -144,14 +144,23 @@
       "level": null
     },
     "effects": {
-      "before0000000000": {
-        "_id": "before0000000000",
+      "after00000000000": {
+        "_id": "after00000000000",
         "type": "base",
-        "description": "<p>Targets closest to the center of the area are pulled first.</p><p><strong>Strained:</strong> The size of the area increases by 2. You also target yourself and each ally within distance.</p>",
-        "before": true,
+        "description": "<p>Targets closest to the center of the area are pulled first.</p>",
+        "before": false,
         "name": "",
         "img": null,
         "sort": 0
+      },
+      "Fxw06UaUWI8GIAzk": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "strained",
+        "_id": "Fxw06UaUWI8GIAzk",
+        "description": "<p>The size of the area increases by 2. You also target yourself and each ally within distance.</p>",
+        "before": false
       }
     }
   },
@@ -165,7 +174,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.363",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1761075837709,
