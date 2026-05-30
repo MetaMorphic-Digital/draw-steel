@@ -181,7 +181,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Perform a free strike using the NPC's stats against all of the user's targets.
+   * Perform a free strike.
    * @this DrawSteelNPCSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].

@@ -67,6 +67,24 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static getEffectStart(combat = game.combat) {
+    if (!game.combats.isDefaultInitiativeMode) return super.getEffectStart(combat);
+    // In normal Draw Steel initiative, almost all abilities have a duration tied to the *target* rather than the *source* of an effect.
+    // It is therefore the responsibility of whatever is setting the duration to provide the correct combatant & turn.
+    if (!combat?.started) combat = null;
+    return {
+      time: game.time.worldTime,
+      combat: combat?.id ?? null,
+      combatant: null,
+      initiative: null,
+      round: combat?.round ?? null,
+      turn: null,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -90,6 +108,14 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (typeof change.effect?.system.apply === "function")
       return change.effect.system.apply(targetDoc, change, options);
     return super.applyChange(targetDoc, change, options);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _applyChangeUnguided(targetDoc, change, changes, options = {}) {
+    if (!change.key || !(change.key.startsWith?.("flags."))) return;
+    super._applyChangeUnguided(targetDoc, change, changes, options);
   }
 
   /* -------------------------------------------------- */

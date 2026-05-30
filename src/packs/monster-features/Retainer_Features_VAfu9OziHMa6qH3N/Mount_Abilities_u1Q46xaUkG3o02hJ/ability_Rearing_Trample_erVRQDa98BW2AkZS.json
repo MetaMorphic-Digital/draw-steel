@@ -27,7 +27,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "burst"
+      "type": "burst",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -137,13 +140,20 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>A target knocked prone this way or who is already prone takes [[/damage 5]]{an extra 5 damage}.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>A target knocked prone this way or who is already prone takes [[/damage 5]]{an extra 5 damage}.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -156,9 +166,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912589496,
     "modifiedTime": null,
     "lastModifiedBy": null

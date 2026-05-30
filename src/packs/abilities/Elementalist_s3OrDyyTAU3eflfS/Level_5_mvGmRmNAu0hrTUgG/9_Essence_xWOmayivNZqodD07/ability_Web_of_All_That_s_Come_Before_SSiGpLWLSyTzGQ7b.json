@@ -24,8 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 4,
-      "secondary": 10
+      "primary": "4",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -38,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "Gk3r4P0goHs7vxgc": {
@@ -53,8 +55,10 @@
                 "corruption"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "3",
@@ -62,8 +66,10 @@
                 "corruption"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "5",
@@ -71,10 +77,13 @@
                 "corruption"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "wAceEUL6rbnpAyVx": {
           "name": "",
@@ -87,36 +96,47 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>The area is difficult terrain until the start of your next turn. Each enemy who ends their turn in the area is [[/apply restrained save]].</p><p><strong>Persistent 1</strong>: The area remains until the start of your next turn.</p>"
     },
     "spend": {
       "text": "",
@@ -125,7 +145,20 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The area is difficult terrain until the start of your next turn. Each enemy who ends their turn in the area is [[/apply restrained save]].</p><p><strong>Persistent 1</strong>: The area remains until the start of your next turn.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -138,9 +171,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761072834749,
     "modifiedTime": null,
     "lastModifiedBy": null

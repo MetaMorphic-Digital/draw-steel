@@ -23,7 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "t0ZWjOf2W1794m2d": {
@@ -46,15 +49,34 @@
           "_id": "t0ZWjOf2W1794m2d",
           "damage": {
             "tier1": {
-              "value": "8 + @chr"
+              "value": "8 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "12 + @chr"
+              "value": "12 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "16 + @chr"
+              "value": "16 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "AH6miRQQEMg0MHSP": {
           "name": "",
@@ -63,21 +85,30 @@
           "_id": "AH6miRQQEMg0MHSP",
           "other": {
             "tier1": {
-              "display": "as a free triggered action, one ally within 10 squares of the target can use a strike signature ability against the target"
+              "display": "as a free triggered action, one ally within 10 squares of the target can use a strike signature ability against the target",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "as a free triggered action, one ally within 10 squares of the target can use a strike signature ability that gains an edge against the target"
+              "display": "as a free triggered action, one ally within 10 squares of the target can use a strike signature ability that gains an edge against the target",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "as a free triggered action, two allies within 10 squares of the target can each use a strike signature ability that gains an edge against the target"
+              "display": "as a free triggered action, two allies within 10 squares of the target can each use a strike signature ability that gains an edge against the target",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Each ally can shift up to 2 squares and [[/surge 2]] before making the strike.</p>"
     },
     "spend": {
       "text": "",
@@ -86,7 +117,20 @@
     "prerequisites": {
       "dsid": [
         "paragon"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Each ally can shift up to 2 squares and [[/surge 2]] before making the strike.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -99,9 +143,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761257994086,
     "modifiedTime": null,
     "lastModifiedBy": null

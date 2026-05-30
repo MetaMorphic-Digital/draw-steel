@@ -92,7 +92,8 @@
       "keywords": [
         "undead"
       ],
-      "role": "harrier"
+      "role": "harrier",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -403,13 +404,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The vampire rebel gains temporary Stamina equal to any corruption damage dealt.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The vampire rebel gains temporary Stamina equal to any corruption damage dealt.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "BMYPrX9wwt9YgGlO",
@@ -423,9 +431,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776813047506,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -478,13 +486,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The vampire rebel changes their form into a bat. In bat form, their size is 1T and they can fly. The vampire rebel then shifts up to their speed, then regains their true form. If they can’t fit in their current space when they return to their true form, they take [[/damage 10]] damage and are pushed to the nearest unoccupied space.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The vampire rebel changes their form into a bat. In bat form, their size is 1T and they can fly. The vampire rebel then shifts up to their speed, then regains their true form. If they can’t fit in their current space when they return to their true form, they take [[/damage 10]] damage and are pushed to the nearest unoccupied space.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "821zuD3mcusrXZ2o",
@@ -498,9 +513,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776813548764,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -521,9 +536,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772907745647,
     "modifiedTime": null,
     "lastModifiedBy": null

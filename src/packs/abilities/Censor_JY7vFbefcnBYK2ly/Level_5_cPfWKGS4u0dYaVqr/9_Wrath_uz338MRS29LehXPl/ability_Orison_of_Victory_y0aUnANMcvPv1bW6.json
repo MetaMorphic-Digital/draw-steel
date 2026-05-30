@@ -21,7 +21,9 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -34,7 +36,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "YM81IZA48YcSpKSF": {
@@ -42,13 +45,38 @@
           "name": "",
           "img": null,
           "type": "resource",
-          "_id": "YM81IZA48YcSpKSF"
+          "_id": "YM81IZA48YcSpKSF",
+          "resource": {
+            "tier1": {
+              "amount": 1,
+              "type": "surge",
+              "display": "",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "amount": 2,
+              "type": "surge",
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "amount": 3,
+              "type": "surge",
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>A target can end one effect on them that is ended by a saving throw or that ends at the end of their turn, or a prone target can stand up.</p>"
     },
     "spend": {
       "text": "",
@@ -57,7 +85,20 @@
     "prerequisites": {
       "dsid": [
         "censor"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>A target can end one effect on them that is ended by a saving throw or that ends at the end of their turn, or a prone target can stand up.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -70,9 +111,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760990661129,
     "modifiedTime": null,
     "lastModifiedBy": null

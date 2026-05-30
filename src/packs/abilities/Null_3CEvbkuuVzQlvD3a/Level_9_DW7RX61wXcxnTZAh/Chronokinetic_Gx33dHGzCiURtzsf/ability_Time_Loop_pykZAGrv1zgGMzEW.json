@@ -20,7 +20,10 @@
     "resource": 11,
     "trigger": "Another creature on the encounter map ends their turn.",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -31,13 +34,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You take a bonus turn immediately after the triggering creature. This ability can be used only once per combat round.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -46,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "chronokinetic"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You take a bonus turn immediately after the triggering creature. This ability can be used only once per combat round.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -59,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761332123684,
     "modifiedTime": null,
     "lastModifiedBy": null

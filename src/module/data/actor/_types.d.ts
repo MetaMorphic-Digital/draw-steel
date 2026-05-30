@@ -213,6 +213,12 @@ declare module "./retainer.mjs" {
       keywords: Set<string> & { list: string[]; labels: string };
       role: string;
       roleLabel: string;
+      mentor: DrawSteelActor;
     }
+    recoveries: BarAttribute & {
+      bonus: number;
+      recoveryValue: number;
+      divisor: number;
+    };
   }
 }

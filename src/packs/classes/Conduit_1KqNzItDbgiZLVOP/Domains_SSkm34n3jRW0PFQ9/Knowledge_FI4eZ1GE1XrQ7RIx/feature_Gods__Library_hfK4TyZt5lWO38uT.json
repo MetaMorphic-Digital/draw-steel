@@ -27,15 +27,21 @@
         "skills": {
           "groups": [
             "lore"
-          ]
+          ],
+          "choices": []
         },
-        "description": "<p>You also have any skills in the lore skill group you don’t already have, and you gain a number of skills from any other skill groups equal to the number of skills you had in the lore skill group before you gained this feature.</p>"
+        "description": "<p>You also have any skills in the lore skill group you don’t already have, and you gain a number of skills from any other skill groups equal to the number of skills you had in the lore skill group before you gained this feature.</p>",
+        "sort": 0,
+        "repick": {},
+        "chooseN": null
       }
     },
     "prerequisites": {
       "dsid": [
         "knowledge"
-      ]
+      ],
+      "value": "",
+      "level": null
     }
   },
   "effects": [],
@@ -48,9 +54,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760804405790,
     "modifiedTime": null,
     "lastModifiedBy": null

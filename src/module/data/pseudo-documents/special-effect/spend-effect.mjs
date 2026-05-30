@@ -51,4 +51,11 @@ export default class SpendSpecialEffect extends BaseSpecialEffect {
       resourceName: this.parent.resourceName,
     };
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  showUse(formData) {
+    return !!formData.spend[this.id];
+  }
 }

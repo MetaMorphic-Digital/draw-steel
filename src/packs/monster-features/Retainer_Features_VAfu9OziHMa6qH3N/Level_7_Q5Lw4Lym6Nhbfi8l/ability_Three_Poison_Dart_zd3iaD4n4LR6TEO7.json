@@ -29,7 +29,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "5"
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -145,14 +147,11 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
-    }
+    },
+    "effects": {}
   },
   "effects": [
     {
@@ -173,7 +172,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -196,9 +196,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776702777456,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -226,7 +226,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -250,9 +251,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776702952674,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -272,9 +273,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913326004,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -92,7 +92,8 @@
         "humanoid",
         "infernal"
       ],
-      "role": "controller"
+      "role": "controller",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -369,13 +370,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "87adaBCm9MTOO60z",
@@ -399,7 +407,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -419,11 +428,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776724231348,
-            "modifiedTime": 1776724276525,
+            "modifiedTime": 1779886283583,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -440,9 +449,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776724004697,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -496,13 +505,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>Until the end of the flameslinger’s next turn, the target has fire weakness equal to the flameslinger’s level [[/apply xpXhX8TuNQbdX1Hh]]. If the target is the flameslinger’s mentor, they instead have fire immunity equal to the flameslinger’s level [[/apply dL9nDn48owmaCRIW]].</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the flameslinger’s next turn, the target has fire weakness equal to the flameslinger’s level [[/apply xpXhX8TuNQbdX1Hh]]. If the target is the flameslinger’s mentor, they instead have fire immunity equal to the flameslinger’s level [[/apply dL9nDn48owmaCRIW]].</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "Yim8w8qqIID0C78N",
@@ -534,7 +550,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -554,11 +571,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776724812155,
-            "modifiedTime": 1776724947997,
+            "modifiedTime": 1779886283585,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -592,7 +609,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -612,11 +630,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776724906777,
-            "modifiedTime": 1776724984006,
+            "modifiedTime": 1779886283585,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -633,9 +651,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776724035542,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -656,9 +674,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772906719602,
     "modifiedTime": null,
     "lastModifiedBy": null

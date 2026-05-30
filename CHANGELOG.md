@@ -20,25 +20,43 @@
 
 ## 1.1.0
 
+Increased foundry minimum to 14.363.
+
 ### Added
 
 - Abilities can now have any number of HTML sections, and they can have additional info. (#475)
   - This includes promoting the "spend" field to have an HTML entry. (#329)
+  - Strained & Spend message parts only display if their conditions are fulfilled. (#676)
 - Added `@Embed` support for NPC actors. (#901)
+- Added "Effect Origin" option to applied effects. When used, the duration of the effect is based on the *user* of the effect rather than the target. (#1260)
+- Added advancement support to retainers. Retainers can now have a class with advancements and levels. (#1721)
+  - This class is automatically created when an attempt is made to access and has the default retainer bonuses, however it does not have the ability selections added. Individual retainers must have the ability choices added to this default class.
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)
 - Added ability to place a template from the ability use dialog that will intelligently target tokens inside the region. (#1864)
+- Players attempting to use a free strike on an NPC or Retainer now create a message with a damage roll in the chat. (#1875)
+- Added `ds.data.fields.LocalDocumentField`, a field which provides convenient access to a singular embedded document. (#1922)
+- Added `ds.utils.getDocumentTypes` as a helper function to create a set of valid document subtypes.
 - Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
 
 ### Changed
 
+- Updated Player-Facing Compendium Content:
+  - Updated "I'm No Threat", "Careful Observation" to have AEs that provide edges.
+  - Added appropriate enrichers to Burning Ash and Smoke Bomb.
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
+- Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
 
 ### Deprecated
 
 ### Removed
 
+- Active Effects targeting system data model properties must match to a valid field to apply.
+
 ### Fixed
+
+- Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
+- Corrected instances where the "turn end" expiration would not match to the correct combatant.
 
 ## 1.0.2
 

@@ -20,18 +20,15 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1,
-      "secondary": null,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
-    },
-    "effect": {
-      "before": "<p>A creature seeking to keep a foe close and locked down can attempt to grab a creature using the following ability</p>",
-      "after": "<p>You can usually target only creatures of your size or smaller. If your Might score is 2 or higher, you can target any creature with a size equal to or less than your Might score.</p>"
+      "value": 1,
+      "custom": ""
     },
     "spend": {
       "value": null,
@@ -43,7 +40,8 @@
         "characteristics": [
           "might"
         ],
-        "formula": "@chr"
+        "formula": "@chr",
+        "reactive": false
       },
       "effects": {
         "2SbphbZofGVQUQlD": {
@@ -53,29 +51,70 @@
           "_id": "2SbphbZofGVQUQlD",
           "applied": {
             "tier1": {
-              "display": "No effect."
+              "display": "No effect.",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "display": "You can grab the target, but if you do, the target can make a melee free strike against you before they are grabbed",
               "effects": {
                 "grabbed": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "grabbed": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
-              "display": "The target is grabbed by you."
+              "display": "The target is grabbed by you.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>A creature seeking to keep a foe close and locked down can attempt to grab a creature using the following ability</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>You can usually target only creatures of your size or smaller. If your Might score is 2 or higher, you can target any creature with a size equal to or less than your Might score.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -84,9 +123,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1749702845310,
     "modifiedTime": null,
     "lastModifiedBy": null

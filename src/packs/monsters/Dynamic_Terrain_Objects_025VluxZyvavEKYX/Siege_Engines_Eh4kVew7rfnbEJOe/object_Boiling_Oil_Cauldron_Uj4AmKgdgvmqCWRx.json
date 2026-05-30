@@ -355,13 +355,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>If the boiling oil is poured down on targets from above, it has high ground and gains an edge on the power roll [[/apply FueMxe1mkSuzHUYt]]. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. This ability can’t be used again until the boiling oil cauldron is reloaded.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the boiling oil is poured down on targets from above, it has high ground and gains an edge on the power roll [[/apply FueMxe1mkSuzHUYt]]. A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round. This ability can’t be used again until the boiling oil cauldron is reloaded.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "ww1gDQJq6ZUzJnOw",
@@ -385,7 +392,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -405,11 +413,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776897748437,
-            "modifiedTime": 1776898067265,
+            "modifiedTime": 1779886281727,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -443,7 +451,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -463,11 +472,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776898144028,
-            "modifiedTime": 1776898276682,
+            "modifiedTime": 1779886281727,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -484,9 +493,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776897429609,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -537,13 +546,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The boiling oil cauldron is reloaded, allowing <strong>Boiling Oil</strong> to be used again. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The boiling oil cauldron is reloaded, allowing <strong>Boiling Oil</strong> to be used again. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "8JlGXYDz352o4lXT",
@@ -557,9 +573,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776898335004,
         "modifiedTime": null,
         "lastModifiedBy": null,

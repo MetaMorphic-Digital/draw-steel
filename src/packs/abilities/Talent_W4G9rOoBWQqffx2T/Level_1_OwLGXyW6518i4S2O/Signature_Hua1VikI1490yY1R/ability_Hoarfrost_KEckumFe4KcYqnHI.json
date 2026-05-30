@@ -24,19 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "Sx8aasv3ocHdTOEv": {
@@ -49,20 +53,37 @@
               "value": "4 + @chr",
               "types": [
                 "cold"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "6 + @chr",
               "types": [
                 "cold"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             },
             "tier1": {
               "types": [
                 "cold"
-              ]
+              ],
+              "value": "2 + @chr",
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "KmudjgcU1DRqoTIm": {
           "name": "Slowed",
@@ -74,11 +95,13 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.weak"
               },
               "display": "{{potency}}, slowed (EoT)"
             },
@@ -86,25 +109,34 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p><strong>Strained:</strong> You are [[/apply slowed turn]] until the end of your next turn. Additionally, a target slowed by this ability is [[/apply restrained]] instead.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -113,7 +145,20 @@
     "prerequisites": {
       "dsid": [
         "talent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p><strong>Strained:</strong> You are [[/apply slowed turn]] until the end of your next turn. Additionally, a target slowed by this ability is [[/apply restrained]] instead.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -126,9 +171,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755842485202,
     "modifiedTime": null,
     "lastModifiedBy": null

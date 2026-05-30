@@ -32,7 +32,9 @@
           "reason": -1,
           "intuition": -1
         },
-        "max": 6
+        "max": 6,
+        "sort": 0,
+        "repick": {}
       },
       "0QblWfVj4NOS4aLt": {
         "name": "Benefit",
@@ -47,7 +49,14 @@
           {
             "uuid": "Compendium.draw-steel.rewards.Item.93K4cWrpUlEc4IMM"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "Y6ryDQW8fKvOgrv6": {
         "name": "Additional Benefit",
@@ -72,13 +81,21 @@
           {
             "uuid": "Compendium.draw-steel.rewards.Item.2WnKFx4PDovGAR3J"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
     },
     "echelon": 4,
     "story": "The tyrant is dead! Long live the new king!",
     "prerequisites": {
-      "value": "You or a member of your party becomes the monarch of a nation."
+      "value": "You or a member of your party becomes the monarch of a nation.",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -91,9 +108,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1762188184099,
     "modifiedTime": null,
     "lastModifiedBy": null

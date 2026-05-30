@@ -331,7 +331,9 @@
         "trigger": "A creature or object of the appropriate size enters the trap’s area.",
         "distance": {
           "type": "melee",
-          "primary": 0
+          "primary": "0",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -354,13 +356,31 @@
               "_id": "evseWNDewAAGjsjt",
               "damage": {
                 "tier1": {
-                  "value": "3"
+                  "value": "3",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "4"
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "6"
+                  "value": "6",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -372,13 +392,25 @@
               "_id": "9rBY4NYZ3o2KX8na",
               "other": {
                 "tier1": {
-                  "display": "the target shifts 1 square away from the trap"
+                  "display": "the target shifts 1 square away from the trap",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "display": "the target falls into the pit"
+                  "display": "the target falls into the pit",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "display": "the target falls into the pit"
+                  "display": "the target falls into the pit",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -392,18 +424,26 @@
                 "tier2": {
                   "display": "{{potency}} prone",
                   "potency": {
-                    "value": "0"
-                  }
+                    "value": "0",
+                    "characteristic": ""
+                  },
+                  "effects": {}
                 },
                 "tier1": {
                   "potency": {
-                    "characteristic": "agility"
-                  }
+                    "characteristic": "agility",
+                    "value": "@potency.weak"
+                  },
+                  "display": "",
+                  "effects": {}
                 },
                 "tier3": {
                   "potency": {
-                    "value": "1"
-                  }
+                    "value": "1",
+                    "characteristic": ""
+                  },
+                  "display": "",
+                  "effects": {}
                 }
               }
             },
@@ -419,21 +459,49 @@
                   "effects": {
                     "restrained": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The target ends their movement when they enter the trap’s area. The pit is typically 2 squares deep. The trap must be manually reset.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target ends their movement when they enter the trap’s area. The pit is typically 2 squares deep. The trap must be manually reset.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "fOn4eAbd7USFGfPc",
@@ -450,9 +518,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772989797093,
         "modifiedTime": null,
         "lastModifiedBy": null

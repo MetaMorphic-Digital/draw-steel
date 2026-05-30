@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "UZzL5kwla7Qtvarz": {
@@ -45,30 +49,61 @@
           "_id": "UZzL5kwla7Qtvarz",
           "damage": {
             "tier1": {
-              "value": "7 + @chr"
+              "value": "7 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "11 + @chr"
+              "value": "11 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "16 + @chr"
+              "value": "16 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
-    },
-    "spend": {
-      "text": "While you are winded, this ability deals an extra  1d6 damage for each ferocity spent. While you are dying, it deals an  extra 1d10 damage for each ferocity spent. In either case, you lose 1d6 Stamina after making this strike.",
-      "value": null
     },
     "prerequisites": {
       "dsid": [
         "fury"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": true
+        },
+        "description": "<p>While you are winded, this ability deals an extra  1d6 damage for each ferocity spent. While you are dying, it deals an  extra 1d10 damage for each ferocity spent. In either case, you lose 1d6 Stamina after making this strike.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -81,9 +116,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755580494983,
     "modifiedTime": null,
     "lastModifiedBy": null

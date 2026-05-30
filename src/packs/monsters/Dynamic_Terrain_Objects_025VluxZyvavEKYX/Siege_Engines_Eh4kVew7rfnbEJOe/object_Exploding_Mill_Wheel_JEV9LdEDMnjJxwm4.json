@@ -342,13 +342,29 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>When this ability is used and at the start of every turn thereafter, the exploding mill wheel rolls, moving 2 squares in a straight line. Each creature and object of size 2 or smaller in the area defined by the wheel’s movement is targeted by the following power roll. A target force moved this way is moved to either side of the wheel, as the Director determines.</p>",
-          "after": "<p>If the wheel enters the space of any creature or object of size 3 or larger, or if it is reduced to 0 Stamina, its movement stops and it explodes. Each creature and object in a 5 burst centered on the wheel is targeted by the following power roll.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>5 damage; push 1; [[potency M 0]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>9 damage; push 2; [[potency M 1]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>12 damage; push 3; [[potency M 2]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd></dl><p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>When this ability is used and at the start of every turn thereafter, the exploding mill wheel rolls, moving 2 squares in a straight line. Each creature and object of size 2 or smaller in the area defined by the wheel’s movement is targeted by the following power roll. A target force moved this way is moved to either side of the wheel, as the Director determines.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the wheel enters the space of any creature or object of size 3 or larger, or if it is reduced to 0 Stamina, its movement stops and it explodes. Each creature and object in a 5 burst centered on the wheel is targeted by the following power roll.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>5 damage; push 1; [[potency M 0]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>9 damage; push 2; [[potency M 1]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>12 damage; push 3; [[potency M 2]] [[/apply nKPgAzQFXgDWpDKU]]{burning (save ends)}</p></dd></dl><p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes [[/damage 1d6 fire]] damage at the end of each round.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "UMJP51xJh5nRvZCi",
@@ -372,7 +388,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -392,11 +409,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776900913702,
-            "modifiedTime": 1776900975449,
+            "modifiedTime": 1779886279634,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -413,9 +430,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776899853261,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -496,7 +513,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -522,9 +540,9 @@
       "folder": null,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776901301891,
         "modifiedTime": null,
         "lastModifiedBy": null,

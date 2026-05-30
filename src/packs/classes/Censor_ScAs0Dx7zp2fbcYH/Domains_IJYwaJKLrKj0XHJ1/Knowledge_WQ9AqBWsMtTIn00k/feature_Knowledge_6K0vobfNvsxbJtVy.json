@@ -27,9 +27,13 @@
         "skills": {
           "groups": [
             "lore"
-          ]
+          ],
+          "choices": []
         },
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 0,
+        "description": "",
+        "repick": {}
       },
       "q9e3JzyrRVcfu7Au": {
         "name": "Domain Feature",
@@ -43,7 +47,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.j4JVO5suar1GAG3H"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "6DxGnGcRZJmdnJiF": {
         "name": "4th-Level Domain Feature",
@@ -59,7 +71,13 @@
             "uuid": "Compendium.draw-steel.classes.Item.ztxK21x02cLRzFL2"
           }
         ],
-        "description": "<p>You gain a domain feature from your domain</p>"
+        "description": "<p>You gain a domain feature from your domain</p>",
+        "sort": 0,
+        "repick": {},
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "kFVS9bw1sBxnRTlG": {
         "name": "7th-Level Domain Feature",
@@ -74,15 +92,20 @@
             "uuid": "Compendium.draw-steel.classes.Item.RgNzYEHLOxCLSzVX"
           }
         ],
-        "description": "<p>You gain a domain feature from your domain</p>"
+        "description": "<p>You gain a domain feature from your domain</p>",
+        "sort": 0,
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
     },
-    "type": {
-      "value": "",
-      "subtype": ""
-    },
     "prerequisites": {
-      "value": ""
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -95,9 +118,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754759367358,
     "modifiedTime": null,
     "lastModifiedBy": null

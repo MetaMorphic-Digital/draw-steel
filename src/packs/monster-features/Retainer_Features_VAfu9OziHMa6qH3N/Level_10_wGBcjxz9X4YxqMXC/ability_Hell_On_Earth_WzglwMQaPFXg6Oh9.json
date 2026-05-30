@@ -30,7 +30,8 @@
     "distance": {
       "type": "cube",
       "primary": "5",
-      "secondary": "10"
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -46,13 +47,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>The area burns with infernal fire until the end of the devil’s next turn. Any enemy of the defector who ends their turn in the area takes [[/damage 10 fire]] damage, and if they have [[potency P average]] they are [[/apply frightened save]].</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The area burns with infernal fire until the end of the devil’s next turn. Any enemy of the defector who ends their turn in the area takes [[/damage 10 fire]] damage, and if they have [[potency P average]] they are [[/apply frightened save]].</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -65,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913389166,
     "modifiedTime": null,
     "lastModifiedBy": null

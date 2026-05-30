@@ -20,26 +20,44 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Choose one of the following effects:</p><ul><li><p>You teleport a size 1S or smaller object adjacent to you into an unoccupied space adjacent to you.</p></li><li><p>Until the start of your next turn, a part of your body shoots a shower of harmless noisy sparks that light up each square adjacent to you.</p></li><li><p>You ignite or snuff out (your choice) every mundane light source of 1L or smaller adjacent to you.</p></li><li><p>You transform up to 1 pound of edible food you touch to make it taste delicious or disgusting.</p></li><li><p>Until the start of your next turn, you make your body exude a particular odor you’ve smelled before. This smell can be sensed by each creature within 5 squares of you, but can’t impose any condition or other drawback on those creatures.</p></li><li><p>You place a small magical inscription on the surface of a mundane object you touch, or you can remove an inscription that was made by you or by another creature using Arcane Trick.</p></li><li><p>You touch a size 1T object to cover it with an illusion that makes it look like a different object. Any creature who handles the object becomes aware of the illusion. The illusion ends when you stop touching the object.</p></li></ul>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Choose one of the following effects:</p><ul><li><p>You teleport a size 1S or smaller object adjacent to you into an unoccupied space adjacent to you.</p></li><li><p>Until the start of your next turn, a part of your body shoots a shower of harmless noisy sparks that light up each square adjacent to you.</p></li><li><p>You ignite or snuff out (your choice) every mundane light source of 1L or smaller adjacent to you.</p></li><li><p>You transform up to 1 pound of edible food you touch to make it taste delicious or disgusting.</p></li><li><p>Until the start of your next turn, you make your body exude a particular odor you’ve smelled before. This smell can be sensed by each creature within 5 squares of you, but can’t impose any condition or other drawback on those creatures.</p></li><li><p>You place a small magical inscription on the surface of a mundane object you touch, or you can remove an inscription that was made by you or by another creature using Arcane Trick.</p></li><li><p>You touch a size 1T object to cover it with an illusion that makes it look like a different object. Any creature who handles the object becomes aware of the illusion. The illusion ends when you stop touching the object.</p></li></ul>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -52,9 +70,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755830378976,
     "modifiedTime": null,
     "lastModifiedBy": null
