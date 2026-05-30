@@ -112,11 +112,21 @@
             "perkType": {
               "label": "Perk Type",
               "hint": "If empty, all perk types are allowed."
+            },
+            "cost": {
+              "label": "Resource Cost",
+              "hint": "Heroic ability resource cost."
             }
           }
         },
+        "ZeroSignature": "None (Signature)",
+        "CostDrop": {
+          "heroic": "{value}-cost",
+          "signature": "signature"
+        },
         "AdditionalText": {
           "ancestryTrait": "Drop any ancestry trait here.",
+          "ability": "Drop any {cost} ability here.",
           "kit": "Drop any kit here.",
           "perk": "Drop any {perkTypes} perk here.",
           "subclass": "Drop any {itemName} subclass here."
