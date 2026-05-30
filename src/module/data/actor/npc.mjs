@@ -357,7 +357,7 @@ export default class NPCModel extends CreatureModel {
    * Fetches the description for the "With Captain" effect.
    * @param {object} [options] Options to forward to the TextEditor.enrichHTML method.
    * @returns {Promise<string|null>} The inner HTML of the first element of the description.
-   *                        Null if no such effect exists.
+   *                                 Null if no such effect exists.
    */
   async _getWithCaptainDescription(options = {}) {
     const { withCaptainEffect } = this.monster;
