@@ -921,15 +921,6 @@ export const hero = {
     return ds.CONFIG.hero.xpTracks[xpSetting]?.track ?? fallbackTrack;
   },
   /**
-   * A deprecated version of {@linkcode ds.CONFIG.hero.xpTrack}.
-   */
-  get xp_track () {
-    foundry.utils.logCompatibilityWarning("ds.CONFIG.hero.xp_track is deprecated. To get the currently configured "
-      + "xp track use ds.CONFIG.hero.xpTrack instead. Setting an xp track "
-      + "has moved to an object in ds.CONFIG.hero.xpTracks.", { since: "0.10.0", until: "0.12.0", once: true });
-    return ds.CONFIG.hero.xpTrack;
-  },
-  /**
    * Ways to spend hero tokens.
    * @type {Record<string, {label: string, tokens: number, messageContent: string}>}
    */
@@ -962,6 +953,19 @@ export const hero = {
   },
 };
 preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true });
+
+/* -------------------------------------------------- */
+
+/**
+ * Configuration information for retainers.
+ */
+export const retainer = {
+  /**
+   * The default class added to retainers.
+   * @type {string}
+   */
+  retainerClass: "Compendium.draw-steel.monster-features.Item.ReGdXUMQtcAlBBM3",
+};
 
 /* -------------------------------------------------- */
 
