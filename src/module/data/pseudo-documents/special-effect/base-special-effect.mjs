@@ -69,4 +69,15 @@ export default class BaseSpecialEffect extends TypedPseudoDocument {
   async getSheetContext(options) {
     return {};
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Should this effect show in the ability use message part?
+   * @param {object} formData The return form data from AbilityConfigurationDialog.
+   * @returns {boolean}
+   */
+  showUse(formData) {
+    return true;
+  }
 }
