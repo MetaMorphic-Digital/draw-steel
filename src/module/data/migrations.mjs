@@ -216,7 +216,7 @@ async function version_1_1_migration() {
 
   for (const scene of game.scenes) {
     const operation = scene.tokens.map(t => {
-      if (t.isLinked) return null;
+      if (t.isLinked || !t.delta) return null;
       return {
         action: "update",
         updates: t.actor.itemTypes.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
@@ -232,12 +232,15 @@ async function version_1_1_migration() {
   const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
-    const docs = await pack.getDocuments();
     const wasLocked = pack.config.locked;
     if (wasLocked) await pack.configure({ locked: false });
-    if (pack.type === "Actor") await migrateActorItems(pack);
+    if (pack.type === "Actor") {
+      await pack.getDocuments();
+      await migrateActorItems(pack);
+    }
     else {
-      const updates = docs.filter(i => i.type === "ability").map(i => ({ _id: i.id, system: _replace(i.system.toObject()) }));
+      const docs = await pack.getDocuments({ type: "ability" });
+      const updates = docs.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) }));
       await foundry.documents.Item.updateDocuments(updates, { pack: pack.collection });
     }
     if (wasLocked) await pack.configure({ locked: true });
