@@ -19,7 +19,7 @@ export default class StrainedSpecialEffect extends BaseSpecialEffect {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  showUse(_formData) {
+  showUse(formData) {
     const actor = this.document.parent;
     if (!actor || (actor.type !== "hero")) return false;
     return actor.system.hero.primary.value < 0;
