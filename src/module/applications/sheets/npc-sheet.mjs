@@ -10,6 +10,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
+    position: {
+      height: 662,
+    },
     actions: {
       updateSource: this.#updateSource,
       editMonsterMetadata: this.#editMonsterMetadata,

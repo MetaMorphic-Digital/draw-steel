@@ -57,22 +57,31 @@
         </div>
       </div>
     </fieldset>
-    <fieldset class="free-strike">
-      <legend>{{systemFields.monster.fields.freeStrike.label}}</legend>
-      <div class="free-strike-body">
+    <fieldset class="monster-abilities">
+      <legend>
+        {{localize "DRAW_STEEL.Actor.npc.MonsterAbilities.FieldsetLegend"}}
+        {{#unless isPlay}}
+        <a data-action="editMonsterMetadata">
+          <i class="fa-solid fa-gear"></i>
+        </a>
+        {{/unless}}
+      </legend>
+      <div class="free-strike">
         {{#if isPlay}}
         {{#if gm}}
         <button type="button" data-action="freeStrike">
+          {{systemFields.monster.fields.freeStrike.label}}
           <i class="fa-solid fa-burst"></i>
           {{system.monster.freeStrike}}
         </button>
         {{else}}
-        <span>
+        <span class="player-view">
+          {{systemFields.monster.fields.freeStrike.label}}:
           {{system.monster.freeStrike}}
         </span>
         {{/if}}
         {{else}}
-        {{formInput systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike dataset=datasets.isSource}}
+        {{formGroup systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike dataset=datasets.isSource}}
         {{/if}}
       </div>
       {{#if (and isPlay withCaptain.exists)}}
