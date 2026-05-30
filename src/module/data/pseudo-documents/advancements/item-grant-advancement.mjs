@@ -25,7 +25,17 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       additional: new SchemaField({
         type: new StringField({ required: true }),
         perkType: new SetField(setOptions()),
-        cost: new NumberField({ required: true, integer: true, min: 1 }),
+        cost: new NumberField({
+          required: true,
+          nullable: true,
+          choices: {
+            3: "3",
+            5: "5",
+            7: "7",
+            9: "9",
+            11: "11",
+          },
+        }),
       }),
     });
   }

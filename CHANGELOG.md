@@ -29,6 +29,7 @@ Increased foundry minimum to 14.363.
   - Strained & Spend message parts only display if their conditions are fulfilled. (#676)
 - Added `@Embed` support for NPC actors. (#901)
 - Added "Effect Origin" option to applied effects. When used, the duration of the effect is based on the *user* of the effect rather than the target. (#1260)
+- Item choice advancements can now specify "Ability" as an expansion option, allowing selection of non-core abilities. (#1420)
 - Added advancement support to retainers. Retainers can now have a class with advancements and levels. (#1721)
   - This class is automatically created when an attempt is made to access and has the default retainer bonuses, however it does not have the ability selections added. Individual retainers must have the ability choices added to this default class.
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)

@@ -39,7 +39,7 @@ export default class AdvancementModel extends BaseItemModel {
   prepareBaseData() {
     super.prepareBaseData();
 
-    if ((!AdvancementChain.validTypes.has(this.actor.type))) return;
+    if ((!AdvancementChain.validTypes.has(this.actor?.type))) return;
 
     const flags = this.parent.getFlag(systemID, "advancement") ?? {};
 
