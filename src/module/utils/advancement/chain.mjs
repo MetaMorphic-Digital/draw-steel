@@ -20,13 +20,20 @@ import { systemID } from "../../constants.mjs";
  */
 export default class AdvancementChain {
   /**
+   * Valid actor types for advancements.
+   * @type {Set<string>}
+   */
+  static validTypes = new Set(["hero", "retainer"]);
+
+  /* -------------------------------------------------- */
+
+  /**
    * @param {DrawSteelActor} actor
    * @param {LevelRange} levelRange
    */
   constructor(actor, levelRange) {
-    // TODO: Other actor types will likely support advancements in the future
-    if (actor.type !== "hero") {
-      throw new Error("Unable to create AdvancementChain for actor types other than 'hero'.");
+    if (!AdvancementChain.validTypes.has(actor.type)) {
+      throw new Error("Unable to create AdvancementChain for actor types other than 'hero' or 'retainer'.");
     }
     Object.defineProperty(this, "actor", { value: actor, configurable: false, writable: false });
 
