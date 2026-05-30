@@ -1791,6 +1791,9 @@ export const PowerRollEffect = {
       stacking: {
         label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.stacking",
       },
+      originDuration: {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originDuration",
+      },
     },
   },
   forced: {

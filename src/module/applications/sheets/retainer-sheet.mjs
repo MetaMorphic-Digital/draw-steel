@@ -15,6 +15,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
       editRetainerMetadata: this.#editRetainerMetadata,
       levelUp: this.#levelUp,
       openAdvancements: this.#openAdvancements,
+      freeStrike: this.#freeStrike,
     },
     position: {
       // Immunities and Weaknesses section is visible by default
@@ -150,5 +151,17 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
       const classData = game.items.fromCompendium(retainerClass);
       await this.actor.createEmbeddedDocuments("Item", [classData], { renderSheet: true });
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform a free strike.
+   * @this DrawSteelRetainerSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #freeStrike(event, target) {
+    this.actor.system.performFreeStrike();
   }
 }

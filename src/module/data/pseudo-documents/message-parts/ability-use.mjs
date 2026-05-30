@@ -1,4 +1,5 @@
 import BaseMessagePart from "./base-message-part.mjs";
+import { setOptions } from "../../helpers.mjs";
 import { systemPath } from "../../../constants.mjs";
 
 /**
@@ -6,7 +7,7 @@ import { systemPath } from "../../../constants.mjs";
  * @import AbilityData from "../../item/ability.mjs";
  */
 
-const { DocumentUUIDField } = foundry.data.fields;
+const { DocumentUUIDField, SetField } = foundry.data.fields;
 
 /**
  * A part that displays the main text of the ability.
@@ -37,6 +38,7 @@ export default class AbilityUsePart extends BaseMessagePart {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
+      effects: new SetField(setOptions({ validate: foundry.data.validators.isValidId })),
     });
   }
 
@@ -75,6 +77,7 @@ export default class AbilityUsePart extends BaseMessagePart {
       tier1: false,
       tier2: false,
       tier3: false,
+      effects: this.effects,
     };
     context.ctx.embed = await item.toEmbed(embedConfig);
 

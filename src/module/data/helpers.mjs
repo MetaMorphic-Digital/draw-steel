@@ -1,3 +1,7 @@
+/**
+ * @import { StringFieldOptions } from "@common/data/_types.mjs";
+ */
+
 const { NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
@@ -16,7 +20,7 @@ export const requiredInteger = ({ initial = 0, min = 0, max, label, persisted = 
 
 /**
  * Constructs a string field for use inside of a SetField.
- * @param {object} [options] Options to forward to the field.
+ * @param {StringFieldOptions} [options] Options to forward to the field.
  * @returns A string field that is always truthy.
  */
 export const setOptions = (options) => new StringField({ required: true, blank: false, ...options });
