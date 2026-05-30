@@ -109,8 +109,11 @@
   }
 
   .resources {
-    align-items: flex-start;
-    padding-bottom: 0;
+    align-items: center;
+
+    &:has(+ .free-strike) {
+      height: 100%;
+    }
 
     .form-group.stacked {
       flex-direction: column-reverse;
@@ -143,7 +146,6 @@
       display: flex;
       justify-content: center;
 
-      margin-bottom: 6px;
     }
 
 
@@ -178,27 +180,29 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    gap: 10px;
 
     .free-strike-body {
       text-align: center;
       padding: 10px 0;
       margin-inline: auto;
     }
-  }
 
-  fieldset.with-captain {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    flex: 0 0 fit-content;
+    .with-captain {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 fit-content;
 
-    padding-block-start: 8px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      padding: 6px 6px 0px;
 
-    button {
-      width: 90%;
+      button[disabled] + label {
+        opacity: 0.8;
+      }
     }
   }
 

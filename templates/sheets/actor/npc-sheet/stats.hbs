@@ -75,16 +75,17 @@
         {{formInput systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike dataset=datasets.isSource}}
         {{/if}}
       </div>
+      {{#if (and isPlay withCaptain.exists)}}
+      <div class="with-captain">
+        <button id="{{concat rootId "-withCaptainToggle"}}" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}">
+          {{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}
+          <i class="fa-solid fa-lg {{ifThen withCaptain.effectEnabled "fa-toggle-on" "fa-toggle-off"}}"></i>
+        </button>
+        <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
+      </div>
+      {{/if}}
     </fieldset>
-    {{#if withCaptain.exists}}
-    <fieldset class="with-captain">
-      <legend>{{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}</legend>
-      <button id="{{concat rootId "-withCaptainToggle"}}" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}">
-        <i class="fa-solid fa-lg {{ifThen withCaptain.effectEnabled "fa-toggle-on" "fa-toggle-off"}}"></i>
-      </button>
-      <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
-    </fieldset>
-    {{/if}}
+
   </div>
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"  editCharacteristics=(not isPlay)}}
   {{#if isPlay}}
