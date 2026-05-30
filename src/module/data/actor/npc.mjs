@@ -216,7 +216,7 @@ export default class NPCModel extends CreatureModel {
       movement: this._getMovement(true).list,
       system: this,
       systemFields: this.schema.fields,
-      withCaptain: await this._getWithCaptainDescription(),
+      withCaptain: await this._getWithCaptainDescription(options),
     };
 
     const embed = document.createElement("div");
@@ -353,12 +353,13 @@ export default class NPCModel extends CreatureModel {
 
   /**
    * Fetches the description for the "With Captain" effect.
-   * @returns {string|null} The inner HTML of the first element of the description.
+   * @param {object} [options] Options to forward to the TextEditor.enrichHTML method.
+   * @returns {Promise<string|null>} The inner HTML of the first element of the description.
    *                        Null if no such effect exists.
    */
-  _getWithCaptainDescription() {
+  async _getWithCaptainDescription(options = {}) {
     const withCaptainAE = this.parent.effects.get(this.monster.withCaptainEffect);
     if (!withCaptainAE) return null;
-    return CONFIG.ux.TextEditor.enrichHTML(withCaptainAE.description);
+    return CONFIG.ux.TextEditor.enrichHTML(withCaptainAE.description, { ...options, relativeTo: this.parent });
   }
 }
