@@ -99,14 +99,23 @@
       "level": null
     },
     "effects": {
-      "before0000000000": {
-        "_id": "before0000000000",
+      "after00000000000": {
+        "_id": "after00000000000",
         "type": "base",
-        "description": "<p>This ability ignores cover and concealment.</p><p><strong>Strained:</strong> The ability roll scores a critical hit on a natural 17 or higher. You take half the damage the target takes, and you can’t reduce this damage in any way.</p>",
-        "before": true,
+        "description": "<p>This ability ignores cover and concealment.</p>",
+        "before": false,
         "name": "",
         "img": null,
         "sort": 0
+      },
+      "tlMIaf25cpbFH857": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "strained",
+        "_id": "tlMIaf25cpbFH857",
+        "description": "<p>The ability roll scores a critical hit on a natural 17 or higher. You take half the damage the target takes, and you can’t reduce this damage in any way.</p>",
+        "before": false
       }
     }
   },
@@ -120,7 +129,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.363",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1761140923207,
