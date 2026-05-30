@@ -332,6 +332,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier1) context.tier1 = true;
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
+    if (config.effects) context.limitEffects = config.effects;
     await this.getSheetContext(context);
     const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -450,6 +451,7 @@ export default class AbilityModel extends BaseItemModel {
     context.beforeEffects = [];
     context.afterEffects = [];
     for (const effect of this.effects.sortedContents) {
+      if (context.limitEffects && !context.limitEffects.has(effect.id)) continue;
       const displayData = {
         label: effect.label,
         text: await enrichHTML(effect.description, { relativeTo: this.parent }),
@@ -550,6 +552,10 @@ export default class AbilityModel extends BaseItemModel {
             _id: abilityPartId,
             type: "abilityUse",
             abilityUuid: this.parent.uuid,
+            effects: this.effects.reduce((arr, e) => {
+              if (e.showUse(fd)) arr.push(e.id);
+              return arr;
+            }, []),
           },
         },
       },
