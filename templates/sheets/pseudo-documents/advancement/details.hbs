@@ -22,6 +22,9 @@
     options=ctx.additionalTypes
     blank="None"
     localize=true}}
+    {{#if (eq source.additional.type "ability")}}
+    {{formGroup fields.additional.fields.cost value=source.additional.cost name="additional.cost" blank=(localize "DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.ZeroSignature")}}
+    {{/if}}
     {{#if (eq source.additional.type "perk")}}
     {{formGroup fields.additional.fields.perkType value=source.additional.perkType name="additional.perkType" options=ctx.perkTypes}}
     {{/if}}
