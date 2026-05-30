@@ -22,23 +22,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 3
+      "value": 3,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You can target yourself instead of one creature with this ability. Choose one of the following effects, which lasts until the end of the encounter or until you are dying:</p><ul><li><p>Whenever a target makes a power roll, they can roll three dice and choose which two rolls to use.</p></li><li><p>Whenever a target makes a power roll, they must roll three dice and use the lowest two rolls.</p></li></ul>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -47,7 +47,20 @@
     "prerequisites": {
       "dsid": [
         "fate"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You can target yourself instead of one creature with this ability. Choose one of the following effects, which lasts until the end of the encounter or until you are dying:</p><ul><li><p>Whenever a target makes a power roll, they can roll three dice and choose which two rolls to use.</p></li><li><p>Whenever a target makes a power roll, they must roll three dice and use the lowest two rolls.</p></li></ul>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -60,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756153732415,
     "modifiedTime": null,
     "lastModifiedBy": null

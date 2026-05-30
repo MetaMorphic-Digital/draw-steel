@@ -95,9 +95,12 @@
         "humanoid"
       ],
       "level": 11,
-      "ev": 52,
       "role": "",
       "organization": "leader"
+    },
+    "ev": 52,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -116,7 +119,12 @@
           "page": "33"
         },
         "_dsid": "ajax",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "Q5Ek37V7ToX7sZ5a",
       "effects": [],
@@ -130,12 +138,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283227
       },
       "_key": "!actors.items!cX05o7vGiHtYWMlq.Q5Ek37V7ToX7sZ5a"
     },
@@ -154,7 +162,12 @@
           "page": "33"
         },
         "_dsid": "im-not-done-yet-leader-version",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "SFmHOLTbjCcGU7Yn",
       "effects": [],
@@ -168,12 +181,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283227
       },
       "_key": "!actors.items!cX05o7vGiHtYWMlq.SFmHOLTbjCcGU7Yn"
     },
@@ -193,7 +206,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -206,7 +221,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "7GDdQ4RJaDjxXC83": {
@@ -218,29 +234,29 @@
                 "tier1": {
                   "value": "16",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "22",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "26",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -316,14 +332,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Ajax shifts up to 2 squares between striking each target.</p><p>[[/roll 1d3]]{1d3 recovery loss}</p>"
-        },
-        "spend": {
-          "text": "Ajax can strike one additional target for each Malice spent.",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -332,7 +340,39 @@
         "_dsid": "blade-of-the-gol-king",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": true
+            },
+            "description": "<p>Ajax can strike one additional target for each Malice spent.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Ajax shifts up to 2 squares between striking each target.</p><p>[[/roll 1d3]]{1d3 recovery loss}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -342,12 +382,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283227
       },
       "_id": "N2ZxfLta3AClB9dr",
       "ownership": {
@@ -369,8 +409,9 @@
         ],
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "primary": "3",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemyObject",
@@ -383,7 +424,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "4AWobCfi1Lp5Ao4S": {
@@ -397,33 +439,33 @@
                   "types": [
                     "holy"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "17",
                   "types": [
                     "holy"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "21",
                   "types": [
                     "holy"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -526,14 +568,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>A hexed target glows green, and each of their heroic abilities has its cost increased by 2.</p><p>[[/apply prone]]{Malice Prone}</p>"
-        },
-        "spend": {
-          "text": "The potency increases by 1. Additionally, the ground beneath the area drops 3 squares and is difficult terrain. Each flying target who has M < 5 is knocked prone.",
-          "value": 3
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -542,7 +576,39 @@
         "_dsid": "decree-by-the-jade-hand",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 3,
+              "multiple": false
+            },
+            "description": "<p>The potency increases by 1. Additionally, the ground beneath the area drops 3 squares and is difficult terrain. Each flying target who has M &lt; 5 is knocked prone.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A hexed target glows green, and each of their heroic abilities has its cost increased by 2.</p><p>[[/apply prone]]{Malice Prone}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [
         {
@@ -554,10 +620,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -575,12 +650,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283200,
+            "modifiedTime": 1779886283200
           },
           "start": null,
           "showIcon": 1,
@@ -595,12 +670,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283227
       },
       "_id": "D1LKoT0Q7jDnc2ty",
       "ownership": {
@@ -620,7 +695,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -633,13 +710,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target is marked while Ajax is marked. While the target is marked this way, Ajax gains an edge on power rolls against them, and whenever the target uses a triggered action involving their mark on Ajax, he can make a free strike against them.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -653,7 +727,23 @@
         "_dsid": "is-this-what-they-taught-you",
         "story": "",
         "resource": null,
-        "trigger": "A creature within distance marks Ajax."
+        "trigger": "A creature within distance marks Ajax.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target is marked while Ajax is marked. While the target is marked this way, Ajax gains an edge on power rolls against them, and whenever the target uses a triggered action involving their mark on Ajax, he can make a free strike against them.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -663,12 +753,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "NbizjOonaty5VE5t",
       "ownership": {
@@ -689,7 +779,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -702,13 +794,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ajax makes a free strike against the target, dealing extra damage equal to twice the amount that was reduced. This extra damage can’t be reduced in any way.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -722,7 +811,23 @@
         "_dsid": "shieldbreaker-talisman",
         "story": "",
         "resource": null,
-        "trigger": "An enemy within distance uses an ability to reduce damage."
+        "trigger": "An enemy within distance uses an ability to reduce damage.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Ajax makes a free strike against the target, dealing extra damage equal to twice the amount that was reduced. This extra damage can’t be reduced in any way.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -732,12 +837,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "vzJGz3wISa8dahwD",
       "ownership": {
@@ -754,7 +859,10 @@
         "category": "",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -767,13 +875,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ajax shifts up to his speed and can make a free strike. If the target has [[potency R 4]], this free strike also makes them [[/apply weakened turn]]{weakened} until the end of their next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -787,7 +892,23 @@
         "_dsid": "whos-hesitating",
         "story": "",
         "resource": null,
-        "trigger": "A creature uses the Hesitation is Weakness ability."
+        "trigger": "A creature uses the Hesitation is Weakness ability.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Ajax shifts up to his speed and can make a free strike. If the target has [[potency R 4]], this free strike also makes them [[/apply weakened turn]]{weakened} until the end of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -797,12 +918,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "7wBfgNdDERiB9VYg",
       "ownership": {
@@ -823,7 +944,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -836,13 +959,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>If the target has [[potency I 4]], they use a signature ability against a target of Ajax's choice.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -856,7 +976,23 @@
         "_dsid": "your-obsession-with-me-betrays-you",
         "story": "",
         "resource": null,
-        "trigger": "Ajax causes a creature within distance to gain ferocity or wrath."
+        "trigger": "Ajax causes a creature within distance to gain ferocity or wrath.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>If the target has [[potency I 4]], they use a signature ability against a target of Ajax's choice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -866,12 +1002,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "mLwTyxR105dXDy7r",
       "ownership": {
@@ -890,7 +1026,10 @@
           "magic"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -903,13 +1042,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ajax regains the same amount of Stamina.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -923,7 +1059,23 @@
         "_dsid": "you-would-flounder-your-assault",
         "story": "",
         "resource": 2,
-        "trigger": "A creature within 10 squares regains Stamina."
+        "trigger": "A creature within 10 squares regains Stamina.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Ajax regains the same amount of Stamina.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -933,12 +1085,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "3Okq39f3tznnbfaT",
       "ownership": {
@@ -960,7 +1112,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -973,7 +1127,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "11qGfRWAnifB8MyB": {
@@ -987,33 +1142,33 @@
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "17",
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "21",
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -1071,10 +1226,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Ajax flies at high speed to cut through each target, then appears in an unoccupied space within distance.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1087,7 +1238,23 @@
         "_dsid": "phoenix-wing-king",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Ajax flies at high speed to cut through each target, then appears in an unoccupied space within distance.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1097,12 +1264,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "RJUV2sX1FEuRuWXO",
       "ownership": {
@@ -1122,7 +1289,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1135,13 +1304,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ajax uses the shadow elf eclipse’s technique to reduce each target’s surges to 0. Additionally, until the end of the round, Ajax ignores edges and double edges on any target’s abilities, and ignores any nondamaging effects of any target’s damage-dealing abilities.</p><p><strong>Special:</strong> This villain action can be replaced with a villain action from a creature any target has previously encountered.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1155,7 +1321,23 @@
         "_dsid": "ive-learned-their-tricks",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Ajax uses the shadow elf eclipse’s technique to reduce each target’s surges to 0. Additionally, until the end of the round, Ajax ignores edges and double edges on any target’s abilities, and ignores any nondamaging effects of any target’s damage-dealing abilities.</p><p><strong>Special:</strong> This villain action can be replaced with a villain action from a creature any target has previously encountered.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1165,12 +1347,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "rudAZvz0dbJ6tTCO",
       "ownership": {
@@ -1191,7 +1373,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 7
+          "primary": "7",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1204,13 +1388,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target who has [[potency I 5]] is knocked [[/apply prone]] and [[/apply 8PBTSqtB8xUXvdtu]] until Ajax deals damage to them. For each target not knocked prone, Ajax can move up to his speed toward that target and use Blade of the Gol King against them.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1224,7 +1405,23 @@
         "_dsid": "awe-of-the-iron-crown",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target who has [[potency I 5]] is knocked [[/apply prone]] and [[/apply 8PBTSqtB8xUXvdtu]] until Ajax deals damage to them. For each target not knocked prone, Ajax can move up to his speed toward that target and use Blade of the Gol King against them.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1236,10 +1433,19 @@
           "_id": "8PBTSqtB8xUXvdtu",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1257,12 +1463,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283206,
+            "modifiedTime": 1779886283206
           },
           "start": null,
           "showIcon": 1,
@@ -1277,12 +1483,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "FXmyL19zSJ2c1WCO",
       "ownership": {
@@ -1300,7 +1506,10 @@
         "resource": 2,
         "trigger": "A ajax’s starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1311,13 +1520,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ajax attempts to instill doubt into a creature within line of effect through logic and reason. The creature and Ajax make an opposed <span style=\"text-decoration:underline\"><strong>Reason test</strong></span>. If Ajax wins, he chooses to either deal [[/damage 11 extra]] damage action during the current round. Ajax can’t use this feature against the same creature during the same encounter.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1330,7 +1536,23 @@
         },
         "_dsid": "reason",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Ajax attempts to instill doubt into a creature within line of effect through logic and reason. The creature and Ajax make an opposed <span style=\"text-decoration:underline\"><strong>Reason test</strong></span>. If Ajax wins, he chooses to either deal [[/damage 11 extra]] damage action during the current round. Ajax can’t use this feature against the same creature during the same encounter.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1340,12 +1562,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "HejqpHsGSv6QsE0V",
       "ownership": {
@@ -1363,7 +1585,10 @@
         "resource": 5,
         "trigger": "A ajax’s starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1374,13 +1599,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, Ajax chooses one of the following environments on top of the encounter map, temporarily merging multiple realities.</p><p><strong><span style=\"text-decoration:underline\">Incredibly High Above the Ground:</span></strong> The winds whip and bluster. Any creature who can’t fly takes a −3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures. [[/apply RqFsTSh2IaSnituD]]</p><p><strong><span style=\"text-decoration:underline\">Swamp</span></strong>: The ground is difficult terrain for enemies. Any creature who starts and ends their turn in the same space is [[/apply restrained save]]</p><p><strong><span style=\"text-decoration:underline\">Volcanic Canyon:</span></strong> The air is stiflingly hot. Each enemy takes [[/damage 5 fire]]{5 fire damage} for each square they enter.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1393,7 +1615,23 @@
         },
         "_dsid": "nexus-jewel",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, Ajax chooses one of the following environments on top of the encounter map, temporarily merging multiple realities.</p><p><strong><span style=\"text-decoration:underline\">Incredibly High Above the Ground:</span></strong> The winds whip and bluster. Any creature who can’t fly takes a −3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures. [[/apply RqFsTSh2IaSnituD]]</p><p><strong><span style=\"text-decoration:underline\">Swamp</span></strong>: The ground is difficult terrain for enemies. Any creature who starts and ends their turn in the same space is [[/apply restrained save]]</p><p><strong><span style=\"text-decoration:underline\">Volcanic Canyon:</span></strong> The air is stiflingly hot. Each enemy takes [[/damage 5 fire]]{5 fire damage} for each square they enter.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1404,7 +1642,6 @@
           "transfer": false,
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1412,9 +1649,20 @@
                 "key": "system.combat.stability",
                 "value": -3,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1431,11 +1679,11 @@
             "compendiumSource": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.QQdv4SeqY90z8Yee.ActiveEffect.GuQPGtkIXZ53LJsT",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1761703584742,
-            "modifiedTime": null,
+            "modifiedTime": 1779886283210,
             "lastModifiedBy": null
           },
           "_id": "RqFsTSh2IaSnituD",
@@ -1453,12 +1701,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "QQdv4SeqY90z8Yee",
       "ownership": {
@@ -1476,7 +1724,10 @@
         "resource": 5,
         "trigger": "A ajax’s starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1487,13 +1738,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ajax takes an additional main action on his turn. He can use this feature even if he is dazed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1506,7 +1754,23 @@
         },
         "_dsid": "solo-action",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Ajax takes an additional main action on his turn. He can use this feature even if he is dazed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1516,12 +1780,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "gLfSXhKTEHSah1Ms",
       "ownership": {
@@ -1540,8 +1804,9 @@
         "trigger": "A ajax’s starts its turn.",
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "primary": "3",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemyObject",
@@ -1645,10 +1910,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p>",
-          "after": "<p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1670,6 +1931,26 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "effects": [
@@ -1682,10 +1963,19 @@
           "_id": "qjXeWgkCqr0K87AF",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1706,12 +1996,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770783260879,
-            "createdTime": null
+            "modifiedTime": 1779886283215,
+            "createdTime": 1779886283215
           },
           "showIcon": 2,
           "start": null,
@@ -1726,12 +2016,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.TYx67L0lNw0axGan",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_id": "OzzKADAUbKDjyYzJ",
       "ownership": {
@@ -1755,7 +2045,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "tactical-stance",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1767,10 +2062,19 @@
           "_id": "zIUJHxLrGR9NsOr7",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1788,12 +2092,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283220,
+            "modifiedTime": 1779886283220
           },
           "start": null,
           "showIcon": 1,
@@ -1809,10 +2113,19 @@
           "_id": "SAKe0fyPRq4QlPfB",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1830,12 +2143,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283220,
+            "modifiedTime": 1779886283220
           },
           "start": null,
           "showIcon": 1,
@@ -1851,10 +2164,19 @@
           "_id": "L2AVQCR77dRmpFiL",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1872,12 +2194,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886283220,
+            "modifiedTime": 1779886283220
           },
           "start": null,
           "showIcon": 1,
@@ -1896,12 +2218,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_key": "!actors.items!cX05o7vGiHtYWMlq.LFruAI6gGPPbNLSl"
     },
@@ -1925,7 +2247,9 @@
         "trigger": "",
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -1936,17 +2260,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Two allies within 10 squares of Ajax each move up to their speed and can use a signature ability.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Two allies within 10 squares of Ajax each move up to their speed and can use a signature ability.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "LZ6XvnvhlSa8G2jE",
@@ -1963,12 +2300,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283228
       },
       "_key": "!actors.items!cX05o7vGiHtYWMlq.LZ6XvnvhlSa8G2jE"
     },
@@ -1987,7 +2324,12 @@
           "page": "33"
         },
         "_dsid": "ajax-the-leader",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "flags": {},
@@ -1995,9 +2337,9 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.Q5Ek37V7ToX7sZ5a",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761601250445,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -2114,10 +2456,19 @@
       "transfer": false,
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -2134,12 +2485,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283233
       },
       "_id": "3g8BQcYogBchgndh",
       "sort": 0,
@@ -2163,10 +2514,19 @@
       "transfer": false,
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -2183,12 +2543,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283233
       },
       "_id": "YhzgpgxwEKK4IVFd",
       "sort": 0,
@@ -2212,7 +2572,6 @@
       "transfer": false,
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -2220,9 +2579,20 @@
             "key": "system.damage.immunities.all",
             "value": 5,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -2239,12 +2609,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886283233
       },
       "_id": "QqTZK1S0WmiD0u0G",
       "sort": 0,
@@ -2269,9 +2639,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761601225220,
     "modifiedTime": null,
     "lastModifiedBy": null

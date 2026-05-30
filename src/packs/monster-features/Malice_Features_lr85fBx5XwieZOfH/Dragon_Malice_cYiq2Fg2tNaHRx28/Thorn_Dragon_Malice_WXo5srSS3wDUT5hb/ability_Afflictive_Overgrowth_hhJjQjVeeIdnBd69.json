@@ -17,7 +17,10 @@
     "resource": 7,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -45,19 +48,34 @@
               "value": "12",
               "types": [
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "9",
               "types": [
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "5",
               "types": [
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -73,8 +91,13 @@
               "effects": {
                 "restrained": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             },
             "tier2": {
@@ -82,8 +105,13 @@
               "effects": {
                 "bleeding": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -91,21 +119,38 @@
               "effects": {
                 "bleeding": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test</strong>.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -117,9 +162,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760900311561,
     "modifiedTime": null,
     "lastModifiedBy": null

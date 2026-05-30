@@ -22,7 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "aura",
-      "primary": 2
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -33,13 +35,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Until the end of the encounter or until you are dying, whenever a target makes a strike, they take [[/damage 2*@P holy]]{holy damage} equal to twice your Presence score. A target judged by you takes an extra 2d6 holy damage. [[/damage 2d6+2*@P holy]]</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -48,7 +47,20 @@
     "prerequisites": {
       "dsid": [
         "censor"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the end of the encounter or until you are dying, whenever a target makes a strike, they take [[/damage 2*@P holy]]{holy damage} equal to twice your Presence score. A target judged by you takes an extra 2d6 holy damage. [[/damage 2d6+2*@P holy]]</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -61,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756678961692,
     "modifiedTime": null,
     "lastModifiedBy": null

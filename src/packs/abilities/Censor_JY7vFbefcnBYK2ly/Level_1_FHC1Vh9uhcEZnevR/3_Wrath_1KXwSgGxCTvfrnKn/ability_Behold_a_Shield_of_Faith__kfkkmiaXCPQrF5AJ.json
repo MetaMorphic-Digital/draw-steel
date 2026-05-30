@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "3BEUFKuXX8WildFK": {
@@ -48,27 +52,39 @@
               "value": "3+ @chr",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "6+ @chr",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "9 + @chr",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Until the start of your next turn, enemies take a bane on ability rolls made against you or any ally adjacent to you. [[/apply rPrYaYuy4HzEKSQJ]]</p>"
     },
     "spend": {
       "text": "",
@@ -77,7 +93,20 @@
     "prerequisites": {
       "dsid": [
         "censor"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Until the start of your next turn, enemies take a bane on ability rolls made against you or any ally adjacent to you. [[/apply rPrYaYuy4HzEKSQJ]]</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -90,7 +119,6 @@
       "_id": "rPrYaYuy4HzEKSQJ",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -98,9 +126,20 @@
             "key": "system.combat.targetModifiers.banes",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -118,9 +157,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771661168147,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -140,9 +179,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754755419781,
     "modifiedTime": null,
     "lastModifiedBy": null

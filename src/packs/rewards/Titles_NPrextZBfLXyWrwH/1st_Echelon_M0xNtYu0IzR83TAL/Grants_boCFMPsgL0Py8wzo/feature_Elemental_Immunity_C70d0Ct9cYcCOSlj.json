@@ -15,7 +15,12 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "elemental-immunity",
-    "advancements": {}
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -27,7 +32,6 @@
       "_id": "C13KG8nTn7Arkemd",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -35,9 +39,20 @@
             "key": "system.damage.immunities.[type]",
             "value": 2,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -55,9 +70,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757703143691,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -77,9 +92,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757643379339,
     "modifiedTime": null,
     "lastModifiedBy": null

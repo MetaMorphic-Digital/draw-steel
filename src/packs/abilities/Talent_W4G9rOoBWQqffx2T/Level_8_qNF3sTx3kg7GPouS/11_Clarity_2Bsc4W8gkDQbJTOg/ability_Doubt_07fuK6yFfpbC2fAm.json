@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "QR4KPgHr947z7Sdf": {
@@ -49,16 +52,32 @@
             "tier1": {
               "value": "10 + @chr",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier2": {
-              "value": "14 + @chr"
+              "value": "14 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "20 + @chr"
+              "value": "20 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "MySdHpY6mNAVyGqR": {
           "name": "",
@@ -68,13 +87,15 @@
           "applied": {
             "tier1": {
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               },
               "display": "{{potency}}, weakened (save ends)",
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -83,8 +104,13 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -92,17 +118,19 @@
               "effects": {
                 "gAWiCwCR7T8jgHm9": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>This ability gains an edge against a target with a soul. After you make the power roll, you or one ally within distance have a double edge on the next power roll you make before the end of the encounter.</p><p><strong>Strained:</strong> You feel dispirited until you finish a respite. If you obtain a tier 3 outcome on the power roll, you and the target each have [[/apply \"atsPk0jYryV6sL3q\"]] (save ends).</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -111,7 +139,20 @@
     "prerequisites": {
       "dsid": [
         "talent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>This ability gains an edge against a target with a soul. After you make the power roll, you or one ally within distance have a double edge on the next power roll you make before the end of the encounter.</p><p><strong>Strained:</strong> You feel dispirited until you finish a respite. If you obtain a tier 3 outcome on the power roll, you and the target each have [[/apply \"atsPk0jYryV6sL3q\"]] (save ends).</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [
@@ -134,7 +175,17 @@
             "type": "upgrade",
             "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -152,9 +203,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761100427664,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -175,7 +226,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -196,9 +257,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761223992073,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -218,9 +279,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761099654074,
     "modifiedTime": null,
     "lastModifiedBy": null

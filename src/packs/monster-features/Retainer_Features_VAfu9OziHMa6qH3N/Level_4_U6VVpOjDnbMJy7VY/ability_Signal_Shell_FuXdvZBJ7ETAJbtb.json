@@ -28,7 +28,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -93,13 +96,20 @@
         }
       }
     },
-    "effect": {
-      "before": "<p>The mortar fires a shell straight upward, which hovers 3 squares up in the air and sheds light below it in a 3 cube. Enemies illuminated by this light can’t hide or turn invisible and can’t benefit from concealment or cover. At the start of the mortar’s next turn, the shell explodes to deal damage to enemies in the area.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The mortar fires a shell straight upward, which hovers 3 squares up in the air and sheds light below it in a 3 cube. Enemies illuminated by this light can’t hide or turn invisible and can’t benefit from concealment or cover. At the start of the mortar’s next turn, the shell explodes to deal damage to enemies in the area.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -112,9 +122,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913419044,
     "modifiedTime": null,
     "lastModifiedBy": null

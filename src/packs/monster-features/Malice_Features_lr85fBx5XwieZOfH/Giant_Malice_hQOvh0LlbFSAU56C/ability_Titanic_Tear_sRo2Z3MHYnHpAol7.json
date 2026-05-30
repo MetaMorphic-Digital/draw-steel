@@ -8,11 +8,15 @@
     "resource": 7,
     "trigger": "A giant starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
@@ -32,10 +36,31 @@
           "_id": "CYTJpjkCGlbZGSMr",
           "damage": {
             "tier1": {
-              "value": "10"
+              "value": "10",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "10"
+              "value": "10",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -51,8 +76,13 @@
               "effects": {
                 "2hXPO1wVP7B7bl2z": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             },
             "tier2": {
@@ -60,8 +90,21 @@
               "effects": {
                 "prone": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
           }
@@ -74,18 +117,29 @@
           "_id": "xvCwGOhjo135YaxW",
           "other": {
             "tier1": {
-              "display": ""
+              "display": "",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier3": {
-              "display": "The target can shift into the nearest unoccupied space outside the fissure."
+              "display": "The target can shift into the nearest unoccupied space outside the fissure.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier2": {
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -98,7 +152,23 @@
     },
     "_dsid": "titanic-tear",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -109,10 +179,19 @@
       "transfer": false,
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -131,9 +210,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761166112829,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -152,9 +231,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758823084823,
     "modifiedTime": null,
     "lastModifiedBy": null

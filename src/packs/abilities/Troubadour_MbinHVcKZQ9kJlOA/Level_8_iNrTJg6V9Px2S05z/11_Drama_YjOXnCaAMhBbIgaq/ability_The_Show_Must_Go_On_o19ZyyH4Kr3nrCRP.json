@@ -23,8 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 5,
-      "secondary": 10
+      "primary": "5",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "1Gem5EVqzWZKOPRF": {
@@ -47,21 +49,34 @@
           "_id": "1Gem5EVqzWZKOPRF",
           "damage": {
             "tier1": {
-              "value": "6"
+              "value": "6",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "8",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "12",
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "types": [],
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "EWz0h9DWRalpt74g": {
           "name": "Can't Leave",
@@ -72,12 +87,14 @@
             "tier1": {
               "display": "{{potency}}, the target can't willing leave the area (EoT)",
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               },
               "effects": {
                 "9HzrBCXn5uIhEKEy": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               }
             },
@@ -86,8 +103,13 @@
               "effects": {
                 "9HzrBCXn5uIhEKEy": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -103,15 +125,16 @@
                   "properties": []
                 }
               },
-              "display": "the target can't willingly leave the area (EoT); if {{potency}}, they can't willing leave the area (save ends)"
+              "display": "the target can't willingly leave the area (EoT); if {{potency}}, they can't willing leave the area (save ends)",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Each ally within distance can’t obtain lower than a tier 2 outcome on the next test they make before the start of your next turn.</p>"
     },
     "spend": {
       "text": "",
@@ -120,7 +143,20 @@
     "prerequisites": {
       "dsid": [
         "troubadour"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Each ally within distance can’t obtain lower than a tier 2 outcome on the next test they make before the start of your next turn.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -133,10 +169,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -154,9 +199,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761079608934,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -175,10 +220,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -196,9 +250,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761079703941,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -218,9 +272,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761079459575,
     "modifiedTime": null,
     "lastModifiedBy": null

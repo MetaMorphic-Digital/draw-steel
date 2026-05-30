@@ -94,9 +94,12 @@
         "giant"
       ],
       "level": 8,
-      "ev": 40,
       "role": "artillery",
       "organization": "elite"
+    },
+    "ev": 40,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "148"
         },
         "_dsid": "kingdom-of-isolation",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "ewBt2cb3VMOVeZwG",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886279341
       },
       "_key": "!actors.items!H57UVrTSRDa2Ev5T.ewBt2cb3VMOVeZwG"
     },
@@ -152,7 +160,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 15
+          "primary": "15",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -165,7 +175,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "EybgE7H8YE5EqZgk": {
@@ -179,35 +190,36 @@
                   "types": [
                     "cold"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "18",
                   "types": [
                     "cold"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "22",
                   "types": [
                     "cold"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "fqHKMXMwo7UYO6cg": {
               "_id": "fqHKMXMwo7UYO6cg",
@@ -251,13 +263,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Whenever a creature bleeding this way takes damage from that condition, their speed decreases by 1 (to a minimum of 0) until that condition ends.</p>"
         },
         "spend": {
           "text": "",
@@ -271,7 +280,23 @@
         "_dsid": "ice-javelins",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Whenever a creature bleeding this way takes damage from that condition, their speed decreases by 1 (to a minimum of 0) until that condition ends.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -281,12 +306,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886279341
       },
       "_id": "G7tN0u0LYMte5Ras",
       "ownership": {
@@ -307,7 +332,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 15
+          "primary": "15",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -335,19 +362,34 @@
                   "value": "14",
                   "types": [
                     "cold"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "value": "11",
                   "types": [
                     "cold"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "value": "7",
                   "types": [
                     "cold"
-                  ]
+                  ],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -359,15 +401,38 @@
               "_id": "Zy9iQEuwvn0KyMGB",
               "forced": {
                 "tier1": {
-                  "distance": "4"
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "distance": "2"
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
                   "display": "",
                   "movement": [],
-                  "distance": ""
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -383,8 +448,13 @@
                   "effects": {
                     "bleeding": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
@@ -392,17 +462,26 @@
                   "effects": {
                     "slowed": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>The storm hurler throws three size 1L ice javelins into unoccupied squares within distance. Each javelin has 30 Stamina and fire weakness 5. At the start of the storm hurler’s next turn, all javelins not destroyed explode in a shower of icicles. Each enemy and object within 3 squares of an exploding javelin makes an <strong>Agility test.</strong></p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -416,7 +495,23 @@
         "_dsid": "flower-of-frost",
         "story": "",
         "resource": 3,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The storm hurler throws three size 1L ice javelins into unoccupied squares within distance. Each javelin has 30 Stamina and fire weakness 5. At the start of the storm hurler’s next turn, all javelins not destroyed explode in a shower of icicles. Each enemy and object within 3 squares of an exploding javelin makes an <strong>Agility test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -426,12 +521,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886279342
       },
       "_id": "03Ls2o5fyRZJ2zGA",
       "ownership": {
@@ -451,7 +546,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "ally",
@@ -464,13 +561,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The storm hurler and the target each shift up to 6 squares while staying adjacent to each other. The target can then jump up to 5 squares and make a free strike.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -484,7 +578,23 @@
         "_dsid": "ice-dance",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The storm hurler and the target each shift up to 6 squares while staying adjacent to each other. The target can then jump up to 5 squares and make a free strike.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -494,12 +604,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886279342
       },
       "_id": "UDShM6RZpWGSxI8i",
       "ownership": {
@@ -516,7 +626,10 @@
         "category": "",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
@@ -529,13 +642,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The triggering strike has a double bane. If the strike obtains a tier 1 outcome, the storm hurler uses Ice Javelins against the creature who made it.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -549,7 +659,23 @@
         "_dsid": "frozen-retribution",
         "story": "",
         "resource": null,
-        "trigger": "The storm hurler is targeted by a ranged strike."
+        "trigger": "The storm hurler is targeted by a ranged strike.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The triggering strike has a double bane. If the strike obtains a tier 1 outcome, the storm hurler uses Ice Javelins against the creature who made it.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -559,12 +685,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886279342
       },
       "_id": "DDjzcoa9cG2UPYwv",
       "ownership": {
@@ -582,23 +708,24 @@
         "resource": 5,
         "trigger": "A giant starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each giant in the encounter takes a deep breath and yells, pushing each creature within 3 squares of them up to 10 squares. A creature giant of your choice.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -611,7 +738,23 @@
         },
         "_dsid": "bellow",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each giant in the encounter takes a deep breath and yells, pushing each creature within 3 squares of them up to 10 squares. A creature giant of your choice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "hQOvh0LlbFSAU56C",
@@ -620,12 +763,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.F1EpvH1YM6k7hgia",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886279342
       },
       "ownership": {
         "default": 0,
@@ -646,8 +789,9 @@
         "trigger": "A giant starts its turn.",
         "distance": {
           "type": "cube",
-          "primary": 4,
-          "secondary": 10
+          "primary": "4",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -747,10 +891,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -771,6 +911,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [
@@ -783,10 +934,19 @@
           "_id": "dx8loOnogA4DqJ4J",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -806,12 +966,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770778387180,
-            "createdTime": null
+            "modifiedTime": 1779886279335,
+            "createdTime": 1779886279335
           },
           "showIcon": 2,
           "start": null,
@@ -824,9 +984,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761167176455,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -850,7 +1010,10 @@
         "resource": 7,
         "trigger": "A giant starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -980,10 +1143,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1000,6 +1159,17 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "effects": [
@@ -1011,10 +1181,19 @@
           "transfer": false,
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1033,12 +1212,12 @@
             "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "modifiedTime": 1770783921212,
-            "createdTime": null
+            "modifiedTime": 1779886279338,
+            "createdTime": 1779886279338
           },
           "_id": "2hXPO1wVP7B7bl2z",
           "sort": 0,
@@ -1053,9 +1232,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sRo2Z3MHYnHpAol7",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761167177334,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1174,9 +1353,9 @@
     "compendiumSource": "Actor.H57UVrTSRDa2Ev5T",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758827761768,
     "modifiedTime": null,
     "lastModifiedBy": null

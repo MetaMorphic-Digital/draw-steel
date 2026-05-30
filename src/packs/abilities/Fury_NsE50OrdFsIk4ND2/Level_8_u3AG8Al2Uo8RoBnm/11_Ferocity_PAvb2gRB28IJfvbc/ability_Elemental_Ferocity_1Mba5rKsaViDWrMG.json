@@ -20,7 +20,10 @@
     "resource": 11,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -31,13 +34,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You gain [[/heal 10 temp]]. Additionally, choose acid, cold, corruption, fire, lightning, poison, or sonic damage. Until the end of the encounter or until you are dying, whenever an enemy damages you, they take [[/damage 10 type=acid/cold/corruption/fire/lightning/poison/sonic]] damage of the chosen type. If this damage reduces the enemy to 0 Stamina, you gain [[/heal 10 temp]].</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -46,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "fury"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You gain [[/heal 10 temp]]. Additionally, choose acid, cold, corruption, fire, lightning, poison, or sonic damage. Until the end of the encounter or until you are dying, whenever an enemy damages you, they take [[/damage 10 type=acid/cold/corruption/fire/lightning/poison/sonic]] damage of the chosen type. If this damage reduces the enemy to 0 Stamina, you gain [[/heal 10 temp]].</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -59,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761568493606,
     "modifiedTime": null,
     "lastModifiedBy": null

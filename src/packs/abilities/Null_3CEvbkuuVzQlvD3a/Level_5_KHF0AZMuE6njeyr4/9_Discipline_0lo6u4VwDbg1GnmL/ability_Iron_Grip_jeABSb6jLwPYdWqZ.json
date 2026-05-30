@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "YpPnFE0IDjf8bTnx": {
@@ -47,15 +50,34 @@
           "_id": "YpPnFE0IDjf8bTnx",
           "damage": {
             "tier1": {
-              "value": "10 + @chr"
+              "value": "10 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "14 + @chr"
+              "value": "14 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "18 + @chr"
+              "value": "18 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "TUr74BaE27xVLVl0": {
           "name": "Grabbed",
@@ -68,36 +90,47 @@
               "effects": {
                 "Zhabg9uE19Jmvl1Z": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "Zhabg9uE19Jmvl1Z": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "Zhabg9uE19Jmvl1Z": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>While grabbed this way, the target takes a bane on the Escape Grab maneuver. Each time they use that maneuver, they take [[/damage 2*@A]]{damage} equal to twice your Agility score.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -106,7 +139,20 @@
     "prerequisites": {
       "dsid": [
         "null"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>While grabbed this way, the target takes a bane on the Escape Grab maneuver. Each time they use that maneuver, they take [[/damage 2*@A]]{damage} equal to twice your Agility score.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [
@@ -119,10 +165,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -142,9 +197,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760974247602,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -164,9 +219,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760973272895,
     "modifiedTime": null,
     "lastModifiedBy": null

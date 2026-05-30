@@ -30,7 +30,9 @@
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "secondary": "5"
+      "secondary": "5",
+      "primary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -59,13 +61,31 @@
           "_id": "epUcZjqO68RPGyoV",
           "damage": {
             "tier1": {
-              "value": "7"
+              "value": "7",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "10"
+              "value": "10",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "15"
+              "value": "15",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -81,11 +101,13 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
@@ -93,8 +115,13 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -102,21 +129,33 @@
               "effects": {
                 "CwV7kYkNht7Y0v6d": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The retainer and their mentor can each move up to their speed.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The retainer and their mentor can each move up to their speed.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -129,10 +168,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -150,9 +198,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1773166584767,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -172,9 +220,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912309072,
     "modifiedTime": null,
     "lastModifiedBy": null

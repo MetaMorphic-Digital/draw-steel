@@ -93,7 +93,8 @@
         "soulless",
         "undead"
       ],
-      "role": "hexer"
+      "role": "hexer",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -370,14 +371,11 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "effects": {}
       },
       "_id": "gRXElkjvbfHbn1fX",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -390,9 +388,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776811257068,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -443,13 +441,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>While adjacent to their mentor, the unquiet spirit enters the mentor’s space. A spirit who enters their mentor’s space this way moves with the mentor, can’t be sensed, and can’t affect or be affected by other creatures or objects. They can’t take main actions, maneuvers, or move actions, except to use this ability to leave their mentor’s space and appear in an adjacent space.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>While adjacent to their mentor, the unquiet spirit enters the mentor’s space. A spirit who enters their mentor’s space this way moves with the mentor, can’t be sensed, and can’t affect or be affected by other creatures or objects. They can’t take main actions, maneuvers, or move actions, except to use this ability to leave their mentor’s space and appear in an adjacent space.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "lbEdQiSscVFuAlRL",
@@ -463,9 +468,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776811400797,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -486,9 +491,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772907673576,
     "modifiedTime": null,
     "lastModifiedBy": null

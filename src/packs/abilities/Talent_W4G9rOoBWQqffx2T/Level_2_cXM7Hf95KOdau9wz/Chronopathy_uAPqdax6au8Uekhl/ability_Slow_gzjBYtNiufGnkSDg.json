@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 3
+      "value": 3,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "8VCkXXVwF2cWLWXg": {
@@ -49,49 +53,62 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "3bIFJfKokgJqFwn9": {
                   "condition": "success",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "slowed": {
                   "condition": "success",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "P9cMm0DCloMyEZ2p": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
-              "display": "The target’s is slowed (save ends), or if {{potency}}, the  target's speed is 0 (save ends)."
+              "display": "The target’s is slowed (save ends), or if {{potency}}, the  target's speed is 0 (save ends).",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "effects": {
                 "slowed": {
                   "condition": "success",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "P9cMm0DCloMyEZ2p": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>A target can’t use triggered actions while their speed is reduced this way.</p><p><strong>Strained:</strong> The potency of this ability increases by 1 and you take [[/damage 1d6]] damage. At the start of each combat round while any target is affected by this ability, you take [[/damage 1d6]] damage. You can end the effect on all affected targets at any time (no action required).</p>"
     },
     "spend": {
       "text": "",
@@ -100,7 +117,20 @@
     "prerequisites": {
       "dsid": [
         "chronopathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>A target can’t use triggered actions while their speed is reduced this way.</p><p><strong>Strained:</strong> The potency of this ability increases by 1 and you take [[/damage 1d6]] damage. At the start of each combat round while any target is affected by this ability, you take [[/damage 1d6]] damage. You can end the effect on all affected targets at any time (no action required).</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -113,7 +143,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -121,9 +150,20 @@
             "key": "system.movement.value",
             "value": 0.5,
             "priority": null,
-            "type": "multiply"
+            "type": "multiply",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -141,9 +181,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756617312389,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -162,7 +202,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -170,9 +209,20 @@
             "key": "system.movement.value",
             "value": 0,
             "priority": null,
-            "type": "downgrade"
+            "type": "downgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -190,9 +240,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756617404368,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -212,9 +262,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756181641727,
     "modifiedTime": null,
     "lastModifiedBy": null

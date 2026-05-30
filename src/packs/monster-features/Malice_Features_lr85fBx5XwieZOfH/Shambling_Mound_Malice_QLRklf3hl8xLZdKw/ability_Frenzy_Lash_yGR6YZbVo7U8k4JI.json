@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A shambling starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -33,13 +36,31 @@
           "_id": "FIw8KaXP4FI7VriM",
           "damage": {
             "tier1": {
-              "value": "7"
+              "value": "7",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6"
+              "value": "6",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "3"
+              "value": "3",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -52,16 +73,37 @@
           "forced": {
             "tier1": {
               "display": "push 7 or vertical push 3",
-              "distance": "7"
+              "distance": "7",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "display": "push 5 or vertical push 2",
-              "distance": "5"
+              "distance": "5",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "display": "",
               "movement": [],
-              "distance": ""
+              "distance": "",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -77,17 +119,34 @@
               "effects": {
                 "restrained": {
                   "condition": "always",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
           }
         }
       }
-    },
-    "effect": {
-      "before": "<p>The shambling mound lashes out at each enemy within 10 squares of them, driving them back or into the air. Each target makes an <strong>Agility test</strong>.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -100,7 +159,23 @@
     },
     "_dsid": "frenzy-lash",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The shambling mound lashes out at each enemy within 10 squares of them, driving them back or into the air. Each target makes an <strong>Agility test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "QLRklf3hl8xLZdKw",
@@ -109,9 +184,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761529276208,
     "modifiedTime": null,
     "lastModifiedBy": null

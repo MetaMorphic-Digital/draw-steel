@@ -23,7 +23,10 @@
     "resource": 11,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "LTsU7FOxoOrpMWwR": {
@@ -46,21 +50,30 @@
           "_id": "LTsU7FOxoOrpMWwR",
           "other": {
             "tier1": {
-              "display": "Any target whose Stamina is equal to or less than 8 dies."
+              "display": "Any target whose Stamina is equal to or less than 8 dies.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "Any target whose Stamina is equal to or less than 11 dies."
+              "display": "Any target whose Stamina is equal to or less than 11 dies.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "Any target whose Stamina is equal to or less than 17 dies."
+              "display": "Any target whose Stamina is equal to or less than 17 dies.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You shift up to your speed. Each enemy you move adjacent to during this movement takes [[/damage 2*@M]]{damage equal to twice your Might score}. Then make one power roll that targets each enemy you move adjacent to during this shift. You [[/gain 1 heroic]]{gain 1 ferocity} for each target who dies as a result of this ability (maximum 11 ferocity).</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -69,7 +82,20 @@
     "prerequisites": {
       "dsid": [
         "fury"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You shift up to your speed. Each enemy you move adjacent to during this movement takes [[/damage 2*@M]]{damage equal to twice your Might score}. Then make one power roll that targets each enemy you move adjacent to during this shift. You [[/gain 1 heroic]]{gain 1 ferocity} for each target who dies as a result of this ability (maximum 11 ferocity).</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -82,9 +108,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761569111907,
     "modifiedTime": null,
     "lastModifiedBy": null

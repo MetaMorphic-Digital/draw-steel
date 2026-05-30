@@ -24,19 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "bdrzdUwuRtCLwG6F": {
@@ -49,20 +53,37 @@
               "value": "4 + @chr",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "6 + @chr",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             },
             "tier1": {
               "types": [
                 "corruption"
-              ]
+              ],
+              "value": "2 + @chr",
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "UC2syIUM50AD4dIz": {
           "name": "Slowed",
@@ -75,36 +96,47 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "reason",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -113,8 +145,11 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -126,9 +161,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755740525860,
     "modifiedTime": null,
     "lastModifiedBy": null

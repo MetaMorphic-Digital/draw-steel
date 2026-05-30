@@ -24,19 +24,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "BYiaeMRASIjwYUMK": {
@@ -49,27 +53,39 @@
               "value": "4 + @chr",
               "types": [
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "7 + @chr",
               "types": [
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "11 + @chr",
               "types": [
                 "poison"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Mushrooms cover the target’s body. While the mushrooms are on the target, you and any ally adjacent to the target [[/surge 1]] whenever the target takes damage. The mushrooms can be removed by the target or an adjacent creature as a main action.</p>"
     },
     "spend": {
       "text": "",
@@ -78,7 +94,20 @@
     "prerequisites": {
       "dsid": [
         "elementalist"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Mushrooms cover the target’s body. While the mushrooms are on the target, you and any ally adjacent to the target [[/surge 1]] whenever the target takes damage. The mushrooms can be removed by the target or an adjacent creature as a main action.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -91,9 +120,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755742941127,
     "modifiedTime": null,
     "lastModifiedBy": null

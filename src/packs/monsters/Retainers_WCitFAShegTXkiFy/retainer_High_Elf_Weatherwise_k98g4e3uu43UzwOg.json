@@ -92,7 +92,8 @@
         "fey",
         "humanoid"
       ],
-      "role": "controller"
+      "role": "controller",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -330,13 +331,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>If the weatherwise targets their mentor, the mentor ignores the damage and instead gains temporary Stamina equal to the damage dealt.</p><p>[[/heal 3 temp]] [[/heal 5 temp]] [[/heal 7 temp]]</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the weatherwise targets their mentor, the mentor ignores the damage and instead gains temporary Stamina equal to the damage dealt.</p><p>[[/heal 3 temp]] [[/heal 5 temp]] [[/heal 7 temp]]</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "bHgw3mTYNHvEacyC",
@@ -350,9 +358,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776719335734,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -373,9 +381,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772903164616,
     "modifiedTime": null,
     "lastModifiedBy": null

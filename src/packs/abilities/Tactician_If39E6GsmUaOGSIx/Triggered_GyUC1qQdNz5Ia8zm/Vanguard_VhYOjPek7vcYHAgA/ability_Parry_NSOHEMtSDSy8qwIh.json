@@ -19,35 +19,58 @@
     "trigger": "A creature deals damage to the target.",
     "distance": {
       "type": "melee",
-      "primary": 2,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "2",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "selfOrAlly",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>You can shift 1 square. If the target is you, or if you end this shift adjacent to the target, the target takes half the damage. If the damage has any potency effect associated with it, the potency is decreased by 1.</p>",
-      "after": ""
-    },
-    "spend": {
-      "value": 1,
-      "text": "This ability’s distance becomes Melee 1 + your  Reason score, and you can shift up to a number of squares equal to  your Reason score instead of 1 square."
     },
     "story": "Your quick reflexes cost an enemy the precision they seek.",
     "prerequisites": {
       "dsid": [
         "vanguard"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        },
+        "description": "<p>This ability’s distance becomes Melee 1 + your  Reason score, and you can shift up to a number of squares equal to  your Reason score instead of 1 square.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      },
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You can shift 1 square. If the target is you, or if you end this shift adjacent to the target, the target takes half the damage. If the damage has any potency effect associated with it, the potency is decreased by 1.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "spend": {
+      "text": ""
     }
   },
   "effects": [],
@@ -57,9 +80,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751141730791,
     "modifiedTime": null,
     "lastModifiedBy": null

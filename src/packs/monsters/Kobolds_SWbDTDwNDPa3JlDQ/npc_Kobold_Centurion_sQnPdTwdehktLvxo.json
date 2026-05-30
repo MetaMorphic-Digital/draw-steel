@@ -96,9 +96,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 12,
       "role": "",
       "organization": "leader"
+    },
+    "ev": 12,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -210,7 +213,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "shield-shield",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -221,7 +229,6 @@
           "_id": "Pln75B5jY27eUKbU",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -229,9 +236,20 @@
                 "key": "system.combat.stability",
                 "value": 3,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "duration": {
             "value": null,
@@ -249,11 +267,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.1.0",
             "createdTime": 1757797841157,
-            "modifiedTime": 1757797847680,
+            "modifiedTime": 1779886285596,
             "lastModifiedBy": null
           },
           "origin": null,
@@ -274,9 +292,9 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.3fdmNUhuqakwyz18",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951156451,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -299,7 +317,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -313,9 +336,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951172976,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -342,26 +365,44 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Two kobolds take their turns in a row.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Two kobolds take their turns in a row.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -375,9 +416,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.fyuPK3F17a7SWmWO",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951228626,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -404,26 +445,44 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, all kobolds with <strong>Shield? Shield!</strong> Impose an additional bane on incoming strikes and abilities.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, all kobolds with <strong>Shield? Shield!</strong> Impose an additional bane on incoming strikes and abilities.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -437,9 +496,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.FTBTYYIqhMaTU882",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951229764,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -468,27 +527,43 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 5,
-          "secondary": 10
+          "primary": "5",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "enemy"
+          "type": "enemy",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The centurion uses Pilum against each target and has a double edge. Each target is then pushed up to 3 squares.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The centurion uses Pilum against each target and has a double edge. Each target is then pushed up to 3 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "guDxjkufyzq4hZBU",
@@ -505,9 +580,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951231401,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -531,18 +606,24 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "PYzKSnbLXLxxzZqu": {
@@ -552,15 +633,34 @@
               "_id": "PYzKSnbLXLxxzZqu",
               "damage": {
                 "tier1": {
-                  "value": "7+5"
+                  "value": "7+5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "10+5"
+                  "value": "10+5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "13+5"
+                  "value": "13+5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "SxQ67eqUxWyJ0Hs5": {
               "name": "Firetail Weakened",
@@ -577,43 +677,63 @@
                   "effects": {
                     "7j7mrAssAYhW4Cpc": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 },
                 "tier2": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "7j7mrAssAYhW4Cpc": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 },
                 "tier3": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "7j7mrAssAYhW4Cpc": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "<p>The centurion moves up to their speed, ignoring difficult terrain, and uses Pilum against each creature whose space they move through. They make one power roll against all targets, and the ability deals an extra [[/damage 5]] damage. While weakened by that ability, each target takes [[/damage 2 fire]] damage at the start of each of their turns.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The centurion moves up to their speed, ignoring difficult terrain, and uses Pilum against each creature whose space they move through. They make one power roll against all targets, and the ability deals an extra [[/damage 5]] damage. While weakened by that ability, each target takes [[/damage 2 fire]] damage at the start of each of their turns.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "FDvPM7SAZNSNdlj8",
@@ -628,10 +748,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -649,11 +778,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.1.0",
             "createdTime": 1756951474777,
-            "modifiedTime": 1756951655412,
+            "modifiedTime": 1779886285599,
             "lastModifiedBy": null
           },
           "start": null,
@@ -673,9 +802,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951319417,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -702,27 +831,43 @@
         "trigger": "",
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>A target who has [[potency P 2]] is taunted (save ends). Each ally within distance can make a [[/damage @monster.freeStrike]]{Free Strike}. Additionally, until the end of the encounter, the centurion has damage immunity 2.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A target who has [[potency P 2]] is taunted (save ends). Each ally within distance can make a [[/damage @monster.freeStrike]]{Free Strike}. Additionally, until the end of the encounter, the centurion has damage immunity 2.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "8NmeXdjxtjOB9n1T",
@@ -739,9 +884,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951677257,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -768,7 +913,9 @@
         "trigger": "A creature uses an ability that targets the centurion or an ally  of the centurion within distance.",
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -779,17 +926,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target shifts up to 2 squares before the damage is resolved. Each kobold with the Shield? Shield! trait gains damage immunity 2 against the triggering ability.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target shifts up to 2 squares before the damage is resolved. Each kobold with the Shield? Shield! trait gains damage immunity 2 against the triggering ability.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "iWtqKL7pKCMCYsE5",
@@ -806,9 +966,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951950651,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -835,7 +995,9 @@
         "trigger": "",
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -846,17 +1008,42 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>Until the start of the centurion’s next turn, the centurion and their allies gain an edge on power rolls against the target.</p>",
-          "after": ""
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": true
+            },
+            "description": "<p>This ability targets one additional target for each 3 Malice spent.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the start of the centurion’s next turn, the centurion and their allies gain an edge on power rolls against the target.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "This ability targets one additional target for each 3 Malice spent.",
-          "value": null
+          "text": ""
         }
       },
       "_id": "v9hQDYUxHb7lw69t",
@@ -873,9 +1060,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1756952048010,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -905,20 +1092,23 @@
         "trigger": "",
         "distance": {
           "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 10
+          "primary": "1",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "ZQnM7lGGZB3n3w0r": {
@@ -928,15 +1118,34 @@
               "_id": "ZQnM7lGGZB3n3w0r",
               "damage": {
                 "tier1": {
-                  "value": "7"
+                  "value": "7",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "10"
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "13"
+                  "value": "13",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "0hwqoy9hPVSwCdVa": {
               "name": "Weakened",
@@ -953,33 +1162,41 @@
                   "effects": {
                     "weakened": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 },
                 "tier2": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "weakened": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 },
                 "tier3": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "weakened": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 }
-              }
+              },
+              "sort": 0
             },
             "bjRwxYHZ0fG26hfw": {
               "name": "Weakened + Restrained",
@@ -991,45 +1208,79 @@
                   "effects": {
                     "vXLk5HAJ3tyspyll": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   },
                   "potency": {
-                    "value": "1"
-                  }
+                    "value": "1",
+                    "characteristic": "none"
+                  },
+                  "display": ""
                 },
                 "tier2": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "vXLk5HAJ3tyspyll": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 },
                 "tier3": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "vXLk5HAJ3tyspyll": {
-                      "condition": "failure"
+                      "condition": "failure",
+                      "properties": []
                     }
-                  }
+                  },
+                  "display": ""
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each ally adjacent to a target can make a free strike against that target.</p>"
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 3,
+              "multiple": false
+            },
+            "description": "<p>While weakened this way, a target is also restrained</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each ally adjacent to a target can make a free strike against that target.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "While weakened this way, a target is also restrained",
-          "value": 3
+          "text": ""
         }
       },
       "_id": "IR7YlWCnkBJ30U5w",
@@ -1044,10 +1295,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1068,11 +1328,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.1.0",
             "createdTime": 1756952676243,
-            "modifiedTime": 1756952802404,
+            "modifiedTime": 1779886285603,
             "lastModifiedBy": null
           },
           "showIcon": 2,
@@ -1092,9 +1352,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756952518478,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1120,7 +1380,10 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -1131,17 +1394,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a free strike.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a free strike.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -1150,9 +1426,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.KOsnxnQvSid3ZahG",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761174693660,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1176,7 +1452,6 @@
       "_id": "fRbdaVrQ2hiGY2sa",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -1184,9 +1459,20 @@
             "key": "system.damage.immunities.all",
             "value": 2,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -1204,9 +1490,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756951847955,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1233,9 +1519,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756951045873,
     "modifiedTime": null,
     "lastModifiedBy": null

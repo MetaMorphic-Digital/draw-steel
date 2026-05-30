@@ -12,7 +12,6 @@
       "_id": "Ep3YpmSe8vPVOS6e",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -20,9 +19,20 @@
             "key": "system.stamina.bonuses.treasure",
             "value": 6,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -41,9 +51,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1764165948920,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -68,7 +78,6 @@
       "_id": "CCKM9UhRhBrgLKHS",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -76,15 +85,27 @@
             "key": "system.stamina.bonuses.treasure",
             "value": 12,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           },
           {
             "key": "system.damage.immunities.psychic",
             "value": 5,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -103,9 +124,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1764167261659,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -123,7 +144,6 @@
       "_id": "VKLLYKppkOr149WU",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -131,15 +151,27 @@
             "key": "system.stamina.bonuses.treasure",
             "value": 21,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           },
           {
             "key": "system.damage.immunities.psychic",
             "value": 10,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": true,
       "duration": {
@@ -158,9 +190,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1764167464380,
         "modifiedTime": null,
         "lastModifiedBy": null

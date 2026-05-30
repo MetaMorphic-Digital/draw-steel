@@ -22,7 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 5
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +37,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "4loBV9oqkV9i6WqP": {
@@ -48,21 +51,37 @@
               "value": "2",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "5",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "7",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "vAhzwywI3IsbVQcm": {
           "name": "frightened",
@@ -73,43 +92,48 @@
             "tier1": {
               "display": "{{potency}}, frightened (save ends)",
               "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.weak"
               },
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             },
             "tier3": {
               "potency": {
-                "characteristic": "presence"
-              },
-              "effects": {
-                "frightened": {
-                  "condition": "failure"
-                }
-              }
-            },
-            "tier2": {
-              "potency": {
-                "characteristic": "presence"
+                "characteristic": "presence",
+                "value": "@potency.strong"
               },
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": ""
+                  "properties": []
                 }
-              }
+              },
+              "display": ""
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "presence",
+                "value": "@potency.average"
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "display": ""
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -118,8 +142,11 @@
     "prerequisites": {
       "dsid": [
         "auteur"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -131,9 +158,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761075395344,
     "modifiedTime": null,
     "lastModifiedBy": null

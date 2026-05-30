@@ -20,22 +20,24 @@
     "resource": 7,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Until the end of the encounter, the size of your Null Field abil ity increases by 1. While the area of that ability is enlarged this way, each enemy who has [[potency I average]] and enters the area for the first time in a combat round or starts their turn there is [[/apply bleeding save]]. Each ally who enters the area for the first time in a combat round or starts their turn there gains [[/heal @I temp]]{temporary stamina} equal to your Intuition score.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -44,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "null"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the end of the encounter, the size of your Null Field abil ity increases by 1. While the area of that ability is enlarged this way, each enemy who has [[potency I average]] and enters the area for the first time in a combat round or starts their turn there is [[/apply bleeding save]]. Each ally who enters the area for the first time in a combat round or starts their turn there gains [[/heal @I temp]]{temporary stamina} equal to your Intuition score.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -57,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756687341591,
     "modifiedTime": null,
     "lastModifiedBy": null

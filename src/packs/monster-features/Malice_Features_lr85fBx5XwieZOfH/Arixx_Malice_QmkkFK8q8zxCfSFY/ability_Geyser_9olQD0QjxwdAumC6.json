@@ -19,12 +19,15 @@
     "trigger": "",
     "distance": {
       "type": "special",
-      "primary": 3,
-      "secondary": null
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -43,10 +46,31 @@
           "_id": "j8tSJ0oW0hFJmIer",
           "damage": {
             "tier1": {
-              "value": "4"
+              "value": "4",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "4"
+              "value": "4",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -61,16 +85,41 @@
               "properties": [
                 "vertical"
               ],
-              "distance": "5"
+              "distance": "5",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "distance": "3",
               "properties": [
                 "vertical"
-              ]
+              ],
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": ""
+              "display": "",
+              "movement": [
+                "push"
+              ],
+              "distance": "1",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -82,19 +131,49 @@
           "_id": "w5dbs3ok8hgbXi8j",
           "other": {
             "tier3": {
-              "display": "The target shifts to the nearest unoccupied space outside the area"
+              "display": "The target shifts to the nearest unoccupied space outside the area",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "display": "",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "<p>The arixx’s underground tunnels swell with pressure, causing a sudden influx of hot gas to burst from a 3-square-by-3-square area anywhere on the surface. Each enemy in the area makes an <strong>Agility test</strong>.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The arixx’s underground tunnels swell with pressure, causing a sudden influx of hot gas to burst from a 3-square-by-3-square area anywhere on the surface. Each enemy in the area makes an <strong>Agility test</strong>.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -107,9 +186,9 @@
     "compendiumSource": "Item.9olQD0QjxwdAumC6",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755922242457,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -96,9 +96,12 @@
         "infernal"
       ],
       "level": 5,
-      "ev": 14,
       "role": "ambusher",
       "organization": "platoon"
+    },
+    "ev": 14,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -117,7 +120,12 @@
           "page": "176"
         },
         "_dsid": "essence-of-smoke",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "YFanSuhAqUVOfG3G",
       "effects": [],
@@ -131,12 +139,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286745
       },
       "_key": "!actors.items!ycWoupV81malUwP4.YFanSuhAqUVOfG3G"
     },
@@ -155,7 +163,12 @@
           "page": "176"
         },
         "_dsid": "infernal-ichor",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "D0GEVokZfsB205yH",
       "effects": [],
@@ -169,12 +182,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286745
       },
       "_key": "!actors.items!ycWoupV81malUwP4.D0GEVokZfsB205yH"
     },
@@ -192,7 +205,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -205,7 +220,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "RN0kCfkwRMOKP4gm": {
@@ -219,35 +235,36 @@
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "14",
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "17",
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "E8xz9IuWc79i11KV": {
               "_id": "E8xz9IuWc79i11KV",
@@ -285,13 +302,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>If this ability gains an edge or has a double edge, the target can't communicate with anyone until the end of their next turn.</p>"
         },
         "spend": {
           "text": "",
@@ -305,7 +319,23 @@
         "_dsid": "choking-bolt",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If this ability gains an edge or has a double edge, the target can't communicate with anyone until the end of their next turn.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -315,12 +345,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286745
       },
       "_id": "tKnP2YGQ7kCQKfCM",
       "ownership": {
@@ -341,7 +371,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -366,13 +398,31 @@
               "_id": "2WTgAPfjPzmEDTDf",
               "damage": {
                 "tier1": {
-                  "value": "11"
+                  "value": "11",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "9"
+                  "value": "9",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "5"
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -387,27 +437,41 @@
                   "effects": {
                     "Rr0TMnYb7VdGEIwN": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   },
-                  "display": "the target has a double bane on their next power roll"
+                  "display": "the target has a double bane on their next power roll",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
                   "effects": {
                     "pEnGYnYNPTycPl9M": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   },
-                  "display": "the target takes a bane on their next power roll"
+                  "display": "the target takes a bane on their next power roll",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>Each target makes a <strong>Might test.</strong></p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -421,7 +485,23 @@
         "_dsid": "smoke-bomb",
         "story": "",
         "resource": 3,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each target makes a <strong>Might test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -433,7 +513,6 @@
           "_id": "Rr0TMnYb7VdGEIwN",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "filters": {
@@ -444,9 +523,20 @@
                 "key": "power.roll.banes",
                 "value": 2,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -464,11 +554,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1770771292142,
-            "modifiedTime": 1770771316472,
+            "modifiedTime": 1779886286742,
             "lastModifiedBy": null
           },
           "start": null,
@@ -485,7 +575,6 @@
           "_id": "pEnGYnYNPTycPl9M",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "filters": {
@@ -496,9 +585,20 @@
                 "key": "power.roll.banes",
                 "value": 1,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -516,11 +616,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.10.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1770771319960,
-            "modifiedTime": 1770771332775,
+            "modifiedTime": 1779886286743,
             "lastModifiedBy": null
           },
           "start": null,
@@ -536,12 +636,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286745
       },
       "_id": "mi1jifpHDSf8S8uj",
       "ownership": {
@@ -568,27 +668,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The hobgoblin activates a Malice feature available to goblins.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The hobgoblin activates a Malice feature available to goblins.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -601,12 +718,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286746
       },
       "_id": "UGHCecFaMdu6mGLU",
       "sort": 100000,
@@ -622,23 +739,24 @@
         "resource": 7,
         "trigger": "A hobgoblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, the ground throughout the encounter map becomes blazing hot. Any enemy takes [[/damage @scaling fire scaling]]{1 fire damage} for each square of the ground they enter. Any enemy who ends their turn on the ground has fire weakness 2 until the start of their next turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -651,7 +769,23 @@
         },
         "_dsid": "operation-earth-sear",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, the ground throughout the encounter map becomes blazing hot. Any enemy takes [[/damage @scaling fire scaling]]{1 fire damage} for each square of the ground they enter. Any enemy who ends their turn on the ground has fire weakness 2 until the start of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "T4SAnS1vRpGBktJS",
@@ -660,12 +794,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286746
       },
       "ownership": {
         "default": 0,
@@ -685,23 +819,24 @@
         "resource": 3,
         "trigger": "A hobgoblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each goblin in the encounter gains a +3 bonus to speed until the end of the round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -714,7 +849,23 @@
         },
         "_dsid": "operation-goblin-mode",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each goblin in the encounter gains a +3 bonus to speed until the end of the round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "T4SAnS1vRpGBktJS",
@@ -723,12 +874,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286746
       },
       "ownership": {
         "default": 0,
@@ -748,23 +899,24 @@
         "resource": 5,
         "trigger": "A hobgoblin starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each hobgoblin in the encounter shifts up to their speed and can take the Defend main action.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -777,7 +929,23 @@
         },
         "_dsid": "operation-tactical-swarm",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each hobgoblin in the encounter shifts up to their speed and can take the Defend main action.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": "T4SAnS1vRpGBktJS",
@@ -786,12 +954,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286746
       },
       "ownership": {
         "default": 0,
@@ -904,9 +1072,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758773986362,
     "modifiedTime": null,
     "lastModifiedBy": null

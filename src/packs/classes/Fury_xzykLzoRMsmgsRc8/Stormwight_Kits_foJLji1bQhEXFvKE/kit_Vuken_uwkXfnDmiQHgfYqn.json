@@ -30,7 +30,13 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.G8AKYqiObZX16VmX"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "OTp6SQscLG51TZ29": {
         "name": "Aspect of the Wild",
@@ -45,7 +51,14 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.1Syy7WKXEGvFRO2o"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "JwTEDEpZAtwx2ukU": {
         "name": "Growing Ferocity",
@@ -59,7 +72,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.ZHBBIajGPvdipqSR"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "EVdfAGLj8c937dvj": {
         "name": "Growing Ferocity Improvement",
@@ -76,7 +97,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.ZHBBIajGPvdipqSR"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "ublPW8k38CoW9eYk": {
         "name": "Growing Ferocity Improvement",
@@ -93,7 +122,15 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.ZHBBIajGPvdipqSR"
           }
-        ]
+        ],
+        "sort": 0,
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
     },
     "equipment": {
@@ -136,7 +173,6 @@
       "_id": "2G5bYA7DxcyJgLq0",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -144,21 +180,34 @@
             "key": "system.combat.size.letter",
             "value": "L",
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.combat.size.value",
             "value": 1,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.movement.value",
             "value": 2,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -176,9 +225,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760558043633,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -198,9 +247,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.2",
+    "systemVersion": "1.1.0",
     "createdTime": 1755756337148,
     "modifiedTime": null,
     "lastModifiedBy": null

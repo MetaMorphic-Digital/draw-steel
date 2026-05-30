@@ -22,19 +22,23 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "intuition"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "W5C5HuTUgeUg0t9H": {
@@ -47,27 +51,39 @@
               "types": [
                 "fire"
               ],
-              "value": "4"
+              "value": "4",
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "types": [
                 "fire"
               ],
-              "value": "6"
+              "value": "6",
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "types": [
                 "fire"
               ],
-              "value": "10"
+              "value": "10",
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Each ally in the area deals [[/damage @I]]{fire damage} equal to your Intuition score with their next strike made before the end of their next turn</p>"
     },
     "spend": {
       "text": "",
@@ -76,7 +92,20 @@
     "prerequisites": {
       "dsid": [
         "sun"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Each ally in the area deals [[/damage @I]]{fire damage} equal to your Intuition score with their next strike made before the end of their next turn</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -89,9 +118,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756154457830,
     "modifiedTime": null,
     "lastModifiedBy": null

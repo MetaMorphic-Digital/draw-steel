@@ -25,20 +25,23 @@
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 10
+      "primary": "1",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "chIWyAK8xOtjTY5N": {
@@ -49,17 +52,33 @@
           "damage": {
             "tier1": {
               "value": "5 + @chr",
-              "types": []
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "8 + @chr",
-              "types": []
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "11 + @chr",
-              "types": []
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "rMjODxmxXpDcft81": {
           "name": "",
@@ -70,21 +89,41 @@
             "tier1": {
               "movement": [],
               "distance": "",
-              "display": ""
+              "display": "",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "distance": "3"
+              "distance": "3",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "distance": "5"
+              "distance": "5",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>You can choose to have this ability deal sonic damage. Additionally, you can use this ability against the same target for the next 2 combat rounds without spending drama.</p>"
     },
     "spend": {
       "text": "",
@@ -93,7 +132,20 @@
     "prerequisites": {
       "dsid": [
         "troubadour"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>You can choose to have this ability deal sonic damage. Additionally, you can use this ability against the same target for the next 2 combat rounds without spending drama.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -106,9 +158,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756691476668,
     "modifiedTime": null,
     "lastModifiedBy": null

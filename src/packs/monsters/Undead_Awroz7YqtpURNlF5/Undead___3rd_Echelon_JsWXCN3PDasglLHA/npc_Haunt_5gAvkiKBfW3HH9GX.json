@@ -94,9 +94,12 @@
         "undead"
       ],
       "level": 7,
-      "ev": 9,
       "role": "controller",
       "organization": "horde"
+    },
+    "ev": 9,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "270"
         },
         "_dsid": "invisible-horror",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "xDM4N4Db4cnEXI89",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620826750
       },
       "_key": "!actors.items!5gAvkiKBfW3HH9GX.xDM4N4Db4cnEXI89"
     },
@@ -152,11 +160,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -164,7 +175,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "5wCM77kuvPPsJxjl": {
@@ -176,31 +188,32 @@
                 "tier1": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "10",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "vSrFeR2CcKlCEZvR": {
               "_id": "vSrFeR2CcKlCEZvR",
@@ -244,13 +257,10 @@
                     "characteristic": "agility"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>If the target is force moved into another creature's space, that creature takes an additional [[/damage 4]] damage and the haunt slides them up to 2 squares.</p>"
         },
         "spend": {
           "text": "",
@@ -264,7 +274,23 @@
         "_dsid": "lash-out",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>If the target is force moved into another creature's space, that creature takes an additional [[/damage 4]] damage and the haunt slides them up to 2 squares.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -274,12 +300,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620826750
       },
       "_id": "ZU3gpbddKKBl2g68",
       "ownership": {
@@ -300,7 +326,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -313,7 +341,8 @@
             "formula": "@chr",
             "characteristics": [
               "agility"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "iZxe97woae7zeK67": {
@@ -325,31 +354,32 @@
                 "tier1": {
                   "value": "3",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "6",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "7",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "px1GmPjJ9CyZ2SGG": {
               "_id": "px1GmPjJ9CyZ2SGG",
@@ -399,13 +429,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A target knocked prone this way can't use the Stand Up maneuver on themself while any haunt is within 20 squares of them.</p>"
         },
         "spend": {
           "text": "",
@@ -419,7 +446,23 @@
         "_dsid": "crushing-despair",
         "story": "",
         "resource": 3,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A target knocked prone this way can't use the Stand Up maneuver on themself while any haunt is within 20 squares of them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -429,12 +472,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620826751
       },
       "_id": "HH7BHtSe0g3r0uUv",
       "ownership": {
@@ -461,26 +504,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The undead activates a Malice feature available to undead of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.EzWvhVW1uXUmKhV5]{Dread March}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3]{Paranormal Fling}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf]{Ravenous Horde}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw]{The Grasping, the Hungry}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.g3I8pfaRJv4SU7k0]{Blood Hunger}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The undead activates a Malice feature available to undead of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.EzWvhVW1uXUmKhV5]{Dread March}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3]{Paranormal Fling}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf]{Ravenous Horde}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw]{The Grasping, the Hungry}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.g3I8pfaRJv4SU7k0]{Blood Hunger}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -493,12 +554,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620826751
       },
       "_id": "QrgBWyQsSIgtpGM6",
       "sort": 0,
@@ -524,26 +585,44 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, whenever an undead is reduced to 0 Stamina, they deal [[/damage 8 corruption]] damage to each enemy within 3 squares of them</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, whenever an undead is reduced to 0 Stamina, they deal [[/damage 8 corruption]] damage to each enemy within 3 squares of them</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -557,12 +636,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620826751
       },
       "_key": "!actors.items!5gAvkiKBfW3HH9GX.NLIeDdubVVzbOyqX"
     }
@@ -669,9 +748,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758209818853,
     "modifiedTime": null,
     "lastModifiedBy": null

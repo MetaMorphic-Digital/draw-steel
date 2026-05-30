@@ -22,19 +22,21 @@
     "trigger": "",
     "distance": {
       "type": "line",
-      "primary": 10,
-      "secondary": 1,
-      "tertiary": 1
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "3",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {
         "AHQJOeeWUwhVYNaQ": {
@@ -50,11 +52,11 @@
                 "fire",
                 "lightning"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "8",
@@ -63,11 +65,11 @@
                 "fire",
                 "lightning"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "11",
@@ -76,13 +78,14 @@
                 "fire",
                 "lightning"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "EeYEO4u7ex2EywNz": {
           "name": "Condition",
@@ -162,17 +165,30 @@
               },
               "display": ""
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>After making the power roll, the hag can choose to replace the damage type and condition with lightning damage and dazed, or cold damage and slowed.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>After making the power roll, the hag can choose to replace the damage type and condition with lightning damage and dazed, or cold damage and slowed.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -185,9 +201,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757285517611,
     "modifiedTime": null,
     "lastModifiedBy": null

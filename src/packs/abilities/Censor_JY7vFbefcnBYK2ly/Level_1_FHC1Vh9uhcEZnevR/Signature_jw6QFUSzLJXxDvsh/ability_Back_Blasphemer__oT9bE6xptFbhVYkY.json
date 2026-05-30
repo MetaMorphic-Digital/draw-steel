@@ -24,8 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 2,
-      "secondary": 1
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -38,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "bc48VGXs5mtoE0kF": {
@@ -51,21 +53,37 @@
               "value": "2",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "4",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "6",
               "types": [
                 "holy"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "aAADd8YBIn63pWEE": {
           "name": "Push",
@@ -74,18 +92,45 @@
           "_id": "aAADd8YBIn63pWEE",
           "forced": {
             "tier2": {
-              "distance": "2"
+              "distance": "2",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "distance": "3"
+              "distance": "3",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "1",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -94,8 +139,11 @@
     "prerequisites": {
       "dsid": [
         "censor"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -107,9 +155,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754754803689,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -342,13 +342,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Line of effect for this ability is an arc that can be traced over obstacles between the catapult and the target area. This ability can’t be used again until the catapult is reloaded.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Line of effect for this ability is an arc that can be traced over obstacles between the catapult and the target area. This ability can’t be used again until the catapult is reloaded.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "4S9COq264fU25VA5",
@@ -362,9 +369,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776898581018,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -415,13 +422,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The catapult is reloaded, allowing <strong>Arcing Shot</strong> to be used again. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The catapult is reloaded, allowing <strong>Arcing Shot</strong> to be used again. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "3lbXcqZeq8J7H1kA",
@@ -429,9 +443,9 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776898811617,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -488,13 +502,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The next use of <strong>Arcing Shot</strong> gains an edge and has a +10 bonus to ranged distance[[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The next use of <strong>Arcing Shot</strong> gains an edge and has a +10 bonus to ranged distance[[/apply 3jAQaXms6LpJ8Euf]]. This action can be used only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "7qkhpNHywcugZJ5l",
@@ -533,7 +554,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -553,11 +575,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776898814601,
-            "modifiedTime": 1776901849516,
+            "modifiedTime": 1779886280951,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -568,9 +590,9 @@
       ],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776898814601,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -627,13 +649,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The catapult and the creature using this action move together up to 2 squares.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The catapult and the creature using this action move together up to 2 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "QA8XmLYDTnhcqkn2",
@@ -641,9 +670,9 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776898816996,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -687,7 +716,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -714,9 +744,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776899060992,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -752,7 +782,8 @@
           "rollCharacteristic": [],
           "yield": {
             "amount": "1",
-            "display": ""
+            "display": "",
+            "kind": "weapon"
           }
         }
       },
@@ -779,9 +810,9 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776899198198,
         "modifiedTime": null,
         "lastModifiedBy": null,

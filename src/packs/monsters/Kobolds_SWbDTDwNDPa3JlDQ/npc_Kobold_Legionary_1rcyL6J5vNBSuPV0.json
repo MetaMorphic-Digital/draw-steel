@@ -96,9 +96,12 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 3,
       "role": "defender",
       "organization": "horde"
+    },
+    "ev": 3,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -210,7 +213,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "shield-shield",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -221,7 +229,6 @@
           "_id": "23SDXe4V066ielDj",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -229,9 +236,20 @@
                 "key": "system.combat.stability",
                 "value": 1,
                 "priority": null,
-                "type": "upgrade"
+                "type": "upgrade",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "duration": {
             "value": null,
@@ -249,11 +267,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.1.0",
             "createdTime": 1757797878367,
-            "modifiedTime": 1757797878367,
+            "modifiedTime": 1779886276353,
             "lastModifiedBy": null
           },
           "origin": null,
@@ -274,9 +292,9 @@
         "compendiumSource": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.3fdmNUhuqakwyz18",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756948220179,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -303,26 +321,44 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Two kobolds take their turns in a row.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Two kobolds take their turns in a row.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -336,9 +372,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.fyuPK3F17a7SWmWO",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756948234334,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -365,26 +401,44 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, all kobolds with <strong>Shield? Shield!</strong> Impose an additional bane on incoming strikes and abilities.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the round, all kobolds with <strong>Shield? Shield!</strong> Impose an additional bane on incoming strikes and abilities.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -398,9 +452,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.FTBTYYIqhMaTU882",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756948235870,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -429,17 +483,21 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "ts5bBsRsOZ4iqQ5G": {
@@ -449,15 +507,34 @@
               "_id": "ts5bBsRsOZ4iqQ5G",
               "damage": {
                 "tier1": {
-                  "value": "3"
+                  "value": "3",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "4"
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "5"
+                  "value": "5",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "ALCmI1LoqwebRnsm": {
               "name": "Taunted",
@@ -470,37 +547,70 @@
                   "effects": {
                     "taunted": {
                       "condition": "always",
-                      "end": "turn"
+                      "end": "turn",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
                   "effects": {
                     "taunted": {
                       "condition": "always",
-                      "end": "turn"
+                      "end": "turn",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
                   "effects": {
                     "taunted": {
                       "condition": "always",
-                      "end": "turn"
+                      "end": "turn",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 3,
+              "multiple": false
+            },
+            "description": "<p>If the legionary is acting as a captain, they and each mem ber of their squad shift up to 2 squares before this ability is used.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         },
         "spend": {
-          "text": "If the legionary is acting as a captain, they and each mem ber of their squad shift up to 2 squares before this ability is used.",
-          "value": 3
+          "text": ""
         }
       },
       "_id": "UCsi6iRPr6IaaJE6",
@@ -517,9 +627,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756948239992,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -548,19 +658,23 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "2ZjlDcrEoz2gzFzu": {
@@ -570,21 +684,79 @@
               "_id": "2ZjlDcrEoz2gzFzu",
               "damage": {
                 "tier1": {
-                  "value": "2"
+                  "value": "2",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "3"
+                  "value": "3",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "4"
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
-              }
+              },
+              "sort": 0
             },
             "FWRSIF51y02dbOtY": {
               "name": "Push",
               "img": null,
               "type": "forced",
-              "_id": "FWRSIF51y02dbOtY"
+              "_id": "FWRSIF51y02dbOtY",
+              "sort": 0,
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
             },
             "V6oxqEJnKgQfHMPX": {
               "name": "Prone",
@@ -595,12 +767,14 @@
                 "tier1": {
                   "display": "{{potency}} prone",
                   "potency": {
-                    "characteristic": "might"
+                    "characteristic": "might",
+                    "value": "@potency.weak"
                   },
                   "effects": {
                     "prone": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
                   }
                 },
@@ -608,29 +782,44 @@
                   "effects": {
                     "prone": {
                       "condition": "failure",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
                   "effects": {
                     "prone": {
-                      "condition": "failure"
+                      "condition": "failure",
+                      "properties": []
                     }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "effects": {}
       },
       "_id": "599n8Cx95o0oAhgh",
       "img": "icons/skills/ranged/projectile-spiral-gray.webp",
@@ -646,9 +835,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1756948398641,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -674,7 +863,10 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -685,17 +877,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a free strike.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a free strike.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -704,9 +909,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.KOsnxnQvSid3ZahG",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761174705772,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -730,9 +935,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1756948115322,
     "modifiedTime": null,
     "lastModifiedBy": null

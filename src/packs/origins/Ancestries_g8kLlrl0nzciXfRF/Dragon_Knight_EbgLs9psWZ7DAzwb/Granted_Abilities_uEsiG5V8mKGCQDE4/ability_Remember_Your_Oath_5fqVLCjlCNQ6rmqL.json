@@ -18,26 +18,44 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>As a maneuver, you can recite the following oath. Until the start of your next turn, whenever you make a saving throw, you succeed on a 4 or higher.</p><blockquote><p>Even should the sun stop in the sky</p><p>Even should the night last a thousand years</p><p>I will stand forever</p><p>I shall not yield</p><p>Those who suffer and yearn for justice</p><p>I am your sword and shield</p><p>I will yield no ground</p><p>I will speak no lies</p><p>I will stand against all tyrants</p><p>Until the last villain dies</p></blockquote>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>As a maneuver, you can recite the following oath. Until the start of your next turn, whenever you make a saving throw, you succeed on a 4 or higher.</p><blockquote><p>Even should the sun stop in the sky</p><p>Even should the night last a thousand years</p><p>I will stand forever</p><p>I shall not yield</p><p>Those who suffer and yearn for justice</p><p>I am your sword and shield</p><p>I will yield no ground</p><p>I will speak no lies</p><p>I will stand against all tyrants</p><p>Until the last villain dies</p></blockquote>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -49,7 +67,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -57,9 +74,20 @@
             "key": "system.combat.save.threshold",
             "value": 4,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -78,9 +106,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1754599628209,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -100,9 +128,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754599033945,
     "modifiedTime": null,
     "lastModifiedBy": null

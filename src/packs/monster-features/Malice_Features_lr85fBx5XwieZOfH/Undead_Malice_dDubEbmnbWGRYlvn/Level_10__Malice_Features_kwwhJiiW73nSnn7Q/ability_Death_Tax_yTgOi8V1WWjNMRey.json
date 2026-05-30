@@ -18,11 +18,16 @@
     "resource": 7,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -44,19 +49,34 @@
               "value": "10",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "8",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "5",
               "types": [
                 "corruption"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
@@ -68,22 +88,58 @@
           "_id": "HhMIIyfKsVelSvtk",
           "other": {
             "tier1": {
-              "display": "the target loses 2 Recoveries"
+              "display": "the target loses 2 Recoveries",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "the target loses 1 Recovery"
+              "display": "the target loses 1 Recovery",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "<p>The undead attempts to rend the vitality of their foes. Each enemy within 5 squares of the undead makes a <strong>Might test.</strong></p>",
-      "after": "<p>A target who has fewer Recoveries than they would lose is also [[/apply weakened save]].</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The undead attempts to rend the vitality of their foes. Each enemy within 5 squares of the undead makes a <strong>Might test.</strong></p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>A target who has fewer Recoveries than they would lose is also [[/apply weakened save]].</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -96,9 +152,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758210672381,
     "modifiedTime": null,
     "lastModifiedBy": null

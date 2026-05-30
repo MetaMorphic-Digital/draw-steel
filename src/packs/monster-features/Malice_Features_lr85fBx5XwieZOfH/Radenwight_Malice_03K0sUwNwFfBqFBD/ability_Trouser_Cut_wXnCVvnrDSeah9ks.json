@@ -23,18 +23,21 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1,
-      "secondary": null
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "2",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {
         "J8ZyFtvUeh7fUU06": {
@@ -44,15 +47,34 @@
           "_id": "J8ZyFtvUeh7fUU06",
           "damage": {
             "tier1": {
-              "value": "7"
+              "value": "7",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "10"
+              "value": "10",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "13"
+              "value": "13",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "UZvfj8gwWwSlTK6s": {
           "name": "Push",
@@ -61,15 +83,43 @@
           "_id": "UZvfj8gwWwSlTK6s",
           "forced": {
             "tier1": {
-              "distance": "3"
+              "distance": "3",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "distance": "3"
+              "distance": "3",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "distance": "5"
+              "distance": "5",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "zQHVPeyhyCj2ux4J": {
           "name": "Taunted",
@@ -79,27 +129,42 @@
           "applied": {
             "tier1": {
               "display": "",
-              "effects": {}
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier3": {
               "display": "taunted (EoT)",
               "effects": {
                 "taunted": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             },
             "tier2": {
               "effects": {
                 "taunted": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               },
-              "display": "taunted (EoT)"
+              "display": "taunted (EoT)",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "QdFMpIV605bQ2ACQ": {
           "name": "Pantsed",
@@ -111,37 +176,68 @@
               "effects": {
                 "iwDfJBIJlMiF4Olr": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             },
             "tier2": {
               "effects": {
                 "iwDfJBIJlMiF4Olr": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "iwDfJBIJlMiF4Olr": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>If the target is wearing clothing covering the lower half of their body, they must use a maneuver once to pull that clothing up before they can move.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>If the target is wearing clothing covering the lower half of their body, they must use a maneuver once to pull that clothing up before they can move.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -154,7 +250,6 @@
       "_id": "iwDfJBIJlMiF4Olr",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -162,15 +257,27 @@
             "key": "system.movement.multiplier",
             "value": 0,
             "priority": null,
-            "type": "multiply"
+            "type": "multiply",
+            "phase": "initial"
           },
           {
             "key": "system.movement.disengage",
             "value": 0,
             "priority": null,
-            "type": "downgrade"
+            "type": "downgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -188,9 +295,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1758940905342,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -210,9 +317,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755703906248,
     "modifiedTime": null,
     "lastModifiedBy": null

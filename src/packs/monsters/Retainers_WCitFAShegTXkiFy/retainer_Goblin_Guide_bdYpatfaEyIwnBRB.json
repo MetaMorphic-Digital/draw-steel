@@ -92,7 +92,8 @@
       "keywords": [
         "humanoid"
       ],
-      "role": "harrier"
+      "role": "harrier",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -324,13 +325,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The target can’t make opportunity attacks until the end of the guide’s turn.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The target can’t make opportunity attacks until the end of the guide’s turn.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "WPFyR3OTKnUnUB3z",
@@ -344,9 +352,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776723238392,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -367,9 +375,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772906330523,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -21,7 +21,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -32,13 +34,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each target is teleported to unoccupied spaces within 5 squares of a willing creature who you are bonded to with your @UUID[Compendium.draw-steel.classes.Item.YtM8UBnfX1ilf3w6]{Invocation of the Heart} feature. You don’t need line of effect to the bonded creature but you must be on the same world.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -47,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "love"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each target is teleported to unoccupied spaces within 5 squares of a willing creature who you are bonded to with your @UUID[Compendium.draw-steel.classes.Item.YtM8UBnfX1ilf3w6]{Invocation of the Heart} feature. You don’t need line of effect to the bonded creature but you must be on the same world.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -59,9 +71,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1762817975789,
     "modifiedTime": null,
     "lastModifiedBy": null

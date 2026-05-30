@@ -22,7 +22,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -35,7 +37,8 @@
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "cGpDahkxwcqfpA99": {
@@ -45,21 +48,30 @@
           "_id": "cGpDahkxwcqfpA99",
           "other": {
             "tier1": {
-              "display": "One ally within distance can take their turn immediately after yours."
+              "display": "One ally within distance can take their turn immediately after yours.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "Two allies within distance can take their turns immediately after yours in any order."
+              "display": "Two allies within distance can take their turns immediately after yours in any order.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "Three allies within distance can take their turns immediately after yours in any order. One of those allies can have already taken a turn this combat round."
+              "display": "Three allies within distance can take their turns immediately after yours in any order. One of those allies can have already taken a turn this combat round.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -68,8 +80,11 @@
     "prerequisites": {
       "dsid": [
         "troubadour"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -81,9 +96,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760917037448,
     "modifiedTime": null,
     "lastModifiedBy": null

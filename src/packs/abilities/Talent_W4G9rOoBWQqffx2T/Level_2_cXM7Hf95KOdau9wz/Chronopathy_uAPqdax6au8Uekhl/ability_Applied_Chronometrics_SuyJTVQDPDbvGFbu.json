@@ -23,18 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "ukUImYVagMNLnBYz": {
@@ -44,21 +49,30 @@
           "_id": "ukUImYVagMNLnBYz",
           "other": {
             "tier1": {
-              "display": "You target two creatures, one of which can be you."
+              "display": "You target two creatures, one of which can be you.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "You target three creatures, one of which can be you."
+              "display": "You target three creatures, one of which can be you.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "You target four creatures, one of which can be you."
+              "display": "You target four creatures, one of which can be you.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>Until the start of your next turn, each target gains a +5 bonus to speed, they can’t be made dazed, and they can use an additional maneuver on their turn. If a target is already dazed, that condition ends for them.</p><p><strong>Strained</strong>: Your speed is halved until the end of the encounter.</p>"
     },
     "spend": {
       "text": "",
@@ -67,7 +81,20 @@
     "prerequisites": {
       "dsid": [
         "chronopathy"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>Until the start of your next turn, each target gains a +5 bonus to speed, they can’t be made dazed, and they can use an additional maneuver on their turn. If a target is already dazed, that condition ends for them.</p><p><strong>Strained</strong>: Your speed is halved until the end of the encounter.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -80,9 +107,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1756181471209,
     "modifiedTime": null,
     "lastModifiedBy": null

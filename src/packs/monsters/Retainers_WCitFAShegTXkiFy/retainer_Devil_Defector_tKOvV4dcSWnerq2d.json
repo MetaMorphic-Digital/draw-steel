@@ -92,7 +92,8 @@
       "keywords": [
         "infernal"
       ],
-      "role": "hexer"
+      "role": "hexer",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -333,14 +334,11 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "effects": {}
       },
       "_id": "pgGIcT8Xx63Dj1ef",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -353,9 +351,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776707721727,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -410,13 +408,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The defector makes an offer to keep the target alive. If the target accepts, they are reduced to 1 Stamina instead. On the target’s next turn, the defector controls their move action and the target must use a signature ability against a creature of the defector’s choice or immediately die. To have the target turn down the offer, the Director must spend 3 Malice.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The defector makes an offer to keep the target alive. If the target accepts, they are reduced to 1 Stamina instead. On the target’s next turn, the defector controls their move action and the target must use a signature ability against a creature of the defector’s choice or immediately die. To have the target turn down the offer, the Director must spend 3 Malice.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "Srtb9C5hDqVCSmFP",
@@ -430,9 +435,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776707876294,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -453,9 +458,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772902955441,
     "modifiedTime": null,
     "lastModifiedBy": null

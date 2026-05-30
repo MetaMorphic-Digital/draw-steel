@@ -9,7 +9,9 @@
     "trigger": "A olothec starts its turn.",
     "distance": {
       "type": "melee",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "creature",
@@ -20,7 +22,8 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {
         "HG0MQLQEoaEfSovw": {
@@ -35,33 +38,33 @@
               "types": [
                 "psychic"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "17",
               "types": [
                 "psychic"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "20",
               "types": [
                 "psychic"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             }
           }
         },
@@ -117,10 +120,6 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The olothec can pull a target grabbed this way adjacent to them. While grabbed this way, a target can’t make saving throws to end any other effects, and the olothec has a double edge on strikes against them.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
@@ -132,7 +131,23 @@
     },
     "_dsid": "writhing-envelopment",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The olothec can pull a target grabbed this way adjacent to them. While grabbed this way, a target can’t make saving throws to end any other effects, and the olothec has a double edge on strikes against them.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "XSJGcWOPT3SnP62d",
@@ -141,9 +156,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761505918953,
     "modifiedTime": null,
     "lastModifiedBy": null

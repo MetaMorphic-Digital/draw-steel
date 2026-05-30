@@ -94,9 +94,12 @@
         "soulless"
       ],
       "level": 10,
-      "ev": 48,
       "role": "controller",
       "organization": "elite"
+    },
+    "ev": 48,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "318"
         },
         "_dsid": "living-logistics-network",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "O02Gyf3963169wAV",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_key": "!actors.items!TG63JutsWYKQ8zpj.O02Gyf3963169wAV"
     },
@@ -153,7 +161,12 @@
           "page": "318"
         },
         "_dsid": "crash-and-burn",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "oej74w2VWTppLflg",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_key": "!actors.items!TG63JutsWYKQ8zpj.oej74w2VWTppLflg"
     },
@@ -190,9 +203,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 5,
-          "secondary": 3,
-          "tertiary": 15
+          "primary": "5",
+          "secondary": "3",
+          "tertiary": "15"
         },
         "target": {
           "type": "creatureObject",
@@ -205,7 +218,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "ILw4kWm0ioK90Uh9": {
@@ -217,31 +231,32 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "8TnVo77n14jide0L": {
               "_id": "8TnVo77n14jide0L",
@@ -285,17 +300,10 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "<p><strong>Special: </strong>This ability targets only non-prone creatures.</p>",
-          "after": "<p>A target creature can choose to drop prone, in which case the ability takes a bane against them.</p>"
-        },
-        "spend": {
-          "text": "The area remains active until Vesper is reduced to 0 Stamina or until the end of the encounter. Any non-prone enemy who  enters the area for the first time in a round or starts their turn there  takes 15 damage, or 7 damage if they choose to fall prone.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -305,7 +313,48 @@
         "_dsid": "portal-to-the-firing-line",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>The area remains active until Vesper is reduced to 0 Stamina or until the end of the encounter. Any non-prone enemy who  enters the area for the first time in a round or starts their turn there  takes 15 damage, or 7 damage if they choose to fall prone.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p><strong>Special: </strong>This ability targets only non-prone creatures.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A target creature can choose to drop prone, in which case the ability takes a bane against them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -315,12 +364,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_id": "LmnsJsXGWNUeG8wM",
       "ownership": {
@@ -342,8 +391,9 @@
         ],
         "distance": {
           "type": "cube",
-          "primary": 3,
-          "secondary": 15
+          "primary": "3",
+          "secondary": "15",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -356,7 +406,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "99LuvNHq9vcJ0aEq": {
@@ -370,41 +421,38 @@
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [
                     "fire"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The area is difficult terrain. Any creature who enters the area for the first time in a round or starts their turn there takes [[/damage 10 fire]] damage. Until the end of the encounter, the size of the area increases by 1 at the start of each round.</p>"
         },
         "spend": {
           "text": "",
@@ -418,7 +466,23 @@
         "_dsid": "portal-to-the-mantle",
         "story": "",
         "resource": 3,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The area is difficult terrain. Any creature who enters the area for the first time in a round or starts their turn there takes [[/damage 10 fire]] damage. Until the end of the encounter, the size of the area increases by 1 at the start of each round.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -428,12 +492,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_id": "RP78SftCeSDEYt5w",
       "ownership": {
@@ -455,8 +519,9 @@
         ],
         "distance": {
           "type": "cube",
-          "primary": 5,
-          "secondary": 15
+          "primary": "5",
+          "secondary": "15",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -469,7 +534,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "trtbmkzHBoCIXwoN": {
@@ -514,17 +580,10 @@
                     "characteristic": "reason"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A portal appears at the center of the area. Any creature at the center of the area when this ability is used or who is pulled into the center for the first time in a round takes 10 sonic damage</p>"
-        },
-        "spend": {
-          "text": "The area remains active and deals its damage until Vesper is  reduced to 0 Stamina or until the end of the encounter. Any creature who enters the area and has A<4  is pulled 3 squares toward the  center of the area. Any creature who starts their turn in the area and has M<4 is slowed until the end of their turn.",
-          "value": null
         },
         "source": {
           "book": "Monsters",
@@ -534,7 +593,39 @@
         "_dsid": "portal-to-the-void",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 1,
+              "multiple": true
+            },
+            "description": "<p>The area remains active and deals its damage until Vesper is  reduced to 0 Stamina or until the end of the encounter. Any creature who enters the area and has A&lt;4  is pulled 3 squares toward the  center of the area. Any creature who starts their turn in the area and has M&lt;4 is slowed until the end of their turn.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>A portal appears at the center of the area. Any creature at the center of the area when this ability is used or who is pulled into the center for the first time in a round takes 10 sonic damage</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -544,12 +635,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_id": "SOMOUJfXUUtdUvVB",
       "ownership": {
@@ -569,11 +660,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
-          "value": 1
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -581,13 +675,10 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target is dropped through a portal, which teleports them up to 7 squares above a space within 15 squares.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -601,7 +692,23 @@
         "_dsid": "portal-to-the-sky",
         "story": "",
         "resource": null,
-        "trigger": "The target moves within distance of Vesper."
+        "trigger": "The target moves within distance of Vesper.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target is dropped through a portal, which teleports them up to 7 squares above a space within 15 squares.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -611,12 +718,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_id": "PDcLYQleBXZbacbh",
       "ownership": {
@@ -643,26 +750,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -675,12 +800,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830927
       },
       "_id": "RnsgvVE79ASj5Wjw",
       "sort": 0,
@@ -709,7 +834,9 @@
         "trigger": "",
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -720,7 +847,8 @@
         "power": {
           "roll": {
             "formula": "5",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {
             "TzboLJifDtxVNw6n": {
@@ -734,33 +862,33 @@
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [
                     "psychic"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -812,13 +940,25 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -827,9 +967,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wbJTnyESAACLBdwU",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761444117693,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -945,9 +1085,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758226855628,
     "modifiedTime": null,
     "lastModifiedBy": null

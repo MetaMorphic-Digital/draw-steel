@@ -22,12 +22,15 @@
     "trigger": "",
     "distance": {
       "type": "burst",
-      "primary": 3
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
@@ -38,7 +41,8 @@
           "reason",
           "intuition",
           "presence"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "J3w3Vbkz6FK1KbrS": {
@@ -48,25 +52,53 @@
           "_id": "J3w3Vbkz6FK1KbrS",
           "other": {
             "tier1": {
-              "display": "1 psychic damage for each Heroic Resource you spend, to a maximum equal to your level"
+              "display": "1 psychic damage for each Heroic Resource you spend, to a maximum equal to your level",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "display": "1 psychic damage for each Heroic Resource you spend, to a maximum equal to your level + your highest characteristic"
+              "display": "1 psychic damage for each Heroic Resource you spend, to a maximum equal to your level + your highest characteristic",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "display": "1 psychic damage for each Heroic Resource you spend"
+              "display": "1 psychic damage for each Heroic Resource you spend",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": ""
+    "effects": {
+      "spend00000000000": {
+        "_id": "spend00000000000",
+        "type": "spend",
+        "sort": 100000,
+        "resource": {
+          "value": 1,
+          "multiple": true
+        },
+        "description": "<p>Using this ability costs all your Heroic Resource.</p>",
+        "name": "",
+        "img": null,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     },
     "spend": {
-      "text": "Using this ability costs all your Heroic Resource.",
-      "value": null
+      "text": ""
     }
   },
   "effects": [],
@@ -79,9 +111,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755183156488,
     "modifiedTime": null,
     "lastModifiedBy": null

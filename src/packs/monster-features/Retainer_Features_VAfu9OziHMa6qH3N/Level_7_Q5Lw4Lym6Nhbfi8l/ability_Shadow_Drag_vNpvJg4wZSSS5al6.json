@@ -29,7 +29,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "10"
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -97,13 +99,20 @@
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The target takes [[/damage 1*@scaling scaling]] damage for each square they are pulled.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The target takes [[/damage 1*@scaling scaling]] damage for each square they are pulled.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -116,9 +125,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913359171,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -18,26 +18,44 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The chimera shakes the ground, causing an eruption of loose rocks and debris that creates three size 2 stone objects anywhere on the encounter map. Each creature adjacent to one or more objects when they appear who has [[potency A 2]] takes [[/damage 5]] damage.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The chimera shakes the ground, causing an eruption of loose rocks and debris that creates three size 2 stone objects anywhere on the encounter map. Each creature adjacent to one or more objects when they appear who has [[potency A 2]] takes [[/damage 5]] damage.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -50,9 +68,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1757096415927,
     "modifiedTime": null,
     "lastModifiedBy": null

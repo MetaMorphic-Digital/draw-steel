@@ -23,9 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1,
-      "secondary": null,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -38,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "qoeFh08WWDm5ZfNV": {
@@ -48,21 +49,36 @@
           "_id": "qoeFh08WWDm5ZfNV",
           "damage": {
             "tier1": {
-              "value": "15 + @chr"
+              "value": "15 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "21 + @chr"
+              "value": "21 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "28 + @chr"
+              "value": "28 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>If you are disguised as a creature the target knew using your I’m No Threat ability, this ability deals extra [[/damage 3*@A]]{damage} equal to three times your Agility score.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -71,7 +87,20 @@
     "prerequisites": {
       "dsid": [
         "college-of-the-harlequin-mask"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>If you are disguised as a creature the target knew using your I’m No Threat ability, this ability deals extra [[/damage 3*@A]]{damage} equal to three times your Agility score.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -84,9 +113,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760929106706,
     "modifiedTime": null,
     "lastModifiedBy": null

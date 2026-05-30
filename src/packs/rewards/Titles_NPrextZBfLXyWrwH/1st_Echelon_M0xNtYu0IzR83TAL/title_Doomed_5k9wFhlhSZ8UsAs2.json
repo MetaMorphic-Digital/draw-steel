@@ -19,7 +19,9 @@
     "echelon": 1,
     "story": "I don’t know what it meant, but when I watched her die, I saw a vision. I watched her die and saw my own death. Am I losing my mind?",
     "prerequisites": {
-      "value": "You aren’t a hakaan but have witnessed the death of a hakaan."
+      "value": "You aren’t a hakaan but have witnessed the death of a hakaan.",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -32,10 +34,19 @@
       "_id": "2WwTi4CUepWPIHL8",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -53,9 +64,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757915999419,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -75,9 +86,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757642494181,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "lNWlcRO88g3Snb1S": {
@@ -48,22 +52,40 @@
               "movement": [
                 "slide"
               ],
-              "distance": "2 + @chr"
+              "distance": "2 + @chr",
+              "display": "{{forced}}",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "movement": [
                 "slide"
               ],
-              "distance": "4 + @chr"
+              "distance": "4 + @chr",
+              "display": "{{forced}}",
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "movement": [
                 "slide"
               ],
               "distance": "6 + @chr",
-              "display": "{{forced}}"
+              "display": "{{forced}}",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "QV9gwaREjPWi3SAw": {
           "name": "Prone",
@@ -75,18 +97,36 @@
               "effects": {
                 "prone": {
                   "condition": "always",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               },
-              "display": "prone"
+              "display": "prone",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p><strong>Strained:</strong> You must vertical push the target instead of sliding them.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -95,7 +135,20 @@
     "prerequisites": {
       "dsid": [
         "talent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p><strong>Strained:</strong> You must vertical push the target instead of sliding them.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -108,9 +161,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755842510410,
     "modifiedTime": null,
     "lastModifiedBy": null

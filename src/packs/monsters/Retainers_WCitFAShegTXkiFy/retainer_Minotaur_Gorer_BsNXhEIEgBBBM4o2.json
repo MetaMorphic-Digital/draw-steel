@@ -92,7 +92,8 @@
         "accursed",
         "humanoid"
       ],
-      "role": "brute"
+      "role": "brute",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -358,14 +359,11 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "effects": {}
       },
       "_id": "RUNKbkIoEiTzURRl",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -378,9 +376,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776802836529,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -433,13 +431,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The gorer uses the Charge main action and Gore against the target.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The gorer uses the Charge main action and Gore against the target.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "YCg2eIQ0nAWD2K0H",
@@ -453,9 +458,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776803013151,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -476,9 +481,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772907054216,
     "modifiedTime": null,
     "lastModifiedBy": null

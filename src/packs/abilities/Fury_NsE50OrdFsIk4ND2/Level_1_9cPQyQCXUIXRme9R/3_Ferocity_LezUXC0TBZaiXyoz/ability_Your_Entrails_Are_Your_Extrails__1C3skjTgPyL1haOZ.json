@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "E9uwgqnZ0NlecqfU": {
@@ -45,15 +49,34 @@
           "_id": "E9uwgqnZ0NlecqfU",
           "damage": {
             "tier1": {
-              "value": "3 + @chr"
+              "value": "3 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "5 + @chr"
+              "value": "5 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "8 + @chr"
+              "value": "8 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "V9sk64EYwZ3wzXRA": {
           "name": "Bleeding",
@@ -64,12 +87,14 @@
             "tier1": {
               "display": "{{potency}}, bleeding (save ends)",
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.weak"
               },
               "effects": {
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -77,25 +102,34 @@
               "effects": {
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
               "effects": {
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>While bleeding this way, the target takes [[/damage @M]]{damage} equal to your Might score at the end of each of your turns.</p>"
     },
     "spend": {
       "text": "",
@@ -104,7 +138,20 @@
     "prerequisites": {
       "dsid": [
         "fury"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>While bleeding this way, the target takes [[/damage @M]]{damage} equal to your Might score at the end of each of your turns.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -117,9 +164,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755579765927,
     "modifiedTime": null,
     "lastModifiedBy": null

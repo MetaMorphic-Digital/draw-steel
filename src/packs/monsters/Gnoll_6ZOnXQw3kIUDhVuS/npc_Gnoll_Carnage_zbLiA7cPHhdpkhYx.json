@@ -94,9 +94,12 @@
         "abyssal"
       ],
       "level": 2,
-      "ev": 16,
       "role": "",
       "organization": "leader"
+    },
+    "ev": 16,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "158"
         },
         "_dsid": "death-rampage",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "T9rRkONSNZ4ykZ1d",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_key": "!actors.items!zbLiA7cPHhdpkhYx.T9rRkONSNZ4ykZ1d"
     },
@@ -153,7 +161,12 @@
           "page": "158"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "v8Gvm3MMYJqJO1xt",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_key": "!actors.items!zbLiA7cPHhdpkhYx.v8Gvm3MMYJqJO1xt"
     },
@@ -191,7 +204,12 @@
           "page": "158"
         },
         "_dsid": "endless-hunger",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "2JUu6dPhbG5ZfkK7",
       "effects": [],
@@ -205,12 +223,12 @@
         "compendiumSource": "Actor.zbLiA7cPHhdpkhYx.Item.2JUu6dPhbG5ZfkK7",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_key": "!actors.items!zbLiA7cPHhdpkhYx.2JUu6dPhbG5ZfkK7"
     },
@@ -228,11 +246,14 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -240,7 +261,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "PuME1DRm1neg8ZTK": {
@@ -252,31 +274,32 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "YWyyQEF38cTSMhay": {
               "_id": "YWyyQEF38cTSMhay",
@@ -321,17 +344,15 @@
                   "effects": {
                     "djensfHmTU8RzHZe": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>An ally targeted by this ability ignores the damage and can make a free strike.</p>"
         },
         "spend": {
           "text": "",
@@ -345,7 +366,23 @@
         "_dsid": "shrapnel-whip",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>An ally targeted by this ability ignores the damage and can make a free strike.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -357,10 +394,19 @@
           "type": "base",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -381,11 +427,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "1.1.0",
             "createdTime": 1757047936742,
-            "modifiedTime": 1757047978935,
+            "modifiedTime": 1779886286967,
             "lastModifiedBy": null
           },
           "showIcon": 2,
@@ -401,12 +447,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_id": "LsCWGc4wd41Aa2o5",
       "ownership": {
@@ -426,7 +472,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "selfAlly",
@@ -439,13 +487,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Each target deals an extra 3 damage with their next strike until the start of the carnage's next turn. If any target hasn't used their own Cackletongue maneuver on this turn, they can use it immediately at no cost.</p>"
         },
         "spend": {
           "text": "",
@@ -459,7 +504,23 @@
         "_dsid": "carnages-cackletongue",
         "story": "",
         "resource": 4,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each target deals an extra 3 damage with their next strike until the start of the carnage's next turn. If any target hasn't used their own Cackletongue maneuver on this turn, they can use it immediately at no cost.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -469,12 +530,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_id": "Xrsu4NolOSqupt7i",
       "ownership": {
@@ -495,11 +556,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -507,13 +571,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The carnage summons four @UUID[Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]{abyssal hyenas} into unoccupied spaces within distance.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -527,7 +588,23 @@
         "_dsid": "call-up-from-the-abyss",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The carnage summons four @UUID[Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]{abyssal hyenas} into unoccupied spaces within distance.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -537,12 +614,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_id": "IDULffSNjtZuhzxJ",
       "ownership": {
@@ -562,11 +639,14 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "selfAlly",
-          "value": 3
+          "value": 3,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -574,13 +654,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Each target moves up to their speed and can make a free strike. Any creature damaged by one of these free strikes who has [[potency M 2]] is knocked prone.</p>"
         },
         "spend": {
           "text": "",
@@ -594,7 +671,23 @@
         "_dsid": "edacity",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each target moves up to their speed and can make a free strike. Any creature damaged by one of these free strikes who has [[potency M 2]] is knocked prone.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -604,12 +697,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_id": "i051KUdORnhQ7Lg0",
       "ownership": {
@@ -630,11 +723,14 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -658,8 +754,13 @@
                   "effects": {
                     "uqvtFB9CL1LyAILf": {
                       "condition": "always",
-                      "end": "encounter"
+                      "end": "encounter",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
@@ -667,20 +768,26 @@
                   "effects": {
                     "uqvtFB9CL1LyAILf": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "display": "No effect."
+                  "display": "No effect.",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p>The carnage's eyes and all exposed blood within distance glow bright red. Each target makes a <strong>Presence test.</strong></p>",
-          "after": "<p>Until the end of the encounter, all gnolls have a double edge on power rolls that target a winded enemy.</p>"
         },
         "spend": {
           "text": "",
@@ -694,7 +801,32 @@
         "_dsid": "deepest-wounds",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The carnage's eyes and all exposed blood within distance glow bright red. Each target makes a <strong>Presence test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Until the end of the encounter, all gnolls have a double edge on power rolls that target a winded enemy.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -706,10 +838,19 @@
           "_id": "uqvtFB9CL1LyAILf",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -727,11 +868,11 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1761169621362,
-            "modifiedTime": 1761169665913,
+            "modifiedTime": 1779886286970,
             "lastModifiedBy": null
           },
           "start": null,
@@ -747,12 +888,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286974
       },
       "_id": "MGJs5KVtzkkZ4R8y",
       "ownership": {
@@ -780,7 +921,10 @@
         "resource": 5,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -791,17 +935,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>One gnoll minion suddenly explodes into a pool of blood, splattering the area within 3 squares of them. Any gnoll who starts their turn in this area deals an extra [[/damage 5]] damage on their next strike before the end of their turn. Once per round, an abyssal hyena who starts their turn in the area turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder} with 7 stamina.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>One gnoll minion suddenly explodes into a pool of blood, splattering the area within 3 squares of them. Any gnoll who starts their turn in this area deals an extra [[/damage 5]] damage on their next strike before the end of their turn. Once per round, an abyssal hyena who starts their turn in the area turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder} with 7 stamina.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -815,12 +972,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.38qnomOvMFz9ES4D",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286975
       },
       "_key": "!actors.items!zbLiA7cPHhdpkhYx.38qnomOvMFz9ES4D"
     },
@@ -844,26 +1001,44 @@
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the encounter, the encounter map is encased in a soundscape of laughter and howling. Each enemy takes a bane on the first power roll they make each round. Whenever a gnoll is killed, this effect is suppressed until the start of the next round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the encounter, the encounter map is encased in a soundscape of laughter and howling. Each enemy takes a bane on the first power roll they make each round. Whenever a gnoll is killed, this effect is suppressed until the start of the next round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -877,12 +1052,12 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wvrInGnyn0e0mj0n",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886286975
       },
       "_key": "!actors.items!zbLiA7cPHhdpkhYx.wvrInGnyn0e0mj0n"
     },
@@ -910,8 +1085,9 @@
         "trigger": "",
         "distance": {
           "type": "cube",
-          "primary": 1,
-          "secondary": 3
+          "primary": "1",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -1011,10 +1187,6 @@
             }
           }
         },
-        "effect": {
-          "before": "<p>A gnoll acting this turn drops an iron-jawed snare into the area. The first time any enemy moves into the area, they make an <strong>Agility test</strong>. If they were unaware of the snare, the test takes a bane.</p>",
-          "after": "<p>While an enemy is bleeding this way, each gnoll in the encounter gains an edge on strikes made against them.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1023,6 +1195,26 @@
           "value": "",
           "dsid": [],
           "level": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>A gnoll acting this turn drops an iron-jawed snare into the area. The first time any enemy moves into the area, they make an <strong>Agility test</strong>. If they were unaware of the snare, the test takes a bane.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>While an enemy is bleeding this way, each gnoll in the encounter gains an edge on strikes made against them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "effects": [],
@@ -1031,9 +1223,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.9bdZ4N6vu3nGUvPk",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761169504184,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -1151,9 +1343,9 @@
     "compendiumSource": "Actor.zbLiA7cPHhdpkhYx",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757047900718,
     "modifiedTime": null,
     "lastModifiedBy": null

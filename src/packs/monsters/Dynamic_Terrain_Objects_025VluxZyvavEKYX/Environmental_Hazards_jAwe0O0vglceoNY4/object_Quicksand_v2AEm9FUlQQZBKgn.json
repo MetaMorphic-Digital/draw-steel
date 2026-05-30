@@ -287,7 +287,9 @@
         "trigger": "A creature or object enters the quicksand or starts their turn there.",
         "distance": {
           "type": "melee",
-          "primary": 0
+          "primary": "0",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -318,31 +320,36 @@
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 },
                 "tier2": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "display": "{{potency}} restrained (save ends)",
                   "effects": {
                     "restrained": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 },
                 "tier3": {
                   "potency": {
-                    "value": "2"
+                    "value": "2",
+                    "characteristic": ""
                   },
                   "display": "{{potency}} restrained (save ends)",
                   "effects": {
                     "restrained": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   }
                 }
@@ -350,13 +357,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>This ability takes a bane if a triggering creature shifted into the quicksand. A character who starts their turn restrained this way is suffocating</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>This ability takes a bane if a triggering creature shifted into the quicksand. A character who starts their turn restrained this way is suffocating</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "mKYPpsiLXBNBwIVM",
@@ -373,9 +387,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1771705080043,
         "modifiedTime": null,
         "lastModifiedBy": null

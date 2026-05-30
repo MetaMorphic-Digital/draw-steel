@@ -23,19 +23,23 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "qd50FlsYfrxTVaNT": {
@@ -45,15 +49,34 @@
           "_id": "qd50FlsYfrxTVaNT",
           "damage": {
             "tier1": {
-              "value": "4 + @chr"
+              "value": "4 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "6 + @chr"
+              "value": "6 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "10 + @chr"
+              "value": "10 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "NnAuNYuytTeAgHIE": {
           "name": "Slide",
@@ -65,27 +88,42 @@
               "movement": [
                 "slide"
               ],
-              "distance": "2"
+              "distance": "2",
+              "display": "{{forced}}",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "movement": [
                 "slide"
               ],
-              "distance": "3"
+              "distance": "3",
+              "display": "{{forced}}",
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "movement": [
                 "slide"
               ],
-              "distance": "5"
+              "distance": "5",
+              "display": "{{forced}}",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>You can shift into any square the target leaves when you slide them.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -94,7 +132,20 @@
     "prerequisites": {
       "dsid": [
         "shadow"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>You can shift into any square the target leaves when you slide them.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -107,9 +158,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754653203931,
     "modifiedTime": null,
     "lastModifiedBy": null

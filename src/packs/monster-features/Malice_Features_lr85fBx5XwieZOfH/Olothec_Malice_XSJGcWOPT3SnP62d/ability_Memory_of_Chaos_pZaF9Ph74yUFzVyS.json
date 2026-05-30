@@ -8,7 +8,10 @@
     "resource": 6,
     "trigger": "A olothec starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -19,13 +22,10 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has [[potency R 3]] is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -38,7 +38,23 @@
     },
     "_dsid": "memory-of-chaos",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has [[potency R 3]] is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -50,10 +66,19 @@
       "_id": "XV3JUcixv5fgbYm7",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -74,12 +99,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620836589
       },
       "showIcon": 2,
       "start": null,
@@ -93,9 +118,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761505915799,
     "modifiedTime": null,
     "lastModifiedBy": null

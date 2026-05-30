@@ -8,7 +8,10 @@
     "resource": 5,
     "trigger": "A xorannox’s starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -19,13 +22,10 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Until the end of Xorannox’s next turn, whenever he or any of his eyes leave their space, they secrete a viscous slime onto the ground in that area. Any enemy who enters an affected square has [[/apply ApDXogBwQd5y8qS8]]{lightning weakness 5 and fire weakness 5} until the end of the encounter.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -38,7 +38,23 @@
     },
     "_dsid": "slime-trail",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the end of Xorannox’s next turn, whenever he or any of his eyes leave their space, they secrete a viscous slime onto the ground in that area. Any enemy who enters an affected square has [[/apply ApDXogBwQd5y8qS8]]{lightning weakness 5 and fire weakness 5} until the end of the encounter.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -50,7 +66,6 @@
       "_id": "ApDXogBwQd5y8qS8",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -58,15 +73,27 @@
             "key": "system.damage.weakness.fire",
             "value": 5,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           },
           {
             "key": "system.damage.weakness.lightning",
             "value": 5,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -84,12 +111,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620836266
       },
       "start": null,
       "showIcon": 1,
@@ -103,9 +130,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761532245900,
     "modifiedTime": null,
     "lastModifiedBy": null

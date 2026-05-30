@@ -8,23 +8,24 @@
     "resource": 5,
     "trigger": "A hobgoblin starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each hobgoblin in the encounter shifts up to their speed and can take the Defend main action.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -37,7 +38,23 @@
     },
     "_dsid": "operation-tactical-swarm",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each hobgoblin in the encounter shifts up to their speed and can take the Defend main action.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "T4SAnS1vRpGBktJS",
@@ -46,9 +63,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758769555335,
     "modifiedTime": null,
     "lastModifiedBy": null

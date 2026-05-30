@@ -29,7 +29,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": "5"
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -52,25 +54,50 @@
           "_id": "d1NnPd3E8HyWqGQ0",
           "damage": {
             "tier1": {
-              "value": "9"
+              "value": "9",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "14"
+              "value": "14",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "19"
+              "value": "19",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         }
       }
     },
-    "effect": {
-      "before": "",
-      "after": "<p>The retainer can target a second creature or object within 5 squares of the original target and that has line of effect to the original target. The retainer doesn’t need line of effect to the second target but must be aware of their location.</p>"
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>The retainer can target a second creature or object within 5 squares of the original target and that has line of effect to the original target. The retainer doesn’t need line of effect to the second target but must be aware of their location.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [],
@@ -83,9 +110,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772912346467,
     "modifiedTime": null,
     "lastModifiedBy": null

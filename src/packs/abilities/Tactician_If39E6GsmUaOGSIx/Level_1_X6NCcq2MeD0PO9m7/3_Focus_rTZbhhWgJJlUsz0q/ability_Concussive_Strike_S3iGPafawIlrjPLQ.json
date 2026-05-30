@@ -15,27 +15,29 @@
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "heroic",
     "resource": 3,
     "trigger": "",
     "distance": {
       "type": "meleeRanged",
-      "primary": 1,
-      "secondary": 5,
-      "tertiary": null
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creatureObject",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "might"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "LDNZ7ZtkrReyBEDs": {
@@ -50,7 +52,7 @@
                 "characteristic": "none",
                 "value": "@potency.weak"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier2": {
               "types": [],
@@ -59,7 +61,7 @@
                 "characteristic": "",
                 "value": "@potency.average"
               },
-              "properties": []
+              "ignoredImmunities": []
             },
             "tier3": {
               "types": [],
@@ -68,9 +70,11 @@
                 "characteristic": "",
                 "value": "@potency.strong"
               },
-              "properties": []
+              "ignoredImmunities": []
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         },
         "n2s5coNoWVimQudO": {
           "type": "applied",
@@ -86,7 +90,8 @@
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -99,7 +104,8 @@
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -112,17 +118,16 @@
               "effects": {
                 "dazed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             }
-          }
+          },
+          "img": null,
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -132,8 +137,11 @@
     "prerequisites": {
       "dsid": [
         "tactician"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "folder": "rTZbhhWgJJlUsz0q",
@@ -142,9 +150,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140628632,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -37,7 +39,8 @@
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "QBxmisNcWNpmd3xO": {
@@ -52,8 +55,10 @@
                 "psychic"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "14 + @chr",
@@ -61,8 +66,10 @@
                 "psychic"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "20 + @chr",
@@ -70,10 +77,13 @@
                 "psychic"
               ],
               "potency": {
-                "characteristic": "none"
-              }
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "gmeDnGz1DCMKjZqw": {
           "name": "Applied Effect",
@@ -84,58 +94,64 @@
             "tier1": {
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "reason",
+                "value": "@potency.weak"
               },
               "effects": {
                 "4VNUTZ3jWRGqD7SQ": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "oCsO9QcithqyHJ9C": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
             "tier2": {
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "reason",
+                "value": "@potency.average"
               },
               "display": "{{potency}}, slowed (save ends)",
               "effects": {
                 "4VNUTZ3jWRGqD7SQ": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "oCsO9QcithqyHJ9C": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
             "tier3": {
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "reason",
+                "value": "@potency.strong"
               },
               "display": "{{potency}}, slowed (save ends)",
               "effects": {
                 "4VNUTZ3jWRGqD7SQ": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 },
                 "oCsO9QcithqyHJ9C": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]]{3 psychic damage} for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]]{5 psychic damage} for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
     },
     "spend": {
       "text": "",
@@ -144,7 +160,20 @@
     "prerequisites": {
       "dsid": [
         "talent"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>While slowed this way, the target takes [[/damage 3*@scaling type=psychic scaling]]{3 psychic damage} for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5*@scaling type=psychic scaling]]{5 psychic damage} for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
     }
   },
   "effects": [
@@ -157,7 +186,17 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "_id": "4VNUTZ3jWRGqD7SQ",
       "disabled": false,
@@ -179,9 +218,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760901185426,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -200,10 +239,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -223,9 +271,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1760912956745,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -245,9 +293,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1760749557007,
     "modifiedTime": null,
     "lastModifiedBy": null

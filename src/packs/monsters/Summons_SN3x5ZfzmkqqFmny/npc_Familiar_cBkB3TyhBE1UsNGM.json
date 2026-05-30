@@ -98,9 +98,12 @@
         "animal"
       ],
       "level": 1,
-      "ev": 4,
       "role": "support",
       "organization": "minion"
+    },
+    "ev": 4,
+    "statuses": {
+      "immunities": []
     }
   },
   "prototypeToken": {
@@ -212,7 +215,12 @@
           "license": "Draw Steel Creator License"
         },
         "_dsid": "telepathic",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -226,9 +234,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1755833999677,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -246,9 +254,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1755833595680,
     "modifiedTime": null,
     "lastModifiedBy": null

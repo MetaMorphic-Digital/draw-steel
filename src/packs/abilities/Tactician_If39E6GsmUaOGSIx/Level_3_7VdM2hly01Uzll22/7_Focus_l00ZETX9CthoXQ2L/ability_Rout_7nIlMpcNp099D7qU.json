@@ -16,25 +16,23 @@
     "trigger": "",
     "distance": {
       "type": "self",
-      "primary": 0,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "0",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "self",
-      "value": null
+      "value": null,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Until the end of the encounter or until you are dying, whenever you or any ally deals damage to a target marked by you who has R &lt; [Average], the target is [[/apply frightened save]] of the creature who dealt the damage.</p>",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -44,7 +42,20 @@
     "prerequisites": {
       "dsid": [
         "tactician"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the end of the encounter or until you are dying, whenever you or any ally deals damage to a target marked by you who has R &lt; [Average], the target is [[/apply frightened save]] of the creature who dealt the damage.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -54,9 +65,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140993288,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -18,21 +18,23 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10,
-      "secondary": 0,
-      "tertiary": null
+      "primary": "10",
+      "secondary": "0",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "ally",
-      "value": 3
+      "value": 3,
+      "custom": ""
     },
     "power": {
       "roll": {
         "formula": "@chr",
         "characteristics": [
           "reason"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "LHYR6dv0GSqp6MWR": {
@@ -40,13 +42,38 @@
           "name": "",
           "img": null,
           "type": "resource",
-          "_id": "LHYR6dv0GSqp6MWR"
+          "_id": "LHYR6dv0GSqp6MWR",
+          "resource": {
+            "tier1": {
+              "amount": 1,
+              "type": "surge",
+              "display": "",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "amount": 2,
+              "type": "surge",
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "amount": 3,
+              "type": "surge",
+              "display": "",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "value": null,
@@ -56,8 +83,11 @@
     "prerequisites": {
       "dsid": [
         "tactician"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "folder": "rTZbhhWgJJlUsz0q",
@@ -66,9 +96,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1751140619879,
     "modifiedTime": null,
     "lastModifiedBy": null

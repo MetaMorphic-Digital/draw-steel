@@ -332,7 +332,9 @@
         "trigger": "A creature or object of the appropriate size enters the trap’s space.",
         "distance": {
           "type": "melee",
-          "primary": 0
+          "primary": "0",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -355,7 +357,25 @@
               "_id": "nnDamlCXVmLqiI7z",
               "other": {
                 "tier1": {
-                  "display": "The target shifts 1 square away from the snare."
+                  "display": "The target shifts 1 square away from the snare.",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -367,13 +387,31 @@
               "_id": "DCvAqKO9g9iVarjL",
               "damage": {
                 "tier1": {
-                  "value": "0"
+                  "value": "0",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "1"
+                  "value": "1",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "3"
+                  "value": "3",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -387,17 +425,21 @@
                 "tier1": {
                   "display": "",
                   "potency": {
-                    "characteristic": "agility"
-                  }
+                    "characteristic": "agility",
+                    "value": "@potency.weak"
+                  },
+                  "effects": {}
                 },
                 "tier2": {
                   "potency": {
-                    "value": "1"
+                    "value": "1",
+                    "characteristic": ""
                   },
                   "effects": {
                     "restrained": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "display": "{{potency}} restrained (save ends)"
@@ -406,25 +448,25 @@
                   "effects": {
                     "restrained": {
                       "condition": "failure",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "potency": {
-                    "value": "2"
-                  }
+                    "value": "2",
+                    "characteristic": ""
+                  },
+                  "display": ""
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "effects": {}
       },
       "_id": "mtXJNfYuot8Dwm6c",
       "img": "icons/equipment/waist/belt-rope.webp",
@@ -440,9 +482,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772988796067,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -460,7 +502,6 @@
       "_id": "Dd06t03qVgkCUU2D",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -468,21 +509,34 @@
             "key": "system.ev",
             "value": 1,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           },
           {
             "key": "system.stamina.max",
             "value": 3,
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           },
           {
             "key": "system.combat.size.text",
             "value": "3 squares by 3 squares",
             "priority": null,
-            "type": "override"
+            "type": "override",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "duration": {
         "value": null,
@@ -500,9 +554,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.11.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1772988435251,
         "modifiedTime": null,
         "lastModifiedBy": null

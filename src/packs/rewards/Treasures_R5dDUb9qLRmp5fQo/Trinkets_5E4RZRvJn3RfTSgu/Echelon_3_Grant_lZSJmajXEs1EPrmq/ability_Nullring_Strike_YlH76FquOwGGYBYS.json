@@ -24,7 +24,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -38,7 +40,8 @@
         "characteristics": [
           "might",
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "UXyaZXmj6OinfZBp": {
@@ -51,21 +54,37 @@
               "value": "3",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "5",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "8",
               "types": [
                 "psychic"
-              ]
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "ic0w7cZUd8GuKcEj": {
           "name": "Slowed",
@@ -75,13 +94,15 @@
           "applied": {
             "tier2": {
               "potency": {
-                "characteristic": "intuition"
+                "characteristic": "intuition",
+                "value": "@potency.average"
               },
               "display": "{{potency}}, slowed (save ends)",
               "effects": {
                 "7ADX3nm1EjirYQHS": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -90,21 +111,47 @@
               "effects": {
                 "7ADX3nm1EjirYQHS": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p>While slowed in this way, the target takes a bane on magic or psionic abilities.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p>While slowed in this way, the target takes a bane on magic or psionic abilities.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -117,10 +164,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -140,9 +196,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1761843088726,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -162,9 +218,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761752943636,
     "modifiedTime": null,
     "lastModifiedBy": null

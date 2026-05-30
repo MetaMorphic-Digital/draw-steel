@@ -32,7 +32,9 @@
           "intuition": 0,
           "presence": 0
         },
-        "max": 6
+        "max": 6,
+        "sort": 0,
+        "repick": {}
       },
       "5dyFMsTGcKfZMbKk": {
         "name": "Benefit",
@@ -54,13 +56,21 @@
           {
             "uuid": "Compendium.draw-steel.rewards.Item.Bw8sy8HKFlzMowyq"
           }
-        ]
+        ],
+        "sort": 0,
+        "repick": {},
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       }
     },
     "echelon": 4,
     "story": "The quest is done, the enemy is defeated, and the Blade of a Thousand Years has passed from our hands. What do we do with the rest of our lives?",
     "prerequisites": {
-      "value": "Your party loses, destroys, or otherwise parts with an artifact."
+      "value": "Your party loses, destroys, or otherwise parts with an artifact.",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [],
@@ -73,9 +83,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1762186596659,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -8,22 +8,24 @@
     "resource": 3,
     "trigger": "A ashen starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>The ashen hoarder moves up to their speed and can make a free strike against two targets.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -36,7 +38,23 @@
     },
     "_dsid": "relentless-strikes",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The ashen hoarder moves up to their speed and can make a free strike against two targets.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [],
   "folder": "GHdL1A3Mv8B5oFNI",
@@ -45,9 +63,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757725230125,
     "modifiedTime": null,
     "lastModifiedBy": null

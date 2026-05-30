@@ -19,7 +19,9 @@
     "echelon": 3,
     "story": "Last time we fought, I gave you a little token to remember me by … now it appears you need another reminder of my power.",
     "prerequisites": {
-      "value": "An enemy leader or solo creature reduces you to 0 Stamina"
+      "value": "An enemy leader or solo creature reduces you to 0 Stamina",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -31,7 +33,6 @@
       "_id": "mdFpcS85Hud9Sm5u",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -39,9 +40,20 @@
             "key": "system.stamina.max",
             "value": 20,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -60,9 +72,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1762013267479,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -89,9 +101,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1762013047832,
     "modifiedTime": null,
     "lastModifiedBy": null

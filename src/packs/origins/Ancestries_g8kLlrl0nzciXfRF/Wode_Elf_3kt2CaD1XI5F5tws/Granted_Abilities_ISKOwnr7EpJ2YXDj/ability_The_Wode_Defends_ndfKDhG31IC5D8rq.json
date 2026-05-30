@@ -23,12 +23,15 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
       "type": "creature",
-      "value": 1
+      "value": 1,
+      "custom": ""
     },
     "power": {
       "roll": {
@@ -36,7 +39,8 @@
         "characteristics": [
           "might",
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "SsiipRfdaageIGMp": {
@@ -46,12 +50,34 @@
           "_id": "SsiipRfdaageIGMp",
           "damage": {
             "tier2": {
-              "value": "3 + @chr"
+              "value": "3 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "5 + @chr"
+              "value": "5 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "Rnu7xcmwdD1t0v9A": {
           "name": "",
@@ -62,12 +88,14 @@
             "tier1": {
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
-                "characteristic": "agility"
+                "characteristic": "agility",
+                "value": "@potency.weak"
               },
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
             },
@@ -75,8 +103,14 @@
               "effects": {
                 "slowed": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "display": "",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
               }
             },
             "tier3": {
@@ -84,22 +118,30 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
-    }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 100000,
@@ -111,9 +153,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1754533571179,
     "modifiedTime": null,
     "lastModifiedBy": null

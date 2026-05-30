@@ -92,7 +92,8 @@
         "fey",
         "humanoid"
       ],
-      "role": "artillery"
+      "role": "artillery",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -250,25 +251,50 @@
               "_id": "l9K4ECoylXLMm1Eu",
               "damage": {
                 "tier1": {
-                  "value": "4"
+                  "value": "4",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "7"
+                  "value": "7",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 },
                 "tier3": {
-                  "value": "10"
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The arrowswift can take a bane on this ability to gain a +5 bonus to ranged distance.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The arrowswift can take a bane on this ability to gain a +5 bonus to ranged distance.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "am2ldPy0NmCQ1GVp",
@@ -285,9 +311,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1773161847565,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -349,9 +375,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.11.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772903271603,
     "modifiedTime": null,
     "lastModifiedBy": null

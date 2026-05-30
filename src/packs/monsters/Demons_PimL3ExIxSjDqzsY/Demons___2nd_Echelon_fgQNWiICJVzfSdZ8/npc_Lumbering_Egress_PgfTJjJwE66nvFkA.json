@@ -94,9 +94,12 @@
         "abyssal"
       ],
       "level": 6,
-      "ev": 32,
       "role": "",
       "organization": "leader"
+    },
+    "ev": 32,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "68"
         },
         "_dsid": "end-effect",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "rc3gr6kHtZMyG9j6",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830418
       },
       "_key": "!actors.items!PgfTJjJwE66nvFkA.rc3gr6kHtZMyG9j6"
     },
@@ -152,11 +160,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -164,7 +175,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "S7qqfAiPySJ7sVPk": {
@@ -178,35 +190,36 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "16",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "19",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "f4j7YddAKEtlHwvd": {
               "_id": "f4j7YddAKEtlHwvd",
@@ -256,17 +269,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>@UUID[Compendium.draw-steel.monsters.Actor.UhfOrqouXnHoIS8h]{Ensnarer}</p>"
-        },
-        "spend": {
-          "text": "Two ensnarers appear in unoccupied spaces adjacent to each target. On a tier 3 outcome, four ensnarers appear.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -276,7 +282,39 @@
         "_dsid": "ensnarer-cannon",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>Two ensnarers appear in unoccupied spaces adjacent to each target. On a tier 3 outcome, four ensnarers appear.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>@UUID[Compendium.draw-steel.monsters.Actor.UhfOrqouXnHoIS8h]{Ensnarer}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -286,12 +324,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830418
       },
       "_id": "0tMvR6s597WnDpMe",
       "ownership": {
@@ -311,11 +349,14 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 3
+          "primary": "3",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -323,17 +364,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Four level 1 demon minions (most commonly ensnarers, frenzieds, and pitlings) burst forth from the egress and appear in unoccupied spaces in the area.</p><p>@UUID[Compendium.draw-steel.monsters.Actor.UhfOrqouXnHoIS8h]{Ensnarer}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.LObGOqAbCzceqLsZ]{Frenzied}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.mk2BTfD8Mv9ffTLT]{Pitling}</p>",
-          "after": "<p>@UUID[Compendium.draw-steel.monsters.Actor.tE6gzFGlFDdSV0nT]{Orliq}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.WwVzCeCSmWxzavYt]{Grulqin}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.FlhenZoGvBLM5GOu]{Wobalas}</p>"
-        },
-        "spend": {
-          "text": "Four level 4 demon minions (most commonly orliq, grul qins, and wobalas) appear instead.",
-          "value": 2
         },
         "source": {
           "book": "Monsters",
@@ -343,7 +377,48 @@
         "_dsid": "demonic-egress",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>Four level 4 demon minions (most commonly orliq, grul qins, and wobalas) appear instead.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Four level 1 demon minions (most commonly ensnarers, frenzieds, and pitlings) burst forth from the egress and appear in unoccupied spaces in the area.</p><p>@UUID[Compendium.draw-steel.monsters.Actor.UhfOrqouXnHoIS8h]{Ensnarer}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.LObGOqAbCzceqLsZ]{Frenzied}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.mk2BTfD8Mv9ffTLT]{Pitling}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>@UUID[Compendium.draw-steel.monsters.Actor.tE6gzFGlFDdSV0nT]{Orliq}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.WwVzCeCSmWxzavYt]{Grulqin}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.FlhenZoGvBLM5GOu]{Wobalas}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -353,12 +428,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_id": "Q2X7FgAmlWbwV4D9",
       "ownership": {
@@ -379,11 +454,14 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -391,13 +469,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Eight @UUID[Compendium.draw-steel.monsters.Actor.UhfOrqouXnHoIS8h]{Ensnarer} appear anywhere in the area.</p>"
         },
         "spend": {
           "text": "",
@@ -411,7 +486,23 @@
         "_dsid": "abyssal-protectors",
         "story": "",
         "resource": 2,
-        "trigger": "The last ally minion on the encounter map dies, or the egress is reduced below 25 Stamina."
+        "trigger": "The last ally minion on the encounter map dies, or the egress is reduced below 25 Stamina.",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Eight @UUID[Compendium.draw-steel.monsters.Actor.UhfOrqouXnHoIS8h]{Ensnarer} appear anywhere in the area.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -421,12 +512,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_id": "MOTd2cmvRoUxxwv0",
       "ownership": {
@@ -446,11 +537,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": "10",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
-          "value": 3
+          "value": 3,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -458,7 +552,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "N5fgGQsaihlXSjQg": {
@@ -472,35 +567,36 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "12",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "15",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "Gt5VXFkf2t11dM6w": {
               "name": "",
@@ -529,13 +625,10 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>@UUID[Compendium.draw-steel.monsters.Actor.LObGOqAbCzceqLsZ]{Frenzied}</p>"
         },
         "spend": {
           "text": "",
@@ -549,7 +642,23 @@
         "_dsid": "frenzied-deluge",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>@UUID[Compendium.draw-steel.monsters.Actor.LObGOqAbCzceqLsZ]{Frenzied}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -559,12 +668,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_id": "mXyPjH6etdYhQKkp",
       "ownership": {
@@ -584,11 +693,14 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 20
+          "primary": "20",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "self",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -596,13 +708,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The egress folds into their own portal and teleports to an un occupied space within distance. Four level 4 demon minions (most commonly orliq, grulqins, and wobalas) appear in squares in the egress's former space.</p>",
-          "after": "<p>@UUID[Compendium.draw-steel.monsters.Actor.tE6gzFGlFDdSV0nT]{Orliq}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.WwVzCeCSmWxzavYt]{Grulqin}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.FlhenZoGvBLM5GOu]{Wobalas}</p>"
         },
         "spend": {
           "text": "",
@@ -616,7 +725,32 @@
         "_dsid": "fold-space",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The egress folds into their own portal and teleports to an un occupied space within distance. Four level 4 demon minions (most commonly orliq, grulqins, and wobalas) appear in squares in the egress's former space.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>@UUID[Compendium.draw-steel.monsters.Actor.tE6gzFGlFDdSV0nT]{Orliq}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.WwVzCeCSmWxzavYt]{Grulqin}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.FlhenZoGvBLM5GOu]{Wobalas}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -626,12 +760,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_id": "khWcJVs4Ih6c55g1",
       "ownership": {
@@ -652,13 +786,14 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 10,
-          "secondary": 3,
-          "tertiary": 1
+          "primary": "10",
+          "secondary": "3",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemyObject",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -666,7 +801,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "zIkE342EOQt3cwuL": {
@@ -680,35 +816,36 @@
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "11",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "14",
                   "types": [
                     "corruption"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
-              }
+              },
+              "sort": 0
             },
             "UAQ3PsIC6r1no1hl": {
               "_id": "UAQ3PsIC6r1no1hl",
@@ -758,13 +895,10 @@
                     }
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The egress recalls and instantly destroys any minion allies on the encounter map. A torrent of churned-up minion bodies, blood, and ichor erupts from the egress, dealing an extra [[/damage 1 damage]] for each minion destroyed this way.</p>"
         },
         "spend": {
           "text": "",
@@ -778,7 +912,23 @@
         "_dsid": "blood-of-the-abyss",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The egress recalls and instantly destroys any minion allies on the encounter map. A torrent of churned-up minion bodies, blood, and ichor erupts from the egress, dealing an extra [[/damage 1 damage]] for each minion destroyed this way.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -788,12 +938,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_id": "yfNjO2sWqtNNLrIL",
       "ownership": {
@@ -821,26 +971,44 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -854,12 +1022,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_key": "!actors.items!PgfTJjJwE66nvFkA.2PmYNyLNcEt2Ufaa"
     },
@@ -883,26 +1051,44 @@
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "effects": [],
@@ -916,12 +1102,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620830419
       },
       "_key": "!actors.items!PgfTJjJwE66nvFkA.d298nvIWsIOh0Kl7"
     }
@@ -1028,9 +1214,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1758137288063,
     "modifiedTime": null,
     "lastModifiedBy": null

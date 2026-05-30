@@ -23,7 +23,9 @@
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -36,7 +38,8 @@
         "formula": "@chr",
         "characteristics": [
           "agility"
-        ]
+        ],
+        "reactive": false
       },
       "effects": {
         "OrDSEr7vKXRpCWe6": {
@@ -46,15 +49,34 @@
           "_id": "OrDSEr7vKXRpCWe6",
           "damage": {
             "tier1": {
-              "value": "12 + @chr"
+              "value": "12 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "18 + @chr"
+              "value": "18 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "24 + @chr"
+              "value": "24 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "wIi7T7j7C610hFtm": {
           "name": "Bleeding EoT",
@@ -64,7 +86,8 @@
           "applied": {
             "tier1": {
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.weak"
               },
               "display": "",
               "effects": {}
@@ -72,23 +95,27 @@
             "tier2": {
               "display": "",
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.average"
               },
               "effects": {}
             },
             "tier3": {
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.strong"
               },
               "effects": {
                 "bleeding": {
                   "condition": "success",
-                  "end": "turn"
+                  "end": "turn",
+                  "properties": []
                 }
               },
               "display": "bleeding (EoT)"
             }
-          }
+          },
+          "sort": 0
         },
         "B5fZoUkXsyfomVbO": {
           "name": "Bleeding",
@@ -101,38 +128,47 @@
               "effects": {
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "characteristic": "might"
+                "characteristic": "might",
+                "value": "@potency.weak"
               }
             },
             "tier2": {
               "effects": {
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
-              "display": "{{potency}}, bleeding (save ends)"
+              "display": "{{potency}}, bleeding (save ends)",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "effects": {
                 "bleeding": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
-              "display": "or if {{potency}}, bleeding (save ends)"
+              "display": "or if {{potency}}, bleeding (save ends)",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -141,8 +177,11 @@
     "prerequisites": {
       "dsid": [
         "duelist"
-      ]
-    }
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {}
   },
   "effects": [],
   "sort": 0,
@@ -154,9 +193,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761076268387,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -18,16 +18,22 @@
     "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
         "formula": "2",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {
         "LWfCzXMwGX0NJNos": {
@@ -37,15 +43,34 @@
           "_id": "LWfCzXMwGX0NJNos",
           "damage": {
             "tier1": {
-              "value": "4"
+              "value": "4",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
-              "value": "4"
+              "value": "4",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
-              "value": "4"
+              "value": "4",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
-          }
+          },
+          "sort": 0
         },
         "4CyD3EuQhZZ3XBS3": {
           "name": "Agility Damage",
@@ -55,25 +80,33 @@
           "damage": {
             "tier1": {
               "potency": {
-                "characteristic": "none"
+                "characteristic": "none",
+                "value": "@potency.weak"
               },
-              "value": "0"
+              "value": "0",
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier2": {
               "potency": {
                 "characteristic": "agility",
                 "value": "1"
               },
-              "value": "2"
+              "value": "2",
+              "types": [],
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "5",
               "potency": {
                 "value": "2",
                 "characteristic": "agility"
-              }
+              },
+              "types": [],
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "vhv2fx9be2mvJo3W": {
           "name": "Prone",
@@ -90,37 +123,62 @@
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 }
               }
             },
             "tier3": {
               "display": "prone and can't stand (save ends)",
               "potency": {
-                "value": "2"
+                "value": "2",
+                "characteristic": ""
               },
               "effects": {
                 "prone": {
                   "condition": "failure",
-                  "end": ""
+                  "end": "",
+                  "properties": []
                 },
                 "KtUIFOUuE6sXE8vC": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               }
+            },
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "<p>The basilisk spits up a chunk of partly digested stone.</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The basilisk spits up a chunk of partly digested stone.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "effects": [
@@ -133,10 +191,19 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": []
+        "changes": [],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -154,9 +221,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "1.1.0",
         "createdTime": 1757092423092,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -176,9 +243,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "1.1.0",
     "createdTime": 1757092250067,
     "modifiedTime": null,
     "lastModifiedBy": null

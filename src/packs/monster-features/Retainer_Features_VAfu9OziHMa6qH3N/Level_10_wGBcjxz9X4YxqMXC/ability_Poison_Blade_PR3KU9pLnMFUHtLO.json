@@ -25,7 +25,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -41,13 +44,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>The guide applies poison to their weapon. The next time the guide obtains a tier 2 or tier 3 outcome on a weapon strike, the strike deals an extra [[/damage 10 poison]] damage, and if the target has [[potency M average]], they are [[/apply weakened save]]. If the guide is adjacent to their mentor when they use Poison Blade, they apply poison to the mentor’s weapon in the same way.</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>The guide applies poison to their weapon. The next time the guide obtains a tier 2 or tier 3 outcome on a weapon strike, the strike deals an extra [[/damage 10 poison]] damage, and if the target has [[potency M average]], they are [[/apply weakened save]]. If the guide is adjacent to their mentor when they use Poison Blade, they apply poison to the mentor’s weapon in the same way.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -60,9 +70,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913577268,
     "modifiedTime": null,
     "lastModifiedBy": null

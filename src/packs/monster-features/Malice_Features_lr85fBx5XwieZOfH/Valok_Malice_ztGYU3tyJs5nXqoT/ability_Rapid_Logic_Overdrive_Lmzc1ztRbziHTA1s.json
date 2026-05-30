@@ -8,7 +8,10 @@
     "resource": 7,
     "trigger": "A  starts its turn.",
     "distance": {
-      "type": "special"
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "target": {
       "type": "special",
@@ -19,13 +22,10 @@
     "power": {
       "roll": {
         "formula": "",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Each valok in the encounter can end one effect on them that can be ended by a saving throw, and can move up to their speed (making use of the bonus below). Additionally, until the end of the encounter, all valok deal an extra [[/damage 5]] damage on strikes and gain a +5 bonus to speed. This feature can be activated multiples times, stacking the effects.</p><p>[[/apply Imfv5uj4pCikQdwu]]</p><p>[[/apply HbHoatu1lL1GlLjD]]</p>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -38,7 +38,23 @@
     },
     "_dsid": "rapid-logic-overdrive",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Each valok in the encounter can end one effect on them that can be ended by a saving throw, and can move up to their speed (making use of the bonus below). Additionally, until the end of the encounter, all valok deal an extra [[/damage 5]] damage on strikes and gain a +5 bonus to speed. This feature can be activated multiples times, stacking the effects.</p><p>[[/apply Imfv5uj4pCikQdwu]]</p><p>[[/apply HbHoatu1lL1GlLjD]]</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
   },
   "effects": [
     {
@@ -50,7 +66,6 @@
       "_id": "Imfv5uj4pCikQdwu",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
@@ -63,9 +78,20 @@
             "key": "damage.bonuses.value",
             "value": 5,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -83,12 +109,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620836372
       },
       "start": null,
       "showIcon": 1,
@@ -104,7 +130,6 @@
       "_id": "HbHoatu1lL1GlLjD",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -112,9 +137,20 @@
             "key": "system.movement.value",
             "value": 5,
             "priority": null,
-            "type": "add"
+            "type": "add",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -132,12 +168,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620836372
       },
       "start": null,
       "showIcon": 1,
@@ -151,9 +187,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761432574837,
     "modifiedTime": null,
     "lastModifiedBy": null

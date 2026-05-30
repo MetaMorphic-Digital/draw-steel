@@ -20,8 +20,9 @@
     "trigger": "",
     "distance": {
       "type": "cube",
-      "primary": 3,
-      "secondary": 10
+      "primary": "3",
+      "secondary": "10",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -32,7 +33,8 @@
     "power": {
       "roll": {
         "formula": "2",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {
         "MhQwsOqVGfNaQFua": {
@@ -46,35 +48,36 @@
               "types": [
                 "corruption"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier2": {
               "value": "6",
               "types": [
                 "corruption"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             },
             "tier3": {
               "value": "9",
               "types": [
                 "corruption"
               ],
-              "properties": [],
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
-              }
+              },
+              "ignoredImmunities": []
             }
-          }
+          },
+          "sort": 0
         },
         "WoQ1Q8BcxmPBSXXN": {
           "name": "Slowed and Restrained",
@@ -115,7 +118,8 @@
               "effects": {
                 "restrained": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
@@ -123,17 +127,30 @@
                 "characteristic": ""
               }
             }
-          }
+          },
+          "sort": 0
         }
       }
-    },
-    "effect": {
-      "before": "",
-      "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
     },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "after00000000000": {
+        "_id": "after00000000000",
+        "type": "base",
+        "description": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>",
+        "name": "",
+        "img": null,
+        "sort": 0,
+        "before": false
+      }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "_id": "lVlwo9eIp8HBjfth",
@@ -149,9 +166,9 @@
     "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.80gzHodmr6sIzkR2",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1755639546111,
     "modifiedTime": null,
     "lastModifiedBy": null

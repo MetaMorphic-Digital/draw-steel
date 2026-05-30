@@ -302,13 +302,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>The shard releases a shockwave channeled through each creature affected by Psionic Barrier. Each ally in the encounter is [[/apply dazed turn]] until the end of their next turn.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The shard releases a shockwave channeled through each creature affected by Psionic Barrier. Each ally in the encounter is [[/apply dazed turn]] until the end of their next turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "kpQ5f9xjlrOZCNsk",
@@ -322,9 +329,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776874411097,
         "modifiedTime": null,
         "lastModifiedBy": null,

@@ -94,9 +94,12 @@
         "horror"
       ],
       "level": 6,
-      "ev": 0,
       "role": "controller",
       "organization": "minion"
+    },
+    "ev": 0,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "329"
         },
         "_dsid": "psionic-barrier",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "JfOdpfWr8oxfvkJ3",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835493
       },
       "_key": "!actors.items!wmtEhrfa1pZyyDQy.JfOdpfWr8oxfvkJ3"
     },
@@ -152,7 +160,9 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 6
+          "primary": "6",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -165,7 +175,8 @@
             "formula": "@chr",
             "characteristics": [
               "reason"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "7y9fNXkyMjY4IAob": {
@@ -200,10 +211,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>As a free triggered action, a charmed target immediately moves up to their speed and can make a free strike against an enemy of Xorannox's choice. The target is then no longer charmed.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -216,7 +223,23 @@
         "_dsid": "compulsion-beam",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>As a free triggered action, a charmed target immediately moves up to their speed and can make a free strike against an enemy of Xorannox's choice. The target is then no longer charmed.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -226,12 +249,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835493
       },
       "_id": "2Zn4GZcDnQhnfgh5",
       "ownership": {
@@ -342,7 +365,6 @@
       "_id": "yszyVK7g0ZSMMJa5",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -350,9 +372,20 @@
             "key": "system.damage.immunities.all",
             "value": 15,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -371,12 +404,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1778620835494
       },
       "start": {
         "combat": null,
@@ -399,9 +432,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761535141258,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -25,7 +25,10 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -41,13 +44,20 @@
       },
       "effects": {}
     },
-    "effect": {
-      "before": "<p>Until the end of the encounter, whenever the arrowswift makes a ranged strike, the strike gains an edge and the arrowswift [[/gain 1 surge]] that must be used immediately. While the arrowswift’s mentor is adjacent to them, the mentor also gains this benefit. [[/apply 1mtIinANapevdBhp]]</p>",
-      "after": ""
-    },
     "spend": {
       "text": "",
       "value": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the end of the encounter, whenever the arrowswift makes a ranged strike, the strike gains an edge and the arrowswift [[/gain 1 surge]] that must be used immediately. While the arrowswift’s mentor is adjacent to them, the mentor also gains this benefit. [[/apply 1mtIinANapevdBhp]]</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [
@@ -76,7 +86,17 @@
             "type": "add",
             "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -94,9 +114,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.358",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1773162444926,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -116,9 +136,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772913521489,
     "modifiedTime": null,
     "lastModifiedBy": null

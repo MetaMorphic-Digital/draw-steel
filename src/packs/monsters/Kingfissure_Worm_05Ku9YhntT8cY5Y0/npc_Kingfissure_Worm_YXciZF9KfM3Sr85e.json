@@ -94,9 +94,12 @@
         "beast"
       ],
       "level": 7,
-      "ev": 108,
       "role": "solo",
       "organization": "solo"
+    },
+    "ev": 108,
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
@@ -115,7 +118,12 @@
           "page": "187"
         },
         "_dsid": "solo-monster",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "bFcZXYnoVFYtjUs4",
       "effects": [],
@@ -129,12 +137,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.bFcZXYnoVFYtjUs4"
     },
@@ -153,7 +161,12 @@
           "page": "187"
         },
         "_dsid": "multiple-tongues",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "8vSfNZKDtSjAm9k4",
       "effects": [],
@@ -167,12 +180,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.8vSfNZKDtSjAm9k4"
     },
@@ -191,7 +204,12 @@
           "page": "187"
         },
         "_dsid": "seismic-king",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "KeG6EHQrU1TEeVnC",
       "effects": [],
@@ -205,12 +223,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.KeG6EHQrU1TEeVnC"
     },
@@ -229,7 +247,12 @@
           "page": "187"
         },
         "_dsid": "swallowed",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "Y17bNsLnstNOy56d",
       "effects": [],
@@ -243,12 +266,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.Y17bNsLnstNOy56d"
     },
@@ -267,7 +290,12 @@
           "page": "187"
         },
         "_dsid": "titanic-tunneler",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "HOY8iVDSTwfWe6Qo",
       "effects": [],
@@ -281,12 +309,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.HOY8iVDSTwfWe6Qo"
     },
@@ -305,7 +333,12 @@
           "page": "187"
         },
         "_dsid": "unstoppable-crawler",
-        "advancements": {}
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "_id": "XrNRQ0gkC0l2hUUs",
       "effects": [],
@@ -319,12 +352,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.XrNRQ0gkC0l2hUUs"
     },
@@ -342,7 +375,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -355,7 +390,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "bh5tN6NpkLREhP6k": {
@@ -367,29 +403,29 @@
                 "tier1": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "18",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "22",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -447,10 +483,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>The kingfissure worm must have one or more tongues to use this ability. As a maneuver, the kingfissure worm can pull up to two creatures grabbed this way adjacent to them.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -463,7 +495,23 @@
         "_dsid": "tongue-grab",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>The kingfissure worm must have one or more tongues to use this ability. As a maneuver, the kingfissure worm can pull up to two creatures grabbed this way adjacent to them.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -473,12 +521,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "23MW8yw5jMBh6dxE",
       "ownership": {
@@ -501,7 +549,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -514,7 +564,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "tJImnKHkRP5VmeHL": {
@@ -526,29 +577,29 @@
                 "tier1": {
                   "value": "15",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "20",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "25",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -624,14 +675,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>[[/damage 8]]{8 damage from malice charge}</p>"
-        },
-        "spend": {
-          "text": "When the kingfissure worm uses the Charge main action, they ignore difficult terrain and automatically destroy mundane size 3 and smaller objects in the path of their charge. The first time the kingfissure worm moves through a creature's space during this charge, that creature takes 8 damage and is pushed up to 3 squares.",
-          "value": 2
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -640,7 +683,39 @@
         "_dsid": "maw",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "spend00000000000": {
+            "_id": "spend00000000000",
+            "type": "spend",
+            "sort": 100000,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            },
+            "description": "<p>When the kingfissure worm uses the Charge main action, they ignore difficult terrain and automatically destroy mundane size 3 and smaller objects in the path of their charge. The first time the kingfissure worm moves through a creature's space during this charge, that creature takes 8 damage and is pushed up to 3 squares.</p>",
+            "name": "",
+            "img": null,
+            "before": false
+          },
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>[[/damage 8]]{8 damage from malice charge}</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "spend": {
+          "text": ""
+        }
       },
       "effects": [],
       "folder": null,
@@ -650,12 +725,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "3xc4AMf4PbeISUnh",
       "ownership": {
@@ -675,7 +750,9 @@
         ],
         "distance": {
           "type": "melee",
-          "primary": 1
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -688,13 +765,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target is swallowed (see Swallowed).</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -708,7 +782,23 @@
         "_dsid": "consume",
         "story": "",
         "resource": 2,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The target is swallowed (see Swallowed).</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -718,12 +808,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "H79ge4eCgPTZUPqK",
       "ownership": {
@@ -746,8 +836,9 @@
         ],
         "distance": {
           "type": "meleeRanged",
-          "primary": 5,
-          "secondary": 10
+          "primary": "5",
+          "secondary": "10",
+          "tertiary": "1"
         },
         "target": {
           "type": "creatureObject",
@@ -760,13 +851,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The kingfissure worm can use this maneuver only while they have a creature or object grabbed. The worm slams the grabbed creature or object against the target, dealing [[/damage 13]]{13 damage} to both. If this ability is used at range, it deals an extra [[/damage 5]]{5 damage} and the grabbed creature or object is released.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -780,7 +868,23 @@
         "_dsid": "tongue-whip",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The kingfissure worm can use this maneuver only while they have a creature or object grabbed. The worm slams the grabbed creature or object against the target, dealing [[/damage 13]]{13 damage} to both. If this ability is used at range, it deals an extra [[/damage 5]]{5 damage} and the grabbed creature or object is released.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -790,12 +894,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "p9FSJWkGUyuiteyj",
       "ownership": {
@@ -812,7 +916,10 @@
         "category": "",
         "keywords": [],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -823,13 +930,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The kingfissure worm deals [[/damage 5]]{5 damage} to the creature or object the tongue had grabbed, releases that creature or object, then pulls the damaged tongue back into their mouth.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -843,7 +947,23 @@
         "_dsid": "tearing-recoil",
         "story": "",
         "resource": null,
-        "trigger": "A tongue takes damage that doesn't reduce it to 0 Stamina."
+        "trigger": "A tongue takes damage that doesn't reduce it to 0 Stamina.",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The kingfissure worm deals [[/damage 5]]{5 damage} to the creature or object the tongue had grabbed, releases that creature or object, then pulls the damaged tongue back into their mouth.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -853,12 +973,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "zxKs2m14y1bB9Bzd",
       "ownership": {
@@ -879,9 +999,9 @@
         ],
         "distance": {
           "type": "line",
-          "primary": 20,
-          "secondary": 4,
-          "tertiary": 1
+          "primary": "20",
+          "secondary": "4",
+          "tertiary": "1"
         },
         "target": {
           "type": "creature",
@@ -906,10 +1026,31 @@
               "_id": "cmFUx4nqBHB8y1M4",
               "damage": {
                 "tier1": {
-                  "value": "10"
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
                 },
                 "tier2": {
-                  "value": "10"
+                  "value": "10",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "",
+                  "types": [],
+                  "ignoredImmunities": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
                 }
               }
             },
@@ -925,8 +1066,13 @@
                   "effects": {
                     "Jtyo7w0rGoTMpMQd": {
                       "condition": "always",
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 },
                 "tier2": {
@@ -934,8 +1080,21 @@
                   "effects": {
                     "prone": {
                       "condition": "always",
-                      "end": ""
+                      "end": "",
+                      "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
               }
@@ -948,15 +1107,29 @@
               "_id": "7HaQEWZWUfeejLbY",
               "other": {
                 "tier3": {
-                  "display": "The target shifts to the nearest unoccupied space outside the area."
+                  "display": "The target shifts to the nearest unoccupied space outside the area.",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 }
               }
             }
           }
-        },
-        "effect": {
-          "before": "<p><strong>Special:</strong> Each target must be on the ground.</p><p>The area becomes a 10-square-deep fissure in the earth. Each target makes an <strong>Agility test.</strong></p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -970,7 +1143,23 @@
         "_dsid": "kings-fissure",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p><strong>Special:</strong> Each target must be on the ground.</p><p>The area becomes a 10-square-deep fissure in the earth. Each target makes an <strong>Agility test.</strong></p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -982,10 +1171,19 @@
           "_id": "Jtyo7w0rGoTMpMQd",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
-            "changes": []
+            "changes": [],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1003,12 +1201,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886282418,
+            "modifiedTime": 1779886282418
           },
           "start": {
             "combat": null,
@@ -1030,12 +1228,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "N6KJiwhROKYmjLzf",
       "ownership": {
@@ -1054,7 +1252,10 @@
           "weapon"
         ],
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1067,13 +1268,10 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The kingfissure worm can use this villain action only while burrowing. The worm burrows up to half their speed, then breaches the surface and moves 5 squares straight up before dropping back to the ground. Each creature or object whose space the worm moves through during this movement takes [[/damage 10]]{10 damage}, and if they have [[potency A 4]] they are knocked [[/apply prone]]. Any creature who is made winded by this damage is swallowed (see Swallowed).</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1087,7 +1285,23 @@
         "_dsid": "earth-breach",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The kingfissure worm can use this villain action only while burrowing. The worm burrows up to half their speed, then breaches the surface and moves 5 squares straight up before dropping back to the ground. Each creature or object whose space the worm moves through during this movement takes [[/damage 10]]{10 damage}, and if they have [[potency A 4]] they are knocked [[/apply prone]]. Any creature who is made winded by this damage is swallowed (see Swallowed).</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1097,12 +1311,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "yd2qheP3d9MViTtO",
       "ownership": {
@@ -1123,7 +1337,9 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemyObject",
@@ -1136,7 +1352,8 @@
             "formula": "@chr",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "kvTpnPSVY9rxvsIY": {
@@ -1150,33 +1367,33 @@
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "17",
                   "types": [
                     "acid"
                   ],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               },
               "sort": 0
@@ -1234,10 +1451,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Each creature swallowed by the worm is regurgitated and automatically subject to the tier 3 outcome, then lands [[/apply prone]] in an unoccupied space within 5 squares of the kingfissure worm.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1250,7 +1463,23 @@
         "_dsid": "better-out-than-in",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Each creature swallowed by the worm is regurgitated and automatically subject to the tier 3 outcome, then lands [[/apply prone]] in an unoccupied space within 5 squares of the kingfissure worm.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1260,12 +1489,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "8PjcKe1C9CUOEtb0",
       "ownership": {
@@ -1283,7 +1512,10 @@
         "resource": 5,
         "trigger": "A  starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1294,13 +1526,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The kingfissure worm takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1313,7 +1542,23 @@
         },
         "_dsid": "solo-action",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The kingfissure worm takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1323,12 +1568,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "NR44AykqiqUPuevU",
       "ownership": {
@@ -1346,7 +1591,10 @@
         "resource": 5,
         "trigger": "A  starts its turn.",
         "distance": {
-          "type": "special"
+          "type": "special",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "special",
@@ -1357,13 +1605,10 @@
         "power": {
           "roll": {
             "formula": "",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>The kingfissure worm loses [[/damage 35]]{35 Stamina} and regrows one tongue, to a maximum of three tongues. The worm is then dazed until the end of their turn.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
@@ -1376,7 +1621,23 @@
         },
         "_dsid": "spontaneous-regeneration",
         "story": "",
-        "keywords": []
+        "keywords": [],
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>The kingfissure worm loses [[/damage 35]]{35 Stamina} and regrows one tongue, to a maximum of three tongues. The worm is then dazed until the end of their turn.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [],
       "folder": null,
@@ -1386,12 +1647,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282428
       },
       "_id": "vK4cMF99I9kwmwpV",
       "ownership": {
@@ -1410,7 +1671,9 @@
         "trigger": "A  starts its turn.",
         "distance": {
           "type": "burst",
-          "primary": 5
+          "primary": "5",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "target": {
           "type": "enemy",
@@ -1423,7 +1686,8 @@
             "formula": "",
             "characteristics": [
               "might"
-            ]
+            ],
+            "reactive": false
           },
           "effects": {
             "8mipGCSaI9SK8OQy": {
@@ -1436,29 +1700,29 @@
                 "tier1": {
                   "value": "8",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier2": {
                   "value": "13",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 },
                 "tier3": {
                   "value": "17",
                   "types": [],
-                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
+                  },
+                  "ignoredImmunities": []
                 }
               }
             },
@@ -1509,10 +1773,6 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Until the end of the next round, each target takes a [[/apply l6fW3mUd5FgAYUOf]]{−3 penalty} to stability, treats all terrain as difficult terrain, and takes [[/damage 10]]{10 damage} whenever they are knocked prone.</p>"
-        },
         "spend": {
           "text": "",
           "value": null
@@ -1527,7 +1787,23 @@
         "keywords": [
           "area",
           "weapon"
-        ]
+        ],
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Until the end of the next round, each target takes a [[/apply l6fW3mUd5FgAYUOf]]{−3 penalty} to stability, treats all terrain as difficult terrain, and takes [[/damage 10]]{10 damage} whenever they are knocked prone.</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
       },
       "effects": [
         {
@@ -1539,7 +1815,6 @@
           "_id": "l6fW3mUd5FgAYUOf",
           "system": {
             "end": {
-              "type": "",
               "roll": "1d10 + @combat.save.bonus"
             },
             "changes": [
@@ -1547,9 +1822,20 @@
                 "key": "system.combat.stability",
                 "value": -3,
                 "priority": null,
-                "type": "add"
+                "type": "add",
+                "phase": "initial"
               }
-            ]
+            ],
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
           },
           "disabled": false,
           "duration": {
@@ -1567,12 +1853,12 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "14.356",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
+            "systemVersion": "1.1.0",
             "lastModifiedBy": null,
-            "createdTime": null,
-            "modifiedTime": null
+            "createdTime": 1779886282423,
+            "modifiedTime": 1779886282423
           },
           "start": null,
           "showIcon": 1,
@@ -1587,12 +1873,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282429
       },
       "_id": "nFay1vXtHXGJXUCy",
       "ownership": {
@@ -1617,7 +1903,10 @@
         "resource": 3,
         "trigger": "A creature deals damage to the kingfissure worm or one of their tongues.",
         "distance": {
-          "type": "self"
+          "type": "self",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
         },
         "damageDisplay": "melee",
         "target": {
@@ -1628,17 +1917,30 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [],
+            "reactive": false
           },
           "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each creature within 5 squares of the kingfissure worm takes [[/damage 5]]{5 damage}, and if they have [[potency A 4]] they are knocked [[/apply prone]]. The kingfissure worm can use this ability only once per round.</p>",
-          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Each creature within 5 squares of the kingfissure worm takes [[/damage 5]]{5 damage}, and if they have [[potency A 4]] they are knocked [[/apply prone]]. The kingfissure worm can use this ability only once per round.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
+        },
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
         }
       },
       "_id": "JLblmainXI3If1ld",
@@ -1655,12 +1957,12 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "0.10.0",
+        "systemVersion": "1.1.0",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": null
+        "createdTime": 1779886282429
       },
       "_key": "!actors.items!YXciZF9KfM3Sr85e.JLblmainXI3If1ld"
     }
@@ -1767,9 +2069,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761597533820,
     "modifiedTime": null,
     "lastModifiedBy": null

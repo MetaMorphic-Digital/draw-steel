@@ -27,8 +27,12 @@
           "choices": [
             "eavesdrop",
             "sneak"
-          ]
-        }
+          ],
+          "groups": []
+        },
+        "sort": 0,
+        "description": "",
+        "repick": {}
       },
       "73XFGk4wXMTvItL8": {
         "name": "",
@@ -42,9 +46,18 @@
         "skills": {
           "groups": [
             "lore"
-          ]
-        }
+          ],
+          "choices": []
+        },
+        "sort": 0,
+        "description": "",
+        "repick": {}
       }
+    },
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
     }
   },
   "_id": "kNq3IALOvIkZxcGn",
@@ -58,7 +71,6 @@
       "type": "base",
       "system": {
         "end": {
-          "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "changes": [
@@ -66,9 +78,20 @@
             "key": "system.damage.weaknesses.sonic",
             "value": 5,
             "priority": null,
-            "type": "upgrade"
+            "type": "upgrade",
+            "phase": "initial"
           }
-        ]
+        ],
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
       },
       "disabled": false,
       "duration": {
@@ -87,9 +110,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.356",
+        "coreVersion": "14.361",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1755177686947,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -109,9 +132,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.356",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "0.10.2",
+    "systemVersion": "1.1.0",
     "createdTime": 1754715846118,
     "modifiedTime": null,
     "lastModifiedBy": null

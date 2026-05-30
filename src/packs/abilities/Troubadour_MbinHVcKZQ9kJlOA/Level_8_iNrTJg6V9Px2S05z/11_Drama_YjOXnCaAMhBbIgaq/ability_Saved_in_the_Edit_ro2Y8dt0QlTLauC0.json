@@ -20,7 +20,10 @@
     "resource": 11,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
@@ -31,13 +34,10 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [],
+        "reactive": false
       },
       "effects": {}
-    },
-    "effect": {
-      "before": "<p>Until the end of the encounter, whenever you deal rolled damage to a creature or object, or enable a creature to spend a Recovery, you can use a free triggered action to give that creature or object one of the following effects until the start of your next turn. If this ability is triggered by multiple targets taking damage or multiple creatures spending Recoveries simultaneously, each target receives the same effect:</p><ul><li><p>The target has damage weakness equal to [[lookup @P]]{your Presence score} against any magic, psionic, or weapon ability.</p></li><li><p>The target has damage immunity equal to [[lookup @P]]{your Presence score}.</p></li><li><p>The target has a bonus to stability and a penalty to speed equal to [[lookup @P]]{your Presence score}.</p></li><li><p>The target has a bonus to speed and a penalty to stability equal to [[lookup @P]]{your Presence score}.</p></li></ul>",
-      "after": ""
     },
     "spend": {
       "text": "",
@@ -46,7 +46,20 @@
     "prerequisites": {
       "dsid": [
         "troubadour"
-      ]
+      ],
+      "value": "",
+      "level": null
+    },
+    "effects": {
+      "before0000000000": {
+        "_id": "before0000000000",
+        "type": "base",
+        "description": "<p>Until the end of the encounter, whenever you deal rolled damage to a creature or object, or enable a creature to spend a Recovery, you can use a free triggered action to give that creature or object one of the following effects until the start of your next turn. If this ability is triggered by multiple targets taking damage or multiple creatures spending Recoveries simultaneously, each target receives the same effect:</p><ul><li><p>The target has damage weakness equal to [[lookup @P]]{your Presence score} against any magic, psionic, or weapon ability.</p></li><li><p>The target has damage immunity equal to [[lookup @P]]{your Presence score}.</p></li><li><p>The target has a bonus to stability and a penalty to speed equal to [[lookup @P]]{your Presence score}.</p></li><li><p>The target has a bonus to speed and a penalty to stability equal to [[lookup @P]]{your Presence score}.</p></li></ul>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      }
     }
   },
   "effects": [],
@@ -59,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.359",
+    "coreVersion": "14.361",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1761079220967,
     "modifiedTime": null,
     "lastModifiedBy": null

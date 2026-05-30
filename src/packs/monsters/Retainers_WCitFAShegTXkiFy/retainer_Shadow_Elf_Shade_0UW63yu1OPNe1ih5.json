@@ -93,7 +93,8 @@
         "fey",
         "humanoid"
       ],
-      "role": "ambusher"
+      "role": "ambusher",
+      "mentor": null
     },
     "recoveries": {
       "value": 6,
@@ -243,7 +244,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -263,11 +265,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776721113664,
-            "modifiedTime": 1776721187901,
+            "modifiedTime": 1779886276013,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -301,7 +303,8 @@
               "rollCharacteristic": [],
               "yield": {
                 "amount": "1",
-                "display": ""
+                "display": "",
+                "kind": "weapon"
               }
             }
           },
@@ -321,11 +324,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.360",
+            "coreVersion": "14.362",
             "systemId": "draw-steel",
-            "systemVersion": "1.0.0",
+            "systemVersion": "1.1.0",
             "createdTime": 1776721238810,
-            "modifiedTime": 1776721282675,
+            "modifiedTime": 1779886276013,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -443,13 +446,20 @@
             }
           }
         },
-        "effect": {
-          "before": "",
-          "after": "<p>Whenever the shade starts their turn with concealment from the target, they [[/gain 1 surge]].</p>"
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "after00000000000": {
+            "_id": "after00000000000",
+            "type": "base",
+            "description": "<p>Whenever the shade starts their turn with concealment from the target, they [[/gain 1 surge]].</p>",
+            "name": "",
+            "img": null,
+            "sort": 0,
+            "before": false
+          }
         }
       },
       "_id": "8Kea0DTQbTEHHlF1",
@@ -463,9 +473,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776721439333,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -520,13 +530,20 @@
           },
           "effects": {}
         },
-        "effect": {
-          "before": "<p>Until the end of the next turn, the area is filled with darkness. The shade’s mentor ignores concealment created by this darkness.</p>",
-          "after": ""
-        },
         "spend": {
           "text": "",
           "value": null
+        },
+        "effects": {
+          "before0000000000": {
+            "_id": "before0000000000",
+            "type": "base",
+            "description": "<p>Until the end of the next turn, the area is filled with darkness. The shade’s mentor ignores concealment created by this darkness.</p>",
+            "before": true,
+            "name": "",
+            "img": null,
+            "sort": 0
+          }
         }
       },
       "_id": "aDYQUITYAy2IiBwo",
@@ -540,9 +557,9 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.360",
+        "coreVersion": "14.362",
         "systemId": "draw-steel",
-        "systemVersion": "1.0.0",
+        "systemVersion": "1.1.0",
         "createdTime": 1776721684983,
         "modifiedTime": null,
         "lastModifiedBy": null,
@@ -563,9 +580,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.360",
+    "coreVersion": "14.362",
     "systemId": "draw-steel",
-    "systemVersion": "1.0.0",
+    "systemVersion": "1.1.0",
     "createdTime": 1772903213150,
     "modifiedTime": null,
     "lastModifiedBy": null
