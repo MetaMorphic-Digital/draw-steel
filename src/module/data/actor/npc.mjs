@@ -2,7 +2,9 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
+import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import LocalDocumentField from "../fields/local-document-field.mjs";
 import SourceModel from "../models/source.mjs";
 
 /**
@@ -57,7 +59,7 @@ export default class NPCModel extends CreatureModel {
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
-      withCaptainEffect: new fields.DocumentIdField({ required: false, readonly: false }),
+      withCaptainEffect: new LocalDocumentField(DrawSteelActiveEffect || foundry.documents.ActiveEffect, { required: false }),
     });
 
     return schema;
@@ -358,8 +360,8 @@ export default class NPCModel extends CreatureModel {
    *                        Null if no such effect exists.
    */
   async _getWithCaptainDescription(options = {}) {
-    const withCaptainAE = this.parent.effects.get(this.monster.withCaptainEffect);
-    if (!withCaptainAE) return null;
-    return CONFIG.ux.TextEditor.enrichHTML(withCaptainAE.description, { ...options, relativeTo: this.parent });
+    const { withCaptainEffect } = this.monster;
+    if (!withCaptainEffect) return null;
+    return CONFIG.ux.TextEditor.enrichHTML(withCaptainEffect.description, { ...options, relativeTo: this.parent });
   }
 }
