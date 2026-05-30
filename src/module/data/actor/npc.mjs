@@ -228,12 +228,16 @@ export default class NPCModel extends CreatureModel {
 
     // Prepare abilities list (`ul`).
     const abilities = this.parent.itemTypes.ability;
+    const features = this.parent.itemTypes.feature;
     const abilitiesList = document.createElement("ul");
     abilitiesList.classList.add("abilities-list");
     for (const ability of abilities) {
       const abilityEmbed = await ability.system.toEmbed({});
+      const abilityIcon = ability.system.getStatBlockIcon();
       const li = document.createElement("li");
       li.innerHTML = abilityEmbed.outerHTML;
+      li.classList.add(abilityIcon);
+
       abilitiesList.append(li);
     }
 
