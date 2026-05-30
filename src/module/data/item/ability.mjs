@@ -339,39 +339,6 @@ export default class AbilityModel extends BaseItemModel {
     return embed;
   }
 
-  /**
-   * Logic to get the stat-block icon for use in the actor sheet.
-   * @returns {string}
-   */
-  getStatBlockIcon() {
-    console.info(this);
-    switch (this.type) {
-      case "villain":
-        return "villain-action";
-
-      case "triggered":
-      case "freeTriggered":
-        return "triggered-action";
-
-      default:
-        break;
-    }
-
-    switch (this.distance.type) {
-      case "cube":
-      case "line":
-      case "wall":
-        return "area";
-
-      case "aura":
-      case "burst":
-        return "burst";
-      //
-      default:
-        return this.distance.type;
-    }
-  }
-
   /* -------------------------------------------------- */
 
   /**

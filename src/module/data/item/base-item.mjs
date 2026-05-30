@@ -3,7 +3,10 @@ import SourceModel from "../models/source.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { validateDSID } from "../helpers.mjs";
 
-/** @import DrawSteelActor from "../../documents/actor.mjs" */
+/**
+ * @import DrawSteelActor from "../../documents/actor.mjs"
+ * @import { EmbedDisplayFlags } from "./_types";
+ */
 
 const fields = foundry.data.fields;
 
@@ -123,9 +126,62 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);
-    embed.innerHTML = enriched;
+    if (config.includeName) {
+      embed.innerHTML = `
+        <h5>${this.parent.name}</h5>
+        ${enriched}
+      `;
+    } else {
+      embed.innerHTML = enriched;
+    }
 
     return embed;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Logic to get the stat-block icon for use in Actor embed.
+   * Currently only applies to `feature` and `ability` items.
+   * @returns {string}
+   */
+  getStatBlockIcon() {
+    if (!["feature", "ability"].includes(this.parent.type)) return null;
+
+    /** @type {EmbedDisplayFlags["iconOverride"]} */
+    const iconOverride = this.parent.getFlag(ds.CONST.systemID, "iconOverride");
+
+    if (this.parent.type === "feature") {
+      return iconOverride ?? "trait"; // Default to `trait` icon for features.
+    }
+
+    if (iconOverride) return iconOverride;
+
+    switch (this.type) {
+      case "villain":
+        return "villain-action";
+
+      case "triggered":
+      case "freeTriggered":
+        return "triggered-action";
+
+      default:
+        break;
+    }
+
+    switch (this.distance.type) {
+      case "cube":
+      case "line":
+      case "wall":
+        return "area";
+
+      case "aura":
+      case "burst":
+        return "burst";
+
+      default:
+        return this.distance.type;
+    }
   }
 
   /* -------------------------------------------------- */
