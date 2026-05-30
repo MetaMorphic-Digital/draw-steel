@@ -100,14 +100,23 @@
       "level": null
     },
     "effects": {
-      "before0000000000": {
-        "_id": "before0000000000",
+      "after00000000000": {
+        "_id": "after00000000000",
         "type": "base",
-        "description": "<p>A column of fire remains in the area until the start of your next turn. Each enemy who enters the area for the first time in a combat round or starts their turn there takes [[/damage 2 fire]] damage.</p><p><strong>Strained:</strong> The size of the cube increases by 2, but the fire disappears at the end of your turn.</p>",
-        "before": true,
+        "description": "<p>A column of fire remains in the area until the start of your next turn. Each enemy who enters the area for the first time in a combat round or starts their turn there takes [[/damage 2 fire]] damage.</p>",
+        "before": false,
         "name": "",
         "img": null,
         "sort": 0
+      },
+      "pybjlOTGUPZI80eY": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "strained",
+        "_id": "pybjlOTGUPZI80eY",
+        "description": "<p>The size of the cube increases by 2, but the fire disappears at the end of your turn.</p>",
+        "before": false
       }
     }
   },
@@ -121,7 +130,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.363",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755842501449,
