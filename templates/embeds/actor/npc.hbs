@@ -55,35 +55,23 @@
 
   <div class="secondary-stats">
     <div class="immunities">
-      <span class="label">
-        {{systemFields.damage.fields.immunities.label}}:
-      </span>
-      <span class="value">
-        {{#if damageIW.immunities}}
-        {{{damageIW.immunities}}}
-        {{else}}
-        —
-        {{/if}}
-      </span>
+      <span class="label">{{systemFields.damage.fields.immunities.label}}:</span>
+      <span class="value">{{{ifThen damageIW.immunities damageIW.immunities "—"}}}</span>
     </div>
     <div class="weakness">
       <span class="label">{{systemFields.damage.fields.weaknesses.label}}:</span>
-      <span class="value">
-        {{#if damageIW.weaknesses}}
-        {{{damageIW.weaknesses}}}
-        {{else}}
-        —
-        {{/if}}
-      </span>
+      <span class="value">{{{ifThen damageIW.weaknesses damageIW.weaknesses "—"}}}</span>
     </div>
     <div class="movement">
       <span class="label">{{systemFields.movement.label}}:</span>
       <span class="value">{{ifThen movement movement "—"}}</span>
     </div>
+    {{#if (eq system.monster.organization "minion")}}
     <div class="with-captain">
       <span class="label">{{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}:</span>
       <span class="value">{{{ifThen withCaptain withCaptain "—"}}}</span>
     </div>
+    {{/if}}
   </div>
 
   <div class="characteristics">

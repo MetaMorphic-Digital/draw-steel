@@ -4,5 +4,7 @@
   {{formGroup monsterFields.organization value=systemSource.monster.organization options=monsterOrganizations}}
   {{formGroup monsterFields.role value=systemSource.monster.role options=monsterRoles}}
   {{formGroup systemFields.ev value=systemSource.ev}}
+  {{#if (eq systemSource.monster.organization "minion")}}
   {{formGroup monsterFields.withCaptainEffect value=systemSource.monster.withCaptainEffect options=effects}}
+  {{/if}}
 </section>

@@ -97,11 +97,12 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    */
   async _getWithCaptainContext() {
     const effect = this.actor.system.monster.withCaptainEffect;
+    const isMinion = this.actor.system.monster.organization === "minion";
     return {
       description: await this.actor.system._getWithCaptainDescription(),
       effectEnabled: !effect?.disabled,
       effectId: effect?.id,
-      exists: !!effect,
+      exists: !!effect && isMinion,
     };
   }
 
