@@ -228,17 +228,8 @@ export default class NPCModel extends CreatureModel {
     embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
 
     // Prepare list of features and abilities (`ul`).
-    const { feature } = this.parent.items.documentsByType;
     const abilities = this._getOrderedAbilities();
-
-    const startFeatures = [];
-    const endFeatures = [];
-    feature.forEach(f => {
-      /** @type {EmbedDisplayFlags} */
-      const flag = f.getFlag(ds.CONST.systemID, "embedDisplay");
-      if (flag?.displayAtEnd) endFeatures.push(f);
-      else startFeatures.push(f);
-    });
+    const { startFeatures, endFeatures } = this._getOrderedFeatures();
     const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
 
     const itemList = document.createElement("ul");
@@ -262,7 +253,7 @@ export default class NPCModel extends CreatureModel {
   }
 
   /**
-   * Orders the Ability Items in the same order
+   * Orders Ability Items in the same order
    * as the keys in ds.CONFIG.abilities.types.
    * @returns {DrawSteelItem[]}
    */
@@ -271,6 +262,24 @@ export default class NPCModel extends CreatureModel {
     return this.parent.items.documentsByType.ability.sort(
       (a, b) => keys.indexOf(a.system.type) - keys.indexOf(b.system.type),
     );
+  }
+
+  /**
+   * Orders Feature Items via the `embedDisplay.displayAtEnd` flag.
+   * @returns {{ startFeatures: DrawSteelItem[], endFeatures: DrawSteelItem[] }}
+   */
+  _getOrderedFeatures() {
+    const { feature } = this.parent.items.documentsByType;
+
+    const startFeatures = [];
+    const endFeatures = [];
+    feature.forEach(f => {
+      /** @type {EmbedDisplayFlags} */
+      const flag = f.getFlag(ds.CONST.systemID, "embedDisplay");
+      if (flag?.displayAtEnd) endFeatures.push(f);
+      else startFeatures.push(f);
+    });
+    return { startFeatures, endFeatures };
   }
 
   /* ------------------------------------------------- */
