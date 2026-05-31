@@ -57,25 +57,46 @@
         </div>
       </div>
     </fieldset>
-    <fieldset class="free-strike">
-      <legend>{{systemFields.monster.fields.freeStrike.label}}</legend>
-      <div class="free-strike-body">
+    <fieldset class="monster-abilities">
+      <legend>
+        {{localize "DRAW_STEEL.Actor.npc.MonsterAbilities.FieldsetLegend"}}
+        {{#unless isPlay}}
+        <a data-action="editMonsterMetadata">
+          <i class="fa-solid fa-gear"></i>
+        </a>
+        {{/unless}}
+      </legend>
+      <div class="free-strike">
         {{#if isPlay}}
         {{#if gm}}
         <button type="button" data-action="freeStrike">
+          {{systemFields.monster.fields.freeStrike.label}}
           <i class="fa-solid fa-burst"></i>
           {{system.monster.freeStrike}}
         </button>
         {{else}}
-        <span>
+        <span class="player-view">
+          {{systemFields.monster.fields.freeStrike.label}}:
           {{system.monster.freeStrike}}
         </span>
         {{/if}}
         {{else}}
-        {{formInput systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike dataset=datasets.isSource}}
+        {{formGroup systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike dataset=datasets.isSource}}
         {{/if}}
       </div>
+      {{#if (and isPlay withCaptain.exists)}}
+      <div class="with-captain">
+        <button id="{{concat rootId "-withCaptainToggle"}}" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}">
+          {{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}
+          <i class="fa-solid fa-lg {{ifThen withCaptain.effectEnabled "fa-toggle-on" "fa-toggle-off"}}"></i>
+        </button>
+        {{#if withCaptain.description}}
+        <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
+        {{/if}}
+      </div>
+      {{/if}}
     </fieldset>
+
   </div>
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"  editCharacteristics=(not isPlay)}}
   {{#if isPlay}}

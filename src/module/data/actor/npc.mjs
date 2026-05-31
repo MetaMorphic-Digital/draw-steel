@@ -2,8 +2,11 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
+import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import LocalDocumentField from "../fields/local-document-field.mjs";
 import SourceModel from "../models/source.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -57,6 +60,7 @@ export default class NPCModel extends CreatureModel {
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
+      withCaptainEffect: new LocalDocumentField(DrawSteelActiveEffect || foundry.documents.ActiveEffect, { required: false }),
     });
 
     return schema;
@@ -207,9 +211,6 @@ export default class NPCModel extends CreatureModel {
     // All NPCs are rendered inline
     config.inline = true;
 
-    const walkLabel = _loc(CONFIG.Token.movement.actions.walk.label);
-    const walkRe = new RegExp(`${walkLabel}[,]?`);
-
     const context = {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
@@ -218,6 +219,7 @@ export default class NPCModel extends CreatureModel {
       movement: this._getMovement(true).list,
       system: this,
       systemFields: this.schema.fields,
+      withCaptain: await this._getWithCaptainDescription(options),
     };
 
     const embed = document.createElement("div");
@@ -348,5 +350,19 @@ export default class NPCModel extends CreatureModel {
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
     return Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
+  }
+
+  /* ------------------------------------------------- */
+
+  /**
+   * Fetches the description for the "With Captain" effect.
+   * @param {object} [options] Options to forward to the TextEditor.enrichHTML method.
+   * @returns {Promise<string|null>} The inner HTML of the first element of the description.
+   *                                 Null if no such effect exists.
+   */
+  async _getWithCaptainDescription(options = {}) {
+    const { withCaptainEffect } = this.monster;
+    if (!withCaptainEffect) return null;
+    return enrichHTML(withCaptainEffect.description, { ...options, relativeTo: withCaptainEffect });
   }
 }

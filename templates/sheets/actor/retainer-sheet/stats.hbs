@@ -91,9 +91,9 @@
         </div>
       </div>
     </fieldset>
-    <fieldset class="free-strike">
+    <fieldset class="monster-abilities">
       <legend>{{systemFields.retainer.fields.freeStrike.label}}</legend>
-      <div class="free-strike-body">
+      <div class="free-strike">
         {{#if isPlay}}
         {{#if gm}}
         <button type="button" data-action="freeStrike">
@@ -101,7 +101,7 @@
           {{system.retainer.freeStrike}}
         </button>
         {{else}}
-        <span>
+        <span class="player-view">
           {{system.retainer.freeStrike}}
         </span>
         {{/if}}

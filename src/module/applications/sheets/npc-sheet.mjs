@@ -10,10 +10,14 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
+    position: {
+      height: 662,
+    },
     actions: {
       updateSource: this.#updateSource,
       editMonsterMetadata: this.#editMonsterMetadata,
       freeStrike: this.#freeStrike,
+      toggleWithCaptainEffect: this.#toggleWithCaptainEffect,
     },
     window: {
       controls: [{
@@ -74,6 +78,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         break;
       case "stats":
         context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
+        context.withCaptain = await this._getWithCaptainContext();
         context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
         if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
         break;
@@ -82,6 +87,23 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         break;
     }
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the context for the "With Captain" effect.
+   * @returns {Promise<{description: string; exists: boolean; effectEnabled: boolean; effectId: string}>}
+   */
+  async _getWithCaptainContext() {
+    const effect = this.actor.system.monster.withCaptainEffect;
+    const isMinion = this.actor.system.monster.organization === "minion";
+    return {
+      description: await this.actor.system._getWithCaptainDescription(),
+      effectEnabled: !effect?.disabled,
+      effectId: effect?.id,
+      exists: !!effect && isMinion,
+    };
   }
 
   /* -------------------------------------------------- */
@@ -188,5 +210,19 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    */
   static async #freeStrike(event, target) {
     this.actor.system.performFreeStrike();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Toggle the "With Captain" effect.
+   * @this DrawSteelNPCSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #toggleWithCaptainEffect(event, target) {
+    const id = target.closest("[data-effect-id]").dataset.effectId;
+    const effect = this.actor.effects.get(id);
+    await effect.update({ disabled: !effect.disabled });
   }
 }

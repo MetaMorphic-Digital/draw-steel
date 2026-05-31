@@ -109,13 +109,19 @@
   }
 
   .resources {
-    align-items: flex-start;
+    align-items: center;
+
+    &:has(+ .monster-abilities) {
+      height: 100%;
+    }
+
     .form-group.stacked {
       flex-direction: column-reverse;
     }
 
     .resource {
       gap: 0.5rem;
+
       input[type=number] {
         width: 60px;
         flex: 0 0 50px;
@@ -132,11 +138,29 @@
     }
 
     .resource-label {
+      font-size: 1.1em;
       font-weight: 600;
       text-align: center;
-      display: flex;
-      justify-content: space-around;
       line-height: var(--input-height);
+
+      display: flex;
+      justify-content: center;
+
+    }
+
+
+    .resource-content {
+      align-items: center;
+
+      > * > .form-group {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0px;
+
+        > .form-fields {
+          justify-content: center;
+        }
+      }
     }
 
     .resource-divider {
@@ -150,12 +174,45 @@
     }
   }
 
-  .free-strike {
-    flex: 0 0 120px;
-    .free-strike-body {
+
+  fieldset.monster-abilities {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+
+    .free-strike {
       text-align: center;
-      height: 100%;
       padding: 10px 0;
+      margin-inline: auto;
+
+      &:has(span.player-view) {
+        padding-block-end: 0;
+      }
+
+      span.player-view {
+        font-size: 1.125em;
+        padding: 0;
+      }
+    }
+
+    .with-captain {
+      justify-items: center;
+
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      border: 1px groove rgba(0, 0, 0, 0.1);
+      padding: 6px 6px 0px;
+
+      &:not(:has(button + label)) {
+        padding-bottom: 6px;
+      }
+
+      button[disabled] + label {
+        opacity: 0.8;
+      }
     }
   }
 
