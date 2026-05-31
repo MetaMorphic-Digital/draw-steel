@@ -234,7 +234,6 @@ document-embed, .item-embed {
 
         &.triggered-action::before {
           --ability-icon: ')'; /* exclamation */
-          color: black;
         }
 
         &.meleeRanged::before {
@@ -291,6 +290,11 @@ document-embed, .item-embed {
 
     &.mount {
       --color-statblock: #BADDEA;
+    }
+
+    &.no-role,
+    &.solo {
+      box-shadow:4px 4px 8px 2px var(--color-statblock);
     }
 
     &.support {
