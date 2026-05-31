@@ -216,6 +216,7 @@ export default class NPCModel extends CreatureModel {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
+      itemEmbeds: await this._getItemEmbeds(),
       monsterKeywords: this._getMonsterKeywords().join(", "),
       movement: this._getMovement(true).list,
       system: this,
@@ -227,8 +228,6 @@ export default class NPCModel extends CreatureModel {
 
     embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
 
-    context.itemList = await this._getItemsList();
-
     embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
 
     return embed;
@@ -237,28 +236,19 @@ export default class NPCModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the list of items for the NPC embed.
-   * @returns {Promise<string>}
+   * Prepare embeds of Items for the NPC embed.
+   * @returns {Promise<DrawSteelItemEmbed[]>}
    */
-  async _getItemsList() {
+  async _getItemEmbeds() {
     const abilities = this._getOrderedAbilities();
     const { startFeatures, endFeatures } = this._getOrderedFeatures();
     const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
 
-    const itemList = document.createElement("ul");
-    itemList.classList.add("abilities-list");
-    for (const item of orderedItems) {
-      const itemEmbed = await item.system.toEmbed({ includeName: true });
-      const li = document.createElement("li");
-      li.innerHTML = itemEmbed.outerHTML;
-
-      const itemIcon = item.system.getStatBlockIcon?.();
-      if (itemIcon) li.classList.add(itemIcon);
-
-      itemList.append(li);
-    }
-
-    return itemList.outerHTML;
+    return Promise.all(orderedItems.map(async (item) => {
+      const embed = await item.system.toEmbed({ includeName: true });
+      embed.icon = item.system.getStatBlockIcon?.();
+      return embed;
+    }));
   }
 
   /* -------------------------------------------------- */
