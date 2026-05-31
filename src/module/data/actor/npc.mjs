@@ -6,6 +6,7 @@ import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import LocalDocumentField from "../fields/local-document-field.mjs";
 import SourceModel from "../models/source.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -362,6 +363,6 @@ export default class NPCModel extends CreatureModel {
   async _getWithCaptainDescription(options = {}) {
     const { withCaptainEffect } = this.monster;
     if (!withCaptainEffect) return null;
-    return CONFIG.ux.TextEditor.enrichHTML(withCaptainEffect.description, { ...options, relativeTo: this.parent });
+    return enrichHTML(withCaptainEffect.description, { ...options, relativeTo: withCaptainEffect });
   }
 }
