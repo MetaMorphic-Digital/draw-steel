@@ -206,6 +206,10 @@
       border: 1px groove rgba(0, 0, 0, 0.1);
       padding: 6px 6px 0px;
 
+      &:not(:has(button + label)) {
+        padding-bottom: 6px;
+      }
+
       button[disabled] + label {
         opacity: 0.8;
       }

@@ -90,7 +90,9 @@
           {{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}
           <i class="fa-solid fa-lg {{ifThen withCaptain.effectEnabled "fa-toggle-on" "fa-toggle-off"}}"></i>
         </button>
+        {{#if withCaptain.description}}
         <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
+        {{/if}}
       </div>
       {{/if}}
     </fieldset>
