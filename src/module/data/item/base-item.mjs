@@ -149,7 +149,7 @@ export default class BaseItemModel extends DrawSteelSystemModel {
     if (!["feature", "ability"].includes(this.parent.type)) return null;
 
     /** @type {EmbedDisplayFlags["iconOverride"]} */
-    const iconOverride = this.parent.getFlag(ds.CONST.systemID, "iconOverride");
+    const { iconOverride } = this.parent.getFlag(ds.CONST.systemID, "embedDisplay") ?? {};
 
     if (this.parent.type === "feature") {
       return iconOverride ?? "trait"; // Default to `trait` icon for features.

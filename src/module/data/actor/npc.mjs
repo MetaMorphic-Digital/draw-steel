@@ -12,6 +12,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
+ * @import { EmbedDisplayFlags } from "../item/_types";
  * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
@@ -227,10 +228,21 @@ export default class NPCModel extends CreatureModel {
     embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
 
     // Prepare list of features and abilities (`ul`).
-    const { ability, feature } = this.parent.itemTypes;
+    const { ability: abilities, feature } = this.parent.items.documentsByType;
+
+    const startFeatures = [];
+    const endFeatures = [];
+    feature.forEach(f => {
+      /** @type {EmbedDisplayFlags} */
+      const flag = f.getFlag(ds.CONST.systemID, "embedDisplay");
+      if (flag?.displayAtEnd) endFeatures.push(f);
+      else startFeatures.push(f);
+    });
+    const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
+
     const itemList = document.createElement("ul");
     itemList.classList.add("abilities-list");
-    for (const item of [...feature, ...ability]) {
+    for (const item of orderedItems) {
       const itemEmbed = await item.system.toEmbed({ includeName: true });
       const li = document.createElement("li");
       li.innerHTML = itemEmbed.outerHTML;
