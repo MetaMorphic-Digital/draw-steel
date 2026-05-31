@@ -219,9 +219,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
-  static #toggleWithCaptainEffect(event, target) {
+  static async #toggleWithCaptainEffect(event, target) {
     const id = target.closest("[data-effect-id]").dataset.effectId;
     const effect = this.actor.effects.get(id);
-    effect.update({ disabled: !effect.disabled });
+    await effect.update({ disabled: !effect.disabled });
   }
 }
