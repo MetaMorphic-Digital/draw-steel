@@ -1,6 +1,9 @@
 import { setOptions, validateDSID } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 import { systemPath } from "../../constants.mjs";
+/**
+ * @import { EmbedDisplayFlags } from "./_types";
+ */
 
 /**
  * A data model directly representing class and monster features as well as the basis for ancestry traits, perks, and titles.
@@ -39,5 +42,17 @@ export default class FeatureModel extends AdvancementModel {
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Logic to get the stat-block icon for use in Actor embed.
+   * @returns {EmbedDisplayFlags["iconOverride"]}
+   */
+  getStatBlockIcon() {
+    /** @type {EmbedDisplayFlags["iconOverride"]} */
+    const { iconOverride } = this.parent.getFlag(ds.CONST.systemID, "embedDisplay") ?? {};
+    return iconOverride ?? "trait"; // Default to `trait` icon for features.
   }
 }
