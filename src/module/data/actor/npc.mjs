@@ -228,7 +228,8 @@ export default class NPCModel extends CreatureModel {
     embed.classList.add("draw-steel", "actor", "npc", this.monster.role || "no-role");
 
     // Prepare list of features and abilities (`ul`).
-    const { ability: abilities, feature } = this.parent.items.documentsByType;
+    const { feature } = this.parent.items.documentsByType;
+    const abilities = this._getOrderedAbilities();
 
     const startFeatures = [];
     const endFeatures = [];
@@ -258,6 +259,18 @@ export default class NPCModel extends CreatureModel {
     embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
 
     return embed;
+  }
+
+  /**
+   * Orders the Ability Items in the same order
+   * as the keys in ds.CONFIG.abilities.types.
+   * @returns {DrawSteelItem[]}
+   */
+  _getOrderedAbilities() {
+    const keys = Object.keys(ds.CONFIG.abilities.types);
+    return this.parent.items.documentsByType.ability.sort(
+      (a, b) => keys.indexOf(a.system.type) - keys.indexOf(b.system.type),
+    );
   }
 
   /* ------------------------------------------------- */
