@@ -121,11 +121,22 @@ document-embed, .item-embed {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
+        column-gap: 24px;
+
         font-size: 1em;
         padding-inline: 8px;
 
         div:nth-child(even) {
           text-align: end;
+        }
+
+        /* Style html from AE's description as `inline` elements to avoid line breaks */
+        .with-captain .value > * {
+          display: inline;
+
+          &:not(:last-child) {
+            padding-inline-end: 0.5ch;
+          }
         }
       }
 

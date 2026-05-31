@@ -1,5 +1,6 @@
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
 import DrawSteelActor from "../../documents/actor.mjs";
+import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import MembersCollection from "../../utils/members-collection.mjs";
 import { PowerRollModifiers } from "../../_types";
 
@@ -178,6 +179,7 @@ declare module "./npc.mjs" {
       roleLabel: string;
       organization: string;
       organizationLabel: string;
+      withCaptainEffect: DrawSteelActiveEffect | null;
     }
   }
 }
