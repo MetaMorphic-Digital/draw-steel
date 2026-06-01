@@ -86,4 +86,10 @@
     </div>
     {{/each}}
   </div>
+
+  <ul class="item-embed-list">
+    {{#each itemEmbeds as |item|}}
+    <li class="{{item.icon}}">{{{item.outerHTML}}}</li>
+    {{/each}}
+  </ul>
 </section>

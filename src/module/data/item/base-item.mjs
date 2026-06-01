@@ -3,7 +3,9 @@ import SourceModel from "../models/source.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { validateDSID } from "../helpers.mjs";
 
-/** @import DrawSteelActor from "../../documents/actor.mjs" */
+/**
+ * @import DrawSteelActor from "../../documents/actor.mjs"
+ */
 
 const fields = foundry.data.fields;
 
@@ -123,7 +125,14 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);
-    embed.innerHTML = enriched;
+    if (config.includeName) {
+      embed.innerHTML = `
+        <h5 data-no-toc>${this.parent.name}</h5>
+        ${enriched}
+      `;
+    } else {
+      embed.innerHTML = enriched;
+    }
 
     return embed;
   }

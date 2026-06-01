@@ -12,6 +12,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
+ * @import { EmbedDisplayFlags } from "./_types";
  * @import RegionDocument from "@client/documents/region.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
@@ -340,6 +341,42 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /* -------------------------------------------------- */
+
+  /**
+   * Logic to get the stat-block icon for use in Actor embed.
+   * @returns {EmbedDisplayFlags["iconOverride"]}
+   */
+  getStatBlockIcon() {
+    /** @type {EmbedDisplayFlags["iconOverride"]} */
+    const { iconOverride } = this.parent.getFlag(ds.CONST.systemID, "embedDisplay") ?? {};
+    if (iconOverride) return iconOverride;
+
+    switch (this.type) {
+      case "villain":
+        return "villain-action";
+
+      case "triggered":
+      case "freeTriggered":
+        return "triggered-action";
+
+      default:
+        break;
+    }
+
+    switch (this.distance.type) {
+      case "cube":
+      case "line":
+      case "wall":
+        return "area";
+
+      case "aura":
+      case "burst":
+        return "burst";
+
+      default:
+        return this.distance.type;
+    }
+  }
 
   /**
    * The formatted text strings for keywords, distance, and target for use in the ability embed and actor sheet.
