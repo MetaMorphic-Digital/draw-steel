@@ -259,9 +259,9 @@ export default class NPCModel extends CreatureModel {
    * @returns {DrawSteelItem[]}
    */
   _getOrderedAbilities() {
-    const keys = Object.keys(ds.CONFIG.abilities.types);
+    const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
     return this.parent.items.documentsByType.ability.sort(
-      (a, b) => keys.indexOf(a.system.type) - keys.indexOf(b.system.type),
+      (a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort,
     );
   }
 
@@ -272,11 +272,12 @@ export default class NPCModel extends CreatureModel {
    * @returns {{ startFeatures: DrawSteelItem[], endFeatures: DrawSteelItem[] }}
    */
   _getOrderedFeatures() {
-    const { feature } = this.parent.items.documentsByType;
+    const features = this.parent.items.documentsByType.feature.sort((a, b) => a.sort - b.sort);
+    console.info("features", features);
 
     const startFeatures = [];
     const endFeatures = [];
-    feature.forEach(f => {
+    features.forEach(f => {
       /** @type {EmbedDisplayFlags} */
       const flag = f.getFlag(ds.CONST.systemID, "embedDisplay");
       if (flag?.displayAtEnd) endFeatures.push(f);
