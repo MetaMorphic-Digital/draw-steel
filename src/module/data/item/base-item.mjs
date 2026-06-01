@@ -127,7 +127,7 @@ export default class BaseItemModel extends DrawSteelSystemModel {
     embed.classList.add("draw-steel", this.parent.type);
     if (config.includeName) {
       embed.innerHTML = `
-        <h5>${this.parent.name}</h5>
+        <h5 data-no-toc>${this.parent.name}</h5>
         ${enriched}
       `;
     } else {

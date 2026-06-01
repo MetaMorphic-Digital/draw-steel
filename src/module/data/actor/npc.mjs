@@ -273,15 +273,9 @@ export default class NPCModel extends CreatureModel {
    */
   _getOrderedFeatures() {
     const features = this.parent.items.documentsByType.feature.sort((a, b) => a.sort - b.sort);
-    console.info("features", features);
 
-    const startFeatures = [];
-    const endFeatures = [];
-    features.forEach(f => {
-      /** @type {EmbedDisplayFlags} */
-      const flag = f.getFlag(ds.CONST.systemID, "embedDisplay");
-      if (flag?.displayAtEnd) endFeatures.push(f);
-      else startFeatures.push(f);
+    const [ endFeatures, startFeatures ] = features.partition(f => {
+      return !!f.getFlag(ds.CONST.systemID, "embedDisplay.displayAtEnd");
     });
     return { startFeatures, endFeatures };
   }
