@@ -60,6 +60,18 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       walk: {
         canSelect: (token) => !(token instanceof foundry.documents.TokenDocument) || !token.hasStatusEffect("prone"),
       },
+      /** @type {TokenMovementActionConfig} */
+      forced: {
+        order: 998,
+        label: "TOKEN.MOVEMENT.ACTIONS.forced.label",
+        icon: "fa-solid fa-explosion",
+        img: "icons/svg/wing.svg",
+        teleport: false,
+        visualize: true,
+        costMultiplier: 0,
+        speedMultiplier: 1,
+        terrainAction: null,
+      },
     }, { applyOperators: true });
   }
 
@@ -144,6 +156,8 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   #speedValueStyle(style, waypoint) {
     // color order
     const colors = [0x33BC4E, 0xF1D836, 0xE72124];
+
+    if (waypoint.action === "forced") return;
 
     if (waypoint.actionConfig.teleport) {
       // Teleports on creatures without a teleport speed are ignored for distance calculations
