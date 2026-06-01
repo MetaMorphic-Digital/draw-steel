@@ -50,7 +50,8 @@ document-embed, .item-embed {
     min-width: unset;
 
     background-image: linear-gradient(var(--color-statblock), transparent 5rem);
-    border-radius: 8px 8px 0px 0px;
+    box-shadow: 4px 4px 8px 2px oklch(from var(--color-statblock) 0.65 0.06 h / 0.5);
+    border-radius: 8px;
 
     margin-inline: 1rem;
 
@@ -60,7 +61,6 @@ document-embed, .item-embed {
       gap: 8px;
       font-size: 1.125em;
       font-family: 'Newsreader', serif;
-      border-bottom: 1px solid gray;
       padding-inline-end: 1rem;
 
       .image-name-keywords {
@@ -99,6 +99,20 @@ document-embed, .item-embed {
 
     section.stats {
       gap: 8px;
+
+      &:before {
+        content: "";
+        height: 15px;
+
+        background-image: url("/systems/draw-steel/assets/ui/continue.svg");
+        background-repeat: no-repeat;
+        background-size: 200%;
+        background-position: center;
+
+        margin-block: -8px;
+
+        filter: grayscale(0.8) brightness(0.2);
+      }
 
       .label {
         font-weight: 600;
@@ -163,6 +177,89 @@ document-embed, .item-embed {
       }
     }
 
+    ul.item-embed-list {
+      list-style: none;
+
+      border-radius: inherit;
+      padding-inline: 0;
+      margin-block-end: 0;
+
+      li {
+        position: relative;
+        margin-inline: 32px 4px;
+
+        --ability-icon: 't'; /* sword (default) */
+
+        &::before {
+          content: var(--ability-icon);
+          position: absolute;
+          top: -0.25em;
+          left: -24px;
+          font-size: 1.25em;
+          font-family: 'Draw Steel Glyphs';
+          font-weight: normal;
+        }
+
+        &.area::before {
+          --ability-icon: 'e'; /* 3x3 grid */
+        }
+
+        &.burst::before {
+          --ability-icon: 'b'; /* burst */
+        }
+
+        &.villain-action::before {
+          --ability-icon: 'd'; /* skull */
+        }
+
+        &.melee::before {
+          --ability-icon: 't'; /* sword */
+        }
+
+        &.ranged::before {
+          --ability-icon: 'g'; /* bow */
+        }
+
+        &.self::before {
+          --ability-icon: 'f'; /* person */
+        }
+
+        &.special::before {
+          --ability-icon: 'c'; /* concentric circle looking thing */
+        }
+
+        &.trait::before {
+          --ability-icon: '*'; /* star */
+        }
+
+        &.triggered-action::before {
+          --ability-icon: ')'; /* exclamation */
+        }
+
+        &.meleeRanged::before {
+          --ability-icon: 'l'; /* sword/arrow */
+        }
+
+
+        &:not(:last-child)::after {
+          content: "";
+          display: block;
+          height: 15px;
+          width: calc(100% + 36px);
+          transform: translate(-32px, 0);
+
+          background-image: url("/systems/draw-steel/assets/ui/continue.svg");
+          background-repeat: no-repeat;
+          background-size: 200%;
+          background-position: center;
+
+          margin-bottom: 8px;
+
+          filter: grayscale(0.8) brightness(0.2);
+        }
+      }
+    }
+
     &.ambusher {
       --color-statblock: #F9DD63;
     }
@@ -193,6 +290,11 @@ document-embed, .item-embed {
 
     &.mount {
       --color-statblock: #BADDEA;
+    }
+
+    &.no-role,
+    &.solo {
+      box-shadow:4px 4px 8px 2px var(--color-statblock);
     }
 
     &.support {

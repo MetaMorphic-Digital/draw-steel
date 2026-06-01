@@ -17,6 +17,24 @@ export type ItemMetaData = Readonly<SubtypeMetadata & {
   detailsPartial?: string[];
 }>;
 
+/** Flags which control how embedded items are displayed. */
+export interface EmbedDisplayFlags {
+  /** Icon to override the default icon for the embedded item. */
+  readonly iconOverride?:
+    | "area"
+    | "burst"
+    | "melee"
+    | "meleeRanged"
+    | "ranged"
+    | "self"
+    | "special"
+    | "trait"
+    | "triggered-action"
+    | "villain-action";
+  /** Whether to display the embedded item at the end of the list. */
+  readonly displayAtEnd?: boolean;
+}
+
 declare module "./base-item.mjs" {
   export default interface BaseItemModel {
     parent: DrawSteelItem;

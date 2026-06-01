@@ -12,6 +12,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
+ * @import { EmbedDisplayFlags } from "../item/_types";
  * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
@@ -215,6 +216,7 @@ export default class NPCModel extends CreatureModel {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
+      itemEmbeds: await this._getItemEmbeds(),
       monsterKeywords: this._getMonsterKeywords().join(", "),
       movement: this._getMovement(true).list,
       system: this,
@@ -229,6 +231,53 @@ export default class NPCModel extends CreatureModel {
     embed.innerHTML = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/actor/npc.hbs"), context);
 
     return embed;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepare embeds of Items for the NPC embed.
+   * @returns {Promise<DrawSteelItemEmbed[]>}
+   */
+  async _getItemEmbeds() {
+    const abilities = this._getOrderedAbilities();
+    const { startFeatures, endFeatures } = this._getOrderedFeatures();
+    const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
+
+    return Promise.all(orderedItems.map(async (item) => {
+      const embed = await item.system.toEmbed({ includeName: true });
+      embed.icon = item.system.getStatBlockIcon?.();
+      return embed;
+    }));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Orders Ability Items in the same order
+   * as the keys in ds.CONFIG.abilities.types.
+   * @returns {DrawSteelItem[]}
+   */
+  _getOrderedAbilities() {
+    const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
+    return this.parent.items.documentsByType.ability.toSorted(
+      (a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort,
+    );
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Orders Feature Items via the `embedDisplay.displayAtEnd` flag.
+   * @returns {{ startFeatures: DrawSteelItem[], endFeatures: DrawSteelItem[] }}
+   */
+  _getOrderedFeatures() {
+    const features = this.parent.items.documentsByType.feature.toSorted((a, b) => a.sort - b.sort);
+
+    const [ startFeatures, endFeatures ] = features.partition(f => {
+      return !!f.getFlag(ds.CONST.systemID, "embedDisplay.displayAtEnd");
+    });
+    return { startFeatures, endFeatures };
   }
 
   /* ------------------------------------------------- */
