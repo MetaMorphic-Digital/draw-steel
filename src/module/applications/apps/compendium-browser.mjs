@@ -198,7 +198,8 @@ export default class DrawSteelCompendiumBrowser extends HandlebarsApplicationMix
         type: "checkboxes",
         callback: (entry, filters) => evaluateFilter(entry, filters, "itemTypes", "type"),
         modes: ["Item"],
-        options: Object.keys(CONFIG.Item.dataModels).map(value => ({ value, label: _loc(`TYPES.Item.${value}`) })),
+        options: Array.from(ds.utils.getDocumentTypes("Item"))
+          .map(value => ({ value, label: _loc(`TYPES.Item.${value}`) })),
       },
       monsterLevel: {
         // TODO: Consider renaming, allowing for other actor types.
@@ -500,8 +501,7 @@ export default class DrawSteelCompendiumBrowser extends HandlebarsApplicationMix
         switch (filter.type) {
           case "checkboxes": {
             options = filter.options.map(o => {
-              const _name = `${name}.${o.value}`;
-              const value = foundry.utils.getProperty(this.#filter, _name);
+              const value = this.#filter[name][o.value];
               return {
                 value: o.value,
                 label: o.label,
@@ -510,7 +510,7 @@ export default class DrawSteelCompendiumBrowser extends HandlebarsApplicationMix
                   : (value === -1)
                     ? "fa-solid fa-times"
                     : "fa-regular fa-square",
-                isLocked: this.#isLocked(_name),
+                isLocked: this.#isLocked(`${name}.${o.value}`),
               };
             });
             break;
@@ -718,12 +718,14 @@ export default class DrawSteelCompendiumBrowser extends HandlebarsApplicationMix
     // Locked filters cannot be modified.
     if (this.#isLocked(name)) return;
 
-    const current = foundry.utils.getProperty(this.#filter, name) ?? 0;
+    const current = this.#filter[filter][value];
     const options = [0, 1, -1];
     if (event.button === 2) options.reverse();
     const index = options.indexOf(current);
     const next = options[index + 1] ?? options[0];
-    foundry.utils.setProperty(this.#filter, name, next);
+    // The `value` property may contain dot notation, e.g. in case of document subtypes
+    // or sources; we are relying on the fact that `mergeObject` does not split inner keys.
+    foundry.utils.mergeObject(this.#filter, { [filter]: { [value]: next } });
     this.render({ parts: ["filters", "results"] });
   }
 
@@ -865,7 +867,8 @@ export default class DrawSteelCompendiumBrowser extends HandlebarsApplicationMix
    */
   #isLocked(name) {
     if (this.#locked === true) return true;
-    const [a, b] = name.split(".");
+    const [a, ...rest] = name.split(".");
+    const b = rest.join(".");
     return (this.#locked[a] === true) || (this.#locked[a]?.[b] === true);
   }
 
