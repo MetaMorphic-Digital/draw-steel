@@ -227,12 +227,10 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     }
 
     // Zero and winded markers
-
     if (data.min < 0) {
       const zeroMark = (0 - data.min) / totalStamina * bw;
       bar.moveTo(zeroMark, 0).lineTo(zeroMark, bh);
     }
-
     const windedMark = (data.winded - data.min) / totalStamina * bw;
     bar.moveTo(windedMark, 0).lineTo(windedMark, bh);
 
