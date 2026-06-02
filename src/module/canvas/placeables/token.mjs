@@ -183,20 +183,17 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _drawBar(number, bar, data) {
-    if (data.attribute !== "stamina") return super._drawBar(number, bar, data);
-
-    const staminaData = foundry.utils.getProperty(this, "document.actor.system.stamina");
-    const temp = staminaData?.temporary ?? 0;
-    const min = staminaData?.min ?? 0;
-    const stamina = Number(data.value) - temp;
+  _drawBar(index, bar, data) {
+    // specialized handling for thp & negative HP, not relevant for minion squads.
+    if ((data.attribute !== "stamina") || data.minionStamina) return super._drawBar(index, bar, data);
 
     // Creates a normalized range of 0 to (max stamina - min stamina) used for calculating the token bar percentage
     // Needed to handle actor's negative stamina
-    const totalStamina = data.max - min;
-    const adjustedValue = stamina - min;
+    const stamina = Number(data.value) - data.temporary;
+    const totalStamina = data.max - data.min;
+    const adjustedValue = stamina - data.min;
     const barPct = Math.clamp(adjustedValue, 0, totalStamina) / totalStamina;
-    const tempPct = Math.clamp(temp, 0, data.max) / data.max;
+    const tempPct = Math.clamp(data.temporary, 0, data.max) / data.max;
 
     // Determine sizing
     const { width, height } = this.document.getSize();
@@ -210,11 +207,11 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     let color;
     if (stamina >= 0) {
       const colorPct = Math.clamp(stamina, 0, data.max) / data.max;
-      if (number === 0) color = Color.fromRGB([1 - (colorPct / 2), colorPct, 0]);
+      if (index === 0) color = Color.fromRGB([1 - (colorPct / 2), colorPct, 0]);
       else color = Color.fromRGB([0.5 * colorPct, 0.7 * colorPct, 0.5 + (colorPct / 2)]);
     } else {
       const colorPct = Math.clamp(adjustedValue, 0, Math.abs(data.min)) / Math.abs(data.min);
-      if (number === 0) color = Color.fromRGB([colorPct + (1 - colorPct) * 0.2, 0, 0]);
+      if (index === 0) color = Color.fromRGB([colorPct + (1 - colorPct) * 0.2, 0, 0]);
       else color = Color.fromRGB([0, 0, 0.5 - ((1 - colorPct) * 0.4)]);
     }
 
@@ -225,13 +222,12 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     bar.beginFill(color, 1.0).drawRoundedRect(0, 0, barPct * bw, bh, 2 * s);
 
     // Draw the temp stamina
-    if (temp > 0) {
+    if (data.temporary > 0) {
       bar.beginFill(0x66CCFF, 1.0).drawRoundedRect(2 * s, 2 * s, (tempPct * bw) - (4 * s), bh - (4 * s), s);
     }
 
     // Set position
-    const posY = number === 0 ? height - bh : 0;
+    const posY = index === 0 ? height - bh : 0;
     bar.position.set(0, posY);
-    return true;
   }
 }
