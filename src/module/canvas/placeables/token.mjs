@@ -226,6 +226,14 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
       bar.beginFill(0x66CCFF, 1.0).drawRoundedRect(2 * s, 2 * s, (tempPct * bw) - (4 * s), bh - (4 * s), s);
     }
 
+    // Zero and winded markers
+    if (data.min < 0) {
+      const zeroMark = (0 - data.min) / totalStamina * bw;
+      bar.moveTo(zeroMark, 0).lineTo(zeroMark, bh);
+    }
+    const windedMark = (data.winded - data.min) / totalStamina * bw;
+    bar.moveTo(windedMark, 0).lineTo(windedMark, bh);
+
     // Set position
     const posY = index === 0 ? height - bh : 0;
     bar.position.set(0, posY);
