@@ -27,6 +27,7 @@ Increased foundry minimum to 14.363.
 - Abilities can now have any number of HTML sections, and they can have additional info. (#475)
   - This includes promoting the "spend" field to have an HTML entry. (#329)
   - Strained & Spend message parts only display if their conditions are fulfilled. (#676)
+  - Spend effects now provide the spend value as roll data under `@spend`. (#852)
 - Added `@Embed` support for NPC actors. (#901)
 - Added "Effect Origin" option to applied effects. When used, the duration of the effect is based on the *user* of the effect rather than the target. (#1260)
 - Item choice advancements can now specify "Ability" as an expansion option, allowing selection of non-core abilities. (#1420)

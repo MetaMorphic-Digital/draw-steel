@@ -188,6 +188,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    * @param {1 | 2 | 3} tier        The tier of this effects' data to fetch.
    * @param {object} [options]
    * @param {string} [options.damageSelection] Pick between this damage effect's multiple damage types.
+   * @param {number[]} [options.spend] Spend data from an ability configuration form.
    * @returns {DamageRoll | null} Returns null if there would be no damage from that tier.
    */
   toDamageRoll(tier, options = {}) {
@@ -204,7 +205,11 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     // Extract ignoredImmunities from the damage effect
     const ignoredImmunities = Array.from(effectTier.ignoredImmunities);
 
-    return new DamageRoll(String(effectTier.value), this.item.getRollData(), {
+    const rollData = this.item.getRollData();
+
+    if (options.spend) rollData.spend = options.spend;
+
+    return new DamageRoll(String(effectTier.value), rollData, {
       flavor,
       type: damageType,
       ignoredImmunities,
