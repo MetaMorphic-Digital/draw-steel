@@ -105,16 +105,34 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
 
     if (barData?.attribute !== "stamina") return barData;
 
-    barData.min = this.actor.system.stamina.min;
-    barData.value += this.actor.system.stamina.temporary || 0;
-
     // Set minion specific stamina bar data based on their combat squad
-    if (!this.actor.isMinion || (this.actor.system.combatGroups.size !== 1)) return barData;
+    if (!this.actor.isMinion) {
+      const staminaData = this.actor.system.stamina;
+      barData.min = staminaData.min ?? 0;
+      barData.value += staminaData.temporary || 0;
+      barData.temporary = staminaData.temporary;
+      barData.winded = staminaData.winded;
 
-    const combatGroup = this.actor.system.combatGroup;
-    barData.min = 0;
-    barData.max = combatGroup.system.staminaMax;
-    barData.value = combatGroup.system.staminaValue;
+      return barData;
+    }
+
+    Object.defineProperties(barData, {
+      max: {
+        get: () => {
+          const combatGroup = this.actor.system.combatGroup;
+          return combatGroup ? combatGroup.system.staminaMax : barData.max;
+        },
+      },
+      value: {
+        get: () => {
+          const combatGroup = this.actor.system.combatGroup;
+          return combatGroup ? combatGroup.system.staminaValue : barData.value;
+        },
+      },
+      minionStamina: {
+        value: true,
+      },
+    });
 
     return barData;
   }
