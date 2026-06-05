@@ -94,6 +94,10 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   _getWaypointLabelContext(waypoint, state) {
     const context = super._getWaypointLabelContext(waypoint, state);
 
+    if (context && (waypoint.action === "forced")) {
+      this._forcedMovementContext(context, waypoint, state);
+    }
+
     if (!this.token.inCombat) return context;
 
     state.segmentWaypoints ??= [];
@@ -103,10 +107,13 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
     const points = this.token.document.getCompleteMovementPath(state.segmentWaypoints);
 
-    const startedNear = state.endPointEnemies ?? new Set();
+    let delta = 0;
     const endPointEnemies = new Set(this.token.document.getHostileTokensFromPoints([points.at(-1)]));
-    const passedBy = new Set(this.token.document.getHostileTokensFromPoints(points)).union(startedNear);
-    const delta = waypoint.actionConfig.teleport ? 0 : passedBy.difference(endPointEnemies).size;
+    if (!waypoint.actionConfig.teleport && (waypoint.action !== "forced")) {
+      const startedNear = state.endPointEnemies ?? new Set();
+      const passedBy = new Set(this.token.document.getHostileTokensFromPoints(points)).union(startedNear);
+      delta = passedBy.difference(endPointEnemies).size;
+    }
     const strikes = {
       delta,
       total: delta + (state.strikes?.total ?? 0),
@@ -118,6 +125,19 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     context.strikes = strikes;
 
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Adjust Waypoint Label Context for Forced Movement.
+   * @param {object} context
+   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint
+   * @param {WaypointLabelState} state
+   */
+  _forcedMovementContext(context, waypoint, state) {
+    // For now, forced movement doesn't plug into any cost calculations.
+    delete context.cost;
   }
 
   /* -------------------------------------------------- */
