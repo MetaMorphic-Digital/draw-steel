@@ -58,6 +58,10 @@ Increased foundry minimum to 14.363.
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Added in correct source data for several triggered actions granted by features. (#1935)
+- Director-Facing Compendium Data Fixes:
+  - Corrected distance on Blackguard Villain Actions. (#1894)
 - Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
