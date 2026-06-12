@@ -635,7 +635,10 @@ export default class AbilityModel extends BaseItemModel {
         };
 
         for (const damageEffect of this.power.effects.documentsByType.damage) {
-          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: fd.damage });
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, {
+            damageSelection: fd.damage,
+            spend: Object.values(fd.spend),
+          });
           if (!damageRoll) continue;
           await damageRoll.evaluate();
           rollPart.rolls.push(damageRoll);

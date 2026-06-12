@@ -27,6 +27,7 @@ Increased foundry minimum to 14.363.
 - Abilities can now have any number of HTML sections, and they can have additional info. (#475)
   - This includes promoting the "spend" field to have an HTML entry. (#329)
   - Strained & Spend message parts only display if their conditions are fulfilled. (#676)
+  - Spend effects now provide the spend value as roll data under `@spend`. (#852)
 - Added `@Embed` support for NPC actors. (#901)
 - Added "Effect Origin" option to applied effects. When used, the duration of the effect is based on the *user* of the effect rather than the target. (#1260)
 - Item choice advancements can now specify "Ability" as an expansion option, allowing selection of non-core abilities. (#1420)
@@ -36,6 +37,7 @@ Increased foundry minimum to 14.363.
 - Added ability to place a template from the ability use dialog that will intelligently target tokens inside the region. (#1864)
 - Players attempting to use a free strike on an NPC or Retainer now create a message with a damage roll in the chat. (#1875)
 - Added `ds.data.fields.LocalDocumentField`, a field which provides convenient access to a singular embedded document. (#1922)
+- Added Forced Movement as a movement action type. (#1931)
 - Added `ds.utils.getDocumentTypes` as a helper function to create a set of valid document subtypes.
 - Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
 
@@ -60,6 +62,7 @@ Increased foundry minimum to 14.363.
   - Added in correct source data for several triggered actions granted by features. (#1935)
 - Director-Facing Compendium Data Fixes:
   - Corrected distance on Blackguard Villain Actions. (#1894)
+- Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
 
