@@ -37,6 +37,7 @@ Increased foundry minimum to 14.363.
 - Added ability to place a template from the ability use dialog that will intelligently target tokens inside the region. (#1864)
 - Players attempting to use a free strike on an NPC or Retainer now create a message with a damage roll in the chat. (#1875)
 - Added `ds.data.fields.LocalDocumentField`, a field which provides convenient access to a singular embedded document. (#1922)
+- Added Forced Movement as a movement action type. (#1931)
 - Added `ds.utils.getDocumentTypes` as a helper function to create a set of valid document subtypes.
 - Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
 
