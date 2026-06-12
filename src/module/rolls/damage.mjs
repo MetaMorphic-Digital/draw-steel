@@ -123,7 +123,7 @@ export default class DamageRoll extends DSRoll {
     let amount = this.total;
     if (options.halfDamage) amount = Math.floor(amount / 2);
 
-    // Damage actors that aren't minions or in a combat group.
+    // Actors that aren't minions or in a combat group.
     for (const actor of actors) {
       if (this.isHeal) {
         const isTemp = this.type !== "value";
@@ -135,10 +135,16 @@ export default class DamageRoll extends DSRoll {
       else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities });
     }
 
-    // Damage minion sqauds
+    // Minion sqauds
     for (const [uuid, actors] of Object.entries(groups)) {
       const group = fromUuidSync(uuid);
-      group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe });
+      // Minions cannot regain stamina or gain temp stamina (Monsters p. 7)
+      if (this.isHeal) {
+        const msg = `DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.${this.type === "value" ? "MinionHeal" : "MinionTemp"}`;
+        ui.notifications.warn(msg, { localize: true });
+      }
+      // Damage
+      else group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe });
     }
   }
 }
