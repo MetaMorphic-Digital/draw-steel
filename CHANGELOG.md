@@ -60,8 +60,10 @@ Increased foundry minimum to 14.363.
 
 - Player-Facing Compendium Data Fixes:
   - Added in correct source data for several triggered actions granted by features. (#1935)
+  - Corrected Back! to not have a forced movement in tier 1. (#1898)
 - Director-Facing Compendium Data Fixes:
   - Corrected distance on Blackguard Villain Actions. (#1894)
+  - Corrected forced movement effects on the Servok War Engine, Kobold Artifex, Ogre Tantrum, and Troll Whelp. (#1898)
 - Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
