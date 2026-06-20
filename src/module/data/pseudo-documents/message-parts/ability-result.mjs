@@ -174,45 +174,6 @@ export default class AbilityResultPart extends RollPart {
 
     const menuItems = this._getResultPartContextOptions();
     new foundry.applications.ux.ContextMenu.implementation(element, "[data-action=resultPartContext", menuItems, { jQuery: false, fixed: true, eventName: "click" });
-
-    element.addEventListener("pointermove", (event) => this.#potencyHover(element, event));
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Elements highlighted for potency logic.
-   * @type {Set<HTMLAnchorElement>}
-   */
-  #potencyTargets = new Set();
-
-  /* -------------------------------------------------- */
-
-  /**
-   * An event for handling hovering over potency.
-   * @param {HTMLDivElement} element
-   * @param {PointerEvent} event
-   */
-  #potencyHover(element, event) {
-    const { potencyValue, potencyCharacteristic } = event.target.closest("span.potency")?.dataset ?? {};
-    if (Number.isNumeric(potencyValue) && potencyCharacteristic) {
-      element.querySelectorAll("a.header[data-uuid]").forEach(el => {
-        const { uuid } = el.dataset;
-        const actor = fromUuidSync(uuid);
-        if (actor) {
-          const potencyNumber = Number(potencyValue);
-          if (!actor.testUserPermission(game.user, "OBSERVER")) return;
-          el.classList.add("potency-target", actor.checkPotency(potencyNumber, potencyCharacteristic) ? "apply" : "resist");
-          this.#potencyTargets.add(el);
-        }
-      });
-    }
-    else {
-      for (const el of this.#potencyTargets) {
-        el.classList.remove("potency-target", "apply", "resist");
-      }
-      this.#potencyTargets.clear();
-    }
   }
 
   /* -------------------------------------------------- */
