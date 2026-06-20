@@ -46,6 +46,7 @@ Increased foundry minimum to 14.363.
 - Updated Player-Facing Compendium Content:
   - Updated "I'm No Threat", "Careful Observation" to have AEs that provide edges.
   - Added appropriate enrichers to Burning Ash and Smoke Bomb.
+- The Actor Sheet & Token HUD no longer show disabled & expired statuses as active, and toggling an inactive status will delete the existing effect and create a new one. (#1694)
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 - Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
