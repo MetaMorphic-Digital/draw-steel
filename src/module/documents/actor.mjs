@@ -17,6 +17,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     return super.migrateData(data);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Is this actor a minion?
    * @returns {boolean}
@@ -55,6 +57,20 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     }
 
     Hooks.callAll("ds.prepareActorData", this);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preUpdate(changed, options, user) {
+    const allowed = await super._preUpdate(changed, options, user);
+    if (allowed === false) return false;
+    // Make it easier for users to override system-provided default icons
+    if (changed.img && !foundry.utils.getProperty(changed, "prototypeToken.texture.src")) {
+      if (!this.prototypeToken.texture.src || (this.prototypeToken.texture.src.includes("systems/draw-steel/"))) {
+        foundry.utils.setProperty(changed, "prototypeToken.texture.src", changed.img);
+      }
+    }
   }
 
   /* -------------------------------------------------- */
