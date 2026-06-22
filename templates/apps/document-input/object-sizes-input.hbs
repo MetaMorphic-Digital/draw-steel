@@ -1,48 +1,24 @@
-<section class="flexcol">
+<section class="flexcol standard-form">
   <header class="region-element region-shape flexrow">
     <div class="region-element-name">{{localize "SHAPE.label"}}</div>
     <div class="region-element-controls">
       {{#if editable}}
+      <button type="button" class="ui-control icon fa-solid fa-plus" data-action="addShape" data-tooltip
+        aria-label="{{localize "DRAW_STEEL.Actor.object.ObjectSizes.AddShape"}}"></button>
       <button type="button" class="ui-control icon fa-solid fa-trash" data-action="shapeRemoveAll" data-tooltip
         aria-label="{{localize "SHAPE.ACTIONS.removeAll"}}"></button>
       {{/if}}
     </div>
   </header>
 
-  {{#if shapeContext}}
-
-  <fieldset class="region-element region-shape flexrow" data-shape-index="0" aria-label="{{localize "SHAPE.label"}} 0">
-    <legend>{{localize (concat "SHAPE.TYPES." shapeContext.shape.type ".name")}}</legend>
-    {{> (concat "templates/apps/shape-config/" shapeContext.shape.type ".hbs") shapeContext }}
+  {{!-- We expect fewer shapes than regions so we can afford to just have a long form if there's a few --}}
+  {{#each shapeContexts as |shapeContext i|}}
+  <fieldset class="region-element region-shape flexrow" data-shape-index="{{i}}" aria-label="{{localize "SHAPE.label"}} 0">
+    <legend>
+      {{localize (concat "SHAPE.TYPES." shapeContext.shape.type ".name")}}
+      <button type="button" class="icon fa-solid fa-trash" data-action="deleteShape"></button>
+    </legend>
+    {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shapeContext.shape.type ".hbs") shapeContext }}
   </fieldset>
-
-  {{else}}
-
-  <div class="standard-form scrollable">
-    {{#each sizeSource.shapes as |shape i|}}
-    <fieldset class="region-element region-shape flexrow" data-shape-index="{{i}}" aria-label="{{localize "SHAPE.label"}} {{i}}">
-      <span class="region-element-name">{{localize (concat "SHAPE.TYPES." shape.type ".name")}}</span>
-      <div class="region-element-controls">
-        {{#if ../editable}}
-        <a class="control fa-solid fa-edit fa-fw" data-action="shapeEdit" data-tooltip
-          aria-label="{{localize "SHAPE.ACTIONS.edit"}}"></a>
-        <a class="control {{#if shape.hole}}fa-regular{{else}}fa-solid{{/if}} fa-circle fa-fw"
-          data-action="shapeToggleHole" data-tooltip
-          aria-label="{{localize (ifThen shape.hole "SHAPE.ACTIONS.fillHole" "SHAPE.ACTIONS.makeHole") }}"
-        ></a>
-        <a class="control fa-solid fa-arrow-up fa-fw" data-action="shapeMoveUp" data-tooltip
-          aria-label="{{localize "SHAPE.ACTIONS.moveUp"}}"></a>
-        <a class="control fa-solid fa-arrow-down fa-fw" data-action="shapeMoveDown" data-tooltip
-          aria-label="{{localize "SHAPE.ACTIONS.moveDown"}}"></a>
-        <a class="control fa-solid fa-trash fa-fw" data-action="shapeRemove" data-tooltip
-          aria-label="{{localize "SHAPE.ACTIONS.remove"}}"></a>
-        {{else}}
-        <span class="{{#if shape.hole}}fa-regular{{else}}fa-solid{{/if}} fa-circle fa-fw"></span>
-        {{/if}}
-      </div>
-    </fieldset>
-    {{/each}}
-  </div>
-
-  {{/if}}
+  {{/each}}
 </section>

@@ -1,0 +1,12 @@
+<section class="standard-form scrollable">
+    <fieldset>
+        <legend>{{localize "SHAPE.TYPES.emanation.FIELDS.base.label"}}: {{localize (concat "SHAPE.TYPES." shape.base.type ".name")}}</legend>
+        {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shape.base.type ".hbs") baseContext }}
+    </fieldset>
+
+    {{formField fields.radius value=source.radius input=dimensionInput grid=shape.grid classes="dimension-field" rootId=rootId}}
+
+    {{#if fields.hole}}
+    {{formField fields.hole value=source.hole rootId=rootId}}
+    {{/if}}
+</section>
