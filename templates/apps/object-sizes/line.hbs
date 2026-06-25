@@ -1,13 +1,13 @@
 <section class="standard-form">
-  {{formField fields.count value=source.count classes="slim"}}
+  {{formField fields.count name=(concat name ".count") value=source.count classes="slim"}}
 
-  {{formField fields.length value=source.length input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+  {{formField fields.length name=(concat name ".length") value=source.length input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
 
-  {{formField fields.width value=source.width input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+  {{formField fields.width name=(concat name ".width") value=source.width input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
 
-  {{formField fields.rotation value=source.rotation rootId=rootId classes="slim" units="MEASUREMENT.Degrees" localize=true}}
+  {{formField fields.rotation name=(concat name ".rotation") value=source.rotation rootId=rootId classes="slim" units="MEASUREMENT.Degrees" localize=true}}
 
   {{#if fields.hole}}
-  {{formField fields.hole value=source.hole rootId=rootId}}
+  {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
   {{/if}}
 </section>

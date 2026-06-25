@@ -53,10 +53,22 @@ export default class ObjectSizeModel extends SizeModel {
   placeArea(options = {}) {
     const object = this.parent.parent;
 
+    const distancePixels = canvas.grid.size / canvas.grid.distance;
+
     const data = {
-      shapes: this.shapes.reduce((shapeData, shape) => {
-        for (let i = 0; i < (shape.count ?? 1); i++) shapeData.push({ ...shape });
-        return shapeData;
+      shapes: this.shapes.reduce((shapes, shape) => {
+        const shapeData = shape.toObject();
+        shapeData.gridBased = true;
+        shapeData.x = 0;
+        shapeData.y = 0;
+        for (const key of shape.gridProperties) shapeData[key] *= distancePixels;
+        if (shapeData.base) {
+          shapeData.base.x = shapeData.base.y = 0;
+          shapeData.base.shape = CONST.TOKEN_SHAPES.RECTANGLE_1;
+        }
+        console.log(shapeData);
+        for (let i = 0; i < (shape.count ?? 1); i++) shapes.push(shapeData);
+        return shapes;
       }, []),
       name: object.name,
       color: game.user.color,

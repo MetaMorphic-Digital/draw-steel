@@ -1,9 +1,6 @@
 import DocumentInput from "../api/document-input.mjs";
+import { TEMPLATE_TYPES } from "../../data/models/template-shapes.mjs";
 import { systemPath } from "../../constants.mjs";
-
-/**
- * @import { TEMPLATE_TYPES } from "../../data/models/template-shapes.mjs";
- */
 
 /**
  * Simple live-updating input for object sizes.
@@ -35,6 +32,7 @@ export default class ObjectSizesInput extends DocumentInput {
       template: systemPath("templates/apps/document-input/object-sizes-input.hbs"),
       templates: [
         systemPath("templates/apps/object-sizes/circle.hbs"),
+        systemPath("templates/apps/object-sizes/cone.hbs"),
         systemPath("templates/apps/object-sizes/emanation.hbs"),
         systemPath("templates/apps/object-sizes/line.hbs"),
         systemPath("templates/apps/object-sizes/rectangle.hbs"),
@@ -52,7 +50,7 @@ export default class ObjectSizesInput extends DocumentInput {
     const sizeModel = this.document.system.combat.size;
     context.sizeSource = sizeModel._source;
 
-    context.shapeContexts = sizeModel.shapes.map(shape => this._prepareShapeContext(shape));
+    context.shapeContexts = sizeModel.shapes.map((shape, idx) => this._prepareShapeContext(shape, idx));
 
     return context;
   }
@@ -69,6 +67,7 @@ export default class ObjectSizesInput extends DocumentInput {
     const gridInput = foundry.applications.fields.createNumberInput({
       id: `${inputConfig.rootId}-${field.fieldPath}-grid`, min: 0, step: "any", dataset: { units: "grid" },
       value: inputConfig.value,
+      name: inputConfig.name,
     });
     const gridLabel = document.createElement("label");
     gridLabel.setAttribute("for", gridInput.id);
@@ -81,11 +80,13 @@ export default class ObjectSizesInput extends DocumentInput {
   /**
    * Puts together rendering context for each shape.
    * @param {InstanceType<TEMPLATE_TYPES[keyof TEMPLATE_TYPES]>} shape
+   * @param {number} index
    * @returns {object}
    */
-  _prepareShapeContext(shape) {
+  _prepareShapeContext(shape, index) {
     const shapeContext = {
       shape,
+      name: shape.schema.fieldPath.replace(`element.${shape.type}`, index),
       rootId: this.id,
       fields: { ...shape.schema.fields },
       source: shape._source,
@@ -112,6 +113,19 @@ export default class ObjectSizesInput extends DocumentInput {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  _processFormData(event, form, formData) {
+    const fd = super._processFormData(event, form, formData);
+
+    const shapeData = this.document.system.combat.size.shapes;
+
+    Object.values(fd.system.combat.size.shapes).forEach((shape, idx) => shape.type = shapeData[idx].type);
+
+    return fd;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Add a new shape.
    * @this ObjectSizesInput
@@ -123,19 +137,10 @@ export default class ObjectSizesInput extends DocumentInput {
 
     const { createFormGroup, createSelectInput } = foundry.applications.fields;
 
-    // curated from foundry.data.BaseShapeData.TYPES
-    const validShapes = [
-      "rectangle",
-      "circle",
-      "emanation",
-      "ring",
-      "line",
-    ];
-
     content.append(createFormGroup({
       label: "DRAW_STEEL.Actor.object.ObjectSizes.ShapeType",
       input: createSelectInput({
-        options: validShapes.map(key => ({
+        options: Object.keys(TEMPLATE_TYPES).map(key => ({
           value: key,
           label: _loc(`SHAPE.TYPES.${key}.name`),
         })),
@@ -171,8 +176,9 @@ export default class ObjectSizesInput extends DocumentInput {
       case "circle":
         shapeData.radius = 1;
         break;
-      case "ellipse":
-        shapeData.radiusX = shapeData.radiusY = 1;
+      case "cone":
+        shapeData.radius = 1;
+        shapeData.angle = 60;
         break;
       case "emanation":
         shapeData.radius = 1;

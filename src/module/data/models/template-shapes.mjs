@@ -25,6 +25,16 @@ export class RectangleTemplateData extends foundry.data.RectangleShapeData {
 
     return schema;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return ["height", "width"];
+  }
 }
 
 /* -------------------------------------------------- */
@@ -51,6 +61,16 @@ export class CircleTemplateData extends foundry.data.CircleShapeData {
     delete schema.gridBased;
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return ["radius"];
   }
 }
 
@@ -83,6 +103,16 @@ export class EmanationTemplateData extends foundry.data.BaseShapeData {
 
     return schema;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return ["radius"];
+  }
 }
 
 /* -------------------------------------------------- */
@@ -109,6 +139,16 @@ export class ConeTemplateData extends foundry.data.ConeShapeData {
     delete schema.gridBased;
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return ["radius"];
   }
 }
 
@@ -137,6 +177,16 @@ export class RingTemplateData extends foundry.data.RingShapeData {
 
     return schema;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return ["radius", "innerWidth", "outerWidth"];
+  }
 }
 
 /* -------------------------------------------------- */
@@ -163,6 +213,16 @@ export class LineTemplateData extends foundry.data.LineShapeData {
     delete schema.gridBased;
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return ["length", "width"];
   }
 }
 
@@ -197,5 +257,15 @@ export class TokenTemplateData extends foundry.data.TokenShapeData {
     delete schema.shape;
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Properties that need to be multiplied by grid pixels.
+   * @type {string[]}
+   */
+  get gridProperties() {
+    return [];
   }
 }
