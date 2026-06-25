@@ -289,6 +289,11 @@ aside[role="tooltip"] section.content {
 
   table {
     width: 100%;
+
+    /** Scroll overflowing tables **/
+    display: block;
+    overflow: auto;
+
     border-collapse: collapse;
     background: var(--input-background-color);
 
