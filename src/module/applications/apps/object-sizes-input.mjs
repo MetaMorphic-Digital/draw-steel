@@ -2,6 +2,10 @@ import DocumentInput from "../api/document-input.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
+ * @import { TEMPLATE_TYPES } from "../../data/models/template-shapes.mjs";
+ */
+
+/**
  * Simple live-updating input for object sizes.
  */
 export default class ObjectSizesInput extends DocumentInput {
@@ -14,11 +18,12 @@ export default class ObjectSizesInput extends DocumentInput {
       shapeRemoveAll: this.#shapeRemoveAll,
     },
     position: {
-      width: 500,
+      width: 400,
     },
     window: {
       title: "DRAW_STEEL.Actor.object.ObjectSizes.DialogTitle",
       icon: "fa-solid fa-shapes",
+      resizable: true,
     },
   };
 
@@ -34,6 +39,7 @@ export default class ObjectSizesInput extends DocumentInput {
         systemPath("templates/apps/object-sizes/line.hbs"),
         systemPath("templates/apps/object-sizes/rectangle.hbs"),
         systemPath("templates/apps/object-sizes/ring.hbs"),
+        systemPath("templates/apps/object-sizes/token.hbs"),
       ],
     },
   };
@@ -46,15 +52,62 @@ export default class ObjectSizesInput extends DocumentInput {
     const sizeModel = this.document.system.combat.size;
     context.sizeSource = sizeModel._source;
 
-    context.shapeContexts = sizeModel.shapes.map(shape => {
-      const fields = { ...shape.schema.fields };
-      delete fields.hole;
-      const shapeContext = { rootId: this.id };
-      foundry.applications.apps.ShapeConfig._prepareShapeContext(shapeContext, shape, fields);
-      return shapeContext;
-    });
+    context.shapeContexts = sizeModel.shapes.map(shape => this._prepareShapeContext(shape));
 
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create the dimension field.
+   * @param {DataField} field
+   * @param {FormInputConfig} inputConfig
+   * @returns {HTMLElement[]}
+   */
+  static #dimensionInput(field, inputConfig) {
+    const gridInput = foundry.applications.fields.createNumberInput({
+      id: `${inputConfig.rootId}-${field.fieldPath}-grid`, min: 0, step: "any", dataset: { units: "grid" },
+      value: inputConfig.value,
+    });
+    const gridLabel = document.createElement("label");
+    gridLabel.setAttribute("for", gridInput.id);
+    gridLabel.textContent = _loc("MEASUREMENT.GridUnits");
+    return [gridInput, gridLabel];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Puts together rendering context for each shape.
+   * @param {InstanceType<TEMPLATE_TYPES[keyof TEMPLATE_TYPES]>} shape
+   * @returns {object}
+   */
+  _prepareShapeContext(shape) {
+    const shapeContext = {
+      shape,
+      rootId: this.id,
+      fields: { ...shape.schema.fields },
+      source: shape._source,
+      gridUnits: _loc("MEASUREMENT.GridUnits"),
+      dimensionInput: ObjectSizesInput.#dimensionInput,
+    };
+
+    delete shapeContext.fields.hole;
+
+    // Prepare base shape context for emanations
+    if (shape.type === "emanation") {
+      shapeContext.baseContext = {
+        rootId: shapeContext.rootId,
+        shape: shape.base,
+        fields: shapeContext.fields.base.types[shape.base.type].fields,
+        source: shape.base._source,
+        gridUnits: shapeContext.gridUnits,
+        dimensionInput: shapeContext.dimensionInput,
+      };
+    }
+
+    return shapeContext;
   }
 
   /* -------------------------------------------------- */
@@ -100,6 +153,8 @@ export default class ObjectSizesInput extends DocumentInput {
       },
     });
 
+    if (!fd) return;
+
     const objectSize = this.document.system.combat.size;
 
     const shapeData = {
@@ -122,7 +177,10 @@ export default class ObjectSizesInput extends DocumentInput {
       case "emanation":
         shapeData.radius = 1;
         shapeData.base = {
+          x: 0,
+          y: 0,
           type: "token",
+          shape: CONST.TOKEN_SHAPES.RECTANGLE_1,
           width: objectSize.value,
           height: objectSize.value,
         };

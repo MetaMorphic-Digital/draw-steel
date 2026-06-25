@@ -1,4 +1,5 @@
 import SizeModel from "./size.mjs";
+import TemplateShapesField from "../fields/template-shapes-field.mjs";
 import { systemID } from "../../constants.mjs";
 
 const fields = foundry.data.fields;
@@ -15,7 +16,7 @@ export default class ObjectSizeModel extends SizeModel {
       text: new fields.StringField({ required: true }),
       direction: new fields.StringField({ required: true }),
       typical: new fields.StringField({ required: true }),
-      shapes: new fields.ShapesField(),
+      shapes: new TemplateShapesField(),
     });
 
     return schema;
@@ -53,7 +54,10 @@ export default class ObjectSizeModel extends SizeModel {
     const object = this.parent.parent;
 
     const data = {
-      shapes: this.shapes,
+      shapes: this.shapes.reduce((shapeData, shape) => {
+        for (let i = 0; i < (shape.count ?? 1); i++) shapeData.push({ ...shape });
+        return shapeData;
+      }, []),
       name: object.name,
       color: game.user.color,
       levels: [canvas.level.id],

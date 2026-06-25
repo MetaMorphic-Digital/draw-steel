@@ -1,0 +1,15 @@
+<section class="standard-form scrollable">
+    <div class="form-group slim">
+        <label>{{localize "SHAPE.TYPES.token.size.label"}} <span class="units">({{localize "MEASUREMENT.GridSpaces"}})</span></label>
+        <div class="form-fields slim">
+            <label for="{{rootId}}-token.width">X</label>
+            {{formInput fields.width value=source.width id=(concat rootId "-token.width")}}
+            <label for="{{rootId}}-token.height">Y</label>
+            {{formInput fields.height value=source.height id=(concat rootId "-token.height")}}
+        </div>
+    </div>
+
+    {{#if fields.hole}}
+    {{formField fields.hole value=source.hole rootId=rootId}}
+    {{/if}}
+</section>

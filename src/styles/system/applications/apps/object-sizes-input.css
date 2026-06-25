@@ -1,0 +1,22 @@
+.draw-steel.object-sizes {
+  min-width: 400px;
+
+  .window-content {
+    display: block;
+  }
+
+  [data-application-part="body"] {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .shape-controls {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+}

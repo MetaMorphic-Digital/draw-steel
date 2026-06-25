@@ -1,9 +1,9 @@
-<section class="standard-form scrollable">
-    {{formField fields.radius value=source.radius input=dimensionInput grid=shape.grid classes="dimension-field" rootId=rootId}}
+<section class="standard-form">
+  {{formField fields.count value=source.count classes="slim"}}
 
-    {{formField fields.gridBased value=source.gridBased rootId=rootId}}
+  {{formField fields.radius value=source.radius input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
 
-    {{#if fields.hole}}
-    {{formField fields.hole value=source.hole rootId=rootId}}
-    {{/if}}
+  {{#if fields.hole}}
+  {{formField fields.hole value=source.hole rootId=rootId}}
+  {{/if}}
 </section>
