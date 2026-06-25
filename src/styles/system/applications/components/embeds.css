@@ -98,11 +98,12 @@ document-embed, .item-embed {
     }
 
     section.stats {
+      container: stats-section / inline-size;
       gap: 8px;
 
       &:before {
         content: "";
-        height: 15px;
+        height: 15px; /* Fallback height */
 
         background-image: url("/systems/draw-steel/assets/ui/continue.svg");
         background-repeat: no-repeat;
@@ -112,6 +113,10 @@ document-embed, .item-embed {
         margin-block: -8px;
 
         filter: grayscale(0.8) brightness(0.2);
+
+        @container stats-section {
+          height: 2.7cqw;
+        }
       }
 
       .label {
@@ -185,6 +190,7 @@ document-embed, .item-embed {
       margin-block-end: 0;
 
       li {
+        container: list-item / inline-size;
         position: relative;
         margin-inline: 32px 4px;
 
@@ -244,7 +250,7 @@ document-embed, .item-embed {
         &:not(:last-child)::after {
           content: "";
           display: block;
-          height: 15px;
+          height: 15px; /* Fallback height */
           width: calc(100% + 36px);
           transform: translate(-32px, 0);
 
@@ -256,6 +262,10 @@ document-embed, .item-embed {
           margin-bottom: 8px;
 
           filter: grayscale(0.8) brightness(0.2);
+
+          @container list-item {
+            height: 2.7cqw;
+          }
         }
       }
     }
