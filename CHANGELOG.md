@@ -67,6 +67,7 @@ Increased foundry minimum to 14.363.
 - Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
+- Corrected object resource form displaying as a column instead of a row in edit mode. (#1955)
 
 ## 1.0.2
 
