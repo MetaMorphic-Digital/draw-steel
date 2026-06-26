@@ -21,6 +21,7 @@
   --ability-quick-border: url("/systems/draw-steel/assets/ui/abilityborderdark.svg");
   --draw-steel-c-primary-party: #9F9175;
   --draw-steel-embed-separator-filter: grayscale(0.8) brightness(0.2);
+  --draw-steel-c-thead-bg: rgb(185, 185, 185);
 }
 
 @scope (.theme-dark) to (.themed) {
@@ -43,4 +44,5 @@
   --ability-quick-border: url("/systems/draw-steel/assets/ui/abilityborderlight.svg");
   --draw-steel-c-primary-party: #b9578c;
   --draw-steel-embed-separator-filter: grayscale(0.8) brightness(0.2) invert(1);
+  --draw-steel-c-thead-bg: var(--table-header-bg-color);
 }

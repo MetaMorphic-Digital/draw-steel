@@ -288,7 +288,12 @@ aside[role="tooltip"] section.content {
   }
 
   table {
+    @container journal-entry-pages (min-width: 0px) {
+      max-height: 80cqh; /** Max height is 80% of its container **/
+    }
+
     width: 100%;
+    position: relative;
 
     /** Scroll overflowing tables **/
     display: block;
@@ -303,6 +308,10 @@ aside[role="tooltip"] section.content {
     }
 
     thead {
+      position: sticky;
+      top: 0;
+
+      background-color: var(--draw-steel-c-thead-bg);
       border: none;
     }
 
@@ -610,6 +619,10 @@ aside[role="tooltip"] section.content {
       padding-inline-end: 3px;
     }
   }
+}
+
+.draw-steel .journal-entry-pages {
+  container: journal-entry-pages / size;
 }
 
 
