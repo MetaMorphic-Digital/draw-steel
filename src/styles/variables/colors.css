@@ -20,6 +20,7 @@
   --ability-default-border: url("/systems/draw-steel/assets/ui/abilityborderblack.svg");
   --ability-quick-border: url("/systems/draw-steel/assets/ui/abilityborderdark.svg");
   --draw-steel-c-primary-party: #9F9175;
+  --draw-steel-embed-separator-filter: grayscale(0.8) brightness(0.2);
 }
 
 @scope (.theme-dark) to (.themed) {
@@ -41,4 +42,5 @@
   --ability-default-border: url("/systems/draw-steel/assets/ui/abilityborderwhite.svg");
   --ability-quick-border: url("/systems/draw-steel/assets/ui/abilityborderlight.svg");
   --draw-steel-c-primary-party: #b9578c;
+  --draw-steel-embed-separator-filter: grayscale(0.8) brightness(0.2) invert(1);
 }

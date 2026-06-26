@@ -112,7 +112,7 @@ document-embed, .item-embed {
 
         margin-block: -8px;
 
-        filter: grayscale(0.8) brightness(0.2);
+        filter: var(--draw-steel-embed-separator-filter);
 
         @container stats-section {
           height: 2.7cqw;
@@ -261,7 +261,7 @@ document-embed, .item-embed {
 
           margin-bottom: 8px;
 
-          filter: grayscale(0.8) brightness(0.2);
+          filter: var(--draw-steel-embed-separator-filter);
 
           @container list-item {
             height: 2.7cqw;
