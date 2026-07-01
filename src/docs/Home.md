@@ -20,3 +20,4 @@ Start by checking out the [[Frequently Asked Questions]]; more information can b
 - [[CONFIG Modifications]]
 - [[Registering Sources]]
 - [[Table of Contents]]
+- [[Hooks]]
