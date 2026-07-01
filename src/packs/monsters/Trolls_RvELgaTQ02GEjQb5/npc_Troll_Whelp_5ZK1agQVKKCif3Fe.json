@@ -91,7 +91,8 @@
     "monster": {
       "freeStrike": 3,
       "keywords": [
-        "giant"
+        "giant",
+        "troll"
       ],
       "level": 5,
       "role": "brute",
@@ -247,9 +248,11 @@
                   }
                 },
                 "tier1": {
-                  "display": "",
-                  "movement": [],
-                  "distance": "",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "1",
                   "properties": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -846,7 +849,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.364",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1761424410675,
