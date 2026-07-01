@@ -63,6 +63,8 @@ export default class CollectionField extends foundry.data.fields.TypedObjectFiel
   /** @inheritdoc */
   initialize(value, model, options = {}) {
     const name = this.documentClass.metadata.documentName;
+    // Adventures only initialize Base documents which means pseudoCollections will be invalid.
+    if (!(model.parent instanceof getDocumentClass(model.parent.documentName))) return null;
     const collection = model.parent.pseudoCollections[name];
     collection.initialize(model, options);
     return collection;
