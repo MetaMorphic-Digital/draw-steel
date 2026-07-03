@@ -1,0 +1,13 @@
+<section class="standard-form">
+    {{formField fields.radius name=(concat name ".radius") value=source.radius input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+
+    {{formField fields.angle name=(concat name ".angle") value=source.angle rootId=rootId classes="slim" units="MEASUREMENT.Degrees" localize=true}}
+
+    {{formField fields.rotation name=(concat name ".rotation") value=source.rotation rootId=rootId classes="slim" units="MEASUREMENT.Degrees" localize=true}}
+
+    {{formField fields.curvature name=(concat name ".curvature") value=source.curvature rootId=rootId classes="slim" localize=true}}
+
+    {{#if fields.hole}}
+    {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
+    {{/if}}
+</section>
