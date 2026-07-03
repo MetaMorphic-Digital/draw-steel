@@ -1,0 +1,312 @@
+{
+  "folder": "49eS494pFw6U3ghR",
+  "name": "Blade of a Thousand Years",
+  "type": "treasure",
+  "_id": "t3ujtpKJbHQIPU2B",
+  "img": "icons/weapons/swords/sword-flanged-lightning.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This fabled sword features a hilt made of glittering starlight, out of which its gleaming metal blade extends.</em></p><p>Whether drawn from a stone, gifted by a lake spirit, forged by a god, or used to kill one, there is a sword that exists outside of time and space. It is always where it needs to be precisely when it needs to be there—then is gone in a flash when the need for it has waned. The sword is depicted in art, song, and story across many living cultures—and even more frequently among cultures long buried, often after proving the deciding factor in a battle. It’s been wielded by numerous heroes of legend, and even more who have slipped into the forgotten shadows of history.</p><p>Though its size and make are often debated, the sword is consistently described as having a crossguard made from pure starlight. When wielded, a brilliant metal blade springs forth from that hilt, suiting the holder’s taste in weapons. Those who touch the blade are filled with the vigor and power of the heroes who have held it before.</p><p><strong>Suited for Victory:</strong> This sword takes on the size, shape, and make that the wielder wills into it. It can be a light, medium, or heavy weapon, and you can change its weapon type and appearance as a free maneuver. Any weapon ability that deals rolled damage using the Blade of a Thousand Years gains a +5 damage bonus, and that ability always deals holy damage. Any creature with weakness to holy damage who takes damage from this weapon is also [[/apply frightened turn]] and [[/apply weakened turn]] until the end of their next turn.</p><p><strong>Rally the Righteous:</strong> This blade fills all around it with hope and courage. Each ally within 1 mile of the weapon gains an edge on weapon abilities and magic abilities, and has damage immunity 5. Additionally, each such creature’s Stamina maximum increases by 15 and they gain a +15 bonus to Stamina when this ability first affects them [[/heal 15]]. [[/apply 749xcAFAkttwj86I]]{Stamina and Damage Immunity} [[/apply jsAzcjBj15aFG6lG]]{Ability Edge}</p><p><strong>Turn the Tide</strong>: Each enemy minion within 1 mile of the sword is [[/apply dazed]]. Any enemy leader or solo creature in that area takes a bane on ability rolls. [[/apply oVBzN2iEuF1RMYCR]]</p><p><strong>Victory’s Assurance:</strong> This weapon always appears on the eve before what will later come to be known as a historic battle. It disappears after 24 hours or when the battle is won, whichever comes first. By taking the blade, the wielder unwittingly enters into a pact with the weapon. If they don’t secure victory against monumental odds or some great foe by the time the sword disappears, they are pulled into the sword, preventing any chance of resurrection, and forever dooming them to lend their strength to the heroes of other ages.</p><p><strong>Soul of the Martyr:</strong> If the wielder dies while holding this blade, their soul is drawn into the starlight hilt, where it remains for the rest of time to prevent any chance of resurrection. The sword disappears, but the lingering feeling of hope that spreads from it remains. For the next hour, the effects of Rally the Righteous increase to provide a double edge on weapon abilities and magic abilities, damage immunity 10, an increase to Stamina maximum of 30, and a bonus to Stamina of +30.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "336",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "blade-of-a-thousand-years",
+    "kind": "weapon",
+    "category": "artifact",
+    "echelon": 4,
+    "keywords": [
+      "magic",
+      "heavy",
+      "light",
+      "medium"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Rally of the Righteous",
+      "img": "icons/weapons/swords/sword-flanged-lightning.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.t3ujtpKJbHQIPU2B",
+      "transfer": false,
+      "_id": "749xcAFAkttwj86I",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.all",
+            "type": "upgrade",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 15,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Each ally within 1 mile has damagae immunity 5 and their Stamina maximum increases by 15.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1782945212946,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!t3ujtpKJbHQIPU2B.749xcAFAkttwj86I"
+    },
+    {
+      "name": "Suited for Victory",
+      "img": "icons/weapons/swords/sword-flanged-lightning.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.t3ujtpKJbHQIPU2B",
+      "transfer": true,
+      "_id": "uaolGcZjN34m6JHv",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Any weapon ability that deals rolled damage using the Blade of a Thousand Years gains a +5 damage bonus, and that ability always deals holy damage.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1782945342818,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!t3ujtpKJbHQIPU2B.uaolGcZjN34m6JHv"
+    },
+    {
+      "name": "Rally the Righteous",
+      "img": "icons/weapons/swords/sword-flanged-lightning.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.t3ujtpKJbHQIPU2B",
+      "transfer": false,
+      "_id": "jsAzcjBj15aFG6lG",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Each ally within 1 mile of the weapon gains an edge on weapon abilities and magic abilities.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1782945674936,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!t3ujtpKJbHQIPU2B.jsAzcjBj15aFG6lG"
+    },
+    {
+      "name": "Turn the Tide",
+      "img": "icons/weapons/swords/sword-flanged-lightning.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.t3ujtpKJbHQIPU2B",
+      "transfer": false,
+      "_id": "oVBzN2iEuF1RMYCR",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Any enemy leader or solo creature within 1 mile of the sword takes a bane on ability rolls.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1782945704860,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!t3ujtpKJbHQIPU2B.oVBzN2iEuF1RMYCR"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1782944499590,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!t3ujtpKJbHQIPU2B"
+}

@@ -1,0 +1,114 @@
+{
+  "folder": "49eS494pFw6U3ghR",
+  "name": "Mortal Coil",
+  "type": "treasure",
+  "_id": "vBUXNLazSmSmo019",
+  "img": "icons/magic/light/orb-container-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This floating helix of golden metal spins ever faster as it activates, crackling with crimson sparks.</em></p><p>Change is the engine of existence. Permanence begets stagnation. When the past refuses to relinquish control, a path must be cleared for the future. Energized by the flickering of minds and souls passing through the void, the Mortal Coil taps into the entropic potential inherent in every living creature to cast a shadow capable of felling even gods. For the true gift of life is death, and gifts are meant to be given.</p><p>Only one destined for death can contain the power of the Mortal Coil. A mortal creature who carries this artifact serves as its host, gaining an additional main action on each of their turns, aging at ten times the usual rate, and becoming unable to ever regain Stamina. A host with no natural maximum lifespan permanently reduces their Stamina maximum by 10 each year.</p><p>When the Mortal Coil is left unattended or is in the possession of a creature who is not mortal, it activates and can’t be deactivated until a mortal creature becomes its host once more. While active, the artifact extends a penumbra of influence for 10 miles in every direction. Every creature in the penumbra is subject to the following effects. [[/apply QgOyDX0wavdQoePV]]{Apply Penumbra Effect}</p><p><strong>One Foot in the Grave: </strong>Any creature in the penumbra has damage weakness 2 and can’t regain Stamina.</p><p><strong>Get Busy Dyin’: </strong>Each creature in the penumbra ages at 10 times the usual rate, and diseases and poisons affecting creatures in the penumbra run their course at 10 times their usual rate. A creature with no natural maximum lifespan permanently reduces their Stamina maximum by 10 each year. Each creature can undertake one additional respite activity during each respite.</p><p><strong>If You Meet God on the Road, Kill Them:</strong> Every non-mortal entity in the penumbra is granted the gift of mortality. Previously immortal or invulnerable entities—from planar creatures to the gods themselves—can be killed while in the penumbra, though not necessarily easily. Any creature or entity who dies in the Mortal Coil’s penumbra experiences perfect death. They are permanently, irrevocably dead, and no magic, psionics, or technology can restore them to life.</p><p><strong>Perpetual Motion: </strong>If there are ever no creatures or entities within the Mortal Coil’s penumbra, the radius of the penumbra doubles.</p><p><strong>Beneath Contempt: </strong>Deities and their servants always overlook the Mortal Coil and its host—either unable to notice it, or not considering it a threat. If the artifact is somehow destroyed or unmade through godly power, it consumes a year of life from every humanoid in the manifold where it was destroyed, then reforms in a hidden place.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "337",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "mortal-coil",
+    "kind": "",
+    "category": "artifact",
+    "echelon": 4,
+    "keywords": [
+      "psionic"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    }
+  },
+  "effects": [
+    {
+      "name": "One Foot in the Grave",
+      "img": "icons/magic/light/orb-container-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.vBUXNLazSmSmo019",
+      "transfer": false,
+      "_id": "QgOyDX0wavdQoePV",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.weaknesses.all",
+            "type": "upgrade",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p><strong>One Foot in the Grave: </strong>Any creature in the penumbra has damage weakness 2 and can’t regain Stamina.</p><p><strong>Get Busy Dyin’: </strong>Each creature in the penumbra ages at 10 times the usual rate, and diseases and poisons affecting creatures in the penumbra run their course at 10 times their usual rate. A creature with no natural maximum lifespan permanently reduces their Stamina maximum by 10 each year. Each creature can undertake one additional respite activity during each respite.</p><p><strong>If You Meet God on the Road, Kill Them:</strong> Every non-mortal entity in the penumbra is granted the gift of mortality. Previously immortal or invulnerable entities—from planar creatures to the gods themselves—can be killed while in the penumbra, though not necessarily easily. Any creature or entity who dies in the Mortal Coil’s penumbra experiences perfect death. They are permanently, irrevocably dead, and no magic, psionics, or technology can restore them to life.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1782944941548,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!vBUXNLazSmSmo019.QgOyDX0wavdQoePV"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1782944798009,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!vBUXNLazSmSmo019"
+}
