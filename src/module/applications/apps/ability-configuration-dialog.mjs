@@ -109,15 +109,6 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _canRender(options) {
-    const allowed = Hooks.call("ds.preRenderAbilityConfigurationDialog", this);
-    if (allowed === false) return false;
-    return super._canRender(options);
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   async _prepareContext(options) {
     return Object.assign(await super._prepareContext(options), {
       rootId: this.id,

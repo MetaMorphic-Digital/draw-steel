@@ -65,6 +65,15 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  _canRender(options) {
+    const allowed = Hooks.call(`ds.canRender${this.constructor.name}`, this);
+    if (allowed === false) return false;
+    return super._canRender(options);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _onFirstRender(context, options) {
     const timeout = this.options.timeout;
 
