@@ -7,7 +7,7 @@
   "system": {
     "description": {
       "value": "<p>Select one damage immunity granted by your Wyrmplate trait. You always have this immunity, in addition to the immunity granted by Wyrmplate.</p>",
-      "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
+      "director": ""
     },
     "source": {
       "book": "Heroes",
@@ -15,7 +15,43 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "prismatic-scales",
-    "advancements": {},
+    "advancements": {
+      "jiYtHGwDqwfvzo9Y": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "effectGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "jiYtHGwDqwfvzo9Y",
+        "description": "",
+        "repick": {
+          "respite": "finish"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.bjWsBuewU5nOjrLv"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.FBHxesSD21wqQFP7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.W4T6T0JqqCgLqlLs"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.jUiKGskq9GfYC07P"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.UTOMzPUJOec3H0Iq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.UULfS7oSIvyCJEfl"
+          }
+        ],
+        "chooseN": 1
+      }
+    },
     "points": 1,
     "prerequisites": {
       "value": "",
@@ -93,7 +129,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.364",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1754522589314,
