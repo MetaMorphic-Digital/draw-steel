@@ -612,6 +612,9 @@
               },
               "typical": {
                 "label": "Typical Space"
+              },
+              "shapes": {
+                "label": "Region Shapes"
               }
             },
             "stability": {
@@ -825,10 +828,60 @@
           "Plant": "Plant",
           "Soulless": "Soulless",
           "Swarm": "Swarm",
-          "Undead": "Undead"
+          "Undead": "Undead",
+          "angulotl": "Angulotl",
+          "arixx": "Arixx",
+          "basilisk": "Basilisk",
+          "bredbeddle": "Bredbeddle",
+          "bugbear": "Bugbear",
+          "chimera": "Chimera",
+          "demon": "Demon",
+          "devil": "Devil",
+          "draconian": "Draconian",
+          "dwarf": "Dwarf",
+          "elfHigh": "High Elf",
+          "elfShadow": "Shadow Elf",
+          "elfWode": "Wode Elf",
+          "giantFire": "Fire Giant",
+          "giantFrost": "Frost Giant",
+          "giantHill": "Hill Giant",
+          "giantStone": "Stone Giant",
+          "gnoll": "Gnoll",
+          "goblin": "Goblin",
+          "griffon": "Griffon",
+          "hag": "Hag",
+          "hobgoblin": "Hobgoblin",
+          "human": "Human",
+          "worm": "Worm",
+          "kobold": "Kobold",
+          "lightbender": "Lightbender",
+          "lizardfolk": "Lizardfolk",
+          "manticore": "Manticore",
+          "medusa": "Medusa",
+          "minotaur": "Minotaur",
+          "ogre": "Ogre",
+          "olothec": "Olothec",
+          "orc": "Orc",
+          "radenwight": "Radenwight",
+          "rival": "Rival",
+          "shamblingMound": "Shambling Mound",
+          "timeRaider": "Time Raider",
+          "troll": "Troll",
+          "mummy": "Mummy",
+          "vampire": "Vampire",
+          "multivok": "Multivok",
+          "servok": "Servok",
+          "valok": "Valok",
+          "voicelessTalker": "Voiceless Talker",
+          "warDog": "War Dog",
+          "werebeast": "Werebeast",
+          "wyvern": "Wyvern",
+          "eyestalk": "Eyestalk",
+          "overmind": "Overmind"
         },
         "KeywordGroups": {
-          "General": "General"
+          "General": "General",
+          "Ancestry": "Ancestry"
         },
         "ROLES": {
           "Ambusher": "Ambusher",
@@ -907,6 +960,18 @@
         },
         "ObjectMetadata": {
           "DialogTitle": "Update Object Metadata"
+        },
+        "ObjectSizes": {
+          "DialogTitle": "Update Object Sizes",
+          "AddShape": "Add Region Shape",
+          "ShapeType": "Shape Type",
+          "PlaceShape": "Place Object Shapes",
+          "EditShapes": "Edit Object Shapes",
+          "FIELDS": {
+            "count": {
+              "label": "Count"
+            }
+          }
         }
       },
       "party": {
@@ -1765,6 +1830,7 @@
       "Name": "Effect",
       "Filters": "Filters",
       "StatusConditions": "Status Conditions",
+      "ComplexStatus": "This condition cannot be toggled here because it is added by a non-standard effect. Open the actor sheet to adjust.",
       "Source": "Source",
       "Toggle": "Toggle Effect",
       "Temporary": "Temporary Effects",
@@ -2464,6 +2530,31 @@
     },
     "CombatantGroup": {
       "squad": "Squad"
+    },
+    "HINTS": {
+      "Actor": {
+        "hero": "A player character, created and run by a player other than the Director.",
+        "npc": "A nonplayer character, usually created and run by the Director.",
+        "object": "A terrain object is an element placed in an encounter that alters tactics on the battlefield, allowing the Director to better theme an encounter.",
+        "party": "A collection of Heroes used for easy viewing of statistics and setting of hero tokens.",
+        "retainer": " A follower who adventures alongside a hero."
+      },
+      "Item": {
+        "ability": "Special main actions, maneuvers, and more that a creature can use to affect other creatures and objects, and the environment.",
+        "complication": "A dramatic narrative twist that deepens a hero's backstory and gives them a rules benefit and drawback. Complications are an optional rule.",
+        "culture": "The community in which a hero was raised.",
+        "feature": "A trait given by classes, ancestries, etc.",
+        "follower": "An NPC dedicated to helping a hero. Many of the actions of a follower are controlled by a player.",
+        "perk": "A feature available to all heroes that helps with exploration, investigation, negotiation, and more.",
+        "project": "A task a hero undertakes during one or more respite.",
+        "title": "A special reward that a hero can earn while adventuring, and which grants benefits or new abilities.",
+        "treasure": " A piece of supernatural equipment, from weapons and armor to implements and more."
+      },
+      "JournalEntryPage": {
+        "configuration": "An easy way to configure homebrew elements like languages and monster keywords.",
+        "reference": "An extensions of a text page that allows for rich tooltips.",
+        "tierOutcome": "A page for configuring reusable power roll outcomes that can be embedded."
+      }
     },
     "Item": {
       "ability": "Ability",

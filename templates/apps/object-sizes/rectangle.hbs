@@ -1,0 +1,23 @@
+<section class="standard-form">
+  {{formField fields.count name=(concat name ".count") value=source.count classes="slim"}}
+
+  {{formField fields.width name=(concat name ".width") value=source.width input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+
+  {{formField fields.height name=(concat name ".height") value=source.height input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+
+  <div class="form-group slim">
+      <label>{{localize "SHAPE.TYPES.rectangle.anchor.label"}}</label>
+      <div class="form-fields">
+          <label for="{{rootId}}-{{fields.anchorX.fieldPath}}">X</label>
+          {{formInput fields.anchorX name=(concat name ".anchorX") value=source.anchorX id=(concat rootId "-" fields.anchorX.fieldPath)}}
+          <label for="{{rootId}}-{{fields.anchorY.fieldPath}}">Y</label>
+          {{formInput fields.anchorY name=(concat name ".anchorY") value=source.anchorY id=(concat rootId "-" fields.anchorY.fieldPath)}}
+      </div>
+  </div>
+
+  {{formField fields.rotation name=(concat name ".rotation") value=source.rotation rootId=rootId classes="slim" units="MEASUREMENT.Degrees" localize=true}}
+
+  {{#if fields.hole}}
+  {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
+  {{/if}}
+</section>

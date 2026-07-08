@@ -1,7 +1,11 @@
+export {}
+
 declare module "./object-size.mjs" {
   export default interface ObjectSizeModel {
+    text: string;
     direction: string;
     typical: string;
+    shapes: Array<typeof foundry.data.BaseShapeData.TYPES[keyof typeof foundry.data.BaseShapeData.TYPES]>;
   }
 }
 

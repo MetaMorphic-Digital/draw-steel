@@ -406,6 +406,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     // If the actor has the status and it's not from the canonical statusEffect
     // Then we want to force more individual control rather than allow toggleStatusEffect
     for (const effect of this.actor.allApplicableEffects()) {
+      if (!effect.active) continue;
       for (const id of effect.statuses) {
         if (!(id in statusInfo)) continue;
         statusInfo[id].active = "active";
@@ -818,8 +819,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #toggleStatus(event, target) {
-    const status = target.dataset.statusId;
-    await this.actor.toggleStatusEffect(status);
+    const statusId = target.dataset.statusId;
+    const existing = this.actor.effects.get(CONFIG.statusEffects[statusId]._id);
+    if (existing && !existing.active) await existing.delete();
+    await this.actor.toggleStatusEffect(statusId);
   }
 
   /* -------------------------------------------------- */

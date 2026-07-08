@@ -1,0 +1,26 @@
+<section class="standard-form">
+  <header class="flexrow">
+    <div class="">{{localize "SHAPE.label"}}</div>
+    <div class="shape-controls">
+      {{#if editable}}
+      <button type="button" class="ui-control icon fa-solid fa-plus" data-action="addShape" data-tooltip
+        aria-label="{{localize "DRAW_STEEL.Actor.object.ObjectSizes.AddShape"}}"></button>
+      <button type="button" class="ui-control icon fa-solid fa-trash" data-action="shapeRemoveAll" data-tooltip
+        aria-label="{{localize "SHAPE.ACTIONS.removeAll"}}"></button>
+      {{/if}}
+    </div>
+  </header>
+
+  {{!-- We expect fewer shapes than regions so we can afford to just have a long form if there's a few --}}
+  <div class="standard-form scrollable">
+  {{#each shapeContexts as |shapeContext i|}}
+  <fieldset class="region-element region-shape flexrow" data-shape-index="{{i}}" aria-label="{{localize "SHAPE.label"}} 0">
+    <legend>
+      {{localize (concat "SHAPE.TYPES." shapeContext.shape.type ".name")}}
+      <button type="button" class="icon fa-solid fa-trash" data-action="deleteShape"></button>
+    </legend>
+    {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shapeContext.shape.type ".hbs") shapeContext }}
+  </fieldset>
+  {{/each}}
+  </div>
+</section>

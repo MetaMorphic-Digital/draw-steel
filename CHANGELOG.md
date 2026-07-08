@@ -46,6 +46,7 @@ Increased foundry minimum to 14.363.
 - Updated Player-Facing Compendium Content:
   - Updated "I'm No Threat", "Careful Observation" to have AEs that provide edges.
   - Added appropriate enrichers to Burning Ash and Smoke Bomb.
+- The Actor Sheet & Token HUD no longer show disabled & expired statuses as active, and toggling an inactive status will delete the existing effect and create a new one. (#1694)
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 - Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
@@ -60,11 +61,15 @@ Increased foundry minimum to 14.363.
 
 - Player-Facing Compendium Data Fixes:
   - Added in correct source data for several triggered actions granted by features. (#1935)
+  - Corrected Back! to not have a forced movement in tier 1. (#1898)
 - Director-Facing Compendium Data Fixes:
   - Corrected distance on Blackguard Villain Actions. (#1894)
+  - Corrected forced movement effects on the Servok War Engine, Kobold Artifex, Ogre Tantrum, and Troll Whelp. (#1898)
 - Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
+- Corrected object resource form displaying as a column instead of a row in edit mode. (#1955)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
+- Adventure documents with items now load properly.
 
 ## 1.0.2
 
@@ -133,8 +138,8 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
 - Hard fixed the list of characteristics. (#1705)
-- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 - Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
+- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`.
 
 ### Deprecated
 
