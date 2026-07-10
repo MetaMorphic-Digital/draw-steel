@@ -249,7 +249,7 @@ async function version_1_1_migration() {
   warning.update({ pct: 1.00 });
 
   ui.notifications.remove(warning);
-  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.0.0" }, permanent: true });
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.1.0" }, permanent: true });
   console.log("Migration complete");
 }
 
