@@ -167,6 +167,12 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    */
   static constructPotencyHTML(characteristic, strength) {
 
+    const span = document.createElement("span");
+    if (!characteristic) return span;
+    span.classList.add("potency");
+    span.dataset.potencyValue = strength;
+    span.dataset.potencyCharacteristic = Object.entries(ds.CONFIG.characteristics).find(([, chr]) => chr.rollKey === characteristic).at(0);
+
     if (strength in ds.CONST.potencyStrengths) strength = ds.CONST.potencyStrengths[strength].glyph;
     // Numeric glyphs are formatted with square edges on both sides
     // Append right bracket to get the rounded edge on the end.
@@ -177,8 +183,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       value: strength,
     });
 
-    const span = document.createElement("span");
-    span.classList.add("potency");
     span.textContent = potencyString;
 
     return span;

@@ -15,6 +15,7 @@ interface Biography {
 }
 
 interface Characteristic {
+  resist: number;
   value: number;
   edges: number;
   banes: number;

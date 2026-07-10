@@ -85,6 +85,19 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /* -------------------------------------------------- */
 
+  /**
+   * A helper function to check if a potency applies to this actor.
+   * @param {number} value
+   * @param {string} characteristic
+   * @returns {boolean} True if the value exceeds the relevant characteristic, null if this actor does not have characteristics to evaluate.
+   */
+  checkPotency(value, characteristic) {
+    if (typeof this.system.checkPotency === "function") return this.system.checkPotency(value, characteristic);
+    return null;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     switch (attribute) {
