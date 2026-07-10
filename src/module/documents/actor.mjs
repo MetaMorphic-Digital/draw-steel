@@ -35,7 +35,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
         },
       };
     }
-    else return super.getDefaultArtwork(data);
+    return super.getDefaultArtwork(data);
   }
 
   /* -------------------------------------------------- */
