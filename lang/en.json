@@ -612,6 +612,9 @@
               },
               "typical": {
                 "label": "Typical Space"
+              },
+              "shapes": {
+                "label": "Region Shapes"
               }
             },
             "stability": {
@@ -825,10 +828,60 @@
           "Plant": "Plant",
           "Soulless": "Soulless",
           "Swarm": "Swarm",
-          "Undead": "Undead"
+          "Undead": "Undead",
+          "angulotl": "Angulotl",
+          "arixx": "Arixx",
+          "basilisk": "Basilisk",
+          "bredbeddle": "Bredbeddle",
+          "bugbear": "Bugbear",
+          "chimera": "Chimera",
+          "demon": "Demon",
+          "devil": "Devil",
+          "draconian": "Draconian",
+          "dwarf": "Dwarf",
+          "elfHigh": "High Elf",
+          "elfShadow": "Shadow Elf",
+          "elfWode": "Wode Elf",
+          "giantFire": "Fire Giant",
+          "giantFrost": "Frost Giant",
+          "giantHill": "Hill Giant",
+          "giantStone": "Stone Giant",
+          "gnoll": "Gnoll",
+          "goblin": "Goblin",
+          "griffon": "Griffon",
+          "hag": "Hag",
+          "hobgoblin": "Hobgoblin",
+          "human": "Human",
+          "worm": "Worm",
+          "kobold": "Kobold",
+          "lightbender": "Lightbender",
+          "lizardfolk": "Lizardfolk",
+          "manticore": "Manticore",
+          "medusa": "Medusa",
+          "minotaur": "Minotaur",
+          "ogre": "Ogre",
+          "olothec": "Olothec",
+          "orc": "Orc",
+          "radenwight": "Radenwight",
+          "rival": "Rival",
+          "shamblingMound": "Shambling Mound",
+          "timeRaider": "Time Raider",
+          "troll": "Troll",
+          "mummy": "Mummy",
+          "vampire": "Vampire",
+          "multivok": "Multivok",
+          "servok": "Servok",
+          "valok": "Valok",
+          "voicelessTalker": "Voiceless Talker",
+          "warDog": "War Dog",
+          "werebeast": "Werebeast",
+          "wyvern": "Wyvern",
+          "eyestalk": "Eyestalk",
+          "overmind": "Overmind"
         },
         "KeywordGroups": {
-          "General": "General"
+          "General": "General",
+          "Ancestry": "Ancestry"
         },
         "ROLES": {
           "Ambusher": "Ambusher",
@@ -907,6 +960,18 @@
         },
         "ObjectMetadata": {
           "DialogTitle": "Update Object Metadata"
+        },
+        "ObjectSizes": {
+          "DialogTitle": "Update Object Sizes",
+          "AddShape": "Add Region Shape",
+          "ShapeType": "Shape Type",
+          "PlaceShape": "Place Object Shapes",
+          "EditShapes": "Edit Object Shapes",
+          "FIELDS": {
+            "count": {
+              "label": "Count"
+            }
+          }
         }
       },
       "party": {
@@ -1765,6 +1830,7 @@
       "Name": "Effect",
       "Filters": "Filters",
       "StatusConditions": "Status Conditions",
+      "ComplexStatus": "This condition cannot be toggled here because it is added by a non-standard effect. Open the actor sheet to adjust.",
       "Source": "Source",
       "Toggle": "Toggle Effect",
       "Temporary": "Temporary Effects",

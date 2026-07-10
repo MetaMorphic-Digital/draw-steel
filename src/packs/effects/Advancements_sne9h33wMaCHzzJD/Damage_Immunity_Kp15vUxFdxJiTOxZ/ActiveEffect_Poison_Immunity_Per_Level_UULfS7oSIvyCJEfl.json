@@ -1,0 +1,60 @@
+{
+  "folder": "Kp15vUxFdxJiTOxZ",
+  "name": "Poison Immunity Per Level",
+  "type": "base",
+  "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+  "system": {
+    "changes": [
+      {
+        "key": "system.damage.immunities.poison",
+        "type": "upgrade",
+        "value": "@level",
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>You have poison immunity equal to your level.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1783173492257,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "UULfS7oSIvyCJEfl",
+  "_key": "!effects!UULfS7oSIvyCJEfl"
+}

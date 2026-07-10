@@ -5,6 +5,7 @@ export { default as CharacteristicInput } from "./characteristic-input.mjs";
 export { default as DocumentSourceInput } from "./document-source-input.mjs";
 export { default as MonsterMetadataInput } from "./monster-metadata-input.mjs";
 export { default as ObjectMetadataInput } from "./object-metadata-input.mjs";
+export { default as ObjectSizesInput } from "./object-sizes-input.mjs";
 export { default as PowerRollDialog } from "./power-roll-dialog.mjs";
 export { default as RetainerMetadataInput } from "./retainer-metadata-input.mjs";
 export { default as SavingThrowDialog } from "./saving-throw-dialog.mjs";

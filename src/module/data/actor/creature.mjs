@@ -208,4 +208,19 @@ export default class CreatureModel extends BaseActorModel {
       return obj;
     }, {});
   }
+
+  /* ------------------------------------------------- */
+
+  /**
+   * Checks if this character fails a potency check.
+   * @param {number} value
+   * @param {string} characteristic A valid characteristic key.
+   * @returns {boolean} Returns true if the value is greater than this character's effective characteristic.
+   */
+  checkPotency(value, characteristic) {
+    const chr = this.characteristics[characteristic];
+    if (!chr) throw new Error(`Invalid characteristic ${characteristic}`);
+    const resist = chr.value + chr.resist;
+    return value > resist;
+  }
 }

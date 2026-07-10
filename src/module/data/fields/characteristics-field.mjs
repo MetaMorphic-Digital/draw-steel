@@ -19,6 +19,7 @@ export default class CharacteristicsField extends SchemaField {
       const { label, hint } = ds.CONFIG.characteristics[chc];
       obj[chc] = new SchemaField({
         value: new NumberField({ ...characteristic, label, hint }),
+        resist: new NumberField({ required: true, nullable: false, integer: true, initial: 0, persisted: false }),
         edges: new NumberField({ required: true, nullable: false, integer: true, initial: 0, persisted: false }),
         banes: new NumberField({ required: true, nullable: false, integer: true, initial: 0, persisted: false }),
         dice: new SchemaField({

@@ -46,6 +46,7 @@ Increased foundry minimum to 14.363.
 - Updated Player-Facing Compendium Content:
   - Updated "I'm No Threat", "Careful Observation" to have AEs that provide edges.
   - Added appropriate enrichers to Burning Ash and Smoke Bomb.
+- The Actor Sheet & Token HUD no longer show disabled & expired statuses as active, and toggling an inactive status will delete the existing effect and create a new one. (#1694)
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 - Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
@@ -66,8 +67,9 @@ Increased foundry minimum to 14.363.
   - Corrected forced movement effects on the Servok War Engine, Kobold Artifex, Ogre Tantrum, and Troll Whelp. (#1898)
 - Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
-- Corrected instances where the "turn end" expiration would not match to the correct combatant.
 - Corrected object resource form displaying as a column instead of a row in edit mode. (#1955)
+- Corrected instances where the "turn end" expiration would not match to the correct combatant.
+- Adventure documents with items now load properly.
 
 ## 1.0.2
 
