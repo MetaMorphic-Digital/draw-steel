@@ -1,6 +1,7 @@
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 import DrawSteelActiveEffect from "./active-effect.mjs";
 import DrawSteelPartySheet from "../applications/sheets/party-sheet.mjs";
+import { systemID } from "../constants.mjs";
 
 /** @import ClassModel from "../data/item/class.mjs" */
 
@@ -16,6 +17,28 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     }
     return super.migrateData(data);
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static getDefaultArtwork(data) {
+    if (data.type === "npc") {
+      const organization = foundry.utils.getProperty(data, "system.monster.organization");
+      const role = foundry.utils.getProperty(data, "system.monster.role");
+      let filePath = this.DEFAULT_ICON;
+      if (["leader", "solo", "minion"].includes(organization)) filePath = `systems/${systemID}/assets/roles/${organization}.webp`;
+      else if (role) filePath = `systems/${systemID}/assets/roles/${role}.webp`;
+      return {
+        img: filePath,
+        texture: {
+          src: filePath,
+        },
+      };
+    }
+    return super.getDefaultArtwork(data);
+  }
+
+  /* -------------------------------------------------- */
 
   /**
    * Is this actor a minion?

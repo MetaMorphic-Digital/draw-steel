@@ -50,6 +50,7 @@ Increased foundry minimum to 14.363.
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 - Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
+- Adjusting an actor's image if they are using a system icon will now also adjust the actor token to match.
 
 ### Deprecated
 
