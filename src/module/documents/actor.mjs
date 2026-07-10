@@ -1,6 +1,7 @@
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 import DrawSteelActiveEffect from "./active-effect.mjs";
 import DrawSteelPartySheet from "../applications/sheets/party-sheet.mjs";
+import { systemID } from "../constants.mjs";
 
 /** @import ClassModel from "../data/item/class.mjs" */
 
@@ -15,6 +16,26 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }
     return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static getDefaultArtwork(data) {
+    if (data.type === "npc") {
+      const organization = foundry.utils.getProperty(data, "system.monster.organization");
+      const role = foundry.utils.getProperty(data, "system.monster.role");
+      let filePath = this.DEFAULT_ICON;
+      if (["leader", "solo", "minion"].includes(organization)) filePath = `systems/${systemID}/assets/roles/${organization}.webp`;
+      else if (role) filePath = `systems/${systemID}/assets/roles/${role}.webp`;
+      return {
+        img: filePath,
+        texture: {
+          src: filePath,
+        },
+      };
+    }
+    else return super.getDefaultArtwork(data);
   }
 
   /* -------------------------------------------------- */
@@ -57,20 +78,6 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     }
 
     Hooks.callAll("ds.prepareActorData", this);
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _preUpdate(changed, options, user) {
-    const allowed = await super._preUpdate(changed, options, user);
-    if (allowed === false) return false;
-    // Make it easier for users to override system-provided default icons
-    if (changed.img && !foundry.utils.getProperty(changed, "prototypeToken.texture.src")) {
-      if (!this.prototypeToken.texture.src || (this.prototypeToken.texture.src.includes("systems/draw-steel/"))) {
-        foundry.utils.setProperty(changed, "prototypeToken.texture.src", changed.img);
-      }
-    }
   }
 
   /* -------------------------------------------------- */
