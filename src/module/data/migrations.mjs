@@ -234,7 +234,7 @@ async function version_1_1_migration() {
     console.log("Migrating document inside", pack.title);
     const wasLocked = pack.config.locked;
     if (wasLocked) await pack.configure({ locked: false });
-    if (pack.type === "Actor") {
+    if (pack.documentName === "Actor") {
       await pack.getDocuments();
       await migrateActorItems(pack);
     }
