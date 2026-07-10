@@ -72,6 +72,23 @@ The "glyph" class switches the font to "Draw Steel Glyphs", a special font cover
 The `table.compact` element and class removes the additional padding Foundry adds to `th` and `td` elements. Wrapping the caption inside `strong` tags will surround it with gold-colored laser lines that extend horizontally to match the width of the table. This can be replicated on embedded tables by passing `captionPosition=top` to the internal configuration.
 
 ```html
+<table class="large" role="table">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th role="columnheader">Text Here</th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td role="cell">Text Here</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+The `table.large` element and class adds scrollbars to large tables that would overflow and makes the header "sticky", keeping it on screen as you scroll down a tall table. The implementation requires using the `role` attribute on all table elements to maintain compliance with web accessibility standards.
+
+```html
 <aside class="boxed">
   <p>Text Here</p>
 </aside>

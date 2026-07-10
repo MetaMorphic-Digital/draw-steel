@@ -20,10 +20,13 @@
 
 ## 1.1.0
 
-Increased foundry minimum to 14.363.
+Increased foundry minimum to 14.364.
 
 ### Added
 
+- New Director-Facing Compendium Content:
+  - Added the artifacts from *Draw Steel Heroes*.
+- Added shape definition to objects for use in region placement. (#311)
 - Abilities can now have any number of HTML sections, and they can have additional info. (#475)
   - This includes promoting the "spend" field to have an HTML entry. (#329)
   - Strained & Spend message parts only display if their conditions are fulfilled. (#676)
@@ -31,8 +34,11 @@ Increased foundry minimum to 14.363.
 - Added `@Embed` support for NPC actors. (#901)
 - Added "Effect Origin" option to applied effects. When used, the duration of the effect is based on the *user* of the effect rather than the target. (#1260)
 - Item choice advancements can now specify "Ability" as an expansion option, allowing selection of non-core abilities. (#1420)
+- Document creation dialogs now include a hint based on the currently selected type. (#1558)
+- Added support for a `large` class that can be applied to tables to make them scrollable. (#1682)
 - Added advancement support to retainers. Retainers can now have a class with advancements and levels. (#1721)
   - This class is automatically created when an attempt is made to access and has the default retainer bonuses, however it does not have the ability selections added. Individual retainers must have the ability choices added to this default class.
+  - Added this class to all existing retainers.
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)
 - Added ability to place a template from the ability use dialog that will intelligently target tokens inside the region. (#1864)
 - Players attempting to use a free strike on an NPC or Retainer now create a message with a damage roll in the chat. (#1875)
@@ -40,18 +46,20 @@ Increased foundry minimum to 14.363.
 - Added Forced Movement as a movement action type. (#1931)
 - Added `ds.utils.getDocumentTypes` as a helper function to create a set of valid document subtypes.
 - Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
+- Added ancestry-based keywords from the core books.
 
 ### Changed
 
 - Updated Player-Facing Compendium Content:
   - Updated "I'm No Threat", "Careful Observation" to have AEs that provide edges.
   - Added appropriate enrichers to Burning Ash and Smoke Bomb.
+  - Updated the Dragon Knight Wyrmplate & Prismatic Scales traits to use Effect Grant advancements.
+- Updated Director-Facing Compendium Content:
+  - All monsters now have their ancestry tags, e.g. Goblin
 - The Actor Sheet & Token HUD no longer show disabled & expired statuses as active, and toggling an inactive status will delete the existing effect and create a new one. (#1694)
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 - Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
-
-### Deprecated
 
 ### Removed
 
@@ -60,8 +68,9 @@ Increased foundry minimum to 14.363.
 ### Fixed
 
 - Player-Facing Compendium Data Fixes:
-  - Added in correct source data for several triggered actions granted by features. (#1935)
   - Corrected Back! to not have a forced movement in tier 1. (#1898)
+  - Added in correct source data for several triggered actions granted by features. (#1935)
+  - Corrected Censor level 4 characteristic advancement to give Presence and not Reason. (##1968)
 - Director-Facing Compendium Data Fixes:
   - Corrected distance on Blackguard Villain Actions. (#1894)
   - Corrected forced movement effects on the Servok War Engine, Kobold Artifex, Ogre Tantrum, and Troll Whelp. (#1898)
