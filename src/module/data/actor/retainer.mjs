@@ -215,7 +215,7 @@ export default class RetainerModel extends CreatureModel {
     const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
     /** @type {DamagePowerRollEffect} */
-    const [firstDamage] = signature?.system.power.effects.documentsByType.damage;
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
       value: this.retainer.freeStrike,
