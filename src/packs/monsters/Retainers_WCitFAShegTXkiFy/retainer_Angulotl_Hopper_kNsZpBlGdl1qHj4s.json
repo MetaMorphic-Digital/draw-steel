@@ -7,7 +7,7 @@
   "system": {
     "stamina": {
       "value": null,
-      "max": 21,
+      "max": 0,
       "temporary": 0
     },
     "combat": {
@@ -296,7 +296,7 @@
               "_id": "Vvq21shahlEIRb9B",
               "damage": {
                 "tier1": {
-                  "value": "3",
+                  "value": "3 + floor(@level / 2)",
                   "types": [],
                   "ignoredImmunities": [],
                   "potency": {
@@ -305,7 +305,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "5",
+                  "value": "4 + @level",
                   "types": [],
                   "ignoredImmunities": [],
                   "potency": {
@@ -314,7 +314,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "7",
+                  "value": "6 + @level",
                   "types": [],
                   "ignoredImmunities": [],
                   "potency": {
@@ -353,7 +353,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.361",
+        "coreVersion": "14.364",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1776704488304,
@@ -589,7 +589,7 @@
           "core": []
         },
         "stamina": {
-          "starting": 20,
+          "starting": 21,
           "level": 9
         },
         "recoveries": 6
