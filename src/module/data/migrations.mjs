@@ -216,7 +216,7 @@ async function version_1_1_migration() {
 
   for (const scene of game.scenes) {
     const operation = scene.tokens.map(t => {
-      if (t.isLinked || !t.delta) return null;
+      if (t.isLinked || !t.delta || !t.baseActor) return null;
       return {
         action: "update",
         updates: t.actor.itemTypes.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
