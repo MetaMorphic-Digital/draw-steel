@@ -116,8 +116,8 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
       return barData;
     }
 
-    const barMax = barData.max;
-    const barValue = barData.value;
+    let barMax = barData.max;
+    let barValue = barData.value;
 
     Object.defineProperties(barData, {
       max: {
@@ -125,11 +125,17 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
           const combatGroup = this.actor.system.combatGroup;
           return combatGroup ? combatGroup.system.staminaMax : barMax;
         },
+        set: value => {
+          barMax = value;
+        },
       },
       value: {
         get: () => {
           const combatGroup = this.actor.system.combatGroup;
           return combatGroup ? combatGroup.system.staminaValue : barValue;
+        },
+        set: value => {
+          barValue = value;
         },
       },
       minionStamina: {
