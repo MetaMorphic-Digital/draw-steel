@@ -133,7 +133,9 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     const group = await this.create({
       type,
       name: tokens.every(t => t.actor?.name === actorName) ? actorName : this.defaultName({ type, parent: combat }),
-      img: tokens.every(t => t.texture.src === tokenImage) ? tokenImage : null,
+      img: foundry.data.validators.hasFileExtension(tokenImage, Object.keys(CONST.FILE_CATEGORIES.IMAGE))
+        ? tokens.every(t => t.texture.src === tokenImage) ? tokenImage : null
+        : null,
     }, { parent: combat });
     const updateData = combatants.map(c => ({ _id: c.id, group: group.id }));
     await combat.updateEmbeddedDocuments("Combatant", updateData);
