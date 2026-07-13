@@ -2,11 +2,11 @@
 
 ## Actor Embeds
 
-NPC Actors can be embedded into enriched text via the `@Embed[uuid]` syntax. (Only NPC Actors can be embedded in this way currently; support for Objects and Retainers is planned)
+NPC Actors can be embedded into enriched text via the @Embed&ZeroWidthSpace;[uuid] syntax. (Only NPC Actors can be embedded in this way currently; support for Objects and Retainers is planned)
 
 This embed displays similarly as the statblocks in the book and contains the same relevant information there:
 
-![NPC Embed Example](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/NPC-embed-example.png)
+![NPC Embed Example](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/NPC-embed-example.png?raw=true)
 
 ### Setting up an NPC's Features/Abilities so that its `@Embed`s display as expected
 
@@ -27,7 +27,20 @@ This embed displays similarly as the statblocks in the book and contains the sam
 
 ## Item Embeds
 
-All items support the @Embed<s></s>[uuid] syntax, which by default share the description of the item. For abilities, kits, and projects, their embeds feature additional information.
+All items support the @Embed&ZeroWidthSpace;[uuid] syntax, which by default share the description of the item. Abilities, followers, kits, projects, tiles, and treasures feature additional information. These embeds support the following additional properties, which should be included inside the square brackets.
+
+<dl>
+  <dt>includeName=true</dt>
+  <dd>Prepends the item embed with an h5 element with the item name.</dd>
+  <dt>prerequisites=true (Title only)</dt>
+  <dd>Adds the title's prerequisites to the start of the embed.</dd>
+  <dt>includeProjectInfo=true (Treasure Only)</dt>
+  <dd>Adds the project info to the start of the embed.</dd>
+</dl>
+
+## Active Effect Embeds
+
+Active effects support the @Embed&ZeroWidthSpace;[uuid] syntax, which shares the description of the effect.
 
 ## Lookup
 
@@ -152,4 +165,4 @@ If an enricher is not working as intended, in the text editor in which you are t
 1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
 2. click on the `</>` symbol to enter HTML mode and make sure, there is not unnecessary characters or code interfering with the enricher.
 
-![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/HTML-mode-explainer.png)
+![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/HTML-mode-explainer.png?raw=true)
