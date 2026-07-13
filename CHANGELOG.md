@@ -71,13 +71,15 @@ Increased foundry minimum to 14.364.
 - Player-Facing Compendium Data Fixes:
   - Corrected Back! to not have a forced movement in tier 1. (#1898)
   - Added in correct source data for several triggered actions granted by features. (#1935)
-  - Corrected Censor level 4 characteristic advancement to give Presence and not Reason. (##1968)
+  - Corrected Censor level 4 characteristic advancement to give Presence and not Reason. (#1968)
 - Director-Facing Compendium Data Fixes:
   - Corrected distance on Blackguard Villain Actions. (#1894)
   - Corrected forced movement effects on the Servok War Engine, Kobold Artifex, Ogre Tantrum, and Troll Whelp. (#1898)
+  - Corrected Omen Dragon Corrupting Breath test attribute. (#1977)
 - Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
 - Corrected object resource form displaying as a column instead of a row in edit mode. (#1955)
+- Fixed error that could block combatant group creation if the included tokens used video files for images. (#1978)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
 - Adventure documents with items now load properly.
 
