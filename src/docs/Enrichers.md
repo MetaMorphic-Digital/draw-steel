@@ -1,5 +1,30 @@
 "Enrichers" refer to specialized text syntax that can be used in any rich text editor (such as an actor description, journal entry, or chat message). Enriched content displays simply in the editor but can represent large and complex displays in the rendered text.
 
+## Actor Embeds
+
+NPC Actors can be embedded into enriched text via the `@Embed[uuid]` syntax. (Only NPC Actors can be embedded in this way currently; support for Objects and Retainers is planned)
+
+This embed displays similarly as the statblocks in the book and contains the same relevant information there:
+
+![NPC Embed Example](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/NPC-embed-example.png)
+
+### Setting up an NPC's Features/Abilities so that its `@Embed`s display as expected
+
+- For Abilities, there is a best-effort attempt to assign the icon that it corresponds with in the PDF's statblocks. However, there are some Abilities that don't follow an obvious pattern for their icon, and thus can be manually set by using a flag. The flag exists under the namespace `draw-steel.embedDisplay`, under the property `iconOverride` (a `string` literal). Set that property to one of the following options to override the icon that is used:
+  - "area"
+  - "burst"
+  - "melee"
+  - "meleeRanged"
+  - "ranged"
+  - "self"
+  - "special"
+  - "trait"
+  - "triggered-action"
+  - "villain-action"
+- For Features, there isn't sufficient information in the data model to assign the icon using logic alone. Thus, Features default to using the "trait" (star) icon. If you wish to select the icon yourself, you must use the flag described above to override the icon.
+- In statblocks, some Features come at the beginning of the list, before Abilities, and others come at the end. Thus there is another flag option for Features, under the same namespace: `draw-steel.embedDisplay`, under the `displayAtEnd` property. This is a `Boolean` that exists on the Feature. Set it to `true` to put that Feature after the Abilities, rather than before. The order is otherwise retained.
+- You can set this flag on an item in Foundry via `item.setFlag("draw-steel", "embedDisplay", { iconOverride: "special", displayAtEnd: true  }`
+
 ## Item Embeds
 
 All items support the @Embed<s></s>[uuid] syntax, which by default share the description of the item. For abilities, kits, and projects, their embeds feature additional information.
@@ -127,4 +152,4 @@ If an enricher is not working as intended, in the text editor in which you are t
 1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
 2. click on the `</>` symbol to enter HTML mode and make sure, there is not unnecessary characters or code interfering with the enricher.
 
-![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs/HTML-mode-explainer.png)
+![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/HTML-mode-explainer.png)
