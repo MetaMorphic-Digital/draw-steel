@@ -2,7 +2,9 @@
 
 ## Actor Embeds
 
-NPC Actors can be embedded into enriched text via the `@Embed[uuid]` syntax. **Note:** Currently, only NPC Actors can be embedded in this way. Support for embedding additional Actor types is planned. This embed displays similarly as the statblocks in the book and contains the same relevant information there:
+NPC Actors can be embedded into enriched text via the `@Embed[uuid]` syntax. (Only NPC Actors can be embedded in this way currently; support for Objects and Retainers is planned)
+
+This embed displays similarly as the statblocks in the book and contains the same relevant information there:
 
 ![NPC Embed Example](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/NPC-embed-example.png)
 
