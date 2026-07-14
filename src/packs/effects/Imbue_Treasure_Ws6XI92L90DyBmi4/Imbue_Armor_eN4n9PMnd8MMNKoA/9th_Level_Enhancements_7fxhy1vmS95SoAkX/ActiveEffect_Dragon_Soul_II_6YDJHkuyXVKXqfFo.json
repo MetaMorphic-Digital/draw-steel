@@ -1,0 +1,56 @@
+{
+  "folder": "7fxhy1vmS95SoAkX",
+  "name": "Dragon Soul II",
+  "type": "base",
+  "_id": "6YDJHkuyXVKXqfFo",
+  "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "An offering of gems, coins, and art stolen from a dragon’s hoard, sacrificed in ritual fire",
+      "source": "Texts or lore in Vastariax",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "armor",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>While you are winded, your head transforms into a dragon’s head and you have the following ability.</p><p></p><p>@Embed[Compendium.draw-steel.abilities.Item.dKIgDPPN5qIo4sXD]{Dragon's Fire}</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784051050596,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!6YDJHkuyXVKXqfFo"
+}
