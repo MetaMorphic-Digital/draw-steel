@@ -77,7 +77,7 @@ async function version_0_8_migration() {
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     await pack.getDocuments();
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     await migrateType(pack, { pack: pack.collection });
     if (pack.documentName === "Actor") {
@@ -135,7 +135,7 @@ async function version_0_11_migration() {
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     const docs = await pack.getDocuments();
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     for (const doc of docs) await migrateChanges(doc);
     if (wasLocked) await pack.configure({ locked: true });
@@ -186,7 +186,7 @@ async function version_1_0_migration() {
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     const docs = await pack.getDocuments();
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     const operation = [];
     docs.forEach(doc => migrateEffectSystem(doc, operation));
@@ -232,7 +232,7 @@ async function version_1_1_migration() {
   const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     if (pack.documentName === "Actor") {
       await pack.getDocuments();
