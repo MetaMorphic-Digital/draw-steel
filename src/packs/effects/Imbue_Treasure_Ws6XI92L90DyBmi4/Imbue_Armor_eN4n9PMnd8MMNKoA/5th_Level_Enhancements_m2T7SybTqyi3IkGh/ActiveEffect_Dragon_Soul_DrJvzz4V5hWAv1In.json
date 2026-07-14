@@ -1,0 +1,56 @@
+{
+  "folder": "m2T7SybTqyi3IkGh",
+  "name": "Dragon Soul",
+  "type": "base",
+  "_id": "DrJvzz4V5hWAv1In",
+  "img": "icons/magic/fire/beam-strike-whip-red.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "A scale from a dead dragon",
+      "source": "Texts or lore in Vastariax",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "armor",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>When another creature causes you to be winded or dying, you can use a free triggered action to cause the soul of a dragon to emerge from this armor and hurtle toward the creature. Make the following power roll against the creature.</p><p></p><p><strong>Power Roll + [[lookup @chr]]{Your Highest Characteristic}</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8]] damage; push 3</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 12]] damage; push 4;</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 15]] damage; push 5</p></dd></dl>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784050811386,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!DrJvzz4V5hWAv1In"
+}

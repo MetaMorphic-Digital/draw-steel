@@ -1,0 +1,56 @@
+{
+  "folder": "SYvBVq7DlRpAzqcl",
+  "name": "Phasing I",
+  "type": "base",
+  "_id": "FWNPzgZK2iEzDjrU",
+  "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "Ichor from a destroyed wraith",
+      "source": "Texts or lore in Szetch",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "armor",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 15
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Once per turn, you can move through 1 square of solid matter. If you end your turn inside solid matter, you are forced out into the space from which you entered it and you take [[/damage 5]] damage that can’t be reduced in any way.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784050023684,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!FWNPzgZK2iEzDjrU"
+}
