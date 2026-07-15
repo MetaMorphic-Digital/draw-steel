@@ -22,8 +22,8 @@
 
 ### Fixed
 
+- Potency enrichers now work again. (#1985)
 - Corrected handling of locked compendiums during system migration.
-
 
 ## 1.1.0
 
