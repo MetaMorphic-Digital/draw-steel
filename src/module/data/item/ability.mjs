@@ -101,11 +101,6 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.effects = new ds.data.fields.CollectionField(ds.data.pseudoDocuments.specialEffects.BaseSpecialEffect);
 
-    schema.spend = new fields.SchemaField({
-      value: new fields.NumberField({ integer: true }),
-      text: new fields.StringField({ required: true }),
-    });
-
     return schema;
   }
 
