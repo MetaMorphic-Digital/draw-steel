@@ -20,6 +20,10 @@
 
 ## 1.1.1
 
+### Removed
+
+- Removed `system.spend` from AbilityModel (all spend data was migrated to `system.effects` in 1.1.0)
+
 ### Fixed
 
 - Corrected handling of locked compendiums during system migration.
