@@ -42,19 +42,19 @@ export async function enricher(match, options) {
   const potencyStrengths = ds.CONST.potencyStrengths;
   // Caching the rollKeys this way as ds.CONFIG is not available at the time rollKeys is initially set.
   if (!rollKeys.size) {
-    foundry.utils.objectValues(characteristics).forEach(char => rollKeys.add(char.rollKey.toLocaleLowerCase()));
+    foundry.utils.objectValues(characteristics).forEach(char => rollKeys.add(char.rollKey.toUpperCase()));
   }
 
   for (const val of parsedConfig.values) {
     const normalizedValue = val.toLowerCase();
-    if (rollKeys.has(normalizedValue)) parsedConfig.characteristic ??= normalizedValue;
-    else if (characteristics[normalizedValue]?.rollKey) parsedConfig.characteristic ??= characteristics[normalizedValue].rollKey.toLowerCase();
+    if (rollKeys.has(normalizedValue.toUpperCase())) parsedConfig.characteristic ??= normalizedValue.toUpperCase();
+    else if (characteristics[normalizedValue]?.rollKey) parsedConfig.characteristic ??= characteristics[normalizedValue].rollKey;
     else if (normalizedValue in potencyStrengths) parsedConfig.strength ??= normalizedValue;
     else if (Number.isNumeric(val)) parsedConfig.strength = Number(val);
   }
 
   // Convert characteristic strings to characteristic roll keys.
-  if (parsedConfig.characteristic in characteristics) parsedConfig.characteristic = characteristics[parsedConfig.characteristic].rollKey.toLowerCase();
+  if (parsedConfig.characteristic in characteristics) parsedConfig.characteristic = characteristics[parsedConfig.characteristic].rollKey;
 
   const hasValidCharacteristic = rollKeys.has(parsedConfig.characteristic);
   const hasValidStrength = (typeof parsedConfig.strength === "number") || (parsedConfig.strength in potencyStrengths);
