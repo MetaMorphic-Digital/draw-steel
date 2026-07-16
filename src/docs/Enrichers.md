@@ -148,7 +148,7 @@ The `[[/apply]]` enricher allows you to link status effects, either from an item
 - [&ZeroWidthSpace;[/apply Rage stacking=true]]: Apply "Rage" and allow stacking multiple copies of the effect.
 - [&ZeroWidthSpace;[/apply Fated originDuration=true end=turn]]: Apply "Fated" and set it to end at the next turn of the source actor (rather than the end of the target's next turn).
 - [&ZeroWidthSpace;[/apply xww2tw1knkZ9x4A3]]: Apply the effect with an ID of `xww2tw1knkZ9x4A3`. You can grab an effect's ID by right clicking the passport icon in the top right of the active effect config.
-- [&ZeroWidthSpace;[/apply Item.uU7qrouU5PlbLWIM.ActiveEffect.xww2tw1knkZ9x4A3]]: Apply an effect by UUID, which can be grabbed by left clicking the passport icon in the top right of the active effect config.. Unlike the ID and name matching, this allows referencing a custom active effect without being inside the parent's html fields.
+- [&ZeroWidthSpace;[/apply Item.uU7qrouU5PlbLWIM.ActiveEffect.xww2tw1knkZ9x4A3]]: Apply an effect by UUID, which can be grabbed by left clicking the passport icon in the top right of the active effect config. Unlike the ID and name matching, this allows referencing a custom active effect without being inside the parent's html fields.
 
 ## Potency
 
