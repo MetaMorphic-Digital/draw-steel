@@ -20,6 +20,10 @@
 
 ## 1.1.1
 
+### Added
+
+- Setting the `draw-steel.embedDisplay.skip` flag to true marks a feature or ability not to be included in the parent actor embed. Using `showAllItems=true` in the embed call will include the item anyways. All ancestry-based monster malice abilities have been updated to have this flag.
+
 ### Removed
 
 - Removed `system.spend` from AbilityModel (all spend data was migrated to `system.effects` in 1.1.0)

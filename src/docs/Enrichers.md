@@ -23,7 +23,8 @@ This embed displays similarly as the statblocks in the book and contains the sam
   - "villain-action"
 - For Features, there isn't sufficient information in the data model to assign the icon using logic alone. Thus, Features default to using the "trait" (star) icon. If you wish to select the icon yourself, you must use the flag described above to override the icon.
 - In statblocks, some Features come at the beginning of the list, before Abilities, and others come at the end. Thus there is another flag option for Features, under the same namespace: `draw-steel.embedDisplay`, under the `displayAtEnd` property. This is a `Boolean` that exists on the Feature. Set it to `true` to put that Feature after the Abilities, rather than before. The order is otherwise retained.
-- You can set this flag on an item in Foundry via `item.setFlag("draw-steel", "embedDisplay", { iconOverride: "special", displayAtEnd: true  }`
+- You can set this flag on an item in Foundry via `item.setFlag("draw-steel", "embedDisplay", { iconOverride: "special", displayAtEnd: true  })`
+- Setting `embedDisplay.skip` to `true` will skip the item entirely unless you use `showAllItems=true` in the embed configuration (i.e. @Embed&ZeroWidthSpace;[uuid showAllItems=true])
 
 ## Item Embeds
 

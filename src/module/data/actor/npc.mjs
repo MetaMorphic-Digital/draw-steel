@@ -216,7 +216,7 @@ export default class NPCModel extends CreatureModel {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
-      itemEmbeds: await this._getItemEmbeds(),
+      itemEmbeds: await this._getItemEmbeds(config),
       monsterKeywords: this._getMonsterKeywords().join(", "),
       movement: this._getMovement(true).list,
       system: this,
@@ -237,11 +237,12 @@ export default class NPCModel extends CreatureModel {
 
   /**
    * Prepare embeds of Items for the NPC embed.
-   * @returns {Promise<DrawSteelItemEmbed[]>}
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
+   * @returns {Promise<HTMLElement[]>}
    */
-  async _getItemEmbeds() {
-    const abilities = this._getOrderedAbilities();
-    const { startFeatures, endFeatures } = this._getOrderedFeatures();
+  async _getItemEmbeds(config) {
+    let abilities = this._getOrderedAbilities(config);
+    const { startFeatures, endFeatures } = this._getOrderedFeatures(config);
     const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
 
     return Promise.all(orderedItems.map(async (item) => {
@@ -256,26 +257,30 @@ export default class NPCModel extends CreatureModel {
   /**
    * Orders Ability Items in the same order
    * as the keys in ds.CONFIG.abilities.types.
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
    * @returns {DrawSteelItem[]}
    */
-  _getOrderedAbilities() {
+  _getOrderedAbilities(config) {
     const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
-    return this.parent.items.documentsByType.ability.toSorted(
-      (a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort,
-    );
+    return this.parent.items.documentsByType.ability
+      .filter(i => config.showAllItems || !i.getFlag(systemID, "embedDisplay.skip"))
+      .sort((a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort);
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Orders Feature Items via the `embedDisplay.displayAtEnd` flag.
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
    * @returns {{ startFeatures: DrawSteelItem[], endFeatures: DrawSteelItem[] }}
    */
-  _getOrderedFeatures() {
-    const features = this.parent.items.documentsByType.feature.toSorted((a, b) => a.sort - b.sort);
+  _getOrderedFeatures(config) {
+    const features = this.parent.items.documentsByType.feature
+      .filter(i => config.showAllItems || !i.getFlag(systemID, "embedDisplay.skip"))
+      .sort((a, b) => a.sort - b.sort);
 
     const [ startFeatures, endFeatures ] = features.partition(f => {
-      return !!f.getFlag(ds.CONST.systemID, "embedDisplay.displayAtEnd");
+      return !!f.getFlag(systemID, "embedDisplay.displayAtEnd");
     });
     return { startFeatures, endFeatures };
   }

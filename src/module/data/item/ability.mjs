@@ -343,7 +343,7 @@ export default class AbilityModel extends BaseItemModel {
    */
   getStatBlockIcon() {
     /** @type {EmbedDisplayFlags["iconOverride"]} */
-    const { iconOverride } = this.parent.getFlag(ds.CONST.systemID, "embedDisplay") ?? {};
+    const { iconOverride } = this.parent.getFlag(systemID, "embedDisplay") ?? {};
     if (iconOverride) return iconOverride;
 
     switch (this.type) {
