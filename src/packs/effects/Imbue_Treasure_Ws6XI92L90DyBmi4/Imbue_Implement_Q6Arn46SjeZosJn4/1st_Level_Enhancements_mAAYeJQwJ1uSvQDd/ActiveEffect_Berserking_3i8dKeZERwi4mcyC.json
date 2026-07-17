@@ -1,0 +1,56 @@
+{
+  "folder": "mAAYeJQwJ1uSvQDd",
+  "name": "Berserking",
+  "type": "base",
+  "_id": "3i8dKeZERwi4mcyC",
+  "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "The tusk of a feral boar",
+      "source": "Texts or lore in Kalliak",
+      "rollCharacteristic": [
+        "agility",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "implement",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Whenever you damage a creature using a magic or psionic ability and obtain a tier 3 outcome, that creature must make an opportunity attack against their nearest ally if possible after the ability’s effects resolve. This strike deals extra damage equal to [[lookup \"max(@R, @I, @P)\" evaluate]]{the highest of your Reason, Intuition, or Presence scores}.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784235953908,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!3i8dKeZERwi4mcyC"
+}
