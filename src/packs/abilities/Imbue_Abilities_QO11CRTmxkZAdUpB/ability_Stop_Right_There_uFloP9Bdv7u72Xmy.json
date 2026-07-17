@@ -1,0 +1,79 @@
+{
+  "folder": "QO11CRTmxkZAdUpB",
+  "name": "Stop Right There",
+  "type": "ability",
+  "_id": "uFloP9Bdv7u72Xmy",
+  "img": "icons/skills/social/wave-halt-stop.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "302",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "stop-right-there",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Their momentum, your impact.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "freeTriggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target willingly moves adjacent to you",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "O9asdcBj8CoPJAu7": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "O9asdcBj8CoPJAu7",
+        "description": "<p>The target takes [[/damage 5]] damage.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784306319279,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!uFloP9Bdv7u72Xmy"
+}
