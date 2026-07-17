@@ -216,7 +216,7 @@ export default class NPCModel extends CreatureModel {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
-      itemEmbeds: await this._getItemEmbeds(),
+      itemEmbeds: await this._getItemEmbeds(config),
       monsterKeywords: this._getMonsterKeywords().join(", "),
       movement: this._getMovement(true).list,
       system: this,
@@ -237,10 +237,11 @@ export default class NPCModel extends CreatureModel {
 
   /**
    * Prepare embeds of Items for the NPC embed.
-   * @returns {Promise<DrawSteelItemEmbed[]>}
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
+   * @returns {Promise<HTMLElement[]>}
    */
-  async _getItemEmbeds() {
-    const abilities = this._getOrderedAbilities();
+  async _getItemEmbeds(config) {
+    let abilities = this._getOrderedAbilities(config);
     const { startFeatures, endFeatures } = this._getOrderedFeatures();
     const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
 
@@ -256,13 +257,15 @@ export default class NPCModel extends CreatureModel {
   /**
    * Orders Ability Items in the same order
    * as the keys in ds.CONFIG.abilities.types.
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
    * @returns {DrawSteelItem[]}
    */
-  _getOrderedAbilities() {
+  _getOrderedAbilities(config) {
     const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
-    return this.parent.items.documentsByType.ability.toSorted(
-      (a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort,
-    );
+    return this.parent.items.documentsByType.ability
+      // Ancestry malice do not show by default
+      .filter(i => config.showAll || (i.system.category !== "maliceAncestry"))
+      .sort((a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort);
   }
 
   /* -------------------------------------------------- */
@@ -275,7 +278,7 @@ export default class NPCModel extends CreatureModel {
     const features = this.parent.items.documentsByType.feature.toSorted((a, b) => a.sort - b.sort);
 
     const [ startFeatures, endFeatures ] = features.partition(f => {
-      return !!f.getFlag(ds.CONST.systemID, "embedDisplay.displayAtEnd");
+      return !!f.getFlag(systemID, "embedDisplay.displayAtEnd");
     });
     return { startFeatures, endFeatures };
   }

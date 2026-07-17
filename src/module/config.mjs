@@ -1654,6 +1654,9 @@ const abilityCategories = {
   villain: {
     label: "DRAW_STEEL.Item.ability.Category.Villain",
   },
+  maliceAncestry: {
+    label: "DRAW_STEEL.Item.ability.Category.MaliceAncestry",
+  },
 };
 
 /**

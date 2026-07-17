@@ -20,14 +20,30 @@
 
 ## 1.1.1
 
+### Added
+
+- New Player-Facing Compendium Content:
+  - Added Armor, Implement, and Weapon imbues to the Effects compendium
+- Added an "Ancestry Malice" category for abilities that are from a monster's ancestry, not from its unique statblock. Ancestry malice abilities are skipped in the actor embed unless the embed is supplied the `showAll=true` option.  (#1982)
+
+### Changed
+
+- Updated Player-Facing Compendium Content:
+  - Updated Wodewalker Complication to use roll data instead of a fixed value. (#1988)
+  - Updated Revitalizing Ritual to provide an applied effect. (#1990)
+  - Updated the Adaptive Second Skin and Thief of Joy treasures to use roll data instead of fixed values.
+
 ### Removed
 
 - Removed `system.spend` from AbilityModel (all spend data was migrated to `system.effects` in 1.1.0)
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Fixed typo in Paper Trappings treasure.
 - Potency enrichers now work again. (#1985)
 - Corrected handling of locked compendiums during system migration.
+- Corrected issue preventing project creation when the yield document is not provided.
 
 ## 1.1.0
 

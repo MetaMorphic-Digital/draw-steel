@@ -24,9 +24,9 @@ import {
   JournalEntryPage as JEPModels,
 } from "../data/_module.mjs";
 import { DrawSteelActiveEffect, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelItem, DrawSteelJournalEntryPage, DrawSteelTokenDocument, DrawSteelWallDocument } from "./_module.mjs";
-import Collection from "@common/utils/collection.mjs";
-import { JournalEntryCategory } from "@client/documents/_module.mjs";
 import DrawSteelToken from "../canvas/placeables/token.mjs";
+import EmbeddedCollection from "@common/abstract/embedded-collection.mjs";
+import { JournalEntryCategory } from "@client/documents/_module.mjs";
 
 // Collator for the types
 type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
@@ -37,7 +37,7 @@ type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGro
 type JournalEntryPageModel = typeof JEPModels[keyof typeof JEPModels];
 
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
-type CanvasDocument = ReturnType<typeof foundry.documents.abstract.CanvasDocumentMixin>
+type CanvasDocument = ReturnType<typeof foundry.documents.abstract.CanvasDocumentMixin>;
 
 declare module "@client/documents/_module.mjs" {
   interface BaseActiveEffect<Model extends ActiveEffectModel = ActiveEffectModel> extends ActiveEffectData, InstanceType<ClientDocument> {
@@ -48,14 +48,14 @@ declare module "@client/documents/_module.mjs" {
   interface BaseActor<Model extends ActorModel = ActorModel> extends ActorData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
-    items: Collection<string, DrawSteelItem>;
-    effects: Collection<string, DrawSteelActiveEffect>;
+    items: EmbeddedCollection<DrawSteelItem>;
+    effects: EmbeddedCollection<DrawSteelActiveEffect>;
   }
 
   interface BaseItem<Model extends ItemModel = ItemModel> extends ItemData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
-    effects: Collection<string, DrawSteelActiveEffect>;
+    effects: EmbeddedCollection<DrawSteelActiveEffect>;
   }
   interface BaseChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
@@ -65,8 +65,8 @@ declare module "@client/documents/_module.mjs" {
   interface BaseCombat extends CombatData, InstanceType<ClientDocument> {
     type: "base";
     system: CombatModels.BaseCombatModel;
-    combatants: Collection<string, DrawSteelCombatant>;
-    groups: Collection<string, DrawSteelCombatantGroup>
+    combatants: EmbeddedCollection<DrawSteelCombatant>;
+    groups: EmbeddedCollection<DrawSteelCombatantGroup>
   }
 
   interface BaseCombatantGroup<Model extends CombatantGroupModel = CombatantGroupModel> extends CombatantGroupData, InstanceType<ClientDocument> {
@@ -80,8 +80,8 @@ declare module "@client/documents/_module.mjs" {
   }
 
   interface BaseJournalEntry extends JournalEntryData, InstanceType<ClientDocument> {
-    pages: Collection<string, DrawSteelJournalEntryPage>;
-    categories: Collection<string, JournalEntryCategory>;
+    pages: EmbeddedCollection<DrawSteelJournalEntryPage>;
+    categories: EmbeddedCollection<JournalEntryCategory>;
   }
 
   interface BaseJournalEntryPage<Model extends JournalEntryPageModel = JournalEntryPageModel> extends JournalEntryPageData, InstanceType<ClientDocument> {
@@ -90,11 +90,11 @@ declare module "@client/documents/_module.mjs" {
   }
 
   interface BaseScene extends SceneData, InstanceType<ClientDocument> {
-    tokens: Collection<string, DrawSteelTokenDocument>;
-    walls: Collection<string, DrawSteelWallDocument>;
+    tokens: EmbeddedCollection<DrawSteelTokenDocument>;
+    walls: EmbeddedCollection<DrawSteelWallDocument>;
   }
 
-  interface BaseToken extends TokenData, InstanceType<CanvasDocument>{
+  interface BaseToken extends TokenData, InstanceType<CanvasDocument> {
     object: DrawSteelToken;
   }
 
