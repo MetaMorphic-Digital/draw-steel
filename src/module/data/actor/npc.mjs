@@ -242,7 +242,7 @@ export default class NPCModel extends CreatureModel {
    */
   async _getItemEmbeds(config) {
     let abilities = this._getOrderedAbilities(config);
-    const { startFeatures, endFeatures } = this._getOrderedFeatures(config);
+    const { startFeatures, endFeatures } = this._getOrderedFeatures();
     const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
 
     return Promise.all(orderedItems.map(async (item) => {
@@ -263,7 +263,8 @@ export default class NPCModel extends CreatureModel {
   _getOrderedAbilities(config) {
     const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
     return this.parent.items.documentsByType.ability
-      .filter(i => config.showAllItems || !i.getFlag(systemID, "embedDisplay.skip"))
+      // Ancestry malice do not show by default
+      .filter(i => config.showAllItems || (i.system.category !== "ancestryMalice"))
       .sort((a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort);
   }
 
@@ -271,13 +272,10 @@ export default class NPCModel extends CreatureModel {
 
   /**
    * Orders Feature Items via the `embedDisplay.displayAtEnd` flag.
-   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
    * @returns {{ startFeatures: DrawSteelItem[], endFeatures: DrawSteelItem[] }}
    */
-  _getOrderedFeatures(config) {
-    const features = this.parent.items.documentsByType.feature
-      .filter(i => config.showAllItems || !i.getFlag(systemID, "embedDisplay.skip"))
-      .sort((a, b) => a.sort - b.sort);
+  _getOrderedFeatures() {
+    const features = this.parent.items.documentsByType.feature.toSorted((a, b) => a.sort - b.sort);
 
     const [ startFeatures, endFeatures ] = features.partition(f => {
       return !!f.getFlag(systemID, "embedDisplay.displayAtEnd");

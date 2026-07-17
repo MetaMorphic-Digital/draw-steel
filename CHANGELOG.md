@@ -22,7 +22,16 @@
 
 ### Added
 
-- Setting the `draw-steel.embedDisplay.skip` flag to true marks a feature or ability not to be included in the parent actor embed. Using `showAllItems=true` in the embed call will include the item anyways. All ancestry-based monster malice abilities have been updated to have this flag.
+- New Player-Facing Compendium Content:
+  - Added Armor & Implement imbues to the Effects compendium
+- Added an "Ancestry Malice" category for abilities which will be skipped by the embed. Using `showAllItems=true` in the embed call will include the abilities anyways.
+
+### Changed
+
+- Updated Player-Facing Compendium Content:
+  - Updated Wodewalker Complication to use roll data instead of a fixed value. (#1988)
+  - Updated Revitalizing Ritual to provide an applied effect. (#1990)
+  - Updated the Adaptive Second Skin and Thief of Joy treasures to use roll data instead of fixed values.
 
 ### Removed
 
@@ -30,8 +39,11 @@
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Fixed typo in Paper Trappings treasure.
 - Potency enrichers now work again. (#1985)
 - Corrected handling of locked compendiums during system migration.
+- Corrected issue preventing project creation when the yield document is not provided.
 
 ## 1.1.0
 
