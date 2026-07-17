@@ -23,8 +23,8 @@
 ### Added
 
 - New Player-Facing Compendium Content:
-  - Added Armor & Implement imbues to the Effects compendium
-- Added an "Ancestry Malice" category for abilities that are from a monster's ancestry, not from its unique statblock. Ancestry malice abilities are skipped in the actor embed unless the embed is supplied the `showAll=true` option.
+  - Added Armor, Implement, and Weapon imbues to the Effects compendium
+- Added an "Ancestry Malice" category for abilities that are from a monster's ancestry, not from its unique statblock. Ancestry malice abilities are skipped in the actor embed unless the embed is supplied the `showAll=true` option.  (#1982)
 
 ### Changed
 
