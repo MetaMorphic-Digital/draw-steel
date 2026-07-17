@@ -1,0 +1,56 @@
+{
+  "folder": "td54h74KX9zyJJnT",
+  "name": "Imprisoning",
+  "type": "base",
+  "_id": "oAphZq499hY1lB3N",
+  "img": "icons/magic/control/debuff-chains-ropes-net-white.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "A chain once used to restrain an angel",
+      "source": "Texts or lore in Anjali",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Whenever you damage a creature with an ability using this weapon and obtain a tier 3 outcome, that creature is also [[/apply restrained save]]. While restrained in this way, the creature can’t use magic or psionic abilities.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784301480721,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!oAphZq499hY1lB3N"
+}
