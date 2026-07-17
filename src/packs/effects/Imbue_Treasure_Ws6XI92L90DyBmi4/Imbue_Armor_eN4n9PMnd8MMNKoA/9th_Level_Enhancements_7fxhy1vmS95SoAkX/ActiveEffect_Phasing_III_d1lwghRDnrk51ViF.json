@@ -5,7 +5,15 @@
   "_id": "d1lwghRDnrk51ViF",
   "img": "icons/creatures/magical/spirit-undead-ghost-purple.webp",
   "system": {
-    "changes": [],
+    "changes": [
+      {
+        "key": "system.stamina.bonuses.treasure",
+        "type": "upgrade",
+        "value": 21,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
     "end": {
       "roll": "1d10 + @combat.save.bonus"
     },
@@ -42,7 +50,7 @@
   "sort": 0,
   "flags": {},
   "_stats": {
-    "coreVersion": "14.364",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1784051031423,
