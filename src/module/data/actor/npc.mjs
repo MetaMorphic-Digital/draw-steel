@@ -264,7 +264,7 @@ export default class NPCModel extends CreatureModel {
     const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
     return this.parent.items.documentsByType.ability
       // Ancestry malice do not show by default
-      .filter(i => config.showAllItems || (i.system.category !== "ancestryMalice"))
+      .filter(i => config.showAll || (i.system.category !== "ancestryMalice"))
       .sort((a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort);
   }
 
