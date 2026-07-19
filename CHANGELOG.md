@@ -1,10 +1,13 @@
 # CHANGELOG
 
-<!--
+-->
 ## [Unreleased]
 
 ### Added
 
+- Added d3 to the core dice configuration, allowing easier manual rolls for heroic resources. (#<issue_number>)
+
+<!--
 ### Changed
 
 ### Deprecated
