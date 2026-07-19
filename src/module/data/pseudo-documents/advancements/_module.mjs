@@ -1,5 +1,5 @@
 export { default as BaseAdvancement } from "./base-advancement.mjs";
-export { default as CharacteristicAdvancement } from "./characteristic.mjs";
+export { default as CharacteristicAdvancement } from "./characteristic-advancement.mjs";
 export { default as EffectGrantAdvancement } from "./effect-grant-advancement.mjs";
 export { default as ItemGrantAdvancement } from "./item-grant-advancement.mjs";
 export { default as LanguageAdvancement } from "./language-advancement.mjs";

@@ -6,7 +6,6 @@ const { NumberField, TypedObjectField } = foundry.data.fields;
 
 /**
  * An advancement that applies a permanent adjustment to an actor's characteristics.
- * @abstract
  */
 export default class CharacteristicAdvancement extends BaseAdvancement {
   /** @inheritdoc */
