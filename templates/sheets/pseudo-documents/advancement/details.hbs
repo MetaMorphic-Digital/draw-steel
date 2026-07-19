@@ -31,6 +31,26 @@
   </fieldset>
   {{/if}}
 
+  {{#if fields.dsid}}{{formGroup fields.dsid value=source.dsid name="dsid"}}{{/if}}
+
+  {{!-- SUMMON CHOICE POOL --}}
+  {{#if (eq document.type "summon")}}
+  {{formGroup fields.cost value=source.cost name="cost" classes="slim"}}
+
+  <section class="drop-target-area">
+    {{#each ctx.actorPool}}
+    <div class="form-group" data-pool-index="{{@index}}">
+      <input type="hidden" name="{{concat "pool." @index ".uuid"}}" value="{{uuid}}">
+      {{formInput @root.fields.pool.element.fields.count value=count name=(concat "pool." @index ".count")}}
+      <label>{{{link.outerHTML}}}</label>
+      <div class="form-fields">
+        <button type="button" data-action="deletePoolActor" class="icon fa-solid fa-trash"></button>
+      </div>
+    </div>
+    {{/each}}
+  </section>
+  {{/if}}
+
   {{!-- ITEM GRANT POOL --}}
   {{#if (eq document.type "itemGrant")}}
   <section class="drop-target-area">
@@ -45,7 +65,7 @@
   </section>
   {{/if}}
 
-  {{!-- ITEM GRANT POOL --}}
+  {{!-- EFFECT GRANT POOL --}}
   {{#if (eq document.type "effectGrant")}}
   <section class="drop-target-area">
     {{#each ctx.effectPool}}

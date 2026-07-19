@@ -76,6 +76,24 @@
           }
         }
       },
+      "ACTOR_CHOICE": {
+        "FIELDS": {
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many actors can be picked when this advancement is configured. If left blank or if the number is greater than the number of actors available, all the actors are selected.",
+            "placeholder": "Choose All"
+          },
+          "dsid": {
+            "label": "DSID",
+            "hint": "The DSID of the ability this is providing choices for"
+          },
+          "cost": {
+            "label": "Resource Cost",
+            "hint": "Leave blank for signature summons."
+          }
+        },
+        "SummonOption": "{name} ({count})"
+      },
       "CHARACTERISTIC": {
         "FIELDS": {
           "guaranteed": {
@@ -175,6 +193,7 @@
       "SHEET": {
         "requirements": "Requirements",
         "additional": "Additional",
+        "unknownActor": "Unknown Actor",
         "unknownItem": "Unknown Item",
         "unknownEffect": "Unknown Effect",
         "reconfigure": "Reconfigure Advancement",
@@ -184,7 +203,9 @@
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
         "restrictedType": "{type} items cannot be added as advancements.",
         "requirePack": "Granted documents must come from a compendium pack.",
-        "forbidParent": "Granted documents cannot be embedded in an actor."
+        "forbidParent": "Granted documents cannot be embedded in an actor.",
+        "restrictedTypeSummon": "{type} actors cannot be added as summon choices.",
+        "requirePackSummon": "Summonable Actors must come from a compendium pack."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -2522,9 +2543,11 @@
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",
+      "companion": "Companion",
       "effectGrant": "Effect Grant",
       "itemGrant": "Item Grant",
       "skill": "Skill",
+      "summon": "Summon Choice",
       "language": "Language"
     },
     "ChatMessage": {

@@ -15,6 +15,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
+      deletePoolActor: AdvancementSheet.#deletePoolDocument,
       deletePoolEffect: AdvancementSheet.#deletePoolDocument,
       deletePoolItem: AdvancementSheet.#deletePoolDocument,
     },
