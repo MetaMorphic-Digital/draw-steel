@@ -18,6 +18,12 @@
 ### Known Issues
 -->
 
+## 1.1.2
+
+### Fixed
+
+- Retainers no longer show level-up when equal in level to their mentor. (#2015)
+
 ## 1.1.1
 
 ### Added
