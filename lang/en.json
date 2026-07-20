@@ -718,6 +718,31 @@
           }
         }
       },
+      "companion": {
+        "FIELDS": {
+          "companion": {
+            "freeStrike": {
+              "label": "Free Strike"
+            },
+            "keywords": {
+              "label": "Keywords"
+            },
+            "role": {
+              "label": "Creature Role"
+            },
+            "master": {
+              "label": "Master"
+            }
+          }
+        },
+        "NoMaster": "{companion} does not have a linked master.",
+        "SpendRecovery": {
+          "tooltip": "Spend a {name} recovery to regain stamina.",
+          "Notifications": {
+            "Success": "{master} has spent a recovery to recover {companion}'s stamina."
+          }
+        }
+      },
       "creature": {
         "FIELDS": {
           "characteristics": {
@@ -2514,6 +2539,7 @@
       "abilityModifier": "Ability Modifier"
     },
     "Actor": {
+      "companion": "Companion",
       "hero": "Hero",
       "npc": "NPC",
       "object": "Object",
@@ -2535,6 +2561,7 @@
     },
     "HINTS": {
       "Actor": {
+        "companion": "A wild animal who has forged a mystical bond with a Beastheart.",
         "hero": "A player character, created and run by a player other than the Director.",
         "npc": "A nonplayer character, usually created and run by the Director.",
         "object": "A terrain object is an element placed in an encounter that alters tactics on the battlefield, allowing the Director to better theme an encounter.",
