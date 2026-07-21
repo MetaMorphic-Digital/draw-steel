@@ -155,7 +155,7 @@ export default class RetainerModel extends CreatureModel {
    * @type {boolean}
    */
   get advancementReady() {
-    return this.retainer.mentor?.system.level >= this.level;
+    return this.retainer.mentor?.system.level > this.level;
   }
 
   /* -------------------------------------------------- */
