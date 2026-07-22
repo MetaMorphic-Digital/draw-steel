@@ -385,6 +385,14 @@
           "multiple": {
             "label": "Multiple"
           }
+        },
+        "summoning": {
+          "pool": {
+            "label": "Actors"
+          },
+          "count": {
+            "label": "Count"
+          }
         }
       },
       "persistent": "Persistent {value}",
@@ -1056,6 +1064,13 @@
         "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
       },
       "Summoning": {
+        "ActorSelectDialog": {
+          "title": "Summon Actor",
+          "uuid": {
+            "label": "Actor",
+            "hint": "Choose an actor to summon, importing from compendium if it hasn't yet already."
+          }
+        },
         "Errors": {
           "ACTOR_CREATE": "You do not have permission to import actors!",
           "TOKEN_CREATE": "You do not have permission to create new Tokens!",
@@ -2648,7 +2663,8 @@
       "base": "Effect",
       "persistent": "Persistent",
       "spend": "Spend",
-      "strained": "Strained"
+      "strained": "Strained",
+      "summon": "Summon"
     }
   },
   "TOKEN.MOVEMENT": {

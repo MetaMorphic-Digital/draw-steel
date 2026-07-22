@@ -4,13 +4,14 @@ import { requiredInteger } from "../../helpers.mjs";
 import { systemPath } from "../../../constants.mjs";
 
 /**
- * @import { DrawSteelActor, DrawSteelTokenDocument} from "../../../documents/_module.mjs"
+ * @import { DrawSteelTokenDocument } from "../../../documents/_module.mjs"
  */
 
-const { DocumentUUIDField, SetField } = foundry.data.fields;
+const { DocumentUUIDField, SchemaField, SetField } = foundry.data.fields;
+const { createSelectInput, createFormGroup } = foundry.applications.fields;
 
 /**
- * A type of effect that performs a summon.
+ * A type of effect that summons from a fixed list of options.
  */
 export default class SummonSpecialEffect extends BaseSpecialEffect {
   /** @inheritdoc */
@@ -23,8 +24,10 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      pool: new SetField(new DocumentUUIDField({ type: "Actor", embedded: false })),
-      count: new requiredInteger({ initial: 1, min: 1 }),
+      summoning: new SchemaField({
+        pool: new SetField(new DocumentUUIDField({ type: "Actor", embedded: false })),
+        count: requiredInteger({ initial: 1, min: 1 }),
+      }),
     });
   }
 
@@ -46,7 +49,8 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
     // Token permissions handled by placeActor
     let summonUuid;
 
-    if (this.pool.size > 1) {
+    if (this.pool.size === 1) summonUuid = this.pool.first();
+    else {
       const actorOptions = this.pool.reduce((options, uuid) => {
         const idx = fromUuidSync(uuid);
         if (idx) options.push({
@@ -56,12 +60,31 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
         return options;
       }, []);
 
-      const fd = DSDialog.input({});
+      const content = document.createElement("div");
+
+      const uuidSelect = createFormGroup({
+        label: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.uuid.label",
+        hint: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.uuid.hint",
+        input: createSelectInput({
+          name: "uuid",
+          options: actorOptions,
+        }),
+        localize: true,
+      });
+
+      content.append(uuidSelect);
+
+      const fd = DSDialog.input({
+        content,
+        window: {
+          title: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.title",
+          icon: "fa-solid fa-transporter-2",
+        },
+      });
 
       if (!fd) return null;
       summonUuid = fd.uuid;
     }
-    else summonUuid = this.pool.first();
 
     return this.parent.performSummon(summonUuid);
   }

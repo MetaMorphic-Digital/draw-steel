@@ -25,6 +25,9 @@ declare module "./spend-effect.mjs" {
 
 declare module "./summon-effect.mjs" {
   export default interface SummonSpecialEffect {
-    pool: Set<string>;
+    summoning: {
+      pool: Set<string>;
+      count: number;
+    }
   }
 }

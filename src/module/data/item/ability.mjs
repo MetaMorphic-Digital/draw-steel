@@ -17,7 +17,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
- * @import DrawSteelTokenDocument from "../../documents/token.mjs";
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
 const fields = foundry.data.fields;
