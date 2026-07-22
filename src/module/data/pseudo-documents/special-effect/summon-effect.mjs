@@ -1,6 +1,7 @@
-import { systemID, systemPath } from "../../../constants.mjs";
 import BaseSpecialEffect from "./base-special-effect.mjs";
+import DSDialog from "../../../applications/api/dialog.mjs";
 import { requiredInteger } from "../../helpers.mjs";
+import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelTokenDocument} from "../../../documents/_module.mjs"
@@ -43,35 +44,25 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
   async performSummon() {
     if (!this.pool.size) return void ui.notifications.error("");
     // Token permissions handled by placeActor
-    let uuid;
+    let summonUuid;
 
     if (this.pool.size > 1) {
+      const actorOptions = this.pool.reduce((options, uuid) => {
+        const idx = fromUuidSync(uuid);
+        if (idx) options.push({
+          label: idx.name,
+          value: uuid,
+        });
+        return options;
+      }, []);
 
-      // TODO: Pick actor from pool
+      const fd = DSDialog.input({});
 
-      if (!uuid) return null;
+      if (!fd) return null;
+      summonUuid = fd.uuid;
     }
-    else uuid = this.pool.first();
+    else summonUuid = this.pool.first();
 
-    /** @type {DrawSteelActor} */
-    const sourceActor = await fromUuid(uuid);
-
-    if (!sourceActor) return void ui.notifications.error("");
-
-    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.document.uuid));
-
-    if (!worldActor) {
-      // Ensure the user has permission to drop the actor and create a Token.
-      if (!game.user.can("ACTOR_CREATE")) {
-        ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
-        return null;
-      }
-
-      worldActor = game.actors.importFromCompendium(sourceActor.pack, sourceActor.id, {
-        "flags.draw-steel.summonSource": this.document.uuid,
-      }, { keepId: true });
-    }
-
-    return canvas.tokens.placeActor(worldActor);
+    return this.parent.performSummon(summonUuid);
   }
 }

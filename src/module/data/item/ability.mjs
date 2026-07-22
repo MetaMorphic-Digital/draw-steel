@@ -891,4 +891,36 @@ export default class AbilityModel extends BaseItemModel {
     }
     return false;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+     * Places summons.
+     * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
+     * @param {Object} options
+     * @param {number} [options.count=1]  How many tokens to summon.
+     * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
+     */
+  async performSummon(uuid, { count = 1 }) {
+    /** @type {DrawSteelActor} */
+    const sourceActor = await fromUuid(uuid);
+
+    if (!sourceActor) return void ui.notifications.error("");
+
+    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.document.uuid));
+
+    if (!worldActor) {
+      // Ensure the user has permission to drop the actor and create a Token.
+      if (!game.user.can("ACTOR_CREATE")) {
+        ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
+        return null;
+      }
+
+      worldActor = game.actors.importFromCompendium(sourceActor.pack, sourceActor.id, {
+        "flags.draw-steel.summonSource": this.document.uuid,
+      }, { keepId: true });
+    }
+
+    return canvas.tokens.placeActor(worldActor, { count });
+  }
 }
