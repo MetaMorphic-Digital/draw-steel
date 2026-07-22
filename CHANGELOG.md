@@ -20,6 +20,14 @@
 
 ## 1.1.2
 
+### Added
+
+- Added type hints for compendium exclusive item types.
+
+### Changed
+
+- Ability modifiers that enhance a creature's signature damage will also add to the free strike value, e.g. some minion's captain benefits.
+
 ### Fixed
 
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)

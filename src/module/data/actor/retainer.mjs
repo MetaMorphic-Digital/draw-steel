@@ -6,7 +6,9 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import SourceModel from "../models/source.mjs";
 
 /**
- * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import AbilityModel from "../item/ability.mjs";
+ * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
 /**
@@ -214,11 +216,11 @@ export default class RetainerModel extends CreatureModel {
     /** @type {Set<string>} */
     const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
-    /** @type {DamagePowerRollEffect} */
+    /** @type {[DamagePowerRollEffect]} */
     const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
-      value: this.retainer.freeStrike,
+      value: this.retainer.freeStrike + (firstDamage?.damage.bonuses.value ?? 0),
       keywords: keywords.add("strike"),
       type: firstDamage?.damage.tier1.types.first() ?? "",
       range: {
@@ -226,6 +228,7 @@ export default class RetainerModel extends CreatureModel {
         ranged: 5,
       },
     };
+
     switch (signature?.system.distance.type) {
       case "melee":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);

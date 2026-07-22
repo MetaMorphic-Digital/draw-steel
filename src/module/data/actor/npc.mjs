@@ -12,7 +12,6 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
- * @import { EmbedDisplayFlags } from "../item/_types";
  * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
@@ -173,15 +172,15 @@ export default class NPCModel extends CreatureModel {
    */
   get freeStrike() {
     /** @type {DrawSteelItem & {system: AbilityModel}} */
-    const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
+    const signature = this.parent.items.documentsByType.ability.find(item => item.system.category === "signature");
     /** @type {Set<string>} */
-    const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+    const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
-    /** @type {DamagePowerRollEffect} */
-    const firstDamage = signature?.system.power.effects.find(e => e.type === "damage");
+    /** @type {[DamagePowerRollEffect]} */
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
-      value: this.monster.freeStrike,
+      value: this.monster.freeStrike + (firstDamage?.damage.bonuses.value ?? 0),
       keywords: keywords.add("strike"),
       type: firstDamage?.damage.tier1.types.first() ?? "",
       range: {
@@ -189,6 +188,7 @@ export default class NPCModel extends CreatureModel {
         ranged: 5,
       },
     };
+
     switch (signature?.system.distance.type) {
       case "melee":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
