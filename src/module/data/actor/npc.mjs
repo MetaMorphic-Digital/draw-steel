@@ -1,6 +1,7 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
@@ -12,7 +13,6 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
- * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
 /**
@@ -180,7 +180,7 @@ export default class NPCModel extends CreatureModel {
     const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
-      value: this.monster.freeStrike + (firstDamage?.damage.bonuses.value ?? 0),
+      value: this.monster.freeStrike,
       keywords: keywords.add("strike"),
       type: firstDamage?.damage.tier1.types.first() ?? "",
       range: {
@@ -188,6 +188,17 @@ export default class NPCModel extends CreatureModel {
         ranged: 5,
       },
     };
+
+    if (signature && signature.system.keywords.has("strike")) freeStrike.value += (firstDamage?.damage.bonuses.value ?? 0);
+    else {
+      const replacementData = this.parent.getRollData();
+      const field = DamagePowerRollEffect.schema.getField("damage.bonuses.value");
+      for (const bonus of this._abilityBonuses) {
+        if (bonus.key !== "damage.bonuses.value") continue;
+        if (!bonus.filters.keywords.isSubsetOf(freeStrike.keywords)) continue;
+        foundry.utils.setProperty(freeStrike, "value", field.applyChange(freeStrike.value, this, bonus, { replacementData }));
+      }
+    }
 
     switch (signature?.system.distance.type) {
       case "melee":

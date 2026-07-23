@@ -1,6 +1,7 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import SourceModel from "../models/source.mjs";
@@ -8,7 +9,6 @@ import SourceModel from "../models/source.mjs";
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
- * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
 /**
@@ -220,7 +220,7 @@ export default class RetainerModel extends CreatureModel {
     const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
-      value: this.retainer.freeStrike + (firstDamage?.damage.bonuses.value ?? 0),
+      value: this.retainer.freeStrike,
       keywords: keywords.add("strike"),
       type: firstDamage?.damage.tier1.types.first() ?? "",
       range: {
@@ -228,6 +228,17 @@ export default class RetainerModel extends CreatureModel {
         ranged: 5,
       },
     };
+
+    if (signature && signature.system.keywords.has("strike")) freeStrike.value += (firstDamage?.damage.bonuses.value ?? 0);
+    else {
+      const replacementData = this.parent.getRollData();
+      const field = DamagePowerRollEffect.schema.getField("damage.bonuses.value");
+      for (const bonus of this._abilityBonuses) {
+        if (bonus.key !== "damage.bonuses.value") continue;
+        if (!bonus.filters.keywords.isSubsetOf(freeStrike.keywords)) continue;
+        foundry.utils.setProperty(freeStrike, "value", field.applyChange(freeStrike.value, this, bonus, { replacementData }));
+      }
+    }
 
     switch (signature?.system.distance.type) {
       case "melee":
