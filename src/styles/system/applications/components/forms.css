@@ -252,20 +252,23 @@
     -webkit-appearance: none;
     border-radius: 0;
     transform: rotate(45deg);
-    background-color: var(--draw-steel-form-background);
     border-color: var(--draw-steel-form-border);
+    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+
   }
 
   input[type="range"]::-moz-range-thumb {
-
     border-radius: 0;
     transform: rotate(45deg);
+    border-color: var(--draw-steel-form-border);
+    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
   }
 
   input[type="range"]::-ms-thumb {
-
     border-radius: 0;
     transform: rotate(45deg);
+    border-color: var(--draw-steel-form-border);
+    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
   }
 
   prose-mirror {
