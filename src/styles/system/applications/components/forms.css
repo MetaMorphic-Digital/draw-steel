@@ -79,6 +79,8 @@
     padding: revert;
     corner-shape: bevel;
     border-width: 1px;
+    background-color: var(--draw-steel-form-fieldset);
+    border-color: var(--draw-steel-form-accent);
 
     legend {
       button {
@@ -122,11 +124,20 @@
         border: 2px solid white;
       }
     }
+    label {
+      color: var(--draw-steel-form-label);
+    }
+    /*This centers the label for a multi-select when tags are present*/
+    &:has(div>multi-select>.tags>.tag) {
+      label {
+        align-self: end;
+        line-height: 32px;
+      }
+    }
   }
 
-  fieldset {
-    background-color: var(--draw-steel-form-fieldset);
-    border-color: var(--draw-steel-form-accent);
+  &.application {
+    background: linear-gradient(135deg, var(--draw-steel-background), var(--draw-steel-background-alt));
   }
 
   input[type="checkbox"] {
@@ -165,36 +176,6 @@
     }
   }
 
-  input[type="number"],
-  select,
-  button:not(.header-control):not(.icon) {
-    border-radius: 5px;
-    background-color: var(--draw-steel-form-background);
-    @supports (corner-shape: bevel) {
-      corner-shape: bevel;
-    }
-  }
-
-  select,
-  button:not(.header-control),
-  input[type="number"] {
-    border: 1px solid var(--draw-steel-form-border);
-  }
-
-
-  button.icon:not(.header-control) {
-    border-radius: 5px;
-    background-color: var(--draw-steel-form-background);
-  }
-
-  input:focus,
-  select:focus,
-  button:focus {
-    outline-color: var(--draw-steel-form-active);
-  }
-
-  
-
   input[type="text"] {
     background-color: var(--draw-steel-form-background);
     border: 0;
@@ -211,23 +192,55 @@
     border-style: solid;
   }
 
-  multi-select {
-    select {
-    }
-    .tags {
+  input[type="number"],
+  select,
+  button:not(.header-control):not(.icon) {
+    @supports (corner-shape: bevel) {
+      corner-shape: bevel;
     }
   }
 
-  .tag {
-    border-color: var(--draw-steel-form-accent);
+  input[type="number"],
+  select,
+  button:not(.header-control) {
+    border-radius: 5px;
+    border: 1px solid var(--draw-steel-form-border);
+  }
+
+  button:not(.header-control) {
+    background-color: var(--draw-steel-form-button);
+  }
+
+  input:focus,
+  select:focus,
+  button:not(.header-control):focus {
+    outline-color: var(--draw-steel-form-active);
+    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow)) drop-shadow(0 0 4px var(--draw-steel-form-shadow));
+  }
+
+  input,
+  select,
+  button:not(.header-control) {
+    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+  }
+
+  input,
+  select {
+        background-color: var(--draw-steel-form-input);
+  }
+
+  select > option {
     background: var(--draw-steel-form-background);
+  }
+  
+
+  .tag {
+    border: 1px solid var(--draw-steel-form-accent);
+    background: var(--draw-steel-form-tag-background);
+    color: var(--draw-steel-form-tag-text);
     @supports (corner-shape: scoop) {
       corner-shape: scoop;
     }
-  }
-
-  input[type="range"] {
-    -webkit-appearance: none;
   }
 
   input[type="range"]::-webkit-slider-thumb {
@@ -239,27 +252,15 @@
   }
 
   input[type="range"]::-moz-range-thumb {
-    -webkit-appearance: none;
+
     border-radius: 0;
     transform: rotate(45deg);
   }
 
   input[type="range"]::-ms-thumb {
-    -webkit-appearance: none;
+
     border-radius: 0;
     transform: rotate(45deg);
-  }
-
-  input[type="range"]::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-  }
-
-  input[type="range"]::-moz-range-track {
-    -webkit-appearance: none;
-  }
-
-  input[type="range"]::-ms-track {
-    -webkit-appearance: none;
   }
 
   prose-mirror {
