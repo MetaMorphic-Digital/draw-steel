@@ -22,7 +22,7 @@
 
 ### Added
 
-- Added type hints for compendium exclusive item types.
+- Added type hints for compendium-exclusive item types. (#2014)
 
 ### Changed
 
@@ -30,6 +30,8 @@
 
 ### Fixed
 
+- Updated Player-Facing Compendium Content:
+  - Corrected spelling of Absorption imbue. (#2004)
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)
 
 ## 1.1.1
