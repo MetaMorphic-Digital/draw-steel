@@ -1,0 +1,92 @@
+.draw-steel.minion {
+  [data-application-part="body"] {
+    container: stats-section / inline-size;
+    gap: 8px;
+
+    &:before {
+      content: "";
+      height: 15px; /* Fallback height */
+
+      background-image: url("/systems/draw-steel/assets/ui/continue.svg");
+      background-repeat: no-repeat;
+      background-size: 200%;
+      background-position: center;
+
+      margin-block: -8px;
+
+      filter: var(--draw-steel-embed-separator-filter);
+
+      @container stats-section {
+        height: 2.7cqw;
+      }
+    }
+
+    .characteristics, .secondary-stats {
+      .label {
+        font-weight: 600;
+      }
+    }
+
+    .basic-stats {
+      gap: 8px;
+      justify-content: center;
+      font-size: 1rem;
+      text-align: center;
+      margin-block: 8px 0;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .secondary-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      column-gap: 24px;
+
+      font-size: 1em;
+      padding-inline: 8px;
+
+      div:nth-child(even) {
+        text-align: end;
+      }
+
+      /* Style html from AE's description as `inline` elements to avoid line breaks */
+      .with-captain .value > * {
+        display: inline;
+
+        &:not(:last-child) {
+          padding-inline-end: 0.5ch;
+        }
+      }
+    }
+
+    .characteristics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border-block: 1px solid gray;
+
+      .characteristic {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5ch;
+        font-size: 1.125em;
+
+
+        .label::first-letter {
+          font-family: 'Draw Steel Glyphs';
+          font-weight: normal;
+          letter-spacing: 1px;
+        }
+      }
+    }
+
+    .item-list-container {
+      margin: 0;
+    }
+  }
+}

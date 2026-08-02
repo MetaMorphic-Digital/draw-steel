@@ -4,6 +4,7 @@ export { default as DrawSteelCombatantGroupConfig } from "./combatant-group-conf
 export { default as DrawSteelHeroSheet } from "./hero-sheet.mjs";
 export { default as DrawSteelItemSheet } from "./item-sheet.mjs";
 export { default as DrawSteelJournalEntrySheet } from "./journal-entry-sheet.mjs";
+export { default as DrawSteelMinionSheet } from "./minion-sheet.mjs";
 export { default as DrawSteelNPCSheet } from "./npc-sheet.mjs";
 export { default as DrawSteelObjectSheet } from "./object-sheet.mjs";
 export { default as DrawSteelPartySheet } from "./party-sheet.mjs";

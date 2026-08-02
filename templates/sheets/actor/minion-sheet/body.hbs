@@ -1,0 +1,173 @@
+<section class="standard-form scrollable">
+  {{log this}}
+  <div class="basic-stats flexrow">
+    <div class="size">
+      {{system.combat.size}}
+      <strong>{{systemFields.combat.fields.size.label}}</strong>
+    </div>
+    <div class="speed">
+      {{system.movement.value}}
+      <strong>{{localize "DRAW_STEEL.Actor.base.FIELDS.movement.value.label"}}</strong>
+    </div>
+    <div class="stamina">
+      {{system.stamina.max}}
+      <strong>{{systemFields.stamina.label}}</strong>
+    </div>
+    <div class="stability">
+      {{system.combat.stability}}
+      <strong>{{systemFields.combat.fields.stability.label}}</strong>
+    </div>
+    <div class="free-strike">
+      {{system.monster.freeStrike}}
+      <strong>{{systemFields.monster.fields.freeStrike.label}}</strong>
+    </div>
+  </div>
+  <div class="secondary-stats">
+    <div class="immunities">
+      <span class="label">{{systemFields.damage.fields.immunities.label}}:</span>
+      <span class="value">{{{ifThen damageIW.immunities damageIW.immunities "—"}}}</span>
+    </div>
+    <div class="weakness">
+      <span class="label">{{systemFields.damage.fields.weaknesses.label}}:</span>
+      <span class="value">{{{ifThen damageIW.weaknesses damageIW.weaknesses "—"}}}</span>
+    </div>
+    <div class="movement">
+      <span class="label">{{systemFields.movement.label}}:</span>
+      <span class="value">{{ifThen movement.list movement.list "—"}}</span>
+    </div>
+    {{#if withCaptain.exists}}
+    <div class="with-captain">
+      <span class="label">{{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}:</span>
+      <span class="value">{{{ifThen withCaptain.description withCaptain.description "—"}}}</span>
+    </div>
+    {{/if}}
+  </div>
+  <div class="characteristics">
+    {{#each characteristics as |chr key|}}
+    <div class="characteristic">
+      <div class="label">
+        {{chr.field.label}}
+      </div>
+      <div class="value">
+        {{numberFormat chr.value sign=true}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/features/features.hbs"}}
+
+  {{#each abilities as |abilityType|}}
+  {{#if abilityType.showHeader}}
+  <section class="item-list-container">
+    <div class="item-header">
+      <div class="item-column item-name">{{abilityType.label}}</div>
+      {{#if (eq @key "villain")}}
+      <div class="item-column item-order">{{localize "DRAW_STEEL.Item.ability.Order"}}</div>
+      {{else}}
+      <div class="item-column item-cost">{{@root.abilityFields.resource.label}}</div>
+      {{/if}}
+      <div class="item-column item-distance">{{@root.abilityFields.distance.label}}</div>
+      <div class="item-column item-target">{{@root.abilityFields.target.label}}</div>
+      <div class="item-column item-controls">
+        {{#if abilityType.showAdd}}
+        {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        {{/with}}
+        {{/if}}
+      </div>
+    </div>
+    <ol class="item-list abilities-list">
+      {{#each abilityType.abilities as |abilityContext|}}
+      <li class="item ability draggable expandable-document" data-document-uuid="{{abilityContext.item.uuid}}">
+        <div class="item-row">
+          <div class="item-column item-name rollable {{disabled (not @root.owner)}}" data-action="useAbility">
+            <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
+            {{#if abilityContext.item.system.restricted}}
+            <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.ability.Restricted">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            {{/if}}
+            <div class="name">
+              <div class="label">{{abilityContext.item.name}}</div>
+              <div class="keywords">{{abilityContext.formattedLabels.keywords}}</div>
+            </div>
+          </div>
+          {{#if (eq @../key "villain")}}
+          <div class="item-column item-order">
+            {{abilityContext.order}}
+          </div>
+          {{else}}
+          <div class="item-column item-cost">
+            {{#if abilityContext.item.system.resource}}
+            {{abilityContext.item.system.resource}} {{@root.system.coreResource.name}}
+            {{/if}}
+          </div>
+          {{/if}}
+          <div class="item-column item-distance">{{abilityContext.formattedLabels.distance}}</div>
+          <div class="item-column item-target">{{abilityContext.formattedLabels.target}}</div>
+          <div class="item-column item-controls">
+            <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
+            <a class="fa-fw fa-solid fa-angle-{{ifThen abilityContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
+          </div>
+        </div>
+        <div class="document-description item-embed {{#if abilityContext.expanded}}expanded{{/if}}">
+          {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+  {{/if}}
+  {{/each}}
+  <div class="effect-list-container">
+    <ol class="effect-list">
+      <li class="effect-header">
+        <div class="effect-name flexrow">
+          {{localize "DOCUMENT.ActiveEffects"}}
+        </div>
+        <div class="effect-source">
+          {{localize "DRAW_STEEL.ActiveEffect.Source"}}
+        </div>
+        <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
+        <div class="effect-controls flexrow">
+          <a
+            class="effect-control effect-create fa-solid fa-fw fa-plus"
+            {{#if (eq section.type "inactive")}}
+            data-disabled="true"
+            {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+            {{else if (eq section.type "temporary")}}
+            data-system.end.type="turn"
+            {{/if}}
+          >
+          </a>
+        </div>
+      </li>
+      <ol class="effect-list">
+        {{#each effects as |effect|}}
+        <li class="effect draggable expandable-document" data-document-uuid="{{effect.uuid}}">
+          <div class="effect-row">
+            <div class="effect-name">
+              <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}">
+              <div class="name">
+                <div class="label">{{effect.name}}</div>
+              </div>
+            </div>
+            <div class="effect-source">{{effect.sourceName}}</div>
+            <div class="effect-duration">{{effect.durationLabel}}</div>
+            <div class="effect-controls">
+              <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
+              <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleDocumentDescription"></a>
+            </div>
+          </div>
+          <div class="document-description effect-description {{#if effect.expanded}}expanded{{/if}}">
+            {{#if effect.expanded}}{{{effect.enrichedDescription.outerHTML}}}{{/if}}
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+    </ol>
+  </div>
+</section>

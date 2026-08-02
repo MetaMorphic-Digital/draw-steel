@@ -84,17 +84,6 @@
         {{formGroup systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike dataset=datasets.isSource}}
         {{/if}}
       </div>
-      {{#if (and isPlay withCaptain.exists)}}
-      <div class="with-captain">
-        <button id="{{concat rootId "-withCaptainToggle"}}" data-action="toggleWithCaptainEffect" data-effect-id="{{withCaptain.effectId}}">
-          {{localize "DRAW_STEEL.ActiveEffect.WithCaptainEffects.embedLabel"}}
-          <i class="fa-solid fa-lg {{ifThen withCaptain.effectEnabled "fa-toggle-on" "fa-toggle-off"}}"></i>
-        </button>
-        {{#if withCaptain.description}}
-        <label for="{{concat rootId "-withCaptainToggle"}}">{{{withCaptain.description}}}</label>
-        {{/if}}
-      </div>
-      {{/if}}
     </fieldset>
 
   </div>
