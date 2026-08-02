@@ -22,7 +22,7 @@ export default class LocalDocumentField extends foundry.data.fields.DocumentIdFi
    * @param {LocalDocumentFieldOptions} options   Options which configure the behavior of the field.
    * @param {DataFieldContext} [context]          Additional context which describes the field.
    */
-  constructor(model, options, context = {}) {
+  constructor(model, options = {}, context = {}) {
     super(options, context);
     if (!foundry.utils.isSubclass(model, foundry.abstract.DataModel)) {
       throw new Error("A LocalDocumentField must specify a DataModel subclass as its type.");
