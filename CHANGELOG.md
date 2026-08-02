@@ -28,6 +28,7 @@
 
 - Updated Player-Facing Compendium Content:
   - Corrected spelling of Absorption imbue. (#2004)
+- Added missing Ananjali language. (#2009)
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)
 
 ## 1.1.1
