@@ -75,6 +75,7 @@ Increased foundry minimum to 14.366.
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)
 - Dropping a class on a retainer will now prompt to delete the existing one. (#2030)
 - The "With Captain" select for minions can now be cleared.
+- Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 
 ## 1.1.1
 
