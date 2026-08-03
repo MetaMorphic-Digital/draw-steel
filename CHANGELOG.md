@@ -32,6 +32,14 @@
 
 - Updated Player-Facing Compendium Content:
   - Corrected spelling of Absorption imbue. (#2004)
+  - Implemented scaling effects and values:
+    - Abilities: Devastating Rush, Feedback Loop, Iron, Tide of Death
+    - Complications: Mundane, Self Taught
+    - Class Features: Implement of Wrath, Light of the Burning Sun, Nature's Bounty, Impervious Touch, Entropic Adaptability, Inertial Dampener, Psionic Leap, Time Bomb, Umbral Form, Bait and Ambush, Pincer Movement, See Your Enemies Driven Before You, Ease their Fall, Entropy Ward, Kinetic Amplifier, Repulsive Ward, Steel Ward
+    - Ancestries: Polder Corruption Immunity, Time Raider Psychic Scar, Revenant Tough but Withered
+    - Titles: Divine Health, Elemental Immunity (comes with an Effect Grant now instead of manually adjusting the AE path), I Reject This Evil Power
+- Updated Director-Facing Compendium Content:
+  - Bugbear Malice abilities now use `@scaling` in damage enrichers.
 - Added missing Ananjali language. (#2009)
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)
 - Dropping a class on a retainer will now prompt to delete the existing one. (#2030)
