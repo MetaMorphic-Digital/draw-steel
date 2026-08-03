@@ -58,6 +58,8 @@ export default class CreatureModel extends BaseActorModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    this.stamina.winded = Math.floor(this.stamina.max / 2);
+
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
     this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;

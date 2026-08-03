@@ -24,6 +24,10 @@
 
 - Added type hints for compendium-exclusive item types. (#2014)
 
+### Removed
+
+- Removed winded data and stamina bar markers from object actors. (#2028)
+
 ### Fixed
 
 - Updated Player-Facing Compendium Content:

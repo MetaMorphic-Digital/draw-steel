@@ -149,8 +149,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     // If our current stamina has not been set, match it to max:
     this.stamina.value ??= this.stamina.max;
 
-    this.stamina.winded = Math.floor(this.stamina.max / 2);
-
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
 
