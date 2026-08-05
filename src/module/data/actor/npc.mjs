@@ -61,7 +61,7 @@ export default class NPCModel extends CreatureModel {
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
-      withCaptainEffect: new LocalDocumentField(DrawSteelActiveEffect || foundry.documents.ActiveEffect, { required: false }),
+      withCaptainEffect: new LocalDocumentField(DrawSteelActiveEffect),
     });
 
     return schema;
