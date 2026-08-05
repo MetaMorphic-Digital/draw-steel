@@ -21,7 +21,202 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "12 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.DYrdwlPqC7tIfrZq",
+      "disabled": true,
+      "_id": "vhYHJVHcRjlrR8gJ",
+      "system": {
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": "@M",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.pull",
+            "type": "add",
+            "value": "@M",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.slide",
+            "type": "add",
+            "value": "@M",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Additionally, whenever you make a power roll that imposes forced movement on a target, the forced movement distance gains a bonus equal to [[lookup @M]]{your Might score}.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785948911991,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DYrdwlPqC7tIfrZq.vhYHJVHcRjlrR8gJ"
+    },
+    {
+      "name": "6 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.DYrdwlPqC7tIfrZq",
+      "disabled": true,
+      "_id": "qC9bPoMq9HkAyLBk",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.might.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You gain an edge on Might tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785949586814,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DYrdwlPqC7tIfrZq.qC9bPoMq9HkAyLBk"
+    },
+    {
+      "name": "10 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.DYrdwlPqC7tIfrZq",
+      "disabled": true,
+      "_id": "CRhRstiTWzk3pZ42",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.might.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You have a double edge on Might tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785949627666,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DYrdwlPqC7tIfrZq.CRhRstiTWzk3pZ42"
+    }
+  ],
   "ownership": {
     "default": 0
   },

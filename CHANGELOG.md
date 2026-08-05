@@ -38,6 +38,7 @@
     - Class Features: Implement of Wrath, Light of the Burning Sun, Nature's Bounty, Impervious Touch, Entropic Adaptability, Inertial Dampener, Psionic Leap, Time Bomb, Umbral Form, Bait and Ambush, Pincer Movement, See Your Enemies Driven Before You, Ease their Fall, Entropy Ward, Kinetic Amplifier, Repulsive Ward, Steel Ward
     - Ancestries: Polder Corruption Immunity, Time Raider Psychic Scar, Revenant Tough but Withered
     - Titles: Divine Health, Elemental Immunity (comes with an Effect Grant now instead of manually adjusting the AE path), I Reject This Evil Power
+  - Added AEs to the subclass resource upgrades for the Fury (Growing Ferocity) and Null (Discipline Mastery)
 - Updated Director-Facing Compendium Content:
   - Bugbear Malice abilities now use `@scaling` in damage enrichers.
 - Added missing Ananjali language. (#2009)

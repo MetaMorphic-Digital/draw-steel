@@ -22,7 +22,84 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "12 Insight",
+      "img": "icons/magic/water/snowflake-ice-purple.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.TseUqw7uV5nOcKOZ",
+      "disabled": true,
+      "_id": "arQXbREJy7lb6Fm2",
+      "system": {
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": "@I",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.pull",
+            "type": "add",
+            "value": "@I",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.slide",
+            "type": "add",
+            "value": "@I",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Whenever you force move a target, the forced movement distance gains a bonus equal to your Intuition score.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785947320161,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!TseUqw7uV5nOcKOZ.arQXbREJy7lb6Fm2"
+    }
+  ],
   "sort": 100000,
   "ownership": {
     "default": 0
