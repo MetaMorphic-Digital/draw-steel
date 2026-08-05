@@ -729,6 +729,9 @@ export const languages = {
     label: "DRAW_STEEL.LANGUAGE.Vasloria",
   },
   // Dead languages
+  ananjali: {
+    label: "DRAW_STEEL.LANGUAGE.Ananjali",
+  },
   highRhyvian: {
     label: "DRAW_STEEL.LANGUAGE.HighRhyvian",
   },

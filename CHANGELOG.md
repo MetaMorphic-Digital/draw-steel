@@ -32,6 +32,7 @@
 
 - Updated Player-Facing Compendium Content:
   - Corrected spelling of Absorption imbue. (#2004)
+- Added missing Ananjali language. (#2009)
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)
 - Dropping a class on a retainer will now prompt to delete the existing one. (#2030)
 
