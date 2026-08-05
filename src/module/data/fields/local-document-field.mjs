@@ -1,16 +1,7 @@
 /**
- * @import { StringFieldOptions, DataFieldContext } from "@client/data/_types.mjs"
+ * @import { DataFieldContext } from "@client/data/_types.mjs"
  * @import Document from "@common/abstract/document.mjs"
- */
-
-/**
- * @typedef _LocalDocumentFieldOptions
- * @property {boolean} idOnly     Read the value as a string instead of a model?
- * @property {string} [subtype]   The document subtype referenced by this field.
- */
-
-/**
- * @typedef {StringFieldOptions & _LocalDocumentFieldOptions} LocalDocumentFieldOptions
+ * @import { LocalDocumentFieldOptions } from "./_types";
  */
 
 /**
@@ -19,8 +10,8 @@
 export default class LocalDocumentField extends foundry.data.fields.DocumentIdField {
   /**
    * @param {typeof Document} model               The local DataModel class definition which this field links to.
-   * @param {LocalDocumentFieldOptions} options   Options which configure the behavior of the field.
-   * @param {DataFieldContext} [context]          Additional context which describes the field.
+   * @param {LocalDocumentFieldOptions} [options={}]   Options which configure the behavior of the field.
+   * @param {DataFieldContext} [context={}]          Additional context which describes the field.
    */
   constructor(model, options = {}, context = {}) {
     super(options, context);
