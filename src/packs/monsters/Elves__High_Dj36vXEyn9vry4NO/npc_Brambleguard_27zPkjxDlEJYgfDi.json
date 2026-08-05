@@ -193,7 +193,7 @@
           "after00000000000": {
             "_id": "after00000000000",
             "type": "base",
-            "description": "<p>Until the start of the brambleguard's next turn, their speed is 0 and they extend themself into a 5 wall. Each ally who starts their turn adjacent to the brambleguard regains [[/heal 5]] and can apply the Magic keyword to their weapon abilities until the end of their turn.</p>",
+            "description": "<p>Until the start of the brambleguard's next turn, their speed is 0 and they extend themself into a 5 wall. Each ally who starts their turn adjacent to the brambleguard regains [[/heal 5]] and can apply the Magic keyword to their weapon abilities until the end of their turn. [[/apply dxGDXwYVNIZtyCjm turn]]</p>",
             "name": "",
             "img": null,
             "sort": 0,
@@ -206,7 +206,72 @@
           "level": null
         }
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Enchanted Weapons",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monsters.Actor.27zPkjxDlEJYgfDi.Item.HMLc9gvez0NIpd0h",
+          "transfer": false,
+          "_id": "dxGDXwYVNIZtyCjm",
+          "system": {
+            "changes": [
+              {
+                "key": "keyword",
+                "type": "add",
+                "value": "magic",
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            },
+            "filters": {
+              "keywords": [
+                "weapon"
+              ]
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": "turnEnd",
+            "expired": false
+          },
+          "description": "<p>You can apply the Magic keyword to your weapon abilities until the end of your turn.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.365",
+            "systemId": "draw-steel",
+            "systemVersion": "1.1.2",
+            "createdTime": 1785950817937,
+            "modifiedTime": 1785950884316,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!27zPkjxDlEJYgfDi.HMLc9gvez0NIpd0h.dxGDXwYVNIZtyCjm"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -216,7 +281,7 @@
         "exportSource": null,
         "coreVersion": "14.365",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1778620826252
