@@ -1,0 +1,65 @@
+{
+  "folder": "ivWZegxcfLPPB4pP",
+  "name": "Rot Attunement",
+  "type": "abilityModifier",
+  "img": "icons/magic/death/skull-energy-light-purple.webp",
+  "system": {
+    "changes": [
+      {
+        "key": "power.roll.edges",
+        "type": "add",
+        "value": 1,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    },
+    "filters": {
+      "keywords": [
+        "rot"
+      ]
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": "combatEnd",
+    "expired": false
+  },
+  "description": "<p>While the implement is attuned, you gain an edge on power rolls with that elemental keyword.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.365",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.2",
+    "createdTime": 1786058416197,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_id": "D96XlmBEKdjj1qcs",
+  "_key": "!effects!D96XlmBEKdjj1qcs"
+}

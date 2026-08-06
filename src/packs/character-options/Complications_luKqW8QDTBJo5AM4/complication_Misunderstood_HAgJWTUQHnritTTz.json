@@ -22,7 +22,95 @@
   },
   "_id": "HAgJWTUQHnritTTz",
   "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Misunderstood",
+      "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.character-options.Item.HAgJWTUQHnritTTz",
+      "disabled": true,
+      "_id": "4zIVh1qE9CRchemX",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.brag.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.intimidate.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.flirt.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.lead.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.persuade.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>When you reveal your appearance to creatures who don’t know you personally, you gain an edge on any test involving those creatures where the Brag or Intimidate skill could be applied, but you take a bane on any test where the Flirt, Lead, or Persuade skill could be applied.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786131809982,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!HAgJWTUQHnritTTz.4zIVh1qE9CRchemX"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
