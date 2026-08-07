@@ -60,7 +60,7 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
 
   /**
    * Fetches the context for the "With Captain" effect.
-   * @returns {Promise<{description: string; exists: boolean; effectEnabled: boolean; effectId: string}>}
+   * @returns {Promise<{ description: string; exists: boolean; effectEnabled: boolean; effectId: string }>}
    */
   async _getWithCaptainContext() {
     const effect = this.actor.system.monster.withCaptainEffect;
