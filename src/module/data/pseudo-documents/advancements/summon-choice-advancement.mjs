@@ -63,10 +63,10 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
   /* -------------------------------------------------- */
 
   /**
-     * Process a dropped actor.
-     * @param {DrawSteelActor} document
-     * @returns {Promise<DrawSteelActor>}
-     */
+   * Process a dropped actor.
+   * @param {DrawSteelActor} document
+   * @returns {Promise<DrawSteelActor>}
+   */
   handleDrop(document) {
     if (document.documentName !== "Actor") return;
 

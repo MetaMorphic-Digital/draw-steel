@@ -33,7 +33,7 @@ export default function createDocumentLink(uuid, { attrs = {}, dataset = {}, cla
   // If this is a typed document, add the type to the dataset
   if (entry.type) {
     const typeLabel = documentConfig.typeLabels[entry.type];
-    const typeName = game.i18n.has(typeLabel) ? `${_loc(typeLabel)}` : "";
+    const typeName = game.i18n.has(typeLabel) ? _loc(typeLabel) : "";
     attrs["aria-label"] ??= typeName
       ? _loc("DOCUMENT.TypePageFormat", { type: typeName, page: documentName })
       : documentName;
@@ -42,5 +42,5 @@ export default function createDocumentLink(uuid, { attrs = {}, dataset = {}, cla
   }
 
   name ??= entry.name;
-  return foundry.applications.ux.TextEditor.implementation.createAnchor({ attrs, dataset, name, classes, icon: anchorIcon });
+  return CONFIG.ux.TextEditor.createAnchor({ attrs, dataset, name, classes, icon: anchorIcon });
 }

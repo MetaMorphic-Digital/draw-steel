@@ -13,6 +13,7 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
 
   /**
    * A companion advancement only offers a choice of a single companion.
+   * @type {number}
    */
   get chooseN() {
     return 1;
