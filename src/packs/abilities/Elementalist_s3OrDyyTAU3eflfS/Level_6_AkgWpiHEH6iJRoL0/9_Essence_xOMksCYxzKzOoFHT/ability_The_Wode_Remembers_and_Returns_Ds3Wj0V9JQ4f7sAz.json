@@ -54,7 +54,17 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>The area becomes dark and verdant, with trees and plant life appearing in unoccupied spaces within it until the start of your next turn. The area is difficult terrain for enemies, and any ally who ends their turn in the area has cover.</p><p><strong>Persistent 2</strong>: The area remains until the start of your next turn. Additionally, at the start of your turn, each ally in the area can spend a Recovery.</p>",
+        "description": "<p>The area becomes dark and verdant, with trees and plant life appearing in unoccupied spaces within it until the start of your next turn. The area is difficult terrain for enemies, and any ally who ends their turn in the area has cover.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "persistent000000": {
+        "_id": "persistent000000",
+        "type": "persistent",
+        "description": "<p>The area remains until the start of your next turn. Additionally, at the start of your turn, each ally in the area can spend a Recovery.</p>",
+        "essence": 2,
         "before": true,
         "name": "",
         "img": null,

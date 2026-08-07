@@ -42,7 +42,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Up the Beanstalk",
+      "img": "icons/magic/nature/root-vine-beanstolk-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.673az9zZE1tpHFEH",
+      "disabled": true,
+      "_id": "MZ9ApPrhZYu36MZS",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.climb.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>If you already have the Climb skill, you instead gain an edge on tests made using it.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786057274990,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!673az9zZE1tpHFEH.MZ9ApPrhZYu36MZS"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

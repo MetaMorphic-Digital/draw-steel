@@ -22,7 +22,154 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Ordained",
+      "img": "icons/magic/holy/chalice-glowing-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.CYkxQ3HK9V3AE5XZ",
+      "_id": "pKNKLvGwNpFyQ2rv",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.might.resist",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.agility.resist",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.reason.resist",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.intuition.resist",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.presence.resist",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Your god elevates the power flowing through you. Your characteristic scores are treated as 1 higher for the purpose of resisting potencies.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786054970229,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!CYkxQ3HK9V3AE5XZ.pKNKLvGwNpFyQ2rv"
+    },
+    {
+      "name": "Voice of your Deity",
+      "img": "icons/magic/holy/chalice-glowing-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.CYkxQ3HK9V3AE5XZ",
+      "disabled": true,
+      "_id": "Ges0M1ARgjheVw4b",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.presence.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Additionally, while you have 5 or more Victories, you speak with the voice of your deity. You have a double edge on Presence tests made to influence other creatures.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786055070229,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!CYkxQ3HK9V3AE5XZ.Ges0M1ARgjheVw4b"
+    }
+  ],
   "sort": 112500,
   "ownership": {
     "default": 0

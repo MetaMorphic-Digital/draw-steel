@@ -88,14 +88,21 @@
         "vChGqfpzo6xKwtZg": {
           "name": "",
           "img": null,
-          "type": "other",
+          "type": "applied",
           "_id": "vChGqfpzo6xKwtZg",
-          "other": {
+          "applied": {
             "tier1": {
               "display": "the target takes a bane on ability rolls made to harm you or your allies (save ends)",
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
+              },
+              "effects": {
+                "rIJFndb0on22d90J": {
+                  "condition": "always",
+                  "properties": [],
+                  "end": "save"
+                }
               }
             },
             "tier2": {
@@ -103,6 +110,13 @@
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
+              },
+              "effects": {
+                "Xa3UKRKHGnOa33LH": {
+                  "condition": "always",
+                  "properties": [],
+                  "end": "save"
+                }
               }
             },
             "tier3": {
@@ -110,6 +124,13 @@
               "potency": {
                 "value": "@potency.strong",
                 "characteristic": ""
+              },
+              "effects": {
+                "jjkMWG7pCawgtU8M": {
+                  "condition": "always",
+                  "properties": [],
+                  "end": "save"
+                }
               }
             }
           },
@@ -136,7 +157,183 @@
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Bane",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.byRI3ZSQFvdKJc5D",
+      "transfer": false,
+      "_id": "rIJFndb0on22d90J",
+      "type": "abilityModifier",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The target takes a bane on ability rolls made to harm you or your allies (save ends)</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786131190859,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!byRI3ZSQFvdKJc5D.rIJFndb0on22d90J"
+    },
+    {
+      "name": "Double Bane",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.byRI3ZSQFvdKJc5D",
+      "transfer": false,
+      "type": "abilityModifier",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The target has a double bane on ability rolls made to harm you or your allies (save ends)</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786131293439,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "Xa3UKRKHGnOa33LH",
+      "_key": "!items.effects!byRI3ZSQFvdKJc5D.Xa3UKRKHGnOa33LH"
+    },
+    {
+      "name": "Ally Confusion",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.byRI3ZSQFvdKJc5D",
+      "transfer": false,
+      "_id": "jjkMWG7pCawgtU8M",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The target considers you and your allies to be their allies when using abilities and features (save ends)</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786131322109,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!byRI3ZSQFvdKJc5D.jjkMWG7pCawgtU8M"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -148,7 +345,7 @@
     "exportSource": null,
     "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1761077739922,
     "modifiedTime": null,
     "lastModifiedBy": null

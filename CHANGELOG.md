@@ -24,6 +24,10 @@
 
 - Added type hints for compendium-exclusive item types. (#2014)
 
+### Changed
+
+- Reworked Burgeoning Saint to use an Effect Grant.
+
 ### Removed
 
 - Removed winded data and stamina bar markers from object actors. (#2028)
@@ -31,14 +35,26 @@
 ### Fixed
 
 - Updated Player-Facing Compendium Content:
-  - Corrected spelling of Absorption imbue. (#2004)
-  - Implemented scaling effects and values:
+  - Broadly implemented AEs for automatic edges & banes: (#1567)
+    - Ancestries: High Elf Glamour, Four Armed Athletics, Wode Elf Glamour
+    - Abilities: Absorption Field, Phase Leap, Soul Burn, Synaptic Conditioning, Epic
+    - Complications: Misunderstood, Vow of Honesty
+    - Class Features: Blessing of Secrets, Ordained, Mantle of Quintessence, Corven, Raden, Umbral Form, I Predicted That
+    - Perks: Thingspeaker
+    - Title Benefits: Susurrus Codex, Gift of Knowledge, Sneakers, Up the Beanstalk, Stellar Knowledge, Spotlight
+    - Treasures: Growth Potion, Concealment Potion
+    - Projects: Elemental Implement Imbue
+  - Implemented scaling effects and values: (#1844)
+    - Ancestries: Polder Corruption Immunity, Time Raider Psychic Scar, Revenant Tough but Withered
     - Abilities: Devastating Rush, Feedback Loop, Iron, Tide of Death
     - Complications: Mundane, Self Taught
     - Class Features: Implement of Wrath, Light of the Burning Sun, Nature's Bounty, Impervious Touch, Entropic Adaptability, Inertial Dampener, Psionic Leap, Time Bomb, Umbral Form, Bait and Ambush, Pincer Movement, See Your Enemies Driven Before You, Ease their Fall, Entropy Ward, Kinetic Amplifier, Repulsive Ward, Steel Ward
-    - Ancestries: Polder Corruption Immunity, Time Raider Psychic Scar, Revenant Tough but Withered
-    - Titles: Divine Health, Elemental Immunity (comes with an Effect Grant now instead of manually adjusting the AE path), I Reject This Evil Power
+    - Title Benefits: Divine Health, Elemental Immunity (comes with an Effect Grant now instead of manually adjusting the AE path), I Reject This Evil Power
+  - Added a triggered ability for Resist the Unnatural. (#1885)
+  - Corrected spelling of Absorption imbue. (#2004)
+  - Corrected Disciple of the Green table. (#2025)
   - Added AEs to the subclass resource upgrades for the Fury (Growing Ferocity) and Null (Discipline Mastery)
+  - Split out Strained and Persistent effects
 - Updated Director-Facing Compendium Content:
   - Bugbear Malice abilities now use `@scaling` in damage enrichers.
 - Added missing Ananjali language. (#2009)

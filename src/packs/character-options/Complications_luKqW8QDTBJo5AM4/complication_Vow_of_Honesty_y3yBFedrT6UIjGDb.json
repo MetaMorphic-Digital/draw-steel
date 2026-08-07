@@ -22,7 +22,138 @@
   },
   "_id": "y3yBFedrT6UIjGDb",
   "img": "icons/skills/social/diplomacy-peace-alliance.webp",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Stained Honor",
+      "img": "icons/skills/social/diplomacy-peace-alliance.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.character-options.Item.y3yBFedrT6UIjGDb",
+      "disabled": true,
+      "_id": "PiX7vc4RmQJ9oekV",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.brag.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.empathize.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.flirt.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.gamble.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.handleAnimals.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.interrogate.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.intimidate.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.lead.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.lie.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.music.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.perform.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.persuade.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          },
+          {
+            "key": "system.skills.modifiers.readPerson.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial"
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>When you lie, your honor is stained and you lose this complication’s benefit. Additionally, you take a bane on any test that uses a skill from the interpersonal skill group. You can lose the bane and regain this complication’s benefit only by doing penance, such as gaining the forgiveness of the creature you lied to.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786132143779,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!y3yBFedrT6UIjGDb.PiX7vc4RmQJ9oekV"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

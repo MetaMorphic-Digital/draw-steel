@@ -53,7 +53,17 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>The wall lasts until the start of your next turn, and can be placed in occupied squares. Creatures can enter and pass through the wall. Each enemy who enters the area for the first time in a combat round or starts their turn there takes [[/damage @R*@scaling fire scaling]]{fire damage} equal to your Reason score for each square of the area they start their turn in or enter.</p><p><strong>Persistent 1:</strong> The wall lasts until the start of your next turn, and you can add a number of squares to the wall equal to [[lookup @R]]{your Reason score}.</p>",
+        "description": "<p>The wall lasts until the start of your next turn, and can be placed in occupied squares. Creatures can enter and pass through the wall. Each enemy who enters the area for the first time in a combat round or starts their turn there takes [[/damage @R*@scaling fire scaling]]{fire damage} equal to your Reason score for each square of the area they start their turn in or enter.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "persistent000000": {
+        "_id": "persistent000000",
+        "type": "persistent",
+        "description": "<p>The wall lasts until the start of your next turn, and you can add a number of squares to the wall equal to [[lookup @R]]{your Reason score}.</p>",
+        "essence": 1,
         "before": true,
         "name": "",
         "img": null,
