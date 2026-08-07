@@ -7,7 +7,7 @@
     "category": "consumable",
     "echelon": 2,
     "description": {
-      "value": "<p><em>This dark, viscous liquid tastes like burnt leaves.</em></p><p><strong>Effect:</strong> When you drink this potion as a maneuver, light shifts around your body, letting you blend into the environment around you for 10 minutes. While this effect is active, you have a double edge on tests made to hide and sneak, and you can use the Hide maneuver even while you are observed.</p>",
+      "value": "<p><em>This dark, viscous liquid tastes like burnt leaves.</em></p><p><strong>Effect:</strong> When you drink this potion as a maneuver, light shifts around your body, letting you blend into the environment around you for 10 minutes. While this effect is active, you have a double edge on tests made to hide and sneak, and you can use the Hide maneuver even while you are observed. [[/apply ZQmWsFebvpjs3amT]]</p>",
       "director": ""
     },
     "keywords": [
@@ -35,7 +35,74 @@
     },
     "quantity": 1
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Concealment Potion",
+      "img": "icons/consumables/potions/bottle-ornate-bat-teal.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.YkYxIhMIDfdl727B",
+      "transfer": false,
+      "_id": "ZQmWsFebvpjs3amT",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.hide.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.sneak.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>While this effect is active, you have a double edge on tests made to hide and sneak, and you can use the Hide maneuver even while you are observed.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786057478641,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!YkYxIhMIDfdl727B.ZQmWsFebvpjs3amT"
+    }
+  ],
   "folder": "5KJmrjbJfvNBgjYp",
   "_id": "YkYxIhMIDfdl727B",
   "flags": {},
@@ -43,9 +110,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.350",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1761682822282,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -22,7 +22,126 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Calming Air",
+      "img": "icons/magic/light/explosion-star-glow-silhouette.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.5mkZfswalUlF79Oa",
+      "_id": "1iko6tvF2lWQIg1E",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.handleAnimals.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>While in the area, you and any ally gain an edge on tests that use the Handle Animals skill.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786055270213,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!5mkZfswalUlF79Oa.1iko6tvF2lWQIg1E"
+    },
+    {
+      "name": "Calming Air (5 Victories)",
+      "img": "icons/magic/light/explosion-star-glow-silhouette.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.5mkZfswalUlF79Oa",
+      "disabled": true,
+      "_id": "1ItRADBquAqNmVqO",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.handleAnimals.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>If you have 5 or more Victories, the bonus to patience increases to 2 and tests that use the Handle Animals skill have a double edge.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786055331017,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!5mkZfswalUlF79Oa.1ItRADBquAqNmVqO"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

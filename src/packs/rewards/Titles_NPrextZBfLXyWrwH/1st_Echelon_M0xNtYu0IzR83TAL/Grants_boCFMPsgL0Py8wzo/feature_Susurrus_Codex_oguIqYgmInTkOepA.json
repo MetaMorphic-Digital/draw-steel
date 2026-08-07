@@ -33,7 +33,22 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": [],
+        "changes": [
+          {
+            "key": "system.characteristics.reason.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.presence.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
         "project": {
           "prerequisites": "",
           "source": "",

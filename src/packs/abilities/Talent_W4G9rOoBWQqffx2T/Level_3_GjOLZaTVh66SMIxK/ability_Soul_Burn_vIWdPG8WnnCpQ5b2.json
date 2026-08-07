@@ -143,15 +143,84 @@
       "after00000000000": {
         "_id": "after00000000000",
         "type": "base",
-        "description": "<p>The target takes a bane on Presence tests until the end of the encounter.</p><p><strong>Strained:</strong> The potency of this ability increases by 1. You take [[/damage 2d6]] damage and [[/surge 3]] that you can use immediately.</p>",
+        "description": "<p>The target takes a bane on Presence tests until the end of the encounter. [[/apply XseuhaepGh2DaQgB]]</p>",
         "name": "",
         "img": null,
         "sort": 0,
         "before": false
+      },
+      "KJmyeBxU3ZuByqLT": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "strained",
+        "_id": "KJmyeBxU3ZuByqLT",
+        "description": "<p>The potency of this ability increases by 1. You take [[/damage 2d6]] damage and [[/surge 3]] that you can use immediately.</p>",
+        "before": false
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Soul Burned",
+      "img": "icons/magic/death/undead-ghost-scream-teal.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.vIWdPG8WnnCpQ5b2",
+      "transfer": false,
+      "_id": "XseuhaepGh2DaQgB",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.presence.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "<p>The target takes a bane on Presence tests until the end of the encounter.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786130608244,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!vIWdPG8WnnCpQ5b2.XseuhaepGh2DaQgB"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -163,7 +232,7 @@
     "exportSource": null,
     "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1756690060437,
     "modifiedTime": null,
     "lastModifiedBy": null
