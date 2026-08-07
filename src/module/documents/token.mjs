@@ -111,7 +111,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
       barData.min = staminaData.min ?? 0;
       barData.value += staminaData.temporary || 0;
       barData.temporary = staminaData.temporary;
-      barData.winded = staminaData.winded;
+      if (staminaData.winded) barData.winded = staminaData.winded;
 
       return barData;
     }

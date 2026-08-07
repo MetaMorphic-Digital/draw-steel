@@ -136,6 +136,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Reason value|`system.characteristics.reason.value`|
 |Edges for Tests|`system.characteristics.[chr].edges`|
 |Banes for Tests|`system.characteristics.[chr].banes`|
+|Bonus to resisting potencies|`system.characteristics.[chr].resist`|
 
 Draw Steel also supports modifying the default roll formula for tests. `system.characteristics.[chr].dice.number` will adjust the number of dice rolled, defaulting to keeping the highest two (You should use the UPGRADE type). You can switch this to keeping the lowest two with `system.characteristics.[chr].dice.mode | OVERRIDE | kl`.
 

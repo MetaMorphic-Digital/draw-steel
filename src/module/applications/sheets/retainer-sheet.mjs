@@ -88,6 +88,8 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
   }
 
   /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
 
   /**
    * Spend a recovery, adding to the retainer's stamina and reducing the number of recoveries.
@@ -163,5 +165,38 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
    */
   static async #freeStrike(event, target) {
     this.actor.system.performFreeStrike();
+  }
+
+  /* -------------------------------------------------- */
+  /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDropItem(event, item) {
+    // Sort & Permission check first
+    if (!this.isEditable) return null;
+    if (this.actor.uuid === item.parent?.uuid) {
+      const result = await this._onSortItem(event, item);
+      return result?.length ? item : null;
+    }
+
+    if (item.type === "class") {
+      const cls = this.actor.system.class;
+      if (cls) {
+        const deleted = await cls.deleteDialog();
+        if (!deleted) {
+          const message = _loc("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
+            type: _loc(CONFIG.Item.typeLabels[item.type]),
+          });
+          ui.notifications.error(message, { console: false });
+          throw new Error(message);
+        }
+      }
+    }
+
+    const keepId = !this.actor.items.has(item.id);
+    const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+    const result = await getDocumentClass("Item").create(itemData, { parent: this.actor, keepId });
+    return result ?? null;
   }
 }

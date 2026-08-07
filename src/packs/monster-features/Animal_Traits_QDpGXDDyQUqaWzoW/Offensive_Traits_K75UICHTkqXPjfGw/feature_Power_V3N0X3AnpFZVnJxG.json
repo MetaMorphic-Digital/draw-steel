@@ -22,7 +22,84 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Power",
+      "img": "icons/creatures/abilities/dragon-breath-purple.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monster-features.Item.V3N0X3AnpFZVnJxG",
+      "_id": "LoiRqKW1Yt4HG3wo",
+      "system": {
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.pull",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.slide",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Whenever the animal force moves a target, they have a +2 bonus to the forced movement distance.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785950402038,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!V3N0X3AnpFZVnJxG.LoiRqKW1Yt4HG3wo"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

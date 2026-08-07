@@ -7,7 +7,7 @@
   "system": {
     "description": {
       "value": "<p>Your mind is a formidable layer of defense. You have psychic immunity equal to [[lookup @level]]{your level}.</p>",
-      "director": "<p>This effect needs to be adjusted as the character levels.</p>"
+      "director": ""
     },
     "source": {
       "book": "Heroes",
@@ -37,7 +37,7 @@
         "changes": [
           {
             "key": "system.damage.immunities.psychic",
-            "value": 1,
+            "value": "@level",
             "priority": null,
             "type": "upgrade",
             "phase": "initial"

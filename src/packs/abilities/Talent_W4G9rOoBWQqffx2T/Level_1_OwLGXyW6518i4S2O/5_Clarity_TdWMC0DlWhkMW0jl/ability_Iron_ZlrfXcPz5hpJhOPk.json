@@ -52,15 +52,135 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>Effect: The target’s stability increases by an amount equal to [[lookup @R]]{your Reason score}, and they gain [[/heal 10 type=temporary]] and [[/surge 2]]. This stability increase lasts until the target no longer has temporary Stamina from this ability.</p><p><strong>Strained:</strong> You can’t use maneuvers (save ends).</p>",
+        "description": "<p>The target’s stability increases by an amount equal to [[lookup @R]]{your Reason score} [[/apply ktzxIx8ZaieG0R8j]], and they gain [[/heal 10 type=temporary]] and [[/surge 2]]. This stability increase lasts until the target no longer has temporary Stamina from this ability.</p>",
         "before": true,
         "name": "",
         "img": null,
         "sort": 0
+      },
+      "AuOANLC7RgScqJ2E": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "strained",
+        "_id": "AuOANLC7RgScqJ2E",
+        "description": "<p>You can’t use maneuvers (save ends). [[/apply 72WeEuGXZfduHQrl]]</p>",
+        "before": false
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Iron",
+      "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.ZlrfXcPz5hpJhOPk",
+      "transfer": false,
+      "_id": "ktzxIx8ZaieG0R8j",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.stability",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>The target’s stability increases by an amount equal to your Reason score.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785770483248,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!ZlrfXcPz5hpJhOPk.ktzxIx8ZaieG0R8j"
+    },
+    {
+      "name": "Iron Strain",
+      "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.ZlrfXcPz5hpJhOPk",
+      "transfer": false,
+      "_id": "72WeEuGXZfduHQrl",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "save",
+        "expired": false
+      },
+      "description": "<p>You can’t use maneuvers (save ends).</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785770600610,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!ZlrfXcPz5hpJhOPk.72WeEuGXZfduHQrl"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -72,7 +192,7 @@
     "exportSource": null,
     "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1755872298457,
     "modifiedTime": null,
     "lastModifiedBy": null

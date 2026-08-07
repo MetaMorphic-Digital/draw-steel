@@ -22,7 +22,126 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "10 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.Sy8x4zFqIgYU75DB",
+      "disabled": true,
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.agility.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You have a double edge on Agility tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 100000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785950333906,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "uP9XiOzjoNos99cS",
+      "_key": "!items.effects!Sy8x4zFqIgYU75DB.uP9XiOzjoNos99cS"
+    },
+    {
+      "name": "6 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.Sy8x4zFqIgYU75DB",
+      "disabled": true,
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.agility.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You gain an edge on Agility tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785950353274,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "3z4a1eYyAWHMay7V",
+      "_key": "!items.effects!Sy8x4zFqIgYU75DB.3z4a1eYyAWHMay7V"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

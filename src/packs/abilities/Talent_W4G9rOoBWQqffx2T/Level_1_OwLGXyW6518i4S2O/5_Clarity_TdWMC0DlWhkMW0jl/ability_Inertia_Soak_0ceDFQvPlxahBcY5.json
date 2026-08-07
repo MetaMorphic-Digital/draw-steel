@@ -52,8 +52,17 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>The target ignores difficult terrain and takes no damage from forced movement until the start of your next turn. Whenever the target enters a square while under this effect, they can push one adjacent creature up to a number of squares equal to [[lookup @R]]{your Reason score}. When pushing an ally, the target can ignore that ally’s stability. A creature can only be force moved this way once a turn.</p><p><strong>Strained:</strong> You are [[/apply weakened save]]. While you are weakened this way, whenever you are force moved, the forced movement distance gains a +5 bonus.</p>",
+        "description": "<p>The target ignores difficult terrain and takes no damage from forced movement until the start of your next turn. Whenever the target enters a square while under this effect, they can push one adjacent creature up to a number of squares equal to [[lookup @R]]{your Reason score}. When pushing an ally, the target can ignore that ally’s stability. A creature can only be force moved this way once a turn.</p>",
         "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "strained00000000": {
+        "_id": "strained00000000",
+        "type": "strained",
+        "description": "<p>You are [[/apply weakened save]]. While you are weakened this way, whenever you are force moved, the forced movement distance gains a +5 bonus.</p>",
+        "before": false,
         "name": "",
         "img": null,
         "sort": 0

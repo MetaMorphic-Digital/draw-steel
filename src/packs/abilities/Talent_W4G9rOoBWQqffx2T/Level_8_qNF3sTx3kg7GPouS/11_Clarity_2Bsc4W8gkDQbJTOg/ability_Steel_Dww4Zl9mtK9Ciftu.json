@@ -52,7 +52,16 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>The target has [[/apply \"Damage Immunity 5\"]] and can’t be made slowed or weakened until the start of your next turn. Whenever the target force moves a creature or object while under this effect, the forced movement distance gains a +5 bonus.</p><p><strong>Strained:</strong> You can’t use maneuvers (save ends).</p>",
+        "description": "<p>The target has [[/apply TvlAECWifZ6xhz16]] and can’t be made slowed or weakened until the start of your next turn. Whenever the target force moves a creature or object while under this effect, the forced movement distance gains a +5 bonus.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "strained00000000": {
+        "_id": "strained00000000",
+        "type": "strained",
+        "description": "<p>You can’t use maneuvers (save ends). [[/apply yPuEFfXwOBSsr8MT save]]</p>",
         "before": true,
         "name": "",
         "img": null,
@@ -62,8 +71,8 @@
   },
   "effects": [
     {
-      "name": "Damage Immunity 5",
-      "img": "icons/svg/item-bag.svg",
+      "name": "Steel: Damage Immunity",
+      "img": "icons/magic/defensive/armor-stone-skin.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.abilities.Item.Dww4Zl9mtK9Ciftu",
       "transfer": false,
@@ -96,10 +105,10 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "turnStart",
         "expired": false
       },
-      "description": "",
+      "description": "<p>The target has damage immunity 5.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -108,7 +117,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1761101876513,
@@ -119,6 +128,133 @@
       "showIcon": 1,
       "folder": null,
       "_key": "!items.effects!Dww4Zl9mtK9Ciftu.TvlAECWifZ6xhz16"
+    },
+    {
+      "name": "Steel: Forced Movement Bonus",
+      "img": "icons/magic/defensive/armor-stone-skin.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.abilities.Item.Dww4Zl9mtK9Ciftu",
+      "transfer": false,
+      "_id": "7OS6HgpJDLCHrPbB",
+      "system": {
+        "changes": [
+          {
+            "key": "forced.bonuses.push",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.pull",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "forced.bonuses.slide",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "<p>Whenever the target force moves a creature or object while under this effect, the forced movement distance gains a +5 bonus.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785948251851,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!Dww4Zl9mtK9Ciftu.7OS6HgpJDLCHrPbB"
+    },
+    {
+      "name": "Steel Strain",
+      "img": "icons/magic/defensive/armor-stone-skin.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.Dww4Zl9mtK9Ciftu",
+      "transfer": false,
+      "_id": "yPuEFfXwOBSsr8MT",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "save",
+        "expired": false
+      },
+      "description": "<p>You can't use maneuvers.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785948388828,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!Dww4Zl9mtK9Ciftu.yPuEFfXwOBSsr8MT"
     }
   ],
   "sort": 0,
@@ -132,7 +268,7 @@
     "exportSource": null,
     "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1761101684126,
     "modifiedTime": null,
     "lastModifiedBy": null

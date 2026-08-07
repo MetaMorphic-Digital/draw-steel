@@ -136,7 +136,16 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>On a critical hit, the size of the area increases by 3, and this ability deals an extra [[/damage 10]] damage.</p><p><strong>Strained:</strong> You are [[/apply weakened save]]. If you scored a critical hit with this ability, you die.</p>",
+        "description": "<p>On a critical hit, the size of the area increases by 3, and this ability deals an extra [[/damage 10]] damage.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "strained00000000": {
+        "_id": "strained00000000",
+        "type": "strained",
+        "description": "<p>You are [[/apply weakened save]]. If you scored a critical hit with this ability, you die.</p>",
         "before": true,
         "name": "",
         "img": null,

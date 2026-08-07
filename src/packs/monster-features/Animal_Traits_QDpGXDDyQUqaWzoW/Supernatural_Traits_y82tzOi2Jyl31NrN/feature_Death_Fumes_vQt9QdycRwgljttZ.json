@@ -6,7 +6,7 @@
   "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
   "system": {
     "description": {
-      "value": "<p>(10 Points)</p><p>Whenever the animal takes damage, each creature adjacent to the animal who has [[potency M 1]] takes damage equal to half the creature’s current Stamina.</p><ul><li><p><strong>Typically Used By:</strong> Death snails.</p></li></ul>",
+      "value": "<p>(10 Points)</p><p>Whenever the animal takes damage, each creature adjacent to the animal who has [[potency M 1]] takes damage equal to half the creature’s current Stamina. [[/damage floor(@stamina.value/2)]]</p><ul><li><p><strong>Typically Used By:</strong> Death snails.</p></li></ul>",
       "director": ""
     },
     "source": {
