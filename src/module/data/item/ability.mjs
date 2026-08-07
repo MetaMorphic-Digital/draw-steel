@@ -901,13 +901,14 @@ export default class AbilityModel extends BaseItemModel {
    * @param {number} [options.count=1]  How many tokens to summon.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performSummon(uuid, { count = 1 }) {
+  async performSummon(uuid, { count = 1 } = {}) {
     /** @type {DrawSteelActor} */
     const sourceActor = await fromUuid(uuid);
 
-    if (!sourceActor) return void ui.notifications.error("");
+    if (!sourceActor) return void ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
 
-    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.document.uuid));
+    // TODO: Rework into registry or other service to improve performance with large actor collections
+    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.parent.uuid));
 
     if (!worldActor) {
       // Ensure the user has permission to drop the actor and create a Token.
@@ -916,8 +917,8 @@ export default class AbilityModel extends BaseItemModel {
         return null;
       }
 
-      worldActor = game.actors.importFromCompendium(sourceActor.pack, sourceActor.id, {
-        "flags.draw-steel.summonSource": this.document.uuid,
+      worldActor = await game.actors.importFromCompendium(game.packs.get(sourceActor.pack), sourceActor.id, {
+        "flags.draw-steel.summonSource": this.parent.uuid,
       }, { keepId: true });
     }
 

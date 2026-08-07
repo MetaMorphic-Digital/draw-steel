@@ -45,21 +45,14 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
   async performSummon() {
-    if (!this.pool.size) return void ui.notifications.error("");
+    const summonOptions = this.summoning.pool.map(uuid => fromUuidSync(uuid)).filter(_ => _);
+
+    if (!summonOptions.size) return void ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.NO_OPTIONS", { localize: true });
     // Token permissions handled by placeActor
     let summonUuid;
 
-    if (this.pool.size === 1) summonUuid = this.pool.first();
+    if (summonOptions.size === 1) summonUuid = summonOptions.first().uuid;
     else {
-      const actorOptions = this.pool.reduce((options, uuid) => {
-        const idx = fromUuidSync(uuid);
-        if (idx) options.push({
-          label: idx.name,
-          value: uuid,
-        });
-        return options;
-      }, []);
-
       const content = document.createElement("div");
 
       const uuidSelect = createFormGroup({
@@ -67,14 +60,14 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
         hint: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.uuid.hint",
         input: createSelectInput({
           name: "uuid",
-          options: actorOptions,
+          options: summonOptions.map(idx => ({ label: idx.name, value: idx.uuid })),
         }),
         localize: true,
       });
 
       content.append(uuidSelect);
 
-      const fd = DSDialog.input({
+      const fd = await DSDialog.input({
         content,
         window: {
           title: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.title",
@@ -86,6 +79,6 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
       summonUuid = fd.uuid;
     }
 
-    return this.parent.performSummon(summonUuid);
+    return this.parent.performSummon(summonUuid, { count: this.summoning.count });
   }
 }
