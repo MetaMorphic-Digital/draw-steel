@@ -1,6 +1,11 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
-import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelNPCSheet from "./npc-sheet.mjs";
+import MinionStatsInput from "../apps/minion-stats-input.mjs";
+import { systemPath } from "../../constants.mjs";
+
+/**
+ * @import { MinionEffectContext } from "./_types";
+ */
 
 export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
 
@@ -9,6 +14,7 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
     classes: ["minion"],
     actions: {
       toggleWithCaptainEffect: this.#toggleWithCaptainEffect,
+      editMinionStats: this.#editMinionStats,
     },
   };
 
@@ -21,15 +27,16 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
     },
     body: {
       template: systemPath("templates/sheets/actor/minion-sheet/body.hbs"),
-      templates: ["features/features.hbs", "stats/characteristics.hbs", "stats/combat.hbs", "stats/movement.hbs", "stats/immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/${t}`)),
+      templates: [
+        "features/features.hbs",
+        "stats/characteristics.hbs",
+        "stats/combat.hbs",
+        "stats/movement.hbs",
+        "stats/immunities-weaknesses.hbs",
+      ].map(t => systemPath(`templates/sheets/actor/shared/partials/${t}`)),
       scrollable: [""],
     },
   };
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  // static TABS = {};
 
   /* -------------------------------------------------- */
 
@@ -77,6 +84,7 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in the minion.
+   * @returns {MinionEffectContext[]}
    */
   async _prepareActiveEffects() {
     const effects = [];
@@ -84,6 +92,8 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
       const durationLabel = e.duration.expired ?
         _loc("DRAW_STEEL.ActiveEffect.Expired") :
         _loc(foundry.documents.ActiveEffect.EXPIRY_EVENTS[e.duration.expiry]) ?? e.duration.label;
+
+      /** @type {MinionEffectContext} */
       const effectContext = {
         durationLabel,
         id: e.id,
@@ -123,4 +133,17 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
     const effect = this.actor.effects.get(id);
     await effect.update({ disabled: !effect.disabled });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a dialog to edit the minion stats.
+   * @this DrawSteelMinionSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editMinionStats(event, target) {
+    this.renderChild(new MinionStatsInput({ document: this.document }));
+  }
+
 }

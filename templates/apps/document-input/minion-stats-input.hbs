@@ -1,0 +1,23 @@
+<section class="standard-form">
+  <div class="size flexrow">
+    <label class="size">{{systemFields.combat.fields.size.label}}</label>
+    {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=document.uuid}}
+    {{#if (eq system.combat.size.value 1)}}
+    {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=document.uuid}}
+    {{/if}}
+  </div>
+  <fieldset class="movement">
+    <legend>{{systemFields.movement.label}}</legend>
+    {{formGroup systemFields.movement.fields.value value=systemSource.movement.value rootId=document.uuid classes="slim"}}
+    {{formGroup systemFields.movement.fields.types value=systemSource.movement.types rootId=document.uuid options=movement.options localize=true}}
+    {{#if movement.canHover}}
+    {{formGroup systemFields.movement.fields.hover value=systemSource.movement.hover rootId=document.uuid classes="slim"}}
+    {{/if}}
+    {{formGroup systemFields.movement.fields.disengage value=systemSource.movement.disengage rootId=document.uuid classes="slim"}}
+  </fieldset>
+  {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=document.uuid classes="slim"}}
+  {{formGroup systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike rootId=document.uuid classes="slim"}}
+  {{#if (eq system.monster.organization "minion")}}
+  {{formGroup monsterFields.withCaptainEffect value=systemSource.monster.withCaptainEffect options=effects classes="inline"}}
+  {{/if}}
+</section>

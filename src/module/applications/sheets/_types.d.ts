@@ -101,3 +101,17 @@ export interface AdvancementContext {
   section: string;
   documents: AdvancementModelContext[];
 }
+
+export interface MinionEffectContext {
+  durationLabel: string,
+  id: string,
+  uuid: string,
+  name: string,
+  img: string,
+  sort: number,
+  parent: documents.DrawSteelActor | documents.DrawSteelItem,
+  sourceName: string,
+  disabled: boolean,
+  expanded: boolean,
+  enrichedDescription: string;
+}

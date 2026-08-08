@@ -1,6 +1,6 @@
 <section class="standard-form scrollable">
-  {{log this}}
   <div class="basic-stats flexrow">
+    {{#if isPlay}}
     <div class="size">
       {{system.combat.size}}
       <strong>{{systemFields.combat.fields.size.label}}</strong>
@@ -21,6 +21,12 @@
       {{system.monster.freeStrike}}
       <strong>{{systemFields.monster.fields.freeStrike.label}}</strong>
     </div>
+    {{else}}
+    <button type="button" data-action="editMinionStats">
+      {{localize "DRAW_STEEL.Actor.npc.MinionStats.DialogTitle"}}
+      <i class="fa-solid fa-scroll"></i>
+    </button>
+    {{/if}}
   </div>
   <div class="secondary-stats">
     <div class="immunities">
@@ -44,6 +50,25 @@
   </div>
   <div class="characteristics">
     {{#each characteristics as |chr key|}}
+    {{#if @root.editable}}
+    <div class="characteristic">
+      <a
+        class="characteristic play {{disabled (not @root.owner)}}"
+        data-action="roll"
+        data-roll-type="characteristic"
+        data-characteristic="{{key}}"
+        data-tooltip-text="{{localize "DRAW_STEEL.ROLL.Prompt" prompt=chr.field.label}}"
+        {{disabled (not @root.isPlay)}}
+      >
+        <span class="label">
+          {{chr.field.label}}
+        </span>
+        <span class="value">
+          {{numberFormat chr.value sign=true}}
+        </span>
+      </a>
+    </div>
+    {{else}}
     <div class="characteristic">
       <div class="label">
         {{chr.field.label}}
@@ -52,6 +77,7 @@
         {{numberFormat chr.value sign=true}}
       </div>
     </div>
+    {{/if}}
     {{/each}}
   </div>
 
