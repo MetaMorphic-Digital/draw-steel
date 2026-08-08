@@ -8,7 +8,6 @@ import { systemPath } from "../../constants.mjs";
  */
 
 export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
-
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["minion"],

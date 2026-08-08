@@ -27,6 +27,7 @@
     {{/if}}
     {{formGroup systemFields.movement.fields.disengage value=systemSource.movement.disengage rootId=document.uuid classes="slim"}}
   </fieldset>
+  {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max classes="slim"}}
   {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=document.uuid classes="slim"}}
   {{formGroup systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike rootId=document.uuid classes="slim"}}
   {{#if (eq system.monster.organization "minion")}}

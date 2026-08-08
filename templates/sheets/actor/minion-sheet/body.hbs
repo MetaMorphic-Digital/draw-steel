@@ -18,7 +18,14 @@
       <strong>{{systemFields.combat.fields.stability.label}}</strong>
     </div>
     <div class="free-strike">
+      {{#if editable}}
+      <button type="button" data-action="freeStrike">
+        {{system.monster.freeStrike}}
+        <i class="fa-solid fa-burst"></i>
+      </button>
+      {{else}}
       {{system.monster.freeStrike}}
+      {{/if}}
       <strong>{{systemFields.monster.fields.freeStrike.label}}</strong>
     </div>
     {{else}}
