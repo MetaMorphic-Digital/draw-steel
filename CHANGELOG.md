@@ -29,6 +29,7 @@ Increased foundry minimum to 14.367.
 - "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
 - Implemented summoning as a new type of special effect. (#583)
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
+- Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
 - Added support for Companions as a new actor type. (#2011)
 

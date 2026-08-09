@@ -667,6 +667,7 @@ export default class AbilityModel extends BaseItemModel {
             const damageRoll = damageEffect.toDamageRoll(roll.product, {
               damageSelection: fd.damage,
               spend: Object.values(fd.spend ?? {}),
+              squadMinions: roll.options.minions,
             });
             if (!damageRoll) continue;
             await damageRoll.evaluate();
@@ -674,6 +675,8 @@ export default class AbilityModel extends BaseItemModel {
             // If there's a roll, add it to the base message data for DSN purposes
             if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
           }
+
+          delete roll.options.minions;
 
           messageData.system.parts[partId] = rollPart;
         }
