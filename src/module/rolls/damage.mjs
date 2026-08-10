@@ -1,4 +1,5 @@
 import DSRoll from "./base.mjs";
+import { systemPath } from "../constants.mjs";
 
 /**
  * A roll subclass with damage-specific info like damage type.
@@ -23,6 +24,11 @@ export default class DamageRoll extends DSRoll {
 
     await roll.applyDamage(null, { halfDamage: event.shiftKey });
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static CHAT_TEMPLATE = systemPath("templates/rolls/damage.hbs");
 
   /* -------------------------------------------------- */
 
@@ -73,6 +79,26 @@ export default class DamageRoll extends DSRoll {
    */
   get aoe() {
     return this.options.aoe || false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareChatRenderContext(options = {}) {
+    const context = await super._prepareChatRenderContext(options);
+
+    context.isGM = game.user.isGM;
+    if ("rollIndex" in options) {
+      Object.assign(context, {
+        rollIndex: options.rollIndex,
+        buttonIcon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+        tooltipPath: this.isHeal ?
+          "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" :
+          "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip",
+      });
+    }
+
+    return context;
   }
 
   /* -------------------------------------------------- */

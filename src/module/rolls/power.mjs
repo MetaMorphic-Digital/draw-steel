@@ -63,6 +63,7 @@ export default class PowerRoll extends DSRoll {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static CHAT_TEMPLATE = systemPath("templates/rolls/power.hbs");
 
   /* -------------------------------------------------- */

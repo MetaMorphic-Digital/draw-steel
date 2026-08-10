@@ -54,7 +54,6 @@ export default class SavingThrowPart extends BaseMessagePart {
   async _prepareContext(context) {
     await super._prepareContext(context);
 
-    context.ctx.buttons = [];
     const effect = this.effect;
 
     // Strictly GM-owned actors shouldn't have this option, and should only show if you have effect perms

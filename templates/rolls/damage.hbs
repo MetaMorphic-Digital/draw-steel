@@ -1,0 +1,25 @@
+<div class="dice-roll" data-action="expandRoll">
+  {{#if flavor}}
+  <div class="dice-flavor">{{flavor}}</div>
+  {{/if}}
+  <div class="dice-result">
+    <div class="inline-result">
+      <div class="dice-formula">{{formula}}</div>
+      {{#if rollIndex includeZero=true}}
+      <button
+        type="button"
+        data-action="applyDamage"
+        class="dice-total apply-damage"
+        data-tooltip="{{tooltipPath}}"
+        data-index="{{rollIndex}}"
+      >
+        <i class="{{buttonIcon}}"></i>
+        {{total}}
+      </button>
+      {{else}}
+      <h4 class="dice-total">{{total}}</h4>
+      {{/if}}
+    </div>
+    {{{tooltip}}}
+  </div>
+</div>
