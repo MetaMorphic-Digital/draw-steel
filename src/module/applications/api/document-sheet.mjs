@@ -17,7 +17,7 @@ const { api, ux } = foundry.applications;
 export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.DocumentSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["draw-steel"],
+    classes: ["draw-steel", "ds-sheet"],
     form: {
       submitOnChange: true,
       closeOnSubmit: false,

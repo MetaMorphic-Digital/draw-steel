@@ -136,146 +136,147 @@
     }
   }
 
-  &.application {
+  &.application:not(.ds-sheet) {
     background: linear-gradient(135deg, var(--draw-steel-background), var(--draw-steel-background-alt));
-  }
-
-  input[type="checkbox"] {
-    appearance: none;
-    position: relative;
-    transform: rotate(45deg);
-    border-radius: 0;
-    width: 1em;
-    height: 1em;
-    border: 1px solid var(--draw-steel-form-border);
-    vertical-align: -2px;
-
-    /* &:checked {
-      background-color: currentColor;
-    } */
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0.6em;
-      height: 0.6em;
-      right: 0;
-      top: 0;
-      border-radius: 0;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      visibility: hidden;
-      background-color: var(--color-text-primary);
-    }
-
-    &:checked::after {
-      visibility: visible;
-    }
-  }
-
-  input[type="text"] {
-    background-color: var(--draw-steel-form-background);
-    border: 0;
-    border-radius: 0;
-    border-image: linear-gradient(
-        to right,
-        transparent 5%,
-        var(--draw-steel-form-border) 25%,
-        var(--draw-steel-form-border) 75%,
-        transparent 95%
-      )
-      1;
-    border-width: 0 0 1px;
-    border-style: solid;
-  }
-
-  color-picker {
-    background-color: var(--draw-steel-form-background);
-    box-shadow: 0 0 2px var(--draw-steel-form-shadow);
-  }
-
-  input[type="number"],
-  select,
-  button:not(.header-control):not(.icon) {
-    @supports (corner-shape: bevel) {
-      corner-shape: bevel;
-    }
-  }
-
-  input[type="number"],
-  select,
-  button:not(.header-control) {
-    border-radius: 5px;
-    border: 1px solid var(--draw-steel-form-border);
-  }
-
-  button:not(.header-control) {
-    background-color: var(--draw-steel-form-button);
-  }
-
-  input:focus,
-  select:focus,
-  button:not(.header-control):focus {
-    outline-color: var(--draw-steel-form-active);
-    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow)) drop-shadow(0 0 4px var(--draw-steel-form-shadow));
-  }
-
-  input,
-  select,
-  button:not(.header-control) {
-    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
-  }
-
-  input,
-  select {
-        background-color: var(--draw-steel-form-input);
-  }
-
-  select > option {
-    background: var(--draw-steel-form-background);
-  }
   
 
-  .tag {
-    border: 1px solid var(--draw-steel-form-accent);
-    background: var(--draw-steel-form-tag-background);
-    color: var(--draw-steel-form-tag-text);
-    @supports (corner-shape: scoop) {
-      corner-shape: scoop;
+    input[type="checkbox"] {
+      appearance: none;
+      position: relative;
+      transform: rotate(45deg);
+      border-radius: 0;
+      width: 1em;
+      height: 1em;
+      border: 1px solid var(--draw-steel-form-border);
+      vertical-align: -2px;
+
+      /* &:checked {
+        background-color: currentColor;
+      } */
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0.6em;
+        height: 0.6em;
+        right: 0;
+        top: 0;
+        border-radius: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        visibility: hidden;
+        background-color: var(--color-text-primary);
+      }
+
+      &:checked::after {
+        visibility: visible;
+      }
     }
-  }
 
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border-radius: 0;
-    transform: rotate(45deg);
-    border-color: var(--draw-steel-form-border);
-    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+    input[type="text"] {
+      background-color: var(--draw-steel-form-background);
+      border: 0;
+      border-radius: 0;
+      border-image: linear-gradient(
+          to right,
+          transparent 5%,
+          var(--draw-steel-form-border) 25%,
+          var(--draw-steel-form-border) 75%,
+          transparent 95%
+        )
+        1;
+      border-width: 0 0 1px;
+      border-style: solid;
+    }
 
-  }
+    color-picker {
+      background-color: var(--draw-steel-form-background);
+      box-shadow: 0 0 2px var(--draw-steel-form-shadow);
+    }
 
-  input[type="range"]::-moz-range-thumb {
-    border-radius: 0;
-    transform: rotate(45deg);
-    border-color: var(--draw-steel-form-border);
-    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
-  }
+    input[type="number"],
+    select,
+    button:not(.header-control):not(.icon) {
+      @supports (corner-shape: bevel) {
+        corner-shape: bevel;
+      }
+    }
 
-  input[type="range"]::-ms-thumb {
-    border-radius: 0;
-    transform: rotate(45deg);
-    border-color: var(--draw-steel-form-border);
-    filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
-  }
+    input[type="number"],
+    select,
+    button:not(.header-control) {
+      border-radius: 5px;
+      border: 1px solid var(--draw-steel-form-border);
+    }
 
-  prose-mirror {
-    background: linear-gradient(30deg, var(--draw-steel-form-gradient-right), var(--draw-steel-form-gradient-left));
-    menu {
-      background: transparent;
+    button:not(.header-control) {
+      background-color: var(--draw-steel-form-button);
+    }
+
+    input:focus,
+    select:focus,
+    button:not(.header-control):focus {
+      outline-color: var(--draw-steel-form-active);
+      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow)) drop-shadow(0 0 4px var(--draw-steel-form-shadow));
+    }
+
+    input,
+    select,
+    button:not(.header-control) {
+      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+    }
+
+    input,
+    select {
+          background-color: var(--draw-steel-form-input);
+    }
+
+    select > option {
+      background: var(--draw-steel-form-background);
+    }
+    
+
+    .tag {
       border: 1px solid var(--draw-steel-form-accent);
+      background: var(--draw-steel-form-tag-background);
+      color: var(--draw-steel-form-tag-text);
+      @supports (corner-shape: scoop) {
+        corner-shape: scoop;
+      }
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border-radius: 0;
+      transform: rotate(45deg);
+      border-color: var(--draw-steel-form-border);
+      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      border-radius: 0;
+      transform: rotate(45deg);
+      border-color: var(--draw-steel-form-border);
+      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+    }
+
+    input[type="range"]::-ms-thumb {
+      border-radius: 0;
+      transform: rotate(45deg);
+      border-color: var(--draw-steel-form-border);
+      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+    }
+
+    prose-mirror {
+      background: linear-gradient(30deg, var(--draw-steel-form-gradient-right), var(--draw-steel-form-gradient-left));
+      menu {
+        background: transparent;
+        border: 1px solid var(--draw-steel-form-accent);
+      }
     }
   }
 }
