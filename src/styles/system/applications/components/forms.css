@@ -74,13 +74,8 @@
       font-weight: bold;
     }
   }
-
   fieldset {
     padding: revert;
-    corner-shape: bevel;
-    border-width: 1px;
-    background-color: var(--draw-steel-form-fieldset);
-    border-color: var(--draw-steel-form-accent);
 
     legend {
       button {
@@ -94,6 +89,8 @@
       }
     }
   }
+
+
 
   .form-group {
     &.paired {
@@ -139,6 +136,14 @@
   &.application:not(.ds-sheet) {
     background: linear-gradient(135deg, var(--draw-steel-background), var(--draw-steel-background-alt));
   
+  fieldset {
+
+    corner-shape: bevel;
+    border-width: 1px;
+    background-color: var(--draw-steel-form-fieldset);
+    border-color: var(--draw-steel-form-accent);
+
+  }
 
     input[type="checkbox"] {
       appearance: none;
