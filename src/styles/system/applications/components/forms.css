@@ -90,8 +90,6 @@
     }
   }
 
-
-
   .form-group {
     &.paired {
       gap: 10px;
@@ -121,29 +119,29 @@
         border: 2px solid white;
       }
     }
-    label {
-      color: var(--draw-steel-form-label);
-    }
-    /*This centers the label for a multi-select when tags are present*/
-    &:has(div>multi-select>.tags>.tag) {
-      label {
-        align-self: end;
-        line-height: 32px;
-      }
-    }
   }
 
   &.application:not(.ds-sheet) {
     background: linear-gradient(135deg, var(--draw-steel-background), var(--draw-steel-background-alt));
-  
-  fieldset {
 
-    corner-shape: bevel;
-    border-width: 1px;
-    background-color: var(--draw-steel-form-fieldset);
-    border-color: var(--draw-steel-form-accent);
-
-  }
+    .form-group {
+      label {
+        color: var(--draw-steel-form-label);
+      }
+      /*This centers the label for a multi-select when tags are present*/
+      &:has(div > multi-select > .tags > .tag) {
+        label {
+          align-self: end;
+          line-height: 32px;
+        }
+      }
+    }
+    fieldset {
+      corner-shape: bevel;
+      border-width: 1px;
+      background-color: var(--draw-steel-form-fieldset);
+      border-color: var(--draw-steel-form-accent);
+    }
 
     input[type="checkbox"] {
       appearance: none;
@@ -236,13 +234,12 @@
 
     input,
     select {
-          background-color: var(--draw-steel-form-input);
+      background-color: var(--draw-steel-form-input);
     }
 
     select > option {
       background: var(--draw-steel-form-background);
     }
-    
 
     .tag {
       border: 1px solid var(--draw-steel-form-accent);
@@ -259,7 +256,6 @@
       transform: rotate(45deg);
       border-color: var(--draw-steel-form-border);
       filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
-
     }
 
     input[type="range"]::-moz-range-thumb {
