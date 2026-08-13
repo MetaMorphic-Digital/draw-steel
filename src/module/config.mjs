@@ -1,3 +1,4 @@
+import MapLocationControlIcon from "./canvas/map-location-control-icon.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
 import { pseudoDocuments } from "./data/_module.mjs";
 import { systemID } from "./constants.mjs";
@@ -2886,6 +2887,23 @@ export const references = {
   winded: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.3yd9XsnxkDbR7Ywd",
 };
 
+/* -------------------------------------------------- */
+
+/**
+ * Settings used to render map location markers on the canvas.
+ * @enum {MapLocationMarkerStyle}
+ */
+export const mapLocationMarker = {
+  default: {
+    icon: MapLocationControlIcon,
+    backgroundColor: 0xFBF8F5,
+    borderColor: 0x000000,
+    borderHoverColor: 0xFF5500,
+    fontFamily: "Roboto Slab",
+    shadowColor: 0x000000,
+    textColor: 0x000000,
+  },
+};
 /* -------------------------------------------------- */
 
 /**
