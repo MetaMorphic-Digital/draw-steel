@@ -1,6 +1,9 @@
 import BaseCombatantGroupModel from "./base.mjs";
-import { DrawSteelActor } from "../../documents/_module.mjs";
 import DrawSteelCombatant from "../../documents/combatant.mjs";
+
+/**
+ * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
+ */
 
 const fields = foundry.data.fields;
 
@@ -96,6 +99,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
       this.checkDefeatedMinions();
     }
     if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff, options.ds.damageType);
+
+    if (game.user.isActiveGM && changed.system && ("captainId" in changed.system)) this.refreshCaptainEffect();
   }
 
   /* -------------------------------------------------- */
@@ -110,6 +115,30 @@ export default class SquadModel extends BaseCombatantGroupModel {
     this.minions.forEach((minion) => {
       minion.actor?.system.displayStaminaChange(diff, damageType);
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Refresh all captain effects on minions in this squad.
+   */
+  async refreshCaptainEffect() {
+    const active = this.captain && !this.captain.isDefeated;
+    const operation = this.minions.reduce((batch, minion) => {
+      /** @type {DrawSteelActiveEffect} */
+      const effect = minion.actor?.system.monster.withCaptainEffect;
+      if (effect) batch.push({
+        action: "update",
+        // prefer disable/enable to expiry because we delete expired AEs at the end of combat
+        updates: [{ _id: effect.id, disabled: !active }],
+        documentName: "ActiveEffect",
+        parent: effect.parent,
+        pack: effect.pack,
+      });
+      return batch;
+    }, []);
+
+    await foundry.documents.modifyBatch(operation);
   }
 
   /* -------------------------------------------------- */
