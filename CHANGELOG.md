@@ -18,6 +18,20 @@
 ### Known Issues
 -->
 
+## 1.2.0
+
+Increased foundry minimum to 14.366.
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
 ## 1.1.2
 
 ### Added
