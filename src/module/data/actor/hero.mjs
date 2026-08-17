@@ -62,6 +62,7 @@ export default class HeroModel extends CreatureModel {
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+        tracking: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
       }),
       epic: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
@@ -273,6 +274,17 @@ export default class HeroModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    const hr = foundry.utils.getProperty(changes, "system.hero.primary.value");
+    if (Number.isNumeric(hr)) foundry.utils.setProperty(changes, "system.hero.primary.tracking", Math.max(hr, this.hero.primary.tracking));
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({ "system.hero.primary.value": this.hero.victories });
@@ -294,6 +306,14 @@ export default class HeroModel extends CreatureModel {
       });
       await this.updateResource(recoveryRoll.total);
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onEndTurn(combatant) {
+    await super._onEndTurn(combatant);
+    await this.parent.update({ "system.hero.primary.tracking": this.hero.primary.value });
   }
 
   /* -------------------------------------------------- */

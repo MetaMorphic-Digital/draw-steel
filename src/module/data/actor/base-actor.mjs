@@ -4,8 +4,8 @@ import FormulaField from "../fields/formula-field.mjs";
 import SizeModel from "../models/size.mjs";
 
 /**
- * @import { DataField } from "@common/data/fields.mjs";
- * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
+ * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs";
+ * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelUser } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { CoreResource } from "./_types";
  * @import { AbilityBonus } from "../_types";
@@ -242,8 +242,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /**
    * @inheritdoc
    * @param {Record<string, unknown>} changes
-   * @param {import("@common/abstract/_types.mjs").DatabaseUpdateOperation} operation
-   * @param {User} user
+   * @param {DatabaseUpdateOperation} options
+   * @param {DrawSteelUser} user
    */
   async _preUpdate(changes, options, user) {
     const allowed = await super._preUpdate(changes, options, user);
@@ -361,6 +361,15 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @abstract
    */
   async _onStartTurn(combatant) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Updates performed at the end of this actor's turn.
+   * @param {DrawSteelCombatant} combatant The combatant representation.
+   * @abstract
+   */
+  async _onEndTurn(combatant) {}
 
   /* -------------------------------------------------- */
 
