@@ -4,7 +4,6 @@ import FormulaField from "../fields/formula-field.mjs";
 import SizeModel from "../models/size.mjs";
 
 /**
- * @import { DataField } from "@common/data/fields.mjs";
  * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { CoreResource } from "./_types";

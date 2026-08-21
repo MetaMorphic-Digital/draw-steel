@@ -215,6 +215,7 @@ export default class AbilityResultPart extends RollPart {
 
     // Retainers use their mentor's surges and surge value
     if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+    else if (sourceActor.type === "companion") sourceActor = sourceActor.system.companion.master;
 
     const surgeDamage = sourceActor.getRollData()?.chr;
 
