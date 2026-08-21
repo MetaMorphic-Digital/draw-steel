@@ -53,10 +53,6 @@
     }
 
     .dice-roll {
-      border: 1px solid var(--color-border-light-2);
-      padding: 5px;
-      border-radius: 5px;
-
       .header {
         flex-basis: 100%;
         text-align: center;
@@ -66,17 +62,32 @@
 
       .inline-result {
         display: flex;
+        gap: 5px;
+        align-items: stretch;
         margin-bottom: 5px;
 
         .dice-formula {
-          flex: 1 0 calc(100% - 50px);
+          flex: 1;
           border-radius: 3px 0px 0px 3px;
           margin-bottom: 0px;
+          line-height: 30px;
         }
 
         .dice-total {
           flex: 0 0 50px;
-          border-radius: 0px 3px 3px 0px;
+          border-radius: 3px 0px 0px 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &.apply-damage {
+            flex: 0 0 100px;
+            border-radius: 0px 3px 3px 0px;
+            border: 1px solid var(--button-border-color);
+            &:hover {
+              background-color: var(--button-hover-background-color);
+              border-color: var(--button-hover-border-color);
+            }
+          }
         }
       }
 
