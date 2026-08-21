@@ -30,6 +30,7 @@ export default class ActorChoiceAdvancement extends BaseAdvancement {
 
   /**
    * Getter to indicate that this is an actor choice advancement.
+   * @type {boolean}
    */
   get isActorChoice() {
     return true;

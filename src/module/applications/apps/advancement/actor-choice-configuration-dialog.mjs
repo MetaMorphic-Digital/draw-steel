@@ -97,7 +97,7 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * Total choices made\.
+   * Total choices made.
    * @type {number}
    */
   get totalChosen() {
