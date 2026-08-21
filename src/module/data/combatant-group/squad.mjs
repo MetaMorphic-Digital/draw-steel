@@ -124,21 +124,15 @@ export default class SquadModel extends BaseCombatantGroupModel {
    */
   async refreshCaptainEffect() {
     const active = this.captain && !this.captain.isDefeated;
-    const operation = this.minions.reduce((batch, minion) => {
-      /** @type {DrawSteelActiveEffect} */
-      const effect = minion.actor?.system.monster.withCaptainEffect;
-      if (effect) batch.push({
-        action: "update",
-        // prefer disable/enable to expiry because we delete expired AEs at the end of combat
-        updates: [{ _id: effect.id, disabled: !active }],
-        documentName: "ActiveEffect",
-        parent: effect.parent,
-        pack: effect.pack,
-      });
-      return batch;
-    }, []);
+    const actors = new Set(Array.from(this.minions).map(c => c.actor).filter(_ => _));
+    const operations = Array.from(actors).map(actor => {
+      const effect = actor.system.monster.withCaptainEffect;
+      if (!effect) return null;
 
-    await foundry.documents.modifyBatch(operation);
+      const { documentName, parent, pack, id } = effect;
+      return { documentName, parent, pack, action: "update", updates: [{ _id: id, disabled: !active }] };
+    }).filter(_ => _);
+    await foundry.documents.modifyBatch(operations);
   }
 
   /* -------------------------------------------------- */
