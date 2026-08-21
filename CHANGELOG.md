@@ -26,10 +26,14 @@ Increased foundry minimum to 14.367.
 
 - Improved prone automation by integrating bane and edge application. (#246)
 - "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
+- Implemented summoning as a new type of special effect. (#583)
+  - Added new Companions and Summons advancement type to integrate with summoning. (#584)
+- Added support for Companions as a new actor type. (#2011)
 
 ### Changed
 
 - Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
+- Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display.
 
 ### Deprecated
 
