@@ -2698,6 +2698,14 @@ const sourceBooks = {
     label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
     title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
   },
+  Summoner: {
+    label: "DRAW_STEEL.SOURCE.Books.Summoner.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Summoner.Title",
+  },
+  Beastheart: {
+    label: "DRAW_STEEL.SOURCE.Books.Beastheart.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Beastheart.Title",
+  },
 };
 
 /**
