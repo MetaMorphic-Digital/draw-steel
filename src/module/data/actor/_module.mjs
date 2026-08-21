@@ -1,4 +1,5 @@
 export { default as BaseActorModel } from "./base-actor.mjs";
+export { default as CompanionModel } from "./companion.mjs";
 export { default as CreatureModel } from "./creature.mjs";
 export { default as HeroModel } from "./hero.mjs";
 export { default as NPCModel } from "./npc.mjs";

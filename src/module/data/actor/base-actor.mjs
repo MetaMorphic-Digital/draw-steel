@@ -255,6 +255,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         prototypeToken: {
           width: newSize,
           height: newSize,
+          depth: newSize,
         },
       });
     }

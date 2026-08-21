@@ -45,7 +45,7 @@ If the `Grabbed` status effect is applied to an actor, while another actor is ta
 
 #### Prone
 
-If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***)
+If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***) A prone actor has a bane on strikes and melee abilities targeting them have an edge.
 
 #### Restrained
 
@@ -54,8 +54,6 @@ If the `Restrained` status effect is applied to an actor, the ability power roll
 #### Slowed
 
 If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***)
-
-Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which allows setting the "slowed" speed to 3 instead of 2.
 
 #### Taunted
 

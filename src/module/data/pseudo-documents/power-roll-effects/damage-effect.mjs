@@ -153,7 +153,8 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     }
 
     const simplifiedFormula = this.actor ? ds.utils.simplifyRollFormula(value, this.item.getRollData()) : value;
-    const formattedDamageString = Handlebars.escapeExpression(_loc(i18nString, { value: simplifiedFormula, damageTypes }));
+    let formattedDamageString = Handlebars.escapeExpression(_loc(i18nString, { value: simplifiedFormula, damageTypes }));
+    if (!this.actor) formattedDamageString = this.#replaceRollData(formattedDamageString);
 
     let result = `<span data-tooltip="${value}" data-tooltip-direction="UP">${formattedDamageString}</span>`;
 
@@ -179,6 +180,27 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       damage: result,
       potency: potencyString,
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Replace roll data terms with DS glyphs.
+   * @param {string} formula
+   * @returns {string}
+   */
+  #replaceRollData(formula) {
+    const data = Object.entries(ds.CONFIG.characteristics).reduce((rollData, [key, chr]) => {
+      const html = rollData[chr.rollKey] = `<span style="font-family: var(--font-glyph)">${chr.rollKey}</span>`;
+      if (this.parent.power.roll.characteristics.has(key)) rollData.chr.push(html);
+      return rollData;
+    }, { chr: [] });
+
+    const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+
+    data.chr = formatter.format(data.chr);
+
+    return DamageRoll.replaceFormulaData(formula, data);
   }
 
   /* -------------------------------------------------- */

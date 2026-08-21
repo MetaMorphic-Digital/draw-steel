@@ -1,6 +1,5 @@
+import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
-import DrawSteelActor from "../../documents/actor.mjs";
-import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import MembersCollection from "../../utils/members-collection.mjs";
 import { PowerRollModifiers } from "../../_types";
 
@@ -102,6 +101,19 @@ declare module "./base-actor.mjs" {
       };
       flankable: boolean;
       canFlank: boolean;
+    }
+  }
+}
+
+declare module "./companion.mjs" {
+  export default interface CompanionModel {
+    source: SourceModel;
+    companion: {
+      freeStrike: number;
+      keywords: Set<string> & { list: string[]; labels: string };
+      role: string;
+      roleLabel: string;
+      master: DrawSteelActor;
     }
   }
 }

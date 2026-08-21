@@ -2042,6 +2042,12 @@ export const Advancement = {
     itemTypes: new Set(["class", "title"]),
     documentClass: pseudoDocuments.advancements.CharacteristicAdvancement,
   },
+  companion: {
+    label: "TYPES.Advancement.companion",
+    defaultImage: "icons/svg/pawprint.svg",
+    itemTypes: new Set(["class"]),
+    documentClass: pseudoDocuments.advancements.CompanionChoiceAdvancement,
+  },
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
@@ -2059,6 +2065,12 @@ export const Advancement = {
     defaultImage: "icons/svg/hanging-sign.svg",
     itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
+  },
+  summon: {
+    label: "TYPES.Advancement.summon",
+    defaultImage: "icons/svg/teleport.svg",
+    itemTypes: new Set(["subclass"]),
+    documentClass: pseudoDocuments.advancements.SummonChoiceAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
@@ -2141,6 +2153,11 @@ export const SpecialEffect = {
     label: "TYPES.SpecialEffect.strained",
     defaultImage: "icons/svg/anchor.svg",
     documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
+  },
+  summon: {
+    label: "TYPES.SpecialEffect.summon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.SummonSpecialEffect,
   },
 };
 preLocalize("SpecialEffect", { key: "label" });
@@ -2680,6 +2697,14 @@ const sourceBooks = {
   Monsters: {
     label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
     title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
+  },
+  Summoner: {
+    label: "DRAW_STEEL.SOURCE.Books.Summoner.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Summoner.Title",
+  },
+  Beastheart: {
+    label: "DRAW_STEEL.SOURCE.Books.Beastheart.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Beastheart.Title",
   },
 };
 

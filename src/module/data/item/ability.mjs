@@ -17,7 +17,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
- * @import DrawSteelTokenDocument from "../../documents/token.mjs";
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -90,6 +90,9 @@ export default class AbilityModel extends BaseItemModel {
         reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr", placeholder: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
+        banes: requiredInteger({ persisted: false }),
+        edges: requiredInteger({ persisted: false }),
+        enabled: new fields.BooleanField({ persisted: false }),
       }),
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
 
@@ -291,12 +294,13 @@ export default class AbilityModel extends BaseItemModel {
       }
 
       if (bonus.key.startsWith("power.")) {
+        const field = this.schema.getField(bonus.key);
+        const currentValue = foundry.utils.getProperty(this, bonus.key);
+        if (!field) return;
         switch (bonus.key) {
           case "power.roll.banes":
-            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
-            break;
           case "power.roll.edges":
-            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            foundry.utils.setProperty(this, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
             break;
         }
       }
@@ -549,10 +553,9 @@ export default class AbilityModel extends BaseItemModel {
 
       dialogConfig.context.formula ??= PowerRoll.replaceFormulaData(formula, rollData, { missing: "0" });
 
-      dialogConfig.context.modifiers ??= {};
-      dialogConfig.context.modifiers.banes = (config.modifiers?.banes ?? 0) + (this.power.roll.banes ?? 0);
-      dialogConfig.context.modifiers.edges = (config.modifiers?.edges ?? 0) + (this.power.roll.edges ?? 0);
-      dialogConfig.context.modifiers.bonuses ??= 0;
+      dialogConfig.context.modifiers = this.getActorModifiers();
+      dialogConfig.context.modifiers.banes += (config.modifiers?.banes ?? 0);
+      dialogConfig.context.modifiers.edges += (config.modifiers?.edges ?? 0);
 
       dialogConfig.context.targets ??= game.user.targets.reduce((accumulator, target) => {
         accumulator[target.id] = {
@@ -562,8 +565,6 @@ export default class AbilityModel extends BaseItemModel {
         };
         return accumulator;
       }, {});
-
-      this.getActorModifiers(dialogConfig.context);
     }
 
     const fd = await AbilityConfigurationDialog.create(dialogConfig);
@@ -672,15 +673,21 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target.
-   * @param {Partial<AbilityUseOptions>} options Options for the dialog.
+   * Initialize the modifiers based on conditions that apply to ability Power Rolls regardless of target.
+   * @returns {PowerRollModifiers}
    */
-  getActorModifiers(options) {
-    if (!this.actor) return;
+  getActorModifiers() {
+    const modifiers = {
+      banes: this.power.roll.banes ?? 0,
+      edges: this.power.roll.edges ?? 0,
+      bonuses: 0,
+    };
 
-    if (this.actor.statuses.has("weakened")) options.modifiers.banes += 1;
-    if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
-    // TODO: Consider hook
+    if (this.actor.statuses.has("prone") && this.keywords.has("strike")) modifiers.banes += 1;
+    if (this.actor.statuses.has("restrained")) modifiers.banes += 1;
+    if (this.actor.statuses.has("weakened")) modifiers.banes += 1;
+
+    return modifiers;
   }
 
   /* -------------------------------------------------- */
@@ -699,8 +706,6 @@ export default class AbilityModel extends BaseItemModel {
     const targetActor = target.actor;
     const token = canvas.tokens.controlled[0]?.actor === this.actor ? canvas.tokens.controlled[0] : null;
 
-    //TODO: ALL CONDITION CHECKS
-
     // Modifiers requiring just the targeted token to have an actor
     if (targetActor) {
       modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
@@ -712,6 +717,8 @@ export default class AbilityModel extends BaseItemModel {
 
       // Grabbed condition check - targeting a non-source adds a bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
+      // Prone condition check - targeting prone with melee gets an edge
+      if (targetActor.statuses.has("prone") && this.keywords.has("melee")) modifiers.edges += 1;
       // Restrained condition check - targeting restrained gets an edge
       if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
       // Surprised condition check - targeting surprised gets an edge
@@ -883,5 +890,38 @@ export default class AbilityModel extends BaseItemModel {
       else if (targetOptions.has("enemy")) return (sourceDisposition !== token.disposition) && polarization.includes(sourceDisposition);
     }
     return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Places summons.
+   * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
+   * @param {Object} options
+   * @param {number} [options.count=1]  How many tokens to summon.
+   * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
+   */
+  async performSummon(uuid, { count = 1 } = {}) {
+    /** @type {DrawSteelActor} */
+    const sourceActor = await fromUuid(uuid);
+
+    if (!sourceActor) return void ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
+
+    // TODO: Rework into registry or other service to improve performance with large actor collections
+    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.parent.uuid));
+
+    if (!worldActor) {
+      // Ensure the user has permission to drop the actor and create a Token.
+      if (!game.user.can("ACTOR_CREATE")) {
+        ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
+        return null;
+      }
+
+      worldActor = await game.actors.importFromCompendium(game.packs.get(sourceActor.pack), sourceActor.id, {
+        "flags.draw-steel.summonSource": this.parent.uuid,
+      }, { keepId: true });
+    }
+
+    return canvas.tokens.placeActor(worldActor, { count });
   }
 }
