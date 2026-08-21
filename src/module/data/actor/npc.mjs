@@ -1,6 +1,7 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
@@ -12,8 +13,6 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
- * @import { EmbedDisplayFlags } from "../item/_types";
- * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
 /**
@@ -173,12 +172,12 @@ export default class NPCModel extends CreatureModel {
    */
   get freeStrike() {
     /** @type {DrawSteelItem & {system: AbilityModel}} */
-    const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
+    const signature = this.parent.items.documentsByType.ability.find(item => item.system.category === "signature");
     /** @type {Set<string>} */
-    const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+    const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
-    /** @type {DamagePowerRollEffect} */
-    const firstDamage = signature?.system.power.effects.find(e => e.type === "damage");
+    /** @type {[DamagePowerRollEffect]} */
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
       value: this.monster.freeStrike,
@@ -189,6 +188,18 @@ export default class NPCModel extends CreatureModel {
         ranged: 5,
       },
     };
+
+    if (signature && signature.system.keywords.has("strike")) freeStrike.value += (firstDamage?.damage.bonuses.value ?? 0);
+    else {
+      const replacementData = this.parent.getRollData();
+      const field = DamagePowerRollEffect.schema.getField("damage.bonuses.value");
+      for (const bonus of this._abilityBonuses) {
+        if (bonus.key !== "damage.bonuses.value") continue;
+        if (!bonus.filters.keywords.isSubsetOf(freeStrike.keywords)) continue;
+        foundry.utils.setProperty(freeStrike, "value", field.applyChange(freeStrike.value, this, bonus, { replacementData }));
+      }
+    }
+
     switch (signature?.system.distance.type) {
       case "melee":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
