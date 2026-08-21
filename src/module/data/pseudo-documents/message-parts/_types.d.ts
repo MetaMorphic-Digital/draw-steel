@@ -29,6 +29,14 @@ declare module "./hero-token.mjs" {
   }
 }
 
+declare module "./target-result.mjs" {
+  export default interface TargetResult {
+    abilityUuid: string;
+    tier: number;
+    targetUuid: string;
+  }
+}
+
 declare module "./test-request.mjs" {
   export default interface TestRequestPart {
     characteristics: Set<string>;

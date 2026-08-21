@@ -2108,6 +2108,9 @@ export const MessagePart = {
   savingThrow: {
     documentClass: pseudoDocuments.messageParts.SavingThrowPart,
   },
+  targetResult: {
+    documentClass: pseudoDocuments.messageParts.TargetResult,
+  },
   test: {
     documentClass: pseudoDocuments.messageParts.TestPart,
   },
