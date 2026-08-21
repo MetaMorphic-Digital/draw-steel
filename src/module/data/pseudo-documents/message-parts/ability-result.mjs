@@ -101,7 +101,7 @@ export default class AbilityResultPart extends RollPart {
   static async #applyEffect(event, target) {
     /** @type {AppliedPowerRollEffect} */
     const pre = await fromUuid(target.dataset.uuid);
-    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.PARTS.abilityResult.NoPRE", { localize: true });
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
 
     await pre.applyEffect(this.tierKey, target.dataset.effectId);
   }
@@ -118,7 +118,7 @@ export default class AbilityResultPart extends RollPart {
   static async #gainResource(event, target) {
     /** @type {GainResourcePowerRollEffect} */
     const pre = await fromUuid(target.dataset.uuid);
-    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.PARTS.abilityResult.NoPRE", { localize: true });
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
 
     await pre.applyGain(this.tierKey);
   }

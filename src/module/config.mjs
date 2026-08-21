@@ -2154,6 +2154,11 @@ export const SpecialEffect = {
     defaultImage: "icons/svg/anchor.svg",
     documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
   },
+  summon: {
+    label: "TYPES.SpecialEffect.summon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.SummonSpecialEffect,
+  },
 };
 preLocalize("SpecialEffect", { key: "label" });
 
@@ -2692,6 +2697,14 @@ const sourceBooks = {
   Monsters: {
     label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
     title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
+  },
+  Summoner: {
+    label: "DRAW_STEEL.SOURCE.Books.Summoner.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Summoner.Title",
+  },
+  Beastheart: {
+    label: "DRAW_STEEL.SOURCE.Books.Beastheart.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Beastheart.Title",
   },
 };
 

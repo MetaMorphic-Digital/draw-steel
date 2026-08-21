@@ -81,8 +81,6 @@ export default class AbilityUsePart extends BaseMessagePart {
     };
     context.ctx.embed = await item.toEmbed(embedConfig);
 
-    context.ctx.buttons = [];
-
     if (item.isOwner && item.system.hasTemplate) {
       context.ctx.buttons.push(ds.utils.constructHTMLButton({
         label: _loc("DRAW_STEEL.Item.ability.placeTemplate"),
