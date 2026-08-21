@@ -1,0 +1,24 @@
+{{#if ctx.showContextMenu}}
+<div class="message-part-header">
+  <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="resultPartContext"></a>
+  {{#if ctx.target.owner}}
+  <a class="targetName" data-uuid="{{ctx.target.uuid}}" data-tooltip="DRAW_STEEL.ROLL.Power.SelectToken" data-action="selectToken">
+    {{ctx.target.name}}
+  </a>
+  {{else}}
+  <div class="targetName" data-uuid="{{ctx.target.uuid}}">{{ctx.target.name}}</div>
+  {{/if}}
+  <img src="{{ctx.target.img}}">
+</div>
+{{/if}}
+{{#if part.flavor}}
+<div class="message-part-flavor">{{ctx.flavor}}</div>
+{{/if}}
+<div class="message-part-rolls">
+  {{#each ctx.rolls}}{{{this}}}{{/each}}
+</div>
+{{#if ctx.buttons.length}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
+</footer>
+{{/if}}

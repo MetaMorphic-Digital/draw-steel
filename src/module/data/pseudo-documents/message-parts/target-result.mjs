@@ -1,0 +1,337 @@
+import DamageRoll from "../../../rolls/damage.mjs";
+import RollPart from "./roll.mjs";
+import { systemPath } from "../../../constants.mjs";
+
+/**
+ * @import { DrawSteelActor, DrawSteelItem, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
+ * @import AbilityData from "../../item/ability.mjs";
+ * @import { AppliedPowerRollEffect, GainResourcePowerRollEffect } from "../power-roll-effects/_module.mjs";
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
+ */
+
+const { DocumentUUIDField, NumberField } = foundry.data.fields;
+const { createFormGroup, createNumberInput, createSelectInput, createTextInput } = foundry.applications.fields;
+
+/**
+ * A part that displays the result of an ability power roll and its consequences for a single target.
+ */
+export default class TargetResultPart extends RollPart {
+  /** @inheritdoc */
+  static get TYPE() {
+    return "targetResult";
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static ACTIONS = {
+    ...super.ACTIONS,
+    applyDamage: this.#applyDamage,
+    applyEffect: this.#applyEffect,
+    gainResource: this.#gainResource,
+  };
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static TEMPLATE = systemPath("templates/sidebar/chat/parts/target-result.hbs");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static defineSchema() {
+    return Object.assign(super.defineSchema(), {
+      abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
+      tier: new NumberField({ integer: true, min: 1, max: 3, nullable: false }),
+      targetUuid: new DocumentUUIDField({ nullable: false, type: "Actor" }),
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the ability from the UUID. Can return null if the effect no longer exists.
+   * @type {Omit<DrawSteelItem, "system"> & { system: AbilityData } | null}
+   */
+  get ability() {
+    return fromUuidSync(this.abilityUuid);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The targeted token.
+   * @type {DrawSteelTokenDocument}
+   */
+  get token() {
+    return this.actorTarget.token ?? null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The targeted actor, or null if one is not available.
+   * @type {DrawSteelActor | null}
+   */
+  get actorTarget() {
+    return fromUuidSync(this.targetUuid) ?? null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The key of the tier.
+   * @type {"tier1" | "tier2" | "tier3" | null}
+   */
+  get tierKey() {
+    const tier = this.tier;
+    if (tier) return `tier${tier}`;
+    else return null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareContext(context) {
+    await super._prepareContext(context);
+
+    const token = this.token;
+    const actor = this.actorTarget;
+    context.ctx.target = {
+      owner: actor.isOwner,
+      uuid: this.targetUuid,
+      name: token?.name || actor?.name || _loc("COMMON.Unknown"),
+      img: token?.img || actor?.img || getDocumentClass("Token").DEFAULT_ICON,
+    };
+
+    const item = this.ability;
+
+    if (item) {
+      for (const pre of item.system.power.effects) {
+        const newButtons = pre.constructButtons(this.tier);
+        if (newButtons) context.ctx.buttons.push(...newButtons);
+      }
+
+      context.ctx.foundItem = true;
+      context.ctx.tierSymbol = ds.rolls.PowerRoll.RESULT_TIERS[`tier${this.tier}`].glyph;
+      context.ctx.resultHTML = await item.system.powerRollText(this.tier);
+    }
+
+    context.ctx.showContextMenu = !!this.rolls.find(roll => (roll instanceof DamageRoll) && !roll.isHeal);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply damage to the targeted actor.
+   *
+   * @this TargetResultPart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #applyDamage(event, target) {
+    const idx = target.dataset.index;
+    const roll = this.rolls[idx];
+    await roll.applyDamage([this.actorTarget], { halfDamage: event.shiftKey });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to the targeted actor.
+   *
+   * @this TargetResultPart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #applyEffect(event, target) {
+    /** @type {AppliedPowerRollEffect} */
+    const pre = await fromUuid(target.dataset.uuid);
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
+
+    await pre.applyEffect(this.tierKey, target.dataset.effectId, { targets: [this.actorTarget] });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to the targeted actor.
+   *
+   * @this TargetResultPart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #gainResource(event, target) {
+    /** @type {GainResourcePowerRollEffect} */
+    const pre = await fromUuid(target.dataset.uuid);
+    if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
+
+    await pre.applyGain(this.tierKey, { targets: [this.actorTarget] });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create a new DamageRoll based on applying modifications to a given DamageRoll.
+   * After creation, the new roll is added to the message rolls.
+   * @param {DamageRoll} roll The damage roll to modify.
+   * @param {object} modifications The modification options to apply.
+   * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
+   * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
+   * @returns {Promise<DamageRoll>}
+   */
+  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }, evaluationOptions = {}) {
+    const rollData = this.ability?.getRollData() ?? this.message.getRollData();
+
+    const newRoll = DamageRoll.fromData(roll.toJSON());
+
+    if (additionalTerms) {
+      const terms = DamageRoll.parse(additionalTerms, rollData);
+      for (const term of terms) if (!term._evaluated) await term.evaluate(evaluationOptions);
+      newRoll.terms = newRoll.terms.concat(new foundry.dice.terms.OperatorTerm({ operator: "+" }), terms);
+      newRoll.resetFormula();
+      newRoll._total = newRoll._evaluateTotal();
+    }
+
+    if (damageType !== undefined) {
+      // Without this, changing the new roll damage type changes the original rolls damage type.
+      newRoll.options = { ...newRoll.options };
+      newRoll.options.type = damageType;
+      const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+      const flavor = _loc("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+      newRoll.options.flavor = flavor;
+    }
+
+    const rolls = this.rolls.concat(newRoll);
+
+    await this.update({ rolls }, { notify: true, ds: {
+      dsn: { [this.id]: [rolls.length - 1] },
+    } });
+
+    return newRoll;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _addListeners(element, context) {
+    super._addListeners(element, context);
+
+    const menuItems = this._getResultPartContextOptions();
+    new foundry.applications.ux.ContextMenu.implementation(element, "[data-action=resultPartContext", menuItems, { jQuery: false, fixed: true, eventName: "click" });
+
+    // Buttons in this part that require ownership of the targeted actor
+    if (!this.actorTarget?.isOwner) {
+      const ownerButtons = new Set("applyDamage", "applyEffect", "gainResource");
+      for (const button of element.querySelectorAll("[data-action]")) {
+        if (!ownerButtons.has(button.dataset.action)) continue;
+        button.disabled = true;
+        button.classList.add("disabled");
+      }
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Get context menu entries for this ability result part.
+   * @returns {ContextMenuEntry[]}
+   */
+  _getResultPartContextOptions() {
+    const damageRolls = this.rolls.filter(roll => (roll instanceof DamageRoll) && !roll.isHeal);
+    if (!damageRolls.length) return [];
+
+    const baseLocalizationPath = "DRAW_STEEL.ChatMessage.PARTS.abilityResult.ContextMenuOptions.DamageModification";
+    return damageRolls.map(roll => {
+      const damageType = ds.CONFIG.damageTypes[roll.options.type]?.label ?? roll.options.type;
+      const label = _loc(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
+        total: roll.total,
+        type: damageType,
+      });
+      return {
+        label,
+        icon: "fa-solid fa-gear",
+        visible: () => this.message.isOwner,
+        onClick: () => this.modifyDamageDialog(roll),
+      };
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+  * Prompt the dialog to modify the damage roll and then create the modified roll.
+  * @param {DamageRoll} roll
+  */
+  async modifyDamageDialog(roll) {
+    const content = document.createElement("div");
+
+    let sourceActor = this.ability?.actor;
+
+    // Retainers use their mentor's surges and surge value
+    if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+
+    const surgeDamage = sourceActor.getRollData()?.chr;
+
+    if (sourceActor.type === "hero") {
+      const surgeMax = Math.min(3, sourceActor.system.hero.surges);
+
+      const surges = createFormGroup({
+        label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.label",
+        hint: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.hint", { damage: surgeDamage }),
+        input: createNumberInput({ name: "surges", step: 1, min: 0, max: surgeMax }),
+        localize: true,
+        classes: ["slim"],
+      });
+
+      content.append(surges);
+    }
+
+    const additionalTermGroup = createFormGroup({
+      label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.label",
+      hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.AdditionalTerms.hint",
+      input: createTextInput({ name: "additionalTerms" }),
+      localize: true,
+    });
+
+    const damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, { label }]) => ({ value, label }));
+    const damageSelect = createSelectInput({
+      value: roll.options.type,
+      options: damageTypes,
+      name: "damageType",
+      blank: "",
+    });
+    const damageTypeGroup = createFormGroup({
+      label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.DamageType.label",
+      hint: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.DamageType.hint",
+      input: damageSelect,
+      localize: true,
+    });
+
+    content.append(additionalTermGroup, damageTypeGroup);
+
+    const modifications = await ds.applications.api.DSDialog.input({
+      content,
+      classes: ["modify-damage-dialog"],
+      window: {
+        title: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Title",
+        icon: "fa-fw fa-solid fa-gear",
+      },
+    });
+
+    // If the dialog is closed or submitted without modifications, don't create a new roll.
+    if (!modifications) return;
+
+    if (modifications.surges) {
+      await sourceActor.modifyTokenAttribute("hero.surges", -1 * modifications.surges, true, false);
+      if (modifications.additionalTerms) modifications.additionalTerms += `+ ${modifications.surges} * ${surgeDamage}`;
+      else modifications.additionalTerms = `${modifications.surges} * ${surgeDamage}`;
+      delete modifications.surges;
+    }
+
+    if ((!modifications.additionalTerms) && (modifications.damageType === roll.options.type)) return;
+
+    return this.createModifiedDamageRoll(roll, modifications);
+  }
+}

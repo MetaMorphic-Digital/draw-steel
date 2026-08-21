@@ -5,6 +5,7 @@ export { default as ContentPart } from "./content.mjs";
 export { default as HeroTokenPart } from "./hero-token.mjs";
 export { default as RollPart } from "./roll.mjs";
 export { default as SavingThrowPart } from "./saving-throw.mjs";
+export { default as TargetResult } from "./target-result.mjs";
 export { default as TestRequestPart } from "./test-request.mjs";
 export { default as TestPart } from "./test.mjs";
 export { default as ProjectPart } from "./project.mjs";
