@@ -1,3 +1,4 @@
+export { default as ActorChoiceConfigurationDialog } from "./actor-choice-configuration-dialog.mjs";
 export { default as ChainConfigurationDialog } from "./chain-configuration-dialog.mjs";
 export { default as EffectGrantConfigurationDialog } from "./effect-grant-configuration-dialog.mjs";
 export { default as FillLanguageDialog } from "./fill-trait-dialog.mjs";

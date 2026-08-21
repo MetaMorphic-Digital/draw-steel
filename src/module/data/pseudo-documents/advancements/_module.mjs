@@ -1,7 +1,10 @@
+export { default as ActorChoiceAdvancement } from "./actor-choice-advancement.mjs";
 export { default as BaseAdvancement } from "./base-advancement.mjs";
 export { default as CharacteristicAdvancement } from "./characteristic-advancement.mjs";
+export { default as CompanionChoiceAdvancement } from "./companion-choice-advancement.mjs";
 export { default as EffectGrantAdvancement } from "./effect-grant-advancement.mjs";
 export { default as ItemGrantAdvancement } from "./item-grant-advancement.mjs";
 export { default as LanguageAdvancement } from "./language-advancement.mjs";
 export { default as SkillAdvancement } from "./skill-advancement.mjs";
+export { default as SummonChoiceAdvancement } from "./summon-choice-advancement.mjs";
 export { default as TraitAdvancement } from "./trait-advancement.mjs";

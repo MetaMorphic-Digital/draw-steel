@@ -1,5 +1,36 @@
 export {};
 
+declare module "./actor-choice-advancement.mjs" {
+  export default interface ActorChoiceAdvancement {
+    dsid: string;
+  }
+}
+
+// declare module "./companion-choice-advancement.mjs" {
+//   export default interface SummonChoiceAdvancement {
+
+//   }
+// }
+
+interface SummonChoicePool {
+  uuid: string;
+  count: number;
+}
+
+export type ActorChoice = {
+  /** The UUID of the actor. */
+  uuid: string;
+};
+
+declare module "./summon-choice-advancement.mjs" {
+  export default interface SummonChoiceAdvancement {
+    cost: number;
+    /** If `null`, then this is explicitly a "choose all" - but also if the number is equal to or greater than the pool. */
+    chooseN: number | null;
+    pool: SummonChoicePool[]
+  }
+}
+
 declare module "./base-advancement.mjs" {
   export default interface BaseAdvancement {
     requirements: {
