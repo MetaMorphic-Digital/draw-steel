@@ -2154,6 +2154,11 @@ export const SpecialEffect = {
     defaultImage: "icons/svg/anchor.svg",
     documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
   },
+  summon: {
+    label: "TYPES.SpecialEffect.summon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.SummonSpecialEffect,
+  },
 };
 preLocalize("SpecialEffect", { key: "label" });
 

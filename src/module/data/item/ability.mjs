@@ -17,7 +17,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
- * @import DrawSteelTokenDocument from "../../documents/token.mjs";
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -890,5 +890,38 @@ export default class AbilityModel extends BaseItemModel {
       else if (targetOptions.has("enemy")) return (sourceDisposition !== token.disposition) && polarization.includes(sourceDisposition);
     }
     return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Places summons.
+   * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
+   * @param {Object} options
+   * @param {number} [options.count=1]  How many tokens to summon.
+   * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
+   */
+  async performSummon(uuid, { count = 1 } = {}) {
+    /** @type {DrawSteelActor} */
+    const sourceActor = await fromUuid(uuid);
+
+    if (!sourceActor) return void ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
+
+    // TODO: Rework into registry or other service to improve performance with large actor collections
+    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.parent.uuid));
+
+    if (!worldActor) {
+      // Ensure the user has permission to drop the actor and create a Token.
+      if (!game.user.can("ACTOR_CREATE")) {
+        ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
+        return null;
+      }
+
+      worldActor = await game.actors.importFromCompendium(game.packs.get(sourceActor.pack), sourceActor.id, {
+        "flags.draw-steel.summonSource": this.parent.uuid,
+      }, { keepId: true });
+    }
+
+    return canvas.tokens.placeActor(worldActor, { count });
   }
 }
