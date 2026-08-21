@@ -1,6 +1,9 @@
 import BaseCombatantGroupModel from "./base.mjs";
-import { DrawSteelActor } from "../../documents/_module.mjs";
 import DrawSteelCombatant from "../../documents/combatant.mjs";
+
+/**
+ * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
+ */
 
 const fields = foundry.data.fields;
 
@@ -96,6 +99,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
       this.checkDefeatedMinions();
     }
     if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff, options.ds.damageType);
+
+    if (game.user.isActiveGM && changed.system && ("captainId" in changed.system)) this.refreshCaptainEffect();
   }
 
   /* -------------------------------------------------- */
@@ -110,6 +115,24 @@ export default class SquadModel extends BaseCombatantGroupModel {
     this.minions.forEach((minion) => {
       minion.actor?.system.displayStaminaChange(diff, damageType);
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Refresh all captain effects on minions in this squad.
+   */
+  async refreshCaptainEffect() {
+    const active = this.captain && !this.captain.isDefeated;
+    const actors = new Set(Array.from(this.minions).map(c => c.actor).filter(_ => _));
+    const operations = Array.from(actors).map(actor => {
+      const effect = actor.system.monster.withCaptainEffect;
+      if (!effect) return null;
+
+      const { documentName, parent, pack, id } = effect;
+      return { documentName, parent, pack, action: "update", updates: [{ _id: id, disabled: !active }] };
+    }).filter(_ => _);
+    await foundry.documents.modifyBatch(operations);
   }
 
   /* -------------------------------------------------- */

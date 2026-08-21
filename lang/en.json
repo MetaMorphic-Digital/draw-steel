@@ -76,6 +76,24 @@
           }
         }
       },
+      "ACTOR_CHOICE": {
+        "FIELDS": {
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many actors can be picked when this advancement is configured. If left blank or if the number is greater than the number of actors available, all the actors are selected.",
+            "placeholder": "Choose All"
+          },
+          "dsid": {
+            "label": "DSID",
+            "hint": "The DSID of the ability this is providing choices for."
+          },
+          "cost": {
+            "label": "Resource Cost",
+            "hint": "Leave blank for signature summons."
+          }
+        },
+        "SummonOption": "{name} ({count})"
+      },
       "CHARACTERISTIC": {
         "FIELDS": {
           "guaranteed": {
@@ -175,6 +193,7 @@
       "SHEET": {
         "requirements": "Requirements",
         "additional": "Additional",
+        "unknownActor": "Unknown Actor",
         "unknownItem": "Unknown Item",
         "unknownEffect": "Unknown Effect",
         "reconfigure": "Reconfigure Advancement",
@@ -184,7 +203,9 @@
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
         "restrictedType": "{type} items cannot be added as advancements.",
         "requirePack": "Granted documents must come from a compendium pack.",
-        "forbidParent": "Granted documents cannot be embedded in an actor."
+        "forbidParent": "Granted documents cannot be embedded in an actor.",
+        "restrictedTypeSummon": "{type} actors cannot be added as summon choices.",
+        "requirePackSummon": "Summonable Actors must come from a compendium pack."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -364,6 +385,14 @@
           "multiple": {
             "label": "Multiple"
           }
+        },
+        "summoning": {
+          "pool": {
+            "label": "Actors"
+          },
+          "count": {
+            "label": "Count"
+          }
         }
       },
       "persistent": "Persistent {value}",
@@ -500,6 +529,14 @@
         "Monsters": {
           "Label": "Monsters",
           "Title": "Draw Steel Monsters"
+        },
+        "Summoner": {
+          "Label": "Summoner",
+          "Title": "The Summoner"
+        },
+        "Beastheart": {
+          "Label": "Beastheart",
+          "Title": "The Beastheart"
         }
       },
       "Licenses": {
@@ -718,6 +755,31 @@
           "Rows": {
             "Input": "Base",
             "Advancement": "Advancement"
+          }
+        }
+      },
+      "companion": {
+        "FIELDS": {
+          "companion": {
+            "freeStrike": {
+              "label": "Free Strike"
+            },
+            "keywords": {
+              "label": "Keywords"
+            },
+            "role": {
+              "label": "Creature Role"
+            },
+            "master": {
+              "label": "Master"
+            }
+          }
+        },
+        "NoMaster": "{companion} does not have a linked master.",
+        "SpendRecovery": {
+          "tooltip": "Spend a {name} recovery to regain stamina.",
+          "Notifications": {
+            "Success": "{master} has spent a recovery to recover {companion}'s stamina."
           }
         }
       },
@@ -1016,7 +1078,17 @@
         "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
       },
       "Summoning": {
+        "ActorSelectDialog": {
+          "title": "Summon Actor",
+          "uuid": {
+            "label": "Actor",
+            "hint": "Choose an actor to summon, importing from compendium if it hasn't yet already."
+          }
+        },
         "Errors": {
+          "ACTOR_CREATE": "You do not have permission to import actors!",
+          "NO_ACTOR": "No actor found to summon!",
+          "NO_OPTIONS": "No valid summoning options!",
           "TOKEN_CREATE": "You do not have permission to create new Tokens!",
           "WILDCARD": "You must have 'Use File Browser' permissions to summon creatures with wildcard artwork."
         }
@@ -2520,6 +2592,7 @@
       "abilityModifier": "Ability Modifier"
     },
     "Actor": {
+      "companion": "Companion",
       "hero": "Hero",
       "npc": "NPC",
       "object": "Object",
@@ -2528,9 +2601,11 @@
     },
     "Advancement": {
       "characteristic": "Characteristic Increase",
+      "companion": "Companion",
       "effectGrant": "Effect Grant",
       "itemGrant": "Item Grant",
       "skill": "Skill",
+      "summon": "Summon Choice",
       "language": "Language"
     },
     "ChatMessage": {
@@ -2541,6 +2616,7 @@
     },
     "HINTS": {
       "Actor": {
+        "companion": "A wild animal who has forged a mystical bond with a Beastheart.",
         "hero": "A player character, created and run by a player other than the Director.",
         "npc": "A nonplayer character, usually created and run by the Director.",
         "object": "A terrain object is an element placed in an encounter that alters tactics on the battlefield, allowing the Director to better theme an encounter.",
@@ -2603,7 +2679,8 @@
       "base": "Effect",
       "persistent": "Persistent",
       "spend": "Spend",
-      "strained": "Strained"
+      "strained": "Strained",
+      "summon": "Summon"
     }
   },
   "TOKEN.MOVEMENT": {

@@ -89,6 +89,14 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  _onRelatedUpdate(update = {}, operation = {}) {
+    if (game.user.isActiveGM) this.combatant?.group?.system.refreshCaptainEffect?.();
+    return super._onRelatedUpdate(update, operation);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async _onOverrideSize(changes) {
     return this.resize(changes, { pan: false, animation: {
       duration: 500,

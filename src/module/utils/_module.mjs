@@ -1,5 +1,6 @@
 export * as advancement from "./advancement/_module.mjs";
 export { default as constructHTMLButton } from "./construct-html-button.mjs";
+export { default as createDocumentLink } from "./create-document-link.mjs";
 export { default as enrichHTML } from "./enrich-html.mjs";
 export { default as evaluateFormula } from "./evaluate-formula.mjs";
 export { default as getDocumentTypes } from "./get-document-types.mjs";

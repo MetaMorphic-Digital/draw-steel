@@ -5,7 +5,7 @@ import DrawSteelSystemModel from "../system-model.mjs";
  * @import DrawSteelTokenDocument from "../../documents/token.mjs";
  */
 
-const { HTMLField, SchemaField, TypedObjectField } = foundry.data.fields;
+const { HTMLField, SchemaField } = foundry.data.fields;
 
 export default class PartyModel extends DrawSteelSystemModel {
   /** @inheritdoc */
@@ -21,7 +21,7 @@ export default class PartyModel extends DrawSteelSystemModel {
    * The Actor subtypes allowed as members of a party.
    * @type {Set<string>}
    */
-  static ALLOWED_ACTOR_TYPES = new Set(["hero", "retainer"]);
+  static ALLOWED_ACTOR_TYPES = new Set(["hero", "retainer", "companion"]);
 
   /* -------------------------------------------------- */
 

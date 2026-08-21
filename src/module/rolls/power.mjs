@@ -63,6 +63,7 @@ export default class PowerRoll extends DSRoll {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static CHAT_TEMPLATE = systemPath("templates/rolls/power.hbs");
 
   /* -------------------------------------------------- */
@@ -152,78 +153,6 @@ export default class PowerRoll extends DSRoll {
       glyph: "#",
     },
   };
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Prompt the user with a roll configuration dialog.
-   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog.
-   * @return {Promise<PowerRollPrompt>} Based on evaluation made can either return an array of power rolls or chat messages.
-   */
-  static async prompt(options = {}) {
-    foundry.utils.logCompatibilityWarning("PowerRoll.prompt is deprecated without replacement.", { since: "1.0", until: "1.2" });
-
-    const type = options.type ?? "test";
-    const evaluation = options.evaluation ?? "message";
-    const formula = options.formula ?? "2d10";
-    options.modifiers ??= {};
-    options.modifiers.edges ??= 0;
-    options.modifiers.banes ??= 0;
-    options.modifiers.bonuses ??= 0;
-    options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
-    if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
-    if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
-    const typeLabel = _loc(this.TYPES[type].label);
-    let flavor = options.flavor ?? typeLabel;
-
-    this.getActorModifiers(options);
-    const context = {
-      type,
-      formula: this.replaceFormulaData(formula, options.data, { missing: "0" }),
-      modifiers: options.modifiers,
-      targets: options.targets,
-    };
-
-    if (options.skills) context.skills = options.skills;
-    if (options.skillModifiers) context.skillModifiers = options.skillModifiers;
-
-    const promptValue = await ds.applications.apps.PowerRollDialog.create({
-      context,
-      window: {
-        title: _loc("DRAW_STEEL.ROLL.Power.Prompt.Title", { typeLabel }),
-      },
-    });
-    if (!promptValue) return null;
-
-    const baseRoll = new this(formula, options.data, { damageSelection: promptValue.damage, skill: promptValue.skill });
-    await baseRoll.evaluate();
-
-    const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
-    const rolls = [];
-    const termData = baseRoll.terms[0].toJSON();
-    // Ensures `termData.options` is a copy instead of reference
-    termData.options = foundry.utils.deepClone(termData.options);
-    const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
-    for (const context of promptValue.rolls) {
-      if (options.ability) context.ability = options.ability;
-      if (promptValue.skill) flavor = `${flavor} — ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
-      const roll = new this(formula, options.data, { flavor, ...context });
-      roll.terms[0] = firstTerm;
-      switch (evaluation) {
-        case "none":
-          rolls.push(roll);
-          break;
-        case "evaluate":
-          rolls.push(await roll.evaluate({ allowInteractive: false }));
-          break;
-        case "message":
-          await roll.evaluate({ allowInteractive: false });
-          rolls.push(await roll.toMessage({ speaker }, { messageMode: promptValue.messageMode }));
-          break;
-      }
-    }
-    return { messageMode: promptValue.messageMode, rolls, baseRoll };
-  }
 
   /* -------------------------------------------------- */
 

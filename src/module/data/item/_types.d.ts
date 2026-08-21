@@ -84,18 +84,21 @@ declare module "./ability.mjs" {
       value: number | null;
     }
     power: {
-      /** Added during base data prep, not a schema value. */
+      /** Non-persisted. */
       characteristic: {
         key: string;
-        /** Null value during data prep or if no parent actor. */
         value: null | number;
       }
       roll: {
-        reactive: boolean;
-        /** Added during data prep. */
-        enabled: boolean;
-        formula: string;
         characteristics: Set<string>;
+        reactive: boolean;
+        formula: string;
+        /** Non-persisted. */
+        banes: number;
+        /** Non-persisted. */
+        edges: number;
+        /** Non-persisted, determined if there are power roll effects and it is not reactive. */
+        enabled: boolean;
       }
       effects: ModelCollection<PowerRollEffects>;
     }

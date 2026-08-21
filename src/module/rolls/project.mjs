@@ -77,61 +77,6 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user with a roll configuration dialog.
-   * @param {Partial<RollPromptOptions>} [options]
-   * @returns {Promise<ProjectRollPrompt | null>}
-   */
-  static async prompt(options = {}) {
-    foundry.utils.logCompatibilityWarning("ProjectRoll.prompt is deprecated without replacement.", { since: "1.0", until: "1.2" });
-    const evaluation = options.evaluation ?? "message";
-    const formula = options.formula ?? "2d10";
-    if (!["none", "evaluate", "message"].includes(evaluation)) {
-      throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
-    }
-    const flavor = options.flavor ?? _loc("DRAW_STEEL.ROLL.Project.Label");
-    options.modifiers ??= {};
-    options.modifiers.edges ??= 0;
-    options.modifiers.banes ??= 0;
-    options.modifiers.bonuses ??= 0;
-    options.skills ??= options.actor?.system.skills?.value ?? null;
-
-    const context = {
-      modifiers: options.modifiers,
-      skills: options.skills,
-      skillModifiers: options.skillModifiers,
-    };
-
-    const promptValue = await PowerRollDialog.create({
-      context,
-      window: {
-        title: "DRAW_STEEL.ROLL.Project.Label",
-      },
-    });
-
-    if (!promptValue) return null;
-
-    const roll = new this(formula, options.data, { flavor, ...promptValue.rolls[0] });
-    const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
-
-    let projectRoll;
-    switch (evaluation) {
-      case "none":
-        projectRoll = roll;
-        break;
-      case "evaluate":
-        projectRoll = await roll.evaluate();
-        break;
-      case "message":
-        projectRoll = await roll.toMessage({ speaker }, { messageMode: promptValue.messageMode });
-        break;
-    }
-
-    return { messageMode: promptValue.messageMode, projectRoll };
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Determines if this is a power roll with 2d10 base.
    * @returns {boolean}
    */

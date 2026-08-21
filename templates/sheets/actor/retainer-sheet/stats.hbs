@@ -95,14 +95,14 @@
       <legend>{{systemFields.retainer.fields.freeStrike.label}}</legend>
       <div class="free-strike">
         {{#if isPlay}}
-        {{#if gm}}
+        {{#if owner}}
         <button type="button" data-action="freeStrike">
           <i class="fa-solid fa-burst"></i>
-          {{system.retainer.freeStrike}}
+          {{system.freeStrike.value}}
         </button>
         {{else}}
         <span class="player-view">
-          {{system.retainer.freeStrike}}
+          {{system.freeStrike.value}}
         </span>
         {{/if}}
         {{else}}

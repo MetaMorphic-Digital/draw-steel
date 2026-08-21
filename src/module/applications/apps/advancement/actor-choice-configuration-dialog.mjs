@@ -3,27 +3,27 @@ import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
 
 /**
- * @import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
  * @import AdvancementNode from "../../../utils/advancement/node.mjs";
- * @import EffectGrantAdvancement from "../../../data/pseudo-documents/advancements/effect-grant-advancement.mjs";
+ * @import ActorChoiceAdvancement from "../../../data/pseudo-documents/advancements/actor-choice-advancement.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  */
 
 /**
- * @typedef EffectGrantConfigurationOptions
+ * @typedef ActorChoiceConfigurationOptions
  * @property {AdvancementNode} node   The node to configure.
  */
 
 /**
- * An application that controls the configuration of an effect grant advancement.
+ * An application that controls the configuration of an actor choice advancement.
  */
-export default class EffectGrantConfigurationDialog extends DSApplication {
+export default class ActorChoiceConfigurationDialog extends DSApplication {
   /**
-   * @param {ApplicationConfiguration & EffectGrantConfigurationOptions} options
+   * @param {ApplicationConfiguration & ActorChoiceConfigurationOptions} options
    */
   constructor({ node, ...options }) {
-    if (!(node.advancement?.type === "effectGrant")) {
-      throw new Error("An effect grant configuration dialog must be passed an AdvancementNode with an Effect Grant.");
+    if (!(node.advancement?.isActorChoice)) {
+      throw new Error("An actor choice configuration dialog must be passed an AdvancementNode with an Actor Choice.");
     }
     super(options);
     this.#node = node;
@@ -44,7 +44,7 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   static PARTS = {
     body: {
-      template: systemPath("templates/apps/advancement/effect-grant-configuration-dialog/body.hbs"),
+      template: systemPath("templates/apps/advancement/actor-choice-configuration-dialog/body.hbs"),
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
@@ -55,7 +55,7 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
 
   /**
    * The advancement being configured.
-   * @type {EffectGrantAdvancement}
+   * @type {ActorChoiceAdvancement}
    */
   get advancement() {
     return this.#node.advancement;
@@ -76,13 +76,13 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * Cached reference to the effects this can be configuring. Constructed during the first run of _prepareContext.
-   * @type {Set<DrawSteelActiveEffect>}
+   * Cached reference to the actors this can be configuring. Constructed during the first run of _prepareContext.
+   * @type {Set<DrawSteelActor>}
    */
-  #effects;
+  #actors;
   // eslint-disable-next-line @jsdoc/require-jsdoc
-  get effects() {
-    return this.#effects;
+  get actors() {
+    return this.#actors;
   }
 
   /* -------------------------------------------------- */
@@ -118,10 +118,10 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   async _prepareContext(options) {
     if (options.isFirstRender) {
-      this.#effects = new Set(Object.values(this.node.choices).map(choice => choice.effect));
+      this.#actors = new Set(Object.values(this.node.choices).map(choice => choice.actor));
 
-      this.effects.forEach(effect => {
-        if (this.node.selected[effect.uuid]) this.chosen.add(effect.uuid);
+      this.actors.forEach(actor => {
+        if (this.node.selected[actor.uuid]) this.chosen.add(actor.uuid);
       });
     }
 
@@ -168,7 +168,7 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
 
     const totalChosen = this.totalChosen;
 
-    context.effects = this.effects.map(e => {
+    context.actors = this.actors.map(e => {
       const chosen = this.chosen.has(e.uuid) || (this.advancement.chooseN == null);
       const disabled = !chosen && (totalChosen >= this.advancement.chooseN);
       return {
