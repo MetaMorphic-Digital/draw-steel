@@ -20,17 +20,26 @@
 
 ## 1.2.0
 
-Increased foundry minimum to 14.366.
+Increased foundry minimum to 14.367.
 
 ### Added
 
+- Improved prone automation by integrating bane and edge application. (#246)
+- "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
+
 ### Changed
+
+- Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
 
 ### Deprecated
 
 ### Removed
 
+- Completed deprecation periods for `DrawSteelTokenLayer#performTokenPlacement`, `PowerRoll.prompt`, and `ProjectRoll.prompt`.
+
 ### Fixed
+
+- Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 
 ## 1.1.2
 
@@ -75,7 +84,6 @@ Increased foundry minimum to 14.366.
 - Retainers no longer show level-up when equal in level to their mentor. (#2015)
 - Dropping a class on a retainer will now prompt to delete the existing one. (#2030)
 - The "With Captain" select for minions can now be cleared.
-- Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 
 ## 1.1.1
 
