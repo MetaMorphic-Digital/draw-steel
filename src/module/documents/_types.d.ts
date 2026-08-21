@@ -77,6 +77,7 @@ declare module "@client/documents/_module.mjs" {
   interface BaseCombatant extends CombatantData, InstanceType<ClientDocument> {
     type: "base";
     system: CombatantModels.BaseCombatantModel;
+    group: DrawSteelCombatantGroup;
   }
 
   interface BaseJournalEntry extends JournalEntryData, InstanceType<ClientDocument> {

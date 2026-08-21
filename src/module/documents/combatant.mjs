@@ -42,6 +42,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
       }
       this.refreshCombatant();
     }
+    if (game.user.isActiveGM && ("defeated" in changed) && this.system.isCaptain) this.group.system.refreshCaptainEffect();
   }
 
   /* -------------------------------------------------- */
@@ -51,6 +52,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     super._onDelete(options, userId);
 
     this.group?.system.refreshSquad();
+    if (game.user.isActiveGM) this.group?.system.refreshCaptainEffect?.();
     this.refreshCombatant();
   }
 
