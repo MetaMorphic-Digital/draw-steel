@@ -757,7 +757,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * 
    */
   static #canReconfigAdvancement() {
-    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel.advancement", "parentId")
+    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel.advancement", "parentId");
     if (!advancementSource) return false;
     return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
   }
