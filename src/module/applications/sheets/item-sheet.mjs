@@ -757,7 +757,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * 
    */
   static #canReconfigAdvancement() {
-    return (this.item.parent && (this.item.flags["draw-steel"] != undefined));
+    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel.advancement", "parentId")
+    if (!advancementSource) return false;
+    return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
   }
 
   /**
@@ -766,8 +768,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @private
    */
   static async #rewindAdvancement() {
-    const advancementSource = this.item.parent.items.get(this.item.flags["draw-steel"].advancement.parentId);
-    const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.flags["draw-steel"].advancement["advancementId"]);
+    const advancementSource = this.item.parent.items.get(this.item.getFlag("draw-steel.advancement", "parentId");
+    const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
     await advancement.reconfigure();
   }
 
