@@ -47,7 +47,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         icon: "fa-solid fa-arrow-rotate-right",
         label: "DRAW_STEEL.ADVANCEMENT.SHEET.reconfigure",
         action: "rewindAdvancement",
-        visible: DrawSteelItemSheet.#canReconfigAdvancement,
+        visible: DrawSteelItemSheet.#canReconfigureAdvancement,
       }, {
         icon: "fa-solid fa-share-from-square",
         label: "DRAW_STEEL.SHEET.Share",
@@ -754,12 +754,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * If an item has an advancement that can be reconfigured.
    * @this DrawSteelItemSheet
    * @returns {bool}
-   * 
+   *
    */
-  static #canReconfigAdvancement() {
-    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel.advancement", "parentId");
+  static #canReconfigureAdvancement() {
+    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel", "advancement.parentId"));
     if (!advancementSource) return false;
-    return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
+    return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel", "advancement.advancementId"));
   }
 
   /**
@@ -768,8 +768,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @private
    */
   static async #rewindAdvancement() {
-    const advancementSource = this.item.parent.items.get(this.item.getFlag("draw-steel.advancement", "parentId");
-    const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
+    const advancementSource = this.item.parent.items.get(this.item.getFlag("draw-steel", "advancement.parentId"));
+    const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel", "advancement.advancementId"));
     await advancement.reconfigure();
   }
 
