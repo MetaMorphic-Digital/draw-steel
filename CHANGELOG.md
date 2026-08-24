@@ -24,6 +24,7 @@ Increased foundry minimum to 14.367.
 
 ### Added
 
+- Added Summons compendium to separate player-relevant actors from the monsters.
 - Improved prone automation by integrating bane and edge application. (#246)
 - "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
 - Implemented summoning as a new type of special effect. (#583)
@@ -44,6 +45,13 @@ Increased foundry minimum to 14.367.
 
 ### Fixed
 
+- Updated Player-Facing Compendium Content:
+  - Added fire type to Viscous Fire. (#2061)
+- Updated Director-Facing Compendium Content:
+  - Fixed description for Fossil Cryptic Villain Action 2. (#2043)
+  - Fixed With Captain effect on Decrepit Skeleton. (#2051)
+  - Fixed holy weakness on Chorogaunt and Muceron. (#2052)
+  - Fixed With Captain effect on Dwarf Driver. (#2062)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 
 ## 1.1.2
