@@ -1,0 +1,223 @@
+{
+  "folder": "JSp1h7zHZJxUNPG9",
+  "name": "Minion Improvement",
+  "type": "feature",
+  "_id": "g4rRmUDlo68usfif",
+  "img": "icons/magic/control/energy-stream-link-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your maximum number of minions increases by 4.</p><p>You can increase each of your minions' Stamina as shown on the 4th-Level Minion Stamina Increase table. Additionally, each minion that receives a Stamina boost can treat their characteristics as one higher for the purposes of resisting potencies (to a maximum value of 3).</p><p>These benefits are not reflected in the stat blocks of new minions you acquire.</p><header class=\"sc-head\"><div class=\"sc-head__stack\"><div class=\"sc-head__col sc-head__col--left\"><h4>4th-Level Minion Stamina Increase</h4></div></div><div class=\"sc-head__rail sc-head__col--right\"></div></header><div class=\"sc-trait__body\"><div class=\"md-typeset__scrollwrap\"><div class=\"md-typeset__table\"><div class=\"table-scroll-wrapper\"><table><thead><tr><th role=\"columnheader\" data-colwidth=\"156\"><p>Minion</p></th><th role=\"columnheader\" data-colwidth=\"147\"><p>Stamina Increase</p></th></tr></thead><tbody><tr><td data-colwidth=\"156\"><p>Signature Minion</p></td><td data-colwidth=\"147\"><p>Stamina +1</p></td></tr><tr><td data-colwidth=\"156\"><p>3-Essence Minion</p></td><td data-colwidth=\"147\"><p>Stamina +3</p></td></tr><tr><td data-colwidth=\"156\"><p>5-Essence Minion</p></td><td data-colwidth=\"147\"><p>Stamina +2</p></td></tr></tbody></table></div></div></div></div>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "33",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "minion-improvement",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [
+        "summoner"
+      ],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Signature Minion Stamina Increase",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.world.classes.Item.g4rRmUDlo68usfif",
+      "_id": "BQ859wY0P5fZL2Wf",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787605436337,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!g4rRmUDlo68usfif.BQ859wY0P5fZL2Wf"
+    },
+    {
+      "name": "3-Essence Minions Stamina Increase",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.world.classes.Item.g4rRmUDlo68usfif",
+      "_id": "DkEMaJ5X1vBByQqQ",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787605436337,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!g4rRmUDlo68usfif.DkEMaJ5X1vBByQqQ"
+    },
+    {
+      "name": "5-Essence Minion Stamina Increase",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.world.classes.Item.g4rRmUDlo68usfif",
+      "transfer": false,
+      "_id": "nZAzk18YM6klAfel",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787605436337,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!g4rRmUDlo68usfif.nZAzk18YM6klAfel"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1787605436337,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 0,
+  "_key": "!items!g4rRmUDlo68usfif"
+}

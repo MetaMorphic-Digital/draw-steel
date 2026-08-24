@@ -1,0 +1,120 @@
+{
+  "folder": "BVzXsj2Z6eRfba09",
+  "name": "Explosive Parade",
+  "type": "ability",
+  "_id": "09Tz5XBzvI2uNUKb",
+  "img": "icons/magic/fire/explosion-embers-evade-silhouette.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "explosive-parade",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your minions swell with energy until they can no longer exist in this realm.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": "5+@R",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "M4HLQxqR0j5LAmGp": {
+          "sort": 100000,
+          "name": "Summoning",
+          "img": null,
+          "type": "other",
+          "_id": "M4HLQxqR0j5LAmGp",
+          "other": {
+            "tier1": {
+              "display": "You summon four signature minions.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "You summon five signature minions.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "You summon six signature minions.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "n5CHbyiJ9HUX0NSj": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "n5CHbyiJ9HUX0NSj",
+        "description": "<p>The minions are summoned within distance regardless of your minion maximum and without organizing them into squads. Each newly summoned minion immediately moves up to their speed toward a creature or object.</p><p>If they move adjacent to their target, become targeted by an opportunity attack, or stop moving, they explode, dealing 2 damage to one adjacent creature or object and pushing them 1 square. If a target is affected by two or more minions' explosions, the effects stack. These minions activate no effects upon death, and you gain no essence from their deaths.</p>",
+        "before": false
+      },
+      "QOr8rdgnpvi7bIU9": {
+        "sort": 200000,
+        "name": "Special",
+        "img": null,
+        "type": "base",
+        "_id": "QOr8rdgnpvi7bIU9",
+        "description": "<p>In addition to the minions summoned as a part of this ability, you can choose to command any number of your minions within distance, provided they haven't used a main action or maneuver during the turn.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1787601017878,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!09Tz5XBzvI2uNUKb"
+}

@@ -1,0 +1,88 @@
+{
+  "folder": "c7Npa7d8ilwSrJHD",
+  "name": "Shield!",
+  "type": "ability",
+  "_id": "XbbJ3rqIJt4Rt9d2",
+  "img": "icons/magic/defensive/barrier-shield-dome-blue-purple.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "shield",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You call upon a minion to use their body to dampen the blow.",
+    "keywords": [],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target is targeted by a strike.",
+    "distance": {
+      "type": "ranged",
+      "primary": "5+@R",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "ktEqrT3yea2mqxsh": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "ktEqrT3yea2mqxsh",
+        "description": "<p>If one of your minions is adjacent to the target and is within distance of the strike, they become the new target of the strike.</p>",
+        "before": false
+      },
+      "HyiAFYrGzjztHaxT": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "HyiAFYrGzjztHaxT",
+        "description": "<p>Instead of commanding an existing minion, you summon a signature minion into an unoccupied space adjacent to the target to take the strike.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1787592443334,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!XbbJ3rqIJt4Rt9d2"
+}
