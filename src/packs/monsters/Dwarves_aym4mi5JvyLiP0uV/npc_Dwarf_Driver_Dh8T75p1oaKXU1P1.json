@@ -96,7 +96,8 @@
       ],
       "level": 1,
       "role": "harrier",
-      "organization": "minion"
+      "organization": "minion",
+      "withCaptainEffect": "coEXmOFamYiCIVwz"
     },
     "ev": 3,
     "statuses": {
@@ -104,109 +105,6 @@
     }
   },
   "items": [
-    {
-      "name": "With Captain",
-      "type": "feature",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to Stamina</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "106"
-        },
-        "_dsid": "with-captain",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [
-        {
-          "name": "With Captain",
-          "img": "icons/skills/social/intimidation-impressing.webp",
-          "type": "base",
-          "origin": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.a7emInE4cQxOrYoq",
-          "disabled": true,
-          "_id": "fSjGdUm0CN0YE7Sk",
-          "system": {
-            "end": {
-              "roll": "1d10 + @combat.save.bonus"
-            },
-            "changes": [
-              {
-                "key": "system.stamina.max",
-                "value": 2,
-                "priority": null,
-                "type": "add",
-                "phase": "initial"
-              }
-            ],
-            "project": {
-              "prerequisites": "",
-              "source": "",
-              "rollCharacteristic": [],
-              "yield": {
-                "kind": "weapon",
-                "amount": "1",
-                "display": ""
-              }
-            }
-          },
-          "duration": {
-            "value": null,
-            "units": "seconds",
-            "expiry": null,
-            "expired": false
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "transfer": true,
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "14.362",
-            "systemId": "draw-steel",
-            "systemVersion": "1.1.0",
-            "lastModifiedBy": null,
-            "modifiedTime": 1779886278534,
-            "createdTime": 1779886278534
-          },
-          "start": null,
-          "showIcon": 1,
-          "folder": null,
-          "_key": "!actors.items.effects!Dh8T75p1oaKXU1P1.KcZtLLfm2oeyoI2q.fSjGdUm0CN0YE7Sk"
-        }
-      ],
-      "folder": null,
-      "sort": -100000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "14.362",
-        "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null,
-        "createdTime": 1779886278536
-      },
-      "_id": "KcZtLLfm2oeyoI2q",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!Dh8T75p1oaKXU1P1.KcZtLLfm2oeyoI2q"
-    },
     {
       "name": "Handaxes",
       "type": "ability",
@@ -618,7 +516,74 @@
     "prependAdjective": false,
     "depth": 1
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.Dh8T75p1oaKXU1P1",
+      "disabled": true,
+      "_id": "coEXmOFamYiCIVwz",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>+2 bonus to stamina</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787579553553,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.effects!Dh8T75p1oaKXU1P1.coEXmOFamYiCIVwz"
+    }
+  ],
   "ownership": {
     "default": 0
   },
@@ -627,9 +592,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.364",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1757030716541,
     "modifiedTime": null,
     "lastModifiedBy": null
