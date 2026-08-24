@@ -35,6 +35,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
       shareDoc: this.#shareDoc,
+      rewindAdvancement: this.#rewindAdvancement,
     },
     window: {
       controls: [{
@@ -42,6 +43,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,
+      }, {
+        icon: "fa-solid fa-arrow-rotate-right",
+        label: "DRAW_STEEL.ADVANCEMENT.SHEET.reconfigure",
+        action: "rewindAdvancement",
+        visible: DrawSteelItemSheet.#canReconfigAdvancement,
       }, {
         icon: "fa-solid fa-share-from-square",
         label: "DRAW_STEEL.SHEET.Share",
@@ -742,6 +748,29 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       };
     } else createData = { type };
     ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.item });
+  }
+
+  /**
+   * If an item has an advancement that can be reconfigured.
+   * @this DrawSteelItemSheet
+   * @returns {bool}
+   * 
+   */
+  static #canReconfigAdvancement() {
+    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel.advancement", "parentId");
+    if (!advancementSource) return false;
+    return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
+  }
+
+  /**
+   * Finds which advanceemnt an item came from, calls the advancement's reconfigure.
+   * @this DrawSteelItemSheet
+   * @private
+   */
+  static async #rewindAdvancement() {
+    const advancementSource = this.item.parent.items.get(this.item.getFlag("draw-steel.advancement", "parentId");
+    const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel.advancement", "advancementId");
+    await advancement.reconfigure();
   }
 
   /**

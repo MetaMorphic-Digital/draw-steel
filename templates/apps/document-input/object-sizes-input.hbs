@@ -13,14 +13,14 @@
 
   {{!-- We expect fewer shapes than regions so we can afford to just have a long form if there's a few --}}
   <div class="standard-form scrollable">
-  {{#each shapeContexts as |shapeContext i|}}
-  <fieldset class="region-element region-shape flexrow" data-shape-index="{{i}}" aria-label="{{localize "SHAPE.label"}} 0">
-    <legend>
-      {{localize (concat "SHAPE.TYPES." shapeContext.shape.type ".name")}}
-      <button type="button" class="icon fa-solid fa-trash" data-action="deleteShape"></button>
-    </legend>
-    {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shapeContext.shape.type ".hbs") shapeContext }}
-  </fieldset>
-  {{/each}}
+    {{#each shapeContexts as |shapeContext i|}}
+    <fieldset class="region-element region-shape flexrow" data-shape-index="{{i}}" aria-label="{{localize "SHAPE.label"}} 0">
+      <legend>
+        {{localize (concat "SHAPE.TYPES." shapeContext.shape.type ".name")}}
+        <button type="button" class="icon fa-solid fa-trash" data-action="deleteShape"></button>
+      </legend>
+      {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shapeContext.shape.type ".hbs") shapeContext }}
+    </fieldset>
+    {{/each}}
   </div>
 </section>
