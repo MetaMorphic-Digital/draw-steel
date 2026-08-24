@@ -19,9 +19,9 @@ export interface LocalDocumentFieldOptions extends StringFieldOptions {
    * Read the value as a string instead of a model?
    * @defaultValue `false`
    */
- idOnly?: boolean;
+  idOnly?: boolean;
 
- /**
+  /**
   * The document subtype referenced by this field.
   * @defaultValue `null`
   */

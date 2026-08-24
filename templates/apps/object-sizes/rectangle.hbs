@@ -6,13 +6,13 @@
   {{formField fields.height name=(concat name ".height") value=source.height input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
 
   <div class="form-group slim">
-      <label>{{localize "SHAPE.TYPES.rectangle.anchor.label"}}</label>
-      <div class="form-fields">
-          <label for="{{rootId}}-{{fields.anchorX.fieldPath}}">X</label>
-          {{formInput fields.anchorX name=(concat name ".anchorX") value=source.anchorX id=(concat rootId "-" fields.anchorX.fieldPath)}}
-          <label for="{{rootId}}-{{fields.anchorY.fieldPath}}">Y</label>
-          {{formInput fields.anchorY name=(concat name ".anchorY") value=source.anchorY id=(concat rootId "-" fields.anchorY.fieldPath)}}
-      </div>
+    <label>{{localize "SHAPE.TYPES.rectangle.anchor.label"}}</label>
+    <div class="form-fields">
+      <label for="{{rootId}}-{{fields.anchorX.fieldPath}}">X</label>
+      {{formInput fields.anchorX name=(concat name ".anchorX") value=source.anchorX id=(concat rootId "-" fields.anchorX.fieldPath)}}
+      <label for="{{rootId}}-{{fields.anchorY.fieldPath}}">Y</label>
+      {{formInput fields.anchorY name=(concat name ".anchorY") value=source.anchorY id=(concat rootId "-" fields.anchorY.fieldPath)}}
+    </div>
   </div>
 
   {{formField fields.rotation name=(concat name ".rotation") value=source.rotation rootId=rootId classes="slim" units="MEASUREMENT.Degrees" localize=true}}
