@@ -1,3 +1,11 @@
+import DrawSteelItem from "../../../documents/item.mjs";
+
+declare module "./base-power-roll-effect.mjs" {
+  export default interface BasePowerRollEffect {
+    document: DrawSteelItem;
+  }
+}
+
 type PotencySchema = {
   value: string;
   characteristic: string;

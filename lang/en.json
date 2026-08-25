@@ -1078,6 +1078,10 @@
           "uuid": {
             "label": "Actor",
             "hint": "Choose an actor to summon, importing from compendium if it hasn't yet already."
+          },
+          "count": {
+            "label": "Count",
+            "hint": "How many signature minions to summon?"
           }
         },
         "Errors": {
@@ -2673,6 +2677,7 @@
     "SpecialEffect": {
       "base": "Effect",
       "persistent": "Persistent",
+      "portfolioSummon": "Summon (Portfolio)",
       "spend": "Spend",
       "strained": "Strained",
       "summon": "Summon"

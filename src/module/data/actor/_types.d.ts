@@ -61,6 +61,12 @@ interface Skills {
   list: string;
 }
 
+export interface SummonPortfolio {
+  uuid: string;
+  count: string;
+  cost: number | null
+}
+
 declare module "./base-actor.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;

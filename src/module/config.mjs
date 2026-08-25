@@ -2162,6 +2162,11 @@ export const SpecialEffect = {
     defaultImage: "icons/svg/teleport.svg",
     documentClass: pseudoDocuments.specialEffects.SummonSpecialEffect,
   },
+  portfolioSummon: {
+    label: "TYPES.SpecialEffect.portfolioSummon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.PortfolioSummonSpecialEffect,
+  },
 };
 preLocalize("SpecialEffect", { key: "label" });
 
