@@ -27,21 +27,19 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
    */
   async performSummon() {
     const hero = this.document.actor;
-    if (hero.type !== "hero") {
-      return void ui.notifications.error();
-    }
 
     /** @type {SummonPortfolio[]} */
-    const portfolio = hero.system._summonPortfolios[this.document.dsid];
-
-    if (!portfolio) return void ui.notifications.error();
-
-    // TODO: Sacrifice and other adjustments
-    const currentHR = hero.system.hero.primary.value;
+    const portfolio = hero.system._summonPortfolios[this.document.dsid] ?? [];
 
     const summonOptions = portfolio.reduce((options, o) => {
       const idx = fromUuidSync(o.uuid);
-      if (idx && (o.cost <= currentHR)) options.push({ label: idx.name, value: idx.uuid });
+      if (idx) options.push({
+        label: _loc("DRAW_STEEL.Actor.Summoning.ActorSelectDialog.optionLabel", {
+          name: idx.name,
+          cost: o.cost ?? _loc("DRAW_STEEL.Actor.Summoning.ActorSelectDialog.signature"),
+        }),
+        value: idx.uuid,
+      });
       return options;
     }, []);
 
@@ -66,12 +64,24 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
       input: createNumberInput({
         name: "count",
         min: 1,
-        max: hero.system.hero.primary.value,
+        value: 1,
       }),
       localize: true,
     });
 
-    content.append(uuidSelect, signatureCount);
+    const resourceCost = createFormGroup({
+      label: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.cost.label",
+      hint: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.cost.hint",
+      input: createNumberInput({
+        name: "cost",
+        min: 1,
+        max: hero.system.hero.primary.value,
+        value: portfolio[0].cost ?? 1,
+      }),
+      localize: true,
+    });
+
+    content.append(uuidSelect, signatureCount, resourceCost);
 
     const fd = await DSDialog.input({
       content,
@@ -81,19 +91,30 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
       },
       render: (ev, dialog) => {
         /** @type {HTMLInputElement} */
-        const signature = dialog.element.querySelector("[name=\"count\"]").closest(".form-group");
+        const costInput = dialog.element.querySelector("[name=\"cost\"]");
+        /** @type {HTMLInputElement} */
+        const signatureInput = dialog.element.querySelector("[name=\"count\"]");
+        signatureInput.addEventListener("change", (e) => {
+          costInput.value = e.target.value;
+        });
+        /** @type {HTMLDivElement} */
+        const signatureGroup = signatureInput.closest(".form-group");
         dialog.element.querySelector("[name=\"uuid\"]").addEventListener("change", (e) => {
-          signature.hidden = portfolio.find(o => o.uuid === e.target.value).cost !== null;
+          const { cost } = portfolio.find(o => o.uuid === e.target.value);
+          signatureGroup.hidden = cost !== null;
+          costInput.value = cost ?? signatureInput.value;
         });
       },
     });
 
     if (!fd) return null;
 
-    let { cost, count } = portfolio.find(o => o.uuid === fd.uuid);
+    const summonInfo = portfolio.find(o => o.uuid === fd.uuid);
+
+    const cost = fd.cost;
 
     // Signature minions have a null count & cost and instead just directly scale with the # summoned
-    if (!cost) count = cost = fd.count;
+    const count = summonInfo.count ?? fd.count;
 
     const tokens = await this.parent.performSummon(fd.uuid, { count });
 

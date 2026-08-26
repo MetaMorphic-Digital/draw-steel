@@ -1082,7 +1082,13 @@
           "count": {
             "label": "Count",
             "hint": "How many signature minions to summon?"
-          }
+          },
+          "cost": {
+            "label": "Cost",
+            "hint": "Total amount of heroic resource to spend on this summoning. Automatically adjusts after changing the other inputs."
+          },
+          "optionLabel": "{name} ({cost})",
+          "signature": "Signature"
         },
         "Errors": {
           "ACTOR_CREATE": "You do not have permission to import actors!",
