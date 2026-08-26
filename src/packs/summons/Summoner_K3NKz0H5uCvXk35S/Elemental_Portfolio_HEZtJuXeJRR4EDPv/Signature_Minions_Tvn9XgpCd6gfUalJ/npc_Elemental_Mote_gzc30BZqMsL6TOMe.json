@@ -1,13 +1,13 @@
 {
-  "folder": "lIP2ZfsKPXLypWjI",
-  "name": "Rasquine",
+  "folder": "Tvn9XgpCd6gfUalJ",
+  "name": "Elemental Mote",
   "type": "npc",
-  "_id": "WiHk1bOLtubsWiZV",
+  "_id": "gzc30BZqMsL6TOMe",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 2,
+      "max": 1,
       "temporary": 0
     },
     "combat": {
@@ -17,21 +17,21 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "T"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "<p>The rasquine are skulking demons that shimmer in the light. They teleport into position before biting the necks of their prey.</p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "movement": {
-      "value": 4,
+      "value": 5,
       "types": [
         "walk",
-        "teleport"
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -55,7 +55,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 1,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,16 +67,16 @@
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": 0
       },
       "agility": {
         "value": 0
       },
       "reason": {
-        "value": -1
+        "value": 0
       },
       "intuition": {
-        "value": -1
+        "value": 0
       },
       "presence": {
         "value": 2
@@ -84,7 +84,7 @@
     },
     "source": {
       "book": "Summoner",
-      "page": "13",
+      "page": "16",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,18 +96,18 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "abyssal"
+        "elemental"
       ],
-      "level": 1,
-      "role": "ambusher",
+      "level": 0,
+      "role": "",
       "organization": "minion",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Rasquine",
+    "name": "Elemental Mote",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -200,21 +200,21 @@
   },
   "items": [
     {
-      "name": "Skulker",
+      "name": "Dweomer Burst",
       "type": "feature",
-      "_id": "LmBmT89KWGkrenMr",
+      "_id": "Y2nO4788pnmYCRQb",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the [[lookup @name]] can hide as a free maneuver after teleporting.</p>",
+          "value": "<p>When the [[lookup @name]] is reduced to 0 Stamina, each enemy adjacent to the [[lookup @name]] has a bane on their next strike.</p>",
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": ""
+          "book": "Summoner",
+          "page": "16",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "",
+        "_dsid": "dweomer-burst",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -234,30 +234,31 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787747329597,
+        "createdTime": 1787755857165,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.LmBmT89KWGkrenMr"
+      "_key": "!actors.items!gzc30BZqMsL6TOMe.Y2nO4788pnmYCRQb"
     },
     {
-      "name": "Soulsight",
+      "name": "Catalyst",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "aBV9BdU1RsR7APqj",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
+          "value": "<p>Once per turn, the [[lookup @name]] can transform into an adjacent allied signature minion, maintaining their current Stamina. The minion must be reassigned to a new squad if their new name differs from the other squad members.</p><p>Alternatively, you can spend 1 essence to transform the [[lookup @name]] into any signature minion in the elemental portfolio you don't have, as if you summoned the new minion into the [[lookup @name]]'s space.</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "62"
+          "book": "Summoner",
+          "page": "16",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "soulsight",
+        "_dsid": "catalyst",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -265,30 +266,30 @@
           "level": null
         }
       },
-      "_id": "6J9lMMqHMOR8zWyO",
       "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "lastModifiedBy": null,
+        "createdTime": 1787755857165,
         "modifiedTime": null,
-        "createdTime": 1787747329597,
+        "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.6J9lMMqHMOR8zWyO"
+      "_key": "!actors.items!gzc30BZqMsL6TOMe.aBV9BdU1RsR7APqj"
     }
   ],
   "effects": [],
+  "sort": 150000,
   "ownership": {
     "default": 0
   },
@@ -297,13 +298,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1787747329597,
+    "createdTime": 1787755857165,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 0,
-  "_key": "!actors!WiHk1bOLtubsWiZV"
+  "_key": "!actors!gzc30BZqMsL6TOMe"
 }

@@ -1,8 +1,8 @@
 {
-  "folder": "lIP2ZfsKPXLypWjI",
-  "name": "Rasquine",
+  "folder": "JOnQLMCRUKq5IuTx",
+  "name": "Skeleton",
   "type": "npc",
-  "_id": "WiHk1bOLtubsWiZV",
+  "_id": "DJaSvLl2TYt3u04I",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
@@ -17,21 +17,20 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "M"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "<p>The rasquine are skulking demons that shimmer in the light. They teleport into position before biting the necks of their prey.</p>",
+      "value": "<p>These autonomous bone networks fall just short of replicating the structure they had in life. Skeleton bones are especially brittle and can splinter into huge shards when met with enough force.</p>",
       "director": "",
       "languages": []
     },
     "movement": {
-      "value": 4,
+      "value": 6,
       "types": [
-        "walk",
-        "teleport"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -55,7 +54,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 1,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,7 +66,7 @@
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": 2
       },
       "agility": {
         "value": 0
@@ -79,12 +78,12 @@
         "value": -1
       },
       "presence": {
-        "value": 2
+        "value": -1
       }
     },
     "source": {
-      "book": "Summoner",
-      "page": "13",
+      "book": "",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,18 +95,18 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "abyssal"
+        "undead"
       ],
       "level": 1,
-      "role": "ambusher",
+      "role": "harrier",
       "organization": "minion",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Rasquine",
+    "name": "Skeleton",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -200,13 +199,57 @@
   },
   "items": [
     {
-      "name": "Skulker",
+      "name": "Bonetrops",
       "type": "feature",
-      "_id": "LmBmT89KWGkrenMr",
+      "_id": "jhnjqLQcRjfNeeOi",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the [[lookup @name]] can hide as a free maneuver after teleporting.</p>",
+          "value": "<p>When the [[lookup @name]] is reduced to 0 Stamina, their square becomes difficult terrain for enemies. The first time any enemy enters this space, they take [[/damage 2]]{2 damage} and end this effect.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "23",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "bonetrops",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755879875,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!DJaSvLl2TYt3u04I.jhnjqLQcRjfNeeOi"
+    },
+    {
+      "name": "Corruption and Poison Immunity",
+      "type": "feature",
+      "_id": "kuNWYyPGX0sZfwTy",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>This creature has corruption immunity and poison immunity equal to your Reason.</p>",
           "director": ""
         },
         "source": {
@@ -214,7 +257,7 @@
           "page": "",
           "license": ""
         },
-        "_dsid": "",
+        "_dsid": "corruption-immunity-and-free-strike",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -223,59 +266,19 @@
         }
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1787747329597,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.LmBmT89KWGkrenMr"
-    },
-    {
-      "name": "Soulsight",
-      "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "62"
-        },
-        "_dsid": "soulsight",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
+      "flags": {
+        "draw-steel-plus": {
+          "favorite": false
         }
       },
-      "_id": "6J9lMMqHMOR8zWyO",
-      "effects": [],
-      "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "lastModifiedBy": null,
+        "createdTime": 1787755879875,
         "modifiedTime": null,
-        "createdTime": 1787747329597,
-        "compendiumSource": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.world.summoner-minions.Actor.0nKN4jqeroy5hNJ8.Item.kuNWYyPGX0sZfwTy",
         "duplicateSource": null,
         "exportSource": null
       },
@@ -285,10 +288,11 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.6J9lMMqHMOR8zWyO"
+      "_key": "!actors.items!DJaSvLl2TYt3u04I.kuNWYyPGX0sZfwTy"
     }
   ],
   "effects": [],
+  "sort": 200000,
   "ownership": {
     "default": 0
   },
@@ -297,13 +301,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1787747329597,
+    "createdTime": 1787755879875,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 0,
-  "_key": "!actors!WiHk1bOLtubsWiZV"
+  "_key": "!actors!DJaSvLl2TYt3u04I"
 }

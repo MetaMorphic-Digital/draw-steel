@@ -1,13 +1,13 @@
 {
-  "folder": "lIP2ZfsKPXLypWjI",
-  "name": "Rasquine",
+  "folder": "Tvn9XgpCd6gfUalJ",
+  "name": "Walking Boulder",
   "type": "npc",
-  "_id": "WiHk1bOLtubsWiZV",
+  "_id": "1PdvU41PZkp6ncK9",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 2,
+      "max": 3,
       "temporary": 0
     },
     "combat": {
@@ -16,14 +16,14 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
-        "letter": "S"
+        "value": 2,
+        "letter": "M"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "<p>The rasquine are skulking demons that shimmer in the light. They teleport into position before biting the necks of their prey.</p>",
+      "value": "<p>These massive clods of animated stone roll upon smaller piles of rocks that could be perceived as limbs. Walking boulders are useful for taking up space and forming barricades.</p>",
       "director": "",
       "languages": []
     },
@@ -31,7 +31,7 @@
       "value": 4,
       "types": [
         "walk",
-        "teleport"
+        "climb"
       ],
       "hover": false,
       "disengage": 1
@@ -55,7 +55,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 1,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,24 +67,24 @@
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": 2
       },
       "agility": {
-        "value": 0
+        "value": -2
       },
       "reason": {
-        "value": -1
+        "value": 0
       },
       "intuition": {
-        "value": -1
+        "value": 0
       },
       "presence": {
-        "value": 2
+        "value": 1
       }
     },
     "source": {
-      "book": "Summoner",
-      "page": "13",
+      "book": "",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,23 +96,23 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "abyssal"
+        "elemental"
       ],
       "level": 1,
-      "role": "ambusher",
+      "role": "",
       "organization": "minion",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Rasquine",
+    "name": "Walking Boulder",
     "displayName": 20,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
-    "depth": 1,
+    "width": 2,
+    "height": 2,
+    "depth": 2,
     "texture": {
       "src": "systems/draw-steel/assets/roles/minion.webp",
       "anchorX": 0.5,
@@ -200,13 +200,101 @@
   },
   "items": [
     {
-      "name": "Skulker",
+      "name": "Obstruct",
       "type": "feature",
-      "_id": "LmBmT89KWGkrenMr",
+      "_id": "RQeHlgiTPvCaD9a2",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the [[lookup @name]] can hide as a free maneuver after teleporting.</p>",
+          "value": "<p>The [[lookup @name]] obstructs line of effect for enemies.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "17",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "obstruct",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755857160,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!1PdvU41PZkp6ncK9.RQeHlgiTPvCaD9a2"
+    },
+    {
+      "name": "Pile Up (1 Essence)",
+      "type": "feature",
+      "_id": "hkI3IXgEaIT1wFuv",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>When one or more [[lookup @name]]s is reduced to 0 Stamina, they each leave behind a stone wall equal to their size in their space until the end of the encounter.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "17",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "pile-up",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755857160,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!1PdvU41PZkp6ncK9.hkI3IXgEaIT1wFuv"
+    },
+    {
+      "name": "Stablility",
+      "type": "feature",
+      "_id": "8oo6AlyM0ttBnMuy",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The [[lookup @name]] has stability equal to your reason.</p>",
           "director": ""
         },
         "source": {
@@ -234,61 +322,18 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787747329597,
+        "createdTime": 1787755857160,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.LmBmT89KWGkrenMr"
-    },
-    {
-      "name": "Soulsight",
-      "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "62"
-        },
-        "_dsid": "soulsight",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "_id": "6J9lMMqHMOR8zWyO",
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "lastModifiedBy": null,
-        "modifiedTime": null,
-        "createdTime": 1787747329597,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.6J9lMMqHMOR8zWyO"
+      "_key": "!actors.items!1PdvU41PZkp6ncK9.8oo6AlyM0ttBnMuy"
     }
   ],
   "effects": [],
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -297,13 +342,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1787747329597,
+    "createdTime": 1787755857160,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 0,
-  "_key": "!actors!WiHk1bOLtubsWiZV"
+  "_key": "!actors!1PdvU41PZkp6ncK9"
 }
