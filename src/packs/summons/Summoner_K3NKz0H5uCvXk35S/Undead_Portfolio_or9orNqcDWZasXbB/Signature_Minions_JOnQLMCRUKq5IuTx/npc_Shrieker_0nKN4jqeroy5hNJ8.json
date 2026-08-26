@@ -1,13 +1,13 @@
 {
-  "folder": "lIP2ZfsKPXLypWjI",
-  "name": "Rasquine",
+  "folder": "JOnQLMCRUKq5IuTx",
+  "name": "Shrieker",
   "type": "npc",
-  "_id": "WiHk1bOLtubsWiZV",
+  "_id": "0nKN4jqeroy5hNJ8",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 2,
+      "max": 1,
       "temporary": 0
     },
     "combat": {
@@ -17,21 +17,20 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "M"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "<p>The rasquine are skulking demons that shimmer in the light. They teleport into position before biting the necks of their prey.</p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "movement": {
       "value": 4,
       "types": [
-        "walk",
-        "teleport"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -55,7 +54,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 1,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,16 +66,16 @@
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": -2
       },
       "agility": {
-        "value": 0
+        "value": -2
       },
       "reason": {
-        "value": -1
+        "value": 0
       },
       "intuition": {
-        "value": -1
+        "value": 0
       },
       "presence": {
         "value": 2
@@ -84,7 +83,7 @@
     },
     "source": {
       "book": "Summoner",
-      "page": "13",
+      "page": "23",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -98,16 +97,16 @@
     "monster": {
       "freeStrike": 2,
       "keywords": [
-        "abyssal"
+        "undead"
       ],
       "level": 1,
-      "role": "ambusher",
+      "role": "artillery",
       "organization": "minion",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Rasquine",
+    "name": "Shrieker",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -194,19 +193,155 @@
     },
     "movementAction": null,
     "flags": {},
-    "randomImg": false,
+    "randomImg": true,
     "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Skulker",
+      "name": "Howling Strike",
       "type": "feature",
-      "_id": "LmBmT89KWGkrenMr",
+      "_id": "8RAqhllY3IlQPOTv",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the [[lookup @name]] can hide as a free maneuver after teleporting.</p>",
+          "value": "<p>The [[lookup @name]]'s ranged free strikes have a distance of 12.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "23",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "howling-strike",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755879873,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!0nKN4jqeroy5hNJ8.8RAqhllY3IlQPOTv"
+    },
+    {
+      "name": "Shrill Alarm",
+      "type": "feature",
+      "_id": "a3xUZrbvMCNQ3fdX",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Each enemy within 2 squares of the [[lookup @name]] can't hide or be hidden.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "23",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "shrill-alarm",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755879873,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!0nKN4jqeroy5hNJ8.a3xUZrbvMCNQ3fdX"
+    },
+    {
+      "name": "Corruption and Poison Immunity",
+      "type": "feature",
+      "_id": "kuNWYyPGX0sZfwTy",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>This creature has corruption immunity and poison immunity equal to your Reason.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "corruption-immunity-and-free-strike",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "flags": {
+        "draw-steel-plus": {
+          "favorite": false
+        }
+      },
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755879873,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.world.summoner-minions.Actor.GT0yJpFZZ2gtM4he.Item.kuNWYyPGX0sZfwTy",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!0nKN4jqeroy5hNJ8.kuNWYyPGX0sZfwTy"
+    },
+    {
+      "name": "Sonic Free Strikes",
+      "type": "feature",
+      "_id": "5ddK8ubkq6jo6mIs",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>This creature may choose to deal sonic damage on their free strikes.</p>",
           "director": ""
         },
         "source": {
@@ -234,61 +369,18 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787747329597,
+        "createdTime": 1787755879873,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.LmBmT89KWGkrenMr"
-    },
-    {
-      "name": "Soulsight",
-      "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "62"
-        },
-        "_dsid": "soulsight",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "_id": "6J9lMMqHMOR8zWyO",
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "lastModifiedBy": null,
-        "modifiedTime": null,
-        "createdTime": 1787747329597,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.6J9lMMqHMOR8zWyO"
+      "_key": "!actors.items!0nKN4jqeroy5hNJ8.5ddK8ubkq6jo6mIs"
     }
   ],
   "effects": [],
+  "sort": 150000,
   "ownership": {
     "default": 0
   },
@@ -297,13 +389,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1787747329597,
+    "createdTime": 1787755879873,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 0,
-  "_key": "!actors!WiHk1bOLtubsWiZV"
+  "_key": "!actors!0nKN4jqeroy5hNJ8"
 }
