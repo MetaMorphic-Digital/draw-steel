@@ -1,0 +1,246 @@
+{
+  "folder": "XLTepKKknqngECeR",
+  "name": "The Champion Slams the Earth",
+  "type": "ability",
+  "_id": "Jp3p68JwTNAiLsUB",
+  "img": "icons/magic/earth/strike-stone-stalactite-blood-red.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "the-champion-slams-the-earth",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your champion lays their fury upon those unfortunate enough to be in their wake.",
+    "keywords": [
+      "area",
+      "magic",
+      "weapon",
+      "champion"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": "4",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemyObject",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "rayjr29xGa7N5rqZ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "rayjr29xGa7N5rqZ",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "8",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "11",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "BOESoOmLLm8A10qL": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "BOESoOmLLm8A10qL",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} prone and can't stand (save ends)",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": ""
+                },
+                "88HrzeohpddIxNVH": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": ""
+                },
+                "88HrzeohpddIxNVH": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": ""
+                },
+                "88HrzeohpddIxNVH": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "turn"
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "mL9elGWZ358fGszP": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "mL9elGWZ358fGszP",
+        "description": "<p>You can use this ability as if in the space of one of your minions within your Summoner's Range.</p>",
+        "before": false
+      },
+      "sumBDisMI1fQABbm": {
+        "sort": 200000,
+        "name": "Special",
+        "img": null,
+        "type": "base",
+        "_id": "sumBDisMI1fQABbm",
+        "description": "<p>You can change the damage type to be a type that your champion deals on their stat block (see Portfolio Champion).</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "folder": "N0lpDp0tt06nvpAM",
+      "name": "Can't Stand",
+      "type": "base",
+      "img": "icons/skills/movement/arrow-down-pink.webp",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787700495017,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.gQX380Z2Rk63tssT",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "88HrzeohpddIxNVH",
+      "sort": 0,
+      "_key": "!items.effects!Jp3p68JwTNAiLsUB.88HrzeohpddIxNVH"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1787700332634,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Jp3p68JwTNAiLsUB"
+}

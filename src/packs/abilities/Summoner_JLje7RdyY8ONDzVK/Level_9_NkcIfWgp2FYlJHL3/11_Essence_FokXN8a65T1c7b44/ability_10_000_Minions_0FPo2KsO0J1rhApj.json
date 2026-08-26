@@ -1,0 +1,77 @@
+{
+  "folder": "FokXN8a65T1c7b44",
+  "name": "10,000 Minions",
+  "type": "ability",
+  "_id": "0FPo2KsO0J1rhApj",
+  "img": "icons/creatures/unholy/demons-horned-glowing-pink.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "10000-minions",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "The battle is now a war. Your entire army storms the field.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "special",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "It3PFDL9bYBXtQDa": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "It3PFDL9bYBXtQDa",
+        "description": "<p>Until the end of the encounter or you are dying, each square on the ground is considered teeming with minions. An enemy that ends their turn in an affected square takes [[/damage 5]]{5 damage}. This damage can't be reduced.</p><p>Additionally, you can use Minion Bridge treating each affected square as an eligible minion (up to a maximum of 10 additional squares).</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1787702144456,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!0FPo2KsO0J1rhApj"
+}
