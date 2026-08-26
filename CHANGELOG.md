@@ -53,6 +53,7 @@ Increased foundry minimum to 14.367.
   - Fixed holy weakness on Chorogaunt and Muceron. (#2052)
   - Fixed With Captain effect on Dwarf Driver. (#2062)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
+- Deleting an entry from a configuration page now works correctly. (#2042)
 
 ## 1.1.2
 
