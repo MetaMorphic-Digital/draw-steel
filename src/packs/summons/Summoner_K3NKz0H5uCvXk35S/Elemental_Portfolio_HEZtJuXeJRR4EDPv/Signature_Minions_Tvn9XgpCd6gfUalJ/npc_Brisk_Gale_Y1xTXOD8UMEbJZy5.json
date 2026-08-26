@@ -1,8 +1,8 @@
 {
-  "folder": "lIP2ZfsKPXLypWjI",
-  "name": "Rasquine",
+  "folder": "Tvn9XgpCd6gfUalJ",
+  "name": "Brisk Gale",
   "type": "npc",
-  "_id": "WiHk1bOLtubsWiZV",
+  "_id": "Y1xTXOD8UMEbJZy5",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
@@ -23,15 +23,15 @@
       "turns": 1
     },
     "biography": {
-      "value": "<p>The rasquine are skulking demons that shimmer in the light. They teleport into position before biting the necks of their prey.</p>",
+      "value": "<p>The gales are twisting ribbons of cloud and debris endlessly dancing in place. They disrupt the air and allow their allies to move freely.</p>",
       "director": "",
       "languages": []
     },
     "movement": {
-      "value": 4,
+      "value": 5,
       "types": [
         "walk",
-        "teleport"
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -55,7 +55,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 1,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,24 +67,24 @@
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": -2
       },
       "agility": {
-        "value": 0
+        "value": 2
       },
       "reason": {
-        "value": -1
+        "value": 0
       },
       "intuition": {
-        "value": -1
+        "value": 0
       },
       "presence": {
-        "value": 2
+        "value": 1
       }
     },
     "source": {
       "book": "Summoner",
-      "page": "13",
+      "page": "16",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,18 +96,18 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "abyssal"
+        "elemental"
       ],
-      "level": 1,
-      "role": "ambusher",
+      "level": 0,
+      "role": "",
       "organization": "minion",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Rasquine",
+    "name": "Brisk Gale",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -200,13 +200,13 @@
   },
   "items": [
     {
-      "name": "Skulker",
+      "name": "Sonic Immunity and Free Strike",
       "type": "feature",
-      "_id": "LmBmT89KWGkrenMr",
+      "_id": "emF03owyOUBSbAna",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the [[lookup @name]] can hide as a free maneuver after teleporting.</p>",
+          "value": "<p>This creature has sonic immunity equal to your Reason and can choose to do sonic damage for their free strikes.</p>",
           "director": ""
         },
         "source": {
@@ -234,30 +234,31 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787747329597,
+        "createdTime": 1787755857164,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.LmBmT89KWGkrenMr"
+      "_key": "!actors.items!Y1xTXOD8UMEbJZy5.emF03owyOUBSbAna"
     },
     {
-      "name": "Soulsight",
+      "name": "Cutting the Air",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "Sxvse0eybQ8lIJcw",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
+          "value": "<p>The [[lookup @name]] doesn't provoke opportunity attacks by moving.</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "62"
+          "book": "Summoner",
+          "page": "16",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "soulsight",
+        "_dsid": "cutting-the-air",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -265,30 +266,74 @@
           "level": null
         }
       },
-      "_id": "6J9lMMqHMOR8zWyO",
       "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "lastModifiedBy": null,
+        "createdTime": 1787755857164,
         "modifiedTime": null,
-        "createdTime": 1787747329597,
+        "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
+      "_key": "!actors.items!Y1xTXOD8UMEbJZy5.Sxvse0eybQ8lIJcw"
+    },
+    {
+      "name": "Whirlwind",
+      "type": "feature",
+      "_id": "SEFw1nNPO34XO99P",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>When the [[lookup @name]] is reduced to 0 Stamina, winds whip in their space until the end of the encounter. You or an ally that enters this space or starts their turn there can immediately shift (including vertically).</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "16",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "whirlwind",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
       "ownership": {
         "default": 0,
         "bULgfeSVOL2yapd0": 3
       },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.6J9lMMqHMOR8zWyO"
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755857164,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!Y1xTXOD8UMEbJZy5.SEFw1nNPO34XO99P"
     }
   ],
   "effects": [],
+  "sort": 200000,
   "ownership": {
     "default": 0
   },
@@ -297,13 +342,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1787747329597,
+    "createdTime": 1787755857164,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 0,
-  "_key": "!actors!WiHk1bOLtubsWiZV"
+  "_key": "!actors!Y1xTXOD8UMEbJZy5"
 }

@@ -1,13 +1,13 @@
 {
-  "folder": "lIP2ZfsKPXLypWjI",
-  "name": "Rasquine",
+  "folder": "XHhMisn8Y8JZl2xR",
+  "name": "Nixie Soakreed",
   "type": "npc",
-  "_id": "WiHk1bOLtubsWiZV",
+  "_id": "OxLozeAfr7iz08Fv",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": null,
-      "max": 2,
+      "value": 1,
+      "max": 1,
       "temporary": 0
     },
     "combat": {
@@ -17,21 +17,21 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "T"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "<p>The rasquine are skulking demons that shimmer in the light. They teleport into position before biting the necks of their prey.</p>",
+      "value": "<p>These nixies are especially tiny. Their hair grows longer than their bodies and curls into reeds. The water soakreeds swim in tends to turn thick and cling to surfaces.</p>",
       "director": "",
       "languages": []
     },
     "movement": {
-      "value": 4,
+      "value": 5,
       "types": [
         "walk",
-        "teleport"
+        "swim"
       ],
       "hover": false,
       "disengage": 1
@@ -55,7 +55,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 1,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,24 +67,24 @@
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": -2
       },
       "agility": {
-        "value": 0
+        "value": -1
       },
       "reason": {
-        "value": -1
+        "value": 0
       },
       "intuition": {
-        "value": -1
+        "value": 2
       },
       "presence": {
-        "value": 2
+        "value": 1
       }
     },
     "source": {
       "book": "Summoner",
-      "page": "13",
+      "page": "20",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -94,20 +94,20 @@
       "pitfalls": [],
       "impression": 1
     },
-    "ev": 0,
+    "ev": 1,
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "abyssal"
+        "fey"
       ],
       "level": 1,
-      "role": "ambusher",
+      "role": "controller",
       "organization": "minion",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Rasquine",
+    "name": "Nixie Soakreed",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -200,13 +200,13 @@
   },
   "items": [
     {
-      "name": "Skulker",
+      "name": "Water Weird",
       "type": "feature",
-      "_id": "LmBmT89KWGkrenMr",
+      "_id": "SZoC2eXcPou0hhb5",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the [[lookup @name]] can hide as a free maneuver after teleporting.</p>",
+          "value": "<p>Once per turn during their move action, each [[lookup @name]] under your control can teleport to a body of water within 5. The [[lookup @name]] can't teleport into water created by their own soaking bog.</p>",
           "director": ""
         },
         "source": {
@@ -234,30 +234,31 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787747329597,
+        "createdTime": 1787755861654,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.LmBmT89KWGkrenMr"
+      "_key": "!actors.items!OxLozeAfr7iz08Fv.SZoC2eXcPou0hhb5"
     },
     {
-      "name": "Soulsight",
+      "name": "Soaking Bog",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "njH17pEM8paKTbnm",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
+          "value": "<p>The area within 1 square of the [[lookup @name]] is filled with swampy water. An enemy that starts their turn in the area with [[potency A weak]] is [[/apply slowed turn]]. The potency increases by 1 for each additional soaking bog the target occupies (maximum +2).</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "62"
+          "book": "",
+          "page": "",
+          "license": ""
         },
-        "_dsid": "soulsight",
+        "_dsid": "",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -265,30 +266,74 @@
           "level": null
         }
       },
-      "_id": "6J9lMMqHMOR8zWyO",
       "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "lastModifiedBy": null,
+        "createdTime": 1787755861654,
         "modifiedTime": null,
-        "createdTime": 1787747329597,
+        "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
+      "_key": "!actors.items!OxLozeAfr7iz08Fv.njH17pEM8paKTbnm"
+    },
+    {
+      "name": "Miniscule",
+      "type": "feature",
+      "_id": "vSRZTdF0ismyQWJF",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The [[lookup @name]] has cover while occupying a larger creature's space.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "20",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "miniscule",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
       "ownership": {
         "default": 0,
         "bULgfeSVOL2yapd0": 3
       },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!WiHk1bOLtubsWiZV.6J9lMMqHMOR8zWyO"
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1787755861654,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!OxLozeAfr7iz08Fv.vSRZTdF0ismyQWJF"
     }
   ],
   "effects": [],
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -297,13 +342,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1787747329597,
+    "createdTime": 1787755861654,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 0,
-  "_key": "!actors!WiHk1bOLtubsWiZV"
+  "_key": "!actors!OxLozeAfr7iz08Fv"
 }
