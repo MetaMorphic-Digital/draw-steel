@@ -313,7 +313,7 @@ export default class HeroModel extends CreatureModel {
   /** @inheritdoc */
   async _onEndTurn(combatant) {
     await super._onEndTurn(combatant);
-    await this.parent.update({ "system.hero.primary.tracking": this.hero.primary.value });
+    await this.parent.update({ "system.hero.primary.tracking": this.hero.primary.value }, { render: false });
   }
 
   /* -------------------------------------------------- */
