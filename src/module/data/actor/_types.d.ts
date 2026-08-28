@@ -194,6 +194,7 @@ declare module "./npc.mjs" {
     evLabel: string;
     monster: {
       freeStrike: number;
+      freeStrikeType: string;
       keywords: Set<string> & { list: string[]; labels: string };
       level: number;
       role: string;

@@ -30,6 +30,7 @@
   {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max classes="slim"}}
   {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=document.uuid classes="slim"}}
   {{formGroup systemFields.monster.fields.freeStrike value=systemSource.monster.freeStrike rootId=document.uuid classes="slim"}}
+  {{formGroup systemFields.monster.fields.freeStrikeType value=systemSource.monster.freeStrikeType rootId=document.uuid options=damageOptions}}
   {{#if (eq system.monster.organization "minion")}}
   {{formGroup monsterFields.withCaptainEffect value=systemSource.monster.withCaptainEffect options=effects classes="inline"}}
   {{/if}}

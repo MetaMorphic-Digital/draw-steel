@@ -60,6 +60,7 @@ export default class MinionStatsInput extends DocumentInput {
         context.movement = this.document.system._getMovement();
         context.effects = this.document.effects.filter(e => !e.transfer).map(e => ({ label: e.name, value: e.id }));
         context.monsterFields = this.document.system.schema.getField("monster").fields;
+        context.damageOptions = Object.entries(ds.CONFIG.damageTypes).map(([type, { label }]) => ({ value: type, label }));
         break;
       case "immunities":
       case "weaknesses":
