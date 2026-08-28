@@ -24,4 +24,15 @@
   fieldset + .form-group {
     margin-top: 0.5rem;
   }
+
+  [data-application-part="ability"] {
+    .meleeRanged > span {
+      flex: 1;
+      text-align: center;
+      color: var(--color-form-label);
+      &:not(.label) {
+        font-weight:lighter;
+      }
+    }
+  }
 }

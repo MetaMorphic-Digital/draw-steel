@@ -31,6 +31,7 @@ Increased foundry minimum to 14.367.
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
 - Added new header button to repick items granted by advancements. (#1513)
 - Added support for Companions as a new actor type. (#2011)
+- Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
 
 ### Changed
 
