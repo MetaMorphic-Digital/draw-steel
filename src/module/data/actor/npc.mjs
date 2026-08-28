@@ -56,6 +56,7 @@ export default class NPCModel extends CreatureModel {
 
     schema.monster = new fields.SchemaField({
       freeStrike: requiredInteger({ initial: 0 }),
+      freeStrikeType: new fields.StringField({required:true, initial:""}),
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
@@ -182,7 +183,7 @@ export default class NPCModel extends CreatureModel {
     const freeStrike = {
       value: this.monster.freeStrike,
       keywords: keywords.add("strike"),
-      type: firstDamage?.damage.tier1.types.first() ?? "",
+      type: firstDamage?.damage.tier1.types.first() ?? this.monster.freeStrikeType,
       range: {
         melee: 1,
         ranged: 5,
