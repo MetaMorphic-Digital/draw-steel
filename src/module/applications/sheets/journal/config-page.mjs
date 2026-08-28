@@ -156,7 +156,7 @@ export default class ConfigPage extends foundry.applications.sheets.journal.Jour
   static async #removeEntry(event, target) {
     const { path, index } = target.dataset;
 
-    const updatedArray = this.document.system[path].splice(index, 1);
+    const updatedArray = this.document.system[path].toSpliced(index, 1);
 
     return this.document.update({ [`system.${path}`]: updatedArray });
   }
