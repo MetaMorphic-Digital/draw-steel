@@ -140,11 +140,6 @@ declare module "./creature.mjs" {
 }
 
 declare module "./hero.mjs" {
-  type HeroicResource = {
-    value: number;
-    label?: string;
-  };
-
   export default interface HeroModel {
     combat: Combat & {
       initiativeThreshold: number;
@@ -155,8 +150,15 @@ declare module "./hero.mjs" {
       divisor: number;
     };
     hero: {
-      primary: HeroicResource;
-      epic: HeroicResource;
+      primary: {
+        value: number;
+        tracking: number;
+        label?: string;
+      };
+      epic: {
+        value: number;
+        label?: string;
+      };
       xp: number;
       renown: number;
       wealth: number;
