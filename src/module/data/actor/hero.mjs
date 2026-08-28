@@ -7,6 +7,7 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
+ * @import { SummonPortfolio } from "./_types"
  */
 
 const fields = foundry.data.fields;
@@ -403,6 +404,17 @@ export default class HeroModel extends CreatureModel {
    * @internal
    */
   _respiteAdvancements = {};
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Internal record used to cache summon advancements to track the available summons in the portfolio.
+   * Outer keys are portfolio ID, inner object is source UUID, count, and HR cost.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<string, SummonPortfolio[]>}
+   * @internal
+   */
+  _summonPortfolios = {};
 
   /* -------------------------------------------------- */
 
