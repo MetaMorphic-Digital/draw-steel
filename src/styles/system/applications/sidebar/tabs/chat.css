@@ -9,7 +9,7 @@
 
     /* "standard" chat messages that use parts */
     &.draw-steel {
-      >section:not(:last-of-type) {
+      > section:not(:last-of-type) {
         border-bottom: var(--sidebar-separator);
         padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;
@@ -23,6 +23,7 @@
         img {
           width: 40px;
         }
+
         .targetName {
           text-align: center;
           font-size: var(--font-size-16);
@@ -32,7 +33,16 @@
       }
 
       .message-part-flavor {
+        font-size: var(--font-size-16);
         font-style: italic;
+        text-align: center;
+
+        border-block-end: 1px solid var(--draw-steel-c-laserline);
+        border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+        border-image-slice: 1;
+
+        padding-inline-start: 4px;
+        margin-bottom: 4px;
       }
 
       .message-part-buttons {
