@@ -382,6 +382,20 @@ export default class AdvancementChain {
           _idMap.set(effect.id, effectData._id);
         }
       }
+      else if (node.advancement.isActorChoice) {
+        const { document: item, id } = node.advancement;
+        /** @type {ItemData} */
+        let itemData;
+
+        if (item.parent === this.actor) {
+          toUpdate[item.id] ??= { _id: item.id };
+          itemData = toUpdate[item.id];
+        } else {
+          itemData = toCreate[item.uuid];
+        }
+
+        foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
+      }
     }
 
     operations[0].data = Object.values(toCreate);

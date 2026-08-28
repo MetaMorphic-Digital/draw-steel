@@ -1078,7 +1078,17 @@
           "uuid": {
             "label": "Actor",
             "hint": "Choose an actor to summon, importing from compendium if it hasn't yet already."
-          }
+          },
+          "count": {
+            "label": "Count",
+            "hint": "How many signature minions to summon?"
+          },
+          "cost": {
+            "label": "Cost",
+            "hint": "Total amount of heroic resource to spend on this summoning. Automatically adjusts after changing the other inputs."
+          },
+          "optionLabel": "{name} ({cost})",
+          "signature": "Signature"
         },
         "Errors": {
           "ACTOR_CREATE": "You do not have permission to import actors!",
@@ -2676,6 +2686,7 @@
     "SpecialEffect": {
       "base": "Effect",
       "persistent": "Persistent",
+      "portfolioSummon": "Summon (Portfolio)",
       "spend": "Spend",
       "strained": "Strained",
       "summon": "Summon"

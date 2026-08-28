@@ -75,7 +75,15 @@ export default class ActorChoiceAdvancement extends BaseAdvancement {
 
   /** @inheritdoc */
   async configureAdvancement(node = null) {
-    const selection = await ActorChoiceConfigurationDialog.create({ node });
+
+    const path = `flags.draw-steel.advancement.${this.id}.selected`;
+    const chosen = node
+      ? Object.entries(node.selected).reduce((arr, [k, v]) => arr.concat(v ? k : []), [])
+      : this.document.isEmbedded
+        ? foundry.utils.getProperty(this.document, path) ?? []
+        : [];
+
+    const selection = await ActorChoiceConfigurationDialog.create({ advancement: this, chosen });
 
     if (!selection) return null;
 
@@ -90,7 +98,7 @@ export default class ActorChoiceAdvancement extends BaseAdvancement {
 
     await Promise.allSettled(promises);
 
-    return { [`flags.draw-steel.advancement.${this.id}.selected`]: selection.choices };
+    return { [path]: selection.choices };
   }
 
   /* -------------------------------------------------- */
