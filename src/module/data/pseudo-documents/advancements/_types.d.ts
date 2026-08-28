@@ -1,4 +1,4 @@
-export {};
+import DrawSteelItem from "../../../documents/item.mjs";
 
 declare module "./actor-choice-advancement.mjs" {
   export default interface ActorChoiceAdvancement {
@@ -40,6 +40,7 @@ declare module "./base-advancement.mjs" {
     repick: {
       respite: null | "activity" | "finish";
     }
+    document: DrawSteelItem;
   }
 }
 
