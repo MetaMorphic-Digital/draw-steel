@@ -62,7 +62,7 @@
         {{localize "DRAW_STEEL.Actor.npc.MonsterAbilities.FieldsetLegend"}}
         {{#unless isPlay}}
         <a data-action="editMonsterMetadata">
-          <i class="fa-solid fa-gear"></i>
+          <i class="fa-solid fa-gear" inert></i>
         </a>
         {{/unless}}
       </legend>
@@ -71,7 +71,7 @@
         {{#if editable}}
         <button type="button" data-action="freeStrike">
           {{systemFields.monster.fields.freeStrike.label}}
-          <i class="fa-solid fa-burst"></i>
+          <i class="fa-solid fa-burst" inert></i>
           {{system.freeStrike.value}}
         </button>
         {{else}}

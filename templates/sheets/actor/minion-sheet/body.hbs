@@ -21,7 +21,7 @@
       {{#if editable}}
       <button type="button" data-action="freeStrike">
         {{system.monster.freeStrike}}
-        <i class="fa-solid fa-burst"></i>
+        <i class="fa-solid fa-burst" inert></i>
       </button>
       {{else}}
       {{system.monster.freeStrike}}
@@ -31,7 +31,7 @@
     {{else}}
     <button type="button" data-action="editMinionStats">
       {{localize "DRAW_STEEL.Actor.npc.MinionStats.DialogTitle"}}
-      <i class="fa-solid fa-scroll"></i>
+      <i class="fa-solid fa-scroll" inert></i>
     </button>
     {{/if}}
   </div>
@@ -106,7 +106,7 @@
         {{#if abilityType.showAdd}}
         {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-plus" inert></i>
         </a>
         {{/with}}
         {{/if}}
@@ -120,7 +120,7 @@
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
             {{#if abilityContext.item.system.restricted}}
             <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.ability.Restricted">
-              <i class="fa-solid fa-triangle-exclamation"></i>
+              <i class="fa-solid fa-triangle-exclamation" inert></i>
             </div>
             {{/if}}
             <div class="name">
