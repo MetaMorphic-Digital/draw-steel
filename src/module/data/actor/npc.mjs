@@ -56,7 +56,7 @@ export default class NPCModel extends CreatureModel {
 
     schema.monster = new fields.SchemaField({
       freeStrike: requiredInteger({ initial: 0 }),
-      freeStrikeType: new fields.StringField({required:true, initial:""}),
+      freeStrikeType: new fields.StringField({ required: true, initial: "" }),
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
