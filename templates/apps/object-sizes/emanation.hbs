@@ -1,12 +1,12 @@
 <section class="standard-form">
-    <fieldset>
-        <legend>{{localize "SHAPE.TYPES.emanation.FIELDS.base.label"}}: {{localize (concat "SHAPE.TYPES." shape.base.type ".name")}}</legend>
-        {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shape.base.type ".hbs") baseContext }}
-    </fieldset>
+  <fieldset>
+    <legend>{{localize "SHAPE.TYPES.emanation.FIELDS.base.label"}}: {{localize (concat "SHAPE.TYPES." shape.base.type ".name")}}</legend>
+    {{> (concat "systems/draw-steel/templates/apps/object-sizes/" shape.base.type ".hbs") baseContext }}
+  </fieldset>
 
-    {{formField fields.radius name=(concat name ".radius") value=source.radius input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+  {{formField fields.radius name=(concat name ".radius") value=source.radius input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
 
-    {{#if fields.hole}}
-    {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
-    {{/if}}
+  {{#if fields.hole}}
+  {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
+  {{/if}}
 </section>

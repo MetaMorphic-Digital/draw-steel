@@ -1,3 +1,4 @@
+import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import DSRoll from "../../../rolls/base.mjs";
 import StandardModel from "../../message/standard.mjs";
 
@@ -17,6 +18,7 @@ declare module "./ability-use.mjs" {
 declare module "./base-message-part.mjs" {
   export default interface MessagePart {
     parent: StandardModel;
+    document: DrawSteelChatMessage;
     type: string;
     rolls: DSRoll[],
     flavor: string;
@@ -26,6 +28,14 @@ declare module "./base-message-part.mjs" {
 declare module "./hero-token.mjs" {
   export default interface HeroTokenPart {
     spendType: string;
+  }
+}
+
+declare module "./target-result.mjs" {
+  export default interface TargetResult {
+    abilityUuid: string;
+    tier: number;
+    targetUuid: string;
   }
 }
 

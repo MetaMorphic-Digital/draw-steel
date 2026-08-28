@@ -17,7 +17,18 @@
 
       .message-part-header {
         display: flex;
-        justify-content: end;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+
+        img {
+          width: 40px;
+        }
+        .targetName {
+          text-align: center;
+          font-size: var(--font-size-16);
+          font-weight: bold;
+          line-height: 30px;
+        }
       }
 
       .message-part-flavor {

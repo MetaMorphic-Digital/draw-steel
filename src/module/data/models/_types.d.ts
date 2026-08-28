@@ -1,4 +1,4 @@
-export {}
+export {};
 
 declare module "./object-size.mjs" {
   export default interface ObjectSizeModel {

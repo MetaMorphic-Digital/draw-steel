@@ -1,15 +1,17 @@
 <section class="standard-form scrollable">
-    <div class="form-group slim">
-        <label>{{localize "SHAPE.TYPES.token.size.label"}} <span class="units">({{localize "MEASUREMENT.GridSpaces"}})</span></label>
-        <div class="form-fields slim">
-            <label for="{{rootId}}-token.width">X</label>
-            {{formInput fields.width name=(concat name ".base.width") value=source.width id=(concat rootId "-token.width")}}
-            <label for="{{rootId}}-token.height">Y</label>
-            {{formInput fields.height name=(concat name ".base.height") value=source.height id=(concat rootId "-token.height")}}
-        </div>
+  <div class="form-group slim">
+    <label>
+      {{localize "SHAPE.TYPES.token.size.label"}} <span class="units">({{localize "MEASUREMENT.GridSpaces"}})</span>
+    </label>
+    <div class="form-fields slim">
+      <label for="{{rootId}}-token.width">X</label>
+      {{formInput fields.width name=(concat name ".base.width") value=source.width id=(concat rootId "-token.width")}}
+      <label for="{{rootId}}-token.height">Y</label>
+      {{formInput fields.height name=(concat name ".base.height") value=source.height id=(concat rootId "-token.height")}}
     </div>
+  </div>
 
-    {{#if fields.hole}}
-    {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
-    {{/if}}
+  {{#if fields.hole}}
+  {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
+  {{/if}}
 </section>

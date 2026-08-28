@@ -607,7 +607,14 @@ export default class AbilityModel extends BaseItemModel {
 
       const evaluatedRolls = [];
 
+      const targets = [];
+
       for (const context of fd.rolls) {
+        // Strip from roll options
+        if (context.target) {
+          targets.push(context.target);
+          delete context.target;
+        }
         const roll = new PowerRoll(dialogConfig.context.formula, {}, { flavor: _loc(PowerRoll.TYPES.ability.label), ...context });
         roll.terms[0] = baseRoll.terms[0];
         await roll.evaluate({ allowInteractive: false });
@@ -615,17 +622,16 @@ export default class AbilityModel extends BaseItemModel {
         evaluatedRolls.push(roll);
       }
 
-      // Power Rolls grouped by tier of success
-      const groupedRolls = Object.groupBy(evaluatedRolls, roll => roll.product);
+      evaluatedRolls.sort((a, b) => a.product - b.product);
 
-      // Each tier group gets a message part. Rolls within a group are in the same message part
-      for (const tierNumber in groupedRolls) {
+      if (!targets.length) {
+        const tierNumber = evaluatedRolls[0].product;
         const partId = `tier${tierNumber}Result`.padEnd(16, "0");
 
         const rollPart = {
           _id: partId,
           type: "abilityResult",
-          rolls: groupedRolls[tierNumber],
+          rolls: evaluatedRolls,
           tier: tierNumber,
           abilityUuid: this.parent.uuid,
         };
@@ -643,6 +649,34 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         messageData.system.parts[partId] = rollPart;
+      }
+      else {
+        for (const [index, roll] of evaluatedRolls.entries()) {
+          const partId = foundry.utils.randomID();
+
+          const rollPart = {
+            _id: partId,
+            type: "targetResult",
+            rolls: [roll],
+            tier: roll.product,
+            abilityUuid: this.parent.uuid,
+            targetUuid: targets[index],
+          };
+
+          for (const damageEffect of this.power.effects.documentsByType.damage) {
+            const damageRoll = damageEffect.toDamageRoll(roll.product, {
+              damageSelection: fd.damage,
+              spend: Object.values(fd.spend ?? {}),
+            });
+            if (!damageRoll) continue;
+            await damageRoll.evaluate();
+            rollPart.rolls.push(damageRoll);
+            // If there's a roll, add it to the base message data for DSN purposes
+            if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
+          }
+
+          messageData.system.parts[partId] = rollPart;
+        }
       }
     }
 
