@@ -10,7 +10,9 @@
     /* "standard" chat messages that use parts */
     &.draw-steel {
       > section:not(:last-of-type) {
-        border-bottom: var(--sidebar-separator);
+        border-block-end: 1px solid var(--draw-steel-c-laserline);
+        border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+        border-image-slice: 1;
         padding-bottom: 0.5rem;
         margin-bottom: 0.5rem;
       }
@@ -45,6 +47,26 @@
         margin-bottom: 4px;
       }
 
+      .message-part-html {
+        document-embed {
+          box-shadow:
+            inset 0 0 8px var(--draw-steel-c-laserline);
+          border: 1px solid var(--draw-steel-c-color-shadow);
+          border-radius: 6px;
+
+          padding: 10px;
+          margin-top: 8px;
+
+          dl {
+            margin-block: 4px;
+          }
+
+          section.effect dd.effect p {
+            margin-block: 0px;
+          }
+        }
+      }
+
       .message-part-buttons {
         display: flex;
         flex-wrap: wrap;
@@ -53,6 +75,8 @@
     }
 
     footer {
+      justify-content: center;
+
       button {
         margin-top: 3px;
 
@@ -114,11 +138,11 @@
 
       .dice-result {
         .critical {
-          color: green;
+          color: var(--draw-steel-c-success);
         }
 
         .failure {
-          color: red;
+          color: var(--draw-steel-c-failure);
         }
       }
 
