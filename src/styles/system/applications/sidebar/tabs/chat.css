@@ -36,18 +36,20 @@
 
       .message-part-rolls {
         border-image-source: url(/systems/draw-steel/assets/ui/mcdm-box.svg);
-        border-image-slice: 20; /* 20 */
-        border-image-width: 60px; /* 60px */
+        border-image-slice: 20;
+        border-image-width: 60px;
         border-image-repeat: repeat;
 
         filter: drop-shadow(1px 1px 4px var(--draw-steel-c-laserline));
 
-        padding: 22px; /* 22px */
+        padding: 22px;
+        margin-block-end: -6px;
       }
 
       .message-part-flavor {
-        font-family: var(--font-h3); /* */
+        font-family: var(--font-h3);
         font-size: var(--font-h3-size);
+        line-height: 1;
         font-weight: bold;
         font-variant: small-caps;
         text-align: center;
@@ -56,20 +58,20 @@
         border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
         border-image-slice: 1;
 
-        margin-block-end: 4px;
+        margin-block: 4px -4px;
       }
 
       .message-part-html {
         document-embed {
           border-radius: 6px;
 
-                  border-image-source: url(/systems/draw-steel/assets/ui/mcdm-box.svg);
-        border-image-slice: 20; /* 20 */
-        border-image-width: 60px; /* 60px */
-        border-image-repeat: repeat;
+          border-image-source: url(/systems/draw-steel/assets/ui/mcdm-box.svg);
+          border-image-slice: 20;
+          border-image-width: 60px;
+          border-image-repeat: repeat;
 
           padding: 22px;
-          margin-top: 8px;
+          margin-block: 8px -8px;
 
           dl {
             margin-block: 4px;
@@ -134,7 +136,7 @@
         display: flex;
         gap: 5px;
         align-items: stretch;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
 
         .dice-formula {
           flex: 1;
@@ -155,7 +157,6 @@
             border-radius: 0px 3px 3px 0px;
             border: 1px solid var(--button-border-color);
             border-inline-start: var(--draw-steel-c-tan) solid 3px;
-
 
             &:hover {
               background-color: var(--button-hover-background-color);
@@ -179,6 +180,34 @@
           .dice-flavor {
             font-style: italic
           }
+        }
+      }
+
+      .dice-tooltip .dice {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 5px;
+
+        border-block-end: dotted 1px var(--draw-steel-c-tan);
+        margin-block: 3px;
+        margin-inline: 8px;
+
+        .part-header {
+          border-block-end: none;
+
+          .part-total {
+            display: none;
+          }
+
+          .part-formula {
+            align-self: self-end;
+          }
+        }
+
+        .dice-rolls {
+          padding-block-end: 3px;
+          margin-block-end: 0;
         }
       }
 
