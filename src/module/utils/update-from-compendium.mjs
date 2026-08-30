@@ -112,7 +112,7 @@ function gatherCollectionUpdates(operation, originalCollection, currentCollectio
         .forEach(([field, collection]) => gatherCollectionUpdates(operation, collection, currentEntry[field]));
     }
     // Items does not alter WorldCollection#fromCompendium
-    else toCreate.push(game.items.fromCompendium(original, { keepId: true, clearOwnership: false }));
+    else toCreate.push(game.items.fromCompendium(original, { keepId: true, clearOwnership: false, clearFolder: true }));
   }
   const documentName = originalCollection.documentName;
   operation.push(
