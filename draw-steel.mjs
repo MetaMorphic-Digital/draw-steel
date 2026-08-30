@@ -143,6 +143,10 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.NPC",
   });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelMinionSheet, {
+    types: ["npc"],
+    label: "DRAW_STEEL.SHEET.Labels.Minion",
+  });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelObjectSheet, {
     types: ["object"],
     makeDefault: true,

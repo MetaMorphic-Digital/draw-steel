@@ -6,7 +6,6 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
- * @import { NumberField } from "@common/data/fields.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  * @import { ActiveEffectCategory, ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
  * @import { DrawSteelActor, DrawSteelItem, DrawSteelTokenDocument } from "../../documents/_module.mjs";

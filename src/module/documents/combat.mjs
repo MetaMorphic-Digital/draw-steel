@@ -317,6 +317,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
         SavingThrowManager.delegateSavingThrow(effect);
       }
     }
+    combatant.actor?.system._onEndTurn(combatant);
   }
 
   /* -------------------------------------------------- */

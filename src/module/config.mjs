@@ -1477,9 +1477,9 @@ const abilityKeywords = {
   area: {
     label: "DRAW_STEEL.Item.ability.Keywords.Area",
   },
-  champion:{
-    label:"DRAW_STEEL.Item.ability.Keywords.Champion",
-    group:"DRAW_STEEL.Item.ability.KeywordGroups.Summoner"
+  champion: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Champion",
+    group: "DRAW_STEEL.Item.ability.KeywordGroups.Summoner",
   },
   charge: {
     label: "DRAW_STEEL.Item.ability.Keywords.Charge",
@@ -2166,6 +2166,11 @@ export const SpecialEffect = {
     label: "TYPES.SpecialEffect.summon",
     defaultImage: "icons/svg/teleport.svg",
     documentClass: pseudoDocuments.specialEffects.SummonSpecialEffect,
+  },
+  portfolioSummon: {
+    label: "TYPES.SpecialEffect.portfolioSummon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.PortfolioSummonSpecialEffect,
   },
 };
 preLocalize("SpecialEffect", { key: "label" });

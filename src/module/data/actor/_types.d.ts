@@ -61,6 +61,12 @@ interface Skills {
   list: string;
 }
 
+export interface SummonPortfolio {
+  uuid: string;
+  count: string;
+  cost: number | null
+}
+
 declare module "./base-actor.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
@@ -134,11 +140,6 @@ declare module "./creature.mjs" {
 }
 
 declare module "./hero.mjs" {
-  type HeroicResource = {
-    value: number;
-    label?: string;
-  };
-
   export default interface HeroModel {
     combat: Combat & {
       initiativeThreshold: number;
@@ -149,8 +150,15 @@ declare module "./hero.mjs" {
       divisor: number;
     };
     hero: {
-      primary: HeroicResource;
-      epic: HeroicResource;
+      primary: {
+        value: number;
+        tracking: number;
+        label?: string;
+      };
+      epic: {
+        value: number;
+        label?: string;
+      };
       xp: number;
       renown: number;
       wealth: number;
@@ -186,6 +194,7 @@ declare module "./npc.mjs" {
     evLabel: string;
     monster: {
       freeStrike: number;
+      freeStrikeType: string;
       keywords: Set<string> & { list: string[]; labels: string };
       level: number;
       role: string;

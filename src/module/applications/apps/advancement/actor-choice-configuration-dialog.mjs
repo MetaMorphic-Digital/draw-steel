@@ -11,7 +11,8 @@ import { systemPath } from "../../../constants.mjs";
 
 /**
  * @typedef ActorChoiceConfigurationOptions
- * @property {AdvancementNode} node   The node to configure.
+ * @property {ActorChoiceAdvancement} advancement   The advancement to configure.
+ * @property {string[]} chosen                      Chosen actors by UUID.
  */
 
 /**
@@ -21,12 +22,13 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
   /**
    * @param {ApplicationConfiguration & ActorChoiceConfigurationOptions} options
    */
-  constructor({ node, ...options }) {
-    if (!(node.advancement?.isActorChoice)) {
+  constructor({ advancement, chosen, ...options }) {
+    if (!(advancement?.isActorChoice)) {
       throw new Error("An actor choice configuration dialog must be passed an AdvancementNode with an Actor Choice.");
     }
     super(options);
-    this.#node = node;
+    this.#advancement = advancement;
+    this.chosen = new Set(chosen);
   }
 
   /* -------------------------------------------------- */
@@ -53,24 +55,13 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
+  #advancement;
   /**
    * The advancement being configured.
    * @type {ActorChoiceAdvancement}
    */
   get advancement() {
-    return this.#node.advancement;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * The node this is configuring. May be null.
-   * @type {AdvancementNode | null}
-   */
-  #node;
-  // eslint-disable-next-line @jsdoc/require-jsdoc
-  get node() {
-    return this.#node;
+    return this.#advancement;
   }
 
   /* -------------------------------------------------- */
@@ -79,7 +70,7 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
    * Cached reference to the actors this can be configuring. Constructed during the first run of _prepareContext.
    * @type {Set<DrawSteelActor>}
    */
-  #actors;
+  #actors = new Set();
   // eslint-disable-next-line @jsdoc/require-jsdoc
   get actors() {
     return this.#actors;
@@ -92,7 +83,7 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
    * A new set is constructed each time the form data is processed.
    * @type {Set<string>}
    */
-  chosen = new Set();
+  chosen;
 
   /* -------------------------------------------------- */
 
@@ -117,13 +108,8 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
 
   /** @inheritdoc */
   async _prepareContext(options) {
-    if (options.isFirstRender) {
-      this.#actors = new Set(Object.values(this.node.choices).map(choice => choice.actor));
-
-      this.actors.forEach(actor => {
-        if (this.node.selected[actor.uuid]) this.chosen.add(actor.uuid);
-      });
-    }
+    // fromUuid call respects caching
+    if (options.isFirstRender) for (const { uuid } of this.#advancement.actorOptions) this.#actors.add(await fromUuid(uuid));
 
     return super._prepareContext(options);
   }
