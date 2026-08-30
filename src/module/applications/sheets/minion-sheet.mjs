@@ -50,6 +50,7 @@ export default class DrawSteelMinionSheet extends DrawSteelNPCSheet {
         context.combatTooltip = this._getCombatTooltip();
         context.movement = this.actor.system._getMovement(true);
         context.damageIW = this.actor.system._getImmunitiesWeaknesses();
+        context.damageOption = ds.CONFIG.damageTypes[this.actor.system.freeStrike.type]?.label;
         context.features = await this._prepareFeaturesContext();
         context.featureFields = FeatureModel.schema.fields;
         context.abilities = await this._prepareAbilitiesContext();
