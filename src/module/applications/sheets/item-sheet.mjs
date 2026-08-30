@@ -800,7 +800,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       return result?.length ? effect : null;
     }
     const keepId = !this.item.effects.has(effect.id);
-    const effectData = game.items.fromCompendium(effect);
+    const effectData = game.items.fromCompendium(effect, { keepId, clearFolder: true });
     const result = await getDocumentClass("ActiveEffect").create(effectData, { parent: this.item, keepId });
     return result ?? null;
   }

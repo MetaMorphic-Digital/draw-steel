@@ -66,7 +66,6 @@ export default class ObjectSizeModel extends SizeModel {
           shapeData.base.x = shapeData.base.y = 0;
           shapeData.base.shape = CONST.TOKEN_SHAPES.RECTANGLE_1;
         }
-        console.log(shapeData);
         for (let i = 0; i < (shape.count ?? 1); i++) shapes.push(shapeData);
         return shapes;
       }, []),
