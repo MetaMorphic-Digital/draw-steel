@@ -6,7 +6,7 @@ import { setOptions } from "../../helpers.mjs";
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
  * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
  * @import { StatusEffectConfig } from "@client/config.mjs";
- * @import { AppliedEffectSchema } from "./_types";
+ * @import { AppliedEffectSchema, AppliedEffectAdjustmentSchema } from "./_types";
  * @import { DrawSteelActor } from "../../../documents/_module.mjs";
  */
 
@@ -187,6 +187,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       throw new Error(`${game.user.name} is not an owner of all the actors`);
     }
 
+    /** @type {AppliedEffectAdjustmentSchema} */
     const config = this.applied[tierKey].effects[effectId];
 
     const noStack = !config.properties.has("stacking");
@@ -197,6 +198,13 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const tempEffect = isStatus
       ? await DrawSteelActiveEffect.fromStatusEffect(effectId)
       : this.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
+
+    if (config.properties.has("originRollData")) {
+      const replacementData = this.document.getRollData();
+      const changeUpdates = foundry.utils.deepClone(tempEffect.system._source.changes);
+      for (const change of changeUpdates) if (typeof change.value === "string") change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
+      tempEffect.updateSource({ "system.changes": changeUpdates });
+    }
 
     const targetActors = options.targets ?? ds.utils.tokensToActors();
 
