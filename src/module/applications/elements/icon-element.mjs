@@ -33,7 +33,10 @@ export default class DSIconElement extends HTMLElement {
     const insertElement = html => {
       if (!html) return;
       const ids = new Map();
-      this.innerHTML = html.replaceAll(/__\d+__/g, match => {
+      // Sanitize fetched SVG markup before insertion to strip scripts, event handlers, and other
+      // executable content that could be embedded in a malicious or compromised source file.
+      const sanitized = DOMPurify.sanitize(html, { USE_PROFILES: { svg: true, svgFilters: true } });
+      this.innerHTML = sanitized.replaceAll(/__\d+__/g, match => {
         if (!ids.get(match)) ids.set(match, foundry.utils.randomID());
         return ids.get(match);
       });
