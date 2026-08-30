@@ -933,9 +933,10 @@ export default class AbilityModel extends BaseItemModel {
    * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
    * @param {Object} options
    * @param {number} [options.count=1]  How many tokens to summon.
+   * @param {DrawSteelActiveEffect[]} [options.effects] Effects to add to the summoned actors, evaluating based on this actor's roll data.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performSummon(uuid, { count = 1 } = {}) {
+  async performSummon(uuid, { count = 1, effects = [] } = {}) {
     /** @type {DrawSteelActor} */
     const sourceActor = await fromUuid(uuid);
 
@@ -956,6 +957,19 @@ export default class AbilityModel extends BaseItemModel {
       }, { keepId: true });
     }
 
-    return canvas.tokens.placeActor(worldActor, { count });
+    const actorUpdates = { effects: [] };
+
+    const replacementData = this.parent.getRollData();
+
+    for (const e of effects) {
+      const data = game.items.fromCompendium(e, { keepId: true, clearFolder: true });
+      for (const change of data.system.changes) {
+        if (typeof change.value !== "string") continue;
+        change.value = DrawSteelActiveEffect.implementation._replaceDataRefs(change.value, replacementData);
+      }
+      actorUpdates.effects.push(data);
+    }
+
+    return canvas.tokens.placeActor(worldActor, { count, actorUpdates });
   }
 }
