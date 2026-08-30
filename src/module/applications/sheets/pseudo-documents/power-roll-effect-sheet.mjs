@@ -15,7 +15,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
   static DEFAULT_OPTIONS = {
     actions: {
       addAppliedEffect: this.#addAppliedEffect,
-      addTierOneEffect: this.#addTierOneEffect,
+      copyTierOneEffect: this.#copyTierOneEffect,
       deleteAppliedEffectEntry: this.#deleteAppliedEffectEntry,
       editAppliedEffect: this.#editAppliedEffect,
     },
@@ -112,13 +112,15 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Add an entry to `applied.effects`.
    * @this PowerRollEffectSheet
    * @param {PointerEvent} event        The initiating click event.
    * @param {HTMLButtonElement} target  The capturing HTML element which defined a [data-action].
    */
-  static async #addTierOneEffect(event, target) {
+  static async #copyTierOneEffect(event, target) {
     const path = target.dataset.path;
     if (path.includes("1")) return;
     this.pseudoDocument.update({ [`${path}`]: this.pseudoDocument.applied.tier1.effects });

@@ -33,7 +33,9 @@
       </select>
     </div>
     <button type="button" class="icon fa-solid fa-plus" data-action="addAppliedEffect" data-path="{{effects.name}}"></button>
-    <button type="button" class="icon fa-solid fa-copy" data-action="addTierOneEffect" data-path="{{effects.name}}" data-tooltip="DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CopyTierOneEffect" data-tooltip-direction="UP"></button>
+    {{#unless (eq ../tab.id "tier1")}}
+    <button type="button" class="icon fa-solid fa-copy" data-action="copyTierOneEffect" data-path="{{effects.name}}" data-tooltip="DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CopyTierOneEffect" data-tooltip-direction="UP"></button>
+    {{/unless}}
   </div>
   {{#each effects.entries as |appliedEffect|}}
   <fieldset data-effect-id="{{appliedEffect.id}}" data-path="{{../effects.name}}">
