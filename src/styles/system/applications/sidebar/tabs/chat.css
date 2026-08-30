@@ -9,18 +9,12 @@
 
     /* "standard" chat messages that use parts */
     &.draw-steel {
-      > section:not(:last-of-type) {
-        border-block-end: 1px solid var(--draw-steel-c-laserline);
-        border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
-        border-image-slice: 1;
-        padding-bottom: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
       .message-part-header {
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
+
+        margin-block: -6px;
 
         img {
           width: 40px;
@@ -42,8 +36,9 @@
 
         filter: drop-shadow(1px 1px 4px var(--draw-steel-c-laserline));
 
-        padding: 22px;
+        padding: 22px 20px;
         margin-block-end: -6px;
+        margin-inline: -6px;
       }
 
       .message-part-flavor {
@@ -70,8 +65,13 @@
           border-image-width: 60px;
           border-image-repeat: repeat;
 
-          padding: 22px;
+          padding: 22px 20px;
           margin-block: 8px -8px;
+          margin-inline: -6px;
+
+          > h5 {
+            font-size: 1.25em;
+          }
 
           dl {
             margin-block: 4px;
@@ -106,6 +106,13 @@
 
       button {
         margin-top: 3px;
+        border: 1px solid var(--draw-steel-c-laserline);
+        background-color: transparent;
+        box-shadow: inset 0 0 4px var(--draw-steel-c-laserline);
+
+        &:hover {
+          background-color: var(--draw-steel-c-laserline);
+        }
 
         &.apply-effect {
 
@@ -130,6 +137,15 @@
         text-align: center;
         font-size: var(--font-size-16);
         font-weight: bold;
+      }
+
+      .dice-flavor {
+        font-style: italic;
+        padding-bottom: 2px;
+      }
+
+      .dice-total {
+        font-family: var(--font-h4);
       }
 
       .inline-result {
