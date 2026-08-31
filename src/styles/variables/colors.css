@@ -1,4 +1,5 @@
 /*:root,*/
+
 @scope (.theme-light) to (.themed) {
   --draw-steel-c-dark: #191813;
   --draw-steel-c-faint: #cdcdcd;
@@ -22,11 +23,31 @@
   --draw-steel-c-primary-party: #9F9175;
   --draw-steel-embed-separator-filter: grayscale(0.8) brightness(0.2);
   --draw-steel-c-thead-bg: rgb(185, 185, 185);
+
+  --draw-steel-svg-color: grayscale(100%) brightness(0%);
+
+  --draw-steel-background: var(--draw-steel-c-white);
+  --draw-steel-background-alt: var(--draw-steel-c-faint);
+
+  --draw-steel-form-background: var(--draw-steel-c-white);
+  --draw-steel-form-fieldset: var(--draw-steel-c-faint);
+  --draw-steel-form-border: var(--draw-steel-c-groove);
+  --draw-steel-form-accent: var(--draw-steel-c-laserline);
+  --draw-steel-form-outline: var(--draw-steel-c-laserline-rev);
+  --draw-steel-form-shadow: var(--draw-steel-c-tan);
+  --draw-steel-form-gradient-right: var(--draw-steel-c-faint);
+  --draw-steel-form-gradient-left: var(--draw-steel-c-beige);
+  --draw-steel-form-button: var(--draw-steel-c-beige);
+  --draw-steel-form-input: var(--draw-steel-c-beige);
+  --draw-steel-form-label: var(--draw-steel-c-black);
+  --draw-steel-form-tag-background: var(--draw-steel-c-faint);
+  --draw-steel-form-tag-text: var(--draw-steel-c-dark);
 }
 
 @scope (.theme-dark) to (.themed) {
   --draw-steel-c-dark: #c9c7b8;
   --draw-steel-c-faint: #191813;
+  --draw-steel-c-faint-2: #131208;
   --draw-steel-c-beige: #444444;
   --draw-steel-c-tan: #b5b3a4;
   --draw-steel-c-white: #000000;
@@ -45,4 +66,22 @@
   --draw-steel-c-primary-party: #b9578c;
   --draw-steel-embed-separator-filter: grayscale(0.8) brightness(0.2) invert(1);
   --draw-steel-c-thead-bg: var(--table-header-bg-color);
+
+  --draw-steel-svg-color: grayscale(100%) brightness(200%);
+
+  --draw-steel-background: var(--draw-steel-c-white);
+  --draw-steel-background-alt: var(--draw-steel-c-faint);
+
+  --draw-steel-form-background: var(--draw-steel-c-white);
+  --draw-steel-form-fieldset: var(--draw-steel-c-faint);
+  --draw-steel-form-border: var(--draw-steel-c-laserline);
+  --draw-steel-form-accent: var(--draw-steel-c-laserline);
+  --draw-steel-form-outline: var(--draw-steel-c-laserline-rev);
+  --draw-steel-form-shadow: var(--draw-steel-c-beige);
+  --draw-steel-form-gradient-right: var(--draw-steel-c-faint);
+  --draw-steel-form-gradient-left: var(--draw-steel-c-faint-2);
+  --draw-steel-form-button: var(--draw-steel-c-beige);
+  --draw-steel-form-label: var(--draw-steel-c-black);
+  --draw-steel-form-tag-background: var(--draw-steel-c-faint);
+  --draw-steel-form-tag-text: var(--draw-steel-c-dark);
 }
