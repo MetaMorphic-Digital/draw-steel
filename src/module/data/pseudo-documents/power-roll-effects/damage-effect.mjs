@@ -3,6 +3,10 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 
+/**
+ * @import { TextOptions } from "./_types";
+ */
+
 const { SchemaField, SetField } = foundry.data.fields;
 
 /**
@@ -137,9 +141,10 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
   /**
    * @param {1 | 2 | 3} tier
+   * @param {TextOptions} [options]
    * @inheritdoc
    */
-  toText(tier) {
+  toText(tier, options = {}) {
     const { value, types, potency, ignoredImmunities } = this.damage[`tier${tier}`];
     if (Number(value) === 0) return "";
 
@@ -174,7 +179,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     if (potency.characteristic === "none") return result;
 
-    const potencyString = this.toPotencyHTML(tier);
+    const potencyString = this.toPotencyHTML(tier, options.potencyBonus);
 
     return _loc("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
       damage: result,
