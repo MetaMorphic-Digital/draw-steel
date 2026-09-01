@@ -21,6 +21,20 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  constructButtons() {
+    return [ds.utils.constructHTMLButton({
+      label: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityUse.performSummon"),
+      icon: "fa-solid fa-transporter-2",
+      dataset: {
+        specialEffectId: this.id,
+        action: "performSummon",
+      },
+    })];
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Places summons.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
