@@ -1,0 +1,90 @@
+{
+  "folder": "42nW96il9JThmSoN",
+  "name": "Shadow in the Mist",
+  "type": "ability",
+  "_id": "AeLnnF7rSz0bv3Yp",
+  "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "shadow-in-the-mist",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "While everyone's eyes are drawn to your foe, you wreathe yourself in obscuring mist.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "An enemy within 10 squares deals damage to a creature other than you.",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "qygn70OyL1y1BjpN": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "qygn70OyL1y1BjpN",
+        "description": "<p>You become [[/apply invisible turn]] until the end of your next turn or you deal damage. You can then use the Hide maneuver even if you are observed and can move up to a number of squares equal to your Intuition score before or after using that maneuver.</p>",
+        "before": false
+      },
+      "Bz6TouJFvluyGivJ": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "Bz6TouJFvluyGivJ",
+        "description": "<p>You can move up to a number of squares equal to [[lookup 2*@I]]{twice your Intuition score} and ignore difficult terrain during this movement.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788356417778,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!AeLnnF7rSz0bv3Yp"
+}

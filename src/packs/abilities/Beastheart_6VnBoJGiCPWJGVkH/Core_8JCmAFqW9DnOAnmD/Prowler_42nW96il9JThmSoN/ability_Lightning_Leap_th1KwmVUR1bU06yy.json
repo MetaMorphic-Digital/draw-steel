@@ -1,0 +1,92 @@
+{
+  "folder": "42nW96il9JThmSoN",
+  "name": "Lightning Leap",
+  "type": "ability",
+  "_id": "th1KwmVUR1bU06yy",
+  "img": "icons/magic/lightning/bolt-blue.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "lightning-leap",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You summon a lightning bolt and ride it into battle.",
+    "keywords": [
+      "beastheart",
+      "magic",
+      "weapon"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "GFXN7KZrv5OhJBar": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "GFXN7KZrv5OhJBar",
+        "description": "<p>The target takes damage equal to [[/damage 3+@M]]{3 + your Might score}. Before you use this ability, you can jump up to a number of squares equal to your Intuition score in a straight line. During this jump, enemies' spaces don't count as difficult terrain for you. The target takes extra lightning damage equal to the number of squares you jumped this way.</p>",
+        "before": false
+      },
+      "CUDu5xiKFh1ucVN3": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "CUDu5xiKFh1ucVN3",
+        "description": "<p>Your jump doesn't provoke opportunity attacks.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788356048721,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!th1KwmVUR1bU06yy"
+}

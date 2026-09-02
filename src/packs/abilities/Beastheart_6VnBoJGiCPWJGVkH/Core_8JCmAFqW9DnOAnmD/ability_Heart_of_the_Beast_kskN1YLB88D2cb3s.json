@@ -1,0 +1,117 @@
+{
+  "folder": "8JCmAFqW9DnOAnmD",
+  "name": "Heart of the Beast",
+  "type": "ability",
+  "_id": "kskN1YLB88D2cb3s",
+  "img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "heart-of-the-beast",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "\"Better look away—this might not be pretty.\"",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "cqezgdWCUXC6G3wF": {
+        "sort": 300000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "cqezgdWCUXC6G3wF",
+        "description": "Your partner can shift up to their speed.",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      },
+      "O2CTfBik0U41PK9J": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "O2CTfBik0U41PK9J",
+        "description": "<p>You must spend a Recovery without regaining Stamina. Your partner gains temporary Stamina equal to your recovery value as they leap out of your chest. Your partner teleports to your space from any distance, even if they don't have line of effect to you.</p>",
+        "before": false
+      },
+      "ad9GzWwzavA80UI9": {
+        "sort": 400000,
+        "name": "Spend 1 - 5 Ferocity",
+        "img": null,
+        "type": "spend",
+        "_id": "ad9GzWwzavA80UI9",
+        "description": "<p>Your partner gains additional temporary Stamina equal to their Might score for each ferocity spent this way, to a maximum of five ferocity.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": true
+        }
+      },
+      "e6umv7e8SLM95JYE": {
+        "sort": 500000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "e6umv7e8SLM95JYE",
+        "description": "<p><span class=\"txt\">You restore your dead partner to life with 1 Stamina, even if their body was destroyed. They gain no temporary Stamina if you use this ability this way.</span></p>",
+        "before": false,
+        "resource": {
+          "value": 5,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788355044973,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!kskN1YLB88D2cb3s"
+}

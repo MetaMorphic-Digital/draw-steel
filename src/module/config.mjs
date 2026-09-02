@@ -1476,6 +1476,9 @@ const abilityKeywords = {
   area: {
     label: "DRAW_STEEL.Item.ability.Keywords.Area",
   },
+  beastheart: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Beastheart",
+  },
   champion: {
     label: "DRAW_STEEL.Item.ability.Keywords.Champion",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Summoner",
