@@ -51,7 +51,7 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>Until the start of your next turn, each time a target kills an enemy, they regain Stamina equal to [[/heal 5+@I]]{5 + your Intuition score}.</p>",
+        "description": "<p>Until the start of your next turn, each time a target kills an enemy, they regain Stamina equal to [[/heal 5+@I]]{5 + your Intuition score}.</p><p>[[/apply WNs9bih2ASCH0YzH originDuration=true]]</p>",
         "before": true,
         "name": "",
         "img": null,
@@ -59,7 +59,59 @@
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Reap",
+      "img": "icons/magic/death/weapon-scythe-rune-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.OqZbt8MOyCeVkd5z",
+      "transfer": false,
+      "_id": "WNs9bih2ASCH0YzH",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788359417495,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!OqZbt8MOyCeVkd5z.WNs9bih2ASCH0YzH"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -69,9 +121,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.365",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1756154752353,
     "modifiedTime": null,
     "lastModifiedBy": null
