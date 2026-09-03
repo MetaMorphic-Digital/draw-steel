@@ -24,6 +24,7 @@ export default class AbilityUsePart extends BaseMessagePart {
   static ACTIONS = {
     ...super.ACTIONS,
     rollTest: this.#rollTest,
+    persistent: this.#applyPersist,
     placeTemplate: this.#placeTemplate,
   };
 
@@ -134,6 +135,23 @@ export default class AbilityUsePart extends BaseMessagePart {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #placeTemplate(event, target) {
-    this.ability.system.placeTemplate();
+    await this.ability.system.placeTemplate();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to track the persistent cost to the user of this ability.
+   *
+   * @this AbilityUsePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #applyPersist(event, target) {
+    const item = this.ability;
+    if (!item) return void console.error("Source item no longer exists!");
+    const { specialEffectId } = target.dataset;
+    const specialEffect = item.system.effects.get(specialEffectId);
+    await specialEffect.applyPersist();
   }
 }
