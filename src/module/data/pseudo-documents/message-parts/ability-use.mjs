@@ -26,6 +26,7 @@ export default class AbilityUsePart extends BaseMessagePart {
     rollTest: this.#rollTest,
     persistent: this.#applyPersist,
     placeTemplate: this.#placeTemplate,
+    performSummon: this.#performSummon,
   };
 
   /* -------------------------------------------------- */
@@ -106,6 +107,12 @@ export default class AbilityUsePart extends BaseMessagePart {
         }));
       }
     }
+
+    for (const effectId of this.effects) {
+      const specialEffect = item.system.effects.get(effectId);
+      const buttons = specialEffect.constructButtons();
+      if (buttons) context.ctx.buttons.push(...buttons);
+    }
   }
 
   /* -------------------------------------------------- */
@@ -153,5 +160,21 @@ export default class AbilityUsePart extends BaseMessagePart {
     const { specialEffectId } = target.dataset;
     const specialEffect = item.system.effects.get(specialEffectId);
     await specialEffect.applyPersist();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform a given effect's summoning.
+   * @this AbilityUsePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #performSummon(event, target) {
+    const item = this.ability;
+    if (!item) return void console.error("Source item no longer exists!");
+    const { specialEffectId } = target.dataset;
+    const specialEffect = item.system.effects.get(specialEffectId);
+    await specialEffect.performSummon();
   }
 }
