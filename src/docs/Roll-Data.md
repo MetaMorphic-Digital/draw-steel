@@ -81,7 +81,7 @@ Most actors support the following roll attributes
 
 ### Statuses
 Value indicates if actor currently has status (1/yes, 0/no). Use with multiplication.
-+ Asleep:`@statuses.sleep`
++ Asleep: `@statuses.sleep`
 + Bleeding: `@statuses.bleeding`
 + Burning: `@statuses.burning`
 + Dazed: `@statuses.dazed`
@@ -144,5 +144,5 @@ Value indicates if actor currently has status (1/yes, 0/no). Use with multiplica
 ### Spend Info
 
 The amount of heroic resource/malice spent on an ability is available in both the Power Roll Effect as well as the text for the spend.
-- In the power roll effect, use `@spend.0` to reference the amount spent on the first spend effect, `@spend.0` for the second, etc.
+- In the power roll effect, use `@spend.0` to reference the amount spent on the first spend effect, `@spend.1` for the second, etc.
 - In the text of the individual effect, `@spend` is the amount spent on that effect.
