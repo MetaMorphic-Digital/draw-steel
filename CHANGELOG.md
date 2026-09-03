@@ -29,6 +29,7 @@ Increased foundry minimum to 14.367.
 - "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
 - Implemented summoning as a new type of special effect. (#583)
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
+- Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
 - Added support for Companions as a new actor type. (#2011)
 
@@ -54,6 +55,7 @@ Increased foundry minimum to 14.367.
   - Fixed With Captain effect on Dwarf Driver. (#2062)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 - Deleting an entry from a configuration page now works correctly. (#2042)
+- Fixed saving throw rolls not properly being contained in a saving throw message part.
 
 ## 1.1.2
 
