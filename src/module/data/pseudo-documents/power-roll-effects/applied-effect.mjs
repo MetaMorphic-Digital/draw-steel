@@ -201,10 +201,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
     if (config.properties.has("originRollData")) {
       const replacementData = this.document.getRollData();
-      const changeUpdates = foundry.utils.deepClone(tempEffect.system._source.changes);
-      for (const change of changeUpdates)
-        if (typeof change.value === "string")
-          change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
+      const changeUpdates = await DrawSteelActiveEffect.forApplication(tempEffect.system._source.changes, replacementData);
       tempEffect.updateSource({ "system.changes": changeUpdates });
     }
 
