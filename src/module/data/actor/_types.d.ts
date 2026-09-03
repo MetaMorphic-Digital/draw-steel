@@ -153,6 +153,7 @@ declare module "./hero.mjs" {
       primary: {
         value: number;
         tracking: number;
+        turnGain: string;
         label?: string;
       };
       epic: {
