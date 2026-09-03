@@ -965,7 +965,7 @@ export default class AbilityModel extends BaseItemModel {
       const data = game.items.fromCompendium(e, { keepId: true, clearFolder: true });
       for (const change of data.system.changes) {
         if (typeof change.value !== "string") continue;
-        change.value = DrawSteelActiveEffect.implementation._replaceDataRefs(change.value, replacementData);
+        change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
       }
       actorUpdates.effects.push(data);
     }
