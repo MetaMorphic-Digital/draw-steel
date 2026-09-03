@@ -64,10 +64,12 @@ export default class PersistentSpecialEffect extends BaseSpecialEffect {
     const parent = this.document.actor;
     if (!parent) throw new Error("No parent actor found to create Persistent AE!");
 
+    const descriptionBody = _loc("DRAW_STEEL.SPECIAL_EFFECT.persistentDescription");
+
     return foundry.documents.ActiveEffect.create({
       name: this.label,
       img: this.document.img,
-      description: "<p>If you take damage equal to our greater than [[lookup 5*@R evaluate]]{5 times your Reason score} in one turn, you stop maintaining any persistent abilities.</p>",
+      description: `<p>${foundry.utils.escapeHTML(descriptionBody)}</p>`,
       duration: {
         expiry: "combatEnd",
       },
