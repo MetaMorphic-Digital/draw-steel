@@ -26,12 +26,14 @@
   }
 
   [data-application-part="ability"] {
-    .meleeRanged > span {
-      flex: 1;
-      text-align: center;
-      color: var(--color-form-label);
-      &:not(.label) {
-        font-weight:lighter;
+    .meleeRanged {
+      button {
+        border-color: var(--button-border-color);
+      }
+
+      button.selected {
+        background: var(--button-hover-background-color);
+        color: var(--button-hover-text-color);
       }
     }
   }

@@ -195,7 +195,8 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     context.meleeRanged = {
       show: this.item.system.distance.type === "meleeRanged",
-      isMelee: this.item.system.damageDisplay === "melee",
+      meleeClass: `${this.item.system.damageDisplay === "melee" ? "selected " : ""}icon fa-solid fa-sword`,
+      rangedClass: `${this.item.system.damageDisplay === "ranged" ? "selected " : ""}icon fa-solid fa-bow-arrow`,
     };
 
     // Heroic resource/malice spend
@@ -319,7 +320,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #swapMeleeRanged(event, target) {
-    await this.item.update({ "system.damageDisplay": this.item.system.damageDisplay === "melee" ? "ranged" : "melee" });
+    await this.item.update({ "system.damageDisplay": target.dataset.value });
     this.render({ parts: ["ability"] });
   }
 }

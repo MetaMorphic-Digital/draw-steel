@@ -2,11 +2,9 @@
 <section class="ability-config">
   {{#if meleeRanged.show}}
   <div class="form-group meleeRanged">
-    <span class="{{#if meleeRanged.isMelee}}label{{/if}}">{{localize "DRAW_STEEL.Item.ability.Distance.Melee"}}</span>
-    <button type="button" data-action="swapMeleeRanged" data-tooltip="{{ifThen meleeRanged.isMelee "DRAW_STEEL.Item.ability.SwapUsage.ToRanged" "DRAW_STEEL.Item.ability.SwapUsage.ToMelee"}}">
-      <i class="fa-solid {{ifThen meleeRanged.isMelee "fa-sword" "fa-bow-arrow"}}" inert></i>
-    </button>
-    <span class="{{#unless meleeRanged.isMelee}}label{{/unless}}">{{localize "DRAW_STEEL.Item.ability.Distance.Ranged"}}</span>
+    <span class="label">{{localize "DRAW_STEEL.Item.ability.Distance.MeleeRanged"}}</span>
+    <button type="button" class="{{meleeRanged.meleeClass}}" data-action="swapMeleeRanged" data-value="melee" data-tooltip="DRAW_STEEL.Item.ability.SwapUsage.ToMelee"></button>
+    <button type="button" class="{{meleeRanged.rangedClass}}" data-action="swapMeleeRanged" data-value="ranged" data-tooltip="DRAW_STEEL.Item.ability.SwapUsage.ToRanged"></button>
   </div>
   {{/if}}
   {{#if resource.show}}
