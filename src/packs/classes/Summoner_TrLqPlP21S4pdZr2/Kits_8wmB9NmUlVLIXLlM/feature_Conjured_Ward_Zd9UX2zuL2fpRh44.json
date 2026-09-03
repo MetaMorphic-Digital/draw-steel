@@ -1,20 +1,20 @@
 {
-  "folder": "4ibJmGSRT5UnlcDh",
-  "name": "Elite Formation",
+  "folder": "8wmB9NmUlVLIXLlM",
+  "name": "Conjured Ward",
   "type": "feature",
-  "_id": "MJzpVrjJyRII6T9o",
-  "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
+  "_id": "Zd9UX2zuL2fpRh44",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue.webp",
   "system": {
     "description": {
-      "value": "<p>Each of your minions have their Stamina increased by 3 and their stability increased by 1.</p><p>[[/apply uX7GQ87sH6Xodpka]]</p>",
+      "value": "<p>You are clad in the natural defenses of your portfolio (bones, fairy wood, stone, writhing flesh). You gain a +3 bonus to Stamina and that bonus increases by 3 at 4th, 7th, and 10th levels.</p>",
       "director": ""
     },
     "source": {
       "book": "Summoner",
-      "page": "11",
+      "page": "32",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "elite-formation",
+    "_dsid": "conjured-ward",
     "advancements": {},
     "prerequisites": {
       "value": "",
@@ -24,25 +24,17 @@
   },
   "effects": [
     {
-      "name": "Elite Formation",
-      "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
-      "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.MJzpVrjJyRII6T9o",
-      "transfer": false,
-      "_id": "uX7GQ87sH6Xodpka",
+      "name": "Stamina Bonus",
+      "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.Zd9UX2zuL2fpRh44",
+      "_id": "O6DoKhSpUgE88ppC",
       "system": {
         "changes": [
           {
-            "key": "system.stamina.max",
+            "key": "system.stamina.bonuses.echelon",
             "type": "add",
             "value": 3,
-            "phase": "initial",
-            "priority": null
-          },
-          {
-            "key": "system.combat.stability",
-            "type": "add",
-            "value": 1,
             "phase": "initial",
             "priority": null
           }
@@ -59,6 +51,9 @@
             "amount": "1",
             "display": ""
           }
+        },
+        "filters": {
+          "keywords": []
         }
       },
       "disabled": false,
@@ -71,6 +66,7 @@
       },
       "description": "",
       "tint": "#ffffff",
+      "transfer": true,
       "statuses": [],
       "showIcon": 1,
       "folder": null,
@@ -80,17 +76,16 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788441730557,
+        "createdTime": 1788442074028,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!items.effects!MJzpVrjJyRII6T9o.uX7GQ87sH6Xodpka"
+      "_key": "!items.effects!Zd9UX2zuL2fpRh44.O6DoKhSpUgE88ppC"
     }
   ],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -99,12 +94,13 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788440966028,
+    "createdTime": 1788442074028,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!MJzpVrjJyRII6T9o"
+  "sort": 100000,
+  "_key": "!items!Zd9UX2zuL2fpRh44"
 }

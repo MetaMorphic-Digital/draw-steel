@@ -1,20 +1,20 @@
 {
-  "folder": "4ibJmGSRT5UnlcDh",
-  "name": "Elite Formation",
+  "folder": "98RDMwbeC32dWWgN",
+  "name": "Pixie Dust",
   "type": "feature",
-  "_id": "MJzpVrjJyRII6T9o",
-  "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
+  "_id": "yV1cQbm41Y6kkVnL",
+  "img": "icons/magic/light/orbs-firefly-hand-yellow.webp",
   "system": {
     "description": {
-      "value": "<p>Each of your minions have their Stamina increased by 3 and their stability increased by 1.</p><p>[[/apply uX7GQ87sH6Xodpka]]</p>",
+      "value": "<p>Increase your number of Recoveries by 2. Whenever one of your fey minions dies within your Summoner's Range, you can spend a Recovery to give temporary Stamina equal to [[/heal @R*2 type=temporary]]{twice your Reason score} to each non-minion ally adjacent to the minion when they died.</p>",
       "director": ""
     },
     "source": {
       "book": "Summoner",
-      "page": "11",
+      "page": "10",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "elite-formation",
+    "_dsid": "pixie-dust",
     "advancements": {},
     "prerequisites": {
       "value": "",
@@ -24,25 +24,17 @@
   },
   "effects": [
     {
-      "name": "Elite Formation",
-      "img": "icons/magic/symbols/rune-sigil-horned-white-purple.webp",
+      "name": "Pixie Dust",
+      "img": "icons/magic/light/orbs-firefly-hand-yellow.webp",
       "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.MJzpVrjJyRII6T9o",
-      "transfer": false,
-      "_id": "uX7GQ87sH6Xodpka",
+      "origin": "Compendium.draw-steel.classes.Item.yV1cQbm41Y6kkVnL",
+      "_id": "fPOfQQBzQJLf1HK6",
       "system": {
         "changes": [
           {
-            "key": "system.stamina.max",
+            "key": "system.recoveries.max",
             "type": "add",
-            "value": 3,
-            "phase": "initial",
-            "priority": null
-          },
-          {
-            "key": "system.combat.stability",
-            "type": "add",
-            "value": 1,
+            "value": 2,
             "phase": "initial",
             "priority": null
           }
@@ -71,6 +63,7 @@
       },
       "description": "",
       "tint": "#ffffff",
+      "transfer": true,
       "statuses": [],
       "showIcon": 1,
       "folder": null,
@@ -80,17 +73,16 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788441730557,
+        "createdTime": 1788442618074,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!items.effects!MJzpVrjJyRII6T9o.uX7GQ87sH6Xodpka"
+      "_key": "!items.effects!yV1cQbm41Y6kkVnL.fPOfQQBzQJLf1HK6"
     }
   ],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -99,12 +91,13 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788440966028,
+    "createdTime": 1788442618074,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!MJzpVrjJyRII6T9o"
+  "sort": 0,
+  "_key": "!items!yV1cQbm41Y6kkVnL"
 }
