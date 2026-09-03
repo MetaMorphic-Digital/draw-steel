@@ -19,6 +19,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     actions: {
       panToken: this.#panToken,
       placeTemplate: this.#placeTemplate,
+      swapMeleeRanged: this.#swapMeleeRanged,
     },
   };
 
@@ -192,6 +193,12 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     context.resource.show = this.item.system.resource;
 
+    context.meleeRanged = {
+      show: this.item.system.distance.type === "meleeRanged",
+      meleeClass: `${this.item.system.damageDisplay === "melee" ? "selected " : ""}icon fa-solid fa-sword`,
+      rangedClass: `${this.item.system.damageDisplay === "ranged" ? "selected " : ""}icon fa-solid fa-bow-arrow`,
+    };
+
     // Heroic resource/malice spend
     if (this.item.system.effects.documentsByType.spend.length) {
       context.resource.show = true;
@@ -302,5 +309,18 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   static async #placeTemplate(event, target) {
     if (this.#region) await this.#region.delete();
     this.#region = await this.item.system.placeTemplate({ setTargets: "replace" });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Switch if this ability is going to roll as melee or ranged.
+   * @this AbilityConfigurationDialog
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #swapMeleeRanged(event, target) {
+    await this.item.update({ "system.damageDisplay": target.dataset.value });
+    this.render({ parts: ["ability"] });
   }
 }
