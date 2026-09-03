@@ -17,6 +17,11 @@ interface SummonChoicePool {
   count: number;
 }
 
+interface SummonEffectPool {
+  uuid: string;
+  level: number;
+}
+
 export type ActorChoice = {
   /** The UUID of the actor. */
   uuid: string;
@@ -27,7 +32,8 @@ declare module "./summon-choice-advancement.mjs" {
     cost: number;
     /** If `null`, then this is explicitly a "choose all" - but also if the number is equal to or greater than the pool. */
     chooseN: number | null;
-    pool: SummonChoicePool[]
+    pool: SummonChoicePool[];
+    effects: SummonEffectPool[];
   }
 }
 
