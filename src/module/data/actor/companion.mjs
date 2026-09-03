@@ -1,8 +1,10 @@
-import { requiredInteger, setOptions } from "../helpers.mjs";
 import CreatureModel from "./creature.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 import SourceModel from "../models/source.mjs";
+import { setOptions } from "../helpers.mjs";
 
 /**
  * @import DrawSteelItem from "../../documents/item.mjs";
@@ -38,9 +40,8 @@ export default class CompanionModel extends CreatureModel {
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
     schema.companion = new fields.SchemaField({
-      freeStrike: requiredInteger({ initial: 0 }),
-      keywords: new fields.SetField(setOptions()),
-      role: new fields.StringField({ required: true }),
+      freeStrike: new FormulaField({ initial: "1 + @M" }),
+      keywords: new fields.SetField(setOptions(), { initial: ["animal"] }),
       master: new fields.ForeignDocumentField(foundry.documents.Actor),
     });
 
@@ -62,9 +63,6 @@ export default class CompanionModel extends CreatureModel {
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
-
-    const roles = ds.CONFIG.monsters.roles;
-    this.companion.roleLabel = roles[this.companion.role]?.label ?? "";
 
     const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
 
@@ -141,23 +139,32 @@ export default class CompanionModel extends CreatureModel {
     /** @type {DamagePowerRollEffect} */
     const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
-    // CONSIDER: Companions nominally don't have ranged free strikes, maybe remove data?
-
     const freeStrike = {
-      value: this.companion.freeStrike,
+      value: ds.utils.evaluateFormula(this.companion.freeStrike, this.parent.getRollData()),
       keywords: keywords.add("strike"),
       type: firstDamage?.damage.tier1.types.first() ?? "",
       range: {
         melee: 1,
-        ranged: 5,
       },
     };
+
+    if (signature && signature.system.keywords.has("strike")) freeStrike.value += (firstDamage?.damage.bonuses.value ?? 0);
+    else {
+      const replacementData = this.parent.getRollData();
+      const field = DamagePowerRollEffect.schema.getField("damage.bonuses.value");
+      for (const bonus of this._abilityBonuses) {
+        if (bonus.key !== "damage.bonuses.value") continue;
+        if (!bonus.filters.keywords.isSubsetOf(freeStrike.keywords)) continue;
+        foundry.utils.setProperty(freeStrike, "value", field.applyChange(freeStrike.value, this, bonus, { replacementData }));
+      }
+    }
+
     switch (signature?.system.distance.type) {
       case "melee":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
         break;
       case "ranged":
-        freeStrike.range.ranged = Math.max(5, signature.system.distance.primary ?? 0);
+        freeStrike.range.ranged = signature.system.distance.primary ?? 0;
         break;
       case "meleeRanged":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
