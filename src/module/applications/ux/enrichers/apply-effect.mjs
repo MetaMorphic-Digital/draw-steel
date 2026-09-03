@@ -152,7 +152,9 @@ async function onClickAnchor() {
   if (this.dataset.originRollData) {
     const replacementData = origin.getRollData();
     const changeUpdates = foundry.utils.deepClone(tempEffect.system._source.changes);
-    for (const change of changeUpdates) if (typeof change.value === "string") change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
+    for (const change of changeUpdates)
+      if (typeof change.value === "string")
+        change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
     tempEffect.updateSource({ "system.changes": changeUpdates });
   }
 
