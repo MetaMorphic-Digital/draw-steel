@@ -6,7 +6,6 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
- * @import { NumberField } from "@common/data/fields.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  * @import { ActiveEffectCategory, ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
  * @import { DrawSteelActor, DrawSteelItem, DrawSteelTokenDocument } from "../../documents/_module.mjs";
@@ -941,7 +940,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       return result?.length ? effect : null;
     }
     const keepId = !this.actor.effects.has(effect.id);
-    const effectData = game.items.fromCompendium(effect);
+    const effectData = game.items.fromCompendium(effect, { keepId, clearFolder: true });
     const result = await getDocumentClass("ActiveEffect").create(effectData, { parent: this.actor, keepId });
     return result ?? null;
   }

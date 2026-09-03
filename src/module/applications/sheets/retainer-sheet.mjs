@@ -150,7 +150,7 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
     if (cls) await cls.sheet.render({ force: true });
     else {
       const retainerClass = await fromUuid(ds.CONFIG.retainer.retainerClass);
-      const classData = game.items.fromCompendium(retainerClass);
+      const classData = game.items.fromCompendium(retainerClass, { clearFolder: true });
       await this.actor.createEmbeddedDocuments("Item", [classData], { renderSheet: true });
     }
   }

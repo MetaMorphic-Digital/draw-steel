@@ -35,6 +35,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
       shareDoc: this.#shareDoc,
+      rewindAdvancement: this.#rewindAdvancement,
     },
     window: {
       controls: [{
@@ -42,6 +43,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
         action: "updateFromCompendium",
         visible: DrawSteelItemSheet.#canUpdateFromCompendium,
+      }, {
+        icon: "fa-solid fa-arrow-rotate-right",
+        label: "DRAW_STEEL.ADVANCEMENT.SHEET.reconfigure",
+        action: "rewindAdvancement",
+        visible: DrawSteelItemSheet.#canReconfigureAdvancement,
       }, {
         icon: "fa-solid fa-share-from-square",
         label: "DRAW_STEEL.SHEET.Share",
@@ -745,6 +751,29 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   }
 
   /**
+   * If an item has an advancement that can be reconfigured.
+   * @this DrawSteelItemSheet
+   * @returns {bool}
+   *
+   */
+  static #canReconfigureAdvancement() {
+    const advancementSource = this.item.parent?.items.get(this.item.getFlag("draw-steel", "advancement.parentId"));
+    if (!advancementSource) return false;
+    return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel", "advancement.advancementId"));
+  }
+
+  /**
+   * Finds which advanceemnt an item came from, calls the advancement's reconfigure.
+   * @this DrawSteelItemSheet
+   * @private
+   */
+  static async #rewindAdvancement() {
+    const advancementSource = this.item.parent.items.get(this.item.getFlag("draw-steel", "advancement.parentId"));
+    const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel", "advancement.advancementId"));
+    await advancement.reconfigure();
+  }
+
+  /**
    * Reconfigure an existing advancement on an actor.
    *
    * @this DrawSteelItemSheet
@@ -771,7 +800,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       return result?.length ? effect : null;
     }
     const keepId = !this.item.effects.has(effect.id);
-    const effectData = game.items.fromCompendium(effect);
+    const effectData = game.items.fromCompendium(effect, { keepId, clearFolder: true });
     const result = await getDocumentClass("ActiveEffect").create(effectData, { parent: this.item, keepId });
     return result ?? null;
   }

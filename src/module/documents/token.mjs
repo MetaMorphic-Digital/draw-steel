@@ -1,6 +1,11 @@
 import { systemID } from "../constants.mjs";
 
-/** @import DrawSteelToken from "../canvas/placeables/token.mjs"; */
+/**
+ * @import DrawSteelToken from "../canvas/placeables/token.mjs";
+ * @import DrawSteelUser from "./user.mjs";
+ * @import { TokenMovementOperation } from "@client/documents/_types.mjs";
+ * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs";
+ */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass.
@@ -84,6 +89,20 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
       }
     }
     return Array.from(tokens);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc
+   * @param {TokenMovementOperation} movement
+   * @param {Partial<DatabaseUpdateOperation>} operation
+   * @param {DrawSteelUser} user
+   */
+  _onUpdateMovement(movement, operation, user) {
+    if (!user.isSelf) return;
+    if (movement.passed.waypoints.every(wp => wp.action === "fly")) this.actor?.toggleStatusEffect("fly", { active: true });
+    else if (movement.passed.waypoints.every(wp => wp.action === "burrow")) this.actor?.toggleStatusEffect("burrow", { active: true });
   }
 
   /* -------------------------------------------------- */
