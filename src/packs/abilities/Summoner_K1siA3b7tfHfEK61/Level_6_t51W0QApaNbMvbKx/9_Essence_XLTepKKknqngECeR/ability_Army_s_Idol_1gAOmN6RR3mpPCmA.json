@@ -1,0 +1,139 @@
+{
+  "folder": "XLTepKKknqngECeR",
+  "name": "Army's Idol",
+  "type": "ability",
+  "_id": "1gAOmN6RR3mpPCmA",
+  "img": "icons/magic/sonic/bell-alarm-red-purple.webp",
+  "system": {
+    "source": {
+      "book": "Summoner",
+      "page": "39",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "armys-idol",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your champion's appearance has an enchanting impact on you and your allies.",
+    "keywords": [
+      "area",
+      "magic",
+      "champion"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "4",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "yIVMjFqphSifrZcB": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "yIVMjFqphSifrZcB",
+        "description": "<p>You can use this ability as if in the space of one of your minions within [[lookup 5+@R evaluate]]{your Summoner's Range}.</p><p>Until the end of the encounter or you become dying, each target has a +2 bonus to saving throws.</p><p>Each target can immediately make each of their saving throws and stand up from prone.</p><p>[[/apply VtoWrmrcAOE6YI2N combat]]</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "+2 to Saving Throws",
+      "img": "icons/magic/sonic/bell-alarm-red-purple.webp",
+      "type": "base",
+      "origin": "Compendium.summoner-fuckup-storage-zone.fuckupAbilities.Item.1gAOmN6RR3mpPCmA",
+      "transfer": false,
+      "_id": "VtoWrmrcAOE6YI2N",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.save.bonus",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788433151634,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!1gAOmN6RR3mpPCmA.VtoWrmrcAOE6YI2N"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788433151634,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 300000,
+  "_key": "!items!1gAOmN6RR3mpPCmA"
+}

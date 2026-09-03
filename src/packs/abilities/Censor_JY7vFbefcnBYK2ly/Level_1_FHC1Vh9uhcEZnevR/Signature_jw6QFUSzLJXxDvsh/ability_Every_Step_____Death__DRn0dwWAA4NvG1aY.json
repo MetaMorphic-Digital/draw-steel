@@ -97,7 +97,7 @@
       "after00000000000": {
         "_id": "after00000000000",
         "type": "base",
-        "description": "<p>Each time the target willingly moves before the end of your next turn, they take [[/damage @scaling scaling psychic]]{1 psychic damage} for each square they move.</p>",
+        "description": "<p>Each time the target willingly moves before the end of your next turn, they take [[/damage @scaling scaling psychic]]{1 psychic damage} for each square they move.</p><p>[[/apply FI1wLZlS2I2BQvQW originDuration=true]]</p>",
         "name": "",
         "img": null,
         "sort": 0,
@@ -105,7 +105,59 @@
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Every Step... Death!",
+      "img": "icons/skills/ranged/arrows-flying-salvo-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.DRn0dwWAA4NvG1aY",
+      "transfer": false,
+      "_id": "FI1wLZlS2I2BQvQW",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "<p>Each time you willingly move, you take [[/damage @scaling scaling psychic]]{1 psychic damage} for each square you move.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788360015348,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DRn0dwWAA4NvG1aY.FI1wLZlS2I2BQvQW"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -115,9 +167,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.365",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1754754815131,
     "modifiedTime": null,
     "lastModifiedBy": null

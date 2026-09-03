@@ -41,10 +41,29 @@
     {{#each ctx.actorPool}}
     <div class="form-group" data-pool-index="{{@index}}">
       <input type="hidden" name="{{concat "pool." @index ".uuid"}}" value="{{uuid}}">
+      {{#if @root.source.cost}}
       {{formInput @root.fields.pool.element.fields.count value=count name=(concat "pool." @index ".count")}}
-      <label>{{{link.outerHTML}}}</label>
+      {{else}}
+      <input type="hidden" name="{{concat "pool." @index ".count"}}" value="{{count}}">
+      {{/if}}
+      <label>{{{link}}}</label>
       <div class="form-fields">
         <button type="button" data-action="deletePoolActor" class="icon fa-solid fa-trash"></button>
+      </div>
+    </div>
+    {{/each}}
+    <hr>
+    <div class="summon-effects" data-tooltip-text="{{@root.fields.effects.hint}}">
+      <div class="column-header">{{@root.fields.effects.element.fields.level.label}}</div>
+      <div class="section-header">{{@root.fields.effects.label}}</div>
+    </div>
+    {{#each ctx.summonEffects}}
+    <div class="form-group" data-effects-index="{{@index}}">
+      <input type="hidden" name="{{concat "effects." @index ".uuid"}}" value="{{uuid}}">
+      {{formInput @root.fields.effects.element.fields.level value=level name=(concat "effects." @index ".level") type="number"}}
+      <label>{{{link}}}</label>
+      <div class="form-fields">
+        <button type="button" data-action="deleteSummonEffect" class="icon fa-solid fa-trash"></button>
       </div>
     </div>
     {{/each}}

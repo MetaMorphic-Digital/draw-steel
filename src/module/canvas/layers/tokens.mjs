@@ -69,7 +69,10 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
       await tokenDocument.actor.updateEmbeddedDocuments("ActiveEffect", oldEffects);
       await tokenDocument.actor.createEmbeddedDocuments("ActiveEffect", newEffects, { keepId: true });
     } else {
-      tokenDocument.delta.updateSource(actorUpdates);
+      if (!foundry.utils.isEmpty(actorUpdates)) {
+        tokenDocument.updateSource({ delta: {} });
+        tokenDocument.delta.updateSource(actorUpdates);
+      }
       // Foundry will automatically increment but we need to add in our indices
       if (actor.prototypeToken.appendNumber) {
         const regex = new RegExp(/\((\d+)\)$/);
