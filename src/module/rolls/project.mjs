@@ -1,9 +1,5 @@
 import DSRoll from "./base.mjs";
-import DrawSteelChatMessage from "../documents/chat-message.mjs";
-import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
 import { systemPath } from "../constants.mjs";
-
-/** @import { RollPromptOptions, ProjectRollPrompt } from "../_types.js" */
 
 /**
  * A special test a hero makes while working on a downtime project during a respite.

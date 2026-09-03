@@ -51,7 +51,7 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>Each target takes [[/damage 2*@P holy]]{holy damage} equal to twice your Presence score. Additionally, each hidden target is automatically revealed and can’t become hidden again until the start of your next turn. You can then use your Judgment ability against one target as a free triggered action.</p>",
+        "description": "<p>Each target takes [[/damage 2*@P holy]]{holy damage} equal to twice your Presence score. Additionally, each hidden target is automatically revealed and can’t become hidden again until the start of your next turn. You can then use your Judgment ability against one target as a free triggered action.</p><p>[[/apply qBmLrfuJINMvk2UX originDuration=true]]</p>",
         "before": true,
         "name": "",
         "img": null,
@@ -59,7 +59,59 @@
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Revelator",
+      "img": "icons/magic/light/beam-strike-village-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.dxcbckGRaq4eFLyj",
+      "transfer": false,
+      "_id": "qBmLrfuJINMvk2UX",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788359702429,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!dxcbckGRaq4eFLyj.qBmLrfuJINMvk2UX"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -69,9 +121,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.365",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1756092396681,
     "modifiedTime": null,
     "lastModifiedBy": null

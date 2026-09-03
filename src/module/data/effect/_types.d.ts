@@ -2,7 +2,7 @@ import { DrawSteelActiveEffect, DrawSteelCombat } from "../../documents/_module.
 import { AbilityFilters } from "../_types";
 import { EffectChangeData } from "@common/documents/_types.mjs";
 
-declare module "./base.mjs" {
+declare module "./base-effect.mjs" {
   export default interface BaseEffectModel {
     parent: DrawSteelActiveEffect;
     changes: EffectChangeData[];

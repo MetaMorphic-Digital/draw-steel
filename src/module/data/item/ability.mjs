@@ -9,10 +9,10 @@ import PowerRoll from "../../rolls/power.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
- * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
- * @import { EmbedDisplayFlags } from "./_types";
+ * @import { AbilityEmbedConfig, EmbedDisplayFlags } from "./_types";
  * @import RegionDocument from "@client/documents/region.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
@@ -311,7 +311,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * @inheritdoc
-   * @param {DocumentHTMLEmbedConfig} config
+   * @param {AbilityEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
   async toEmbed(config, options = {}) {
@@ -333,6 +333,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     if (config.effects) context.limitEffects = config.effects;
+    if (config.spendAmounts) context.spendAmounts = config.spendAmounts;
     await this.getSheetContext(context);
     const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -488,9 +489,13 @@ export default class AbilityModel extends BaseItemModel {
     context.afterEffects = [];
     for (const effect of this.effects.sortedContents) {
       if (context.limitEffects && !context.limitEffects.has(effect.id)) continue;
+
+      const rollData = {};
+      if (context.spendAmounts) rollData.spend = context.spendAmounts[effect.id];
+
       const displayData = {
         label: effect.label,
-        text: await enrichHTML(effect.description, { relativeTo: this.parent }),
+        text: await enrichHTML(effect.description, { relativeTo: this.parent, rollData }),
       };
       context[effect.before ? "beforeEffects" : "afterEffects"].push(displayData);
     }
@@ -589,6 +594,7 @@ export default class AbilityModel extends BaseItemModel {
               if (e.showUse(fd)) arr.push(e.id);
               return arr;
             }, []),
+            spendAmounts: fd.spend,
           },
         },
       },
@@ -667,6 +673,7 @@ export default class AbilityModel extends BaseItemModel {
             const damageRoll = damageEffect.toDamageRoll(roll.product, {
               damageSelection: fd.damage,
               spend: Object.values(fd.spend ?? {}),
+              squadMinions: roll.options.minions,
             });
             if (!damageRoll) continue;
             await damageRoll.evaluate();
@@ -675,13 +682,14 @@ export default class AbilityModel extends BaseItemModel {
             if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
           }
 
+          delete roll.options.minions;
+
           messageData.system.parts[partId] = rollPart;
         }
       }
     }
 
     let resourceSpend = fd.resource ?? 0;
-
     for (const spend of Object.values(fd.spend ?? {})) resourceSpend += spend;
 
     if (resourceSpend) {
