@@ -52,7 +52,7 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>You can target yourself instead of one creature with this ability. Each target has damage immunity 5 until the start of your next turn.</p><p>[[/apply Ht6igV93MRiIAGeM]]</p>",
+        "description": "<p>You can target yourself instead of one creature with this ability. Each target has damage immunity 5 until the start of your next turn.</p><p>[[/apply Ht6igV93MRiIAGeM originDuration=true]]</p>",
         "before": true,
         "name": "",
         "img": null,
@@ -62,7 +62,7 @@
   },
   "effects": [
     {
-      "name": "Cuirass of the Gods",
+      "name": "Damage Immunity 5",
       "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.abilities.Item.ZC0m20DAm7UVhk75",
@@ -96,7 +96,7 @@
       "duration": {
         "value": 1,
         "units": "turns",
-        "expiry": null,
+        "expiry": "turnStart",
         "expired": false
       },
       "description": "",
@@ -108,7 +108,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1760754211148,
@@ -130,9 +130,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.365",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1760754109153,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,80 +1,77 @@
 {
-  "folder": "cRmntDE2VNDzurg2",
-  "name": "Minor Acceleration",
+  "folder": "XLTepKKknqngECeR",
+  "name": "Army's Idol",
   "type": "ability",
-  "_id": "sSWcFde8OLkWgksg",
-  "img": "icons/magic/control/debuff-energy-hold-teal-blue.webp",
+  "_id": "1gAOmN6RR3mpPCmA",
+  "img": "icons/magic/sonic/bell-alarm-red-purple.webp",
   "system": {
     "source": {
-      "book": "Heroes",
-      "page": "50",
+      "book": "Summoner",
+      "page": "39",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "minor-acceleration",
-    "story": "You fill yourself or an ally with a burst of speed",
+    "_dsid": "armys-idol",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your champion's appearance has an enchanting impact on you and your allies.",
     "keywords": [
-      "melee",
-      "psionic"
+      "area",
+      "magic",
+      "champion"
     ],
     "type": "maneuver",
-    "category": "signature",
-    "resource": null,
+    "category": "heroic",
+    "resource": 9,
     "trigger": "",
     "distance": {
-      "type": "melee",
-      "primary": "1",
+      "type": "burst",
+      "primary": "4",
       "secondary": "1",
       "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
-      "value": 1,
-      "custom": ""
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
+        "reactive": false,
         "formula": "@chr",
-        "characteristics": [],
-        "reactive": false
+        "characteristics": []
       },
       "effects": {}
     },
-    "spend": {
-      "text": "",
-      "value": null
-    },
     "effects": {
-      "after00000000000": {
-        "_id": "after00000000000",
-        "type": "base",
-        "description": "<p>The target gains a bonus to speed equal to [[lookup formula=\"max(@R, @I, @P)\" evaluate=true]]{your Reason, Intuition, or Presence score (your choice)} until the start of your next turn.</p><p>[[/apply FmeINrdB44cAhk0P originDuration=true]]</p>",
+      "yIVMjFqphSifrZcB": {
+        "sort": 100000,
         "name": "",
         "img": null,
-        "sort": 0,
+        "type": "base",
+        "_id": "yIVMjFqphSifrZcB",
+        "description": "<p>You can use this ability as if in the space of one of your minions within [[lookup 5+@R evaluate]]{your Summoner's Range}.</p><p>Until the end of the encounter or you become dying, each target has a +2 bonus to saving throws.</p><p>Each target can immediately make each of their saving throws and stand up from prone.</p><p>[[/apply VtoWrmrcAOE6YI2N combat]]</p>",
         "before": false
       }
-    },
-    "prerequisites": {
-      "value": "",
-      "dsid": [],
-      "level": null
     }
   },
   "effects": [
     {
-      "name": "Minor Acceleration",
-      "img": "icons/magic/control/debuff-energy-hold-teal-blue.webp",
+      "name": "+2 to Saving Throws",
+      "img": "icons/magic/sonic/bell-alarm-red-purple.webp",
       "type": "base",
-      "origin": "Compendium.draw-steel.origins.Item.sSWcFde8OLkWgksg",
+      "origin": "Compendium.summoner-fuckup-storage-zone.fuckupAbilities.Item.1gAOmN6RR3mpPCmA",
       "transfer": false,
-      "_id": "FmeINrdB44cAhk0P",
+      "_id": "VtoWrmrcAOE6YI2N",
       "system": {
         "changes": [
           {
-            "key": "system.movement.value",
+            "key": "system.combat.save.bonus",
             "type": "add",
-            "value": "",
+            "value": 2,
             "phase": "initial",
             "priority": null
           }
@@ -98,7 +95,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": "turnStart",
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "",
@@ -112,31 +109,31 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788359846072,
+        "createdTime": 1788433151634,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!items.effects!sSWcFde8OLkWgksg.FmeINrdB44cAhk0P"
+      "_key": "!items.effects!1gAOmN6RR3mpPCmA.VtoWrmrcAOE6YI2N"
     }
   ],
-  "sort": 300000,
   "ownership": {
     "default": 0
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "exportSource": null,
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1754630190057,
+    "createdTime": 1788433151634,
     "modifiedTime": null,
-    "lastModifiedBy": null
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
   },
-  "_key": "!items!sSWcFde8OLkWgksg"
+  "sort": 300000,
+  "_key": "!items!1gAOmN6RR3mpPCmA"
 }
