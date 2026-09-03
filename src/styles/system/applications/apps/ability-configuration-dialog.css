@@ -24,4 +24,17 @@
   fieldset + .form-group {
     margin-top: 0.5rem;
   }
+
+  [data-application-part="ability"] {
+    .meleeRanged {
+      button {
+        border-color: var(--button-border-color);
+      }
+
+      button.selected {
+        background: var(--button-hover-background-color);
+        color: var(--button-hover-text-color);
+      }
+    }
+  }
 }

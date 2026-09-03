@@ -64,7 +64,8 @@ interface Skills {
 export interface SummonPortfolio {
   uuid: string;
   count: string;
-  cost: number | null
+  cost: number | null;
+  advancementUuid: string;
 }
 
 declare module "./base-actor.mjs" {
@@ -153,6 +154,7 @@ declare module "./hero.mjs" {
       primary: {
         value: number;
         tracking: number;
+        turnGain: string;
         label?: string;
       };
       epic: {

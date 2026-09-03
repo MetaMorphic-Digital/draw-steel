@@ -3,6 +3,7 @@ import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
@@ -64,6 +65,7 @@ export default class HeroModel extends CreatureModel {
       primary: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
         tracking: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+        turnGain: new FormulaField({ persisted: false }),
       }),
       epic: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
@@ -140,6 +142,8 @@ export default class HeroModel extends CreatureModel {
 
     // Existing DrawSteelActiveEffect#_applyAdd override means this also shims active effects targeting hero.skills
     HeroModel.shimSkills(this);
+
+    this.hero.primary.turnGain = this.class?.system.turnGain ?? "";
 
     const kitBonuses = {
       stamina: 0,
@@ -296,9 +300,8 @@ export default class HeroModel extends CreatureModel {
   /** @inheritdoc */
   async _onStartTurn(combatant) {
     await super._onStartTurn(combatant);
-    const characterClass = this.class;
-    if (characterClass && characterClass.system.turnGain) {
-      const recoveryRoll = new DSRoll(characterClass.system.turnGain, characterClass.getRollData(), {
+    if (this.hero.primary.turnGain) {
+      const recoveryRoll = new DSRoll(this.hero.primary.turnGain, this.class?.getRollData() ?? this.parent.getRollData(), {
         flavor: this.class.system.primary,
       });
       await recoveryRoll.toMessage({

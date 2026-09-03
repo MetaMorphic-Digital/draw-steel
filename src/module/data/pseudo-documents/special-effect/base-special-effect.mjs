@@ -80,4 +80,14 @@ export default class BaseSpecialEffect extends TypedPseudoDocument {
   showUse(formData) {
     return true;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs buttons for an Ability Use chat message.
+   * @returns {HTMLButtonElement[] | null} An array of buttons to add to the footer of the message, or null if there are none.
+   */
+  constructButtons() {
+    return null;
+  }
 }

@@ -18,6 +18,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
       deletePoolActor: AdvancementSheet.#deletePoolDocument,
       deletePoolEffect: AdvancementSheet.#deletePoolDocument,
       deletePoolItem: AdvancementSheet.#deletePoolDocument,
+      deleteSummonEffect: AdvancementSheet.#deleteSummonEffect,
     },
     classes: ["advancement"],
   };
@@ -36,6 +37,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     details: {
       template: "systems/draw-steel/templates/sheets/pseudo-documents/advancement/details.hbs",
       classes: ["tab", "standard-form"],
+      scrollable: [""],
     },
   };
 
@@ -130,5 +132,20 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     const pool = foundry.utils.deepClone(this.pseudoDocument._source.pool);
     pool.splice(index, 1);
     this.pseudoDocument.update({ pool });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Delete an entry from the summon effects.
+   * @this {AdvancementSheet}
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
+  static async #deleteSummonEffect(event, target) {
+    const index = Number(target.closest("[data-effects-index]").dataset.effectsIndex);
+    const effects = foundry.utils.deepClone(this.pseudoDocument._source.effects);
+    effects.splice(index, 1);
+    this.pseudoDocument.update({ effects });
   }
 }

@@ -160,6 +160,19 @@
           }
         }
       },
+      "SUMMON": {
+        "FIELDS": {
+          "effects": {
+            "label": "Effects Applied On Summon",
+            "hint": "Actors summoned from this portfolio entry will be created with these active effects based on the summoner's level. Roll data in the effects is evaluated at the moment of summoning.",
+            "element": {
+              "level": {
+                "label": "Summoner Level"
+              }
+            }
+          }
+        }
+      },
       "TRAIT": {
         "FIELDS": {
           "chooseN": {
@@ -206,7 +219,8 @@
         "requirePack": "Granted documents must come from a compendium pack.",
         "forbidParent": "Granted documents cannot be embedded in an actor.",
         "restrictedTypeSummon": "{type} actors cannot be added as summon choices.",
-        "requirePackSummon": "Summonable Actors must come from a compendium pack."
+        "requirePackSummon": "Summonable Actors must come from a compendium pack.",
+        "requireStandaloneSummonEffect": "Effects for summoned actors must come from a compendium pack and not be embedded in another document."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -398,6 +412,7 @@
         }
       },
       "persistent": "Persistent {value}",
+      "persistentDescription": "If you take damage equal to or greater than [[lookup 5*@R evaluate]]{5 times your Reason score} in one turn, you stop maintaining any persistent abilities.",
       "spend": {
         "single": "Spend {value} {resourceName}",
         "multiple": "Spend {value}+ {resourceName}"
@@ -405,6 +420,7 @@
     },
     "SHEET": {
       "Labels": {
+        "Companion": "Draw Steel Companion Sheet",
         "Character": "Draw Steel Character Sheet",
         "Minion": "Draw Steel Minion Sheet",
         "NPC": "Draw Steel NPC Sheet",
@@ -783,6 +799,9 @@
           "Notifications": {
             "Success": "{master} has spent a recovery to recover {companion}'s stamina."
           }
+        },
+        "CompanionMetadata": {
+          "DialogTitle": "Update Companion Metadata"
         }
       },
       "creature": {
@@ -2246,7 +2265,8 @@
               "one": "Bane",
               "other": "Banes"
             }
-          }
+          },
+          "Minions": "Minions"
         },
         "TestDifficulty": {
           "easy": "Easy",
@@ -2515,7 +2535,8 @@
       },
       "PARTS": {
         "abilityUse": {
-          "performTest": "{characteristic} Test"
+          "performTest": "{characteristic} Test",
+          "performSummon": "Summon"
         },
         "savingThrow": {
           "Buttons": {

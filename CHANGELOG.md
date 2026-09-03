@@ -24,18 +24,29 @@ Increased foundry minimum to 14.367.
 
 ### Added
 
-- Added Summons compendium to separate player-relevant actors from the monsters.
+- Added the Summoner and Beastheart classes and supporting material.
+  - Added Summons compendium to separate player-relevant actors from the monsters.
+  - Added both books to the sourcebook datalist.
 - Improved prone automation by integrating bane and edge application. (#246)
 - "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
+- Flying or burrowing will apply the relevant status. (#363)
 - Implemented summoning as a new type of special effect. (#583)
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
+  - Added new Summoning and Portfolio Summoning special effects. (#2021)
+- Added a new Minion Sheet. You can switch to this for any NPC but it is optimized for minions. (#585)
+- Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
+- Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
 - Added support for Companions as a new actor type. (#2011)
+- Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
 
 ### Changed
 
 - Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
-- Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display.
+- Major updates to roll presentation. (#1628)
+  - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display
+  - Results are now per-target rather than grouped by tier, allowing for more individualized adjustments.
+- Ability modifiers targeting damage.bonuses.value can improve a monster's free strike value. (#2003)
 
 ### Deprecated
 
@@ -46,14 +57,19 @@ Increased foundry minimum to 14.367.
 ### Fixed
 
 - Updated Player-Facing Compendium Content:
+  - Set origin duration on Every Step, Death!, Revelator, Reap, Cuirass of the Gods, Fate, and Minor Acceleration. (#1857)
+  - Fixed enricher on Exploding Arrow. (#2053)
   - Added fire type to Viscous Fire. (#2061)
+  - Fixed name of Wode Elf Arrowswift (Sorry Illwyth!). (#2084)
 - Updated Director-Facing Compendium Content:
   - Fixed description for Fossil Cryptic Villain Action 2. (#2043)
   - Fixed With Captain effect on Decrepit Skeleton. (#2051)
   - Fixed holy weakness on Chorogaunt and Muceron. (#2052)
   - Fixed With Captain effect on Dwarf Driver. (#2062)
+  - Added Staying Power malice feature to Human Bandit Chief & Scoundrel. (#2112)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 - Deleting an entry from a configuration page now works correctly. (#2042)
+- Fixed saving throw rolls not properly being contained in a saving throw message part.
 
 ## 1.1.2
 

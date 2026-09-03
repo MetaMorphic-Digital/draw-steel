@@ -80,7 +80,7 @@ export default class AdvancementModel extends BaseItemModel {
       } else if (advancement.type === "summon") {
         const options = advancement.pool
           .filter(o => flags[advancement.id]?.selected.includes(o.uuid))
-          .map(o => ({ ...o, cost: advancement.cost }));
+          .map(o => ({ ...o, cost: advancement.cost, advancementUuid: advancement.uuid }));
         const portfolio = this.actor.system._summonPortfolios[advancement.dsid] ??= [];
         portfolio.push(...options);
       }

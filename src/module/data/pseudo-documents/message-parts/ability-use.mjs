@@ -7,7 +7,7 @@ import { systemPath } from "../../../constants.mjs";
  * @import AbilityData from "../../item/ability.mjs";
  */
 
-const { DocumentUUIDField, SetField } = foundry.data.fields;
+const { DocumentUUIDField, NumberField, SetField, TypedObjectField } = foundry.data.fields;
 
 /**
  * A part that displays the main text of the ability.
@@ -24,7 +24,9 @@ export default class AbilityUsePart extends BaseMessagePart {
   static ACTIONS = {
     ...super.ACTIONS,
     rollTest: this.#rollTest,
+    persistent: this.#applyPersist,
     placeTemplate: this.#placeTemplate,
+    performSummon: this.#performSummon,
   };
 
   /* -------------------------------------------------- */
@@ -39,6 +41,7 @@ export default class AbilityUsePart extends BaseMessagePart {
     return Object.assign(super.defineSchema(), {
       abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
       effects: new SetField(setOptions({ validate: foundry.data.validators.isValidId })),
+      spendAmounts: new TypedObjectField(new NumberField()),
     });
   }
 
@@ -78,7 +81,9 @@ export default class AbilityUsePart extends BaseMessagePart {
       tier2: false,
       tier3: false,
       effects: this.effects,
+      spendAmounts: this.spendAmounts,
     };
+
     context.ctx.embed = await item.toEmbed(embedConfig);
 
     if (item.isOwner && item.system.hasTemplate) {
@@ -104,6 +109,12 @@ export default class AbilityUsePart extends BaseMessagePart {
           },
         }));
       }
+    }
+
+    for (const effectId of this.effects) {
+      const specialEffect = item.system.effects.get(effectId);
+      const buttons = specialEffect.constructButtons();
+      if (buttons) context.ctx.buttons.push(...buttons);
     }
   }
 
@@ -134,6 +145,39 @@ export default class AbilityUsePart extends BaseMessagePart {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #placeTemplate(event, target) {
-    this.ability.system.placeTemplate();
+    await this.ability.system.placeTemplate();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply an effect to track the persistent cost to the user of this ability.
+   *
+   * @this AbilityUsePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #applyPersist(event, target) {
+    const item = this.ability;
+    if (!item) return void console.error("Source item no longer exists!");
+    const { specialEffectId } = target.dataset;
+    const specialEffect = item.system.effects.get(specialEffectId);
+    await specialEffect.applyPersist();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform a given effect's summoning.
+   * @this AbilityUsePart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #performSummon(event, target) {
+    const item = this.ability;
+    if (!item) return void console.error("Source item no longer exists!");
+    const { specialEffectId } = target.dataset;
+    const specialEffect = item.system.effects.get(specialEffectId);
+    await specialEffect.performSummon();
   }
 }

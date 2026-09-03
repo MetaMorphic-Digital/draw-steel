@@ -1,6 +1,7 @@
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 import { BaseSpecialEffect, SpendSpecialEffect } from "../pseudo-documents/special-effect/_module.mjs";
 import { CharacteristicAdvancement, EffectGrantAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import { DocumentHTMLEmbedConfig } from "@client/applications/ux/text-editor.mjs";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import { PowerRollModifiers } from "../../_types.js";
@@ -35,6 +36,10 @@ export interface EmbedDisplayFlags {
   readonly displayAtEnd?: boolean;
 }
 
+export interface DSItemEmbedConfig extends DocumentHTMLEmbedConfig {
+  includeName?: boolean;
+}
+
 declare module "./base-item.mjs" {
   export default interface BaseItemModel {
     parent: DrawSteelItem;
@@ -51,6 +56,14 @@ declare module "./base-item.mjs" {
 export interface PlaceAbilityOptions extends RegionPlacementOptions {
   /** Whether to update the user's targets based off of tokens included in the region. A falsy value means do not adjust targets. */
   setTargets?: "acquire" | "replace";
+}
+
+export interface AbilityEmbedConfig extends DSItemEmbedConfig {
+  tier1?: boolean;
+  tier2?: boolean;
+  tier3?: boolean;
+  effects?: Set<string>;
+  spendAmounts: Record<string, number>;
 }
 
 declare module "./ability.mjs" {
