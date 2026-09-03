@@ -4,7 +4,7 @@
   <div class="form-group meleeRanged">
     <span class="{{#if meleeRanged.isMelee}}label{{/if}}">{{localize "DRAW_STEEL.Item.ability.Distance.Melee"}}</span>
     <button type="button" data-action="swapMeleeRanged" data-tooltip="{{ifThen meleeRanged.isMelee "DRAW_STEEL.Item.ability.SwapUsage.ToRanged" "DRAW_STEEL.Item.ability.SwapUsage.ToMelee"}}">
-      <i class="fa-solid {{ifThen meleeRanged.isMelee "fa-sword" "fa-bow-arrow"}}"></i>
+      <i class="fa-solid {{ifThen meleeRanged.isMelee "fa-sword" "fa-bow-arrow"}}" inert></i>
     </button>
     <span class="{{#unless meleeRanged.isMelee}}label{{/unless}}">{{localize "DRAW_STEEL.Item.ability.Distance.Ranged"}}</span>
   </div>
