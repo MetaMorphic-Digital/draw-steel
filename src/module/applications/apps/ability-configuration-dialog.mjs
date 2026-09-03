@@ -199,7 +199,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
       context.resource.name = coreResource.name;
       context.resource.max = foundry.utils.getProperty(coreResource.target, coreResource.path) - coreResource.minimum;
 
-      context.spendConfig = this.item.system.effects.documentsByType.spend.map(e => ({
+      context.spendConfig = this.item.system.effects.documentsByType.spend.toSorted((a, b) => a.sort - b.sort).map(e => ({
         id: e.id,
         multiple: e.resource.multiple,
         value: e.resource.value,

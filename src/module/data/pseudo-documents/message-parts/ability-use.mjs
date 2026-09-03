@@ -7,7 +7,7 @@ import { systemPath } from "../../../constants.mjs";
  * @import AbilityData from "../../item/ability.mjs";
  */
 
-const { DocumentUUIDField, SetField } = foundry.data.fields;
+const { DocumentUUIDField, NumberField, SetField, TypedObjectField } = foundry.data.fields;
 
 /**
  * A part that displays the main text of the ability.
@@ -41,6 +41,7 @@ export default class AbilityUsePart extends BaseMessagePart {
     return Object.assign(super.defineSchema(), {
       abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
       effects: new SetField(setOptions({ validate: foundry.data.validators.isValidId })),
+      spendAmounts: new TypedObjectField(new NumberField()),
     });
   }
 
@@ -80,7 +81,9 @@ export default class AbilityUsePart extends BaseMessagePart {
       tier2: false,
       tier3: false,
       effects: this.effects,
+      spendAmounts: this.spendAmounts,
     };
+
     context.ctx.embed = await item.toEmbed(embedConfig);
 
     if (item.isOwner && item.system.hasTemplate) {
