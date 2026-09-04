@@ -4,7 +4,7 @@ import "./data/_types";
 import "./documents/_types";
 import "./helpers/_types";
 import "./utils/advancement/_types";
-import { DrawSteelActor, DrawSteelChatMessage, DrawSteelItem } from "./documents/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage, DrawSteelItem } from "./documents/_module.mjs";
 import { PowerRoll, ProjectRoll } from "./rolls/_module.mjs";
 import FollowerModel from "./data/item/follower.mjs";
 
@@ -52,6 +52,13 @@ export interface ProjectRollPrompt {
 
 export interface ProjectRollPromptOptions extends RollPromptOptions {
   follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
+}
+
+export interface PerformSummonOptions {
+  /** How many tokens to summon. */
+  count: number;
+  /** Effects to add to the summoned actors, evaluating based on this actor's roll data. */
+  effects: DrawSteelActiveEffect[];
 }
 
 declare module "./utils/advancement/node.mjs" {
