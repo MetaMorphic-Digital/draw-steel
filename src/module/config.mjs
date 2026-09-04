@@ -1490,6 +1490,9 @@ const abilityKeywords = {
     label: "DRAW_STEEL.Item.ability.Keywords.Chronopathy",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
   },
+  companion: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Companion",
+  },
   cryokinesis: {
     label: "DRAW_STEEL.Item.ability.Keywords.Cryokinesis",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",

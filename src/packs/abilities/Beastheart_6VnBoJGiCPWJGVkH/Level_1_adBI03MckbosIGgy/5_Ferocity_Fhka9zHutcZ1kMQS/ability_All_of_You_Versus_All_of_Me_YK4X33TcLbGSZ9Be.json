@@ -1,41 +1,40 @@
 {
-  "folder": "k3OHdyJJMUvdmvxe",
-  "name": "Living Arrow",
+  "folder": "Fhka9zHutcZ1kMQS",
+  "name": "All of You Versus All of Me",
   "type": "ability",
-  "_id": "NQfRr2vT08ZVe247",
-  "img": "icons/magic/movement/trail-streak-impact-blue.webp",
+  "_id": "YK4X33TcLbGSZ9Be",
+  "img": "icons/skills/social/intimidation-impressing.webp",
   "system": {
     "source": {
-      "book": "Beastheart",
-      "page": "22",
+      "book": "",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "living-arrow",
+    "_dsid": "all-of-you-versus-all-of-me",
     "prerequisites": {
       "value": "",
       "dsid": [],
       "level": null
     },
-    "story": "You point, and your companion appears.",
+    "story": "Let all of them come forward and shatter themselves against your might!",
     "keywords": [
-      "beastheart",
-      "magic",
-      "ranged"
+      "area",
+      "beastheart"
     ],
-    "type": "maneuver",
-    "category": "",
-    "resource": null,
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
     "trigger": "",
     "distance": {
-      "type": "ranged",
-      "primary": "10",
+      "type": "burst",
+      "primary": "3",
       "secondary": "1",
       "tertiary": "1"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special",
-      "custom": "One Unoccupied Space",
+      "type": "enemy",
+      "custom": "",
       "value": null
     },
     "power": {
@@ -47,22 +46,22 @@
       "effects": {}
     },
     "effects": {
-      "N6o1ea1FgvAum5zm": {
+      "QkyT9DwGMrkpAsQr": {
         "sort": 100000,
         "name": "",
         "img": null,
         "type": "base",
-        "_id": "N6o1ea1FgvAum5zm",
-        "description": "<p>If your companion is within range and can fit into the target space, they teleport to the space. They can then make a melee free strike.</p>",
+        "_id": "QkyT9DwGMrkpAsQr",
+        "description": "<p>You can spend a Recovery and gain [[/heal 3*@scaling temporary scaling]]{3 temporary Stamina} for each target. Each target is taunted by you until the end of their next turn.</p>",
         "before": false
       },
-      "eUO3i3MqyUZ3Jmiy": {
+      "5gBviHLYyZdvqI3w": {
         "sort": 200000,
         "name": "",
         "img": null,
         "type": "spend",
-        "_id": "eUO3i3MqyUZ3Jmiy",
-        "description": "<p>The distance increases to ranged 15.</p>",
+        "_id": "5gBviHLYyZdvqI3w",
+        "description": "<p>This ability also affects a 3 burst originating from your companion. Targets in this second area are [[/apply taunted]] by your companion. An enemy in both areas is taunted only by you.</p>",
         "before": false,
         "resource": {
           "value": 1,
@@ -81,12 +80,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788356207020,
+    "createdTime": 1788555458319,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!NQfRr2vT08ZVe247"
+  "_key": "!items!YK4X33TcLbGSZ9Be"
 }

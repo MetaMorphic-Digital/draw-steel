@@ -1,0 +1,224 @@
+{
+  "folder": "2fstYwSlN4qztaEm",
+  "name": "Bring the Thunder",
+  "type": "ability",
+  "_id": "WTbajVDlrpUVVR1t",
+  "img": "icons/magic/lightning/barrier-shield-crackling-orb-pink.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "24",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "bring-the-thunder",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion unleashes a shattering roar, screech, or howl that terrifies your foes—or at least gets their attention.",
+    "keywords": [
+      "area",
+      "companion",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "YRJZMbjmkkgLIvZb": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "YRJZMbjmkkgLIvZb",
+          "damage": {
+            "tier1": {
+              "value": "3",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "5",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "7",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "NkvwFVakDhXLAigN": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "NkvwFVakDhXLAigN",
+          "forced": {
+            "tier1": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "1",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "2",
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "3",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "cDPzGdD3rlZO7RFB": {
+          "sort": 300000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "cDPzGdD3rlZO7RFB",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} taunted (save ends)",
+              "effects": {
+                "taunted": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "display": "{{potency}} taunted (save ends)",
+              "effects": {
+                "taunted": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{potency}} frightened (save ends)",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "aTTRo2kDBoC9rle0": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "aTTRo2kDBoC9rle0",
+        "description": "<p>This ability also affects a 2 burst originating from you. An enemy in both areas is only affected once.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788554262673,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!WTbajVDlrpUVVR1t"
+}
