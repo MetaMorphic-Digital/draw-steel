@@ -294,7 +294,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The [[lookup @name]]'s melee strikes inflict [[potency P strong]] [[/apply bleeding save]]. While bleeding this way, the target can't roll lower than a 3 on the die used to resolve bleeding damage.</p>",
+          "value": "<p>The [[lookup @name]]'s melee strikes inflict [[potency P strong]] [[/apply bleeding save]]. While bleeding this way, the target can't roll [[/damage 1d6min3+@level]]{lower than a 3} on the die used to resolve bleeding damage.</p>",
           "director": ""
         },
         "source": {
