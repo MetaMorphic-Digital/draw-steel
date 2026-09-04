@@ -1,13 +1,13 @@
 {
-  "folder": "Z1TIaUJJFq62unJ6",
-  "name": "Pixie Rosenthall",
+  "folder": "hTMMzOoqCcgHHL8k",
+  "name": "Phantom of the Ripper",
   "type": "npc",
-  "_id": "tKWDYYcmEBgb9sP9",
+  "_id": "aFfz3TjUR3w0Q9wT",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 5,
+      "max": 17,
       "temporary": 0
     },
     "combat": {
@@ -16,14 +16,14 @@
         "bonus": ""
       },
       "size": {
-        "value": 2,
+        "value": 1,
         "letter": "M"
       },
       "stability": 1,
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p>These phantoms puppet the remnants of their corporeal forms. Unlike other spirits, the ripper tears the reality around them and leaves behind distorted or uneven “bumps” in the air, which can affect stone, metal, and flesh.</p>",
       "director": "",
       "languages": []
     },
@@ -70,10 +70,10 @@
         "value": 0
       },
       "agility": {
-        "value": 2
+        "value": 4
       },
       "reason": {
-        "value": 4
+        "value": 0
       },
       "intuition": {
         "value": 0
@@ -84,7 +84,7 @@
     },
     "source": {
       "book": "Summoner",
-      "page": "30",
+      "page": "38",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,24 +96,23 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 3,
+      "freeStrike": 8,
       "keywords": [
-        "fey",
-        "swarm"
+        "undead"
       ],
       "level": 1,
-      "role": "harrier",
+      "role": "ambusher",
       "organization": "minion",
       "freeStrikeType": "",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Pixie Rosenthall",
+    "name": "Phantom of the Ripper",
     "displayName": 0,
     "actorLink": false,
-    "width": 2,
-    "height": 2,
+    "width": 1,
+    "height": 1,
     "depth": 1,
     "texture": {
       "src": "systems/draw-steel/assets/roles/minion.webp",
@@ -202,20 +201,21 @@
   },
   "items": [
     {
-      "name": "Swarm",
+      "name": "Corruption and Poison Immunity",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "kuNWYyPGX0sZfwTy",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The [[lookup @name]] can move through spaces as if they were size 1T, and can occupy other creatures' spaces. At the start of the [[lookup @name]]'s turn, they deal 2 damage to each enemy whose space they share.</p>",
+          "value": "<p>This creature has corruption immunity and poison immunity equal to your Reason.</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "41"
+          "book": "",
+          "page": "",
+          "license": ""
         },
-        "_dsid": "swarm",
+        "_dsid": "corruption-immunity-and-free-strike",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -223,19 +223,22 @@
           "level": null
         }
       },
-      "_id": "EuPiIijT1zuOvWxj",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "draw-steel-plus": {
+          "favorite": false
+        }
+      },
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.8hyc2xbJy825dRTZ.Item.EuPiIijT1zuOvWxj",
-        "duplicateSource": null,
-        "exportSource": null,
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "lastModifiedBy": null,
+        "createdTime": 1788545985596,
         "modifiedTime": null,
-        "createdTime": 1788476217828
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.world.summoner-minions.Actor.GDQYfMhOE3dsUt9l.Item.kuNWYyPGX0sZfwTy",
+        "duplicateSource": null,
+        "exportSource": null
       },
       "ownership": {
         "default": 0,
@@ -243,10 +246,54 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.EuPiIijT1zuOvWxj"
+      "_key": "!actors.items!aFfz3TjUR3w0Q9wT.kuNWYyPGX0sZfwTy"
     },
     {
-      "name": "Stickerbrush Symphony",
+      "name": "Ripping Phase",
+      "type": "feature",
+      "_id": "e07NdjsX2LciSj7U",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The [[lookup @name]] can move through other creatures and objects at normal speed. The first time in a round that the [[lookup @name]] passes through a creature, that creature takes [[/damage 3 corruption]] and has a bane on their next strike. The [[lookup @name]] doesn't take damage from being force moved into objects.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788545985596,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!aFfz3TjUR3w0Q9wT.e07NdjsX2LciSj7U"
+    },
+    {
+      "name": "Plunge of the Knife",
       "type": "ability",
       "system": {
         "type": "main",
@@ -272,7 +319,7 @@
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": "2",
+          "primary": "1",
           "secondary": "1",
           "tertiary": "1"
         },
@@ -285,86 +332,39 @@
         "power": {
           "roll": {
             "reactive": false,
-            "formula": "@chr",
-            "characteristics": [
-              "reason"
-            ]
+            "formula": "",
+            "characteristics": []
           },
           "effects": {
-            "AonSmtc5Q3DnUvVW": {
+            "9eitgHuqShzMx9co": {
               "sort": 100000,
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "AonSmtc5Q3DnUvVW",
+              "_id": "9eitgHuqShzMx9co",
               "damage": {
                 "tier1": {
-                  "value": "3",
-                  "types": [],
-                  "ignoredImmunities": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "6",
-                  "types": [],
-                  "ignoredImmunities": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
                   "value": "8",
                   "types": [],
                   "ignoredImmunities": [],
                   "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "pWPR92QEd2zQtveN": {
-              "sort": 200000,
-              "name": "",
-              "img": null,
-              "type": "forced",
-              "_id": "pWPR92QEd2zQtveN",
-              "forced": {
-                "tier1": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "properties": [],
-                  "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
                   }
                 },
                 "tier2": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "3",
-                  "properties": [],
+                  "value": "13",
+                  "types": [],
+                  "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "4",
-                  "properties": [],
+                  "value": "17",
+                  "types": [],
+                  "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
@@ -372,34 +372,34 @@
                 }
               }
             },
-            "qY0KF4jWwJUzI8wb": {
-              "sort": 300000,
+            "ivX5bIIZnDXKmHy8": {
+              "sort": 200000,
               "name": "",
               "img": null,
               "type": "applied",
-              "_id": "qY0KF4jWwJUzI8wb",
+              "_id": "ivX5bIIZnDXKmHy8",
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} slowed (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "slowed": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "agility"
+                    "characteristic": "might"
                   }
                 },
                 "tier2": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} slowed (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "slowed": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
@@ -408,12 +408,12 @@
                   }
                 },
                 "tier3": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}}  slowed (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "slowed": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
@@ -429,7 +429,7 @@
           "after00000000000": {
             "_id": "after00000000000",
             "type": "base",
-            "description": "<p>A target can't shift while bleeding from this ability.</p>",
+            "description": "<p>The [[lookup @name]] deals an additional [[/damage 3]] if they have an edge.</p>",
             "name": "",
             "img": null,
             "sort": 0,
@@ -437,7 +437,7 @@
           }
         }
       },
-      "_id": "i1GTj9DccIwB2PaH",
+      "_id": "Ikd68nNkiNc4M1Gv",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -451,14 +451,14 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788476217828,
+        "createdTime": 1788545985596,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.i1GTj9DccIwB2PaH"
+      "_key": "!actors.items!aFfz3TjUR3w0Q9wT.Ikd68nNkiNc4M1Gv"
     }
   ],
   "effects": [],
@@ -475,12 +475,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788476217828,
+    "createdTime": 1788545985596,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!tKWDYYcmEBgb9sP9"
+  "_key": "!actors!aFfz3TjUR3w0Q9wT"
 }
