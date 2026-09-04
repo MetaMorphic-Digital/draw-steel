@@ -1,0 +1,221 @@
+{
+  "folder": "ukLUk8SWVtTuI7eq",
+  "name": "Control the Elements",
+  "type": "feature",
+  "_id": "rNIrik48lNmIB2JG",
+  "img": "icons/magic/symbols/cross-circle-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Whenever you use Call Forth, you can spend essence to change the size of one elemental minion you summon depending on it's Essence Cost.</p><p><strong>Essence Cost 1 - </strong>[[/apply x6PktbAoS1mUdPOy]]{The minion becomes size 2.}</p><p><strong>Essence Cost 3 - </strong>[[/apply FGqMBW1UazQNHror]]{The minion becomes size 3.}</p><p><strong>Essence Cost 5 - </strong>[[/apply JPdDBEWM2DXQBnGB]]{The minion becomes size 4.}</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "40",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "control-the-elements",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Become Size 2",
+      "img": "icons/magic/symbols/cross-circle-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.rNIrik48lNmIB2JG",
+      "transfer": false,
+      "_id": "x6PktbAoS1mUdPOy",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size.value",
+            "type": "override",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788472729291,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!rNIrik48lNmIB2JG.x6PktbAoS1mUdPOy"
+    },
+    {
+      "name": "Become Size 3",
+      "img": "icons/magic/symbols/cross-circle-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.rNIrik48lNmIB2JG",
+      "transfer": false,
+      "_id": "FGqMBW1UazQNHror",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size.value",
+            "type": "override",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788472769892,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!rNIrik48lNmIB2JG.FGqMBW1UazQNHror"
+    },
+    {
+      "name": "Become Size 4",
+      "img": "icons/magic/symbols/cross-circle-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.rNIrik48lNmIB2JG",
+      "transfer": false,
+      "_id": "JPdDBEWM2DXQBnGB",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size.value",
+            "type": "add",
+            "value": 4,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788472787573,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!rNIrik48lNmIB2JG.JPdDBEWM2DXQBnGB"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788472635489,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!rNIrik48lNmIB2JG"
+}
