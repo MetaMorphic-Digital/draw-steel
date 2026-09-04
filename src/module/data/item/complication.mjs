@@ -9,7 +9,7 @@ export default class ComplicationModel extends FeatureModel {
     return {
       ...super.metadata,
       type: "complication",
-      invalidActorTypes: ["npc", "object", "party"],
+      invalidActorTypes: ["npc", "object", "party", "retainer"],
       detailsPartial: null,
     };
   }

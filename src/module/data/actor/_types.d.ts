@@ -29,6 +29,7 @@ interface CoreResource {
   target: foundry.abstract.DataModel;
   path: string;
   minimum: number;
+  tracking: number;
 }
 
 interface FreeStrike {
@@ -120,7 +121,9 @@ declare module "./companion.mjs" {
       keywords: Set<string> & { list: string[]; labels: string };
       role: string;
       roleLabel: string;
-      master: DrawSteelActor;
+      master: Omit<DrawSteelActor, "system"> & { system: import("./hero.mjs").default };
+      rampage: number;
+      skills: Set<string>;
     }
   }
 }
