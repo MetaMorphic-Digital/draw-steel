@@ -1,9 +1,9 @@
 {
-  "folder": "HS8VOC5sBgutnpR7",
-  "name": "The Boil",
+  "folder": "6zFoLigCMhkaD7Rg",
+  "name": "Glade Pond",
   "type": "object",
-  "_id": "Gp4L6WwluGhd5olm",
-  "img": "icons/skills/wounds/blood-cells-red.webp",
+  "_id": "ytbm4Cblp1XzKNjN",
+  "img": "icons/magic/nature/tree-spirit-black.webp",
   "system": {
     "stamina": {
       "value": null,
@@ -27,7 +27,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "<p>The boil arises from the chaotic depths of the Abyssal Waste, concentrated into a heaving mass by the pressure of a coherent reality. As it slushes and threatens to burst, the noises drive nearby demons into a frenzy.</p>",
+      "value": "<p>The vibrant waters of Arcadia pour through a hole in reality and pool into a verdant cup of paradise. As the pond babbles, it causes the surrounding flora to grow and provides the fey places to hide.</p>",
       "director": ""
     },
     "movement": {
@@ -67,27 +67,27 @@
     },
     "source": {
       "book": "Summoner",
-      "page": "26",
+      "page": "27",
       "license": "Draw Steel Creator License"
     },
     "ev": null,
     "object": {
-      "level": 2,
+      "level": null,
       "category": "hazard",
-      "role": "support",
+      "role": "ambusher",
       "area": "",
       "squareStamina": false
     }
   },
   "prototypeToken": {
-    "name": "The Boil",
+    "name": "Glade Pond",
     "displayName": 0,
     "actorLink": false,
     "width": 2,
     "height": 2,
     "depth": 1,
     "texture": {
-      "src": "icons/skills/wounds/blood-cells-red.webp",
+      "src": "icons/magic/nature/trap-spikes-thorns-green.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "contain",
@@ -105,7 +105,7 @@
       "attribute": "stamina"
     },
     "bar2": {
-      "attribute": null
+      "attribute": "hero.primary.value"
     },
     "light": {
       "negative": false,
@@ -153,7 +153,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -173,151 +173,19 @@
   },
   "items": [
     {
-      "name": "Hunger Thrush",
+      "name": "Bubbling Boost",
       "type": "feature",
-      "_id": "6xmBNp2REGEkrvGP",
-      "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp",
+      "_id": "nzvEpJ6vEff3uhM1",
+      "img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
       "system": {
         "description": {
-          "value": "<p>Each enemy that starts their turn within 3 squares of [[lookup @name]] is [[potency I average]] [[/apply taunted turn]] by [[lookup @name]], or [[potency I weak]] [[/apply taunted turn]] by the boil and can't move further from it.</p>",
+          "value": "<p>You and each non-minion ally that enters one or more squares within 3 squares of the pond or starts their turn there has their [[/apply vYHqZU6C4aSpDIEQ turn]]{speed increased by 2} until the end of their turn.</p>",
           "director": ""
         },
         "source": {
           "book": "",
           "page": "",
           "license": ""
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788268623014,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.6xmBNp2REGEkrvGP"
-    },
-    {
-      "name": "Oh, It Pops",
-      "type": "feature",
-      "_id": "7vsCWMHUei95mT4m",
-      "img": "icons/magic/unholy/strike-beam-blood-large-red-green.webp",
-      "system": {
-        "description": {
-          "value": "<p>When [[lookup @name]] is destroyed, each enemy within 3 squares of [[lookup @name]] takes acid damage equal to your level and is [[potency A strong]] [[/apply weakened save]].</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788268623014,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.7vsCWMHUei95mT4m"
-    },
-    {
-      "name": "Soul Rancor",
-      "type": "feature",
-      "_id": "oO5R1tbuuYk8uqRu",
-      "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
-      "system": {
-        "description": {
-          "value": "<p>You [[/gain 1 surge]] the first time in a round that your demon minions deal 3 or more damage to a creature while you have line of effect to the boil. You can choose to give the surge to an ally who also has line of effect to the boil.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": 5
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "H3JTtZ7ZHtjM7TW8": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788268623014,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.oO5R1tbuuYk8uqRu"
-    },
-    {
-      "name": "Size Increase",
-      "type": "feature",
-      "_id": "XMmsbVn7DB4iPJaj",
-      "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
-      "system": {
-        "description": {
-          "value": "<p>The boil is now size 3.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "Draw Steel Creator License"
         },
         "_dsid": "",
         "advancements": {},
@@ -329,17 +197,17 @@
       },
       "effects": [
         {
-          "name": "Active Effect",
-          "img": "icons/svg/item-bag.svg",
+          "name": "Speed Increase",
+          "img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
           "type": "base",
-          "origin": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm.Item.XMmsbVn7DB4iPJaj",
+          "origin": "Compendium.draw-steel.summons.Actor.ytbm4Cblp1XzKNjN.Item.nzvEpJ6vEff3uhM1",
           "transfer": false,
-          "_id": "BpmxAGSVWe682tyg",
+          "_id": "vYHqZU6C4aSpDIEQ",
           "system": {
             "changes": [
               {
-                "key": "system.combat.size",
-                "type": "upgrade",
+                "key": "system.movement.value",
+                "type": "add",
                 "value": 3,
                 "phase": "initial",
                 "priority": null
@@ -378,44 +246,199 @@
             "coreVersion": "14.367",
             "systemId": "draw-steel",
             "systemVersion": "1.2",
-            "createdTime": 1788268988386,
-            "modifiedTime": 1788269040870,
+            "createdTime": 1788474797907,
+            "modifiedTime": 1788474822476,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null
           },
-          "_key": "!actors.items.effects!Gp4L6WwluGhd5olm.XMmsbVn7DB4iPJaj.BpmxAGSVWe682tyg"
+          "_key": "!actors.items.effects!ytbm4Cblp1XzKNjN.nzvEpJ6vEff3uhM1.vYHqZU6C4aSpDIEQ"
         }
       ],
       "folder": null,
       "sort": 0,
       "ownership": {
         "default": 0,
-        "H3JTtZ7ZHtjM7TW8": 3
+        "bULgfeSVOL2yapd0": 3
       },
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788268623014,
+        "createdTime": 1788474684572,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.XMmsbVn7DB4iPJaj"
+      "_key": "!actors.items!ytbm4Cblp1XzKNjN.nzvEpJ6vEff3uhM1"
     },
     {
-      "name": "Fester Field",
+      "name": "Overgrowth",
       "type": "feature",
-      "_id": "Ccie9z88OA56X3pm",
-      "img": "icons/magic/death/skull-poison-green.webp",
+      "_id": "RxABmwmZ8OfwYYGi",
+      "img": "icons/magic/nature/stealth-hide-beast-eyes-green.webp",
       "system": {
         "description": {
-          "value": "<p>Each non-abyssal enemy that starts their turn within 3 squares of the boil takes [[/damage 5 corruption]] damage.</p>",
+          "value": "<p>Each of your fey minions that ends their turn within 3 squares of the pond is hidden until the start of their next turn.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Summoner",
+          "page": "27",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "overgrowth",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788474684572,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!ytbm4Cblp1XzKNjN.RxABmwmZ8OfwYYGi"
+    },
+    {
+      "name": "Size Increase",
+      "type": "feature",
+      "_id": "XMmsbVn7DB4iPJaj",
+      "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+      "system": {
+        "description": {
+          "value": "<p>The boil is now size 3.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "size-increase",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Size Increase",
+          "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.summons.Actor.apRD7KyjeQCGOgkk.Item.XMmsbVn7DB4iPJaj",
+          "_id": "odSOGT0uOlhBpBw6",
+          "system": {
+            "changes": [
+              {
+                "key": "system.combat.size",
+                "type": "upgrade",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": true,
+          "start": {
+            "time": 0,
+            "round": null,
+            "combat": null,
+            "combatant": null,
+            "initiative": null,
+            "turn": null
+          },
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788474902586,
+            "modifiedTime": 1788474902586,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!ytbm4Cblp1XzKNjN.XMmsbVn7DB4iPJaj.odSOGT0uOlhBpBw6"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788474902586,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.summons.Actor.apRD7KyjeQCGOgkk.Item.XMmsbVn7DB4iPJaj",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "H3JTtZ7ZHtjM7TW8": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!ytbm4Cblp1XzKNjN.XMmsbVn7DB4iPJaj"
+    },
+    {
+      "name": "Garden of Jest",
+      "type": "feature",
+      "_id": "bnuJJHnImV3DnE18",
+      "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+      "system": {
+        "description": {
+          "value": "<p>You can spend a Recovery the first time in a round a creature gains or starts their turn with a condition while you have line of effect to the pond. Alternatively, you can choose to enable an ally who also has line of effect to the boil to spend a Recovery instead.</p>",
           "director": ""
         },
         "source": {
@@ -443,14 +466,58 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788269079535,
+        "createdTime": 1788474909048,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.Ccie9z88OA56X3pm"
+      "_key": "!actors.items!ytbm4Cblp1XzKNjN.bnuJJHnImV3DnE18"
+    },
+    {
+      "name": "Folly Field",
+      "type": "feature",
+      "_id": "BIYBMR4mJpRY482W",
+      "img": "icons/magic/nature/leaf-armor-scale-green.webp",
+      "system": {
+        "description": {
+          "value": "<p>Each non-fey enemy that starts their turn within 3 squares of the pond has a -1 penalty to saving throws and resisting potencies until the start of their next turn.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "H3JTtZ7ZHtjM7TW8": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788474935224,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!ytbm4Cblp1XzKNjN.BIYBMR4mJpRY482W"
     },
     {
       "name": "Advancement",
@@ -467,7 +534,7 @@
           "page": "",
           "license": "Draw Steel Creator License"
         },
-        "_dsid": "",
+        "_dsid": "advancement",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -476,95 +543,28 @@
         }
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788474960770,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.summons.Actor.apRD7KyjeQCGOgkk.Item.rNnzn5Fu85tbQGd3",
+        "duplicateSource": null,
+        "exportSource": null
+      },
       "ownership": {
         "default": 0,
         "H3JTtZ7ZHtjM7TW8": 3
       },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788269424154,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.rNnzn5Fu85tbQGd3"
-    }
-  ],
-  "effects": [
-    {
-      "name": "Level 5 - Size Increase",
-      "img": "icons/svg/aura.svg",
-      "type": "base",
-      "origin": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm",
-      "disabled": true,
-      "_id": "1niXkk1gn8kXwdwH",
-      "system": {
-        "changes": [
-          {
-            "key": "system.combat.size.value",
-            "type": "upgrade",
-            "value": 3,
-            "phase": "initial",
-            "priority": null
-          }
-        ],
-        "end": {
-          "roll": "1d10 + @combat.save.bonus"
-        },
-        "project": {
-          "prerequisites": "",
-          "source": "",
-          "rollCharacteristic": [],
-          "yield": {
-            "kind": "weapon",
-            "amount": "1",
-            "display": ""
-          }
-        }
-      },
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 1,
       "folder": null,
       "sort": 0,
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788268623014,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!Gp4L6WwluGhd5olm.1niXkk1gn8kXwdwH"
+      "_key": "!actors.items!ytbm4Cblp1XzKNjN.rNnzn5Fu85tbQGd3"
     }
   ],
+  "effects": [],
   "ownership": {
     "default": 0
   },
@@ -573,7 +573,7 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788268623014,
+    "createdTime": 1788474684572,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
@@ -581,5 +581,5 @@
     "exportSource": null
   },
   "sort": 0,
-  "_key": "!actors!Gp4L6WwluGhd5olm"
+  "_key": "!actors!ytbm4Cblp1XzKNjN"
 }

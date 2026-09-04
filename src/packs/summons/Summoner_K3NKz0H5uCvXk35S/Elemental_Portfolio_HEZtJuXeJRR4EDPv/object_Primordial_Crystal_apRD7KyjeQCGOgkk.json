@@ -1,9 +1,9 @@
 {
-  "folder": "HS8VOC5sBgutnpR7",
-  "name": "The Boil",
+  "folder": "HEZtJuXeJRR4EDPv",
+  "name": "Primordial Crystal",
   "type": "object",
-  "_id": "Gp4L6WwluGhd5olm",
-  "img": "icons/skills/wounds/blood-cells-red.webp",
+  "_id": "apRD7KyjeQCGOgkk",
+  "img": "icons/commodities/gems/pearl-storm.webp",
   "system": {
     "stamina": {
       "value": null,
@@ -27,12 +27,14 @@
       "turns": 1
     },
     "biography": {
-      "value": "<p>The boil arises from the chaotic depths of the Abyssal Waste, concentrated into a heaving mass by the pressure of a coherent reality. As it slushes and threatens to burst, the noises drive nearby demons into a frenzy.</p>",
+      "value": "",
       "director": ""
     },
     "movement": {
       "value": null,
-      "types": [],
+      "types": [
+        "walk"
+      ],
       "hover": false,
       "disengage": null
     },
@@ -67,27 +69,27 @@
     },
     "source": {
       "book": "Summoner",
-      "page": "26",
+      "page": "27",
       "license": "Draw Steel Creator License"
     },
     "ev": null,
     "object": {
-      "level": 2,
-      "category": "hazard",
-      "role": "support",
+      "level": null,
+      "category": "relic",
+      "role": "artillery",
       "area": "",
       "squareStamina": false
     }
   },
   "prototypeToken": {
-    "name": "The Boil",
+    "name": "Primordial Crystal",
     "displayName": 0,
     "actorLink": false,
     "width": 2,
     "height": 2,
     "depth": 1,
     "texture": {
-      "src": "icons/skills/wounds/blood-cells-red.webp",
+      "src": "icons/commodities/gems/pearl-storm.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "fit": "contain",
@@ -105,7 +107,7 @@
       "attribute": "stamina"
     },
     "bar2": {
-      "attribute": null
+      "attribute": "hero.primary.value"
     },
     "light": {
       "negative": false,
@@ -153,7 +155,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -173,13 +175,13 @@
   },
   "items": [
     {
-      "name": "Hunger Thrush",
+      "name": "Magnetic Pull",
       "type": "feature",
-      "_id": "6xmBNp2REGEkrvGP",
-      "img": "icons/creatures/tentacles/tentacles-suctioncups-pink.webp",
+      "_id": "GaZeQi6uXEmvUiv7",
+      "img": "icons/magic/lightning/orb-ball-spiral-blue.webp",
       "system": {
         "description": {
-          "value": "<p>Each enemy that starts their turn within 3 squares of [[lookup @name]] is [[potency I average]] [[/apply taunted turn]] by [[lookup @name]], or [[potency I weak]] [[/apply taunted turn]] by the boil and can't move further from it.</p>",
+          "value": "<p>Each enemy that starts their turn within 3 squares of the crystal is vertically pulled 3.</p>",
           "director": ""
         },
         "source": {
@@ -207,23 +209,23 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788268623014,
+        "createdTime": 1788474196400,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.6xmBNp2REGEkrvGP"
+      "_key": "!actors.items!apRD7KyjeQCGOgkk.GaZeQi6uXEmvUiv7"
     },
     {
-      "name": "Oh, It Pops",
+      "name": "Elemental Boost",
       "type": "feature",
-      "_id": "7vsCWMHUei95mT4m",
-      "img": "icons/magic/unholy/strike-beam-blood-large-red-green.webp",
+      "_id": "LHNoXtDht6B5znOx",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
       "system": {
         "description": {
-          "value": "<p>When [[lookup @name]] is destroyed, each enemy within 3 squares of [[lookup @name]] takes acid damage equal to your level and is [[potency A strong]] [[/apply weakened save]].</p>",
+          "value": "<p>When you or an ally uses a ranged ability that draws a line through the crystal, the distance increases by 5.</p>",
           "director": ""
         },
         "source": {
@@ -251,23 +253,23 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788268623014,
+        "createdTime": 1788474196400,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.7vsCWMHUei95mT4m"
+      "_key": "!actors.items!apRD7KyjeQCGOgkk.LHNoXtDht6B5znOx"
     },
     {
-      "name": "Soul Rancor",
+      "name": "Terra Resonance",
       "type": "feature",
-      "_id": "oO5R1tbuuYk8uqRu",
-      "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+      "_id": "td3eKIZMA0j2Zw6e",
+      "img": "icons/magic/control/energy-stream-link-blue.webp",
       "system": {
         "description": {
-          "value": "<p>You [[/gain 1 surge]] the first time in a round that your demon minions deal 3 or more damage to a creature while you have line of effect to the boil. You can choose to give the surge to an ally who also has line of effect to the boil.</p>",
+          "value": "<p>Each round, you gain a surge the first time an area of terrain gains a @UUID[JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.0c0vJzSQHdPih3O9]{supernatural} effect (excluding auras) while you have line of effect to the crystal. You can choose to give the surge to an ally who also has line of effect to the crystal.</p>",
           "director": ""
         },
         "source": {
@@ -280,7 +282,7 @@
         "prerequisites": {
           "value": "",
           "dsid": [],
-          "level": 5
+          "level": null
         }
       },
       "effects": [],
@@ -295,14 +297,58 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788268623014,
+        "createdTime": 1788474370790,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.oO5R1tbuuYk8uqRu"
+      "_key": "!actors.items!apRD7KyjeQCGOgkk.td3eKIZMA0j2Zw6e"
+    },
+    {
+      "name": "Advancement",
+      "type": "feature",
+      "_id": "rNnzn5Fu85tbQGd3",
+      "img": "icons/svg/upgrade.svg",
+      "system": {
+        "description": {
+          "value": "<p>Your fixture gains additional features at 5th and 9th level.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "advancement",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788474444483,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm.Item.rNnzn5Fu85tbQGd3",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "H3JTtZ7ZHtjM7TW8": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!apRD7KyjeQCGOgkk.rNnzn5Fu85tbQGd3"
     },
     {
       "name": "Size Increase",
@@ -319,7 +365,7 @@
           "page": "",
           "license": "Draw Steel Creator License"
         },
-        "_dsid": "",
+        "_dsid": "size-increase",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -329,12 +375,11 @@
       },
       "effects": [
         {
-          "name": "Active Effect",
-          "img": "icons/svg/item-bag.svg",
+          "name": "Size Increase",
+          "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
           "type": "base",
-          "origin": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm.Item.XMmsbVn7DB4iPJaj",
-          "transfer": false,
-          "_id": "BpmxAGSVWe682tyg",
+          "origin": "Compendium.draw-steel.summons.Actor.apRD7KyjeQCGOgkk.Item.XMmsbVn7DB4iPJaj",
+          "_id": "odSOGT0uOlhBpBw6",
           "system": {
             "changes": [
               {
@@ -359,8 +404,15 @@
               }
             }
           },
-          "disabled": false,
-          "start": null,
+          "disabled": true,
+          "start": {
+            "time": 0,
+            "round": null,
+            "combat": null,
+            "combatant": null,
+            "initiative": null,
+            "turn": null
+          },
           "duration": {
             "value": null,
             "units": "seconds",
@@ -369,6 +421,7 @@
           },
           "description": "",
           "tint": "#ffffff",
+          "transfer": true,
           "statuses": [],
           "showIcon": 1,
           "folder": null,
@@ -378,44 +431,44 @@
             "coreVersion": "14.367",
             "systemId": "draw-steel",
             "systemVersion": "1.2",
-            "createdTime": 1788268988386,
-            "modifiedTime": 1788269040870,
+            "createdTime": 1788474571189,
+            "modifiedTime": 1788474603501,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null
           },
-          "_key": "!actors.items.effects!Gp4L6WwluGhd5olm.XMmsbVn7DB4iPJaj.BpmxAGSVWe682tyg"
+          "_key": "!actors.items.effects!apRD7KyjeQCGOgkk.XMmsbVn7DB4iPJaj.odSOGT0uOlhBpBw6"
         }
       ],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "H3JTtZ7ZHtjM7TW8": 3
-      },
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788268623014,
+        "createdTime": 1788474535967,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm.Item.XMmsbVn7DB4iPJaj",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.XMmsbVn7DB4iPJaj"
+      "ownership": {
+        "default": 0,
+        "H3JTtZ7ZHtjM7TW8": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!apRD7KyjeQCGOgkk.XMmsbVn7DB4iPJaj"
     },
     {
-      "name": "Fester Field",
+      "name": "Magnified Strike",
       "type": "feature",
-      "_id": "Ccie9z88OA56X3pm",
-      "img": "icons/magic/death/skull-poison-green.webp",
+      "_id": "eUNSyMEWxbT0QS2j",
+      "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
       "system": {
         "description": {
-          "value": "<p>Each non-abyssal enemy that starts their turn within 3 squares of the boil takes [[/damage 5 corruption]] damage.</p>",
+          "value": "<p>When you or an ally makes a ranged strike that draws a line through the crystal, the user [[/gain 1 surge]]{gains a surge} which they can use on the ability.</p>",
           "director": ""
         },
         "source": {
@@ -443,128 +496,17 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788269079535,
+        "createdTime": 1788474619495,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.Ccie9z88OA56X3pm"
-    },
-    {
-      "name": "Advancement",
-      "type": "feature",
-      "_id": "rNnzn5Fu85tbQGd3",
-      "img": "icons/svg/upgrade.svg",
-      "system": {
-        "description": {
-          "value": "<p>Your fixture gains additional features at 5th and 9th level.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "H3JTtZ7ZHtjM7TW8": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788269424154,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!Gp4L6WwluGhd5olm.rNnzn5Fu85tbQGd3"
+      "_key": "!actors.items!apRD7KyjeQCGOgkk.eUNSyMEWxbT0QS2j"
     }
   ],
-  "effects": [
-    {
-      "name": "Level 5 - Size Increase",
-      "img": "icons/svg/aura.svg",
-      "type": "base",
-      "origin": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm",
-      "disabled": true,
-      "_id": "1niXkk1gn8kXwdwH",
-      "system": {
-        "changes": [
-          {
-            "key": "system.combat.size.value",
-            "type": "upgrade",
-            "value": 3,
-            "phase": "initial",
-            "priority": null
-          }
-        ],
-        "end": {
-          "roll": "1d10 + @combat.save.bonus"
-        },
-        "project": {
-          "prerequisites": "",
-          "source": "",
-          "rollCharacteristic": [],
-          "yield": {
-            "kind": "weapon",
-            "amount": "1",
-            "display": ""
-          }
-        }
-      },
-      "start": {
-        "time": 0,
-        "combat": null,
-        "combatant": null,
-        "initiative": null,
-        "round": null,
-        "turn": null
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [],
-      "showIcon": 1,
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788268623014,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.effects!Gp4L6WwluGhd5olm.1niXkk1gn8kXwdwH"
-    }
-  ],
+  "effects": [],
   "ownership": {
     "default": 0
   },
@@ -573,7 +515,7 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788268623014,
+    "createdTime": 1788474196400,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
@@ -581,5 +523,5 @@
     "exportSource": null
   },
   "sort": 0,
-  "_key": "!actors!Gp4L6WwluGhd5olm"
+  "_key": "!actors!apRD7KyjeQCGOgkk"
 }
