@@ -2000,6 +2000,9 @@ export const PowerRollEffect = {
       originDuration: {
         label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originDuration",
       },
+      originRollData: {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originRollData",
+      },
     },
   },
   forced: {

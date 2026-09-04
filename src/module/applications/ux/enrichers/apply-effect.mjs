@@ -39,6 +39,7 @@ export async function enricher(match, options) {
   if (parsedConfig.uuid) linkConfig.uuid = parsedConfig.uuid;
   if (parsedConfig.stacking) linkConfig.stacking = parsedConfig.stacking;
   if (parsedConfig.originDuration) linkConfig.originDuration = parsedConfig.originDuration;
+  if (parsedConfig.originRollData) linkConfig.originRollData = parsedConfig.originRollData;
   if (options.relativeTo) linkConfig.origin = options.relativeTo.uuid;
 
   /** @type {DrawSteelItem} */
@@ -148,6 +149,12 @@ async function onClickAnchor() {
   const originActor = origin?.documentName === "Actor" ? origin : origin?.actor;
   let combatant = this.dataset.originDuration ? game.combat?.getCombatantsByActor(originActor)[0] ?? "" : null;
 
+  if (this.dataset.originRollData) {
+    const replacementData = origin.getRollData();
+    const changeUpdates = await DrawSteelActiveEffect.forApplication(tempEffect.system._source.changes, replacementData);
+    tempEffect.updateSource({ "system.changes": changeUpdates });
+  }
+
   for (const token of tokens) {
     const actor = token.actor;
     if (!actor) continue;
@@ -175,18 +182,6 @@ async function onClickAnchor() {
     // deleting instead of updating because there may be variances between the old copy and new
     if (existing) toDelete.push({ action: "delete", parent: actor, documentName: "ActiveEffect", ids: [tempEffect.id] });
     toCreate.push({ action: "create", parent: actor, documentName: "ActiveEffect", data: [createData], keepId: noStack });
-
-    // statuses automatically create scrolling text themselves
-    if (this.dataset.type === "custom") {
-      canvas.interface.createScrollingText(token.center,
-        _loc("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
-        {
-          fill: "white",
-          fontSize: 32,
-          stroke: 0x000000,
-          strokeThickness: 4,
-        });
-    }
   }
 
   await foundry.documents.modifyBatch(toDelete);
