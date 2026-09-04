@@ -1,13 +1,13 @@
 {
-  "folder": "Z1TIaUJJFq62unJ6",
-  "name": "Pixie Rosenthall",
+  "folder": "9wclm2mzfgmwjHk2",
+  "name": "Vicisittante",
   "type": "npc",
-  "_id": "tKWDYYcmEBgb9sP9",
+  "_id": "lzliZfauMilJoQX1",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 5,
+      "max": 17,
       "temporary": 0
     },
     "combat": {
@@ -19,21 +19,20 @@
         "value": 2,
         "letter": "M"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p>It's difficult to identify the base nature of a vicisittante apart from an ever-changing mass of burning flesh. Any surface they touch immediately scars as the demon leaves parts of themselves behind.</p>",
       "director": "",
       "languages": []
     },
     "movement": {
-      "value": 6,
+      "value": 10,
       "types": [
-        "walk",
-        "fly"
+        "walk"
       ],
-      "hover": true,
+      "hover": false,
       "disengage": 1
     },
     "damage": {
@@ -55,7 +54,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 0,
+        "holy": 1,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -67,24 +66,24 @@
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": 3
       },
       "agility": {
-        "value": 2
+        "value": 4
       },
       "reason": {
-        "value": 4
+        "value": 0
       },
       "intuition": {
         "value": 0
       },
       "presence": {
-        "value": 3
+        "value": -1
       }
     },
     "source": {
       "book": "Summoner",
-      "page": "30",
+      "page": "35",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -94,22 +93,19 @@
       "pitfalls": [],
       "impression": 1
     },
-    "ev": 0,
+    "ev": 4,
     "monster": {
-      "freeStrike": 3,
-      "keywords": [
-        "fey",
-        "swarm"
-      ],
+      "freeStrike": 7,
+      "keywords": [],
       "level": 1,
-      "role": "harrier",
-      "organization": "minion",
-      "freeStrikeType": "",
-      "withCaptainEffect": null
+      "role": "",
+      "organization": "",
+      "withCaptainEffect": null,
+      "freeStrikeType": ""
     }
   },
   "prototypeToken": {
-    "name": "Pixie Rosenthall",
+    "name": "Vicisittante",
     "displayName": 0,
     "actorLink": false,
     "width": 2,
@@ -202,20 +198,20 @@
   },
   "items": [
     {
-      "name": "Swarm",
+      "name": "Soulsight",
       "type": "feature",
       "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The [[lookup @name]] can move through spaces as if they were size 1T, and can occupy other creatures' spaces. At the start of the [[lookup @name]]'s turn, they deal 2 damage to each enemy whose space they share.</p>",
+          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "41"
+          "page": "62"
         },
-        "_dsid": "swarm",
+        "_dsid": "soulsight",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -223,19 +219,19 @@
           "level": null
         }
       },
-      "_id": "EuPiIijT1zuOvWxj",
+      "_id": "6J9lMMqHMOR8zWyO",
       "effects": [],
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.8hyc2xbJy825dRTZ.Item.EuPiIijT1zuOvWxj",
-        "duplicateSource": null,
-        "exportSource": null,
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": 1788476217828
+        "createdTime": 1788544364040,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
       },
       "ownership": {
         "default": 0,
@@ -243,10 +239,10 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.EuPiIijT1zuOvWxj"
+      "_key": "!actors.items!lzliZfauMilJoQX1.6J9lMMqHMOR8zWyO"
     },
     {
-      "name": "Stickerbrush Symphony",
+      "name": "Cerebral Flay",
       "type": "ability",
       "system": {
         "type": "main",
@@ -264,15 +260,15 @@
         "story": "",
         "keywords": [
           "melee",
-          "strike",
-          "weapon"
+          "psionic",
+          "strike"
         ],
         "category": "signature",
         "resource": null,
         "trigger": "",
         "distance": {
           "type": "melee",
-          "primary": "2",
+          "primary": "1",
           "secondary": "1",
           "tertiary": "1"
         },
@@ -291,16 +287,18 @@
             ]
           },
           "effects": {
-            "AonSmtc5Q3DnUvVW": {
+            "5wrFcqUQIcKS4gpD": {
               "sort": 100000,
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "AonSmtc5Q3DnUvVW",
+              "_id": "5wrFcqUQIcKS4gpD",
               "damage": {
                 "tier1": {
-                  "value": "3",
-                  "types": [],
+                  "value": "7",
+                  "types": [
+                    "psychic"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -308,8 +306,10 @@
                   }
                 },
                 "tier2": {
-                  "value": "6",
-                  "types": [],
+                  "value": "11",
+                  "types": [
+                    "psychic"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.average",
@@ -317,8 +317,10 @@
                   }
                 },
                 "tier3": {
-                  "value": "8",
-                  "types": [],
+                  "value": "16",
+                  "types": [
+                    "psychic"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.strong",
@@ -327,79 +329,34 @@
                 }
               }
             },
-            "pWPR92QEd2zQtveN": {
+            "UbFBeSOQA0TdCpo3": {
               "sort": 200000,
               "name": "",
               "img": null,
-              "type": "forced",
-              "_id": "pWPR92QEd2zQtveN",
-              "forced": {
-                "tier1": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "3",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "4",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "qY0KF4jWwJUzI8wb": {
-              "sort": 300000,
-              "name": "",
-              "img": null,
               "type": "applied",
-              "_id": "qY0KF4jWwJUzI8wb",
+              "_id": "UbFBeSOQA0TdCpo3",
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} weakened (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "weakened": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "agility"
+                    "characteristic": "presence"
                   }
                 },
                 "tier2": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} weakened (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "weakened": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
@@ -408,12 +365,12 @@
                   }
                 },
                 "tier3": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} weakened (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "weakened": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
@@ -429,7 +386,7 @@
           "after00000000000": {
             "_id": "after00000000000",
             "type": "base",
-            "description": "<p>A target can't shift while bleeding from this ability.</p>",
+            "description": "<p>A target weakened by this ability is always considered flanked by the [[lookup @name]] regardless of position until the condition ends.</p>",
             "name": "",
             "img": null,
             "sort": 0,
@@ -437,7 +394,7 @@
           }
         }
       },
-      "_id": "i1GTj9DccIwB2PaH",
+      "_id": "07cfNG7DtYN4a7D7",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -451,18 +408,17 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788476217828,
+        "createdTime": 1788544364040,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.i1GTj9DccIwB2PaH"
+      "_key": "!actors.items!lzliZfauMilJoQX1.07cfNG7DtYN4a7D7"
     }
   ],
   "effects": [],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -475,12 +431,13 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788476217828,
+    "createdTime": 1788544364040,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!tKWDYYcmEBgb9sP9"
+  "sort": 0,
+  "_key": "!actors!lzliZfauMilJoQX1"
 }
