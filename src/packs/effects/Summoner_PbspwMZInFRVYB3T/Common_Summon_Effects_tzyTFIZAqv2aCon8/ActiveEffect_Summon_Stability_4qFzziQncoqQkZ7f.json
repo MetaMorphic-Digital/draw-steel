@@ -5,7 +5,15 @@
   "_id": "4qFzziQncoqQkZ7f",
   "img": "icons/svg/leg.svg",
   "system": {
-    "changes": [],
+    "changes": [
+      {
+        "key": "system.combat.stability",
+        "type": "add",
+        "value": "flags.draw-steel.summoner",
+        "phase": "initial",
+        "priority": null
+      }
+    ],
     "end": {
       "roll": "1d10 + @combat.save.bonus"
     },
