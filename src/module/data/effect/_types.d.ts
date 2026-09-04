@@ -7,8 +7,21 @@ declare module "./base-effect.mjs" {
     parent: DrawSteelActiveEffect;
     changes: EffectChangeData[];
     end: {
-      type: keyof typeof ds["CONFIG"]["effectEnds"] | "";
       roll: string;
+    }
+    requirements: {
+      resource: number;
+    }
+    project: {
+      prerequisites: string;
+      source: string;
+      rollCharacteristic: Set<string>;
+      goal: number;
+      yield: {
+        kind: string;
+        amount: string;
+        display: string;
+      };
     }
   }
 }

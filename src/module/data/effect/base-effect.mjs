@@ -6,6 +6,10 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
 
 /**
+ * @import { CoreResource } from "../actor/_types";
+ */
+
+/**
  * A data model used by default effects with properties to control the expiration behavior.
  */
 export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataModel {
@@ -38,6 +42,10 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
       roll: new FormulaField({ initial: "1d10 + @combat.save.bonus" }),
     });
 
+    schema.requirements = new fields.SchemaField({
+      resource: new fields.NumberField({ min: 0, integer: true, initial: null }),
+    });
+
     schema.project = new fields.SchemaField({
       prerequisites: new fields.StringField({ required: true }),
       source: new fields.StringField({ required: true }),
@@ -57,12 +65,19 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
   /**
    * Is this effect suppressed due to some system-specific behavior?
-   * @type {boolean}
+   * @type {boolean | null}
    */
   get isSuppressed() {
-    const target = this.parent.target ?? {};
+    const target = this.parent.target;
+    if (!target) return null;
     const invalidTypes = this.constructor.metadata[`invalid${target.documentName}Types`] ?? [];
-    return invalidTypes.includes(target.type);
+    if (invalidTypes.includes(target.type)) return true;
+
+    /** @type {CoreResource} */
+    const resourceInfo = target.system?.coreResource;
+    if (resourceInfo && (resourceInfo.tracking < this.requirements.resource)) return true;
+
+    return null;
   }
 
   /* -------------------------------------------------- */

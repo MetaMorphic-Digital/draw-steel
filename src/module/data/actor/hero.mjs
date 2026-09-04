@@ -455,10 +455,11 @@ export default class HeroModel extends CreatureModel {
     if (classModel) minimum = ds.utils.evaluateFormula(classModel.minimum, classModel.parent.getRollData());
 
     return {
-      name: this.class?.system.primary ?? _loc("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label"),
+      minimum,
+      name: this.hero.primary.label,
       target: this.parent,
       path: "system.hero.primary.value",
-      minimum,
+      tracking: this.hero.primary.tracking,
     };
   }
 
