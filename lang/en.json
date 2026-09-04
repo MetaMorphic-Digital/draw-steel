@@ -2065,7 +2065,11 @@
             "label": "Filters",
             "keywords": {
               "label": "Keywords",
-              "hint": "All keywords that an ability must have to receive these modifications."
+              "hint": "All keywords that an ability must have to receive these modifications. If this is empty all abilities will be affected."
+            },
+            "dsid": {
+              "label": "DSID",
+              "hint": "Specific abilities to adjust, matching by DSID. If the keyword filters are empty then abilities not listed here will not be affected."
             }
           }
         }

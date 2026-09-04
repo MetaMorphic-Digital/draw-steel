@@ -13,6 +13,7 @@ import "./settings/_types";
 
 export type AbilityFilters = {
   keywords: Set<string>;
+  dsid: Set<string>;
 };
 
 export type AbilityBonus = foundry.documents.types.EffectChangeData & {
