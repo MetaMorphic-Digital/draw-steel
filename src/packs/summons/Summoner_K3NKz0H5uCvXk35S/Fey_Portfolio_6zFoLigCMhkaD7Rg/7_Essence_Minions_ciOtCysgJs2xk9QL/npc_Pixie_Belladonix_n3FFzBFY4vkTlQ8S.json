@@ -1,13 +1,13 @@
 {
-  "folder": "Z1TIaUJJFq62unJ6",
-  "name": "Pixie Rosenthall",
+  "folder": "ciOtCysgJs2xk9QL",
+  "name": "Pixie Belladonix",
   "type": "npc",
-  "_id": "tKWDYYcmEBgb9sP9",
+  "_id": "n3FFzBFY4vkTlQ8S",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 5,
+      "max": 16,
       "temporary": 0
     },
     "combat": {
@@ -16,14 +16,14 @@
         "bonus": ""
       },
       "size": {
-        "value": 2,
-        "letter": "M"
+        "value": 1,
+        "letter": "T"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p>The belladonix are found among the elite guard of fey monarchs and carry themselves like royalty. Their moth-like wings ooze with vibrant colors and are barbed; the poison within threatening to completely shift the reality of their victims.</p>",
       "director": "",
       "languages": []
     },
@@ -67,7 +67,7 @@
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": -2
       },
       "agility": {
         "value": 2
@@ -79,12 +79,12 @@
         "value": 0
       },
       "presence": {
-        "value": 3
+        "value": 4
       }
     },
     "source": {
       "book": "Summoner",
-      "page": "30",
+      "page": "37",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,24 +96,23 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 3,
+      "freeStrike": 8,
       "keywords": [
-        "fey",
-        "swarm"
+        "fey"
       ],
       "level": 1,
-      "role": "harrier",
+      "role": "artillery",
       "organization": "minion",
       "freeStrikeType": "",
       "withCaptainEffect": null
     }
   },
   "prototypeToken": {
-    "name": "Pixie Rosenthall",
+    "name": "Pixie Belladonix",
     "displayName": 0,
     "actorLink": false,
-    "width": 2,
-    "height": 2,
+    "width": 1,
+    "height": 1,
     "depth": 1,
     "texture": {
       "src": "systems/draw-steel/assets/roles/minion.webp",
@@ -202,20 +201,21 @@
   },
   "items": [
     {
-      "name": "Swarm",
+      "name": "Miniscule",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "vSRZTdF0ismyQWJF",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The [[lookup @name]] can move through spaces as if they were size 1T, and can occupy other creatures' spaces. At the start of the [[lookup @name]]'s turn, they deal 2 damage to each enemy whose space they share.</p>",
+          "value": "<p>The [[lookup @name]] has cover while occupying a larger creature's space.</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "41"
+          "book": "Summoner",
+          "page": "20",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "swarm",
+        "_dsid": "miniscule",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -223,19 +223,18 @@
           "level": null
         }
       },
-      "_id": "EuPiIijT1zuOvWxj",
       "effects": [],
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.8hyc2xbJy825dRTZ.Item.EuPiIijT1zuOvWxj",
-        "duplicateSource": null,
-        "exportSource": null,
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "lastModifiedBy": null,
+        "createdTime": 1788545562359,
         "modifiedTime": null,
-        "createdTime": 1788476217828
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.world.summoner-minions.Actor.I6ERrGoOtkWCNBCq.Item.vSRZTdF0ismyQWJF",
+        "duplicateSource": null,
+        "exportSource": null
       },
       "ownership": {
         "default": 0,
@@ -243,10 +242,54 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.EuPiIijT1zuOvWxj"
+      "_key": "!actors.items!n3FFzBFY4vkTlQ8S.vSRZTdF0ismyQWJF"
     },
     {
-      "name": "Stickerbrush Symphony",
+      "name": "Poison Immunity + Free Strike",
+      "type": "feature",
+      "_id": "aCzfvdgLZT26n6DY",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The [[lookup @name]] has Poison immunity equal to your Reason. You can choose for their free strike damage type to be Poison.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "acid-immunity--free-strike",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788545562359,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.world.summoner-minions.Actor.Dq9zDtT7WM59DSAS.Item.aCzfvdgLZT26n6DY",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!n3FFzBFY4vkTlQ8S.aCzfvdgLZT26n6DY"
+    },
+    {
+      "name": "A Thorn, Woe to the Pricked",
       "type": "ability",
       "system": {
         "type": "main",
@@ -263,16 +306,16 @@
         },
         "story": "",
         "keywords": [
-          "melee",
-          "strike",
-          "weapon"
+          "magic",
+          "ranged",
+          "strike"
         ],
         "category": "signature",
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "melee",
-          "primary": "2",
+          "type": "ranged",
+          "primary": "15",
           "secondary": "1",
           "tertiary": "1"
         },
@@ -291,16 +334,18 @@
             ]
           },
           "effects": {
-            "AonSmtc5Q3DnUvVW": {
+            "vTX7LBDeJMrBvv21": {
               "sort": 100000,
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "AonSmtc5Q3DnUvVW",
+              "_id": "vTX7LBDeJMrBvv21",
               "damage": {
                 "tier1": {
-                  "value": "3",
-                  "types": [],
+                  "value": "8",
+                  "types": [
+                    "poison"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -308,8 +353,10 @@
                   }
                 },
                 "tier2": {
-                  "value": "6",
-                  "types": [],
+                  "value": "12",
+                  "types": [
+                    "poison"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.average",
@@ -317,8 +364,10 @@
                   }
                 },
                 "tier3": {
-                  "value": "8",
-                  "types": [],
+                  "value": "17",
+                  "types": [
+                    "poison"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.strong",
@@ -327,79 +376,34 @@
                 }
               }
             },
-            "pWPR92QEd2zQtveN": {
+            "OXqFzyehsNQ1lWXw": {
               "sort": 200000,
               "name": "",
               "img": null,
-              "type": "forced",
-              "_id": "pWPR92QEd2zQtveN",
-              "forced": {
-                "tier1": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "3",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "4",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "qY0KF4jWwJUzI8wb": {
-              "sort": 300000,
-              "name": "",
-              "img": null,
               "type": "applied",
-              "_id": "qY0KF4jWwJUzI8wb",
+              "_id": "OXqFzyehsNQ1lWXw",
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "restrained": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "agility"
+                    "characteristic": "might"
                   }
                 },
                 "tier2": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "restrained": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
@@ -408,12 +412,12 @@
                   }
                 },
                 "tier3": {
-                  "display": "{{potency}} bleeding (EoT)",
+                  "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "restrained": {
                       "condition": "failure",
                       "properties": [],
-                      "end": "turn"
+                      "end": "save"
                     }
                   },
                   "potency": {
@@ -429,7 +433,7 @@
           "after00000000000": {
             "_id": "after00000000000",
             "type": "base",
-            "description": "<p>A target can't shift while bleeding from this ability.</p>",
+            "description": "<p>A target restrained by this ability is trapped in a poison-fueled haze and considers each creature within 1 square of them to be an enemy until the condition ends.</p>",
             "name": "",
             "img": null,
             "sort": 0,
@@ -437,7 +441,7 @@
           }
         }
       },
-      "_id": "i1GTj9DccIwB2PaH",
+      "_id": "DViMD1qjFfuBYESf",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -451,14 +455,14 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788476217828,
+        "createdTime": 1788545562359,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.i1GTj9DccIwB2PaH"
+      "_key": "!actors.items!n3FFzBFY4vkTlQ8S.DViMD1qjFfuBYESf"
     }
   ],
   "effects": [],
@@ -475,12 +479,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788476217828,
+    "createdTime": 1788545562359,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!tKWDYYcmEBgb9sP9"
+  "_key": "!actors!n3FFzBFY4vkTlQ8S"
 }

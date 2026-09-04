@@ -1,13 +1,13 @@
 {
-  "folder": "Z1TIaUJJFq62unJ6",
-  "name": "Pixie Rosenthall",
+  "folder": "9wclm2mzfgmwjHk2",
+  "name": "Faded Blightling",
   "type": "npc",
-  "_id": "tKWDYYcmEBgb9sP9",
+  "_id": "j8t7lDcmgdLYRliE",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
       "value": null,
-      "max": 5,
+      "max": 17,
       "temporary": 0
     },
     "combat": {
@@ -16,24 +16,24 @@
         "bonus": ""
       },
       "size": {
-        "value": 2,
-        "letter": "M"
+        "value": 1,
+        "letter": "L"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p>This cherubin creature is bloated and warped by demonic energy. The lights from their myriad eyes have all but gone out, now resembling pustules across their body.</p>",
       "director": "",
       "languages": []
     },
     "movement": {
-      "value": 6,
+      "value": 5,
       "types": [
         "walk",
         "fly"
       ],
-      "hover": true,
+      "hover": false,
       "disengage": 1
     },
     "damage": {
@@ -55,7 +55,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 0,
+        "holy": 1,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -70,13 +70,13 @@
         "value": 0
       },
       "agility": {
-        "value": 2
+        "value": 0
       },
       "reason": {
-        "value": 4
+        "value": -1
       },
       "intuition": {
-        "value": 0
+        "value": 4
       },
       "presence": {
         "value": 3
@@ -84,7 +84,7 @@
     },
     "source": {
       "book": "Summoner",
-      "page": "30",
+      "page": "34",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -96,24 +96,23 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 3,
+      "freeStrike": 7,
       "keywords": [
-        "fey",
-        "swarm"
+        "abyssal"
       ],
       "level": 1,
-      "role": "harrier",
+      "role": "support",
       "organization": "minion",
-      "freeStrikeType": "",
-      "withCaptainEffect": null
+      "withCaptainEffect": null,
+      "freeStrikeType": ""
     }
   },
   "prototypeToken": {
-    "name": "Pixie Rosenthall",
+    "name": "Faded Blightling",
     "displayName": 0,
     "actorLink": false,
-    "width": 2,
-    "height": 2,
+    "width": 1,
+    "height": 1,
     "depth": 1,
     "texture": {
       "src": "systems/draw-steel/assets/roles/minion.webp",
@@ -202,20 +201,21 @@
   },
   "items": [
     {
-      "name": "Swarm",
+      "name": "Wilted Wings",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "H8WV5eAZ4jlNcAcz",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The [[lookup @name]] can move through spaces as if they were size 1T, and can occupy other creatures' spaces. At the start of the [[lookup @name]]'s turn, they deal 2 damage to each enemy whose space they share.</p>",
+          "value": "<p>The [[lookup @name]] must land on the ground at the end of their turn or fall prone.</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "41"
+          "book": "",
+          "page": "",
+          "license": ""
         },
-        "_dsid": "swarm",
+        "_dsid": "",
         "advancements": {},
         "prerequisites": {
           "value": "",
@@ -223,19 +223,62 @@
           "level": null
         }
       },
-      "_id": "EuPiIijT1zuOvWxj",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "bULgfeSVOL2yapd0": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788544361088,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!j8t7lDcmgdLYRliE.H8WV5eAZ4jlNcAcz"
+    },
+    {
+      "name": "Soulsight",
+      "type": "feature",
+      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "62"
+        },
+        "_dsid": "soulsight",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "_id": "6J9lMMqHMOR8zWyO",
       "effects": [],
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.8hyc2xbJy825dRTZ.Item.EuPiIijT1zuOvWxj",
-        "duplicateSource": null,
-        "exportSource": null,
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
-        "createdTime": 1788476217828
+        "createdTime": 1788544361088,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
       },
       "ownership": {
         "default": 0,
@@ -243,10 +286,10 @@
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.EuPiIijT1zuOvWxj"
+      "_key": "!actors.items!j8t7lDcmgdLYRliE.6J9lMMqHMOR8zWyO"
     },
     {
-      "name": "Stickerbrush Symphony",
+      "name": "Blighted Strike",
       "type": "ability",
       "system": {
         "type": "main",
@@ -263,16 +306,16 @@
         },
         "story": "",
         "keywords": [
-          "melee",
-          "strike",
-          "weapon"
+          "magic",
+          "ranged",
+          "strike"
         ],
         "category": "signature",
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "melee",
-          "primary": "2",
+          "type": "ranged",
+          "primary": "5",
           "secondary": "1",
           "tertiary": "1"
         },
@@ -291,16 +334,18 @@
             ]
           },
           "effects": {
-            "AonSmtc5Q3DnUvVW": {
+            "w7ViFXLexBlJtdxs": {
               "sort": 100000,
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "AonSmtc5Q3DnUvVW",
+              "_id": "w7ViFXLexBlJtdxs",
               "damage": {
                 "tier1": {
-                  "value": "3",
-                  "types": [],
+                  "value": "7",
+                  "types": [
+                    "corruption"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -308,8 +353,10 @@
                   }
                 },
                 "tier2": {
-                  "value": "6",
-                  "types": [],
+                  "value": "11",
+                  "types": [
+                    "corruption"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.average",
@@ -317,8 +364,10 @@
                   }
                 },
                 "tier3": {
-                  "value": "8",
-                  "types": [],
+                  "value": "16",
+                  "types": [
+                    "corruption"
+                  ],
                   "ignoredImmunities": [],
                   "potency": {
                     "value": "@potency.strong",
@@ -327,57 +376,12 @@
                 }
               }
             },
-            "pWPR92QEd2zQtveN": {
+            "9SCRjS02RS6P2j3A": {
               "sort": 200000,
               "name": "",
               "img": null,
-              "type": "forced",
-              "_id": "pWPR92QEd2zQtveN",
-              "forced": {
-                "tier1": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "3",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "4",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "qY0KF4jWwJUzI8wb": {
-              "sort": 300000,
-              "name": "",
-              "img": null,
               "type": "applied",
-              "_id": "qY0KF4jWwJUzI8wb",
+              "_id": "9SCRjS02RS6P2j3A",
               "applied": {
                 "tier1": {
                   "display": "{{potency}} bleeding (EoT)",
@@ -390,7 +394,7 @@
                   },
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "agility"
+                    "characteristic": "presence"
                   }
                 },
                 "tier2": {
@@ -429,7 +433,7 @@
           "after00000000000": {
             "_id": "after00000000000",
             "type": "base",
-            "description": "<p>A target can't shift while bleeding from this ability.</p>",
+            "description": "<p>Instead of taking damage, you or an ally targeted by this ability impose a double bane on the next strike that targets them.</p>",
             "name": "",
             "img": null,
             "sort": 0,
@@ -437,7 +441,7 @@
           }
         }
       },
-      "_id": "i1GTj9DccIwB2PaH",
+      "_id": "S3WizRMSjCDvG6Qj",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -451,18 +455,17 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788476217828,
+        "createdTime": 1788544361088,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!tKWDYYcmEBgb9sP9.i1GTj9DccIwB2PaH"
+      "_key": "!actors.items!j8t7lDcmgdLYRliE.S3WizRMSjCDvG6Qj"
     }
   ],
   "effects": [],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -475,12 +478,13 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788476217828,
+    "createdTime": 1788544361088,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!tKWDYYcmEBgb9sP9"
+  "sort": 0,
+  "_key": "!actors!j8t7lDcmgdLYRliE"
 }
