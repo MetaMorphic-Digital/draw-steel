@@ -95,14 +95,14 @@
     },
     "ev": 0,
     "monster": {
-      "freeStrike": 0,
+      "freeStrike": 4,
       "keywords": [
         "elemental"
       ],
       "level": 1,
       "role": "artillery",
       "organization": "minion",
-      "freeStrikeType": "",
+      "freeStrikeType": "cold",
       "withCaptainEffect": null
     }
   },
@@ -339,7 +339,7 @@
               "_id": "lujTvpkAjkHoVIwd",
               "applied": {
                 "tier1": {
-                  "display": "[[op M weak]] slowed (EoT)",
+                  "display": "{{potency}} slowed (EoT)",
                   "effects": {
                     "slowed": {
                       "condition": "failure",
@@ -349,11 +349,11 @@
                   },
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "none"
+                    "characteristic": "might"
                   }
                 },
                 "tier2": {
-                  "display": "[[op M average]] slowed (EoT)",
+                  "display": "{{potency}} slowed (EoT)",
                   "effects": {
                     "slowed": {
                       "condition": "failure",
@@ -367,7 +367,7 @@
                   }
                 },
                 "tier3": {
-                  "display": "[[op M weak]] speed is 0 (EoT)",
+                  "display": "{{potency}} speed is 0 (EoT)",
                   "effects": {
                     "QWzUsmybo1wRDVEA": {
                       "condition": "failure",
