@@ -23,7 +23,7 @@ export default class AdvancementChain {
    * Valid actor types for advancements.
    * @type {Set<string>}
    */
-  static validTypes = new Set(["hero", "retainer"]);
+  static validTypes = new Set(["companion", "hero", "retainer"]);
 
   /* -------------------------------------------------- */
 
@@ -33,7 +33,7 @@ export default class AdvancementChain {
    */
   constructor(actor, levelRange) {
     if (!AdvancementChain.validTypes.has(actor.type)) {
-      throw new Error("Unable to create AdvancementChain for actor types other than 'hero' or 'retainer'.");
+      throw new Error("Unable to create AdvancementChain for actor types other than 'companion', 'hero', 'retainer'.");
     }
     Object.defineProperty(this, "actor", { value: actor, configurable: false, writable: false });
 

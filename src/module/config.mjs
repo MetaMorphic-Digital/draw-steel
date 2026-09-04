@@ -962,6 +962,19 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
 /**
  * Configuration information for retainers.
  */
+export const companion = {
+  /**
+   * Available companion classes. By default only for the Beastheart, but can be added to by to turn the "add class" button into a choice dialog.
+   * @type {string[]}
+   */
+  companionClasses: ["Compendium.draw-steel.classes.Item.qhsGsuYIEa5TQXzK"],
+};
+
+/* -------------------------------------------------- */
+
+/**
+ * Configuration information for retainers.
+ */
 export const retainer = {
   /**
    * The default class added to retainers.
