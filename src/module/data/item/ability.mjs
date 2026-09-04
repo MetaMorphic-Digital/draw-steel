@@ -772,7 +772,8 @@ export default class AbilityModel extends BaseItemModel {
       // Flanking checks
       if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
       // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
-      if ((token.document.elevation - target.document.elevation) >= targetActor.system.combat.size.value) modifiers.edges += 1;
+      
+      if (((token.document.elevation - target.document.elevation) >= targetActor.system.combat.size.value) && !(this.actor.statuses.has("flying"))) modifiers.edges += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
