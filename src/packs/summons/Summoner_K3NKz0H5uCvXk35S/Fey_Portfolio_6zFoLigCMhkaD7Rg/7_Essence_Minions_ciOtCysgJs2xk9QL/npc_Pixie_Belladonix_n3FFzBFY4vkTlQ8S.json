@@ -386,7 +386,7 @@
                 "tier1": {
                   "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "restrained": {
+                    "PmZvbYz5CQx8VvUM": {
                       "condition": "failure",
                       "properties": [],
                       "end": "save"
@@ -400,10 +400,10 @@
                 "tier2": {
                   "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "restrained": {
+                    "PmZvbYz5CQx8VvUM": {
                       "condition": "failure",
-                      "properties": [],
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "potency": {
@@ -414,10 +414,10 @@
                 "tier3": {
                   "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "restrained": {
+                    "PmZvbYz5CQx8VvUM": {
                       "condition": "failure",
-                      "properties": [],
-                      "end": "save"
+                      "end": "save",
+                      "properties": []
                     }
                   },
                   "potency": {
@@ -443,7 +443,61 @@
       },
       "_id": "DViMD1qjFfuBYESf",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
+      "effects": [
+        {
+          "name": "Restrained and Confused",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.summons.Actor.n3FFzBFY4vkTlQ8S.Item.DViMD1qjFfuBYESf",
+          "transfer": false,
+          "_id": "PmZvbYz5CQx8VvUM",
+          "system": {
+            "changes": [],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "<p>The creature is trapped in a poison-fueled haze and considers each creature within 1 square of them to be an enemy until the condition ends.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "restrained"
+          ],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788552054517,
+            "modifiedTime": 1788552088392,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!n3FFzBFY4vkTlQ8S.DViMD1qjFfuBYESf.PmZvbYz5CQx8VvUM"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {

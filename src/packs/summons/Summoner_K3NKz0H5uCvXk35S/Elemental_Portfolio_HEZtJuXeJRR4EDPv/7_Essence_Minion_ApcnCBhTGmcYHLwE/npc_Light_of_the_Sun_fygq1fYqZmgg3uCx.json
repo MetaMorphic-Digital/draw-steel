@@ -386,7 +386,7 @@
                 "tier1": {
                   "display": "{{potency}} dazed (EoT)",
                   "effects": {
-                    "dazed": {
+                    "Q3z4Ia1wyS3W7qgC": {
                       "condition": "failure",
                       "properties": [],
                       "end": "turn"
@@ -400,7 +400,7 @@
                 "tier2": {
                   "display": "{{potency}} dazed (EoT)",
                   "effects": {
-                    "dazed": {
+                    "Q3z4Ia1wyS3W7qgC": {
                       "condition": "failure",
                       "properties": [],
                       "end": "turn"
@@ -414,7 +414,7 @@
                 "tier3": {
                   "display": "{{potency}} dazed (save ends)",
                   "effects": {
-                    "dazed": {
+                    "Q3z4Ia1wyS3W7qgC": {
                       "condition": "failure",
                       "properties": [],
                       "end": "save"
@@ -443,7 +443,69 @@
       },
       "_id": "EOCrhovfldyiww3H",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
+      "effects": [
+        {
+          "name": "Dazed and Unstable",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.summons.Actor.fygq1fYqZmgg3uCx.Item.EOCrhovfldyiww3H",
+          "transfer": false,
+          "_id": "Q3z4Ia1wyS3W7qgC",
+          "system": {
+            "changes": [
+              {
+                "key": "system.combat.stability",
+                "type": "downgrade",
+                "value": 0,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "dazed"
+          ],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788551835288,
+            "modifiedTime": 1788551863113,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!fygq1fYqZmgg3uCx.EOCrhovfldyiww3H.Q3z4Ia1wyS3W7qgC"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
