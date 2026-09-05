@@ -1,0 +1,77 @@
+{
+  "folder": "UE3wedF5dw0AMjj6",
+  "name": "A Shower of Dust",
+  "type": "ability",
+  "_id": "xXasnr2gSHIjRSV3",
+  "img": "icons/magic/air/air-wave-gust-blue.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "a-shower-of-dust",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "",
+    "keywords": [
+      "champion"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "20",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "Self and each non-minion ally in the area",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "oYaFyqfdqI1lQZ7F": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "oYaFyqfdqI1lQZ7F",
+        "description": "<p>[[/gain -1 epic]]</p><p>Each target gains [[/heal 20 temp]] and receives the benefits of one of your Flash Powder effects until the end of their next turn.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788549398201,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!xXasnr2gSHIjRSV3"
+}

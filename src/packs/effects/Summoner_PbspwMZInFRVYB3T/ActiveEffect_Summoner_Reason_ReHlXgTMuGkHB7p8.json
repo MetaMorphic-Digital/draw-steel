@@ -1,0 +1,81 @@
+{
+  "folder": "PbspwMZInFRVYB3T",
+  "name": "Summoner Reason",
+  "type": "base",
+  "_id": "ReHlXgTMuGkHB7p8",
+  "img": "icons/magic/movement/portal-vortex-orange.webp",
+  "system": {
+    "changes": [
+      {
+        "key": "flags.draw-steel.summoner",
+        "type": "override",
+        "value": "@R",
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.potency.weak",
+        "type": "add",
+        "value": "@potency.weak",
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.potency.average",
+        "type": "add",
+        "value": "@potency.average",
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.potency.strong",
+        "type": "add",
+        "value": "@potency.strong",
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 100000,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788556636235,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!ReHlXgTMuGkHB7p8"
+}
