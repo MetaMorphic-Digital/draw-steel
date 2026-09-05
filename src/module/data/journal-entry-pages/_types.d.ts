@@ -20,6 +20,20 @@ declare module "./image.mjs" {
   }
 }
 
+declare module "./image.mjs" {
+  export default interface DrawSteelImageModel {
+    parent: DrawSteelJournalEntryPage;
+    artDescription: string;
+  }
+}
+
+declare module "./map-location.mjs" {
+  export default interface MapLocationModel {
+    parent: DrawSteelJournalEntryPage;
+    code: string;
+  }
+}
+
 declare module "./reference.mjs" {
   export default interface ReferenceModel {
     parent: DrawSteelJournalEntryPage;
