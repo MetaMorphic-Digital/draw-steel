@@ -1,0 +1,90 @@
+{
+  "folder": "k3OHdyJJMUvdmvxe",
+  "name": "The Pack Defends",
+  "type": "ability",
+  "_id": "Mhmr8xfDUT8kbZm9",
+  "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "the-pack-defends",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You siphon away the pain and endure it yourself.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target takes damage.",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "FtjIZWI1VFrGHrxr": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "FtjIZWI1VFrGHrxr",
+        "description": "<p>The target takes half the damage.</p>",
+        "before": false
+      },
+      "ZzATXjbJP8SJ6FAT": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "ZzATXjbJP8SJ6FAT",
+        "description": "<p><span class=\"txt\">You spend a Recovery without regaining Stamina, and the target regains Stamina equal to your recovery value.</span></p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788356579661,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Mhmr8xfDUT8kbZm9"
+}

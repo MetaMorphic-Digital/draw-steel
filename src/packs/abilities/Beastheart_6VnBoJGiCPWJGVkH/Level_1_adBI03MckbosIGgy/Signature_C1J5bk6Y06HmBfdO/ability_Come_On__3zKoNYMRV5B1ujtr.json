@@ -1,0 +1,120 @@
+{
+  "folder": "C1J5bk6Y06HmBfdO",
+  "name": "Come On!",
+  "type": "ability",
+  "_id": "3zKoNYMRV5B1ujtr",
+  "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "23",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "come-on",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You launch a flurry of attacks to cover your movement.",
+    "keywords": [
+      "beastheart",
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "usWuHAn2ZqYmMZY3": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "usWuHAn2ZqYmMZY3",
+          "damage": {
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "3 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "4 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "boDB67az2ZBcMS6m": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "boDB67az2ZBcMS6m",
+        "description": "<p>Your companion can make a melee free strike. You both shift up to a number of squares equal to [[lookup @I evaluate]]{your Intuition score}.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788553865424,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!3zKoNYMRV5B1ujtr"
+}

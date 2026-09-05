@@ -1,0 +1,91 @@
+{
+  "folder": "SSbEvHOyBDUATM0r",
+  "name": "Thunderclap",
+  "type": "ability",
+  "_id": "jlsmYPUABkrc1upq",
+  "img": "icons/magic/sonic/explosion-shock-sound-wave.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "26",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "thunderclap",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "The force of your counterattack cracks the air.",
+    "keywords": [
+      "melee",
+      "weapon"
+    ],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target deals damage to a creature.",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "2MVOma15gvwhPyMU": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "2MVOma15gvwhPyMU",
+        "description": "<p>You deal [[/damage @M]]{sonic damage equal to your Might score} to the target and push them up to a number of squares equal to [[lookup 1+@M]]{1 + your Might score}. If this forced movement pushes the target away from the creature they damaged, the creature takes half the triggering damage.</p>",
+        "before": false
+      },
+      "dLtXdrqKiVw9L1HS": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "dLtXdrqKiVw9L1HS",
+        "description": "<p>The forced movement distance is [[lookup 2*(1+@M)]]{doubled}.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788356668015,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!jlsmYPUABkrc1upq"
+}

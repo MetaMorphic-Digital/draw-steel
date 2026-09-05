@@ -1,0 +1,91 @@
+{
+  "folder": "Fhka9zHutcZ1kMQS",
+  "name": "All of You Versus All of Me",
+  "type": "ability",
+  "_id": "YK4X33TcLbGSZ9Be",
+  "img": "icons/skills/social/intimidation-impressing.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "all-of-you-versus-all-of-me",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Let all of them come forward and shatter themselves against your might!",
+    "keywords": [
+      "area",
+      "beastheart"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "QkyT9DwGMrkpAsQr": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "QkyT9DwGMrkpAsQr",
+        "description": "<p>You can spend a Recovery and gain [[/heal 3*@scaling temporary scaling]]{3 temporary Stamina} for each target. Each target is taunted by you until the end of their next turn.</p>",
+        "before": false
+      },
+      "5gBviHLYyZdvqI3w": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "5gBviHLYyZdvqI3w",
+        "description": "<p>This ability also affects a 3 burst originating from your companion. Targets in this second area are [[/apply taunted]] by your companion. An enemy in both areas is taunted only by you.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788555458319,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!YK4X33TcLbGSZ9Be"
+}

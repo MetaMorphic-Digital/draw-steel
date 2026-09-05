@@ -1476,6 +1476,9 @@ const abilityKeywords = {
   area: {
     label: "DRAW_STEEL.Item.ability.Keywords.Area",
   },
+  beastheart: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Beastheart",
+  },
   champion: {
     label: "DRAW_STEEL.Item.ability.Keywords.Champion",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Summoner",
@@ -1486,6 +1489,9 @@ const abilityKeywords = {
   chronopathy: {
     label: "DRAW_STEEL.Item.ability.Keywords.Chronopathy",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
+  },
+  companion: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Companion",
   },
   cryokinesis: {
     label: "DRAW_STEEL.Item.ability.Keywords.Cryokinesis",
