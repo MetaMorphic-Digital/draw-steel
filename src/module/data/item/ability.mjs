@@ -947,39 +947,6 @@ export default class AbilityModel extends BaseItemModel {
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
   async performSummon(uuid, { count = 1, effects = [] } = {}) {
-    /** @type {DrawSteelActor} */
-    const sourceActor = await fromUuid(uuid);
-
-    if (!sourceActor) return void ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
-
-    // TODO: Rework into registry or other service to improve performance with large actor collections
-    let worldActor = game.actors.find(a => (a._stats.compendiumSource === uuid) && (a.getFlag(systemID, "summonSource") === this.parent.uuid));
-
-    if (!worldActor) {
-      // Ensure the user has permission to drop the actor and create a Token.
-      if (!game.user.can("ACTOR_CREATE")) {
-        ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
-        return null;
-      }
-
-      worldActor = await game.actors.importFromCompendium(game.packs.get(sourceActor.pack), sourceActor.id, {
-        "flags.draw-steel.summonSource": this.parent.uuid,
-      }, { keepId: true });
-    }
-
-    const actorUpdates = { effects: [] };
-
-    const replacementData = this.parent.getRollData();
-
-    for (const e of effects) {
-      const data = game.items.fromCompendium(e, { keepId: true, clearFolder: true });
-      for (const change of data.system.changes) {
-        if (typeof change.value !== "string") continue;
-        change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
-      }
-      actorUpdates.effects.push(data);
-    }
-
-    return canvas.tokens.placeActor(worldActor, { count, actorUpdates });
+    return ds.utils.performSummon(uuid, this, { count, effects });
   }
 }
