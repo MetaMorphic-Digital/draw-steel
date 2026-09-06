@@ -68,4 +68,22 @@ export default class DrawSteelJournalEntrySheet extends foundry.applications.she
     li.append(anchor);
     return li;
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritDoc */
+  _preparePageData() {
+    const pages = super._preparePageData();
+    let adjustment = 0;
+    for (const descriptor of Object.values(pages)) {
+      const page = this.document.pages.get(descriptor.id);
+      const numbering = page?.system.adjustTOCNumbering?.(descriptor.number);
+      if (numbering) {
+        descriptor.number = numbering.number;
+        adjustment += numbering.adjustment ?? 0;
+      }
+      else descriptor.number += adjustment;
+    }
+    return pages;
+  }
 }

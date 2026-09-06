@@ -1,0 +1,50 @@
+const { StringField } = foundry.data.fields;
+
+/**
+ * An extension of text page that allows specifying a map key.
+ */
+export default class MapLocationModel extends foundry.abstract.TypeDataModel {
+
+  /** @inheritDoc */
+  static defineSchema() {
+    return {
+      code: new StringField(),
+    };
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Adjust the number of this entry in the table of contents.
+   * @param {number} number  Current position number.
+   * @returns {{ number: string, adjustment: number } | void}
+   */
+  adjustTOCNumbering(number) {
+    if (!this.code) return;
+    return { number: this.code, adjustment: -1 };
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Create a control icon for rendering this page on a scene.
+   * @param {object} options  Options passed through to ControlIcon construction.
+   * @returns {PIXI.Container|void}
+   */
+  getControlIcon(options) {
+    if (!this.code) return;
+    const { icon: IconClass, ...style } = foundry.utils.mergeObject(
+      ds.CONFIG.mapLocationMarker.default,
+      ds.CONFIG.mapLocationMarker[this.parent.getFlag(ds.CONST.systemID, "mapMarkerStyle")] ?? {},
+      { inplace: false },
+    );
+    return new IconClass({ code: this.code, ...options, ...style });
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  async toEmbed(config, options = {}) {
+    return this.parent._embedTextPage(config, options);
+  }
+}
