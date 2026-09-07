@@ -1,0 +1,169 @@
+{
+  "folder": "4iwKylp2MAAXJ19p",
+  "name": "Rip Them Apart!",
+  "type": "ability",
+  "_id": "PA8HYg8w97GYgH49",
+  "img": "icons/skills/melee/strike-slashes-red.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "30",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rip-them-apart",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "In a gruesome display, you and your companion rip off a pinned enemy's limb or other body part and toss it away.",
+    "keywords": [
+      "magic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "u0BCmPB4i0lanj7T": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "u0BCmPB4i0lanj7T",
+          "damage": {
+            "tier1": {
+              "value": "11 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "17 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "22 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "8DkuFSGKUbgOTT8V": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "8DkuFSGKUbgOTT8V",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "fXXLYzqwRsRC5cuW": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "fXXLYzqwRsRC5cuW",
+        "description": "<p>If the target is grabbed by your partner, the target takes extra damage equal to [[lookup 2*@M evaluate]]{your Might score plus your partner's Might score}. If the target is reduced to 0 Stamina by this ability, each enemy within 2 squares who has [[potency P AVERAGE]] is [[/apply frightened save]].</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788732134315,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!PA8HYg8w97GYgH49"
+}
