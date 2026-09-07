@@ -286,57 +286,144 @@
         "exportSource": null
       },
       "_key": "!actors.items!DHB7sGANX6Qm5WZ1.qZKOS0uM3afOl5wC"
-    },
+    }
+  ],
+  "effects": [
     {
-      "name": "Corruption and Poison Immunity",
-      "type": "feature",
-      "_id": "kuNWYyPGX0sZfwTy",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "name": "Corruption Immunity R",
+      "type": "base",
+      "_id": "PUjqN6PbQAc22D5b",
+      "img": "icons/magic/unholy/barrier-fire-pink.webp",
       "system": {
-        "description": {
-          "value": "<p>This creature has corruption immunity and poison immunity equal to your Reason.</p>",
-          "director": ""
+        "changes": [
+          {
+            "key": "system.damage.immunities.corruption",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
         },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "corruption-immunity-and-free-strike",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
         }
       },
-      "effects": [],
-      "flags": {
-        "draw-steel-plus": {
-          "favorite": false
-        }
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
       },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787836194438,
+        "createdTime": 1788720485536,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": "Compendium.world.summoner-minions.Actor.GDQYfMhOE3dsUt9l.Item.kuNWYyPGX0sZfwTy",
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.PUjqN6PbQAc22D5b",
         "duplicateSource": null,
         "exportSource": null
       },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!DHB7sGANX6Qm5WZ1.PUjqN6PbQAc22D5b"
+    },
+    {
+      "name": "Poison Immunity R",
+      "type": "base",
+      "_id": "vOJzbGKojiO91a5R",
+      "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.poison",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788720486526,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.vOJzbGKojiO91a5R",
+        "duplicateSource": null,
+        "exportSource": null
       },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!DHB7sGANX6Qm5WZ1.kuNWYyPGX0sZfwTy"
+      "_key": "!actors.effects!DHB7sGANX6Qm5WZ1.vOJzbGKojiO91a5R"
     }
   ],
-  "effects": [],
   "sort": 125000,
   "ownership": {
     "default": 0

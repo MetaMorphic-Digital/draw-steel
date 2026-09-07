@@ -245,50 +245,6 @@
       "_key": "!actors.items!n3FFzBFY4vkTlQ8S.vSRZTdF0ismyQWJF"
     },
     {
-      "name": "Poison Immunity + Free Strike",
-      "type": "feature",
-      "_id": "aCzfvdgLZT26n6DY",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The [[lookup @name]] has Poison immunity equal to your Reason. You can choose for their free strike damage type to be Poison.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "acid-immunity--free-strike",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788545562359,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.world.summoner-minions.Actor.Dq9zDtT7WM59DSAS.Item.aCzfvdgLZT26n6DY",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!n3FFzBFY4vkTlQ8S.aCzfvdgLZT26n6DY"
-    },
-    {
       "name": "A Thorn, Woe to the Pricked",
       "type": "ability",
       "system": {
@@ -519,7 +475,75 @@
       "_key": "!actors.items!n3FFzBFY4vkTlQ8S.DViMD1qjFfuBYESf"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Poison Immunity R",
+      "type": "base",
+      "_id": "vOJzbGKojiO91a5R",
+      "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.poison",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788719243743,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.vOJzbGKojiO91a5R",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!n3FFzBFY4vkTlQ8S.vOJzbGKojiO91a5R"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

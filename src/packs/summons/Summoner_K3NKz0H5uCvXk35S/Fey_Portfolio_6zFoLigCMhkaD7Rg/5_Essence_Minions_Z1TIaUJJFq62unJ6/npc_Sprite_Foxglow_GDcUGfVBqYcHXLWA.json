@@ -201,50 +201,6 @@
   },
   "items": [
     {
-      "name": "Fire Immunity + Free Strike",
-      "type": "feature",
-      "_id": "aCzfvdgLZT26n6DY",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The [[lookup @name]] has Fire immunity equal to your Reason. You can choose for their free strike damage type to be Fire .</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "acid-immunity--free-strike",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788476217823,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.forge-vtt-shared-compendiums-shared-things.actor-2-monsters.Actor.AGk9zVLMSqCnlOp1.Item.aCzfvdgLZT26n6DY",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!GDcUGfVBqYcHXLWA.aCzfvdgLZT26n6DY"
-    },
-    {
       "name": "Miniscule",
       "type": "feature",
       "_id": "vSRZTdF0ismyQWJF",
@@ -377,7 +333,75 @@
       "_key": "!actors.items!GDcUGfVBqYcHXLWA.IPRiQNlPFUEMO9aA"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Fire Immunity R",
+      "type": "base",
+      "_id": "TSdkgosSfFG6tBI1",
+      "img": "icons/magic/fire/flame-burning-campfire-orange.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.fire",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788718761435,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.TSdkgosSfFG6tBI1",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!GDcUGfVBqYcHXLWA.TSdkgosSfFG6tBI1"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
