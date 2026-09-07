@@ -1,0 +1,77 @@
+{
+  "folder": "bE7wxeWWRrN3Kzbq",
+  "name": "Lead the Pack",
+  "type": "ability",
+  "_id": "NuU95SU0frF5JQVn",
+  "img": "icons/skills/movement/arrow-upward-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "31",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "lead-the-pack",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Roaring like wild beasts, your companion and your allies rush toward the foe.",
+    "keywords": [
+      "companion"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "uh6obWZyPbZAilnx": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "uh6obWZyPbZAilnx",
+        "description": "<p>Your companion shifts up to their speed and can make a melee free strike. As a free triggered action, you and up to 10 allies within 10 squares of your companion's starting position can shift up to their speed and make free strikes.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788793648210,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!NuU95SU0frF5JQVn"
+}
