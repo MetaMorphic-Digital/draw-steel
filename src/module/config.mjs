@@ -2068,7 +2068,7 @@ export const Advancement = {
   companion: {
     label: "TYPES.Advancement.companion",
     defaultImage: "icons/svg/pawprint.svg",
-    itemTypes: new Set(["class"]),
+    itemTypes: new Set(["class", "subclass"]),
     documentClass: pseudoDocuments.advancements.CompanionChoiceAdvancement,
   },
   itemGrant: {
