@@ -93,6 +93,25 @@ export default class DrawSteelCompanionSheet extends DrawSteelActorSheet {
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    // Every render rather than first render because master status can change.
+    const master = this.actor.system.companion.master;
+    if (master) master.apps[this.id] ??= this;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onClose(context, options) {
+    super._onClose(context, options);
+    const master = this.actor.system.companion.master;
+    if (master) delete master.apps[this.id];
+  }
+
+  /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
 
