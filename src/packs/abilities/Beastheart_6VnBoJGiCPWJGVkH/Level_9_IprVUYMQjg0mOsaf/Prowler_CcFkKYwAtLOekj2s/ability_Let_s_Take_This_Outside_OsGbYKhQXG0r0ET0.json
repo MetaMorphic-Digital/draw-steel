@@ -1,0 +1,130 @@
+{
+  "folder": "CcFkKYwAtLOekj2s",
+  "name": "Let's Take This Outside",
+  "type": "ability",
+  "_id": "OsGbYKhQXG0r0ET0",
+  "img": "icons/magic/movement/trail-streak-pink.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "35",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "lets-take-this-outside",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion drags your chosen foe into storms of the Primordial Plane.",
+    "keywords": [
+      "companion",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "BhZ8YLOfoJHeGm4U": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "BhZ8YLOfoJHeGm4U",
+        "description": "<p>You, your companion, and the target enter the heart of an eternal storm [[/apply n6foGpxbqh7QoaEG]]{on Quintessence}. The three of you can't affect or be affected by any creatures except each other. Creatures in this area are always adjacent to each other and can't move or teleport away from each other, but can otherwise act normally.</p><p>While on Quintessence, the target takes [[/damage 5 cold]], [[/damage 5 fire]], [[/damage 5 lightning]], and [[/damage 5 sonic]] at the start of each of your turns.</p><p>The effect ends when one of you dies or you end it as a free maneuver. The target can make a save at the end of each of their turns to end the effect early. When the effect ends, you each reappear in the space you left or the nearest unoccupied space. If the target dies on Quintessence, their remains do not return.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "In Quintessence",
+      "img": "icons/magic/movement/trail-streak-pink.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.OsGbYKhQXG0r0ET0",
+      "transfer": false,
+      "_id": "n6foGpxbqh7QoaEG",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Creatures in this area are always adjacent to each other and can't move or teleport away from each other, but can otherwise act normally.</p><p>While on Quintessence, the target takes [[/damage 5 cold]], [[/damage 5 fire]], [[/damage 5 lightning]], and [[/damage 5 sonic]] at the start of each of your turns.</p><p>The effect ends when one of you dies or the hero ends it as a free maneuver.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788884386286,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!OsGbYKhQXG0r0ET0.n6foGpxbqh7QoaEG"
+    }
+  ],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788884278545,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!OsGbYKhQXG0r0ET0"
+}
