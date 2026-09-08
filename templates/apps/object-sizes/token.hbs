@@ -5,11 +5,12 @@
     </label>
     <div class="form-fields slim">
       <label for="{{rootId}}-token.width">X</label>
-      {{formInput fields.width name=(concat name ".base.width") value=source.width id=(concat rootId "-token.width")}}
+      {{formInput fields.width name=(concat name ".width") value=source.width id=(concat rootId "-token.width")}}
       <label for="{{rootId}}-token.height">Y</label>
-      {{formInput fields.height name=(concat name ".base.height") value=source.height id=(concat rootId "-token.height")}}
+      {{formInput fields.height name=(concat name ".height") value=source.height id=(concat rootId "-token.height")}}
     </div>
   </div>
+  <input type="hidden" name="{{concat name ".type"}}" value="token">
 
   {{#if fields.hole}}
   {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
