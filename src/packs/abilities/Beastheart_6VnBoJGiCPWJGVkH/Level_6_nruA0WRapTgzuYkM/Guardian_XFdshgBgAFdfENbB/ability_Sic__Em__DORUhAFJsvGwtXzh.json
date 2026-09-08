@@ -1,0 +1,282 @@
+{
+  "folder": "XFdshgBgAFdfENbB",
+  "name": "Sic 'Em!",
+  "type": "ability",
+  "_id": "DORUhAFJsvGwtXzh",
+  "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "31",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "sic-em",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion rushes forward to protect you from a dangerous foe.",
+    "keywords": [
+      "charge",
+      "companion",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "kMFNIcSrzSEU0zE4": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "kMFNIcSrzSEU0zE4",
+          "damage": {
+            "tier1": {
+              "value": "11 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "16 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "21 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "fjAzC0skZm9ZwYz7": {
+          "sort": 200000,
+          "name": "Taunted",
+          "img": null,
+          "type": "applied",
+          "_id": "fjAzC0skZm9ZwYz7",
+          "applied": {
+            "tier1": {
+              "display": "taunted (save ends)",
+              "effects": {
+                "taunted": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "taunted": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "taunted": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "QYcAqXNfEVxQDWvc": {
+          "sort": 300000,
+          "name": "Prone",
+          "img": null,
+          "type": "applied",
+          "_id": "QYcAqXNfEVxQDWvc",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": ""
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{potency}} prone and can't stand (EoT)",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                },
+                "gQX380Z2Rk63tssT": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "8vcF9O915sT5PCAA": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "8vcF9O915sT5PCAA",
+        "description": "<p>Your companion can use this ability as a triggered action against an enemy who damages you.</p>",
+        "before": false,
+        "resource": {
+          "value": 2,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Can't Stand",
+      "type": "base",
+      "_id": "gQX380Z2Rk63tssT",
+      "img": "icons/skills/movement/arrow-down-pink.webp",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788793009859,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.gQX380Z2Rk63tssT",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!DORUhAFJsvGwtXzh.gQX380Z2Rk63tssT"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788792761017,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!DORUhAFJsvGwtXzh"
+}
