@@ -32,6 +32,7 @@ export default class AbilityModifier extends BaseEffectModel {
 
     schema.filters = new fields.SchemaField({
       keywords: new fields.SetField(setOptions()),
+      dsid: new fields.SetField(setOptions()),
     });
 
     return schema;

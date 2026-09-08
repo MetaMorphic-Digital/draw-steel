@@ -15,6 +15,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { AbilityEmbedConfig, EmbedDisplayFlags } from "./_types";
  * @import RegionDocument from "@client/documents/region.mjs";
  * @import { PowerRollModifiers } from "../../_types";
+ * @import { AbilityBonus } from "../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
@@ -223,8 +224,14 @@ export default class AbilityModel extends BaseItemModel {
       this.keywords.add(bonus.value);
     }
 
-    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
-      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+    for (const bonus of /** @type {AbilityBonus[]} */ (this.actor.system._abilityBonuses ?? [])) {
+      // Specifically targeted abilities are always affected
+      if (!bonus.filters.dsid.has(this.parent.dsid)) {
+        // Keyword filter can be additive to the DSID matching.
+        if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+        // If there's no keyword filters, then we only care about the DSID matching.
+        else if (!bonus.filters.keywords.size && bonus.filters.dsid.size) continue;
+      }
 
       if (bonus.key === "distance") {
         // All distance value fields are structured identically so the field can be used regardless of which it actually modifies
