@@ -30,7 +30,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     },
     actions: {
       showImage: this.#showImage,
-      updateSource: this.#updateSource,
+      updateSource: { handler: this.#updateSource, buttons: [0, 2] },
       editHTML: this.#editHTML,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
@@ -624,7 +624,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    this.renderChild(new DocumentSourceInput({ document: this.item }));
+    if (event.button === 0) await this.renderChild(new DocumentSourceInput({ document: this.item }));
+    else {
+      const dsid = this.item.dsid;
+      game.clipboard.copyPlainText(dsid);
+      ui.notifications.info("DRAW_STEEL.SOURCE.CopyDSID", { format: { dsid } });
+    }
   }
 
   /* -------------------------------------------------- */
