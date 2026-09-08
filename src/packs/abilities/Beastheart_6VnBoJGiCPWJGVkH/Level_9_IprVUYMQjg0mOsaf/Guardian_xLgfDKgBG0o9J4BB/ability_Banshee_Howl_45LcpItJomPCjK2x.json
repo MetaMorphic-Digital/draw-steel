@@ -1,0 +1,188 @@
+{
+  "folder": "xLgfDKgBG0o9J4BB",
+  "name": "Banshee Howl",
+  "type": "ability",
+  "_id": "45LcpItJomPCjK2x",
+  "img": "icons/creatures/abilities/wolf-howl-moon-white.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "35",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "banshee-howl",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion's howl, screech, roar, or psychic emanation presages death to those who hear it.",
+    "keywords": [
+      "area",
+      "companion",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "3",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "tVxTcVH3a3X0nJBF": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "tVxTcVH3a3X0nJBF",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "10",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "15",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "iNIewlx55c2cfMiO": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "iNIewlx55c2cfMiO",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} frightened (save ends)",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "intuition"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "hcgbOzmfPe5BpfgN": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "hcgbOzmfPe5BpfgN",
+        "description": "<p>While frightened this way, a creature takes [[/damage 10 psychic]] at the start of each of your turns.</p>",
+        "before": false
+      },
+      "TqmqjQnvwJ4b1SdQ": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "TqmqjQnvwJ4b1SdQ",
+        "description": "This ability also affects a 3 burst originating from you. An enemy in both areas is only affected once.",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788883768953,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!45LcpItJomPCjK2x"
+}
