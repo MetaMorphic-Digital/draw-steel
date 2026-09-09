@@ -1,0 +1,95 @@
+{
+  "folder": "TYtM3Jvu0SwAYKx1",
+  "name": "Foes Forever Frozen",
+  "type": "feature",
+  "_id": "WHIn70OtX9T0SSrO",
+  "img": "icons/magic/earth/strike-fist-stone-light.webp",
+  "system": {
+    "description": {
+      "value": "<p>Whenever the basilisk makes a strike against a creature while rampaging, the target is [[/apply \"Stoned\" save]]</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "5",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "foes-forever-frozen",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Stoned",
+      "img": "icons/creatures/eyes/lizard-single-slit-pink.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.summons.Actor.nmsauNmV3hjKVCqD.Item.shFMtBjbn4mJsKfE",
+      "transfer": false,
+      "_id": "eXbQd0mP93ytHiH2",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>A stoned creature is magically turning to stone. Each time a creature fails the saving throw to end this effect, they take corruption damage equal to the basilisk's [[/damage @M corruption]]{Might score}. A stoned creature or a creature adjacent to them can use a maneuver to cut the encroaching stone from the stoned target's body, ending the effect and dealing damage to the target equal to [[/damage 2*@M ignoredImmunities=all]]{twice the basilisk's Might score} that can't be reduced in any way. A creature reduced to 0 Stamina while they are stoned, or by an ability that causes a creature to become stoned, is turned to stone until they are restored to life by magical means.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788955266882,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.summons.Actor.nmsauNmV3hjKVCqD.Item.shFMtBjbn4mJsKfE.ActiveEffect.eXbQd0mP93ytHiH2",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!WHIn70OtX9T0SSrO.eXbQd0mP93ytHiH2"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788955253530,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!WHIn70OtX9T0SSrO"
+}
