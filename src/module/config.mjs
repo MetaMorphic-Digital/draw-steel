@@ -1010,6 +1010,13 @@ const monsterKeywords = {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.ZydJ0bkDd8a0wvPA",
     },
   },
+  companion: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.Companion",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    reference: {
+      uuid: "Compendium.draw-steel.journals.JournalEntry.kPQmBoxvBH6uGogl.JournalEntryPage.s7cIUGwWZ60b6q6n",
+    },
+  },
   construct: {
     label: "DRAW_STEEL.Actor.npc.KEYWORDS.Construct",
     group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
