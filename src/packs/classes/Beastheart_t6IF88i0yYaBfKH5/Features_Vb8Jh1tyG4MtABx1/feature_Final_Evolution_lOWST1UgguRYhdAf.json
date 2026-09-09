@@ -1,0 +1,103 @@
+{
+  "folder": "Vb8Jh1tyG4MtABx1",
+  "name": "Final Evolution",
+  "type": "feature",
+  "_id": "lOWST1UgguRYhdAf",
+  "img": "icons/commodities/biological/organ-heart-black.webp",
+  "system": {
+    "description": {
+      "value": "<p>When you gain ferocity at the start of each of your turns during combat, you gain 2d3 + 1 ferocity instead of 1d3 + 1.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "37",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "final-evolution",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Final Evolution",
+      "img": "icons/commodities/biological/organ-heart-black.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.lOWST1UgguRYhdAf",
+      "_id": "opEwxMn8I59KRMpD",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.primary.turnGain",
+            "type": "upgrade",
+            "value": "2d3+1",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788967876875,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!lOWST1UgguRYhdAf.opEwxMn8I59KRMpD"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788953566785,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!lOWST1UgguRYhdAf"
+}
