@@ -1,0 +1,103 @@
+{
+  "folder": "r8nMZItAR9IYJMMK",
+  "name": "A Burning Inside Me",
+  "type": "feature",
+  "_id": "BH9NNZEhJstGRMks",
+  "img": "icons/magic/fire/explosion-flame-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>While the drake is rampaging, you gain draconic wings and can [[/apply 1t3rhyhuQFvd4fB4]]{fly}. If you are midair when the drake's rampage ends, you take no damage from the fall. Additionally, you can use the drake's Drake Breath maneuver until their rampage ends.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "10",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "a-burning-inside-me",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Flight Speed",
+      "img": "icons/magic/fire/explosion-flame-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.BH9NNZEhJstGRMks",
+      "transfer": false,
+      "_id": "1t3rhyhuQFvd4fB4",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788974187492,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!BH9NNZEhJstGRMks.1t3rhyhuQFvd4fB4"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788974133187,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!BH9NNZEhJstGRMks"
+}
