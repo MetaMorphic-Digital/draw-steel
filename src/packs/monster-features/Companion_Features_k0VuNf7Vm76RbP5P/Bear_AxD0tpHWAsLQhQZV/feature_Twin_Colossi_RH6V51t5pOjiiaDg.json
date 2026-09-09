@@ -1,0 +1,246 @@
+{
+  "folder": "AxD0tpHWAsLQhQZV",
+  "name": "Twin Colossi",
+  "type": "feature",
+  "_id": "RH6V51t5pOjiiaDg",
+  "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+  "system": {
+    "description": {
+      "value": "<p>While the bear is rampaging, you gain a [[/apply s1V8gqfveELsVhW2]]{+1 bonus to distance}} with melee weapon abilities, [[/apply NNcJmKBdGYOdlsFg]]{{your size increases}} to match the bear's size (to a maximum of 3), and [[/apply AqJYaByUrjhR3PeJ]]{your strikes deal an extra 5 damage}.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "6",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "twin-colossi",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Size Increase",
+      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.RH6V51t5pOjiiaDg",
+      "transfer": false,
+      "_id": "NNcJmKBdGYOdlsFg",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size.value",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788955940408,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!RH6V51t5pOjiiaDg.NNcJmKBdGYOdlsFg"
+    },
+    {
+      "name": "Melee Distance",
+      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monster-features.Item.RH6V51t5pOjiiaDg",
+      "transfer": false,
+      "_id": "s1V8gqfveELsVhW2",
+      "system": {
+        "changes": [
+          {
+            "key": "distance",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "melee",
+            "weapon"
+          ]
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788955967473,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!RH6V51t5pOjiiaDg.s1V8gqfveELsVhW2"
+    },
+    {
+      "name": "Strike Bonus",
+      "img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monster-features.Item.RH6V51t5pOjiiaDg",
+      "transfer": false,
+      "_id": "AqJYaByUrjhR3PeJ",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.tier1.value",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "damage.tier2.value",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "damage.tier3.value",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788956004394,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!RH6V51t5pOjiiaDg.AqJYaByUrjhR3PeJ"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788955888239,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!RH6V51t5pOjiiaDg"
+}
