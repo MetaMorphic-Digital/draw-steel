@@ -34,6 +34,7 @@ Increased foundry minimum to 14.367.
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
   - Added new Summoning and Portfolio Summoning special effects. (#2021)
 - Added a new Minion Sheet. You can switch to this for any NPC but it is optimized for minions. (#585)
+- Added suppression logic based on heroic resource quantities (e.g. the Null's Discipline Mastery). (#702)
 - Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
 - Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
