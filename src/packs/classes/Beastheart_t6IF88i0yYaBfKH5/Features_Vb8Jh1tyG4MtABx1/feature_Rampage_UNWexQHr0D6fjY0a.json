@@ -6,7 +6,7 @@
   "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
   "system": {
     "description": {
-      "value": "<p>While your ferocity sharpens your killer instinct, it can also drive your companion into a rampage, causing them to strike friends and foes alike in a blood-soaked battle frenzy. As their rampage builds, they become something more than a mortal companion, embodying a primordial spirit of destruction.</p><p>Your companion has a resource called rampage. Whenever you or your companion spends ferocity, your companion gains rampage equal to the ferocity spent. Your companion loses their rampage and its effects at the end of an encounter.</p><p>Your companion doesn't spend rampage to activate abilities. Instead, when your companion gains 8 rampage, they are rampaging. As your companion's rampage increases, they gain the listed effects from the Rampage table. Effects are cumulative. Some Rampage effects are applied only if you are a specific level or higher, with the level of these effects noted in the Rampage table.</p><p>Growing Ferocity: [[lookup @hero.primary.tracking]]</p><table><tbody><tr><td data-colwidth=\"117\"><p><strong>Rampage</strong></p></td><td><p><strong>Effect</strong></p></td></tr><tr><td data-colwidth=\"117\"><p>8</p></td><td><p>At the end of each of your turns, your companion must use their Feral Strike ability as a free maneuver. You can’t willingly decrease the power roll outcome to a lower tier. For each ally damaged this way, you [[/gain 2 surge]], which you can use on this strike.</p></td></tr><tr><td data-colwidth=\"117\"><p>12</p></td><td><p>Your companion has damage immunity equal to their Intuition score.</p></td></tr><tr><td data-colwidth=\"117\"><p>16 (4th Level)</p></td><td><p>When your companion uses their Feral Strike ability, they deal extra damage equal to their Intuition score to each target. You gain 1 additional surge for each ally damaged this way.</p></td></tr><tr><td data-colwidth=\"117\"><p>20 (7th Level)</p></td><td><p>As a free maneuver, your companion can increase their size up to size 2, or increase their size by 1 if their original size is already 2 or larger. This size increase lasts until your companion’s rampage ends or they use a free maneuver to end it. While your companion’s size is increased, they gain a +2 bonus to speed and stability, the potencies of their abilities increase by 1, and the size of their Feral Strike ability’s burst increases by 1.</p></td></tr><tr><td data-colwidth=\"117\"><p>24 (10th Level)</p></td><td><p>When your companion increases their size, they can increase it up to size 3, or increase their size by 1 if their original size is already 3 or larger. Whenever they make a power roll while their size is increased this way, they can roll 3d10 and discard the lowest roll.</p></td></tr></tbody></table>",
+      "value": "<p>While your ferocity sharpens your killer instinct, it can also drive your companion into a rampage, causing them to strike friends and foes alike in a blood-soaked battle frenzy. As their rampage builds, they become something more than a mortal companion, embodying a primordial spirit of destruction.</p><p>Your companion has a resource called rampage. Whenever you or your companion spends ferocity, your companion gains rampage equal to the ferocity spent. Your companion loses their rampage and its effects at the end of an encounter.</p><p>Your companion doesn't spend rampage to activate abilities. Instead, when your companion gains 8 rampage, they are rampaging. As your companion's rampage increases, they gain the listed effects from the Rampage table. Effects are cumulative. Some Rampage effects are applied only if you are a specific level or higher, with the level of these effects noted in the Rampage table.</p><p>Rampage Level: [[lookup @hero.primary.tracking]]</p><table><tbody><tr><td data-colwidth=\"117\"><p><strong>Rampage</strong></p></td><td><p><strong>Effect</strong></p></td></tr><tr><td data-colwidth=\"117\"><p>8</p></td><td><p>At the end of each of your turns, your companion must use their Feral Strike ability as a free maneuver. You can’t willingly decrease the power roll outcome to a lower tier. For each ally damaged this way, you [[/gain 2 surge]], which you can use on this strike.</p></td></tr><tr><td data-colwidth=\"117\"><p>12</p></td><td><p>Your companion has [[/apply vMFxV4AZ4oM9LbFD]]{damage immunity} equal to their Intuition score.</p></td></tr><tr><td data-colwidth=\"117\"><p>16 (4th Level)</p></td><td><p>When your companion uses their Feral Strike ability, they deal [[/damage @I]]{extra damage equal to their Intuition score} to each target. You [[/gain 1 surge]]{gain 1 additional surge} for each ally damaged this way.</p></td></tr><tr><td data-colwidth=\"117\"><p>20 (7th Level)</p></td><td><p>As a free maneuver, your companion can increase their size up to size 2, or [[/apply  odSOGT0uOlhBpBw6]]{increase their size by 1} if their original size is already 2 or larger. This size increase lasts until your companion’s rampage ends or they use a free maneuver to end it. [[/apply 8JT1gv4aAboqLB1J]]{While your companion’s size is increased}, they gain a +2 bonus to speed and stability, the potencies of their abilities increase by 1, and the size of their Feral Strike ability’s burst increases by 1. </p></td></tr><tr><td data-colwidth=\"117\"><p>24 (10th Level)</p></td><td><p>When your companion increases their size, they can increase it up to size 3, or increase their size by 1 if their original size is already 3 or larger. Whenever they make a power roll while their size is increased this way, they can roll 3d10 and discard the lowest roll.</p></td></tr></tbody></table>",
       "director": ""
     },
     "source": {
@@ -22,7 +22,274 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Damage Immunity I",
+      "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.UNWexQHr0D6fjY0a",
+      "transfer": false,
+      "_id": "vMFxV4AZ4oM9LbFD",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.all",
+            "type": "upgrade",
+            "value": "@I",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788912108798,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!UNWexQHr0D6fjY0a.vMFxV4AZ4oM9LbFD"
+    },
+    {
+      "name": "Size to 3",
+      "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+      "type": "base",
+      "origin": null,
+      "_id": "odSOGT0uOlhBpBw6",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": true,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788912238261,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!UNWexQHr0D6fjY0a.odSOGT0uOlhBpBw6"
+    },
+    {
+      "name": "Size +1",
+      "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+      "type": "base",
+      "origin": null,
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": true,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788912256257,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "OQm3bUFdxwuXupzT",
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!UNWexQHr0D6fjY0a.OQm3bUFdxwuXupzT"
+    },
+    {
+      "name": "Rampage 20",
+      "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.UNWexQHr0D6fjY0a",
+      "transfer": false,
+      "_id": "8JT1gv4aAboqLB1J",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.combat.stability",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.potency.weak",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.potency.average",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.potency.strong",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788912358676,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!UNWexQHr0D6fjY0a.8JT1gv4aAboqLB1J"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
