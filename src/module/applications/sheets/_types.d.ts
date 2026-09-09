@@ -17,6 +17,12 @@ declare module "./combatant-group-config.mjs" {
   }
 }
 
+declare module "./companion-sheet.mjs" {
+  export default interface DrawSteelCompanionSheet {
+    actor: Omit<documents.DrawSteelActor, "system"> & { system: data.Actor.CompanionModel };
+  }
+}
+
 declare module "./hero.mjs" {
   export default interface DrawSteelHeroSheet {
     actor: Omit<documents.DrawSteelActor, "system"> & { system: data.Actor.HeroModel };
