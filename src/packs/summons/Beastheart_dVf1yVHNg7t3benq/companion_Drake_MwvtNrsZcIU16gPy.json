@@ -1,0 +1,1260 @@
+{
+  "folder": "dVf1yVHNg7t3benq",
+  "name": "Drake",
+  "type": "companion",
+  "_id": "MwvtNrsZcIU16gPy",
+  "img": "systems/draw-steel/assets/roles/mount.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 0,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 1,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p></p>",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk",
+        "fly"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": -1
+      },
+      "intuition": {
+        "value": 2
+      },
+      "presence": {
+        "value": 2
+      }
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "companion": {
+      "freeStrike": "1 + @M",
+      "keywords": [
+        "animal"
+      ],
+      "master": null
+    }
+  },
+  "prototypeToken": {
+    "name": "Drake",
+    "displayName": 0,
+    "actorLink": true,
+    "width": 1,
+    "height": 1,
+    "depth": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/mount.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": 1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.primary.value"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": true,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Elementally Attuned",
+      "type": "feature",
+      "_id": "g29m4mme48Hxu8CX",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+      "system": {
+        "description": {
+          "value": "<p>When you gain this companion, you choose their attuned damage type from [[/apply \"Acid Immunity 3\"]]{acid}, [[/apply \"Cold Immunity 3\"]]{cold}, [[/apply \"Corruption Immunity 3\"]]{corruption},[[/apply \"Fire Immunity 3]]{fire}, [[/apply \"Lightning Immunity 3\"]]{lightning}, [[/apply \"Poison Immunity 3\"]]{poison}, or [[/apply \"Sonic Immunity 3\"]]{sonic}. The drake's attuned damage type affects their other features.</p><p></p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Acid Immunity 3",
+          "type": "base",
+          "_id": "mwUMLkzcuLDUQgTd",
+          "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.acid",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              },
+              {
+                "key": "flags.draw-steel.elementAttune",
+                "type": "override",
+                "value": "acid",
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971173037,
+            "modifiedTime": 1788971779942,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.mwUMLkzcuLDUQgTd",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.mwUMLkzcuLDUQgTd"
+        },
+        {
+          "name": "Cold Immunity 3",
+          "type": "base",
+          "_id": "G8bqdOyGiThIDB8X",
+          "img": "icons/magic/water/barrier-ice-crystal-wall-faceted-light.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.cold",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              },
+              {
+                "key": "flags.draw-steel.elementAttune",
+                "type": "override",
+                "value": "cold",
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971174100,
+            "modifiedTime": 1788971872080,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.G8bqdOyGiThIDB8X",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.G8bqdOyGiThIDB8X"
+        },
+        {
+          "name": "Corruption Immunity 3",
+          "type": "base",
+          "_id": "PUjqN6PbQAc22D5b",
+          "img": "icons/magic/unholy/barrier-fire-pink.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.corruption",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971175591,
+            "modifiedTime": 1788971213534,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.PUjqN6PbQAc22D5b",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.PUjqN6PbQAc22D5b"
+        },
+        {
+          "name": "Fire Immunity 3",
+          "type": "base",
+          "_id": "TSdkgosSfFG6tBI1",
+          "img": "icons/magic/fire/flame-burning-campfire-orange.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.fire",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971177637,
+            "modifiedTime": 1788971220039,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.TSdkgosSfFG6tBI1",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.TSdkgosSfFG6tBI1"
+        },
+        {
+          "name": "Lightning Immunity 3",
+          "type": "base",
+          "_id": "yoReVyHqAA3cLPDP",
+          "img": "icons/magic/lightning/bolt-forked-blue.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.lightning",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971179530,
+            "modifiedTime": 1788971227301,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.yoReVyHqAA3cLPDP",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.yoReVyHqAA3cLPDP"
+        },
+        {
+          "name": "Poison Immunity 3",
+          "type": "base",
+          "_id": "vOJzbGKojiO91a5R",
+          "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.poison",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971180554,
+            "modifiedTime": 1788971232934,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.vOJzbGKojiO91a5R",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.vOJzbGKojiO91a5R"
+        },
+        {
+          "name": "Sonic Immunity 3",
+          "type": "base",
+          "_id": "GILF44OKhvVltRHb",
+          "img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.sonic",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971181571,
+            "modifiedTime": 1788971239446,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.GILF44OKhvVltRHb",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX.GILF44OKhvVltRHb"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "JPPTsHoHr7Po771y": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788971145577,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!MwvtNrsZcIU16gPy.g29m4mme48Hxu8CX"
+    },
+    {
+      "name": "Shared Scales",
+      "type": "feature",
+      "_id": "JYzXzzsTyJbineze",
+      "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p>You have immunity 3 to the drake's attuned damage type.</p><p>(Valid Damage Types are: [[/apply \"Acid Immunity 3\"]]{acid}, [[/apply \"Cold Immunity 3\"]]{cold}, [[/apply \"Corruption Immunity 3\"]]{corruption},[[/apply \"Fire Immunity 3]]{fire}, [[/apply \"Lightning Immunity 3\"]]{lightning}, [[/apply \"Poison Immunity 3\"]]{poison}, or [[/apply \"Sonic Immunity 3\"]]{sonic}.)</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Acid Immunity 3",
+          "type": "base",
+          "_id": "mwUMLkzcuLDUQgTd",
+          "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.acid",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971490813,
+            "modifiedTime": 1788971490813,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.mwUMLkzcuLDUQgTd",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.mwUMLkzcuLDUQgTd"
+        },
+        {
+          "name": "Cold Immunity 3",
+          "type": "base",
+          "_id": "G8bqdOyGiThIDB8X",
+          "img": "icons/magic/water/barrier-ice-crystal-wall-faceted-light.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.cold",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971492133,
+            "modifiedTime": 1788971492133,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.G8bqdOyGiThIDB8X",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.G8bqdOyGiThIDB8X"
+        },
+        {
+          "name": "Corruption Immunity 3",
+          "type": "base",
+          "_id": "PUjqN6PbQAc22D5b",
+          "img": "icons/magic/unholy/barrier-fire-pink.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.corruption",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971493501,
+            "modifiedTime": 1788971493501,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.PUjqN6PbQAc22D5b",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.PUjqN6PbQAc22D5b"
+        },
+        {
+          "name": "Fire Immunity 3",
+          "type": "base",
+          "_id": "TSdkgosSfFG6tBI1",
+          "img": "icons/magic/fire/flame-burning-campfire-orange.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.fire",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971494990,
+            "modifiedTime": 1788971494990,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.TSdkgosSfFG6tBI1",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.TSdkgosSfFG6tBI1"
+        },
+        {
+          "name": "Lightning Immunity 3",
+          "type": "base",
+          "_id": "yoReVyHqAA3cLPDP",
+          "img": "icons/magic/lightning/bolt-forked-blue.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.lightning",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971496127,
+            "modifiedTime": 1788971496127,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.yoReVyHqAA3cLPDP",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.yoReVyHqAA3cLPDP"
+        },
+        {
+          "name": "Poison Immunity 3",
+          "type": "base",
+          "_id": "vOJzbGKojiO91a5R",
+          "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.poison",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971497446,
+            "modifiedTime": 1788971497446,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.vOJzbGKojiO91a5R",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.vOJzbGKojiO91a5R"
+        },
+        {
+          "name": "Sonic Immunity 3",
+          "type": "base",
+          "_id": "GILF44OKhvVltRHb",
+          "img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
+          "system": {
+            "changes": [
+              {
+                "key": "system.damage.immunities.sonic",
+                "type": "override",
+                "value": 3,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              },
+              "goal": null
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "showIcon": 1,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.367",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1788971498415,
+            "modifiedTime": 1788971498415,
+            "lastModifiedBy": null,
+            "compendiumSource": "Compendium.draw-steel.summons.Actor.MwvtNrsZcIU16gPy.Item.g29m4mme48Hxu8CX.ActiveEffect.GILF44OKhvVltRHb",
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "folder": null,
+          "sort": 0,
+          "_key": "!actors.items.effects!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze.GILF44OKhvVltRHb"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "JPPTsHoHr7Po771y": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788971461915,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!MwvtNrsZcIU16gPy.JYzXzzsTyJbineze"
+    },
+    {
+      "name": "Drake Breath",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "The drake exhales a blast of flesh-melting energy.",
+        "keywords": [
+          "area",
+          "companion",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effects": {
+          "Vhs5pVioztW6yckD": {
+            "sort": 100000,
+            "name": "",
+            "img": null,
+            "type": "base",
+            "_id": "Vhs5pVioztW6yckD",
+            "description": "<p>The target takes damage of the drake's attuned damage type (see Elementally Attuned) equal to the drake's [[/damage @M type=@flags.draw-steel.elementAttune]]{Might score}].</p>",
+            "before": false
+          },
+          "woZxtrf6viz9FTm4": {
+            "sort": 200000,
+            "name": "",
+            "img": null,
+            "type": "spend",
+            "_id": "woZxtrf6viz9FTm4",
+            "description": "<p>This ability affects a 3 cube.</p>",
+            "before": false,
+            "resource": {
+              "value": 1,
+              "multiple": false
+            }
+          },
+          "E8Iu7NFMTUs486z7": {
+            "sort": 300000,
+            "name": "",
+            "img": null,
+            "type": "spend",
+            "_id": "E8Iu7NFMTUs486z7",
+            "description": "<p>This ability affects a 4 cube.</p>",
+            "before": false,
+            "resource": {
+              "value": 2,
+              "multiple": false
+            }
+          }
+        }
+      },
+      "_id": "u2D3m72GqMTVCN7X",
+      "img": "icons/magic/fire/projectile-fireball-smoke-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "JPPTsHoHr7Po771y": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788971594816,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!MwvtNrsZcIU16gPy.u2D3m72GqMTVCN7X"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788970987032,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!MwvtNrsZcIU16gPy"
+}

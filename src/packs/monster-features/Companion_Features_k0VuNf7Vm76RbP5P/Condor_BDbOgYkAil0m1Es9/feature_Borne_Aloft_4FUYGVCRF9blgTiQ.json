@@ -1,20 +1,20 @@
 {
-  "folder": "wONRwA4xbKbahc8z",
-  "name": "Nature Will Not Harm Us",
+  "folder": "BDbOgYkAil0m1Es9",
+  "name": "Borne Aloft",
   "type": "feature",
-  "_id": "NY0dThbKDdSKyWjZ",
-  "img": "icons/magic/nature/tree-roots-glow-yellow.webp",
+  "_id": "4FUYGVCRF9blgTiQ",
+  "img": "icons/magic/air/fog-gas-smoke-swirling-gray.webp",
   "system": {
     "description": {
-      "value": "<p>You and your companion have damage immunity 10 to cold, fire, lightning, and sonic damage.</p>",
+      "value": "<p>While the condor is rampaging, you gain wings and can [[/apply 8zVGGq8n7WU9W54f]]{fly}. While flying, you gain a +2 bonus to speed. If you are midair when the condor's rampage ends, you take no damage from the fall.</p>",
       "director": ""
     },
     "source": {
       "book": "Beastheart",
-      "page": "34",
+      "page": "8",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "nature-will-not-harm-us",
+    "_dsid": "borne-aloft",
     "advancements": {},
     "prerequisites": {
       "value": "",
@@ -24,38 +24,25 @@
   },
   "effects": [
     {
-      "name": "Nature Will Not Harm Us",
-      "img": "icons/magic/nature/tree-roots-glow-yellow.webp",
+      "name": "Flight Speed",
+      "img": "icons/magic/air/fog-gas-smoke-swirling-gray.webp",
       "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.NY0dThbKDdSKyWjZ",
-      "_id": "4XYR84qTOxpCmv7w",
+      "origin": "Compendium.draw-steel.monster-features.Item.4FUYGVCRF9blgTiQ",
+      "transfer": false,
+      "_id": "8zVGGq8n7WU9W54f",
       "system": {
         "changes": [
           {
-            "key": "system.damage.immunities.cold",
-            "type": "upgrade",
-            "value": 10,
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
             "phase": "initial",
             "priority": null
           },
           {
-            "key": "system.damage.immunities.fire",
-            "type": "upgrade",
-            "value": 10,
-            "phase": "initial",
-            "priority": null
-          },
-          {
-            "key": "system.damage.immunities.lightning",
-            "type": "upgrade",
-            "value": 10,
-            "phase": "initial",
-            "priority": null
-          },
-          {
-            "key": "system.damage.immunities.sonic",
-            "type": "upgrade",
-            "value": 10,
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 2,
             "phase": "initial",
             "priority": null
           }
@@ -84,7 +71,6 @@
       },
       "description": "",
       "tint": "#ffffff",
-      "transfer": true,
       "statuses": [],
       "showIcon": 1,
       "folder": null,
@@ -94,14 +80,14 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788953285410,
+        "createdTime": 1788970343047,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!items.effects!NY0dThbKDdSKyWjZ.4XYR84qTOxpCmv7w"
+      "_key": "!items.effects!4FUYGVCRF9blgTiQ.8zVGGq8n7WU9W54f"
     }
   ],
   "sort": 0,
@@ -113,12 +99,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788953204616,
+    "createdTime": 1788970284885,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!NY0dThbKDdSKyWjZ"
+  "_key": "!items!4FUYGVCRF9blgTiQ"
 }

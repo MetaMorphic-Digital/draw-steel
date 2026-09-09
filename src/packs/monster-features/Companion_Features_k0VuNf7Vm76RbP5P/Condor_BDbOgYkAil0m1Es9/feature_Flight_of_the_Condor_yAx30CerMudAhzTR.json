@@ -1,20 +1,20 @@
 {
-  "folder": "7d2yemfkN4cLnxNM",
-  "name": "Built for Violence",
+  "folder": "BDbOgYkAil0m1Es9",
+  "name": "Flight of the Condor",
   "type": "feature",
-  "_id": "3yAXnrDjbpCjmd1B",
-  "img": "icons/skills/wounds/injury-stapled-flesh-tan.webp",
+  "_id": "yAx30CerMudAhzTR",
+  "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
   "system": {
     "description": {
-      "value": "<p>You and your companion gain a +2 damage bonus to maneuvers that deal damage. When you or your companion pushes a creature, you can vertical push that creature.</p>",
+      "value": "<p>While the condor is rampaging, you and the condor gain a +5 [[/apply xA7DShEqugTPuVpj]]{bonus to speed}.</p>",
       "director": ""
     },
     "source": {
       "book": "Beastheart",
-      "page": "34",
+      "page": "8",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "built-for-violence",
+    "_dsid": "flight-of-the-condor",
     "advancements": {},
     "prerequisites": {
       "value": "",
@@ -24,13 +24,22 @@
   },
   "effects": [
     {
-      "name": "Built for Violence",
-      "img": "icons/skills/wounds/injury-stapled-flesh-tan.webp",
-      "type": "abilityModifier",
-      "origin": "Compendium.draw-steel.classes.Item.3yAXnrDjbpCjmd1B",
-      "_id": "nNXYSCh1Xt2QwW8y",
+      "name": "Flight of the Condor",
+      "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.yAx30CerMudAhzTR",
+      "transfer": false,
+      "_id": "xA7DShEqugTPuVpj",
       "system": {
-        "changes": [],
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
@@ -43,9 +52,6 @@
             "amount": "1",
             "display": ""
           }
-        },
-        "filters": {
-          "keywords": []
         }
       },
       "disabled": false,
@@ -56,9 +62,8 @@
         "expiry": null,
         "expired": false
       },
-      "description": "<p>You and your companion gain a +2 damage bonus to maneuvers that deal damage. When you or your companion pushes a creature, you can vertical push that creature.</p>",
+      "description": "",
       "tint": "#ffffff",
-      "transfer": true,
       "statuses": [],
       "showIcon": 1,
       "folder": null,
@@ -68,14 +73,14 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788953111270,
+        "createdTime": 1788970448729,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!items.effects!3yAXnrDjbpCjmd1B.nNXYSCh1Xt2QwW8y"
+      "_key": "!items.effects!yAx30CerMudAhzTR.xA7DShEqugTPuVpj"
     }
   ],
   "sort": 0,
@@ -87,12 +92,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788953070708,
+    "createdTime": 1788970426088,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!3yAXnrDjbpCjmd1B"
+  "_key": "!items!yAx30CerMudAhzTR"
 }
