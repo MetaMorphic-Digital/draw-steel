@@ -1,8 +1,8 @@
 {
   "folder": "dVf1yVHNg7t3benq",
-  "name": "Bear",
+  "name": "Condor",
   "type": "companion",
-  "_id": "9Y6sjGkesERlyVL0",
+  "_id": "c4NzNVlZ0Qqf4OnW",
   "img": "systems/draw-steel/assets/roles/mount.webp",
   "system": {
     "stamina": {
@@ -17,9 +17,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "L"
+        "letter": "M"
       },
-      "stability": 2,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
@@ -28,10 +28,10 @@
       "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 7,
       "types": [
         "walk",
-        "climb"
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -79,12 +79,12 @@
         "value": 2
       },
       "presence": {
-        "value": 2
+        "value": 1
       }
     },
     "source": {
       "book": "Beastheart",
-      "page": "6",
+      "page": "8",
       "license": "Draw Steel Creator License"
     },
     "companion": {
@@ -96,7 +96,7 @@
     }
   },
   "prototypeToken": {
-    "name": "Bear",
+    "name": "Condor",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
@@ -189,13 +189,13 @@
   },
   "items": [
     {
-      "name": "Strong Like Bear",
+      "name": "Moving Target",
       "type": "feature",
-      "_id": "qsd8fpCn9J74QYfx",
-      "img": "icons/creatures/abilities/bear-roar-bite-brown.webp",
+      "_id": "bHbkigbauCPJjjRM",
+      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
       "system": {
         "description": {
-          "value": "<p>You gain a +1 [[/apply EFe4CX6Hq5RmIncf]]{bonus} to your stability.</p>",
+          "value": "<p>While the condor is flying and has a speed greater than 0, ranged strikes against them take a bane.</p>",
           "director": ""
         },
         "source": {
@@ -211,67 +211,7 @@
           "level": null
         }
       },
-      "effects": [
-        {
-          "name": "Strong Like Bear",
-          "img": "icons/creatures/abilities/bear-roar-bite-brown.webp",
-          "type": "base",
-          "origin": "Compendium.draw-steel.summons.Actor.9Y6sjGkesERlyVL0.Item.qsd8fpCn9J74QYfx",
-          "transfer": false,
-          "_id": "EFe4CX6Hq5RmIncf",
-          "system": {
-            "changes": [
-              {
-                "key": "system.combat.stability",
-                "type": "add",
-                "value": 1,
-                "phase": "initial",
-                "priority": null
-              }
-            ],
-            "end": {
-              "roll": "1d10 + @combat.save.bonus"
-            },
-            "project": {
-              "prerequisites": "",
-              "source": "",
-              "rollCharacteristic": [],
-              "yield": {
-                "kind": "weapon",
-                "amount": "1",
-                "display": ""
-              }
-            }
-          },
-          "disabled": false,
-          "start": null,
-          "duration": {
-            "value": null,
-            "units": "seconds",
-            "expiry": null,
-            "expired": false
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "showIcon": 1,
-          "folder": null,
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "coreVersion": "14.367",
-            "systemId": "draw-steel",
-            "systemVersion": "1.2",
-            "createdTime": 1788955565160,
-            "modifiedTime": 1788955594746,
-            "lastModifiedBy": null,
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null
-          },
-          "_key": "!actors.items.effects!9Y6sjGkesERlyVL0.qsd8fpCn9J74QYfx.EFe4CX6Hq5RmIncf"
-        }
-      ],
+      "effects": [],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -283,23 +223,23 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788955533528,
+        "createdTime": 1788977465756,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!9Y6sjGkesERlyVL0.qsd8fpCn9J74QYfx"
+      "_key": "!actors.items!c4NzNVlZ0Qqf4OnW.bHbkigbauCPJjjRM"
     },
     {
-      "name": "Backhand",
+      "name": "Flurry of Wings",
       "type": "ability",
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "Beastheart",
-          "page": "6",
+          "book": "",
+          "page": "",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "",
@@ -308,7 +248,7 @@
           "dsid": [],
           "level": null
         },
-        "story": "The bear casually swats the pesky foe into next week.",
+        "story": "I can't draw a bead on them with that infernal bird flapping in my face!",
         "keywords": [
           "companion",
           "melee",
@@ -338,22 +278,22 @@
           "effects": {}
         },
         "effects": {
-          "eMH5grZIScrcELa6": {
+          "CDLC6E0LlRyNi5BH": {
             "sort": 100000,
             "name": "",
             "img": null,
             "type": "base",
-            "_id": "eMH5grZIScrcELa6",
-            "description": "<p>The target takes damage equal to [[/damage 4+@M]]{4 + the bear's Might score} and is pushed up to 2 squares.</p>",
+            "_id": "CDLC6E0LlRyNi5BH",
+            "description": "<p>The target takes damage equal to [[/damage 3+@M]]{3 + the condor's Might score}. Additionally, enemies are weakened while adjacent to the condor until the end of your next turn.</p>",
             "before": false
           },
-          "obxwsqNEaZm4L82c": {
+          "AvXoFMVgqlMqKL4C": {
             "sort": 200000,
             "name": "",
             "img": null,
             "type": "spend",
-            "_id": "obxwsqNEaZm4L82c",
-            "description": "<p>The target is force moved up to a number of additional squares equal to [[/lookup @M]]{the bear's Might score}.</p>",
+            "_id": "AvXoFMVgqlMqKL4C",
+            "description": "<p>An enemy who would be weakened by this ability is taunted instead.</p>",
             "before": false,
             "resource": {
               "value": 1,
@@ -362,8 +302,8 @@
           }
         }
       },
-      "_id": "gcHtoMWCymme0otl",
-      "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp",
+      "_id": "Orl8NVaulAJgImKi",
+      "img": "icons/creatures/birds/corvid-flying-wings-purple.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -376,18 +316,17 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788955629370,
+        "createdTime": 1788977465756,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!9Y6sjGkesERlyVL0.gcHtoMWCymme0otl"
+      "_key": "!actors.items!c4NzNVlZ0Qqf4OnW.Orl8NVaulAJgImKi"
     }
   ],
   "effects": [],
-  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -396,12 +335,13 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788955476304,
+    "createdTime": 1788977465756,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!9Y6sjGkesERlyVL0"
+  "sort": 500000,
+  "_key": "!actors!c4NzNVlZ0Qqf4OnW"
 }

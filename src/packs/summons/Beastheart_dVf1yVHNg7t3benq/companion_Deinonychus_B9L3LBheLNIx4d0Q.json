@@ -1,8 +1,8 @@
 {
   "folder": "dVf1yVHNg7t3benq",
-  "name": "Bear",
+  "name": "Deinonychus",
   "type": "companion",
-  "_id": "9Y6sjGkesERlyVL0",
+  "_id": "B9L3LBheLNIx4d0Q",
   "img": "systems/draw-steel/assets/roles/mount.webp",
   "system": {
     "stamina": {
@@ -17,9 +17,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "L"
+        "letter": "M"
       },
-      "stability": 2,
+      "stability": 1,
       "turns": 1
     },
     "biography": {
@@ -28,10 +28,9 @@
       "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 7,
       "types": [
-        "walk",
-        "climb"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -70,7 +69,7 @@
         "value": 2
       },
       "agility": {
-        "value": 1
+        "value": 2
       },
       "reason": {
         "value": -1
@@ -79,12 +78,12 @@
         "value": 2
       },
       "presence": {
-        "value": 2
+        "value": 1
       }
     },
     "source": {
       "book": "Beastheart",
-      "page": "6",
+      "page": "9",
       "license": "Draw Steel Creator License"
     },
     "companion": {
@@ -96,7 +95,7 @@
     }
   },
   "prototypeToken": {
-    "name": "Bear",
+    "name": "Deinonychus",
     "displayName": 0,
     "actorLink": true,
     "width": 1,
@@ -189,13 +188,13 @@
   },
   "items": [
     {
-      "name": "Strong Like Bear",
+      "name": "Blood Frenzy",
       "type": "feature",
-      "_id": "qsd8fpCn9J74QYfx",
-      "img": "icons/creatures/abilities/bear-roar-bite-brown.webp",
+      "_id": "98bjqhLiyvhI6vOT",
+      "img": "icons/magic/unholy/projectile-helix-blood-red.webp",
       "system": {
         "description": {
-          "value": "<p>You gain a +1 [[/apply EFe4CX6Hq5RmIncf]]{bonus} to your stability.</p>",
+          "value": "<p>Whenever the deinonychus deals damage to a bleeding creature, they [[/gain 1 surge]].</p>",
           "director": ""
         },
         "source": {
@@ -211,159 +210,6 @@
           "level": null
         }
       },
-      "effects": [
-        {
-          "name": "Strong Like Bear",
-          "img": "icons/creatures/abilities/bear-roar-bite-brown.webp",
-          "type": "base",
-          "origin": "Compendium.draw-steel.summons.Actor.9Y6sjGkesERlyVL0.Item.qsd8fpCn9J74QYfx",
-          "transfer": false,
-          "_id": "EFe4CX6Hq5RmIncf",
-          "system": {
-            "changes": [
-              {
-                "key": "system.combat.stability",
-                "type": "add",
-                "value": 1,
-                "phase": "initial",
-                "priority": null
-              }
-            ],
-            "end": {
-              "roll": "1d10 + @combat.save.bonus"
-            },
-            "project": {
-              "prerequisites": "",
-              "source": "",
-              "rollCharacteristic": [],
-              "yield": {
-                "kind": "weapon",
-                "amount": "1",
-                "display": ""
-              }
-            }
-          },
-          "disabled": false,
-          "start": null,
-          "duration": {
-            "value": null,
-            "units": "seconds",
-            "expiry": null,
-            "expired": false
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "showIcon": 1,
-          "folder": null,
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "coreVersion": "14.367",
-            "systemId": "draw-steel",
-            "systemVersion": "1.2",
-            "createdTime": 1788955565160,
-            "modifiedTime": 1788955594746,
-            "lastModifiedBy": null,
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null
-          },
-          "_key": "!actors.items.effects!9Y6sjGkesERlyVL0.qsd8fpCn9J74QYfx.EFe4CX6Hq5RmIncf"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "JPPTsHoHr7Po771y": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788955533528,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!9Y6sjGkesERlyVL0.qsd8fpCn9J74QYfx"
-    },
-    {
-      "name": "Backhand",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Beastheart",
-          "page": "6",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "",
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        },
-        "story": "The bear casually swats the pesky foe into next week.",
-        "keywords": [
-          "companion",
-          "melee",
-          "weapon"
-        ],
-        "category": "",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": "1",
-          "secondary": "1",
-          "tertiary": "1"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "custom": "",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "reactive": false,
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effects": {
-          "eMH5grZIScrcELa6": {
-            "sort": 100000,
-            "name": "",
-            "img": null,
-            "type": "base",
-            "_id": "eMH5grZIScrcELa6",
-            "description": "<p>The target takes damage equal to [[/damage 4+@M]]{4 + the bear's Might score} and is pushed up to 2 squares.</p>",
-            "before": false
-          },
-          "obxwsqNEaZm4L82c": {
-            "sort": 200000,
-            "name": "",
-            "img": null,
-            "type": "spend",
-            "_id": "obxwsqNEaZm4L82c",
-            "description": "<p>The target is force moved up to a number of additional squares equal to [[/lookup @M]]{the bear's Might score}.</p>",
-            "before": false,
-            "resource": {
-              "value": 1,
-              "multiple": false
-            }
-          }
-        }
-      },
-      "_id": "gcHtoMWCymme0otl",
-      "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -376,18 +222,106 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788955629370,
+        "createdTime": 1788977772940,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!9Y6sjGkesERlyVL0.gcHtoMWCymme0otl"
+      "_key": "!actors.items!B9L3LBheLNIx4d0Q.98bjqhLiyvhI6vOT"
+    },
+    {
+      "name": "Terrible Claws",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "The deinonychus kicks their prey, then slashes them with wicked claws.",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effects": {
+          "jI7TD1akOw0PyRUF": {
+            "sort": 100000,
+            "name": "",
+            "img": null,
+            "type": "base",
+            "_id": "jI7TD1akOw0PyRUF",
+            "description": "<p>The target takes damage equal to [[/damage 3+@M]]{3 + the deinonychus's Might score}, and if they have [[potency M AVERAGE]], they are [[/apply bleeding turn]].</p>",
+            "before": false
+          },
+          "bIXPvfGWNybVChBQ": {
+            "sort": 200000,
+            "name": "",
+            "img": null,
+            "type": "spend",
+            "_id": "bIXPvfGWNybVChBQ",
+            "description": "<p>A target who has [[potency M STRONG]] is [[/apply bleeding save]].</p>",
+            "before": false,
+            "resource": {
+              "value": 1,
+              "multiple": false
+            }
+          }
+        }
+      },
+      "_id": "wpCqfs9ejJCNmQEx",
+      "img": "icons/creatures/claws/claw-hooked-purple.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "JPPTsHoHr7Po771y": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788977772940,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!B9L3LBheLNIx4d0Q.wpCqfs9ejJCNmQEx"
     }
   ],
   "effects": [],
-  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -396,12 +330,13 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788955476304,
+    "createdTime": 1788977772940,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!actors!9Y6sjGkesERlyVL0"
+  "sort": 0,
+  "_key": "!actors!B9L3LBheLNIx4d0Q"
 }
