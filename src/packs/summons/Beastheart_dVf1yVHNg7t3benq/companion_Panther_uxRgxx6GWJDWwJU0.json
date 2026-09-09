@@ -1,0 +1,347 @@
+{
+  "folder": "dVf1yVHNg7t3benq",
+  "name": "Panther",
+  "type": "companion",
+  "_id": "uxRgxx6GWJDWwJU0",
+  "img": "systems/draw-steel/assets/roles/mount.webp",
+  "system": {
+    "stamina": {
+      "value": null,
+      "max": 0,
+      "temporary": 0
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 1,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p></p>",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 7,
+      "types": [
+        "walk",
+        "climb"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "statuses": {
+      "immunities": []
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": -1
+      },
+      "intuition": {
+        "value": 2
+      },
+      "presence": {
+        "value": 1
+      }
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "15",
+      "license": "Draw Steel Creator License"
+    },
+    "companion": {
+      "freeStrike": "1 + @M",
+      "keywords": [
+        "animal"
+      ],
+      "master": null
+    }
+  },
+  "prototypeToken": {
+    "name": "Panther",
+    "displayName": 0,
+    "actorLink": true,
+    "width": 1,
+    "height": 1,
+    "depth": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/mount.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": 1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.primary.value"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": true,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Mighty Spring",
+      "type": "feature",
+      "_id": "yiJGecebOiKYuJZ7",
+      "img": "icons/magic/movement/trail-streak-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever the panther takes the Advance move action or the Charge action, they can jump up to a number of squares equal to their speed in any direction, including vertically, as part of this movement.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "advancements": {},
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "JPPTsHoHr7Po771y": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788981024646,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!uxRgxx6GWJDWwJU0.yiJGecebOiKYuJZ7"
+    },
+    {
+      "name": "Pounce",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "",
+        "prerequisites": {
+          "value": "",
+          "dsid": [],
+          "level": null
+        },
+        "story": "The panther bunches up, then uncoils into a deadly leap.",
+        "keywords": [
+          "companion",
+          "melee",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": "1",
+          "secondary": "1",
+          "tertiary": "1"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "reactive": false,
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effects": {
+          "22NjoZ0dX2ShqWm4": {
+            "sort": 100000,
+            "name": "",
+            "img": null,
+            "type": "base",
+            "_id": "22NjoZ0dX2ShqWm4",
+            "description": "<p>The target takes damage equal to [[/damage 3+@M]]{3 + the panther's Might score}, and if they have [[potency M AVERAGE]], they are knocked [[/apply prone]].</p>",
+            "before": false
+          },
+          "iNov7hvKHa9VerVJ": {
+            "sort": 200000,
+            "name": "",
+            "img": null,
+            "type": "spend",
+            "_id": "iNov7hvKHa9VerVJ",
+            "description": "<p>The panther can jump up to a number of squares equal to their speed before using this ability. If they jump at least 1 square in this way, a target who has [[potency M STRONG]] is knocked prone.</p>",
+            "before": false,
+            "resource": {
+              "value": 1,
+              "multiple": false
+            }
+          }
+        }
+      },
+      "_id": "WffhiCJbxyKFrVkO",
+      "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "JPPTsHoHr7Po771y": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788981054655,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!uxRgxx6GWJDWwJU0.WffhiCJbxyKFrVkO"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788980986411,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!actors!uxRgxx6GWJDWwJU0"
+}
