@@ -1,20 +1,20 @@
 {
-  "folder": "r8nMZItAR9IYJMMK",
-  "name": "Elemental Avatar",
+  "folder": "Vb8Jh1tyG4MtABx1",
+  "name": "Final Evolution",
   "type": "feature",
-  "_id": "oVrU9P8YwOaxFFIs",
-  "img": "icons/creatures/magical/spirit-fire-orange.webp",
+  "_id": "lOWST1UgguRYhdAf",
+  "img": "icons/commodities/biological/organ-heart-black.webp",
   "system": {
     "description": {
-      "value": "<p>While the drake is rampaging, you and the drake have immunity all to the drake's attuned damage type, and whenever you or the drake make a strike against a creature you can cause the target to be [[/apply \"Dragonsealed\" save]]. A dragonsealed creature has weakness 10 to the drake's attuned damage type.</p>",
+      "value": "<p>When you gain ferocity at the start of each of your turns during combat, you gain 2d3 + 1 ferocity instead of 1d3 + 1.</p>",
       "director": ""
     },
     "source": {
       "book": "Beastheart",
-      "page": "10",
+      "page": "37",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "elemental-avatar",
+    "_dsid": "final-evolution",
     "advancements": {},
     "prerequisites": {
       "value": "",
@@ -24,14 +24,21 @@
   },
   "effects": [
     {
-      "name": "Dragonsealed",
-      "img": "icons/magic/control/fear-fright-monster-grin-green.webp",
+      "name": "Final Evolution",
+      "img": "icons/commodities/biological/organ-heart-black.webp",
       "type": "base",
-      "origin": "Compendium.draw-steel.monster-features.Item.oVrU9P8YwOaxFFIs",
-      "transfer": false,
-      "_id": "TK4np8Gmdi8H1tXS",
+      "origin": "Compendium.draw-steel.classes.Item.lOWST1UgguRYhdAf",
+      "_id": "opEwxMn8I59KRMpD",
       "system": {
-        "changes": [],
+        "changes": [
+          {
+            "key": "system.hero.primary.turnGain",
+            "type": "upgrade",
+            "value": "2d3+1",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
@@ -54,8 +61,9 @@
         "expiry": null,
         "expired": false
       },
-      "description": "<p>A dragonsealed creature has weakness 10 to the drake's attuned damage type.</p>",
+      "description": "",
       "tint": "#ffffff",
+      "transfer": true,
       "statuses": [],
       "showIcon": 1,
       "folder": null,
@@ -65,16 +73,17 @@
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788977460348,
+        "createdTime": 1788967876875,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!items.effects!oVrU9P8YwOaxFFIs.TK4np8Gmdi8H1tXS"
+      "_key": "!items.effects!lOWST1UgguRYhdAf.opEwxMn8I59KRMpD"
     }
   ],
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -83,13 +92,12 @@
     "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1788977460348,
+    "createdTime": 1788953566785,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "sort": 300000,
-  "_key": "!items!oVrU9P8YwOaxFFIs"
+  "_key": "!items!lOWST1UgguRYhdAf"
 }
