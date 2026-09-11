@@ -41,7 +41,7 @@ export async function enricher(match, options) {
   if (parsedConfig.originDuration) linkConfig.originDuration = parsedConfig.originDuration;
   if (options.relativeTo) linkConfig.origin = options.relativeTo.uuid;
 
-  /** @type {DrawSteelItem} */
+  /** @type {DrawSteelActor | DrawSteelItem} */
   const doc = (["Actor", "Item"].includes(options.relativeTo?.documentName)) ? options.relativeTo : null;
 
   for (const val of parsedConfig.values) {
