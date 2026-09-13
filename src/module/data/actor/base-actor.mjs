@@ -375,9 +375,9 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     //Can this hover?
     //Can this fly, and is it not prone or it's speed > 0?
     //Is this climbing, and can it climb?
-    var isFlying = this.movement.types.has("fly");
-    var isClimbing = this.movement.types.has("climb");
-    var flyProne = isFlying && ((this.movement.value <= 0) || (this.parent.statuses.has("prone")));
+    let isFlying = this.movement.types.has("fly");
+    let isClimbing = this.movement.types.has("climb");
+    let flyProne = isFlying && ((this.movement.value <= 0) || (this.parent.statuses.has("prone")));
     if (!(this.movement.hover) && ((!isFlying) || (flyProne)) && isClimbing) {
 
       const tokens = this.parent.getActiveTokens();
