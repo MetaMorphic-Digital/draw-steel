@@ -6,7 +6,7 @@
   "img": "icons/creatures/slimes/slime-giant-face-eyes.webp",
   "system": {
     "description": {
-      "value": "<p>While the ball is rampaging, you and the ball have [[/apply mwUMLkzcuLDUQgTd]]{acid immunity 10}, and whenever a creature is reduced to 0 Stamina while inside the ball, the ball's [[/apply odSOGT0uOlhBpBw6]]{size increases by 1} (to a maximum of 5). The ball's size can't increase this way more than once a turn, and the ball shrinks back to their original size when their rampage ends.</p>",
+      "value": "<p>While the ball is rampaging, you and the ball have [[/apply mwUMLkzcuLDUQgTd]]{acid immunity 10}, and whenever a creature is reduced to 0 Stamina while inside the ball, the ball's [[/apply odSOGT0uOlhBpBw6 stacking=true]]{size increases by 1} (to a maximum of 5). The ball's size can't increase this way more than once a turn, and the ball shrinks back to their original size when their rampage ends.</p>",
       "director": ""
     },
     "source": {
@@ -32,7 +32,7 @@
       "system": {
         "changes": [
           {
-            "key": "system.combat.size",
+            "key": "system.combat.size.value",
             "type": "add",
             "value": 1,
             "phase": "initial",
