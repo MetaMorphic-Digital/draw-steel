@@ -4,6 +4,7 @@ import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 /**
  * @import { DataSchema } from "@common/abstract/_types.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
+ * @import { PotencyChatResult, PotencyChatOptions, PotencySchema, TextOptions } from "./_types";
  */
 
 const { SchemaField, StringField } = foundry.data.fields;
@@ -192,16 +193,19 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * A helper method for generating the potency string (i.e M < 2).
-   * @param {1|2|3} n     The tier.
+   * @param {1|2|3} tier     The tier.
+   * @param {number} [bonus] A numerical adjustment to the potency.
    * @returns {string}    The formatted potency string.
    */
-  toPotencyHTML(tier) {
+  toPotencyHTML(tier, bonus = 0) {
     const tierValue = this[`${this.constructor.TYPE}`][`tier${tier}`];
 
     const characteristic = ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "";
-    const strength = this.actor
+    let strength = this.actor
       ? ds.utils.evaluateFormula(tierValue.potency.value, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.potency.value.split("@potency.")[1] ?? Number(tierValue.potency.value);
+
+    if (typeof strength === "number") strength += bonus;
 
     const potencySpan = this.constructor.constructPotencyHTML(characteristic, strength);
     return potencySpan.outerHTML;
@@ -212,19 +216,45 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /**
    * Define how an effect renders on sheets and embeds.
    * @param {1 | 2 | 3} tier   The specific tier.
+   * @param {TextOptions} [options]
    * @returns {string}
    * @abstract
    */
-  toText(tier) {}
+  toText(tier, options = {}) {}
 
   /* -------------------------------------------------- */
 
   /**
-   * Constructs button for an Ability Use chat message.
+   * Constructs button(s) for an Ability Use chat message part.
    * @param {1 | 2 | 3} tier    The specific tier.
    * @returns {HTMLButtonElement[] | null} An array of buttons to add to the footer of the message, or null if there are none.
    */
   constructButtons(tier) {
     return null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs potency info for a Target Result chat message part.
+   * @param {1 | 2 | 3} tier          The specific tier.
+   * @param {DrawSteelActor} target   The targeted Actor actor.
+   * @param {PotencyChatOptions} [options={}]
+   * @returns {PotencyChatResult | null} Returns null if no potency associated with this result.
+   */
+  potencyOption(tier, target, options = {}) {
+    /** @type {PotencySchema} */
+    const potencyInfo = this[`${this.constructor.TYPE}`][`tier${tier}`].potency;
+
+    if (potencyInfo.characteristic === "none") return null;
+
+    const strength = ds.utils.evaluateFormula(potencyInfo.value, this.item.getRollData(), { contextName: this.uuid }) + (options.bonus ?? 0);
+    const fail = target.checkPotency(strength, potencyInfo.characteristic);
+    // nullish fail means target doesn't have characteristics
+    if (fail === null) return null;
+    return {
+      fail,
+      text: this.toText(tier, { potencyBonus: options.bonus ?? 0 }),
+    };
   }
 }

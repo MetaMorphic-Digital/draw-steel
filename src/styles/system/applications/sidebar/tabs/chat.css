@@ -13,7 +13,6 @@
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
-
         margin-block: -6px;
 
         img {
@@ -24,7 +23,10 @@
           text-align: center;
           font-size: var(--font-size-16);
           font-weight: bold;
-          line-height: 30px;
+        }
+
+        > * {
+          line-height: 40px;
         }
       }
 
@@ -91,6 +93,19 @@
           padding: 6px 10px;
           margin-block-start: 0;
           margin-inline: calc(22px - 10px);
+        }
+      }
+
+      .message-part-potency {
+        span.potency {
+          font-family: "Draw Steel Glyphs";
+          font-size: var(--font-size-16);
+          text-transform: lowercase;
+          line-height: 0.9;
+        }
+        input[type="checkbox"],
+        span.characteristic {
+          flex: 0 0 25px;
         }
       }
 
@@ -255,5 +270,15 @@
         }
       }
     }
+  }
+}
+
+/* Not strictly sure if this is the best place for this? */
+.modify-potency-dialog {
+  p.hint span.potency {
+    font-family: "Draw Steel Glyphs";
+    font-size: var(--font-size-16);
+    text-transform: lowercase;
+    line-height: 0.9;
   }
 }

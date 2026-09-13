@@ -6,7 +6,7 @@ import { setOptions } from "../../helpers.mjs";
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
  * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
  * @import { StatusEffectConfig } from "@client/config.mjs";
- * @import { AppliedEffectSchema } from "./_types";
+ * @import { AppliedEffectSchema, TextOptions } from "./_types";
  * @import { DrawSteelActor } from "../../../documents/_module.mjs";
  */
 
@@ -137,10 +137,11 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
   /**
    * @param {1 | 2 | 3} tier
+   * @param {TextOptions} options
    * @inheritdoc
    */
-  toText(tier) {
-    const potencyString = this.toPotencyHTML(tier);
+  toText(tier, options = {}) {
+    const potencyString = this.toPotencyHTML(tier, options.potencyBonus);
     // Sanitize any HTML that may be in the base display string
     const escapedDisplay = Handlebars.escapeExpression(this.applied[`tier${tier}`].display);
     return escapedDisplay.replaceAll("{{potency}}", potencyString);

@@ -38,6 +38,8 @@ declare module "./target-result.mjs" {
     abilityUuid: string;
     tier: number;
     targetUuid: string;
+    /** Mapping of PRE ids to potency bonuses. */
+    potencies: Record<string, number>;
   }
 }
 
