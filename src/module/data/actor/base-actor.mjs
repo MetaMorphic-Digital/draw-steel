@@ -368,9 +368,30 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /**
    * Updates performed at the end of this actor's turn.
    * @param {DrawSteelCombatant} combatant The combatant representation.
-   * @abstract
+   * 
    */
-  async _onEndTurn(combatant) {}
+  async _onEndTurn(combatant) {
+    //End Turn Checks
+    //Can this hover?
+    //Can this fly, and is it not prone or it's speed > 0?
+    //Is this climbing, and can it climb?
+    var isFlying = this.movement.types.has("fly");
+    var isClimbing = this.movement.types.has("climb");
+    var flyProne = isFlying && ((this.movement.value <= 0) || (this.parent.statuses.has("prone")));
+    if (!(this.movement.hover) && ((!isFlying) || (flyProne)) && isClimbing) {
+
+      const tokens = this.parent.getActiveTokens();
+      
+      tokens.forEach((token) => {
+        if (!token.visible || token.document.isSecret) {
+          return;
+        }
+        if (token.document.elevation > 0) {
+          token.document.update({ elevation: 0 });
+        }
+      });
+    }
+  }
 
   /* -------------------------------------------------- */
 
