@@ -408,6 +408,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   }
 
   /* -------------------------------------------------- */
+
   /**
    * Processes falls by calculating damage and then calling the chat part that makes the fall.
    * @param {DrawSteelToken} token The Token that is falling.
