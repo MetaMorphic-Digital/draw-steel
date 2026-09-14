@@ -27,7 +27,7 @@ declare module "./base-message-part.mjs" {
   }
 }
 
-declare module "./fall.mjs"{
+declare module "./fall.mjs" {
   export default interface FallPart {
     fallerUuid: string;
     fallerDistance: string;
