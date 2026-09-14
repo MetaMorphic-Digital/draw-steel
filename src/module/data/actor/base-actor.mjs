@@ -416,15 +416,9 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   async processFall(token, dist) {
     //Modify later to apply for net damage.
 
-    let fallDamage = 0;
-    if (dist > 2)
-    {
-      fallDamage = Math.min(2 * dist, 50);
-    }
+    const fallDamage = dist >= 2 ? 0 : Math.min(2 * dist, 50);
     
-    const roll = new DamageRoll(String(fallDamage), {
-    });
-    await roll.evaluate();
+    const roll = new DamageRoll(String(fallDamage), {});
 
     await DrawSteelChatMessage.create({
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
