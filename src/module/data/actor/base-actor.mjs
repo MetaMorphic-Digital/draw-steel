@@ -410,8 +410,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
   /**
    * Taking a Surface from elsewhere, post a chat message trying to get permission to fall. If granted post applicable damage.
-   * @param {DrawSteelToken} token the Token that is falling.
-   * @param {number} dist The distance straight down the actor is falling.
+   * @param {DrawSteelToken} token The Token that is falling.
+   * @param {number} dist          The distance straight down the actor is falling.
    */
   async processFall(token, dist) {
     //Modify later to apply for net damage.
