@@ -20,7 +20,7 @@ export default class FallPart extends RollPart {
   /** @inheritdoc */
   static ACTIONS = {
     ...super.ACTIONS,
-    applyDamage: (event) => DamageRoll.applyDamageCallback(event),
+    applyDamage: this.#applyDamage,
     fall: this.#handleFall,
   };
   /* -------------------------------------------------- */
@@ -30,7 +30,6 @@ export default class FallPart extends RollPart {
     return Object.assign(super.defineSchema(), {
       fallerUuid: new DocumentUUIDField({ nullable: false, type: "Token" }),
       fallerDistance: new NumberField(),
-      fallerDamage: new NumberField(),
     });
   }
 
@@ -79,14 +78,30 @@ export default class FallPart extends RollPart {
     const surface = await token._findSupportingSurface();
     token.update({ elevation: surface.elevation });
 
+    console.log(this.parent.parts.get());
+
     await DrawSteelChatMessage.create({
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
-      content: "<br>" + _loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.token.name, distance: this.fallerDistance, damage: this.fallerDamage }),
+      content: "<br>" + _loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.token.name, distance: this.fallerDistance, damage: this.rolls[0].formula }),
       type: "standard",
       "system.parts": [{ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label") }],
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       
     });
+    
+  }
+
+  /**
+   * Apply damage to the targeted actor.
+   *
+   * @this TargetResultPart
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #applyDamage(event, target) {
+    const idx = target.dataset.index;
+    const roll = this.rolls[idx];
+    await roll.applyDamage([this.actorTarget], { halfDamage: event.shiftKey });
   }
 
 }

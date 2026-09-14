@@ -31,7 +31,6 @@ declare module "./fall.mjs" {
   export default interface FallPart {
     fallerUuid: string;
     fallerDistance: string;
-    fallerDamage: string;
   }
 }
 

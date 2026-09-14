@@ -409,16 +409,17 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
   /* -------------------------------------------------- */
   /**
-   * Taking a Surface from elsewhere, post a chat message trying to get permission to fall. If granted post applicable damage.
+   * Processes falls by calculating damage and then calling the chat part that makes the fall.
    * @param {DrawSteelToken} token The Token that is falling.
    * @param {number} dist          The distance straight down the actor is falling.
    */
   async processFall(token, dist) {
     //Modify later to apply for net damage.
 
-    const fallDamage = dist >= 2 ? 0 : Math.min(2 * dist, 50);
+    const fallDamage = dist <= 2 ? 0 : Math.min(2 * dist, 50);
     
     const roll = new DamageRoll(String(fallDamage), {});
+    await roll.evaluate();
 
     await DrawSteelChatMessage.create({
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
@@ -429,7 +430,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
         fallerUuid: token.document.uuid,
         fallerDistance: dist,
-        fallerDamage: fallDamage,
       }],
       flags: { core: { canPopout: true } },
     });
