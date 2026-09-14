@@ -106,6 +106,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   }
 
   /* -------------------------------------------------- */
+
   /**
    * Find the supporting surface this token rests on or would fall onto, and the level it comes to rest on. A scene that
    * defines any movement surface uses those surfaces as its only floors. As a heuristic to accommodate older scenes
