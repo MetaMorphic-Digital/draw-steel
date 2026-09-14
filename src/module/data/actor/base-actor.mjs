@@ -408,6 +408,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   }
 
   /* -------------------------------------------------- */
+
   /**
    * Taking a Surface from elsewhere, post a chat message trying to get permission to fall. If granted post applicable damage.
    * @param {DrawSteelToken} token The Token that is falling.
