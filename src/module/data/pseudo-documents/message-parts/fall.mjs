@@ -3,6 +3,9 @@ import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import RollPart from "./roll.mjs";
 import { systemPath } from "../../../constants.mjs";
 
+/** 
+* @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
+*/
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
 /**
 * A part that displays details about a fall and executes it.
@@ -42,7 +45,8 @@ export default class FallPart extends RollPart {
     return fromUuidSync(this.token.actor.uuid) ?? null;
   }
   /**
-   * The ending the turn, or null if unavailable.
+   * The token of the actor ending the turn, or null if unavailable.
+   * @type {DrawSteelToken | null}
    */
   get token() {
     return fromUuidSync(this.fallerUuid) ?? null;

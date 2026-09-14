@@ -9,6 +9,7 @@ import SizeModel from "../models/size.mjs";
 /**
  * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs";
  * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelUser } from "../../documents/_module.mjs";
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { CoreResource } from "./_types";
  * @import { AbilityBonus } from "../_types";
@@ -409,6 +410,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
   /**
    * Taking a Surface from elsewhere, post a chat message trying to get permission to fall. If granted post applicable damage.
+   * @param {DrawSteelToken} token the Token that is falling.
    * @param {number} dist The distance straight down the actor is falling.
    */
   async processFall(token, dist) {
@@ -422,9 +424,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     
     const roll = new DamageRoll(String(fallDamage), {
     });
-
     await roll.evaluate();
-    //Part 2: Damage
+
     await DrawSteelChatMessage.create({
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
       type: "standard",
