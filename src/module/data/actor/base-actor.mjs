@@ -431,7 +431,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         fallerDistance: dist,
         fallerDamage: fallDamage,
       }],
-      
+      flags: { core: { canPopout: true } },
     });
   }
 
