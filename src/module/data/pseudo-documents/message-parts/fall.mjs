@@ -85,7 +85,7 @@ export default class FallPart extends RollPart {
     const surface = await token._findSupportingSurface();
 
     await token.move({ action: "forced", elevation: surface.elevation });
-    await ContentPart.create({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }) }, { parent: game.messages.get(this.message.id) });
+    await ContentPart.create({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }) }, { parent: this.message });
 
   }
 
