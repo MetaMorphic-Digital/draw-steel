@@ -42,6 +42,9 @@
   --draw-steel-form-label: var(--draw-steel-c-black);
   --draw-steel-form-tag-background: var(--draw-steel-c-faint);
   --draw-steel-form-tag-text: var(--draw-steel-c-dark);
+  --draw-steel-form-disabled: #bcbcbc;
+  --draw-steel-form-disabled-text: var(--draw-steel-c-tan);
+  --draw-steel-form-disabled-border: hsl(from var(--draw-steel-form-border) h s l / 0.5);
 }
 
 @scope (.theme-dark) to (.themed) {
@@ -84,4 +87,7 @@
   --draw-steel-form-label: var(--draw-steel-c-black);
   --draw-steel-form-tag-background: var(--draw-steel-c-faint);
   --draw-steel-form-tag-text: var(--draw-steel-c-dark);
+  --draw-steel-form-disabled: #242319;
+  --draw-steel-form-disabled-text: var(--draw-steel-c-color-shadow);
+  --draw-steel-form-disabled-border: hsl(from var(--draw-steel-form-border) h s l / 0.5);
 }

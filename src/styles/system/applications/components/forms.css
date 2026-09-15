@@ -223,13 +223,13 @@
     select:focus,
     button:not(.header-control):focus {
       outline-color: var(--draw-steel-form-active);
-      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow)) drop-shadow(0 0 4px var(--draw-steel-form-shadow));
+      filter: drop-shadow(0 0 4px var(--draw-steel-form-shadow)) drop-shadow(0 0 6px var(--draw-steel-form-shadow));
     }
 
     input,
     select,
     button:not(.header-control) {
-      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow));
+      filter: drop-shadow(0 0 2px var(--draw-steel-form-shadow)) drop-shadow(0 0 4px var(--draw-steel-form-shadow));
     }
 
     input,
@@ -278,6 +278,13 @@
         background: transparent;
         border: 1px solid var(--draw-steel-form-accent);
       }
+    }
+
+    input:disabled {
+      background-color: var(--draw-steel-form-disabled);
+      filter: none;
+      color: var(--draw-steel-form-disabled-text);
+      border-color: var(--draw-steel-form-disabled-border);
     }
   }
 }
