@@ -2,6 +2,7 @@ import { systemID } from "../constants.mjs";
 
 /**
  * @import DrawSteelToken from "../canvas/placeables/token.mjs";
+ * @import { TokenSurfaceOptions, TokenSurfaceResults } from from "../_types.js";
  * @import DrawSteelUser from "./user.mjs";
  * @import { TokenMovementOperation } from "@client/documents/_types.mjs";
  * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs"
@@ -113,10 +114,10 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
    * Find the supporting surface this token rests on or would fall onto, and the level it comes to rest on. A scene that
    * defines any movement surface uses those surfaces as its only floors. As a heuristic to accommodate older scenes
    * without levels or surfaces, the base of each level is considered a floor in scenes with no surfaces.
-   * @param {object} [options] Options to modify the processing of the surfaces.
+   * @param {Partial <TokenSurfaceOptions>} [options] Options to modify the processing of the surfaces.
    * @param {TokenCoordinates} [options.position]  The position to evaluate against. Defaults to the token's source
    *                                               position.
-   * @returns {{ elevation: number, region: RegionDocument|null, level: Level }|null}  An Object that holds the relevant details of where 
+   * @returns {TokenSurfaceResults}  An Object that holds the relevant details of where 
    *                                                                                   in the scene (including layers) the nearest surface
    *                                                                                   is.
    * @internal

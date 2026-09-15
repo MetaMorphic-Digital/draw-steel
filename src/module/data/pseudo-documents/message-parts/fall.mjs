@@ -86,7 +86,7 @@ export default class FallPart extends RollPart {
     const updates = { content: eventText };
 
     const parts = { ...this.parent.parts };
-    const contentPart = new ContentPart({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", {distance: this.fallerDistance }) });
+    const contentPart = new ContentPart({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }) });
     parts[contentPart._id] = contentPart;
     updates.system = { parts };
 
