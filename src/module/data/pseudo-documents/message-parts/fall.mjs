@@ -1,8 +1,8 @@
+import ContentPart from "./content.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
 import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import RollPart from "./roll.mjs";
 import { systemPath } from "../../../constants.mjs";
-import ContentPart from "./content.mjs";
 
 /** 
 * @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
@@ -86,7 +86,7 @@ export default class FallPart extends RollPart {
     const updates = { content: eventText };
 
     const parts = { ...this.parent.parts };
-    const contentPart = new ContentPart({ type: "content" });
+    const contentPart = new ContentPart({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", {distance: this.fallerDistance }) });
     parts[contentPart._id] = contentPart;
     updates.system = { parts };
 
