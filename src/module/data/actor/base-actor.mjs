@@ -426,6 +426,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+      content: "<br>" + _loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.name, distance: fallDamage, damage: roll.formula }),
       "system.parts": [{ type: "falling",
         rolls: [roll],
         flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
