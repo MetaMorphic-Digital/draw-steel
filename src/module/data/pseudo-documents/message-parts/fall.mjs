@@ -55,17 +55,23 @@ export default class FallPart extends RollPart {
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
-    context.ctx.fallWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.falling.explain", { victim: this.token.name, distance: this.fallerDistance });
-    
-    context.ctx.buttons.push(
-      ds.utils.constructHTMLButton({
-        label: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }),
-        icon: "fa-solid fa-person-falling-burst",
-        dataset: {
-          action: "fall",
-        },
-      }),
-    );
+    if (this.token)
+    {
+      context.ctx.fallWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.falling.explain", { victim: this.token.name, distance: this.fallerDistance });
+      
+      if (this?.actorTarget.isOwner) {
+        context.ctx.buttons.push(
+          ds.utils.constructHTMLButton({
+            label: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }),
+            icon: "fa-solid fa-person-falling-burst",
+            dataset: {
+              action: "fall",
+            },
+          }),
+        );
+      }
+
+    }
 
   }
 
@@ -75,22 +81,14 @@ export default class FallPart extends RollPart {
    * @param {PointerEvent} event   The originating click event.
    */
   static async #handleFall(event) {
-    if (!this.actorTarget.isOwner) return;
     const token = this.token;
     const surface = await token._findSupportingSurface();
-    token.update({ elevation: surface.elevation });
 
-    console.log(this.parent.parts.get());
+    await token.move({ action: "forced", elevation: surface.elevation });
 
     const eventText = "<br>" + _loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.token.name, distance: this.fallerDistance, damage: this.rolls[0].formula });
-    const updates = { content: eventText };
-
-    const parts = { ...this.parent.parts };
-    const contentPart = new ContentPart({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }) });
-    parts[contentPart._id] = contentPart;
-    updates.system = { parts };
-
-    await this.message.update(updates);
+    this.message.update({content: eventText});
+    await ContentPart.create({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }) }, { parent: game.messages.get(this.message.id) });
 
   }
 
