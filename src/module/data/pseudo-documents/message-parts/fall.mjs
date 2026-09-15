@@ -2,6 +2,7 @@ import DamageRoll from "../../../rolls/damage.mjs";
 import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import RollPart from "./roll.mjs";
 import { systemPath } from "../../../constants.mjs";
+import ContentPart from "./content.mjs";
 
 /** 
 * @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
@@ -74,21 +75,23 @@ export default class FallPart extends RollPart {
    * @param {PointerEvent} event   The originating click event.
    */
   static async #handleFall(event) {
+    if (!this.actorTarget.isOwner) return;
     const token = this.token;
     const surface = await token._findSupportingSurface();
     token.update({ elevation: surface.elevation });
 
     console.log(this.parent.parts.get());
 
-    await DrawSteelChatMessage.create({
-      title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
-      content: "<br>" + _loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.token.name, distance: this.fallerDistance, damage: this.rolls[0].formula }),
-      type: "standard",
-      "system.parts": [{ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label") }],
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      
-    });
-    
+    const eventText = "<br>" + _loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.token.name, distance: this.fallerDistance, damage: this.rolls[0].formula });
+    const updates = { content: eventText };
+
+    const parts = { ...this.parent.parts };
+    const contentPart = new ContentPart({ type: "content" });
+    parts[contentPart._id] = contentPart;
+    updates.system = { parts };
+
+    await this.message.update(updates);
+
   }
 
   /**
