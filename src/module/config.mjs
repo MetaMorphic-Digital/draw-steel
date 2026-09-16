@@ -2130,6 +2130,9 @@ export const MessagePart = {
   project: {
     documentClass: pseudoDocuments.messageParts.ProjectPart,
   },
+  fall: {
+    documentClass: pseudoDocuments.messageParts.FallPart,
+  },
 };
 preLocalize("MessagePart", { key: "label" });
 
