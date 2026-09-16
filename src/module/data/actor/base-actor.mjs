@@ -372,7 +372,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /**
    * Updates performed at the end of this actor's turn.
    * @param {DrawSteelCombatant} combatant The combatant representation.
-   * 
+   *
    */
   async _onEndTurn(combatant) {
     //End Turn Checks
@@ -385,7 +385,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
       //Find Every Token on the battlefield that represents this token.
       const tokens = this.parent.getActiveTokens();
-    
+
       tokens.forEach(async (token) => {
         //Ignore Hidden Tokens
         if (!token.visible || token.document.isSecret) {
@@ -402,7 +402,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         if (distance > 0) {
           await this.processFall(token, distance);
         }
-        
+
       });
     }
   }
@@ -418,7 +418,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     //Modify later to apply for net damage.
 
     const fallDamage = dist <= 2 ? 0 : Math.min(2 * dist, 50);
-    
+
     const roll = new DamageRoll(String(fallDamage), {});
     await roll.evaluate();
 
@@ -426,7 +426,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
-      content: `<p>${_loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.name, distance: fallDamage, damage: roll.formula })}</p>`,
+      content: `<p>${_loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.parent.name, distance: fallDamage, damage: roll.formula })}</p>`,
       "system.parts": [{ type: "falling",
         rolls: [roll],
         flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
