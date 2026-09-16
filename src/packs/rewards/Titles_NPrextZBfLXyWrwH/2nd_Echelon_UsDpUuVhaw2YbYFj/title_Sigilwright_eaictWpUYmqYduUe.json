@@ -6,7 +6,7 @@
   "img": "icons/magic/symbols/star-yellow.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Effect:</strong> Choose one of the following benefits:</p><ul><li><p><em>Quick Gate:</em> <br>As a maneuver, you can etch an arcane circle in an adjacent square on the ground. Until the end of the encounter, you can use magic abilities and treat your Summoner's Range as if you were in that space. Each time you etch an arcane circle, your last circle fades and becomes inactive.</p></li><li><p><em>Ritual Circle:</em> <br>As a respite activity, you can draw a minor summoning circle to temporarily call forth a creature you've contacted previously, regardless of manifold. If the creature is willing and able to answer your call, they appear to you for the remainder of the respite. You can ask the creature for information or a service in exchange for ending the respite with two fewer Recoveries or a demand of their choosing. If the creature doesn't appear, you can choose to take a different respite activity.</p></li><li><p><em>Sigil Eye:</em> <br>You have an edge on tests made to identify summoning circles and who or where they're connected to. You also have an edge on strikes made against creatures not native to the manifold in which you're currently located.</p></li></ul>",
+      "value": "<p><strong>Effect:</strong> Choose one of the following benefits:</p><ul><li><p><em>Quick Gate:</em> <br>@Embed[Compendium.draw-steel.rewards.Item.ReH4SFkgME172XFf inline]</p></li><li><p><em>Ritual Circle:</em> <br>@Embed[Compendium.draw-steel.rewards.Item.o6JPAclb4Rhech1e inline]</p></li><li><p><em>Sigil Eye:</em> <br>@Embed[Compendium.draw-steel.rewards.Item.1E7RFfipSuotenOz inline]</p></li></ul>",
       "director": ""
     },
     "source": {
@@ -15,13 +15,45 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "sigilwright",
-    "advancements": {},
+    "advancements": {
+      "GldZP7tJlTfEuxRq": {
+        "sort": 100000,
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "GldZP7tJlTfEuxRq",
+        "description": "<p><em>Choose One of the Following:</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.o6JPAclb4Rhech1e"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.1E7RFfipSuotenOz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.ReH4SFkgME172XFf"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      }
+    },
     "prerequisites": {
       "value": "You complete a ritual to summon a non-minion entity using a summoning circle you drew.",
       "dsid": [],
       "level": null
     },
-    "echelon": 1,
+    "echelon": 2,
     "story": "Let's find out who's on the other side of the circle."
   },
   "effects": [],

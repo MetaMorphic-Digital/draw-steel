@@ -6,7 +6,7 @@
   "img": "icons/skills/social/diplomacy-unity-alliance.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Effect:</strong> You no longer need line of effect to give commands to any minions you can summon. Additionally, choose one of the following benefits:</p><ul><li><p><em>For the Boss:<br></em>Your followers gain a +3 bonus to project rolls that they make.</p></li><li><p><em>Networker:</em> <br>Your maximum follower count increases by 1.</p></li><li><p><em>Stringpuller:</em> <br>While occupying a civilized area (such as a village, town, district, or city), you always have access to a follower native to the location. If the area is otherwise hostile to you, this follower is a spy in hiding who has any project points they earn halved.</p></li></ul>",
+      "value": "<p><strong>Effect:</strong> You no longer need line of effect to give commands to any minions you can summon. Additionally, choose one of the following benefits:</p><ul><li><p><em>For the Boss:<br></em>@Embed[Compendium.draw-steel.rewards.Item.Ut6IO20Mhaq1MdB5 inline]</p></li><li><p><em>Networker:</em> <br>@Embed[Compendium.draw-steel.rewards.Item.niVIdsflLrsBAz35 inline]</p></li><li><p><em>Stringpuller:</em> <br>@Embed[Compendium.draw-steel.rewards.Item.fThi7yCsRmAdghm0 inline]</p></li></ul>",
       "director": ""
     },
     "source": {
@@ -15,13 +15,45 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "ringleader",
-    "advancements": {},
+    "advancements": {
+      "VFq3QbTDfWPhLjWO": {
+        "sort": 100000,
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "VFq3QbTDfWPhLjWO",
+        "description": "<p><em>Choose one of the Following Benefits:</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.niVIdsflLrsBAz35"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.1GvVfCxqAHx6ibtr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.fThi7yCsRmAdghm0"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      }
+    },
     "prerequisites": {
       "value": "You complete three downtime projects during the same respite with the help of followers or minions.",
       "dsid": [],
       "level": null
     },
-    "echelon": 1,
+    "echelon": 3,
     "story": "Don't worry. I've got a guy."
   },
   "effects": [],
