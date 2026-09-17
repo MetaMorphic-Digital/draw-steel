@@ -2,7 +2,9 @@
  * @import { DataFieldContext, DataFieldOptions } from "@common/data/_types.mjs";
  */
 
-const { NumberField, SchemaField, StringField } = foundry.data.fields;
+import PowerRollDiceField from "./power-roll-dice-field.mjs";
+
+const { NumberField, SchemaField } = foundry.data.fields;
 
 /**
  * A field that unifies and hardens the Characteristic data across creatures and followers.
@@ -22,11 +24,7 @@ export default class CharacteristicsField extends SchemaField {
         resist: new NumberField({ required: true, nullable: false, integer: true, initial: 0, persisted: false }),
         edges: new NumberField({ required: true, nullable: false, integer: true, initial: 0, persisted: false }),
         banes: new NumberField({ required: true, nullable: false, integer: true, initial: 0, persisted: false }),
-        dice: new SchemaField({
-          mode: new StringField({ choices: ["kh", "kl"], initial: "kh" }),
-          number: new NumberField({ required: true, nullable: false, integer: true, initial: 2, min: 1, persisted: false }),
-          faces: new NumberField({ required: true, nullable: false, integer: true, initial: 10, min: 1, persisted: false }),
-        }, { persisted: false }),
+        dice: new PowerRollDiceField(),
       });
       return obj;
     }, {});

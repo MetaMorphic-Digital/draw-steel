@@ -4,4 +4,5 @@ export { default as FormulaField } from "./formula-field.mjs";
 export { default as LazyTypedSchemaField } from "./lazy-typed-schema-field.mjs";
 export { default as LocalDocumentField } from "./local-document-field.mjs";
 export { default as MembersField } from "./members-field.mjs";
+export { default as PowerRollDiceField } from "./power-roll-dice-field.mjs";
 export { default as TemplateShapesField } from "./template-shapes-field.mjs";
