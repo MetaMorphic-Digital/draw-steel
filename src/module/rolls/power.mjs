@@ -157,6 +157,18 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
+   * Build the base dice term for a power roll from a dice descriptor.
+   * Keeps the highest/lowest 2 when rolling more than 2 dice.
+   * @param {{ number?: number, mode?: "kh" | "kl", faces?: number }} [dice]
+   * @returns {string}
+   */
+  static baseDiceFormula({ number = 2, mode = "kh", faces = 10 } = {}) {
+    return number > 2 ? `${number}d${faces}${mode}2` : `2d${faces}`;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Modify the options object based on conditions that apply to all Power Rolls.
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog.
    */

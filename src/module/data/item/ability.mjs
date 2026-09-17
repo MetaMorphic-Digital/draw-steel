@@ -553,7 +553,10 @@ export default class AbilityModel extends BaseItemModel {
     }, dialogOptions);
 
     if (this.power.roll.enabled) {
-      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
+      const chrKey = this.power.characteristic.key;
+      const dice = this.actor?.system.characteristics?.[chrKey]?.dice;
+      const base = PowerRoll.baseDiceFormula(dice);
+      const formula = this.power.roll.formula ? `${base} + ${this.power.roll.formula}` : base;
       const rollData = this.parent.getRollData();
 
       dialogConfig.context.formula ??= PowerRoll.replaceFormulaData(formula, rollData, { missing: "0" });
