@@ -92,6 +92,7 @@ export default class AbilityModel extends BaseItemModel {
         characteristics: new fields.SetField(setOptions()),
         banes: requiredInteger({ persisted: false }),
         edges: requiredInteger({ persisted: false }),
+        dice: new ds.data.fields.PowerRollDiceField(),
         enabled: new fields.BooleanField({ persisted: false }),
       }),
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
@@ -300,6 +301,8 @@ export default class AbilityModel extends BaseItemModel {
         switch (bonus.key) {
           case "power.roll.banes":
           case "power.roll.edges":
+          case "power.roll.dice.number":
+          case "power.roll.dice.mode":
             foundry.utils.setProperty(this, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
             break;
         }
@@ -553,9 +556,7 @@ export default class AbilityModel extends BaseItemModel {
     }, dialogOptions);
 
     if (this.power.roll.enabled) {
-      const chrKey = this.power.characteristic.key;
-      const dice = this.actor?.system.characteristics?.[chrKey]?.dice;
-      const base = PowerRoll.baseDiceFormula(dice);
+      const base = PowerRoll.baseDiceFormula(this.power.roll.dice);
       const formula = this.power.roll.formula ? `${base} + ${this.power.roll.formula}` : base;
       const rollData = this.parent.getRollData();
 

@@ -19,6 +19,13 @@ export type AbilityBonus = foundry.documents.types.EffectChangeData & {
   filters: AbilityFilters;
 };
 
+/** The dice rolled for a power roll. More than two dice keeps the highest or lowest two. */
+export type PowerRollDice = {
+  mode: "kh" | "kl";
+  number: number;
+  faces: number;
+};
+
 export type SubtypeMetadata = {
   /** The registered document subtype in system.json. */
   type: string;
