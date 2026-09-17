@@ -278,7 +278,7 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`power.roll.banes`|Add banes that apply to the ability's power roll regardless of target|
 |`power.roll.edges`|Add edges that apply to the ability's power roll regardless of target|
 |`power.roll.dice.number`|Adjust the number of dice rolled, defaulting to keep highest 2. (Use the UPGRADE type)|
-|`power.roll.dice.mode`|When the number of dice is more than 2, set to `kh` or `kl` to detemine if Keep Highest 2 or Keep Lowest 2 should be used|
+|`power.roll.dice.mode`|When the number of dice is more than 2, set to `kh` or `kl` to detemine if Keep Highest 2 or Keep Lowest 2 should be used. `kh` is the default.|
 
 **Notes:**
 - For `ignoredImmunities`, use the "Add" change type with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
