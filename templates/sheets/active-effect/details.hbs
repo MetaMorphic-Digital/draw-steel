@@ -6,6 +6,12 @@
     {{formGroup systemFields.filters.fields.keywords value=source.system.filters.keywords options=keywordOptions}}
   </fieldset>
   {{/if}}
+  {{#if systemFields.requirements}}
+  <fieldset class="filters">
+    <legend>{{localize "DRAW_STEEL.ActiveEffect.Requirements"}}</legend>
+    {{formGroup systemFields.requirements.fields.resource value=source.system.requirements.resource}}
+  </fieldset>
+  {{/if}}
   {{formGroup fields.description value=source.description rootId=rootId}}
   {{formGroup fields.disabled value=source.disabled rootId=rootId}}
 
