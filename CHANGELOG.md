@@ -20,7 +20,7 @@
 
 ## 1.2.0
 
-Increased foundry minimum to 14.367.
+Increased foundry minimum to 14.368.
 
 ### Added
 
@@ -34,14 +34,22 @@ Increased foundry minimum to 14.367.
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
   - Added new Summoning and Portfolio Summoning special effects. (#2021)
 - Added a new Minion Sheet. You can switch to this for any NPC but it is optimized for minions. (#585)
+  - You can manually set the damage type of a free strike from this sheet (only necessary if there's not a signature attack). (#2093)
+- Edges from high ground are automatically added. (#604)
+- Added button to copy effects from tier 1. (#1142)
 - Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
 - Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
+- Adding automation for falling that works with v14 levels and surfaces. (#1930)
 - Added support for Companions as a new actor type. (#2011)
+- Added support for Blessing of Fate and Destiny to adjust the number of dice rolled. (#2039)
+- Spend amounts are now available as roll data in spend special effects. (#2060)
 - Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
 
 ### Changed
 
+- Significant overhaul of application styles across the system.
+- Updated Player-Facing Compendium Content:
 - Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
 - Major updates to roll presentation. (#1628)
   - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display
