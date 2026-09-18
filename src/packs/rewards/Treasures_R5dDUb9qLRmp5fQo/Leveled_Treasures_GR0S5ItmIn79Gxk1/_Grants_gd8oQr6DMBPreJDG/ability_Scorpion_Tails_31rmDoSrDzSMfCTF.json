@@ -1,0 +1,78 @@
+{
+  "folder": "gd8oQr6DMBPreJDG",
+  "name": "Scorpion Tails",
+  "type": "ability",
+  "_id": "31rmDoSrDzSMfCTF",
+  "img": "icons/creatures/abilities/tail-strike-bone-orange.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "scorpion-tails",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your scorpion tail lashes out.",
+    "keywords": [
+      "magic",
+      "strike"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "W2LBoXIPuv2bDoAT": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "W2LBoXIPuv2bDoAT",
+        "description": "<p>The target takes poison damage equal to [[/damage 3+@M]]{3 + your Might Score}</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789765070033,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!31rmDoSrDzSMfCTF"
+}
