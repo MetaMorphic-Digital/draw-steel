@@ -213,13 +213,13 @@ export default class AbilityResultPart extends RollPart {
 
     let sourceActor = this.ability?.actor;
 
-    // Retainers use their mentor's surges and surge value
+    // Retainers and companions use their hero's surges and surge value
     if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
     else if (sourceActor.type === "companion") sourceActor = sourceActor.system.companion.master;
 
-    const surgeDamage = sourceActor.getRollData()?.chr;
+    const surgeDamage = sourceActor?.getRollData()?.chr;
 
-    if (sourceActor.type === "hero") {
+    if (sourceActor?.type === "hero") {
       const surgeMax = Math.min(3, sourceActor.system.hero.surges);
 
       const surges = createFormGroup({

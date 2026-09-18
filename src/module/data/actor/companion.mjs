@@ -1,3 +1,4 @@
+import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
@@ -8,6 +9,7 @@ import { setOptions } from "../helpers.mjs";
 
 /**
  * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { Skills } from "./_types";
  */
 
 /**
@@ -37,12 +39,16 @@ export default class CompanionModel extends CreatureModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
+    schema.stamina.fields.max.persisted = schema.stamina.fields.max.options.persisted = false;
+
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
     schema.companion = new fields.SchemaField({
-      freeStrike: new FormulaField({ initial: "1 + @M" }),
+      freeStrike: new FormulaField({ initial: "1 + @M", deterministic: true }),
       keywords: new fields.SetField(setOptions(), { initial: ["animal"] }),
       master: new fields.ForeignDocumentField(foundry.documents.Actor),
+      rampage: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+      skills: new fields.SetField(setOptions()),
     });
 
     return schema;
@@ -52,14 +58,18 @@ export default class CompanionModel extends CreatureModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
+
+    const companionClass = this.class;
+    // Non-beastheart classes might have fixed companion HP values rather than match their master
+    const classStamina = companionClass?.system.stamina.starting || companionClass?.system.stamina.level;
+    if (this.companion.master && !classStamina)
+      Object.defineProperty(this.stamina, "max", {
+        get: () => this.companion.master?.system.stamina.max,
+        set: () => {},
+      });
+
     super.prepareDerivedData();
     this.source.prepareData();
-
-    // TODO: Shared companion stats include
-    // - stamina
-    // - skills
-    // - perks/titles/conditions (conditional on "logical")
-    // - surges
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
@@ -95,6 +105,186 @@ export default class CompanionModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /**
+   * Finds the actor's current class.
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
+   */
+  get class() {
+    return this.parent.itemTypes.class.at(0);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Companions don't have subclasses.
+   * @type {Set<never>}
+   */
+  get subclasses() {
+    return new Set();
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get level() {
+    return this.class?.system.level ?? 0;
+  }
+
+  /**
+   * Returns if this actor can level up.
+   * @type {boolean}
+   */
+  get advancementReady() {
+    return this.companion.master?.system.level > this.level;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+     * Advance a given number of levels.
+     * @param {object} [options={}]                           Options to modify the advancement of levels.
+     * @param {number} [options.levels=1]                     The number of levels to advance.
+     * @param {foundry.documents.Item} [options.item=null]    For a hero with no current levels, a class item.
+     */
+  async advance({ levels = 1, item = null } = {}) {
+    let cls = this.class;
+
+    if (item && (item.type !== "class")) throw new Error("The item provided for advancing must be a class item.");
+    if (!cls && !item) throw new Error("A class item is required if a companion has no current levels.");
+    if (cls && item && (item.dsid !== cls.dsid))
+      throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
+    if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
+    if (this.level + levels > ds.CONFIG.hero.xpTrack.length) {
+      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xpTrack.length}.`);
+    }
+
+    if (!cls) await item.system.applyAdvancements({ actor: this.parent });
+    else {
+
+      const chain = new AdvancementChain(this.parent, { start: this.level + 1, end: this.level + levels });
+
+      await chain.initializeRoots();
+
+      const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
+        chain,
+        window: {
+          title: _loc("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
+        },
+      });
+      if (!configured) return;
+
+      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": chain.levelRange.end } };
+
+      await chain.finalize({ toUpdate });
+    }
+
+    return this.class;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create the class item for this companion.
+   * @param {boolean} [renderSheet=true] Whether to render the new class.
+   * @returns {Promise<DrawSteelItem | null>} The created class, or null if none was needed.
+   */
+  async fillClass(renderSheet = true) {
+    if (this.class) return null;
+    let companionClass = null;
+
+    if (ds.CONFIG.companion.companionClasses.length === 1) companionClass = await fromUuid(ds.CONFIG.companion.companionClasses.at(0));
+    else {
+      const classOptions = ds.CONFIG.companion.companionClasses.map(uuid => ({ label: fromUuidSync(uuid).name, value: uuid }));
+      const classSelect = foundry.applications.fields.createFormGroup({
+        name: "uuid",
+        label: "DRAW_STEEL.Actor.companion.ChooseClassDialog.InputLabel",
+        input: foundry.applications.fields.createSelectInput({
+          options: classOptions,
+        }),
+        localize: true,
+      });
+
+      const content = document.createElement("div");
+      content.append(classSelect);
+
+      const fd = await ds.applications.api.DSDialog.input({
+        content,
+        window: {
+          title: "DRAW_STEEL.Actor.companion.ChooseClassDialog.Title",
+          icon: "fa-solid fa-list-dropdown",
+        },
+      });
+      if (!fd) return;
+
+      companionClass = await fromUuid(fd.uuid);
+    }
+
+    const classData = game.items.fromCompendium(companionClass, { clearFolder: true });
+    await this.actor.createEmbeddedDocuments("Item", [classData], { renderSheet: true });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get coreResource() {
+    const masterResource = this.companion.master?.system.coreResource;
+    if (!masterResource) return null;
+
+    return {
+      ...masterResource,
+      tracking: this.companion.rampage,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async updateResource(delta) {
+    const master = this.companion.master;
+
+    if (!master) return void ui.notifications.error("DRAW_STEEL.Actor.companion.NoMaster", { localize: true });
+    return this.companion.master.modifyTokenAttribute("hero.primary.value", delta, true, false);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Recovery info from the companion's master.
+   * @returns {{ value: number; max: number; recoveryValue: number }} Values will be null if no master is present.
+   */
+  get recoveries() {
+    const master = this.companion.master;
+
+    if (master) return { ...master.system.recoveries };
+    else return { max: null, value: null, recoveryValue: null };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The skills this companion has.
+   * @returns {Skills}
+   */
+  get skills() {
+    const master = this.companion.master;
+
+    if (master) return master.system.skills;
+
+    const list = this.companion.skills.reduce((skills, skill) => {
+      skill = ds.CONFIG.skills.list[skill]?.label;
+      if (skill) skills.push(skill);
+      return skills;
+    }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
+
+    return {
+      value: this.companion.skills,
+      modifiers: {},
+      list: game.i18n.getListFormatter().format(list),
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Spend a recovery, adding to the companion's stamina and reducing the number of recoveries.
    * @returns {Promise<DrawSteelActor>}
    */
@@ -106,7 +296,7 @@ export default class CompanionModel extends CreatureModel {
       return this.parent;
     }
 
-    const recoveryInfo = master.system.recoveries;
+    const recoveryInfo = this.recoveries;
 
     if (recoveryInfo.value === 0) {
       ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", {

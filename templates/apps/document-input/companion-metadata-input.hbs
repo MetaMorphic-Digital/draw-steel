@@ -2,4 +2,7 @@
   {{formGroup companionFields.keywords value=systemSource.companion.keywords options=monsterKeywords}}
   {{formGroup companionFields.role value=systemSource.companion.role options=monsterRoles}}
   {{formGroup companionFields.master value=systemSource.companion.master options=masterOptions}}
+  {{#if document.pack}}
+  {{formGroup companionFields.skills value=systemSource.companion.skills options=skillOptions}}
+  {{/if}}
 </section>
