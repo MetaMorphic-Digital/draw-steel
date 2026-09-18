@@ -1,0 +1,119 @@
+{
+  "folder": "GbJ95cA5I5QZ4Sz5",
+  "name": "Speaking Scarab",
+  "type": "treasure",
+  "_id": "juCrPFN2sqLaCZs3",
+  "img": "icons/creatures/invertebrates/beetle-stag-yellow-green.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This black leather necklace is set with a golden representation of a scarab beetle.</em></p><p><strong>Effect:</strong> Only a beastheart's companion or an animal can wear this necklace. While wearing this necklace, the creature's Reason score is 0 unless it would otherwise be higher. The creature can speak any language they know, and another creature who knows a language can teach that language to the creature as a respite activity. When the creature speaks, their voice issues from the scarab on the necklace.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "38",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "speaking-scarab",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 1,
+    "keywords": [
+      "psionic",
+      "neck"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "Jewelry worn by a voiceless talker",
+      "source": "Texts or lore in Variac",
+      "rollCharacteristic": [
+        "reason",
+        "intuition",
+        "presence"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "effects": [
+    {
+      "name": "Scarab Reason Upgrade",
+      "img": "icons/creatures/invertebrates/beetle-stag-yellow-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.juCrPFN2sqLaCZs3",
+      "_id": "w51DpdpBSRgo3ZoV",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.reason.value",
+            "type": "upgrade",
+            "value": 0,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789745165922,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!juCrPFN2sqLaCZs3.w51DpdpBSRgo3ZoV"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789744963526,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!juCrPFN2sqLaCZs3"
+}
