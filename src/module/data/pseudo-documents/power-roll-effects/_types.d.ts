@@ -11,6 +11,20 @@ type PotencySchema = {
   characteristic: string;
 };
 
+export type PotencyChatResult = {
+  text: string;
+  fail: boolean;
+};
+
+export type PotencyChatOptions = {
+  bonus: number;
+};
+
+export type TextOptions = {
+  /** An integer adjustment of the potency value, e.g. Surges. */
+  potencyBonus?: number;
+};
+
 export type DamageSchema = {
   value: string;
   types: Set<string>;
