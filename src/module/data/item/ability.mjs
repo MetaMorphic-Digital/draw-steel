@@ -90,7 +90,7 @@ export default class AbilityModel extends BaseItemModel {
         reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr", placeholder: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
-        criticalThresholdModifier: new fields.NumberField({ initial: 0, min: 0, integer: true }),
+        criticalThreshold: new fields.NumberField({ initial: 19, min: 2, integer: true }),
         banes: requiredInteger({ persisted: false }),
         edges: requiredInteger({ persisted: false }),
         dice: new ds.data.fields.PowerRollDiceField(),
@@ -302,7 +302,7 @@ export default class AbilityModel extends BaseItemModel {
         switch (bonus.key) {
           case "power.roll.banes":
           case "power.roll.edges":
-          case "power.roll.criticalThresholdModifier":
+          case "power.roll.criticalThreshold":
           case "power.roll.dice.number":
           case "power.roll.dice.mode":
             foundry.utils.setProperty(this, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
@@ -627,7 +627,7 @@ export default class AbilityModel extends BaseItemModel {
           targets.push(context.target);
           delete context.target;
         }
-        const roll = new PowerRoll(dialogConfig.context.formula, {}, { flavor: _loc(PowerRoll.TYPES.ability.label), criticalThreshold: 19 - this.power.roll.criticalThresholdModifier, ...context });
+        const roll = new PowerRoll(dialogConfig.context.formula, {}, { flavor: _loc(PowerRoll.TYPES.ability.label), criticalThreshold: this.power.roll.criticalThreshold, ...context });
         roll.terms[0] = baseRoll.terms[0];
         await roll.evaluate({ allowInteractive: false });
 
