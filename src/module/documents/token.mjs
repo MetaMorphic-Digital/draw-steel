@@ -258,6 +258,11 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
       minionStamina: {
         value: true,
       },
+      staminaIncrement: {
+        get: () => {
+          return this.actor.system.stamina.max;
+        },
+      },
     });
 
     return barData;
