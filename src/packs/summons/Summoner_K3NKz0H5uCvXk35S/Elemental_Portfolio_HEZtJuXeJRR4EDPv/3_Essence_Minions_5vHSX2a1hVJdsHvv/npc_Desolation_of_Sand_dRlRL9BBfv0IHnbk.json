@@ -244,50 +244,6 @@
       "_key": "!actors.items!dRlRL9BBfv0IHnbk.7Eb7NMnS7JeM8s0S"
     },
     {
-      "name": "Sonic Immunity",
-      "type": "feature",
-      "_id": "emF03owyOUBSbAna",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>This creature has sonic immunity equal to your Reason.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "sonic-immunity-and-free-strike",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1787836169738,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.world.summoner-minions.Actor.Y1xTXOD8UMEbJZy5.Item.emF03owyOUBSbAna",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!dRlRL9BBfv0IHnbk.emF03owyOUBSbAna"
-    },
-    {
       "name": "Sand Through your Fingers",
       "type": "feature",
       "_id": "uducEZjYwxhf76SM",
@@ -376,7 +332,75 @@
       "_key": "!actors.items!dRlRL9BBfv0IHnbk.z6WZCVta9qFWCadH"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Sonic Immunity R",
+      "type": "base",
+      "_id": "GILF44OKhvVltRHb",
+      "img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.sonic",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713094661,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.GILF44OKhvVltRHb",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!dRlRL9BBfv0IHnbk.GILF44OKhvVltRHb"
+    }
+  ],
   "sort": 200000,
   "ownership": {
     "default": 0

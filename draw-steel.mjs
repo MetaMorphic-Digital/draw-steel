@@ -133,6 +133,11 @@ Hooks.once("init", function () {
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCompanionSheet, {
+    types: ["companion"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Companion",
+  });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelHeroSheet, {
     types: ["hero"],
     makeDefault: true,

@@ -7,6 +7,9 @@ import "./utils/advancement/_types";
 import { DrawSteelActor, DrawSteelChatMessage, DrawSteelItem } from "./documents/_module.mjs";
 import { PowerRoll, ProjectRoll } from "./rolls/_module.mjs";
 import FollowerModel from "./data/item/follower.mjs";
+import Level from "@client/documents/level.mjs";
+import RegionDocument from "@client/documents/region.mjs";
+import { TokenCoordinates } from "@common/documents/_types.mjs";
 
 export interface PowerRollModifiers {
   edges: number;
@@ -52,6 +55,16 @@ export interface ProjectRollPrompt {
 
 export interface ProjectRollPromptOptions extends RollPromptOptions {
   follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
+}
+
+export interface TokenSurfaceOptions {
+  position: TokenCoordinates;
+}
+
+export interface TokenSurfaceResults {
+  elevation: number;
+  region: RegionDocument | null;
+  level: Level | null;
 }
 
 declare module "./utils/advancement/node.mjs" {

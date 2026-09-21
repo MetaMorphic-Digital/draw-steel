@@ -1,5 +1,5 @@
-import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import DSRoll from "../../../rolls/base.mjs";
+import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import StandardModel from "../../message/standard.mjs";
 
 declare module "./ability-result.mjs" {
@@ -12,6 +12,8 @@ declare module "./ability-result.mjs" {
 declare module "./ability-use.mjs" {
   export default interface AbilityUse {
     abilityUuid: string;
+    effects: Set<string>;
+    spendAmounts: Record<string, number>;
   }
 }
 
@@ -22,6 +24,13 @@ declare module "./base-message-part.mjs" {
     type: string;
     rolls: DSRoll[],
     flavor: string;
+  }
+}
+
+declare module "./fall.mjs" {
+  export default interface FallPart {
+    fallerUuid: string;
+    fallerDistance: string;
   }
 }
 

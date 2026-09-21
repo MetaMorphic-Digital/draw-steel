@@ -9,10 +9,10 @@ import PowerRoll from "../../rolls/power.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
- * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
- * @import { EmbedDisplayFlags } from "./_types";
+ * @import { AbilityEmbedConfig, EmbedDisplayFlags } from "./_types";
  * @import RegionDocument from "@client/documents/region.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
@@ -92,6 +92,7 @@ export default class AbilityModel extends BaseItemModel {
         characteristics: new fields.SetField(setOptions()),
         banes: requiredInteger({ persisted: false }),
         edges: requiredInteger({ persisted: false }),
+        dice: new ds.data.fields.PowerRollDiceField(),
         enabled: new fields.BooleanField({ persisted: false }),
       }),
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
@@ -300,6 +301,8 @@ export default class AbilityModel extends BaseItemModel {
         switch (bonus.key) {
           case "power.roll.banes":
           case "power.roll.edges":
+          case "power.roll.dice.number":
+          case "power.roll.dice.mode":
             foundry.utils.setProperty(this, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
             break;
         }
@@ -311,7 +314,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * @inheritdoc
-   * @param {DocumentHTMLEmbedConfig} config
+   * @param {AbilityEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
   async toEmbed(config, options = {}) {
@@ -333,6 +336,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     if (config.effects) context.limitEffects = config.effects;
+    if (config.spendAmounts) context.spendAmounts = config.spendAmounts;
     await this.getSheetContext(context);
     const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -488,9 +492,13 @@ export default class AbilityModel extends BaseItemModel {
     context.afterEffects = [];
     for (const effect of this.effects.sortedContents) {
       if (context.limitEffects && !context.limitEffects.has(effect.id)) continue;
+
+      const rollData = {};
+      if (context.spendAmounts) rollData.spend = context.spendAmounts[effect.id];
+
       const displayData = {
         label: effect.label,
-        text: await enrichHTML(effect.description, { relativeTo: this.parent }),
+        text: await enrichHTML(effect.description, { relativeTo: this.parent, rollData }),
       };
       context[effect.before ? "beforeEffects" : "afterEffects"].push(displayData);
     }
@@ -548,7 +556,8 @@ export default class AbilityModel extends BaseItemModel {
     }, dialogOptions);
 
     if (this.power.roll.enabled) {
-      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
+      const base = PowerRoll.baseDiceFormula(this.power.roll.dice);
+      const formula = this.power.roll.formula ? `${base} + ${this.power.roll.formula}` : base;
       const rollData = this.parent.getRollData();
 
       dialogConfig.context.formula ??= PowerRoll.replaceFormulaData(formula, rollData, { missing: "0" });
@@ -589,6 +598,7 @@ export default class AbilityModel extends BaseItemModel {
               if (e.showUse(fd)) arr.push(e.id);
               return arr;
             }, []),
+            spendAmounts: fd.spend,
           },
         },
       },
@@ -667,6 +677,7 @@ export default class AbilityModel extends BaseItemModel {
             const damageRoll = damageEffect.toDamageRoll(roll.product, {
               damageSelection: fd.damage,
               spend: Object.values(fd.spend ?? {}),
+              squadMinions: roll.options.minions,
             });
             if (!damageRoll) continue;
             await damageRoll.evaluate();
@@ -675,13 +686,14 @@ export default class AbilityModel extends BaseItemModel {
             if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
           }
 
+          delete roll.options.minions;
+
           messageData.system.parts[partId] = rollPart;
         }
       }
     }
 
     let resourceSpend = fd.resource ?? 0;
-
     for (const spend of Object.values(fd.spend ?? {})) resourceSpend += spend;
 
     if (resourceSpend) {
@@ -763,6 +775,8 @@ export default class AbilityModel extends BaseItemModel {
     if (token) {
       // Flanking checks
       if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
+      // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
+      if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("flying"))) modifiers.edges += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
@@ -933,9 +947,10 @@ export default class AbilityModel extends BaseItemModel {
    * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
    * @param {Object} options
    * @param {number} [options.count=1]  How many tokens to summon.
+   * @param {DrawSteelActiveEffect[]} [options.effects] Effects to add to the summoned actors, evaluating based on this actor's roll data.
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performSummon(uuid, { count = 1 } = {}) {
+  async performSummon(uuid, { count = 1, effects = [] } = {}) {
     /** @type {DrawSteelActor} */
     const sourceActor = await fromUuid(uuid);
 
@@ -956,6 +971,19 @@ export default class AbilityModel extends BaseItemModel {
       }, { keepId: true });
     }
 
-    return canvas.tokens.placeActor(worldActor, { count });
+    const actorUpdates = { effects: [] };
+
+    const replacementData = this.parent.getRollData();
+
+    for (const e of effects) {
+      const data = game.items.fromCompendium(e, { keepId: true, clearFolder: true });
+      for (const change of data.system.changes) {
+        if (typeof change.value !== "string") continue;
+        change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
+      }
+      actorUpdates.effects.push(data);
+    }
+
+    return canvas.tokens.placeActor(worldActor, { count, actorUpdates });
   }
 }

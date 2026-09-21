@@ -122,8 +122,6 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     if (rollConfig.situationalBonus) formula += ` + ${rollConfig.situationalBonus}`;
     rollOptions.successThreshold = rollConfig.successThreshold;
 
-    messageOptions.messageMode = messageMode;
-
     const roll = new SavingThrowRoll(formula, rollData, rollOptions);
 
     await roll.evaluate();
@@ -134,7 +132,9 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
     const savingThrowId = "savingThrow".padEnd(16, "0");
 
-    foundry.utils.mergeObject(messageData, {
+    DrawSteelChatMessage.applyMode(messageData, messageMode);
+
+    const finalMessageData = foundry.utils.mergeObject({
       rolls: [roll],
       type: "standard",
       system: {
@@ -143,13 +143,19 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
             _id: savingThrowId,
             type: "savingThrow",
             effectUuid: this.parent.uuid,
+            flavor: this.parent.name,
             rolls: [roll],
           },
         },
       },
-    });
+      author: game.user.id,
+      sound: CONFIG.sounds.dice,
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent.actor }),
+      title: this.parent.name,
+      flags: { core: { canPopout: true } },
+    }, messageData);
 
-    return roll.toMessage(messageData, messageOptions);
+    return DrawSteelChatMessage.create(finalMessageData, messageOptions);
   }
 
   /* -------------------------------------------------- */

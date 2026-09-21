@@ -1,11 +1,10 @@
 import BaseSpecialEffect from "./base-special-effect.mjs";
 import DSDialog from "../../../applications/api/dialog.mjs";
-import { systemID } from "../../../constants.mjs";
 
 /**
- * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../../documents/_module.mjs"
- * @import ActorChoiceAdvancement from "../advancements/actor-choice-advancement.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelTokenDocument } from "../../../documents/_module.mjs"
  * @import { SummonPortfolio } from "../../actor/_types";
+ * @import SummonChoiceAdvancement from "../advancements/summon-choice-advancement.mjs";
  */
 
 const { createFormGroup, createSelectInput, createNumberInput } = foundry.applications.fields;
@@ -17,6 +16,20 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
   /** @inheritdoc */
   static get TYPE() {
     return "portfolioSummon";
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  constructButtons() {
+    return [ds.utils.constructHTMLButton({
+      label: _loc("DRAW_STEEL.ChatMessage.PARTS.abilityUse.performSummon"),
+      icon: "fa-solid fa-transporter-2",
+      dataset: {
+        specialEffectId: this.id,
+        action: "performSummon",
+      },
+    })];
   }
 
   /* -------------------------------------------------- */
@@ -111,12 +124,23 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
 
     const summonInfo = portfolio.find(o => o.uuid === fd.uuid);
 
+    /** @type {SummonChoiceAdvancement} */
+    const advancement = fromUuidSync(summonInfo.advancementUuid);
+
+    /** @type {DrawSteelActiveEffect[]} */
+    const effects = [];
+    for (const effectInfo of advancement.effects) {
+      if (hero.system.level < effectInfo.level) return;
+      const effect = await fromUuid(effectInfo.uuid);
+      if (effect) effects.push(effect);
+    }
+
     const cost = fd.cost;
 
     // Signature minions have a null count & cost and instead just directly scale with the # summoned
     const count = summonInfo.count ?? fd.count;
 
-    const tokens = await this.parent.performSummon(fd.uuid, { count });
+    const tokens = await this.parent.performSummon(fd.uuid, { count, effects });
 
     if (tokens?.length) {
       await hero.modifyTokenAttribute("hero.primary.value", -cost, true);

@@ -51,7 +51,7 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>You can target yourself instead of one creature with this ability. Choose one of the following effects, which lasts until the end of the encounter or until you are dying:</p><ul><li><p>Whenever a target makes a power roll, they can roll three dice and choose which two rolls to use.</p></li><li><p>Whenever a target makes a power roll, they must roll three dice and use the lowest two rolls.</p></li></ul>",
+        "description": "<p>You can target yourself instead of one creature with this ability. Choose one of the following effects, which lasts until the end of the encounter or until you are dying:</p><ul><li><p>Whenever a target makes a power roll, they can roll three dice and choose which two rolls to use.<br>[[/apply ex9YrYItyz3tJ38A]]{Roll high on tests} &amp; [[/apply 8KJs69qTpATXEdF8]]{Roll high on abilities}</p></li><li><p>Whenever a target makes a power roll, they must roll three dice and use the lowest two rolls.<br>[[/apply Compendium.draw-steel.abilities.Item.tpEhMJt2yZATNnlo.ActiveEffect.rliZ9NXdk60QqjI0]]{Roll low on tests} &amp; [[/apply QrJNl411MJpTax3K]]{Roll low on abilities}</p></li></ul>",
         "before": true,
         "name": "",
         "img": null,
@@ -59,7 +59,348 @@
       }
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Blessing of Fate and Destiny (Roll high on Abilities)",
+      "img": "icons/sundries/lights/candle-pillar-lit-yellow.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.abilities.Item.tpEhMJt2yZATNnlo",
+      "transfer": false,
+      "_id": "8KJs69qTpATXEdF8",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.368",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789656172221,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!tpEhMJt2yZATNnlo.8KJs69qTpATXEdF8"
+    },
+    {
+      "name": "Blessing of Fate and Destiny (Roll low on Abilities)",
+      "img": "icons/sundries/lights/candle-pillar-lit-yellow.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.abilities.Item.tpEhMJt2yZATNnlo",
+      "transfer": false,
+      "_id": "QrJNl411MJpTax3K",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "power.roll.dice.mode",
+            "type": "override",
+            "value": "kl",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.368",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789656268388,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!tpEhMJt2yZATNnlo.QrJNl411MJpTax3K"
+    },
+    {
+      "name": "Blessing of Fate and Destiny (Roll high on Tests)",
+      "img": "icons/sundries/lights/candle-pillar-lit-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.tpEhMJt2yZATNnlo",
+      "transfer": false,
+      "_id": "ex9YrYItyz3tJ38A",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.agility.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.intuition.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.might.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.presence.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.reason.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.368",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789656323066,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!tpEhMJt2yZATNnlo.ex9YrYItyz3tJ38A"
+    },
+    {
+      "name": "Blessing of Fate and Destiny (Roll low on Tests)",
+      "img": "icons/sundries/lights/candle-pillar-lit-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.tpEhMJt2yZATNnlo",
+      "transfer": false,
+      "_id": "rliZ9NXdk60QqjI0",
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.agility.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.intuition.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.might.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.presence.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.reason.dice.number",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.agility.dice.mode",
+            "type": "override",
+            "value": "kl",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.intuition.dice.mode",
+            "type": "override",
+            "value": "kl",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.might.dice.mode",
+            "type": "override",
+            "value": "kl",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.presence.dice.mode",
+            "type": "override",
+            "value": "kl",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.reason.dice.mode",
+            "type": "override",
+            "value": "kl",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.368",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789656445083,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!tpEhMJt2yZATNnlo.rliZ9NXdk60QqjI0"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -69,9 +410,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.365",
+    "coreVersion": "14.368",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1756153732415,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,12 +1,21 @@
 .draw-steel.advancement {
-  h4.section-header {
-    margin: 0;
-  }
-
   .drop-target-area {
     input[type="number"] {
       flex: 0 0 50px;
       text-align: center;
+    }
+    .summon-effects {
+      display: flex;
+      align-items: center;
+      .column-header {
+        flex: 0 0 50px;
+        text-align: center;
+      }
+      .section-header {
+        font-weight: bold;
+        flex: 1;
+        text-align: center;
+      }
     }
   }
 }

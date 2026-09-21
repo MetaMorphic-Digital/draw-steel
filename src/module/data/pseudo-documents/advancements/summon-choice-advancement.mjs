@@ -2,7 +2,7 @@ import ActorChoiceAdvancement from "./actor-choice-advancement.mjs";
 import { requiredInteger } from "../../helpers.mjs";
 
 /**
- * @import DrawSteelActor from "../../../documents/actor.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../../documents/actor.mjs";
  */
 
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
@@ -20,6 +20,10 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
         uuid: new DocumentUUIDField({ embedded: false, type: "Actor" }),
         count: requiredInteger({ initial: 2, min: 1 }),
       })),
+      effects: new ArrayField(new SchemaField({
+        uuid: new DocumentUUIDField({ embedded: false, type: "ActiveEffect" }),
+        level: new NumberField({ min: 1, integer: true, max: 10, required: true }),
+      })),
     });
   }
 
@@ -29,6 +33,11 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
   static get TYPE() {
     return "summon";
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.ADVANCEMENT.SUMMON");
 
   /* -------------------------------------------------- */
 
@@ -49,11 +58,19 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
 
     ctx.actorPool = [];
     for (const [i, pool] of this.pool.entries()) {
-      const actor = await fromUuid(pool.uuid);
       ctx.actorPool.push({
         ...pool,
         index: i,
-        link: actor ? actor.toAnchor() : _loc("DRAW_STEEL.ADVANCEMENT.SHEET.unknownActor"),
+        link: ds.utils.createDocumentLink(pool.uuid)?.outerHTML ?? _loc("DRAW_STEEL.ADVANCEMENT.SHEET.unknownActor"),
+      });
+    }
+
+    ctx.summonEffects = [];
+    for (const [i, effect] of this.effects.entries()) {
+      ctx.summonEffects.push({
+        ...effect,
+        index: i,
+        link: ds.utils.createDocumentLink(effect.uuid)?.outerHTML ?? _loc("DRAW_STEEL.ADVANCEMENT.SHEET.unknownEffect"),
       });
     }
 
@@ -63,22 +80,51 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
   /* -------------------------------------------------- */
 
   /**
+   * Process a dropped actor or active effect.
+   * @param {DrawSteelActor | DrawSteelActiveEffect} document
+   * @returns {Promise<DrawSteelActor>}
+   */
+  handleDrop(document) {
+    switch (document.documentName) {
+      case "ActiveEffect": return this.#handleActiveEffectDrop(document);
+      case "Actor": return this.#handleActorDrop(document);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Process a dropped effect.
+   * @param {DrawSteelActiveEffect} effect
+   */
+  #handleActiveEffectDrop(effect) {
+    if (!effect.pack || effect.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requireStandaloneSummonEffect", { localize: true });
+    const exists = this.effects.some(k => k.uuid === effect.uuid);
+    if (exists) return;
+
+    const effects = foundry.utils.deepClone(this._source.effects);
+    effects.push({ uuid: effect.uuid });
+    return this.update({ effects });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Process a dropped actor.
    * @param {DrawSteelActor} document
    * @returns {Promise<DrawSteelActor>}
    */
-  handleDrop(document) {
-    if (document.documentName !== "Actor") return;
-
-    if (document.type !== "npc") return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedTypeSummon", {
-      format: { type: _loc(CONFIG.Actor.typeLabels[document.type]) },
+  #handleActorDrop(actor) {
+    if (actor.type !== "npc") return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedTypeSummon", {
+      format: { type: _loc(CONFIG.Actor.typeLabels[actor.type]) },
     });
-    if (!document.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePackSummon", { localize: true });
-    const exists = this.pool.some(k => k.uuid === document.uuid);
+    if (!actor.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePackSummon", { localize: true });
+    const exists = this.pool.some(k => k.uuid === actor.uuid);
     if (exists) return;
 
     const pool = foundry.utils.deepClone(this._source.pool);
-    pool.push({ uuid: document.uuid });
+    pool.push({ uuid: actor.uuid });
     return this.update({ pool });
   }
+
 }

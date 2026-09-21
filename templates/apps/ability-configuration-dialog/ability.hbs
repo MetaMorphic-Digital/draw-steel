@@ -1,5 +1,12 @@
 
 <section class="ability-config">
+  {{#if meleeRanged.show}}
+  <div class="form-group meleeRanged">
+    <span class="label">{{localize "DRAW_STEEL.Item.ability.Distance.MeleeRanged"}}</span>
+    <button type="button" class="{{meleeRanged.meleeClass}}" data-action="swapMeleeRanged" data-value="melee" data-tooltip="DRAW_STEEL.Item.ability.SwapUsage.ToMelee"></button>
+    <button type="button" class="{{meleeRanged.rangedClass}}" data-action="swapMeleeRanged" data-value="ranged" data-tooltip="DRAW_STEEL.Item.ability.SwapUsage.ToRanged"></button>
+  </div>
+  {{/if}}
   {{#if resource.show}}
   <fieldset>
     <legend>{{localize "DRAW_STEEL.Item.ability.ConfigureUse.ResourceLegend" value=resource.current name=resource.name}}</legend>

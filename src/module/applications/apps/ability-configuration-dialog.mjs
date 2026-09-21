@@ -4,7 +4,7 @@ import { systemPath } from "../../constants.mjs";
 
 /**
  * @import AbilityModel from "../../data/item/ability.mjs";
- * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import { DrawSteelActor, DrawSteelCombatantGroup, DrawSteelItem } from "../../documents/_module.mjs";
  * @import DrawSteelToken  from "../../canvas/placeables/token.mjs"
  * @import RegionDocument from "@client/documents/region.mjs";
  */
@@ -19,6 +19,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     actions: {
       panToken: this.#panToken,
       placeTemplate: this.#placeTemplate,
+      swapMeleeRanged: this.#swapMeleeRanged,
     },
   };
 
@@ -93,6 +94,17 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
   /* -------------------------------------------------- */
 
+  /**
+   * A possible squad for this actor.
+   * @returns {DrawSteelCombatantGroup | null}
+   */
+  get squad() {
+    if (!this.actor.isMinion) return null;
+    return this.actor.system.combatGroup;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _initializeApplicationOptions(options) {
     const initializedOptions = super._initializeApplicationOptions(options);
@@ -124,6 +136,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     switch (partId) {
       case "roll":
+        context.squad = this.squad;
         context.targets ??= {};
         this._prepareTargets(context);
         break;
@@ -148,6 +161,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     for (const target of Object.values(context.targets)) {
       target.actor ??= fromUuidSync(target.uuid);
       target.token ??= fromUuidSync(target.tokenUuid);
+      if (this.squad) target.minions ??= 1;
 
       target.combinedModifiers = {
         edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
@@ -179,6 +193,12 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     context.resource.show = this.item.system.resource;
 
+    context.meleeRanged = {
+      show: this.item.system.distance.type === "meleeRanged",
+      meleeClass: `${this.item.system.damageDisplay === "melee" ? "selected " : ""}icon fa-solid fa-sword`,
+      rangedClass: `${this.item.system.damageDisplay === "ranged" ? "selected " : ""}icon fa-solid fa-bow-arrow`,
+    };
+
     // Heroic resource/malice spend
     if (this.item.system.effects.documentsByType.spend.length) {
       context.resource.show = true;
@@ -186,7 +206,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
       context.resource.name = coreResource.name;
       context.resource.max = foundry.utils.getProperty(coreResource.target, coreResource.path) - coreResource.minimum;
 
-      context.spendConfig = this.item.system.effects.documentsByType.spend.map(e => ({
+      context.spendConfig = this.item.system.effects.documentsByType.spend.toSorted((a, b) => a.sort - b.sort).map(e => ({
         id: e.id,
         multiple: e.resource.multiple,
         value: e.resource.value,
@@ -243,7 +263,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     const fd = foundry.utils.expandObject(formData.object);
 
     const targets = Object.values(this.options.context.targets ?? {});
-    if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid }));
+    if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid, minions: target.minions }));
 
     if (fd["damage-selection"]) config.damage = fd["damage-selection"];
     if ("resource" in fd) config.resource = fd.resource;
@@ -289,5 +309,18 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   static async #placeTemplate(event, target) {
     if (this.#region) await this.#region.delete();
     this.#region = await this.item.system.placeTemplate({ setTargets: "replace" });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Switch if this ability is going to roll as melee or ranged.
+   * @this AbilityConfigurationDialog
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #swapMeleeRanged(event, target) {
+    await this.item.update({ "system.damageDisplay": target.dataset.value });
+    this.render({ parts: ["ability"] });
   }
 }

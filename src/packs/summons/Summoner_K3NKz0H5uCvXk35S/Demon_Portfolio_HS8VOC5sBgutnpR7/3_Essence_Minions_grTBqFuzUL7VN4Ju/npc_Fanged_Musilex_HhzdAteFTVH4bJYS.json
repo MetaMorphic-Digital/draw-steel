@@ -205,7 +205,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The [[lookup @name]]'s melee free strikes have a distance of 2 + (your R) and inflict pull 2. The pull distance increases by 2 for each additional [[lookup @name]] striking the same target. Choose the [[lookup @name]] that the target is being pulled to before applying forced movement. If the target is pulled adjacent to the [[lookup @name]], the [[lookup @name]] either deals an additional [[/damage 2]] or [[/apply grabbed]]{grabs them}.</p>",
+          "value": "<p>The [[lookup @name]]'s melee free strikes have a distance of [[lookup 2 + @flags.draw-steel.summoner evaluate]] and inflict pull 2. The pull distance increases by 2 for each additional [[lookup @name]] striking the same target. Choose the [[lookup @name]] that the target is being pulled to before applying forced movement. If the target is pulled adjacent to the [[lookup @name]], the [[lookup @name]] either deals an additional [[/damage 2]] or [[/apply grabbed]]{grabs them}.</p>",
           "director": ""
         },
         "source": {
@@ -245,7 +245,7 @@
     {
       "name": "Soulsight",
       "type": "feature",
-      "img": "https://assets.forge-vtt.com/bazaar/core/icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
           "value": "<p>Each creature adjacent to the [[lookup @name]] can't be hidden from them.</p>",

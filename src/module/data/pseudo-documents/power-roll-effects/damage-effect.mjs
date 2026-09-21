@@ -211,6 +211,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    * @param {object} [options]
    * @param {string} [options.damageSelection] Pick between this damage effect's multiple damage types.
    * @param {number[]} [options.spend] Spend data from an ability configuration form.
+   * @param {number} [options.squadMinions] A number of squad minions joining in the attack. Base 1 for no extra damage.
    * @returns {DamageRoll | null} Returns null if there would be no damage from that tier.
    */
   toDamageRoll(tier, options = {}) {
@@ -229,9 +230,15 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     const rollData = this.item.getRollData();
 
-    if (options.spend) rollData.spend = options.spend;
+    let formula = String(effectTier.value);
 
-    return new DamageRoll(String(effectTier.value), rollData, {
+    if (options.spend) rollData.spend = options.spend;
+    if (options.squadMinions) {
+      formula += "+(@squadMinions * @monster.freeStrike)";
+      rollData.squadMinions = options.squadMinions - 1;
+    }
+
+    return new DamageRoll(formula, rollData, {
       flavor,
       type: damageType,
       ignoredImmunities,

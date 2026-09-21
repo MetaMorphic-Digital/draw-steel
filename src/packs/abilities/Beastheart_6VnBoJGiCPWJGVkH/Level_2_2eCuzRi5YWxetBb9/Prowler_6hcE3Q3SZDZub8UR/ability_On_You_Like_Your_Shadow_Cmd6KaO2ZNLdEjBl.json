@@ -1,0 +1,120 @@
+{
+  "folder": "6hcE3Q3SZDZub8UR",
+  "name": "On You Like Your Shadow",
+  "type": "ability",
+  "_id": "Cmd6KaO2ZNLdEjBl",
+  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "27",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "on-you-like-your-shadow",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion darts around their target, staying out of reach and using them as a shield.",
+    "keywords": [
+      "charge",
+      "companion",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "ippMJGlA7uZdooWw": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ippMJGlA7uZdooWw",
+          "damage": {
+            "tier1": {
+              "value": "5 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "8 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "12 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "2akT8uJ2lje6kzKH": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "2akT8uJ2lje6kzKH",
+        "description": "<p>Your companion enters the target's space. Until your companion is no longer in the target's space, they can end their turn in that space, strikes against them also affect the target, and your strikes against the target gain an edge.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788651282882,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Cmd6KaO2ZNLdEjBl"
+}

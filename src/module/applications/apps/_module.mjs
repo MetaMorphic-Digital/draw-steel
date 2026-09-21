@@ -2,6 +2,7 @@ export { default as AbilityConfigurationDialog } from "./ability-configuration-d
 export { default as ActorAvatarInput } from "./actor-avatar-input.mjs";
 export { default as ActorCombatStatsInput } from "./actor-combat-stats-input.mjs";
 export { default as CharacteristicInput } from "./characteristic-input.mjs";
+export { default as CompanionMetadataInput } from "./companion-metadata-input.mjs";
 export { default as DocumentSourceInput } from "./document-source-input.mjs";
 export { default as MinionStatsInput } from "./minion-stats-input.mjs";
 export { default as MonsterMetadataInput } from "./monster-metadata-input.mjs";

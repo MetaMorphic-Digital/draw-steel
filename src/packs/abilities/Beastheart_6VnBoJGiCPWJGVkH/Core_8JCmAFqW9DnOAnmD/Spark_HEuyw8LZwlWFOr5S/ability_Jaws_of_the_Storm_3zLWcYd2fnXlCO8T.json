@@ -1,0 +1,92 @@
+{
+  "folder": "HEuyw8LZwlWFOr5S",
+  "name": "Jaws of the Storm",
+  "type": "ability",
+  "_id": "3zLWcYd2fnXlCO8T",
+  "img": "icons/magic/lightning/bolt-strike-explosion-blue.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "jaws-of-the-storm",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your foes are torn by a tempest of primordial teeth and claws.",
+    "keywords": [
+      "area",
+      "beastheart",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": "2",
+      "secondary": "5",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "PYYvzPPzL6Hrlyf0": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "PYYvzPPzL6Hrlyf0",
+        "description": "<p>Each target takes [[/damage @M cold fire lightning sonic]]{cold, fire, lightning, or sonic damage (your choice) equal to your Might score}.</p>",
+        "before": false
+      },
+      "f7BunmwRN0ugD9I9": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "f7BunmwRN0ugD9I9",
+        "description": "<p>The size of the cube increases by 1.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788355822091,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!3zLWcYd2fnXlCO8T"
+}

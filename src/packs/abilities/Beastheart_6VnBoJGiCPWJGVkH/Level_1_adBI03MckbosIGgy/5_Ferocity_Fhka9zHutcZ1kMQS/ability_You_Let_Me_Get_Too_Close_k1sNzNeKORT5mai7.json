@@ -1,0 +1,158 @@
+{
+  "folder": "Fhka9zHutcZ1kMQS",
+  "name": "You Let Me Get Too Close",
+  "type": "ability",
+  "_id": "k1sNzNeKORT5mai7",
+  "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "you-let-me-get-too-close",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "The wilderness has no concept of fair play.",
+    "keywords": [
+      "beastheart",
+      "charge",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "QGns0ZSYs9XRtPH2": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "QGns0ZSYs9XRtPH2",
+          "damage": {
+            "tier1": {
+              "value": "8 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "12 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "16 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "Iain93UyRWIh8kxv": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "Iain93UyRWIh8kxv",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} grabbed",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {}
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788555867873,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!k1sNzNeKORT5mai7"
+}

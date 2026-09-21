@@ -1,0 +1,60 @@
+{
+  "name": "Size Increase",
+  "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+  "type": "base",
+  "origin": null,
+  "_id": "odSOGT0uOlhBpBw6",
+  "system": {
+    "changes": [
+      {
+        "key": "system.combat.size",
+        "type": "upgrade",
+        "value": 3,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    }
+  },
+  "disabled": true,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "",
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "folder": "tzyTFIZAqv2aCon8",
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788547903079,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 0,
+  "_key": "!effects!odSOGT0uOlhBpBw6"
+}

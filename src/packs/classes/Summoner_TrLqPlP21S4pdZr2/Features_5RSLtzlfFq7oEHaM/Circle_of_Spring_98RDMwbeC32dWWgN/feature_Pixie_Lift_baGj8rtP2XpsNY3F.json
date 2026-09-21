@@ -1,0 +1,110 @@
+{
+  "folder": "98RDMwbeC32dWWgN",
+  "name": "Pixie Lift",
+  "type": "feature",
+  "_id": "baGj8rtP2XpsNY3F",
+  "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your speed gains the Fly and Hover keywords. You lose the Hover keyword from this feature while you are dazed, dying, or you fly more than 1 square above the surface of the ground.</p><p>If your speed previously had the Fly keyword, you can now fly while sneaking an additional number of squares equal to your Reason.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "34",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "pixie-lift",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Pixie Lift",
+      "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.baGj8rtP2XpsNY3F",
+      "_id": "6DvtXZJ4gKigjkz2",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.movement.hover",
+            "type": "override",
+            "value": true,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788471188767,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!baGj8rtP2XpsNY3F.6DvtXZJ4gKigjkz2"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788471134951,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!baGj8rtP2XpsNY3F"
+}

@@ -1,0 +1,103 @@
+{
+  "folder": "5RSLtzlfFq7oEHaM",
+  "name": "Font of Creation",
+  "type": "feature",
+  "_id": "5phy7YJFwhNNy0I3",
+  "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
+  "system": {
+    "description": {
+      "value": "<p>When you gain essence at the start of each of your turns during combat, you gain 3 instead of 2.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "40",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "font-of-creation",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Font of Creation",
+      "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.5phy7YJFwhNNy0I3",
+      "transfer": false,
+      "_id": "Etm6JPO0e1lyubHZ",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.primary.turnGain",
+            "type": "override",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788533379320,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!5phy7YJFwhNNy0I3.Etm6JPO0e1lyubHZ"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788472164170,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 1000000,
+  "_key": "!items!5phy7YJFwhNNy0I3"
+}

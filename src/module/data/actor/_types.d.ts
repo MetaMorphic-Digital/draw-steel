@@ -1,6 +1,7 @@
 import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
 import MembersCollection from "../../utils/members-collection.mjs";
+import { PowerRollDice } from "../_types";
 import { PowerRollModifiers } from "../../_types";
 
 interface BarAttribute {
@@ -18,10 +19,7 @@ interface Characteristic {
   value: number;
   edges: number;
   banes: number;
-  dice: {
-    mode: "kh" | "kl";
-    number: number;
-  }
+  dice: PowerRollDice;
 }
 
 interface CoreResource {
@@ -64,7 +62,8 @@ interface Skills {
 export interface SummonPortfolio {
   uuid: string;
   count: string;
-  cost: number | null
+  cost: number | null;
+  advancementUuid: string;
 }
 
 declare module "./base-actor.mjs" {
@@ -153,6 +152,7 @@ declare module "./hero.mjs" {
       primary: {
         value: number;
         tracking: number;
+        turnGain: string;
         label?: string;
       };
       epic: {

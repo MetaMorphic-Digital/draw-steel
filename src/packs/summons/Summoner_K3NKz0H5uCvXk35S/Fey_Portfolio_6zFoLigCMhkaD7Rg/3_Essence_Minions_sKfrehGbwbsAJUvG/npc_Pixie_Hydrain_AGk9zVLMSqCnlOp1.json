@@ -201,50 +201,6 @@
   },
   "items": [
     {
-      "name": "Acid Immunity and Free Strike",
-      "type": "feature",
-      "_id": "aCzfvdgLZT26n6DY",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The [[lookup @name]] has Acid immunity equal to your Reason. You can choose for their free strike damage type to be Acid.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1787836190381,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!AGk9zVLMSqCnlOp1.aCzfvdgLZT26n6DY"
-    },
-    {
       "name": "Miniscule",
       "type": "feature",
       "_id": "vSRZTdF0ismyQWJF",
@@ -465,7 +421,75 @@
       "_key": "!actors.items!AGk9zVLMSqCnlOp1.36WZzMFZcpTgztZ2"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Acid Immunity R",
+      "type": "base",
+      "_id": "mwUMLkzcuLDUQgTd",
+      "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.acid",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788718639454,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.mwUMLkzcuLDUQgTd",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!AGk9zVLMSqCnlOp1.mwUMLkzcuLDUQgTd"
+    }
+  ],
   "sort": 100000,
   "ownership": {
     "default": 0
