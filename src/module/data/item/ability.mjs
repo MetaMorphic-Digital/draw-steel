@@ -90,7 +90,7 @@ export default class AbilityModel extends BaseItemModel {
         reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr", placeholder: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
-        criticalThreshold: new fields.NumberField({ initial: 19, min: 2, integer: true }),
+        criticalThreshold: new fields.NumberField({ initial: 19, min: 2, integer: true, nullable: false, required: true }),
         banes: requiredInteger({ persisted: false }),
         edges: requiredInteger({ persisted: false }),
         dice: new ds.data.fields.PowerRollDiceField(),
