@@ -2073,7 +2073,7 @@ export const Advancement = {
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
-    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
+    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   summon: {

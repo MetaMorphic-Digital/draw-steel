@@ -1,0 +1,138 @@
+{
+  "folder": "inlCRuoVqrlKipgA",
+  "name": "Wild Rumpus",
+  "type": "ability",
+  "_id": "X5xx6PYE5eexSJ9L",
+  "img": "icons/magic/nature/wolf-paw-glow-teal-blue.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "41",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "wild-rumpus",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "The ability to glide like a condor or race like a wolf is intoxicating—but beware the temptation to run yourself to death.",
+    "keywords": [
+      "beastheart",
+      "magic"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "BmhDn2xCQDc6GWDK": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "BmhDn2xCQDc6GWDK",
+        "description": "<p>For one minute or until you or your companion takes damage, you and your companion [[/apply wp3Jnm3fTfaS7YX4]]{gain each other's movement types} in addition to your own. You and your companion both use your speed or your companion's speed, whichever is higher.</p><p>Each additional time you use this ability after the first, you take damage equal to [[/damage @level]]{your level} until you finish a respite or gain 1 or more Victories. This damage can't be reduced in any way and doesn't end this ability's effect.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Wild Rumpus",
+      "img": "icons/magic/nature/wolf-paw-glow-teal-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.X5xx6PYE5eexSJ9L",
+      "transfer": false,
+      "_id": "wp3Jnm3fTfaS7YX4",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "@movement.types",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789761271246,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!X5xx6PYE5eexSJ9L.wp3Jnm3fTfaS7YX4"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789743801102,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!X5xx6PYE5eexSJ9L"
+}
