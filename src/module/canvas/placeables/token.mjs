@@ -241,6 +241,9 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     const posY = index === 0 ? height - bh : 0;
     bar.position.set(0, posY);
   }
+
+  /* -------------------------------------------------- */
+
   /**
    * Draw the health bar with marks for each minion in squad.
    * @param {number} index        The Bar index.
