@@ -185,7 +185,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /** @inheritdoc */
   _drawBar(index, bar, data) {
     // specialized handling for thp & negative HP, not relevant for minion squads.
-    if ((data.attribute !== "stamina") || data.minionStamina) return super._drawBar(index, bar, data);
+    if ((data.attribute !== "stamina")) return super._drawBar(index, bar, data);
+    if (data.minionStamina) return this._drawMinionBar(index, bar, data);
 
     // Creates a normalized range of 0 to (max stamina - min stamina) used for calculating the token bar percentage
     // Needed to handle actor's negative stamina
@@ -236,6 +237,46 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
       bar.moveTo(windedMark, 0).lineTo(windedMark, bh);
     }
 
+    // Set position
+    const posY = index === 0 ? height - bh : 0;
+    bar.position.set(0, posY);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Draw the health bar with marks for each minion in squad.
+   * @param {number} index        The Bar index.
+   * @param {PIXI.Graphics} bar   The Bar container.
+   * @param {object} data         Resource data for this bar.
+   */
+  _drawMinionBar(index, bar, data) {
+    const val = Number(data.value);
+    const pct = Math.clamp(val, 0, data.max) / data.max;
+
+    // Determine sizing
+    const { width, height } = this.document.getSize();
+    const s = canvas.dimensions.uiScale;
+    const bw = width;
+    const bh = 8 * (this.document.height >= 2 ? 1.5 : 1) * s;
+
+    // Determine the color to use
+    const colors = this._getBarColors(index, data);
+    const color = Color.mix(colors.empty, colors.full, pct);
+
+    // Draw the bar
+    bar.clear();
+    bar.lineStyle(s, 0x000000, 1.0);
+    bar.beginFill(0x000000, 0.5).drawRoundedRect(0, 0, bw, bh, 3 * s);
+    bar.beginFill(color, 1.0).drawRoundedRect(0, 0, pct * bw, bh, 2 * s);
+
+    //Draw a Mark for each Minion in Squad.
+    const minionIncrement = Number(data.staminaIncrement);
+    const minionAmnt = data.max / minionIncrement;
+    for (let i = 1; i < minionAmnt; i++) {
+      let minionMark = (i * minionIncrement) / data.max * bw;
+      bar.moveTo(minionMark, 0).lineTo(minionMark, bh);
+    } 
     // Set position
     const posY = index === 0 ? height - bh : 0;
     bar.position.set(0, posY);
