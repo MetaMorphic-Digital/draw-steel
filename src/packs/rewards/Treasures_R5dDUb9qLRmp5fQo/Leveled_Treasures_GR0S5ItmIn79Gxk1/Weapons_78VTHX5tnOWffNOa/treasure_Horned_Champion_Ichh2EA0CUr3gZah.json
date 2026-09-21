@@ -6,7 +6,7 @@
   "img": "icons/equipment/head/helm-norman-horned-brown.webp",
   "system": {
     "description": {
-      "value": "<p><strong>1st Level:</strong> Only a beastheart can wield this weapon. Any weapon ability that deals rolled damage using this weapon deals an extra 1 damage. Additionally, your abilities with the Melee and Weapon keywords also gain the Charge keyword.</p><p><strong>5th Level:</strong> The weapon's extra damage increases to 2. Additionally, whenever you or your companion uses the Charge main action and obtains a tier 3 outcome with an ability, whoever used the action can either knock the target prone, push them 2 squares or increase the distance of a push made as part of the charge, or deal extra damage equal to their own Might score.</p><p><strong>9th Level:</strong> The weapon's extra damage increases to 3. Additionally, when you or your companion uses the Charge main action, the movement doesn't provoke opportunity attacks.</p>",
+      "value": "<p><strong>1st Level:</strong> Only a beastheart can wield this weapon. Any weapon ability that deals rolled damage using this weapon deals an extra [[/damage 1]]{1 damage}. Additionally, your abilities with the Melee and Weapon keywords also gain the Charge keyword.</p><p><strong>5th Level:</strong> The weapon's extra damage increases to 2. Additionally, whenever you or your companion uses the Charge main action and obtains a tier 3 outcome with an ability, whoever used the action can either knock the target [[/apply prone]], push them 2 squares or increase the distance of a push made as part of the charge, or deal extra damage equal to [[/damage @M]]{their own Might score}.</p><p><strong>9th Level:</strong> The weapon's extra damage increases to 3. Additionally, when you or your companion uses the Charge main action, the movement doesn't provoke opportunity attacks.</p>",
       "director": ""
     },
     "source": {
@@ -57,7 +57,7 @@
           {
             "key": "keyword",
             "type": "add",
-            "value": "Charge",
+            "value": "charge",
             "phase": "initial",
             "priority": null
           }
