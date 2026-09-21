@@ -627,7 +627,9 @@ export default class AbilityModel extends BaseItemModel {
           delete context.target;
         }
         const roll = new PowerRoll(dialogConfig.context.formula, {},
-          { flavor: _loc(PowerRoll.TYPES.ability.label), criticalThreshold: this.power.roll.criticalThreshold, ...context });
+          { flavor: _loc(PowerRoll.TYPES.ability.label), 
+            criticalThreshold: this.power.roll.criticalThreshold,
+            ...context });
         roll.terms[0] = baseRoll.terms[0];
         await roll.evaluate({ allowInteractive: false });
 
