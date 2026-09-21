@@ -3,6 +3,7 @@ import DrawSteelChatMessage from "../documents/chat-message.mjs";
 import { systemPath } from "../constants.mjs";
 
 /** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
+/** @import { PowerRollDice } from "../data/_types.js" */
 
 /**
  * A roll of 2d10 plus a characteristic score that has three different possible tier outcomes—tier 1, tier 2, or tier 3.
@@ -153,6 +154,20 @@ export default class PowerRoll extends DSRoll {
       glyph: "#",
     },
   };
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Build the base dice term for a power roll from a dice descriptor.
+   * Keeps the highest/lowest 2 when rolling more than 2 dice.
+   * @param {Partial<PowerRollDice>} [dice]
+   * @returns {string}
+   */
+  static baseDiceFormula({ number = 2, mode = "kh", faces = 10 } = {}) {
+    // Active effects bypass the field's choice validation, so an unrecognized mode falls back to keeping the highest.
+    const keepMode = (mode === "kl") ? "kl" : "kh";
+    return number > 2 ? `${number}d${faces}${keepMode}2` : `2d${faces}`;
+  }
 
   /* -------------------------------------------------- */
 

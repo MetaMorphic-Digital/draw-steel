@@ -1,0 +1,232 @@
+{
+  "folder": "mC8rBvJb0GCMM0wz",
+  "name": "Head to Head",
+  "type": "ability",
+  "_id": "TiPsvHGNBybRp2hw",
+  "img": "icons/equipment/head/helm-norman-brutal.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "28",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "head-to-head",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your bloody-forehead smash drives your companion into a frenzy.",
+    "keywords": [
+      "beastheart",
+      "melee",
+      "strike"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "mTg6iPQ7eeQHJlnJ": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "mTg6iPQ7eeQHJlnJ",
+          "damage": {
+            "tier1": {
+              "value": "13 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "19 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "25 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "Fcdxerh5yjz2ZRdd": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "Fcdxerh5yjz2ZRdd",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} dazed (save ends)",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "GR6qZuZXCQCXHbyv": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "GR6qZuZXCQCXHbyv",
+        "description": "<p>You are [[/apply bleeding save]]. Until the end of your next turn, your companion [[/apply OFNI5bvAa8dUu752 originDuration=true]]{gains an edge on power rolls}.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Power Roll Edge",
+      "img": "icons/equipment/head/helm-norman-brutal.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.abilities.Item.TiPsvHGNBybRp2hw",
+      "transfer": false,
+      "_id": "OFNI5bvAa8dUu752",
+      "system": {
+        "changes": [
+          {
+            "key": "power.roll.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788730960232,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!TiPsvHGNBybRp2hw.OFNI5bvAa8dUu752"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788730873269,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!TiPsvHGNBybRp2hw"
+}

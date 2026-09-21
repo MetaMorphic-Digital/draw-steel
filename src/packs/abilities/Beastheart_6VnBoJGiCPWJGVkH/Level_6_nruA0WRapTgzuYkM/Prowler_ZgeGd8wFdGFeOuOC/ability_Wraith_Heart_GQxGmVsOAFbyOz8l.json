@@ -1,0 +1,77 @@
+{
+  "folder": "ZgeGd8wFdGFeOuOC",
+  "name": "Wraith Heart",
+  "type": "ability",
+  "_id": "GQxGmVsOAFbyOz8l",
+  "img": "icons/magic/death/undead-bird-skeleton-purple.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "31",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "wraith-heart",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You and your companion become soul-freezing wraiths.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "move",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "1lFSRe6p5eDKEkhu": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "1lFSRe6p5eDKEkhu",
+        "description": "<p>You and your companion shift up to your speeds. During this movement, you are both invisible, can move through enemies and objects, and ignore difficult terrain. You each deal corruption damage equal to [[/damage @I]]{your own Intuition score} to each enemy you pass through during this movement. You can both damage each enemy once this way.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788793546321,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!GQxGmVsOAFbyOz8l"
+}

@@ -1,0 +1,170 @@
+{
+  "folder": "mC8rBvJb0GCMM0wz",
+  "name": "Jaws of Death",
+  "type": "ability",
+  "_id": "yVunxn92m7CMdoGq",
+  "img": "icons/magic/death/skeleton-dinosaur-skull-tan.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "28",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "jaws-of-death",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Spectral teeth clamp on a foe, chaining them to you and draining their life essence.",
+    "keywords": [
+      "beastheart",
+      "magic",
+      "melee",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "fi2KGq1UYkzP4ACD": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "fi2KGq1UYkzP4ACD",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "10 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "14 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "sOjr6aMKQ1lEa6yY": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "sOjr6aMKQ1lEa6yY",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} weakened (save ends)",
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "r2F1gLi4pU8vHGwn": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "r2F1gLi4pU8vHGwn",
+        "description": "<p>Whenever a target more than 3 squares away from you fails the saving throw while weakened this way, you can pull the target up to a number of squares equal to [[lookup @I]]{your Intuition score} as a free triggered action.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788731282528,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!yVunxn92m7CMdoGq"
+}
