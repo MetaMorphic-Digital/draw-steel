@@ -90,6 +90,7 @@ export default class AbilityModel extends BaseItemModel {
         reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr", placeholder: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
+        criticalThreshold: new fields.NumberField({ initial: 19, min: 2, integer: true, nullable: false, required: true }),
         banes: requiredInteger({ persisted: false }),
         edges: requiredInteger({ persisted: false }),
         dice: new ds.data.fields.PowerRollDiceField(),
@@ -301,6 +302,7 @@ export default class AbilityModel extends BaseItemModel {
         switch (bonus.key) {
           case "power.roll.banes":
           case "power.roll.edges":
+          case "power.roll.criticalThreshold":
           case "power.roll.dice.number":
           case "power.roll.dice.mode":
             foundry.utils.setProperty(this, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
@@ -538,7 +540,6 @@ export default class AbilityModel extends BaseItemModel {
    */
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Abilities can only be used while embedded");
-
     const coreResource = this.actor.system.coreResource ?? {};
 
     const dialogConfig = foundry.utils.mergeObject({
@@ -625,7 +626,11 @@ export default class AbilityModel extends BaseItemModel {
           targets.push(context.target);
           delete context.target;
         }
-        const roll = new PowerRoll(dialogConfig.context.formula, {}, { flavor: _loc(PowerRoll.TYPES.ability.label), ...context });
+        const roll = new PowerRoll(dialogConfig.context.formula, {}, { 
+          flavor: _loc(PowerRoll.TYPES.ability.label), 
+          criticalThreshold: this.power.roll.criticalThreshold,
+          ...context,
+        });
         roll.terms[0] = baseRoll.terms[0];
         await roll.evaluate({ allowInteractive: false });
 
