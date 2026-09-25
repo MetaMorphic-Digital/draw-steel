@@ -84,6 +84,7 @@ Increased foundry minimum to 14.368.
 - Deleting an entry from a configuration page now works correctly. (#2042)
 - Cleaned up duplicate scrolling text when using the apply effect enricher.
 - Fixed saving throw rolls not properly being contained in a saving throw message part.
+- Fixed limited view of the item sheet.
 
 ## 1.1.2
 
