@@ -1,0 +1,186 @@
+{
+  "folder": "bE7wxeWWRrN3Kzbq",
+  "name": "Rolling Thunder",
+  "type": "ability",
+  "_id": "56Eqs2HtIaVd0W7q",
+  "img": "icons/magic/lightning/bolt-strike-explosion-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "31",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rolling-thunder",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "The rumble of your companion's dash is a rolling thunderclap, their impact an earthquake.",
+    "keywords": [
+      "companion",
+      "magic",
+      "melee",
+      "strike"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "ZdOLDW7xCGGOzaNG": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ZdOLDW7xCGGOzaNG",
+          "damage": {
+            "tier1": {
+              "value": "9",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "13",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "18",
+              "types": [
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "geXUqdWt46ilVw89": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "geXUqdWt46ilVw89",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "q3VSSAQtssseEnSO": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "q3VSSAQtssseEnSO",
+        "description": "<p>Your companion shifts up to their speed and makes one power roll that targets each enemy they come adjacent to during the shift. If your companion targets only one enemy with this ability, the power roll gains an edge.</p>",
+        "before": true
+      },
+      "sXZOYPMPftdv47mG": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "sXZOYPMPftdv47mG",
+        "description": "<p>You can move up to your speed. The power roll also targets each enemy you come adjacent to during the move.</p>",
+        "before": false,
+        "resource": {
+          "value": 2,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788793721236,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!56Eqs2HtIaVd0W7q"
+}

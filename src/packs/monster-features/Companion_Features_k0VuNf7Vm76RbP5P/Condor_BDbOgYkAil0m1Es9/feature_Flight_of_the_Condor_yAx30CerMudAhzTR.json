@@ -1,0 +1,103 @@
+{
+  "folder": "BDbOgYkAil0m1Es9",
+  "name": "Flight of the Condor",
+  "type": "feature",
+  "_id": "yAx30CerMudAhzTR",
+  "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p>While the condor is rampaging, you and the condor gain a +5 [[/apply xA7DShEqugTPuVpj]]{bonus to speed}.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "8",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "flight-of-the-condor",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Flight of the Condor",
+      "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.yAx30CerMudAhzTR",
+      "transfer": false,
+      "_id": "xA7DShEqugTPuVpj",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788970448729,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!yAx30CerMudAhzTR.xA7DShEqugTPuVpj"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788970426088,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!yAx30CerMudAhzTR"
+}

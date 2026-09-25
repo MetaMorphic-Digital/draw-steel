@@ -330,7 +330,8 @@
         },
         "Properties": {
           "stacking": "Stacking",
-          "originDuration": "Origin-based Duration"
+          "originDuration": "Origin-based Duration",
+          "originRollData": "Origin-based Roll Data"
         },
         "AddEffect": "Add Effect",
         "CopyTierOneEffect": "Copy Tier 1 Effect",
@@ -495,8 +496,7 @@
             "turn": "(EoT)"
           },
           "LinkTooltip": "Apply {name} to selected tokens.",
-          "NoSelection": "You must select tokens to apply the effect to.",
-          "CreateText": "+Applied {name}"
+          "NoSelection": "You must select tokens to apply the effect to."
         }
       }
     },
@@ -560,6 +560,7 @@
       "Licenses": {
         "DSCL": "Draw Steel Creator License"
       },
+      "CopyDSID": "Copied \"{dsid}\" to clipboard.",
       "InvalidDSID": "A DSID must be all lowercase with no spaces."
     },
     "MEASUREMENT": {
@@ -1210,7 +1211,8 @@
         "MinionMustSquad": "Minions can only be added to Squad groups.",
         "MinionNoSquad": "Applying damage directly to a minion because it's not in a squad.",
         "TooManySquad": "Applying damage directly to a minion because it's in multiple squads.",
-        "DamagingInapplicableActors": "There are actors included in the squad's damage application that are not a minion in this squad."
+        "DamagingInapplicableActors": "There are actors included in the squad's damage application that are not a minion in this squad.",
+        "FallSurfaceNotFound":"Can't find surface to fall to!"
       },
       "ToggleVisibility": "Toggle Visibility"
     },
@@ -1361,9 +1363,11 @@
           "Animal": "Animal",
           "Animapathy": "Animapathy",
           "Area": "Area",
+          "Beastheart": "Beastheart",
           "Champion":"Champion",
           "Charge": "Charge",
           "Chronopathy": "Chronopathy",
+          "Companion": "Companion",
           "Cryokinesis": "Cryokinesis",
           "Earth": "Earth",
           "Encounter": "Encounter",
@@ -2536,6 +2540,12 @@
         "abilityUse": {
           "performTest": "{characteristic} Test",
           "performSummon": "Summon"
+        },
+        "falling":{
+          "Label": "Falling",
+          "explain": "{victim} could fall {distance} Squares!",
+          "takeFall": "Fall {distance} Squares",
+          "aftermath": "{victim} fell {distance} Squares, taking {damage} damage"
         },
         "savingThrow": {
           "Buttons": {

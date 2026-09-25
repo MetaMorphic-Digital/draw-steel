@@ -1,0 +1,181 @@
+{
+  "folder": "8g97Jx6nZeOwvJH9",
+  "name": "Burning Lash",
+  "type": "ability",
+  "_id": "Ht5K0dTU6XoDOuZS",
+  "img": "icons/magic/fire/beam-strike-whip-red.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "27",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "burning-lash",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "A blazing tongue of energy entangles a foe.",
+    "keywords": [
+      "companion",
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "2",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "21QMiQJjShFbWAOI": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "21QMiQJjShFbWAOI",
+          "damage": {
+            "tier1": {
+              "value": "6 + @chr",
+              "types": [
+                "fire",
+                "lightning"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "9 + @chr",
+              "types": [
+                "fire",
+                "lightning"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "14 + @chr",
+              "types": [
+                "fire",
+                "lightning"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "felBRLczEsUrlru3": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "felBRLczEsUrlru3",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "OVBZe6wCFDinSzg7": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "OVBZe6wCFDinSzg7",
+        "description": "<p>If you are within distance of the target, you can use a free maneuver to wield a second whip, dealing extra fire or lightning damage equal to [[/damage @I fire/lightning]]{your Intuition score}.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788651771719,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Ht5K0dTU6XoDOuZS"
+}

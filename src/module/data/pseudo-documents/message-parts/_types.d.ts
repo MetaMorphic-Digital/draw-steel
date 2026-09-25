@@ -27,6 +27,13 @@ declare module "./base-message-part.mjs" {
   }
 }
 
+declare module "./fall.mjs" {
+  export default interface FallPart {
+    fallerUuid: string;
+    fallerDistance: string;
+  }
+}
+
 declare module "./hero-token.mjs" {
   export default interface HeroTokenPart {
     spendType: string;

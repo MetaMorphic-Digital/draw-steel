@@ -15,7 +15,923 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "summoner",
-    "advancements": {},
+    "advancements": {
+      "hX6IT3Ok67OHh0vN": {
+        "sort": 100000,
+        "name": "Minions",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "hX6IT3Ok67OHh0vN",
+        "description": "<p>The creatures you control are called minions. You can summon and maintain up to a maximum of 8 minions. Your minions are considered allies at your level.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.M1nvpPDxewehEK0b"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "7xHClI2yGHfF96Tg": {
+        "sort": 200000,
+        "name": "Essence",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "7xHClI2yGHfF96Tg",
+        "description": "<p>You and your minions have a unique reserve of essence as your Heroic Resource. You use this magic to sculpt your forces and maintain control over the battlefield.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.bpmpevbhJM9m3dS6"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "cZxcuMLQNTzmNvJc": {
+        "sort": 300000,
+        "name": "Summoner Abilities",
+        "img": "icons/magic/symbols/triangle-glow-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "cZxcuMLQNTzmNvJc",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.czHTOVQ7Xi9WReqK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.vKzCZPA68o2CA2VB"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.WAzv6xku3g4d4WBj"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.9wYvFs6YIWgsFepg"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "rqpFdOw3ms09x1nl": {
+        "sort": 400000,
+        "name": "Circle",
+        "img": "icons/magic/symbols/star-inverted-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "rqpFdOw3ms09x1nl",
+        "description": "<p>You've learned the art of summoning from a member of a loose network of summoners called a circle. Each circle specializes in a distinct portfolio of creatures you can call into existence. Choose a summoner circle from the following options, each of which grants you a communication feature.<em>(Quick Build: Circle of Graves.)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "NsB0DiG0qm9JmzhK": {
+        "sort": 500000,
+        "name": "Formation",
+        "img": "icons/magic/symbols/triangle-glowing-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "NsB0DiG0qm9JmzhK",
+        "description": "<p>You've practiced a specific formation for your minions. Choose one of the following formations: horde, platoon, elite, or leader. You can change your formation along with your quick command by performing intense study as a respite activity<em>. (Quick Build: Platoon Formation.)</em></p>",
+        "repick": {
+          "respite": "activity"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.MJzpVrjJyRII6T9o"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.y08lJF0egFWBGvLr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.RRCS6CjABw12BEDA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.avYIowv4d5i2h3Uy"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "2OakJdP0tYD5dDzF": {
+        "sort": 600000,
+        "name": "Quick Command",
+        "img": "icons/skills/movement/arrow-upward-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "2OakJdP0tYD5dDzF",
+        "description": "",
+        "repick": {
+          "respite": "activity"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.K6TaJ3C98yjmeA3d"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.0LjJ5YWxuC1qJTII"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.fzcUwf43Mq6ezXmp"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.XbbJ3rqIJt4Rt9d2"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "YIqTx6qgbfwgLavD": {
+        "sort": 700000,
+        "name": "5-Essence Ability",
+        "img": "icons/magic/symbols/runes-triangle-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "YIqTx6qgbfwgLavD",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 essence to use. <em>(Quick Build: Rallying Cry.)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.iC4Fu7TxWbMZK3Zx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.JRQwfgHgfYZzPtgv"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.09Tz5XBzvI2uNUKb"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.vDb2t7duOcIl1w9R"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.17F57a0z1uONFLbj"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yzp3J1MPcRLogYjI"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "utFZAVsMnuPq38SF": {
+        "sort": 800000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "utFZAVsMnuPq38SF",
+        "description": "<p>You gain an intrigue, lore, or supernatural perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "intrigue",
+            "lore",
+            "supernatural"
+          ],
+          "cost": null
+        }
+      },
+      "bfaDRDYoDG4zLPyu": {
+        "sort": 900000,
+        "name": "Summoner's Kit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "bfaDRDYoDG4zLPyu",
+        "description": "<p>You conjure a kit for yourself. This kit includes an implement, such as a rod or a baton,</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.9FF5MeuFsNEsTBMt"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "mt4cJihdOfgTsGce": {
+        "sort": 1000000,
+        "name": "Summoner's Ward",
+        "img": "icons/magic/defensive/shield-barrier-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "mt4cJihdOfgTsGce",
+        "description": "<p>Your kit also comes with wards like magic armor and transient minion forces. Choose one of the following wards.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Zd9UX2zuL2fpRh44"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.WReW0HmGtiFCwN1j"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ZTr4xl77Wsm5ZoEe"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.1AcgDv7W1MAViZlF"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "1mxWbRsBF04TYb7P": {
+        "sort": 1100000,
+        "name": "7-Essence Ability",
+        "img": "icons/magic/symbols/runes-star-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "1mxWbRsBF04TYb7P",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 essence to use.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.EyAlK3DH58yu8oGM"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.WDmcLwlvdCYQ0PeJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Jhx5LrSQSgqT4SV5"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.mmE5hWF4wBr7hZOK"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "ZGBp62gKmIagViDN": {
+        "sort": 1200000,
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "ZGBp62gKmIagViDN",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "characteristics": {
+          "might": 0,
+          "agility": 0,
+          "reason": 1,
+          "intuition": 0,
+          "presence": 0
+        },
+        "max": 3
+      },
+      "PlIP5pVlAoWV2tGx": {
+        "sort": 1300000,
+        "name": "Essence Salvage",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "PlIP5pVlAoWV2tGx",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.d3ulV2Amw6cT3UiX"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "XnU8UIwpvEs4FnNH": {
+        "sort": 1400000,
+        "name": "Minion Chain",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "XnU8UIwpvEs4FnNH",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.XhbUQ3YuC5166bS6"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "8SaKBxMUGsahlMB3": {
+        "sort": 1500000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "8SaKBxMUGsahlMB3",
+        "description": "<p>You gain any one perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "qUKo6FUIXhcwePHv": {
+        "sort": 1600000,
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "qUKo6FUIXhcwePHv",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 1,
+        "skills": {
+          "groups": [],
+          "choices": []
+        }
+      },
+      "knWfGySgpCYu9BHz": {
+        "sort": 1700000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "knWfGySgpCYu9BHz",
+        "description": "<p>You gain an interpersonal, lore, or supernatural perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": null,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ],
+          "cost": null
+        }
+      },
+      "TS9wNAPPsWEg0cWM": {
+        "sort": 1800000,
+        "name": "Minion Machination",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "TS9wNAPPsWEg0cWM",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Y8DMj8KKnZ3E5jgY"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "oQ2yeHzeMG9ueWEy": {
+        "sort": 1900000,
+        "name": "Kit Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "oQ2yeHzeMG9ueWEy",
+        "description": "<p>Your kit gains a new ability.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.b5KLYFSMETwF0Jeh"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "XEbgGa5wSh1yEmaA": {
+        "sort": 2000000,
+        "name": "New Ward",
+        "img": "icons/magic/defensive/shield-barrier-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "XEbgGa5wSh1yEmaA",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Zd9UX2zuL2fpRh44"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.WReW0HmGtiFCwN1j"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ZTr4xl77Wsm5ZoEe"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.1AcgDv7W1MAViZlF"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "DctHhch0nsviC4Nj": {
+        "sort": 2100000,
+        "name": "9-Essence Ability",
+        "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "DctHhch0nsviC4Nj",
+        "description": "<p>You can summon the assistance of your future champion (see Portfolio Champion) and allow them to show off a brief display of their power. Select one of the following heroic abilities, each of which costs 9 essence to use.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qhNa8pGpVyxdObOH"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.1gAOmN6RR3mpPCmA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Jp3p68JwTNAiLsUB"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.IaVte8boP37MRubS"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "TuDsXEaCOGE0b3BI": {
+        "sort": 2200000,
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "TuDsXEaCOGE0b3BI",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "max": 4
+      },
+      "lujVw7hTbPvs2rBM": {
+        "sort": 2300000,
+        "name": "Level 7 Features",
+        "img": "icons/magic/symbols/ring-circle-smoke-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "lujVw7hTbPvs2rBM",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.SzorRJDyUw7Wp6gY"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.5phy7YJFwhNNy0I3"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "ajGFeqmPYXYAjctK": {
+        "sort": 2400000,
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "ajGFeqmPYXYAjctK",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 1,
+        "skills": {
+          "groups": [],
+          "choices": []
+        }
+      },
+      "ptAUzsbZn3gKYd56": {
+        "sort": 2500000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "ptAUzsbZn3gKYd56",
+        "description": "<p>You gain any one perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "6mfJUZECg0LUwCrB": {
+        "sort": 2600000,
+        "name": "Kit Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "6mfJUZECg0LUwCrB",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DpFcT8Qz2ekoSBFP"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "xwlpOKw9YUfSiFPP": {
+        "sort": 2700000,
+        "name": "New Ward",
+        "img": "icons/magic/defensive/shield-barrier-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "xwlpOKw9YUfSiFPP",
+        "description": "<p>You may choose a new ward for your summoner's kit.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Zd9UX2zuL2fpRh44"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.WReW0HmGtiFCwN1j"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ZTr4xl77Wsm5ZoEe"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.1AcgDv7W1MAViZlF"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "G77ouOv3iV89Jej3": {
+        "sort": 2800000,
+        "name": "Steward of Two Worlds",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "G77ouOv3iV89Jej3",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.j32fFgN0QCWcw8wH"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "UWLHieVT8TC5EJei": {
+        "sort": 2900000,
+        "name": "11-Essence Ability",
+        "img": "icons/magic/symbols/cross-circle-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "UWLHieVT8TC5EJei",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 essence to use.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.0FPo2KsO0J1rhApj"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.NzzLb4acXXv2N7vt"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.knNxGM7E5zeQB6UU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.kmBykCfbj4cFxJFO"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "41tTrm7y4tkVu8WI": {
+        "sort": 3000000,
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "41tTrm7y4tkVu8WI",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "characteristics": {
+          "might": 0,
+          "agility": 0,
+          "reason": 1,
+          "intuition": 0,
+          "presence": 0
+        },
+        "max": 3
+      },
+      "3NuG445xwnjOwvqb": {
+        "sort": 3100000,
+        "name": "Eidos",
+        "img": "icons/magic/symbols/chevron-elipse-circle-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "3NuG445xwnjOwvqb",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Ol3Ucb5Uh9mXXUOo"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "n5oNRdRdf3KzEcjz": {
+        "sort": 3200000,
+        "name": "No Matter the Cost",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "n5oNRdRdf3KzEcjz",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.5ekZqcLufu9qjlIB"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "HnDUBnqq6dEVXeN9": {
+        "sort": 3300000,
+        "name": "Among Our Ranks",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "HnDUBnqq6dEVXeN9",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.QzC2N2P8GY42uXFi"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "PrbJWtL7QqvwubQS": {
+        "sort": 3400000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "PrbJWtL7QqvwubQS",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": null,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "intrigue",
+            "supernatural"
+          ],
+          "cost": null
+        }
+      },
+      "escjlaDu6FwqiCBo": {
+        "sort": 3500000,
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "escjlaDu6FwqiCBo",
+        "description": "",
+        "repick": {},
+        "chooseN": null,
+        "skills": {
+          "groups": [],
+          "choices": []
+        }
+      }
+    },
     "level": 0,
     "primary": "Essence",
     "epic": "Eidos",

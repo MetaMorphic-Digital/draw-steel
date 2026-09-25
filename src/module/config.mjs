@@ -1476,6 +1476,9 @@ const abilityKeywords = {
   area: {
     label: "DRAW_STEEL.Item.ability.Keywords.Area",
   },
+  beastheart: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Beastheart",
+  },
   champion: {
     label: "DRAW_STEEL.Item.ability.Keywords.Champion",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Summoner",
@@ -1486,6 +1489,9 @@ const abilityKeywords = {
   chronopathy: {
     label: "DRAW_STEEL.Item.ability.Keywords.Chronopathy",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
+  },
+  companion: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Companion",
   },
   cryokinesis: {
     label: "DRAW_STEEL.Item.ability.Keywords.Cryokinesis",
@@ -2000,6 +2006,9 @@ export const PowerRollEffect = {
       originDuration: {
         label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originDuration",
       },
+      originRollData: {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originRollData",
+      },
     },
   },
   forced: {
@@ -2067,7 +2076,7 @@ export const Advancement = {
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
-    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
+    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   summon: {
@@ -2123,6 +2132,9 @@ export const MessagePart = {
   },
   project: {
     documentClass: pseudoDocuments.messageParts.ProjectPart,
+  },
+  fall: {
+    documentClass: pseudoDocuments.messageParts.FallPart,
   },
 };
 preLocalize("MessagePart", { key: "label" });

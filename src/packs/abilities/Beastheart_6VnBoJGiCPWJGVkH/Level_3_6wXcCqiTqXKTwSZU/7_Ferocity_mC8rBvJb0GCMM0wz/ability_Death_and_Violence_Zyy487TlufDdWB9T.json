@@ -1,0 +1,173 @@
+{
+  "folder": "mC8rBvJb0GCMM0wz",
+  "name": "Death and Violence",
+  "type": "ability",
+  "_id": "Zyy487TlufDdWB9T",
+  "img": "icons/skills/wounds/injury-pain-body-orange.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "28",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "death-and-violence",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You leap from your foe's corpse.",
+    "keywords": [
+      "beastheart",
+      "magic",
+      "ranged"
+    ],
+    "type": "triggered",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "Your companion uses an ability that reduces the target to 0 Stamina.",
+    "distance": {
+      "type": "ranged",
+      "primary": "10",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "pLmLYasOev47djKd": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "pLmLYasOev47djKd",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} frightened (save ends)",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "VnwwXFXDtpgdPDV5": {
+          "sort": 0,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "VnwwXFXDtpgdPDV5",
+          "damage": {
+            "tier1": {
+              "value": "",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "4",
+              "types": [
+                "psychic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "8",
+              "types": [
+                "psychic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "O9Ki7DvisbpSiNpP": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "O9Ki7DvisbpSiNpP",
+        "description": "<p>The target dies. You teleport to the target's space, shift up to a number of squares equal to your Might score, and can then make a melee free strike. You then make the following power roll, targeting each enemy within 5 squares of the target:</p>",
+        "before": true
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788730636259,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Zyy487TlufDdWB9T"
+}

@@ -201,94 +201,6 @@
   },
   "items": [
     {
-      "name": "Stability",
-      "type": "feature",
-      "_id": "nj0rAFKwCeNCMVTd",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>This creature has Stability equal to your reason.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "stability",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788544746367,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!XcO03bxuOnoLHdjO.nj0rAFKwCeNCMVTd"
-    },
-    {
-      "name": "Poison Immunity",
-      "type": "feature",
-      "_id": "ZnWytNjycSVRh9gn",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>This creature has poison immunity equal to your Reason.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "poison-immunity",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788544746367,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!XcO03bxuOnoLHdjO.ZnWytNjycSVRh9gn"
-    },
-    {
       "name": "Decentralized Segments",
       "type": "feature",
       "_id": "yh5pCT8SZjy3Exxx",
@@ -421,7 +333,142 @@
       "_key": "!actors.items!XcO03bxuOnoLHdjO.PGklpFBbnsOn8WyU"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Stability R",
+      "type": "base",
+      "_id": "4qFzziQncoqQkZ7f",
+      "img": "icons/svg/leg.svg",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.stability",
+            "type": "add",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788692983425,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.4qFzziQncoqQkZ7f",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!XcO03bxuOnoLHdjO.4qFzziQncoqQkZ7f"
+    },
+    {
+      "name": "Poison Immunity R",
+      "type": "base",
+      "_id": "vOJzbGKojiO91a5R",
+      "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.poison",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788693000953,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.vOJzbGKojiO91a5R",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!XcO03bxuOnoLHdjO.vOJzbGKojiO91a5R"
+    }
+  ],
   "ownership": {
     "default": 0
   },

@@ -2,9 +2,12 @@ import { systemID } from "../constants.mjs";
 
 /**
  * @import DrawSteelToken from "../canvas/placeables/token.mjs";
+ * @import { TokenSurfaceOptions, TokenSurfaceResults } from from "../_types.js";
  * @import DrawSteelUser from "./user.mjs";
  * @import { TokenMovementOperation } from "@client/documents/_types.mjs";
- * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs";
+ * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs"
+ * @import import Level from "@client/documents/level.mjs";
+ * @import RegionDocument from "@client/documents/region.mjs";
  */
 
 /**
@@ -107,6 +110,93 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
 
   /* -------------------------------------------------- */
 
+  /**
+   * Find the supporting surface this token rests on or would fall onto, and the level it comes to rest on. A scene that
+   * defines any movement surface uses those surfaces as its only floors. As a heuristic to accommodate older scenes
+   * without levels or surfaces, the base of each level is considered a floor in scenes with no surfaces.
+   * @param {Partial <TokenSurfaceOptions>} [options] Options to modify the processing of the surfaces.
+   * @param {TokenCoordinates} [options.position]  The position to evaluate against. Defaults to the token's source
+   *                                               position.
+   * @returns {TokenSurfaceResults}  An Object that holds the relevant details of where 
+   *                                                                                   in the scene (including layers) the nearest surface
+   *                                                                                   is.
+   * @internal
+   */
+  _findSupportingSurface({ position = this._source } = {}) {
+    const scene = this.parent;
+    if (!scene) return null;
+    const { elevation, level } = position;
+
+    // Walk surfaces from highest to lowest and return the first whose footprint contains the required share of the
+    // token. Scene#getSurfaces already orders surfaces by elevation.
+    if (scene.getSurfaces({ type: "move" }).length) {
+      const surfaces = scene.getSurfaces({ level, type: "move" });
+      if (!surfaces.length) return null;
+      const points = this.getContainmentTestPoints(position);
+      const required = Math.ceil(points.length * .75);
+      const allowedMisses = points.length - required;
+
+      for (let i = surfaces.length; i--;) {
+        const surface = surfaces[i];
+        if (surface.elevation > elevation) continue;
+        let inside = 0;
+        let missed = 0;
+        for (const p of points) {
+          if (surface.region.polygonTree.testPoint(p)) {
+            if (++inside >= required) return {
+              elevation: surface.elevation,
+              level: this.#findRestingLevel(surface.region, surface.elevation, level),
+              region: surface.region,
+            };
+          } else if (++missed > allowedMisses) {
+            break;
+          }
+        }
+      }
+      return null;
+    }
+
+    // With no surfaces defined, the base of every level is an implied floor. The supporting surface is the highest
+    // level base at or below the token.
+    let floorLevel = null;
+    for (const l of scene.levels) {
+      if (l.elevation.base > elevation) continue;
+      if (!floorLevel || (l.elevation.base > floorLevel.elevation.base)) floorLevel = l;
+    }
+    if (!floorLevel) return null;
+    return { elevation: floorLevel.elevation.base, level: floorLevel, region: null };
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Resolve the level a token comes to rest on when landing on a surface region at a given elevation. Checks every
+   * level the surface region belongs to. The result is the single candidate whose elevation range is home to the
+   * landing elevation, or the current level when there is no unambiguous home.
+   * @param {RegionDocument} region  The landed surface's region.
+   * @param {number} elevation       The landing elevation.
+   * @param {string} levelId         The token's current level ID.
+   * @returns {Level|null}           The level the token rests on.
+   */
+  #findRestingLevel(region, elevation, levelId) {
+    const scene = this.parent;
+    const current = scene.levels.get(levelId) ?? null;
+    const candidates = region.levels.size
+      ? Array.from(region.levels, id => scene.levels.get(id))
+      : scene.levels.contents;
+    let home = null;
+    for (const level of candidates) {
+      if (!level) continue;
+      if ((elevation >= level.elevation.bottom) && (elevation < level.elevation.top)) {
+        if (home) return current; // Ambiguous: more than one candidate level is home to this elevation.
+        home = level;
+      }
+    }
+    return home ?? current;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _onRelatedUpdate(update = {}, operation = {}) {
     if (game.user.isActiveGM) this.combatant?.group?.system.refreshCaptainEffect?.();
@@ -167,6 +257,11 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
       },
       minionStamina: {
         value: true,
+      },
+      staminaIncrement: {
+        get: () => {
+          return this.actor.system.stamina.max;
+        },
       },
     });
 

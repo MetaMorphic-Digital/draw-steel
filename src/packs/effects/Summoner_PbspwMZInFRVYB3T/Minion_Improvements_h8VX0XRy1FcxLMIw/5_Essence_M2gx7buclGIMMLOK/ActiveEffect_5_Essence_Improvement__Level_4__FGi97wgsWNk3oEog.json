@@ -1,0 +1,95 @@
+{
+  "folder": "M2gx7buclGIMMLOK",
+  "name": "5-Essence Improvement (Level 4)",
+  "type": "base",
+  "_id": "FGi97wgsWNk3oEog",
+  "img": "icons/magic/life/cross-area-circle-green-white.webp",
+  "system": {
+    "changes": [
+      {
+        "key": "system.stamina.max",
+        "type": "add",
+        "value": 2,
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.characteristics.might.resist",
+        "type": "add",
+        "value": 1,
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.characteristics.intuition.resist",
+        "type": "add",
+        "value": 1,
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.characteristics.intuition.resist",
+        "type": "add",
+        "value": 1,
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.characteristics.agility.resist",
+        "type": "add",
+        "value": 1,
+        "phase": "initial",
+        "priority": null
+      },
+      {
+        "key": "system.characteristics.presence.resist",
+        "type": "add",
+        "value": 1,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "",
+      "source": "",
+      "rollCharacteristic": [],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": null
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788648330140,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!FGi97wgsWNk3oEog"
+}

@@ -108,7 +108,7 @@ export default class CreatureModel extends BaseActorModel {
     const chr = this.characteristics[characteristic];
 
     const testConfig = ds.CONST.testOutcomes[config.difficulty];
-    const baseFormula = chr.dice.number > 2 ? `${chr.dice.number}d10${chr.dice.mode}2` : "2d10";
+    const baseFormula = PowerRoll.baseDiceFormula(chr.dice);
     const formula = `${baseFormula} + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const rollData = this.parent.getRollData();
     const modifiers = {

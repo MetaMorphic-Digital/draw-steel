@@ -201,98 +201,6 @@
   },
   "items": [
     {
-      "name": "Stability",
-      "type": "feature",
-      "_id": "nj0rAFKwCeNCMVTd",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>This creature has Stability equal to your reason.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "stability",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788475737535,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.world.summoner-minions.Actor.lsWE4HI1WhRRBzB5.Item.nj0rAFKwCeNCMVTd",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!fq1qoPXQFFwLJySG.nj0rAFKwCeNCMVTd"
-    },
-    {
-      "name": "Corruption and Poison Immunity",
-      "type": "feature",
-      "_id": "kuNWYyPGX0sZfwTy",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>This creature has corruption immunity and poison immunity equal to your Reason.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "corruption-immunity-and-free-strike",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {
-        "draw-steel-plus": {
-          "favorite": false
-        }
-      },
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788475737535,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": "Compendium.world.summoner-minions.Actor.lsWE4HI1WhRRBzB5.Item.kuNWYyPGX0sZfwTy",
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!fq1qoPXQFFwLJySG.kuNWYyPGX0sZfwTy"
-    },
-    {
       "name": "Encroaching Strike",
       "type": "feature",
       "_id": "9dbzw3MaelXMaBmF",
@@ -381,7 +289,209 @@
       "_key": "!actors.items!fq1qoPXQFFwLJySG.l1OkAUgVdOVsrSHt"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Poison Immunity R",
+      "type": "base",
+      "_id": "vOJzbGKojiO91a5R",
+      "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.poison",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713152439,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.vOJzbGKojiO91a5R",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!fq1qoPXQFFwLJySG.vOJzbGKojiO91a5R"
+    },
+    {
+      "name": "Corruption Immunity R",
+      "type": "base",
+      "_id": "PUjqN6PbQAc22D5b",
+      "img": "icons/magic/unholy/barrier-fire-pink.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.corruption",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713163727,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.PUjqN6PbQAc22D5b",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!fq1qoPXQFFwLJySG.PUjqN6PbQAc22D5b"
+    },
+    {
+      "name": "Stability R",
+      "type": "base",
+      "_id": "4qFzziQncoqQkZ7f",
+      "img": "icons/svg/leg.svg",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.stability",
+            "type": "add",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713167928,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.4qFzziQncoqQkZ7f",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!fq1qoPXQFFwLJySG.4qFzziQncoqQkZ7f"
+    }
+  ],
   "sort": 150000,
   "ownership": {
     "default": 0

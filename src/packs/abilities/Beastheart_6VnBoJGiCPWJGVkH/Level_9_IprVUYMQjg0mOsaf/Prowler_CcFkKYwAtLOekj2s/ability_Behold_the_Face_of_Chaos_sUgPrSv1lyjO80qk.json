@@ -1,0 +1,177 @@
+{
+  "folder": "CcFkKYwAtLOekj2s",
+  "name": "Behold the Face of Chaos",
+  "type": "ability",
+  "_id": "sUgPrSv1lyjO80qk",
+  "img": "icons/creatures/magical/spirit-poison-smoke-green.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "35",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "behold-the-face-of-chaos",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion appears next to their victim in the guise of a heart-stopping nightmare.",
+    "keywords": [
+      "charge",
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "rgZkq9xBO06L1hf9": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "rgZkq9xBO06L1hf9",
+          "damage": {
+            "tier1": {
+              "value": "13 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "20 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "27 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "LXAOHYzR87RcRnrW": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "LXAOHYzR87RcRnrW",
+          "applied": {
+            "tier1": {
+              "display": "{{potencty}} frightened (save ends)",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "aK9t8yQZWVTkXkt3": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "aK9t8yQZWVTkXkt3",
+        "description": "<p>Your companion teleports up to their speed.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788884117917,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!sUgPrSv1lyjO80qk"
+}

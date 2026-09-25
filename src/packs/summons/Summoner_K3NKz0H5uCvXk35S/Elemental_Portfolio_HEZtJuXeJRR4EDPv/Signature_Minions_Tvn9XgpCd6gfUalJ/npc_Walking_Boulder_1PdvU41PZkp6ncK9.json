@@ -286,53 +286,76 @@
         "exportSource": null
       },
       "_key": "!actors.items!1PdvU41PZkp6ncK9.hkI3IXgEaIT1wFuv"
-    },
+    }
+  ],
+  "effects": [
     {
-      "name": "Stablility",
-      "type": "feature",
-      "_id": "8oo6AlyM0ttBnMuy",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "name": "Stability R",
+      "img": "icons/magic/earth/strike-fist-stone.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.summons.Actor.1PdvU41PZkp6ncK9",
+      "_id": "n3YhNiFDcvOjpJXu",
       "system": {
-        "description": {
-          "value": "<p>The [[lookup @name]] has stability equal to your reason.</p>",
-          "director": ""
+        "changes": [
+          {
+            "key": "system.combat.stability",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
         },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
         }
       },
-      "effects": [],
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
       "folder": null,
       "sort": 0,
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1787755857160,
+        "createdTime": 1788692007720,
         "modifiedTime": null,
         "lastModifiedBy": null,
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!1PdvU41PZkp6ncK9.8oo6AlyM0ttBnMuy"
+      "_key": "!actors.effects!1PdvU41PZkp6ncK9.n3YhNiFDcvOjpJXu"
     }
   ],
-  "effects": [],
   "sort": 100000,
   "ownership": {
     "default": 0
