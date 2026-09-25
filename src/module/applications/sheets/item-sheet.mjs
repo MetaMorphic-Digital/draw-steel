@@ -130,7 +130,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     // Don't re-render the description tab if there's an active editor
     if (!this.#editor && itemModel.schema.has("description")) parts.description = description;
-    if (this.item.limited) return;
+    if (this.item.limited) return parts;
     if (this.item.system.constructor.metadata.detailsPartial) parts.details = details;
     if ("Advancement" in itemModel.metadata.embedded) parts.advancement = advancement;
     if ("PowerRollEffect" in itemModel.metadata.embedded) parts.impact = impact;
