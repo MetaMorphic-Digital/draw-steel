@@ -1,6 +1,7 @@
 import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
 import MembersCollection from "../../utils/members-collection.mjs";
+import { PowerRollDice } from "../_types";
 import { PowerRollModifiers } from "../../_types";
 
 interface BarAttribute {
@@ -18,10 +19,7 @@ interface Characteristic {
   value: number;
   edges: number;
   banes: number;
-  dice: {
-    mode: "kh" | "kl";
-    number: number;
-  }
+  dice: PowerRollDice;
 }
 
 interface CoreResource {

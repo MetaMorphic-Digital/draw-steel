@@ -201,50 +201,6 @@
   },
   "items": [
     {
-      "name": "Corruption and Fire Immunity and Fire Free Strikes",
-      "type": "feature",
-      "_id": "ZnWytNjycSVRh9gn",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>This creature has corruption and fire immunity equal to your Reason. You may choose for their free strikes to deal fire damage.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": ""
-        },
-        "_dsid": "poison-immunity",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.367",
-        "systemId": "draw-steel",
-        "systemVersion": "1.2",
-        "createdTime": 1788544750188,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0,
-        "bULgfeSVOL2yapd0": 3
-      },
-      "folder": null,
-      "sort": 0,
-      "_key": "!actors.items!fygq1fYqZmgg3uCx.ZnWytNjycSVRh9gn"
-    },
-    {
       "name": "Radiant Field (2 essence)",
       "type": "feature",
       "_id": "HbCv2LgGrmL94wZl",
@@ -527,7 +483,142 @@
       "_key": "!actors.items!fygq1fYqZmgg3uCx.EOCrhovfldyiww3H"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Corruption Immunity R",
+      "type": "base",
+      "_id": "PUjqN6PbQAc22D5b",
+      "img": "icons/magic/unholy/barrier-fire-pink.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.corruption",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713204560,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.PUjqN6PbQAc22D5b",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!fygq1fYqZmgg3uCx.PUjqN6PbQAc22D5b"
+    },
+    {
+      "name": "Fire Immunity R",
+      "type": "base",
+      "_id": "TSdkgosSfFG6tBI1",
+      "img": "icons/magic/fire/flame-burning-campfire-orange.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.fire",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713206169,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.TSdkgosSfFG6tBI1",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!fygq1fYqZmgg3uCx.TSdkgosSfFG6tBI1"
+    }
+  ],
   "ownership": {
     "default": 0
   },

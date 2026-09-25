@@ -1,0 +1,88 @@
+{
+  "folder": "LZpOSAPJdYKzjLfO",
+  "name": "This One's Yours",
+  "type": "ability",
+  "_id": "zzdJf0OL12BN8ZoA",
+  "img": "icons/magic/air/air-smoke-casting.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "26",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "this-ones-yours",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "When someone is pushed into you, you reach out to steady an ally or send a foe careening off in another direction.",
+    "keywords": [],
+    "type": "freeTriggered",
+    "category": "",
+    "resource": null,
+    "trigger": "A creature force moved by another creature enters a space adjacent to you.",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "yApqdzSgvLYyD4n4": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "yApqdzSgvLYyD4n4",
+        "description": "<p>You end the forced movement. You can then push the creature up to a number of squares equal to [[lookup 1+@M evaluate]]{1 + your Might score}. The creature takes [[/damage 1+@scaling scaling]]{1 damage} for each square they are force moved this way.</p>",
+        "before": false
+      },
+      "8KBvOF2vsJUzaUJd": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "8KBvOF2vsJUzaUJd",
+        "description": "<p>You and your companions can each use this free triggered action on the same turn.</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788652345508,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!zzdJf0OL12BN8ZoA"
+}

@@ -99,6 +99,7 @@ export default class ObjectSizesInput extends DocumentInput {
     // Prepare base shape context for emanations
     if (shape.type === "emanation") {
       shapeContext.baseContext = {
+        name: shapeContext.name + ".base",
         rootId: shapeContext.rootId,
         shape: shape.base,
         fields: shapeContext.fields.base.types[shape.base.type].fields,

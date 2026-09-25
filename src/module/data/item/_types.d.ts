@@ -1,13 +1,13 @@
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 import { BaseSpecialEffect, SpendSpecialEffect } from "../pseudo-documents/special-effect/_module.mjs";
 import { CharacteristicAdvancement, EffectGrantAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import { PowerRollDice, SubtypeMetadata } from "../_types.js";
 import { DocumentHTMLEmbedConfig } from "@client/applications/ux/text-editor.mjs";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import { PowerRollModifiers } from "../../_types.js";
 import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs";
 import SourceModel from "../models/source.mjs";
-import { SubtypeMetadata } from "../_types.js";
 
 export type ItemMetaData = Readonly<SubtypeMetadata & {
   /** Actor types that this item cannot be placed on. */
@@ -105,11 +105,14 @@ declare module "./ability.mjs" {
       roll: {
         characteristics: Set<string>;
         reactive: boolean;
+        criticalThreshold: number;
         formula: string;
         /** Non-persisted. */
         banes: number;
         /** Non-persisted. */
         edges: number;
+        /** Non-persisted. */
+        dice: PowerRollDice;
         /** Non-persisted, determined if there are power roll effects and it is not reactive. */
         enabled: boolean;
       }

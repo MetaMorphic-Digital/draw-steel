@@ -1,0 +1,92 @@
+{
+  "folder": "SSbEvHOyBDUATM0r",
+  "name": "Avalanche Rush",
+  "type": "ability",
+  "_id": "kbNYX4QsrpLPClw0",
+  "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "22",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "avalanche-rush",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "You ride a cascade of ice over your foes.",
+    "keywords": [
+      "beastheart",
+      "melee",
+      "weapon"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "GuCwZ55i4yjhKd1j": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "GuCwZ55i4yjhKd1j",
+        "description": "<p>The target takes damage equal to [[/damage 3+@M]]{3 + your Might score}, and if they have [[potency M AVERAGE]], they are knocked [[/apply prone]].</p><p>You can move up to 3 squares before and after you use this ability. During this movement, a prone enemy's space doesn't count as difficult terrain, and the first time you enter a prone enemy's space, that enemy takes [[/damage @M cold]] damage..</p>",
+        "before": false
+      },
+      "8ouxtbJ3GK4Y0Jqo": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "spend",
+        "_id": "8ouxtbJ3GK4Y0Jqo",
+        "description": "<p>If the target has [[potency M STRONG]], they are knocked [[/apply prone]].</p>",
+        "before": false,
+        "resource": {
+          "value": 1,
+          "multiple": false
+        }
+      }
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788355316975,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!kbNYX4QsrpLPClw0"
+}

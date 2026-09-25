@@ -1,0 +1,103 @@
+{
+  "folder": "TYtM3Jvu0SwAYKx1",
+  "name": "Heart of Stone",
+  "type": "feature",
+  "_id": "OUJzj2ssVAYh6Ozt",
+  "img": "icons/commodities/biological/shell-ribbed-grey.webp",
+  "system": {
+    "description": {
+      "value": "<p>While the basilisk is rampaging, you and the basilisk have damage immunity 10 as you become nearly impervious living statues.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "5",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "heart-of-stone",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Heart of Stone",
+      "img": "icons/commodities/biological/shell-ribbed-grey.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.OUJzj2ssVAYh6Ozt",
+      "_id": "A5kQ6fQSE7kINHCX",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.all",
+            "type": "upgrade",
+            "value": 10,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788955412668,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!OUJzj2ssVAYh6Ozt.A5kQ6fQSE7kINHCX"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788955372371,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!OUJzj2ssVAYh6Ozt"
+}

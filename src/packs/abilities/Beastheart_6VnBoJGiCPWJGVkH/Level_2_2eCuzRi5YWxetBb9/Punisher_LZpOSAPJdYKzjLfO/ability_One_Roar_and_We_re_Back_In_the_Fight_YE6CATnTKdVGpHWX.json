@@ -1,0 +1,77 @@
+{
+  "folder": "LZpOSAPJdYKzjLfO",
+  "name": "One Roar and We're Back In the Fight",
+  "type": "ability",
+  "_id": "YE6CATnTKdVGpHWX",
+  "img": "icons/magic/sonic/projectile-sound-rings-wave.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "27",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "one-roar-and-were-back-in-the-fight",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion builds up courage with a roar, growl, or aggressive display.",
+    "keywords": [
+      "companion"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "FTSXOIe5jn34qGqt": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "FTSXOIe5jn34qGqt",
+        "description": "<p>Your companion and the target can each [[/gain 2 surge]], spend up to 2 Recoveries, and end one condition or effect on them that is ended by a saving throw or that ends at the end of their turn.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788651534232,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!YE6CATnTKdVGpHWX"
+}

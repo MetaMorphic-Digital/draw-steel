@@ -1,0 +1,236 @@
+{
+  "folder": "5RZq8kMsUYHbLjTy",
+  "name": "Rampant Shield",
+  "type": "treasure",
+  "_id": "SG9CT1X44b6t80Hn",
+  "img": "icons/equipment/shield/heater-steel-boss-red.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This battered shield bears a magically animated painting of a lion rampant.</em></p><p><strong>1st Level:</strong> Only a beastheart can wield or carry this shield. You gain a +3 bonus to Stamina and the painting on the shield changes to resemble your companion. Additionally, your companion can see as if they were in your space as well as their own, and whenever your companion uses an ability, they can do so as if they were in either your space or their own.</p><p><strong>5th Level:</strong> The shield's bonus to Stamina increases to +6. Additionally, your companion can use 2 squares of movement to teleport from their current location and leap out of the shield, landing in a space adjacent to you.</p><p><strong>9th Level:</strong> The shield's bonus to Stamina increases to +9. Additionally, the shield can make opportunity attacks as if it was your companion.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "39",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rampant-shield",
+    "kind": "armor",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "shield"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "Strands from the manes of nine lions",
+      "source": "Texts or lore in Vaslorian",
+      "rollCharacteristic": [
+        "might",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "Rampant Shield (1st Level)",
+      "img": "icons/equipment/shield/heater-steel-boss-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.SG9CT1X44b6t80Hn",
+      "disabled": true,
+      "_id": "xZOc4sKgb2wbhRI0",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789748826739,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!SG9CT1X44b6t80Hn.xZOc4sKgb2wbhRI0"
+    },
+    {
+      "name": "Rampant Shield (5th Level)",
+      "img": "icons/equipment/shield/heater-steel-boss-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.SG9CT1X44b6t80Hn",
+      "disabled": true,
+      "_id": "LJ4B142CLqqKBhyW",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 6,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789748835526,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!SG9CT1X44b6t80Hn.LJ4B142CLqqKBhyW"
+    },
+    {
+      "name": "Rampant Shield (9th Level)",
+      "img": "icons/equipment/shield/heater-steel-boss-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.SG9CT1X44b6t80Hn",
+      "disabled": true,
+      "_id": "o7iv5BurX21GBl2d",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 9,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789748842327,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!SG9CT1X44b6t80Hn.o7iv5BurX21GBl2d"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789748548473,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!SG9CT1X44b6t80Hn"
+}

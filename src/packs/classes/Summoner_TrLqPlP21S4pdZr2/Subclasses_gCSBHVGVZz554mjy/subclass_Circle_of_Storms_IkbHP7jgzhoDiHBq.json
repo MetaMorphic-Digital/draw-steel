@@ -15,8 +15,394 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "circle-of-storms",
-    "advancements": {},
-    "classLink": ""
+    "advancements": {
+      "sg3PmOPSYlM5oWor": {
+        "sort": 100000,
+        "name": "Signature Minions",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
+        "type": "summon",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "sg3PmOPSYlM5oWor",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": null,
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.Y1xTXOD8UMEbJZy5",
+            "count": 2
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.EeVovMjZYLoP81TO",
+            "count": 2
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.1PdvU41PZkp6ncK9",
+            "count": 2
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
+            "level": 1
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.sBMHJN3bQEYNdckH",
+            "level": 4
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.1NWArkqmbTzJQ1CU",
+            "level": 7
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.nsltKGOKHai03PF5",
+            "level": 10
+          }
+        ],
+        "dsid": "call-forth"
+      },
+      "4yxdY9VXGX9QSYIl": {
+        "sort": 0,
+        "name": "Elemental Mote",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
+        "type": "summon",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "4yxdY9VXGX9QSYIl",
+        "description": "<p>You gain the elemental mote and can choose one of the following signature minions.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "cost": null,
+        "chooseN": 2,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.gzc30BZqMsL6TOMe",
+            "count": 2
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
+            "level": 1
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.sBMHJN3bQEYNdckH",
+            "level": 4
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.1NWArkqmbTzJQ1CU",
+            "level": 7
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.nsltKGOKHai03PF5",
+            "level": 10
+          }
+        ],
+        "dsid": "call-forth"
+      },
+      "2mO2Musd2yqDq7r1": {
+        "sort": 200000,
+        "name": "3-Essence Minions",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
+        "type": "summon",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "2mO2Musd2yqDq7r1",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 3,
+        "chooseN": 2,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.O59jDUqKb4BsPwFm",
+            "count": 2
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.dRlRL9BBfv0IHnbk",
+            "count": 2
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.FfYa6Xr5IzvDkS0n",
+            "count": 2
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
+            "level": 1
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.8YMI92X6lmJqk7Fa",
+            "level": 4
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.crCPIhQ7xX3jmKYq",
+            "level": 7
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.gQclAB0Z0od5C7Mg",
+            "level": 10
+          }
+        ],
+        "dsid": "call-forth"
+      },
+      "Yjv49LbSFyvuuucH": {
+        "sort": 300000,
+        "name": "Circle Features",
+        "img": "icons/magic/lightning/projectile-orb-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Yjv49LbSFyvuuucH",
+        "description": "<p>Your circle grants you features</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.isQ1maSZjrX3r50h"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.QhlmpOp9XKcgNvCV"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "KEHrrU1psB0zvtme": {
+        "sort": 400000,
+        "name": "Summoner's Dominion",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "KEHrrU1psB0zvtme",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.b18SPv6xoCkQ8B69"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "zBm4RVAGRm1Wpraz": {
+        "sort": 500000,
+        "name": "5-Essence Minion",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
+        "type": "summon",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "zBm4RVAGRm1Wpraz",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 5,
+        "chooseN": 2,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.52jRwKT2LL1myjwo",
+            "count": 3
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.fq1qoPXQFFwLJySG",
+            "count": 3
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.DIb8mMhLPpeKu3do",
+            "count": 3
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
+            "level": 1
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.FGi97wgsWNk3oEog",
+            "level": 4
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.nGaIhaXqopd9syGV",
+            "level": 7
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.JWnQCEV6XqYmFw42",
+            "level": 10
+          }
+        ],
+        "dsid": "call-forth"
+      },
+      "f4skEm9qHumMFvbx": {
+        "sort": 600000,
+        "name": "Circle Features",
+        "img": "icons/magic/lightning/projectile-orb-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "f4skEm9qHumMFvbx",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.QItrCBwuQaIg2L7k"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.hjzQ0X74fU1S3wyZ"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "sT5Pj50mDkevLdaV": {
+        "sort": 700000,
+        "name": "7-Essence Minion",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
+        "type": "summon",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "sT5Pj50mDkevLdaV",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 7,
+        "chooseN": 2,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.XcO03bxuOnoLHdjO",
+            "count": 3
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.djoiRR1iQ8UQk0lP",
+            "count": 2
+          },
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.fygq1fYqZmgg3uCx",
+            "count": 2
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
+            "level": 1
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.rJOjiwSmp9kHRHbV",
+            "level": 7
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.fAUtKQ7Zx9dsH54Y",
+            "level": 10
+          }
+        ],
+        "dsid": "call-forth"
+      },
+      "3fc3Pl6admIBm2ie": {
+        "sort": 800000,
+        "name": "Return to the Source",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "3fc3Pl6admIBm2ie",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.k4wWB8OMKPt6ImgP"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "78uVIpi3ygG9T4eq": {
+        "sort": 900000,
+        "name": "Circle Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "78uVIpi3ygG9T4eq",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.rNIrik48lNmIB2JG"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "Q25YOyF4e8wJRq6w": {
+        "sort": 1000000,
+        "name": "Portfolio Champion",
+        "img": "systems/draw-steel/assets/roles/leader.webp",
+        "type": "summon",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "Q25YOyF4e8wJRq6w",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 9,
+        "chooseN": 2,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.yIbLdycFNPaIdj86",
+            "count": 1
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
+            "level": 1
+          }
+        ],
+        "dsid": "call-forth"
+      }
+    },
+    "classLink": "summoner"
   },
   "effects": [],
   "ownership": {

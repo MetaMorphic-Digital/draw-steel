@@ -478,53 +478,144 @@
         "exportSource": null
       },
       "_key": "!actors.items!DIb8mMhLPpeKu3do.JyIPC56JZOSVkauH"
-    },
+    }
+  ],
+  "effects": [
     {
-      "name": "Sonic & Cold Immunity",
-      "type": "feature",
-      "_id": "vEs4rmDLiahHhvME",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "name": "Sonic Immunity R",
+      "type": "base",
+      "_id": "GILF44OKhvVltRHb",
+      "img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
       "system": {
-        "description": {
-          "value": "<p>The Quiet of Snow has Sonic and Cold Immunity Equal to the summoner's Reason</p>",
-          "director": ""
+        "changes": [
+          {
+            "key": "system.damage.immunities.sonic",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
         },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "",
-        "advancements": {},
-        "prerequisites": {
-          "value": "",
-          "dsid": [],
-          "level": null
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
         }
       },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "H3JTtZ7ZHtjM7TW8": 3
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
       },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
       "flags": {},
       "_stats": {
         "coreVersion": "14.367",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
-        "createdTime": 1788476110332,
+        "createdTime": 1788713135223,
         "modifiedTime": null,
         "lastModifiedBy": null,
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.GILF44OKhvVltRHb",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!DIb8mMhLPpeKu3do.vEs4rmDLiahHhvME"
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!DIb8mMhLPpeKu3do.GILF44OKhvVltRHb"
+    },
+    {
+      "name": "Cold Immunity R",
+      "type": "base",
+      "_id": "G8bqdOyGiThIDB8X",
+      "img": "icons/magic/water/barrier-ice-crystal-wall-faceted-light.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.cold",
+            "type": "override",
+            "value": "@flags.draw-steel.summoner",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "round": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788713136519,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.G8bqdOyGiThIDB8X",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.effects!DIb8mMhLPpeKu3do.G8bqdOyGiThIDB8X"
     }
   ],
-  "effects": [],
   "sort": 200000,
   "ownership": {
     "default": 0
