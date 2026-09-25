@@ -38,7 +38,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
    * Convert roll data properties in change data.
    * @param {EffectChangeData[]} [changes]    Effect change data in json-serializable format.
    * @param {object} [replacementData]        The target of the effect to be applied.
-   * @returns {Promise<EffectChangeData[]>}      A promise that resolves to the modified change data.
+   * @returns {Promise<EffectChangeData[]>}   A promise that resolves to the modified change data.
    */
   static async forApplication(changes = [], replacementData = {}) {
     const changeUpdates = foundry.utils.deepClone(changes);
