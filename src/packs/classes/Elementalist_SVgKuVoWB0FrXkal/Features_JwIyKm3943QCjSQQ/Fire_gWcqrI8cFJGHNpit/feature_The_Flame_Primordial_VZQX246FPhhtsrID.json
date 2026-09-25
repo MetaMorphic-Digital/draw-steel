@@ -34,7 +34,15 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": [],
+        "changes": [
+          {
+            "key": "system.damage.weaknesses.fire",
+            "type": "upgrade",
+            "value": "@R",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
         "project": {
           "prerequisites": "",
           "source": "",
@@ -62,9 +70,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.368",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "createdTime": 1761513381274,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -85,7 +93,15 @@
         "end": {
           "roll": "1d10 + @combat.save.bonus"
         },
-        "changes": [],
+        "changes": [
+          {
+            "key": "system.damage.weaknesses.fire",
+            "type": "upgrade",
+            "value": "2*@R",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
         "project": {
           "prerequisites": "",
           "source": "",
@@ -113,9 +129,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.368",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "createdTime": 1761513578872,
         "modifiedTime": null,
         "lastModifiedBy": null
