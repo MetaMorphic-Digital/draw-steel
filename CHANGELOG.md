@@ -41,6 +41,7 @@ Increased foundry minimum to 14.368.
 - Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
 - Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
+- Added data path (`power.roll.critical`) to handle the critical threshold for abilities. (#1899)
 - Adding automation for falling that works with v14 levels and surfaces. (#1930)
 - Added support for Companions as a new actor type. (#2011)
 - Added support for Blessing of Fate and Destiny to adjust the number of dice rolled. (#2039)
@@ -52,6 +53,7 @@ Increased foundry minimum to 14.368.
 
 - Significant overhaul of application styles across the system.
 - Updated Player-Facing Compendium Content:
+  - Added enrichers to "To the Uttermost End" leveraging the new spend data. (#2049)
 - Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
 - Major updates to roll presentation. (#1628)
   - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display
@@ -71,6 +73,7 @@ Increased foundry minimum to 14.368.
   - Fixed enricher on Exploding Arrow. (#2053)
   - Added fire type to Viscous Fire. (#2061)
   - Fixed name of Wode Elf Arrowswift (Sorry Illwyth!). (#2084)
+  - Fixed several miscategorized abilities. (#2175)
 - Updated Director-Facing Compendium Content:
   - Fixed description for Fossil Cryptic Villain Action 2. (#2043)
   - Fixed With Captain effect on Decrepit Skeleton. (#2051)
