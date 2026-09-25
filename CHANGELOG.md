@@ -33,6 +33,7 @@ Increased foundry minimum to 14.368.
 - Implemented summoning as a new type of special effect. (#583)
   - Added new Companions and Summons advancement type to integrate with summoning. (#584)
   - Added new Summoning and Portfolio Summoning special effects. (#2021)
+- The "Origin Roll Data" property on apply effect enrichers and applied effect power roll effects will use the effect source's roll data to parse change values before application, allowing effects like Smolder to properly key off of the talent's Reason. (#680)
 - Added a new Minion Sheet. You can switch to this for any NPC but it is optimized for minions. (#585)
   - You can manually set the damage type of a free strike from this sheet (only necessary if there's not a signature attack). (#2093)
 - Edges from high ground are automatically added. (#604)
@@ -45,6 +46,7 @@ Increased foundry minimum to 14.368.
 - Added support for Blessing of Fate and Destiny to adjust the number of dice rolled. (#2039)
 - Spend amounts are now available as roll data in spend special effects. (#2060)
 - Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
+- Right clicking the Update Source button in the header of an item sheet will copy the item's DSID to your clipboard. (#2141)
 
 ### Changed
 
@@ -77,6 +79,7 @@ Increased foundry minimum to 14.368.
   - Added Staying Power malice feature to Human Bandit Chief & Scoundrel. (#2112)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 - Deleting an entry from a configuration page now works correctly. (#2042)
+- Cleaned up duplicate scrolling text when using the apply effect enricher.
 - Fixed saving throw rolls not properly being contained in a saving throw message part.
 
 ## 1.1.2

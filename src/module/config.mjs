@@ -2006,6 +2006,9 @@ export const PowerRollEffect = {
       originDuration: {
         label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originDuration",
       },
+      originRollData: {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originRollData",
+      },
     },
   },
   forced: {
@@ -2073,7 +2076,7 @@ export const Advancement = {
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
-    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
+    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   summon: {

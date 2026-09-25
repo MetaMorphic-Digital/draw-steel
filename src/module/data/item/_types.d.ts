@@ -105,6 +105,7 @@ declare module "./ability.mjs" {
       roll: {
         characteristics: Set<string>;
         reactive: boolean;
+        criticalThreshold: number;
         formula: string;
         /** Non-persisted. */
         banes: number;
