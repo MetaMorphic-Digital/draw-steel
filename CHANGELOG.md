@@ -39,6 +39,7 @@ Increased foundry minimum to 14.367.
 - Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
 - Added support for Companions as a new actor type. (#2011)
 - Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
+- Right clicking the Update Source button in the header of an item sheet will copy the item's DSID to your clipboard. (#2141)
 
 ### Changed
 
