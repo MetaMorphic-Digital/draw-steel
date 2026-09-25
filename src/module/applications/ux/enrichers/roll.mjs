@@ -5,6 +5,7 @@ import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 
 /**
  * @import { ParsedConfig } from "../helpers.mjs";
+ * @import { GainResource } from "./_types";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  */
@@ -24,10 +25,7 @@ export const id = "ds.roll";
 /**
  * Resource name to localization key and attribute path mappings for gain enricher.
  * Maps resource type identifiers to their i18n localization keys and actor attribute paths.
- *
- * @typedef {string} label - The full i18n path used to label the resource
- * @typedef {string} resource - The full path, relative to the actor, used to update the resource
- * @typedef {string} resourceFormatString - Final key in the i18n path used for localization, relative to DRAW_STEEL.EDITOR.Enrichers.Gain.{MessageTitle|FormatString} (Default: "Default")
+ * @type {Record<string, GainResource>}
  */
 const GAIN_RESOURCE_LOOKUP = {
   epic: {
