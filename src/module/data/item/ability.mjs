@@ -859,9 +859,9 @@ export default class AbilityModel extends BaseItemModel {
     /** @type {DrawSteelTokenDocument} */
     const tokenInfo = this.actor.token ?? this.actor.getActiveTokens(true, true)[0];
 
-    const { type, ...shapeProperties } = ds.CONFIG.abilities.distances[this.distance.type].area;
+    const { type, count, ...shapeProperties } = ds.CONFIG.abilities.distances[this.distance.type].area;
 
-    const shapeCount = typeof this.distance.count === "string" ? this.distance.count : 1;
+    const shapeCount = typeof count === "string" ? this.distance[count] : 1;
 
     const shapes = Array.fromRange(shapeCount).map(() => {
       const shapeData = { type, gridBased: true, x: 0, y: 0 };

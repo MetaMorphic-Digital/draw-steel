@@ -1756,6 +1756,7 @@ const abilityDistances = {
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
       type: "rectangle",
+      count: "count",
       width: "primary",
       height: "primary",
     },
@@ -1772,6 +1773,7 @@ const abilityDistances = {
     tertiary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
       type: "line",
+      count: "count",
       length: "primary",
       width: "secondary",
     },
