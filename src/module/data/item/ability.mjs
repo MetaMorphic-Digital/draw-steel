@@ -71,6 +71,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.trigger = new fields.StringField({ required: true });
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
+      count: new FormulaField({ deterministic: true, initial: "1" }),
       primary: new FormulaField({ deterministic: true, initial: "1" }),
       secondary: new FormulaField({ deterministic: true, initial: "1" }),
       tertiary: new FormulaField({ deterministic: true, initial: "1" }),
@@ -458,6 +459,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
+    context.distanceCount = config.distances[this.distance.type]?.count ?? "";
     context.primaryDistance = config.distances[this.distance.type]?.primary ?? "";
     context.secondaryDistance = config.distances[this.distance.type]?.secondary ?? "";
     context.tertiaryDistance = config.distances[this.distance.type]?.tertiary ?? "";

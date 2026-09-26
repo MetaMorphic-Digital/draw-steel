@@ -1751,10 +1751,12 @@ const abilityDistances = {
   },
   cube: {
     label: "DRAW_STEEL.Item.ability.Distance.Cube",
+    count: "DRAW_STEEL.Item.ability.Distance.Count",
     primary: "DRAW_STEEL.Item.ability.Distance.Length",
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
       type: "rectangle",
+      count: "count",
       width: "primary",
       height: "primary",
     },
@@ -1765,11 +1767,13 @@ const abilityDistances = {
   },
   line: {
     label: "DRAW_STEEL.Item.ability.Distance.Line",
+    count: "DRAW_STEEL.Item.ability.Distance.Count",
     primary: "DRAW_STEEL.Item.ability.Distance.Length",
     secondary: "DRAW_STEEL.Item.ability.Distance.Width",
     tertiary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
       type: "line",
+      count: "count",
       length: "primary",
       width: "secondary",
     },
