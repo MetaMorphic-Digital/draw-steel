@@ -459,7 +459,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
-    context.distanceCount = config.distances[this.distance.type]?.count ?? "";
+    context.distanceCount = config.distances[this.distance.type]?.count ?? false;
     context.primaryDistance = config.distances[this.distance.type]?.primary ?? "";
     context.secondaryDistance = config.distances[this.distance.type]?.secondary ?? "";
     context.tertiaryDistance = config.distances[this.distance.type]?.tertiary ?? "";
