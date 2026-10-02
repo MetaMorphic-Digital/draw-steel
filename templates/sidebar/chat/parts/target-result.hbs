@@ -1,4 +1,3 @@
-{{#if ctx.showContextMenu}}
 <div class="message-part-header">
   <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="resultPartContext"></a>
   {{#if ctx.target.owner}}
@@ -10,14 +9,23 @@
   {{/if}}
   <img src="{{ctx.target.img}}">
 </div>
-{{/if}}
 {{#if part.flavor}}
 <div class="message-part-flavor">{{ctx.flavor}}</div>
 {{/if}}
 <div class="message-part-rolls">
   {{#each ctx.rolls}}{{{this}}}{{/each}}
 </div>
-{{#if ctx.buttons.length}}
+{{#if ctx.potency}}
+<div class="message-part-potency">
+  {{#each ctx.potency}}
+  <div class="flexrow">
+    <input type="checkbox" class="potency-toggle" {{checked fail}} disabled>
+    <span class="label">{{{text}}}</span>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
+{{#if ctx.buttons}}
 <footer class="message-part-buttons">
   {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
 </footer>

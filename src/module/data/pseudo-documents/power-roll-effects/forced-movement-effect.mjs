@@ -2,7 +2,7 @@ import { requiredInteger, setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 
-/** @import { ForcedMovementSchema } from "./_types" */
+/** @import { ForcedMovementSchema, TextOptions } from "./_types" */
 
 const { NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 
@@ -113,9 +113,10 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
 
   /**
    * @param {1 | 2 | 3} tier
+   * @param {TextOptions} [options]
    * @inheritdoc
    */
-  toText(tier) {
+  toText(tier, options = {}) {
     const tierValue = this.forced[`tier${tier}`];
     const isVertical = tierValue.properties.has("vertical");
     const baseDistance = this.actor
@@ -159,7 +160,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       distanceString = formatter.format(formattedParts);
     }
 
-    const potencyString = this.toPotencyHTML(tier);
+    const potencyString = this.toPotencyHTML(tier, options.potencyBonus);
     const escapedDisplay = Handlebars.escapeExpression(tierValue.display);
     const finalText = escapedDisplay.replaceAll("{{potency}}", potencyString);
     return finalText.replaceAll("{{forced}}", distanceString);
