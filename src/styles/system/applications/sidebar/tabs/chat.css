@@ -75,6 +75,10 @@
 
           dl {
             margin-block: 4px;
+
+            &:has(p) {
+              display: block;
+            }
           }
 
           section.effect dd.effect p {
