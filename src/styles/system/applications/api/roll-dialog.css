@@ -4,9 +4,12 @@
     gap: 5px;
     margin-top: 5px;
 
-    .roll-mode-buttons {
+    .roll-mode-buttons.split-button {
       button {
         border-color: var(--button-border-color);
+        border-radius: inherit;
+        border: 1px solid var(--control-border-color);
+        filter: none;
       }
 
       button.selected {
