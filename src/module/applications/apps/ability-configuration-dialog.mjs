@@ -263,7 +263,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     const fd = foundry.utils.expandObject(formData.object);
 
     const targets = Object.values(this.options.context.targets ?? {});
-    if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid, minions: target.minions }));
+    if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid, tokenUuid: target.tokenUuid, minions: target.minions }));
 
     if (fd["damage-selection"]) config.damage = fd["damage-selection"];
     if ("resource" in fd) config.resource = fd.resource;

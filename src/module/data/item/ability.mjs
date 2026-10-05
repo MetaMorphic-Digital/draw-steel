@@ -678,6 +678,7 @@ export default class AbilityModel extends BaseItemModel {
             tier: roll.product,
             abilityUuid: this.parent.uuid,
             targetUuid: targets[index],
+            tokenUuid: roll.options.tokenUuid,
           };
 
           for (const damageEffect of this.power.effects.documentsByType.damage) {
@@ -694,6 +695,7 @@ export default class AbilityModel extends BaseItemModel {
           }
 
           delete roll.options.minions;
+          delete roll.options.tokenUuid;
 
           messageData.system.parts[partId] = rollPart;
         }
