@@ -44,6 +44,7 @@ export default class TargetResultPart extends RollPart {
       abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
       tier: new NumberField({ integer: true, min: 1, max: 3, nullable: false }),
       targetUuid: new DocumentUUIDField({ nullable: false, type: "Actor" }),
+      tokenUuid: new DocumentUUIDField({ type: "Token" }),
       potencies: new TypedObjectField(new NumberField({ integer: true, nullable: false, initial: 0 })),
     });
   }
@@ -65,7 +66,7 @@ export default class TargetResultPart extends RollPart {
    * @type {DrawSteelTokenDocument}
    */
   get token() {
-    return this.actorTarget?.token ?? null;
+    return fromUuidSync(this.tokenUuid) ?? this.actorTarget?.token ?? null;
   }
 
   /* -------------------------------------------------- */
