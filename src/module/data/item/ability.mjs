@@ -620,14 +620,12 @@ export default class AbilityModel extends BaseItemModel {
 
       const evaluatedRolls = [];
 
-      const targets = [];
+      const rollTargets = new Map();
 
       for (const context of fd.rolls) {
         // Strip from roll options
-        if (context.target) {
-          targets.push(context.target);
-          delete context.target;
-        }
+        const target = context.target;
+        delete context.target;
         const roll = new PowerRoll(dialogConfig.context.formula, {}, { 
           flavor: _loc(PowerRoll.TYPES.ability.label), 
           criticalThreshold: this.power.roll.criticalThreshold,
@@ -637,9 +635,12 @@ export default class AbilityModel extends BaseItemModel {
         await roll.evaluate({ allowInteractive: false });
 
         evaluatedRolls.push(roll);
+        if (target) rollTargets.set(roll, target);
       }
 
       evaluatedRolls.sort((a, b) => a.product - b.product);
+
+      const targets = evaluatedRolls.map(roll => rollTargets.get(roll)).filter(Boolean);
 
       if (!targets.length) {
         const tierNumber = evaluatedRolls[0].product;
