@@ -3,6 +3,8 @@ import { systemPath } from "../../constants.mjs";
 
 /**
  * @import { SubtypeMetadata } from "../_types"
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  */
 
 /**
@@ -66,6 +68,29 @@ export default class StandardModel extends DrawSteelSystemModel {
    */
   get visible() {
     return this.parts.some(part => part.visible);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The power roll tier a target got from this message, or its only tier if the ability was used without targets.
+   * @param {DrawSteelActor|DrawSteelTokenDocument|DrawSteelToken} target   The targeted actor or token.
+   * @returns {1|2|3|null}
+   */
+  tierFor(target) {
+    const uuid = (target instanceof foundry.documents.Actor ? target : target?.actor)?.uuid;
+    if (!uuid) return null;
+
+    const targetResult = this.parts.find(part => (part.type === "targetResult") && (part.targetUuid === uuid));
+    if (targetResult) return targetResult.tier;
+
+    const abilityResults = this.parts.filter(part => part.type === "abilityResult");
+    // Messages from before 1.2 keep each target on its roll's options
+    const legacy = abilityResults.find(part => part.rolls.some(roll => roll.options.target === uuid));
+    if (legacy) return legacy.tier;
+
+    const targeted = abilityResults.some(part => part.rolls.some(roll => roll.options.target));
+    return (!targeted && abilityResults[0]?.tier) || null;
   }
 
   /* -------------------------------------------------- */
