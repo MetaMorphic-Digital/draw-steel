@@ -135,8 +135,14 @@ export default class TargetResultPart extends RollPart {
    */
   static async #applyDamage(event, target) {
     const idx = target.dataset.index;
-    const roll = this.rolls[idx];
-    await roll.applyDamage([this.actorTarget], { halfDamage: event.shiftKey, origin: DamageRoll.getOrigin(this.message, this) });
+    const context = { targets: [this.actorTarget], roll: this.rolls[idx], halfDamage: event.shiftKey };
+    if (Hooks.call("ds.preApplyTargetResult", this, "applyDamage", context) === false) return;
+
+    context.applied = await context.roll.applyDamage(context.targets, {
+      halfDamage: context.halfDamage,
+      origin: DamageRoll.getOrigin(this.message, this),
+    });
+    Hooks.callAll("ds.applyTargetResult", this, "applyDamage", context);
   }
 
   /* -------------------------------------------------- */
@@ -153,7 +159,11 @@ export default class TargetResultPart extends RollPart {
     const pre = await fromUuid(target.dataset.uuid);
     if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
 
-    await pre.applyEffect(this.tierKey, target.dataset.effectId, { targets: [this.actorTarget] });
+    const context = { targets: [this.actorTarget], effect: pre, effectId: target.dataset.effectId };
+    if (Hooks.call("ds.preApplyTargetResult", this, "applyEffect", context) === false) return;
+
+    await pre.applyEffect(this.tierKey, context.effectId, { targets: context.targets });
+    Hooks.callAll("ds.applyTargetResult", this, "applyEffect", context);
   }
 
   /* -------------------------------------------------- */
@@ -170,7 +180,11 @@ export default class TargetResultPart extends RollPart {
     const pre = await fromUuid(target.dataset.uuid);
     if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.NoPRE", { localize: true });
 
-    await pre.applyGain(this.tierKey, { targets: [this.actorTarget] });
+    const context = { targets: [this.actorTarget], effect: pre };
+    if (Hooks.call("ds.preApplyTargetResult", this, "gainResource", context) === false) return;
+
+    await pre.applyGain(this.tierKey, { targets: context.targets });
+    Hooks.callAll("ds.applyTargetResult", this, "gainResource", context);
   }
 
   /* -------------------------------------------------- */

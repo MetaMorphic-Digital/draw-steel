@@ -4,7 +4,7 @@ import "./data/_types";
 import "./documents/_types";
 import "./helpers/_types";
 import "./utils/advancement/_types";
-import { DrawSteelActor, DrawSteelChatMessage, DrawSteelItem } from "./documents/_module.mjs";
+import { DrawSteelActor, DrawSteelChatMessage, DrawSteelCombatantGroup, DrawSteelItem } from "./documents/_module.mjs";
 import { PowerRoll, ProjectRoll } from "./rolls/_module.mjs";
 import FollowerModel from "./data/item/follower.mjs";
 import Level from "@client/documents/level.mjs";
@@ -28,6 +28,14 @@ export interface DamageOrigin {
   abilityUuid: string | null;
   actorUuid: string | null;
   tokenUuid: string | null;
+}
+
+export interface DamageApplication {
+  actor?: DrawSteelActor;
+  group?: DrawSteelCombatantGroup;
+  actors?: DrawSteelActor[];
+  before: { value: number; temporary?: number };
+  after: { value: number; temporary?: number };
 }
 
 export interface RollPromptOptions {
