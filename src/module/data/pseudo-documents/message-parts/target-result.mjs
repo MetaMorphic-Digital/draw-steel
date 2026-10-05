@@ -227,7 +227,7 @@ export default class TargetResultPart extends RollPart {
 
     // Buttons in this part that require ownership of the targeted actor
     if (!this.actorTarget?.isOwner) {
-      const ownerButtons = new Set("applyDamage", "applyEffect", "gainResource");
+      const ownerButtons = new Set(["applyDamage", "applyEffect", "gainResource"]);
       for (const button of element.querySelectorAll("[data-action]")) {
         if (!ownerButtons.has(button.dataset.action)) continue;
         button.disabled = true;
