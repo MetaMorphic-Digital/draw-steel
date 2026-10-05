@@ -63,8 +63,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   isExpiryEvent(event, context) {
-    const dsEvents = new Set("save", "respite");
-    if (!dsEvents.has(event) || !dsEvents.has(this.duration.expiry)) return super.isExpiryEvent(event, context);
+    const dsEvents = new Set(["save", "respite"]);
+    if (!dsEvents.has(event) || (event !== this.duration.expiry)) return super.isExpiryEvent(event, context);
 
     if (event === "save") {
       // copies core combat duration logic
@@ -79,7 +79,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       return !!effectCombatant;
     }
     // respite
-    else return context.actors?.includes(this.target);
+    else return !!context.actors?.has(this.target);
   }
 
   /* -------------------------------------------------- */
