@@ -538,7 +538,6 @@ export default class AbilityModel extends BaseItemModel {
    * @param {ApplicationConfiguration} [dialogOptions={}]   Options to be forwarded to the roll dialog.
    * @param {DatabaseCreateOperation} [messageOptions]      Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
-   * TODO: Add hooks based on discussion with module authors.
    */
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Abilities can only be used while embedded");
@@ -578,6 +577,8 @@ export default class AbilityModel extends BaseItemModel {
         return accumulator;
       }, {});
     }
+
+    if (Hooks.call("ds.preUseAbility", this.parent, config, dialogConfig) === false) return null;
 
     const fd = await AbilityConfigurationDialog.create(dialogConfig);
 
@@ -713,7 +714,9 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-    return DrawSteelChatMessage.create(messageData, messageOptions);
+    const message = await DrawSteelChatMessage.create(messageData, messageOptions);
+    Hooks.callAll("ds.useAbility", this.parent, message);
+    return message;
   }
 
   /* -------------------------------------------------- */
