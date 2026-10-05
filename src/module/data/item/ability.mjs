@@ -538,7 +538,6 @@ export default class AbilityModel extends BaseItemModel {
    * @param {ApplicationConfiguration} [dialogOptions={}]   Options to be forwarded to the roll dialog.
    * @param {DatabaseCreateOperation} [messageOptions]      Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
-   * TODO: Add hooks based on discussion with module authors.
    */
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Abilities can only be used while embedded");
@@ -578,6 +577,8 @@ export default class AbilityModel extends BaseItemModel {
         return accumulator;
       }, {});
     }
+
+    if (Hooks.call("ds.preUseAbility", this.parent, config, dialogConfig) === false) return null;
 
     const fd = await AbilityConfigurationDialog.create(dialogConfig);
 
@@ -620,14 +621,12 @@ export default class AbilityModel extends BaseItemModel {
 
       const evaluatedRolls = [];
 
-      const targets = [];
+      const rollTargets = new Map();
 
       for (const context of fd.rolls) {
         // Strip from roll options
-        if (context.target) {
-          targets.push(context.target);
-          delete context.target;
-        }
+        const target = context.target;
+        delete context.target;
         const roll = new PowerRoll(dialogConfig.context.formula, {}, { 
           flavor: _loc(PowerRoll.TYPES.ability.label), 
           criticalThreshold: this.power.roll.criticalThreshold,
@@ -637,9 +636,12 @@ export default class AbilityModel extends BaseItemModel {
         await roll.evaluate({ allowInteractive: false });
 
         evaluatedRolls.push(roll);
+        if (target) rollTargets.set(roll, target);
       }
 
       evaluatedRolls.sort((a, b) => a.product - b.product);
+
+      const targets = evaluatedRolls.map(roll => rollTargets.get(roll)).filter(Boolean);
 
       if (!targets.length) {
         const tierNumber = evaluatedRolls[0].product;
@@ -678,6 +680,7 @@ export default class AbilityModel extends BaseItemModel {
             tier: roll.product,
             abilityUuid: this.parent.uuid,
             targetUuid: targets[index],
+            tokenUuid: roll.options.tokenUuid,
           };
 
           for (const damageEffect of this.power.effects.documentsByType.damage) {
@@ -694,6 +697,7 @@ export default class AbilityModel extends BaseItemModel {
           }
 
           delete roll.options.minions;
+          delete roll.options.tokenUuid;
 
           messageData.system.parts[partId] = rollPart;
         }
@@ -711,7 +715,9 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-    return DrawSteelChatMessage.create(messageData, messageOptions);
+    const message = await DrawSteelChatMessage.create(messageData, messageOptions);
+    Hooks.callAll("ds.useAbility", this.parent, message);
+    return message;
   }
 
   /* -------------------------------------------------- */

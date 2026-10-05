@@ -44,6 +44,7 @@ export default class TargetResultPart extends RollPart {
       abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
       tier: new NumberField({ integer: true, min: 1, max: 3, nullable: false }),
       targetUuid: new DocumentUUIDField({ nullable: false, type: "Actor" }),
+      tokenUuid: new DocumentUUIDField({ type: "Token" }),
       potencies: new TypedObjectField(new NumberField({ integer: true, nullable: false, initial: 0 })),
     });
   }
@@ -65,7 +66,7 @@ export default class TargetResultPart extends RollPart {
    * @type {DrawSteelTokenDocument}
    */
   get token() {
-    return this.actorTarget.token ?? null;
+    return fromUuidSync(this.tokenUuid) ?? this.actorTarget?.token ?? null;
   }
 
   /* -------------------------------------------------- */
@@ -92,6 +93,18 @@ export default class TargetResultPart extends RollPart {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Whether the ability has a potency that applies to this target at this tier.
+   * @type {boolean}
+   */
+  get hasPotency() {
+    const actor = this.actorTarget;
+    if (!actor) return false;
+    return !!this.ability?.system.power.effects.sortedContents.some(pre => pre.potencyOption(this.tier, actor, { bonus: this.potencies[pre.id] }));
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
@@ -99,7 +112,7 @@ export default class TargetResultPart extends RollPart {
     const token = this.token;
     const actor = this.actorTarget;
     context.ctx.target = {
-      owner: actor.isOwner,
+      owner: actor?.isOwner ?? false,
       uuid: this.targetUuid,
       name: token?.name || actor?.name || _loc("COMMON.Unknown"),
       img: token?.img || actor?.img || getDocumentClass("Token").DEFAULT_ICON,
@@ -241,7 +254,7 @@ export default class TargetResultPart extends RollPart {
 
     // Buttons in this part that require ownership of the targeted actor
     if (!this.actorTarget?.isOwner) {
-      const ownerButtons = new Set("applyDamage", "applyEffect", "gainResource");
+      const ownerButtons = new Set(["applyDamage", "applyEffect", "gainResource"]);
       for (const button of element.querySelectorAll("[data-action]")) {
         if (!ownerButtons.has(button.dataset.action)) continue;
         button.disabled = true;
@@ -278,7 +291,7 @@ export default class TargetResultPart extends RollPart {
     options.push({
       label: "DRAW_STEEL.ChatMessage.PARTS.targetResult.ContextMenuOptions.AdjustPotency",
       icon: "fa-solid fa-hand-fist",
-      visible: () => this.message.isOwner && this.ability && this.actorTarget,
+      visible: () => this.message.isOwner && this.hasPotency,
       onClick: () => this.modifyPotencyDialog(),
     });
 
@@ -296,10 +309,10 @@ export default class TargetResultPart extends RollPart {
 
     let sourceActor = this.ability?.actor;
     // Retainers and companions use their hero's surges and surge damage
-    if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
-    if (sourceActor.type === "companion") sourceActor = sourceActor.system.companion.master;
+    if (sourceActor?.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+    if (sourceActor?.type === "companion") sourceActor = sourceActor.system.companion.master;
 
-    const surgeDamage = sourceActor.getRollData()?.chr;
+    const surgeDamage = sourceActor?.getRollData()?.chr;
 
     if (sourceActor?.type === "hero") {
       const surgeMax = Math.min(3, sourceActor.system.hero.surges);
@@ -371,8 +384,8 @@ export default class TargetResultPart extends RollPart {
     const actor = this.actorTarget;
     let sourceActor = this.ability?.actor;
     // Retainers and companions use their hero's surges
-    if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
-    if (sourceActor.type === "companion") sourceActor = sourceActor.system.companion.master;
+    if (sourceActor?.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+    if (sourceActor?.type === "companion") sourceActor = sourceActor.system.companion.master;
 
     const content = document.createElement("div");
 
@@ -414,7 +427,7 @@ export default class TargetResultPart extends RollPart {
 
     const potencies = foundry.utils.deepClone(this._source.potencies);
 
-    for (const [id, adjustment] of Object.entries(modifications.potencies)) {
+    for (const [id, adjustment] of Object.entries(modifications.potencies ?? {})) {
       potencies[id] ??= 0;
       potencies[id] += adjustment + !!modifications.surges;
     }
