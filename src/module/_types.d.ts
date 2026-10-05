@@ -22,6 +22,14 @@ export interface PowerRollTargets {
   modifiers: PowerRollModifiers;
 }
 
+export interface DamageOrigin {
+  messageId: string | null;
+  partId: string | null;
+  abilityUuid: string | null;
+  actorUuid: string | null;
+  tokenUuid: string | null;
+}
+
 export interface RollPromptOptions {
   evaluation: "none" | "evaluate" | "message";
   modifiers: PowerRollModifiers;

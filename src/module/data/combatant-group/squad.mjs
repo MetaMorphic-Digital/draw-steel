@@ -3,6 +3,7 @@ import DrawSteelCombatant from "../../documents/combatant.mjs";
 
 /**
  * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
+ * @import { DamageOrigin } from "../../_types";
  */
 
 const fields = foundry.data.fields;
@@ -186,6 +187,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
    * @param {string} [options.type]            Valid damage type.
    * @param {boolean} [options.aoe]            Is this an AOE that should have the damage capped?
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
+   * @param {DamageOrigin} [options.origin]  Where the damage came from, passed through to the Stamina update.
    * @returns {Promise<DrawSteelCombatantGroup>}
    */
   async takeDamage(minions, damagePerMinion, options = {}) {
@@ -209,6 +211,6 @@ export default class SquadModel extends BaseCombatantGroupModel {
     if (options.aoe) damagePerMinion = Math.min(damagePerMinion, minions[0].system.stamina.max);
     const damage = Math.max(0, (damagePerMinion * minions.length) + applicableImmunityWeakness.weakness - applicableImmunityWeakness.immunity);
 
-    return this.parent.update({ "system.staminaValue": this.staminaValue - damage }, { ds: { damageType: options.type } });
+    return this.parent.update({ "system.staminaValue": this.staminaValue - damage }, { ds: { damageType: options.type, origin: options.origin } });
   }
 }

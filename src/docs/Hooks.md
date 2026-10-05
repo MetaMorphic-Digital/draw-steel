@@ -7,3 +7,7 @@ The base Foundry software provides a [`dropActorSheetData`](https://foundryvtt.c
 ## canRenderDSApplication
 
 All DS Applications provides a `ds.canRender${Class}$` hook, e.g. `ds.canRenderAbilityConfigurationDialog`, that if returned an explicit `false` will prevent it from rendering.
+
+## Damage Origin
+
+When damage is applied from a chat message, the Stamina update carries where it came from in `options.ds.origin`: `{ messageId, partId, abilityUuid, actorUuid, tokenUuid }`, with `actorUuid` and `tokenUuid` taken from the message speaker. Read it in the core `preUpdateActor` and `updateActor` hooks, or `preUpdateCombatantGroup` and `updateCombatantGroup` for minion squads. Damage applied through `takeDamage` without an origin leaves it undefined.
