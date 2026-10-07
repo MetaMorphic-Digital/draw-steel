@@ -19,6 +19,9 @@
 <fieldset>
   <legend>{{systemFields.distance.label}}</legend>
   {{formGroup systemFields.distance.fields.type value=system.distance.type options=distanceTypes}}
+  {{#if distanceCount}}
+  {{formGroup systemFields.distance.fields.count value=system.distance.count}}
+  {{/if}}
   {{#if primaryDistance}}
   {{formGroup systemFields.distance.fields.primary value=system.distance.primary label=primaryDistance}}
   {{/if}}

@@ -1293,6 +1293,9 @@
             "label": "Distance",
             "type": {
               "label": "Type"
+            },
+            "count": {
+              "label": "Count" 
             }
           },
           "damageDisplay": {
@@ -2554,6 +2557,18 @@
               "Tooltip": "Succeed by spending a Hero Token",
               "NoEffect": "This effect no longer exists.",
               "NoOwner": "You no longer have update permissions for this effect."
+            }
+          }
+        },
+        "targetResult": {
+          "ContextMenuOptions": {
+            "AdjustPotency": "Adjust Potency"
+          },
+          "PotencyModificationDialog": {
+            "Title": "Potency Modification Dialog",
+            "Surges": {
+              "label": "Surges",
+              "hint": "Expend two surges to increase the potency by 1."
             }
           }
         },

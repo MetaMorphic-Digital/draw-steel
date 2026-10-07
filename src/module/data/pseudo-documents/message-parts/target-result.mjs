@@ -9,8 +9,8 @@ import { systemPath } from "../../../constants.mjs";
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  */
 
-const { DocumentUUIDField, NumberField } = foundry.data.fields;
-const { createFormGroup, createNumberInput, createSelectInput, createTextInput } = foundry.applications.fields;
+const { DocumentUUIDField, NumberField, TypedObjectField } = foundry.data.fields;
+const { createFormGroup, createCheckboxInput, createNumberInput, createSelectInput, createTextInput } = foundry.applications.fields;
 
 /**
  * A part that displays the result of an ability power roll and its consequences for a single target.
@@ -44,6 +44,8 @@ export default class TargetResultPart extends RollPart {
       abilityUuid: new DocumentUUIDField({ nullable: false, type: "Item" }),
       tier: new NumberField({ integer: true, min: 1, max: 3, nullable: false }),
       targetUuid: new DocumentUUIDField({ nullable: false, type: "Actor" }),
+      tokenUuid: new DocumentUUIDField({ type: "Token" }),
+      potencies: new TypedObjectField(new NumberField({ integer: true, nullable: false, initial: 0 })),
     });
   }
 
@@ -64,7 +66,7 @@ export default class TargetResultPart extends RollPart {
    * @type {DrawSteelTokenDocument}
    */
   get token() {
-    return this.actorTarget.token ?? null;
+    return fromUuidSync(this.tokenUuid) ?? this.actorTarget?.token ?? null;
   }
 
   /* -------------------------------------------------- */
@@ -91,6 +93,18 @@ export default class TargetResultPart extends RollPart {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Whether the ability has a potency that applies to this target at this tier.
+   * @type {boolean}
+   */
+  get hasPotency() {
+    const actor = this.actorTarget;
+    if (!actor) return false;
+    return !!this.ability?.system.power.effects.sortedContents.some(pre => pre.potencyOption(this.tier, actor, { bonus: this.potencies[pre.id] }));
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
@@ -98,7 +112,7 @@ export default class TargetResultPart extends RollPart {
     const token = this.token;
     const actor = this.actorTarget;
     context.ctx.target = {
-      owner: actor.isOwner,
+      owner: actor?.isOwner ?? false,
       uuid: this.targetUuid,
       name: token?.name || actor?.name || _loc("COMMON.Unknown"),
       img: token?.img || actor?.img || getDocumentClass("Token").DEFAULT_ICON,
@@ -107,17 +121,20 @@ export default class TargetResultPart extends RollPart {
     const item = this.ability;
 
     if (item) {
-      for (const pre of item.system.power.effects) {
-        const newButtons = pre.constructButtons(this.tier);
-        if (newButtons) context.ctx.buttons.push(...newButtons);
-      }
-
       context.ctx.foundItem = true;
       context.ctx.tierSymbol = ds.rolls.PowerRoll.RESULT_TIERS[`tier${this.tier}`].glyph;
       context.ctx.resultHTML = await item.system.powerRollText(this.tier);
-    }
 
-    context.ctx.showContextMenu = !!this.rolls.find(roll => (roll instanceof DamageRoll) && !roll.isHeal);
+      if (!actor) return;
+
+      context.ctx.potency = [];
+      for (const pre of item.system.power.effects.sortedContents) {
+        const newButtons = pre.constructButtons(this.tier);
+        if (newButtons) context.ctx.buttons.push(...newButtons);
+        const potency = pre.potencyOption(this.tier, actor, { bonus: this.potencies[pre.id] });
+        if (potency) context.ctx.potency.push(potency);
+      }
+    }
   }
 
   /* -------------------------------------------------- */
@@ -223,7 +240,7 @@ export default class TargetResultPart extends RollPart {
 
     // Buttons in this part that require ownership of the targeted actor
     if (!this.actorTarget?.isOwner) {
-      const ownerButtons = new Set("applyDamage", "applyEffect", "gainResource");
+      const ownerButtons = new Set(["applyDamage", "applyEffect", "gainResource"]);
       for (const button of element.querySelectorAll("[data-action]")) {
         if (!ownerButtons.has(button.dataset.action)) continue;
         button.disabled = true;
@@ -239,23 +256,32 @@ export default class TargetResultPart extends RollPart {
    * @returns {ContextMenuEntry[]}
    */
   _getResultPartContextOptions() {
-    const damageRolls = this.rolls.filter(roll => (roll instanceof DamageRoll) && !roll.isHeal);
-    if (!damageRolls.length) return [];
+    const options = [];
 
-    const baseLocalizationPath = "DRAW_STEEL.ChatMessage.PARTS.abilityResult.ContextMenuOptions.DamageModification";
-    return damageRolls.map(roll => {
+    const damageRolls = this.rolls.filter(roll => (roll instanceof DamageRoll) && !roll.isHeal);
+    const damageRollLocalizationPath = "DRAW_STEEL.ChatMessage.PARTS.abilityResult.ContextMenuOptions.DamageModification";
+    for (const roll of damageRolls) {
       const damageType = ds.CONFIG.damageTypes[roll.options.type]?.label ?? roll.options.type;
-      const label = _loc(`${baseLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
+      const label = _loc(`${damageRollLocalizationPath}.${damageType ? "WithType" : "Typeless"}`, {
         total: roll.total,
         type: damageType,
       });
-      return {
+      options.push({
         label,
-        icon: "fa-solid fa-gear",
+        icon: "fa-solid fa-dice-d6",
         visible: () => this.message.isOwner,
         onClick: () => this.modifyDamageDialog(roll),
-      };
+      });
+    }
+
+    options.push({
+      label: "DRAW_STEEL.ChatMessage.PARTS.targetResult.ContextMenuOptions.AdjustPotency",
+      icon: "fa-solid fa-hand-fist",
+      visible: () => this.message.isOwner && this.hasPotency,
+      onClick: () => this.modifyPotencyDialog(),
     });
+
+    return options;
   }
 
   /* -------------------------------------------------- */
@@ -268,13 +294,13 @@ export default class TargetResultPart extends RollPart {
     const content = document.createElement("div");
 
     let sourceActor = this.ability?.actor;
+    // Retainers and companions use their hero's surges and surge damage
+    if (sourceActor?.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+    if (sourceActor?.type === "companion") sourceActor = sourceActor.system.companion.master;
 
-    // Retainers use their mentor's surges and surge value
-    if (sourceActor.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+    const surgeDamage = sourceActor?.getRollData()?.chr;
 
-    const surgeDamage = sourceActor.getRollData()?.chr;
-
-    if (sourceActor.type === "hero") {
+    if (sourceActor?.type === "hero") {
       const surgeMax = Math.min(3, sourceActor.system.hero.surges);
 
       const surges = createFormGroup({
@@ -333,5 +359,67 @@ export default class TargetResultPart extends RollPart {
     if ((!modifications.additionalTerms) && (modifications.damageType === roll.options.type)) return;
 
     return this.createModifiedDamageRoll(roll, modifications);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt dialog to modify potencies associated with this chat message.
+   */
+  async modifyPotencyDialog() {
+    const actor = this.actorTarget;
+    let sourceActor = this.ability?.actor;
+    // Retainers and companions use their hero's surges
+    if (sourceActor?.type === "retainer") sourceActor = sourceActor.system.retainer.mentor;
+    if (sourceActor?.type === "companion") sourceActor = sourceActor.system.companion.master;
+
+    const content = document.createElement("div");
+
+    if (sourceActor?.type === "hero") {
+      const surges = createFormGroup({
+        label: "DRAW_STEEL.ChatMessage.PARTS.abilityResult.DamageModificationDialog.Surges.label",
+        hint: "DRAW_STEEL.ChatMessage.PARTS.targetResult.PotencyModificationDialog.Surges.hint",
+        input: createCheckboxInput({ name: "surges", disabled: sourceActor.system.hero.surges < 2 }),
+        localize: true,
+      });
+      content.append(surges);
+    }
+
+    for (const pre of this.ability.system.power.effects.sortedContents) {
+      const potencyData = pre.potencyOption(this.tier, actor, { bonus: this.potencies[pre.id] });
+      if (!potencyData) continue;
+      const potencyInput = createFormGroup({
+        label: pre.name,
+        hint: " ",
+        input: createNumberInput({ name: `potencies.${pre.id}`, step: 1 }),
+        classes: ["slim"],
+      });
+      potencyInput.querySelector("p.hint").innerHTML = potencyData.text;
+      content.append(potencyInput);
+    }
+
+    const fd = await ds.applications.api.DSDialog.input({
+      content,
+      classes: ["modify-potency-dialog"],
+      window: {
+        title: "DRAW_STEEL.ChatMessage.PARTS.targetResult.PotencyModificationDialog.Title",
+        icon: "fa-fw fa-solid fa-gear",
+      },
+    });
+
+    if (!fd) return;
+
+    const modifications = foundry.utils.expandObject(fd);
+
+    const potencies = foundry.utils.deepClone(this._source.potencies);
+
+    for (const [id, adjustment] of Object.entries(modifications.potencies ?? {})) {
+      potencies[id] ??= 0;
+      potencies[id] += adjustment + !!modifications.surges;
+    }
+
+    await this.update({ potencies });
+
+    if (modifications.surges) await sourceActor.modifyTokenAttribute("hero.surges", -2, true, false);
   }
 }

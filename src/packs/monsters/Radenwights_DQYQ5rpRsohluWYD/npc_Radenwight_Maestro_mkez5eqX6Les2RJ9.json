@@ -697,7 +697,7 @@
               "value": 3,
               "multiple": false
             },
-            "description": "<p>Each ally within 3 squares of any target has a +2 bonus to  speed until the end of their next turn.</p>",
+            "description": "<p>Each ally within 3 squares of any target has a [[/apply IQxQOtTlzJGSJfwI turn]]{+2 bonus} to speed until the end of their next turn.</p>",
             "name": "",
             "img": null,
             "before": false
@@ -711,7 +711,67 @@
       },
       "_id": "ZTYorvjqkIX017CE",
       "img": "icons/skills/ranged/projectile-spiral-gray.webp",
-      "effects": [],
+      "effects": [
+        {
+          "name": "Speed Bonus",
+          "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.mkez5eqX6Les2RJ9.Item.ZTYorvjqkIX017CE",
+          "transfer": false,
+          "_id": "IQxQOtTlzJGSJfwI",
+          "system": {
+            "changes": [
+              {
+                "key": "system.movement.value",
+                "type": "add",
+                "value": 2,
+                "phase": "initial",
+                "priority": null
+              }
+            ],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.368",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1790683129753,
+            "modifiedTime": 1790683212266,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!mkez5eqX6Les2RJ9.ZTYorvjqkIX017CE.IQxQOtTlzJGSJfwI"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -723,9 +783,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.365",
+        "coreVersion": "14.368",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1779886284840
@@ -852,7 +912,7 @@
           "before0000000000": {
             "_id": "before0000000000",
             "type": "base",
-            "description": "<p>Until the end of their next turn, the target halves any damage they take, gains a +4 damage bonus to strikes, and has their speed doubled.</p><p>[[/apply c0PgYvOvY8xsRPjT]]</p><p>[[/apply RKFQudsXXNlFROAm]]</p>",
+            "description": "<p>Until the end of their next turn, the target halves any damage they take, gains a [[/apply RKFQudsXXNlFROAm turn]]{+4 damage bonus} to strikes, and has their [[/apply c0PgYvOvY8xsRPjT turn]]{speed doubled}.</p><p></p><p></p>",
             "before": true,
             "name": "",
             "img": null,
@@ -1003,9 +1063,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.365",
+        "coreVersion": "14.368",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1779886284840

@@ -2,6 +2,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /**
  * @import DrawSteelActor from "../../../documents/actor.mjs";
+ * @import { TextOptions } from "./_types";
  */
 
 const { NumberField, StringField } = foundry.data.fields;
@@ -133,9 +134,10 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
 
   /**
    * @param {1 | 2 | 3} tier
+   * @param {TextOptions} [options={}]
    * @inheritdoc
    */
-  toText(tier) {
+  toText(tier, options = {}) {
     // Sanitize any HTML that may be in the base display string
     return Handlebars.escapeExpression(this.resource[`tier${tier}`].display);
   }

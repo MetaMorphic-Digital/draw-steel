@@ -58,7 +58,9 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
     application.addEventListener("close", () => resolve(application.config), { once: true });
-    application.render({ force: true });
+    await application.render({ force: true });
+    // A render refused by `_canRender` never fires "close"
+    if (!application.rendered) resolve(null);
     return promise;
   }
 

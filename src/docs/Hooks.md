@@ -1,5 +1,11 @@
 The Draw Steel system adds the following hooks to the ones available in the [core software](https://foundryvtt.com/api/modules/hookEvents.html).
 
+## Using Abilities
+
+`ds.preUseAbility(item, config, dialogConfig)` is called when an ability is used, before its configuration dialog opens. `dialogConfig.context` holds the targets and modifiers the dialog will show and can be changed. Returning an explicit `false` ends the use before anything is spent or posted.
+
+`ds.useAbility(item, message)` is called after the ability's chat message has been created.
+
 ## Drop Data
 
 The base Foundry software provides a [`dropActorSheetData`](https://foundryvtt.com/api/functions/hookEvents.dropActorSheetData.html) hook. The Draw Steel system also provides a similar `dropItemSheetData` hook.

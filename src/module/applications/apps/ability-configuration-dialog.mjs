@@ -4,7 +4,7 @@ import { systemPath } from "../../constants.mjs";
 
 /**
  * @import AbilityModel from "../../data/item/ability.mjs";
- * @import { DrawSteelActor, DrawSteelCombatantGroup, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import { DrawSteelActor, DrawSteelCombatantGroup, DrawSteelItem, DrawSteelUser } from "../../documents/_module.mjs";
  * @import DrawSteelToken  from "../../canvas/placeables/token.mjs"
  * @import RegionDocument from "@client/documents/region.mjs";
  */
@@ -48,9 +48,19 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
   /**
    * Hook reference for adding or removing tokens from the context.
-   * @type {number}
+   * @type {number|null}
    */
-  #targetHook = Hooks.on("targetToken", (user, token, targeted) => {
+  #targetHook = null;
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Add or remove a token from the context when the user targets or untargets it.
+   * @param {DrawSteelUser} user      The user who changed their targets.
+   * @param {DrawSteelToken} token    The token that was targeted or untargeted.
+   * @param {boolean} targeted        Whether the token is now targeted.
+   */
+  #onTargetToken(user, token, targeted) {
     if ((user !== game.user) || !this.options.context.targets) return;
 
     if (targeted) {
@@ -70,7 +80,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
 
     // Re-render to update the target list and modifiers.
     this.render();
-  });
+  }
 
   /* -------------------------------------------------- */
 
@@ -220,6 +230,8 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
+    this.#targetHook = Hooks.on("targetToken", this.#onTargetToken.bind(this));
+
     // Add event listeners to trigger target token hovering.
     this.element.addEventListener("pointermove", event => {
       if (!canvas.ready) return;
@@ -263,17 +275,24 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
     const fd = foundry.utils.expandObject(formData.object);
 
     const targets = Object.values(this.options.context.targets ?? {});
-    if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid, minions: target.minions }));
+    if (targets?.length) config.rolls = targets.map(target => ({ ...target.combinedModifiers, target: target.uuid, tokenUuid: target.tokenUuid, minions: target.minions }));
 
     if (fd["damage-selection"]) config.damage = fd["damage-selection"];
     if ("resource" in fd) config.resource = fd.resource;
     if ("spend" in fd) config.spend = fd.spend;
 
-    Hooks.off("targetToken", this.#targetHook);
-
     if (this.#region) this.#region.delete();
 
     return config;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onClose(options) {
+    super._onClose(options);
+    if (this.#targetHook !== null) Hooks.off("targetToken", this.#targetHook);
+    this.#targetHook = null;
   }
 
   /* -------------------------------------------------- */
