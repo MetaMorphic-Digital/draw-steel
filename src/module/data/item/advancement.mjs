@@ -77,12 +77,6 @@ export default class AdvancementModel extends BaseItemModel {
           const chrInfo = this.actor.system.characteristics[chr];
           chrInfo.value = Math.min(chrInfo.value + 1, advancement.max);
         }
-      } else if (advancement.type === "summon") {
-        const options = advancement.pool
-          .filter(o => flags[advancement.id]?.selected.includes(o.uuid))
-          .map(o => ({ ...o, cost: advancement.cost, advancementUuid: advancement.uuid }));
-        const portfolio = this.actor.system._summonPortfolios[advancement.dsid] ??= [];
-        portfolio.push(...options);
       }
     }
   }
