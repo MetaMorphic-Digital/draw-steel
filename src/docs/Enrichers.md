@@ -161,6 +161,16 @@ The `[[potency]]` enricher allows you to construct enriched potency displays usi
 - [&ZeroWidthSpace;[potency characteristic=I strength=weak]]: Displays `I<weak` without an actor or `I<[number]` with an actor.
 - [&ZeroWidthSpace;[potency characteristic=presence strength=1]]: Displays `P<1`.
 
+## Summon
+
+The `[[/summon]]` enricher creates a button that will place a token in the current scene, performing any necessary imports. Chat Messages do not support compendium actors
+- [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: Summon an Abyssal Hyena. World actors are also supported.
+- [&ZeroWidthSpace;[/summon actor=Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: You can specify the actor to summon.
+- [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm count=3]]: You can summon more than one actor at a time by specifying the count.
+- [&ZeroWidthSpace;[/summon portfolio=call-forth]]: Perform a portfolio summon using the portfolio for the identified ability.
+- [&ZeroWidthSpace;[/summon portfolio=call-forth signatureOnly=true]]: Perform a portfolio summon but restrict to signature minions in the portfolio.
+- [&ZeroWidthSpace;[/summon Actor.5oS4rixqbIcsziNm summoner=Actor.k0hqADu4kFGzDQ9z]]: Specify an actor as the summoner by providing their UUID. Summoner should be a world actor.
+
 ## HTML-mode to clean up text
 If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):
 1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
