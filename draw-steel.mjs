@@ -238,9 +238,9 @@ Hooks.once("init", function () {
   CONFIG.TextEditor.enrichers = [
     applications.ux.enrichers.applyEffect,
     applications.ux.enrichers.lookup,
+    applications.ux.enrichers.potency,
     applications.ux.enrichers.reference,
     applications.ux.enrichers.roll,
-    applications.ux.enrichers.potency,
     applications.ux.enrichers.summon,
   ];
 
