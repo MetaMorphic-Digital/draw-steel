@@ -121,10 +121,13 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
+  /**
+   * @inheritdoc
+   * @param {object} [updateOptions]    Options for the resulting update. Only used for Stamina.
+   */
+  async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true, updateOptions = {}) {
     switch (attribute) {
-      case "stamina": return this.#modifyStamina(value, isDelta);
+      case "stamina": return this.#modifyStamina(value, isDelta, updateOptions);
       case "hero.primary.value": return this.#modifyHeroicResource(value, isDelta);
       default: return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
     }
@@ -136,15 +139,16 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * Handle how changes to Stamina are applied to the Actor.
    * @param {number} value        The target attribute value.
    * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false).
+   * @param {object} [updateOptions]    Options for the resulting update.
    * @returns {Promise<DrawSteelActor>}    The updated Actor document.
    */
-  async #modifyStamina(value, isDelta) {
+  async #modifyStamina(value, isDelta, updateOptions = {}) {
     const attribute = "stamina";
     const isBar = true;
     const combatGroup = (this.system.combatGroups.size === 1) ? this.system.combatGroup : null;
     if (this.isMinion && combatGroup) {
       const update = isDelta ? combatGroup.system.staminaValue + value : value;
-      return combatGroup.update({ "system.staminaValue": update });
+      return combatGroup.update({ "system.staminaValue": update }, updateOptions);
     }
     const { value: current, temporary, min, max } = this.system.stamina;
     const delta = isDelta ? (-1 * value) : current + temporary - value;
@@ -165,7 +169,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
     // Allow a hook to override these changes
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);
-    return allowed !== false ? this.update(updates) : this;
+    return allowed !== false ? this.update(updates, updateOptions) : this;
   }
 
   /* -------------------------------------------------- */

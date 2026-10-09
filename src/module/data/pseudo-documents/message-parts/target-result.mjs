@@ -149,7 +149,7 @@ export default class TargetResultPart extends RollPart {
   static async #applyDamage(event, target) {
     const idx = target.dataset.index;
     const roll = this.rolls[idx];
-    await roll.applyDamage([this.actorTarget], { halfDamage: event.shiftKey });
+    await roll.applyDamage([this.actorTarget], { halfDamage: event.shiftKey, origin: DamageRoll.getOrigin(this.message, this) });
   }
 
   /* -------------------------------------------------- */
