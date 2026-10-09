@@ -73,12 +73,16 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
     if (!hero) return;
 
     const flags = this.document.getFlag(ds.CONST.systemID, "advancement") ?? {};
-
-    const options = this.pool
-      .filter(o => flags[this.id]?.selected.includes(o.uuid))
-      .map(o => ({ ...o, cost: this.cost, advancementUuid: this.uuid }));
     const portfolio = hero.system._summonPortfolios[this.dsid] ??= [];
-    portfolio.push(...options);
+    for (const option of this.pool) {
+      if (flags[this.id]?.selected.includes(option.uuid)) {
+        portfolio.push({
+          ...option,
+          cost: this.cost,
+          advancementUuid: this.uuid,
+        });
+      }
+    }
   }
 
   /* -------------------------------------------------- */
@@ -166,7 +170,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
    * @param {string} portfolioKey   The DSID of the ability that is doing the summoning.
    * @param {Object} [options={}]
    * @param {boolean} [options.signatureOnly=false] Only show signature minions and hide the cost input?
-   * @returns {Promise<SummonInfo | void>} Returns void if dialog canceled or no valid summoning options.
+   * @returns {Promise<SummonInfo | null>} Returns null if dialog canceled or no valid summoning options.
    */
   static async getSummonInfo(hero, portfolioKey, { signatureOnly = false } = {}) {
     /** @type {SummonPortfolio[]} */
@@ -187,32 +191,24 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
       // Reverse sort by cost + alpha sort
     }, []).sort((a, b) => b.cost - a.cost || a.label.localeCompare(b.label));
 
-    if (!summonOptions.length) return void ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.NO_OPTIONS", { localize: true });
-    // Token permissions handled by placeActor
+    if (!summonOptions.length) {
+      ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.NO_OPTIONS", { localize: true });
+      return null;
+    }
 
     const content = document.createElement("div");
-
     const uuidSelect = createFormGroup({
       label: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.uuid.label",
       hint: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.uuid.hint",
-      input: createSelectInput({
-        name: "uuid",
-        options: summonOptions,
-      }),
+      input: createSelectInput({ name: "uuid", options: summonOptions, autofocus: true }),
       localize: true,
     });
-
     const signatureCount = createFormGroup({
       label: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.count.label",
       hint: "DRAW_STEEL.Actor.Summoning.ActorSelectDialog.count.hint",
-      input: createNumberInput({
-        name: "count",
-        min: 1,
-        value: 1,
-      }),
+      input: createNumberInput({ name: "count", min: 1, value: 1 }),
       localize: true,
     });
-
     content.append(uuidSelect, signatureCount);
 
     if (!signatureOnly) {
@@ -227,7 +223,6 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
         }),
         localize: true,
       });
-
       content.append(resourceCost);
     }
 
@@ -256,8 +251,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
         });
       },
     });
-
-    if (!fd) return;
+    if (!fd) return null;
 
     const summonInfo = portfolio.find(o => o.uuid === fd.uuid);
 

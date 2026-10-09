@@ -1,5 +1,4 @@
 import { createLink, parseConfig } from "../helpers.mjs";
-import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
 import SummonChoiceAdvancement from "../../../data/pseudo-documents/advancements/summon-choice-advancement.mjs";
 
 /**
@@ -12,6 +11,8 @@ import SummonChoiceAdvancement from "../../../data/pseudo-documents/advancements
 
 /** @type {TextEditorEnricherConfig["id"]} */
 export const id = "ds.summon";
+
+/* -------------------------------------------------- */
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp("\\[\\[/(?<type>summon)(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?", "gi");
@@ -108,9 +109,10 @@ export async function enricher(match, options) {
  */
 export async function onRender(element) {
   const link = element.querySelector("a");
-
   link.addEventListener("click", onClickAnchor);
 }
+
+/* -------------------------------------------------- */
 
 /**
  * Helper function to perform a summon.
@@ -123,6 +125,8 @@ async function onClickAnchor() {
   }
 }
 
+/* -------------------------------------------------- */
+
 /**
  * Helper function to perform a summon.
  * @param {DirectSummonConfig} config
@@ -134,6 +138,8 @@ async function directSummon(config) {
   await ds.utils.performSummon(config.actor, summonItem ?? origin, { count: config.count ?? 1 });
 }
 
+/* -------------------------------------------------- */
+
 /**
  * Helper function to perform a summon.
  * @param {PortfolioSummonConfig} config
@@ -141,15 +147,20 @@ async function directSummon(config) {
 async function portfolioSummon(config) {
   const hero = fromUuidSync(config.summoner);
 
-  const summonInfo = await SummonChoiceAdvancement.getSummonInfo(hero, config.portfolio, { signatureOnly: !!config.signatureOnly });
-
+  const summonInfo = await SummonChoiceAdvancement.getSummonInfo(hero, config.portfolio, {
+    signatureOnly: !!config.signatureOnly,
+  });
   if (!summonInfo) return;
 
   const summonItem = fromUuidSync(config.summoner)?.items.get(config.summonItem);
+  if (!summonItem) return;
 
-  const tokens = await summonItem.system.performSummon(summonInfo.uuid, { count: summonInfo.count, effects: summonInfo.effects });
+  const tokens = await summonItem.system.performSummon(summonInfo.uuid, {
+    count: summonInfo.count,
+    effects: summonInfo.effects,
+  });
 
-  if (tokens?.length && summonInfo.cost) {
+  if (tokens.length && summonInfo.cost) {
     await hero.modifyTokenAttribute("hero.primary.value", -summonInfo.cost, true);
   }
 }
