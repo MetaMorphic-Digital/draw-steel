@@ -85,6 +85,15 @@ export async function enricher(match, options) {
     }
   }
 
+  // Chat messages are missing enough info to reliably de-duplicate imports so only world actors are allowed
+  if (!linkConfig.summonItem && !linkConfig.origin) {
+    const parseInfo = foundry.utils.parseUuid(linkConfig.actor);
+    if (parseInfo.collection instanceof foundry.documents.collections.CompendiumCollection) {
+      console.error("Summoning Compendium actors is not supported in non-relative enriched text, e.g. Chat Messages", options);
+      return null;
+    }
+  }
+
   switch (linkConfig.type) {
     case null:
       return null;
@@ -132,10 +141,10 @@ async function onClickAnchor() {
  * @param {DirectSummonConfig} config
  */
 async function directSummon(config) {
-  /** @type {DrawSteelItem} */
-  const summonItem = fromUuidSync(config.summoner)?.items.get(config.summonItem);
+  const summoner = fromUuidSync(config.summoner);
+  const summonItem = summoner?.items.get(config.summonItem);
   const origin = fromUuidSync(config.origin);
-  await ds.utils.performSummon(config.actor, summonItem ?? origin, { count: config.count ?? 1 });
+  await ds.utils.performSummon(config.actor, summonItem ?? summoner ?? origin, { count: config.count ?? 1 });
 }
 
 /* -------------------------------------------------- */

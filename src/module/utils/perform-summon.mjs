@@ -7,8 +7,8 @@ import DrawSteelActiveEffect from "../documents/active-effect.mjs";
 /**
  * Places summons.
  * @param {string} uuid                  The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
- * @param {ClientDocument} summonSource  A document that can be checked against to prevent duplicate imports and provide roll data for effect replacement.
- * @param {PerformSummonOptions} options
+ * @param {ClientDocument} [summonSource]  A document that can be checked against to prevent duplicate imports and provide roll data for effect replacement. Optional only for already-imported actors.
+ * @param {PerformSummonOptions} [options]
  * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if cancelled or the user did not have permissions.
  */
 export default async function performSummon(uuid, summonSource, { count = 1, effects = [] } = {}) {
@@ -42,7 +42,7 @@ export default async function performSummon(uuid, summonSource, { count = 1, eff
 
   const actorUpdates = { effects: [] };
 
-  const replacementData = summonSource.getRollData?.() ?? {};
+  const replacementData = summonSource?.getRollData?.() ?? {};
 
   for (const e of effects) {
     const data = game.items.fromCompendium(e, { keepId: true, clearFolder: true });
