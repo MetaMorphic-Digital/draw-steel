@@ -1,5 +1,6 @@
-import { CompanionMetadataInput, DocumentSourceInput } from "../apps/_module.mjs";
+import { CharacteristicInput, CompanionMetadataInput, DocumentSourceInput } from "../apps/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
+import HeroModel from "../../data/actor/hero.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
@@ -12,7 +13,10 @@ export default class DrawSteelCompanionSheet extends DrawSteelActorSheet {
     actions: {
       updateSource: this.#updateSource,
       spendRecovery: this.#spendRecovery,
+      editCharacteristics: this.#editCharacteristics,
       editCompanionMetadata: this.#editCompanionMetadata,
+      levelUp: this.#levelUp,
+      openAdvancements: this.#openAdvancements,
       freeStrike: this.#freeStrike,
     },
     position: {
@@ -65,7 +69,10 @@ export default class DrawSteelCompanionSheet extends DrawSteelActorSheet {
     switch (partId) {
       case "header":
         context.companionKeywords = this._getCompanionKeywords();
-        context.masterLink = this.document.system.companion.master?.toAnchor();
+        context.masterLink = this.actor.system.companion.master?.toAnchor();
+        context.recoveryFields = HeroModel.schema.getField("recoveries").fields;
+        context.heroFields = HeroModel.schema.getField("hero").fields;
+        context.recoveries = this.actor.system.recoveries;
         break;
       case "stats":
         context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
@@ -86,6 +93,25 @@ export default class DrawSteelCompanionSheet extends DrawSteelActorSheet {
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    // Every render rather than first render because master status can change.
+    const master = this.actor.system.companion.master;
+    if (master) master.apps[this.id] ??= this;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onClose(context, options) {
+    super._onClose(context, options);
+    const master = this.actor.system.companion.master;
+    if (master) delete master.apps[this.id];
+  }
+
+  /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
 
@@ -102,13 +128,25 @@ export default class DrawSteelCompanionSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
+   * Open a configuration app to edit this hero's characteristics.
+   * @this DrawSteelHeroSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editCharacteristics(event, target) {
+    this.renderChild(new CharacteristicInput({ document: this.document }));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Open a dialog to edit the companion metadata.
    * @this DrawSteelCompanionSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editCompanionMetadata(event, target) {
-    this.renderChild(new CompanionMetadataInput({ document: this.document }));
+    this.renderChild(new CompanionMetadataInput({ document: this.actor }));
   }
 
   /* -------------------------------------------------- */
@@ -120,7 +158,33 @@ export default class DrawSteelCompanionSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    this.renderChild(new DocumentSourceInput({ document: this.document }));
+    this.renderChild(new DocumentSourceInput({ document: this.actor }));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Advance this companion one level.
+   * @this DrawSteelCompanionSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #levelUp(event, target) {
+    await this.actor.system.advance();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open the companion's class sheet or prompt its creation.
+   * @this DrawSteelCompanionSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #openAdvancements(event, target) {
+    const cls = this.actor.system.class;
+    if (cls) await cls.sheet.render({ force: true });
+    else await this.actor.system.fillClass();
   }
 
   /* -------------------------------------------------- */

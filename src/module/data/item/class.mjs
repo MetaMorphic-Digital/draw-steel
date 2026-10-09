@@ -44,7 +44,7 @@ export default class ClassModel extends AdvancementModel {
 
     schema.turnGain = new FormulaField();
 
-    schema.minimum = new FormulaField({ initial: "0" });
+    schema.minimum = new FormulaField({ initial: "0", deterministic: true });
 
     schema.characteristics = new fields.SchemaField({
       core: new fields.SetField(setOptions()),

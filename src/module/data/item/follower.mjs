@@ -23,7 +23,7 @@ export default class FollowerModel extends BaseItemModel {
       ...super.metadata,
       type: "follower",
       packOnly: false,
-      invalidActorTypes: ["npc", "object"],
+      invalidActorTypes: ["companion", "npc", "object", "retainer"],
       detailsPartial: [systemPath("templates/sheets/item/partials/follower.hbs")],
     };
   }

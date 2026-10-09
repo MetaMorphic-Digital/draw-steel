@@ -14,7 +14,7 @@ export default class CareerModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "career",
-      invalidActorTypes: ["npc", "object", "party"],
+      invalidActorTypes: ["companion", "npc", "object", "party", "retainer"],
       detailsPartial: [systemPath("templates/sheets/item/partials/career.hbs")],
     };
   }
