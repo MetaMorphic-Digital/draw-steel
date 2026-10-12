@@ -198,6 +198,11 @@ Hooks.once("init", function () {
   );
   DocumentSheetConfig.registerSheet(
     foundry.documents.JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.MapLocationPage,
+    { makeDefault: true, types: ["map"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    foundry.documents.JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.DrawSteelImageSheet,
     { makeDefault: true, types: ["image"] },
   );
