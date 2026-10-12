@@ -108,9 +108,10 @@ export default class CompanionModel extends CreatureModel {
   async _preUpdate(changed, options, userId) {
     const allowed = await super._preUpdate(changed, options, userId);
     if (allowed === false) return false;
-    // Unregister sheets on master change
+
+    // Unregister sheets on master change.
     if (foundry.utils.hasProperty(changed, "system.companion.master")) {
-      const master = this.actor.system.companion.master;
+      const master = this.parent.system.companion.master;
       if (master) delete master.apps[this.parent.sheet.id];
     }
   }
