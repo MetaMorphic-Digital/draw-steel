@@ -10,7 +10,7 @@ export default class CultureModel extends AdvancementModel {
       ...super.metadata,
       type: "culture",
       packOnly: false,
-      invalidActorTypes: ["npc", "object", "party"],
+      invalidActorTypes: ["companion", "npc", "object", "party", "retainer"],
     };
   }
 

@@ -12,6 +12,7 @@ import SizeModel from "../models/size.mjs";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { CoreResource } from "./_types";
+ * @import { DamageOrigin } from "../../_types";
  * @import { AbilityBonus } from "../_types";
  */
 
@@ -475,6 +476,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {object} [options] Options to modify the damage application.
    * @param {string} [options.type]   Valid damage type.
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
+   * @param {DamageOrigin} [options.origin]  Where the damage came from, passed through to the Stamina update.
    * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
    */
   async takeDamage(damage, options = {}) {
@@ -501,7 +503,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     }
 
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
+    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
   }
 
   /* -------------------------------------------------- */
