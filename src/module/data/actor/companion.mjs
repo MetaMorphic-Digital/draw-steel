@@ -148,7 +148,7 @@ export default class CompanionModel extends CreatureModel {
    * @type {boolean}
    */
   get advancementReady() {
-    return this.companion.master?.system.level > this.level;
+    return (this.companion.master?.system.level > this.level) && this.class;
   }
 
   /* -------------------------------------------------- */
@@ -233,7 +233,7 @@ export default class CompanionModel extends CreatureModel {
     }
 
     const classData = game.items.fromCompendium(companionClass, { clearFolder: true });
-    await this.actor.createEmbeddedDocuments("Item", [classData], { renderSheet: true });
+    await this.parent.createEmbeddedDocuments("Item", [classData], { renderSheet: true });
   }
 
   /* -------------------------------------------------- */
