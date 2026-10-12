@@ -153,7 +153,7 @@ The `[[/apply]]` enricher allows you to link status effects, either from an item
 
 ## Potency
 
-The `[[potency]]` enricher allows you to construct enriched potency displays using the Draw Steel Glyphs. The a strength of `weak`, `average`, or `strong` is provided and the item is on an actor, it will pull the actor's potency value.
+The `[[potency]]` enricher allows you to construct enriched potency displays using the Draw Steel Glyphs. If the strength of `weak`, `average`, or `strong` is provided and the item is on an actor, it will pull the actor's potency value.
 
 - [&ZeroWidthSpace;[potency M weak]]: Displays `M<weak` without an actor or `M<[number]` with an actor.
 - [&ZeroWidthSpace;[potency A 2]]: Displays `A<2`.
@@ -163,7 +163,8 @@ The `[[potency]]` enricher allows you to construct enriched potency displays usi
 
 ## Summon
 
-The `[[/summon]]` enricher creates a button that will place a token in the current scene, performing any necessary imports. Chat Messages do not support compendium actors
+The `[[/summon]]` enricher creates a button that will place a token in the current scene, performing any necessary imports.
+It is not possible to summon actors sourced from compendiums in a context with no summoner, e.g., in a Chat Message.
 - [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: Summon an Abyssal Hyena. World actors are also supported.
 - [&ZeroWidthSpace;[/summon actor=Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: You can specify the actor to summon.
 - [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm count=3]]: You can summon more than one actor at a time by specifying the count.

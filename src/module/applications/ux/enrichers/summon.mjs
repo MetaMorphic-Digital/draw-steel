@@ -89,7 +89,9 @@ export async function enricher(match, options) {
   if (!linkConfig.summonItem && !linkConfig.origin) {
     const parseInfo = foundry.utils.parseUuid(linkConfig.actor);
     if (parseInfo.collection instanceof foundry.documents.collections.CompendiumCollection) {
-      console.error("Summoning Compendium actors is not supported in non-relative enriched text, e.g. Chat Messages", options);
+      console.error(
+        `Unable to create Summon enricher using actor '${linkConfig.actor}' in a context with no source item or origin.`,
+      );
       return null;
     }
   }
