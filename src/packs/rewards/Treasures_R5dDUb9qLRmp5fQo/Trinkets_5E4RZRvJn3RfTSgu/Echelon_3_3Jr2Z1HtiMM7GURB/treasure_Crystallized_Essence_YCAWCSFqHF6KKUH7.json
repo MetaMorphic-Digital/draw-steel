@@ -1,0 +1,183 @@
+{
+  "folder": "3Jr2Z1HtiMM7GURB",
+  "name": "Crystallized Essence",
+  "type": "treasure",
+  "_id": "YCAWCSFqHF6KKUH7",
+  "img": "icons/commodities/gems/pearl-storm.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>A storm rages at the center of this color-shifting shard of rock.</em></p><p><strong>Effect:</strong> While holding crystallized essence, the distance of your ranged magic abilities increases by 5. Any creatures you create or summon using magic have their [[/apply bl3B4evudIgUltN2]]{Stamina increased} by one-third of their Stamina maximum.</p><p>Additionally, you can shatter and destroy the crystallized essence as a maneuver to immediately give yourself [[/gain 5 hr]]{5 essence}.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "48",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "crystallized-essence",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 3,
+    "keywords": [
+      "magic"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "The remains of an elemental",
+      "source": "Records in Rhorvic",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "Summon Stamina",
+      "type": "base",
+      "_id": "bl3B4evudIgUltN2",
+      "img": "icons/magic/life/cross-worn-green.webp",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.max",
+            "type": "add",
+            "value": "",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          },
+          "goal": null
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>Any creatures you create or summon using magic have their Stamina increased by [[lookup floor(@stamina.max/3) evaluate]]{one-third of their Stamina maximum}.</p>",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789513181759,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.effects.ActiveEffect.bl3B4evudIgUltN2",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!YCAWCSFqHF6KKUH7.bl3B4evudIgUltN2"
+    },
+    {
+      "name": "Magic Range Increase",
+      "img": "icons/commodities/gems/pearl-storm.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.YCAWCSFqHF6KKUH7",
+      "_id": "8WqKArDBmBhCGcTg",
+      "system": {
+        "changes": [
+          {
+            "key": "distance",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "magic",
+            "ranged"
+          ]
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789513364551,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!YCAWCSFqHF6KKUH7.8WqKArDBmBhCGcTg"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789513016023,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!YCAWCSFqHF6KKUH7"
+}

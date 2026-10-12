@@ -110,11 +110,14 @@ export default class BaseMessagePart extends TypedPseudoDocument {
    * @returns {Promise<void>}
    */
   async _prepareContext(context) {
-    context.ctx = {};
+    context.ctx = {
+      buttons: [],
+    };
+
     const isPrivate = context.ctx.isPrivate = !this.isContentVisible;
     const name = this.message.author?.name ?? _loc("CHAT.UnknownUser");
     context.ctx.flavor = isPrivate ? _loc("CHAT.PrivateRollContent", { user: foundry.utils.escapeHTML(name) }) : this.flavor;
-    context.ctx.rolls = await Promise.all(this.rolls.map(roll => roll.render({ isPrivate })));
+    context.ctx.rolls = await Promise.all(this.rolls.map((roll, rollIndex) => roll.render({ isPrivate, rollIndex })));
   }
 
   /* -------------------------------------------------- */

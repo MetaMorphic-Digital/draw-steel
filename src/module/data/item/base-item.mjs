@@ -163,4 +163,14 @@ export default class BaseItemModel extends DrawSteelSystemModel {
    * @param {object} rollData   Pointer to the roll data object.
    */
   modifyRollData(rollData) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create data for an enriched tooltip.
+   * @returns {Promise<HTMLElement[]>}
+   */
+  async richTooltip() {
+    return this.parent.toEmbed({ includeName: true, inline: true });
+  }
 }

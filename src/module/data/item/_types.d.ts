@@ -1,12 +1,13 @@
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 import { BaseSpecialEffect, SpendSpecialEffect } from "../pseudo-documents/special-effect/_module.mjs";
 import { CharacteristicAdvancement, EffectGrantAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import { PowerRollDice, SubtypeMetadata } from "../_types.js";
+import { DocumentHTMLEmbedConfig } from "@client/applications/ux/text-editor.mjs";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import { PowerRollModifiers } from "../../_types.js";
 import { RegionPlacementOptions } from "@client/canvas/layers/_types.mjs";
 import SourceModel from "../models/source.mjs";
-import { SubtypeMetadata } from "../_types.js";
 
 export type ItemMetaData = Readonly<SubtypeMetadata & {
   /** Actor types that this item cannot be placed on. */
@@ -35,6 +36,10 @@ export interface EmbedDisplayFlags {
   readonly displayAtEnd?: boolean;
 }
 
+export interface DSItemEmbedConfig extends DocumentHTMLEmbedConfig {
+  includeName?: boolean;
+}
+
 declare module "./base-item.mjs" {
   export default interface BaseItemModel {
     parent: DrawSteelItem;
@@ -51,6 +56,14 @@ declare module "./base-item.mjs" {
 export interface PlaceAbilityOptions extends RegionPlacementOptions {
   /** Whether to update the user's targets based off of tokens included in the region. A falsy value means do not adjust targets. */
   setTargets?: "acquire" | "replace";
+}
+
+export interface AbilityEmbedConfig extends DSItemEmbedConfig {
+  tier1?: boolean;
+  tier2?: boolean;
+  tier3?: boolean;
+  effects?: Set<string>;
+  spendAmounts: Record<string, number>;
 }
 
 declare module "./ability.mjs" {
@@ -72,6 +85,7 @@ declare module "./ability.mjs" {
     damageDisplay: "melee" | "ranged";
     distance: {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
+      count: number | string;
       primary: number | string;
       secondary: number | string;
       tertiary: number | string;
@@ -84,18 +98,24 @@ declare module "./ability.mjs" {
       value: number | null;
     }
     power: {
-      /** Added during base data prep, not a schema value. */
+      /** Non-persisted. */
       characteristic: {
         key: string;
-        /** Null value during data prep or if no parent actor. */
         value: null | number;
       }
       roll: {
-        reactive: boolean;
-        /** Added during data prep. */
-        enabled: boolean;
-        formula: string;
         characteristics: Set<string>;
+        reactive: boolean;
+        criticalThreshold: number;
+        formula: string;
+        /** Non-persisted. */
+        banes: number;
+        /** Non-persisted. */
+        edges: number;
+        /** Non-persisted. */
+        dice: PowerRollDice;
+        /** Non-persisted, determined if there are power roll effects and it is not reactive. */
+        enabled: boolean;
       }
       effects: ModelCollection<PowerRollEffects>;
     }

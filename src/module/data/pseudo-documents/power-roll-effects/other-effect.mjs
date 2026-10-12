@@ -1,5 +1,9 @@
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
+/**
+ * @import { TextOptions } from "./_types";
+ */
+
 const { StringField } = foundry.data.fields;
 
 /**
@@ -49,10 +53,11 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
 
   /**
    * @param {1 | 2 | 3} tier
+   * @param {TextOptions} [options={}]
    * @inheritdoc
    */
-  toText(tier) {
-    const potencyString = this.toPotencyHTML(tier);
+  toText(tier, options = {}) {
+    const potencyString = this.toPotencyHTML(tier, options.potencyBonus);
     // Sanitize any HTML that may be in the base display string
     const escapedDisplay = Handlebars.escapeExpression(this.other[`tier${tier}`].display);
     return escapedDisplay.replaceAll("{{potency}}", potencyString);

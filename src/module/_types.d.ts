@@ -4,9 +4,12 @@ import "./data/_types";
 import "./documents/_types";
 import "./helpers/_types";
 import "./utils/advancement/_types";
-import { DrawSteelActor, DrawSteelChatMessage, DrawSteelItem } from "./documents/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage, DrawSteelItem } from "./documents/_module.mjs";
 import { PowerRoll, ProjectRoll } from "./rolls/_module.mjs";
 import FollowerModel from "./data/item/follower.mjs";
+import Level from "@client/documents/level.mjs";
+import RegionDocument from "@client/documents/region.mjs";
+import { TokenCoordinates } from "@common/documents/_types.mjs";
 
 export interface PowerRollModifiers {
   edges: number;
@@ -17,6 +20,14 @@ export interface PowerRollModifiers {
 export interface PowerRollTargets {
   uuid: string;
   modifiers: PowerRollModifiers;
+}
+
+export interface DamageOrigin {
+  messageId: string | null;
+  partId: string | null;
+  abilityUuid: string | null;
+  actorUuid: string | null;
+  tokenUuid: string | null;
 }
 
 export interface RollPromptOptions {
@@ -52,6 +63,23 @@ export interface ProjectRollPrompt {
 
 export interface ProjectRollPromptOptions extends RollPromptOptions {
   follower?: Omit<DrawSteelItem, "system"> & { system: FollowerModel }
+}
+
+export interface TokenSurfaceOptions {
+  position: TokenCoordinates;
+}
+
+export interface TokenSurfaceResults {
+  elevation: number;
+  region: RegionDocument | null;
+  level: Level | null;
+}
+
+export interface PerformSummonOptions {
+  /** How many tokens to summon. */
+  count: number;
+  /** Effects to add to the summoned actors, evaluating based on this actor's roll data. */
+  effects: DrawSteelActiveEffect[];
 }
 
 declare module "./utils/advancement/node.mjs" {

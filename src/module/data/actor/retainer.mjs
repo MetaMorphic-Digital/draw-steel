@@ -1,12 +1,14 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import SourceModel from "../models/source.mjs";
 
 /**
- * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import AbilityModel from "../item/ability.mjs";
  */
 
 /**
@@ -155,7 +157,7 @@ export default class RetainerModel extends CreatureModel {
    * @type {boolean}
    */
   get advancementReady() {
-    return this.retainer.mentor?.system.level >= this.level;
+    return this.retainer.mentor?.system.level > this.level;
   }
 
   /* -------------------------------------------------- */
@@ -214,8 +216,8 @@ export default class RetainerModel extends CreatureModel {
     /** @type {Set<string>} */
     const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
-    /** @type {DamagePowerRollEffect} */
-    const [firstDamage] = signature?.system.power.effects.documentsByType.damage;
+    /** @type {[DamagePowerRollEffect]} */
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
       value: this.retainer.freeStrike,
@@ -226,6 +228,18 @@ export default class RetainerModel extends CreatureModel {
         ranged: 5,
       },
     };
+
+    if (signature && signature.system.keywords.has("strike")) freeStrike.value += (firstDamage?.damage.bonuses.value ?? 0);
+    else {
+      const replacementData = this.parent.getRollData();
+      const field = DamagePowerRollEffect.schema.getField("damage.bonuses.value");
+      for (const bonus of this._abilityBonuses) {
+        if (bonus.key !== "damage.bonuses.value") continue;
+        if (!bonus.filters.keywords.isSubsetOf(freeStrike.keywords)) continue;
+        foundry.utils.setProperty(freeStrike, "value", field.applyChange(freeStrike.value, this, bonus, { replacementData }));
+      }
+    }
+
     switch (signature?.system.distance.type) {
       case "melee":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);

@@ -6,7 +6,7 @@
   "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
   "system": {
     "description": {
-      "value": "<p>Each time you finish a respite, you can choose yourself or one ally who is also finishing a respite to gain the benefit of a divine ritual. The chosen character gains a bonus to their recovery value equal to [[lookup @level]]{your level} that lasts until you finish another respite.</p>",
+      "value": "<p>Each time you finish a respite, you can choose yourself or one ally who is also finishing a respite to gain the benefit of a divine ritual. The chosen character gains a bonus to their recovery value equal to [[lookup @level]]{your level} that lasts until you finish another respite. [[/apply SktSjAK4px1i01xd]]</p>",
       "director": ""
     },
     "source": {
@@ -46,7 +46,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Revitalizing Ritual",
+      "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.kDa1rc6xRuBARDpJ",
+      "transfer": false,
+      "_id": "SktSjAK4px1i01xd",
+      "system": {
+        "changes": [
+          {
+            "key": "system.recoveries.bonus",
+            "type": "add",
+            "value": "@level",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "respite",
+        "expired": false
+      },
+      "description": "<p>The chosen character gains a bonus to their recovery value equal to your level that lasts until you finish another respite.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1784226188380,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!kDa1rc6xRuBARDpJ.SktSjAK4px1i01xd"
+    }
+  ],
   "sort": 200000,
   "ownership": {
     "default": 0
@@ -56,7 +116,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755755164919,

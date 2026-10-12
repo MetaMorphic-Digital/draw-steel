@@ -42,7 +42,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Stellar Knowledge",
+      "img": "icons/sundries/documents/document-symbol-circle-brown.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.K75b1eI8gHoOe95d",
+      "disabled": true,
+      "_id": "o8409KuUfD4Yy7Vb",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.mechanics.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>If you already have the Sneak skill, you instead gain an edge on tests made using it.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786057343100,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!K75b1eI8gHoOe95d.o8409KuUfD4Yy7Vb"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

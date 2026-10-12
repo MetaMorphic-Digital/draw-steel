@@ -1,0 +1,117 @@
+{
+  "folder": "5EH4VZFScdM4Vttp",
+  "name": "Thunder Chariot",
+  "type": "treasure",
+  "_id": "7bqa5JF8A0o78VZ4",
+  "img": "icons/commodities/tech/tube-chamber-lightning.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>A porcelain cart with golden filigree and wheels that crackle with electricity.</em></p><p><strong>Effect:</strong> The thunder chariot can be used as a size 2 mount. Its speed is equal to [[lookup @movement.value+3 evaluate]]{its rider's speed + 3}.</p><p>While riding in the thunder chariot, you have lightning damage immunity 5. An ally can use their maneuver while adjacent to you to move up to their speed, pulling you along.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "47",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "thunder-chariot",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 1,
+    "keywords": [
+      "magic"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "Twenty lightning bolts frozen in time",
+      "source": "Texts or lore in the First Language",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 300
+    }
+  },
+  "effects": [
+    {
+      "name": "Lightning Immunity",
+      "img": "icons/commodities/tech/tube-chamber-lightning.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.7bqa5JF8A0o78VZ4",
+      "_id": "8pQN2uvutzR8Pj98",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.lightning",
+            "type": "upgrade",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789512012111,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!7bqa5JF8A0o78VZ4.8pQN2uvutzR8Pj98"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789512012111,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 0,
+  "_key": "!items!7bqa5JF8A0o78VZ4"
+}

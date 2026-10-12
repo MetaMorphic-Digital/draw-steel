@@ -1,0 +1,79 @@
+{
+  "folder": "Q5Lw4Lym6Nhbfi8l",
+  "name": "Cleansing Flense",
+  "type": "ability",
+  "_id": "1s2JaPZkksNupOmT",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+  "system": {
+    "source": {
+      "book": "Summoner",
+      "page": "53",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "cleansing-flense",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "",
+    "keywords": [
+      "area",
+      "magic",
+      "encounter"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "Each of the detective's minions in the area",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "yQTYW9ND4GvGo0D4": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "yQTYW9ND4GvGo0D4",
+        "description": "<p>Each target moves up to their speed toward an ally. Each ally within line of effect of the detective can give one EoT or save ends effect they're affected by to an adjacent minion and end that effect on themself.</p><p>Until the end of the encounter, whenever an enemy kills a target and has [[potency P STRONG]], they receive all EoT or save ends effects the target was affected by.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788733968231,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!1s2JaPZkksNupOmT"
+}

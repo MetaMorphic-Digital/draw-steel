@@ -3,10 +3,12 @@ import AdvancementChain from "../../utils/advancement/chain.mjs";
 import CreatureModel from "./creature.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
+ * @import { SummonPortfolio } from "./_types"
  */
 
 const fields = foundry.data.fields;
@@ -62,6 +64,8 @@ export default class HeroModel extends CreatureModel {
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+        tracking: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+        turnGain: new FormulaField({ persisted: false }),
       }),
       epic: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
@@ -138,6 +142,8 @@ export default class HeroModel extends CreatureModel {
 
     // Existing DrawSteelActiveEffect#_applyAdd override means this also shims active effects targeting hero.skills
     HeroModel.shimSkills(this);
+
+    this.hero.primary.turnGain = this.class?.system.turnGain ?? "";
 
     const kitBonuses = {
       stamina: 0,
@@ -273,6 +279,17 @@ export default class HeroModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    const hr = foundry.utils.getProperty(changes, "system.hero.primary.value");
+    if (Number.isNumeric(hr)) foundry.utils.setProperty(changes, "system.hero.primary.tracking", Math.max(hr, this.hero.primary.tracking));
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({ "system.hero.primary.value": this.hero.victories });
@@ -283,9 +300,8 @@ export default class HeroModel extends CreatureModel {
   /** @inheritdoc */
   async _onStartTurn(combatant) {
     await super._onStartTurn(combatant);
-    const characterClass = this.class;
-    if (characterClass && characterClass.system.turnGain) {
-      const recoveryRoll = new DSRoll(characterClass.system.turnGain, characterClass.getRollData(), {
+    if (this.hero.primary.turnGain) {
+      const recoveryRoll = new DSRoll(this.hero.primary.turnGain, this.class?.getRollData() ?? this.parent.getRollData(), {
         flavor: this.class.system.primary,
       });
       await recoveryRoll.toMessage({
@@ -294,6 +310,14 @@ export default class HeroModel extends CreatureModel {
       });
       await this.updateResource(recoveryRoll.total);
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onEndTurn(combatant) {
+    await super._onEndTurn(combatant);
+    await this.parent.update({ "system.hero.primary.tracking": this.hero.primary.value }, { render: false });
   }
 
   /* -------------------------------------------------- */
@@ -403,6 +427,17 @@ export default class HeroModel extends CreatureModel {
    * @internal
    */
   _respiteAdvancements = {};
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Internal record used to cache summon advancements to track the available summons in the portfolio.
+   * Outer keys are portfolio ID, inner object is source UUID, count, and HR cost.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<string, SummonPortfolio[]>}
+   * @internal
+   */
+  _summonPortfolios = {};
 
   /* -------------------------------------------------- */
 

@@ -92,7 +92,9 @@
     },
     "monster": {
       "freeStrike": 1,
-      "keywords": [],
+      "keywords": [
+        "human"
+      ],
       "level": 1,
       "role": "harrier",
       "organization": "minion",
@@ -320,10 +322,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "after00000000000": {
             "_id": "after00000000000",
@@ -355,7 +353,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -377,7 +375,7 @@
         "_dsid": "exploit-opening",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 5,
         "trigger": "A human's turn starts",
         "distance": {
@@ -399,10 +397,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -431,7 +425,7 @@
         "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.8BzL1WGLdRmlM5U0",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1755714332102,
@@ -457,7 +451,7 @@
         "_dsid": "staying-power",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "a human's turn starts",
         "distance": {
@@ -479,10 +473,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -511,7 +501,7 @@
         "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.UgORNnmUgijjyizj",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1755714333286,
@@ -602,12 +592,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755639586219,

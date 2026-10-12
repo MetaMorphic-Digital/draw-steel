@@ -92,7 +92,8 @@
     "monster": {
       "freeStrike": 2,
       "keywords": [
-        "undead"
+        "undead",
+        "soulless"
       ],
       "level": 1,
       "role": "artillery",
@@ -320,10 +321,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "after00000000000": {
             "_id": "after00000000000",
@@ -355,7 +352,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -377,7 +374,7 @@
         "_dsid": "dread-march",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -399,10 +396,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -435,7 +428,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -457,7 +450,7 @@
         "_dsid": "paranormal-fling",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 3,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -479,10 +472,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -515,7 +504,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -537,7 +526,7 @@
         "_dsid": "ravenous-horde",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 2,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -559,10 +548,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -589,7 +574,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1761424938305,
@@ -617,7 +602,7 @@
         "_dsid": "the-grasping-the-hungry",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 5,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -724,10 +709,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "prerequisites": {
           "value": "",
           "dsid": [],
@@ -762,7 +743,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1761424939425,
@@ -798,10 +779,10 @@
         "changes": [
           {
             "key": "power.roll.edges",
-            "value": "",
-            "priority": null,
             "type": "add",
-            "phase": "initial"
+            "value": 1,
+            "phase": "initial",
+            "priority": null
           }
         ],
         "project": {
@@ -831,9 +812,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.367",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "createdTime": 1758899408037,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -854,12 +835,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755922214428,

@@ -1,13 +1,18 @@
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
+import { DrawSteelChatMessage } from "../../documents/_module.mjs";
+
 import DrawSteelSystemModel from "../system-model.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import SizeModel from "../models/size.mjs";
 
 /**
- * @import { DataField } from "@common/data/fields.mjs";
- * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
+ * @import { DatabaseUpdateOperation } from "@common/abstract/_types.mjs";
+ * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelUser } from "../../documents/_module.mjs";
+ * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { CoreResource } from "./_types";
+ * @import { DamageOrigin } from "../../_types";
  * @import { AbilityBonus } from "../_types";
  */
 
@@ -149,8 +154,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     // If our current stamina has not been set, match it to max:
     this.stamina.value ??= this.stamina.max;
 
-    this.stamina.winded = Math.floor(this.stamina.max / 2);
-
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
 
@@ -244,8 +247,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /**
    * @inheritdoc
    * @param {Record<string, unknown>} changes
-   * @param {import("@common/abstract/_types.mjs").DatabaseUpdateOperation} operation
-   * @param {User} user
+   * @param {DatabaseUpdateOperation} options
+   * @param {DrawSteelUser} user
    */
   async _preUpdate(changes, options, user) {
     const allowed = await super._preUpdate(changes, options, user);
@@ -257,6 +260,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         prototypeToken: {
           width: newSize,
           height: newSize,
+          depth: newSize,
         },
       });
     }
@@ -367,6 +371,76 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
+   * Updates performed at the end of this actor's turn.
+   * @param {DrawSteelCombatant} combatant The combatant representation.
+   *
+   */
+  async _onEndTurn(combatant) {
+    //End Turn Checks
+    //Can this hover?
+    //Can this fly, and is it not prone or it's speed > 0?
+    //Is this climbing, and can it climb?
+    let isFlying = this.movement.types.has("fly");
+    let flyProne = isFlying && ((this.movement.value <= 0) || (this.parent.statuses.has("prone")));
+    if (!(this.movement.hover) && (!(isFlying) || (flyProne))) {
+
+      //Find Every Token on the battlefield that represents this token.
+      const tokens = this.parent.getActiveTokens();
+
+      tokens.forEach(async (token) => {
+        //Ignore Hidden Tokens
+        if (!token.visible || token.document.isSecret) {
+          return;
+        }
+        //Token Fall Logic.
+        const surface = token.document._findSupportingSurface();
+        if (!surface || (surface.elevation >= this.elevation)) {
+          ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.FallSurfaceNotFound", { format: { name: this.name } });
+          return;
+        }
+        const distance = token.document.elevation - surface.elevation;
+        //This is where our logic for getting permission to fall comes in.
+        if (distance > 0) {
+          await this.processFall(token, distance);
+        }
+
+      });
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Processes falls by calculating damage and then calling the chat part that makes the fall.
+   * @param {DrawSteelToken} token The Token that is falling.
+   * @param {number} dist          The distance straight down the actor is falling.
+   */
+  async processFall(token, dist) {
+    //Modify later to apply for net damage.
+
+    const fallDamage = dist <= 2 ? 0 : Math.min(2 * dist, 50);
+
+    const roll = new DamageRoll(String(fallDamage), {});
+    await roll.evaluate();
+
+    await DrawSteelChatMessage.create({
+      title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
+      type: "standard",
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+      content: `<p>${_loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.parent.name, distance: fallDamage, damage: roll.formula })}</p>`,
+      "system.parts": [{ type: "falling",
+        rolls: [roll],
+        flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
+        fallerUuid: token.document.uuid,
+        fallerDistance: dist,
+      }],
+      flags: { core: { canPopout: true } },
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Calculate the applicable immunity and weakness based on the damage type and ignored immunities.
    * @param {object} [options] Options to modify the damage application.
    * @param {string} [options.type]   Valid damage type.
@@ -402,6 +476,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {object} [options] Options to modify the damage application.
    * @param {string} [options.type]   Valid damage type.
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
+   * @param {DamageOrigin} [options.origin]  Where the damage came from, passed through to the Stamina update.
    * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
    */
   async takeDamage(damage, options = {}) {
@@ -428,7 +503,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     }
 
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
+    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
   }
 
   /* -------------------------------------------------- */
@@ -518,4 +593,5 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     };
   }
+
 }

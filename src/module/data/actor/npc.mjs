@@ -1,6 +1,7 @@
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import CreatureModel from "./creature.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
@@ -12,8 +13,6 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { MaliceModel } from "../settings/_module.mjs";
- * @import { EmbedDisplayFlags } from "../item/_types";
- * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
  */
 
 /**
@@ -57,11 +56,12 @@ export default class NPCModel extends CreatureModel {
 
     schema.monster = new fields.SchemaField({
       freeStrike: requiredInteger({ initial: 0 }),
+      freeStrikeType: new fields.StringField({ required: true, initial: "" }),
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({ initial: 1 }),
       role: new fields.StringField({ required: true }),
       organization: new fields.StringField({ required: true }),
-      withCaptainEffect: new LocalDocumentField(DrawSteelActiveEffect || foundry.documents.ActiveEffect, { required: false }),
+      withCaptainEffect: new LocalDocumentField(DrawSteelActiveEffect),
     });
 
     return schema;
@@ -173,22 +173,34 @@ export default class NPCModel extends CreatureModel {
    */
   get freeStrike() {
     /** @type {DrawSteelItem & {system: AbilityModel}} */
-    const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
+    const signature = this.parent.items.documentsByType.ability.find(item => item.system.category === "signature");
     /** @type {Set<string>} */
-    const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+    const keywords = new Set(["magic", "psionic", "weapon"]).intersection(signature?.system.keywords ?? new Set());
 
-    /** @type {DamagePowerRollEffect} */
-    const firstDamage = signature?.system.power.effects.find(e => e.type === "damage");
+    /** @type {[DamagePowerRollEffect]} */
+    const [firstDamage] = signature?.system.power.effects.documentsByType.damage ?? [];
 
     const freeStrike = {
       value: this.monster.freeStrike,
       keywords: keywords.add("strike"),
-      type: firstDamage?.damage.tier1.types.first() ?? "",
+      type: firstDamage?.damage.tier1.types.first() ?? this.monster.freeStrikeType,
       range: {
         melee: 1,
         ranged: 5,
       },
     };
+
+    if (signature && signature.system.keywords.has("strike")) freeStrike.value += (firstDamage?.damage.bonuses.value ?? 0);
+    else {
+      const replacementData = this.parent.getRollData();
+      const field = DamagePowerRollEffect.schema.getField("damage.bonuses.value");
+      for (const bonus of this._abilityBonuses) {
+        if (bonus.key !== "damage.bonuses.value") continue;
+        if (!bonus.filters.keywords.isSubsetOf(freeStrike.keywords)) continue;
+        foundry.utils.setProperty(freeStrike, "value", field.applyChange(freeStrike.value, this, bonus, { replacementData }));
+      }
+    }
+
     switch (signature?.system.distance.type) {
       case "melee":
         freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
@@ -216,7 +228,7 @@ export default class NPCModel extends CreatureModel {
       actor: this.parent,
       characteristics: this._getCharacteristics(false),
       damageIW: this._getImmunitiesWeaknesses(),
-      itemEmbeds: await this._getItemEmbeds(),
+      itemEmbeds: await this._getItemEmbeds(config),
       monsterKeywords: this._getMonsterKeywords().join(", "),
       movement: this._getMovement(true).list,
       system: this,
@@ -237,10 +249,11 @@ export default class NPCModel extends CreatureModel {
 
   /**
    * Prepare embeds of Items for the NPC embed.
-   * @returns {Promise<DrawSteelItemEmbed[]>}
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
+   * @returns {Promise<HTMLElement[]>}
    */
-  async _getItemEmbeds() {
-    const abilities = this._getOrderedAbilities();
+  async _getItemEmbeds(config) {
+    let abilities = this._getOrderedAbilities(config);
     const { startFeatures, endFeatures } = this._getOrderedFeatures();
     const orderedItems = [...startFeatures, ...abilities, ...endFeatures];
 
@@ -256,13 +269,15 @@ export default class NPCModel extends CreatureModel {
   /**
    * Orders Ability Items in the same order
    * as the keys in ds.CONFIG.abilities.types.
+   * @param {DocumentHTMLEmbedConfig} config  Configuration for embedding behavior.
    * @returns {DrawSteelItem[]}
    */
-  _getOrderedAbilities() {
+  _getOrderedAbilities(config) {
     const abilityTypes = Object.keys(ds.CONFIG.abilities.types);
-    return this.parent.items.documentsByType.ability.toSorted(
-      (a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort,
-    );
+    return this.parent.items.documentsByType.ability
+      // Ancestry malice do not show by default
+      .filter(i => config.showAll || (i.system.category !== "maliceAncestry"))
+      .sort((a, b) => abilityTypes.indexOf(a.system.type) - abilityTypes.indexOf(b.system.type) || a.sort - b.sort);
   }
 
   /* -------------------------------------------------- */
@@ -275,7 +290,7 @@ export default class NPCModel extends CreatureModel {
     const features = this.parent.items.documentsByType.feature.toSorted((a, b) => a.sort - b.sort);
 
     const [ startFeatures, endFeatures ] = features.partition(f => {
-      return !!f.getFlag(ds.CONST.systemID, "embedDisplay.displayAtEnd");
+      return !!f.getFlag(systemID, "embedDisplay.displayAtEnd");
     });
     return { startFeatures, endFeatures };
   }

@@ -6,7 +6,7 @@
   "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
   "system": {
     "description": {
-      "value": "<p>As a maneuver, you lose control of yourself, becoming a shadow creature dripping with ash. This transformation lasts until the end of the encounter, until you are dying, or after 1 uninterrupted hour of quiet focus outside of combat. You gain the following effects while in this form:</p><ul><li><p>You can automatically climb at full speed while moving.</p></li><li><p>Enemies’ spaces don’t count as difficult terrain for you. An enemy takes corruption damage equal to your Agility score the first time you pass through their space on a turn. [[/damage @A corruption]]</p></li><li><p>If you end your turn with cover or concealment from another creature, you are automatically hidden from that creature.</p></li><li><p>You [[/surge 1]] at the start of each of your turns.</p></li><li><p>You have corruption immunity equal to 5 + your level. [[/apply BJDIcO6epfhKcbfC]]</p></li><li><p>Creatures gain an edge on strikes against you.</p></li><li><p>You take a bane on Presence tests made to interact with other creatures.</p></li></ul>",
+      "value": "<p>As a maneuver, you lose control of yourself, becoming a shadow creature dripping with ash. This transformation lasts until the end of the encounter, until you are dying, or after 1 uninterrupted hour of quiet focus outside of combat. You gain the following effects while in this form:  [[/apply BJDIcO6epfhKcbfC]]</p><ul><li><p>You can automatically climb at full speed while moving.</p></li><li><p>Enemies’ spaces don’t count as difficult terrain for you. An enemy takes corruption damage equal to your Agility score the first time you pass through their space on a turn. [[/damage @A corruption]]</p></li><li><p>If you end your turn with cover or concealment from another creature, you are automatically hidden from that creature.</p></li><li><p>You [[/surge 1]] at the start of each of your turns.</p></li><li><p>You have corruption immunity equal to 5 + your level.</p></li><li><p>Creatures gain an edge on strikes against you.</p></li><li><p>You take a bane on Presence tests made to interact with other creatures.</p></li></ul>",
       "director": ""
     },
     "source": {
@@ -24,7 +24,7 @@
   },
   "effects": [
     {
-      "name": "Corruption Immunity",
+      "name": "Umbral Form",
       "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.74zMvV18CZ7BbnWc",
@@ -37,10 +37,31 @@
         "changes": [
           {
             "key": "system.damage.immunities.corruption",
-            "value": 6,
-            "priority": null,
             "type": "upgrade",
-            "phase": "initial"
+            "value": "5+@level",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "climb",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.characteristics.presence.banes",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.combat.targetModifiers.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
           }
         ],
         "project": {
@@ -61,7 +82,7 @@
         "expiry": "combatEnd",
         "expired": false
       },
-      "description": "<p>You have corruption immunity equal to 5 + your level.</p>",
+      "description": "<ul><li><p>You can automatically climb at full speed while moving.</p></li><li><p>Enemies’ spaces don’t count as difficult terrain for you. An enemy takes corruption damage equal to your Agility score the first time you pass through their space on a turn. [[/damage @A corruption]]</p></li><li><p>If you end your turn with cover or concealment from another creature, you are automatically hidden from that creature.</p></li><li><p>You [[/surge 1]] at the start of each of your turns.</p></li><li><p>You have corruption immunity equal to 5 + your level.</p></li><li><p>Creatures gain an edge on strikes against you.</p></li><li><p>You take a bane on Presence tests made to interact with other creatures.</p></li></ul>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -70,9 +91,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.1.2",
         "createdTime": 1760911325495,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -92,9 +113,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1760834771909,
     "modifiedTime": null,
     "lastModifiedBy": null

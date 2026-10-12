@@ -54,6 +54,12 @@
         {{numberInput target.modifiers.bonuses name=(concat "targets." tokenId ".modifiers.bonuses") step=1}}
         <span class="total-bonuses">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.bonuses}}</span>
       </label>
+      {{#if @root.squad}}
+      <label>
+        {{numberInput target.minions name=(concat "targets." tokenId ".minions") step=1 min=1 max=@root.squad.members.size}}
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Minions"}}</span>
+      </label>
+      {{/if}}
     </div>
   </div>
   {{/each}}

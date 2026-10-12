@@ -6,7 +6,7 @@
   "img": "icons/magic/defensive/armor-shield-barrier-steel.webp",
   "system": {
     "description": {
-      "value": "<p>You have immunity to the chosen damage type equal to [[lookup @chr]]{your highest characteristic score}.</p><p><strong>Note: </strong>Alter the Active Effect to match the selected element.</p>",
+      "value": "<p>You have immunity to the chosen damage type equal to [[lookup @chr]]{your highest characteristic score}.</p>",
       "director": ""
     },
     "source": {
@@ -15,74 +15,50 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "elemental-immunity",
-    "advancements": {},
+    "advancements": {
+      "iupHLcXt2qewhfQB": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "effectGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "iupHLcXt2qewhfQB",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.ksdLrQkvByDWeXzS"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.2Ijgzs015a76T6EC"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.kDuJ2jXZSGfILP4l"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.JQ5s78yFeDnuN1mX"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.P9u3HOCZm7riu12o"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.Ltnd9PWE7vosqnVi"
+          }
+        ],
+        "chooseN": 1
+      }
+    },
     "prerequisites": {
       "value": "",
       "dsid": [],
       "level": null
     }
   },
-  "effects": [
-    {
-      "name": "Elemental Immunity",
-      "img": "icons/sundries/books/book-embossed-gold-green.webp",
-      "type": "base",
-      "origin": "Compendium.draw-steel.rewards.Item.C70d0Ct9cYcCOSlj",
-      "disabled": false,
-      "_id": "C13KG8nTn7Arkemd",
-      "system": {
-        "end": {
-          "roll": "1d10 + @combat.save.bonus"
-        },
-        "changes": [
-          {
-            "key": "system.damage.immunities.[type]",
-            "value": 2,
-            "priority": null,
-            "type": "upgrade",
-            "phase": "initial"
-          }
-        ],
-        "project": {
-          "prerequisites": "",
-          "source": "",
-          "rollCharacteristic": [],
-          "yield": {
-            "kind": "weapon",
-            "amount": "1",
-            "display": ""
-          }
-        }
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "<p>You have immunity to the chosen damage type equal to your highest characteristic score.</p>",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "14.361",
-        "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
-        "createdTime": 1757703143691,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "start": null,
-      "showIcon": 1,
-      "folder": null,
-      "_key": "!items.effects!C70d0Ct9cYcCOSlj.C13KG8nTn7Arkemd"
-    }
-  ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -92,9 +68,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1757643379339,
     "modifiedTime": null,
     "lastModifiedBy": null

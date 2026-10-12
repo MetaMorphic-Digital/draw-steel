@@ -1,0 +1,136 @@
+{
+  "folder": "C1J5bk6Y06HmBfdO",
+  "name": "Stormrage",
+  "type": "ability",
+  "_id": "xyTjHSltEkf3PMGE",
+  "img": "icons/magic/lightning/fist-unarmed-strike-blue.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "23",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "stormrage",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Lances of primordial energy leap from you and your companion to sear, crush, or freeze your foe.",
+    "keywords": [
+      "beastheart",
+      "magic",
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": "1",
+      "secondary": "5",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "oo1W0VAXreme4jy9": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "oo1W0VAXreme4jy9",
+          "damage": {
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [
+                "cold",
+                "fire",
+                "lightning",
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "4 + @chr",
+              "types": [
+                "cold",
+                "fire",
+                "lightning",
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "6 + @chr",
+              "types": [
+                "cold",
+                "fire",
+                "lightning",
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "e8g9bdBh5BQtWTHu": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "e8g9bdBh5BQtWTHu",
+        "description": "<p>You can spend 1 surge without gaining its benefits. If you do, your companion can use this ability as a free triggered action, targeting a different creature or object with the same power roll, but they don't trigger this effect.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788554117319,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!xyTjHSltEkf3PMGE"
+}

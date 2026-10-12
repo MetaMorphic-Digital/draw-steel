@@ -21,6 +21,7 @@ export const pattern = new RegExp("\\[\\[(?<type>lookup)(?<config> .*?)?]](?!])(
  */
 export async function enricher(match, options) {
   let { config, label: fallback } = match.groups;
+  if (!config) return null;
 
   /** @type {ParsedConfig} */
   const parsedConfig = parseConfig(config);

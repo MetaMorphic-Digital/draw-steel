@@ -45,7 +45,7 @@ If the `Grabbed` status effect is applied to an actor, while another actor is ta
 
 #### Prone
 
-If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***)
+If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***) A prone actor has a bane on strikes and melee abilities targeting them have an edge.
 
 #### Restrained
 
@@ -54,8 +54,6 @@ If the `Restrained` status effect is applied to an actor, the ability power roll
 #### Slowed
 
 If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***)
-
-Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which allows setting the "slowed" speed to 3 instead of 2.
 
 #### Taunted
 
@@ -136,8 +134,10 @@ While there are similarities with roll data, active effects generally lead with 
 |Reason value|`system.characteristics.reason.value`|
 |Edges for Tests|`system.characteristics.[chr].edges`|
 |Banes for Tests|`system.characteristics.[chr].banes`|
+|Bonus to resisting potencies|`system.characteristics.[chr].resist`|
 
 Draw Steel also supports modifying the default roll formula for tests. `system.characteristics.[chr].dice.number` will adjust the number of dice rolled, defaulting to keeping the highest two (You should use the UPGRADE type). You can switch this to keeping the lowest two with `system.characteristics.[chr].dice.mode | OVERRIDE | kl`.
+For modifying the roll formula of ability rolls, see Ability Modifiers below.
 
 #### Skill Keys
 
@@ -277,6 +277,8 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`potency`|Give a bonus to all potency values|
 |`power.roll.banes`|Add banes that apply to the ability's power roll regardless of target|
 |`power.roll.edges`|Add edges that apply to the ability's power roll regardless of target|
+|`power.roll.dice.number`|Adjust the number of dice rolled, defaulting to keep highest 2. (Use the UPGRADE type)|
+|`power.roll.dice.mode`|When the number of dice is more than 2, set to `kh` or `kl` to detemine if Keep Highest 2 or Keep Lowest 2 should be used. `kh` is the default.|
 
 **Notes:**
 - For `ignoredImmunities`, use the "Add" change type with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.

@@ -1,0 +1,64 @@
+{
+  "folder": "mAAYeJQwJ1uSvQDd",
+  "name": "Warding I",
+  "type": "base",
+  "_id": "hHFdPGQgiMXRjmbs",
+  "img": "icons/magic/life/heart-cross-strong-flame-blue.webp",
+  "system": {
+    "changes": [
+      {
+        "key": "system.stamina.bonuses.treasure",
+        "type": "upgrade",
+        "value": 6,
+        "phase": "initial",
+        "priority": null
+      }
+    ],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "Three skulls from the same chimera",
+      "source": "Texts or lore in Zaliac",
+      "rollCharacteristic": [
+        "agility",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "implement",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>You gain a +6 bonus to Stamina.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784235927380,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!hHFdPGQgiMXRjmbs"
+}

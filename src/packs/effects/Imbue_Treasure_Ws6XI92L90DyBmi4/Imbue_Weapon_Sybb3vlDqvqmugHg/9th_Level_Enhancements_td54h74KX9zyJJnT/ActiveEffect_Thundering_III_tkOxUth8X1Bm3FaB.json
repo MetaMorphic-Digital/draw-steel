@@ -1,0 +1,56 @@
+{
+  "folder": "td54h74KX9zyJJnT",
+  "name": "Thundering III",
+  "type": "base",
+  "_id": "tkOxUth8X1Bm3FaB",
+  "img": "icons/magic/air/fog-gas-smoke-swirling-gray.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "An oracle of storms must willingly bless the weapon with lightning while it is being wielded, and its wielder must survive this trial",
+      "source": "Texts or lore in Low Kuric",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Whenever you deal rolled damage to a creature using this weapon, you can vertical push that creature up to 5 squares and knock them [[/apply prone]] after the other effects of the ability resolve. If the creature takes or deals damage as a result of this movement, they also take 5 thunder damage. This replaces the benefit of Thundering II.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784301468851,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!tkOxUth8X1Bm3FaB"
+}

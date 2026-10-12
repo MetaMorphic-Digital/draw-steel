@@ -1,0 +1,444 @@
+{
+  "folder": "VKJHe5zcFfKVBQ2l",
+  "name": "33 Field Commanders Baton",
+  "type": "treasure",
+  "_id": "c4df98aWDgYkK53l",
+  "img": "icons/commodities/cloth/ribbon-red.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This long, ornate rod with a silver bulb head is braided with 33 green cords. A new cord starts to grow while you wield the baton.</em></p><p><strong>Special:</strong> If you are a tactician, you can wield this implement as if it had the Light Weapon keyword. Replace any reference to magic or psionic abilities with weapon abilities.</p><p><strong>1st Level:</strong> While you wield this baton, you are imbued with the experience of the commanders who wielded it before you. Your magic or psionic abilities that deal rolled damage gain a +1 damage bonus. On your turn, whenever you or an ally deal damage to a creature within 5 squares of you, you can immediately use your maneuver to slide the creature up to 2 squares.</p><p><strong>5th Level:</strong> The baton's damage bonus increases to +2. When you slide a creature using this ability and they end this slide adjacent to one of your allies, that ally can use the Grab or Knockback maneuver against the creature as a free triggered action.</p><p><strong>9th Level:</strong> The baton's damage bonus increases to +3. On your turn, whenever you or an ally deal damage to a creature within 10 squares of you, you can immediately use your maneuver to slide the creature up to 3 squares, ignoring stability.</p><p></p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "49",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "33-field-commanders-baton",
+    "kind": "implement",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "implement"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A silver ingot and a written strategy from 33 warleaders",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "reason",
+        "intuition",
+        "presence"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "33 Field Commanders Baton (1st Level, Supernatural)",
+      "img": "icons/commodities/cloth/ribbon-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.c4df98aWDgYkK53l",
+      "disabled": true,
+      "_id": "LBxbimfoEhLimrEC",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "magic",
+            "psionic"
+          ]
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789514890400,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!c4df98aWDgYkK53l.LBxbimfoEhLimrEC"
+    },
+    {
+      "name": "33 Field Commanders Baton (5th Level, Supernatural)",
+      "img": "icons/commodities/cloth/ribbon-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.c4df98aWDgYkK53l",
+      "disabled": true,
+      "_id": "iIsNUkIuU0ub2TQq",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "magic",
+            "psionic"
+          ]
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515017826,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!c4df98aWDgYkK53l.iIsNUkIuU0ub2TQq"
+    },
+    {
+      "name": "33 Field Commanders Baton (9th Level, Supernatural)",
+      "img": "icons/commodities/cloth/ribbon-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.c4df98aWDgYkK53l",
+      "disabled": true,
+      "_id": "jyP9Rc76iJPoVrHF",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515091684,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!c4df98aWDgYkK53l.jyP9Rc76iJPoVrHF"
+    },
+    {
+      "name": "33 Field Commanders Baton (1st Level, Tactician)",
+      "img": "icons/commodities/cloth/ribbon-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.c4df98aWDgYkK53l",
+      "disabled": true,
+      "_id": "lKwUh1Xp52CxnYGb",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515133452,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!c4df98aWDgYkK53l.lKwUh1Xp52CxnYGb"
+    },
+    {
+      "name": "33 Field Commanders Baton (5th Level, Tactician)",
+      "img": "icons/commodities/cloth/ribbon-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.c4df98aWDgYkK53l",
+      "disabled": true,
+      "_id": "azjykId1KwK9wqjo",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515172974,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!c4df98aWDgYkK53l.azjykId1KwK9wqjo"
+    },
+    {
+      "name": "33 Field Commanders Baton (9th Level, Tactician)",
+      "img": "icons/commodities/cloth/ribbon-red.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.c4df98aWDgYkK53l",
+      "disabled": true,
+      "_id": "IBIHqC1JPfduvDvv",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515224239,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!c4df98aWDgYkK53l.IBIHqC1JPfduvDvv"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789514835952,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 500000,
+  "_key": "!items!c4df98aWDgYkK53l"
+}

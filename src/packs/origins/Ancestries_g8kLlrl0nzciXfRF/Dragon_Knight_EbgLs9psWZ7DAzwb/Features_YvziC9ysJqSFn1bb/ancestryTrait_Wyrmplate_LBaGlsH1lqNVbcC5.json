@@ -7,7 +7,7 @@
   "system": {
     "description": {
       "value": "<p>Your hardened scales grant you damage immunity equal to [[lookup @level]]{your level} to one of the following damage types: acid, cold, corruption, fire, lightning, or poison. You can change your damage immunity type when you finish a respite.</p>",
-      "director": "<p>The effect of this item needs to be customized to the damage type of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
+      "director": ""
     },
     "source": {
       "book": "Heroes",
@@ -15,7 +15,43 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "wyrmplate",
-    "advancements": {},
+    "advancements": {
+      "jiYtHGwDqwfvzo9Y": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "effectGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "jiYtHGwDqwfvzo9Y",
+        "description": "",
+        "repick": {
+          "respite": "finish"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.bjWsBuewU5nOjrLv"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.FBHxesSD21wqQFP7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.W4T6T0JqqCgLqlLs"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.jUiKGskq9GfYC07P"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.UTOMzPUJOec3H0Iq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.UULfS7oSIvyCJEfl"
+          }
+        ],
+        "chooseN": 1
+      }
+    },
     "points": null,
     "prerequisites": {
       "value": "",
@@ -23,67 +59,7 @@
       "level": null
     }
   },
-  "effects": [
-    {
-      "name": "Wyrmplate",
-      "origin": "Compendium.draw-steel.origins.Item.LBaGlsH1lqNVbcC5",
-      "img": "icons/equipment/chest/breastplate-layered-gold.webp",
-      "disabled": false,
-      "_id": "WTEHqU3xFlhwv9JN",
-      "type": "base",
-      "system": {
-        "end": {
-          "roll": "1d10 + @combat.save.bonus"
-        },
-        "changes": [
-          {
-            "key": "system.damage.immunities.acid",
-            "type": "upgrade",
-            "value": "@level",
-            "phase": "initial",
-            "priority": null
-          }
-        ],
-        "project": {
-          "prerequisites": "",
-          "source": "",
-          "rollCharacteristic": [],
-          "yield": {
-            "kind": "weapon",
-            "amount": "1",
-            "display": ""
-          }
-        }
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "<p>Your hardened scales grant you damage immunity equal to your level to one of the following damage types: acid, cold, corruption, fire, lightning, or poison. You can change your damage immunity type when you finish a respite.</p>",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "14.361",
-        "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
-        "createdTime": 1754523115273,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "start": null,
-      "showIcon": 1,
-      "folder": null,
-      "_key": "!items.effects!LBaGlsH1lqNVbcC5.WTEHqU3xFlhwv9JN"
-    }
-  ],
+  "effects": [],
   "sort": 100000,
   "ownership": {
     "default": 0
@@ -93,7 +69,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.364",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1754522554970,

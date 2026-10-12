@@ -1,0 +1,110 @@
+{
+  "folder": "BDbOgYkAil0m1Es9",
+  "name": "Borne Aloft",
+  "type": "feature",
+  "_id": "4FUYGVCRF9blgTiQ",
+  "img": "icons/magic/air/fog-gas-smoke-swirling-gray.webp",
+  "system": {
+    "description": {
+      "value": "<p>While the condor is rampaging, you gain wings and can [[/apply 8zVGGq8n7WU9W54f]]{fly}. While flying, you gain a +2 bonus to speed. If you are midair when the condor's rampage ends, you take no damage from the fall.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "8",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "borne-aloft",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Flight Speed",
+      "img": "icons/magic/air/fog-gas-smoke-swirling-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.4FUYGVCRF9blgTiQ",
+      "transfer": false,
+      "_id": "8zVGGq8n7WU9W54f",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788970343047,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!4FUYGVCRF9blgTiQ.8zVGGq8n7WU9W54f"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788970284885,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!4FUYGVCRF9blgTiQ"
+}

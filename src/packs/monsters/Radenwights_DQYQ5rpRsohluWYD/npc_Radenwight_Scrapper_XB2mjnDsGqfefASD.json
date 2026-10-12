@@ -91,7 +91,8 @@
     "monster": {
       "freeStrike": 1,
       "keywords": [
-        "humanoid"
+        "humanoid",
+        "radenwight"
       ],
       "level": 1,
       "role": "defender",
@@ -221,10 +222,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -249,7 +246,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -295,10 +292,6 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -333,7 +326,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -362,7 +355,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 5,
         "trigger": "A Radenwight's turn starts.",
         "distance": {
@@ -384,10 +377,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -417,7 +406,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -441,7 +430,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "A Radenwight's turn starts.",
         "distance": {
@@ -463,10 +452,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -543,7 +528,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.jhYQClVszlAUFkeJ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1761242447373,
@@ -728,12 +713,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.362",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1757283901400,

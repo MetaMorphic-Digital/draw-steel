@@ -1,7 +1,7 @@
+import { DrawSteelActiveEffect, DrawSteelActor } from "../../documents/_module.mjs";
 import { ObjectSizeModel, SizeModel, SourceModel } from "../models/_module.mjs";
-import DrawSteelActor from "../../documents/actor.mjs";
-import { DrawSteelActiveEffect } from "../../documents/_module.mjs";
 import MembersCollection from "../../utils/members-collection.mjs";
+import { PowerRollDice } from "../_types";
 import { PowerRollModifiers } from "../../_types";
 
 interface BarAttribute {
@@ -15,13 +15,11 @@ interface Biography {
 }
 
 interface Characteristic {
+  resist: number;
   value: number;
   edges: number;
   banes: number;
-  dice: {
-    mode: "kh" | "kl";
-    number: number;
-  }
+  dice: PowerRollDice;
 }
 
 interface CoreResource {
@@ -59,6 +57,13 @@ interface Skills {
   value: Set<string>;
   modifiers: Record<string, PowerRollModifiers>;
   list: string;
+}
+
+export interface SummonPortfolio {
+  uuid: string;
+  count: string;
+  cost: number | null;
+  advancementUuid: string;
 }
 
 declare module "./base-actor.mjs" {
@@ -105,6 +110,19 @@ declare module "./base-actor.mjs" {
   }
 }
 
+declare module "./companion.mjs" {
+  export default interface CompanionModel {
+    source: SourceModel;
+    companion: {
+      freeStrike: number;
+      keywords: Set<string> & { list: string[]; labels: string };
+      role: string;
+      roleLabel: string;
+      master: DrawSteelActor;
+    }
+  }
+}
+
 declare module "./creature.mjs" {
   export default interface CreatureModel {
     biography: Biography & {
@@ -121,11 +139,6 @@ declare module "./creature.mjs" {
 }
 
 declare module "./hero.mjs" {
-  type HeroicResource = {
-    value: number;
-    label?: string;
-  };
-
   export default interface HeroModel {
     combat: Combat & {
       initiativeThreshold: number;
@@ -136,8 +149,16 @@ declare module "./hero.mjs" {
       divisor: number;
     };
     hero: {
-      primary: HeroicResource;
-      epic: HeroicResource;
+      primary: {
+        value: number;
+        tracking: number;
+        turnGain: string;
+        label?: string;
+      };
+      epic: {
+        value: number;
+        label?: string;
+      };
       xp: number;
       renown: number;
       wealth: number;
@@ -173,6 +194,7 @@ declare module "./npc.mjs" {
     evLabel: string;
     monster: {
       freeStrike: number;
+      freeStrikeType: string;
       keywords: Set<string> & { list: string[]; labels: string };
       level: number;
       role: string;

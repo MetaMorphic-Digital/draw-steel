@@ -7,7 +7,7 @@
   "system": {
     "description": {
       "value": "<p>Select one damage immunity granted by your Wyrmplate trait. You always have this immunity, in addition to the immunity granted by Wyrmplate.</p>",
-      "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
+      "director": ""
     },
     "source": {
       "book": "Heroes",
@@ -15,7 +15,43 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "prismatic-scales",
-    "advancements": {},
+    "advancements": {
+      "jiYtHGwDqwfvzo9Y": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "effectGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "jiYtHGwDqwfvzo9Y",
+        "description": "",
+        "repick": {
+          "respite": "finish"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.bjWsBuewU5nOjrLv"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.FBHxesSD21wqQFP7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.W4T6T0JqqCgLqlLs"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.jUiKGskq9GfYC07P"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.UTOMzPUJOec3H0Iq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.UULfS7oSIvyCJEfl"
+          }
+        ],
+        "chooseN": 1
+      }
+    },
     "points": 1,
     "prerequisites": {
       "value": "",
@@ -23,67 +59,7 @@
       "level": null
     }
   },
-  "effects": [
-    {
-      "name": "Prismatic Scales",
-      "origin": "Compendium.draw-steel.origins.Item.iyieHhQ8wAB5godW",
-      "img": "icons/equipment/shield/heater-crystal-blue.webp",
-      "disabled": false,
-      "_id": "7HS8NQ0J2U2ZEmuf",
-      "type": "base",
-      "system": {
-        "end": {
-          "roll": "1d10 + @combat.save.bonus"
-        },
-        "changes": [
-          {
-            "key": "system.damage.immunities.acid",
-            "type": "upgrade",
-            "value": "@level",
-            "phase": "initial",
-            "priority": null
-          }
-        ],
-        "project": {
-          "prerequisites": "",
-          "source": "",
-          "rollCharacteristic": [],
-          "yield": {
-            "kind": "weapon",
-            "amount": "1",
-            "display": ""
-          }
-        }
-      },
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "<p>Select one damage immunity granted by your Wyrmplate trait. You always have this immunity, in addition to the immunity granted by Wyrmplate.</p>",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "14.361",
-        "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
-        "createdTime": 1754599926702,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "start": null,
-      "showIcon": 1,
-      "folder": null,
-      "_key": "!items.effects!iyieHhQ8wAB5godW.7HS8NQ0J2U2ZEmuf"
-    }
-  ],
+  "effects": [],
   "sort": 600000,
   "ownership": {
     "default": 0
@@ -93,7 +69,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.364",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1754522589314,

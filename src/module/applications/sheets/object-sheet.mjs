@@ -1,4 +1,4 @@
-import { DocumentSourceInput, ObjectMetadataInput } from "../apps/_module.mjs";
+import { DocumentSourceInput, ObjectMetadataInput, ObjectSizesInput } from "../apps/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 import { systemPath } from "../../constants.mjs";
 
@@ -12,6 +12,8 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
     actions: {
       updateSource: this.#updateSource,
       editObjectMetadata: this.#editObjectMetadata,
+      editShapes: this.#editShapes,
+      placeShapes: this.#placeShapes,
     },
     window: {
       controls: [{
@@ -83,7 +85,7 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    this.renderChild(new DocumentSourceInput({ document: this.document }));
+    await this.renderChild(new DocumentSourceInput({ document: this.document }));
   }
 
   /* -------------------------------------------------- */
@@ -95,6 +97,30 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editObjectMetadata(event, target) {
-    this.renderChild(new ObjectMetadataInput({ document: this.document }));
+    await this.renderChild(new ObjectMetadataInput({ document: this.document }));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a dialog to edit the object shapes.
+   * @this DrawSteelObjectSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editShapes(event, target) {
+    await this.renderChild(new ObjectSizesInput({ document: this.document }));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Place the configured shapes.
+   * @this DrawSteelObjectSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #placeShapes(event, target) {
+    await this.actor.system.combat.size.placeArea();
   }
 }

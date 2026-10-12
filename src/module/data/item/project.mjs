@@ -89,7 +89,7 @@ export default class ProjectModel extends BaseItemModel {
     // If creating with a doment UUID, transfer the document's project data to the project item.
     const uuid = data.system?.yield?.document;
     const yieldDocument = await fromUuid(uuid);
-    if ((yieldDocument?.type === "treasure") || (yieldDocument.documentName === "ActiveEffect")) {
+    if (yieldDocument && ((yieldDocument.type === "treasure") || (yieldDocument.documentName === "ActiveEffect"))) {
       const { prerequisites, rollCharacteristic, goal, source } = yieldDocument.system.project;
       this.parent.updateSource({
         img: yieldDocument.img,

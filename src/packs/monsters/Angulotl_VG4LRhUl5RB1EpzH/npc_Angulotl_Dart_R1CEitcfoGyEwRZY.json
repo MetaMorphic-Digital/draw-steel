@@ -95,7 +95,8 @@
     "monster": {
       "freeStrike": 2,
       "keywords": [
-        "humanoid"
+        "humanoid",
+        "angulotl"
       ],
       "level": 1,
       "role": "artillery",
@@ -356,7 +357,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 3,
         "trigger": "",
         "distance": {
@@ -378,10 +379,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -411,7 +408,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.UZtOR8SSJC71RuS3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1757015038970,
@@ -505,10 +502,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "after00000000000": {
             "_id": "after00000000000",
@@ -540,7 +533,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1757015227253,
@@ -564,7 +557,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "",
         "distance": {
@@ -586,10 +579,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -666,7 +655,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chuInXNQ28dtiMPI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1760844482562,
@@ -696,7 +685,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 5,
         "trigger": "",
         "distance": {
@@ -795,10 +784,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "prerequisites": {
           "value": "",
           "dsid": [],
@@ -822,7 +807,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.SMNH5LxY8st7IyDf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1763816514664,
@@ -915,12 +900,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.362",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1757014843397,

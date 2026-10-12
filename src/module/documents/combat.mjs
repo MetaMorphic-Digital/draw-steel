@@ -293,7 +293,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     /** @type {DrawSteelActor} */
     const actor = combatant.actor;
     if (!actor) return;
-    const combatEvents = new Set("save", "combatEnd", "roundStart", "roundEnd", "turnStart", "turnEnd");
+    const combatEvents = new Set(["save", "combatEnd", "roundStart", "roundEnd", "turnStart", "turnEnd"]);
     const toDelete = actor.effects.filter(e => e.duration.expired || (combatEvents.has(e.duration.expiry) && (e._source.start.combat === this.id)));
 
     // TODO: Consider if we need some notification or message here.
@@ -317,6 +317,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
         SavingThrowManager.delegateSavingThrow(effect);
       }
     }
+    combatant.actor?.system._onEndTurn(combatant);
   }
 
   /* -------------------------------------------------- */

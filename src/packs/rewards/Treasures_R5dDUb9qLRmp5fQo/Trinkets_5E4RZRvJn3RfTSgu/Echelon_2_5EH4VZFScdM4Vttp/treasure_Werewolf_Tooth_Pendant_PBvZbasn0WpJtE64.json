@@ -1,0 +1,110 @@
+{
+  "folder": "5EH4VZFScdM4Vttp",
+  "name": "Werewolf Tooth Pendant",
+  "type": "treasure",
+  "_id": "PBvZbasn0WpJtE64",
+  "img": "icons/commodities/bones/tooth-shark-brown.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>The blood encrusting this tooth can never be washed off.</em></p><p><strong>Effect:</strong> You must be a beastheart to wear this necklace. While wearing this necklace, you can use a free maneuver and [[/gain -1 hr]]{spend 1 ferocity} during combat to shapeshift into a hybrid form that grants you your companion's physical characteristics. Your hybrid form lasts until the end of the encounter or you revert to your true form as a free maneuver. While in hybrid form, you can use abilities with the Companion keyword, your speed increases to your companion's speed (if it is higher), and you gain your companion's movement types and damage immunities.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "38",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "werewolf-tooth-pendant",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 2,
+    "keywords": [
+      "magic",
+      "neck"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "An incisor from a werewolf",
+      "source": "Sagas in High Kuric",
+      "rollCharacteristic": [
+        "might",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 300
+    }
+  },
+  "effects": [
+    {
+      "name": "Werewolf Pendant Transformation",
+      "img": "icons/commodities/bones/tooth-shark-brown.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.PBvZbasn0WpJtE64",
+      "_id": "XtiH30qT0og8t05s",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789745331861,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!PBvZbasn0WpJtE64.XtiH30qT0og8t05s"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789745230923,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!PBvZbasn0WpJtE64"
+}

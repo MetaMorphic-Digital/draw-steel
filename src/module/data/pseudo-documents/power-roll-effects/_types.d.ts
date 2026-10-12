@@ -1,6 +1,28 @@
+import DrawSteelItem from "../../../documents/item.mjs";
+
+declare module "./base-power-roll-effect.mjs" {
+  export default interface BasePowerRollEffect {
+    document: DrawSteelItem;
+  }
+}
+
 type PotencySchema = {
   value: string;
   characteristic: string;
+};
+
+export type PotencyChatResult = {
+  text: string;
+  fail: boolean;
+};
+
+export type PotencyChatOptions = {
+  bonus: number;
+};
+
+export type TextOptions = {
+  /** An integer adjustment of the potency value, e.g. Surges. */
+  potencyBonus?: number;
 };
 
 export type DamageSchema = {

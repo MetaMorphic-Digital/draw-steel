@@ -3,6 +3,10 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 import DamageRoll from "../../../rolls/damage.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 
+/**
+ * @import { TextOptions } from "./_types";
+ */
+
 const { SchemaField, SetField } = foundry.data.fields;
 
 /**
@@ -137,9 +141,10 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
   /**
    * @param {1 | 2 | 3} tier
+   * @param {TextOptions} [options]
    * @inheritdoc
    */
-  toText(tier) {
+  toText(tier, options = {}) {
     const { value, types, potency, ignoredImmunities } = this.damage[`tier${tier}`];
     if (Number(value) === 0) return "";
 
@@ -153,7 +158,8 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     }
 
     const simplifiedFormula = this.actor ? ds.utils.simplifyRollFormula(value, this.item.getRollData()) : value;
-    const formattedDamageString = Handlebars.escapeExpression(_loc(i18nString, { value: simplifiedFormula, damageTypes }));
+    let formattedDamageString = Handlebars.escapeExpression(_loc(i18nString, { value: simplifiedFormula, damageTypes }));
+    if (!this.actor) formattedDamageString = this.#replaceRollData(formattedDamageString);
 
     let result = `<span data-tooltip="${value}" data-tooltip-direction="UP">${formattedDamageString}</span>`;
 
@@ -173,7 +179,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     if (potency.characteristic === "none") return result;
 
-    const potencyString = this.toPotencyHTML(tier);
+    const potencyString = this.toPotencyHTML(tier, options.potencyBonus);
 
     return _loc("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
       damage: result,
@@ -184,10 +190,33 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /**
+   * Replace roll data terms with DS glyphs.
+   * @param {string} formula
+   * @returns {string}
+   */
+  #replaceRollData(formula) {
+    const data = Object.entries(ds.CONFIG.characteristics).reduce((rollData, [key, chr]) => {
+      const html = rollData[chr.rollKey] = `<span style="font-family: var(--font-glyph)">${chr.rollKey}</span>`;
+      if (this.parent.power.roll.characteristics.has(key)) rollData.chr.push(html);
+      return rollData;
+    }, { chr: [] });
+
+    const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+
+    data.chr = formatter.format(data.chr);
+
+    return DamageRoll.replaceFormulaData(formula, data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Produce a damage roll.
    * @param {1 | 2 | 3} tier        The tier of this effects' data to fetch.
    * @param {object} [options]
    * @param {string} [options.damageSelection] Pick between this damage effect's multiple damage types.
+   * @param {number[]} [options.spend] Spend data from an ability configuration form.
+   * @param {number} [options.squadMinions] A number of squad minions joining in the attack. Base 1 for no extra damage.
    * @returns {DamageRoll | null} Returns null if there would be no damage from that tier.
    */
   toDamageRoll(tier, options = {}) {
@@ -204,7 +233,17 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     // Extract ignoredImmunities from the damage effect
     const ignoredImmunities = Array.from(effectTier.ignoredImmunities);
 
-    return new DamageRoll(String(effectTier.value), this.item.getRollData(), {
+    const rollData = this.item.getRollData();
+
+    let formula = String(effectTier.value);
+
+    if (options.spend) rollData.spend = options.spend;
+    if (options.squadMinions) {
+      formula += "+(@squadMinions * @monster.freeStrike)";
+      rollData.squadMinions = options.squadMinions - 1;
+    }
+
+    return new DamageRoll(formula, rollData, {
       flavor,
       type: damageType,
       ignoredImmunities,

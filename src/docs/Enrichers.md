@@ -1,8 +1,47 @@
 "Enrichers" refer to specialized text syntax that can be used in any rich text editor (such as an actor description, journal entry, or chat message). Enriched content displays simply in the editor but can represent large and complex displays in the rendered text.
 
+## Actor Embeds
+
+NPC Actors can be embedded into enriched text via the @Embed&ZeroWidthSpace;[uuid] syntax. (Only NPC Actors can be embedded in this way currently; support for Objects and Retainers is planned)
+
+This embed displays similarly as the statblocks in the book and contains the same relevant information there:
+
+![NPC Embed Example](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/NPC-embed-example.png?raw=true)
+
+### Setting up an NPC's Features/Abilities so that its `@Embed`s display as expected
+
+- For Abilities, there is a best-effort attempt to assign the icon that it corresponds with in the PDF's statblocks. However, there are some Abilities that don't follow an obvious pattern for their icon, and thus can be manually set by using a flag. The flag exists under the namespace `draw-steel.embedDisplay`, under the property `iconOverride` (a `string` literal). Set that property to one of the following options to override the icon that is used:
+  - "area"
+  - "burst"
+  - "melee"
+  - "meleeRanged"
+  - "ranged"
+  - "self"
+  - "special"
+  - "trait"
+  - "triggered-action"
+  - "villain-action"
+- For Features, there isn't sufficient information in the data model to assign the icon using logic alone. Thus, Features default to using the "trait" (star) icon. If you wish to select the icon yourself, you must use the flag described above to override the icon.
+- In statblocks, some Features come at the beginning of the list, before Abilities, and others come at the end. Thus there is another flag option for Features, under the same namespace: `draw-steel.embedDisplay`, under the `displayAtEnd` property. This is a `Boolean` that exists on the Feature. Set it to `true` to put that Feature after the Abilities, rather than before. The order is otherwise retained.
+- You can set this flag on an item in Foundry via `item.setFlag("draw-steel", "embedDisplay", { iconOverride: "special", displayAtEnd: true  })`
+- Abilities with the "Ancestry Malice" category will not be shown unless you use `showAll=true` in the embed configuration (i.e. @Embed&ZeroWidthSpace;[uuid showAll=true])
+
 ## Item Embeds
 
-All items support the @Embed<s></s>[uuid] syntax, which by default share the description of the item. For abilities, kits, and projects, their embeds feature additional information.
+All items support the @Embed&ZeroWidthSpace;[uuid] syntax, which by default share the description of the item. Abilities, followers, kits, projects, tiles, and treasures feature additional information. These embeds support the following additional properties, which should be included inside the square brackets.
+
+<dl>
+  <dt>includeName=true</dt>
+  <dd>Prepends the item embed with an h5 element with the item name.</dd>
+  <dt>prerequisites=true (Title only)</dt>
+  <dd>Adds the title's prerequisites to the start of the embed.</dd>
+  <dt>includeProjectInfo=true (Treasure Only)</dt>
+  <dd>Adds the project info to the start of the embed.</dd>
+</dl>
+
+## Active Effect Embeds
+
+Active effects support the @Embed&ZeroWidthSpace;[uuid] syntax, which shares the description of the effect.
 
 ## Lookup
 
@@ -110,11 +149,11 @@ The `[[/apply]]` enricher allows you to link status effects, either from an item
 - [&ZeroWidthSpace;[/apply Rage stacking=true]]: Apply "Rage" and allow stacking multiple copies of the effect.
 - [&ZeroWidthSpace;[/apply Fated originDuration=true end=turn]]: Apply "Fated" and set it to end at the next turn of the source actor (rather than the end of the target's next turn).
 - [&ZeroWidthSpace;[/apply xww2tw1knkZ9x4A3]]: Apply the effect with an ID of `xww2tw1knkZ9x4A3`. You can grab an effect's ID by right clicking the passport icon in the top right of the active effect config.
-- [&ZeroWidthSpace;[/apply Item.uU7qrouU5PlbLWIM.ActiveEffect.xww2tw1knkZ9x4A3]]: Apply an effect by UUID, which can be grabbed by left clicking the passport icon in the top right of the active effect config.. Unlike the ID and name matching, this allows referencing a custom active effect without being inside the parent's html fields.
+- [&ZeroWidthSpace;[/apply Item.uU7qrouU5PlbLWIM.ActiveEffect.xww2tw1knkZ9x4A3]]: Apply an effect by UUID, which can be grabbed by left clicking the passport icon in the top right of the active effect config. Unlike the ID and name matching, this allows referencing a custom active effect without being inside the parent's html fields.
 
 ## Potency
 
-The `[[potency]]` enricher allows you to construct enriched potency displays using the Draw Steel Glyphs. The a strength of `weak`, `average`, or `strong` is provided and the item is on an actor, it will pull the actor's potency value.
+The `[[potency]]` enricher allows you to construct enriched potency displays using the Draw Steel Glyphs. If the strength of `weak`, `average`, or `strong` is provided and the item is on an actor, it will pull the actor's potency value.
 
 - [&ZeroWidthSpace;[potency M weak]]: Displays `M<weak` without an actor or `M<[number]` with an actor.
 - [&ZeroWidthSpace;[potency A 2]]: Displays `A<2`.
@@ -122,9 +161,20 @@ The `[[potency]]` enricher allows you to construct enriched potency displays usi
 - [&ZeroWidthSpace;[potency characteristic=I strength=weak]]: Displays `I<weak` without an actor or `I<[number]` with an actor.
 - [&ZeroWidthSpace;[potency characteristic=presence strength=1]]: Displays `P<1`.
 
+## Summon
+
+The `[[/summon]]` enricher creates a button that will place a token in the current scene, performing any necessary imports.
+It is not possible to summon actors sourced from compendiums in a context with no summoner, e.g., in a Chat Message.
+- [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: Summon an Abyssal Hyena. World actors are also supported.
+- [&ZeroWidthSpace;[/summon actor=Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: You can specify the actor to summon.
+- [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm count=3]]: You can summon more than one actor at a time by specifying the count.
+- [&ZeroWidthSpace;[/summon portfolio=call-forth]]: Perform a portfolio summon using the portfolio for the identified ability.
+- [&ZeroWidthSpace;[/summon portfolio=call-forth signatureOnly=true]]: Perform a portfolio summon but restrict to signature minions in the portfolio.
+- [&ZeroWidthSpace;[/summon Actor.5oS4rixqbIcsziNm summoner=Actor.k0hqADu4kFGzDQ9z]]: Specify an actor as the summoner by providing their UUID. Summoner should be a world actor.
+
 ## HTML-mode to clean up text
 If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):
 1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
 2. click on the `</>` symbol to enter HTML mode and make sure, there is not unnecessary characters or code interfering with the enricher.
 
-![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs/HTML-mode-explainer.png)
+![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/1.1.x/assets/docs/HTML-mode-explainer.png?raw=true)

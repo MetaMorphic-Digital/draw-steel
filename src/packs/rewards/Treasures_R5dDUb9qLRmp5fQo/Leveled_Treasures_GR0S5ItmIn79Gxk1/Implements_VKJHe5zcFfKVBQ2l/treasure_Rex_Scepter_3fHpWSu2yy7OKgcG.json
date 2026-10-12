@@ -1,0 +1,237 @@
+{
+  "folder": "VKJHe5zcFfKVBQ2l",
+  "name": "Rex Scepter",
+  "type": "treasure",
+  "_id": "3fHpWSu2yy7OKgcG",
+  "img": "icons/commodities/treasure/sceptre-jeweled-gold.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>The rod resembles a simple tree branch. It grows and braids itself into an ornate scepter in the heat of battle.</em></p><p><strong>1st Level:</strong> While you wield this scepter, your Renown is increased by 1. Additionally, you can use a main action once per turn targeting a willing ally or two minions you control within 5 squares of you to make a free strike on a target within the same distance of you as a free triggered action.</p><p><strong>5th Level:</strong> The scepter's bonus to Renown increases to +2. Additionally, whenever a creature you command using the scepter makes a free strike, they [[/gain 1 surge]] that can be used immediately.</p><p><strong>9th Level:</strong> The scepter's bonus to Renown increases to +4. Additionally, the scepter's main action can now be used as a maneuver.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "49",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rex-scepter",
+    "kind": "implement",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "implement"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A tree branch and fealty from three hundred or more sworn followers",
+      "source": "Texts or lore in Zaliac",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "presence"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "Rex Scepter (1st Level)",
+      "img": "icons/commodities/treasure/sceptre-jeweled-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.3fHpWSu2yy7OKgcG",
+      "disabled": true,
+      "_id": "eVP19CMKar8MjLLE",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.renown",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515444899,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!3fHpWSu2yy7OKgcG.eVP19CMKar8MjLLE"
+    },
+    {
+      "name": "Rex Scepter (5th Level)",
+      "img": "icons/commodities/treasure/sceptre-jeweled-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.3fHpWSu2yy7OKgcG",
+      "disabled": true,
+      "_id": "xWATaqduQjXNUiyV",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.renown",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515542758,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!3fHpWSu2yy7OKgcG.xWATaqduQjXNUiyV"
+    },
+    {
+      "name": "Rex Scepter (9th Level)",
+      "img": "icons/commodities/treasure/sceptre-jeweled-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.3fHpWSu2yy7OKgcG",
+      "disabled": true,
+      "_id": "0gwnWXCtKyhY6IWS",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.renown",
+            "type": "add",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789515572110,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!3fHpWSu2yy7OKgcG.0gwnWXCtKyhY6IWS"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789515349226,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!3fHpWSu2yy7OKgcG"
+}

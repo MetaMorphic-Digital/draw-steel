@@ -1,0 +1,176 @@
+{
+  "folder": "U6VVpOjDnbMJy7VY",
+  "name": "Soul Sleuth",
+  "type": "ability",
+  "_id": "ypHZHe4BBXKZlUqX",
+  "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+  "system": {
+    "source": {
+      "book": "Summoner",
+      "page": "53",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "soul-sleuth",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "",
+    "keywords": [
+      "area",
+      "encounter",
+      "magic"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": "4",
+      "secondary": "5",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemyObject",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "q1rbkp1SiAmyT2gP": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "q1rbkp1SiAmyT2gP",
+          "damage": {
+            "tier1": {
+              "value": "2",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "4",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "5",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "PfIQoIBSm9C5LInU": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "PfIQoIBSm9C5LInU",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "properties": [],
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "agility"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "iH1CVsoYdw7JTK9x": {
+        "sort": 100000,
+        "name": "Special",
+        "img": null,
+        "type": "base",
+        "_id": "iH1CVsoYdw7JTK9x",
+        "description": "<p>The detective can instantly kill one or more of their minions to give themself a double edge on the power roll.</p>",
+        "before": false
+      },
+      "34yuBVYKPAbYWI2w": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "34yuBVYKPAbYWI2w",
+        "description": "<p>Any enemy that was hiding in the area is revealed. The area is now difficult terrain for enemies.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788733578835,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!ypHZHe4BBXKZlUqX"
+}

@@ -1,0 +1,239 @@
+{
+  "folder": "8g97Jx6nZeOwvJH9",
+  "name": "Howling Gale",
+  "type": "ability",
+  "_id": "yPb8EGJ4vEbP5iPD",
+  "img": "icons/magic/air/wind-tornado-wall-blue.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "27",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "howling-gale",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "A blizzard or thunderstorm sends foes flying and lifts you like a feather.",
+    "keywords": [
+      "area",
+      "companion",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": "3",
+      "secondary": "5",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "rrbcAMvxOIezcnZr": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "rrbcAMvxOIezcnZr",
+          "damage": {
+            "tier1": {
+              "value": "6",
+              "types": [
+                "cold",
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "cold",
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "13",
+              "types": [
+                "cold",
+                "sonic"
+              ],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "0Ly9ZxAOOR2ykJtC": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "0Ly9ZxAOOR2ykJtC",
+          "forced": {
+            "tier1": {
+              "display": "{{forced}}",
+              "movement": [
+                "slide"
+              ],
+              "distance": "1",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "{{forced}}",
+              "movement": [
+                "slide"
+              ],
+              "distance": "2",
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{forced}}",
+              "movement": [
+                "slide"
+              ],
+              "distance": "4",
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "CTcBYkudzkfeSv1U": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "CTcBYkudzkfeSv1U",
+        "description": "<p>Until the end of your next turn, you and your companion can fly and gain a +3 bonus to speed.</p><p></p><p>[[/apply I3N5wvheYlzDQBwW originDuration=true end=turn]]</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Howling Gale",
+      "img": "icons/magic/air/wind-tornado-wall-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.yPb8EGJ4vEbP5iPD",
+      "transfer": false,
+      "_id": "I3N5wvheYlzDQBwW",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788652131159,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!yPb8EGJ4vEbP5iPD.I3N5wvheYlzDQBwW"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788651980923,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!yPb8EGJ4vEbP5iPD"
+}

@@ -83,7 +83,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Does this trait have a choice to make?
+   * Does this advancement have a choice to make?
    * @type {boolean}
    */
   get isChoice() {

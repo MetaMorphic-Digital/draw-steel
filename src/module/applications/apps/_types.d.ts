@@ -1,4 +1,5 @@
 import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
+import ObjectModel from "../../data/actor/object.mjs";
 
 interface PowerRollDialogModifiers {
   edges: number;
@@ -29,5 +30,11 @@ declare module "./characteristic-input.mjs" {
 declare module "./document-source-input.mjs" {
   export default interface DocumentSourceInput {
     document: DrawSteelActor | DrawSteelItem;
+  }
+}
+
+declare module "./object-sizes-input.mjs" {
+  export default interface ObjectSizesInput {
+    document: Omit<DrawSteelActor, "system"> & { system: ObjectModel };
   }
 }

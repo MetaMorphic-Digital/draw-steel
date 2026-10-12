@@ -57,7 +57,7 @@
       max-width: 160px;
       .actor-source {
         margin-top: 5px;
-        font-family: var(--font-h4);
+        font-family: "Modesto Condensed", serif;
         font-size: var(--font-size-16);
         flex-grow: 1;
         align-items: start;
@@ -117,6 +117,11 @@
 
     .form-group.stacked {
       flex-direction: column-reverse;
+      row-gap: 0px;
+      label {
+        align-self: center;
+        justify-self: center;
+      }
     }
 
     .resource {
@@ -152,7 +157,7 @@
     .resource-content {
       align-items: center;
 
-      > * > .form-group {
+      .form-group.paired {
         display: flex;
         flex-direction: column-reverse;
         gap: 0px;
@@ -289,52 +294,53 @@
     }
   }
 
-  [data-application-part="abilities"] .item-list-container {
+  [data-application-part="abilities"], [data-application-part="body"] {
+     .item-list-container {
+      .item-cost,
+      .item-distance,
+      .item-target {
+        width: 100px;
+      }
 
-    .item-cost,
-    .item-distance,
-    .item-target {
-      width: 100px;
-    }
+      .item-order {
+        width: 50px;
+      }
 
-    .item-order {
-      width: 50px;
-    }
-
-    .item-row {
-      .item-name {
-        .name {
-          .keywords {
-            font-size: var(--font-size-12);
+      .item-row {
+        .item-name {
+          .name {
+            .keywords {
+              font-size: var(--font-size-12);
+            }
           }
         }
       }
-    }
 
-    .item-embed {
-      padding: 1px 5px;
+      .item-embed {
+        padding: 1px 5px;
 
-      .metadata dl {
-        grid-template-columns: auto 1fr auto 1fr;
-      }
-
-      .draw-steel.ability {
-        dt.distance, dt.target {
-          font-family: "Draw Steel Glyphs";
+        .metadata dl {
+          grid-template-columns: auto 1fr auto 1fr;
         }
 
-        dd.effect {
-          :first-child {
-            /* Ensures the text lines up with the dt element */
-            margin-top: 0;
-            padding-top: 0;
+        .draw-steel.ability {
+          dt.distance, dt.target {
+            font-family: "Draw Steel Glyphs";
+          }
+
+          dd.effect {
+            :first-child {
+              /* Ensures the text lines up with the dt element */
+              margin-top: 0;
+              padding-top: 0;
+            }
           }
         }
       }
     }
   }
 
-  [data-application-part="features"] {
+  [data-application-part="features"], [data-application-part="body"] {
 
     .feature-list-container {
 
@@ -410,6 +416,7 @@
           padding: 0.25rem 1rem;
           img {
             max-height: 100%;
+            filter: var(--draw-steel-svg-color);
           }
         }
       }

@@ -23,16 +23,4 @@ export default class RollPart extends BaseMessagePart {
 
   /** @inheritdoc */
   static TEMPLATE = systemPath("templates/sidebar/chat/parts/roll.hbs");
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _prepareContext(context) {
-    await super._prepareContext(context);
-
-    context.ctx.buttons = this.rolls.map((roll, i) => {
-      if (roll instanceof DamageRoll) return roll.toRollButton(i);
-      return null;
-    }).filter(_ => _);
-  }
 }

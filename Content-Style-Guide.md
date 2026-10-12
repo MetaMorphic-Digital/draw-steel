@@ -19,6 +19,7 @@ The Draw Steel system repository has a large amount of compendium content licens
   - Actor link: False.
   - Sight: Not enabled.
 - Items should have the appropriate source info.
+- Minions should use the Minion Sheet.
 
 ## Items
 - Use [Enrichers](https://github.com/MetaMorphic-Digital/draw-steel/wiki/Enrichers) to fill in functionality and reduce text repetition.

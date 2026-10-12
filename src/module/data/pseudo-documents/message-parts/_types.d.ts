@@ -1,4 +1,5 @@
 import DSRoll from "../../../rolls/base.mjs";
+import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import StandardModel from "../../message/standard.mjs";
 
 declare module "./ability-result.mjs" {
@@ -11,21 +12,41 @@ declare module "./ability-result.mjs" {
 declare module "./ability-use.mjs" {
   export default interface AbilityUse {
     abilityUuid: string;
+    effects: Set<string>;
+    spendAmounts: Record<string, number>;
   }
 }
 
 declare module "./base-message-part.mjs" {
   export default interface MessagePart {
     parent: StandardModel;
+    document: DrawSteelChatMessage;
     type: string;
     rolls: DSRoll[],
     flavor: string;
   }
 }
 
+declare module "./fall.mjs" {
+  export default interface FallPart {
+    fallerUuid: string;
+    fallerDistance: string;
+  }
+}
+
 declare module "./hero-token.mjs" {
   export default interface HeroTokenPart {
     spendType: string;
+  }
+}
+
+declare module "./target-result.mjs" {
+  export default interface TargetResult {
+    abilityUuid: string;
+    tier: number;
+    targetUuid: string;
+    /** Mapping of PRE ids to potency bonuses. */
+    potencies: Record<string, number>;
   }
 }
 

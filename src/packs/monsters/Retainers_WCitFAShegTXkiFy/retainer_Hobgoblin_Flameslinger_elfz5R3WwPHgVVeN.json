@@ -7,7 +7,7 @@
   "system": {
     "stamina": {
       "value": null,
-      "max": 48,
+      "max": 0,
       "temporary": 0
     },
     "combat": {
@@ -23,7 +23,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
@@ -295,7 +295,7 @@
               "_id": "ZmiEd35Vd9YIo4TB",
               "damage": {
                 "tier1": {
-                  "value": "5",
+                  "value": "3 + floor(@level / 2)",
                   "types": [
                     "fire"
                   ],
@@ -306,7 +306,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "9",
+                  "value": "5 + @level",
                   "types": [
                     "fire"
                   ],
@@ -317,7 +317,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "12",
+                  "value": "8 + @level",
                   "types": [
                     "fire"
                   ],
@@ -369,10 +369,6 @@
               }
             }
           }
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "after00000000000": {
@@ -449,7 +445,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1776724004697,
@@ -505,10 +501,6 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "before0000000000": {
             "_id": "before0000000000",
@@ -536,7 +528,7 @@
               {
                 "key": "system.damage.immunities.fire",
                 "type": "upgrade",
-                "value": 4,
+                "value": "@level",
                 "phase": "initial",
                 "priority": null
               }
@@ -571,11 +563,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.362",
+            "coreVersion": "14.368",
             "systemId": "draw-steel",
-            "systemVersion": "1.1.0",
+            "systemVersion": "1.2",
             "createdTime": 1776724812155,
-            "modifiedTime": 1779886283585,
+            "modifiedTime": 1790334218609,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -595,7 +587,7 @@
               {
                 "key": "system.damage.weaknesses.fire",
                 "type": "upgrade",
-                "value": 4,
+                "value": "@level",
                 "phase": "initial",
                 "priority": null
               }
@@ -630,11 +622,11 @@
           "sort": 0,
           "flags": {},
           "_stats": {
-            "coreVersion": "14.362",
+            "coreVersion": "14.368",
             "systemId": "draw-steel",
-            "systemVersion": "1.1.0",
+            "systemVersion": "1.2",
             "createdTime": 1776724906777,
-            "modifiedTime": 1779886283585,
+            "modifiedTime": 1790334225584,
             "lastModifiedBy": null,
             "compendiumSource": null,
             "duplicateSource": null,
@@ -651,7 +643,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1776724035542,
@@ -662,6 +654,254 @@
         "exportSource": null
       },
       "_key": "!actors.items!elfz5R3WwPHgVVeN.Yim8w8qqIID0C78N"
+    },
+    {
+      "name": "Retainer Class",
+      "type": "class",
+      "img": "icons/magic/symbols/symbol-lightning-bolt.webp",
+      "system": {
+        "description": {
+          "value": "<p>A retainer doesn’t earn Victories or gain XP. Instead, they usually have the same level as their mentor. When a character acquires a retainer, the retainer starts out at that mentor character’s level. Thereafter, each time a mentor gains a level, all their retainers attain the same level, whether they are actively adventuring with the hero or not. </p><p>If a character somehow acquires a retainer with a level higher than their own, the retainer doesn’t lose levels, but they don’t gain any new levels until their mentor’s level exceeds their own.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "353",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "retainer-class",
+        "advancements": {
+          "X4AvQtsgOPO1G7HC": {
+            "sort": 100000,
+            "name": "",
+            "img": null,
+            "type": "characteristic",
+            "requirements": {
+              "level": 2
+            },
+            "_id": "X4AvQtsgOPO1G7HC",
+            "description": "<p>Increase one characteristic score by 1.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "characteristics": {
+              "might": 0,
+              "agility": 0,
+              "reason": 0,
+              "intuition": 0,
+              "presence": 0
+            },
+            "max": 2
+          },
+          "fgzMKAFP511wrLra": {
+            "sort": 300000,
+            "name": "",
+            "img": null,
+            "type": "characteristic",
+            "requirements": {
+              "level": 8
+            },
+            "_id": "fgzMKAFP511wrLra",
+            "description": "<p>Increase one characteristic score by 1.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "characteristics": {
+              "might": 0,
+              "agility": 0,
+              "reason": 0,
+              "intuition": 0,
+              "presence": 0
+            },
+            "max": 4
+          },
+          "6ZiWOieUtkVhS0KL": {
+            "sort": 400000,
+            "name": "Free Strike Damage Bonus",
+            "img": null,
+            "type": "effectGrant",
+            "requirements": {
+              "level": 3
+            },
+            "_id": "6ZiWOieUtkVhS0KL",
+            "description": "<p>+2 damage bonus to free strikes.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "pool": [],
+            "chooseN": null
+          },
+          "kc3L7QsHhD0AqZgG": {
+            "sort": 500000,
+            "name": "",
+            "img": null,
+            "type": "characteristic",
+            "requirements": {
+              "level": 5
+            },
+            "_id": "kc3L7QsHhD0AqZgG",
+            "description": "<p>Increase each characteristic score by 1.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "characteristics": {
+              "might": -1,
+              "agility": -1,
+              "reason": -1,
+              "intuition": -1,
+              "presence": -1
+            },
+            "max": 3
+          },
+          "F3LpH7va2XQCc238": {
+            "sort": 600000,
+            "name": "Free Strike Damage Bonus",
+            "img": null,
+            "type": "effectGrant",
+            "requirements": {
+              "level": 6
+            },
+            "_id": "F3LpH7va2XQCc238",
+            "description": "<p>+2 damage bonus to free strikes.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "pool": [],
+            "chooseN": null
+          },
+          "Z3DVh58svhFphpv6": {
+            "sort": 700000,
+            "name": "Free Strike Damage Bonus",
+            "img": null,
+            "type": "effectGrant",
+            "requirements": {
+              "level": 9
+            },
+            "_id": "Z3DVh58svhFphpv6",
+            "description": "<p>+2 damage bonus to free strikes.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "pool": [],
+            "chooseN": null
+          },
+          "bdLf0S1aCnCfJdo7": {
+            "sort": 800000,
+            "name": "Advancement Ability",
+            "img": null,
+            "type": "itemGrant",
+            "requirements": {
+              "level": 4
+            },
+            "_id": "bdLf0S1aCnCfJdo7",
+            "description": "<p>Level 4 retainer advancement ability or level 4 role advancement ability.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "pool": [
+              {
+                "uuid": "Compendium.draw-steel.monster-features.Item.XZCQvUkrIOr05jer"
+              }
+            ],
+            "chooseN": 1,
+            "additional": {
+              "type": "",
+              "perkType": [],
+              "cost": null
+            }
+          },
+          "FKRDT1TZi4uUqDSX": {
+            "sort": 900000,
+            "name": "Advancement Ability",
+            "img": null,
+            "type": "itemGrant",
+            "requirements": {
+              "level": 7
+            },
+            "_id": "FKRDT1TZi4uUqDSX",
+            "description": "<p>Level 7 retainer advancement ability or level 7 role advancement ability.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "pool": [
+              {
+                "uuid": "Compendium.draw-steel.monster-features.Item.hZBOmFxFMtpYRDsk"
+              },
+              {
+                "uuid": "Compendium.draw-steel.monster-features.Item.WPXhGGibsN7fkYzl"
+              }
+            ],
+            "chooseN": 1,
+            "additional": {
+              "type": "",
+              "perkType": [],
+              "cost": null
+            }
+          },
+          "qrpbcIBVOR4sf907": {
+            "sort": 1000000,
+            "name": "Advancement Ability",
+            "img": null,
+            "type": "itemGrant",
+            "requirements": {
+              "level": 10
+            },
+            "_id": "qrpbcIBVOR4sf907",
+            "description": "<p>Level 10 retainer advancement ability or level 10 role advancement ability.</p>",
+            "repick": {
+              "respite": ""
+            },
+            "pool": [
+              {
+                "uuid": "Compendium.draw-steel.monster-features.Item.xaGvO4oyOW6BxWCN"
+              },
+              {
+                "uuid": "Compendium.draw-steel.monster-features.Item.QAu6BIZd5b3ljP35"
+              }
+            ],
+            "chooseN": null,
+            "additional": {
+              "type": "",
+              "perkType": [],
+              "cost": null
+            }
+          }
+        },
+        "level": 4,
+        "primary": "",
+        "epic": "",
+        "turnGain": "",
+        "minimum": "0",
+        "characteristics": {
+          "core": []
+        },
+        "stamina": {
+          "starting": 21,
+          "level": 9
+        },
+        "recoveries": 6
+      },
+      "effects": [],
+      "folder": "VAfu9OziHMa6qH3N",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.0",
+        "createdTime": 1783131337757,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.ReGdXUMQtcAlBBM3",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "wqkDqDYberVxUDR0": 3
+      },
+      "_id": "t88UQMT1FDswA5wE",
+      "sort": 0,
+      "_key": "!actors.items!elfz5R3WwPHgVVeN.t88UQMT1FDswA5wE"
     }
   ],
   "effects": [],
@@ -674,7 +914,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.362",
+    "coreVersion": "14.364",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1772906719602,

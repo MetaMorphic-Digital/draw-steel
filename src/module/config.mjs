@@ -729,6 +729,9 @@ export const languages = {
     label: "DRAW_STEEL.LANGUAGE.Vasloria",
   },
   // Dead languages
+  ananjali: {
+    label: "DRAW_STEEL.LANGUAGE.Ananjali",
+  },
   highRhyvian: {
     label: "DRAW_STEEL.LANGUAGE.HighRhyvian",
   },
@@ -1098,6 +1101,202 @@ const monsterKeywords = {
       uuid: "Compendium.draw-steel.journals.JournalEntry.f8eNK5Pte4CSdex0.JournalEntryPage.UdGIomLvVZT9Yb2U",
     },
   },
+  angulotl: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.angulotl",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  arixx: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.arixx",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  basilisk: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.basilisk",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  bredbeddle: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.bredbeddle",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  bugbear: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.bugbear",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  chimera: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.chimera",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  demon: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.demon",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  devil: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.devil",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  draconian: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.draconian",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  dwarf: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.dwarf",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  elfHigh: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.elfHigh",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  elfShadow: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.elfShadow",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  elfWode: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.elfWode",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  giantFire: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.giantFire",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  giantFrost: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.giantFrost",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  giantHill: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.giantHill",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  giantStone: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.giantStone",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  gnoll: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.gnoll",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  goblin: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.goblin",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  griffon: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.griffon",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  hag: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.hag",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  hobgoblin: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.hobgoblin",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  human: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.human",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  worm: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.worm",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  kobold: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.kobold",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  lightbender: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.lightbender",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  lizardfolk: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.lizardfolk",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  manticore: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.manticore",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  medusa: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.medusa",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  minotaur: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.minotaur",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  ogre: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.ogre",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  olothec: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.olothec",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  orc: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.orc",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  radenwight: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.radenwight",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  rival: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.rival",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  shamblingMound: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.shamblingMound",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  timeRaider: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.timeRaider",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  troll: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.troll",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  mummy: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.mummy",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  vampire: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.vampire",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  multivok: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.multivok",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  servok: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.servok",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  valok: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.valok",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  voicelessTalker: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.voicelessTalker",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  warDog: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.warDog",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  werebeast: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.werebeast",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  wyvern: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.wyvern",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  eyestalk: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.eyestalk",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
+  overmind: {
+    label: "DRAW_STEEL.Actor.npc.KEYWORDS.overmind",
+    group: "DRAW_STEEL.Actor.npc.KeywordGroups.Ancestry",
+  },
 };
 
 /**
@@ -1277,12 +1476,22 @@ const abilityKeywords = {
   area: {
     label: "DRAW_STEEL.Item.ability.Keywords.Area",
   },
+  beastheart: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Beastheart",
+  },
+  champion: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Champion",
+    group: "DRAW_STEEL.Item.ability.KeywordGroups.Summoner",
+  },
   charge: {
     label: "DRAW_STEEL.Item.ability.Keywords.Charge",
   },
   chronopathy: {
     label: "DRAW_STEEL.Item.ability.Keywords.Chronopathy",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
+  },
+  companion: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Companion",
   },
   cryokinesis: {
     label: "DRAW_STEEL.Item.ability.Keywords.Cryokinesis",
@@ -1458,6 +1667,9 @@ const abilityCategories = {
   villain: {
     label: "DRAW_STEEL.Item.ability.Category.Villain",
   },
+  maliceAncestry: {
+    label: "DRAW_STEEL.Item.ability.Category.MaliceAncestry",
+  },
 };
 
 /**
@@ -1539,10 +1751,12 @@ const abilityDistances = {
   },
   cube: {
     label: "DRAW_STEEL.Item.ability.Distance.Cube",
+    count: true,
     primary: "DRAW_STEEL.Item.ability.Distance.Length",
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
       type: "rectangle",
+      count: "count",
       width: "primary",
       height: "primary",
     },
@@ -1553,11 +1767,13 @@ const abilityDistances = {
   },
   line: {
     label: "DRAW_STEEL.Item.ability.Distance.Line",
+    count: true,
     primary: "DRAW_STEEL.Item.ability.Distance.Length",
     secondary: "DRAW_STEEL.Item.ability.Distance.Width",
     tertiary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
       type: "line",
+      count: "count",
       length: "primary",
       width: "secondary",
     },
@@ -1794,6 +2010,9 @@ export const PowerRollEffect = {
       originDuration: {
         label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originDuration",
       },
+      originRollData: {
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.originRollData",
+      },
     },
   },
   forced: {
@@ -1840,6 +2059,12 @@ export const Advancement = {
     itemTypes: new Set(["class", "title"]),
     documentClass: pseudoDocuments.advancements.CharacteristicAdvancement,
   },
+  companion: {
+    label: "TYPES.Advancement.companion",
+    defaultImage: "icons/svg/pawprint.svg",
+    itemTypes: new Set(["class"]),
+    documentClass: pseudoDocuments.advancements.CompanionChoiceAdvancement,
+  },
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
@@ -1855,8 +2080,14 @@ export const Advancement = {
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
-    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
+    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
+  },
+  summon: {
+    label: "TYPES.Advancement.summon",
+    defaultImage: "icons/svg/teleport.svg",
+    itemTypes: new Set(["subclass"]),
+    documentClass: pseudoDocuments.advancements.SummonChoiceAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
@@ -1894,6 +2125,9 @@ export const MessagePart = {
   savingThrow: {
     documentClass: pseudoDocuments.messageParts.SavingThrowPart,
   },
+  targetResult: {
+    documentClass: pseudoDocuments.messageParts.TargetResult,
+  },
   test: {
     documentClass: pseudoDocuments.messageParts.TestPart,
   },
@@ -1902,6 +2136,9 @@ export const MessagePart = {
   },
   project: {
     documentClass: pseudoDocuments.messageParts.ProjectPart,
+  },
+  fall: {
+    documentClass: pseudoDocuments.messageParts.FallPart,
   },
 };
 preLocalize("MessagePart", { key: "label" });
@@ -1939,6 +2176,16 @@ export const SpecialEffect = {
     label: "TYPES.SpecialEffect.strained",
     defaultImage: "icons/svg/anchor.svg",
     documentClass: pseudoDocuments.specialEffects.StrainedSpecialEffect,
+  },
+  summon: {
+    label: "TYPES.SpecialEffect.summon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.SummonSpecialEffect,
+  },
+  portfolioSummon: {
+    label: "TYPES.SpecialEffect.portfolioSummon",
+    defaultImage: "icons/svg/teleport.svg",
+    documentClass: pseudoDocuments.specialEffects.PortfolioSummonSpecialEffect,
   },
 };
 preLocalize("SpecialEffect", { key: "label" });
@@ -2478,6 +2725,14 @@ const sourceBooks = {
   Monsters: {
     label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
     title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
+  },
+  Summoner: {
+    label: "DRAW_STEEL.SOURCE.Books.Summoner.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Summoner.Title",
+  },
+  Beastheart: {
+    label: "DRAW_STEEL.SOURCE.Books.Beastheart.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Beastheart.Title",
   },
 };
 

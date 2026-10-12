@@ -6,7 +6,7 @@
   "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
   "system": {
     "description": {
-      "value": "<p>As your ferocity grows, you gain benefits as noted on the Raden Growing Ferocity table. Benefits are cumulative except where an improved benefit replaces a lesser benefit.</p><table><thead><tr><th><p>Ferocity</p></th><th><p>Benefit</p></th></tr></thead><tbody><tr><td><p>2</p></td><td><p>Whenever you use the Disengage move action, the distance you can shift gains a bonus equal to [[lookup @A]]{your Agility score}.</p></td></tr><tr><td><p>4</p></td><td><p>The first time you shift on a turn, you gain [[/surge 1]].</p></td></tr><tr><td><p>6</p></td><td><p>You gain an edge on Agility tests, the Escape Grab maneuver, and the Knockback maneuver.</p></td></tr><tr><td><p>8 (4th level)</p></td><td><p>The first time you shift on a turn, you [[/surge 2]] instead of 1.</p></td></tr><tr><td><p>10 (7th level)</p></td><td><p>You have a double edge on Agility tests, the Escape Grab maneuver, and the Knockback maneuver.</p></td></tr><tr><td><p>12 (10th level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temp]]. Additionally, the potency of any effects targeting you is reduced by 2 for you.</p></td></tr></tbody></table>",
+      "value": "<p>As your ferocity grows, you gain benefits as noted on the Raden Growing Ferocity table. Benefits are cumulative except where an improved benefit replaces a lesser benefit.</p><p>Current Growing Ferocity:  [[lookup @hero.primary.tracking]]</p><table><thead><tr><th><p>Ferocity</p></th><th><p>Benefit</p></th></tr></thead><tbody><tr><td><p>2</p></td><td><p>Whenever you use the Disengage move action, the distance you can shift gains a bonus equal to [[lookup @A]]{your Agility score}.</p></td></tr><tr><td><p>4</p></td><td><p>The first time you shift on a turn, you gain [[/surge 1]].</p></td></tr><tr><td><p>6</p></td><td><p>You gain an edge on Agility tests, the Escape Grab maneuver, and the Knockback maneuver.</p></td></tr><tr><td><p>8 (4th level)</p></td><td><p>The first time you shift on a turn, you [[/surge 2]] instead of 1.</p></td></tr><tr><td><p>10 (7th level)</p></td><td><p>You have a double edge on Agility tests, the Escape Grab maneuver, and the Knockback maneuver.</p></td></tr><tr><td><p>12 (10th level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temp]]. Additionally, the potency of any effects targeting you is reduced by 2 for you.</p></td></tr></tbody></table>",
       "director": ""
     },
     "source": {
@@ -22,7 +22,126 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "6 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.2POr5VogG2lwJO71",
+      "disabled": true,
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.agility.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You gain an edge on Agility tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785950212160,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "wze3janu9i5D5WWe",
+      "_key": "!items.effects!2POr5VogG2lwJO71.wze3janu9i5D5WWe"
+    },
+    {
+      "name": "10 Ferocity",
+      "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.2POr5VogG2lwJO71",
+      "disabled": true,
+      "system": {
+        "changes": [
+          {
+            "key": "system.characteristics.agility.edges",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>You have a double edge on Agility tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785950222242,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "VzlRuaJwctAA0YdF",
+      "_key": "!items.effects!2POr5VogG2lwJO71.VzlRuaJwctAA0YdF"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -32,9 +151,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1761526691523,
     "modifiedTime": null,
     "lastModifiedBy": null

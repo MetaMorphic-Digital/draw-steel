@@ -69,7 +69,10 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
       await tokenDocument.actor.updateEmbeddedDocuments("ActiveEffect", oldEffects);
       await tokenDocument.actor.createEmbeddedDocuments("ActiveEffect", newEffects, { keepId: true });
     } else {
-      tokenDocument.delta.updateSource(actorUpdates);
+      if (!foundry.utils.isEmpty(actorUpdates)) {
+        tokenDocument.updateSource({ delta: {} });
+        tokenDocument.delta.updateSource(actorUpdates);
+      }
       // Foundry will automatically increment but we need to add in our indices
       if (actor.prototypeToken.appendNumber) {
         const regex = new RegExp(/\((\d+)\)$/);
@@ -82,20 +85,5 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     }
 
     return tokenDocument.toObject();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * @deprecated
-   * @see {DrawSteelTokenLayer.placeActor}
-   */
-  async performTokenPlacement(actor, options = {}) {
-    foundry.utils.logCompatibilityWarning("canvas.layer.performTokenPlacement has been deprecated in favor of canvas.layer.placeActor", {
-      since: "1.0",
-      until: "1.2",
-    });
-
-    return this.placeActor(actor, options);
   }
 }

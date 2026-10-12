@@ -1,0 +1,307 @@
+{
+  "folder": "fpYwR41dRtqcG310",
+  "name": "Elements Unleashed",
+  "type": "ability",
+  "_id": "ib5cWBwzWDdMJd3s",
+  "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "32",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "elements-unleashed",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion's body becomes a bank of glowing coals, a web of arcing lightning, a cloud of rumbling thunder, or a flurry of dancing ice crystals.",
+    "keywords": [
+      "companion",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "Tc42bN2tPnsp2xIl": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "Tc42bN2tPnsp2xIl",
+        "description": "<p>Your companion transforms into a creature made of elemental energy. Choose a damage type from cold, fire, lightning, or sonic damage. While transformed, your companion gains the following benefits:</p><p>Your companion can [[/apply XK28yJ1ABG20gRs9 turn originDuration=true]]{fly}. If they could already fly, they gain a [[/apply wO64r7wrbxnQ4Zb4 turn originDuration=true]]{+2 bonus to speed}.</p><p>When your companion enters another creature's space for the first time on a turn or damages a creature with a strike, your companion deals [[/damage 5 type=cold/fire/lightning/sonic]]{5 damage of the chosen type}to the creature.</p><p>Your companion has [[/apply Iqf5IFw5NdsbCVth turn originDuration=true]]{immunity all} to the chosen damage type and [[/apply noqA2wbEoCOHHAQR originDuration=true turn]]{immunity 5} to all other damage.</p><p>Your companion's transformation lasts until the start of your next turn. At the start of each of your turns, you can spend [[/gain formula=-3 type=heroic]]{3 ferocity} to extend the transformation's duration for one turn. When you do so, you can change the chosen damage type.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Flight",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.ib5cWBwzWDdMJd3s",
+      "transfer": false,
+      "_id": "XK28yJ1ABG20gRs9",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788794072699,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!ib5cWBwzWDdMJd3s.XK28yJ1ABG20gRs9"
+    },
+    {
+      "name": "Speed Boost",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.ib5cWBwzWDdMJd3s",
+      "transfer": false,
+      "_id": "wO64r7wrbxnQ4Zb4",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.hover",
+            "type": "add",
+            "value": 2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788794172430,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!ib5cWBwzWDdMJd3s.wO64r7wrbxnQ4Zb4"
+    },
+    {
+      "name": "Damage Immunity 5",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.ib5cWBwzWDdMJd3s",
+      "transfer": false,
+      "_id": "noqA2wbEoCOHHAQR",
+      "system": {
+        "changes": [
+          {
+            "key": "system.damage.immunities.all",
+            "type": "upgrade",
+            "value": 5,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788794226247,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!ib5cWBwzWDdMJd3s.noqA2wbEoCOHHAQR"
+    },
+    {
+      "name": "Immune All (Chosen Type)",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.ib5cWBwzWDdMJd3s",
+      "transfer": false,
+      "_id": "Iqf5IFw5NdsbCVth",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788794546063,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!ib5cWBwzWDdMJd3s.Iqf5IFw5NdsbCVth"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788793881080,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!ib5cWBwzWDdMJd3s"
+}

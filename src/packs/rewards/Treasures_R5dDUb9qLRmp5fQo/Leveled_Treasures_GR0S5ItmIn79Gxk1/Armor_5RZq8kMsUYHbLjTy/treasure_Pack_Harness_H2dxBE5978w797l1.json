@@ -1,0 +1,236 @@
+{
+  "folder": "5RZq8kMsUYHbLjTy",
+  "name": "Pack Harness",
+  "type": "treasure",
+  "_id": "H2dxBE5978w797l1",
+  "img": "icons/commodities/leather/ring-leather.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>While wearing these worn leather bands, your companion appears as not a single creature, but a hunting pack.</em></p><p><strong>1st Level:</strong> Only a beastheart can wear this armor. While you wear this armor, you gain a +6 bonus to Stamina. You can spend 10 minutes to activate this armor's power, causing two illusory copies of your companion to appear in their space and move with them. Whenever your companion takes damage from an ability that deals rolled damage while visible, you can banish one copy to decrease the power roll outcome by one tier (to a minimum of tier 1). When you activate this armor's power again, any old copies vanish.</p><p><strong>5th Level:</strong> The armor's bonus to Stamina increases to +12, and whenever you activate this armor's power, your companion gains three illusory copies.</p><p><strong>9th Level:</strong> The armor's bonus to Stamina increases to +21, and whenever you activate this armor's power, your companion gains four illusory copies. Additionally, while you share your companion's space, you take on the appearance of one of the pack. When you take damage from an ability that deals rolled damage while in your companion's space, you can banish one copy to decrease the power roll outcome by one tier (to a minimum of tier 1).</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "39",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "pack-harness",
+    "kind": "armor",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "light"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A leash from an archfey's hunting pack",
+      "source": "Texts or lore in Khelt",
+      "rollCharacteristic": [
+        "agility",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "Pack Harness (1st Level)",
+      "img": "icons/commodities/leather/ring-leather.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.H2dxBE5978w797l1",
+      "disabled": true,
+      "_id": "ILN3Rs8pP3QPsW0J",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 6,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789748240786,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!H2dxBE5978w797l1.ILN3Rs8pP3QPsW0J"
+    },
+    {
+      "name": "Pack Harness (5th Level)",
+      "img": "icons/commodities/leather/ring-leather.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.H2dxBE5978w797l1",
+      "disabled": true,
+      "_id": "MDQLw3o6XFySj8kY",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 12,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789748253810,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!H2dxBE5978w797l1.MDQLw3o6XFySj8kY"
+    },
+    {
+      "name": "Pack Harness (9th Level)",
+      "img": "icons/commodities/leather/ring-leather.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.H2dxBE5978w797l1",
+      "disabled": true,
+      "_id": "i5Gmgk8SmjIapTYe",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 21,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789748263603,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!H2dxBE5978w797l1.i5Gmgk8SmjIapTYe"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789748107744,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!H2dxBE5978w797l1"
+}

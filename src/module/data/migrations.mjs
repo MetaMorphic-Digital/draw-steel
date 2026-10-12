@@ -77,7 +77,7 @@ async function version_0_8_migration() {
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     await pack.getDocuments();
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     await migrateType(pack, { pack: pack.collection });
     if (pack.documentName === "Actor") {
@@ -135,7 +135,7 @@ async function version_0_11_migration() {
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     const docs = await pack.getDocuments();
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     for (const doc of docs) await migrateChanges(doc);
     if (wasLocked) await pack.configure({ locked: true });
@@ -186,7 +186,7 @@ async function version_1_0_migration() {
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
     const docs = await pack.getDocuments();
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
     const operation = [];
     docs.forEach(doc => migrateEffectSystem(doc, operation));
@@ -216,7 +216,7 @@ async function version_1_1_migration() {
 
   for (const scene of game.scenes) {
     const operation = scene.tokens.map(t => {
-      if (t.isLinked || !t.delta) return null;
+      if (t.isLinked || !t.delta || !t.baseActor) return null;
       return {
         action: "update",
         updates: t.actor.itemTypes.ability.map(i => ({ _id: i.id, system: _replace(i.system.toObject()) })),
@@ -232,9 +232,9 @@ async function version_1_1_migration() {
   const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor", "Item"]));
   for (const pack of packsToMigrate) {
     console.log("Migrating document inside", pack.title);
-    const wasLocked = pack.config.locked;
+    const wasLocked = pack.locked;
     if (wasLocked) await pack.configure({ locked: false });
-    if (pack.type === "Actor") {
+    if (pack.documentName === "Actor") {
       await pack.getDocuments();
       await migrateActorItems(pack);
     }
@@ -249,7 +249,7 @@ async function version_1_1_migration() {
   warning.update({ pct: 1.00 });
 
   ui.notifications.remove(warning);
-  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.0.0" }, permanent: true });
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.1.0" }, permanent: true });
   console.log("Migration complete");
 }
 

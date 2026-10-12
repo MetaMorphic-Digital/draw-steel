@@ -87,10 +87,6 @@
         }
       }
     },
-    "spend": {
-      "text": "",
-      "value": null
-    },
     "prerequisites": {
       "dsid": [
         "elementalist"
@@ -101,8 +97,9 @@
     "effects": {
       "after00000000000": {
         "_id": "after00000000000",
-        "type": "base",
-        "description": "<p><strong>Persistent 1:</strong> At the start of your turn, you can use a maneuver to use this ability again without spending essence</p>",
+        "type": "persistent",
+        "description": "<p>At the start of your turn, you can use a maneuver to use this ability again without spending essence</p>",
+        "essence": 1,
         "name": "",
         "img": null,
         "sort": 0,
@@ -120,7 +117,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755741218900,

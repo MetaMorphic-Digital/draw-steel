@@ -18,6 +18,9 @@
       "abilityModifier": {}
     },
     "Actor": {
+      "companion": {
+        "htmlFields": ["biography.value", "biography.director"]
+      },
       "hero": {
         "htmlFields": ["biography.value", "biography.director"]
       },
@@ -137,6 +140,7 @@
     },
     "JournalEntryPage": {
       "configuration": {},
+      "map": {},
       "reference": {
         "htmlFields": ["tooltip"]
       },
@@ -163,9 +167,9 @@
       "thumbnail": "systems/draw-steel/assets/system-background.webp"
     }
   ],
-  "version": "1.1.0",
+  "version": "1.2",
   "compatibility": {
-    "minimum": "14.363",
+    "minimum": "14.369",
     "verified": "14",
     "maximum": "14"
   },
@@ -246,13 +250,19 @@
       "label": "DRAW_STEEL.COMPENDIUM.effects",
       "type": "ActiveEffect",
       "banner": "systems/draw-steel/assets/banners/effects.webp"
+    },
+    {
+      "name": "summons",
+      "label": "DRAW_STEEL.COMPENDIUM.summons",
+      "type": "Actor",
+      "banner": "systems/draw-steel/assets/banners/summons.webp"
     }
   ],
   "packFolders": [
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["abilities", "classes", "journals", "monsters", "monster-features", "tables", "character-options", "origins", "rewards", "effects"]
+      "packs": ["abilities", "classes", "journals", "monsters", "monster-features", "tables", "character-options", "origins", "rewards", "effects", "summons"]
     }
   ],
   "socket": true,

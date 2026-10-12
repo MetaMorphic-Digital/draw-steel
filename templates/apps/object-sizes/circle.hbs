@@ -1,0 +1,9 @@
+<section class="standard-form">
+  {{formField fields.count name=(concat name ".count") value=source.count classes="slim"}}
+
+  {{formField fields.radius name=(concat name ".radius") value=source.radius input=dimensionInput grid=shape.grid classes="slim" rootId=rootId}}
+
+  {{#if fields.hole}}
+  {{formField fields.hole name=(concat name ".hole") value=source.hole rootId=rootId}}
+  {{/if}}
+</section>

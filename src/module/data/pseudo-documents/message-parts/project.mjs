@@ -63,7 +63,6 @@ export default class ProjectPart extends BaseMessagePart {
   async _prepareContext(context) {
     await super._prepareContext(context);
 
-    context.ctx.buttons = [];
     const project = this.project;
     const eventSetting = game.settings.get(systemID, "projectEvents");
 

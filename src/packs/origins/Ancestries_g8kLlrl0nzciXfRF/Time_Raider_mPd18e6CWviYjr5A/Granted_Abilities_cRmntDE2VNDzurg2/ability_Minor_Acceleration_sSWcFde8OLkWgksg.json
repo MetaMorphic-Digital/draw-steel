@@ -48,7 +48,7 @@
       "after00000000000": {
         "_id": "after00000000000",
         "type": "base",
-        "description": "<p>The target gains a bonus to speed equal to [[lookup formula=\"max(@R, @I, @P)\" evaluate=true]]{your Reason, Intuition, or Presence score (your choice)} until the start of your next turn.</p>",
+        "description": "<p>The target gains a bonus to speed equal to [[lookup formula=\"max(@R, @I, @P)\" evaluate=true]]{your Reason, Intuition, or Presence score (your choice)} until the start of your next turn.</p><p>[[/apply FmeINrdB44cAhk0P originDuration=true]]</p>",
         "name": "",
         "img": null,
         "sort": 0,
@@ -61,7 +61,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Minor Acceleration",
+      "img": "icons/magic/control/debuff-energy-hold-teal-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.origins.Item.sSWcFde8OLkWgksg",
+      "transfer": false,
+      "_id": "FmeINrdB44cAhk0P",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": "",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788359846072,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!sSWcFde8OLkWgksg.FmeINrdB44cAhk0P"
+    }
+  ],
   "sort": 300000,
   "ownership": {
     "default": 0
@@ -71,9 +131,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1754630190057,
     "modifiedTime": null,
     "lastModifiedBy": null

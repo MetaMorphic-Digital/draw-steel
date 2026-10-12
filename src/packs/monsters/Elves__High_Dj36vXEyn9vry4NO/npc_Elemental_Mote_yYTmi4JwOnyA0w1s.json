@@ -92,7 +92,8 @@
     "monster": {
       "freeStrike": 1,
       "keywords": [
-        "elemental"
+        "elemental",
+        "elfHigh"
       ],
       "level": 1,
       "role": "hexer",
@@ -264,10 +265,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -352,7 +349,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -381,7 +378,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 3,
         "trigger": "",
         "distance": {
@@ -403,10 +400,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -436,7 +429,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.QOHebOCHFr6tglBw",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -461,7 +454,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "",
         "distance": {
@@ -483,10 +476,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -516,7 +505,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.oILvREyZahTmzq10",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.362",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -692,12 +681,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": "Actor.yYTmi4JwOnyA0w1s",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.362",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1757118122491,

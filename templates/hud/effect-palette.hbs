@@ -5,7 +5,7 @@
 </header>
 <section class="effect-pane">
   {{#each statusEffects as |status|}}
-  <div class="effect-group {{status.cssClass}} flexrow" data-action="effect" data-status-id="{{status.id}}">
+  <div class="effect-group {{status.cssClass}} flexrow" {{#if status.disabled}}disabled{{else}}data-action="effect"{{/if}} data-status-id="{{status.id}}" data-tooltip="{{status.tooltip}}" data-effect-ids="{{status.effectIds}}">
     <span class="title ellipsis">{{status.title}}</span>
     <img class="effect-control" src="{{status.src}}" alt="{{status.title}}">
   </div>

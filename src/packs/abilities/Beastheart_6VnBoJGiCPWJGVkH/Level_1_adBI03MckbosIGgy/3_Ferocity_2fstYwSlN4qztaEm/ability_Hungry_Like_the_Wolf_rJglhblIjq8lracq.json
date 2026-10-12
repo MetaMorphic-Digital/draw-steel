@@ -1,0 +1,178 @@
+{
+  "folder": "2fstYwSlN4qztaEm",
+  "name": "Hungry Like the Wolf",
+  "type": "ability",
+  "_id": "rJglhblIjq8lracq",
+  "img": "icons/creatures/abilities/wolf-howl-moon-purple.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "24",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "hungry-like-the-wolf",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "The enemy's blood flows like wine, invigorating your companion.",
+    "keywords": [
+      "companion",
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "4YzOV30yKVWuOlxb": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "4YzOV30yKVWuOlxb",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "7 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "11 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "JfdA3WwkoOFyo57z": {
+          "sort": 200000,
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "JfdA3WwkoOFyo57z",
+          "other": {
+            "tier1": {
+              "display": "your companion can spend a Recovery",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "you and your companion can each spend a Recovery",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "you and your companion can each spend a Recovery and shift up to 2 spaces",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "qGPshwhP4UYawP19": {
+          "sort": 150000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "qGPshwhP4UYawP19",
+          "applied": {
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{potency}} bleeding (EoT)",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": "agility"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {}
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788554977644,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!rJglhblIjq8lracq"
+}

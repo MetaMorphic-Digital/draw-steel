@@ -92,7 +92,10 @@
     },
     "monster": {
       "freeStrike": 1,
-      "keywords": [],
+      "keywords": [
+        "undead",
+        "soulless"
+      ],
       "level": 1,
       "role": "harrier",
       "organization": "minion",
@@ -319,10 +322,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "after00000000000": {
             "_id": "after00000000000",
@@ -354,7 +353,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -376,7 +375,7 @@
         "_dsid": "dread-march",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -398,10 +397,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -434,7 +429,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -456,7 +451,7 @@
         "_dsid": "paranormal-fling",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 3,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -478,10 +473,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -514,7 +505,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -536,7 +527,7 @@
         "_dsid": "paranormal-fling",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 3,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -558,10 +549,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -587,7 +574,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1761424827849,
@@ -616,7 +603,7 @@
         "_dsid": "ravenous-horde",
         "story": "",
         "keywords": [],
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 2,
         "trigger": "An undead starts its turn",
         "distance": {
@@ -638,10 +625,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -668,7 +651,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1761424830753,
@@ -755,12 +738,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755922213436,

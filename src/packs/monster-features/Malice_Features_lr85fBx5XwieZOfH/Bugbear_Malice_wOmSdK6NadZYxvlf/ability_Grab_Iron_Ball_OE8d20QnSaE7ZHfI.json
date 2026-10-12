@@ -14,7 +14,7 @@
     "story": "",
     "keywords": [],
     "type": "none",
-    "category": "",
+    "category": "maliceAncestry",
     "resource": null,
     "trigger": "",
     "distance": {
@@ -37,15 +37,11 @@
       },
       "effects": {}
     },
-    "spend": {
-      "text": "",
-      "value": null
-    },
     "effects": {
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have [[potency M 1]] they are slowed (save ends).</p>",
+        "description": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to [[/damage 8-@scaling scaling]]{8 - the number of squares} the iron ball was thrown, and if they have [[potency M 1]] they are slowed (save ends).</p>",
         "before": true,
         "name": "",
         "img": null,
@@ -68,7 +64,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1757084198855,

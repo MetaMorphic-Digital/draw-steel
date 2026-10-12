@@ -1,4 +1,3 @@
-import AdvancementLeaf from "../../../utils/advancement/leaf.mjs";
 import DSApplication from "../../api/application.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
@@ -8,15 +7,12 @@ import { systemPath } from "../../../constants.mjs";
  * @import AdvancementNode from "../../../utils/advancement/node.mjs";
  * @import EffectGrantAdvancement from "../../../data/pseudo-documents/advancements/effect-grant-advancement.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
- * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
 
 /**
  * @typedef EffectGrantConfigurationOptions
  * @property {AdvancementNode} node   The node to configure.
  */
-
-const { DragDrop, TextEditor } = foundry.applications.ux;
 
 /**
  * An application that controls the configuration of an effect grant advancement.
@@ -101,14 +97,11 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * Total choices made, accounting for possible point buy mechanics.
+   * Total choices made.
    * @type {number}
    */
   get totalChosen() {
-    return this.effects.reduce((points, effect) => {
-      points += this.chosen.has(effect.uuid);
-      return points;
-    }, 0);
+    return this.chosen.size;
   }
 
   /* -------------------------------------------------- */
@@ -183,7 +176,6 @@ export default class EffectGrantConfigurationDialog extends DSApplication {
         chosen: chosen && !disabled,
         link: e.toAnchor().outerHTML,
         uuid: e.uuid,
-        points: context.points ? e.system.points : false,
       };
     });
 

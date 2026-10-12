@@ -289,6 +289,7 @@ aside[role="tooltip"] section.content {
 
   table {
     width: 100%;
+
     border-collapse: collapse;
     background: var(--input-background-color);
 
@@ -298,6 +299,7 @@ aside[role="tooltip"] section.content {
     }
 
     thead {
+      background-color: var(--draw-steel-c-thead-bg);
       border: none;
     }
 
@@ -306,11 +308,30 @@ aside[role="tooltip"] section.content {
     }
 
     &.compact {
-
       th,
       td {
         padding-top: 0;
         padding-bottom: 0;
+      }
+    }
+
+    /**
+     * *NOTE*: If you give a table the `.large` class, you must also assign `role` attributes for accessibility purposes.
+     * See https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/table_role#description
+     */
+    &.large {
+      position: relative;
+      /** Scroll overflowing tables **/
+      display: block;
+      overflow: auto;
+
+      @container journal-entry-pages (min-width: 0px) {
+        max-height: 80cqh; /** Max height is 80% of its container **/
+      }
+
+      thead {
+        position: sticky;
+        top: 0;
       }
     }
   }
@@ -605,6 +626,10 @@ aside[role="tooltip"] section.content {
       padding-inline-end: 3px;
     }
   }
+}
+
+.draw-steel .journal-entry-pages {
+  container: journal-entry-pages / size;
 }
 
 

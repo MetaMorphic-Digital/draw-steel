@@ -91,7 +91,8 @@
     "monster": {
       "freeStrike": 5,
       "keywords": [
-        "giant"
+        "giant",
+        "troll"
       ],
       "level": 9,
       "role": "brute",
@@ -153,7 +154,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 5,
         "trigger": "A troll starts its turn.",
         "distance": {
@@ -175,10 +176,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "source": {
           "book": "Monsters",
@@ -212,7 +209,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2ec0iV4d6tPxMe4A",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -233,7 +230,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 7,
         "trigger": "A troll starts its turn.",
         "distance": {
@@ -255,10 +252,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "source": {
           "book": "Monsters",
@@ -292,7 +285,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.z9YH7yxEznbOe4Uu",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -418,10 +411,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "after00000000000": {
             "_id": "after00000000000",
@@ -453,7 +442,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -468,7 +457,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 3,
         "trigger": "A troll starts its turn.",
         "distance": {
@@ -581,10 +570,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "page": "254",
@@ -616,7 +601,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.kU33bPU6W8nUEB2i",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -799,12 +784,16 @@
   "ownership": {
     "default": 0
   },
-  "flags": {},
+  "flags": {
+    "core": {
+      "sheetClass": "draw-steel.DrawSteelMinionSheet"
+    }
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1761424410675,

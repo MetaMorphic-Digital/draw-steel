@@ -49,7 +49,6 @@ export default class TestRequestPart extends BaseMessagePart {
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
-    context.ctx.buttons ??= [];
 
     // Result source is expected to be a Power Roll Tier Outcomes page.
     const resultSource = await fromUuid(this.resultSource);

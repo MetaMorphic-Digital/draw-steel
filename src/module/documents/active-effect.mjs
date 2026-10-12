@@ -2,6 +2,7 @@ import TargetedConditionPrompt from "../applications/apps/targeted-condition-pro
 
 /**
  * @import { StatusEffectConfig } from "@client/config.mjs";
+ * @import { EffectChangeData } from "@common/documents/_types.mjs";
  * @import { DrawSteelActor, DrawSteelCombat, DrawSteelCombatant } from "./_module.mjs";
  */
 
@@ -34,6 +35,23 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /**
+   * Convert roll data properties in change data.
+   * @param {EffectChangeData[]} [changes]    Effect change data in json-serializable format.
+   * @param {object} [replacementData]        The target of the effect to be applied.
+   * @returns {Promise<EffectChangeData[]>}   A promise that resolves to the modified change data.
+   */
+  static async forApplication(changes = [], replacementData = {}) {
+    const changeUpdates = foundry.utils.deepClone(changes);
+    for (const change of changeUpdates)
+      if (typeof change.value === "string")
+        // TODO: Possibly handle async dice evaluation? Not a lot of need for that in Draw Steel.
+        change.value = this._replaceDataRefs(change.value, replacementData);
+    return changeUpdates;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Prefer falsy fall through to expired rather than null coalescing; expiration can always suppress an AE.
    * @inheritdoc
    */
@@ -45,8 +63,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   isExpiryEvent(event, context) {
-    const dsEvents = new Set("save", "respite");
-    if (!dsEvents.has(event) || !dsEvents.has(this.duration.expiry)) return super.isExpiryEvent(event, context);
+    const dsEvents = new Set(["save", "respite"]);
+    if (!dsEvents.has(event) || (event !== this.duration.expiry)) return super.isExpiryEvent(event, context);
 
     if (event === "save") {
       // copies core combat duration logic
@@ -61,7 +79,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       return !!effectCombatant;
     }
     // respite
-    else return context.actors?.includes(this.target);
+    else return !!context.actors?.has(this.target);
   }
 
   /* -------------------------------------------------- */

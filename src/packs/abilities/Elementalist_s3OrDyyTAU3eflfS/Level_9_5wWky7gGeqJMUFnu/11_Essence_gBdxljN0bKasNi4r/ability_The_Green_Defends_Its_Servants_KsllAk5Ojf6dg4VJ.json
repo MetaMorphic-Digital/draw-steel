@@ -41,10 +41,6 @@
       },
       "effects": {}
     },
-    "spend": {
-      "text": "",
-      "value": null
-    },
     "prerequisites": {
       "dsid": [
         "elementalist"
@@ -56,7 +52,17 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>You conjure an [[/apply Bs1Ant6ozienc9Hx]] that protects the target until the end of your next turn. While the shield is active, the target can take the Defend main action as a maneuver on each of their turns. The target gains [[/heal 30 temporary]] that lasts until depleted or until the effect ends. If this temporary Stamina disappears, the effect ends and the shield explodes, dealing [[/damage 10]] damage to each enemy within 5 squares of the target.</p><p><strong>Persistent 2</strong>: The effect lasts until the start of your next turn.</p>",
+        "description": "<p>You conjure an [[/apply Bs1Ant6ozienc9Hx]] that protects the target until the end of your next turn. While the shield is active, the target can take the Defend main action as a maneuver on each of their turns. The target gains [[/heal 30 temporary]] that lasts until depleted or until the effect ends. If this temporary Stamina disappears, the effect ends and the shield explodes, dealing [[/damage 10]] damage to each enemy within 5 squares of the target.</p>",
+        "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "persistent000000": {
+        "_id": "persistent000000",
+        "type": "persistent",
+        "description": "<p>The effect lasts until the start of your next turn.</p>",
+        "essence": 2,
         "before": true,
         "name": "",
         "img": null,
@@ -126,7 +132,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1761518018438,

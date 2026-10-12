@@ -1,7 +1,7 @@
 import AdvancementNode from "./node.mjs";
 
 /**
- * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  */
 
 /**
@@ -14,6 +14,8 @@ export default class AdvancementLeaf {
    * @param {string} label
    * @param {object} [options={}]
    * @param {DrawSteelItem} [options.item]
+   * @param {DrawSteelActiveEffect} [options.effect]
+   * @param {DrawSteelActor} [options.actor]
    */
   constructor(node, key, label, options = {}) {
     Object.defineProperties(this, {
@@ -22,6 +24,7 @@ export default class AdvancementLeaf {
       label: { value: label, configurable: false, writable: false },
       item: { value: options.item ?? null, configurable: false, writable: false },
       effect: { value: options.effect ?? null, configurable: false, writable: false },
+      actor: { value: options.actor ?? null, configurable: false, writable: false },
     });
   }
 
@@ -83,4 +86,12 @@ export default class AdvancementLeaf {
    * @type {DrawSteelActiveEffect | null}
    */
   effect = null;
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The actor associated with this leaf's key. Only used by actor choice advancements.
+   * @type {DrawSteelActor | null}
+   */
+  actor = null;
 }

@@ -1,4 +1,11 @@
 import DSRoll from "./base.mjs";
+import { systemPath } from "../constants.mjs";
+
+/**
+ * @import { DamageOrigin } from "../_types";
+ * @import { DrawSteelChatMessage } from "../documents/_module.mjs";
+ * @import BaseMessagePart from "../data/pseudo-documents/message-parts/base-message-part.mjs";
+ */
 
 /**
  * A roll subclass with damage-specific info like damage type.
@@ -18,11 +25,36 @@ export default class DamageRoll extends DSRoll {
     const li = target.closest("[data-message-id]");
     const message = game.messages.get(li.dataset.messageId);
     const idx = target.dataset.index;
+    const messagePart = part ? message.system.parts.get(part.dataset.messagePart) : null;
     /** @type {DamageRoll} */
-    const roll = part ? message.system.parts.get(part.dataset.messagePart).rolls[idx] : message.rolls[idx];
+    const roll = messagePart ? messagePart.rolls[idx] : message.rolls[idx];
 
-    await roll.applyDamage(null, { halfDamage: event.shiftKey });
+    await roll.applyDamage(null, { halfDamage: event.shiftKey, origin: DamageRoll.getOrigin(message, messagePart) });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Describe where damage applied from a chat message came from.
+   * @param {DrawSteelChatMessage} message    The message holding the damage roll.
+   * @param {BaseMessagePart} [part]          The message part holding the damage roll, if any.
+   * @returns {DamageOrigin}
+   */
+  static getOrigin(message, part) {
+    const { scene, token } = message.speaker;
+    return {
+      messageId: message.id,
+      partId: part?.id ?? null,
+      abilityUuid: part?.abilityUuid ?? null,
+      actorUuid: getDocumentClass("ChatMessage").getSpeakerActor(message.speaker)?.uuid ?? null,
+      tokenUuid: (scene && token) ? (game.scenes.get(scene)?.tokens.get(token)?.uuid ?? null) : null,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static CHAT_TEMPLATE = systemPath("templates/rolls/damage.hbs");
 
   /* -------------------------------------------------- */
 
@@ -77,6 +109,26 @@ export default class DamageRoll extends DSRoll {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _prepareChatRenderContext(options = {}) {
+    const context = await super._prepareChatRenderContext(options);
+
+    context.isGM = game.user.isGM;
+    if ("rollIndex" in options) {
+      Object.assign(context, {
+        rollIndex: options.rollIndex,
+        buttonIcon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+        tooltipPath: this.isHeal ?
+          "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" :
+          "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip",
+      });
+    }
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Produces a button with relevant data to applying this damage.
    * @param {number} index The index of this roll in the `rolls` array of the message.
@@ -110,6 +162,7 @@ export default class DamageRoll extends DSRoll {
    * @param {DrawSteelActor[]} [targets]    Actors to apply damage to. Defaults to selected targets.
    * @param {object} [options={}]           Options that modify the damage application.
    * @param {boolean} [options.halfDamage]  Only apply half the total damage.
+   * @param {DamageOrigin} [options.origin] Where the damage came from, passed through to the Stamina update.
    */
   async applyDamage(targets, options = {}) {
     targets ??= ds.utils.tokensToActors();
@@ -123,7 +176,7 @@ export default class DamageRoll extends DSRoll {
     let amount = this.total;
     if (options.halfDamage) amount = Math.floor(amount / 2);
 
-    // Damage actors that aren't minions or in a combat group.
+    // Actors that aren't minions or in a combat group.
     for (const actor of actors) {
       if (this.isHeal) {
         const isTemp = this.type !== "value";
@@ -132,13 +185,19 @@ export default class DamageRoll extends DSRoll {
         });
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
       }
-      else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities });
+      else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, origin: options.origin });
     }
 
-    // Damage minion sqauds
+    // Minion sqauds
     for (const [uuid, actors] of Object.entries(groups)) {
       const group = fromUuidSync(uuid);
-      group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe });
+      // Minions cannot regain stamina or gain temp stamina (Monsters p. 7)
+      if (this.isHeal) {
+        const msg = `DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.${this.type === "value" ? "MinionHeal" : "MinionTemp"}`;
+        ui.notifications.warn(msg, { localize: true });
+      }
+      // Damage
+      else group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe, origin: options.origin });
     }
   }
 }

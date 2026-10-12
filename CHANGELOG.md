@@ -18,37 +18,194 @@
 ### Known Issues
 -->
 
-## 1.1.0
+## 1.2.0
 
-Increased foundry minimum to 14.363.
+Increased foundry minimum to 14.369.
 
 ### Added
 
+- Added the Summoner and Beastheart classes and supporting material.
+  - Added Summons compendium to separate player-relevant actors from the monsters.
+  - Added both books to the sourcebook datalist.
+- Improved prone automation by integrating bane and edge application. (#246)
+- "With Captain" effects will automatically be enabled/disabled based on the changing status of a minion's captain. (#348)
+- Flying or burrowing will apply the relevant status. (#363)
+- Implemented summoning as a new type of special effect. (#583)
+  - Added new Companions and Summons advancement type to integrate with summoning. (#584)
+  - Added new Summoning and Portfolio Summoning special effects. (#2021)
+- The "Origin Roll Data" property on apply effect enrichers and applied effect power roll effects will use the effect source's roll data to parse change values before application, allowing effects like Smolder to properly key off of the talent's Reason. (#680)
+- Added a new Minion Sheet. You can switch to this for any NPC but it is optimized for minions. (#585)
+  - You can manually set the damage type of a free strike from this sheet (only necessary if there's not a signature attack). (#2093)
+- Edges from high ground are automatically added. (#604)
+- Added button to copy effects from tier 1. (#1142)
+- Added support for specifying the number of minions joining in a squad attack. (#1320)
+- Added new header button to repick items granted by advancements. (#1513)
+- Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
+- Added data path (`power.roll.critical`) to handle the critical threshold for abilities. (#1899)
+- Adding automation for falling that works with v14 levels and surfaces. (#1930)
+- Added support for Companions as a new actor type. (#2011)
+- Added support for Blessing of Fate and Destiny to adjust the number of dice rolled. (#2039)
+- Spend amounts are now available as roll data in spend special effects. (#2060)
+- Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
+- Right clicking the Update Source button in the header of an item sheet will copy the item's DSID to your clipboard. (#2141)
+- Various improvements to help out modules. (#2199)
+  - Added `StandardModel#tierFor`.
+  - Added `ds.preUseAbility` and `ds.useAbility` hooks.
+  - Added additional context to origin logic
+
+### Changed
+
+- Significant overhaul of application styles across the system.
+- Updated Player-Facing Compendium Content:
+  - Added enrichers to "To the Uttermost End" leveraging the new spend data. (#2049)
+- Updated Director-Facing Compendium Content:
+- Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
+- Major updates to roll presentation. (#1628)
+  - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display
+  - Results are now per-target rather than grouped by tier, allowing for more individualized adjustments.
+  - Added Potency results to chat messages. (#1869)
+- Ability modifiers targeting damage.bonuses.value can improve a monster's free strike value. (#2003)
+
+### Removed
+
+- Completed deprecation periods for `DrawSteelTokenLayer#performTokenPlacement`, `PowerRoll.prompt`, and `ProjectRoll.prompt`.
+
+### Fixed
+
+- Updated Player-Facing Compendium Content:
+  - Set origin duration on Every Step, Death!, Revelator, Reap, Cuirass of the Gods, Fate, and Minor Acceleration. (#1857)
+  - Fixed enricher on Exploding Arrow. (#2053)
+  - Added fire type to Viscous Fire. (#2061)
+  - Fixed name of Wode Elf Arrowswift (Sorry Illwyth!). (#2084)
+  - Fixed several miscategorized abilities. (#2175)
+- Updated Director-Facing Compendium Content:
+  - Fixed description for Fossil Cryptic Villain Action 2. (#2043)
+  - Fixed With Captain effect on Decrepit Skeleton. (#2051)
+  - Fixed holy weakness on Chorogaunt and Muceron. (#2052)
+  - Fixed With Captain effect on Dwarf Driver. (#2062)
+  - Added Staying Power malice feature to Human Bandit Chief & Scoundrel. (#2112)
+- Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
+- Deleting an entry from a configuration page now works correctly. (#2042)
+- Fixed respite expiry events not running and other bugs related to Set construction. (#2192)
+- Ensure that DSApplication.create resolves even if the render is canceled. (#2194)
+- Cleaned up duplicate scrolling text when using the apply effect enricher.
+- Fixed saving throw rolls not properly being contained in a saving throw message part.
+- Fixed limited view of the item sheet.
+
+## 1.1.2
+
+### Added
+
+- Added type hints for compendium-exclusive item types. (#2014)
+
+### Changed
+
+- Reworked Burgeoning Saint to use an Effect Grant.
+
+### Removed
+
+- Removed winded data and stamina bar markers from object actors. (#2028)
+
+### Fixed
+
+- Updated Player-Facing Compendium Content:
+  - Broadly implemented AEs for automatic edges & banes: (#1567)
+    - Ancestries: High Elf Glamour, Four Armed Athletics, Wode Elf Glamour
+    - Abilities: Absorption Field, Phase Leap, Soul Burn, Synaptic Conditioning, Epic
+    - Complications: Misunderstood, Vow of Honesty
+    - Class Features: Blessing of Secrets, Ordained, Mantle of Quintessence, Corven, Raden, Umbral Form, I Predicted That
+    - Perks: Thingspeaker
+    - Title Benefits: Susurrus Codex, Gift of Knowledge, Sneakers, Up the Beanstalk, Stellar Knowledge, Spotlight
+    - Treasures: Growth Potion, Concealment Potion
+    - Projects: Elemental Implement Imbue
+  - Implemented scaling effects and values: (#1844)
+    - Ancestries: Polder Corruption Immunity, Time Raider Psychic Scar, Revenant Tough but Withered
+    - Abilities: Devastating Rush, Feedback Loop, Iron, Tide of Death
+    - Complications: Mundane, Self Taught
+    - Class Features: Implement of Wrath, Light of the Burning Sun, Nature's Bounty, Impervious Touch, Entropic Adaptability, Inertial Dampener, Psionic Leap, Time Bomb, Umbral Form, Bait and Ambush, Pincer Movement, See Your Enemies Driven Before You, Ease their Fall, Entropy Ward, Kinetic Amplifier, Repulsive Ward, Steel Ward
+    - Title Benefits: Divine Health, Elemental Immunity (comes with an Effect Grant now instead of manually adjusting the AE path), I Reject This Evil Power
+  - Added a triggered ability for Resist the Unnatural. (#1885)
+  - Corrected spelling of Absorption imbue. (#2004)
+  - Corrected Disciple of the Green table. (#2025)
+  - Added AEs to the subclass resource upgrades for the Fury (Growing Ferocity) and Null (Discipline Mastery)
+  - Split out Strained and Persistent effects
+- Updated Director-Facing Compendium Content:
+  - Bugbear Malice abilities now use `@scaling` in damage enrichers.
+- Added missing Ananjali language. (#2009)
+- Retainers no longer show level-up when equal in level to their mentor. (#2015)
+- Dropping a class on a retainer will now prompt to delete the existing one. (#2030)
+- The "With Captain" select for minions can now be cleared.
+
+## 1.1.1
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Added Armor, Implement, and Weapon imbues to the Effects compendium
+- Added an "Ancestry Malice" category for abilities that are from a monster's ancestry, not from its unique statblock. Ancestry malice abilities are skipped in the actor embed unless the embed is supplied the `showAll=true` option.  (#1982)
+
+### Changed
+
+- Updated Player-Facing Compendium Content:
+  - Updated Wodewalker Complication to use roll data instead of a fixed value. (#1988)
+  - Updated Revitalizing Ritual to provide an applied effect. (#1990)
+  - Updated the Adaptive Second Skin and Thief of Joy treasures to use roll data instead of fixed values.
+
+### Removed
+
+- Removed `system.spend` from AbilityModel (all spend data was migrated to `system.effects` in 1.1.0)
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Fixed typo in Paper Trappings treasure.
+- Potency enrichers now work again. (#1985)
+- Corrected handling of locked compendiums during system migration.
+- Corrected issue preventing project creation when the yield document is not provided.
+
+## 1.1.0
+
+Increased foundry minimum to 14.364.
+
+### Added
+
+- New Director-Facing Compendium Content:
+  - Added the artifacts from *Draw Steel Heroes*.
+- Added shape definition to objects for use in region placement. (#311)
 - Abilities can now have any number of HTML sections, and they can have additional info. (#475)
   - This includes promoting the "spend" field to have an HTML entry. (#329)
   - Strained & Spend message parts only display if their conditions are fulfilled. (#676)
+  - Spend effects now provide the spend value as roll data under `@spend`. (#852)
 - Added `@Embed` support for NPC actors. (#901)
 - Added "Effect Origin" option to applied effects. When used, the duration of the effect is based on the *user* of the effect rather than the target. (#1260)
 - Item choice advancements can now specify "Ability" as an expansion option, allowing selection of non-core abilities. (#1420)
+- Document creation dialogs now include a hint based on the currently selected type. (#1558)
+- Added support for a `large` class that can be applied to tables to make them scrollable. (#1682)
 - Added advancement support to retainers. Retainers can now have a class with advancements and levels. (#1721)
   - This class is automatically created when an attempt is made to access and has the default retainer bonuses, however it does not have the ability selections added. Individual retainers must have the ability choices added to this default class.
+  - Added this class to all existing retainers.
 - Added project data to Active Effects to help implement Imbued treasures. (#1843)
 - Added ability to place a template from the ability use dialog that will intelligently target tokens inside the region. (#1864)
 - Players attempting to use a free strike on an NPC or Retainer now create a message with a damage roll in the chat. (#1875)
 - Added `ds.data.fields.LocalDocumentField`, a field which provides convenient access to a singular embedded document. (#1922)
+- Added Forced Movement as a movement action type. (#1931)
 - Added `ds.utils.getDocumentTypes` as a helper function to create a set of valid document subtypes.
 - Directors can now select ability targets from ability results. Like the canvas, hold shift to add instead of replace selections.
+- Added ancestry-based keywords from the core books.
 
 ### Changed
 
 - Updated Player-Facing Compendium Content:
   - Updated "I'm No Threat", "Careful Observation" to have AEs that provide edges.
   - Added appropriate enrichers to Burning Ash and Smoke Bomb.
+  - Updated the Dragon Knight Wyrmplate & Prismatic Scales traits to use Effect Grant advancements.
+- Updated Director-Facing Compendium Content:
+  - All monsters now have their ancestry tags, e.g. Goblin
+- The Actor Sheet & Token HUD no longer show disabled & expired statuses as active, and toggling an inactive status will delete the existing effect and create a new one. (#1694)
 - Refactored `_renderFrame` usage to instead implement the new `_getFrameButtons`. (#1863)
 - Changed default template region visibility to "Always for Anyone". (#1889)
 - Various "extra field input" forms now render inside the parent sheet's detached window.
-
-### Deprecated
+- Adjusting an actor's image if they are using a system icon will now also adjust the actor token to match.
 
 ### Removed
 
@@ -56,8 +213,20 @@ Increased foundry minimum to 14.363.
 
 ### Fixed
 
+- Player-Facing Compendium Data Fixes:
+  - Corrected Back! to not have a forced movement in tier 1. (#1898)
+  - Added in correct source data for several triggered actions granted by features. (#1935)
+  - Corrected Censor level 4 characteristic advancement to give Presence and not Reason. (#1968)
+- Director-Facing Compendium Data Fixes:
+  - Corrected distance on Blackguard Villain Actions. (#1894)
+  - Corrected forced movement effects on the Servok War Engine, Kobold Artifex, Ogre Tantrum, and Troll Whelp. (#1898)
+  - Corrected Omen Dragon Corrupting Breath test attribute. (#1977)
+- Minions are no longer damaged by heal enrichers, instead a warning is issued that they cannot regain stamina or gain temporary stamina. (#1901)
 - Added missing showIcon field to the details page of the Active Effect Config sheet. (#1917)
+- Corrected object resource form displaying as a column instead of a row in edit mode. (#1955)
+- Fixed error that could block combatant group creation if the included tokens used video files for images. (#1978)
 - Corrected instances where the "turn end" expiration would not match to the correct combatant.
+- Adventure documents with items now load properly.
 
 ## 1.0.2
 
@@ -126,8 +295,8 @@ The latest version of Draw Steel is v14-exclusive. You can see the full v14 stab
 - Creature token sizes are now inferred from their actor sizes, so active effects targeting `system.combat.size.value` will also adjust token sizes automatically. (#1528)
 - Migrated roll modes to the new core message modes. (#1681)
 - Hard fixed the list of characteristics. (#1705)
-- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`
 - Refactored various system methods to use new core methods to simplify logic and improve performance. (#1158, #1284, #1711)
+- Migrated `forced.pull` (etc.) to `forced.bonuses.pull`.
 
 ### Deprecated
 

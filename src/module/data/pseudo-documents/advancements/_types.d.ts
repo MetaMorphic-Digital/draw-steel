@@ -1,4 +1,49 @@
-export {};
+import DrawSteelItem from "../../../documents/item.mjs";
+
+declare module "./actor-choice-advancement.mjs" {
+  export default interface ActorChoiceAdvancement {
+    dsid: string;
+  }
+}
+
+// declare module "./companion-choice-advancement.mjs" {
+//   export default interface SummonChoiceAdvancement {
+
+//   }
+// }
+
+interface SummonChoicePool {
+  uuid: string;
+  count: number;
+}
+
+interface SummonEffectPool {
+  uuid: string;
+  level: number;
+}
+
+interface SummonInfo {
+  effects: DrawSteelActiveEffect[];
+  uuid: string;
+  count: number;
+  /** Only included if signature. */
+  cost?: number;
+}
+
+export type ActorChoice = {
+  /** The UUID of the actor. */
+  uuid: string;
+};
+
+declare module "./summon-choice-advancement.mjs" {
+  export default interface SummonChoiceAdvancement {
+    cost: number;
+    /** If `null`, then this is explicitly a "choose all" - but also if the number is equal to or greater than the pool. */
+    chooseN: number | null;
+    pool: SummonChoicePool[];
+    effects: SummonEffectPool[];
+  }
+}
 
 declare module "./base-advancement.mjs" {
   export default interface BaseAdvancement {
@@ -9,10 +54,11 @@ declare module "./base-advancement.mjs" {
     repick: {
       respite: null | "activity" | "finish";
     }
+    document: DrawSteelItem;
   }
 }
 
-declare module "./characteristic.mjs" {
+declare module "./characteristic-advancement.mjs" {
   export default interface CharacteristicAdvancement {
     characteristics: Record<string, number>;
     max: number;

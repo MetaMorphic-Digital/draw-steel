@@ -1,0 +1,146 @@
+{
+  "folder": "GbJ95cA5I5QZ4Sz5",
+  "name": "Precious Collar",
+  "type": "treasure",
+  "_id": "WUPPsxUYEYoRykOj",
+  "img": "icons/sundries/misc/pet-collar-red.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This gold collar is bedazzled with semiprecious gems spelling out a cute pet name.</em></p><p><strong>Effect:</strong> Only a beastheart's companion can wear this collar. As a free maneuver, the companion can shrink to size 1T or grow back to their original size. </p><p>While reduced in size, the companion gains an edge on tests made to hide, sneak, and disguise themself as an ordinary animal.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "38",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "precious-collar",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "neck"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "One Collar worn by a Royal Pet",
+      "source": "Texts or Lore in Vaslorian",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "effects": [
+    {
+      "name": "Shrunk",
+      "img": "icons/sundries/misc/pet-collar-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.WUPPsxUYEYoRykOj",
+      "transfer": true,
+      "_id": "JFtBgtCGwdIITK8t",
+      "system": {
+        "changes": [
+          {
+            "key": "system.combat.size.value",
+            "type": "override",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.combat.size.letter",
+            "type": "override",
+            "value": "t",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.hide.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.sneak.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.disguise.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789744629598,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!WUPPsxUYEYoRykOj.JFtBgtCGwdIITK8t"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789744542038,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!WUPPsxUYEYoRykOj"
+}

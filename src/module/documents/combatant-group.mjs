@@ -128,7 +128,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     await DrawSteelTokenDocument.createCombatants(tokens);
     const combatants = tokens.map(t => t.combatant);
     const actorName = tokens[0]?.actor.name;
-    const tokenImage = tokens[0].texture.src;
+    const tokenImage = tokens.find(t => foundry.data.validators.hasFileExtension(t.texture.src, Object.keys(CONST.FILE_CATEGORIES.IMAGE)));
     const type = tokens.some(t => t.actor?.system.isMinion) ? "squad" : "base";
     const group = await this.create({
       type,

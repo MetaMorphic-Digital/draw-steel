@@ -1,0 +1,119 @@
+{
+  "folder": "C1J5bk6Y06HmBfdO",
+  "name": "Covering Fire",
+  "type": "ability",
+  "_id": "2E0D76WTgu08sef9",
+  "img": "icons/skills/ranged/arrows-flying-salvo-blue.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "23",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "covering-fire",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Keep your head down, or I'll shoot it off!",
+    "keywords": [
+      "beastheart",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "IgxA3Y4w6y277Ref": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "IgxA3Y4w6y277Ref",
+          "damage": {
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "4 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "6 + @chr",
+              "types": [],
+              "ignoredImmunities": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "Bq3i8pTTQyBmcigE": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "Bq3i8pTTQyBmcigE",
+        "description": "<p>If the target is not prone, they must use a free triggered action to fall [[/apply prone]] or take extra damage equal to [[/damage 2*@I]]{twice your Intuition score}. Your companion can shift up to a number of squares equal to their Intuition score.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788554003811,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!2E0D76WTgu08sef9"
+}

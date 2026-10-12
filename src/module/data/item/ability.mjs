@@ -9,15 +9,15 @@ import PowerRoll from "../../rolls/power.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
- * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  * @import { DatabaseCreateOperation } from "@common/abstract/_types.mjs";
- * @import { EmbedDisplayFlags } from "./_types";
+ * @import { AbilityEmbedConfig, EmbedDisplayFlags } from "./_types";
  * @import RegionDocument from "@client/documents/region.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
- * @import DrawSteelTokenDocument from "../../documents/token.mjs";
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -71,6 +71,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.trigger = new fields.StringField({ required: true });
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
+      count: new FormulaField({ deterministic: true, initial: "1" }),
       primary: new FormulaField({ deterministic: true, initial: "1" }),
       secondary: new FormulaField({ deterministic: true, initial: "1" }),
       tertiary: new FormulaField({ deterministic: true, initial: "1" }),
@@ -90,6 +91,11 @@ export default class AbilityModel extends BaseItemModel {
         reactive: new fields.BooleanField(),
         formula: new FormulaField({ blank: true, initial: "@chr", placeholder: "@chr" }),
         characteristics: new fields.SetField(setOptions()),
+        criticalThreshold: new fields.NumberField({ initial: 19, min: 2, integer: true, nullable: false, required: true }),
+        banes: requiredInteger({ persisted: false }),
+        edges: requiredInteger({ persisted: false }),
+        dice: new ds.data.fields.PowerRollDiceField(),
+        enabled: new fields.BooleanField({ persisted: false }),
       }),
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
 
@@ -100,11 +106,6 @@ export default class AbilityModel extends BaseItemModel {
     });
 
     schema.effects = new ds.data.fields.CollectionField(ds.data.pseudoDocuments.specialEffects.BaseSpecialEffect);
-
-    schema.spend = new fields.SchemaField({
-      value: new fields.NumberField({ integer: true }),
-      text: new fields.StringField({ required: true }),
-    });
 
     return schema;
   }
@@ -296,12 +297,16 @@ export default class AbilityModel extends BaseItemModel {
       }
 
       if (bonus.key.startsWith("power.")) {
+        const field = this.schema.getField(bonus.key);
+        const currentValue = foundry.utils.getProperty(this, bonus.key);
+        if (!field) return;
         switch (bonus.key) {
           case "power.roll.banes":
-            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
-            break;
           case "power.roll.edges":
-            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+          case "power.roll.criticalThreshold":
+          case "power.roll.dice.number":
+          case "power.roll.dice.mode":
+            foundry.utils.setProperty(this, bonus.key, field.applyChange(currentValue, this, bonus, { replacementData }));
             break;
         }
       }
@@ -312,7 +317,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * @inheritdoc
-   * @param {DocumentHTMLEmbedConfig} config
+   * @param {AbilityEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
   async toEmbed(config, options = {}) {
@@ -334,6 +339,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     if (config.effects) context.limitEffects = config.effects;
+    if (config.spendAmounts) context.spendAmounts = config.spendAmounts;
     await this.getSheetContext(context);
     const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -348,7 +354,7 @@ export default class AbilityModel extends BaseItemModel {
    */
   getStatBlockIcon() {
     /** @type {EmbedDisplayFlags["iconOverride"]} */
-    const { iconOverride } = this.parent.getFlag(ds.CONST.systemID, "embedDisplay") ?? {};
+    const { iconOverride } = this.parent.getFlag(systemID, "embedDisplay") ?? {};
     if (iconOverride) return iconOverride;
 
     switch (this.type) {
@@ -453,6 +459,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
+    context.distanceCount = config.distances[this.distance.type]?.count ?? false;
     context.primaryDistance = config.distances[this.distance.type]?.primary ?? "";
     context.secondaryDistance = config.distances[this.distance.type]?.secondary ?? "";
     context.tertiaryDistance = config.distances[this.distance.type]?.tertiary ?? "";
@@ -489,9 +496,13 @@ export default class AbilityModel extends BaseItemModel {
     context.afterEffects = [];
     for (const effect of this.effects.sortedContents) {
       if (context.limitEffects && !context.limitEffects.has(effect.id)) continue;
+
+      const rollData = {};
+      if (context.spendAmounts) rollData.spend = context.spendAmounts[effect.id];
+
       const displayData = {
         label: effect.label,
-        text: await enrichHTML(effect.description, { relativeTo: this.parent }),
+        text: await enrichHTML(effect.description, { relativeTo: this.parent, rollData }),
       };
       context[effect.before ? "beforeEffects" : "afterEffects"].push(displayData);
     }
@@ -527,11 +538,9 @@ export default class AbilityModel extends BaseItemModel {
    * @param {ApplicationConfiguration} [dialogOptions={}]   Options to be forwarded to the roll dialog.
    * @param {DatabaseCreateOperation} [messageOptions]      Options to be forwarded to the final created chat message.
    * @returns {Promise<DrawSteelChatMessage | null>}
-   * TODO: Add hooks based on discussion with module authors.
    */
   async use(config = {}, dialogOptions = {}, messageOptions = {}) {
     if (!this.actor) throw new Error("Abilities can only be used while embedded");
-
     const coreResource = this.actor.system.coreResource ?? {};
 
     const dialogConfig = foundry.utils.mergeObject({
@@ -549,15 +558,15 @@ export default class AbilityModel extends BaseItemModel {
     }, dialogOptions);
 
     if (this.power.roll.enabled) {
-      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
+      const base = PowerRoll.baseDiceFormula(this.power.roll.dice);
+      const formula = this.power.roll.formula ? `${base} + ${this.power.roll.formula}` : base;
       const rollData = this.parent.getRollData();
 
       dialogConfig.context.formula ??= PowerRoll.replaceFormulaData(formula, rollData, { missing: "0" });
 
-      dialogConfig.context.modifiers ??= {};
-      dialogConfig.context.modifiers.banes = (config.modifiers?.banes ?? 0) + (this.power.roll.banes ?? 0);
-      dialogConfig.context.modifiers.edges = (config.modifiers?.edges ?? 0) + (this.power.roll.edges ?? 0);
-      dialogConfig.context.modifiers.bonuses ??= 0;
+      dialogConfig.context.modifiers = this.getActorModifiers();
+      dialogConfig.context.modifiers.banes += (config.modifiers?.banes ?? 0);
+      dialogConfig.context.modifiers.edges += (config.modifiers?.edges ?? 0);
 
       dialogConfig.context.targets ??= game.user.targets.reduce((accumulator, target) => {
         accumulator[target.id] = {
@@ -567,9 +576,9 @@ export default class AbilityModel extends BaseItemModel {
         };
         return accumulator;
       }, {});
-
-      this.getActorModifiers(dialogConfig.context);
     }
+
+    if (Hooks.call("ds.preUseAbility", this.parent, config, dialogConfig) === false) return null;
 
     const fd = await AbilityConfigurationDialog.create(dialogConfig);
 
@@ -593,6 +602,7 @@ export default class AbilityModel extends BaseItemModel {
               if (e.showUse(fd)) arr.push(e.id);
               return arr;
             }, []),
+            spendAmounts: fd.spend,
           },
         },
       },
@@ -611,31 +621,45 @@ export default class AbilityModel extends BaseItemModel {
 
       const evaluatedRolls = [];
 
+      const rollTargets = new Map();
+
       for (const context of fd.rolls) {
-        const roll = new PowerRoll(dialogConfig.context.formula, {}, { flavor: _loc(PowerRoll.TYPES.ability.label), ...context });
+        // Strip from roll options
+        const target = context.target;
+        delete context.target;
+        const roll = new PowerRoll(dialogConfig.context.formula, {}, { 
+          flavor: _loc(PowerRoll.TYPES.ability.label), 
+          criticalThreshold: this.power.roll.criticalThreshold,
+          ...context,
+        });
         roll.terms[0] = baseRoll.terms[0];
         await roll.evaluate({ allowInteractive: false });
 
         evaluatedRolls.push(roll);
+        if (target) rollTargets.set(roll, target);
       }
 
-      // Power Rolls grouped by tier of success
-      const groupedRolls = Object.groupBy(evaluatedRolls, roll => roll.product);
+      evaluatedRolls.sort((a, b) => a.product - b.product);
 
-      // Each tier group gets a message part. Rolls within a group are in the same message part
-      for (const tierNumber in groupedRolls) {
+      const targets = evaluatedRolls.map(roll => rollTargets.get(roll)).filter(Boolean);
+
+      if (!targets.length) {
+        const tierNumber = evaluatedRolls[0].product;
         const partId = `tier${tierNumber}Result`.padEnd(16, "0");
 
         const rollPart = {
           _id: partId,
           type: "abilityResult",
-          rolls: groupedRolls[tierNumber],
+          rolls: evaluatedRolls,
           tier: tierNumber,
           abilityUuid: this.parent.uuid,
         };
 
         for (const damageEffect of this.power.effects.documentsByType.damage) {
-          const damageRoll = damageEffect.toDamageRoll(tierNumber, { damageSelection: fd.damage });
+          const damageRoll = damageEffect.toDamageRoll(tierNumber, {
+            damageSelection: fd.damage,
+            spend: Object.values(fd.spend ?? {}),
+          });
           if (!damageRoll) continue;
           await damageRoll.evaluate();
           rollPart.rolls.push(damageRoll);
@@ -645,10 +669,42 @@ export default class AbilityModel extends BaseItemModel {
 
         messageData.system.parts[partId] = rollPart;
       }
+      else {
+        for (const [index, roll] of evaluatedRolls.entries()) {
+          const partId = foundry.utils.randomID();
+
+          const rollPart = {
+            _id: partId,
+            type: "targetResult",
+            rolls: [roll],
+            tier: roll.product,
+            abilityUuid: this.parent.uuid,
+            targetUuid: targets[index],
+            tokenUuid: roll.options.tokenUuid,
+          };
+
+          for (const damageEffect of this.power.effects.documentsByType.damage) {
+            const damageRoll = damageEffect.toDamageRoll(roll.product, {
+              damageSelection: fd.damage,
+              spend: Object.values(fd.spend ?? {}),
+              squadMinions: roll.options.minions,
+            });
+            if (!damageRoll) continue;
+            await damageRoll.evaluate();
+            rollPart.rolls.push(damageRoll);
+            // If there's a roll, add it to the base message data for DSN purposes
+            if (!damageRoll.isDeterministic) messageData.rolls.push(damageRoll);
+          }
+
+          delete roll.options.minions;
+          delete roll.options.tokenUuid;
+
+          messageData.system.parts[partId] = rollPart;
+        }
+      }
     }
 
     let resourceSpend = fd.resource ?? 0;
-
     for (const spend of Object.values(fd.spend ?? {})) resourceSpend += spend;
 
     if (resourceSpend) {
@@ -659,7 +715,9 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
-    return DrawSteelChatMessage.create(messageData, messageOptions);
+    const message = await DrawSteelChatMessage.create(messageData, messageOptions);
+    Hooks.callAll("ds.useAbility", this.parent, message);
+    return message;
   }
 
   /* -------------------------------------------------- */
@@ -674,15 +732,21 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target.
-   * @param {Partial<AbilityUseOptions>} options Options for the dialog.
+   * Initialize the modifiers based on conditions that apply to ability Power Rolls regardless of target.
+   * @returns {PowerRollModifiers}
    */
-  getActorModifiers(options) {
-    if (!this.actor) return;
+  getActorModifiers() {
+    const modifiers = {
+      banes: this.power.roll.banes ?? 0,
+      edges: this.power.roll.edges ?? 0,
+      bonuses: 0,
+    };
 
-    if (this.actor.statuses.has("weakened")) options.modifiers.banes += 1;
-    if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
-    // TODO: Consider hook
+    if (this.actor.statuses.has("prone") && this.keywords.has("strike")) modifiers.banes += 1;
+    if (this.actor.statuses.has("restrained")) modifiers.banes += 1;
+    if (this.actor.statuses.has("weakened")) modifiers.banes += 1;
+
+    return modifiers;
   }
 
   /* -------------------------------------------------- */
@@ -701,8 +765,6 @@ export default class AbilityModel extends BaseItemModel {
     const targetActor = target.actor;
     const token = canvas.tokens.controlled[0]?.actor === this.actor ? canvas.tokens.controlled[0] : null;
 
-    //TODO: ALL CONDITION CHECKS
-
     // Modifiers requiring just the targeted token to have an actor
     if (targetActor) {
       modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
@@ -714,6 +776,8 @@ export default class AbilityModel extends BaseItemModel {
 
       // Grabbed condition check - targeting a non-source adds a bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
+      // Prone condition check - targeting prone with melee gets an edge
+      if (targetActor.statuses.has("prone") && this.keywords.has("melee")) modifiers.edges += 1;
       // Restrained condition check - targeting restrained gets an edge
       if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
       // Surprised condition check - targeting surprised gets an edge
@@ -724,6 +788,8 @@ export default class AbilityModel extends BaseItemModel {
     if (token) {
       // Flanking checks
       if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
+      // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
+      if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("flying"))) modifiers.edges += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
@@ -885,5 +951,19 @@ export default class AbilityModel extends BaseItemModel {
       else if (targetOptions.has("enemy")) return (sourceDisposition !== token.disposition) && polarization.includes(sourceDisposition);
     }
     return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Places summons.
+   * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
+   * @param {Object} options
+   * @param {number} [options.count=1]  How many tokens to summon.
+   * @param {DrawSteelActiveEffect[]} [options.effects] Effects to add to the summoned actors, evaluating based on this actor's roll data.
+   * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
+   */
+  async performSummon(uuid, { count = 1, effects = [] } = {}) {
+    return ds.utils.performSummon(uuid, this, { count, effects });
   }
 }

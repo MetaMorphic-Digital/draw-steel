@@ -18,7 +18,7 @@
       "chronopathy"
     ],
     "type": "maneuver",
-    "category": "signature",
+    "category": "heroic",
     "resource": 5,
     "trigger": "",
     "distance": {
@@ -41,10 +41,6 @@
       },
       "effects": {}
     },
-    "spend": {
-      "text": "",
-      "value": null
-    },
     "prerequisites": {
       "dsid": [
         "talent"
@@ -56,8 +52,17 @@
       "before0000000000": {
         "_id": "before0000000000",
         "type": "base",
-        "description": "<p>The target uses an ability with a base Heroic Resource cost of 7 or lower that they’ve previously used this round, without needing to spend the base cost. Augmentations to the ability can be paid for as usual.</p><p><strong>Strained:</strong> You take [[/damage 1d6]] damage and are [[/apply slowed save]].</p>",
+        "description": "<p>The target uses an ability with a base Heroic Resource cost of 7 or lower that they’ve previously used this round, without needing to spend the base cost. Augmentations to the ability can be paid for as usual.</p>",
         "before": true,
+        "name": "",
+        "img": null,
+        "sort": 0
+      },
+      "strained00000000": {
+        "_id": "strained00000000",
+        "type": "strained",
+        "description": "<p>You take [[/damage 1d6]] damage and are [[/apply slowed save]].</p>",
+        "before": false,
         "name": "",
         "img": null,
         "sort": 0
@@ -74,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.367",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.2",
     "createdTime": 1755872277059,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -137,6 +137,11 @@ Hooks.once("init", function () {
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCompanionSheet, {
+    types: ["companion"],
+    makeDefault: true,
+    label: "DRAW_STEEL.SHEET.Labels.Companion",
+  });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelHeroSheet, {
     types: ["hero"],
     makeDefault: true,
@@ -146,6 +151,10 @@ Hooks.once("init", function () {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.NPC",
+  });
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelMinionSheet, {
+    types: ["npc"],
+    label: "DRAW_STEEL.SHEET.Labels.Minion",
   });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelObjectSheet, {
     types: ["object"],
@@ -193,6 +202,11 @@ Hooks.once("init", function () {
   );
   DocumentSheetConfig.registerSheet(
     foundry.documents.JournalEntryPage, DS_CONST.systemID,
+    applications.sheets.journal.MapLocationPage,
+    { makeDefault: true, types: ["map"] },
+  );
+  DocumentSheetConfig.registerSheet(
+    foundry.documents.JournalEntryPage, DS_CONST.systemID,
     applications.sheets.journal.DrawSteelImageSheet,
     { makeDefault: true, types: ["image"] },
   );
@@ -228,9 +242,10 @@ Hooks.once("init", function () {
   CONFIG.TextEditor.enrichers = [
     applications.ux.enrichers.applyEffect,
     applications.ux.enrichers.lookup,
+    applications.ux.enrichers.potency,
     applications.ux.enrichers.reference,
     applications.ux.enrichers.roll,
-    applications.ux.enrichers.potency,
+    applications.ux.enrichers.summon,
   ];
 
   Object.assign(CONFIG.fontDefinitions, {

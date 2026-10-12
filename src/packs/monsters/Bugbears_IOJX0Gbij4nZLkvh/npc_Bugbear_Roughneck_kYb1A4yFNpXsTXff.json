@@ -92,7 +92,9 @@
       "freeStrike": 5,
       "keywords": [
         "fey",
-        "humanoid"
+        "humanoid",
+        "bugbear",
+        "goblin"
       ],
       "level": 2,
       "role": "brute",
@@ -302,9 +304,6 @@
           "value": "",
           "dsid": [],
           "level": null
-        },
-        "spend": {
-          "text": ""
         }
       },
       "effects": [],
@@ -315,7 +314,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -450,10 +449,6 @@
             }
           }
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -488,7 +483,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -533,10 +528,6 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -580,7 +571,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -626,10 +617,6 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -673,7 +660,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -718,10 +705,6 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -756,7 +739,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -801,10 +784,6 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
@@ -839,7 +818,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "lastModifiedBy": null,
@@ -868,7 +847,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": null,
         "trigger": "",
         "distance": {
@@ -890,10 +869,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -923,7 +898,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.06sDqIj5EE1bUxw1",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1757089859491,
@@ -948,7 +923,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "",
+        "category": "maliceAncestry",
         "resource": null,
         "trigger": "",
         "distance": {
@@ -971,15 +946,11 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "before0000000000": {
             "_id": "before0000000000",
             "type": "base",
-            "description": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have [[potency M 1]] they are slowed (save ends).</p>",
+            "description": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to [[/damage 8-@scaling scaling]]{8 - the number of squares} the iron ball was thrown, and if they have [[potency M 1]] they are slowed (save ends).</p>",
             "before": true,
             "name": "",
             "img": null,
@@ -1003,7 +974,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.OE8d20QnSaE7ZHfI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1757089861194,
@@ -1028,7 +999,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": 10,
         "trigger": "",
         "distance": {
@@ -1050,10 +1021,6 @@
             "reactive": false
           },
           "effects": {}
-        },
-        "spend": {
-          "text": "",
-          "value": null
         },
         "effects": {
           "before0000000000": {
@@ -1083,7 +1050,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.XPiOlpj5iRNcFIvP",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1757089864076,
@@ -1107,7 +1074,7 @@
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
+        "category": "maliceAncestry",
         "resource": null,
         "trigger": "",
         "distance": {
@@ -1130,15 +1097,11 @@
           },
           "effects": {}
         },
-        "spend": {
-          "text": "",
-          "value": null
-        },
         "effects": {
           "before0000000000": {
             "_id": "before0000000000",
             "type": "base",
-            "description": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have [[potency M 1]] they are [[/apply bleeding save]]. While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+            "description": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to [[/damage 12-@scaling scaling]]{12 - the number of squares} the javelin was thrown, and if they have [[potency M 1]] they are [[/apply bleeding save]]. While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
             "before": true,
             "name": "",
             "img": null,
@@ -1157,7 +1120,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.361",
+        "coreVersion": "14.365",
         "systemId": "draw-steel",
         "systemVersion": "1.1.0",
         "createdTime": 1763816733785,
@@ -1275,7 +1238,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.364",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1757089809246,

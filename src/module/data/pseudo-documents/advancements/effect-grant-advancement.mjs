@@ -57,16 +57,6 @@ export default class EffectGrantAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Does this item grant advancement use point buy rather than a simple count.
-   * @type {boolean}
-   */
-  get pointBuy() {
-    return !!this.constructor.ADDITIONAL_TYPES[this.additional.type]?.points;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
@@ -123,7 +113,6 @@ export default class EffectGrantAdvancement extends BaseAdvancement {
 
     if (node) {
       node.selected = selection.choices.reduce((selected, uuid) => {
-        const leaf = node.choices[uuid];
         selected[uuid] = true;
         return selected;
       }, {});

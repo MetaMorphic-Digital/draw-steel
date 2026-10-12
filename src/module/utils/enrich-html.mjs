@@ -12,7 +12,8 @@ export default async function enrichHTML(content, options = {}) {
   if (options.relativeTo) {
     // Don't reveal secrets of unowned documents, but allow explicit false to prevent sharing secrets of owned documents
     if (options.secrets !== false) options.secrets = options.relativeTo.isOwner;
-    if (typeof options.relativeTo.getRollData === "function") options.rollData = options.relativeTo.getRollData();
+    // Allow possibly passing in extra roll data like `@spend`
+    if (typeof options.relativeTo.getRollData === "function") Object.assign(options.rollData ?? {}, options.relativeTo.getRollData());
   }
   return foundry.applications.ux.TextEditor.implementation.enrichHTML(content, options);
 }

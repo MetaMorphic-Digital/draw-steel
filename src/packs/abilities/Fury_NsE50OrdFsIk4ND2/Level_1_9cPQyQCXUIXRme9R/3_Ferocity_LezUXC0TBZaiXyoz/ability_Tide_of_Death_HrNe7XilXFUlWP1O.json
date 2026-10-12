@@ -79,10 +79,6 @@
         }
       }
     },
-    "spend": {
-      "text": "",
-      "value": null
-    },
     "prerequisites": {
       "dsid": [
         "fury"
@@ -103,7 +99,7 @@
       "after00000000000": {
         "_id": "after00000000000",
         "type": "base",
-        "description": "<p>The last target you damage takes [[/damage @M]]{extra damage} equal to your Might score for each opportunity attack you trigger during your move.</p>",
+        "description": "<p>The last target you damage takes [[/damage @M*@scaling scaling]]{extra damage} equal to your Might score for each opportunity attack you trigger during your move.</p>",
         "name": "",
         "img": null,
         "sort": 0,
@@ -121,7 +117,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
     "systemVersion": "1.1.0",
     "createdTime": 1755579510329,

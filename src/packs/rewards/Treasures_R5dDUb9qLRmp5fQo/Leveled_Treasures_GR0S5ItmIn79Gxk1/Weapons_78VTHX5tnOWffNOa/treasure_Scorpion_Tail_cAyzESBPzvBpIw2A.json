@@ -1,0 +1,245 @@
+{
+  "folder": "78VTHX5tnOWffNOa",
+  "name": "Scorpion Tail",
+  "type": "treasure",
+  "_id": "cAyzESBPzvBpIw2A",
+  "img": "icons/creatures/abilities/tail-strike-bone-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>These braids of articulated, wickedly barbed tails weave behind your heads, threatening painful stings.</em></p><p><strong>1st Level:</strong> Only a beastheart can wield this weapon. Any weapon ability that deals rolled damage using this weapon deals an extra 1 poison damage. Additionally, you and your companion can use the following maneuver. @UUID[Compendium.draw-steel.rewards.Item.31rmDoSrDzSMfCTF]{Scorpion Tails}</p><p><strong>5th Level:</strong> The weapon's extra poison damage increases to 2. Additionally, the Scorpion Tail ability's distance increases to melee 3.</p><p><strong>9th Level:</strong> The weapon's extra poison damage increases to 3. Additionally, the Scorpion Tail ability's distance increases to melee 4.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "40",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "scorpion-tail",
+    "kind": "weapon",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "light"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "The stinger from a manticore's tail",
+      "source": "Texts or lore in Khemharic",
+      "rollCharacteristic": [
+        "agility",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "Scorpion Tail (1st Level)",
+      "img": "icons/creatures/abilities/tail-strike-bone-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.cAyzESBPzvBpIw2A",
+      "_id": "wYTcDfiIXlrhVauL",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789765350255,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!cAyzESBPzvBpIw2A.wYTcDfiIXlrhVauL"
+    },
+    {
+      "name": "Scorpion Tail (5th Level)",
+      "img": "icons/creatures/abilities/tail-strike-bone-orange.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.cAyzESBPzvBpIw2A",
+      "_id": "6zkD3gKDvosSbbuJ",
+      "system": {
+        "changes": [
+          {
+            "key": "",
+            "type": "add",
+            "value": "",
+            "phase": "initial"
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789765388104,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!cAyzESBPzvBpIw2A.6zkD3gKDvosSbbuJ"
+    },
+    {
+      "name": "Scorpion Tail (9th Level)",
+      "img": "icons/creatures/abilities/tail-strike-bone-orange.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.cAyzESBPzvBpIw2A",
+      "_id": "rjpFVjfLBdmQgRiM",
+      "system": {
+        "changes": [
+          {
+            "key": "damage.bonuses.treasure",
+            "type": "upgrade",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": [
+            "melee",
+            "weapon"
+          ]
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789765552892,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!cAyzESBPzvBpIw2A.rjpFVjfLBdmQgRiM"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789765199364,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!cAyzESBPzvBpIw2A"
+}

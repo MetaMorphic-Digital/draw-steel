@@ -1,0 +1,236 @@
+{
+  "folder": "5RZq8kMsUYHbLjTy",
+  "name": "Thorn Dragonscale",
+  "type": "treasure",
+  "_id": "0NpHZgdYpsYBIMVJ",
+  "img": "icons/equipment/chest/breastplate-layered-grey.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>This armor, fashioned from the barbed scales of a thorn dragon, still pulses with the echo of the dragon's heartbeat.</em></p><p><strong>1st Level:</strong> Only a beastheart can wear this armor. While you wear this armor, you gain a +6 bonus to Stamina, and when a creature starts their turn either grabbed by or grabbing you or your companion, they are [[/apply bleeding turn]] until the end of their next turn.</p><p><strong>5th Level:</strong> The armor's bonus to Stamina increases to +12. Additionally, you or your companion can use a maneuver to latch onto a creature or object of size 1L or smaller within 3 squares with thorned vines, pulling the target 3 squares.</p><p><strong>9th Level:</strong> The armor's bonus to Stamina increases to +21, and whenever you or your companion pulls a creature with thorned vines using the armor, the target also takes [[/damage 5 ]]{5 damage} and is [[/apply grabbed]] by whoever force moved them.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "39",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "thorn-dragonscale",
+    "kind": "armor",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "medium"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "The scales of a slain thorn dragon: The scales of a slain thorn dragon",
+      "source": "Texts or lore in the First Language",
+      "rollCharacteristic": [
+        "agility",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "effects": [
+    {
+      "name": "Thorn Dragonscale (1st Level)",
+      "img": "icons/equipment/chest/breastplate-layered-grey.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.0NpHZgdYpsYBIMVJ",
+      "disabled": true,
+      "_id": "PiTEnefahCOfKSc5",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 6,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789749105732,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!0NpHZgdYpsYBIMVJ.PiTEnefahCOfKSc5"
+    },
+    {
+      "name": "Thorn Dragonscale (5th Level)",
+      "img": "icons/equipment/chest/breastplate-layered-grey.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.0NpHZgdYpsYBIMVJ",
+      "disabled": true,
+      "_id": "AMIpcZPOYEwkPpvc",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 12,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789749129348,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!0NpHZgdYpsYBIMVJ.AMIpcZPOYEwkPpvc"
+    },
+    {
+      "name": "Thorn Dragonscale (9th Level)",
+      "img": "icons/equipment/chest/breastplate-layered-grey.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.0NpHZgdYpsYBIMVJ",
+      "disabled": true,
+      "_id": "OCG5lp3Fc1rykRiB",
+      "system": {
+        "changes": [
+          {
+            "key": "system.stamina.bonuses.treasure",
+            "type": "upgrade",
+            "value": 21,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789749153550,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!0NpHZgdYpsYBIMVJ.OCG5lp3Fc1rykRiB"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789748915985,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!0NpHZgdYpsYBIMVJ"
+}

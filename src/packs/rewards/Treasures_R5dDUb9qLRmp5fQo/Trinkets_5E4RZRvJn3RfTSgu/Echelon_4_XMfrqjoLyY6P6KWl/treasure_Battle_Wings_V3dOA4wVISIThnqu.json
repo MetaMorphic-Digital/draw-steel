@@ -1,0 +1,177 @@
+{
+  "folder": "XMfrqjoLyY6P6KWl",
+  "name": "Battle Wings",
+  "type": "treasure",
+  "_id": "V3dOA4wVISIThnqu",
+  "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>These gently undulating wings affix themselves to a creature's shoulders.</em></p><p>Only a beastheart's companion or an animal can wear this item. While wearing it, the creature grows feathered wings if they don't already have wings and can fly. If the creature can already fly, they gain a +3 bonus to their speed while flying.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "38",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "battle-wings",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 4,
+    "keywords": [
+      "magic",
+      "neck"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A creature's feather given as a gift by the creature",
+      "source": "Texts or lore in Khelt and Yllric",
+      "rollCharacteristic": [
+        "agility",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 600
+    }
+  },
+  "effects": [
+    {
+      "name": "Battle Wings Flight",
+      "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.V3dOA4wVISIThnqu",
+      "transfer": true,
+      "_id": "ZejCBeTJD72OAcw5",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.types",
+            "type": "add",
+            "value": "fly",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": true,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789746812828,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!V3dOA4wVISIThnqu.ZejCBeTJD72OAcw5"
+    },
+    {
+      "name": "Battle Wings Speed",
+      "img": "icons/creatures/abilities/wings-birdlike-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.V3dOA4wVISIThnqu",
+      "transfer": true,
+      "_id": "5b1eioq5n9cmGlQh",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": true,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789746835197,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!V3dOA4wVISIThnqu.5b1eioq5n9cmGlQh"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789745745654,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!V3dOA4wVISIThnqu"
+}

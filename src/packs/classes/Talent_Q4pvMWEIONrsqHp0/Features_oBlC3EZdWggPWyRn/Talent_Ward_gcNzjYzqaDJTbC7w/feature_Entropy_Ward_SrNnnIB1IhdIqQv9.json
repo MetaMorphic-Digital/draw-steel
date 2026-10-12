@@ -6,7 +6,7 @@
   "img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue-yellow.webp",
   "system": {
     "description": {
-      "value": "<p>Your ward slows time for your enemies. Whenever a creature deals damage to you, their speed is reduced by an amount equal to your Reason score and they can’t use triggered actions until the end of their next turn.</p>",
+      "value": "<p>Your ward slows time for your enemies. Whenever a creature deals damage to you, their speed is reduced by an amount equal to [[lookup @R]]{your Reason score} and they can’t use triggered actions until the end of their next turn. [[/apply naLxVhSRcjEV8Zqm turn]]</p>",
       "director": ""
     },
     "source": {
@@ -22,7 +22,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Entropy Ward",
+      "img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.SrNnnIB1IhdIqQv9",
+      "transfer": false,
+      "_id": "naLxVhSRcjEV8Zqm",
+      "system": {
+        "changes": [
+          {
+            "key": "system.movement.value",
+            "type": "add",
+            "value": -2,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "turnEnd",
+        "expired": false
+      },
+      "description": "<p>Their speed is reduced by an amount equal to your Reason score and they can’t use triggered actions until the end of their next turn.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1785815645000,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!SrNnnIB1IhdIqQv9.naLxVhSRcjEV8Zqm"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -32,9 +92,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.361",
+    "coreVersion": "14.365",
     "systemId": "draw-steel",
-    "systemVersion": "1.1.0",
+    "systemVersion": "1.1.2",
     "createdTime": 1755826525565,
     "modifiedTime": null,
     "lastModifiedBy": null

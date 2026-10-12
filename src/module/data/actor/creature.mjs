@@ -58,6 +58,8 @@ export default class CreatureModel extends BaseActorModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    this.stamina.winded = Math.floor(this.stamina.max / 2);
+
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
     this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;
@@ -106,7 +108,7 @@ export default class CreatureModel extends BaseActorModel {
     const chr = this.characteristics[characteristic];
 
     const testConfig = ds.CONST.testOutcomes[config.difficulty];
-    const baseFormula = chr.dice.number > 2 ? `${chr.dice.number}d10${chr.dice.mode}2` : "2d10";
+    const baseFormula = PowerRoll.baseDiceFormula(chr.dice);
     const formula = `${baseFormula} + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const rollData = this.parent.getRollData();
     const modifiers = {
@@ -207,5 +209,20 @@ export default class CreatureModel extends BaseActorModel {
       };
       return obj;
     }, {});
+  }
+
+  /* ------------------------------------------------- */
+
+  /**
+   * Checks if this character fails a potency check.
+   * @param {number} value
+   * @param {string} characteristic A valid characteristic key.
+   * @returns {boolean} Returns true if the value is greater than this character's effective characteristic.
+   */
+  checkPotency(value, characteristic) {
+    const chr = this.characteristics[characteristic];
+    if (!chr) throw new Error(`Invalid characteristic ${characteristic}`);
+    const resist = chr.value + chr.resist;
+    return value > resist;
   }
 }

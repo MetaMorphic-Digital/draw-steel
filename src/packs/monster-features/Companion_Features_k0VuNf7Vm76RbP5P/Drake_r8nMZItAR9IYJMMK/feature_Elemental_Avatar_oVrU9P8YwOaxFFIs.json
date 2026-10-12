@@ -1,0 +1,95 @@
+{
+  "folder": "r8nMZItAR9IYJMMK",
+  "name": "Elemental Avatar",
+  "type": "feature",
+  "_id": "oVrU9P8YwOaxFFIs",
+  "img": "icons/creatures/magical/spirit-fire-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p>While the drake is rampaging, you and the drake have immunity all to the drake's attuned damage type, and whenever you or the drake make a strike against a creature you can cause the target to be [[/apply \"Dragonsealed\" save]]. A dragonsealed creature has weakness 10 to the drake's attuned damage type.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "10",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "elemental-avatar",
+    "advancements": {},
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Dragonsealed",
+      "img": "icons/magic/control/fear-fright-monster-grin-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.oVrU9P8YwOaxFFIs",
+      "transfer": false,
+      "_id": "TK4np8Gmdi8H1tXS",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>A dragonsealed creature has weakness 10 to the drake's attuned damage type.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788977460348,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!oVrU9P8YwOaxFFIs.TK4np8Gmdi8H1tXS"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788977460348,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 300000,
+  "_key": "!items!oVrU9P8YwOaxFFIs"
+}

@@ -51,7 +51,7 @@
             data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip"
             data-tooltip-direction="UP"
           >
-            <i class="fa-solid fa-heart-pulse"></i>
+            <i class="fa-solid fa-heart-pulse" inert></i>
             {{systemFields.recoveries.label}}
           </button>
           {{else}}
@@ -95,14 +95,14 @@
       <legend>{{systemFields.retainer.fields.freeStrike.label}}</legend>
       <div class="free-strike">
         {{#if isPlay}}
-        {{#if gm}}
+        {{#if owner}}
         <button type="button" data-action="freeStrike">
-          <i class="fa-solid fa-burst"></i>
-          {{system.retainer.freeStrike}}
+          <i class="fa-solid fa-burst" inert></i>
+          {{system.freeStrike.value}}
         </button>
         {{else}}
         <span class="player-view">
-          {{system.retainer.freeStrike}}
+          {{system.freeStrike.value}}
         </span>
         {{/if}}
         {{else}}

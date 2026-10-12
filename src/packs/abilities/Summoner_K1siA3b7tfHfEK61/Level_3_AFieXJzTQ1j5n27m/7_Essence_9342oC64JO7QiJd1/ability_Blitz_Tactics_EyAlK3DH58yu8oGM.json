@@ -1,0 +1,136 @@
+{
+  "folder": "9342oC64JO7QiJd1",
+  "name": "Blitz Tactics",
+  "type": "ability",
+  "_id": "EyAlK3DH58yu8oGM",
+  "img": "icons/skills/movement/arrow-upward-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Summoner",
+      "page": "32",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "blitz-tactics",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Rush 'em! CRUSH 'EM!",
+    "keywords": [
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": "1",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effects": {
+      "2s8xOu8towceJG9w": {
+        "sort": 100000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "2s8xOu8towceJG9w",
+        "description": "<p>Until the end of the encounter or you are dying, each minion under your control during the encounter is the target of the following effect. The first time on a turn that the target moves through an enemy's space, the enemy can choose to shift 1 square or be [[potency M WEAK]] (or [[potency M AVERAGE]] if the target is larger than the enemy) knocked prone. The potency increases by 1 for each subsequent target that moves through the enemy's space during the same move action.</p><p></p><p>[[/apply kTcnpdWrdIwg8hUT encounter]]</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Blitz Tactics - Shift or Prone",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.EyAlK3DH58yu8oGM",
+      "_id": "kTcnpdWrdIwg8hUT",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": {
+        "time": 0,
+        "round": null,
+        "combat": null,
+        "combatant": null,
+        "initiative": null,
+        "turn": null
+      },
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": "combatEnd",
+        "expired": false
+      },
+      "description": "<p>Until the end of the encounter or you are dying, each minion under your control during the encounter is the target of the following effect. The first time on a turn that the target moves through an enemy's space, the enemy can choose to shift 1 square or be [[potency M WEAK]] (or [[potency M AVERAGE]] if the target is larger than the enemy) knocked prone. The potency increases by 1 for each subsequent target that moves through the enemy's space during the same move action.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "showIcon": 1,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1788423294327,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": "Compendium.draw-steel.abilities.Item.EyAlK3DH58yu8oGM.ActiveEffect.kTcnpdWrdIwg8hUT",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!items.effects!EyAlK3DH58yu8oGM.kTcnpdWrdIwg8hUT"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788370320264,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!EyAlK3DH58yu8oGM"
+}

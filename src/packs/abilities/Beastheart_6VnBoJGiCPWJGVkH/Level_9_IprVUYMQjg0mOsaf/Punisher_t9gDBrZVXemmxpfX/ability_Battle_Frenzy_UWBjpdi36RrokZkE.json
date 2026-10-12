@@ -1,0 +1,124 @@
+{
+  "folder": "t9gDBrZVXemmxpfX",
+  "name": "Battle Frenzy",
+  "type": "ability",
+  "_id": "UWBjpdi36RrokZkE",
+  "img": "icons/skills/melee/blood-slash-foam-red.webp",
+  "system": {
+    "source": {
+      "book": "Beastheart",
+      "page": "36",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "battle-frenzy",
+    "prerequisites": {
+      "value": "",
+      "dsid": [],
+      "level": null
+    },
+    "story": "Your companion shatters the floodgates that keep their rampage dammed up, and it cascades into the unprepared minds of nearby creatures.",
+    "keywords": [
+      "area",
+      "companion",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": "5",
+      "secondary": "1",
+      "tertiary": "1"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "reactive": false,
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "19ZFYGGllccNFpwY": {
+          "sort": 100000,
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "19ZFYGGllccNFpwY",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} the target is battle-frenzied",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "The target is battle-frenzied",
+              "effects": {},
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "PX9HmXCEOmDSXFaw": {
+        "sort": 100000,
+        "name": "Special",
+        "img": null,
+        "type": "base",
+        "_id": "PX9HmXCEOmDSXFaw",
+        "description": "<p>This ability targets only creatures you choose within distance.</p>",
+        "before": true
+      },
+      "mISJuEMx3i8uzMcP": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "base",
+        "_id": "mISJuEMx3i8uzMcP",
+        "description": "<p>If a target resists the potency, they can choose to become battle-frenzied.</p><p>A battle-frenzied creature must use a free triggered action to make a melee free strike against themself or a creature adjacent to them. You choose each creature's target. After making this strike, they are no longer battle frenzied.</p>",
+        "before": false
+      }
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788884526346,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!UWBjpdi36RrokZkE"
+}

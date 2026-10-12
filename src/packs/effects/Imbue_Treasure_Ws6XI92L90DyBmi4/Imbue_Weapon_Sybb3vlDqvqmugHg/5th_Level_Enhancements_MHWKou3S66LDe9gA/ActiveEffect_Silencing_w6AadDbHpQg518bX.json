@@ -1,0 +1,56 @@
+{
+  "folder": "MHWKou3S66LDe9gA",
+  "name": "Silencing",
+  "type": "base",
+  "_id": "w6AadDbHpQg518bX",
+  "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "An executioner’s hood worn during the execution of a mage",
+      "source": "Texts or lore in The First Language",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Whenever you damage a creature with an ability using this weapon and obtain a tier 3 outcome, that creature also can’t use magic abilities until the end of their next turn.</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784301510630,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!w6AadDbHpQg518bX"
+}

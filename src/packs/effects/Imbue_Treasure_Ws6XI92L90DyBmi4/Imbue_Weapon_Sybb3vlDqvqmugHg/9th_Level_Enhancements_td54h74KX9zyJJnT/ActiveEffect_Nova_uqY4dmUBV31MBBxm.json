@@ -1,0 +1,56 @@
+{
+  "folder": "td54h74KX9zyJJnT",
+  "name": "Nova",
+  "type": "base",
+  "_id": "uqY4dmUBV31MBBxm",
+  "img": "icons/magic/fire/explosion-mushroom-nuke-orange.webp",
+  "system": {
+    "changes": [],
+    "end": {
+      "roll": "1d10 + @combat.save.bonus"
+    },
+    "project": {
+      "prerequisites": "A piece of metal touched by a sun",
+      "source": "Texts or lore in Ullorvic",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "kind": "weapon",
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 150
+    }
+  },
+  "disabled": false,
+  "start": null,
+  "duration": {
+    "value": null,
+    "units": "seconds",
+    "expiry": null,
+    "expired": false
+  },
+  "description": "<p>Whenever you damage a creature using this weapon, each enemy adjacent to you takes damage based on the tier outcome of the power roll—[[/damage 2]] damage for tier 1, [[/damage 6]] for tier 2, or [[/damage 10]] for tier 3. Additionally, while you are winded, you have the following ability.</p><p></p><p>@UUID[Compendium.draw-steel.abilities.Item.LeTNMwyAQCYor1fS]{Nova}</p>",
+  "origin": null,
+  "tint": "#ffffff",
+  "transfer": false,
+  "statuses": [],
+  "showIcon": 1,
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "draw-steel",
+    "systemVersion": "1.1.0",
+    "createdTime": 1784301476216,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!effects!uqY4dmUBV31MBBxm"
+}

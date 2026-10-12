@@ -1,0 +1,891 @@
+{
+  "folder": "t6IF88i0yYaBfKH5",
+  "name": "Beastheart",
+  "type": "class",
+  "_id": "4oKOcrPU5h1jJZb1",
+  "img": "icons/creatures/eyes/lizard-single-slit-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>A beastheart never fights alone! You travel with a ferocious beast by your side—no trained pet, but an untamed creature such as a wolf, a basilisk, or even a young dragon. Bound to you by a primordial connection, your companion honors your wishes just as you are guided by their instincts. </p><p>But beware! As battle rages on, your companion may succumb to a blood-soaked rampage, lashing out at enemies and friends alike.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Beastheart",
+      "page": "4",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "beastheart",
+    "advancements": {
+      "caUolB6iU5mtWbfZ": {
+        "sort": 100000,
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "caUolB6iU5mtWbfZ",
+        "description": "<p>You gain the Animal Handling Skill</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": null,
+        "skills": {
+          "groups": [],
+          "choices": [
+            "handleAnimals"
+          ]
+        }
+      },
+      "EiMww8oiou2q4qKP": {
+        "sort": 200000,
+        "name": "Skills",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "EiMww8oiou2q4qKP",
+        "description": "<p>Choose any two skills from the exploration or intrigue skill groups. <em>(Quick Build: Animal Handling, Navigate, Track.)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "exploration",
+            "intrigue"
+          ],
+          "choices": []
+        }
+      },
+      "X4TaBIiD9Qw7lt6L": {
+        "sort": 300000,
+        "name": "Features and Abilities",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "X4TaBIiD9Qw7lt6L",
+        "description": "<p>You gain the following Features and Abilities</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.WSfNJDNA0pU9c2Sb"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UNWexQHr0D6fjY0a"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.kskN1YLB88D2cb3s"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "pZOhgDZXhZ9uBNop": {
+        "sort": 400000,
+        "name": "Wild Nature",
+        "img": "icons/creatures/abilities/wolf-howl-moon-white.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "pZOhgDZXhZ9uBNop",
+        "description": "<p>You choose a wild nature from the following options, each of which grants you a skill. <em>(Quick Build: Punisher.)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.8yImKm52cz0Mgksu"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.L8znzladIUZpiAZR"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.AYnb12Ok5MhSg5w1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.f3LQ4izGgHP7tnfz"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "subclass",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "CLe3aosrN7mio2e0": {
+        "sort": 500000,
+        "name": "Companion Choice",
+        "img": null,
+        "type": "companion",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "CLe3aosrN7mio2e0",
+        "description": "<p>Choose a companion from the following options. <em>(Quick Build: Wolf.)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "dsid": ""
+      },
+      "E3at2zpYhcEMHIIV": {
+        "sort": 600000,
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "E3at2zpYhcEMHIIV",
+        "description": "<p>You can use and gain the benefits of a kit.</p>",
+        "repick": {
+          "respite": "activity"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.dFKiwPs0hVo7uWei"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.eQsxbl59pEjHEyB7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.26dSN2U5BPYxURBl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZQVco8CZprfeqPp6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.49hPWhEliTnRbuxT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.x41mBdtcCGTj8Quy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jHJnlHyRRNf9V5hm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.uEExxUnkmJ1whpCz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jBAKshrCTStqX7yI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.IWcztYRBrAMdRQyf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.tfBbJyfk0ARRiPJU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.RhaBwqKzijzbJcCQ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.JE0Q1L35MuOGLVVJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.B07q1yyc5HSCnAf7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.74X1pEcNgz1OQC2x"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.UWjNAZn9cBAMUWB0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZoWDIjHoCJjr1uo1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.NkzAlCFgDeGuTnzr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.AOCz8Nufy6kbg85v"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "kit",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "l8W2tgmON39eEKiv": {
+        "sort": 700000,
+        "name": "Signature Ability",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "l8W2tgmON39eEKiv",
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. <em>(Quick Build: Come On!)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.UXcP84JYq3MOQgjM"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.3zKoNYMRV5B1ujtr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.2E0D76WTgu08sef9"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.xyTjHSltEkf3PMGE"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "mcdRhwuMpXfl3F4V": {
+        "sort": 800000,
+        "name": "3 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-wood.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "mcdRhwuMpXfl3F4V",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 ferocity to use. <em>(Quick Build: Hungry Like the Wolf.)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.WTbajVDlrpUVVR1t"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.fcuPcvtilkOh1Wzt"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.rJglhblIjq8lracq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cciUjGdhEvl6dUAP"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "zlcof8E7P6S8OBwx": {
+        "sort": 900000,
+        "name": "5 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-engraved.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "zlcof8E7P6S8OBwx",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 ferocity to use. <em>(Quick Build: I Feed On Your Pain!)</em></p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.YK4X33TcLbGSZ9Be"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.WsmB6t4rZrUxN8xn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.PWQde2PLLtCenfzr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.k1sNzNeKORT5mai7"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "SVMCXpzpKakGRmlq": {
+        "sort": 1000000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "SVMCXpzpKakGRmlq",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "intrigue",
+            "exploration"
+          ],
+          "cost": null
+        }
+      },
+      "3r5bCVKq4lm0iLQV": {
+        "sort": 1100000,
+        "name": "Everyone's Best Friend",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "3r5bCVKq4lm0iLQV",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.v6aISGR2HAdMcxUH"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "enQu7n5q3F6MtLTZ": {
+        "sort": 1200000,
+        "name": "7 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-engraved-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "enQu7n5q3F6MtLTZ",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Zyy487TlufDdWB9T"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.TiPsvHGNBybRp2hw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yVunxn92m7CMdoGq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.LQKrgicwuszNUbI2"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "yrKibJNX0SQMMmYg": {
+        "sort": 1300000,
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "yrKibJNX0SQMMmYg",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "characteristics": {
+          "might": 1,
+          "agility": -1,
+          "reason": -1,
+          "intuition": 1,
+          "presence": -1
+        },
+        "max": 3
+      },
+      "pCptH2O2UiCgWMjA": {
+        "sort": 1400000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "pCptH2O2UiCgWMjA",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore",
+            "supernatural"
+          ],
+          "cost": null
+        }
+      },
+      "UdT1K32wA7oryajD": {
+        "sort": 1500000,
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "UdT1K32wA7oryajD",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.v94r1nDemERNmtTo"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.59P9M8lID65VQBnO"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "oIfebVGoGpSDGeBs": {
+        "sort": 1600000,
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "oIfebVGoGpSDGeBs",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ],
+          "choices": []
+        }
+      },
+      "KXHUfMDNwWK90Lbf": {
+        "sort": 1700000,
+        "name": "9 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-engraved-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "KXHUfMDNwWK90Lbf",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 ferocity to use.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.fnRBlXavWnbtjwiS"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.H1HPkQfO5O4NxTSf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.upw6Agfd3Iu4Ax5y"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.PA8HYg8w97GYgH49"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "6dvdc2X284xRrVky": {
+        "sort": 1800000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "6dvdc2X284xRrVky",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ],
+          "cost": null
+        }
+      },
+      "TE3HcdZx0DOSzlO5": {
+        "sort": 1900000,
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "TE3HcdZx0DOSzlO5",
+        "description": "<p>Each of your and your companion's characteristic scores increases by 1, to a maximum of 4.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "max": 4
+      },
+      "rZ6ARpnKyjR6GWvj": {
+        "sort": 2000000,
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "rZ6ARpnKyjR6GWvj",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.V7SAeOcVWppDHAmu"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ajNHR05i2ORkDs97"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "Ly6V0NPrsaAzPZQ3": {
+        "sort": 2100000,
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "Ly6V0NPrsaAzPZQ3",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": null,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ],
+          "choices": []
+        }
+      },
+      "RPcsri8meTSpd1h8": {
+        "sort": 2200000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "RPcsri8meTSpd1h8",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": null,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "lore",
+            "supernatural",
+            "intrigue"
+          ],
+          "cost": null
+        }
+      },
+      "L9adxxsBOW2A0T8b": {
+        "sort": 2300000,
+        "name": "11 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-engraved-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "L9adxxsBOW2A0T8b",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 ferocity to use.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qh1zG1BtUY2L8EAs"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.bqisuRfoyHEdAFnP"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.WMfjlcEKEdiGUMFZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.5hTzDh4CnqsQR05w"
+          }
+        ],
+        "chooseN": 1,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "16bOImoeFkslm5x1": {
+        "sort": 2400000,
+        "name": "Avatar of the Green",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "16bOImoeFkslm5x1",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.iuxx6leejoILyyxy"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "uUFOrRbz7oqNOOx9": {
+        "sort": 2500000,
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "uUFOrRbz7oqNOOx9",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "characteristics": {
+          "might": 1,
+          "agility": -1,
+          "reason": -1,
+          "intuition": 1,
+          "presence": -1
+        },
+        "max": 5
+      },
+      "Q2l3KqYOUOx2Jrli": {
+        "sort": 2600000,
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "Q2l3KqYOUOx2Jrli",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.lOWST1UgguRYhdAf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.dg2OauONtJY1hjVo"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.vwmYedPMnLpjyom8"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      },
+      "L1uEJdhD3BZ9os1s": {
+        "sort": 2700000,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "L1uEJdhD3BZ9os1s",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "pool": [],
+        "chooseN": null,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ],
+          "cost": null
+        }
+      },
+      "5WPLEDN9zz6Otl1e": {
+        "sort": 2800000,
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "5WPLEDN9zz6Otl1e",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ],
+          "choices": []
+        }
+      },
+      "pGE2Fckcrj1jI5FZ": {
+        "sort": 450000,
+        "name": "Companion Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "pGE2Fckcrj1jI5FZ",
+        "description": "",
+        "repick": {},
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.RktNx9yB5RSLHTEe"
+          }
+        ],
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": [],
+          "cost": null
+        }
+      }
+    },
+    "level": 0,
+    "primary": "Ferocity",
+    "epic": "Ferox",
+    "turnGain": "1d3",
+    "minimum": "0",
+    "characteristics": {
+      "core": [
+        "might",
+        "intuition"
+      ]
+    },
+    "stamina": {
+      "starting": 21,
+      "level": 12
+    },
+    "recoveries": 12
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1788887520923,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!4oKOcrPU5h1jJZb1"
+}

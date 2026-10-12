@@ -45,11 +45,11 @@ export default class AdvancementModel extends BaseItemModel {
 
     const respiteAdvancements = this.actor.system._respiteAdvancements;
 
-    const record = this.actor.system._traits;
-    const unfilled = this.actor.system._unfilledTraits;
+    const traitRecord = this.actor.system._traits;
+    const traitUnfilled = this.actor.system._unfilledTraits;
     const addTrait = (type, trait) => {
-      record[type] ??= new Set();
-      for (const k of trait) record[type].add(k);
+      traitRecord[type] ??= new Set();
+      for (const k of trait) traitRecord[type].add(k);
     };
 
     const level = this.actor.system.level;
@@ -69,8 +69,8 @@ export default class AdvancementModel extends BaseItemModel {
           : advancement.traitOptions.map(option => option.value);
         addTrait(advancement.type, selected);
         if (selected.length < advancement.chooseN) {
-          unfilled[advancement.type] ??= new Set();
-          unfilled[advancement.type].add(advancement.getRelativeUUID(this.actor));
+          traitUnfilled[advancement.type] ??= new Set();
+          traitUnfilled[advancement.type].add(advancement.getRelativeUUID(this.actor));
         }
       } else if (advancement.type === "characteristic") {
         for (const chr of flags[advancement.id]?.selected ?? []) {

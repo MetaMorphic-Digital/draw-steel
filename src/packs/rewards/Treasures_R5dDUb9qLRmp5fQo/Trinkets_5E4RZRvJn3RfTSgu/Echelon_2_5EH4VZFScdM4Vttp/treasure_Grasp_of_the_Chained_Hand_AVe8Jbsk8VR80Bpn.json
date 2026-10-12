@@ -1,0 +1,164 @@
+{
+  "folder": "5EH4VZFScdM4Vttp",
+  "name": "Grasp of the Chained Hand",
+  "type": "treasure",
+  "_id": "AVe8Jbsk8VR80Bpn",
+  "img": "icons/equipment/hand/gauntlet-armored-black.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>A gauntlet of loose chains rattles, shackled to each of the user's fingers. They clatter whenever magic surges through them.</em></p><p><strong>Effect:</strong> While wearing this gauntlet, your ranged free strikes have the Magic keyword and if the target has [[potency P average]], they are magically [[/apply STqMUXccndh0WvdJ turn]]{chained to you} until the end of their next turn. While chained, the target can't move farther away from you, and you can use a maneuver to either vertically pull the target up to 3 squares or shift yourself up to 3 squares through the air toward the target.</p><p><strong>Special:</strong> If you are a summoner, you regain the use of your standard ranged free strike while wearing this gauntlet.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Summoner",
+      "page": "47",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "grasp-of-the-chained-hand",
+    "kind": "",
+    "category": "trinket",
+    "echelon": 2,
+    "keywords": [
+      "magic",
+      "arms"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "Blood-soaked chains that restrained a demon for at least 30 days",
+      "source": "Texts or lore in the Tholl",
+      "rollCharacteristic": [
+        "reason",
+        "presence"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 300
+    }
+  },
+  "effects": [
+    {
+      "name": "Magic Ranged Free Strike",
+      "img": "icons/equipment/hand/gauntlet-armored-black.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.AVe8Jbsk8VR80Bpn",
+      "_id": "Jp8a8goTpG6bkR5s",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>While wearing this gauntlet, your ranged free strikes have the Magic keyword.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789512010666,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!AVe8Jbsk8VR80Bpn.Jp8a8goTpG6bkR5s"
+    },
+    {
+      "name": "Chained",
+      "img": "icons/magic/control/debuff-chains-shackles-movement-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.AVe8Jbsk8VR80Bpn",
+      "transfer": false,
+      "_id": "STqMUXccndh0WvdJ",
+      "system": {
+        "changes": [],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>While chained, the target can't move farther away from you, and you can use a maneuver to either vertically pull the target up to 3 squares or shift yourself up to 3 squares through the air toward the target.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1789512010666,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!AVe8Jbsk8VR80Bpn.STqMUXccndh0WvdJ"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "draw-steel",
+    "systemVersion": "1.2",
+    "createdTime": 1789512010666,
+    "modifiedTime": null,
+    "lastModifiedBy": null,
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "sort": 0,
+  "_key": "!items!AVe8Jbsk8VR80Bpn"
+}

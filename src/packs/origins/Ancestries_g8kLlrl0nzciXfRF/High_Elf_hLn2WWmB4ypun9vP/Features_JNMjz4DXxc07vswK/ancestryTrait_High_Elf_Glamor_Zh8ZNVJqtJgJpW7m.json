@@ -23,7 +23,74 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "High Elf Glamour",
+      "img": "icons/magic/control/control-influence-crown-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.origins.Item.Zh8ZNVJqtJgJpW7m",
+      "_id": "8CQXsbwj3RyzACD3",
+      "system": {
+        "changes": [
+          {
+            "key": "system.skills.modifiers.flirt.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "system.skills.modifiers.persuade.edges",
+            "type": "add",
+            "value": 1,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "<p>A magic glamor makes others perceive you as interesting and engaging, granting you an edge on Presence tests using the Flirt or Persuade skills. This glamor makes you appear and sound slightly different to each creature you meet, since what is engaging to one might be different for another. However, you never appear to be anyone other than yourself.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.365",
+        "systemId": "draw-steel",
+        "systemVersion": "1.1.2",
+        "createdTime": 1786056317280,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!Zh8ZNVJqtJgJpW7m.8CQXsbwj3RyzACD3"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
