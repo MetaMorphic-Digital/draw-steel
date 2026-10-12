@@ -251,7 +251,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The summoner can command up to two squads of minions with a maximum of 4 minions per squad. They can only have one squad of signature minions active at any time. At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner. On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>@UUID[Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]{Skeleton - 1 Malice Per Minion}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.GDQYfMhOE3dsUt9l]{Grave Knight - 2 Malice for 2 Minions}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.NqLOIa8LGrxXHom0]{Zombie Titan - 6 Malice for 1 Minion}</p></li></ul>",
+          "value": "<p>The summoner can command up to two squads of minions with a maximum of 4 minions per squad. They can only have one squad of signature minions active at any time. At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner. On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>[[/summon Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]]{Skeleton - 1 Malice Per Minion}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.GDQYfMhOE3dsUt9l count=2]]{Grave Knight - 2 Malice for 2 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF count=3]]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.NqLOIa8LGrxXHom0]]{Zombie Titan - 6 Malice for 1 Minion}</p></li></ul>",
           "director": ""
         },
         "source": {
@@ -270,7 +270,7 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790007054768,
@@ -999,7 +999,7 @@
             "img": null,
             "type": "base",
             "_id": "KDYc8bpHCfDdZln1",
-            "description": "<p>The summoner summons a grave knight into an unoccupied space adjacent to the target. They become the new target of the strike. The target can shift into any square adjacent to the minion.</p>",
+            "description": "<p>The summoner summons a [[/summon Compendium.draw-steel.summons.Actor.GDQYfMhOE3dsUt9l]]{Grave Knight} into an unoccupied space adjacent to the target. They become the new target of the strike. The target can shift into any square adjacent to the minion.</p>",
             "before": false
           }
         }
@@ -1015,7 +1015,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790007532098,
