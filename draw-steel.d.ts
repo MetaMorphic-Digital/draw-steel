@@ -22,4 +22,6 @@ declare global {
     const fromUuid = foundry.utils.fromUuid;
     const fromUuidSync = foundry.utils.fromUuidSync;
   }
+
+  type ClientDocument = InstanceType<ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>>;
 }
