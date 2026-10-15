@@ -207,7 +207,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The summoner can command up to two squads of minions with a maximum of 6 minions per squad. They can only have one squad of signature minions active at any time.</p><p>At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner.</p><p>On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>@UUID[Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]{Skeleton - 1 Malice Per Minion}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.GDQYfMhOE3dsUt9l]{Grave Knight - 2 Malice for 2 Minions}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li></ul>",
+          "value": "<p>The summoner can command up to two squads of minions with a maximum of 6 minions per squad. They can only have one squad of signature minions active at any time.</p><p>At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner.</p><p>On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>[[/summon Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]]{Skeleton - 1 Malice Per Minion}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.GDQYfMhOE3dsUt9l count=2]]{Grave Knight - 2 Malice for 2 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF count=3]]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li></ul>",
           "director": ""
         },
         "source": {
@@ -226,7 +226,7 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790004999074,
@@ -965,7 +965,7 @@
             "img": null,
             "type": "base",
             "_id": "1MSZGsu4dDtfbFbE",
-            "description": "<p>The summoner summons a skeleton into an unoccupied space adjacent to the target.</p>",
+            "description": "<p>The summoner summons a [[/summon Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]]{skeleton} into an unoccupied space adjacent to the target.</p>",
             "before": false
           }
         }
@@ -981,7 +981,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790005421681,
@@ -1051,7 +1051,7 @@
             "img": null,
             "type": "spend",
             "_id": "QK7syEAYD533Py5O",
-            "description": "<p>Instead of commanding an existing minion, the summoner summons a skeleton into an unoccupied space adjacent to the target to take the strike.</p>",
+            "description": "<p>Instead of commanding an existing minion, the summoner summons a [[/summon Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]]{skeleton} into an unoccupied space adjacent to the target to take the strike.</p>",
             "before": false,
             "resource": {
               "value": 2,
@@ -1071,7 +1071,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790005529198,

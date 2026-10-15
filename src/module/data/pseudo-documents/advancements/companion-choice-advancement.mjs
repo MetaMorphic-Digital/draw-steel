@@ -1,6 +1,10 @@
 import ActorChoiceAdvancement from "./actor-choice-advancement.mjs";
 
 /**
+ * @import { ActorChoice } from "./_types";
+ */
+
+/**
  * An advancement that selects the Beastheart's companion.
  */
 export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
@@ -30,7 +34,14 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
 
   /** @inheritdoc */
   get actorOptions() {
-    return [];
+    /** @type {ActorChoice[]} */
+    const options = [];
+    for (const pack of game.packs) {
+      if (pack.documentName !== "Actor") continue;
+      for (const idx of pack.index)
+        if (idx.type === "companion") options.push({ uuid: idx.uuid });
+    }
+    return options;
   }
 
   /* -------------------------------------------------- */

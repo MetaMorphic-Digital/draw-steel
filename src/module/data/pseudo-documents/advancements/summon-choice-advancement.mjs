@@ -3,8 +3,8 @@ import DSDialog from "../../../applications/api/dialog.mjs";
 import { requiredInteger } from "../../helpers.mjs";
 
 /**
+ * @import { ActorChoice, SummonInfo } from "./_types";
  * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../../documents/_module.mjs";
- * @import { SummonInfo } from "./_types";
  * @import { SummonPortfolio } from "../../actor/_types";
  */
 
@@ -47,7 +47,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
 
   /** @inheritdoc */
   get actorOptions() {
-    return Object.values(this.pool).reduce((options, entry) => {
+    return Object.values(this.pool).reduce((/** @type {ActorChoice[]} */ options, entry) => {
       const idx = fromUuidSync(entry.uuid);
       if (idx) options.push({ uuid: idx.uuid });
       return options;

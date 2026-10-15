@@ -52,8 +52,23 @@
         "img": null,
         "type": "base",
         "_id": "pQrtqXzDii2paUj4",
-        "description": "<p>The detective summons 3 violents into unoccupied spaces within distance. On each of the detective's turns, they direct the squad of violents to move and use a main action.</p>",
+        "description": "",
         "before": false
+      },
+      "QmLnq5s07tcI87As": {
+        "sort": 200000,
+        "name": "",
+        "img": null,
+        "type": "summon",
+        "_id": "QmLnq5s07tcI87As",
+        "description": "<p>The detective summons 3 violents into unoccupied spaces within distance. On each of the detective's turns, they direct the squad of violents to move and use a main action.</p>",
+        "before": false,
+        "summoning": {
+          "pool": [
+            "Compendium.draw-steel.summons.Actor.heaRr8snOnr3tgSs"
+          ],
+          "count": 1
+        }
       }
     }
   },
@@ -64,7 +79,7 @@
   },
   "flags": {},
   "_stats": {
-    "coreVersion": "14.367",
+    "coreVersion": "14.369",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
     "createdTime": 1788733882460,

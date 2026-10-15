@@ -140,13 +140,13 @@ export default class DrawSteelRetainerSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open the update source dialog.
+   * Open the retainer's class sheet or prompt its creation.
    * @this DrawSteelRetainerSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #openAdvancements(event, target) {
-    const [cls] = this.actor.items.documentsByType.class;
+    const cls = this.actor.system.class;
     if (cls) await cls.sheet.render({ force: true });
     else {
       const retainerClass = await fromUuid(ds.CONFIG.retainer.retainerClass);
