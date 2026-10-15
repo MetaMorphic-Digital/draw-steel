@@ -1,47 +1,8 @@
 import { systemPath } from "../../constants.mjs";
 
 /**
- * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ * @import { BrowserDocument, BrowserFetchResults, BrowserFilterConfiguration, BrowserLockedConfiguration, CompendiumBrowserOptions, CompendiumFilter, FilterDocumentName, } from "./_types";
  * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
- * @import DrawSteelActor from "../../documents/actor.mjs";
- * @import DrawSteelItem from "../../documents/item.mjs";
- */
-
-/**
- * @typedef {Record<string, -1|0|1>} BrowserCheckboxFilter
- *
- * @typedef {{ min: number, max: number }} BrowserRangeFilter
- *
- * @typedef {Record<string, BrowserCheckboxFilter|BrowserRangeFilter>} BrowserFilterConfiguration
- *
- * @typedef {Record<string, boolean|Record<string, boolean>>|boolean} BrowserLockedConfiguration
- *
- * @typedef {"Actor"|"Item"} FilterDocumentName
- *
- * @typedef {DrawSteelActor|DrawSteelItem} BrowserDocument
- *
- * @typedef {(entry: object, filters: BrowserFilterConfiguration) => boolean} CompendiumFilterCallback
- *
- * @typedef {(filters: BrowserFilterConfiguration) => boolean} CompendiumFilterVisibility
- *
- * @typedef {Set<BrowserDocument|object>} BrowserFetchResults
- *
- * @typedef CompendiumFilter
- * @property {string} [label]                                 Human-readable label.
- * @property {"checkboxes"|"range"} type                      The display type of the filter.
- * @property {CompendiumFilterCallback} callback              A callback invoked when filtering an entry.
- * @property {CompendiumFilterVisibility} [visible]           A callback invoked to determine visibility.
- * @property {FilterDocumentName[]} modes                     Which modes have this filter available.
- * @property {{ value: string, label: string }[]} [options]   The array of options to display in a checkbox-like fashion.
- * @property {number[]} [range]                               An 2-length array which determines the min/max of a 'range'.
- *
- * @typedef _CompendiumBrowserOptions
- * @property {FilterDocumentName} [documentName="Item"]   Initial document type to browse.
- * @property {BrowserFilterConfiguration} [filters]       Initial filters.
- * @property {BrowserLockedConfiguration} [locked]        Locked filters.
- * @property {number} [selection]                         Number of documents to select.
- *
- * @typedef {_CompendiumBrowserOptions & ApplicationConfiguration} CompendiumBrowserOptions
  */
 
 const { Application, HandlebarsApplicationMixin } = foundry.applications.api;
