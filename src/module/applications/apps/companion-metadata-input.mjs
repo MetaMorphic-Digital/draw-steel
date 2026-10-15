@@ -38,6 +38,8 @@ export default class CompanionMetadataInput extends DocumentInput {
       .filter(a => (a.type === "hero") && (a.isOwner || (a === this.document.system.companion.master)))
       .map(a => ({ value: a.id, label: a.name }));
 
+    context.skillOptions = ds.CONFIG.skills.optgroups;
+
     return context;
   }
 }

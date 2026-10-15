@@ -22,6 +22,14 @@ interface SummonEffectPool {
   level: number;
 }
 
+interface SummonInfo {
+  effects: DrawSteelActiveEffect[];
+  uuid: string;
+  count: number;
+  /** Only included if signature. */
+  cost?: number;
+}
+
 export type ActorChoice = {
   /** The UUID of the actor. */
   uuid: string;

@@ -20,7 +20,7 @@
 
 ## 1.2.0
 
-Increased foundry minimum to 14.368.
+Increased foundry minimum to 14.369.
 
 ### Added
 
@@ -48,19 +48,23 @@ Increased foundry minimum to 14.368.
 - Spend amounts are now available as roll data in spend special effects. (#2060)
 - Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
 - Right clicking the Update Source button in the header of an item sheet will copy the item's DSID to your clipboard. (#2141)
+- Various improvements to help out modules. (#2199)
+  - Added `StandardModel#tierFor`.
+  - Added `ds.preUseAbility` and `ds.useAbility` hooks.
+  - Added additional context to origin logic
 
 ### Changed
 
 - Significant overhaul of application styles across the system.
 - Updated Player-Facing Compendium Content:
   - Added enrichers to "To the Uttermost End" leveraging the new spend data. (#2049)
+- Updated Director-Facing Compendium Content:
 - Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
 - Major updates to roll presentation. (#1628)
   - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display
   - Results are now per-target rather than grouped by tier, allowing for more individualized adjustments.
+  - Added Potency results to chat messages. (#1869)
 - Ability modifiers targeting damage.bonuses.value can improve a monster's free strike value. (#2003)
-
-### Deprecated
 
 ### Removed
 
@@ -82,6 +86,8 @@ Increased foundry minimum to 14.368.
   - Added Staying Power malice feature to Human Bandit Chief & Scoundrel. (#2112)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 - Deleting an entry from a configuration page now works correctly. (#2042)
+- Fixed respite expiry events not running and other bugs related to Set construction. (#2192)
+- Ensure that DSApplication.create resolves even if the render is canceled. (#2194)
 - Cleaned up duplicate scrolling text when using the apply effect enricher.
 - Fixed saving throw rolls not properly being contained in a saving throw message part.
 - Fixed limited view of the item sheet.
