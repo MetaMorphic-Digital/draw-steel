@@ -80,6 +80,28 @@ export default class DamageRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
+   * The icon class for this damage roll's apply button.
+   * @type {string}
+   */
+  get icon() {
+    if (this.isHeal) return "fa-solid fa-heart-pulse";
+    return ds.CONFIG.damageTypes[this.type]?.icon ?? "fa-solid fa-burst";
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The CSS color for this damage roll's type, if it has one.
+   * @type {string|null}
+   */
+  get typeColor() {
+    if (this.isHeal) return null;
+    return ds.CONFIG.damageTypes[this.type]?.color?.css ?? null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Damage immunities to ignore.
    * @type {string[]}
    */
@@ -117,7 +139,8 @@ export default class DamageRoll extends DSRoll {
     if ("rollIndex" in options) {
       Object.assign(context, {
         rollIndex: options.rollIndex,
-        buttonIcon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+        buttonIcon: this.icon,
+        typeColor: this.typeColor,
         tooltipPath: this.isHeal ?
           "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" :
           "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip",
@@ -139,7 +162,7 @@ export default class DamageRoll extends DSRoll {
 
     const tooltipPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip";
 
-    return ds.utils.constructHTMLButton({
+    const button = ds.utils.constructHTMLButton({
       label: _loc(labelPath, {
         type: this.typeLabel ? " " + this.typeLabel : "",
         amount: this.total,
@@ -151,8 +174,16 @@ export default class DamageRoll extends DSRoll {
         tooltipDirection: "UP",
       },
       classes: ["apply-damage"],
-      icon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+      icon: this.icon,
     });
+
+    if (this.typeColor) {
+      const icon = button.querySelector("i");
+      icon.classList.add("damage-type-icon");
+      icon.style.setProperty("--damage-type-color", this.typeColor);
+    }
+
+    return button;
   }
 
   /* -------------------------------------------------- */
