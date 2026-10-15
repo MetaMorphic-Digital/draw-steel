@@ -395,6 +395,7 @@ Hooks.once("ready", async function () {
 
 Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
+Hooks.on("renderCompendiumDirectory", applications.hooks.renderCompendiumDirectory);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
 /* -------------------------------------------------- */
