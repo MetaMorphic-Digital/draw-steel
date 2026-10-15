@@ -36,7 +36,7 @@ export default class DrawSteelCompendiumBrowser extends HandlebarsApplicationMix
     },
     window: {
       title: "DRAW_STEEL.COMPENDIUM.BROWSER.title",
-      icon: "fa-solid fa-map",
+      icon: "fa-solid fa-address-book",
       resizable: true,
     },
     actions: {

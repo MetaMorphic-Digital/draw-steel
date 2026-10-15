@@ -1,9 +1,9 @@
+import DrawSteelCompendiumBrowser from "../apps/compendium-browser.mjs";
+
 /**
  * @import { ApplicationRenderOptions } from "@client/applications/_types.mjs";
  * @import CompendiumDirectory from "@client/applications/sidebar/tabs/compendium-directory.mjs";
  */
-
-import DrawSteelCompendiumBrowser from "../apps/compendium-browser.mjs";
 
 /**
  * A hook event that fires when the CompendiumDirectory application is rendered.
@@ -15,7 +15,8 @@ import DrawSteelCompendiumBrowser from "../apps/compendium-browser.mjs";
 export function renderCompendiumDirectory(app, html, context, options) {
   const headerActions = html.querySelector("header .header-actions");
   headerActions.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
-    label: "DRAW_STEEL.COMPENDIUM.BROWSER.title",
+    label: _loc("DRAW_STEEL.COMPENDIUM.BROWSER.title"),
+    icon: DrawSteelCompendiumBrowser.DEFAULT_OPTIONS.window.icon,
     dataset: {
       action: "openCompendiumBrowser",
     },
