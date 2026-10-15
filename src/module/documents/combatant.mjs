@@ -85,6 +85,6 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
   refreshCombatant() {
     this.token?.object?.renderFlags.set({ refreshBars: true });
     // refresh any rendered sheets but only if the current user has permission to have it rendered anyways
-    if (this.actor?.sheet.isVisible) this.actor.sheet.render({ parts: ["stats"] });
+    if (this.actor?.sheet.isVisible) this.actor.sheet.render({ parts: ["stats", "body"] });
   }
 }
