@@ -4,7 +4,7 @@ import { requiredInteger } from "../../helpers.mjs";
 
 /**
  * @import { ActorChoice, SummonInfo } from "./_types";
- * @import { DrawSteelActiveEffect, DrawSteelActor } from "../../../documents/_module.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
  * @import { SummonPortfolio } from "../../actor/_types";
  */
 
@@ -26,6 +26,10 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
       })),
       effects: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "ActiveEffect" }),
+        level: new NumberField({ min: 1, integer: true, max: 10, required: true }),
+      })),
+      items: new ArrayField(new SchemaField({
+        uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
         level: new NumberField({ min: 1, integer: true, max: 10, required: true }),
       })),
     });
@@ -109,6 +113,15 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
       });
     }
 
+    ctx.summonItems = [];
+    for (const [i, item] of this.items.entries()) {
+      ctx.summonItems.push({
+        ...item,
+        index: i,
+        link: ds.utils.createDocumentLink(item.uuid)?.outerHTML ?? _loc("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
+      });
+    }
+
     return ctx;
   }
 
@@ -123,6 +136,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
     switch (document.documentName) {
       case "ActiveEffect": return this.#handleActiveEffectDrop(document);
       case "Actor": return this.#handleActorDrop(document);
+      case "Item": return this.#handleItemDrop(document);
     }
   }
 
@@ -150,7 +164,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
    * @returns {Promise<DrawSteelActor>}
    */
   #handleActorDrop(actor) {
-    if (actor.type !== "npc") return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedTypeSummon", {
+    if (!["npc", "object"].includes(actor.type)) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedTypeSummon", {
       format: { type: _loc(CONFIG.Actor.typeLabels[actor.type]) },
     });
     if (!actor.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePackSummon", { localize: true });
@@ -160,6 +174,22 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
     const pool = foundry.utils.deepClone(this._source.pool);
     pool.push({ uuid: actor.uuid });
     return this.update({ pool });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Process a dropped item.
+   * @param {DrawSteelItem} item
+   */
+  #handleItemDrop(item) {
+    if (!item.pack || item.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requireStandaloneSummonItem", { localize: true });
+    const exists = this.items.some(k => k.uuid === item.uuid);
+    if (exists) return;
+
+    const items = foundry.utils.deepClone(this._source.items);
+    items.push({ uuid: item.uuid });
+    return this.update({ items });
   }
 
   /* -------------------------------------------------- */

@@ -22,6 +22,11 @@ interface SummonEffectPool {
   level: number;
 }
 
+interface SummonItemPool {
+  uuid: string;
+  level: number;
+}
+
 interface SummonInfo {
   effects: DrawSteelActiveEffect[];
   uuid: string;
@@ -42,6 +47,7 @@ declare module "./summon-choice-advancement.mjs" {
     chooseN: number | null;
     pool: SummonChoicePool[];
     effects: SummonEffectPool[];
+    items: SummonItemPool[];
   }
 }
 
