@@ -131,43 +131,52 @@ export const speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb
 
 /**
  * Configuration information for damage types.
- * @type {Record<string, {label: string, color: foundry.utils.Color}>}
+ * @type {Record<string, {label: string, icon: string, color: foundry.utils.Color}>}
  */
 export const damageTypes = {
   acid: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Acid",
+    icon: "fa-solid fa-flask-vial",
     color: foundry.utils.Color.fromString("#14ff14"),
   },
   cold: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Cold",
+    icon: "fa-solid fa-snowflake",
     color: foundry.utils.Color.fromString("#14ffd0"),
   },
   corruption: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Corruption",
+    icon: "fa-solid fa-galaxy",
     color: foundry.utils.Color.fromString("#7b00a8"),
   },
   fire: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Fire",
+    icon: "fa-solid fa-fire",
     color: foundry.utils.Color.fromString("#ff870f"),
   },
   holy: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Holy",
+    icon: "fa-solid fa-sun",
     color: foundry.utils.Color.fromString("#ffed61"),
   },
   lightning: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Lightning",
+    icon: "fa-solid fa-bolt",
     color: foundry.utils.Color.fromString("#ffff00"),
   },
   poison: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Poison",
+    icon: "fa-solid fa-skull-crossbones",
     color: foundry.utils.Color.fromString("#008500"),
   },
   psychic: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Psychic",
+    icon: "fa-solid fa-brain",
     color: foundry.utils.Color.fromString("#d40cc3"),
   },
   sonic: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Sonic",
+    icon: "fa-solid fa-volume-high",
     color: foundry.utils.Color.fromString("#999999"),
   },
 };
