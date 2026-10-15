@@ -207,7 +207,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The summoner can command up to two squads of minions with a maximum of 4 minions per squad. They can only have one squad of signature minions active at any time. At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner. On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>@UUID[Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]{Skeleton - 1 Malice Per Minion}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.lsWE4HI1WhRRBzB5]{Zombie Lumberer - 2 Malice for 2 Minions}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li><li><p>@UUID[Compendium.draw-steel.summons.Actor.2HrcTgdAhJehXLPX]{False Vampire - 6 Malice for 2 Minions}</p></li></ul>",
+          "value": "<p>The summoner can command up to two squads of minions with a maximum of 4 minions per squad. They can only have one squad of signature minions active at any time. At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner. On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>[[/summon Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]]{Skeleton - 1 Malice Per Minion}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.lsWE4HI1WhRRBzB5 count=2]]{Zombie Lumberer - 2 Malice for 2 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF count=3]]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.2HrcTgdAhJehXLPX count=2]]{False Vampire - 6 Malice for 2 Minions}</p></li></ul>",
           "director": ""
         },
         "source": {
@@ -226,7 +226,7 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790005729985,
@@ -1092,7 +1092,7 @@
             "img": null,
             "type": "spend",
             "_id": "O47MYduoih26D9rh",
-            "description": "<p>Instead, the summoner summons a zombie lumberer into an unoccupied space adjacent to the target to take the strike.</p>",
+            "description": "<p>Instead, the summoner summons a [[/summon Compendium.draw-steel.summons.Actor.lsWE4HI1WhRRBzB5 ]]{Zombie Lumberer} into an unoccupied space adjacent to the target to take the strike.</p>",
             "before": false,
             "resource": {
               "value": 1,
@@ -1112,7 +1112,7 @@
       },
       "flags": {},
       "_stats": {
-        "coreVersion": "14.367",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790006172164,
