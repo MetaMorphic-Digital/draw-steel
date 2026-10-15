@@ -219,7 +219,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
           name: "cost",
           min: 1,
           max: hero.system.hero.primary.value,
-          value: portfolio[0].cost ?? 1,
+          value: summonOptions[0].cost ?? 1,
         }),
         localize: true,
       });
@@ -261,7 +261,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
     /** @type {DrawSteelActiveEffect[]} */
     const effects = [];
     for (const effectInfo of advancement.effects) {
-      if (hero.system.level < effectInfo.level) return;
+      if (hero.system.level < effectInfo.level) continue;
       const effect = await fromUuid(effectInfo.uuid);
       if (effect) effects.push(effect);
     }
