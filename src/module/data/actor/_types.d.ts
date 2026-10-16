@@ -67,6 +67,11 @@ export interface SummonPortfolio {
   advancementUuid: string;
 }
 
+export interface CompanionSummon {
+  uuid: string;
+  advancementUuid: string;
+}
+
 declare module "./base-actor.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;

@@ -11,12 +11,12 @@ import DrawSteelActiveEffect from "../documents/active-effect.mjs";
  * @param {PerformSummonOptions} [options]
  * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if cancelled or the user did not have permissions.
  */
-export default async function performSummon(uuid, summonSource, { count = 1, effects = [] } = {}) {
+export default async function performSummon(uuid, summonSource, { count = 1, effects = [], items = [] } = {}) {
   /** @type {DrawSteelActor} */
   const sourceActor = await fromUuid(uuid);
 
   if (!sourceActor) {
-    ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.ACTOR_CREATE", { localize: true });
+    ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.NO_ACTOR", { localize: true });
     return null;
   }
 
@@ -40,7 +40,7 @@ export default async function performSummon(uuid, summonSource, { count = 1, eff
     }, { keepId: true });
   }
 
-  const actorUpdates = { effects: [] };
+  const actorUpdates = { effects: [], items: [] };
 
   const replacementData = summonSource?.getRollData?.() ?? {};
 
@@ -51,6 +51,11 @@ export default async function performSummon(uuid, summonSource, { count = 1, eff
       change.value = DrawSteelActiveEffect._replaceDataRefs(change.value, replacementData);
     }
     actorUpdates.effects.push(data);
+  }
+
+  for (const i of items) {
+    const data = game.items.fromCompendium(i, { keepId: true, clearFolder: true });
+    actorUpdates.items.push(data);
   }
 
   return canvas.tokens.placeActor(worldActor, { count, actorUpdates });

@@ -17,7 +17,8 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
- * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import { DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import { PerformSummonOptions } from "../../_types.d.ts"
  */
 
 const fields = foundry.data.fields;
@@ -627,8 +628,8 @@ export default class AbilityModel extends BaseItemModel {
         // Strip from roll options
         const target = context.target;
         delete context.target;
-        const roll = new PowerRoll(dialogConfig.context.formula, {}, { 
-          flavor: _loc(PowerRoll.TYPES.ability.label), 
+        const roll = new PowerRoll(dialogConfig.context.formula, {}, {
+          flavor: _loc(PowerRoll.TYPES.ability.label),
           criticalThreshold: this.power.roll.criticalThreshold,
           ...context,
         });
@@ -958,12 +959,10 @@ export default class AbilityModel extends BaseItemModel {
   /**
    * Places summons.
    * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
-   * @param {Object} options
-   * @param {number} [options.count=1]  How many tokens to summon.
-   * @param {DrawSteelActiveEffect[]} [options.effects] Effects to add to the summoned actors, evaluating based on this actor's roll data.
+   * @param {PerformSummonOptions} options
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performSummon(uuid, { count = 1, effects = [] } = {}) {
-    return ds.utils.performSummon(uuid, this, { count, effects });
+  async performSummon(uuid, options = {}) {
+    return ds.utils.performSummon(uuid, this, options);
   }
 }
