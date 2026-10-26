@@ -1,12 +1,12 @@
+import { CompanionChoiceAdvancement, SummonChoiceAdvancement } from "../../../data/pseudo-documents/advancements/_module.mjs";
 import { createLink, parseConfig } from "../helpers.mjs";
-import SummonChoiceAdvancement from "../../../data/pseudo-documents/advancements/summon-choice-advancement.mjs";
 
 /**
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  * @import { AnySummonConfig, DirectSummonConfig, PortfolioSummonConfig } from "./_types";
  * @import { ParsedConfig } from "../helpers.mjs";
- * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
+ * @import { DrawSteelActor } from "../../../documents/_module.mjs";
  */
 
 /** @type {TextEditorEnricherConfig["id"]} */
@@ -105,6 +105,9 @@ export async function enricher(match, options) {
     case "portfolio":
       label ||= _loc("DRAW_STEEL.EDITOR.Enrichers.Summon.PortfolioLabel");
       break;
+    case "companion":
+      label ||= _loc("DRAW_STEEL.EDITOR.Enrichers.Summon.CompanionLabel");
+      break;
   }
 
   return createLink(label, linkConfig, {
@@ -133,6 +136,7 @@ async function onClickAnchor() {
   switch (this.dataset.type) {
     case "direct": return void directSummon(this.dataset);
     case "portfolio": return void portfolioSummon(this.dataset);
+    case "companion": return void companionSummon(this.dataset);
   }
 }
 
@@ -174,4 +178,18 @@ async function portfolioSummon(config) {
   if (tokens.length && summonInfo.cost) {
     await hero.modifyTokenAttribute("hero.primary.value", -summonInfo.cost, true);
   }
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Helper function to perform a summon.
+ * @param {CompanionSummonConfig} config
+ */
+async function companionSummon(config) {
+  const hero = fromUuidSync(config.summoner);
+
+  if (!hero) return;
+
+  await CompanionChoiceAdvancement.performSummon(hero);
 }
