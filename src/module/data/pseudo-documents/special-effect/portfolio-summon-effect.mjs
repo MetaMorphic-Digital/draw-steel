@@ -2,8 +2,8 @@ import BaseSpecialEffect from "./base-special-effect.mjs";
 import SummonChoiceAdvancement from "../advancements/summon-choice-advancement.mjs";
 
 /**
- * @import { DrawSteelTokenDocument } from "../../../documents/_module.mjs";
  * @import SummonChoiceAdvancement from "../advancements/summon-choice-advancement.mjs";
+ * @import { DrawSteelTokenDocument } from "../../../documents/_module.mjs";
  */
 
 /**
@@ -46,6 +46,15 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
 
     if (tokens?.length) {
       await hero.modifyTokenAttribute("hero.primary.value", -summonInfo.cost, true);
+
+      const combat = game.combat;
+      if (combat) {
+        const matchingCombatant = combat.combatants.find(c => c.actorId === tokens.at(0).actorId);
+        const group = matchingCombatant.group;
+        const createData = tokens.map(t => ({ tokenId: t.id, sceneId: t.parent.id, actorId: t.actorId, group: group?.id }));
+        await combat.createEmbeddedDocuments("Combatant", createData);
+        // Do not currently handle squad creation or stamina adjustments
+      }
     }
 
     return tokens;
