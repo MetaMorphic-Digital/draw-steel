@@ -67,6 +67,21 @@
       </div>
     </div>
     {{/each}}
+    <hr>
+    <div class="summon-items" data-tooltip-text="{{@root.fields.items.hint}}">
+      <div class="column-header">{{@root.fields.items.element.fields.level.label}}</div>
+      <div class="section-header">{{@root.fields.items.label}}</div>
+    </div>
+    {{#each ctx.summonItems}}
+    <div class="form-group" data-items-index="{{@index}}">
+      <input type="hidden" name="{{concat "items." @index ".uuid"}}" value="{{uuid}}">
+      {{formInput @root.fields.items.element.fields.level value=level name=(concat "items." @index ".level") type="number"}}
+      <label>{{{link}}}</label>
+      <div class="form-fields">
+        <button type="button" data-action="deleteSummonItem" class="icon fa-solid fa-trash"></button>
+      </div>
+    </div>
+    {{/each}}
   </section>
   {{/if}}
 
