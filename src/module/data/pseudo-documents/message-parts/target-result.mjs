@@ -128,12 +128,18 @@ export default class TargetResultPart extends RollPart {
       if (!actor) return;
 
       context.ctx.potency = [];
+      context.ctx.targetText = [];
       for (const pre of item.system.power.effects.sortedContents) {
         const newButtons = pre.constructButtons(this.tier);
         if (newButtons) context.ctx.buttons.push(...newButtons);
         const potency = pre.potencyOption(this.tier, actor, { bonus: this.potencies[pre.id] });
         if (potency) context.ctx.potency.push(potency);
+        else {
+          const targetText = pre.targetOption(this.tier, actor);
+          if (targetText) context.ctx.targetText.push(targetText);
+        }
       }
+      context.ctx.targetText = context.ctx.targetText.join("; ");
     }
   }
 

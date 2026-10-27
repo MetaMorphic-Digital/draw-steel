@@ -51,6 +51,12 @@ interface Combat {
   targetModifiers: {
     edges: number;
     banes: number;
+    /** Added to the distance of forced movement that affects this actor, by movement type. */
+    forcedMovement: {
+      push: number;
+      pull: number;
+      slide: number;
+    }
   }
 }
 

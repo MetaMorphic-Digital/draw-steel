@@ -49,6 +49,11 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       targetModifiers: new fields.SchemaField({
         edges: requiredInteger({ min: null }),
         banes: requiredInteger({ min: null }),
+        forcedMovement: new fields.SchemaField({
+          push: requiredInteger({ min: null }),
+          pull: requiredInteger({ min: null }),
+          slide: requiredInteger({ min: null }),
+        }),
       }, { persisted: false }),
     });
 
