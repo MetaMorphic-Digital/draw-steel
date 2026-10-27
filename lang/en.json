@@ -170,6 +170,15 @@
                 "label": "Summoner Level"
               }
             }
+          },
+          "items": {
+            "label": "Items Added On Summon",
+            "hint": "Actors summoned from this portfolio entry will be created with these items based on the summoner's level.",
+            "element": {
+              "level": {
+                "label": "Summoner Level"
+              }
+            }
           }
         }
       },
@@ -220,7 +229,8 @@
         "forbidParent": "Granted documents cannot be embedded in an actor.",
         "restrictedTypeSummon": "{type} actors cannot be added as summon choices.",
         "requirePackSummon": "Summonable Actors must come from a compendium pack.",
-        "requireStandaloneSummonEffect": "Effects for summoned actors must come from a compendium pack and not be embedded in another document."
+        "requireStandaloneSummonEffect": "Effects for summoned actors must come from a compendium pack and not be embedded in another document.",
+        "requireStandaloneSummonItem": "Items for summoned actors must come from a compendium pack and not be embedded in another document."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -501,7 +511,8 @@
         },
         "Summon": {
           "DirectLabel": "Summon {name}",
-          "PortfolioLabel": "Portfolio Summon"
+          "PortfolioLabel": "Portfolio Summon",
+          "CompanionLabel": "Companion Summon"
         }
       }
     },

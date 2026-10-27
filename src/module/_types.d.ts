@@ -80,6 +80,8 @@ export interface PerformSummonOptions {
   count: number;
   /** Effects to add to the summoned actors, evaluating based on this actor's roll data. */
   effects: DrawSteelActiveEffect[];
+  /** Items to add to the summoned actors. */
+  effects: DrawSteelItem[];
 }
 
 declare module "./utils/advancement/node.mjs" {
