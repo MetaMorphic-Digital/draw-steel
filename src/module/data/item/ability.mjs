@@ -771,9 +771,17 @@ export default class AbilityModel extends BaseItemModel {
       modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
       modifiers.banes += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.banes") ?? 0;
 
-      // Frightened condition checks
-      if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
-      if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
+      // Targeted conditions that modify rolls between the affected creature and their source, such as frightened
+      for (const status of Object.values(CONFIG.statusEffects)) {
+        if (!status.sourceModifiers) continue;
+        const { againstSource, fromSource } = status.sourceModifiers;
+        const isAgainstSource = DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, status.id); // Attacking the source of the actor's condition
+        const isFromSource = DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, status.id); // Attacking a target the actor is the source for
+        for (const key of ["edges", "banes", "bonuses"]) {
+          if (isAgainstSource) modifiers[key] += againstSource?.[key] ?? 0;
+          if (isFromSource) modifiers[key] += fromSource?.[key] ?? 0;
+        }
+      }
 
       // Grabbed condition check - targeting a non-source adds a bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
