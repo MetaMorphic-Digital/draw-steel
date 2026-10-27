@@ -254,7 +254,20 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     if (fail === null) return null;
     return {
       fail,
-      text: this.toText(tier, { potencyBonus: options.bonus ?? 0 }),
+      text: this.toText(tier, { potencyBonus: options.bonus ?? 0, target }),
     };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Text for a Target Result chat message part, describing this effect as it applies to that target.
+   * Only consulted when the effect has no potency against the target, since the potency line already shows it.
+   * @param {1 | 2 | 3} tier          The specific tier.
+   * @param {DrawSteelActor} target   The targeted actor.
+   * @returns {string | null} Returns null if this effect has nothing to show per target.
+   */
+  targetOption(tier, target) {
+    return null;
   }
 }

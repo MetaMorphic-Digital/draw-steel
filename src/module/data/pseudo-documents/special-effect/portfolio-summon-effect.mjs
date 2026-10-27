@@ -4,6 +4,7 @@ import SummonChoiceAdvancement from "../advancements/summon-choice-advancement.m
 /**
  * @import SummonChoiceAdvancement from "../advancements/summon-choice-advancement.mjs";
  * @import { DrawSteelTokenDocument } from "../../../documents/_module.mjs";
+ * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
  */
 
 /**
@@ -49,11 +50,31 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
 
       const combat = game.combat;
       if (combat) {
-        const matchingCombatant = combat.combatants.find(c => c.actorId === tokens.at(0).actorId);
-        const group = matchingCombatant.group;
-        const createData = tokens.map(t => ({ tokenId: t.id, sceneId: t.parent.id, actorId: t.actorId, group: group?.id }));
-        await combat.createEmbeddedDocuments("Combatant", createData);
-        // Do not currently handle squad creation or stamina adjustments
+        /** @type {DatabaseWriteOperation} */
+        const createOperation = { action: "create", ds: { }, documentName: "Combatant", parent: combat };
+        const operation = [createOperation];
+        const group = combat.combatants.find(c => c.actorId === tokens.at(0).actorId)?.group;
+
+        // Defer group creation.
+        const baseActor = tokens.at(0).baseActor;
+        if (baseActor.isMinion) {
+          if (group) {
+            const staminaValue = group.system.staminaValue + tokens.length * baseActor.system.stamina.max;
+
+            operation.push({
+              action: "update",
+              documentName: "CombatantGroup",
+              updates: [{ _id: group.id, system: { staminaValue } }],
+              parent: combat,
+            });
+          }
+          else if (summonInfo.count > 1) {
+            createOperation.ds.createGroup = true;
+          }
+        }
+
+        createOperation.data = tokens.map(t => ({ tokenId: t.id, sceneId: t.parent.id, actorId: t.actorId, group: group?.id }));
+        await foundry.documents.modifyBatch(operation);
       }
     }
 

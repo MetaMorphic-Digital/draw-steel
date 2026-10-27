@@ -213,6 +213,14 @@ preLocalize("healingTypes", { key: "label" });
  * @property {number} [defaultSpeed]  Used by slowed to infer the default speed to reduce to.
  * @property {Record<string, Set<string>>} [restrictions] Restrictions on ability usage imposed by this condition.
  *                                    The system currently supports `dsid` and `type` based restrictions.
+ * @property {SourceModifiers} [sourceModifiers] Power roll modifiers between an affected creature and the source of
+ *                                    this condition. Requires `targeted`.
+ */
+
+/**
+ * @typedef SourceModifiers
+ * @property {Partial<PowerRollModifiers>} [againstSource]  Added to the affected creature's ability rolls against their source.
+ * @property {Partial<PowerRollModifiers>} [fromSource]     Added to the source's ability rolls against the affected creature.
  */
 
 /**
@@ -241,6 +249,10 @@ export const conditions = {
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg",
     targeted: true,
     maxSources: 1,
+    sourceModifiers: {
+      againstSource: { banes: 1 },
+      fromSource: { edges: 1 },
+    },
   },
   grabbed: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Grabbed.name",
