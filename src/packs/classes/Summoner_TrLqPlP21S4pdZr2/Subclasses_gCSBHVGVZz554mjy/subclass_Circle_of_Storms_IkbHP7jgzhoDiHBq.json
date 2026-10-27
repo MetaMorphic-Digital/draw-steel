@@ -183,29 +183,6 @@
           "cost": null
         }
       },
-      "KEHrrU1psB0zvtme": {
-        "sort": 400000,
-        "name": "Summoner's Dominion",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "KEHrrU1psB0zvtme",
-        "description": "",
-        "repick": {},
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.b18SPv6xoCkQ8B69"
-          }
-        ],
-        "chooseN": null,
-        "additional": {
-          "type": "",
-          "perkType": [],
-          "cost": null
-        }
-      },
       "zBm4RVAGRm1Wpraz": {
         "sort": 500000,
         "name": "5-Essence Minion",
@@ -396,10 +373,63 @@
         "effects": [
           {
             "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
-            "level": 1
+            "level": 8
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 10
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.bl3B4evudIgUltN2",
+            "level": 8
           }
         ],
-        "dsid": "call-forth"
+        "dsid": "call-forth",
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.TEKqkHaA8wbrQ9eT",
+            "level": 10
+          }
+        ]
+      },
+      "jm8oZgITWeYI5cl7": {
+        "sort": 1100000,
+        "name": "Fixture - Primordial Crystal",
+        "img": null,
+        "type": "summon",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "jm8oZgITWeYI5cl7",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 0,
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.apRD7KyjeQCGOgkk",
+            "count": 1
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 9
+          }
+        ],
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.eUNSyMEWxbT0QS2j",
+            "level": 9
+          },
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.td3eKIZMA0j2Zw6e",
+            "level": 5
+          }
+        ],
+        "dsid": "summon-fixture"
       }
     },
     "classLink": "summoner"

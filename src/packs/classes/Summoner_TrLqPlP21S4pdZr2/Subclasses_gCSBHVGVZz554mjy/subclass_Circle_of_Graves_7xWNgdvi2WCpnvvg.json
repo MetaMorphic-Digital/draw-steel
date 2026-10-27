@@ -93,33 +93,10 @@
           "cost": null
         }
       },
-      "2XzZNBCtd5yMr0gh": {
-        "sort": 400000,
-        "name": "Summoner's Dominion",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "2XzZNBCtd5yMr0gh",
-        "description": "",
-        "repick": {},
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.b18SPv6xoCkQ8B69"
-          }
-        ],
-        "chooseN": null,
-        "additional": {
-          "type": "",
-          "perkType": [],
-          "cost": null
-        }
-      },
       "QFYRE60NA3vfXcKM": {
         "sort": 500000,
-        "name": "5-Essence Minion",
-        "img": null,
+        "name": "5-Essence Minions",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
         "type": "summon",
         "requirements": {
           "level": 2
@@ -347,20 +324,73 @@
           "respite": ""
         },
         "cost": 9,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.duRmSVWwxBMkbi6b",
-            "count": 2
+            "count": 1
           }
         ],
         "effects": [
           {
             "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
-            "level": 1
+            "level": 8
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.bl3B4evudIgUltN2",
+            "level": 8
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 10
           }
         ],
-        "dsid": "call-forth"
+        "dsid": "call-forth",
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.EVSPCtqKBmU3GvV5",
+            "level": 10
+          }
+        ]
+      },
+      "Iijuyl8tjb7jaGKa": {
+        "sort": 1100000,
+        "name": "Fixture - Barrow Gate",
+        "img": null,
+        "type": "summon",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "Iijuyl8tjb7jaGKa",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 0,
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.KRS9aAdcC5iCe1qg",
+            "count": 1
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 9
+          }
+        ],
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.3VFg3ewffc7GRVxf",
+            "level": 5
+          },
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.r0wIgunwWbbLYQoT",
+            "level": 9
+          }
+        ],
+        "dsid": "summon-fixture"
       }
     },
     "classLink": "summoner"

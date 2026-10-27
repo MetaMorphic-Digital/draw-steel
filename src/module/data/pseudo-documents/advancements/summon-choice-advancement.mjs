@@ -18,7 +18,7 @@ export default class SummonChoiceAdvancement extends ActorChoiceAdvancement {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      cost: new NumberField({ initial: null, min: 1, integer: true }),
+      cost: new NumberField({ initial: null, min: 0, integer: true }),
       chooseN: new NumberField({ required: true, integer: true, min: 1, initial: 2 }),
       pool: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "Actor" }),

@@ -60,7 +60,7 @@ export async function enricher(match, options) {
     linkConfig.type = "portfolio";
     linkConfig.portfolio = parsedConfig.portfolio;
     const portfolioItem = summoner.items.find(i => i.dsid === parsedConfig.portfolio);
-    linkConfig.summonItem = portfolioItem;
+    linkConfig.summonItem = portfolioItem.id;
   }
   if (parsedConfig.signatureOnly) linkConfig.signatureOnly = parsedConfig.signatureOnly;
   if (parsedConfig.count) linkConfig.count = parsedConfig.count;
@@ -74,7 +74,6 @@ export async function enricher(match, options) {
         linkConfig.actor = idx.uuid;
       }
     }
-
     if (summoner) {
       const portfolioItem = summoner.items.find(i => i.dsid === val);
       if (portfolioItem) {
@@ -165,6 +164,7 @@ async function portfolioSummon(config) {
   const summonInfo = await SummonChoiceAdvancement.getSummonInfo(hero, config.portfolio, {
     signatureOnly: !!config.signatureOnly,
   });
+  
   if (!summonInfo) return;
 
   const summonItem = fromUuidSync(config.summoner)?.items.get(config.summonItem);
