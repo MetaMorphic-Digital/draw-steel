@@ -1,3 +1,10 @@
+import DrawSteelCombatantGroup from "./combatant-group.mjs";
+
+/**
+ * @import { DrawSteelActor } from "./_module.mjs";
+ * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
+ */
+
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Combatant.documentClass.
  */
@@ -18,6 +25,43 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
       -2;
     if ((disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY) && this.hasPlayerOwner) return 2;
     return disposition;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static async _onCreateOperation(documents, operation, user) {
+    await super._onCreateOperation(documents, operation, user);
+
+    // create a group for the combatants because the players can't
+    if (operation.ds?.createGroup && game.user.isActiveGM) {
+      /** @type {DrawSteelActor} */
+      const baseActor = documents.at(0).actor;
+      const createData = {
+        _id: foundry.utils.randomID(),
+        type: baseActor.isMinion ? "squad" : "base",
+        ownership: {
+          [user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+        },
+      };
+      createData.name = DrawSteelCombatantGroup.defaultName({ type: createData.type, parent: operation.parent });
+      if (baseActor.isMinion) foundry.utils.setProperty(createData, "system.staminaValue", documents.length * baseActor.system.stamina.max);
+
+      await DrawSteelCombatantGroup.create(createData, { parent: operation.parent });
+
+      await foundry.documents.modifyBatch([{
+        action: "create",
+        documentName: "CombatantGroup",
+        data: [createData],
+        parent: operation.parent,
+        keepId: true,
+      }, {
+        documentName: "Combatant",
+        action: "update",
+        updates: documents.map(c => ({ _id: c.id, group: createData._id })),
+        parent: operation.parent,
+      }]);
+    }
   }
 
   /* -------------------------------------------------- */
@@ -85,6 +129,6 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
   refreshCombatant() {
     this.token?.object?.renderFlags.set({ refreshBars: true });
     // refresh any rendered sheets but only if the current user has permission to have it rendered anyways
-    if (this.actor?.sheet.isVisible) this.actor.sheet.render({ parts: ["stats"] });
+    if (this.actor?.sheet.isVisible) this.actor.sheet.render({ parts: ["stats", "body"] });
   }
 }

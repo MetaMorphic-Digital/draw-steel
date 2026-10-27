@@ -2,7 +2,7 @@ import DSRoll from "./base.mjs";
 import { systemPath } from "../constants.mjs";
 
 /**
- * @import { DamageOrigin } from "../_types";
+ * @import { DamageApplication, DamageOrigin } from "../_types";
  * @import { DrawSteelChatMessage } from "../documents/_module.mjs";
  * @import BaseMessagePart from "../data/pseudo-documents/message-parts/base-message-part.mjs";
  */
@@ -80,6 +80,28 @@ export default class DamageRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
+   * The icon class for this damage roll's apply button.
+   * @type {string}
+   */
+  get damageTypeIcon() {
+    if (this.isHeal) return "fa-solid fa-heart-pulse";
+    return ds.CONFIG.damageTypes[this.type]?.icon ?? "fa-solid fa-burst";
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The CSS color for this damage roll's type, if it has one.
+   * @type {string|null}
+   */
+  get damageTypeColor() {
+    if (this.isHeal) return null;
+    return ds.CONFIG.damageTypes[this.type]?.color?.css ?? null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Damage immunities to ignore.
    * @type {string[]}
    */
@@ -117,7 +139,8 @@ export default class DamageRoll extends DSRoll {
     if ("rollIndex" in options) {
       Object.assign(context, {
         rollIndex: options.rollIndex,
-        buttonIcon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+        buttonIcon: this.damageTypeIcon,
+        typeColor: this.damageTypeColor,
         tooltipPath: this.isHeal ?
           "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" :
           "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip",
@@ -139,7 +162,7 @@ export default class DamageRoll extends DSRoll {
 
     const tooltipPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip";
 
-    return ds.utils.constructHTMLButton({
+    const button = ds.utils.constructHTMLButton({
       label: _loc(labelPath, {
         type: this.typeLabel ? " " + this.typeLabel : "",
         amount: this.total,
@@ -151,8 +174,16 @@ export default class DamageRoll extends DSRoll {
         tooltipDirection: "UP",
       },
       classes: ["apply-damage"],
-      icon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+      icon: this.damageTypeIcon,
     });
+
+    if (this.damageTypeColor) {
+      const icon = button.querySelector("i");
+      icon.classList.add("damage-type-icon");
+      icon.style.setProperty("--damage-type-color", this.damageTypeColor);
+    }
+
+    return button;
   }
 
   /* -------------------------------------------------- */
@@ -163,6 +194,7 @@ export default class DamageRoll extends DSRoll {
    * @param {object} [options={}]           Options that modify the damage application.
    * @param {boolean} [options.halfDamage]  Only apply half the total damage.
    * @param {DamageOrigin} [options.origin] Where the damage came from, passed through to the Stamina update.
+   * @returns {Promise<DamageApplication[]>}  Stamina before and after, per actor or minion squad.
    */
   async applyDamage(targets, options = {}) {
     targets ??= ds.utils.tokensToActors();
@@ -176,8 +208,13 @@ export default class DamageRoll extends DSRoll {
     let amount = this.total;
     if (options.halfDamage) amount = Math.floor(amount / 2);
 
+    /** @type {DamageApplication[]} */
+    const applied = [];
+    const stamina = actor => ({ value: actor.system.stamina.value, temporary: actor.system.stamina.temporary });
+
     // Actors that aren't minions or in a combat group.
     for (const actor of actors) {
+      const before = stamina(actor);
       if (this.isHeal) {
         const isTemp = this.type !== "value";
         if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
@@ -186,18 +223,23 @@ export default class DamageRoll extends DSRoll {
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
       }
       else await actor.system.takeDamage(amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, origin: options.origin });
+      applied.push({ actor, before, after: stamina(actor) });
     }
 
     // Minion sqauds
     for (const [uuid, actors] of Object.entries(groups)) {
       const group = fromUuidSync(uuid);
+      const before = { value: group.system.staminaValue };
       // Minions cannot regain stamina or gain temp stamina (Monsters p. 7)
       if (this.isHeal) {
         const msg = `DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.${this.type === "value" ? "MinionHeal" : "MinionTemp"}`;
         ui.notifications.warn(msg, { localize: true });
       }
       // Damage
-      else group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe, origin: options.origin });
+      else await group.system.takeDamage(actors, amount, { type: this.type, ignoredImmunities: this.ignoredImmunities, aoe: this.aoe, origin: options.origin });
+      applied.push({ group, actors, before, after: { value: group.system.staminaValue } });
     }
+
+    return applied;
   }
 }

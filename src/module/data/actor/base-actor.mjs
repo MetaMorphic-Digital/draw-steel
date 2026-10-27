@@ -49,6 +49,14 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       targetModifiers: new fields.SchemaField({
         edges: requiredInteger({ min: null }),
         banes: requiredInteger({ min: null }),
+        forcedMovement: new fields.SchemaField({
+          push: requiredInteger({ min: null }),
+          pull: requiredInteger({ min: null }),
+          slide: requiredInteger({ min: null }),
+        }),
+      }, { persisted: false }),
+      fall: new fields.SchemaField({
+        agility: new fields.BooleanField({ initial: true }),
       }, { persisted: false }),
     });
 
@@ -411,23 +419,32 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
+   * The damage dealt by a fall.
+   * @param {number} distance   The effective height of the fall, in squares.
+   * @returns {number}
+   */
+  static fallDamage(distance) {
+    return distance < 2 ? 0 : Math.min(2 * distance, 50);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Processes falls by calculating damage and then calling the chat part that makes the fall.
    * @param {DrawSteelToken} token The Token that is falling.
    * @param {number} dist          The distance straight down the actor is falling.
    */
   async processFall(token, dist) {
-    //Modify later to apply for net damage.
+    const fallDamage = this.constructor.fallDamage(dist);
 
-    const fallDamage = dist <= 2 ? 0 : Math.min(2 * dist, 50);
-
-    const roll = new DamageRoll(String(fallDamage), {});
+    const roll = new DamageRoll(String(fallDamage), {}, { fallHeight: dist });
     await roll.evaluate();
 
     await DrawSteelChatMessage.create({
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
-      content: `<p>${_loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.parent.name, distance: fallDamage, damage: roll.formula })}</p>`,
+      content: `<p>${_loc("DRAW_STEEL.ChatMessage.PARTS.falling.aftermath", { victim: this.parent.name, distance: dist, damage: roll.formula })}</p>`,
       "system.parts": [{ type: "falling",
         rolls: [roll],
         flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.Label"),

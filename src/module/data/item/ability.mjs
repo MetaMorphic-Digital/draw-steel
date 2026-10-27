@@ -17,7 +17,8 @@ import enrichHTML from "../../utils/enrich-html.mjs";
  * @import { PowerRollModifiers } from "../../_types";
  * @import { PlaceAbilityOptions } from "./_types";
  * @import DrawSteelToken from "../../canvas/placeables/token.mjs";
- * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import { DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import { PerformSummonOptions } from "../../_types.d.ts"
  */
 
 const fields = foundry.data.fields;
@@ -627,8 +628,8 @@ export default class AbilityModel extends BaseItemModel {
         // Strip from roll options
         const target = context.target;
         delete context.target;
-        const roll = new PowerRoll(dialogConfig.context.formula, {}, { 
-          flavor: _loc(PowerRoll.TYPES.ability.label), 
+        const roll = new PowerRoll(dialogConfig.context.formula, {}, {
+          flavor: _loc(PowerRoll.TYPES.ability.label),
           criticalThreshold: this.power.roll.criticalThreshold,
           ...context,
         });
@@ -770,9 +771,17 @@ export default class AbilityModel extends BaseItemModel {
       modifiers.edges += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.edges") ?? 0;
       modifiers.banes += foundry.utils.getProperty(targetActor, "system.combat.targetModifiers.banes") ?? 0;
 
-      // Frightened condition checks
-      if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
-      if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
+      // Targeted conditions that modify rolls between the affected creature and their source, such as frightened
+      for (const status of Object.values(CONFIG.statusEffects)) {
+        if (!status.sourceModifiers) continue;
+        const { againstSource, fromSource } = status.sourceModifiers;
+        const isAgainstSource = DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, status.id); // Attacking the source of the actor's condition
+        const isFromSource = DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, status.id); // Attacking a target the actor is the source for
+        for (const key of ["edges", "banes", "bonuses"]) {
+          if (isAgainstSource) modifiers[key] += againstSource?.[key] ?? 0;
+          if (isFromSource) modifiers[key] += fromSource?.[key] ?? 0;
+        }
+      }
 
       // Grabbed condition check - targeting a non-source adds a bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
@@ -958,12 +967,10 @@ export default class AbilityModel extends BaseItemModel {
   /**
    * Places summons.
    * @param {string} uuid               The UUID of the actor to summon. If this points to a compendium actor a copy will be imported.
-   * @param {Object} options
-   * @param {number} [options.count=1]  How many tokens to summon.
-   * @param {DrawSteelActiveEffect[]} [options.effects] Effects to add to the summoned actors, evaluating based on this actor's roll data.
+   * @param {PerformSummonOptions} options
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async performSummon(uuid, { count = 1, effects = [] } = {}) {
-    return ds.utils.performSummon(uuid, this, { count, effects });
+  async performSummon(uuid, options = {}) {
+    return ds.utils.performSummon(uuid, this.parent, options);
   }
 }
