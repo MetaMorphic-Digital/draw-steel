@@ -58,6 +58,10 @@ interface Combat {
       slide: number;
     }
   }
+  fall: {
+    /** Whether this actor can reduce the effective height of a fall by their Agility score. */
+    agility: boolean;
+  }
 }
 
 interface Skills {
