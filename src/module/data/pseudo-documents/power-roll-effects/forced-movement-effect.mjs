@@ -123,10 +123,12 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       ? ds.utils.evaluateFormula(tierValue.distance, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.distance;
 
-    // Group movement types by their final distance value (base + bonus)
+    const targetBonuses = options.target?.system.combat?.targetModifiers?.forcedMovement;
+
+    // Group movement types by their final distance value (base + bonus + the target's own bonus)
     const distanceGroups = Map.groupBy([...tierValue.movement], movementType => {
       if (!this.actor) return baseDistance;
-      return baseDistance + this.forced.bonuses[movementType];
+      return baseDistance + this.forced.bonuses[movementType] + (targetBonuses?.[movementType] ?? 0);
     });
 
     // Format the output
@@ -164,5 +166,12 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     const escapedDisplay = Handlebars.escapeExpression(tierValue.display);
     const finalText = escapedDisplay.replaceAll("{{potency}}", potencyString);
     return finalText.replaceAll("{{forced}}", distanceString);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  targetOption(tier, target) {
+    return this.toText(tier, { target });
   }
 }
