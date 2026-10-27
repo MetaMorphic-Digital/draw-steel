@@ -971,6 +971,6 @@ export default class AbilityModel extends BaseItemModel {
    * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
   async performSummon(uuid, options = {}) {
-    return ds.utils.performSummon(uuid, this, options);
+    return ds.utils.performSummon(uuid, this.parent, options);
   }
 }
