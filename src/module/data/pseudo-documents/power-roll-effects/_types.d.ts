@@ -1,5 +1,4 @@
-import DrawSteelActor from "../../../documents/actor.mjs";
-import DrawSteelItem from "../../../documents/item.mjs";
+import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
 
 declare module "./base-power-roll-effect.mjs" {
   export default interface BasePowerRollEffect {

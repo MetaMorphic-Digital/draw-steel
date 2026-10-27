@@ -123,7 +123,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       ? ds.utils.evaluateFormula(tierValue.distance, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.distance;
 
-    const targetBonuses = options.target?.system.combat?.targetModifiers?.forcedMovement;
+    const targetBonuses = foundry.utils.getProperty(options, "target.system.combat.targetModifiers.forcedMovement");
 
     // Group movement types by their final distance value (base + bonus + the target's own bonus)
     const distanceGroups = Map.groupBy([...tierValue.movement], movementType => {
