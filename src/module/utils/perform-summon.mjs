@@ -14,7 +14,6 @@ import DrawSteelActiveEffect from "../documents/active-effect.mjs";
 export default async function performSummon(uuid, summonSource, { count = 1, effects = [], items = [] } = {}) {
   /** @type {DrawSteelActor} */
   const sourceActor = await fromUuid(uuid);
-
   if (!sourceActor) {
     ui.notifications.error("DRAW_STEEL.Actor.Summoning.Errors.NO_ACTOR", { localize: true });
     return null;

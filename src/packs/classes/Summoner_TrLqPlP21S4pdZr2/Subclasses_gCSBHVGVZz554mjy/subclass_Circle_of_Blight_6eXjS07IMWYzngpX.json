@@ -140,29 +140,6 @@
           "cost": null
         }
       },
-      "vhbKRrIJ5XdDGHVY": {
-        "sort": 400000,
-        "name": "Summoner's Dominion",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "vhbKRrIJ5XdDGHVY",
-        "description": "",
-        "repick": {},
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.b18SPv6xoCkQ8B69"
-          }
-        ],
-        "chooseN": null,
-        "additional": {
-          "type": "",
-          "perkType": [],
-          "cost": null
-        }
-      },
       "wPjTeFdz6ZrsFqAE": {
         "sort": 500000,
         "name": "5-Essence Minion",
@@ -343,7 +320,7 @@
           "respite": ""
         },
         "cost": 9,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.YOSgMuboci7Tqotp",
@@ -364,7 +341,52 @@
             "level": 10
           }
         ],
-        "dsid": ""
+        "dsid": "",
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.VMT5U1KtDYeQN3qM",
+            "level": 10
+          }
+        ]
+      },
+      "TkxHtNKH9GcVLVzI": {
+        "sort": 300000,
+        "name": "Fixture - The Boil",
+        "img": null,
+        "type": "summon",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "TkxHtNKH9GcVLVzI",
+        "description": "",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 0,
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm",
+            "count": 1
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 9
+          }
+        ],
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.Ccie9z88OA56X3pm",
+            "level": 9
+          },
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.oO5R1tbuuYk8uqRu",
+            "level": 5
+          }
+        ],
+        "dsid": "summon-fixture"
       }
     },
     "classLink": "summoner"

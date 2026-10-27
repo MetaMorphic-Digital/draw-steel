@@ -22,7 +22,81 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Summoner's Kit (Level 3)",
+      "img": "icons/weapons/wands/wand-gem-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.9FF5MeuFsNEsTBMt",
+      "_id": "7lAVCzuFNcQNDwQs",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.draw-steel.summoner-strike",
+            "type": "override",
+            "value": "@potency.strong",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "flags.draw-steel.summoner-strike-range",
+            "type": "override",
+            "value": "5+@R",
+            "phase": "initial",
+            "priority": null
+          },
+          {
+            "key": "flags.draw-steel.summoner-strike-damage",
+            "type": "override",
+            "value": "2*@R",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.369",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1793128515546,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!9FF5MeuFsNEsTBMt.7lAVCzuFNcQNDwQs"
+    }
+  ],
   "ownership": {
     "default": 0
   },
