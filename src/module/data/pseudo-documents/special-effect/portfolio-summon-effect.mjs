@@ -55,7 +55,7 @@ export default class PortfolioSummonSpecialEffect extends BaseSpecialEffect {
         const operation = [createOperation];
         const group = combat.combatants.find(c => c.actorId === tokens.at(0).actorId)?.group;
 
-        // defer group creation
+        // Defer group creation.
         const baseActor = tokens.at(0).baseActor;
         if (baseActor.isMinion) {
           if (group) {
