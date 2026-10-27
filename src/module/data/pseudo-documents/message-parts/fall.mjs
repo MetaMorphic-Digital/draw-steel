@@ -111,8 +111,8 @@ export default class FallPart extends RollPart {
     const path = "DRAW_STEEL.ChatMessage.PARTS.falling.ModifyFallDialog";
     const content = document.createElement("div");
 
-    const canUseAgility = actor.system.combat?.fall?.agility ?? true;
-    const agility = canUseAgility ? Math.max(actor.system.characteristics?.agility?.value ?? 0, 0) : 0;
+    const canUseAgility = foundry.utils.getProperty(actor, "system.combat.fall.agility") ?? true;
+    const agility = canUseAgility ? Math.max(foundry.utils.getProperty(actor, "system.characteristics.agility.value") ?? 0, 0) : 0;
     let agilityHint = _loc(`${path}.Agility.hint`);
     if (!canUseAgility) agilityHint += ` ${_loc(`${path}.Agility.prevented`)}`;
 
