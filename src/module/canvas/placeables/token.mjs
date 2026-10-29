@@ -206,7 +206,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @returns {boolean}
    */
   hasEnemyAdjacent() {
-    return (this.getAdjacentEnemies(this).length > 0) ? true : false;
+    return this.getAdjacentEnemies(this).length > 0;
   }
 
   /* -------------------------------------------------- */
