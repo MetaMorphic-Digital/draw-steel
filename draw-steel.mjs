@@ -225,6 +225,7 @@ Hooks.once("init", function () {
   Object.assign(CONFIG.ui, {
     actors: applications.sidebar.tabs.DrawSteelActorDirectory,
     combat: applications.sidebar.tabs.DrawSteelCombatTracker,
+    compendium: applications.sidebar.tabs.DrawSteelCompendiumDirectory,
     players: applications.ui.DrawSteelPlayers,
   });
 
@@ -395,7 +396,6 @@ Hooks.once("ready", async function () {
 
 Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
-Hooks.on("renderCompendiumDirectory", applications.hooks.renderCompendiumDirectory);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
 /* -------------------------------------------------- */
