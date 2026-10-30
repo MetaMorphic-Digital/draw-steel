@@ -887,9 +887,10 @@ export default class AbilityModel extends BaseItemModel {
       }
       // additional adjustments to conform to DS rules
       switch (type) {
-        case "rectangle": // Special wall handling since it's a bunch of 1 x 1 spots.
-          shapeData.width ??= canvas.dimensions.distancePixels;
-          shapeData.height ??= canvas.dimensions.distancePixels;
+        case "grid":
+          shapeData.offsets = [{ i: 0, j: 0 }];
+          break;
+        case "rectangle":
           shapeData.anchorX = 0.5;
           shapeData.anchorY = 0.5;
           break;
