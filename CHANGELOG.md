@@ -20,7 +20,7 @@
 
 ## 1.2.0
 
-Increased foundry minimum to 14.370.
+Increased foundry minimum to 14.369.
 
 ### Added
 
