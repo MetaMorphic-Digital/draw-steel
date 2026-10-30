@@ -1,3 +1,6 @@
+/**
+ * A custom Actor Directory.
+ */
 export default class DrawSteelActorDirectory extends foundry.applications.sidebar.tabs.ActorDirectory {
   /** @inheritdoc */
   _getEntryContextOptions() {

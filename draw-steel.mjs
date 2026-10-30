@@ -225,6 +225,7 @@ Hooks.once("init", function () {
   Object.assign(CONFIG.ui, {
     actors: applications.sidebar.tabs.DrawSteelActorDirectory,
     combat: applications.sidebar.tabs.DrawSteelCombatTracker,
+    compendium: applications.sidebar.tabs.DrawSteelCompendiumDirectory,
     players: applications.ui.DrawSteelPlayers,
   });
 
