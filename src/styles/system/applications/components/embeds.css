@@ -312,6 +312,23 @@ document-embed, .item-embed {
     }
   }
 
+  div.actor.object {
+    .flavor {
+        gap: 8px;
+        justify-content: center;
+        text-align: center;
+        margin-block: 8px 0;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          padding-inline: 8px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+      }
+  }
+
   /* Non-Actor/Item Embeds inside a Draw Steel application */
   .draw-steel & {
     .roll-table-embed {
