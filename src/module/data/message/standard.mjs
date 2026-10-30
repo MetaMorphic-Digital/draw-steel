@@ -39,7 +39,8 @@ export default class StandardModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   static migrateData(data) {
     // Passing an array of parts is always valid, this migration will automatically translate that to the proper object format
-    if (Array.isArray(data.parts)) {
+    const parts = foundry.data.operators.DataFieldOperator.get(data.parts);
+    if (Array.isArray(parts)) {
       data.parts = data.parts.reduce((record, part) => {
         const _id = foundry.utils.randomID();
         record[_id] = { _id, ...part };

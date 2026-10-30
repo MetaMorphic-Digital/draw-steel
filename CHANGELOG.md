@@ -86,11 +86,13 @@ Increased foundry minimum to 14.369.
   - Added Staying Power malice feature to Human Bandit Chief & Scoundrel. (#2112)
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 - Deleting an entry from a configuration page now works correctly. (#2042)
+- Fixed update from compendium not properly handling type changes in pseudodocuments. (#2115)
 - Fixed respite expiry events not running and other bugs related to Set construction. (#2192)
 - Ensure that DSApplication.create resolves even if the render is canceled. (#2194)
 - Cleaned up duplicate scrolling text when using the apply effect enricher.
 - Fixed saving throw rolls not properly being contained in a saving throw message part.
 - Fixed limited view of the item sheet.
+- Updated `migrateData` implementations to properly account for data operators.
 
 ## 1.1.2
 

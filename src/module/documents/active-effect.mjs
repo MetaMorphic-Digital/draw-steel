@@ -264,8 +264,9 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   static migrateData(data) {
+    const changes = foundry.data.operators.DataFieldOperator.get(data.system?.changes) ?? [];
     let migrateChanges = false;
-    for (const change of data.system?.changes ?? []) {
+    for (const change of changes) {
       for (const [oldPath, newPath] of Object.entries(this.keyMigrations)) {
         const oldKey = change.key;
         change.key = change.key.replace(oldPath, newPath);
