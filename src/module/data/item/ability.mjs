@@ -799,6 +799,8 @@ export default class AbilityModel extends BaseItemModel {
       if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
       // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
       if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("flying"))) modifiers.edges += 1;
+      // Ranged Distraction check
+      if (this.keywords.has("ranged") && this.keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
