@@ -36,18 +36,25 @@ Increased foundry minimum to 14.369.
 - The "Origin Roll Data" property on apply effect enrichers and applied effect power roll effects will use the effect source's roll data to parse change values before application, allowing effects like Smolder to properly key off of the talent's Reason. (#680)
 - Added a new Minion Sheet. You can switch to this for any NPC but it is optimized for minions. (#585)
   - You can manually set the damage type of a free strike from this sheet (only necessary if there's not a signature attack). (#2093)
-- Edges from high ground are automatically added. (#604)
+- Improved Edge and Bane automation
+  - Edges from high ground. (#604)
+  - Banes on ranged strikes from adjacent foes. (#2229)
 - Added button to copy effects from tier 1. (#1142)
 - Added support for specifying the number of minions joining in a squad attack. (#1320)
 - Added new header button to repick items granted by advancements. (#1513)
 - Resource growth over a turn is now tracked under `system.hero.primary.tracking`. (#1871)
 - Added data path (`power.roll.critical`) to handle the critical threshold for abilities. (#1899)
 - Adding automation for falling that works with v14 levels and surfaces. (#1930)
+- Object actors now support `@Embed`. (#1974)
 - Added support for Companions as a new actor type. (#2011)
 - Added support for Blessing of Fate and Destiny to adjust the number of dice rolled. (#2039)
+- Added new Journal Entry Page type, Map Location, which can better specify its display as a note. (#2050)
 - Spend amounts are now available as roll data in spend special effects. (#2060)
 - Abilities with a "Melee or Ranged" distance now have a button to swap between the two modes in the Ability Configuration Dialog. (#2063)
 - Right clicking the Update Source button in the header of an item sheet will copy the item's DSID to your clipboard. (#2141)
+- Improved support for conditions used by third party creators. (#2059)
+  - Targeted condition modifier info for Frightened-like conditions
+  - Added target-side forced movement bonus data path `system.combat.targetModifiers.forcedMovement`
 - Various improvements to help out modules. (#2199)
   - Added `StandardModel#tierFor`.
   - Added `ds.preUseAbility` and `ds.useAbility` hooks.
@@ -59,12 +66,15 @@ Increased foundry minimum to 14.369.
 - Updated Player-Facing Compendium Content:
   - Added enrichers to "To the Uttermost End" leveraging the new spend data. (#2049)
 - Updated Director-Facing Compendium Content:
+  - Disambiguated several monster ability DSIDs that were colliding with player abilities like the Crucible Dragon's hammer-and-anvil. (#2122)
+  - Added summon enrichers to monsters that can summon like the Mummy Lord.
 - Unowned abilities will attempt to substitute in glyphs for roll data on the sheet and in the embed. (#1387)
 - Major updates to roll presentation. (#1628)
-  - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display
+  - Significantly condensed the space used for power rolls and damage rolls. Damage buttons are now worked into the roll display and have type-based icons. (#2215)
   - Results are now per-target rather than grouped by tier, allowing for more individualized adjustments.
   - Added Potency results to chat messages. (#1869)
 - Ability modifiers targeting damage.bonuses.value can improve a monster's free strike value. (#2003)
+- Wall templates now use Grid shapes instead of 1x1 rectangles.
 
 ### Removed
 
@@ -78,12 +88,14 @@ Increased foundry minimum to 14.369.
   - Added fire type to Viscous Fire. (#2061)
   - Fixed name of Wode Elf Arrowswift (Sorry Illwyth!). (#2084)
   - Fixed several miscategorized abilities. (#2175)
+  - Fixed Smolder damage typing. (#2218)
 - Updated Director-Facing Compendium Content:
   - Fixed description for Fossil Cryptic Villain Action 2. (#2043)
   - Fixed With Captain effect on Decrepit Skeleton. (#2051)
   - Fixed holy weakness on Chorogaunt and Muceron. (#2052)
   - Fixed With Captain effect on Dwarf Driver. (#2062)
   - Added Staying Power malice feature to Human Bandit Chief & Scoundrel. (#2112)
+  - Fixed monster abilities that were saved disabled on the Angulotl Wave, Devil High Judge, Crucible Dragon, Gloom Dragon, Meteor Dragon, Crux of Fire, Essence of Storms, Essence of Tides, Force of Earth, Fossil Cryptic, medusa, and Olothec.
 - Updating an actor's size will now also update their prototype token's depth, in addition to height and width. (#2024)
 - Deleting an entry from a configuration page now works correctly. (#2042)
 - Fixed respite expiry events not running and other bugs related to Set construction. (#2192)
