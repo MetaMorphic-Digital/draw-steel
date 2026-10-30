@@ -799,6 +799,8 @@ export default class AbilityModel extends BaseItemModel {
       if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
       // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
       if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("flying"))) modifiers.edges += 1;
+      // Ranged Distraction check
+      if (this.keywords.has("ranged") && this.keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
@@ -885,9 +887,10 @@ export default class AbilityModel extends BaseItemModel {
       }
       // additional adjustments to conform to DS rules
       switch (type) {
-        case "rectangle": // Special wall handling since it's a bunch of 1 x 1 spots.
-          shapeData.width ??= canvas.dimensions.distancePixels;
-          shapeData.height ??= canvas.dimensions.distancePixels;
+        case "grid":
+          shapeData.offsets = [{ i: 0, j: 0 }];
+          break;
+        case "rectangle":
           shapeData.anchorX = 0.5;
           shapeData.anchorY = 0.5;
           break;
