@@ -38,12 +38,13 @@ export const setOptions = (options) => new StringField({ required: true, blank: 
  * @param {DamageTypeCallback} inner Callback that returns a field.
  * @returns A Schema with entries for each damage type.
  */
-export const damageTypes = (inner, { all = false } = {}) => {
+export const damageTypes = (inner, { all = false, untyped = false } = {}) => {
   const schema = {};
   const config = ds.CONFIG;
 
   if (all) schema.all = inner();
   Object.entries(config.damageTypes).forEach(([type, value]) => schema[type] = inner({ label: value.label }));
+  if (untyped) schema.untyped = inner();
 
   return new SchemaField(schema);
 };

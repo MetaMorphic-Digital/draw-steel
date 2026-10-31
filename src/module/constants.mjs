@@ -11,6 +11,14 @@ export const systemPath = (path) => `systems/${systemID}/${path}`;
 
 /* -------------------------------------------------- */
 
+/**
+ * A damage immunity at or above this value is shown as "immunity all", since no damage gets through it.
+ * @type {number}
+ */
+export const IMMUNITY_ALL = 1000;
+
+/* -------------------------------------------------- */
+
 export const ASCII = `
 ______                      _____ _            _
 |  _  \\                    /  ___| |          | |

@@ -1,4 +1,4 @@
-import { systemID, systemPath } from "../../constants.mjs";
+import { IMMUNITY_ALL, systemID, systemPath } from "../../constants.mjs";
 import BaseActorModel from "./base-actor.mjs";
 import ObjectSizeModel from "../models/object-size.mjs";
 import SourceModel from "../models/source.mjs";
@@ -52,6 +52,34 @@ export default class ObjectModel extends BaseActorModel {
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Update data that gives an object the poison immunity all and psychic immunity all every object has, once.
+   * The flag records that it was given, so a Director who lowers it for a living object keeps that choice.
+   * @param {DrawSteelActor} actor  An object actor.
+   * @returns {object} The update data, empty if the actor already received it.
+   */
+  static defaultImmunities(actor) {
+    if (actor.getFlag(systemID, "objectImmunities")) return {};
+    const immunities = actor._source.system.damage?.immunities ?? {};
+    return {
+      "system.damage.immunities.poison": Math.max(immunities.poison ?? 0, IMMUNITY_ALL),
+      "system.damage.immunities.psychic": Math.max(immunities.psychic ?? 0, IMMUNITY_ALL),
+      [`flags.${systemID}.objectImmunities`]: true,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    this.parent.updateSource(ObjectModel.defaultImmunities(this.parent));
   }
 
   /* -------------------------------------------------- */
