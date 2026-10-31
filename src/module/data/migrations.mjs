@@ -44,6 +44,10 @@ export async function migrateWorld() {
       await version_1_1_migration();
       updateVersion = true;
     }
+    if (foundry.utils.isNewerVersion("1.2.1", migrationVersion)) {
+      await version_1_2_1_migration();
+      updateVersion = true;
+    }
   }
   if (updateVersion) await game.settings.set(systemID, "migrationVersion", game.system.version);
 }
@@ -250,6 +254,50 @@ async function version_1_1_migration() {
 
   ui.notifications.remove(warning);
   ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.1.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Gives existing objects the poison immunity all and psychic immunity all that objects have by default, for version 1.2.1.
+ */
+async function version_1_2_1_migration() {
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "1.2.1" }, progress: true });
+  const ObjectModel = CONFIG.Actor.dataModels.object;
+  const updatesFor = (actors) => actors.filter(a => a.type === "object")
+    .map(a => ({ _id: a.id, ...ObjectModel.defaultImmunities(a) }))
+    .filter(u => Object.keys(u).length > 1);
+
+  console.log("Migrating world objects");
+  await foundry.documents.Actor.updateDocuments(updatesFor(game.actors));
+
+  warning.update({ pct: 0.3 });
+
+  for (const scene of game.scenes) {
+    for (const token of scene.tokens) {
+      if (token.isLinked || !token.delta || (token.actor?.type !== "object")) continue;
+      const updates = ObjectModel.defaultImmunities(token.actor);
+      if (Object.keys(updates).length) await token.actor.update(updates);
+    }
+  }
+
+  warning.update({ pct: 0.6 });
+
+  const packsToMigrate = game.packs.filter(p => shouldMigrateCompendium(p, ["Actor"]));
+  for (const pack of packsToMigrate) {
+    console.log("Migrating objects inside", pack.title);
+    const wasLocked = pack.locked;
+    if (wasLocked) await pack.configure({ locked: false });
+    const docs = await pack.getDocuments({ type: "object" });
+    await foundry.documents.Actor.updateDocuments(updatesFor(docs), { pack: pack.collection });
+    if (wasLocked) await pack.configure({ locked: true });
+  }
+
+  warning.update({ pct: 1.00 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.2.1" }, permanent: true });
   console.log("Migration complete");
 }
 

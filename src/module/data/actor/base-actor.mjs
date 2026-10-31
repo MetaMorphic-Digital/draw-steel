@@ -4,6 +4,7 @@ import { DrawSteelChatMessage } from "../../documents/_module.mjs";
 
 import DrawSteelSystemModel from "../system-model.mjs";
 import FormulaField from "../fields/formula-field.mjs";
+import { IMMUNITY_ALL } from "../../constants.mjs";
 import SizeModel from "../models/size.mjs";
 
 /**
@@ -75,7 +76,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     });
 
     schema.damage = new fields.SchemaField({
-      immunities: damageTypes(requiredInteger, { all: true }),
+      immunities: damageTypes(requiredInteger, { all: true, untyped: true }),
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
@@ -479,7 +480,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       if (!options.ignoredImmunities.includes("all") && !options.ignoredImmunities.includes(type)) acc[type] = amount;
       return acc;
     }, {});
-    const immunityAmount = Math.max(immunities.all ?? 0, immunities[options.type] ?? 0); // Null check in case type is not in immunities
+    const immunityAmount = Math.max(immunities.all ?? 0, immunities[options.type || "untyped"] ?? 0); // Null check in case type is not in immunities
     if (immunityAmount > 0) immunityAndWeakness.immunity = immunityAmount;
 
     return immunityAndWeakness;
@@ -559,11 +560,15 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         acc[type] = label;
         return acc;
       }, {}),
+      untyped: _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.untyped.label"),
     };
 
     const immunities = Object.entries(this.damage.immunities)
       .filter(([damageType, value]) => value > 0)
-      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+      .map(([damageType, value]) => {
+        const amount = value >= IMMUNITY_ALL ? _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.allAmount") : value;
+        return `<span class="immunity">${labels[damageType]} ${amount}</span>`;
+      });
     const weaknesses = Object.entries(this.damage.weaknesses)
       .filter(([damageType, value]) => value > 0)
       .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
