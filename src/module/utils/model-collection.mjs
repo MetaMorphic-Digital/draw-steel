@@ -16,15 +16,23 @@ import BaseSpecialEffect from "../data/pseudo-documents/special-effect/base-spec
  * @extends {Collection<string, Model>}
  */
 export default class ModelCollection extends foundry.utils.Collection {
-  constructor(documentName, document, data) {
+  constructor(documentName, document) {
     super();
     const name = CONFIG[document.documentName].dataModels[document._source.type].metadata.embedded[documentName];
     Object.defineProperties(this, {
       name: { value: name, writable: false },
-      _source: { value: data, writable: false },
       documentClass: { value: ModelCollection.documentClasses[documentName], writable: false },
     });
+    this.#document = document;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The document whose source data holds this collection.
+   * @type {foundry.abstract.Document}
+   */
+  #document;
 
   /* -------------------------------------------------- */
   /*  Properties                                        */
@@ -81,9 +89,12 @@ export default class ModelCollection extends foundry.utils.Collection {
   /**
    * Underlying source data of each embedded pseudo-document. The
    * collection is responsible for performing mutations to this data.
+   * Read from the document each time, since an update can replace the object (such as updateFromCompendium).
    * @type {Record<string, object>}
    */
-  _source;
+  get _source() {
+    return foundry.utils.getProperty(this.#document._source, this.name);
+  }
 
   /* -------------------------------------------------- */
   /*  Methods                                           */
@@ -210,7 +221,8 @@ export default class ModelCollection extends foundry.utils.Collection {
    */
   #initializeDocument(data, options) {
     let d = this.get(data._id);
-    if (d) {
+    // A replaced source (such as from updateFromCompendium) gets a new instance, since its type may have changed
+    if (d && (d._source === data)) {
       // The document exists, reinitialize with new source data.
       d._initialize(options);
       return d;
