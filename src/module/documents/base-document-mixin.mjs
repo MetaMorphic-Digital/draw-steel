@@ -22,9 +22,8 @@ export default base => {
       const model = CONFIG[this.documentName].dataModels[this._source.type];
       const embedded = model?.metadata?.embedded ?? {};
       for (const [documentName, fieldPath] of Object.entries(embedded)) {
-        const data = foundry.utils.getProperty(this._source, fieldPath);
         const field = model.schema.getField(fieldPath.slice("system.".length));
-        collections[documentName] = new field.constructor.implementation(documentName, this, data);
+        collections[documentName] = new field.constructor.implementation(documentName, this);
       }
 
       Object.defineProperty(this, "pseudoCollections", { value: Object.seal(collections), writable: false });
