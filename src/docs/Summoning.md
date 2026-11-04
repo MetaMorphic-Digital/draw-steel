@@ -20,7 +20,7 @@ Furthermore, the summoned actors will be added to the currently active combat an
 
 For non-ability items that need to summon, the `[[/summon]]` enricher is the best method.
 
-It is not possible to summon actors sourced from compendiums in a context with no summoner, e.g., in a Chat Message.
+It is not possible to summon actors sourced from compendiums in a context with no summoner, e.g., in a generic Chat Message.
 - [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: Summon an Abyssal Hyena. World actors are also supported.
 - [&ZeroWidthSpace;[/summon actor=Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: You can specify the actor to summon.
 - [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm count=3]]: You can summon more than one actor at a time by specifying the count.
