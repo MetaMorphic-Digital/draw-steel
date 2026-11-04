@@ -88,6 +88,8 @@ Hooks.once("init", function () {
 
   // Better art for default roll table pack image
   CONFIG.RollTable.compendiumBanner = "systems/draw-steel/assets/banners/tables.webp";
+  // Default to grid based shapes
+  CONFIG.Region.templateModeConfig.gridBased = true;
 
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
