@@ -99,7 +99,7 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
 
     if (tokens?.length) {
       const token = tokens.at(0);
-      token.baseActor.update({ "system.companion.master": hero.id }); 0;
+      await token.baseActor.update({ "system.companion.master": hero.id });
       return token;
     } else return null;
   }

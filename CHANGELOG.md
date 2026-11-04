@@ -75,6 +75,7 @@ Increased foundry minimum to 14.369.
   - Added Potency results to chat messages. (#1869)
 - Ability modifiers targeting damage.bonuses.value can improve a monster's free strike value. (#2003)
 - Wall templates now use Grid shapes instead of 1x1 rectangles.
+- Measured Template Mode defaults to grid based shapes.
 
 ### Removed
 
