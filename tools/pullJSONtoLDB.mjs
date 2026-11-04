@@ -1,8 +1,9 @@
+import Showdown from "showdown";
 import { compilePack } from "@foundryvtt/foundryvtt-cli";
 import { promises as fs } from "fs";
 import path from "path";
-import Showdown from "showdown";
 
+// eslint-disable-next-line no-undef
 const SYSTEM_ID = process.cwd();
 const yaml = false;
 const folders = true;
@@ -36,15 +37,25 @@ for (const pack of packs) {
 async function transformEntry(entry) {
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
+  const nameIdMap = new Map();
+  entry.pages.forEach(page => nameIdMap.set(page.name, page._id));
+  const wikiRegex = new RegExp(/\[\[([\w\s]+)\]\]/, "g");
+
   for (const jep of entry.pages) {
     const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
     const mdSource = await fs.readFile(docsPath, {
       encoding: "utf8",
     });
 
-    // re-route wiki image links to in-game asset links
     const htmlContent = converter.makeHtml(
-      mdSource.replaceAll("https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs", "systems/draw-steel/assets/docs"),
+      // re-route wiki image links to in-game asset links
+      mdSource.replaceAll("https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs", "systems/draw-steel/assets/docs")
+      // re-route wiki page links to docs pages
+        .replaceAll(wikiRegex, (match, pageName) => {
+          const id = nameIdMap.get(pageName);
+          if (pageName) return `@UUID[.${id}]{${pageName}}`;
+          else return match;
+        }),
     );
     jep.text.markdown = mdSource;
     jep.text.content = htmlContent;

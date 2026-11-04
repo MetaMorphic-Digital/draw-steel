@@ -2,7 +2,7 @@
 
 ## Actor Embeds
 
-NPC Actors can be embedded into enriched text via the @Embed&ZeroWidthSpace;[uuid] syntax. (Only NPC Actors can be embedded in this way currently; support for Objects and Retainers is planned)
+NPC Actors can be embedded into enriched text via the @Embed&ZeroWidthSpace;[uuid] syntax. (Only NPC and Object Actors can be embedded in this way currently; support for Companions and Retainers is planned)
 
 This embed displays similarly as the statblocks in the book and contains the same relevant information there:
 
@@ -163,14 +163,7 @@ The `[[potency]]` enricher allows you to construct enriched potency displays usi
 
 ## Summon
 
-The `[[/summon]]` enricher creates a button that will place a token in the current scene, performing any necessary imports.
-It is not possible to summon actors sourced from compendiums in a context with no summoner, e.g., in a Chat Message.
-- [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: Summon an Abyssal Hyena. World actors are also supported.
-- [&ZeroWidthSpace;[/summon actor=Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]]: You can specify the actor to summon.
-- [&ZeroWidthSpace;[/summon Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm count=3]]: You can summon more than one actor at a time by specifying the count.
-- [&ZeroWidthSpace;[/summon portfolio=call-forth]]: Perform a portfolio summon using the portfolio for the identified ability.
-- [&ZeroWidthSpace;[/summon portfolio=call-forth signatureOnly=true]]: Perform a portfolio summon but restrict to signature minions in the portfolio.
-- [&ZeroWidthSpace;[/summon Actor.5oS4rixqbIcsziNm summoner=Actor.k0hqADu4kFGzDQ9z]]: Specify an actor as the summoner by providing their UUID. Summoner should be a world actor.
+The `[[/summon]]` enricher creates a button that will place a token in the current scene, performing any necessary imports. For more details see [[Summoning]].
 
 ## HTML-mode to clean up text
 If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):

@@ -289,4 +289,3 @@ Ability modifiers support a far more limited set of keys, but still use the same
   - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
   - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
 - For `keyword`, use the "Add" change type with values like `magic` or `strike`
-
