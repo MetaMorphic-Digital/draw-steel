@@ -1,10 +1,9 @@
-import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
+import { damageTypes, extendedInteger, requiredInteger, setOptions } from "../helpers.mjs";
 import DamageRoll from "../../rolls/damage.mjs";
 import { DrawSteelChatMessage } from "../../documents/_module.mjs";
 
 import DrawSteelSystemModel from "../system-model.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { IMMUNITY_ALL } from "../../constants.mjs";
 import SizeModel from "../models/size.mjs";
 
 /**
@@ -76,7 +75,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     });
 
     schema.damage = new fields.SchemaField({
-      immunities: damageTypes(requiredInteger, { all: true, untyped: true }),
+      immunities: damageTypes(extendedInteger, { all: true, untyped: true }),
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
@@ -566,7 +565,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const immunities = Object.entries(this.damage.immunities)
       .filter(([damageType, value]) => value > 0)
       .map(([damageType, value]) => {
-        const amount = value >= IMMUNITY_ALL ? _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.allAmount") : value;
+        const amount = value === Infinity ? _loc("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.allAmount") : value;
         return `<span class="immunity">${labels[damageType]} ${amount}</span>`;
       });
     const weaknesses = Object.entries(this.damage.weaknesses)

@@ -1,4 +1,4 @@
-import { IMMUNITY_ALL, systemID, systemPath } from "../../constants.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import BaseActorModel from "./base-actor.mjs";
 import ObjectSizeModel from "../models/object-size.mjs";
 import SourceModel from "../models/source.mjs";
@@ -64,7 +64,7 @@ export default class ObjectModel extends BaseActorModel {
     // Objects have poison and psychic immunity all, unless the creation data already sets them
     const updates = {};
     for (const type of ["poison", "psychic"]) {
-      if (!foundry.utils.hasProperty(data, `system.damage.immunities.${type}`)) updates[`damage.immunities.${type}`] = IMMUNITY_ALL;
+      if (!foundry.utils.hasProperty(data, `system.damage.immunities.${type}`)) updates[`damage.immunities.${type}`] = null;
     }
     this.updateSource(updates);
   }
