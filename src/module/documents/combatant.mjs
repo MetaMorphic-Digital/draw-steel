@@ -35,6 +35,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
 
     // create a group for the combatants because the players can't
     if (operation.ds?.createGroup && game.user.isActiveGM) {
+      console.log(documents, operation, user);
       /** @type {DrawSteelActor} */
       const baseActor = documents.at(0).actor;
       const createData = {
@@ -46,8 +47,6 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
       };
       createData.name = DrawSteelCombatantGroup.defaultName({ type: createData.type, parent: operation.parent });
       if (baseActor.isMinion) foundry.utils.setProperty(createData, "system.staminaValue", documents.length * baseActor.system.stamina.max);
-
-      await DrawSteelCombatantGroup.create(createData, { parent: operation.parent });
 
       await foundry.documents.modifyBatch([{
         action: "create",
