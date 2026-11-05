@@ -989,6 +989,50 @@
           "perkType": [],
           "cost": null
         }
+      },
+      "MXM4sRQ2Ij1IXyRn": {
+        "sort": 0,
+        "name": "Skills",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "MXM4sRQ2Ij1IXyRn",
+        "description": "<p>You gain the Magic and Strategy skills</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": null,
+        "skills": {
+          "groups": [],
+          "choices": [
+            "magic",
+            "strategy"
+          ]
+        }
+      },
+      "NwhDJIkQbCQXXovE": {
+        "sort": 50000,
+        "name": "Skills",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "NwhDJIkQbCQXXovE",
+        "description": "<p>Choose any two skills from the intrigue or lore skill groups. (Quick Build: Eavesdrop, Magic, Monsters, Strategy.)</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "intrigue",
+            "lore"
+          ],
+          "choices": []
+        }
       }
     },
     "level": 0,
@@ -1014,7 +1058,7 @@
   },
   "flags": {},
   "_stats": {
-    "coreVersion": "14.369",
+    "coreVersion": "14.370",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
     "createdTime": 1788440855105,
