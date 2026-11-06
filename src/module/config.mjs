@@ -1821,7 +1821,7 @@ const abilityDistances = {
     primary: "DRAW_STEEL.Item.ability.Distance.Squares",
     secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
     area: {
-      type: "rectangle",
+      type: "grid",
       count: "primary",
     },
     embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Wall",

@@ -3,7 +3,7 @@ import ActorChoiceAdvancement from "./actor-choice-advancement.mjs";
 /**
  * @import { ActorChoice } from "./_types";
  * @import { CompanionSummon } from "../../actor/_types";
- * @import { DrawSteelActor } from "../../../documents/_module.mjs";
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
  */
 
 /**
@@ -69,6 +69,7 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
   /**
    * Summons a hero's companion, adding in appropriate items.
    * @param {DrawSteelActor} hero
+   * @returns {DrawSteelTokenDocument} The summoned companion, or null if none were placed.
    */
   static async performSummon(hero) {
     const companions = game.actors.filter(a => (a.type === "companion") && (a.system.companion.master === hero));
@@ -94,6 +95,12 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
 
     const companionAbilities = hero.itemTypes.ability.filter(i => i.system.keywords.has("companion"));
 
-    return ds.utils.performSummon(companionUuid, hero, { items: companionAbilities });
+    const tokens = await ds.utils.performSummon(companionUuid, hero, { items: companionAbilities });
+
+    if (tokens?.length) {
+      const token = tokens.at(0);
+      await token.baseActor.update({ "system.companion.master": hero.id });
+      return token;
+    } else return null;
   }
 }

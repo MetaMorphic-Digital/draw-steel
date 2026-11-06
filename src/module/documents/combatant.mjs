@@ -35,6 +35,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
 
     // create a group for the combatants because the players can't
     if (operation.ds?.createGroup && game.user.isActiveGM) {
+      console.log(documents, operation, user);
       /** @type {DrawSteelActor} */
       const baseActor = documents.at(0).actor;
       const createData = {
@@ -46,8 +47,6 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
       };
       createData.name = DrawSteelCombatantGroup.defaultName({ type: createData.type, parent: operation.parent });
       if (baseActor.isMinion) foundry.utils.setProperty(createData, "system.staminaValue", documents.length * baseActor.system.stamina.max);
-
-      await DrawSteelCombatantGroup.create(createData, { parent: operation.parent });
 
       await foundry.documents.modifyBatch([{
         action: "create",
@@ -129,6 +128,9 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
   refreshCombatant() {
     this.token?.object?.renderFlags.set({ refreshBars: true });
     // refresh any rendered sheets but only if the current user has permission to have it rendered anyways
-    if (this.actor?.sheet.isVisible) this.actor.sheet.render({ parts: ["stats", "body"] });
+    if (this.actor?.sheet.isVisible) {
+      if (this.actor.sheet.parts?.stats) this.actor.sheet.render({ parts: ["stats"] });
+      else if (this.actor.sheet.parts?.body) this.actor.sheet.render({ parts: ["body"] });
+    }
   }
 }

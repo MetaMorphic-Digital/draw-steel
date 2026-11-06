@@ -75,7 +75,7 @@
           "level": 1
         },
         "_id": "cZxcuMLQNTzmNvJc",
-        "description": "",
+        "description": "<p>You gain the following abilities.</p>",
         "repick": {
           "respite": ""
         },
@@ -353,7 +353,7 @@
             "uuid": "Compendium.draw-steel.abilities.Item.mmE5hWF4wBr7hZOK"
           }
         ],
-        "chooseN": null,
+        "chooseN": 1,
         "additional": {
           "type": "",
           "perkType": [],
@@ -369,7 +369,7 @@
           "level": 4
         },
         "_id": "ZGBp62gKmIagViDN",
-        "description": "",
+        "description": "<p>Your Reason score becomes 3. Additionally, you can increase one of your characteristic scores by 1, to a maximum score of 3.</p>",
         "repick": {
           "respite": ""
         },
@@ -622,7 +622,7 @@
           "level": 7
         },
         "_id": "TuDsXEaCOGE0b3BI",
-        "description": "",
+        "description": "<p>All of your characteristics increase by 1, to a maximum score of 4.</p>",
         "repick": {
           "respite": ""
         },
@@ -989,6 +989,50 @@
           "perkType": [],
           "cost": null
         }
+      },
+      "MXM4sRQ2Ij1IXyRn": {
+        "sort": 0,
+        "name": "Skills",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "MXM4sRQ2Ij1IXyRn",
+        "description": "<p>You gain the Magic and Strategy skills</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": null,
+        "skills": {
+          "groups": [],
+          "choices": [
+            "magic",
+            "strategy"
+          ]
+        }
+      },
+      "NwhDJIkQbCQXXovE": {
+        "sort": 50000,
+        "name": "Skills",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "NwhDJIkQbCQXXovE",
+        "description": "<p>Choose any two skills from the intrigue or lore skill groups. (Quick Build: Eavesdrop, Magic, Monsters, Strategy.)</p>",
+        "repick": {
+          "respite": ""
+        },
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "intrigue",
+            "lore"
+          ],
+          "choices": []
+        }
       }
     },
     "level": 0,
@@ -1014,7 +1058,7 @@
   },
   "flags": {},
   "_stats": {
-    "coreVersion": "14.369",
+    "coreVersion": "14.370",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
     "createdTime": 1788440855105,

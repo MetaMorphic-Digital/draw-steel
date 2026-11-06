@@ -406,12 +406,19 @@
         "effects": {
           "before0000000000": {
             "_id": "before0000000000",
-            "type": "base",
+            "type": "summon",
             "description": "<p>Two @UUID[Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm]{abyssal hyenas} claw up from the ground in unoccupied spaces within distance.</p>",
             "before": true,
             "name": "",
             "img": null,
-            "sort": 0
+            "sort": 0,
+            "summoning": {
+              "pool": [
+                "Compendium.draw-steel.monsters.Actor.5oS4rixqbIcsziNm"
+              ],
+              "count": 2,
+              "items": []
+            }
           }
         },
         "prerequisites": {
@@ -428,9 +435,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.365",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1779886284822
@@ -485,12 +492,19 @@
         "effects": {
           "after00000000000": {
             "_id": "after00000000000",
-            "type": "base",
+            "type": "summon",
             "description": "<p>One abyssal hyena target turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder}, keeping their current Stamina. If any target hasn't used their own Cackletongue maneuver on this turn, they can use it immediately at no cost.</p>",
             "name": "",
             "img": null,
             "sort": 0,
-            "before": false
+            "before": false,
+            "summoning": {
+              "pool": [
+                "Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk"
+              ],
+              "count": 1,
+              "items": []
+            }
           }
         },
         "prerequisites": {
@@ -507,9 +521,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.365",
+        "coreVersion": "14.369",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1779886284822

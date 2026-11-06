@@ -8,6 +8,7 @@ Start by checking out the [[Frequently Asked Questions]]; more information can b
 
 ## Documents
 * [[Actors]]
+  * [[Summoning]]
 * [[Items]]
   * [[Advancements]]
   * [[Power Roll Effects]]

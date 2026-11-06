@@ -58,6 +58,20 @@ The system automatically generates Malice at the start of each round of combat b
 
 All NPC actors share a malice pool. Any ability that has a Resource Cost listed will consume Malice if activated from an NPC actor sheet.
 
+## Retainers
+
+Retainers are followers who assist heroes in combat. Retainers have a generic "Retainer Class" that handles their progression, providing characteristic increases and ability choices. Custom retainers must add in Item Grant advancements to handle the ability choices.
+
+You can set a Retainer's mentor from the Retainer Metadata form that can be opened in the header. This links them to the hero they share Surges and other bonuses with.
+
+## Objects
+
+Object actors represent non-living objects, both for mundane purposes like wagons as well as Dynamic Terrain Objects with specific abilities and traits.
+
+## Companions
+
+Companions are a unique form of actor that support the Beastheart class. Companions have a generic "Beastheart Companion" class that handles their progression, providing characteristic increases and new features. Custom companions must add in the Item Grant advancements to handle their unique features.
+
 ## Free Strikes
 
 The Free Strike button on an NPC automatically applies the damage to *targeted* actors.
