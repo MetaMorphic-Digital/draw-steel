@@ -20,6 +20,10 @@
 
 ## 1.2.1
 
+### Added
+
+- Added `system.keywords` as a singular getter for actor keywords if available. (#2249)
+
 ### Fixed
 
 - Updated Player-Facing Compendium Content:

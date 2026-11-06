@@ -97,6 +97,13 @@ export default class NPCModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  get keywords() {
+    return this.monster.keywords;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   get isMinion() {
     return this.monster.organization === "minion";
   }

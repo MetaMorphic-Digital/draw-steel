@@ -219,6 +219,16 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
+   * The actor's keywords. Null if they don't have any.
+   * @type {Set<string> | null}
+   */
+  get keywords() {
+    return null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Is this actor a minion?
    * @returns {boolean}
    */
