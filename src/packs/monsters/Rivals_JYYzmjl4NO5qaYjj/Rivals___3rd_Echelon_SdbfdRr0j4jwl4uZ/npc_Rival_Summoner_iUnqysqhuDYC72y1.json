@@ -207,7 +207,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The summoner can command up to two squads of minions with a maximum of 4 minions per squad. They can only have one squad of signature minions active at any time. At the start of each of the summoner's turns, up to three <strong>skeletons</strong> appear in unoccupied spaces within 5 squares of the summoner. On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p><ul><li><p>[[/summon Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I]]{Skeleton - 1 Malice Per Minion}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.lsWE4HI1WhRRBzB5 count=2]]{Zombie Lumberer - 2 Malice for 2 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.xmjmw0lSTaq2YAEF count=3]]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.summons.Actor.2HrcTgdAhJehXLPX count=2]]{False Vampire - 6 Malice for 2 Minions}</p></li></ul>",
+          "value": "<p>The summoner can command up to two squads of minions with a maximum of 4 minions per squad. They can only have one squad of signature minions active at any time. At the start of each of the summoner's turns, up to [[/summon Compendium.draw-steel.monsters.Actor.5myyPHT9IQGsnScK]]{three skeletons} appear in unoccupied spaces within 5 squares of the summoner. On each of the summoner's turns, they direct the squad of skeletons to move and use a main action.</p>",
           "director": ""
         },
         "source": {
@@ -226,7 +226,7 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.369",
+        "coreVersion": "14.370",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790005729985,
@@ -342,6 +342,19 @@
             "_id": "2d7n83gI5DqpOTFB",
             "description": "<p>The summoner summons the listed number of minions for their Malice cost into unoccupied spaces within distance. If the minions are a part of a new squad, the summoner directs the squad to move and use a main action on each of their turns.</p>",
             "before": false
+          },
+          "r7Tgp04AP4oAzkxl": {
+            "sort": 200000,
+            "name": "",
+            "img": null,
+            "type": "spend",
+            "_id": "r7Tgp04AP4oAzkxl",
+            "description": "<ul><li><p>[[/summon Compendium.draw-steel.monsters.Actor.5myyPHT9IQGsnScK]]{Skeleton - 1 Malice Per Minion}</p></li><li><p>[[/summon Compendium.draw-steel.monsters.Actor.7kJG26SyHsOVOmqr count=2]]{Zombie Lumberer - 2 Malice for 2 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.monsters.Actor.keiPEQFgT0ojoy5g count=3]]{Ceaseless Mourning - 4 Malice for 3 Minions}</p></li><li><p>[[/summon Compendium.draw-steel.monsters.Actor.2HrcTgdAhJehXLPX count=2]]{False Vampire - 6 Malice for 2 Minions}</p></li></ul>",
+            "before": false,
+            "resource": {
+              "value": 1,
+              "multiple": true
+            }
           }
         }
       },
@@ -350,7 +363,7 @@
       "effects": [],
       "flags": {},
       "_stats": {
-        "coreVersion": "14.369",
+        "coreVersion": "14.370",
         "systemId": "draw-steel",
         "systemVersion": "1.2",
         "createdTime": 1790005895316,
