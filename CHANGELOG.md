@@ -18,6 +18,16 @@
 ### Known Issues
 -->
 
+## 1.2.1
+
+### Fixed
+
+- Updated Player-Facing Compendium Content:
+  - Added skill advancements, removed extraneous Item Grant for Summoner. (#2247)
+- Fixed high ground not discounting flying. (#2250)
+- Skip defeated tokens for adjacent enemies. (#2251)
+- Fixed erroneous warnings about sheet parts when combatant squads are updated.
+
 ## 1.2.0
 
 Increased foundry minimum to 14.370.
