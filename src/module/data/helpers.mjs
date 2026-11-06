@@ -2,7 +2,7 @@
  * @import { StringFieldOptions } from "@common/data/_types.mjs";
  */
 
-const { NumberField, SchemaField, StringField } = foundry.data.fields;
+const { ExtendedNumberField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * Constructs a number field that is always a number with a min of 0.
@@ -15,6 +15,17 @@ const { NumberField, SchemaField, StringField } = foundry.data.fields;
  * @returns A number field that is non-nullable and always defined.
  */
 export const requiredInteger = ({ initial = 0, min = 0, max, label, persisted = true } = {}) => new NumberField({ initial, label, min, max, persisted, required: true, nullable: false, integer: true });
+
+/* -------------------------------------------------- */
+
+/**
+ * Constructs an integer field with a min of 0 where null stands for Infinity.
+ * @param {object} [options] Options to forward to the field.
+ * @param {number} [options.initial=0]  The initial value for the field.
+ * @param {string} [options.label]      Label for the field.
+ * @returns A nullable number field that initializes null as Infinity.
+ */
+export const extendedInteger = ({ initial = 0, label } = {}) => new ExtendedNumberField({ initial, label, min: 0, required: true, nullable: true, integer: true });
 
 /* -------------------------------------------------- */
 
@@ -38,12 +49,13 @@ export const setOptions = (options) => new StringField({ required: true, blank: 
  * @param {DamageTypeCallback} inner Callback that returns a field.
  * @returns A Schema with entries for each damage type.
  */
-export const damageTypes = (inner, { all = false } = {}) => {
+export const damageTypes = (inner, { all = false, untyped = false } = {}) => {
   const schema = {};
   const config = ds.CONFIG;
 
   if (all) schema.all = inner();
   Object.entries(config.damageTypes).forEach(([type, value]) => schema[type] = inner({ label: value.label }));
+  if (untyped) schema.untyped = inner();
 
   return new SchemaField(schema);
 };
