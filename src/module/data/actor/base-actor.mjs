@@ -219,11 +219,12 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
-   * The actor's keywords. Null if they don't have any.
-   * @type {Set<string> | null}
+   * The actor's keywords; a fresh set from the actual prepared data.
+   * Returns an empty set if the actor subtype does not have keywords (e.g. heroes).
+   * @type {Set<string>}
    */
   get keywords() {
-    return null;
+    return new Set();
   }
 
   /* -------------------------------------------------- */

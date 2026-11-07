@@ -164,7 +164,7 @@ export default class RetainerModel extends CreatureModel {
 
   /** @inheritdoc */
   get keywords() {
-    return this.retainer.keywords;
+    return new Set(this.retainer.keywords);
   }
 
   /* -------------------------------------------------- */

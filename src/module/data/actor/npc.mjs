@@ -98,7 +98,7 @@ export default class NPCModel extends CreatureModel {
 
   /** @inheritdoc */
   get keywords() {
-    return this.monster.keywords;
+    return new Set(this.monster.keywords);
   }
 
   /* -------------------------------------------------- */

@@ -147,7 +147,7 @@ export default class CompanionModel extends CreatureModel {
 
   /** @inheritdoc */
   get keywords() {
-    return this.companion.keywords;
+    return new Set(this.companion.keywords);
   }
 
   /* -------------------------------------------------- */
