@@ -66,15 +66,13 @@ export async function enricher(match, options) {
       continue;
     }
 
-    if (!Number.isNumeric(normalizedValue)) {
-      // Canonical Statuses
-      const status = CONFIG.statusEffects[normalizedValue];
-      if (status) {
-        linkConfig.type = "status";
-        linkConfig.status = status.id;
-        parsedConfig.name ||= status.name;
-        continue;
-      }
+    // Canonical Statuses. CONFIG.statusEffects is still an array so need to check against numeric keys.
+    const status = CONFIG.statusEffects[normalizedValue];
+    if (status && !Number.isNumeric(normalizedValue)) {
+      linkConfig.type = "status";
+      linkConfig.status = status.id;
+      parsedConfig.name ||= status.name;
+      continue;
     }
 
     // Possibly relative UUID
