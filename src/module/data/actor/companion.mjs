@@ -143,6 +143,15 @@ export default class CompanionModel extends CreatureModel {
     return this.class?.system.level ?? 0;
   }
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  get keywords() {
+    return new Set(this.companion.keywords);
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Returns if this actor can level up.
    * @type {boolean}
