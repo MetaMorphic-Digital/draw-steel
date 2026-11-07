@@ -303,57 +303,6 @@
                 }
               },
               "sort": 0
-            },
-            "fHPyT3awjByCY3YV": {
-              "name": "Bleeding and Slowed",
-              "img": null,
-              "type": "applied",
-              "_id": "fHPyT3awjByCY3YV",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "oLzaICx93mvSpPdG": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "4",
-                    "characteristic": "might"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "oLzaICx93mvSpPdG": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "4",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "oLzaICx93mvSpPdG": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "4",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "sort": 0
             }
           }
         },
@@ -375,7 +324,7 @@
               "value": 2,
               "multiple": false
             },
-            "description": "<p>Each target who has M &lt; 4 is bleeding and slowed (save ends).</p>",
+            "description": "<p>Each target who has [[potency M 4]] is [[/apply oLzaICx93mvSpPdG save]]{bleeding and slowed (save ends)}.</p>",
             "name": "",
             "img": null,
             "before": false
