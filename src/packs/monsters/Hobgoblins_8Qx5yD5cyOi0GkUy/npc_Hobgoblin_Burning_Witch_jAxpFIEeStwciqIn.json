@@ -297,7 +297,7 @@
               "value": 2,
               "multiple": false
             },
-            "description": "<p>Each target who has P &lt; 2 is weakened (save ends). Any enemy who starts their turn within 3 squares of a target weakened this way and who has P &lt; 2 is weakened (save ends).</p>",
+            "description": "<p>Each target who has [[potency P 2]] is [[/apply EpVjScSfkKtHd4Wv save]]. Any enemy who starts their turn within 3 squares of a target weakened this way and who has [[potency P 2]] is [[/apply weakened save]].</p>",
             "name": "",
             "img": null,
             "before": false
@@ -309,7 +309,61 @@
           "level": null
         }
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Burnt Soul",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.jAxpFIEeStwciqIn.Item.hipbBo3j0J6LLyMr",
+          "transfer": false,
+          "_id": "EpVjScSfkKtHd4Wv",
+          "system": {
+            "changes": [],
+            "end": {
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "project": {
+              "prerequisites": "",
+              "source": "",
+              "rollCharacteristic": [],
+              "yield": {
+                "kind": "weapon",
+                "amount": "1",
+                "display": ""
+              }
+            }
+          },
+          "disabled": false,
+          "start": null,
+          "duration": {
+            "value": null,
+            "units": "seconds",
+            "expiry": null,
+            "expired": false
+          },
+          "description": "<p>Any enemy who starts their turn within 3 squares of a target weakened this way and who has [[potency P 2]] is [[/apply weakened save]].</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "weakened"
+          ],
+          "showIcon": 1,
+          "folder": null,
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "coreVersion": "14.370",
+            "systemId": "draw-steel",
+            "systemVersion": "1.2",
+            "createdTime": 1794061459306,
+            "modifiedTime": 1794061488266,
+            "lastModifiedBy": null,
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null
+          },
+          "_key": "!actors.items.effects!jAxpFIEeStwciqIn.hipbBo3j0J6LLyMr.EpVjScSfkKtHd4Wv"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -317,9 +371,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "14.365",
+        "coreVersion": "14.370",
         "systemId": "draw-steel",
-        "systemVersion": "1.1.0",
+        "systemVersion": "1.2",
         "lastModifiedBy": null,
         "modifiedTime": null,
         "createdTime": 1778620833439

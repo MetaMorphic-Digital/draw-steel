@@ -265,108 +265,6 @@
                 }
               },
               "sort": 0
-            },
-            "47fy0B9VAJjs8hni": {
-              "name": "Corruption Weakness 5",
-              "img": null,
-              "type": "applied",
-              "_id": "47fy0B9VAJjs8hni",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "4DwuSoiqBEFoV7pg": {
-                      "condition": "always",
-                      "end": "turn",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "4DwuSoiqBEFoV7pg": {
-                      "condition": "always",
-                      "end": "turn",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "4DwuSoiqBEFoV7pg": {
-                      "condition": "always",
-                      "end": "turn",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "sort": 0
-            },
-            "MyLx05xNoRoUrG1V": {
-              "name": "Corruption Weakness Save Ends",
-              "img": null,
-              "type": "applied",
-              "_id": "MyLx05xNoRoUrG1V",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "Q6ud29n1b4LtoEA4": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "intuition"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "Q6ud29n1b4LtoEA4": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "intuition"
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "Q6ud29n1b4LtoEA4": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "intuition"
-                  }
-                }
-              },
-              "sort": 0
             }
           }
         },
@@ -388,7 +286,7 @@
               "value": 2,
               "multiple": false
             },
-            "description": "<p>If the target has i&lt;2, they have corruption weakness 5  (save ends).</p>",
+            "description": "<p>If the target has [[potency i 2]], they have [[/apply 4DwuSoiqBEFoV7pg save]]{corruption weakness 5 (save ends)}.</p>",
             "name": "",
             "img": null,
             "before": false
@@ -396,7 +294,7 @@
           "after00000000000": {
             "_id": "after00000000000",
             "type": "base",
-            "description": "<p>The target has corruption weakness 5 (EoT).</p>",
+            "description": "<p>The target has [[/apply 4DwuSoiqBEFoV7pg turn]]{corruption weakness 5 (EoT)}.</p>",
             "name": "",
             "img": null,
             "sort": 0,
@@ -413,7 +311,6 @@
         {
           "name": "Corruption Weakness (EoT)",
           "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
-          "origin": "Actor.IOIpHzznehQjGL7o.Item.4RO7XgAVkS45CD0T",
           "transfer": false,
           "_id": "4DwuSoiqBEFoV7pg",
           "type": "base",
@@ -468,65 +365,6 @@
           "showIcon": 1,
           "folder": null,
           "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T.4DwuSoiqBEFoV7pg"
-        },
-        {
-          "name": "Corruption Weakness (Save Ends)",
-          "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
-          "origin": "Actor.IOIpHzznehQjGL7o.Item.4RO7XgAVkS45CD0T",
-          "transfer": false,
-          "_id": "Q6ud29n1b4LtoEA4",
-          "type": "base",
-          "system": {
-            "end": {
-              "roll": "1d10 + @combat.save.bonus"
-            },
-            "changes": [
-              {
-                "key": "system.damage.weaknesses.corruption",
-                "value": 5,
-                "priority": null,
-                "type": "upgrade",
-                "phase": "initial"
-              }
-            ],
-            "project": {
-              "prerequisites": "",
-              "source": "",
-              "rollCharacteristic": [],
-              "yield": {
-                "kind": "weapon",
-                "amount": "1",
-                "display": ""
-              }
-            }
-          },
-          "disabled": false,
-          "duration": {
-            "value": null,
-            "units": "seconds",
-            "expiry": null,
-            "expired": false
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "14.362",
-            "systemId": "draw-steel",
-            "systemVersion": "1.1.0",
-            "lastModifiedBy": null,
-            "createdTime": 1779886286957,
-            "modifiedTime": 1779886286957
-          },
-          "start": null,
-          "showIcon": 1,
-          "folder": null,
-          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T.Q6ud29n1b4LtoEA4"
         }
       ],
       "folder": null,

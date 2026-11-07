@@ -29,11 +29,14 @@
 - Updated Player-Facing Compendium Content:
   - Added skill advancements, removed extraneous Item Grant for Summoner. (#2247)
   - Flipped token disposition of summons to be Friendly.
+  - Fixed potency enricher use in Rout, Overwatch
 - Updated Director-Facing Compendium Content:
   - Split rival summoner summons to be separate from the player summons.
+  - Fixed potency enricher usage in the Ajax, Angulotl Needler, Bale Eye, Dorzinuuth the Base, Thorn Dragon, Essence of Tides, War Spider, Hobgoblin Burning Witch, Ogre Juggernaut, Olothec, Rival Fury, War Dog Ground Commander, Taxiarch, Logostician Vesper, and Werewolf
 - Fixed high ground not discounting flying. (#2250)
 - Skip defeated tokens for adjacent enemies. (#2251)
 - Fixed erroneous warnings about sheet parts when combatant squads are updated.
+- Fixed a bug where passing a number to the `/apply` enricher would return an arbitrary status instead of failing to find.
 
 ## 1.2.0
 

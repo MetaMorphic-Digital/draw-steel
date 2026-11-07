@@ -318,56 +318,6 @@
                 }
               },
               "sort": 0
-            },
-            "9zBpmWpDVZDE3atd": {
-              "name": "Slowed",
-              "img": null,
-              "type": "applied",
-              "_id": "9zBpmWpDVZDE3atd",
-              "applied": {
-                "tier1": {
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "sort": 0
             }
           }
         },
@@ -380,7 +330,7 @@
               "value": 2,
               "multiple": false
             },
-            "description": "<p>Each target who has m&lt;1 is slowed (save ends).</p>",
+            "description": "<p>Each target who has [[potency m 1]] is [[/apply slowed save]].</p>",
             "name": "",
             "img": null,
             "before": false

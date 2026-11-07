@@ -66,13 +66,15 @@ export async function enricher(match, options) {
       continue;
     }
 
-    // Canonical Statuses
-    const status = CONFIG.statusEffects[normalizedValue];
-    if (status) {
-      linkConfig.type = "status";
-      linkConfig.status = status.id;
-      parsedConfig.name ||= status.name;
-      continue;
+    if (!Number.isNumeric(normalizedValue)) {
+      // Canonical Statuses
+      const status = CONFIG.statusEffects[normalizedValue];
+      if (status) {
+        linkConfig.type = "status";
+        linkConfig.status = status.id;
+        parsedConfig.name ||= status.name;
+        continue;
+      }
     }
 
     // Possibly relative UUID
