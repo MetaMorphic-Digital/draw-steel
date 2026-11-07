@@ -28,6 +28,9 @@
 
 - Updated Player-Facing Compendium Content:
   - Added skill advancements, removed extraneous Item Grant for Summoner. (#2247)
+  - Flipped token disposition of summons to be Friendly.
+- Updated Director-Facing Compendium Content:
+  - Split rival summoner summons to be separate from the player summons.
 - Fixed high ground not discounting flying. (#2250)
 - Skip defeated tokens for adjacent enemies. (#2251)
 - Fixed erroneous warnings about sheet parts when combatant squads are updated.
