@@ -800,7 +800,7 @@ export default class AbilityModel extends BaseItemModel {
       // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
       if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("fly"))) modifiers.edges += 1;
       // Ranged Distraction check
-      if (this.keywords.has("ranged") && this.keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
+      if ((this.damageDisplay == "ranged") && this.keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
