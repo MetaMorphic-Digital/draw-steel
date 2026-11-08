@@ -2,6 +2,7 @@ import { extractPack } from "@foundryvtt/foundryvtt-cli";
 import { promises as fs } from "fs";
 import path from "path";
 
+// eslint-disable-next-line no-undef
 const SYSTEM_ID = process.cwd();
 const yaml = false;
 const expandAdventures = false;
@@ -82,7 +83,7 @@ async function transformEntry(entry) {
     const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
 
     // re-route in-game asset links to wiki image links
-    const mdContent = jep.text.markdown.replaceAll("systems/draw-steel/assets/docs", "https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs");
+    const mdContent = (jep.text.markdown ?? "").replaceAll("systems/draw-steel/assets/docs", "https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs");
 
     await fs.writeFile(docsPath, mdContent, { encoding: "utf8" });
     jep.text = { format: 2 };

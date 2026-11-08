@@ -30,6 +30,7 @@ declare module "./summon-effect.mjs" {
     summoning: {
       pool: Set<string>;
       count: number;
+      items: Set<string>;
     }
   }
 }

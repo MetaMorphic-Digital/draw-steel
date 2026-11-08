@@ -1,6 +1,8 @@
 /**
  * @import { DatabaseWriteOperation } from "@common/abstract/_types.mjs";
  * @import EmbeddedCollection from "@common/abstract/embedded-collection.mjs";
+ * @import ModelCollection from "./model-collection.mjs";
+ * @import PseudoDocument from "../data/pseudo-documents/pseudo-document.mjs";
  */
 
 /**
@@ -74,10 +76,21 @@ export default async function updateFromCompendium(doc, options = {}) {
 
 /**
  * Produces a data object for updating a document to match its compendium version.
- * @param {foundry.abstract.Document} doc
+ * @param {foundry.abstract.Document} doc The compendium document.
  */
 function compendiumUpdateData(doc) {
   const documentData = doc.toObject();
+  /** @type {Record<string, ModelCollection<PseudoDocument>>} */
+  const modelCollections = doc.pseudoCollections;
+  if (modelCollections) {
+    for (const collection of Object.values(modelCollections)) {
+      for (const pseudo of collection) {
+        const dataPath = `${pseudo.fieldPath}.${pseudo.id}`;
+        const pseudoData = foundry.utils.getProperty(documentData, dataPath);
+        foundry.utils.setProperty(documentData, dataPath, _replace(pseudoData));
+      }
+    }
+  }
   switch (doc.documentName) {
     case "Actor":
     case "Item":

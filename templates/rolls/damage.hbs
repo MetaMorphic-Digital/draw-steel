@@ -13,7 +13,11 @@
         data-tooltip="{{tooltipPath}}"
         data-index="{{rollIndex}}"
       >
+        {{#if typeColor}}
+        <i class="{{buttonIcon}} damage-type-icon" style="--damage-type-color: {{typeColor}}" inert></i>
+        {{else}}
         <i class="{{buttonIcon}}" inert></i>
+        {{/if}}
         {{total}}
       </button>
       {{else}}

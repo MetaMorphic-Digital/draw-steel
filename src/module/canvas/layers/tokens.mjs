@@ -1,6 +1,6 @@
 /**
- * @import {TokenData} from "@common/documents/_types.mjs"
- * @import {DrawSteelActor, DrawSteelTokenDocument} from "../../documents/_module.mjs";
+ * @import { ActorData, TokenData } from "@common/documents/_types.mjs"
+ * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
 /**
@@ -60,7 +60,13 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
     if (tokenDocument.actorLink) {
       const { effects, items, ...rest } = actorUpdates;
       await tokenDocument.actor.update(rest);
-      await tokenDocument.actor.updateEmbeddedDocuments("Item", items ?? []);
+
+      const { newItems = [], oldItems = [] } = Object.groupBy(items ?? [], item => {
+        return tokenDocument.actor.items.get(item._id) ? "oldItems" : "newItems";
+      });
+
+      await tokenDocument.actor.updateEmbeddedDocuments("Item", oldItems);
+      await tokenDocument.actor.createEmbeddedDocuments("Item", newItems, { keepId: true });
 
       const { newEffects = [], oldEffects = [] } = Object.groupBy(effects ?? [], effect => {
         return tokenDocument.actor.effects.get(effect._id) ? "oldEffects" : "newEffects";

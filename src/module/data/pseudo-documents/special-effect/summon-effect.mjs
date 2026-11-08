@@ -27,6 +27,7 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
       summoning: new SchemaField({
         pool: new SetField(new DocumentUUIDField({ type: "Actor", embedded: false })),
         count: requiredInteger({ initial: 1, min: 1 }),
+        items: new SetField(new DocumentUUIDField({ type: "Item", embedded: false })),
       }),
     });
   }
@@ -93,6 +94,8 @@ export default class SummonSpecialEffect extends BaseSpecialEffect {
       summonUuid = fd.uuid;
     }
 
-    return this.parent.performSummon(summonUuid, { count: this.summoning.count });
+    const additionalItems = await Promise.all(this.summoning.items.map(uuid => fromUuid(uuid)));
+
+    return this.parent.performSummon(summonUuid, { count: this.summoning.count, items: additionalItems.filter(_ => _) });
   }
 }

@@ -2,7 +2,10 @@
 <div class="message-part-flavor">{{ctx.flavor}}</div>
 {{/if}}
 <div class="message-part-rolls">
-  <p>{{ctx.fallWarning}}</p>
+  <div class="message-part-header">
+    <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="resultPartContext"></a>
+    <p>{{ctx.fallWarning}}</p>
+  </div>
   {{#each ctx.rolls}}{{{this}}}{{/each}}
 </div>
 {{#if ctx.buttons}}

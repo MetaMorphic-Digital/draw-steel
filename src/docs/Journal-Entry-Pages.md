@@ -146,4 +146,4 @@ The "class-spread" block and its descendant elements puts together a contained i
 </aside>
 ```
 
-The "aside.malice" element and class provides a gray-shaded block for displaying malice abilities and features.
+The "aside.malice" element and class provide a gray-shaded block for displaying malice abilities and features.

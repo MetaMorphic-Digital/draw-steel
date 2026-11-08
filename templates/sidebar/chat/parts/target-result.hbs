@@ -14,6 +14,12 @@
 {{/if}}
 <div class="message-part-rolls">
   {{#each ctx.rolls}}{{{this}}}{{/each}}
+  {{#if ctx.targetText}}
+  <dl class="power-roll-display">
+    <dt class="{{part.tierKey}}">{{ctx.tierSymbol}}</dt>
+    <dd>{{{ctx.targetText}}}</dd>
+  </dl>
+  {{/if}}
 </div>
 {{#if ctx.potency}}
 <div class="message-part-potency">

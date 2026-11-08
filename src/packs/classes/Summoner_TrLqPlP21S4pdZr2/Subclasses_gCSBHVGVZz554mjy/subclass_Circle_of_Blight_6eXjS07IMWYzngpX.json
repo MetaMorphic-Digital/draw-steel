@@ -25,7 +25,7 @@
           "level": 1
         },
         "_id": "aabSvlTjiSvww224",
-        "description": "",
+        "description": "<p>Select two of the following signature minions. Signature minions are summoned at the start of combat and at the start of your turn for free. You can also use Call Forth to summon any number of signature minions for their essence cost.</p>",
         "repick": {
           "respite": ""
         },
@@ -34,15 +34,15 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.4gzlvFuzEdD0ErSd",
-            "count": 2
+            "count": 1
           },
           {
             "uuid": "Compendium.draw-steel.summons.Actor.WiHk1bOLtubsWiZV",
-            "count": 2
+            "count": 1
           },
           {
             "uuid": "Compendium.draw-steel.summons.Actor.QOYeoaKgoueyh7aA",
-            "count": 2
+            "count": 1
           }
         ],
         "effects": [
@@ -74,7 +74,7 @@
           "level": 1
         },
         "_id": "mMzip4fvHRTxh6TO",
-        "description": "",
+        "description": "<p>Choose two of the following minions. You can use Call Forth to summon the listed number of 3-Essence minions for their essence cost.</p>",
         "repick": {
           "respite": ""
         },
@@ -123,8 +123,10 @@
           "level": 1
         },
         "_id": "V7BEbz3KmLte9Ijd",
-        "description": "",
-        "repick": {},
+        "description": "<p>Your circle grants you the following features.</p>",
+        "repick": {
+          "respite": ""
+        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.9tFUdZyXM1rYC5zN"
@@ -140,31 +142,8 @@
           "cost": null
         }
       },
-      "vhbKRrIJ5XdDGHVY": {
-        "sort": 400000,
-        "name": "Summoner's Dominion",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "vhbKRrIJ5XdDGHVY",
-        "description": "",
-        "repick": {},
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.b18SPv6xoCkQ8B69"
-          }
-        ],
-        "chooseN": null,
-        "additional": {
-          "type": "",
-          "perkType": [],
-          "cost": null
-        }
-      },
       "wPjTeFdz6ZrsFqAE": {
-        "sort": 500000,
+        "sort": 200000,
         "name": "5-Essence Minion",
         "img": "systems/draw-steel/assets/roles/minion.webp",
         "type": "summon",
@@ -172,12 +151,12 @@
           "level": 2
         },
         "_id": "wPjTeFdz6ZrsFqAE",
-        "description": "",
+        "description": "<p>Choose one of the following minions.</p>",
         "repick": {
           "respite": ""
         },
         "cost": 5,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.2zP3SJlyV58JzUt8",
@@ -221,8 +200,10 @@
           "level": 5
         },
         "_id": "ue85PcbNxZGX8eQX",
-        "description": "",
-        "repick": {},
+        "description": "<p>Your circle grants you the following features.</p>",
+        "repick": {
+          "respite": ""
+        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.t9UuZY6U3Urrqdc5"
@@ -247,12 +228,12 @@
           "level": 5
         },
         "_id": "HT7Nm7ey2WfZkDKt",
-        "description": "",
+        "description": "<p>Choose one of the following minions.</p>",
         "repick": {
           "respite": ""
         },
         "cost": 7,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.j8t7lDcmgdLYRliE",
@@ -292,8 +273,10 @@
           "level": 6
         },
         "_id": "ea7QY6Xal2SSQo5V",
-        "description": "",
-        "repick": {},
+        "description": "<p>You can translate yourself and your allies into the space that your minions come from, as if summoning in reverse. Your minions come from <strong>The Abyssal Waste</strong></p>",
+        "repick": {
+          "respite": ""
+        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.k4wWB8OMKPt6ImgP"
@@ -315,8 +298,10 @@
           "level": 8
         },
         "_id": "f2QDhmhqoi9ShqgY",
-        "description": "",
-        "repick": {},
+        "description": "<p>Your circle grants you a feature.</p>",
+        "repick": {
+          "respite": ""
+        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.pzwmgs2HDt2HvhhG"
@@ -338,12 +323,12 @@
           "level": 8
         },
         "_id": "8Sp0NpjmPtTlldw8",
-        "description": "",
+        "description": "<p>Your circle now allows you to add a champion to your portfolio.</p>",
         "repick": {
           "respite": ""
         },
         "cost": 9,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.YOSgMuboci7Tqotp",
@@ -364,7 +349,52 @@
             "level": 10
           }
         ],
-        "dsid": ""
+        "dsid": "",
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.VMT5U1KtDYeQN3qM",
+            "level": 10
+          }
+        ]
+      },
+      "TkxHtNKH9GcVLVzI": {
+        "sort": 300000,
+        "name": "Fixture - The Boil",
+        "img": null,
+        "type": "summon",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "TkxHtNKH9GcVLVzI",
+        "description": "<p>Your circle allows you to call forth a piece of your portfolio's dominion like any minion. The boil arises from the chaotic depths of the Abyssal Waste, concentrated into a heaving mass by the pressure of a coherent reality.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 0,
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.Gp4L6WwluGhd5olm",
+            "count": 1
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 9
+          }
+        ],
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.Ccie9z88OA56X3pm",
+            "level": 9
+          },
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.oO5R1tbuuYk8uqRu",
+            "level": 5
+          }
+        ],
+        "dsid": "summon-fixture"
       }
     },
     "classLink": "summoner"

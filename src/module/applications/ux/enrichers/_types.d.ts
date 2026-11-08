@@ -12,7 +12,7 @@ export interface SummonConfig {
   summoner: string;
   /** ID for the item that may be called upon to perform the summoning. */
   summonItem: string;
-  /** Roll formula for actors to summon. */
+  /** Roll formula for the number of actors to summon. */
   count: string;
   /** UUID for the document providing the enricher. */
   origin: string;
@@ -32,4 +32,8 @@ export interface PortfolioSummonConfig extends SummonConfig {
   signatureOnly: boolean;
 }
 
-export type AnySummonConfig = DirectSummonConfig | PortfolioSummonConfig;
+export interface CompanionSummonConfig extends SummonConfig {
+  type: "companion";
+}
+
+export type AnySummonConfig = DirectSummonConfig | PortfolioSummonConfig | CompanionSummonConfig;

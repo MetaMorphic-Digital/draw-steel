@@ -170,6 +170,15 @@
                 "label": "Summoner Level"
               }
             }
+          },
+          "items": {
+            "label": "Items Added On Summon",
+            "hint": "Actors summoned from this portfolio entry will be created with these items based on the summoner's level.",
+            "element": {
+              "level": {
+                "label": "Summoner Level"
+              }
+            }
           }
         }
       },
@@ -220,7 +229,8 @@
         "forbidParent": "Granted documents cannot be embedded in an actor.",
         "restrictedTypeSummon": "{type} actors cannot be added as summon choices.",
         "requirePackSummon": "Summonable Actors must come from a compendium pack.",
-        "requireStandaloneSummonEffect": "Effects for summoned actors must come from a compendium pack and not be embedded in another document."
+        "requireStandaloneSummonEffect": "Effects for summoned actors must come from a compendium pack and not be embedded in another document.",
+        "requireStandaloneSummonItem": "Items for summoned actors must come from a compendium pack and not be embedded in another document."
       },
       "FillTrait": {
         "button": "Pick Unchosen {type}",
@@ -501,7 +511,8 @@
         },
         "Summon": {
           "DirectLabel": "Summon {name}",
-          "PortfolioLabel": "Portfolio Summon"
+          "PortfolioLabel": "Portfolio Summon",
+          "CompanionLabel": "Companion Summon"
         }
       }
     },
@@ -2561,7 +2572,23 @@
           "Label": "Falling",
           "explain": "{victim} could fall {distance} Squares!",
           "takeFall": "Fall {distance} Squares",
-          "aftermath": "{victim} fell {distance} Squares, taking {damage} damage"
+          "aftermath": "{victim} fell {distance} Squares, taking {damage} damage",
+          "EffectiveFall": "Effective Fall: {distance} Squares",
+          "ContextMenuOptions": {
+            "ModifyFall": "Modify Fall ({distance} Squares)"
+          },
+          "ModifyFallDialog": {
+            "Title": "Modify Effective Fall",
+            "Agility": {
+              "label": "Agility Reduction",
+              "hint": "A falling creature can reduce the effective height of their fall by a number of squares equal to their Agility score (minimum 0).",
+              "prevented": "An effect prevents this creature from using their Agility here."
+            },
+            "AdditionalTerms": {
+              "label": "Additional Terms",
+              "hint": "Squares added to the effective fall, such as -4 for landing in liquid 1 square or more deep."
+            }
+          }
         },
         "savingThrow": {
           "Buttons": {

@@ -162,6 +162,13 @@ export default class RetainerModel extends CreatureModel {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  get keywords() {
+    return new Set(this.retainer.keywords);
+  }
+
+  /* -------------------------------------------------- */
+
   /**
      * Advance a given number of levels.
      * @param {object} [options={}]                           Options to modify the advancement of levels.

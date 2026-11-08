@@ -1,0 +1,66 @@
+<header>
+  <div class="flexrow image-name-keywords">
+    <img src="{{actor.img}}" alt="{{actor.name}}">
+    <div class="flexcol name-keywords">
+      <h2 class="name">
+        <a data-action="openSheet">{{actor.name}}</a>
+      </h2>
+      <div class="keywords">
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="flexcol level-ev">
+    <div class="level">
+      {{systemFields.object.fields.level.label}}
+      {{system.level}}
+      {{!-- Organization/Role Tags --}}
+      {{#if system.object.categoryLabel}}
+      {{system.object.categoryLabel}}
+      {{/if}}
+      {{#if system.object.roleLabel}}
+      {{system.object.roleLabel}}
+      {{/if}}
+    </div>
+    <div class="ev">
+      {{localize "DRAW_STEEL.Actor.base.EVLabel.Label"}}
+      {{system.evLabel}}
+    </div>
+  </div>
+</header>
+
+<section class="flexcol flavor">
+  <div>
+    {{{system.biography.value}}}
+  </div>
+</section>
+
+<section class="stats flexcol">
+  <div class="basic-stats flexrow">
+    <div class="size">
+      {{system.combat.size}}
+      <strong>{{systemFields.combat.fields.size.label}}</strong>
+    </div>
+    <div class="stamina">
+      {{system.stamina.maxLabel}}
+      <strong>{{systemFields.stamina.label}}</strong>
+    </div>
+  </div>
+
+  <div class="secondary-stats">
+    <div class="immunities">
+      <span class="label">{{systemFields.damage.fields.immunities.label}}:</span>
+      <span class="value">{{{ifThen damageIW.immunities damageIW.immunities "—"}}}</span>
+    </div>
+    <div class="weakness">
+      <span class="label">{{systemFields.damage.fields.weaknesses.label}}:</span>
+      <span class="value">{{{ifThen damageIW.weaknesses damageIW.weaknesses "—"}}}</span>
+    </div>
+  </div>
+
+  <ul class="item-embed-list">
+    {{#each itemEmbeds as |item|}}
+    <li class="{{item.icon}}">{{{item.outerHTML}}}</li>
+    {{/each}}
+  </ul>
+</section>

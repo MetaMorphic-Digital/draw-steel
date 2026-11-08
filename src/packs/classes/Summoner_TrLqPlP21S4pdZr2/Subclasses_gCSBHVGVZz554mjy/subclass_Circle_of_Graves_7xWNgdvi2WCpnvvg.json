@@ -25,7 +25,7 @@
           "level": 1
         },
         "_id": "3VYjkQbakHuBOrHn",
-        "description": "",
+        "description": "<p>Select two of the following signature minions. Signature minions are summoned at the start of combat and at the start of your turn for free. You can also use Call Forth to summon any number of signature minions for their essence cost.</p>",
         "repick": {
           "respite": ""
         },
@@ -34,15 +34,15 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.GT0yJpFZZ2gtM4he",
-            "count": 2
+            "count": 1
           },
           {
             "uuid": "Compendium.draw-steel.summons.Actor.0nKN4jqeroy5hNJ8",
-            "count": 2
+            "count": 1
           },
           {
             "uuid": "Compendium.draw-steel.summons.Actor.DJaSvLl2TYt3u04I",
-            "count": 2
+            "count": 1
           }
         ],
         "effects": [
@@ -74,7 +74,7 @@
           "level": 1
         },
         "_id": "4FwLqgiOkTSYXHDm",
-        "description": "",
+        "description": "<p>Your circle grants you the following features.</p>",
         "repick": {
           "respite": ""
         },
@@ -93,44 +93,21 @@
           "cost": null
         }
       },
-      "2XzZNBCtd5yMr0gh": {
-        "sort": 400000,
-        "name": "Summoner's Dominion",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "2XzZNBCtd5yMr0gh",
-        "description": "",
-        "repick": {},
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.b18SPv6xoCkQ8B69"
-          }
-        ],
-        "chooseN": null,
-        "additional": {
-          "type": "",
-          "perkType": [],
-          "cost": null
-        }
-      },
       "QFYRE60NA3vfXcKM": {
         "sort": 500000,
-        "name": "5-Essence Minion",
-        "img": null,
+        "name": "5-Essence Minions",
+        "img": "systems/draw-steel/assets/roles/minion.webp",
         "type": "summon",
         "requirements": {
           "level": 2
         },
         "_id": "QFYRE60NA3vfXcKM",
-        "description": "",
+        "description": "<p>Choose one of the following minions.</p>",
         "repick": {
           "respite": ""
         },
         "cost": 5,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.XFe92tDaWgokVdrS",
@@ -174,7 +151,7 @@
           "level": 5
         },
         "_id": "a3QtNhNWucFSPpy8",
-        "description": "",
+        "description": "<p>Your circle grants you the following features.</p>",
         "repick": {
           "respite": ""
         },
@@ -202,12 +179,12 @@
           "level": 5
         },
         "_id": "nbtgVR99SiniUtHY",
-        "description": "",
+        "description": "<p>Choose one of the following minions.</p>",
         "repick": {
           "respite": ""
         },
         "cost": 7,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.2HrcTgdAhJehXLPX",
@@ -247,8 +224,10 @@
           "level": 6
         },
         "_id": "0z0OdBU2BkNX8P2l",
-        "description": "",
-        "repick": {},
+        "description": "<p>You can translate yourself and your allies into the space that your minions come from, as if summoning in reverse. Your minions come from <strong>The</strong> <strong>Necropolitan Ruins.</strong></p>",
+        "repick": {
+          "respite": ""
+        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.k4wWB8OMKPt6ImgP"
@@ -270,8 +249,10 @@
           "level": 8
         },
         "_id": "ISJjINk5tyhnr8rB",
-        "description": "",
-        "repick": {},
+        "description": "<p>Your circle grants you a feature.</p>",
+        "repick": {
+          "respite": ""
+        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.wGshzs0Wiqtrwwww"
@@ -293,7 +274,7 @@
           "level": 1
         },
         "_id": "UHeLStIYZDWGvFhU",
-        "description": "",
+        "description": "<p>Choose two of the following minions. You can use Call Forth to summon the listed number of 3-Essence minions for their essence cost.</p>",
         "repick": {
           "respite": ""
         },
@@ -336,31 +317,84 @@
       "82UoykRlPacCrtE2": {
         "sort": 1000000,
         "name": "Portfolio Champion",
-        "img": null,
+        "img": "systems/draw-steel/assets/roles/leader.webp",
         "type": "summon",
         "requirements": {
           "level": 8
         },
         "_id": "82UoykRlPacCrtE2",
-        "description": "",
+        "description": "<p>Your circle now allows you to add a champion to your portfolio.</p>",
         "repick": {
           "respite": ""
         },
         "cost": 9,
-        "chooseN": 2,
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.summons.Actor.duRmSVWwxBMkbi6b",
-            "count": 2
+            "count": 1
           }
         ],
         "effects": [
           {
             "uuid": "Compendium.draw-steel.effects.ActiveEffect.ReHlXgTMuGkHB7p8",
-            "level": 1
+            "level": 8
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.bl3B4evudIgUltN2",
+            "level": 8
+          },
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 10
           }
         ],
-        "dsid": "call-forth"
+        "dsid": "call-forth",
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.EVSPCtqKBmU3GvV5",
+            "level": 10
+          }
+        ]
+      },
+      "Iijuyl8tjb7jaGKa": {
+        "sort": 1100000,
+        "name": "Fixture - Barrow Gate",
+        "img": null,
+        "type": "summon",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "Iijuyl8tjb7jaGKa",
+        "description": "<p>Your circle allows you to call forth a piece of your portfolio's dominion like any minion. Tall iron gates from the Necropolitan Ruins arise from the earth as wailing spirits swirl around its bars.</p>",
+        "repick": {
+          "respite": ""
+        },
+        "cost": 0,
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.summons.Actor.KRS9aAdcC5iCe1qg",
+            "count": 1
+          }
+        ],
+        "effects": [
+          {
+            "uuid": "Compendium.draw-steel.effects.ActiveEffect.odSOGT0uOlhBpBw6",
+            "level": 9
+          }
+        ],
+        "items": [
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.3VFg3ewffc7GRVxf",
+            "level": 5
+          },
+          {
+            "uuid": "Compendium.draw-steel.monster-features.Item.r0wIgunwWbbLYQoT",
+            "level": 9
+          }
+        ],
+        "dsid": "summon-fixture"
       }
     },
     "classLink": "summoner"

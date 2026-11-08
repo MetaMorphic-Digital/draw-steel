@@ -303,57 +303,6 @@
                 }
               },
               "sort": 0
-            },
-            "ZT1sIFviwp2ANeVV": {
-              "name": "Slowed",
-              "img": null,
-              "type": "applied",
-              "_id": "ZT1sIFviwp2ANeVV",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "might"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "sort": 0
             }
           }
         },
@@ -375,7 +324,7 @@
               "value": 2,
               "multiple": false
             },
-            "description": "<p>Each target who has M &lt; 2 is slowed (save ends).</p>",
+            "description": "<p>Each target who has [[potency m 2]] is [[/apply slowed save]].</p>",
             "name": "",
             "img": null,
             "before": false

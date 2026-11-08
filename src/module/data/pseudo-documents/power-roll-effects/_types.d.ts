@@ -1,4 +1,4 @@
-import DrawSteelItem from "../../../documents/item.mjs";
+import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
 
 declare module "./base-power-roll-effect.mjs" {
   export default interface BasePowerRollEffect {
@@ -23,6 +23,8 @@ export type PotencyChatOptions = {
 export type TextOptions = {
   /** An integer adjustment of the potency value, e.g. Surges. */
   potencyBonus?: number;
+  /** The targeted actor, whose own forced movement modifiers apply. */
+  target?: DrawSteelActor;
 };
 
 export type DamageSchema = {

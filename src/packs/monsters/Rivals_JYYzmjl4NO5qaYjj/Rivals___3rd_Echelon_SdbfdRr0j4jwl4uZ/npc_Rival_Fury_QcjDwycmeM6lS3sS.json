@@ -303,57 +303,6 @@
                 }
               },
               "sort": 0
-            },
-            "Cxt3nA0WAzJaVVOo": {
-              "name": "Bleeding and Slowed",
-              "img": null,
-              "type": "applied",
-              "_id": "Cxt3nA0WAzJaVVOo",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "t4ZjnG2PymvEJ6Zj": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "3",
-                    "characteristic": "might"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "t4ZjnG2PymvEJ6Zj": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "3",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "t4ZjnG2PymvEJ6Zj": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "3",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "sort": 0
             }
           }
         },
@@ -375,7 +324,7 @@
               "value": 3,
               "multiple": false
             },
-            "description": "<p>Each target who has M &lt; 3 is bleeding and slowed (save ends).</p>",
+            "description": "<p>Each target who has [[potency M 3]] is [[/apply t4ZjnG2PymvEJ6Zj save]]{bleeding and slowed (save ends)}.</p>",
             "name": "",
             "img": null,
             "before": false
@@ -391,7 +340,6 @@
         {
           "name": "Bleeding and Slowed",
           "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
-          "origin": "Actor.Egwn9mb8j4uhowoZ.Item.mzRsECmjDy6PGkbN",
           "transfer": false,
           "_id": "t4ZjnG2PymvEJ6Zj",
           "type": "base",

@@ -166,6 +166,9 @@ For modifying the roll formula of ability rolls, see Ability Modifiers below.
 |Initiative Threshold|`system.combat.initiativeThreshold`|
 |Edge for abilities targeting you|`system.combat.targetModifiers.edges`|
 |Bane for abilities targeting you|`system.combat.targetModifiers.banes`|
+|Increase push distance for abilities targeting you|`system.combat.targetModifiers.forcedMovement.push`|
+|Increase pull distance for abilities targeting you|`system.combat.targetModifiers.forcedMovement.pull`|
+|Increase slide distance for abilities targeting you|`system.combat.targetModifiers.forcedMovement.slide`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
@@ -286,4 +289,3 @@ Ability modifiers support a far more limited set of keys, but still use the same
   - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
   - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
 - For `keyword`, use the "Add" change type with values like `magic` or `strike`
-

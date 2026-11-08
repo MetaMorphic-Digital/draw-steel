@@ -8,7 +8,7 @@ import FormulaField from "../fields/formula-field.mjs";
 /**
  * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
- * @import { SummonPortfolio } from "./_types"
+ * @import { CompanionSummon, SummonPortfolio } from "./_types"
  */
 
 const fields = foundry.data.fields;
@@ -438,6 +438,16 @@ export default class HeroModel extends CreatureModel {
    * @internal
    */
   _summonPortfolios = {};
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Internal array used to cache summon advancements to track the available summons in the portfolio.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {CompanionSummon[]}
+   * @internal
+   */
+  _companionAdvancements = [];
 
   /* -------------------------------------------------- */
 
