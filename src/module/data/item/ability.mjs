@@ -800,10 +800,12 @@ export default class AbilityModel extends BaseItemModel {
       // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
       if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("fly"))) modifiers.edges += 1;
       // Ranged Distraction check
-      if ((((this.distance.type === "meleeRanged") && (this.damageDisplay === "ranged")) || ((this.distance.type !== "meleeRanged") && this.keywords.has("ranged")))
-      && this.keywords.has("strike") && token.hasEnemyAdjacent()) { 
-        modifiers.banes += 1;
-      }
+      // Is this modal and currently on the ranged mode?
+      const isModalRanged = ((this.distance.type === "meleeRanged") && (this.damageDisplay === "ranged"));
+      // Is this a ranged ability, but not modal?
+      const isRanged = ((this.distance.type !== "meleeRanged") && this.keywords.has("ranged"));
+      //Check for adjacent enemies, the Strike Keyword, and either of the above Conditions.
+      if ((isModalRanged || isRanged) && this.keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
         
     }
 
