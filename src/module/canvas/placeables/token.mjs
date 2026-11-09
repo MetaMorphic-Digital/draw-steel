@@ -123,9 +123,10 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @returns {DrawSteelToken[]}
    */
   getAdjacentEnemies(target) {
+    const ignoreList = [CONST.TOKEN_DISPOSITIONS.NEUTRAL, CONST.TOKEN_DISPOSITIONS.SECRET];
     const enemyTokens = [];
     for (const token of canvas.tokens.placeables) {
-      if ((token === this) || (this.document.disposition === token.document.disposition) || (token.document.disposition === CONST.TOKEN_DISPOSITIONS.NEUTRAL)) continue;
+      if ((token === this) || (this.document.disposition === token.document.disposition) || ignoreList.includes(token.document.disposition)) continue;
       if (token.actor?.statuses.has(CONFIG.specialStatusEffects.DEFEATED)) continue;
       if (!token.isAdjacentTo(target) || !token.hasLineOfEffect(target)) continue;
 
