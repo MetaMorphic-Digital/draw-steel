@@ -51,7 +51,11 @@
           "damage": {
             "tier1": {
               "value": "3 + @chr",
-              "types": [],
+              "types": [
+                "acid",
+                "corruption",
+                "fire"
+              ],
               "ignoredImmunities": [],
               "potency": {
                 "value": "@potency.weak",
@@ -60,7 +64,11 @@
             },
             "tier2": {
               "value": "6 + @chr",
-              "types": [],
+              "types": [
+                "acid",
+                "corruption",
+                "fire"
+              ],
               "ignoredImmunities": [],
               "potency": {
                 "value": "@potency.average",
@@ -69,7 +77,11 @@
             },
             "tier3": {
               "value": "9 + @chr",
-              "types": [],
+              "types": [
+                "acid",
+                "corruption",
+                "fire"
+              ],
               "ignoredImmunities": [],
               "potency": {
                 "value": "@potency.strong",
@@ -546,7 +558,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "14.369",
+    "coreVersion": "14.370",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
     "createdTime": 1755872266582,

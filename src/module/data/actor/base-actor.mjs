@@ -219,6 +219,17 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
+   * The actor's keywords; a fresh set from the actual prepared data.
+   * Returns an empty set if the actor subtype does not have keywords (e.g. heroes).
+   * @type {Set<string>}
+   */
+  get keywords() {
+    return new Set();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Is this actor a minion?
    * @returns {boolean}
    */
