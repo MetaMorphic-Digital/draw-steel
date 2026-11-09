@@ -339,7 +339,32 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #swapMeleeRanged(event, target) {
+    const targets = Object.values(this.options.context.targets ?? {});
+    const before = targets.map(t => this.#systemTargetModifiers(t));
+
     await this.item.update({ "system.damageDisplay": target.dataset.value });
-    this.render({ parts: ["ability"] });
+
+    // Apply only the change caused by the swap, so edges and banes the user picked by hand are kept.
+    targets.forEach((t, i) => {
+      const after = this.#systemTargetModifiers(t);
+      if (!before[i] || !after) return;
+      t.modifiers.edges = Math.clamp(t.modifiers.edges + after.edges - before[i].edges, 0, PowerRoll.MAX_EDGE);
+      t.modifiers.banes = Math.clamp(t.modifiers.banes + after.banes - before[i].banes, 0, PowerRoll.MAX_BANE);
+      t.modifiers.bonuses += after.bonuses - before[i].bonuses;
+    });
+
+    this.render();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The modifiers the ability itself grants against a target in the context, ignoring changes made in the dialog.
+   * @param {object} targetData   An entry of the context's targets.
+   * @returns {PowerRollModifiers | null}   Null if the target's token is no longer on the canvas.
+   */
+  #systemTargetModifiers(targetData) {
+    const token = fromUuidSync(targetData.tokenUuid)?.object;
+    return token ? this.item.system.getTargetModifiers(token) : null;
   }
 }
