@@ -353,7 +353,7 @@ export default class AbilityConfigurationDialog extends PowerRollDialog {
       t.modifiers.bonuses += after.bonuses - before[i].bonuses;
     });
 
-    this.render();
+    await this.render();
   }
 
   /* -------------------------------------------------- */
