@@ -416,14 +416,15 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * The keywords that apply to the ability as it is currently used.
-   * A melee or ranged ability only has the keyword of its selected mode.
-   * @type {Set<string>}
+   * Whether the ability is currently used as a melee or a ranged ability.
+   * A melee or ranged ability uses its selected mode, otherwise its Melee or Ranged keyword decides.
+   * @type {"melee" | "ranged" | null}
    */
-  get activeKeywords() {
-    const keywords = new Set(this.keywords);
-    if (this.distance.type === "meleeRanged") keywords.delete(this.damageDisplay === "ranged" ? "melee" : "ranged");
-    return keywords;
+  get rangeMode() {
+    if (this.distance.type === "meleeRanged") return this.damageDisplay;
+    const melee = this.keywords.has("melee");
+    if (melee === this.keywords.has("ranged")) return null;
+    return melee ? "melee" : "ranged";
   }
 
   /* -------------------------------------------------- */
@@ -778,7 +779,6 @@ export default class AbilityModel extends BaseItemModel {
     };
     const targetActor = target.actor;
     const token = canvas.tokens.controlled[0]?.actor === this.actor ? canvas.tokens.controlled[0] : null;
-    const keywords = this.activeKeywords;
 
     // Modifiers requiring just the targeted token to have an actor
     if (targetActor) {
@@ -800,7 +800,7 @@ export default class AbilityModel extends BaseItemModel {
       // Grabbed condition check - targeting a non-source adds a bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
       // Prone condition check - targeting prone with melee gets an edge
-      if (targetActor.statuses.has("prone") && keywords.has("melee")) modifiers.edges += 1;
+      if (targetActor.statuses.has("prone") && (this.rangeMode === "melee")) modifiers.edges += 1;
       // Restrained condition check - targeting restrained gets an edge
       if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
       // Surprised condition check - targeting surprised gets an edge
@@ -810,11 +810,11 @@ export default class AbilityModel extends BaseItemModel {
     // Modifiers requiring just a controlled token
     if (token) {
       // Flanking checks
-      if (keywords.has("melee") && keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
+      if ((this.rangeMode === "melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
       // High Ground Check - targeting (Target's Size) Squares Lower gets an edge.
       if (((token.document.elevation - target.document.elevation) >= target.document.depth) && !(this.actor.statuses.has("fly"))) modifiers.edges += 1;
       // Ranged Distraction check - a ranged strike with an adjacent enemy gets a bane
-      if (keywords.has("ranged") && keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
+      if ((this.rangeMode === "ranged") && this.keywords.has("strike") && token.hasEnemyAdjacent()) modifiers.banes += 1;
     }
 
     // Modifiers requiring both a controlled token and the targeted token to have an actor
