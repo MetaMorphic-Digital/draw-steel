@@ -47,6 +47,7 @@ export default class ActorChoiceConfigurationDialog extends DSApplication {
   static PARTS = {
     body: {
       template: systemPath("templates/apps/advancement/actor-choice-configuration-dialog/body.hbs"),
+      scrollable: [".actor-choices"],
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
