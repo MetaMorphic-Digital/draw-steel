@@ -18,6 +18,21 @@
 ### Known Issues
 -->
 
+## 1.2.2
+
+### Changed
+
+- Improved handling of split melee/ranged abilities, including redoing edges and banes. (#2263)
+
+### Fixed
+
+- Updated Player-Facing Compendium Content:
+  - Fixed Smolder damage typing. (#2259)
+  - Updated Summons to Friendly disposition
+  - Corrected Beastheart Companion stamina.
+- Updated Director-Facing Compendium Content:
+  - Fixed distance typing for attacks on Basilisk Tonguesnapper, Rhodar von Glauer, Vicisator, and Radenwight Piper. (#2267)
+
 ## 1.2.1
 
 ### Added
