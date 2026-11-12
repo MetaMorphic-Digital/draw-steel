@@ -1,8 +1,7 @@
 {
-  "folder": "8JCmAFqW9DnOAnmD",
-  "name": "Feral Strike",
+  "folder": "SSbEvHOyBDUATM0r",
+  "name": "Feral Strike (Punisher)",
   "type": "ability",
-  "_id": "IgvcVXKcCsq6yVlY",
   "img": "icons/creatures/claws/claw-straight-brown.webp",
   "system": {
     "source": {
@@ -25,7 +24,7 @@
       "weapon"
     ],
     "type": "main",
-    "category": "",
+    "category": "signature",
     "resource": null,
     "trigger": "",
     "distance": {
@@ -105,13 +104,12 @@
         "img": null,
         "type": "base",
         "_id": "UROr39v1DDLwgpUm",
-        "description": "<p>This ability gains the following benefit based on your wild nature.</p><ul><li><p><strong>Guardian:</strong> Each enemy target is [[/apply taunted]] by your companion until the start of your next turn.</p></li><li><p><strong>Prowler:</strong> Each enemy target is [[/apply weakened]] until the start of your next turn.</p></li><li><p><strong>Punisher:</strong> Your companion slides each target up to a number of squares equal to [[lookup @M]]{their Might score}.</p></li><li><p><strong>Spark:</strong> This strike deals [[/damage @scaling type=cold/fire/lightning/sonic scaling]]{cold, fire, lightning, or sonic} damage. You [[/gain 1 surge]]{gain 1 surge}.</p></li></ul>",
+        "description": "<p>This ability gains the following benefit based on your wild nature.</p><p>Your companion slides each target up to a number of squares equal to [[lookup @M]]{their Might score}.</p>",
         "before": false
       }
     }
   },
   "effects": [],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -120,12 +118,14 @@
     "coreVersion": "14.370",
     "systemId": "draw-steel",
     "systemVersion": "1.2",
-    "createdTime": 1794502359907,
+    "createdTime": 1794516339696,
     "modifiedTime": null,
     "lastModifiedBy": null,
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null
   },
-  "_key": "!items!IgvcVXKcCsq6yVlY"
+  "_id": "VOzPCLYLudhkR0wS",
+  "sort": 0,
+  "_key": "!items!VOzPCLYLudhkR0wS"
 }
