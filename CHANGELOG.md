@@ -28,10 +28,14 @@
 
 - Updated Player-Facing Compendium Content:
   - Fixed Smolder damage typing. (#2259)
+  - Corrected Summoner Reason AE to use the "final" phase. (#2276)
   - Updated Summons to Friendly disposition
   - Corrected Beastheart Companion stamina.
+  - Added missing Feral Strike variants for each Beastheart subclass.
+  - Adjusted Rampage feature to use a single `system.potency.bonuses` change instead of three targeting each individual step.
 - Updated Director-Facing Compendium Content:
   - Fixed distance typing for attacks on Basilisk Tonguesnapper, Rhodar von Glauer, Vicisator, and Radenwight Piper. (#2267)
+- Fixed overflow handling for effect and actor choices dialogs with long lists of options. (#2270)
 
 ## 1.2.1
 
