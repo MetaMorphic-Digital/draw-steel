@@ -41,7 +41,6 @@ export default class Filter {
     }
 
     const dataValue = foundry.utils.getProperty(data, key);
-    if (dataValue == null) return false;
 
     return this[operator](dataValue, filterValue);
   }
@@ -100,7 +99,7 @@ export default class Filter {
    * All possible comparison operators for a statement.
    * @type {string[]}
    */
-  static comparisonOperators = ["equals", "equalsAny", "gt", "gte", "lt", "lte", "has", "hasAll", "hasAny"];
+  static comparisonOperators = ["eq", "gt", "gte", "lt", "lte", "contains", "empty"];
 
   /* -------------------------------------------------- */
 
@@ -110,20 +109,8 @@ export default class Filter {
    * @param {string | number} filterValue   The filter value to match against the data value.
    * @returns {boolean}
    */
-  equals(dataValue, filterValue) {
+  eq(dataValue, filterValue) {
     return dataValue === filterValue;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Evaluate if the data value equals any of the filter values.
-   * @param {string | number} dataValue            The value at the statement's key in the data.
-   * @param {Array<string | number>} filterValue   The filter values to match against the data value.
-   * @returns {boolean}
-   */
-  equalsAny(dataValue, filterValue) {
-    return filterValue.some(value => dataValue === value);
   }
 
   /* -------------------------------------------------- */
@@ -177,21 +164,18 @@ export default class Filter {
   /* -------------------------------------------------- */
 
   /**
-   * Evaluate if a data set, array, or object has the filter value.
-   * @param {Set | Array | object} dataValue   The value at the statement's key in the data.
+   * Evaluate if a data set or array has the filter value.
+   * @param {Set | Array} dataValue            The value at the statement's key in the data.
    * @param {string | number} filterValue      The value to match against the data value.
-   * @param {string} [type]                    The data value's type. Prevents rechecking the type when used in hasAll and hasAny.
    * @returns {boolean}
    */
-  has(dataValue, filterValue, type) {
-    type ??= foundry.utils.getType(dataValue);
+  contains(dataValue, filterValue) {
+    const type = foundry.utils.getType(dataValue);
     switch (type) {
       case "Set":
         return dataValue.has(filterValue);
       case "Array":
         return dataValue.includes(filterValue);
-      case "Object":
-        return Object.hasOwn(dataValue, filterValue);
       default:
         return false;
     }
@@ -200,26 +184,11 @@ export default class Filter {
   /* -------------------------------------------------- */
 
   /**
-   * Evaluate if a data set, array, or object has all of the filter values.
-   * @param {Set | Array | object} dataValue       The value at the statement's key in the data.
-   * @param {Array<string | number>} filterValue   The values to match against the data value.
+   * Check whether a data value is empty.
+   * @param {Set | Array | object} dataValue   The value at the statement's key in the data.
    * @returns {boolean}
    */
-  hasAll(dataValue, filterValue) {
-    const type = foundry.utils.getType(dataValue);
-    return filterValue.every(value => this.has(dataValue, value, type));
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Evaluate if a data set, array, or object has any of the filter values.
-   * @param {Set | Array | object} dataValue       The value at the statement's key in the data.
-   * @param {Array<string | number>} filterValue   The values to match against the data value.
-   * @returns {boolean}
-   */
-  hasAny(dataValue, filterValue) {
-    const type = foundry.utils.getType(dataValue);
-    return filterValue.some(value => this.has(dataValue, value, type));
+  empty(dataValue) {
+    return foundry.utils.isEmpty(dataValue);
   }
 }
