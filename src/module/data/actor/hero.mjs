@@ -229,6 +229,9 @@ export default class HeroModel extends CreatureModel {
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
 
+    for (const companionInfo of this._companionAdvancements ?? []) {
+      for (const skill of companionInfo.skills) if (skill in ds.CONFIG.skills.list) this.skills.value.add(skill);
+    }
     // Handling for trait advancements
     for (const skill of this._traits.skill ?? []) {
       if (skill in ds.CONFIG.skills.list) this.skills.value.add(skill);

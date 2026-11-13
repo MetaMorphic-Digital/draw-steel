@@ -395,6 +395,7 @@ export default class AdvancementChain {
         }
 
         foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
+        if (node.skills) foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.skills`, node.skills);
       }
     }
 

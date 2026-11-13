@@ -80,6 +80,7 @@ export interface SummonPortfolio {
 export interface CompanionSummon {
   uuid: string;
   advancementUuid: string;
+  skills: Array<string>;
 }
 
 declare module "./base-actor.mjs" {

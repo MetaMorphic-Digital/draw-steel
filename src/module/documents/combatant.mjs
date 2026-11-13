@@ -35,7 +35,6 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
 
     // create a group for the combatants because the players can't
     if (operation.ds?.createGroup && game.user.isActiveGM) {
-      console.log(documents, operation, user);
       /** @type {DrawSteelActor} */
       const baseActor = documents.at(0).actor;
       const createData = {
