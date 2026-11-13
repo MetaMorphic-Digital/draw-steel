@@ -57,6 +57,21 @@ export default class ObjectModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    // Objects have poison and psychic immunity all, unless the creation data already sets them
+    const updates = {};
+    for (const type of ["poison", "psychic"]) {
+      if (!foundry.utils.hasProperty(data, `system.damage.immunities.${type}`)) updates[`damage.immunities.${type}`] = null;
+    }
+    this.updateSource(updates);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static _sizeModel() {
     return ObjectSizeModel;
   }
