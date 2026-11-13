@@ -87,16 +87,12 @@ export default class ActorChoiceAdvancement extends BaseAdvancement {
 
     if (!selection) return null;
 
-    const promises = [];
-
     if (node) {
       node.selected = selection.choices.reduce((selected, uuid) => {
         selected[uuid] = true;
         return selected;
       }, {});
     }
-
-    await Promise.allSettled(promises);
 
     return { [path]: selection.choices };
   }

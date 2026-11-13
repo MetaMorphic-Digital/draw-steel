@@ -36,6 +36,8 @@
 - Updated Director-Facing Compendium Content:
   - Fixed distance typing for attacks on Basilisk Tonguesnapper, Rhodar von Glauer, Vicisator, and Radenwight Piper. (#2267)
 - Fixed overflow handling for effect and actor choices dialogs with long lists of options. (#2270)
+- Fixed companion skills not being added to the Beastheart. (#2273)
+  - Note: You will have to redo the advancement if you've already made a beastheart, this does not require re-importing the companion.
 
 ## 1.2.1
 

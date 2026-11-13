@@ -96,5 +96,7 @@ declare module "./utils/advancement/node.mjs" {
   export default interface AdvancementNode {
     /** Assigned by the Chain Configuration Dialog. */
     enrichedDescription?: string;
+    /** Assigned by Companion Choice Advancements. */
+    skills?: string[];
   }
 }

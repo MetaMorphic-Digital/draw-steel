@@ -3,6 +3,7 @@ import ActorChoiceAdvancement from "./actor-choice-advancement.mjs";
 /**
  * @import { ActorChoice } from "./_types";
  * @import { CompanionSummon } from "../../actor/_types";
+ * @import HeroModel from "../../actor/hero.mjs";
  * @import { DrawSteelActor, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
  */
 
@@ -52,17 +53,32 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    /** @type {Omit<DrawSteelActor, "system"> & { system: HeroModel }} */
     const hero = this.document.actor;
     if (!hero) return;
 
     const flags = this.document.getFlag(ds.CONST.systemID, "advancement") ?? {};
-    hero.system._companionAdvancements.push({ uuid: flags[this.id]?.selected.at(0), advancementUuid: this.uuid });
+    hero.system._companionAdvancements.push({ uuid: flags[this.id]?.selected.at(0), skills: flags[this.id]?.skills ?? [], advancementUuid: this.uuid });
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async getSheetContext() {}
+  async configureAdvancement(node = null) {
+    const updateData = await super.configureAdvancement(node);
+    if (updateData) {
+      const expansion = foundry.utils.expandObject(updateData);
+      const flagData = foundry.utils.getProperty(expansion, `flags.draw-steel.advancement.${this.id}`);
+      flagData.skills = [];
+      const promises = [];
+      for (const uuid of flagData.selected) promises.push(fromUuid(uuid));
+      const documents = await Promise.all(promises);
+      for (const companion of documents) flagData.skills.push(...companion.system.companion.skills);
+      if (node) node.skills = expansion.skills;
+      return expansion;
+    }
+    return updateData;
+  }
 
   /* -------------------------------------------------- */
 
