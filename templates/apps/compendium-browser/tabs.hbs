@@ -1,0 +1,8 @@
+<section>
+  {{#each buttons}}
+  <a data-action="changeDocumentType" {{#if active}} class="active" {{/if}} data-document-name="{{documentName}}" {{disabled disabled}}>
+    <ds-icon src="{{icon}}" inert></ds-icon>
+    <span>{{label}}</span>
+  </a>
+  {{/each}}
+</section>

@@ -1,0 +1,31 @@
+<section>
+  <div class="content">
+    {{#each filters}}
+    {{#if label}}
+    <h3 class="label">{{label}}</h3>
+    {{/if}}
+
+    {{!-- CHECKBOXES --}}
+    {{#if (eq type "checkboxes")}}
+    <div class="filter checkboxes">
+      {{#each options}}
+      <a data-action="adjustFilter" data-filter="{{../name}}" data-type="checkboxes" data-value="{{value}}" {{disabled isLocked}}>
+        <i class="fa-fw {{icon}}" inert></i>
+        <span>{{label}}</span>
+      </a>
+      {{/each}}
+    </div>
+    {{/if}}
+
+    {{!-- RANGE --}}
+    {{#if (eq type "range")}}
+    <div class="filter range">
+      <input type="number" data-filter="{{name}}" data-value="min" data-type="range" value="{{range.min}}" placeholder="{{range.minPh}}" {{disabled range.minLocked}} data-change="change" id="{{rootId}}-{{name}}.min">
+      <span class="sep"></span>
+      <input type="number" data-filter="{{name}}" data-value="max" data-type="range" value="{{range.max}}" placeholder="{{range.maxPh}}" {{disabled range.maxLocked}} data-change="change" id="{{rootId}}-{{name}}.max">
+    </div>
+    {{/if}}
+
+    {{/each}}
+  </div>
+</section>
