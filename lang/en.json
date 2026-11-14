@@ -2692,6 +2692,23 @@
         "Strong": "Strong Potency"
       },
       "Chr": "Highest Characteristic"
+    },
+    "Filter": {
+      "Validation": {
+        "NoEmptyStatement": "{path}: A filter statement cannot be empty.",
+        "NotAnObject": "{path}: The statement is not an object.",
+        "Logic": {
+          "OneOperator": "{path}: Logic statements can only include one top level operator.",
+          "InvalidOperator": "{path}: Invalid Logic Operator(s) - {invalid}",
+          "ArrayRequired": "{path}: {operator} operator requires an array of statements.",
+          "NoEmptyArray": "{path}: {operator} requires a non-empty array of statements."
+        },
+        "Comparison": {
+          "InvalidKeys": "{path}: Invalid Comparison Keys - {invalid}",
+          "MissingKeys": "{path}: Missing Required Comparison Keys - {missing}",
+          "InvalidOperator": "{path}: {operator} is not a valid comparison"
+        }
+      }
     }
   },
   "TYPES": {
