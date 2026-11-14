@@ -1,9 +1,13 @@
 /**
+ * @import { FilterComparisonStatement, FilterLogicStatement, FilterStatement } from "../_types.mjs";
+ */
+
+/**
  * A class for constructing and evaluating complex JSON filter statements against a data object.
  */
 export default class Filter {
   /**
-   * @param {object} statements   An object containing both logical and comparison filter statements.
+   * @param {FilterStatement} statements   An object containing both logical and comparison filter statements.
    */
   constructor(statements) {
     this.statements = statements;
@@ -17,7 +21,7 @@ export default class Filter {
    * @returns {boolean}
    */
   evaluate(data) {
-    return this.#evaluate(data, this.statements);
+    return this.constructor.evaluateStatement(data, this.statements);
   }
 
   /* -------------------------------------------------- */
@@ -25,24 +29,26 @@ export default class Filter {
   /**
    * Evaluate a single filter statement.
    * @param {object} data        The data object to evaluate the filter against.
-   * @param {object} statement   The filter statement to evaluate.
+   * @param {FilterStatement} statement   The filter statement to evaluate.
    * @returns {boolean}
    */
-  #evaluate(data, statement) {
+  static evaluateStatement(data, statement) {
     // Step 1. Check if any logic operators are used.
-    const logicOperator = Filter.logicOperators.find(operator => Object.hasOwn(statement, operator));
-    if (logicOperator) return this[logicOperator](data, statement[logicOperator]);
+    if (statement.and) return this.and(data, statement.and);
+    if (statement.or) return this.or(data, statement.or);
+    if (statement.not) return this.not(data, statement.not);
 
     // Step 2. Check for comparison operator statements.
     const { operator, key, value: filterValue } = statement;
-    if (!Filter.comparisonOperators.includes(operator)) {
+    const comparisonCallback = this.COMPARISON_OPERATORS[operator];
+    if (!comparisonCallback) {
       console.warn(`Invalid Filter Operator: ${operator}. The statement was evaluated as false.`);
       return false;
     }
 
     const dataValue = foundry.utils.getProperty(data, key);
 
-    return this[operator](dataValue, filterValue);
+    return comparisonCallback(dataValue, filterValue);
   }
 
   /* -------------------------------------------------- */
@@ -50,56 +56,64 @@ export default class Filter {
   /* -------------------------------------------------- */
 
   /**
-   * All possible logic operators to use for an array of statements.
-   * @type {string[]}
-   */
-  static logicOperators = ["and", "or", "not"];
-
-  /* -------------------------------------------------- */
-
-  /**
    * Evaluate if all of the statements are true.
-   * @param {object} data           The data object to evaluate the filter statement against.
-   * @param {object[]} statements   An array of conditional statement objects.
+   * @param {object} data                              The data object to evaluate the filter statement against.
+   * @param {FilterStatement[]} statements   An array of conditional statement objects.
    * @returns {boolean}
    */
-  and(data, statements) {
-    return statements.every(statement => this.#evaluate(data, statement));
+  static and(data, statements) {
+    return statements.every(statement => this.evaluateStatement(data, statement));
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Evaluate if any of the statements are true.
-   * @param {object} data           The data object to evaluate the filter statement against.
-   * @param {object[]} statements   An array of conditional statements.
+   * @param {object} data                              The data object to evaluate the filter statement against.
+   * @param {FilterStatement[]} statements   An array of conditional statements.
    * @returns {boolean}
    */
-  or(data, statements) {
-    return statements.some(statement => this.#evaluate(data, statement));
+  static or(data, statements) {
+    return statements.some(statement => this.evaluateStatement(data, statement));
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Evaluates to the inverse of the provided statement.
-   * @param {object} data        The data object to evaluate the filter statement against.
-   * @param {object} statement   A conditional statement.
+   * @param {object} data                           The data object to evaluate the filter statement against.
+   * @param {FilterStatement} statement   A conditional statement.
    * @returns {boolean}
    */
-  not(data, statement) {
-    return !this.#evaluate(data, statement);
+  static not(data, statement) {
+    return !this.evaluateStatement(data, statement);
   }
 
   /* -------------------------------------------------- */
-  /*   Comparison Operators                                */
+  /*   Comparison Operators                             */
   /* -------------------------------------------------- */
 
   /**
-   * All possible comparison operators for a statement.
-   * @type {string[]}
+   * A function that evaluates a comparison operator.
+   * @callback ComparisonFunction
+   * @param {string | number | Set | Array | object } dataValue   The value at the statement's key in the data.
+   * @param {string | number} filterValue                         The statement's value, if the operator uses one.
+   * @returns {boolean}
    */
-  static comparisonOperators = ["eq", "gt", "gte", "lt", "lte", "contains", "empty"];
+
+  /**
+   * Comparison operators, mapped to the functions that evaluate them.
+   * @type {Readonly<Record<string, ComparisonFunction>>}
+   */
+  static COMPARISON_OPERATORS = Object.freeze({
+    eq: this.eq,
+    gt: this.gt,
+    gte: this.gte,
+    lt: this.lt,
+    lte: this.lte,
+    contains: this.contains,
+    empty: this.empty,
+  });
 
   /* -------------------------------------------------- */
 
@@ -109,7 +123,7 @@ export default class Filter {
    * @param {string | number} filterValue   The filter value to match against the data value.
    * @returns {boolean}
    */
-  eq(dataValue, filterValue) {
+  static eq(dataValue, filterValue) {
     return dataValue === filterValue;
   }
 
@@ -121,7 +135,7 @@ export default class Filter {
    * @param {string | number} filterValue   The filter value to match against the data value.
    * @returns {boolean}
    */
-  gt(dataValue, filterValue) {
+  static gt(dataValue, filterValue) {
     return dataValue > filterValue;
   }
 
@@ -133,7 +147,7 @@ export default class Filter {
    * @param {string | number} filterValue   The filter value to match against the data value.
    * @returns {boolean}
    */
-  gte(dataValue, filterValue) {
+  static gte(dataValue, filterValue) {
     return dataValue >= filterValue;
   }
 
@@ -145,7 +159,7 @@ export default class Filter {
    * @param {string | number} filterValue   The filter value to match against the data value.
    * @returns {boolean}
    */
-  lt(dataValue, filterValue) {
+  static lt(dataValue, filterValue) {
     return dataValue < filterValue;
   }
 
@@ -157,7 +171,7 @@ export default class Filter {
    * @param {string | number} filterValue   The filter value to match against the data value.
    * @returns {boolean}
    */
-  lte(dataValue, filterValue) {
+  static lte(dataValue, filterValue) {
     return dataValue <= filterValue;
   }
 
@@ -169,7 +183,7 @@ export default class Filter {
    * @param {string | number} filterValue      The value to match against the data value.
    * @returns {boolean}
    */
-  contains(dataValue, filterValue) {
+  static contains(dataValue, filterValue) {
     const type = foundry.utils.getType(dataValue);
     switch (type) {
       case "Set":
@@ -188,7 +202,7 @@ export default class Filter {
    * @param {Set | Array | object} dataValue   The value at the statement's key in the data.
    * @returns {boolean}
    */
-  empty(dataValue) {
+  static empty(dataValue) {
     return foundry.utils.isEmpty(dataValue);
   }
 }
