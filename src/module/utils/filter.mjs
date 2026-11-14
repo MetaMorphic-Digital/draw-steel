@@ -35,8 +35,8 @@ export default class Filter {
   static evaluateStatement(data, statement) {
     // Step 1. Check if any logic operators are used.
     if (statement.and) return this.and(data, statement.and);
-    if (statement.or) return this.or(data, statement.or);
-    if (statement.not) return this.not(data, statement.not);
+    else if (statement.or) return this.or(data, statement.or);
+    else if (statement.not) return this.not(data, statement.not);
 
     // Step 2. Check for comparison operator statements.
     const { operator, key, value: filterValue } = statement;
