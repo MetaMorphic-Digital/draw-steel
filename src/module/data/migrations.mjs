@@ -44,6 +44,10 @@ export async function migrateWorld() {
       await version_1_1_migration();
       updateVersion = true;
     }
+    if (foundry.utils.isNewerVersion("1.2.3", migrationVersion)) {
+      await version_1_2_3_migration();
+      updateVersion = true;
+    }
   }
   if (updateVersion) await game.settings.set(systemID, "migrationVersion", game.system.version);
 }
@@ -250,6 +254,38 @@ async function version_1_1_migration() {
 
   ui.notifications.remove(warning);
   ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.1.0" }, permanent: true });
+  console.log("Migration complete");
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Fix companion-associated skills for version 1.2.3.
+ */
+async function version_1_2_3_migration() {
+
+  const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "1.1.0" }, progress: true });
+
+  const heroes = game.actors.filter(a => a.type === "hero");
+
+  const classes = heroes.map(a => a.system.class).filter(_ => _);
+
+  for (const cls of classes) {
+    for (const advancement of cls.pseudoCollections.Advancement.documentsByType.companion) {
+      const selected = cls.getFlag("draw-steel", `advancement.${advancement.id}.selected`) ?? [];
+      const skills = [];
+      for (const uuid of selected) {
+        const sourceCompanion = await fromUuid(uuid);
+        if (sourceCompanion) skills.push(...sourceCompanion.system.companion.skills);
+      }
+      if (skills.length) await cls.setFlag("draw-steel", `advancement.${advancement.id}.skills`, skills);
+    }
+  }
+
+  warning.update({ pct: 1.00 });
+
+  ui.notifications.remove(warning);
+  ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "1.2.3" }, permanent: true });
   console.log("Migration complete");
 }
 
