@@ -294,21 +294,22 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #addOrigin(event, target) {
-    // TODO: Replace this with opening a compendium browser as part of #130
-    switch (target.dataset.type) {
-      case "ancestry":
-        game.packs.get("draw-steel.origins").render(true);
-        break;
-      case "culture":
-        game.packs.get("draw-steel.origins").render(true);
-        break;
-      case "career":
-        game.packs.get("draw-steel.origins").render(true);
-        break;
-      case "class":
-        game.packs.get("draw-steel.classes").render(true);
-        break;
-    }
+    const docs = await ds.applications.apps.DrawSteelCompendiumBrowser.pick({
+      documentName: "Item",
+      filters: {
+        itemTypes: {
+          [target.dataset.type]: 1,
+        },
+      },
+      locked: {
+        itemTypes: true,
+      },
+    });
+    if (!docs) return;
+    // always a new item so don't need duplicate checks like from item drops.
+    const item = docs.at(0);
+    if (item.type === "class") this.actor.system.advance({ levels: 1, item });
+    else item.system.applyAdvancements({ actor: this.actor, levels: { end: this.actor.system.level } });
   }
 
   /* -------------------------------------------------- */

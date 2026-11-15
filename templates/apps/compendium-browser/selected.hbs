@@ -1,0 +1,25 @@
+<section {{#if displaySelected}} {{else}} class="hidden" {{/if}}>
+  <div class="content">
+    {{#each currentlySelected}}
+    <div class="result" data-uuid="{{uuid}}" {{#if @root.displayTooltips}} data-tooltip-html="{{ds-tooltip uuid=uuid}}" {{/if}} data-dragstart>
+      <a class="identity" data-action="openDocument">
+        <img src="{{ifThen img img @root.defaultArtwork}}" alt="{{name}}">
+        <span class="name">{{name}}</span>
+      </a>
+      <span class="controls">
+        <a data-action="removeSelected" class="fa-solid fa-trash"></a>
+      </span>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="footer">
+    {{#if selection.max}}
+    <span>{{localize "DRAW_STEEL.COMPENDIUM.BROWSER.selected" value=selection.value max=selection.max}}</span>
+    <button type="button" data-action="confirmSelection" {{disabled (not (eq selection.value selection.max))}}>
+      <i class="fa-solid fa-check" inert></i>
+      <span>{{localize "COMMON.Confirm"}}</span>
+    </button>
+    {{/if}}
+  </div>
+</section>

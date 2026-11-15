@@ -39,10 +39,7 @@ export default class DrawSteelRegistry {
     const registryTypes = new Set(["ability", "class", "subclass", "perk", "kit"]);
 
     for (const pack of itemPacks) {
-      // Need to re-call `getIndex` for `system._dsid` to be populated
-      const docs = await pack.getIndex();
-
-      const indices = docs.filter(idx => registryTypes.has(idx.type));
+      const indices = pack.index.filter(idx => registryTypes.has(idx.type));
 
       // Use "world" and "system" for world & system compendiums, elsewise the module ID
       const packageId = pack.metadata.packageType !== "module" ? pack.metadata.packageType : pack.metadata.packageName;
@@ -132,10 +129,7 @@ export default class DrawSteelRegistry {
     const journalPacks = game.packs.filter(p => p.documentName === "JournalEntry");
 
     for (const pack of journalPacks) {
-      // Need to re-call `getIndex` for `pages` to be populated
-      const indices = await pack.getIndex();
-
-      const configJournals = indices.filter(idx => idx.pages?.some(p => p.type === "configuration"));
+      const configJournals = pack.index.filter(idx => idx.pages?.some(p => p.type === "configuration"));
 
       if (!configJournals.length) continue;
 
