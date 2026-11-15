@@ -74,7 +74,7 @@ export default class CompanionChoiceAdvancement extends ActorChoiceAdvancement {
       for (const uuid of flagData.selected) promises.push(fromUuid(uuid));
       const documents = await Promise.all(promises);
       for (const companion of documents) flagData.skills.push(...companion.system.companion.skills);
-      if (node) node.skills = expansion.skills;
+      if (node) node.skills = flagData.skills;
       return expansion;
     }
     return updateData;
