@@ -63,6 +63,13 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   isExpiryEvent(event, context) {
+    if (event === "sourceDying") {
+      if (!this.system.end?.sourceDying || !this.origin) return false;
+      const origin = fromUuidSync(this.origin, { strict: false });
+      const source = (origin?.documentName === "Actor") ? origin : origin?.actor;
+      return !!source && (source.uuid === context.source?.uuid);
+    }
+
     const dsEvents = new Set(["save", "respite"]);
     if (!dsEvents.has(event) || (event !== this.duration.expiry)) return super.isExpiryEvent(event, context);
 

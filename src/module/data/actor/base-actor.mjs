@@ -310,6 +310,11 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
       const diff = stamDiff + tempDiff;
       this.displayStaminaChange(diff, options.ds.damageType);
+
+      const dying = Number(ds.CONST.staminaEffects.dying.threshold);
+      if ((options.ds.previousStamina.value > dying) && (this.stamina.value <= dying)) {
+        foundry.documents.ActiveEffect.registry.refresh("sourceDying", { source: this.parent });
+      }
     }
   }
 
