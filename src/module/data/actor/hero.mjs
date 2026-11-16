@@ -93,10 +93,10 @@ export default class HeroModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     foundry.abstract.Document._addDataFieldMigration(data, "hero.skills", "skills.value");
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */

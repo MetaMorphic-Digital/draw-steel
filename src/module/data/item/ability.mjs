@@ -114,7 +114,7 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     // Game release updates
     if (data.type === "action") data.type = "main";
 
@@ -162,7 +162,7 @@ export default class AbilityModel extends BaseItemModel {
       }
     }
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------- */

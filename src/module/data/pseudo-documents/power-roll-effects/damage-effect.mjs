@@ -254,7 +254,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     // 0.10.0 updates
     for (const tier of ["tier1", "tier2", "tier3"]) {
       const oldKey = `damage.${tier}.properties`;
@@ -272,6 +272,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       }
     }
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 }
