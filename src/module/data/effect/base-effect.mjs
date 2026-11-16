@@ -36,6 +36,7 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
 
     schema.end = new fields.SchemaField({
       roll: new FormulaField({ initial: "1d10 + @combat.save.bonus" }),
+      sourceDying: new fields.BooleanField(),
     });
 
     schema.project = new fields.SchemaField({
