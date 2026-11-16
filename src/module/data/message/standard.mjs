@@ -37,7 +37,7 @@ export default class StandardModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     // Passing an array of parts is always valid, this migration will automatically translate that to the proper object format
     const parts = foundry.data.operators.DataFieldOperator.get(data.parts);
     if (Array.isArray(parts)) {
@@ -48,7 +48,7 @@ export default class StandardModel extends DrawSteelSystemModel {
       }, {});
     }
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */

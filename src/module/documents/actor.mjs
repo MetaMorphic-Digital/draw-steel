@@ -10,12 +10,12 @@ import { systemID } from "../constants.mjs";
  */
 export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.Actor) {
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     if (data.type === "character") {
       data.type = "hero";
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */

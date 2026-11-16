@@ -70,7 +70,7 @@ export default class NPCModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     switch (data.monster?.organization) {
       // release updates
       case "band":
@@ -84,7 +84,7 @@ export default class NPCModel extends CreatureModel {
     // 0.10 Object release
     foundry.abstract.Document._addDataFieldMigration(data, "monster.ev", "ev");
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */
