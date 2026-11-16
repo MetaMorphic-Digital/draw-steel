@@ -271,7 +271,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   };
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     const changes = foundry.data.operators.DataFieldOperator.get(data.system?.changes) ?? [];
     let migrateChanges = false;
     for (const change of changes) {
@@ -297,6 +297,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       foundry.utils.setProperty(data, "flags.draw-steel.oldExpiry", data.system.end.type);
     }
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 }

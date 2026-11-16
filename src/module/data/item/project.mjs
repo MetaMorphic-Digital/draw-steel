@@ -61,11 +61,11 @@ export default class ProjectModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     // 1.1 migration
     foundry.abstract.Document._addDataFieldMigration(data, "yield.item", "yield.document");
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */

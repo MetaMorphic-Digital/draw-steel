@@ -10,7 +10,7 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
     // 0.8 type migrations
     if (data.type === "equipment") {
       data.type = "treasure";
@@ -26,7 +26,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       foundry.utils.setProperty(data, "system.echelon", data.system.type.subtype);
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */

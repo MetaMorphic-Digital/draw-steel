@@ -5,7 +5,7 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.documents.ChatMessage) {
   /** @inheritdoc */
-  static migrateData(data) {
+  static migrateData(data, options) {
 
     // 0.10 type migrations
     if (data.type === "savingThrow") {
@@ -50,7 +50,7 @@ export default class DrawSteelChatMessage extends BaseDocumentMixin(foundry.docu
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }
 
-    return super.migrateData(data);
+    return super.migrateData(data, options);
   }
 
   /* -------------------------------------------------- */
