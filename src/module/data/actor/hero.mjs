@@ -614,4 +614,60 @@ export default class HeroModel extends CreatureModel {
 
     return this.class;
   }
+  /* -------------------------------------------------- */
+
+  /**
+   * Deal damage to the Hero, accounting for immunities and resistances. Trigger Intervention when hero tokens are available.
+   * @param {number} damage    The amount of damage to take.
+   * @param {object} [options] Options to modify the damage application.
+   * @param {string} [options.type]   Valid damage type.
+   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
+   * @param {DamageOrigin} [options.origin]  Where the damage came from, passed through to the Stamina update.
+   * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
+   */
+  async takeDamage(damage, options = {}) {
+    const { immunity = 0, weakness = 0 } = this.calculateImmunityAndWeakness(options);
+    
+    damage = Math.max(0, damage + weakness - immunity);
+
+    if (damage === 0) {
+      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
+      return this.parent;
+    }
+
+    console.log(((this.stamina.value - damage) <= (-1 * this.stamina.winded)));
+    if (((this.stamina.value - damage) <= (-1 * this.stamina.winded)) && (game.actors.heroTokens.value >= 2)) {
+      console.log(this.recoveries);
+      await this.cheatDeath(this.stamina.value - damage);
+    }
+
+    // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
+    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
+
+  }
+
+  /**
+   * 
+   * @param {number} damage - The damage taken that would kill the Hero. 
+   */
+  async cheatDeath(damage) {
+    //Title Needs new String.
+    //Content says "{Hero} will be slain from this blow. Spend a hero token?"
+    //If yes, spend the hero token using the current functions.
+    //If no, return the H.T Stamina function.
+    await DrawSteelChatMessage.create({
+      title: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.label"),
+      type: "standard",
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+      content: `<p> ${_loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.declineSpend", { hero: this.parent.name })} </p>`,
+      "system.parts": [{ type: "cheatDeath",
+        flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.label"),
+        heroUuid: this.parent.uuid,
+        endStamina: damage,
+        currentTokens: game.actors.heroTokens.value,
+        recoveryValue: this.recoveries.recoveryValue,
+      }],
+      flags: { core: { canPopout: true } },
+    });
+  }
 }

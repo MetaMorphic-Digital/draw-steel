@@ -1,0 +1,12 @@
+{{#if part.flavor}}
+<div class="message-part-flavor">{{ctx.flavor}}</div>
+{{/if}}
+<div class="message-part-rolls">
+  <p>{{ctx.staminaWarning}}</p>
+  <p>{{ctx.tokenCounter}}</p>
+</div>
+{{#if ctx.buttons}}
+<footer class="message-part-buttons">
+  {{#each ctx.buttons as |button|}}{{{button.outerHTML}}}{{/each}}
+</footer>
+{{/if}}

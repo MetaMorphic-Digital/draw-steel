@@ -2147,6 +2147,9 @@ export const MessagePart = {
   abilityUse: {
     documentClass: pseudoDocuments.messageParts.AbilityUse,
   },
+  cheatDeath: {
+    documentClass: pseudoDocuments.messageParts.DeathPart,
+  },
   content: {
     documentClass: pseudoDocuments.messageParts.ContentPart,
   },
