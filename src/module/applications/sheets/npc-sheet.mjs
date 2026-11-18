@@ -1,6 +1,7 @@
 import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
+import FeatureModel from "../../data/item/feature.mjs";
 
 /**
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
@@ -44,13 +45,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
-    features: {
-      template: systemPath("templates/sheets/actor/npc-sheet/features.hbs"),
-      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
-      scrollable: [""],
-    },
     abilities: {
       template: systemPath("templates/sheets/actor/shared/abilities.hbs"),
+      templates: ["features.hbs", "ability-list.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/features/${t}`)),
       scrollable: [""],
     },
     effects: {
@@ -79,6 +76,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         context.characteristics = this.actor.system._getCharacteristics(this.isEditMode);
         context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
         if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
+        break;
+      case "abilities":
+        context.features = await this._prepareFeaturesContext();
+        context.featureFields = FeatureModel.schema.fields;
         break;
       case "biography":
         context.motivations = this._getMotivations();

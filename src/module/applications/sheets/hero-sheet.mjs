@@ -1,4 +1,4 @@
-import { AdvancementModel, FollowerModel, KitModel, ProjectModel, TreasureModel } from "../../data/item/_module.mjs";
+import { AdvancementModel, FeatureModel, FollowerModel, KitModel, ProjectModel, TreasureModel } from "../../data/item/_module.mjs";
 import CharacteristicInput from "../apps/characteristic-input.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
@@ -67,7 +67,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
     abilities: {
-      template: systemPath("templates/sheets/actor/shared/abilities.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/abilities.hbs"),
       scrollable: [""],
     },
     effects: {
@@ -93,6 +93,8 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         context.skills = this._getSkills();
         break;
       case "features":
+        context.features = await this._prepareFeaturesContext();
+        context.featureFields = FeatureModel.schema.fields;
         context.complications = await this._prepareComplicationsContext();
         break;
       case "equipment":
