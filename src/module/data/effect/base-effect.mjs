@@ -4,6 +4,11 @@ import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
 import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
+import { systemID } from "../../constants.mjs";
+
+/**
+ * @import RegionDocument from "@client/documents/region.mjs";
+ */
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
@@ -37,6 +42,11 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     schema.end = new fields.SchemaField({
       roll: new FormulaField({ initial: "1d10 + @combat.save.bonus" }),
       sourceDying: new fields.BooleanField(),
+    });
+
+    schema.area = new fields.SchemaField({
+      track: new fields.BooleanField(),
+      regions: new fields.SetField(new fields.DocumentUUIDField({ type: "Region" })),
     });
 
     schema.project = new fields.SchemaField({
@@ -75,6 +85,65 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     const target = this.parent.parent ?? {};
     const invalidTypes = this.constructor.metadata[`invalid${target.documentName}Types`] ?? [];
     if (invalidTypes.includes(target.type)) return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+    const toggled = ("disabled" in changed) || foundry.utils.hasProperty(changed, "duration.expired");
+    if (!toggled) return;
+    for (const region of this.#linkedRegions(userId, "update")) BaseEffectModel.#toggleRegion(region, this.parent.active);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    for (const region of this.#linkedRegions(userId, "delete")) region.delete({ ds: { areaEffect: true } });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The regions tracked by this effect that this client should modify.
+   * The user who changed the effect does it if they can, otherwise the active GM.
+   * @param {string} userId     The user who changed the effect.
+   * @param {string} action     The region operation to perform.
+   * @returns {RegionDocument[]}
+   */
+  #linkedRegions(userId, action) {
+    const user = game.users.get(userId);
+    return Array.from(this.area.regions, uuid => fromUuidSync(uuid)).filter(region => {
+      if (!region) return false;
+      const designated = (user?.active && region.canUserModify(user, action)) ? user : game.users.activeGM;
+      return !!designated?.isSelf;
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Switch a tracked region on or off. A region that is off has its behaviors disabled and shows only on the Regions layer.
+   * Hidden isn't used because regions attached to a token always share the token's hidden state.
+   * @param {RegionDocument} region
+   * @param {boolean} on
+   */
+  static async #toggleRegion(region, on) {
+    const disabledIds = region.getFlag(systemID, "disabledBehaviors");
+    if (on) {
+      if (!disabledIds) return;
+      await region.update({ visibility: CONST.REGION_VISIBILITY.ALWAYS, [`flags.${systemID}.disabledBehaviors`]: _del });
+      const updates = disabledIds.filter(id => region.behaviors.has(id)).map(_id => ({ _id, disabled: false }));
+      if (updates.length) await region.updateEmbeddedDocuments("RegionBehavior", updates);
+    } else {
+      if (disabledIds) return;
+      const ids = region.behaviors.filter(b => !b.disabled).map(b => b.id);
+      await region.update({ visibility: CONST.REGION_VISIBILITY.LAYER, [`flags.${systemID}.disabledBehaviors`]: ids });
+      if (ids.length) await region.updateEmbeddedDocuments("RegionBehavior", ids.map(_id => ({ _id, disabled: true })));
+    }
   }
 
   /* -------------------------------------------------- */

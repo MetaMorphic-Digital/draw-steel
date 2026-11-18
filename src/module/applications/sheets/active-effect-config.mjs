@@ -55,6 +55,14 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
         context.characteristicOptions = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
         context.kindOptions = Object.entries(ds.CONFIG.equipment.kinds).map(([value, { label }]) => ({ value, label }));
         break;
+      case "duration": {
+        // Only an ability's own effect can be changed, an applied tracker shows the field locked.
+        const onAbility = this.document.parent?.type === "ability";
+        const source = onAbility ? this.document.parent : fromUuidSync(this.document.origin ?? "", { strict: false });
+        const shown = source?.system?.hasTemplate && (onAbility || this.document.system.area?.track);
+        context.areaTrack = shown ? { locked: !onAbility } : null;
+        break;
+      }
     }
 
     return partContext;

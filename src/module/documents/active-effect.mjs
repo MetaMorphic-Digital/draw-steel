@@ -61,6 +61,16 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
+  /**
+   * Effects that end when their source is dying are temporary even without a duration.
+   * @inheritdoc
+   */
+  get isTemporary() {
+    return super.isTemporary || !!this.system.end?.sourceDying;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   isExpiryEvent(event, context) {
     if (event === "sourceDying") {
@@ -69,6 +79,9 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       const source = (origin?.documentName === "Actor") ? origin : origin?.actor;
       return !!source && (source.uuid === context.source?.uuid);
     }
+
+    // Core treats an effect without an expiry as ending with its duration, so one that's only temporary because of sourceDying never expires otherwise
+    if (!this.duration.expiry && !Number.isFinite(this._source.duration.value)) return false;
 
     const dsEvents = new Set(["save", "respite"]);
     if (!dsEvents.has(event) || (event !== this.duration.expiry)) return super.isExpiryEvent(event, context);
