@@ -153,7 +153,8 @@
       "type": "base",
       "system": {
         "end": {
-          "roll": "1d10 + @combat.save.bonus"
+          "roll": "1d10 + @combat.save.bonus",
+          "sourceDying": true
         },
         "changes": [],
         "project": {
@@ -171,7 +172,7 @@
       "duration": {
         "value": null,
         "units": "seconds",
-        "expiry": null,
+        "expiry": "combatEnd",
         "expired": false
       },
       "description": "<p>damage weakness 10</p>",
