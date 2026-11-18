@@ -94,7 +94,8 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     super._onUpdate(changed, options, userId);
     const toggled = ("disabled" in changed) || foundry.utils.hasProperty(changed, "duration.expired");
     if (!toggled) return;
-    for (const region of this.#linkedRegions(userId, "update")) BaseEffectModel.#toggleRegion(region, this.parent.active);
+    const operations = this.#linkedRegions("update").flatMap(region => BaseEffectModel.#toggleOperations(region, this.parent.active));
+    if (operations.length) foundry.documents.modifyBatch(operations);
   }
 
   /* -------------------------------------------------- */
@@ -102,48 +103,48 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
   /** @inheritdoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
-    for (const region of this.#linkedRegions(userId, "delete")) region.delete({ ds: { areaEffect: true } });
+    const operations = Object.values(Object.groupBy(this.#linkedRegions("delete"), region => region.parent.id))
+      .map(regions => ({ action: "delete", documentName: "Region", parent: regions[0].parent, ids: regions.map(r => r.id), ds: { areaEffect: true } }));
+    if (operations.length) foundry.documents.modifyBatch(operations);
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * The regions tracked by this effect that this client should modify.
-   * The user who changed the effect does it if they can, otherwise the active GM.
-   * @param {string} userId     The user who changed the effect.
+   * The regions tracked by this effect that this client is designated to modify.
    * @param {string} action     The region operation to perform.
    * @returns {RegionDocument[]}
    */
-  #linkedRegions(userId, action) {
-    const user = game.users.get(userId);
+  #linkedRegions(action) {
     return Array.from(this.area.regions, uuid => fromUuidSync(uuid)).filter(region => {
-      if (!region) return false;
-      const designated = (user?.active && region.canUserModify(user, action)) ? user : game.users.activeGM;
-      return !!designated?.isSelf;
+      return region && game.users.getDesignatedUser(user => user.active && region.canUserModify(user, action))?.isSelf;
     });
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Switch a tracked region on or off. A region that is off has its behaviors disabled and shows only on the Regions layer.
+   * The operations that switch a tracked region on or off. A region that is off has its behaviors disabled and shows only on the Regions layer.
    * Hidden isn't used because regions attached to a token always share the token's hidden state.
    * @param {RegionDocument} region
    * @param {boolean} on
+   * @returns {object[]}
    */
-  static async #toggleRegion(region, on) {
+  static #toggleOperations(region, on) {
     const disabledIds = region.getFlag(systemID, "disabledBehaviors");
-    if (on) {
-      if (!disabledIds) return;
-      await region.update({ visibility: CONST.REGION_VISIBILITY.ALWAYS, [`flags.${systemID}.disabledBehaviors`]: _del });
-      const updates = disabledIds.filter(id => region.behaviors.has(id)).map(_id => ({ _id, disabled: false }));
-      if (updates.length) await region.updateEmbeddedDocuments("RegionBehavior", updates);
-    } else {
-      if (disabledIds) return;
-      const ids = region.behaviors.filter(b => !b.disabled).map(b => b.id);
-      await region.update({ visibility: CONST.REGION_VISIBILITY.LAYER, [`flags.${systemID}.disabledBehaviors`]: ids });
-      if (ids.length) await region.updateEmbeddedDocuments("RegionBehavior", ids.map(_id => ({ _id, disabled: true })));
+    if (on === !disabledIds) return [];
+    const behaviorIds = on ? disabledIds.filter(id => region.behaviors.has(id)) : region.behaviors.filter(b => !b.disabled).map(b => b.id);
+    const operations = [{
+      action: "update", documentName: "Region", parent: region.parent, updates: [{
+        _id: region.id,
+        visibility: on ? CONST.REGION_VISIBILITY.ALWAYS : CONST.REGION_VISIBILITY.LAYER,
+        [`flags.${systemID}.disabledBehaviors`]: on ? _del : behaviorIds,
+      }],
+    }];
+    if (behaviorIds.length) {
+      operations.push({ action: "update", documentName: "RegionBehavior", parent: region, updates: behaviorIds.map(_id => ({ _id, disabled: !on })) });
     }
+    return operations;
   }
 
   /* -------------------------------------------------- */

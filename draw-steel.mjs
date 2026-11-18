@@ -103,6 +103,7 @@ Hooks.once("init", function () {
   // ActiveEffect adjustments
   CONFIG.ActiveEffect.expiryEvents.save = "DRAW_STEEL.ActiveEffect.Ends.Save.Label";
   CONFIG.ActiveEffect.expiryEvents.respite = "DRAW_STEEL.ActiveEffect.Ends.Respite.Label";
+  CONFIG.ActiveEffect.expiryEvents.sourceDying = "DRAW_STEEL.ActiveEffect.Ends.SourceDying.Label";
 
   /**
    * A mapping of statuses to their order.

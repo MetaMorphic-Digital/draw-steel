@@ -48,35 +48,36 @@ export default class DrawSteelScene extends foundry.documents.Scene {
   /** @inheritdoc */
   _onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
     super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
-    const user = game.users.get(userId);
-    const isDesignated = (doc, action) => ((user?.active && doc.canUserModify(user, action)) ? user : game.users.activeGM)?.isSelf;
+    const isDesignated = (doc, action) => game.users.getDesignatedUser(user => user.active && doc.canUserModify(user, action))?.isSelf;
+    const operations = [];
 
-    // A deleted region ends the effects tracking it
     if ((collection === "regions") && !options.ds?.areaEffect) {
-      for (const region of documents) {
+      const deleted = new Set(documents.map(region => region.uuid));
+      const trackers = new Set(documents.flatMap(region => {
         const source = fromUuidSync(region.getFlag(systemID, "abilitySource") ?? "");
-        const trackers = source?.actor?.effects.filter(e => e.system.area?.regions.has(region.uuid)) ?? [];
-        for (const effect of trackers) {
-          if (!isDesignated(effect, "update")) continue;
-          const remaining = effect.system.area.regions.difference(new Set([region.uuid]));
-          if (remaining.size) effect.update({ "system.area.regions": Array.from(remaining) });
-          else effect.delete();
-        }
+        return source?.actor?.effects.filter(e => e.system.area?.regions.has(region.uuid)) ?? [];
+      }));
+      for (const effect of trackers) {
+        if (!isDesignated(effect, "update")) continue;
+        const remaining = effect.system.area.regions.difference(deleted);
+        operations.push(remaining.size
+          ? { action: "update", documentName: "ActiveEffect", parent: effect.parent, updates: [{ _id: effect.id, "system.area.regions": Array.from(remaining) }] }
+          : { action: "delete", documentName: "ActiveEffect", parent: effect.parent, ids: [effect.id] });
       }
     }
 
     // An unlinked token takes its effects with it without deleting them, so its tracked regions are deleted here
     if (collection === "tokens") {
-      for (const token of documents) {
-        if (token.actorLink) continue;
-        for (const effect of token.actor?.effects ?? []) {
-          for (const uuid of effect.system.area?.regions ?? []) {
-            const region = fromUuidSync(uuid);
-            if (region && isDesignated(region, "delete")) region.delete({ ds: { areaEffect: true } });
-          }
-        }
+      const regions = documents.filter(token => !token.actorLink)
+        .flatMap(token => token.actor?.effects.contents.flatMap(effect => Array.from(effect.system.area?.regions ?? [])) ?? [])
+        .map(uuid => fromUuidSync(uuid))
+        .filter(region => region && isDesignated(region, "delete"));
+      for (const group of Object.values(Object.groupBy(regions, region => region.parent.id))) {
+        operations.push({ action: "delete", documentName: "Region", parent: group[0].parent, ids: group.map(r => r.id), ds: { areaEffect: true } });
       }
     }
+
+    if (operations.length) foundry.documents.modifyBatch(operations);
   }
 
   /* -------------------------------------------------- */
