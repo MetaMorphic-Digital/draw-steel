@@ -291,6 +291,22 @@ export default class HeroModel extends CreatureModel {
   }
 
   /* -------------------------------------------------- */
+  
+  /**
+   * @inheritdoc
+   * @param {object} changed            The differential data that was changed relative to the documents prior values.
+   * @param {object} options            Additional options which modify the update request.
+   * @param {string} userId             The id of the User requesting the document update.
+   * @protected
+   * @internal
+   */
+  async _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+    if (changed.system?.stamina && (changed.system.stamina.value <= (-1 * this.stamina.winded)) && (game.actors.heroTokens.value >= 2) && (game.userId === userId)) {
+      await this.cheatDeath(changed.system.stamina.value);
+    }
+  }
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async startCombat(combatant) {
@@ -636,25 +652,21 @@ export default class HeroModel extends CreatureModel {
       return this.parent;
     }
 
-    if (((this.stamina.value - damage) <= (-1 * this.stamina.winded)) && (game.actors.heroTokens.value >= 2)) {
-      await this.cheatDeath(this.stamina.value - damage);
-    }
-
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
     await this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
     return this.parent;
   }
 
   /**
-   * 
+   * Prompting a spend of Hero Tokens if a PC can be prevented from dying.
    * @param {number} damage - The damage taken that would kill the Hero. 
+   * @returns DrawSteelChatMessage - Warning message.
    */
   async cheatDeath(damage) {
-    //Title Needs new String.
     //Content says "{Hero} will be slain from this blow. Spend a hero token?"
     //If yes, spend the hero token using the current functions.
     //If no, return the H.T Stamina function.
-    await DrawSteelChatMessage.create({
+    return DrawSteelChatMessage.create({
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.label"),
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),

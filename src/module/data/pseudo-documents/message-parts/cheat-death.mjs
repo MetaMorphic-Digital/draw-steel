@@ -1,5 +1,4 @@
 import ContentPart from "./content.mjs";
-import DamageRoll from "../../../rolls/damage.mjs";
 import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import RollPart from "./roll.mjs";
 import { systemPath } from "../../../constants.mjs";
@@ -10,8 +9,6 @@ import { systemPath } from "../../../constants.mjs";
 */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
-const { createFormGroup, createNumberInput, createTextInput } = foundry.applications.fields;
-
 /**
 * A part that displays details about a potential death and offers options.
 */
@@ -36,7 +33,7 @@ export default class DeathPart extends RollPart {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       heroUuid: new DocumentUUIDField({ nullable: false, type: "Actor" }),
-      endStamina: new NumberField(),
+      deathValue: new NumberField(),
       recoveryValue: new NumberField(),
       currentTokens: new NumberField(),
     });
@@ -63,10 +60,10 @@ export default class DeathPart extends RollPart {
   async _prepareContext(context) {
     await super._prepareContext(context);
     if (this.actorTarget) {
-      context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: this.actorTarget.name, endHealth: this.endStamina });
+      context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: this.actorTarget.name, endHealth: this.deathValue });
       context.ctx.tokenCounter = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.tokenCounter", { tokens: this.currentTokens, value: this.recoveryValue });
       
-      if (this?.actorTarget.isOwner) {
+      if (this.actorTarget.isOwner) {
         context.ctx.buttons.push(
           ds.utils.constructHTMLButton({
             label: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.yes"),
