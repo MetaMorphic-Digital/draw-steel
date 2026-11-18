@@ -17,6 +17,16 @@
   {{#if isPlay}}
   {{languages.list}}
   {{else}}
-  {{formInput systemFields.biography.fields.languages value=systemSource.biography.languages dataset=datasets.isSource options=languages.options sort=true}}
+  {{formInput
+    systemFields.biography.fields.languages
+    value=systemSource.biography.languages
+    dataset=datasets.isSource
+    options=languages.options
+    sort=true
+    hint=languages.inputHint
+  }}
+  {{#if languages.inputHint}}
+  <p class="hint">{{languages.inputHint}}</p>
+  {{/if}}
   {{/if}}
 </fieldset>

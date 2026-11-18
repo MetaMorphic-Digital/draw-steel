@@ -123,15 +123,49 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    */
   _getSkills() {
     const skillOptions = ds.CONFIG.skills.optgroups;
+    const advancementSkills = [];
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
 
     for (const skill of this.actor.system.skills.value) {
       if (!(skill in ds.CONFIG.skills.list)) skillOptions.push({ value: skill });
+      else if (!this.actor.system._source.skills.value.includes(skill)) advancementSkills.push(skill);
     }
 
-    return {
+    const skillContext = {
       list: this.actor.system.skills.list,
       options: skillOptions,
     };
+
+    if (advancementSkills.length) {
+      skillContext.inputHint = _loc("DRAW_STEEL.ADVANCEMENT.FillTrait.AdvancementProvided", {
+        traitList: formatter.format(advancementSkills.sort((a, b) => a.localeCompare(b, game.i18n.lang)).map(s => ds.CONFIG.skills.list[s].label)),
+      });
+
+    }
+
+    return skillContext;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _getLanguages() {
+    const languageContext = super._getLanguages();
+
+    const advancementLanguages = [];
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+
+    for (const language of this.actor.system.biography.languages) {
+      if (!this.actor.system._source.biography.languages.includes(language)) advancementLanguages.push(language);
+    }
+
+    if (advancementLanguages.length) {
+      languageContext.inputHint = _loc("DRAW_STEEL.ADVANCEMENT.FillTrait.AdvancementProvided", {
+        traitList: formatter.format(advancementLanguages.sort((a, b) => a.localeCompare(b, game.i18n.lang)).map(l => ds.CONFIG.languages[l].label)),
+      });
+    }
+
+    return languageContext;
   }
 
   /* -------------------------------------------------- */

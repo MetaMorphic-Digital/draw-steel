@@ -226,7 +226,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /**
    * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages.
-   * @returns {{list: string, options: FormSelectOption[]}}
+   * @returns {{list: string, options: FormSelectOption[], inputHint?: string}}
    * @protected
    */
   _getLanguages() {

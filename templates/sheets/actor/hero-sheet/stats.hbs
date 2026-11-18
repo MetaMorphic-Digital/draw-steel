@@ -148,6 +148,9 @@
     {{skills.list}}
     {{else}}
     {{formInput systemFields.skills.fields.value value=systemSource.skills.value options=skills.options dataset=datasets.isSource}}
+    {{#if skills.inputHint}}
+    <p class="hint">{{skills.inputHint}}</p>
+    {{/if}}
     {{/if}}
   </fieldset>
 </section>
