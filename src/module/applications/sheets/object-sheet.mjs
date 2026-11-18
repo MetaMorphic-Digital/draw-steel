@@ -1,5 +1,6 @@
 import { DocumentSourceInput, ObjectMetadataInput, ObjectSizesInput } from "../apps/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
+import FeatureModel from "../../data/item/feature.mjs";
 import { systemPath } from "../../constants.mjs";
 
 /**
@@ -42,13 +43,9 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
       templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
-    features: {
-      template: systemPath("templates/sheets/actor/object-sheet/features.hbs"),
-      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
-      scrollable: [""],
-    },
     abilities: {
       template: systemPath("templates/sheets/actor/shared/abilities.hbs"),
+      templates: ["features.hbs", "ability-list.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/features/${t}`)),
       scrollable: [""],
     },
     effects: {
@@ -61,6 +58,20 @@ export default class DrawSteelObjectSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
   };
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options);
+    switch (partId) {
+      case "abilities":
+        context.features = await this._prepareFeaturesContext();
+        context.featureFields = FeatureModel.schema.fields;
+        break;
+    }
+    return context;
+  }
 
   /* -------------------------------------------------- */
   /*   Actions                                          */

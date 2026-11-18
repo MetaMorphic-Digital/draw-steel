@@ -145,6 +145,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       }
 
       if (this.actor.type !== "hero") {
+        delete tabs.features;
         delete tabs.equipment;
         delete tabs.projects;
       }
@@ -166,10 +167,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         context.combatTooltip = this._getCombatTooltip();
         context.movement = this.actor.system._getMovement?.();
         context.damageIW = this.actor.system._getImmunitiesWeaknesses?.();
-        break;
-      case "features":
-        context.features = await this._prepareFeaturesContext();
-        context.featureFields = FeatureModel.schema.fields;
         break;
       case "abilities":
         context.abilities = await this._prepareAbilitiesContext();
