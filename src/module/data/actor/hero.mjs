@@ -614,6 +614,7 @@ export default class HeroModel extends CreatureModel {
 
     return this.class;
   }
+
   /* -------------------------------------------------- */
 
   /**
@@ -635,15 +636,13 @@ export default class HeroModel extends CreatureModel {
       return this.parent;
     }
 
-    console.log(((this.stamina.value - damage) <= (-1 * this.stamina.winded)));
     if (((this.stamina.value - damage) <= (-1 * this.stamina.winded)) && (game.actors.heroTokens.value >= 2)) {
-      console.log(this.recoveries);
       await this.cheatDeath(this.stamina.value - damage);
     }
 
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
-
+    await this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
+    return this.parent;
   }
 
   /**
@@ -659,8 +658,9 @@ export default class HeroModel extends CreatureModel {
       title: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.label"),
       type: "standard",
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
-      content: `<p> ${_loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.declineSpend", { hero: this.parent.name })} </p>`,
-      "system.parts": [{ type: "cheatDeath",
+      content: `<p>${_loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.declineSpend", { hero: this.parent.name })}</p>`,
+      "system.parts": [{
+        type: "cheatDeath",
         flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.label"),
         heroUuid: this.parent.uuid,
         endStamina: damage,

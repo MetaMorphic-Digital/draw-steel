@@ -8,18 +8,21 @@ import { systemPath } from "../../../constants.mjs";
 * @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
 * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
 */
+
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
 const { createFormGroup, createNumberInput, createTextInput } = foundry.applications.fields;
+
 /**
 * A part that displays details about a potential death and offers options.
 */
 export default class DeathPart extends RollPart {
-  
   /** @inheritdoc */
   static get TYPE() {
     return "cheatDeath";
   }
-  
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static ACTIONS = {
     ...super.ACTIONS,
@@ -39,8 +42,12 @@ export default class DeathPart extends RollPart {
     });
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static TEMPLATE = systemPath("templates/sidebar/chat/parts/cheat-death.hbs");
+
+  /* -------------------------------------------------- */
 
   /**
    * The token of the actor ending the turn, or null if unavailable.
@@ -50,11 +57,12 @@ export default class DeathPart extends RollPart {
     return fromUuidSync(this.heroUuid) ?? null;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
-    if (this.actorTarget)
-    {
+    if (this.actorTarget) {
       context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: this.actorTarget.name, endHealth: this.endStamina });
       context.ctx.tokenCounter = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.tokenCounter", { tokens: this.currentTokens, value: this.recoveryValue });
       
@@ -67,8 +75,6 @@ export default class DeathPart extends RollPart {
               action: "recoverStamina",
             },
           }),
-        );
-        context.ctx.buttons.push(
           ds.utils.constructHTMLButton({
             label: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.no"),
             icon: "fa-solid fa-skull",
@@ -78,24 +84,29 @@ export default class DeathPart extends RollPart {
           }),
         );
       }
-
     }
   }
 
   /* -------------------------------------------------- */
+
   /**
    * Recoover Stamina using the hero's inbuilt function.
-   * @param {PointerEvent} event    The Originating Click Event.
+   * @param {PointerEvent} event    The originating click event.
    */
-  static async #recoverStamina(event) {
-    console.log(this.actorTarget);
-    await this.actorTarget.system.spendStaminaHeroToken();
+  static #recoverStamina(event) {
+    this.actorTarget.system.spendStaminaHeroToken();
   }
+
+  /* -------------------------------------------------- */
+
   /**
    * Accept the Hero's death, presenting a message.
    * @param {PointerEvent} event    The originating click event. 
    */
-  static async #acceptDeath(event) {
-    await ContentPart.create({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.no", { hero: this.actorTarget.name }) }, { parent: this.message });
+  static #acceptDeath(event) {
+    ContentPart.create({
+      type: "content",
+      flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.no", { hero: this.actorTarget.name }),
+    }, { parent: this.message });
   }
 }
