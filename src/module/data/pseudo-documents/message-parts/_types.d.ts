@@ -29,10 +29,10 @@ declare module "./base-message-part.mjs" {
 
 declare module "./cheat-death.mjs" {
   export default interface DeathPart {
-    heroUuid: string,
-    deathValue: number,
-    currentTokens: number,
-    recoveryValue: number,
+    uuids: string,
+    death: number,
+    tokens: number,
+    recovery: number,
   }
 }
 

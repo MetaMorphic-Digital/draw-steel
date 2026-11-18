@@ -5,7 +5,6 @@ import { systemPath } from "../../../constants.mjs";
 
 /** 
 * @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
-* @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
 */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
@@ -32,10 +31,10 @@ export default class DeathPart extends RollPart {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      heroUuid: new DocumentUUIDField({ nullable: false, type: "Actor" }),
-      deathValue: new NumberField(),
-      recoveryValue: new NumberField(),
-      currentTokens: new NumberField(),
+      uuids: new DocumentUUIDField({ nullable: false, type: "Actor" }),
+      death: new NumberField(),
+      recovery: new NumberField(),
+      tokens: new NumberField(),
     });
   }
 
@@ -50,8 +49,8 @@ export default class DeathPart extends RollPart {
    * The token of the actor ending the turn, or null if unavailable.
    * @type {DrawSteelToken | null}
    */
-  get actorTarget() {
-    return fromUuidSync(this.heroUuid) ?? null;
+  get actor() {
+    return fromUuidSync(this.uuids) ?? null;
   }
 
   /* -------------------------------------------------- */
@@ -60,8 +59,8 @@ export default class DeathPart extends RollPart {
   async _prepareContext(context) {
     await super._prepareContext(context);
     if (this.actorTarget) {
-      context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: this.actorTarget.name, endHealth: this.deathValue });
-      context.ctx.tokenCounter = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.tokenCounter", { tokens: this.currentTokens, value: this.recoveryValue });
+      context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: this.actor.name, endHealth: this.death });
+      context.ctx.tokenCounter = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.tokenCounter", { tokens: this.tokens, value: this.recovery });
       
       if (this.actorTarget.isOwner) {
         context.ctx.buttons.push(
@@ -103,7 +102,7 @@ export default class DeathPart extends RollPart {
   static #acceptDeath(event) {
     ContentPart.create({
       type: "content",
-      flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.no", { hero: this.actorTarget.name }),
+      flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.no", { hero: this.actor.name }),
     }, { parent: this.message });
   }
 }
