@@ -58,8 +58,9 @@ export default class DeathPart extends RollPart {
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
-    if (this.actorTarget) {
-      context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: this.actor.name, endHealth: this.death });
+    const actor = this.actor;
+    if (this.actor) {
+      context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: actor.name, endHealth: this.death });
       context.ctx.tokenCounter = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.tokenCounter", { tokens: this.tokens, value: this.recovery });
       
       if (this.actorTarget.isOwner) {
@@ -89,8 +90,8 @@ export default class DeathPart extends RollPart {
    * Recoover Stamina using the hero's inbuilt function.
    * @param {PointerEvent} event    The originating click event.
    */
-  static #recoverStamina(event) {
-    this.actorTarget.system.spendStaminaHeroToken();
+  static async #recoverStamina(event) {
+    await this.actorTarget.system.spendStaminaHeroToken();
   }
 
   /* -------------------------------------------------- */
@@ -99,7 +100,7 @@ export default class DeathPart extends RollPart {
    * Accept the Hero's death, presenting a message.
    * @param {PointerEvent} event    The originating click event. 
    */
-  static #acceptDeath(event) {
+  static async #acceptDeath(event) {
     ContentPart.create({
       type: "content",
       flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.no", { hero: this.actor.name }),

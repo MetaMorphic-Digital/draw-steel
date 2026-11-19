@@ -634,30 +634,6 @@ export default class HeroModel extends CreatureModel {
   /* -------------------------------------------------- */
 
   /**
-   * Deal damage to the Hero, accounting for immunities and resistances. Trigger Intervention when hero tokens are available.
-   * @param {number} damage    The amount of damage to take.
-   * @param {object} [options] Options to modify the damage application.
-   * @param {string} [options.type]   Valid damage type.
-   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
-   * @param {DamageOrigin} [options.origin]  Where the damage came from, passed through to the Stamina update.
-   * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
-   */
-  async takeDamage(damage, options = {}) {
-    const { immunity = 0, weakness = 0 } = this.calculateImmunityAndWeakness(options);
-    
-    damage = Math.max(0, damage + weakness - immunity);
-
-    if (damage === 0) {
-      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
-      return this.parent;
-    }
-
-    // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    await this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false, { ds: { damageType: options.type, origin: options.origin } });
-    return this.parent;
-  }
-
-  /**
    * Prompting a spend of Hero Tokens if a PC can be prevented from dying.
    * @param {number} damage - The damage taken that would kill the Hero. 
    * @returns DrawSteelChatMessage - Warning message.
