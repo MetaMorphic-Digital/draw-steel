@@ -100,3 +100,23 @@ declare module "./utils/advancement/node.mjs" {
     skills?: string[];
   }
 }
+
+export interface FilterComparisonStatement {
+  k: string;
+  o: string;
+  v: string | number;
+}
+
+export type FilterLogicStatement =
+  | { and: FilterStatement[] }
+  | { or: FilterStatement[] }
+  | { not: FilterStatement };
+
+
+export type FilterStatement = FilterComparisonStatement | FilterLogicStatement;
+
+declare module "./utils/filter.mjs" {
+  export default interface Filter {
+    statements: FilterStatement;
+  }
+}
