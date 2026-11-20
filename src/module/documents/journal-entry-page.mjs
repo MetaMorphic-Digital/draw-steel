@@ -89,6 +89,8 @@ export default class DrawSteelJournalEntryPage extends foundry.documents.Journal
     });
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   toAnchor({ attrs = {}, dataset = {}, classes = [], name, icon } = {}) {
     if (typeof this.system.richTooltip === "function") {

@@ -4,7 +4,7 @@ import { DrawSteelChatMessage } from "../../../documents/_module.mjs";
 import RollPart from "./roll.mjs";
 import { systemPath } from "../../../constants.mjs";
 
-/** 
+/**
 * @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
 * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
 */
@@ -14,12 +14,14 @@ const { createFormGroup, createNumberInput, createTextInput } = foundry.applicat
 * A part that displays details about a fall and executes it.
 */
 export default class FallPart extends RollPart {
- 
+
   /** @inheritdoc */
   static get TYPE() {
     return "falling";
   }
-  
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static ACTIONS = {
     ...super.ACTIONS,
@@ -27,7 +29,7 @@ export default class FallPart extends RollPart {
     fall: this.#handleFall,
   };
   /* -------------------------------------------------- */
-  
+
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
@@ -36,8 +38,12 @@ export default class FallPart extends RollPart {
     });
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static TEMPLATE = systemPath("templates/sidebar/chat/parts/fall.hbs");
+
+  /* -------------------------------------------------- */
 
   /**
    * The targeted actor, or null if one is not available.
@@ -46,6 +52,9 @@ export default class FallPart extends RollPart {
   get actorTarget() {
     return fromUuidSync(this.token.actor.uuid) ?? null;
   }
+
+  /* -------------------------------------------------- */
+
   /**
    * The token of the actor ending the turn, or null if unavailable.
    * @type {DrawSteelToken | null}
@@ -54,13 +63,15 @@ export default class FallPart extends RollPart {
     return fromUuidSync(this.fallerUuid) ?? null;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(context) {
     await super._prepareContext(context);
     if (this.token)
     {
       context.ctx.fallWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.falling.explain", { victim: this.token.name, distance: this.fallerDistance });
-      
+
       if (this?.actorTarget.isOwner) {
         context.ctx.buttons.push(
           ds.utils.constructHTMLButton({
@@ -76,6 +87,8 @@ export default class FallPart extends RollPart {
     }
 
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _addListeners(element, context) {
@@ -203,6 +216,8 @@ export default class FallPart extends RollPart {
     await ContentPart.create({ type: "content", flavor: _loc("DRAW_STEEL.ChatMessage.PARTS.falling.takeFall", { distance: this.fallerDistance }) }, { parent: this.message });
 
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Apply damage to the targeted actor.
