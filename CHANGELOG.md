@@ -24,6 +24,9 @@
 
 - Updated Player-Facing Compendium Content:
   - Fixed effect key for Synaptic Break. (#2281)
+  - Added effects to level 7 and 10 talents that increase per-turn heroic resource gain. (#2296)
+- Updated Director-Facing Compendium Content:
+  - Corrected the EV and forced movement direction for the Angulotl Slink.
 - Added migration for Beastheart Companion Skills. (#2283)
 
 ## 1.2.2

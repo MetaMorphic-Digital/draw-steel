@@ -534,6 +534,8 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     return result ?? null;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return null;

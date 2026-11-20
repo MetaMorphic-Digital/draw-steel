@@ -52,6 +52,8 @@ export default class PowerRollDialog extends RollDialog {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Prepare the skill select options.
    * @param {object} context The context from _prepareContext.

@@ -87,6 +87,8 @@ export default class ClassModel extends AdvancementModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async applyAdvancements({ actor, levels = { start: null, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
     const { end: levelEnd = 1 } = levels;

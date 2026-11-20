@@ -452,6 +452,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     ];
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Get context menu entries for creating Active Effects.
    * @returns {ContextMenuEntry[]}
@@ -755,6 +757,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.item });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * If an item has an advancement that can be reconfigured.
    * @this DrawSteelItemSheet
@@ -767,6 +771,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     return !!advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel", "advancement.advancementId"));
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Finds which advanceemnt an item came from, calls the advancement's reconfigure.
    * @this DrawSteelItemSheet
@@ -777,6 +783,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     const advancement = advancementSource.pseudoCollections.Advancement.get(this.item.getFlag("draw-steel", "advancement.advancementId"));
     await advancement.reconfigure();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Reconfigure an existing advancement on an actor.

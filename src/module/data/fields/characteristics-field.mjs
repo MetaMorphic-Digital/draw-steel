@@ -32,6 +32,8 @@ export default class CharacteristicsField extends SchemaField {
     super(fields, options, context);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * A fixed, hard private list of valid characteristics in Draw Steel.
    */
