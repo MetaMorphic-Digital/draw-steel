@@ -297,8 +297,6 @@ export default class HeroModel extends CreatureModel {
    * @param {object} changed            The differential data that was changed relative to the documents prior values.
    * @param {object} options            Additional options which modify the update request.
    * @param {string} userId             The id of the User requesting the document update.
-   * @protected
-   * @internal
    */
   async _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
