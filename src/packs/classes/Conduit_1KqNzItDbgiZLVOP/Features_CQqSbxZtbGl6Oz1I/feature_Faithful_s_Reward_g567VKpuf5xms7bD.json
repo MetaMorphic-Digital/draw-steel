@@ -22,7 +22,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Faithful's Reward",
+      "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.g567VKpuf5xms7bD",
+      "transfer": false,
+      "_id": "nOL7x4njTkTNQe01",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.primary.turnGain",
+            "type": "override",
+            "value": "1d3+1",
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1795132036562,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!g567VKpuf5xms7bD.nOL7x4njTkTNQe01"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
