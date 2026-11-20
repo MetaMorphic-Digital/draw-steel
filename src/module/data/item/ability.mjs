@@ -877,7 +877,7 @@ export default class AbilityModel extends BaseItemModel {
    *  - the game is paused and the user is not a GM, or
    *  - the Region creation was rejected by preCreate.
    */
-  async placeTemplate({ setTargets, ...options } = {}) {
+  async placeTemplate({ setTargets, track, ...options } = {}) {
     if (!this.hasTemplate) {
       const msg = _loc("DRAW_STEEL.Item.ability.NoArea", { ability: this.parent.name });
       ui.notifications.error(msg, { console: false });
@@ -943,6 +943,7 @@ export default class AbilityModel extends BaseItemModel {
     };
 
     const region = await canvas.regions.placeRegion(regionData, options);
+    if (track && region) await this.trackRegion(region);
     if (!setTargets || !region) return region;
 
     /** @type {Set<DrawSteelToken>} */
@@ -952,6 +953,34 @@ export default class AbilityModel extends BaseItemModel {
     }).map(token => token.id);
     if (targetIds.size) canvas.tokens.setTargets(targetIds, { mode: setTargets });
     return region;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Apply this ability's area-tracking effect to its user, linked to a placed region.
+   * Each placement gets its own effect, since one creature can maintain several instances of an ability.
+   * @param {RegionDocument} region   The region placed for this ability.
+   * @returns {Promise<DrawSteelActiveEffect|null>} The created effect, or null if this ability has no tracking effect.
+   */
+  async trackRegion(region) {
+    const tracker = this.parent.effects.find(e => e.system.area?.track);
+    if (!tracker || !this.actor) return null;
+
+    const start = DrawSteelActiveEffect.getEffectStart();
+    const combatant = game.combat?.getCombatantsByActor(this.actor)[0];
+    if (combatant) {
+      start.combatant = combatant;
+      if (!game.combats.isDefaultInitiativeMode) start.initiative = combatant.initiative;
+    }
+
+    const effectData = foundry.utils.mergeObject(tracker.toObject(), {
+      start,
+      transfer: true,
+      origin: this.parent.uuid,
+      system: { area: { regions: [region.uuid] } },
+    });
+    return DrawSteelActiveEffect.create(effectData, { parent: this.actor });
   }
 
   /* -------------------------------------------------- */

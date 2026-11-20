@@ -4,6 +4,11 @@ import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
 import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
+import { systemID } from "../../constants.mjs";
+
+/**
+ * @import RegionDocument from "@client/documents/region.mjs";
+ */
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
@@ -37,6 +42,11 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     schema.end = new fields.SchemaField({
       roll: new FormulaField({ initial: "1d10 + @combat.save.bonus" }),
       sourceDying: new fields.BooleanField(),
+    });
+
+    schema.area = new fields.SchemaField({
+      track: new fields.BooleanField(),
+      regions: new fields.SetField(new fields.DocumentUUIDField({ type: "Region" })),
     });
 
     schema.project = new fields.SchemaField({
@@ -75,6 +85,66 @@ export default class BaseEffectModel extends foundry.data.ActiveEffectTypeDataMo
     const target = this.parent.parent ?? {};
     const invalidTypes = this.constructor.metadata[`invalid${target.documentName}Types`] ?? [];
     if (invalidTypes.includes(target.type)) return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+    const toggled = ("disabled" in changed) || foundry.utils.hasProperty(changed, "duration.expired");
+    if (!toggled) return;
+    const operations = this.#linkedRegions("update").flatMap(region => BaseEffectModel.#toggleOperations(region, this.parent.active));
+    if (operations.length) foundry.documents.modifyBatch(operations);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    const operations = Object.values(Object.groupBy(this.#linkedRegions("delete"), region => region.parent.id))
+      .map(regions => ({ action: "delete", documentName: "Region", parent: regions[0].parent, ids: regions.map(r => r.id), ds: { areaEffect: true } }));
+    if (operations.length) foundry.documents.modifyBatch(operations);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The regions tracked by this effect that this client is designated to modify.
+   * @param {string} action     The region operation to perform.
+   * @returns {RegionDocument[]}
+   */
+  #linkedRegions(action) {
+    return Array.from(this.area.regions, uuid => fromUuidSync(uuid)).filter(region => {
+      return region && game.users.getDesignatedUser(user => user.active && region.canUserModify(user, action))?.isSelf;
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The operations that switch a tracked region on or off. A region that is off has its behaviors disabled and shows only on the Regions layer.
+   * Hidden isn't used because regions attached to a token always share the token's hidden state.
+   * @param {RegionDocument} region
+   * @param {boolean} on
+   * @returns {object[]}
+   */
+  static #toggleOperations(region, on) {
+    const disabledIds = region.getFlag(systemID, "disabledBehaviors");
+    if (on === !disabledIds) return [];
+    const behaviorIds = on ? disabledIds.filter(id => region.behaviors.has(id)) : region.behaviors.filter(b => !b.disabled).map(b => b.id);
+    const operations = [{
+      action: "update", documentName: "Region", parent: region.parent, updates: [{
+        _id: region.id,
+        visibility: on ? CONST.REGION_VISIBILITY.ALWAYS : CONST.REGION_VISIBILITY.LAYER,
+        [`flags.${systemID}.disabledBehaviors`]: on ? _del : behaviorIds,
+      }],
+    }];
+    if (behaviorIds.length) {
+      operations.push({ action: "update", documentName: "RegionBehavior", parent: region, updates: behaviorIds.map(_id => ({ _id, disabled: !on })) });
+    }
+    return operations;
   }
 
   /* -------------------------------------------------- */

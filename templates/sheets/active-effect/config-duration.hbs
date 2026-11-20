@@ -4,6 +4,9 @@
     <legend>{{localize "DRAW_STEEL.ActiveEffect.Ends.Label"}}</legend>
     {{formGroup systemFields.end.fields.roll value=source.system.end.roll}}
     {{formGroup systemFields.end.fields.sourceDying value=source.system.end.sourceDying}}
+    {{#if areaTrack}}
+    {{formGroup systemFields.area.fields.track value=source.system.area.track disabled=areaTrack.locked}}
+    {{/if}}
   </fieldset>
 
   <hr>

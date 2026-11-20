@@ -56,6 +56,8 @@ declare module "./base-item.mjs" {
 export interface PlaceAbilityOptions extends RegionPlacementOptions {
   /** Whether to update the user's targets based off of tokens included in the region. A falsy value means do not adjust targets. */
   setTargets?: "acquire" | "replace";
+  /** Whether to apply the ability's area-tracking effect to its user, linked to the placed region. */
+  track?: boolean;
 }
 
 export interface AbilityEmbedConfig extends DSItemEmbedConfig {

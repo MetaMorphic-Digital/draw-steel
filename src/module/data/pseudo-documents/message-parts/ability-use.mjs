@@ -145,7 +145,7 @@ export default class AbilityUsePart extends BaseMessagePart {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #placeTemplate(event, target) {
-    await this.ability.system.placeTemplate();
+    await this.ability.system.placeTemplate({ track: true });
   }
 
   /* -------------------------------------------------- */
