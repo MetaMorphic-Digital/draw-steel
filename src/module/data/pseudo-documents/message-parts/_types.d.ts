@@ -27,6 +27,15 @@ declare module "./base-message-part.mjs" {
   }
 }
 
+declare module "./cheat-death.mjs" {
+  export default interface DeathPart {
+    uuids: string;
+    death: number;
+    tokens: number;
+    recovery: number;
+  }
+}
+
 declare module "./fall.mjs" {
   export default interface FallPart {
     fallerUuid: string;
