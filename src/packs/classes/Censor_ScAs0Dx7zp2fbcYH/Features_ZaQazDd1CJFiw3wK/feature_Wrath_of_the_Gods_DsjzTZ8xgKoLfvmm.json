@@ -22,7 +22,67 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Wrath of the Gods",
+      "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.DsjzTZ8xgKoLfvmm",
+      "transfer": false,
+      "_id": "IDYmARa3MPqoVMnA",
+      "system": {
+        "changes": [
+          {
+            "key": "system.hero.primary.turnGain",
+            "type": "override",
+            "value": 4,
+            "phase": "initial",
+            "priority": null
+          }
+        ],
+        "end": {
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "project": {
+          "prerequisites": "",
+          "source": "",
+          "rollCharacteristic": [],
+          "yield": {
+            "kind": "weapon",
+            "amount": "1",
+            "display": ""
+          }
+        }
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.370",
+        "systemId": "draw-steel",
+        "systemVersion": "1.2",
+        "createdTime": 1795131979081,
+        "modifiedTime": null,
+        "lastModifiedBy": null,
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!items.effects!DsjzTZ8xgKoLfvmm.IDYmARa3MPqoVMnA"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
