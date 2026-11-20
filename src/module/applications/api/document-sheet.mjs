@@ -139,6 +139,8 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);

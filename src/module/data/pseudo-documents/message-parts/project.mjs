@@ -95,6 +95,8 @@ export default class ProjectPart extends BaseMessagePart {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Update the message content with the new event text. If there's no ContentPart, create one.
    */

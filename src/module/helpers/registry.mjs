@@ -125,6 +125,8 @@ export default class DrawSteelRegistry {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Called once in `ready` after migrations.
    */
