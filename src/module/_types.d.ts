@@ -102,9 +102,9 @@ declare module "./utils/advancement/node.mjs" {
 }
 
 export interface FilterComparisonStatement {
-  key: string;
-  operator: string;
-  value: string | number;
+  k: string;
+  o: string;
+  v: string | number;
 }
 
 export type FilterLogicStatement =

@@ -45,7 +45,7 @@ export default class Filter {
     else if (statement.not) return this.not(data, statement.not);
 
     // Step 2. Check for comparison operator statements.
-    const { operator, key, value: filterValue } = statement;
+    const { k: key, o: operator, v: filterValue } = statement;
     const comparisonCallback = this.COMPARISON_OPERATORS[operator];
     if (!comparisonCallback) {
       console.warn(`Invalid Filter Operator: ${operator}. The statement was evaluated as false.`);
@@ -263,14 +263,13 @@ export default class Filter {
    * @param {string} path                      The object path that's currently being validated.
    */
   static validateLogicStatement(statement, failureReasons, path) {
-    const validLogicOperators = new Set(["and", "or", "not"]);
     const statementKeys = new Set(Object.keys(statement));
 
     // 1. Validate that there is only one top level operator
     if (statementKeys.size > 1) failureReasons.push(_loc("DRAW_STEEL.Filter.Validation.Logic.OneOperator", { path }));
 
     // 2. Validate that only acceptable logic keys are present.
-    const invalidKeys = statementKeys.difference(validLogicOperators);
+    const invalidKeys = statementKeys.difference(this.validLogicOperators);
     if (invalidKeys.size) {
       const invalid = game.i18n.getListFormatter().format([...invalidKeys]);
       failureReasons.push(_loc("DRAW_STEEL.Filter.Validation.Logic.InvalidOperator", { path, invalid }));
@@ -301,7 +300,7 @@ export default class Filter {
    * The set of valid keys inside a comparison statement.
    * @type {Set<string>}
    */
-  static validComparisonKeys = new Set(["key", "value", "operator"]);
+  static validComparisonKeys = new Set(["k", "o", "v"]);
 
   /* -------------------------------------------------- */
 
@@ -338,14 +337,14 @@ export default class Filter {
     }
 
     // 2. Validate that statement.operator is a valid comparison operator
-    if (("operator" in statement) && !this.validComparisonOperators.has(statement.operator)) {
-      failureReasons.push(_loc("DRAW_STEEL.Filter.Validation.Comparison.InvalidOperator", { path, operator: statement.operator }));
+    if (("o" in statement) && !this.validComparisonOperators.has(statement.o)) {
+      failureReasons.push(_loc("DRAW_STEEL.Filter.Validation.Comparison.InvalidOperator", { path, operator: statement.o }));
     }
 
     // 3. Validate all required keys are present.
     const requiredKeys = new Set(this.validComparisonKeys);
     // The empty comparison doesn't require value.
-    if (this.valuelessOperators.has(statement.operator)) requiredKeys.delete("value");
+    if (this.valuelessOperators.has(statement.o)) requiredKeys.delete("v");
     const missingKeys = requiredKeys.difference(statementKeys);
     if (missingKeys.size) {
       const missing = game.i18n.getListFormatter().format([...missingKeys]);
