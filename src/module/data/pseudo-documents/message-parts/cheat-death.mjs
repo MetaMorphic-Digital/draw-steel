@@ -4,7 +4,7 @@ import RollPart from "./roll.mjs";
 import { systemPath } from "../../../constants.mjs";
 
 /** 
-* @import DrawSteelToken from "../../../canvas/placeables/token.mjs";
+* @import DrawSteelActor from "../../../documents/actor.mjs";
 */
 
 const { DocumentUUIDField, NumberField } = foundry.data.fields;
@@ -46,8 +46,8 @@ export default class DeathPart extends RollPart {
   /* -------------------------------------------------- */
 
   /**
-   * The token of the actor ending the turn, or null if unavailable.
-   * @type {DrawSteelToken | null}
+   * The hero at death's door.
+   * @type {DrawSteelActor | null}
    */
   get actor() {
     return fromUuidSync(this.uuids) ?? null;
@@ -59,11 +59,11 @@ export default class DeathPart extends RollPart {
   async _prepareContext(context) {
     await super._prepareContext(context);
     const actor = this.actor;
-    if (this.actor) {
+    if (actor) {
       context.ctx.staminaWarning = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.explain", { hero: actor.name, endHealth: this.death });
       context.ctx.tokenCounter = _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.tokenCounter", { tokens: this.tokens, value: this.recovery });
       
-      if (this.actorTarget.isOwner) {
+      if (actor.isOwner) {
         context.ctx.buttons.push(
           ds.utils.constructHTMLButton({
             label: _loc("DRAW_STEEL.ChatMessage.PARTS.cheatDeath.Buttons.yes"),
@@ -91,7 +91,7 @@ export default class DeathPart extends RollPart {
    * @param {PointerEvent} event    The originating click event.
    */
   static async #recoverStamina(event) {
-    await this.actorTarget.system.spendStaminaHeroToken();
+    await this.actor.system.spendStaminaHeroToken();
   }
 
   /* -------------------------------------------------- */
